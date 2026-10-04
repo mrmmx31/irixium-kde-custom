@@ -39,7 +39,8 @@ fi
 
 if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key BorderSize Normal
-    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft MNS
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft M
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HXA
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
 fi
 

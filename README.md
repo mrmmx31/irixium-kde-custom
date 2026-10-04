@@ -6,7 +6,7 @@ improvements:
 - keeps title-bar buttons vertically centered when a window is maximized;
 - restores the 22x22 transparent Irix-style applications button;
 - includes the GTK 1.2, 2.0, 3.0 and 4.0 themes;
-- preserves the chosen Irixium title-bar button order;
+- preserves the chosen Irixium title-bar button order (`M` left and `HXA` right);
 - includes a script to reapply the changes after KDE updates.
 
 ## Installation
