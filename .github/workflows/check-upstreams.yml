@@ -1,0 +1,73 @@
+name: Check upstreams
+
+on:
+  schedule:
+    - cron: "17 9 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository
+        uses: actions/checkout@v4
+
+      - name: Check GTK upstream
+        id: gtk
+        shell: bash
+        run: |
+          set -euo pipefail
+          upstream_commit="$(git ls-remote https://github.com/TheJollyDuck/Irixium.git HEAD | cut -f1)"
+          local_commit="$(cat .upstream/gtk-commit)"
+          echo "upstream_commit=$upstream_commit" >> "$GITHUB_OUTPUT"
+          echo "local_commit=$local_commit" >> "$GITHUB_OUTPUT"
+          if [ "$upstream_commit" != "$local_commit" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check KDE/Pling upstream
+        id: pling
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --silent --show-error \
+            https://www.pling.com/p/1457753 | sha256sum | cut -d' ' -f1 > /tmp/pling-page.sha256
+          current="$(cat /tmp/pling-page.sha256)"
+          recorded="$(cat .upstream/pling-page.sha256)"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "recorded=$recorded" >> "$GITHUB_OUTPUT"
+          if [ "$current" != "$recorded" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Open GTK review issue
+        if: steps.gtk.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPSTREAM_COMMIT: ${{ steps.gtk.outputs.upstream_commit }}
+        run: |
+          title="GTK upstream changed: ${UPSTREAM_COMMIT:0:12}"
+          if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
+            gh issue create --title "$title" --body \
+              "Review the GTK upstream change at https://github.com/TheJollyDuck/Irixium/commit/$UPSTREAM_COMMIT. Do not merge automatically."
+          fi
+
+      - name: Open KDE/Pling review issue
+        if: steps.pling.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_HASH: ${{ steps.pling.outputs.current }}
+        run: |
+          title="KDE/Pling upstream page changed"
+          if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
+            gh issue create --title "$title" --body \
+              "Review the Irixium KDE source at https://www.pling.com/p/1457753. Page fingerprint: \`$CURRENT_HASH\`. Do not merge automatically."
+          fi
