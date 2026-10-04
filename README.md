@@ -27,6 +27,10 @@ To check the registered upstream sources:
 ./check-upstreams.sh
 ```
 
+Upstream changes are review-only. Never merge or copy them directly into
+`main`: prepare one branch and one Pull Request/Merge Request per update,
+review the diff, test the theme, and merge only after approval.
+
 ## Attribution and licensing
 
 The root-level Aurorae files in this repository are based on Irixium by Phob1an.
