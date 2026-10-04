@@ -42,6 +42,14 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft M
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HXA
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
+    kwriteconfig6 --file kdeglobals --group General --key XftAntialias false
+    kwriteconfig6 --file kdeglobals --group General --key XftSubPixel none
+    kwriteconfig6 --file kdeglobals --group General --key font 'Nimbus Sans [urw],12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1'
+    kwriteconfig6 --file kdeglobals --group General --key fixed 'Nimbus Sans [urw],12,-1,5,400,0,0,0,0,0,0,0,0,0,0,1'
+    kwriteconfig6 --file kdeglobals --group General --key smallestReadableFont 'Nimbus Sans [urw],10,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic'
+    kwriteconfig6 --file kdeglobals --group General --key toolBarFont 'Nimbus Sans [urw],12,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic'
+    kwriteconfig6 --file kdeglobals --group General --key menuFont 'Nimbus Sans [urw],12,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic'
+    kwriteconfig6 --file kdeglobals --group WM --key activeFont 'Nimbus Sans [urw],12,-1,5,700,1,0,0,0,0,0,0,0,0,0,1,Bold Italic'
 fi
 
 printf '%s\n' "Irixium customização reaplicada."

@@ -7,6 +7,7 @@ improvements:
 - restores the 22x22 transparent Irix-style applications button;
 - includes the GTK 1.2, 2.0, 3.0 and 4.0 themes;
 - preserves the chosen Irixium title-bar button order (`M` left and `HXA` right);
+- records the KDE Plasma 6 font and antialiasing profile;
 - includes a script to reapply the changes after KDE updates.
 
 ## Installation
@@ -21,6 +22,8 @@ The script installs the user theme files and the patched Aurorae QML component. 
 `MenuButton.qml.irixium-original` when that backup does not already exist.
 It also applies the decoration settings recorded in `kwin-decoration.conf`
 without replacing the rest of `kwinrc`.
+The KDE font settings are recorded separately in `kde-fonts.conf` and are
+written using the KDE 6 `kwriteconfig6` format detected on Plasma 6.3.6.
 
 The QML component is cached by KWin. Log out and back in after installation so the change is loaded.
 
