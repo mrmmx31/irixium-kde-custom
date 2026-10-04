@@ -37,5 +37,11 @@ if command -v qdbus6 >/dev/null 2>&1; then
     qdbus6 org.kde.KWin /KWin reconfigure >/dev/null 2>&1 || true
 fi
 
+if command -v kwriteconfig6 >/dev/null 2>&1; then
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key BorderSize Normal
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft MNS
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
+fi
+
 printf '%s\n' "Irixium customização reaplicada."
 printf '%s\n' "Entre novamente na sessão para o KWin recarregar o componente QML."

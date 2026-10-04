@@ -6,6 +6,7 @@ improvements:
 - keeps title-bar buttons vertically centered when a window is maximized;
 - restores the 22x22 transparent Irix-style applications button;
 - includes the GTK 1.2, 2.0, 3.0 and 4.0 themes;
+- preserves the chosen Irixium title-bar button order;
 - includes a script to reapply the changes after KDE updates.
 
 ## Installation
@@ -18,6 +19,8 @@ Run:
 
 The script installs the user theme files and the patched Aurorae QML component. It preserves the original system component as
 `MenuButton.qml.irixium-original` when that backup does not already exist.
+It also applies the decoration settings recorded in `kwin-decoration.conf`
+without replacing the rest of `kwinrc`.
 
 The QML component is cached by KWin. Log out and back in after installation so the change is loaded.
 
