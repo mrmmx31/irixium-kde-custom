@@ -1,0 +1,43 @@
+style "irixium-default"
+{
+  bg[NORMAL] = "#c1c1c1"
+  bg[PRELIGHT] = "#cdcdcd"
+  bg[ACTIVE] = "#848484"
+  bg[SELECTED] = "#648bb3"
+  bg[INSENSITIVE] = "#919191"
+
+  fg[NORMAL] = "#000000"
+  fg[PRELIGHT] = "#000000"
+  fg[ACTIVE] = "#000000"
+  fg[SELECTED] = "#ffffff"
+  fg[INSENSITIVE] = "#606060"
+
+  base[NORMAL] = "#c1c1c1"
+  base[SELECTED] = "#648bb3"
+  base[INSENSITIVE] = "#c1c1c1"
+
+  text[NORMAL] = "#000000"
+  text[SELECTED] = "#ffffff"
+  text[INSENSITIVE] = "#606060"
+
+  bg_pixmap[NORMAL] = ""
+  bg_pixmap[PRELIGHT] = ""
+  bg_pixmap[ACTIVE] = ""
+  bg_pixmap[SELECTED] = ""
+  bg_pixmap[INSENSITIVE] = ""
+}
+
+class "*" style "irixium-default"
+widget_class "*" style "irixium-default"
+widget "*GtkMenu*" style "irixium-default"
+widget "*GtkMenuItem*" style "irixium-default"
+widget "*GtkTreeView*" style "irixium-default"
+
+gtk-color-scheme = "theme_bg_color:#c1c1c1\n\
+theme_fg_color:#000000\n\
+theme_selected_bg_color:#648bb3\n\
+theme_selected_fg_color:#ffffff\n\
+theme_text_color:#000000\n\
+theme_base_color:#c1c1c1\n\
+theme_tooltip_bg_color:#d0cfb2\n\
+theme_tooltip_fg_color:#000000"
