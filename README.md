@@ -56,7 +56,7 @@ menu-action double-click handling; use
 `classic-rewrite-rc1/instalar.sh` for local testing. The QtTest runner is
 optional; absence is reported rather than treated as a passing runtime test.
 
-The `moderno-geometria/` package is a geometry-only update for the modern
+The `moderno/geometria/` package is a geometry-only update for the modern
 Aurorae Irixium theme. It preserves the artwork, controls, menu component,
 fonts, GTK theme and IRIX Classic, while changing only the Irixium layout and
 the scoped divider component. It recognizes both Debian Aurorae component
