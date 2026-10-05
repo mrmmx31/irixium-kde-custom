@@ -1,11 +1,11 @@
-# IrixClassic 0.1.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.1.0-rc2 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.1.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.1.0-rc2
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -37,6 +37,7 @@ transient_scrollbar=false
 transient_groove=false
 scroll_width=18
 scroll_min_extent=34
+center_scrollbar_indicator=false
 splitter_width=7
 slider_width=14
 slider_handle_width=16
@@ -318,14 +319,25 @@ indicator.size=18
 
 [ScrollbarGroove]
 inherits=Menu
-frame.element=ic-groove
-interior.element=ic-groove
+frame.element=ic-scroll-groove
+interior.element=ic-scroll-groove
+frame.left=1
+frame.right=1
+frame.top=1
+frame.bottom=2
+frame.expansion=0
 
 [ScrollbarSlider]
 inherits=Menu
-frame.element=ic-thumb
-interior.element=ic-thumb
-indicator.element=ic-grip
+frame.element=ic-scroll-thumb
+interior.element=ic-scroll-thumb
+# Full-width grip crosses the side bevel, as in the supplied IRIX reference.
+frame.left=0
+frame.right=0
+frame.top=2
+frame.bottom=3
+frame.expansion=0
+indicator.element=ic-scroll-grip
 indicator.size=10
 
 [Splitter]
@@ -336,17 +348,23 @@ indicator.element=ic-splitgrip
 indicator.size=10
 
 [Slider]
-inherits=ScrollbarGroove
+# Freeze block 7 at the previous appearance; do not inherit scrollbar changes.
+inherits=Menu
+frame.element=ic-groove
+interior.element=ic-groove
 
 [SliderCursor]
-inherits=ScrollbarSlider
+# Preserve the original frame and indicator metrics until block 7.
+inherits=Menu
 frame.element=ic-slidercursor
 interior.element=ic-slidercursor
 indicator.element=ic-slidergrip
 indicator.size=10
 
 [Progressbar]
-inherits=ScrollbarGroove
+inherits=Menu
+frame.element=ic-groove
+interior.element=ic-groove
 text.normal.color=#000000
 text.focus.color=#000000
 text.bold=false

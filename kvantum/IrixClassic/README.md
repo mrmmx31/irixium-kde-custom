@@ -1,8 +1,28 @@
 # IrixClassic — Kvantum
 
-**0.1.0-rc1. Maintainer: `mrmmx31`.** Estilo de **Qt Widgets**, separado da
+**0.1.0-rc2. Maintainer: `mrmmx31`.** Estilo de **Qt Widgets**, separado da
 decoração IRIX Classic e do Irixium moderno. Primeira candidata para ensaio local;
 não é uma reprodução certificada de todos os controles do IRIX.
+
+## Bloco 1 revisado nesta entrega
+
+Setas verticais 8×9 na célula 18×18; três ranhuras claro/preto com passo 4;
+trilho e puxador exclusivos; faixas laterais atravessadas pelo indicador de
+largura total. Pressão sem deslocar o símbolo; hover igual ao repouso. Os demais
+recursos gráficos e suas configurações efetivas foram preservados.
+
+Roteiro completo: `../PLANO-IRIXCLASSIC.md`. Detalhes, limites históricos e teste
+local: `../docs/ROLAGEM.md`. O bloco está implementado para ensaio, **não aprovado
+em Qt/KDE nesta entrega**. A função nativa do Qt continua responsável pelo gesto.
+
+```sh
+bash kvantum/testar-rolagem.sh
+bash kvantum/prever-rolagem.sh
+```
+
+Os comandos acima partem da raiz do checkout. `PREVIA-ROLAGEM.png` compara os
+mapas da referência, da rc1 e da rc2; `ESTADOS-ROLAGEM.png` mostra as composições
+verticais/horizontais. Não são capturas de execução do plugin.
 
 ## Desenho desta revisão
 
@@ -119,4 +139,6 @@ criadas na instalação podem permanecer após a restauração.
 `python3 kvantum/tools/build_classic.py` regenera o SVG deterministicamente.
 Após editar o tema, execute `python3 kvantum/tools/update_manifest.py`.
 O manifesto detecta alteração de bytes, não é assinatura de origem.
-`PREVIA.png` é uma composição técnica das primitivas, **não execução do Kvantum**.
+`PREVIA.png` conserva o catálogo inicial da rc1 para referência. Para a rolagem
+na rc2, use `PREVIA-ROLAGEM.png` e `ESTADOS-ROLAGEM.png`; são composições
+técnicas, **não execução do Kvantum**.
