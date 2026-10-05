@@ -20,6 +20,9 @@ Run:
 
 The script installs the user theme files and the patched Aurorae QML component. It preserves the original system component as
 `MenuButton.qml.irixium-original` when that backup does not already exist.
+The QML component is shared by Aurorae, but its custom image is guarded by
+the active decoration path and is rendered only for Irixium. Other Aurorae
+themes retain the standard application icon.
 It also applies the decoration settings recorded in `kwin-decoration.conf`
 without replacing the rest of `kwinrc`.
 The KDE font settings are recorded separately in `kde-fonts.conf` and are
