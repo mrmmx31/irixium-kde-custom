@@ -47,6 +47,14 @@ It does not modify the shared Aurorae QML, the v2 divider overlay, or the
 existing v1/v2/v3 installation. Use `classic-v4/restaurar-v4.sh` to restore
 the previous decoration selection.
 
+The `classic-rewrite-rc1/` package is the consolidated IRIX Classic rewrite
+(1.0.0-rc1). It updates a selected Classic v4/v5 installation in place,
+preserving compatible local settings and creating a verified backup. Its
+explicit input state machine removes the old hover/timer behavior; use
+`classic-rewrite-rc1/instalar.sh --verificar` followed by
+`classic-rewrite-rc1/instalar.sh` for local testing. The QtTest runner is
+optional; absence is reported rather than treated as a passing runtime test.
+
 To check the registered upstream sources:
 
 ```sh

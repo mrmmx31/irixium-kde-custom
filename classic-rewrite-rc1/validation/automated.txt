@@ -1,0 +1,55 @@
+test_activation_changes_only_two_keys (test_manager.ManagerTests.test_activation_changes_only_two_keys) ... ok
+test_activation_failure_restores_config_and_files (test_manager.ManagerTests.test_activation_failure_restores_config_and_files) ... ok
+test_ambiguous_installations_refuse_guess (test_manager.ManagerTests.test_ambiguous_installations_refuse_guess) ... ok
+test_appearance_migrated_without_global_changes (test_manager.ManagerTests.test_appearance_migrated_without_global_changes) ... ok
+test_backup_dir_private (test_manager.ManagerTests.test_backup_dir_private) ... ok
+test_explicit_target_resolves_ambiguity (test_manager.ManagerTests.test_explicit_target_resolves_ambiguity) ... ok
+test_first_install_restore_removes_new_theme (test_manager.ManagerTests.test_first_install_restore_removes_new_theme) ... ok
+test_install_updates_in_place_and_has_backup (test_manager.ManagerTests.test_install_updates_in_place_and_has_backup) ... ok
+test_installer_preserves_config_without_activation (test_manager.ManagerTests.test_installer_preserves_config_without_activation) ... ok
+test_malformed_receipt_paths_refused (test_manager.ManagerTests.test_malformed_receipt_paths_refused) ... ok
+test_manifest_detects_payload_change (test_manager.ManagerTests.test_manifest_detects_payload_change) ... ok
+test_metadata_mismatch_rejected (test_manager.ManagerTests.test_metadata_mismatch_rejected) ... ok
+test_new_user_gets_stable_id (test_manager.ManagerTests.test_new_user_gets_stable_id) ... ok
+test_nonliteral_settings_refused_before_replacement (test_manager.ManagerTests.test_nonliteral_settings_refused_before_replacement) ... ok
+test_pending_install_blocks_new_update (test_manager.ManagerTests.test_pending_install_blocks_new_update) ... ok
+test_recovery_after_interrupted_directory_swap (test_manager.ManagerTests.test_recovery_after_interrupted_directory_swap) ... ok
+test_restore_exact_original_files (test_manager.ManagerTests.test_restore_exact_original_files) ... ok
+test_restore_preserves_other_theme_selected_afterward (test_manager.ManagerTests.test_restore_preserves_other_theme_selected_afterward) ... ok
+test_restore_refuses_local_edits (test_manager.ManagerTests.test_restore_refuses_local_edits) ... ok
+test_restore_refuses_tampered_backup (test_manager.ManagerTests.test_restore_refuses_tampered_backup) ... ok
+test_reuses_selected_v4 (test_manager.ManagerTests.test_reuses_selected_v4) ... ok
+test_reuses_selected_v5 (test_manager.ManagerTests.test_reuses_selected_v5) ... ok
+test_root_execution_rejected (test_manager.ManagerTests.test_root_execution_rejected) ... ok
+test_second_update_restore_then_first_restore (test_manager.ManagerTests.test_second_update_restore_then_first_restore) ... ok
+test_symlink_inside_dest_refused (test_manager.ManagerTests.test_symlink_inside_dest_refused) ... ok
+test_symlink_parent_refused (test_manager.ManagerTests.test_symlink_parent_refused) ... ok
+test_unknown_target_rejected (test_manager.ManagerTests.test_unknown_target_rejected) ... ok
+test_unselected_single_install_is_reused (test_manager.ManagerTests.test_unselected_single_install_is_reused) ... ok
+test_verify_is_read_only (test_manager.ManagerTests.test_verify_is_read_only) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.133s
+
+OK
+OK hover has no visual pressure or action
+OK minimize acts exactly once on release
+OK leave-release cancels
+OK leave-reenter-release acts
+OK grab cancellation resets without action
+OK disabled never acts
+OK disable-reenable in gesture cannot restore stale press
+OK menu opens on press only once
+OK menu cancellation cannot issue a second popup on release
+OK menu release mode is an explicit local fallback
+OK close only with opt-in preference and left menu double-click
+OK right menu double-click cannot close
+OK left/right/middle maximize preserved
+OK minimize ignores non-left buttons
+OK mismatched release does not trigger or discard original press
+OK accessibility activation is capability-checked
+OK press outside and unsolicited release are inert
+OK unknown kind is rejected
+18 testes de máquina de estados: OK (Node.js, não eventos Qt/KWin).
+108 cenários gráficos: OK; 36 sequências de repouso preservadas.
+Gravador Context2D; não substitui Qt Quick ou KWin.
