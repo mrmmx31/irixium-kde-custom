@@ -17,6 +17,7 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+from native_gallery_input import GalleryInput
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -110,10 +111,10 @@ def main(argv=None):
         def check(name,ok):results.append({'test':name,'passed':bool(ok)})
         def show(m):
             m.popup(win.mapToGlobal(C.QPoint(40,80)));app.processEvents();T.QTest.qWait(100)
+        native_input=GalleryInput(C,W,T,app)
         def click(m,act):
-            pt=m.actionGeometry(act).center()
-            T.QTest.mouseMove(m,pt);T.QTest.mouseClick(m,C.Qt.MouseButton.LeftButton,C.Qt.KeyboardModifier.NoModifier,pt)
-            app.processEvents()
+            # QTest.mouseClick uses the QWindow route inside GalleryInput.
+            return native_input.menu_action(m,act)
         show(menu);check('popup visible',menu.isVisible())
         if captures:menu.grab().save(str(captures/'01-popup.png'))
         n=len(log);click(menu,disabled);check('disabled action not triggered',len(log)==n)
@@ -154,7 +155,7 @@ def main(argv=None):
         check('RTL popup usable',menu.isVisible() and menu.actionGeometry(first).isValid())
         menu.close();win.close();app.processEvents()
         report={'qt':C.qVersion(),'binding':binding,'platform':app.platformName(),
-                'theme':a.tema,'style':style.metaObject().className(),'results':results,
+                'theme':a.tema,'style':style.metaObject().className(),'input_trace':native_input.records,'results':results,
                 'note':'Native Qt Widgets behavior/pixels, not historical equivalence certification.'}
         print(json.dumps(report,ensure_ascii=False,indent=2))
         if captures:(captures/'RESULTADO-MENUS.json').write_text(json.dumps(report,indent=2)+'\n')

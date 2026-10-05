@@ -6,6 +6,17 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
+**Atualização r2 — estabilização do executor, sem mudar a aparência 0.7.0-rc1.**
+A rodada nativa recebida em 05/10/2026 confirma quatro alvos válidos na cópia
+Qt Quick temporária corrigida: movimento, pressão, soltura e mudança de pixels.
+O módulo instalado ainda não contém o reparo e falha apenas no estado visual.
+Seleção e menus têm falhas em ensaios isolados; não declarar defeito do tema nem
+aprovação final antes de repetir com alvos clicáveis e movimentos QWindow.
+O roteiro continua: aplicar o reparo opcional separadamente, repetir a integração,
+e então validar visualmente os sete blocos. Ver `docs/REVISAO-R2.md`.
+
+### Registro da r1 (preservado como histórico)
+
 **Revisão integrada r1, mantendo a aparência 0.7.0-rc1 byte a byte.**
 Os sete blocos têm implementação ou tratamento nativo documentado. A revisão
 agora dispõe de galeria única e agregador de resultados estáticos/nativos;

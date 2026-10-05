@@ -12,6 +12,7 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+from native_gallery_input import GalleryInput
 ROOT=Path(__file__).resolve().parents[1]
 
 def main(argv=None):
@@ -76,10 +77,14 @@ def main(argv=None):
         results=[]
         def check(name,value):
             results.append({'test':name,'passed':bool(value)})
-        def click(w):T.QTest.mouseClick(w,C.Qt.MouseButton.LeftButton);app.processEvents()
+        native_input=GalleryInput(C,W,T,app)
+        def click(w):return native_input.toggle(w)
         click(controls['off']);check('checkbox mouse toggles',controls['off'].isChecked())
         controls['off'].setFocus(C.Qt.FocusReason.TabFocusReason);app.processEvents()
-        T.QTest.keyClick(controls['off'],C.Qt.Key.Key_Space);check('checkbox Space toggles',not controls['off'].isChecked())
+        # Independent keyboard check; do not inherit a failed mouse precondition.
+        before_space=controls['off'].isChecked()
+        T.QTest.keyClick(controls['off'],C.Qt.Key.Key_Space);app.processEvents()
+        check('checkbox Space toggles',controls['off'].isChecked()!=before_space)
         check('keyboard focus target',controls['off'].hasFocus())
         before=controls['disabled'].isChecked();click(controls['disabled']);check('disabled unchanged',controls['disabled'].isChecked()==before)
         values=[]
@@ -99,7 +104,7 @@ def main(argv=None):
         actionGroup.actions()[1].trigger();check('menu radios exclusive',actionGroup.actions()[1].isChecked() and not actionGroup.actions()[0].isChecked())
         toggle.trigger();check('menu checkbox toggles',not toggle.isChecked())
         print(json.dumps({'qt':C.qVersion(),'style':style.metaObject().className(),'binding':binding,
-                          'results':results,'note':'Native behavior only; not a historical pixel-equivalence claim.'},ensure_ascii=False,indent=2))
+                          'platform':app.platformName(),'input_trace':native_input.records,'results':results,'note':'Native behavior only; not a historical pixel-equivalence claim.'},ensure_ascii=False,indent=2))
         win.close();app.processEvents();return 0 if all(t['passed'] for t in results) else 1
 if __name__=='__main__':
     try:sys.exit(main())

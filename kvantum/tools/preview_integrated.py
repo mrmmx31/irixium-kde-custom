@@ -17,6 +17,7 @@ from pathlib import Path
 import shutil
 import sys
 import tempfile
+from native_gallery_input import GalleryInput
 from arrow_runtime import make_private_folder
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -109,7 +110,10 @@ def main(argv=None):
         capture('01-conjunto')
         def require(test,label):
             report['checks'].append({'name':label,'passed':bool(test)})
+        native_input=GalleryInput(C,W,T,app)
         def click(widget):
+            if isinstance(widget,(W.QCheckBox,W.QRadioButton)):
+                return native_input.toggle(widget)
             T.QTest.mouseClick(widget,C.Qt.MouseButton.LeftButton);app.processEvents()
         if a.testar:
             T.QTest.mousePress(normal,C.Qt.MouseButton.LeftButton);require(normal.isDown(),'Pressão do botão de comando')
@@ -128,6 +132,7 @@ def main(argv=None):
             require(slider.value()==41 and progress.value()==41,'Slider e progresso integrados')
             before=toggle.isChecked();toggle.trigger();require(toggle.isChecked()!=before,'Ação de menu com seleção persistente')
             capture('03-interacao');click(rtl);require(win.layoutDirection()==C.Qt.LayoutDirection.RightToLeft,'Layout RTL');capture('04-rtl')
+        report['input_trace']=native_input.records
         if folder:
             path=folder/'METRICAS-INTEGRACAO.json';path.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8');path.chmod(0o600)
         print(json.dumps(report,indent=2,ensure_ascii=False))
