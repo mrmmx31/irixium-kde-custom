@@ -61,7 +61,7 @@ Aurorae Irixium theme. It preserves the artwork, controls, menu component,
 fonts, GTK theme and IRIX Classic, while changing only the Irixium layout and
 the scoped divider component. It recognizes both Debian Aurorae component
 locations, including `/usr/share/kwin/aurorae/`, and must be tested with
-`moderno-geometria/instalar.sh --verificar` before installation.
+`moderno/geometria/instalar.sh --verificar` before installation.
 
 To check the registered upstream sources:
 
