@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import range_art as RG
 import tab_art as A
 
 def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[canonical(c) for c in e]]
@@ -30,7 +31,7 @@ class Tabs(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),3293)
         for n,h in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[n])),h,n)
     def test_only_160_new_tab_resources_added(self):
-        added=set(self.nodes)-set(self.base['svg'])
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(RG.PREFIXES)}
         self.assertEqual(len(added),160)
         self.assertTrue(all(n.startswith(A.PREFIXES) for n in added))
     def test_approved_artwork_generators_and_optional_system_patch_unchanged(self):
@@ -39,11 +40,11 @@ class Tabs(unittest.TestCase):
     def test_other_effective_sections_are_unchanged(self):
         self.assertEqual(set(self.c.sections()),set(self.base['effective_sections']))
         for s,old in self.base['effective_sections'].items():
-            if s in ('%General','Tab','TabFrame','TabBarFrame'):continue
+            if s in ('%General','Tab','TabFrame','TabBarFrame') + RG.CONFIG_SECTIONS:continue
             self.assertEqual(effective(self.c,s),old,s)
     def test_only_overlap_and_version_comment_changed_globally(self):
         old=self.base['effective_sections']['%General'];new=effective(self.c,'%General')
-        self.assertEqual({k for k in set(old)|set(new) if old.get(k)!=new.get(k)}, {'comment','active_tab_overlap'})
+        self.assertEqual({k for k in set(old)|set(new) if old.get(k)!=new.get(k)}, {'comment','active_tab_overlap','spread_progressbar'})
         self.assertEqual(new['active_tab_overlap'],'4')
     def test_tab_specific_changes_are_explicit(self):
         updates={'Tab':{'frame.element':'ic-notebook','interior.element':'ic-notebook',

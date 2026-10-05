@@ -52,7 +52,7 @@ class Classic(unittest.TestCase):
         for section in self.conf.sections():
             if 'frame.element' in self.conf[section]:
                 prefix=self.conf[section]['frame.element']
-                for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else B.STATES):
+                for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else ('normal','focused') if prefix=='ic-mdi-title' else B.STATES):
                     for part in B.PARTS:self.assertIn(prefix+'-'+state+'-'+part,self.ids)
     def test_explicit_interiors_have_states_or_check_substates(self):
         for section in self.conf.sections():
@@ -66,7 +66,7 @@ class Classic(unittest.TestCase):
                     continue
                 subs=['-checked','-unchecked','-tristate'] if prefix in ('ic-check','ic-radio') else ['']
                 for sub in subs:
-                    for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else B.STATES):self.assertIn(prefix+sub+'-'+state,self.ids)
+                    for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else ('normal','focused') if prefix=='ic-mdi-title' else B.STATES):self.assertIn(prefix+sub+'-'+state,self.ids)
     def test_button_hover_equals_rest_but_press_differs(self):
         a,_=B.surface('button','normal');b,_=B.surface('button','focused');c,_=B.surface('button','pressed')
         self.assertEqual(a,b);self.assertNotEqual(a,c)

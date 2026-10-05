@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import range_art as RG
 import menu_art as M
 import tab_art as TB
 import selection_art as A
@@ -34,15 +35,15 @@ class Selection(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),2517)
         for n,h in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[n])),h,n)
     def test_52_added_resources_are_isolated(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
         self.assertEqual(len(added),52)
         self.assertTrue(all(n.startswith(A.PREFIXES) for n in added))
     def test_only_interior_routes_and_version_comment_change(self):
         self.assertEqual(set(self.c.sections()),set(self.base['effective_sections']))
         for s,old in self.base['effective_sections'].items():
-            if s in ('Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem'):continue  # Block 5 is checked by test_menus.py.
+            if s in ('Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem') + RG.CONFIG_SECTIONS:continue  # Block 5 is checked by test_menus.py.
             new=effective(self.c,s);changed={k for k in set(old)|set(new) if old.get(k)!=new.get(k)}
-            self.assertEqual(changed,{'interior.element'} if s in ('CheckBox','RadioButton') else {'comment','active_tab_overlap','menu_separator_height','spread_menuitems'} if s=='%General' else set(),s)
+            self.assertEqual(changed,{'interior.element'} if s in ('CheckBox','RadioButton') else {'comment','active_tab_overlap','menu_separator_height','spread_menuitems','spread_progressbar'} if s=='%General' else set(),s)
     def test_size_and_label_metrics_unchanged(self):
         self.assertEqual(self.c['%General']['check_size'],'15')
         for s in ('CheckBox','RadioButton'):
@@ -56,7 +57,7 @@ class Selection(unittest.TestCase):
                 for st in ('normal','focused'):
                     for tail in ('','-inactive'):self.assertIn(prefix+v+st+tail,self.nodes)
     def test_no_unreachable_pressed_or_disabled_assets_advertised(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
         self.assertTrue(all('pressed' not in n and 'disabled' not in n for n in added))
     def test_all_cells_15_square(self):
         for n,im in self.atlas.items.items():

@@ -1,3 +1,46 @@
+# IrixClassic 0.7.0-rc1 — controles complementares / bloco 7
+
+Manutenção: `mrmmx31`. Tema Kvantum, separado de Aurorae, GTK e Plasma.
+
+## Entrega atual
+
+Sliders/scales, progresso, divisores, cabeçalhos, seleção em listas/tabelas/árvores,
+expansores, molduras de agrupamento, tooltips, alças de redimensionamento, títulos
+de docks, MDI e dial. A largura da barra de rolagem e os blocos 1–6 permanecem
+preservados. O bloco 7 fecha a implementação temática do roteiro; **não significa
+homologação final nem reprodução histórica universal**.
+
+```sh
+# Na raiz do clone, sem sudo:
+bash kvantum/testar-controles.sh
+bash kvantum/prever-controles.sh
+# Ensaio nativo opcional / galeria Qt Quick:
+bash kvantum/prever-controles.sh --testar
+bash kvantum/prever-controles.sh --qtquick
+bash kvantum/instalar-classic.sh --verificar
+bash kvantum/instalar-classic.sh
+```
+
+A instalação preserva a seleção atual e não executa o reparo Qt Quick.
+Reabra os aplicativos. Restauração: `bash kvantum/restaurar-classic.sh`.
+As galerias mantêm a configuração em diretório temporário. Somente
+`--capturas /pasta/nova` salva imagens dos próprios controles da galeria.
+
+`PREVIA-CONTROLES.png` contém mapas do SVG; não é captura nativa nem prova de
+interação. Veja `../docs/CONTROLES.md` e `../docs/COBERTURA-IRIXCLASSIC.md`.
+O plano completo está em `../PLANO-IRIXCLASSIC.md`.
+
+## Setas KDE — ainda pendente
+
+O usuário relata funcionamento no Kvantum Preview e falha nas telas KDE. Não
+há novo resultado de `COMPARACAO-SETAS.json` para confirmar os quatro caminhos.
+Esta entrega NÃO anuncia correção, NÃO redesenha as setas e NÃO modifica o
+reparo opt-in existente. Essa investigação continua independente da arte.
+
+## Histórico até 0.6.0-rc1
+
+As descrições abaixo referem-se às entregas anteriores.
+
 # IrixClassic 0.6.0-rc1 — abas
 
 Manutenção: `mrmmx31`. Tema Kvantum para Application Style, não decoração de janela.

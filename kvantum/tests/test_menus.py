@@ -16,6 +16,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import range_art as RG
 import menu_art as M
 import tab_art as TB
 
@@ -40,7 +41,7 @@ class Menus(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),2569)
         for n,h in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[n])),h,n)
     def test_only_724_menu_resources_added(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(TB.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(TB.PREFIXES+RG.PREFIXES)}
         self.assertEqual(len(added),724)
         self.assertTrue(all(n.startswith(M.PREFIXES) for n in added))
     def test_all_ids_unique_and_serialization_reproducible(self):
@@ -50,7 +51,7 @@ class Menus(unittest.TestCase):
     def test_no_non_menu_effective_property_changed(self):
         self.assertEqual(set(self.c.sections()),set(self.base['effective_sections'])-{'DEFAULT'})
         for s,old in self.base['effective_sections'].items():
-            if s in ('Tab','TabFrame','TabBarFrame','DEFAULT','%General','Menu','MenuItem','MenuBar','MenuBarItem'):continue
+            if s in ('Tab','TabFrame','TabBarFrame','DEFAULT','%General','Menu','MenuItem','MenuBar','MenuBarItem') + RG.CONFIG_SECTIONS:continue
             self.assertEqual(effective(self.c,s),old,s)
     def test_four_menu_sections_have_only_explicit_changes(self):
         changes={
@@ -66,7 +67,7 @@ class Menus(unittest.TestCase):
     def test_only_separator_and_explicit_placement_global_options_added(self):
         a=self.base['effective_sections']['%General'];b=effective(self.c,'%General')
         changed={k for k in set(a)|set(b) if a.get(k)!=b.get(k)}
-        self.assertEqual(changed,{'comment','active_tab_overlap','menu_separator_height','spread_menuitems'})
+        self.assertEqual(changed,{'comment','active_tab_overlap','menu_separator_height','spread_menuitems','spread_progressbar'})
         self.assertEqual(b['menu_separator_height'],'6');self.assertEqual(b['spread_menuitems'],'false')
         for k in ('scroll_width','check_size','submenu_delay','submenu_overlap','animate_states'):
             self.assertEqual(a[k],b[k])

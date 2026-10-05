@@ -1,11 +1,11 @@
-# IrixClassic 0.6.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.7.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.6.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.7.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -63,7 +63,7 @@ vertical_spin_indicators=false
 spin_button_width=16
 tree_branch_line=true
 click_behavior=0
-spread_progressbar=true
+spread_progressbar=false
 progressbar_thickness=18
 no_inactiveness=true
 tooltip_delay=-1
@@ -306,28 +306,28 @@ inherits=MenuBar
 text.normal.color=#000000
 text.focus.color=#000000
 text.italic=true
-frame.element=ic-bar
-interior.element=ic-bar
+frame.element=ic-dock-strip
+interior.element=ic-dock-strip
 
 [HeaderSection]
 inherits=PanelButtonCommand
-indicator.element=ic-arrow
+indicator.element=ic-column-mark
 indicator.size=12
 text.margin.top=1
 text.margin.bottom=1
 
-# Keep this non-button block on its previously reviewed resources.
-frame.element=ic-button
-interior.element=ic-button
+# Dedicated block 7 header resources; other button families are unchanged.
+frame.element=ic-column-panel
+interior.element=ic-column-panel
 [TreeExpander]
 frame=false
 interior=false
-indicator.element=ic-tree
+indicator.element=ic-branch-mark
 indicator.size=9
 
 [GroupBox]
 inherits=GenericFrame
-frame.element=ic-group
+frame.element=ic-section-frame
 interior=false
 text.margin=false
 text.bold=false
@@ -335,7 +335,7 @@ text.bold=false
 [ItemView]
 inherits=PanelButtonCommand
 frame=false
-interior.element=ic-item
+interior.element=ic-row-panel
 text.margin.top=1
 text.margin.bottom=1
 text.margin.left=2
@@ -375,42 +375,46 @@ indicator.size=10
 
 [Splitter]
 inherits=Menu
-frame.element=ic-bar
-interior.element=ic-bar
-indicator.element=ic-splitgrip
+frame.element=ic-divider-panel
+interior.element=ic-divider-panel
+indicator.element=ic-divider-grip
 indicator.size=10
+frame.top=1
+frame.bottom=1
+frame.left=1
+frame.right=1
 
 [Slider]
-# Freeze block 7 at the previous appearance; do not inherit scrollbar changes.
+# Dedicated range groove: independent of the approved scrollbar.
 inherits=Menu
-frame.element=ic-groove
-interior.element=ic-groove
+frame.element=ic-range-track
+interior.element=ic-range-track
 
 [SliderCursor]
-# Preserve the original frame and indicator metrics until block 7.
+# Preserve the existing handle metrics; only the range artwork is replaced.
 inherits=Menu
-frame.element=ic-slidercursor
-interior.element=ic-slidercursor
-indicator.element=ic-slidergrip
+frame.element=ic-range-thumb
+interior.element=ic-range-thumb
+indicator.element=ic-range-mark
 indicator.size=10
 
 [Progressbar]
 inherits=Menu
-frame.element=ic-groove
-interior.element=ic-groove
+frame.element=ic-meter-track
+interior.element=ic-meter-track
 text.normal.color=#000000
 text.focus.color=#000000
 text.bold=false
 
 [ProgressbarContents]
 inherits=Menu
-frame.element=ic-progress
-interior.element=ic-progress
+frame.element=ic-meter-fill
+interior.element=ic-meter-fill
 
 [ToolTip]
 inherits=Menu
-frame.element=ic-menu
-interior.element=ic-menu
+frame.element=ic-hint-panel
+interior.element=ic-hint-panel
 
 [Focus]
 frame=true
@@ -425,7 +429,7 @@ interior=false
 [SizeGrip]
 frame=false
 interior=false
-indicator.element=ic-sizegrip
+indicator.element=ic-resize-mark
 indicator.size=15
 
 [TitleBar]
@@ -434,9 +438,11 @@ text.normal.color=#000000
 text.focus.color=#000000
 text.italic=true
 
-# Dedicated style for auto-raised toolbar controls (not menus or tabs).
+# Only internal MDI titlebar; not a KWin window decoration.
 frame.element=ic-bar
-interior.element=ic-bar
+interior.element=ic-mdi-title
+indicator.element=ic-mdi-mark
+indicator.size=12
 
 [ToolbarButton]
 inherits=PanelButtonTool

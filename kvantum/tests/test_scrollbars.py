@@ -13,6 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import scrollbar_art as S
 import build_classic as B
+import range_art as RG
 import menu_art as M
 import tab_art as TB
 
@@ -38,16 +39,17 @@ class Scrollbars(unittest.TestCase):
         return d
     def test_other_svg_elements_unchanged(self):
         protected={e.get('id'):canonical(e) for e in self.xml if e.get('id')
-                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')+M.PREFIXES+TB.PREFIXES)}
+                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')+M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
         self.assertEqual(len(protected),self.baseline['protected_svg_count'])
         self.assertEqual(digest(protected),self.baseline['protected_svg_sha256'])
     def test_other_effective_configurations_unchanged(self):
         for section,expected in self.baseline['effective_sections'].items():
-            if section in ('Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem','PanelButtonCommand','PanelButtonTool','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'): continue  # Block 2 has its own baseline.
+            if section in ('Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem','PanelButtonCommand','PanelButtonTool','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton') + RG.CONFIG_SECTIONS: continue  # Block 2 has its own baseline.
             actual=self.effective(section)
             if section=='%General':
                 actual.pop('comment')
                 actual['active_tab_overlap']=expected['active_tab_overlap']
+                actual['spread_progressbar']=expected['spread_progressbar']
                 for k in ('menu_separator_height','spread_menuitems'):actual.pop(k,None)
                 for k in ('combo_as_lineedit','combo_focus_rect','square_combo_button'):actual[k]=expected[k]
             self.assertEqual(actual,expected,section)

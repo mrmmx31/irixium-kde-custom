@@ -1,6 +1,6 @@
 {
   "project": "IrixClassic Kvantum",
-  "version": "0.6.0-rc1",
+  "version": "0.7.0-rc1",
   "maintainer": "mrmmx31",
   "license": "GPL-3.0-or-later",
   "base_repository": "mrmmx31/irixium-kde-custom",
@@ -9,13 +9,13 @@
   "modern_config_blob": "b9da05c3084a284fe1aaf183c0d4995f38e76a0c",
   "modern_svg_blob": "20b634259a33a5556137db0286d884de91edf6bc",
   "modern_theme_author": "Mark Whittaker (Phob1an)",
-  "artwork": "Block 6 appended by tab_art.py: 160 new resources. 3293 previous SVG nodes preserved. VkTabPanel provides functional reference; exact geometry/colors/close and overflow drawing are adaptations.",
+  "artwork": "range_art.py appends block 7 resources. All 3453 earlier SVG nodes and positions preserved. Range/progress distinction follows SGI guidelines; new pixel maps and Qt-specific controls are declared adaptations.",
   "references": "User-supplied IRIX screenshots: menus, command buttons, frame colors, scrollbars. Tabs, radio/check indicators and unseen interaction states are declared adaptations.",
-  "tested_engine_target": "Kvantum 1.1.4, Qt 6.8. Native runtime remains to be tested locally.",
+  "tested_engine_target": "Kvantum 1.1.4, Qt 6.8. Target-session runtime acceptance remains pending.",
   "revision_base_branch": "#kvantum-classic-rc1",
-  "revision_base_commit": "a00219924abeb7c68f4cfdac9bb10f8450e0b110",
-  "change_scope": "Tabs only in artwork/config; four-path arrow comparison collector and accurate inventory. No new system patch or arrow artwork change.",
+  "revision_base_commit": "baaacfdbadbed333757c3d638ae461ace13ca8ef",
+  "change_scope": "Block 7 ranges, progress, splitters, item views, headers, tree indicators, group frames, tooltips, size grips, dock titles, MDI and dial. No scrollbar/system-input patch.",
   "reference_manual": "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-003/sgi_html/ch09.html",
-  "compatible_remote_tip": "a00219924abeb7c68f4cfdac9bb10f8450e0b110",
+  "compatible_remote_tip": "baaacfdbadbed333757c3d638ae461ace13ca8ef",
   "tab_reference": "https://techpubs.jurassic.nl/library/manuals/2000/007-2124-005/sgi_html/ch14.html"
 }

@@ -6,16 +6,18 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
-**0.6.0-rc1: bloco 6 — abas implementado para teste; próximo: bloco 7.**
-Desenhos da barra e botões aprovados; campos, seleção e menus entregues, sem
-homologação final explícita. Abas com referência funcional no VkTabPanel e desenho
-adaptado. Não marcar identidade histórica ou execução nativa como aprovada apenas
-por testes de mapas. A pressão/ação das setas nas telas KDE continua pendente:
-o relato persiste e não foi recebido o resultado dos ensaios comparativos nativos.
-A revisão reúne quatro caminhos em `COMPARACAO-SETAS.json`, sem nova intervenção
-no sistema e sem redesenhar as setas.
-**Aceitação em Qt/KDE pendente** para as abas. O inventário somente de leitura
-continua disponível em `diagnosticar-setas.sh`; o novo coletor complementa-o.
+**0.7.0-rc1: bloco 7 implementado para ensaio; próxima etapa: revisão integrada.**
+Preservados todos os 3453 recursos SVG anteriores, desenhos de rolagem e botões
+aprovados. Blocos 3–6 continuam aguardando aceitação explícita; nenhuma aprovação
+foi inferida do pedido para avançar. O bloco 7 segue as distinções funcionais da
+SGI e documenta as adaptações em `docs/COBERTURA-IRIXCLASSIC.md`.
+
+A seta KDE continua sem solução confirmada. O último inventário fornecido
+mostrava QML sem o marcador do reparo e `prefer` para qrc. Esse inventário não
+prova o estado atual da instalação. Não houve nova saída dos ensaios nativos.
+O pacote não aplica nem modifica reparo global e não muda seus mapas.
+Aceitação em Qt/KDE pendente para o bloco 7 e a revisão integrada.
+O inventário somente de leitura continua em `diagnosticar-setas.sh`.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
@@ -25,7 +27,7 @@ continua disponível em `diagnosticar-setas.sh`; o novo coletor complementa-o.
 | 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Implementado em 0.4.0-rc1 para teste; pressão separada limitada pelo motor Kvantum | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
 | 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Implementado em 0.5.0-rc1 para teste; seleção/pressão, submenu, separador, check/radio e tear-off quando nativo | prever-menus.sh; galeria --qtquick; docs/MENUS.md |
 | 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe; quatro orientações; nomes longos; fechar/transbordamento | Implementado para teste em 0.6.0-rc1; sobreposição e estado em primeiro plano referenciados no VkTabPanel; geometria adaptada | prever-abas.sh, --testar, --qtquick; docs/ABAS.md |
-| 7. Sliders e demais controles | Scale/slider; progresso determinado/indeterminado; splitter; headers; listas/tabelas/árvores; seleção simples/múltipla; branches; tooltips; dock/toolbox; labels; size grip; MDI | Pendente; isolado da alteração da scrollbar | SGI ch. 7/9/10/11, métricas e limites reais do Qt/Kvantum |
+| 7. Sliders e demais controles | Slider/scale; progresso determinado/indeterminado; splitter; headers; listas/tabelas/árvores; seleção; branches; tooltips; dock/toolbox; labels; size grip; MDI; dial | Implementado para ensaio em 0.7.0-rc1; partes nativas e limites históricos explicitados | prever-controles.sh, --testar, --qtquick; docs/COBERTURA-IRIXCLASSIC.md |
 
 ## Matriz transversal obrigatória
 
@@ -130,3 +132,17 @@ divisores, cabeçalhos, listas/árvores/tabelas, grades, indicação de ordenaç
 seleção, foco e indisponibilidade. Depois: revisão integrada de todos os blocos.
 O bug de eventos das setas continua como trilha independente; não aguardar uma
 mudança de desenho para considerar corrigido um problema de Qt Quick.
+
+## Continuidade após 0.7.0-rc1
+
+Os sete blocos possuem implementação ou tratamento explicitamente nativo/fora do
+tema. Isso não equivale à aceitação final. Próxima etapa: **revisão integrada**,
+primeiro Qt Widgets, depois os controles equivalentes Qt Quick e as aplicações
+usadas na sessão. Conferir seleção focada/não focada, teclado, RTL, indicadores
+desativados, progresso em extremos, textos longos, DPI e fallback de arte.
+
+A barra aprovada não foi redesenhada. O bug das setas KDE permanece uma trilha
+separada e não deve bloquear nem ser escondido pela conclusão do desenho.
+File Finder/LEDs/thumbwheels específicos, cancelamento do arraste por Escape,
+menu de abas colapsadas e organização de aplicativos exigem suporte além do SVG.
+Não introduzir novos widgets, bibliotecas ou patches globais silenciosamente.
