@@ -51,5 +51,5 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kdeglobals --group WM --key activeFont 'Nimbus Sans [urw],12,-1,5,700,1,0,0,0,0,0,0,0,0,0,1,Bold Italic'
 fi
 
-printf '%s\n' "Irixium customização reaplicada."
+printf '%s\n' "Irixium customização reaplicada; o botão personalizado é limitado ao tema Irixium."
 printf '%s\n' "Entre novamente na sessão para o KWin recarregar o componente QML."

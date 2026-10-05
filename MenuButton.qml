@@ -14,9 +14,11 @@ Item {
     property bool pressed: false
     property bool toggled: false
     property bool closeOnDoubleClick: decorationSettings.closeOnDoubleClickOnMenu
+    property bool isIrixium: auroraeTheme.decorationPath.indexOf("Irixium") !== -1
 
     Item {
         anchors.fill: parent
+        visible: menuButton.isIrixium
         Image {
             anchors.fill: parent
             source: "file:///usr/share/kwin/aurorae/Irixium/applications.png"
@@ -27,7 +29,7 @@ Item {
     Kirigami.Icon {
         anchors.fill: parent
         source: decoration.client.icon
-        visible: false
+        visible: !menuButton.isIrixium
     }
     DecorationOptions {
         id: options
