@@ -83,7 +83,9 @@ Item {
     }
     Kirigami.Icon {
         anchors.fill: parent
-        source: decoration.client.icon
+        // Some clients/themes expose no window icon; keep the menu button
+        // visible instead of leaving an empty slot for non-Irixium themes.
+        source: decoration.client.icon || "application-x-executable"
         visible: !menuButton.isIrixium
     }
     DecorationOptions {

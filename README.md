@@ -129,3 +129,8 @@ os textos GPL permanecem em `LICENSE`, `gtk/LICENSE` e nos pacotes.
 Kvantum é novo; o moderno não é sobrescrito. Os novos utilitários são
 GPL-3.0-or-later. IRIX e SGI são referências/marcas de seus titulares; nenhum
 binário, fonte tipográfica ou código privado do IRIX é incluído.
+
+Fora do Irixium, o `MenuButton.qml` mantém o ícone da janela fornecido por
+`decoration.client.icon`. Quando o cliente não fornece um ícone, usa
+`application-x-executable` como fallback para que o botão de ações não fique
+vazio.

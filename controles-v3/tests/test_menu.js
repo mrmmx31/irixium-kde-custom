@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const qml = fs.readFileSync(path.join(__dirname, '../MenuButton.qml'), 'utf8');
+const qml = fs.readFileSync(path.join(__dirname, '../../MenuButton.qml'), 'utf8');
 function block(name) {
     const start = qml.indexOf(name + ':');
     assert(start >= 0, name);
@@ -91,5 +91,6 @@ test('other themes never activate Irixium press visuals',()=>{
 });
 test('original icon is still used outside Irixium',()=>{
     assert(qml.includes('source: decoration.client.icon'));
+    assert(qml.includes('|| "application-x-executable"'));
     assert(qml.includes('visible: !menuButton.isIrixium'));
 });
