@@ -1,3 +1,14 @@
+# 1.0.0-rc3 — fundo opaco somente na miniatura
+
+- Reconhece o PreviewItem do KWin pelo contrato de propriedades e identidade da
+  decoração, deixando pais desconhecidos sem preenchimento (falha segura).
+- Usa a cor de janela fornecida pelo KCM, forçando apenas sua opacidade na
+  miniatura, sem pintar a área do aplicativo em uma janela real.
+- Mantém mapas, geometria, Surface, entrada de mouse, temporização do menu,
+  capacidades e preferências locais byte a byte iguais aos da rc2.
+- Acrescenta testes de contrato/geometria e QtTest de prévia e isolamento.
+- Mantém o identificador e o instalador existentes; nenhuma nova entrada na lista.
+
 # 1.0.0-rc2 — correção do duplo clique no menu
 
 - Impede publicar o menu na primeira pressão/soltura esquerda quando é necessário

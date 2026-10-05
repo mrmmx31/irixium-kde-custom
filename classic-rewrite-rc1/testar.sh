@@ -30,6 +30,7 @@ case "${1:-}" in
         python3 -m unittest discover -s "$base/tests" -v
         node "$base/tests/test_input.js"
         node "$base/tests/test_graphics.js"
+        node "$base/tests/test_preview.js"
         ;;
     *) printf '%s\n' 'Uso: testar.sh [--qml | --janelas]' >&2; exit 2 ;;
 esac

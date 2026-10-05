@@ -16,6 +16,15 @@ Decoration {
         extendedBorders.setAllBorders(0);
         padding.setAllBorders(0);
     }
+    // Aurorae disables PreviewItem's automatic background. Restore only the
+    // thumbnail's client area, using the preview host's window palette color.
+    PreviewBackground {
+        previewHost: root.parent
+        expectedDecoration: decoration
+        metrics: face.metrics
+        frameHeight: root.height
+        shaded: decoration.client.shaded
+    }
     Surface {
         id: face
         anchors.fill: parent

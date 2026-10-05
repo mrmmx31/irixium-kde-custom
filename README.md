@@ -6,7 +6,7 @@ aplicativos são componentes separados; instalar um não deve trocar o outro.
 | Componente | Diretório | Situação |
 |---|---|---|
 | Decoração Irixium moderno | `aurorae/Irixium/` + `moderno/geometria/` | Símbolos e efeitos modernos; margens e divisórias organizadas. |
-| Decoração IRIX Classic | `classic-rewrite-rc1/` | Reescrita 1.0.0-rc2; nome interno da pasta preservado. |
+| Decoração IRIX Classic | `classic-rewrite-rc1/` | Reescrita 1.0.0-rc3; preenchimento restrito à miniatura do KCM. |
 | Application Style Irixium | `kvantum/Irixium/` | Base original preservada. |
 | Application Style IrixClassic | `kvantum/IrixClassic/` | Primeira candidata 0.1.0-rc1 para Qt Widgets. |
 | Tema GTK | `gtk/` | Base preservada; não é instalada pelos novos fluxos abaixo. |

@@ -28,3 +28,15 @@ O perfil padrão prioriza distinguir clique simples de duplo. A abertura esquerd
 não ocorre na primeira pressão: o clique simples espera, ou a pressão prolongada
 solicita o menu pelo evento pressAndHold. A transferência de seleção arrastada para
 o popup nativo precisa ser testada, não simulada por um piscar temporizado.
+
+## Fundo da miniatura — rc3
+
+- [ ] Fechar e reabrir completamente Configurações do Sistema após reinstalar.
+- [ ] Na miniatura IRIX Classic, o corpo da frente oculta a moldura traseira.
+- [ ] Ativa/inativa: somente a barra e moldura mudam a paleta de foco; o corpo
+      usa a cor de janela do PreviewItem, não o bege/cinza da barra.
+- [ ] Testar janela maximizada e normal sem sobreposição sobre o aplicativo.
+- [ ] Testar uma janela recolhida (shade): não aparece uma área cliente falsa.
+- [ ] Conteúdo de terminal/aplicativos, cliques e menus continuam iguais à rc2.
+- [ ] Uma transparência previamente configurada no aplicativo não foi removida.
+- [ ] Kvantum/Irixium e Kvantum/IrixClassic não foram reinstalados nem selecionados.

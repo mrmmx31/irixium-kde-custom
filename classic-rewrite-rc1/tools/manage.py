@@ -20,7 +20,7 @@ BUNDLE = Path(__file__).resolve().parent.parent
 IDS = ('irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5')
 GROUP = 'org.kde.kdecoration2'
 LIBRARY = 'org.kde.kwin.aurorae'
-VERSION = '1.0.0-rc2'
+VERSION = '1.0.0-rc3'
 KEYS = ('library','theme')
 
 
