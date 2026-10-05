@@ -137,7 +137,10 @@ def system_writer(entries):
         for name in ('qtquick_scrollbar_fix.py','theme_transaction.py','system_theme_writer.py'):
             shutil.copyfile(here/name,root/name)
         payload=root/'operation.json';payload.write_text(json.dumps(entries))
-        result=subprocess.run([launcher,python,str(root/'qtquick_scrollbar_fix.py'),
+        # The privileged interpreter must not create root-owned bytecode in the
+        # user-owned temporary directory; otherwise TemporaryDirectory cannot
+        # clean up after authorization returns.
+        result=subprocess.run([launcher,python,'-B',str(root/'qtquick_scrollbar_fix.py'),
                                '--system-json',str(payload)],check=False)
         if result.returncode:raise Failure('Autorização/cópia Qt Quick falhou: '+str(result.returncode))
 
