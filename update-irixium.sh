@@ -1,6 +1,13 @@
 #!/bin/sh
 set -eu
 
+# IRIXIUM_MODERN_LAYOUT_USER_BEGIN
+if [ "$(id -u)" -eq 0 ]; then
+    printf '%s\n' 'Execute como usuário normal, sem sudo; a autorização é solicitada quando necessária.' >&2
+    exit 1
+fi
+# IRIXIUM_MODERN_LAYOUT_USER_END
+
 bundle_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 aurorae_dir="$HOME/.local/share/aurorae/themes/Irixium"
 qml_dir="/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/kwin/decoration"
@@ -60,6 +67,11 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kdeglobals --group General --key menuFont 'Nimbus Sans [urw],12,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic'
     kwriteconfig6 --file kdeglobals --group WM --key activeFont 'Nimbus Sans [urw],12,-1,5,700,1,0,0,0,0,0,0,0,0,0,1,Bold Italic'
 fi
+
+# IRIXIUM_MODERN_LAYOUT_BEGIN
+# Keep the SVG theme and the scoped Aurorae layout patch installed together.
+bash "$bundle_dir/moderno/geometria/instalar.sh"
+# IRIXIUM_MODERN_LAYOUT_END
 
 printf '%s\n' "Irixium customização reaplicada; o botão personalizado é limitado ao tema Irixium."
 printf '%s\n' "Entre novamente na sessão para o KWin recarregar o componente QML."

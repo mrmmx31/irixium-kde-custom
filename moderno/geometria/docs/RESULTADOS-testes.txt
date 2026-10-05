@@ -1,0 +1,68 @@
+test_auth_cancel_rolls_back (test_package.InstallTests.test_auth_cancel_rolls_back) ... ok
+test_corrupt_backup_refused (test_package.InstallTests.test_corrupt_backup_refused) ... ok
+test_crlf_original_qml_accepted (test_package.InstallTests.test_crlf_original_qml_accepted) ... ok
+test_custom_color_is_not_reset (test_package.InstallTests.test_custom_color_is_not_reset) ... ok
+test_dry_run_no_writes (test_package.InstallTests.test_dry_run_no_writes) ... ok
+test_install_and_restore_exact (test_package.InstallTests.test_install_and_restore_exact) ... ok
+test_install_v1_and_v2 (test_package.InstallTests.test_install_v1_and_v2) ... ok
+test_latest_traversal_refused (test_package.InstallTests.test_latest_traversal_refused) ... ok
+test_no_new_backup_if_already_applied (test_package.InstallTests.test_no_new_backup_if_already_applied) ... ok
+test_pending_receipt_recovery (test_package.InstallTests.test_pending_receipt_recovery) ... ok
+test_refuse_local_rc_custom_dimensions (test_package.InstallTests.test_refuse_local_rc_custom_dimensions) ... ok
+test_restore_dry_run (test_package.InstallTests.test_restore_dry_run) ... ok
+test_restore_refuses_kde_update (test_package.InstallTests.test_restore_refuses_kde_update) ... ok
+test_restore_refuses_later_edits (test_package.InstallTests.test_restore_refuses_later_edits) ... ok
+test_symlink_refused (test_package.InstallTests.test_symlink_refused) ... ok
+test_unknown_qml_is_refused (test_package.InstallTests.test_unknown_qml_is_refused) ... ok
+test_unrelated_classic_and_modern_assets_untouched (test_package.InstallTests.test_unrelated_classic_and_modern_assets_untouched) ... ok
+test_user_write_failure_rolls_back_system (test_package.InstallTests.test_user_write_failure_rolls_back_system) ... ok
+test_wrong_receipt_destination_refused (test_package.InstallTests.test_wrong_receipt_destination_refused) ... ok
+test_existing_changed_hook_refused (test_package.IntegrationTests.test_existing_changed_hook_refused) ... ok
+test_hook_and_early_normal_user_guard (test_package.IntegrationTests.test_hook_and_early_normal_user_guard) ... ok
+test_hook_idempotent (test_package.IntegrationTests.test_hook_idempotent) ... ok
+test_installer_other_actions_preserved (test_package.IntegrationTests.test_installer_other_actions_preserved) ... ok
+test_plan_does_not_write (test_package.IntegrationTests.test_plan_does_not_write) ... ok
+test_refuse_existing_unrelated_package (test_package.IntegrationTests.test_refuse_existing_unrelated_package) ... ok
+test_unknown_installer_refused (test_package.IntegrationTests.test_unknown_installer_refused) ... ok
+test_crlf_preserved (test_package.LayoutTests.test_crlf_preserved) ... ok
+test_custom_colors_and_extra_groups_preserved (test_package.LayoutTests.test_custom_colors_and_extra_groups_preserved) ... ok
+test_idempotent (test_package.LayoutTests.test_idempotent) ... ok
+test_layout_only (test_package.LayoutTests.test_layout_only) ... ok
+test_missing_final_newline (test_package.LayoutTests.test_missing_final_newline) ... ok
+test_no_negative_title_margins (test_package.LayoutTests.test_no_negative_title_margins) ... ok
+test_preview_rc_matches_transform (test_package.LayoutTests.test_preview_rc_matches_transform) ... ok
+test_refuse_duplicate_key (test_package.LayoutTests.test_refuse_duplicate_key) ... ok
+test_refuse_duplicate_layout (test_package.LayoutTests.test_refuse_duplicate_layout) ... ok
+test_refuse_other_face_size (test_package.LayoutTests.test_refuse_other_face_size) ... ok
+test_refuse_specific_width_and_custom_title (test_package.LayoutTests.test_refuse_specific_width_and_custom_title) ... ok
+test_total_height_and_centers_preserved (test_package.LayoutTests.test_total_height_and_centers_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.110s
+
+OK
+OK gap=6, divider=2, clearance=2 on both sides
+OK symmetry for both groups with one to six buttons
+OK equal outer margins for normal and maximized windows
+OK divider and caption have an eight-unit safety gap
+OK normal face stays at y=9; maximized face stays at y=6
+OK equal vertical clearance around both face and divider
+OK odd residual height uses a one-pixel difference at most
+OK gap normalization is even and never overlaps a divider
+OK a 33-unit corner cut aligns with the terminal divider, not borderTop=34
+OK corner cuts are mirrored across both axes
+OK no corner cuts on windows too small for them
+OK no negative length on missing or narrow borders
+OK all actual corner marks stay inside their own borders
+OK only exact Irixium SVG decoration paths opt in
+OK hidden Help has its own record and does not change Maximize identity
+OK changing button order hides pending destroys before creating the new row
+OK explicit spacers are represented separately from real buttons
+OK disabled controls keep their cell and record
+OK empty button lists have no decorative dividers
+OK the patch does not add input or client actions
+OK the original non-Irixium vertical-margin expression remains available
+RESULTADO: 21 testes JavaScript; 126 cenários geométricos parametrizados. Qt/KWin não executado.
+
+Qt Quick: NÃO EXECUTADO; qmltestrunner6 ausente; saída 77.
+Integração CLI em checkout temporário: OK, sem commit/push.
