@@ -1,6 +1,6 @@
 {
   "project": "IrixClassic Kvantum",
-  "version": "0.3.0-rc1",
+  "version": "0.4.0-rc1",
   "maintainer": "mrmmx31",
   "license": "GPL-3.0-or-later",
   "base_repository": "mrmmx31/irixium-kde-custom",
@@ -9,12 +9,12 @@
   "modern_config_blob": "b9da05c3084a284fe1aaf183c0d4995f38e76a0c",
   "modern_svg_blob": "20b634259a33a5556137db0286d884de91edf6bc",
   "modern_theme_author": "Mark Whittaker (Phob1an)",
-  "artwork": "build_classic.py appends entry_art.py resources. All 2132 earlier SVG IDs, maps and positions preserved. Entry focus/option/spin states are adaptations.",
+  "artwork": "Original 15x15 red check marks and blue triangular radio marks. SGI shape/color/locate-highlight references; no exact screenshot-equivalence claim. 2517 earlier SVG resources preserved.",
   "references": "User-supplied IRIX screenshots: menus, command buttons, frame colors, scrollbars. Tabs, radio/check indicators and unseen interaction states are declared adaptations.",
-  "tested_engine_target": "Kvantum 1.1.4, Qt 6.8; runtime test remains local.",
+  "tested_engine_target": "Kvantum 1.1.4, Qt 6.8. Native runtime remains to be tested locally.",
   "revision_base_branch": "#kvantum-classic-rc1",
-  "revision_base_commit": "5f28bdc0112b1d2dbfefda2231f7e494809e310c",
-  "change_scope": "Block 3 entries; approved buttons and scrollbars preserved. Optional separate KDE Qt Quick pressure repair.",
+  "revision_base_commit": "9dc9ca8cea220b21c7dc2756d83498694df65850",
+  "change_scope": "Block 4 checkbox/radio resources, isolated cross-style arrow diagnostics; no additional system patch.",
   "reference_manual": "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-003/sgi_html/ch09.html",
-  "compatible_remote_tip": "5f28bdc0112b1d2dbfefda2231f7e494809e310c"
+  "compatible_remote_tip": "9dc9ca8cea220b21c7dc2756d83498694df65850"
 }

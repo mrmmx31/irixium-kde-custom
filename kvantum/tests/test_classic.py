@@ -58,6 +58,12 @@ class Classic(unittest.TestCase):
         for section in self.conf.sections():
             if 'interior.element' in self.conf[section]:
                 prefix=self.conf[section]['interior.element']
+                if prefix in ('ic-checkmark','ic-radiomark'):
+                    subs=['','-checked'] + (['-tristate'] if prefix=='ic-checkmark' else [])
+                    for sub in subs:
+                        for state in ('normal','focused'):
+                            self.assertIn(prefix+sub+'-'+state,self.ids)
+                    continue
                 subs=['-checked','-unchecked','-tristate'] if prefix in ('ic-check','ic-radio') else ['']
                 for sub in subs:
                     for state in B.STATES:self.assertIn(prefix+sub+'-'+state,self.ids)

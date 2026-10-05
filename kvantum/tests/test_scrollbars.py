@@ -36,12 +36,12 @@ class Scrollbars(unittest.TestCase):
         return d
     def test_other_svg_elements_unchanged(self):
         protected={e.get('id'):canonical(e) for e in self.xml if e.get('id')
-                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-'))}
+                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-'))}
         self.assertEqual(len(protected),self.baseline['protected_svg_count'])
         self.assertEqual(digest(protected),self.baseline['protected_svg_sha256'])
     def test_other_effective_configurations_unchanged(self):
         for section,expected in self.baseline['effective_sections'].items():
-            if section in ('PanelButtonCommand','PanelButtonTool','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame'): continue  # Block 2 has its own baseline.
+            if section in ('PanelButtonCommand','PanelButtonTool','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'): continue  # Block 2 has its own baseline.
             actual=self.effective(section)
             if section=='%General':
                 actual.pop('comment')

@@ -14,7 +14,7 @@ from theme_transaction import Failure
 class InstallVersion(unittest.TestCase):
     def test_new_version_passes_full_manifest_validation(self):
         files=I.theme_files(ROOT)
-        self.assertIn(b'0.3.0-rc1',files['IrixClassic.kvconfig'])
+        self.assertIn(b'0.4.0-rc1',files['IrixClassic.kvconfig'])
     def test_old_candidate_is_still_recognized(self):
         with tempfile.TemporaryDirectory() as tmp:
             repo=Path(tmp);dest=repo/'kvantum/IrixClassic'

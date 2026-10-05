@@ -1,11 +1,11 @@
-# IrixClassic 0.3.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.4.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.3.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.4.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -197,7 +197,7 @@ indicator.size=12
 
 [CheckBox]
 inherits=PanelButtonCommand
-interior.element=ic-check
+interior.element=ic-checkmark
 text.margin.top=1
 text.margin.bottom=1
 text.margin.left=3
@@ -208,7 +208,7 @@ min_height=18
 frame.element=ic-button
 [RadioButton]
 inherits=CheckBox
-interior.element=ic-radio
+interior.element=ic-radiomark
 
 [Menu]
 inherits=PanelButtonCommand

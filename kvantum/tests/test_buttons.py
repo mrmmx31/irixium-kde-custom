@@ -15,7 +15,7 @@ import button_art as A
 import scrollbar_art as S
 
 PREFIXES=('ic-command-','ic-palettebutton-','ic-toolbarbutton-',
-          'ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-')
+          'ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')
 def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[canonical(ch) for ch in e]]
 def sha(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
@@ -35,7 +35,7 @@ class Buttons(unittest.TestCase):
   self.assertEqual(len(data),self.base['protected_svg_count']); self.assertEqual(sha(data),self.base['protected_svg_sha256'])
  def test_non_button_effective_configuration_is_unchanged(self):
   for s,old in self.base['effective_sections'].items():
-   if s in ('LineEdit','ComboBox','IndicatorSpinBox','GenericFrame'): continue  # Block 3: test_entries.py
+   if s in ('LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'): continue  # Block 3: test_entries.py
    new=effective(self.conf,s)
    if s=='%General':
     new.pop('comment')

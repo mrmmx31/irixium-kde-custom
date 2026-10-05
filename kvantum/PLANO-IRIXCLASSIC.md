@@ -6,20 +6,22 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
-**0.3.0-rc1: bloco 3 para teste; reparo Qt Quick separado para a pressão das setas.**
-Desenho da barra aprovado e botões do bloco 2 aprovados pelo usuário. A tentativa
-anterior de reforçar o SVG não resolveu a pressão Qt Quick; nesta revisão os
-mapas aprovados ficam intactos e o sinal Sunken é tratado por um reparo opcional.
-Próximo desenvolvimento: **bloco 4 — checkboxes e radios**.
-A implementação inicial dos demais controles não comprova fidelidade histórica.
-Bloco 3 e reparo de pressão: aceitação em Qt/KDE pendente.
+**0.4.0-rc1: bloco 4 implementado para teste; falha das setas ainda em investigação.**
+Desenho da barra e botões aprovados pelo usuário; bloco 3 implementado em
+0.3.0-rc1 sem confirmação de aceitação final. O relato de falha das setas em
+outros Application Styles exige separar ação de rolagem e pressão visual.
+Não alteramos os desenhos aprovados nem aplicamos reparos globais automaticamente.
+Use `diagnosticar-setas.sh` para comparar Widgets/Quick e Fusion/Breeze/Kvantum.
+Próximo desenvolvimento: **bloco 5 — menus**.
+Blocos 3 e 4: aceitação em Qt/KDE pendente.
+Não marcar fidelidade histórica ou runtime como aprovado por teste estático.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
-| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; extremidades; orientações; normal/hover/pressionado/desativado; extremos do intervalo; sem intervalo; RTL | Desenho da rc2 aprovado pelo usuário; tentativa gráfica 0.2.0-rc1 não resolveu a pressão; reparo Qt Quick 0.3.0-rc1 aguardando teste | Galeria `prever-rolagem.sh`, teste de arraste, prints 100%, comparação com IRIX |
+| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; ação/pressão ainda em investigação por falha em vários estilos | diagnosticar-setas.sh; comparar movimento e sunken em Widgets e Quick |
 | 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Aprovado pelo usuário em 0.2.0-rc1; preservado nesta revisão | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
 | 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Implementado para teste em 0.3.0-rc1; cor readonly universal exige suporte fora do SVG | Galeria prever-campos.sh; foco, seleção, limites, RTL; docs/CAMPOS.md |
-| 4. Checkboxes e radios | Desmarcado/marcado/parcial; rádio; exclusividade; foco; hover/pressionado/desativado; variantes em menu | Pendente; desenhos rc1 são adaptações | SGI: marca vermelha no checkbox e triângulo azul no rádio, figuras 9-3/9-4 |
+| 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Implementado em 0.4.0-rc1 para teste; pressão separada limitada pelo motor Kvantum | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
 | 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Pendente; não apagar indicação de seleção | SGI ch. 8 e CDE/Motif |
 | 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe no painel; orientações; abas estreitas; botão de fechar | Pendente; abas retangulares rc1 são adaptação, não comprovadas por screenshot | Localizar referência histórica equivalente ou manter adaptação explícita |
 | 7. Sliders e demais controles | Scale/slider; progresso determinado/indeterminado; splitter; headers; listas/tabelas/árvores; seleção simples/múltipla; branches; tooltips; dock/toolbox; labels; size grip; MDI | Pendente; isolado da alteração da scrollbar | SGI ch. 7/9/10/11, métricas e limites reais do Qt/Kvantum |
@@ -95,3 +97,11 @@ https://github.com/cdesktopenv/cde/tree/master/cde/programs/dtwm
 
 Fontes e limites desta rodada: `docs/CAMPOS.md` e `docs/PRESSAO-QTQUICK.md`.
 As galerias Qt não executadas aqui devem ser testadas na máquina de destino.
+
+## Registro de 0.4.0-rc1
+
+52 recursos acrescentados; 2517 anteriores intocados. Marca vermelha, triângulo
+azul e locate highlight fundamentados no manual SGI; pixels e parcial adaptados.
+O motor Kvantum 1.1.4 não escolhe `pressed` para CheckBox/RadioButton e compõe os
+indisponíveis com 0.7 de opacidade. Não anunciar suporte de estado inexistente.
+O teste nativo do bloco 4 e a causa das setas continuam pendentes de ensaio local.

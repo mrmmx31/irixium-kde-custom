@@ -1,3 +1,9 @@
+> Atualização 0.4.0-rc1: há relato de falha em outros Application Styles.
+> O reparo descrito abaixo continua opcional e experimental, sem confirmação
+> de aplicação/carregamento na sessão. Não equivale a solução universal de ação.
+> Antes de novas alterações de sistema, execute o diagnóstico cruzado em
+> `DIAGNOSTICO-SETAS.md`; separe movimento real de ausência de relevo.
+
 # Setas que rolam, mas não afundam: integração Qt Quick
 
 **Correção opcional de compatibilidade; não é um novo desenho.** Manutenção:

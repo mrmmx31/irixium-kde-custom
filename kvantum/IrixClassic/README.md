@@ -1,28 +1,40 @@
-# IrixClassic 0.3.0-rc1 — campos e entradas
+# IrixClassic 0.4.0-rc1 — caixas de seleção e botões de opção
 
-**0.3.0-rc1 — bloco 3: campos; reparo Qt Quick opcional. Manutenção: `mrmmx31`.**
+**0.4.0-rc1 — bloco 4: seleção; diagnóstico cruzado das setas. Manutenção: `mrmmx31`.**
 Não é uma decoração de janela. O nome no Kvantum permanece **IrixClassic**.
 
 ## Nesta revisão
 
-Campos editáveis, botões de opção/combo, spinboxes e molduras internas têm
-recursos próprios. Os botões do bloco 2 e todos os mapas da barra de rolagem
-estão preservados. Veja `../docs/CAMPOS.md` para foco, dimensões e limites.
+Checkbox com marca vermelha, radio em losango com triângulo azul, estado parcial
+como adaptação ao Qt, clareamento de localização e contextos de menu/lista.
+As 2517 primitivas antigas, botões, campos e rolagem foram preservados.
+A grade 15×15 é original; não é cópia certificada de todos os pixels do IRIX.
+Consulte `../docs/SELECAO.md` para referências e limites reais do motor.
 
-**A ausência de pressão das setas no KDE Qt Quick exige um reparo separado**:
-a nova pintura não resolve um estado Sunken que não chega ao motor. Consulte
-`../docs/PRESSAO-QTQUICK.md`. Esse reparo de sistema é opcional e afeta o módulo
-org.kde.desktop em todos os temas que o usam; instalar o Kvantum não o aplica.
+**Kvantum 1.1.4 não escolhe um SVG pressed separado para check/radio.**
+O bloqueio e a mudança da seleção permanecem nativos; indisponibilidade usa
+opacidade 0.7. Foco de teclado não é confundido com hover ou seleção.
 
 ```sh
-bash kvantum/prever-campos.sh
-bash kvantum/corrigir-pressao-qtquick.sh --verificar --diff
+bash kvantum/testar-selecao.sh
+bash kvantum/prever-selecao.sh
+bash kvantum/prever-selecao.sh --testar
 ```
 
-Somente leitura permanece selecionável, mas o Kvantum não oferece um estado
-SVG readonly para trocar sua cor separadamente; não anunciamos esse detalhe
-como resolvido. Pressões do scrollbar em Qt Widgets devem ser verificadas pela
-galeria de botões; Qt Quick possui agora sua própria galeria de diagnóstico.
+## Setas em outros Application Styles
+
+A falha reportada é mantida como **não resolvida na sessão**. Não alteramos
+novamente o SVG da rolagem nem ampliamos o reparo global experimental.
+Inventário e ensaio diferenciam execução da ação de pressão visual:
+
+```sh
+bash kvantum/diagnosticar-setas.sh
+bash kvantum/diagnosticar-setas.sh --testar --saida "$HOME/Downloads/diagnostico-setas"
+```
+
+O ensaio compara Qt Widgets e Qt Quick, com Fusion, Breeze e Kvantum que estiverem
+instalados. Não modifica o Application Style global nem arquivos de sistema.
+Veja `../docs/DIAGNOSTICO-SETAS.md`. Ausência de dependência retorna 77.
 
 ## Base dos blocos 1 e 2 preservada
 
