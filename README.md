@@ -9,6 +9,8 @@ improvements:
 - preserves the chosen Irixium title-bar button order (`M` left and `IA` right);
 - includes the reviewed classic-controls v3 package, which reuses the close
   artwork for the minimize button and adds scoped menu-button feedback;
+- includes the independent IRIX Classic v4 Aurorae decoration for visual
+  testing without replacing shared system QML;
 - records the KDE Plasma 6 font and antialiasing profile;
 - includes a script to reapply the changes after KDE updates.
 
@@ -36,6 +38,14 @@ The `controles-v3/` package provides the guarded installer, restoration tool,
 integration helper, tests and provenance for the classic-controls update. It
 must be applied separately when installing an existing checkout; the main
 `update-irixium.sh` script also preserves its `IA` button-order setting.
+
+The `classic-v4/` package installs a separate `Irixium — IRIX Classic (v4)`
+decoration under the user's data directory. Run
+`classic-v4/instalar-v4.sh --verificar` first, then
+`classic-v4/instalar-v4.sh --ativar` to select it for local visual testing.
+It does not modify the shared Aurorae QML, the v2 divider overlay, or the
+existing v1/v2/v3 installation. Use `classic-v4/restaurar-v4.sh` to restore
+the previous decoration selection.
 
 To check the registered upstream sources:
 
