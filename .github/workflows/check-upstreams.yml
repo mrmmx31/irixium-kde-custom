@@ -31,13 +31,13 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Check KDE/Aurorae upstream
-        id: pling
+      - name: Check KDE/Kvantum upstream
+        id: kvantum
         shell: bash
         run: |
           set -euo pipefail
           current="$(git ls-remote https://www.opencode.net/phob1an/irixium.git HEAD | cut -f1)"
-          recorded="$(cat .upstream/aurorae-irixium-commit)"
+          recorded="$(cat .upstream/kvantum-irixium-commit)"
           echo "current=$current" >> "$GITHUB_OUTPUT"
           echo "recorded=$recorded" >> "$GITHUB_OUTPUT"
           if [ "$current" != "$recorded" ]; then
@@ -58,14 +58,14 @@ jobs:
               "Review the GTK upstream change at https://github.com/TheJollyDuck/Irixium/commit/$UPSTREAM_COMMIT. Do not merge automatically."
           fi
 
-      - name: Open KDE/Pling review issue
-        if: steps.pling.outputs.changed == 'true'
+      - name: Open KDE/Kvantum review issue
+        if: steps.kvantum.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-          CURRENT_HASH: ${{ steps.pling.outputs.current }}
+          CURRENT_HASH: ${{ steps.kvantum.outputs.current }}
         run: |
-          title="KDE/Aurorae upstream changed: ${CURRENT_HASH:0:12}"
+          title="KDE/Kvantum upstream changed: ${CURRENT_HASH:0:12}"
           if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
             gh issue create --title "$title" --body \
-              "Review the Irixium Aurorae source at https://www.opencode.net/phob1an/irixium/-/commit/$CURRENT_HASH. Do not merge automatically."
+              "Review the Irixium Kvantum source at https://www.opencode.net/phob1an/irixium/-/commit/$CURRENT_HASH. Do not merge automatically."
           fi

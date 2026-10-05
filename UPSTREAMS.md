@@ -6,10 +6,10 @@ separate directories while distributing them together for convenience.
 | Directory | Upstream | Maintainer/source |
 | --- | --- | --- |
 | `gtk/` | https://github.com/TheJollyDuck/Irixium | TheJollyDuck / Shauna Recto |
-| KDE/Aurorae | https://www.opencode.net/phob1an/irixium | Phob1an |
+| KDE/Kvantum | https://www.opencode.net/phob1an/irixium | Theme author: Mark Whittaker |
 
 Use `./check-upstreams.sh` to fetch and display new commits from the GTK
 upstream. Do not overwrite local changes automatically; review upstream
-changes and merge them deliberately. The preserved Aurorae source snapshot is
-under `upstream/aurorae-irixium/`; the customized installation remains under
-`aurorae/Irixium/`.
+changes and merge them deliberately. The preserved Kvantum source snapshot is
+under `upstream/kvantum-irixium/`; the Aurorae decoration remains separately
+under `aurorae/Irixium/`.
