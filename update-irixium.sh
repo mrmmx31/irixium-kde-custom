@@ -1,11 +1,20 @@
 #!/bin/sh
 set -eu
 
+# IRIXIUM_MODERN_LAYOUT_USER_BEGIN
+if [ "$(id -u)" -eq 0 ]; then
+    printf '%s\n' 'Execute como usuário normal, sem sudo; a autorização é solicitada quando necessária.' >&2
+    exit 1
+fi
+# IRIXIUM_MODERN_LAYOUT_USER_END
+
 bundle_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 aurorae_dir="$HOME/.local/share/aurorae/themes/Irixium"
 qml_dir="/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/kwin/decoration"
 qml_target="$qml_dir/MenuButton.qml"
 qml_backup="$qml_dir/MenuButton.qml.irixium-original"
+aurorae_group_target="/usr/share/kwin/aurorae/AuroraeButtonGroup.qml"
+aurorae_group_backup="/usr/share/kwin/aurorae/AuroraeButtonGroup.qml.irixium-original"
 system_asset_dir="/usr/share/kwin/aurorae/Irixium"
 
 mkdir -p "$aurorae_dir"
@@ -13,6 +22,7 @@ cp -a "$bundle_dir/aurorae/Irixium/." "$aurorae_dir/"
 
 if [ "$(id -u)" -eq 0 ]; then
     install -m 0644 "$bundle_dir/MenuButton.qml" "$qml_target"
+    install -m 0644 "$bundle_dir/AuroraeButtonGroup.qml" "$aurorae_group_target"
     install -d -m 0755 "$system_asset_dir"
     install -m 0644 "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir/applications.png"
 else
@@ -23,13 +33,20 @@ else
         backup=$3
         asset=$4
         asset_dir=$5
+        group_source=$6
+        group_target=$7
+        group_backup=$8
         if [ ! -e "$backup" ]; then
             install -m 0644 "$target" "$backup"
         fi
         install -m 0644 "$source" "$target"
+        if [ ! -e "$group_backup" ]; then
+            install -m 0644 "$group_target" "$group_backup"
+        fi
+        install -m 0644 "$group_source" "$group_target"
         install -d -m 0755 "$asset_dir"
         install -m 0644 "$asset" "$asset_dir/applications.png"
-    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir"
+    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir" "$bundle_dir/AuroraeButtonGroup.qml" "$aurorae_group_target" "$aurorae_group_backup"
 fi
 
 if command -v qdbus6 >/dev/null 2>&1; then
@@ -39,7 +56,7 @@ fi
 if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key BorderSize Normal
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnLeft M
-    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight HXA
+    kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key ButtonsOnRight IA
     kwriteconfig6 --file kwinrc --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
     kwriteconfig6 --file kdeglobals --group General --key XftAntialias false
     kwriteconfig6 --file kdeglobals --group General --key XftSubPixel none
@@ -50,6 +67,11 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file kdeglobals --group General --key menuFont 'Nimbus Sans [urw],12,-1,5,400,1,0,0,0,0,0,0,0,0,0,1,Italic'
     kwriteconfig6 --file kdeglobals --group WM --key activeFont 'Nimbus Sans [urw],12,-1,5,700,1,0,0,0,0,0,0,0,0,0,1,Bold Italic'
 fi
+
+# IRIXIUM_MODERN_LAYOUT_BEGIN
+# Keep the SVG theme and the scoped Aurorae layout patch installed together.
+bash "$bundle_dir/moderno/geometria/instalar.sh"
+# IRIXIUM_MODERN_LAYOUT_END
 
 printf '%s\n' "Irixium customização reaplicada; o botão personalizado é limitado ao tema Irixium."
 printf '%s\n' "Entre novamente na sessão para o KWin recarregar o componente QML."

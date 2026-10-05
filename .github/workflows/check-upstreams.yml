@@ -31,15 +31,13 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Check KDE/Pling upstream
+      - name: Check KDE/Aurorae upstream
         id: pling
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --location --silent --show-error \
-            https://www.pling.com/p/1457753 | sha256sum | cut -d' ' -f1 > /tmp/pling-page.sha256
-          current="$(cat /tmp/pling-page.sha256)"
-          recorded="$(cat .upstream/pling-page.sha256)"
+          current="$(git ls-remote https://www.opencode.net/phob1an/irixium.git HEAD | cut -f1)"
+          recorded="$(cat .upstream/aurorae-irixium-commit)"
           echo "current=$current" >> "$GITHUB_OUTPUT"
           echo "recorded=$recorded" >> "$GITHUB_OUTPUT"
           if [ "$current" != "$recorded" ]; then
@@ -66,8 +64,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           CURRENT_HASH: ${{ steps.pling.outputs.current }}
         run: |
-          title="KDE/Pling upstream page changed"
+          title="KDE/Aurorae upstream changed: ${CURRENT_HASH:0:12}"
           if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
             gh issue create --title "$title" --body \
-              "Review the Irixium KDE source at https://www.pling.com/p/1457753. Page fingerprint: \`$CURRENT_HASH\`. Do not merge automatically."
+              "Review the Irixium Aurorae source at https://www.opencode.net/phob1an/irixium/-/commit/$CURRENT_HASH. Do not merge automatically."
           fi
