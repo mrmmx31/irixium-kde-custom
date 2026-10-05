@@ -6,8 +6,6 @@ aurorae_dir="$HOME/.local/share/aurorae/themes/Irixium"
 qml_dir="/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/kwin/decoration"
 qml_target="$qml_dir/MenuButton.qml"
 qml_backup="$qml_dir/MenuButton.qml.irixium-original"
-button_group_target="$qml_dir/ButtonGroup.qml"
-button_group_backup="$qml_dir/ButtonGroup.qml.irixium-original"
 system_asset_dir="/usr/share/kwin/aurorae/Irixium"
 
 mkdir -p "$aurorae_dir"
@@ -15,7 +13,6 @@ cp -a "$bundle_dir/aurorae/Irixium/." "$aurorae_dir/"
 
 if [ "$(id -u)" -eq 0 ]; then
     install -m 0644 "$bundle_dir/MenuButton.qml" "$qml_target"
-    install -m 0644 "$bundle_dir/ButtonGroup.qml" "$button_group_target"
     install -d -m 0755 "$system_asset_dir"
     install -m 0644 "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir/applications.png"
 else
@@ -26,20 +23,13 @@ else
         backup=$3
         asset=$4
         asset_dir=$5
-        button_group_source=$6
-        button_group_target=$7
-        button_group_backup=$8
         if [ ! -e "$backup" ]; then
             install -m 0644 "$target" "$backup"
         fi
         install -m 0644 "$source" "$target"
-        if [ ! -e "$button_group_backup" ]; then
-            install -m 0644 "$button_group_target" "$button_group_backup"
-        fi
-        install -m 0644 "$button_group_source" "$button_group_target"
         install -d -m 0755 "$asset_dir"
         install -m 0644 "$asset" "$asset_dir/applications.png"
-    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir" "$bundle_dir/ButtonGroup.qml" "$button_group_target" "$button_group_backup"
+    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir"
 fi
 
 if command -v qdbus6 >/dev/null 2>&1; then
