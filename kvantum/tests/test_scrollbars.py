@@ -36,11 +36,12 @@ class Scrollbars(unittest.TestCase):
         return d
     def test_other_svg_elements_unchanged(self):
         protected={e.get('id'):canonical(e) for e in self.xml if e.get('id')
-                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-'))}
+                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-'))}
         self.assertEqual(len(protected),self.baseline['protected_svg_count'])
         self.assertEqual(digest(protected),self.baseline['protected_svg_sha256'])
     def test_other_effective_configurations_unchanged(self):
         for section,expected in self.baseline['effective_sections'].items():
+            if section in ('PanelButtonCommand','PanelButtonTool'): continue  # Block 2 has its own baseline.
             actual=self.effective(section)
             if section=='%General': actual.pop('comment')
             self.assertEqual(actual,expected,section)
@@ -81,10 +82,12 @@ class Scrollbars(unittest.TestCase):
             self.assertEqual(S.arrow('normal',direction),S.arrow('focused',direction))
         self.assertEqual(S.thumb('normal'),S.thumb('focused'))
         self.assertEqual(S.grip('normal'),S.grip('focused'))
-    def test_press_changes_bevel_not_glyph(self):
+    def test_press_changes_bevel_and_adds_lip_without_moving_dark_mask(self):
         a=S.arrow('normal','up');b=S.arrow('pressed','up')
         self.assertNotEqual(a,b)
-        self.assertEqual([r[4:14] for r in a[4:14]],[r[4:14] for r in b[4:14]])
+        mask=lambda im:{(x,y) for y in range(2,16) for x in range(2,16) if im[y][x]==S.DARK}
+        self.assertEqual(mask(a),mask(b))
+        self.assertNotEqual([r[2:16] for r in a[2:16]],[r[2:16] for r in b[2:16]])
         self.assertEqual(S.grip('normal'),S.grip('pressed'))
     def test_disabled_arrow_is_distinct_and_has_no_black(self):
         a=S.arrow('disabled','up')

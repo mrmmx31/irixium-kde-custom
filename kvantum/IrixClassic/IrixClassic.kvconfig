@@ -1,11 +1,11 @@
-# IrixClassic 0.1.0-rc2 — application style, not a window decoration.
+# IrixClassic 0.2.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.1.0-rc2
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.2.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -104,14 +104,14 @@ inherits=Window
 
 [PanelButtonCommand]
 frame=true
-frame.element=ic-button
+frame.element=ic-command
 frame.top=3
 frame.bottom=3
 frame.left=3
 frame.right=3
 frame.expansion=0
 interior=true
-interior.element=ic-button
+interior.element=ic-command
 indicator.element=ic-arrow
 indicator.size=12
 text.normal.color=#000000
@@ -130,8 +130,8 @@ focusFrame=false
 
 [PanelButtonTool]
 inherits=PanelButtonCommand
-frame.element=ic-tool
-interior.element=ic-tool
+frame.element=ic-palettebutton
+interior.element=ic-palettebutton
 frame.top=2
 frame.bottom=2
 frame.left=2
@@ -148,6 +148,8 @@ frame.element=ic-common
 interior=false
 text.margin=false
 
+# Keep this non-button block on its previously reviewed resources.
+interior.element=ic-button
 [LineEdit]
 inherits=PanelButtonCommand
 frame.element=ic-entry
@@ -168,6 +170,9 @@ inherits=PanelButtonCommand
 indicator.element=ic-arrow-down
 indicator.size=12
 
+# Keep this non-button block on its previously reviewed resources.
+frame.element=ic-button
+interior.element=ic-button
 [IndicatorArrow]
 indicator.element=ic-arrow
 indicator.size=12
@@ -192,6 +197,8 @@ text.margin.left=3
 text.margin.right=3
 min_height=18
 
+# Keep this non-button block on its previously reviewed resources.
+frame.element=ic-button
 [RadioButton]
 inherits=CheckBox
 interior.element=ic-radio
@@ -272,6 +279,9 @@ interior.element=ic-window
 [ToolboxTab]
 inherits=PanelButtonCommand
 
+# Keep this non-button block on its previously reviewed resources.
+frame.element=ic-button
+interior.element=ic-button
 [Dock]
 inherits=GenericFrame
 
@@ -288,6 +298,9 @@ indicator.size=12
 text.margin.top=1
 text.margin.bottom=1
 
+# Keep this non-button block on its previously reviewed resources.
+frame.element=ic-button
+interior.element=ic-button
 [TreeExpander]
 frame=false
 interior=false
@@ -311,6 +324,8 @@ text.margin.left=2
 text.margin.right=2
 min_height=18
 
+# Keep this non-button block on its previously reviewed resources.
+frame.element=ic-button
 [Scrollbar]
 frame=false
 interior=false
@@ -398,3 +413,15 @@ inherits=MenuBar
 text.normal.color=#000000
 text.focus.color=#000000
 text.italic=true
+
+# Dedicated style for auto-raised toolbar controls (not menus or tabs).
+[ToolbarButton]
+inherits=PanelButtonTool
+frame.element=ic-toolbarbutton
+interior.element=ic-toolbarbutton
+indicator.element=ic-arrow
+text.normal.color=#000000
+text.focus.color=#000000
+text.press.color=#000000
+text.toggle.color=#000000
+text.shadow=false

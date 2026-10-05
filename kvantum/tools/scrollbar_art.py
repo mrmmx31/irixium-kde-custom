@@ -68,6 +68,15 @@ def arrow(state: str, direction: str):
               for x, bit in enumerate(row) if bit == '1']
     if down:
         points = [(WIDTH-1-x, WIDTH-1-y) for x, y in points]
+    if state in ('pressed', 'toggled'):
+        # The rc2 only inverted the cell. Keep the triangle's dark mask fixed,
+        # but add the missing light lower/right lip of its recessed impression.
+        # This is a declared pressed-state adaptation, not a translated glyph.
+        occupied = set(points)
+        for x, y in points:
+            nx, ny = x+1, y+1
+            if (nx, ny) not in occupied:
+                img[ny][nx] = LIGHT
     if state == 'disabled':
         # Embossed unavailable glyph; no black, no disappearing arrow cell.
         for x, y in points:

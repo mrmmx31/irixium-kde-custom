@@ -5,5 +5,5 @@ import hashlib
 import json
 root=Path(__file__).resolve().parent.parent/'IrixClassic'
 files=['IrixClassic.kvconfig','IrixClassic.svg','LICENSE','ORIGEM.json','README.md']
-manifest={'version':'0.1.0-rc2','files':{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files}}
+manifest={'version':'0.2.0-rc1','files':{name:hashlib.sha256((root/name).read_bytes()).hexdigest() for name in files}}
 (root/'MANIFEST.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
