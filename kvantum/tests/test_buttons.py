@@ -14,7 +14,8 @@ import build_classic as B
 import button_art as A
 import scrollbar_art as S
 
-PREFIXES=('ic-command-','ic-palettebutton-','ic-toolbarbutton-')
+PREFIXES=('ic-command-','ic-palettebutton-','ic-toolbarbutton-',
+          'ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-')
 def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[canonical(ch) for ch in e]]
 def sha(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
@@ -34,8 +35,11 @@ class Buttons(unittest.TestCase):
   self.assertEqual(len(data),self.base['protected_svg_count']); self.assertEqual(sha(data),self.base['protected_svg_sha256'])
  def test_non_button_effective_configuration_is_unchanged(self):
   for s,old in self.base['effective_sections'].items():
+   if s in ('LineEdit','ComboBox','IndicatorSpinBox','GenericFrame'): continue  # Block 3: test_entries.py
    new=effective(self.conf,s)
-   if s=='%General':new.pop('comment')
+   if s=='%General':
+    new.pop('comment')
+    for k in ('combo_as_lineedit','combo_focus_rect','square_combo_button'):new[k]=old[k]
    self.assertEqual(old,new,s)
  def test_command_resting_profile_matches_reference_samples(self):
   image,_=A.surface('command','normal',52,31)

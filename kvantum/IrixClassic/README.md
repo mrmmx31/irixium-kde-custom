@@ -1,9 +1,30 @@
-# IrixClassic — Application Style Kvantum
+# IrixClassic 0.3.0-rc1 — campos e entradas
 
-**0.2.0-rc1 — pressão das setas e bloco 2: botões. Manutenção: `mrmmx31`.**
+**0.3.0-rc1 — bloco 3: campos; reparo Qt Quick opcional. Manutenção: `mrmmx31`.**
 Não é uma decoração de janela. O nome no Kvantum permanece **IrixClassic**.
 
 ## Nesta revisão
+
+Campos editáveis, botões de opção/combo, spinboxes e molduras internas têm
+recursos próprios. Os botões do bloco 2 e todos os mapas da barra de rolagem
+estão preservados. Veja `../docs/CAMPOS.md` para foco, dimensões e limites.
+
+**A ausência de pressão das setas no KDE Qt Quick exige um reparo separado**:
+a nova pintura não resolve um estado Sunken que não chega ao motor. Consulte
+`../docs/PRESSAO-QTQUICK.md`. Esse reparo de sistema é opcional e afeta o módulo
+org.kde.desktop em todos os temas que o usam; instalar o Kvantum não o aplica.
+
+```sh
+bash kvantum/prever-campos.sh
+bash kvantum/corrigir-pressao-qtquick.sh --verificar --diff
+```
+
+Somente leitura permanece selecionável, mas o Kvantum não oferece um estado
+SVG readonly para trocar sua cor separadamente; não anunciamos esse detalhe
+como resolvido. Pressões do scrollbar em Qt Widgets devem ser verificadas pela
+galeria de botões; Qt Quick possui agora sua própria galeria de diagnóstico.
+
+## Base dos blocos 1 e 2 preservada
 
 A barra de rolagem da 0.1.0-rc2 foi preservada: puxador, trilho, ranhuras,
 largura 18 e comprimento mínimo 34. Corrigido o detalhe de pressão das setas:

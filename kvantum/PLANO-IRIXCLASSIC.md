@@ -6,18 +6,19 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
-**0.2.0-rc1: correção de pressão do bloco 1 + bloco 2 para teste; aceitação em Qt/KDE pendente.**
-O usuário aprovou o desenho da barra na rc2, mas relatou falta do relevo inferior
-ao pressionar as setas. Preservar puxador, trilho, ranhuras e estados de repouso.
-Próximo desenvolvimento: **bloco 3 — campos e entradas**, após esta revisão.
-A rc1 existente é uma base funcional, não prova de fidelidade dos blocos 2–7.
-Não marcar um bloco como aprovado por ter apenas mapas SVG ou testes estáticos.
+**0.3.0-rc1: bloco 3 para teste; reparo Qt Quick separado para a pressão das setas.**
+Desenho da barra aprovado e botões do bloco 2 aprovados pelo usuário. A tentativa
+anterior de reforçar o SVG não resolveu a pressão Qt Quick; nesta revisão os
+mapas aprovados ficam intactos e o sinal Sunken é tratado por um reparo opcional.
+Próximo desenvolvimento: **bloco 4 — checkboxes e radios**.
+A implementação inicial dos demais controles não comprova fidelidade histórica.
+Bloco 3 e reparo de pressão: aceitação em Qt/KDE pendente.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
-| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; extremidades; orientações; normal/hover/pressionado/desativado; extremos do intervalo; sem intervalo; RTL | Desenho da rc2 aprovado pelo usuário; pressão das setas corrigida em 0.2.0-rc1, aguardando reteste | Galeria `prever-rolagem.sh`, teste de arraste, prints 100%, comparação com IRIX |
-| 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Implementado para teste em 0.2.0-rc1; comando, padrão, ferramenta/paleta, toolbar, pressão e toggle | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
-| 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Pendente; base rc1 preservada | SGI Text Fields e Option Buttons; verificar cores distintas por função |
+| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; extremidades; orientações; normal/hover/pressionado/desativado; extremos do intervalo; sem intervalo; RTL | Desenho da rc2 aprovado pelo usuário; tentativa gráfica 0.2.0-rc1 não resolveu a pressão; reparo Qt Quick 0.3.0-rc1 aguardando teste | Galeria `prever-rolagem.sh`, teste de arraste, prints 100%, comparação com IRIX |
+| 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Aprovado pelo usuário em 0.2.0-rc1; preservado nesta revisão | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
+| 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Implementado para teste em 0.3.0-rc1; cor readonly universal exige suporte fora do SVG | Galeria prever-campos.sh; foco, seleção, limites, RTL; docs/CAMPOS.md |
 | 4. Checkboxes e radios | Desmarcado/marcado/parcial; rádio; exclusividade; foco; hover/pressionado/desativado; variantes em menu | Pendente; desenhos rc1 são adaptações | SGI: marca vermelha no checkbox e triângulo azul no rádio, figuras 9-3/9-4 |
 | 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Pendente; não apagar indicação de seleção | SGI ch. 8 e CDE/Motif |
 | 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe no painel; orientações; abas estreitas; botão de fechar | Pendente; abas retangulares rc1 são adaptação, não comprovadas por screenshot | Localizar referência histórica equivalente ou manter adaptação explícita |
@@ -75,3 +76,22 @@ https://github.com/tsujan/Kvantum/tree/V1.1.4/Kvantum
 
 CDE/Motif (referência de comportamento, não prova do desenho exato da SGI):
 https://github.com/cdesktopenv/cde/tree/master/cde/programs/dtwm
+
+
+## Atualização 0.3.0-rc1 — bloco 3 e entrada Qt Quick
+
+- Bloco 1: desenho da barra aprovado pelo usuário; SVG preservado. A pressão
+  das setas ainda falhava. Encontrado caminho Qt Quick sem Sunken; reparo
+  opcional separado e ensaio nativo incluídos, aceitação local pendente.
+- Bloco 2: botões aprovados pelo usuário; não redesenhados nesta revisão.
+- Bloco 3: campos, combo/option, spin e painéis implementados para validação.
+  Foco de teclado e indisponibilidade separados. Cor específica para readonly
+  em todos os apps não é suportada apenas pelo SVG Kvantum; sem alegação falsa
+  de conclusão desse detalhe. Sem alteração de fonte global.
+- Próximo bloco 4: checkboxes (marca vermelha segundo o manual SGI), radios
+  (triângulo azul segundo o manual), parcial, desativado, foco e seleção.
+- Blocos 5, 6 e 7: continuam pendentes de revisão específica conforme a matriz
+  acima. A implementação inicial existente não significa aprovação histórica.
+
+Fontes e limites desta rodada: `docs/CAMPOS.md` e `docs/PRESSAO-QTQUICK.md`.
+As galerias Qt não executadas aqui devem ser testadas na máquina de destino.

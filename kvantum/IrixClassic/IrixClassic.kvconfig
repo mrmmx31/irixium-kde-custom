@@ -1,11 +1,11 @@
-# IrixClassic 0.2.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.3.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.2.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.3.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -54,10 +54,10 @@ toolbar_interior_spacing=0
 toolbutton_style=0
 submenu_delay=250
 submenu_overlap=1
-combo_as_lineedit=true
+combo_as_lineedit=false
 combo_menu=true
-combo_focus_rect=false
-square_combo_button=true
+combo_focus_rect=true
+square_combo_button=false
 inline_spin_indicators=false
 vertical_spin_indicators=false
 spin_button_width=16
@@ -144,7 +144,7 @@ min_height=22
 
 [GenericFrame]
 inherits=PanelButtonCommand
-frame.element=ic-common
+frame.element=ic-inset
 interior=false
 text.margin=false
 
@@ -152,8 +152,8 @@ text.margin=false
 interior.element=ic-button
 [LineEdit]
 inherits=PanelButtonCommand
-frame.element=ic-entry
-interior.element=ic-entry
+frame.element=ic-input
+interior.element=ic-input
 text.margin.top=1
 text.margin.bottom=1
 text.margin.left=3
@@ -161,9 +161,16 @@ text.margin.right=3
 min_height=22
 
 [ComboBox]
-inherits=LineEdit
-indicator.element=ic-arrow-down
+inherits=PanelButtonCommand
+indicator.element=ic-optionmark
 indicator.size=12
+frame.element=ic-option
+interior.element=ic-option
+text.margin.top=1
+text.margin.bottom=1
+text.margin.left=3
+text.margin.right=3
+min_height=22
 
 [DropDownButton]
 inherits=PanelButtonCommand
@@ -179,13 +186,13 @@ indicator.size=12
 
 [IndicatorSpinBox]
 inherits=PanelButtonCommand
-frame.element=ic-tool
-interior.element=ic-tool
+frame.element=ic-spin
+interior.element=ic-spin
 frame.top=2
 frame.bottom=2
 frame.left=2
 frame.right=2
-indicator.element=ic-arrow
+indicator.element=ic-spinmark
 indicator.size=12
 
 [CheckBox]
@@ -284,6 +291,7 @@ frame.element=ic-button
 interior.element=ic-button
 [Dock]
 inherits=GenericFrame
+frame.element=ic-common
 
 [DockTitle]
 inherits=MenuBar
@@ -425,3 +433,6 @@ text.focus.color=#000000
 text.press.color=#000000
 text.toggle.color=#000000
 text.shadow=false
+
+[ToolbarLineEdit]
+inherits=LineEdit

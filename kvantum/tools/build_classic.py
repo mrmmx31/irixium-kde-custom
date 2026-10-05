@@ -12,6 +12,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 import scrollbar_art as SB
 import button_art as BT
+import entry_art as EN
 
 NS = 'http://www.w3.org/2000/svg'
 ET.register_namespace('', NS)
@@ -89,7 +90,7 @@ def slice9(img,n):
 class Atlas:
     def __init__(self):
         self.root=ET.Element('{'+NS+'}svg',{'version':'1.1','width':'768','height':'4096','viewBox':'0 0 768 4096','shape-rendering':'crispEdges'})
-        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.2.0-rc1'
+        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.3.0-rc1'
         ET.SubElement(self.root,'{'+NS+'}desc').text='New integer-grid artwork by mrmmx31. GPL-3.0-or-later. No SGI code or fonts.'
         self.items={}
     def add(self,name,img):
@@ -240,6 +241,8 @@ def build():
     SB.append_scrollbar_assets(a, STATES)
     # Append isolated block-2 resources; preserve all existing element positions.
     BT.append_assets(a)
+    # Block 3 is appended; earlier controls and their atlas positions stay fixed.
+    EN.append_entry_assets(a)
     height=((len(a.items)+15)//16)*40
     a.root.set('height',str(height)); a.root.set('viewBox',f'0 0 768 {height}')
     ET.indent(a.root,space='  ')
