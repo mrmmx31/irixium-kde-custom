@@ -9,13 +9,12 @@ qml_backup="$qml_dir/MenuButton.qml.irixium-original"
 system_asset_dir="/usr/share/kwin/aurorae/Irixium"
 
 mkdir -p "$aurorae_dir"
-install -m 0644 "$bundle_dir/applications.png" "$aurorae_dir/applications.png"
-install -m 0644 "$bundle_dir/Irixiumrc" "$aurorae_dir/Irixiumrc"
+cp -a "$bundle_dir/aurorae/Irixium/." "$aurorae_dir/"
 
 if [ "$(id -u)" -eq 0 ]; then
     install -m 0644 "$bundle_dir/MenuButton.qml" "$qml_target"
     install -d -m 0755 "$system_asset_dir"
-    install -m 0644 "$bundle_dir/applications.png" "$system_asset_dir/applications.png"
+    install -m 0644 "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir/applications.png"
 else
     pkexec sh -c '
         set -eu
@@ -30,7 +29,7 @@ else
         install -m 0644 "$source" "$target"
         install -d -m 0755 "$asset_dir"
         install -m 0644 "$asset" "$asset_dir/applications.png"
-    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/applications.png" "$system_asset_dir"
+    ' sh "$bundle_dir/MenuButton.qml" "$qml_target" "$qml_backup" "$bundle_dir/aurorae/Irixium/applications.png" "$system_asset_dir"
 fi
 
 if command -v qdbus6 >/dev/null 2>&1; then

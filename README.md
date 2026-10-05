@@ -39,7 +39,7 @@ review the diff, test the theme, and merge only after approval.
 
 ## Attribution and licensing
 
-The root-level Aurorae files in this repository are based on Irixium by Phob1an.
+The `aurorae/Irixium/` files in this repository are based on Irixium by Phob1an.
 The `gtk/` files are based on Irixium by TheJollyDuck/Shauna Recto.
 The original GPL text is retained in `LICENSE` and `gtk/LICENSE`.
 
