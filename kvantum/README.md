@@ -1,7 +1,8 @@
 # Irixium Kvantum upstream snapshot
 
-This directory preserves the Kvantum theme used by the local KDE
-**Application Style** separately from the customized Aurorae decoration.
+This directory contains the Kvantum themes used by the KDE **Application
+Style**. `Irixium/` is the preserved modern base; `IrixClassic/` is reserved
+for the derivative under development.
 
 | Field | Value |
 | --- | --- |
@@ -11,7 +12,7 @@ This directory preserves the Kvantum theme used by the local KDE
 | Recorded commit | `2384fae31d59d02b81f54901ad6cf496957db91a` |
 | License | GPL3 |
 
-The snapshot matches the active files in
+The `Irixium/` snapshot matches the active files in
 `~/.config/Kvantum/Irixium/` and the source copy in
 `~/kvantumt/Irixium/`. It is preserved for future customization and is not
 installed automatically by `update-irixium.sh`.
