@@ -6,23 +6,25 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
-**0.5.0-rc1: bloco 5 implementado para teste; setas isoladas do desenho.**
-Desenho da barra e botões aprovados; blocos 3/4 entregues sem aprovação final
-explícita. O inventário local confirmou arquivo QML sem reparo e preferência
-por qrc. O usuário relata setas funcionando no Kvantum, mas não nas telas KDE:
-isso é compatível com uma diferença Widgets/Qt Quick, ainda sem teste nativo
-comparativo concluído. Não marcar esse problema como solucionado pelo novo SVG.
-Próximo desenvolvimento: **bloco 6 — abas**.
-Bloco 5: aceitação em Qt/KDE pendente. Galeria Qt Widgets automatizável; galeria Qt Quick manual.
+**0.6.0-rc1: bloco 6 — abas implementado para teste; próximo: bloco 7.**
+Desenhos da barra e botões aprovados; campos, seleção e menus entregues, sem
+homologação final explícita. Abas com referência funcional no VkTabPanel e desenho
+adaptado. Não marcar identidade histórica ou execução nativa como aprovada apenas
+por testes de mapas. A pressão/ação das setas nas telas KDE continua pendente:
+o relato persiste e não foi recebido o resultado dos ensaios comparativos nativos.
+A revisão reúne quatro caminhos em `COMPARACAO-SETAS.json`, sem nova intervenção
+no sistema e sem redesenhar as setas.
+**Aceitação em Qt/KDE pendente** para as abas. O inventário somente de leitura
+continua disponível em `diagnosticar-setas.sh`; o novo coletor complementa-o.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
-| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; Preview Kvantum funciona; QML em disco ainda sem reparo, prefer qrc presente | diagnosticar-setas.sh; comparar movimento e sunken em Widgets e Quick |
+| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; usuário ainda relata falha nas setas KDE, Preview Kvantum funciona; sem prova de reparo carregado | comparar-setas.sh: Widgets / módulo instalado / arquivo direto / reparo temporário |
 | 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Aprovado pelo usuário em 0.2.0-rc1; preservado nesta revisão | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
 | 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Implementado para teste em 0.3.0-rc1; cor readonly universal exige suporte fora do SVG | Galeria prever-campos.sh; foco, seleção, limites, RTL; docs/CAMPOS.md |
 | 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Implementado em 0.4.0-rc1 para teste; pressão separada limitada pelo motor Kvantum | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
 | 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Implementado em 0.5.0-rc1 para teste; seleção/pressão, submenu, separador, check/radio e tear-off quando nativo | prever-menus.sh; galeria --qtquick; docs/MENUS.md |
-| 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe no painel; orientações; abas estreitas; botão de fechar | Pendente; abas retangulares rc1 são adaptação, não comprovadas por screenshot | Localizar referência histórica equivalente ou manter adaptação explícita |
+| 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe; quatro orientações; nomes longos; fechar/transbordamento | Implementado para teste em 0.6.0-rc1; sobreposição e estado em primeiro plano referenciados no VkTabPanel; geometria adaptada | prever-abas.sh, --testar, --qtquick; docs/ABAS.md |
 | 7. Sliders e demais controles | Scale/slider; progresso determinado/indeterminado; splitter; headers; listas/tabelas/árvores; seleção simples/múltipla; branches; tooltips; dock/toolbox; labels; size grip; MDI | Pendente; isolado da alteração da scrollbar | SGI ch. 7/9/10/11, métricas e limites reais do Qt/Kvantum |
 
 ## Matriz transversal obrigatória
@@ -119,3 +121,12 @@ O teste temporário da pressão usa o hit-test do StyleItem em vez de uma consul
 de retângulo de seta não suportada. Nenhum arquivo de sistema é alterado pelo
 pacote de tema; reparo em org.kde.desktop permanece separado e opt-in. O próximo
 ensaio local deve distinguir a ação de rolar do relevo pressionado.
+
+## Continuidade após 0.6.0-rc1
+
+O antigo “próximo bloco 6 — abas” da entrega 0.5.0-rc1 está implementado para
+validação. **Próximo bloco 7:** sliders/scales, progresso determinado/indeterminado,
+divisores, cabeçalhos, listas/árvores/tabelas, grades, indicação de ordenação,
+seleção, foco e indisponibilidade. Depois: revisão integrada de todos os blocos.
+O bug de eventos das setas continua como trilha independente; não aguardar uma
+mudança de desenho para considerar corrigido um problema de Qt Quick.

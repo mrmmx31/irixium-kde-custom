@@ -15,6 +15,7 @@ import button_art as BT
 import entry_art as EN
 import selection_art as SL
 import menu_art as MN
+import tab_art as TB
 
 NS = 'http://www.w3.org/2000/svg'
 ET.register_namespace('', NS)
@@ -92,7 +93,7 @@ def slice9(img,n):
 class Atlas:
     def __init__(self):
         self.root=ET.Element('{'+NS+'}svg',{'version':'1.1','width':'768','height':'4096','viewBox':'0 0 768 4096','shape-rendering':'crispEdges'})
-        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.5.0-rc1'
+        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.6.0-rc1'
         ET.SubElement(self.root,'{'+NS+'}desc').text='New integer-grid artwork by mrmmx31. GPL-3.0-or-later. No SGI code or fonts.'
         self.items={}
     def add(self,name,img):
@@ -249,6 +250,8 @@ def build():
     SL.append_selection_assets(a)
     # Block 5 is isolated; all earlier atlas IDs/maps/positions are retained.
     MN.append_menu_assets(a)
+    # Block 6 appends notebook/document tabs; preceding assets stay byte-stable.
+    TB.append_tab_assets(a)
     height=((len(a.items)+15)//16)*40
     a.root.set('height',str(height)); a.root.set('viewBox',f'0 0 768 {height}')
     ET.indent(a.root,space='  ')

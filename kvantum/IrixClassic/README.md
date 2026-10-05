@@ -1,3 +1,42 @@
+# IrixClassic 0.6.0-rc1 — abas
+
+Manutenção: `mrmmx31`. Tema Kvantum para Application Style, não decoração de janela.
+
+## Revisão atual
+
+Bloco 6: abas com laterais inclinadas, selecionada em primeiro plano, junções de
+painel nas quatro orientações, família para documentos, fechar e transbordamento.
+Mantidos todos os 3.293 recursos SVG anteriores. A largura reservada ao rótulo
+continua equivalente; a única mudança global de comportamento geométrico é
+`active_tab_overlap=4`. Nenhuma fonte, escala ou configuração KDE global é alterada.
+
+Referência funcional: SGI VkTabPanel. Desenho e dimensões escolhidos são adaptações,
+não equivalência pixel a pixel. O menu histórico de abas colapsadas exige suporte
+do aplicativo e não é instalado pelo tema. Consulte `../docs/ABAS.md`.
+
+```sh
+# Na raiz do clone:
+bash kvantum/testar-abas.sh
+bash kvantum/prever-abas.sh
+bash kvantum/prever-abas.sh --testar
+bash kvantum/prever-abas.sh --qtquick
+bash kvantum/instalar-classic.sh --verificar
+bash kvantum/instalar-classic.sh
+```
+
+Sem sudo. Galerias usam configuração temporária. Reabra os aplicativos após
+instalar. Ausência de dependências retorna 77, nunca sucesso nativo.
+`PREVIA-ABAS.png` é composição técnica das fatias, não captura Qt.
+
+A seta nas aplicações KDE **permanece pendente**. Não há novo reparo global nesta
+revisão; o desenho aprovado e o utilitário opcional antigo ficam intactos.
+O novo `../comparar-setas.sh --saida /pasta/nova` reúne Widgets, módulo instalado,
+QML do disco e cópia temporária corrigida em `COMPARACAO-SETAS.json`, sem instalar.
+
+Plano completo: `../PLANO-IRIXCLASSIC.md`. Próximo desenvolvimento: **bloco 7**.
+
+## Histórico (versões abaixo não são a versão atual do manifesto)
+
 # IrixClassic 0.5.0-rc1 — menus
 
 Manutenção: `mrmmx31`. Application Style Kvantum; não é decoração de janela.

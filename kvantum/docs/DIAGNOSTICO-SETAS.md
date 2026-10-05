@@ -92,3 +92,44 @@ limitado. Rever antes de compartilhar. A permissão do arquivo é 0600.
 A pasta de saída é a única gravação persistente solicitada pelo diagnóstico.
 Não há sudo, instalação de pacotes, alteração do módulo, reset de configuração
 ou troca global de Application Style.
+
+## Comparação dos quatro caminhos — revisão 0.6.0-rc1
+
+Para evitar confundir tema instalado, QML no disco e QML embutido, um coletor
+agora executa os quatro ensaios já existentes e reúne os resultados:
+
+```sh
+# Na raiz do clone; usar uma pasta nova ou vazia.
+bash kvantum/comparar-setas.sh --saida "$HOME/Downloads/setas-quatro-caminhos"
+```
+
+Usa Fusion por padrão para excluir o desenho IrixClassic da comparação. O estilo
+é escolhido somente nos processos de teste. São comparados:
+
+1. QScrollBar de Qt Widgets;
+2. importação instalada de `org.kde.desktop` (como ela é resolvida pelo processo);
+3. arquivo ScrollBar.qml do disco carregado diretamente, sem reparo;
+4. uma cópia temporária do mesmo arquivo, com o reparo opcional anterior.
+
+O comando **não instala nem atualiza o reparo de sistema**, não usa sudo/pkexec,
+não muda o Application Style global e não faz capturas da tela. Abre suas próprias
+janelas, executa os testes e grava `COMPARACAO-SETAS.json`. O relatório parcial é
+preservado quando há interrupção. Logs substituem o diretório pessoal por `~`.
+
+`collection_status=collected` só significa que foi obtido resultado estruturado;
+as verificações individuais podem ter falhado. Código 77 indica ensaio não
+executado. `motion_ok`/`motion` precisam ser lidos separadamente de `held_sunken`
+e `released_sunken`. Não interpretar uma cópia temporária aprovada como prova de
+que o aplicativo instalado já carregou o mesmo código.
+
+Se Widgets funciona e todos os caminhos Quick falham, investigar o componente e
+os eventos antes de alterar o SVG. Se apenas a cópia corrigida funciona, ainda
+falta conferir aplicação/carregamento do reparo instalado. Se a importação e o
+arquivo direto divergem, investigar resolução de módulos, `prefer` e reinício do
+processo. O inventário não pode provar qual código um processo antigo carregou.
+
+**Ajuste no inventário:** `click_hit_test_present` agora procura o teste de posição
+somente no handler `onPressed`. Antes, a busca abrangia o arquivo todo e podia
+confundir o hitTest de `onPositionChanged` com um hitTest no clique. A presença em
+qualquer handler é registrada separadamente em `any_handler_hit_test_present`.
+Isso corrige a precisão do diagnóstico; não corrige por si só a seta no KDE.

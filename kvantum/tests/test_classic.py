@@ -52,7 +52,7 @@ class Classic(unittest.TestCase):
         for section in self.conf.sections():
             if 'frame.element' in self.conf[section]:
                 prefix=self.conf[section]['frame.element']
-                for state in B.STATES:
+                for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else B.STATES):
                     for part in B.PARTS:self.assertIn(prefix+'-'+state+'-'+part,self.ids)
     def test_explicit_interiors_have_states_or_check_substates(self):
         for section in self.conf.sections():
@@ -66,7 +66,7 @@ class Classic(unittest.TestCase):
                     continue
                 subs=['-checked','-unchecked','-tristate'] if prefix in ('ic-check','ic-radio') else ['']
                 for sub in subs:
-                    for state in B.STATES:self.assertIn(prefix+sub+'-'+state,self.ids)
+                    for state in (('normal','focused','toggled') if prefix=='ic-notebook' else ('normal',) if prefix in ('ic-notebookpage','ic-notebookbase') else B.STATES):self.assertIn(prefix+sub+'-'+state,self.ids)
     def test_button_hover_equals_rest_but_press_differs(self):
         a,_=B.surface('button','normal');b,_=B.surface('button','focused');c,_=B.surface('button','pressed')
         self.assertEqual(a,b);self.assertNotEqual(a,c)
@@ -85,8 +85,8 @@ class Classic(unittest.TestCase):
     def test_accessible_focus_and_default_are_present(self):
         for p in B.PARTS:
             self.assertIn('ic-focus-normal-'+p,self.ids);self.assertIn('ic-button-default-'+p,self.ids)
-    def test_no_modern_tab_expansion_or_overlap(self):
-        self.assertEqual(self.conf['%General']['active_tab_overlap'],'0')
+    def test_compact_tab_overlap_without_frame_expansion(self):
+        self.assertEqual(self.conf['%General']['active_tab_overlap'],'4')
         self.assertEqual(self.conf['Tab']['frame.expansion'],'0')
     def test_declared_engine_metrics_within_documented_limits(self):
         g=self.conf['%General']

@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
 import menu_art as M
+import tab_art as TB
 import button_art as A
 import scrollbar_art as S
 
@@ -31,15 +32,16 @@ class Buttons(unittest.TestCase):
   cls.conf.read(ROOT/'IrixClassic/IrixClassic.kvconfig')
  def test_all_unrelated_svg_elements_and_positions_unchanged(self):
   nodes=ET.parse(ROOT/'IrixClassic/IrixClassic.svg').getroot()
-  data={e.get('id'):canonical(e) for e in nodes if e.get('id') and not e.get('id').startswith(PREFIXES+M.PREFIXES)
+  data={e.get('id'):canonical(e) for e in nodes if e.get('id') and not e.get('id').startswith(PREFIXES+M.PREFIXES+TB.PREFIXES)
         and not (e.get('id').startswith('ic-scrollarrow-') and e.get('id').endswith(('-pressed','-toggled')))}
   self.assertEqual(len(data),self.base['protected_svg_count']); self.assertEqual(sha(data),self.base['protected_svg_sha256'])
  def test_non_button_effective_configuration_is_unchanged(self):
   for s,old in self.base['effective_sections'].items():
-   if s in ('Menu','MenuItem','MenuBar','MenuBarItem','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'): continue  # Block 3: test_entries.py
+   if s in ('Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'): continue  # Block 3: test_entries.py
    new=effective(self.conf,s)
    if s=='%General':
     new.pop('comment')
+    new['active_tab_overlap']=old['active_tab_overlap']
     for k in ('menu_separator_height','spread_menuitems'):new.pop(k,None)
     for k in ('combo_as_lineedit','combo_focus_rect','square_combo_button'):new[k]=old[k]
    self.assertEqual(old,new,s)

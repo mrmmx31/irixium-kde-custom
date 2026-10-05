@@ -1,6 +1,6 @@
 {
   "project": "IrixClassic Kvantum",
-  "version": "0.5.0-rc1",
+  "version": "0.6.0-rc1",
   "maintainer": "mrmmx31",
   "license": "GPL-3.0-or-later",
   "base_repository": "mrmmx31/irixium-kde-custom",
@@ -9,12 +9,13 @@
   "modern_config_blob": "b9da05c3084a284fe1aaf183c0d4995f38e76a0c",
   "modern_svg_blob": "20b634259a33a5556137db0286d884de91edf6bc",
   "modern_theme_author": "Mark Whittaker (Phob1an)",
-  "artwork": "build_classic.py appends menu_art.py. Central resting menubar profile sampled from the supplied Confidence Tests image. Popup, active and pressed states are documented adaptations.",
+  "artwork": "Block 6 appended by tab_art.py: 160 new resources. 3293 previous SVG nodes preserved. VkTabPanel provides functional reference; exact geometry/colors/close and overflow drawing are adaptations.",
   "references": "User-supplied IRIX screenshots: menus, command buttons, frame colors, scrollbars. Tabs, radio/check indicators and unseen interaction states are declared adaptations.",
   "tested_engine_target": "Kvantum 1.1.4, Qt 6.8. Native runtime remains to be tested locally.",
   "revision_base_branch": "#kvantum-classic-rc1",
-  "revision_base_commit": "ae9fb385c663f778a81eb3a2c6f9e5ba2b34555a",
-  "change_scope": "Block 5 menu-only resources/config routes; all 2569 previous SVG nodes and other effective styles preserved. Fix temporary Qt Quick probe, not system code.",
+  "revision_base_commit": "a00219924abeb7c68f4cfdac9bb10f8450e0b110",
+  "change_scope": "Tabs only in artwork/config; four-path arrow comparison collector and accurate inventory. No new system patch or arrow artwork change.",
   "reference_manual": "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-003/sgi_html/ch09.html",
-  "compatible_remote_tip": "ae9fb385c663f778a81eb3a2c6f9e5ba2b34555a"
+  "compatible_remote_tip": "a00219924abeb7c68f4cfdac9bb10f8450e0b110",
+  "tab_reference": "https://techpubs.jurassic.nl/library/manuals/2000/007-2124-005/sgi_html/ch14.html"
 }

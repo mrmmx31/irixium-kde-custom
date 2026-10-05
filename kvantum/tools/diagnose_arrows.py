@@ -38,13 +38,17 @@ def run_info(args):
 
 
 def inspect_qml(text):
+    # A hitTest in onPositionChanged is not a hitTest at the moment of clicking.
+    pressed = re.search(r'onPressed:\s*mouse\s*=>\s*\{(.*?)(?=\n\s*on[A-Z]\w*:|\Z)', text, re.S)
+    press_body = pressed.group(1) if pressed else ''
     return {
         'sha256': hashlib.sha256(text.encode()).hexdigest(),
         'previous_optional_patch_marker': 'IRIXCLASSIC_QTQUICK_ARROW_PRESS_V1' in text,
         'native_pressed_only': bool(re.search(r'sunken:\s*controlRoot\.pressed\s*\n\s*(?://|minimum:)', text)),
         'sunken_bindings': [x.strip() for x in text.splitlines() if 'sunken:' in x],
         'press_handler_present': 'onPressed:' in text,
-        'click_hit_test_present': 'style.activeControl = style.hitTest(mouse.x, mouse.y);' in text,
+        'click_hit_test_present': 'style.activeControl = style.hitTest(mouse.x, mouse.y);' in press_body,
+        'any_handler_hit_test_present': 'style.activeControl = style.hitTest(mouse.x, mouse.y);' in text,
         'left_button_enabled': 'Qt.LeftButton' in text,
     }
 

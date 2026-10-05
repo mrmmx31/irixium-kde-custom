@@ -1,11 +1,11 @@
-# IrixClassic 0.5.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.6.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.5.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.6.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -21,7 +21,7 @@ x11drag=menubar_and_primary_toolbar
 alt_mnemonic=true
 left_tabs=true
 attach_active_tab=true
-active_tab_overlap=0
+active_tab_overlap=4
 joined_inactive_tabs=false
 no_inactive_tab_expansion=true
 no_active_tab_separator=false
@@ -263,31 +263,32 @@ interior.element=ic-bar
 
 [Tab]
 inherits=PanelButtonCommand
-frame.element=ic-tab
-interior.element=ic-tab
+frame.element=ic-notebook
+interior.element=ic-notebook
 frame.top=2
 frame.bottom=2
-frame.left=2
-frame.right=2
+frame.left=6
+frame.right=6
 frame.expansion=0
-indicator.element=ic-tab
+indicator.element=ic-tabmark
 indicator.size=12
 text.margin.top=1
 text.margin.bottom=1
-text.margin.left=6
-text.margin.right=6
+# Same total text inset as before: frame 6 + margin 2 = 8.
+text.margin.left=2
+text.margin.right=2
 min_height=22
 
 [TabFrame]
 inherits=GenericFrame
-frame.element=ic-tabframe
-interior.element=ic-tabframe
+frame.element=ic-notebookpage
+interior.element=ic-notebookpage
 interior=true
 
 [TabBarFrame]
 inherits=MenuBar
 frame=false
-interior.element=ic-window
+interior.element=ic-notebookbase
 frame.element=ic-bar
 
 [ToolboxTab]
