@@ -6,7 +6,9 @@ improvements:
 - keeps title-bar buttons vertically centered when a window is maximized;
 - restores the 22x22 transparent Irix-style applications button;
 - includes the GTK 1.2, 2.0, 3.0 and 4.0 themes;
-- preserves the chosen Irixium title-bar button order (`M` left and `HXA` right);
+- preserves the chosen Irixium title-bar button order (`M` left and `IA` right);
+- includes the reviewed classic-controls v3 package, which reuses the close
+  artwork for the minimize button and adds scoped menu-button feedback;
 - records the KDE Plasma 6 font and antialiasing profile;
 - includes a script to reapply the changes after KDE updates.
 
@@ -29,6 +31,11 @@ The KDE font settings are recorded separately in `kde-fonts.conf` and are
 written using the KDE 6 `kwriteconfig6` format detected on Plasma 6.3.6.
 
 The QML component is cached by KWin. Log out and back in after installation so the change is loaded.
+
+The `controles-v3/` package provides the guarded installer, restoration tool,
+integration helper, tests and provenance for the classic-controls update. It
+must be applied separately when installing an existing checkout; the main
+`update-irixium.sh` script also preserves its `IA` button-order setting.
 
 To check the registered upstream sources:
 

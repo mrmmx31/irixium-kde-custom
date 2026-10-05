@@ -1,0 +1,28 @@
+{
+  "repository": "mrmmx31/irixium-kde-custom",
+  "commit": "790fcbcb44c3ba05dbcc4114b473b9b875e30820",
+  "MenuButton.qml_blob": "bcf07652fa4a3e45f5d61a42a68ee946fe85b17b",
+  "previous_MenuButton.qml_blob": "5102380b3ea6fbd48bd7913605931938017d0b51",
+  "close.svg_expected_blob": "a887833d039a897dd37c9bfebd8601c09ce9d565",
+  "close_artwork_installation": "Copy verified local close.svg bytes to minimize.svg, preserving all states.",
+  "docs": [
+    "https://develop.kde.org/docs/plasma/aurorae/",
+    "https://doc.qt.io/qt-6/qml-qtquick-mousearea.html"
+  ],
+  "scope": [
+    "MenuButton.qml",
+    "minimize.svg",
+    "kwinrc:ButtonsOnLeft",
+    "kwinrc:ButtonsOnRight"
+  ],
+  "not_modified": [
+    "AuroraeButtonGroup.qml",
+    "Irixiumrc",
+    "close.svg",
+    "maximize.svg",
+    "restore.svg",
+    "decoration.svg",
+    "fonts"
+  ],
+  "qml_runtime_tested": false
+}
