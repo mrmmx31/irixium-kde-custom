@@ -81,6 +81,15 @@ No Debian amd64, o segundo arquivo costuma estar em:
 /usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/kwin/decoration/AuroraeButtonGroup.qml
 ```
 
+Em instalações Plasma 6 que mantêm o componente Aurorae no diretório
+compartilhado do tema, o caminho pode ser:
+
+```text
+/usr/share/kwin/aurorae/AuroraeButtonGroup.qml
+```
+
+O instalador reconhece os dois layouts.
+
 O arquivo é compartilhado pelo Aurorae, mas o novo posicionamento e o desenho das
 divisórias só são habilitados para um caminho que termine exatamente em
 `/Irixium/decoration.svg` ou `.svgz`. Os demais temas conservam as expressões de

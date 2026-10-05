@@ -120,13 +120,14 @@ def discover_qml(explicit: str | None) -> Path:
         no_links(target)
         if not target.is_file():
             raise Failure('Componente não encontrado: ' + str(target))
-        if '/qt6/' not in str(target):
-            raise Failure('O destino deve ser o módulo do Qt 6, não Qt 5.')
+        if '/qt6/' not in str(target) and str(target) != '/usr/share/kwin/aurorae/AuroraeButtonGroup.qml':
+            raise Failure('O destino deve ser o módulo do Qt 6 ou o componente Aurorae de /usr/share/kwin/aurorae.')
         return target
     matches = []
     for pattern in ('/usr/lib/*/qt6/qml/org/kde/kwin/decoration/AuroraeButtonGroup.qml',
                     '/usr/lib/qt6/qml/org/kde/kwin/decoration/AuroraeButtonGroup.qml',
-                    '/usr/lib64/qt6/qml/org/kde/kwin/decoration/AuroraeButtonGroup.qml'):
+                    '/usr/lib64/qt6/qml/org/kde/kwin/decoration/AuroraeButtonGroup.qml',
+                    '/usr/share/kwin/aurorae/AuroraeButtonGroup.qml'):
         matches += [Path(x) for x in glob.glob(pattern)]
     matches = list(dict.fromkeys(matches))
     if len(matches) != 1:
