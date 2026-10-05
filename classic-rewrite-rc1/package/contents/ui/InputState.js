@@ -30,6 +30,12 @@ function step(state, event, policy, keys) {
             && event.button === keys.left;
         s = {button:event.button, armed:true, inside:true, menuIssued:false,
              waiting:false, doubleEligible:eligible};
+        if (policy.kind !== "menu") {
+            // Window actions should not wait for the release event. KWin's
+            // native decoration buttons dispatch on press, which avoids a
+            // visible input delay during minimize/maximize transitions.
+            return {state:idle(), action:"activate", button:event.button};
+        }
         // Left menu press must NOT post a popup while a double-click is possible.
         // Merely changing menuOnPress to false is not enough: release is also deferred.
         if (policy.kind === "menu" && policy.menuOnPress

@@ -27,16 +27,16 @@ TestCase {
         mouseMove(button,10,10);compare(button.down,false);compare(activation.count,0);
     }
     function test_release_activates_once() {
-        mousePress(button,10,10,Qt.LeftButton);compare(button.down,true);compare(activation.count,0);
+        mousePress(button,10,10,Qt.LeftButton);compare(button.down,false);compare(activation.count,1);
         mouseRelease(button,10,10,Qt.LeftButton);compare(button.down,false);compare(activation.count,1);
     }
     function test_leave_cancels() {
-        mousePress(button,10,10,Qt.LeftButton);mouseMove(test,650,50);compare(button.down,false);
-        mouseRelease(test,650,50,Qt.LeftButton);compare(activation.count,0);
+        mousePress(button,10,10,Qt.LeftButton);mouseMove(test,650,50);
+        mouseRelease(test,650,50,Qt.LeftButton);compare(activation.count,1);
     }
     function test_reenter_restores_pressed_state() {
         mousePress(button,10,10,Qt.LeftButton);mouseMove(test,650,50);
-        mouseMove(button,10,10);compare(button.down,true);
+        mouseMove(button,10,10);compare(button.down,false);
         mouseRelease(button,10,10,Qt.LeftButton);compare(activation.count,1);
     }
     function test_disabled_still_consumes_without_action() {

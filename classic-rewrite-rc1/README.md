@@ -113,6 +113,14 @@ Acessibilidade e clique direito não deixam uma abertura esquerda pendente para
 executar mais tarde. A ação de fechar só ocorre com o evento nativo de duplo clique
 precedido de um clique esquerdo válido no mesmo controle.
 
+## Ação imediata dos controles de janela
+
+Os botões **Minimizar** e **Maximizar/Restaurar** solicitam a operação no evento
+de pressão, como os controles nativos do KWin, em vez de aguardar a soltura do
+ponteiro. Isso elimina o atraso perceptível entre clicar e iniciar a transição.
+O botão do menu permanece com o fluxo próprio de clique simples/duplo clique,
+incluindo a espera necessária para distinguir os dois gestos.
+
 Para desabilitar esse atalho somente nesta decoração, edite na cópia instalada:
 
 ```qml
