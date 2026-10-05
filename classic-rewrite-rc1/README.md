@@ -1,7 +1,7 @@
 # IRIX Classic
 
 Reescrita consolidada da decoração de janela desenvolvida a partir das referências
-IRIX fornecidas por `mrmmx31`. **Revisão candidata: 1.0.0-rc2.** O nome exibido no KDE
+IRIX fornecidas por `mrmmx31`. **Revisão candidata: 1.0.0-rc3.** O nome exibido no KDE
 é apenas **IRIX Classic**. Não se trata de uma release homologada em KWin.
 
 ## O que esta revisão faz
@@ -113,6 +113,14 @@ Acessibilidade e clique direito não deixam uma abertura esquerda pendente para
 executar mais tarde. A ação de fechar só ocorre com o evento nativo de duplo clique
 precedido de um clique esquerdo válido no mesmo controle.
 
+## Ação imediata dos controles de janela
+
+Os botões **Minimizar** e **Maximizar/Restaurar** solicitam a operação no evento
+de pressão, como os controles nativos do KWin, em vez de aguardar a soltura do
+ponteiro. Isso elimina o atraso perceptível entre clicar e iniciar a transição.
+O botão do menu permanece com o fluxo próprio de clique simples/duplo clique,
+incluindo a espera necessária para distinguir os dois gestos.
+
 Para desabilitar esse atalho somente nesta decoração, edite na cópia instalada:
 
 ```qml
@@ -206,3 +214,23 @@ no GitHub nesta conversa.
 Leia `docs/VALIDACAO.md`, `docs/CONTRATO.md` e `docs/FONTES.md` antes de considerar
 esta candidata aprovada. Licença: GPL-3.0-or-later. Não inclui binários, código
 privado ou arquivos de fonte do IRIX/SGI.
+
+## Miniatura em Decorações de janelas (rc3)
+
+O fundo da área de conteúdo da miniatura usa agora a cor `windowColor` fornecida
+pelo PreviewItem do KWin. É opaco, sem copiar a cor da barra de título, e cobre a
+miniatura de trás na área correspondente. A identificação exige o contrato do
+objeto de prévia e a identidade da decoração; não usa nome do aplicativo, título
+ou tamanho da janela.
+
+Em janelas reais o preenchimento **não é criado**. A área cliente permanece a
+cargo do aplicativo. Isso preserva inclusive transparência configurada no
+terminal, cliques, duplo clique, estados desativados e o Application Style Kvantum.
+O patch não define `alpha: false` e não altera cores globais.
+
+A cor obtida é a da prévia do KCM: não é uma renderização do conteúdo de um
+aplicativo nem do Kvantum de cada aplicação. Ela pode coincidir com a cor atrás
+da miniatura; o critério é a opacidade na sobreposição, não uma cor artificial.
+
+Veja `docs/PREVIA.md` para causa, fontes, teste local e limites. Os testes QML
+adicionais rodam junto com `bash testar.sh --qml` quando QtTest 6 está instalado.

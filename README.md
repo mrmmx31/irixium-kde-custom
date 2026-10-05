@@ -1,89 +1,136 @@
-# Irixium KDE and GTK customization
+# Irixium / IRIX Classic
 
-This repository combines the Irixium GTK theme with custom Aurorae/KDE
-improvements:
+Personalizações mantidas por **`mrmmx31`**. Decoração de janela e estilo de
+aplicativos são componentes separados; instalar um não deve trocar o outro.
 
-- keeps title-bar buttons vertically centered when a window is maximized;
-- restores the 22x22 transparent Irix-style applications button;
-- includes the GTK 1.2, 2.0, 3.0 and 4.0 themes;
-- preserves the chosen Irixium title-bar button order (`M` left and `IA` right);
-- includes the reviewed classic-controls v3 package, which reuses the close
-  artwork for the minimize button and adds scoped menu-button feedback;
-- includes the independent IRIX Classic v4 Aurorae decoration for visual
-  testing without replacing shared system QML;
-- records the KDE Plasma 6 font and antialiasing profile;
-- includes a script to reapply the changes after KDE updates.
+| Componente | Diretório | Situação |
+|---|---|---|
+| Decoração Irixium moderno | `aurorae/Irixium/` + `moderno/geometria/` | Símbolos e efeitos modernos; margens e divisórias organizadas. |
+| Decoração IRIX Classic | `classic-rewrite-rc1/` | Reescrita 1.0.0-rc3; preenchimento restrito à miniatura do KCM. |
+| Application Style Irixium | `kvantum/Irixium/` | Base original preservada. |
+| Application Style IrixClassic | `kvantum/IrixClassic/` | Primeira candidata 0.1.0-rc1 para Qt Widgets. |
+| Tema GTK | `gtk/` | Base preservada; não é instalada pelos novos fluxos abaixo. |
 
-## Installation
+## Atualização segura da decoração moderna
 
-Run:
+Na raiz do checkout, como usuário normal, **sem sudo**:
 
 ```sh
-./update-irixium.sh
+bash update-irixium.sh --verificar
+bash update-irixium.sh
 ```
 
-The script installs the user theme files and the patched Aurorae QML component. It preserves the original system component as
-`MenuButton.qml.irixium-original` when that backup does not already exist.
-The QML component is shared by Aurorae, but its custom image is guarded by
-the active decoration path and is rendered only for Irixium. Other Aurorae
-themes retain the standard application icon.
-It also applies the decoration settings recorded in `kwin-decoration.conf`
-without replacing the rest of `kwinrc`.
-The KDE font settings are recorded separately in `kde-fonts.conf` and are
-written using the KDE 6 `kwriteconfig6` format detected on Plasma 6.3.6.
+**Mudança em relação ao instalador anterior:** sem opções, instala/atualiza o
+Irixium, mas preserva a seleção atual, a disposição global dos botões e as fontes.
+Assim, quem está usando IRIX Classic não é trocado para o moderno sem pedir.
 
-The QML component is cached by KWin. Log out and back in after installation so the change is loaded.
-
-The `controles-v3/` package provides the guarded installer, restoration tool,
-integration helper, tests and provenance for the classic-controls update. It
-must be applied separately when installing an existing checkout; the main
-`update-irixium.sh` script also preserves its `IA` button-order setting.
-
-The `classic-v4/` package installs a separate `Irixium — IRIX Classic (v4)`
-decoration under the user's data directory. Run
-`classic-v4/instalar-v4.sh --verificar` first, then
-`classic-v4/instalar-v4.sh --ativar` to select it for local visual testing.
-It does not modify the shared Aurorae QML, the v2 divider overlay, or the
-existing v1/v2/v3 installation. Use `classic-v4/restaurar-v4.sh` to restore
-the previous decoration selection.
-
-The `classic-rewrite-rc1/` package is the consolidated IRIX Classic rewrite
-(1.0.0-rc2). It updates a selected Classic v4/v5 installation in place,
-preserving compatible local settings and creating a verified backup. Its
-explicit input state machine removes the old hover/timer behavior and fixes
-menu-action double-click handling; use
-`classic-rewrite-rc1/instalar.sh --verificar` followed by
-`classic-rewrite-rc1/instalar.sh` for local testing. The QtTest runner is
-optional; absence is reported rather than treated as a passing runtime test.
-
-The `moderno/geometria/` package is a geometry-only update for the modern
-Aurorae Irixium theme. It preserves the artwork, controls, menu component,
-fonts, GTK theme and IRIX Classic, while changing only the Irixium layout and
-the scoped divider component. It recognizes both Debian Aurorae component
-locations, including `/usr/share/kwin/aurorae/`, and must be tested with
-`moderno/geometria/instalar.sh --verificar` before installation.
-
-To check the registered upstream sources:
+Opções explícitas:
 
 ```sh
+bash update-irixium.sh --ativar
+bash update-irixium.sh --ativar --aplicar-fontes
+```
+
+`--ativar` seleciona Irixium e aplica a disposição de `kwin-decoration.conf`.
+`--aplicar-fontes` reaplica o perfil declarado em `kde-fonts.conf`. O primeiro
+comando não aplica fontes por implicação. Nenhum muda a escala da tela.
+
+O plano completo é validado antes da primeira escrita. Um recibo privado guarda
+conteúdo e permissões anteriores de cada arquivo afetado; falhas provocam tentativa
+de restauração. A geometria vem exclusivamente de `moderno/geometria/`, nunca do
+`AuroraeButtonGroup.qml` legado na raiz. A seleção/fontes são gravadas por último;
+`reconfigure` só é solicitado depois da conferência final.
+
+Os componentes `MenuButton.qml`, `AuroraeButtonGroup.qml` e a imagem de menu são
+recursos compartilhados do Aurorae: sua cópia exige autorização administrativa
+solicitada pelo próprio instalador. Os comportamentos personalizados continuam
+limitados ao Irixium. Uma versão desconhecida do grupo Aurorae é recusada.
+
+**Salve o trabalho, encerre a sessão e entre novamente** para recarregar QML.
+Não há reinício forçado do KWin. Arquivos da Classic e do Kvantum não são alterados.
+
+Restauração da última atualização global:
+
+```sh
+bash restaurar-irixium.sh --verificar
+bash restaurar-irixium.sh
+```
+
+Em caso de interrupção ou restauração não concluída, use `--recuperar`. Recibos:
+`${XDG_STATE_HOME:-$HOME/.local/state}/irixium-update/backups/`.
+Edições posteriores desconhecidas bloqueiam a restauração, em vez de serem apagadas.
+Cópias legadas `*.irixium-original` não são substituídas nem removidas.
+Consulte `docs/INSTALACAO-RECUPERAVEL.md` para limites e recuperação.
+
+## Decoração IRIX Classic
+
+Esta atualização não modifica a reescrita nem sua correção de duplo clique.
+Seu fluxo permanece:
+
+```sh
+bash classic-rewrite-rc1/instalar.sh --verificar
+bash classic-rewrite-rc1/instalar.sh
+```
+
+A Classic independente não exige sobrescrever QML de sistema. Suas opções,
+restauração e limitações de integração estão no README próprio. `classic-v4/`,
+`controles-v3/`, `divisorias-v1/` e `divisorias-v2/` ficam como histórico/referência,
+não como etapas que devem ser reinstaladas em sequência.
+
+Para atualizar somente a geometria do moderno, o complemento existente continua
+válido: `bash moderno/geometria/instalar.sh --verificar`. Não execute dois
+instaladores ao mesmo tempo. O fluxo global coopera com o bloqueio desse módulo.
+
+## Application Style IrixClassic (Kvantum)
+
+Primeiro teste em uma galeria Qt Widgets com configuração temporária:
+
+```sh
+bash kvantum/prever-classic.sh
+```
+
+Exige PyQt6 ou PySide6 e Kvantum Qt 6; dependência ausente é informada, não instalada.
+Para copiar o tema sem selecionar:
+
+```sh
+bash kvantum/instalar-classic.sh --verificar
+bash kvantum/instalar-classic.sh
+```
+
+Depois selecione **IrixClassic** no Kvantum Manager, mantendo **kvantum** como
+Application Style do KDE. Ou use `--ativar` para trocar somente a seleção interna
+do Kvantum. Reabra os aplicativos. A decoração da janela não é trocada.
+Restauração: `bash kvantum/restaurar-classic.sh`.
+
+A paleta e o desenho são uma proposta baseada nas referências IRIX; abas e estados
+não documentados são adaptações declaradas. Não há alegação de identidade completa
+com o IRIX. As fontes globais continuam intocadas. Veja `kvantum/IrixClassic/README.md`.
+
+## Desenvolvimento e revisão
+
+```sh
+bash testar-integracao.sh
 ./check-upstreams.sh
 ```
 
-Upstream changes are review-only. Never merge or copy them directly into
-`main`: prepare one branch and one Pull Request/Merge Request per update,
-review the diff, test the theme, and merge only after approval.
+Os testes automatizados de integração não substituem testes reais no KWin/Qt.
+Confira `docs/VALIDACAO-INTEGRACAO.md`. Nenhum script faz commit ou push.
+Revisões de upstream devem ser propostas em branch separada e revisadas antes do
+merge na branch de destino; nunca substitua personalizações automaticamente.
 
-## Attribution and licensing
+## Créditos e licença
 
-The `aurorae/Irixium/` files in this repository are based on Irixium by Phob1an.
-The `gtk/` files are based on Irixium by TheJollyDuck/Shauna Recto.
-The original GPL text is retained in `LICENSE` and `gtk/LICENSE`.
+A decoração `aurorae/Irixium/` é baseada em Irixium por Phob1an. O Kvantum moderno
+é de Mark Whittaker/Phob1an. `gtk/` é baseado em Irixium por TheJollyDuck/Shauna
+Recto. Créditos, licenças e fontes preservadas estão nos respectivos diretórios;
+os textos GPL permanecem em `LICENSE`, `gtk/LICENSE` e nos pacotes.
 
-The GTK source and images retain their upstream licensing and attribution.
-The `applications.png` asset is an original 22x22 pixel drawing created for
-this customization. See `gtk/README.md` for the GTK asset licensing notice.
+`applications.png` é o desenho de 22×22 desta personalização. O SVG IrixClassic
+Kvantum é novo; o moderno não é sobrescrito. Os novos utilitários são
+GPL-3.0-or-later. IRIX e SGI são referências/marcas de seus titulares; nenhum
+binário, fonte tipográfica ou código privado do IRIX é incluído.
 
-The `#titlediv` branch contains the reviewed `divisorias-v2` proposal. It
-corrects v1 handling of the maximize/restore compartment and effective border
-widths. It is not installed automatically on `master`; review its QML and
-visual result before merging or applying it locally.
+Fora do Irixium, o `MenuButton.qml` mantém o ícone da janela fornecido por
+`decoration.client.icon`. Quando o cliente não fornece um ícone, usa
+`application-x-executable` como fallback para que o botão de ações não fique
+vazio.
