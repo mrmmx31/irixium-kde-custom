@@ -6,22 +6,30 @@ Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
 
 ## Estado da entrega
 
-**0.7.0-rc1: bloco 7 implementado para ensaio; próxima etapa: revisão integrada.**
-Preservados todos os 3453 recursos SVG anteriores, desenhos de rolagem e botões
-aprovados. Blocos 3–6 continuam aguardando aceitação explícita; nenhuma aprovação
-foi inferida do pedido para avançar. O bloco 7 segue as distinções funcionais da
-SGI e documenta as adaptações em `docs/COBERTURA-IRIXCLASSIC.md`.
+**Revisão integrada r1, mantendo a aparência 0.7.0-rc1 byte a byte.**
+Os sete blocos têm implementação ou tratamento nativo documentado. A revisão
+agora dispõe de galeria única e agregador de resultados estáticos/nativos;
+ela não equivale à aprovação final dos blocos 3–7.
 
-A seta KDE continua sem solução confirmada. O último inventário fornecido
-mostrava QML sem o marcador do reparo e `prefer` para qrc. Esse inventário não
-prova o estado atual da instalação. Não houve nova saída dos ensaios nativos.
-O pacote não aplica nem modifica reparo global e não muda seus mapas.
-Aceitação em Qt/KDE pendente para o bloco 7 e a revisão integrada.
-O inventário somente de leitura continua em `diagnosticar-setas.sh`.
+O COMPARACAO-SETAS fornecido confirmou quatro movimentos e mudanças de pixels
+em Qt Widgets. Nos casos Quick válidos havia pressão na MouseArea sem Sunken.
+Dois casos da cópia corrigida entregaram Sunken e soltura corretos; os casos
+chamados down registraram upPage. A cena anterior sobrepunha o canto das duas
+barras. A revisão r1 corrige o isolamento e valida o destinatário do evento;
+não marca os alvos inválidos como falhas do KDE. Arquivo instalado sem marcador
+no momento da coleta; reparo compartilhado continua opt-in e não é redesenhado.
+
+A seta KDE continua sem solução confirmada na aplicação real; há evidência
+parcial favorável na cópia temporária. Aceitação em Qt/KDE pendente para esta
+revisão integrada. `diagnosticar-setas.sh` continua disponível para inventário,
+mas não substitui o ensaio de interação.
+
+Veja `docs/REVISAO-INTEGRADA.md`. Próxima evidência: galeria integrada local e
+quatro alvos válidos na comparação corrigida, depois validação na aplicação real.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
-| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; usuário ainda relata falha nas setas KDE, Preview Kvantum funciona; sem prova de reparo carregado | comparar-setas.sh: Widgets / módulo instalado / arquivo direto / reparo temporário |
+| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; Widgets 4/4 observados; pressão Quick ausente, reparo temporário demonstrado em 2 casos; outros alvos antigos inconclusivos | comparar-setas.sh (executor r1 comum, sem canto sobreposto e com alvo validado); instalação KDE separada |
 | 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Aprovado pelo usuário em 0.2.0-rc1; preservado nesta revisão | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
 | 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Implementado para teste em 0.3.0-rc1; cor readonly universal exige suporte fora do SVG | Galeria prever-campos.sh; foco, seleção, limites, RTL; docs/CAMPOS.md |
 | 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Implementado em 0.4.0-rc1 para teste; pressão separada limitada pelo motor Kvantum | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
@@ -146,3 +154,12 @@ separada e não deve bloquear nem ser escondido pela conclusão do desenho.
 File Finder/LEDs/thumbwheels específicos, cancelamento do arraste por Escape,
 menu de abas colapsadas e organização de aplicativos exigem suporte além do SVG.
 Não introduzir novos widgets, bibliotecas ou patches globais silenciosamente.
+
+## Registro da revisão integrada r1
+
+A versão de aparência permanece 0.7.0-rc1. Nenhum SVG ou configuração desse
+pacote foi redesenhado. O merge aceita a base 0.6.0-rc1 e o bloco 7 já aplicado.
+`revisar-integracao.sh` agrega evidências sem instalar o tema ou corrigir o
+sistema. `prever-integracao.sh` compara os mesmos controles em IrixClassic e
+Irixium. Histórico de aprovação, teste estático, execução nativa e fidelidade
+histórica permanecem categorias distintas. A trilha Qt Quick não está encerrada.

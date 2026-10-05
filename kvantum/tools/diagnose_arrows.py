@@ -101,6 +101,9 @@ def qimage_hash(image):
 
 
 def native_probe(mode, stylename, manual=False):
+    if mode=='quick':
+        from arrow_runtime import run_quick
+        return run_quick('installed',stylename,manual=manual)
     binding = next((m for m in ('PyQt6','PySide6') if importlib.util.find_spec(m)),None)
     if not binding: return {'status':'skipped','reason':'PyQt6/PySide6 missing'},77
     from importlib import import_module
@@ -154,39 +157,6 @@ def native_probe(mode, stylename, manual=False):
                     app.processEvents()
                     row.update(classify(before,during,b.value(),sign));row['arrow_pixels_changed']=qimage_hash(a)!=qimage_hash(pressed)
                     report['checks'].append(row)
-        else:
-            Q=import_module(binding+'.QtQml')
-            engine=Q.QQmlApplicationEngine();errors=[]
-            engine.warnings.connect(lambda e: errors.extend(str(x.toString()) for x in e))
-            engine.load(C.QUrl.fromLocalFile(str(ROOT/'tests/qml/ProbeScrollbars.qml')))
-            if not engine.rootObjects():
-                return {**report,'status':'skipped','reason':'installed org.kde.desktop QML failed to load',
-                        'errors':[clean(s) for s in errors]},77
-            win=engine.rootObjects()[0];app.processEvents();T.QTest.qWait(350)
-            report['qml_import_paths']=[clean(s) for s in engine.importPathList()]
-            if manual:return {'status':'manual_closed','mode':mode},app.exec()
-            tick=0
-            def snapshot(name):
-                nonlocal tick
-                tick+=1;win.setProperty('probeName',name);win.setProperty('sampleTick',tick);app.processEvents()
-                return json.loads(win.property('diagnostic'))
-            for name in ('vertical','horizontal'):
-                for direction,key,sign in (('subtract','up',-1),('add','down',1)):
-                    C.QMetaObject.invokeMethod(win,'resetProbe',C.Qt.ConnectionType.DirectConnection)
-                    app.processEvents();T.QTest.qWait(50);s=snapshot(name);cell=s.get(key)
-                    row={'orientation':name,'direction':direction}
-                    if not cell or cell['width']<=0 or cell['height']<=0:
-                        report['checks'].append({**row,'motion':'not_available','reason':'no arrow rectangle/StyleItem'});continue
-                    pt=C.QPoint(round(s['x']+cell['x']+cell['width']/2),round(s['y']+cell['y']+cell['height']/2))
-                    T.QTest.mouseMove(win,pt);T.QTest.qWait(220);s=snapshot(name)
-                    T.QTest.mousePress(win,C.Qt.MouseButton.LeftButton,C.Qt.KeyboardModifier.NoModifier,pt)
-                    app.processEvents();T.QTest.qWait(40);held=snapshot(name)
-                    T.QTest.mouseRelease(win,C.Qt.MouseButton.LeftButton,C.Qt.KeyboardModifier.NoModifier,pt)
-                    app.processEvents();released=snapshot(name)
-                    row.update(classify(s['value'],held['value'],released['value'],sign))
-                    row.update({'held_states':held,'released_states':released})
-                    report['checks'].append(row)
-            report['warnings']=[clean(s) for s in errors]
         win.close();app.processEvents()
         tested=[r for r in report['checks'] if r['motion']!='not_available']
         failed=[r for r in tested if r['motion']=='failed']

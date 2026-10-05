@@ -1,3 +1,12 @@
+# Atualização r1 — validade dos alvos
+
+Antes das instruções legadas abaixo: o comparativo recebido revelou sobreposição
+no canto da antiga cena e casos down cujo controle ativo era upPage. O executor
+r1 passou a ser comum aos três caminhos Quick, mede o alvo após o layout e
+registra quem recebeu cada evento. `invalid_target` não equivale a um defeito da
+seta. Consulte `REVISAO-INTEGRADA.md` para o resultado e a sequência atual.
+Os comandos já conhecidos continuam disponíveis; nenhum teste instala o reparo.
+
 # Setas: ação de rolagem e relevo são verificações diferentes
 
 O relato de falha em outros Application Styles é motivo para **parar de

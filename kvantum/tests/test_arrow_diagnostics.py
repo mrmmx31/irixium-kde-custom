@@ -58,6 +58,6 @@ class Diagnostics(unittest.TestCase):
         self.assertIn('import QtQuick.Controls',text);self.assertIn('ScrollBar.vertical:',text)
         self.assertNotRegex(text,r'(?m)^\s*sunken\s*:');self.assertNotIn('MouseArea {',text)
         self.assertIn('mouseAreaPressed',text);self.assertIn('contentY',text)
-        self.assertIn('style.hitTest(cross, i)',text)
+        self.assertIn('s.hitTest(',text)
         self.assertNotIn('subControlRect("up")',text)
 if __name__=='__main__':unittest.main()

@@ -15,6 +15,7 @@ from pathlib import Path
 import subprocess
 import sys
 from diagnose_arrows import inventory, clean
+from arrow_probe_logic import HARNESS_VERSION
 ROOT=Path(__file__).resolve().parent
 
 
@@ -52,11 +53,11 @@ def main(argv=None):
     if folder.exists() and (not folder.is_dir() or any(folder.iterdir())):
         p.error('--saida exige uma pasta nova ou vazia.')
     folder.mkdir(parents=True,mode=0o700,exist_ok=True)
-    report={'kind':'four_path_arrow_comparison','style':a.estilo,
+    report={'kind':'four_path_arrow_comparison','harness_version':HARNESS_VERSION,'style':a.estilo,
             'inventory':inventory(),'probes':{},
             'notes':['No system patch was installed by this command.',
                      'Temporary-file loading is not evidence that the installed application loaded the same code.',
-                     'Compare motion, held_sunken and released_sunken separately. A return code 77 means not executed.']}
+                     'Compare target validity, motion, held_sunken and released_sunken separately. 77 means unavailable; 2 means inconclusive test targets.']}
     path=folder/'COMPARACAO-SETAS.json'
     def save():
         tmp=folder/'.report.tmp'
