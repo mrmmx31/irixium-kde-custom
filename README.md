@@ -50,6 +50,7 @@ The GTK source and images retain their upstream licensing and attribution.
 The `applications.png` asset is an original 22x22 pixel drawing created for
 this customization. See `gtk/README.md` for the GTK asset licensing notice.
 
-The `#titlediv` branch additionally contains the reviewed `divisorias-v1`
-proposal. It is not installed automatically on `master`; review its QML and
+The `#titlediv` branch contains the reviewed `divisorias-v2` proposal. It
+corrects v1 handling of the maximize/restore compartment and effective border
+widths. It is not installed automatically on `master`; review its QML and
 visual result before merging or applying it locally.

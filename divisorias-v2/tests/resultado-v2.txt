@@ -1,0 +1,44 @@
+test_authorization_failure_keeps_previous_files (test_package.InstallationTests.test_authorization_failure_keeps_previous_files) ... ok
+test_backup_tampering_blocks_restore (test_package.InstallationTests.test_backup_tampering_blocks_restore) ... ok
+test_dry_run_writes_nothing (test_package.InstallationTests.test_dry_run_writes_nothing) ... ok
+test_install_and_exact_restore (test_package.InstallationTests.test_install_and_exact_restore) ... ok
+test_keep_colors (test_package.InstallationTests.test_keep_colors) ... ok
+test_local_geometry_is_preserved (test_package.InstallationTests.test_local_geometry_is_preserved) ... ok
+test_partial_copy_failure_rolls_back (test_package.InstallationTests.test_partial_copy_failure_rolls_back) ... ok
+test_qml_update_after_install_blocks_restore (test_package.InstallationTests.test_qml_update_after_install_blocks_restore) ... ok
+test_rc_edit_after_install_blocks_restore (test_package.InstallationTests.test_rc_edit_after_install_blocks_restore) ... ok
+test_reinstall_is_idempotent (test_package.InstallationTests.test_reinstall_is_idempotent) ... ok
+test_restore_dry_run (test_package.InstallationTests.test_restore_dry_run) ... ok
+test_symlink_rc_is_refused (test_package.InstallationTests.test_symlink_rc_is_refused) ... ok
+test_unknown_qml_is_refused_before_writes (test_package.InstallationTests.test_unknown_qml_is_refused_before_writes) ... ok
+test_button_centers_unchanged (test_package.SourceAndGeometryTests.test_button_centers_unchanged) ... ok
+test_corner_rectangles_stay_inside_frame (test_package.SourceAndGeometryTests.test_corner_rectangles_stay_inside_frame) ... ok
+test_duplicate_color_key_is_refused (test_package.SourceAndGeometryTests.test_duplicate_color_key_is_refused) ... ok
+test_existing_comments_and_crlf_are_preserved (test_package.SourceAndGeometryTests.test_existing_comments_and_crlf_are_preserved) ... ok
+test_missing_color_keys_are_added (test_package.SourceAndGeometryTests.test_missing_color_keys_are_added) ... ok
+test_only_title_colors_differ_in_rc (test_package.SourceAndGeometryTests.test_only_title_colors_differ_in_rc) ... ok
+test_original_qml_logic_is_unchanged (test_package.SourceAndGeometryTests.test_original_qml_logic_is_unchanged) ... ok
+test_qml_overlay_has_no_input_handlers (test_package.SourceAndGeometryTests.test_qml_overlay_has_no_input_handlers) ... ok
+test_separator_rectangles_stay_in_titlebar (test_package.SourceAndGeometryTests.test_separator_rectangles_stay_in_titlebar) ... ok
+test_theme_path_filter (test_package.SourceAndGeometryTests.test_theme_path_filter) ... ok
+test_disabled_but_visible_maximize_keeps_separator (test_v2_regressions.QmlExpressionRegressionTests.test_disabled_but_visible_maximize_keeps_separator) ... ok
+test_each_border_width_is_respected (test_v2_regressions.QmlExpressionRegressionTests.test_each_border_width_is_respected) ... ok
+test_explicit_spacer_does_not_acquire_separator (test_v2_regressions.QmlExpressionRegressionTests.test_explicit_spacer_does_not_acquire_separator) ... ok
+test_hidden_help_is_still_excluded (test_v2_regressions.QmlExpressionRegressionTests.test_hidden_help_is_still_excluded) ... ok
+test_maximized_or_tiny_window_hides_frame_marks (test_v2_regressions.QmlExpressionRegressionTests.test_maximized_or_tiny_window_hides_frame_marks) ... ok
+test_normal_six_pixel_border_reproduces_v1_failure (test_v2_regressions.QmlExpressionRegressionTests.test_normal_six_pixel_border_reproduces_v1_failure) ... ok
+test_null_or_zero_sized_item_has_no_separator (test_v2_regressions.QmlExpressionRegressionTests.test_null_or_zero_sized_item_has_no_separator) ... ok
+test_overlay_is_raised_only_for_irixium (test_v2_regressions.QmlExpressionRegressionTests.test_overlay_is_raised_only_for_irixium) ... ok
+test_small_border_does_not_hide_other_edges (test_v2_regressions.QmlExpressionRegressionTests.test_small_border_does_not_hide_other_edges) ... ok
+test_v1_skips_propertyless_maximize_v2_includes_it (test_v2_regressions.QmlExpressionRegressionTests.test_v1_skips_propertyless_maximize_v2_includes_it) ... ok
+test_default_preserves_even_custom_title_colors (test_v2_regressions.UpgradeTests.test_default_preserves_even_custom_title_colors) ... ok
+test_second_restore_can_return_to_before_v1 (test_v2_regressions.UpgradeTests.test_second_restore_can_return_to_before_v1) ... ok
+test_upgrade_from_v1_and_restore_exact_v1 (test_v2_regressions.UpgradeTests.test_upgrade_from_v1_and_restore_exact_v1) ... ok
+test_user_modified_v1_is_not_overwritten (test_v2_regressions.UpgradeTests.test_user_modified_v1_is_not_overwritten) ... ok
+test_v1_dry_run_does_not_write (test_v2_regressions.UpgradeTests.test_v1_dry_run_does_not_write) ... ok
+test_v2_reinstallation_does_not_create_new_backup (test_v2_regressions.UpgradeTests.test_v2_reinstallation_does_not_create_new_backup) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.666s
+
+OK
