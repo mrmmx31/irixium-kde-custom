@@ -8,6 +8,8 @@ Item {
     property bool menuOnPress: true
     property bool closeOnDouble: false
     property string label: ""
+    // Native Qt preference: no fixed visual timeout and no monitor/DPI changes.
+    readonly property int doubleClickInterval: Math.max(1, Qt.styleHints.mouseDoubleClickInterval)
     property var gesture: InputState.idle()
     readonly property bool down: InputState.depressed(gesture, available && visible && enabled)
     readonly property var keys: ({left:Qt.LeftButton, right:Qt.RightButton, middle:Qt.MiddleButton})
@@ -24,12 +26,21 @@ Item {
         else if (result.action === "close") closeRequested();
     }
     function cancelGesture() { gesture = InputState.idle(); }
+    onCloseOnDoubleChanged: cancelGesture()
+    onMenuOnPressChanged: cancelGesture()
     onAvailableChanged: cancelGesture()
     onVisibleChanged: cancelGesture()
     onEnabledChanged: cancelGesture()
     onKindChanged: cancelGesture()
     onWidthChanged: cancelGesture()
     onHeightChanged: cancelGesture()
+    Timer {
+        id: singleMenuClick
+        interval: control.doubleClickInterval
+        repeat: false
+        running: !!control.gesture.waiting && control.available && control.visible && control.enabled
+        onTriggered: control.send("timeout",Qt.LeftButton,true)
+    }
     // A disabled accessible proxy still describes the unavailable operation.
     // The sibling MouseArea consumes its clicks so they do not fall through to
     // KWin's title-bar actions. Artwork and control availability are independent.
@@ -55,9 +66,12 @@ Item {
         onEntered: control.send("move",0,true)
         onExited: control.send("move",0,false)
         onCanceled: control.cancelGesture()
+        onPressAndHold: (mouse) => control.send("hold",mouse.button,control.inside(mouse.x,mouse.y))
         onDoubleClicked: (mouse) => {
-            if (control.kind === "menu" && control.closeOnDouble && control.available
-                    && mouse.button === Qt.LeftButton) {
+            if (control.inside(mouse.x,mouse.y) && InputState.canClose(control.gesture,
+                    {kind:control.kind,closeOnDouble:control.closeOnDouble,
+                     available:control.available && control.visible && control.enabled},
+                    mouse.button,control.keys)) {
                 control.send("double",mouse.button,true);
             } else {
                 // Qt then emits the second press/release normally; don't swallow it.

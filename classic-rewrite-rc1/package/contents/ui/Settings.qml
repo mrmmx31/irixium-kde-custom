@@ -7,7 +7,10 @@ QtObject {
     property int titlePixels: 14
     property bool titleItalic: true
     property bool titleBold: true
-    // CDE-like mouse-down request. false is a local release/click fallback.
-    // No claim that KWin's native popup reproduces all dtwm grabs.
+    // Theme-local historical behavior. Does not rewrite the KDE global preference.
+    // true: double left click requests Close, when the client permits it.
+    property bool menuDoubleClickClosesWindow: true
+    // Used for right click, and for left click when double-click Close is disabled.
+    // With Close enabled, a single left click waits for Qt's double-click interval.
     property bool menuOpensOnPress: true
 }

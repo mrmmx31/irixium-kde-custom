@@ -20,14 +20,20 @@ não comprovação de um decalque histórico específico do 4Dwm.
 | Janela | ativa/inativa, normal/maximizada, largura suficiente/reduzida |
 | Capacidade | minimizar permitido/proibido, maximizar permitido/proibido |
 | Ponteiro | fora/dentro, pressionado dentro/fora, solto, cancelado |
-| Menu | pedido na pressão ou alternativa na soltura; popup nativo externo |
+| Menu | clique esquerdo pendente, duplo clique, manter pressionado, clique direito; popup nativo externo |
 | Instalação | verificada, preparada, instalada, restaurada ou pendente de recuperação |
 
 O hover não muda pixels do botão. Pressão não desloca símbolos. A janela inativa
 não é tratada como indisponível. A perda de capacidade durante o gesto cancela-o;
 reabilitar o botão não ressuscita esse gesto. Não há ação a partir de uma soltura
 sem pressão válida. Uma segunda tecla do mouse não substitui a primeira capturada.
-A preferência de duplo clique no menu é lida, não regravada.
+O fechamento por duplo clique é habilitado pela preferência LOCAL
+`menuDoubleClickClosesWindow` (padrão true), não pela preferência global do KDE.
+A configuração global não é escrita. O temporizador resolve apenas a ambiguidade
+de clique simples; não altera os pixels nem simula um estado de popup aberto.
+A ação fica pendente após a primeira soltura esquerda. O evento nativo de duplo
+clique cancela essa pendência antes de solicitar Fechar. Fechamento depende também
+da capacidade closeable conferida no adaptador KWin.
 
 Um único Canvas contém os elementos gráficos; texto usa a renderização nativa
 separada. A grade e as capacidades do controlador são as mesmas do desenhista.

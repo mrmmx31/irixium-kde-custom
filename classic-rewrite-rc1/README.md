@@ -1,7 +1,7 @@
 # IRIX Classic
 
 Reescrita consolidada da decoração de janela desenvolvida a partir das referências
-IRIX fornecidas por Máximo. **Revisão candidata: 1.0.0-rc1.** O nome exibido no KDE
+IRIX fornecidas por `mrmmx31`. **Revisão candidata: 1.0.0-rc2.** O nome exibido no KDE
 é apenas **IRIX Classic**. Não se trata de uma release homologada em KWin.
 
 ## O que esta revisão faz
@@ -68,11 +68,11 @@ em `/usr` é escrito, não há commit/push e nenhum serviço é reiniciado à fo
 
 ### Ajustes locais
 
-Apenas seis propriedades literais são migradas de `Appearance.qml` /
+Apenas sete propriedades literais são migradas de `Appearance.qml` /
 `InteractionSettings.qml` ou do `Settings.qml` da revisão consolidada:
-`pixelScale`, `titleFamily`, `titlePixels`, `titleItalic`, `titleBold` e
-`menuOpensOnPress`. Expressões QML arbitrárias nesses valores são recusadas em vez
-de executadas ou interpretadas parcialmente. Outros arquivos personalizados da
+`pixelScale`, `titleFamily`, `titlePixels`, `titleItalic`, `titleBold`,
+`menuOpensOnPress` e `menuDoubleClickClosesWindow`. Expressões QML arbitrárias
+nesses valores são recusadas em vez de executadas ou interpretadas parcialmente. Outros arquivos personalizados da
 instalação antiga ficam no backup, mas são substituídos pela nova base.
 
 A partir desta revisão, ajuste `contents/ui/Settings.qml` na cópia instalada.
@@ -81,21 +81,55 @@ ampliação. Alterar o payload extraído do pacote exige regenerar o manifesto d
 desenvolvimento; o instalador detecta alterações acidentais. O manifesto não é
 uma assinatura criptográfica de origem.
 
-## Menu nativo: limite que permanece explícito
+## Menu e fechamento por duplo clique — correção rc2
 
-O menu é solicitado ao pressionar, com o retângulo do botão passado ao KWin.
-A decoração não recria o conteúdo do menu e não modifica sua política global de
-duplo clique. O evento de duplo clique, **quando entregue pelo KWin**, só pede
-Fechar se a preferência global permitir e se a janela for fechável.
+Esta revisão corrige a disputa entre abrir o menu e reconhecer o segundo clique.
+Na rc1 o menu era publicado na primeira pressão, antes de o segundo clique poder
+chegar à decoração. Além disso, o fechamento dependia de uma preferência global
+que o KWin considera desabilitada quando não configurada.
 
-O popup é nativo: pode assumir a captura do ponteiro. Não há uma notificação
-pública de abertura/fechamento do menu da janela usada por esta implementação,
-por isso não inventamos um estado "menu aberto" nem um timer que finja mantê-lo
-pressionado. O desenho acompanha a pressão/cancelamento efetivamente recebidos.
-A seleção por pressionar–arrastar–soltar e o duplo clique com o popup precisam
-ser confirmados na sessão real. **Não são anunciados como equivalentes integrais
-ao dtwm.** `menuOpensOnPress: false` oferece uma alternativa local na soltura,
-sem mudar as preferências do KDE.
+**Agora `menuDoubleClickClosesWindow: true` é uma preferência local da IRIX
+Classic.** O instalador não grava `CloseOnDoubleClickOnMenu` no KDE e não altera
+outras decorações. A operação continua condicionada a `decoration.client.closeable`
+e chama `requestClose()`, não encerramento forçado do processo.
+
+| Gesto no botão do menu, com o fechamento habilitado | Ação |
+|---|---|
+| Duplo clique esquerdo | Solicita Fechar, sem abrir o popup intermediário. |
+| Clique esquerdo simples | Aguarda o intervalo de duplo clique do Qt após a soltura e abre o menu uma vez. |
+| Clique direito | Abre o menu na pressão, no perfil padrão. |
+| Pressionar e manter o esquerdo | Solicita o menu ao receber `pressAndHold` do Qt; não reabre na soltura. |
+| Hover sem pressão | Nenhum efeito adicional. |
+
+O pequeno atraso do clique esquerdo simples é intencional: o popup não deve
+capturar o ponteiro enquanto um segundo clique ainda é possível. O intervalo vem
+de `Qt.styleHints.mouseDoubleClickInterval`; a duração do gesto de manter
+pressionado vem do Qt. **O temporizador não prolonga o efeito gráfico:** o relevo
+volta ao normal na soltura, mesmo enquanto a ação simples está pendente.
+
+Cancelamento, saída do botão enquanto o clique está pendente, ocultação, mudança
+de geometria, perda de foco ou mudança de política anulam a ação pendente.
+Acessibilidade e clique direito não deixam uma abertura esquerda pendente para
+executar mais tarde. A ação de fechar só ocorre com o evento nativo de duplo clique
+precedido de um clique esquerdo válido no mesmo controle.
+
+Para desabilitar esse atalho somente nesta decoração, edite na cópia instalada:
+
+```qml
+property bool menuDoubleClickClosesWindow: false
+```
+
+Nesse modo, `menuOpensOnPress` volta a determinar a abertura esquerda na pressão
+ou na soltura. Com o fechamento habilitado, a espera do clique esquerdo prevalece
+sobre `menuOpensOnPress`. A preferência local é preservada nas próximas atualizações.
+
+**Limite de compatibilidade:** abrir o menu imediatamente na primeira pressão
+esquerda e ao mesmo tempo depender de um segundo clique entregue ao QML não é a
+estratégia usada nesta revisão. Ela prioriza o duplo clique funcional. O menu
+continua pertencendo ao KWin; a seleção arrastada após manter pressionado e a
+captura pelo popup precisam de validação em uma sessão real. Não se anuncia uma
+reprodução integral dos grabs do CDE/Motif nem um estado persistente de popup
+sem sinal do compositor. Os efeitos e a aparência estática permanecem os da rc1.
 
 ## Testes locais
 

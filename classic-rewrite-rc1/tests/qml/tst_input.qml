@@ -68,4 +68,57 @@ TestCase {
         smoke.maximizedWindow=false;smoke.maximizeAllowed=false;
         wait(50);smoke.maximizeAllowed=true;
     }
+
+    function useDoubleMenu() { button.kind="menu"; button.closeOnDouble=true; }
+    function test_menu_double_click_no_popup() {
+        useDoubleMenu();
+        mouseDoubleClickSequence(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        compare(closing.count,1);compare(activation.count,0);compare(button.down,false);
+        wait(button.doubleClickInterval+80);compare(activation.count,0);compare(closing.count,1);
+    }
+    function test_menu_single_click_delayed_without_visual_timer() {
+        useDoubleMenu();mouseClick(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        compare(activation.count,0);compare(button.down,false);
+        tryCompare(activation,"count",1,button.doubleClickInterval+250);
+        compare(closing.count,0);wait(button.doubleClickInterval+50);compare(activation.count,1);
+    }
+    function test_menu_release_mode_also_defers_for_double() {
+        useDoubleMenu();button.menuOnPress=false;
+        mouseDoubleClickSequence(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        compare(closing.count,1);compare(activation.count,0);
+    }
+    function test_menu_pending_cancel() {
+        useDoubleMenu();mouseClick(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        button.cancelGesture();wait(button.doubleClickInterval+80);compare(activation.count,0);
+    }
+    function test_menu_pending_hidden() {
+        useDoubleMenu();mouseClick(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        button.visible=false;button.visible=true;
+        wait(button.doubleClickInterval+80);compare(activation.count,0);
+    }
+    function test_menu_pending_policy_change() {
+        useDoubleMenu();mouseClick(button,10,10,Qt.LeftButton,Qt.NoModifier,10);
+        button.closeOnDouble=false;wait(button.doubleClickInterval+80);compare(activation.count,0);
+    }
+    function test_menu_right_click_immediate() {
+        useDoubleMenu();mousePress(button,10,10,Qt.RightButton);compare(activation.count,1);
+        mouseRelease(button,10,10,Qt.RightButton);wait(button.doubleClickInterval+80);
+        compare(activation.count,1);compare(closing.count,0);
+    }
+    function test_menu_long_press_once() {
+        useDoubleMenu();mousePress(button,10,10,Qt.LeftButton);
+        tryCompare(activation,"count",1,Qt.styleHints.mousePressAndHoldInterval+300);
+        mouseRelease(button,10,10,Qt.LeftButton);wait(button.doubleClickInterval+80);
+        compare(activation.count,1);compare(closing.count,0);
+    }
+    function test_menu_surface_deactivation_cancels_pending() {
+        smoke.closeOnDouble=true;smoke.activeWindow=true;
+        var menu=findChild(smoke,"irixMenu");verify(menu!==null);
+        mouseClick(menu,10,10,Qt.LeftButton,Qt.NoModifier,10);verify(menu.gesture.waiting);
+        smoke.activeWindow=false;compare(menu.gesture.waiting,false);
+        smoke.activeWindow=true;smoke.closeOnDouble=false;
+    }
+    function test_interval_from_qt_style_hints() {
+        compare(button.doubleClickInterval,Math.max(1,Qt.styleHints.mouseDoubleClickInterval));
+    }
 }

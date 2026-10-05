@@ -29,7 +29,10 @@ Item {
         if (minimizeInput) minimizeInput.cancelGesture();
         if (maximizeInput) maximizeInput.cancelGesture();
     }
-    onActiveWindowChanged: repaint()
+    onActiveWindowChanged: {
+        if (!activeWindow) cancelGestures();
+        repaint();
+    }
     onMaximizedWindowChanged: { cancelGestures(); repaint(); }
     onMinimizeAllowedChanged: repaint()
     onMaximizeAllowedChanged: repaint()

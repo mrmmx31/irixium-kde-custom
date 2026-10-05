@@ -145,4 +145,26 @@ class ManagerTests(unittest.TestCase):
         manager=m.Manager(self.base,self.cfg,self.state,altered)
         with self.assertRaises(RuntimeError):manager.verify()
 
+
+    def test_local_doubleclick_enabled_without_changing_global_preference(self):
+        d=self.seed();self.cfg.data['CloseOnDoubleClickOnMenu']='false'
+        # Emulate rc1 Settings.qml, which did not have the theme-local policy.
+        file=d/'contents/ui/Settings.qml'
+        file.write_text('\n'.join(line for line in file.read_text().splitlines()
+                                  if 'property bool menuDoubleClickClosesWindow:' not in line)+'\n')
+        self.manager.install(d.name)
+        self.assertIn('menuDoubleClickClosesWindow: true',file.read_text())
+        self.assertEqual(self.cfg.data['CloseOnDoubleClickOnMenu'],'false')
+    def test_local_doubleclick_false_migrates_on_next_update(self):
+        d=self.seed();file=d/'contents/ui/Settings.qml'
+        file.write_text(file.read_text().replace('menuDoubleClickClosesWindow: true',
+                                                'menuDoubleClickClosesWindow: false'))
+        self.manager.install(d.name)
+        self.assertIn('menuDoubleClickClosesWindow: false',file.read_text())
+    def test_doubleclick_migration_and_restore_leave_global_intact(self):
+        d=self.seed();self.cfg.data['CloseOnDoubleClickOnMenu']='false'
+        before=m.tree_hashes(d);self.manager.install(d.name);self.manager.restore()
+        self.assertEqual(m.tree_hashes(d),before)
+        self.assertEqual(self.cfg.data['CloseOnDoubleClickOnMenu'],'false')
+
 if __name__=='__main__':unittest.main(verbosity=2)

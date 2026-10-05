@@ -20,7 +20,7 @@ BUNDLE = Path(__file__).resolve().parent.parent
 IDS = ('irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5')
 GROUP = 'org.kde.kdecoration2'
 LIBRARY = 'org.kde.kwin.aurorae'
-VERSION = '1.0.0-rc1'
+VERSION = '1.0.0-rc2'
 KEYS = ('library','theme')
 
 
@@ -101,7 +101,8 @@ def configuration() -> tuple[Path,Path,Path]:
 def merge_settings(before: Path, staged: Path) -> list[str]:
     """Import ONLY literal known appearance values, never execute an old QML file."""
     allowed = {'pixelScale':int,'titlePixels':int,'titleFamily':str,
-               'titleItalic':bool,'titleBold':bool,'menuOpensOnPress':bool}
+               'titleItalic':bool,'titleBold':bool,'menuOpensOnPress':bool,
+               'menuDoubleClickClosesWindow':bool}
     values = {}
     ui = before/'contents/ui'
     old_files = [ui/'Settings.qml'] if (ui/'Settings.qml').is_file() else [

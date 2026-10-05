@@ -23,7 +23,7 @@ Decoration {
         maximizedWindow: decoration.client.maximized
         minimizeAllowed: decoration.client.minimizeable
         maximizeAllowed: decoration.client.maximizeable
-        closeOnDouble: decorationSettings.closeOnDoubleClickOnMenu && decoration.client.closeable
+        closeOnDouble: localSettings.menuDoubleClickClosesWindow && decoration.client.closeable
         menuOnPress: localSettings.menuOpensOnPress
         caption: decoration.client.caption
         pixelScale: root.gridScale
@@ -36,7 +36,7 @@ Decoration {
             decoration.requestShowWindowMenu(Qt.rect(r.x,r.y,r.w,r.h));
         }
         onCloseRequested: {
-            if (decorationSettings.closeOnDoubleClickOnMenu && decoration.client.closeable)
+            if (localSettings.menuDoubleClickClosesWindow && decoration.client.closeable)
                 decoration.requestClose();
         }
         onMinimizeRequested: {

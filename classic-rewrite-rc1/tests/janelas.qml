@@ -10,7 +10,7 @@ QtObject {
             | Qt.WindowMinimizeButtonHint | Qt.WindowMaximizeButtonHint | Qt.WindowCloseButtonHint
         Text {
             anchors.fill: parent; anchors.margins: 20; wrapMode: Text.WordWrap
-            text: "Teste a decoração selecionada no KDE.\n\nPressione e segure; saia do botão; volte e solte. Teste minimizar, maximizar/restaurar, o menu e sua preferência de duplo clique.\n\nA janela de tamanho fixo deve indicar maximização indisponível."
+            text: "Teste a decoração selecionada no KDE.\n\nPressione e segure; saia do botão; volte e solte. Teste minimizar, maximizar/restaurar, o menu e o duplo clique esquerdo para fechar (use esta janela descartável).\n\nA janela de tamanho fixo deve indicar maximização indisponível."
         }
         onClosing: { fixed.visible=false; Qt.quit(); }
     }
