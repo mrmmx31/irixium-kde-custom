@@ -1,7 +1,49 @@
-# IrixClassic 0.4.0-rc1 — caixas de seleção e botões de opção
+# IrixClassic 0.5.0-rc1 — menus
 
-**0.4.0-rc1 — bloco 4: seleção; diagnóstico cruzado das setas. Manutenção: `mrmmx31`.**
-Não é uma decoração de janela. O nome no Kvantum permanece **IrixClassic**.
+Manutenção: `mrmmx31`. Application Style Kvantum; não é decoração de janela.
+
+## Revisão atual
+
+Bloco 5: painel e barra de menu, item armado/pressionado, setas de submenu,
+separadores e tear-off quando o aplicativo o oferece. Os recursos anteriores de
+check/radio e campos permanecem intactos, assim como os desenhos da barra e dos
+botões já aprovados. As métricas e recursos dos outros controles foram isolados
+da herança dos menus.
+
+```sh
+# Na raiz do clone:
+bash kvantum/testar-menus.sh
+bash kvantum/prever-menus.sh
+bash kvantum/prever-menus.sh --qtquick
+bash kvantum/instalar-classic.sh --verificar
+bash kvantum/instalar-classic.sh
+```
+
+O instalador não ativa outro tema. Reabra os aplicativos. Sem sudo. Galerias usam
+seleção temporária. `--testar` faz testes nativos de Qt Widgets, quando disponíveis;
+Qt Quick é galeria manual para comparar a camada KDE. Ausência de dependência
+retorna 77, nunca aprovação. Nenhuma captura do desktop é coletada.
+
+`PREVIA-MENUS.png` mostra mapas do SVG, não execução Qt. Os perfis históricos
+amostrados e as adaptações estão discriminados em `../docs/MENUS.md`.
+O plano completo continua em `../PLANO-IRIXCLASSIC.md` (próximo bloco: abas).
+
+## Setas nas telas Qt Quick do KDE
+
+O relato de funcionamento no Kvantum Preview e falha nas telas KDE é compatível
+com caminhos Widgets/Qt Quick diferentes. O inventário recebido ainda mostra
+`native_pressed_only=true`, sem marcador de reparo, e `prefer` para o recurso
+embutido. Instalar este tema NÃO aplica o reparo de compatibilidade do sistema.
+Consulte `../docs/PRESSAO-QTQUICK.md`; a confirmação local continua necessária.
+
+O teste temporário foi corrigido: busca a seta por `hitTest`, pois o StyleItem
+6.13 não expõe `subControlRect("up")` para scrollbars. Agora compara as duas
+orientações com Fusion, Breeze ou Kvantum sem alterar a seleção da sessão.
+
+## Histórico das revisões anteriores
+
+O conteúdo abaixo descreve entregas anteriores. Seus números de versão não são
+a revisão atual; a versão de instalação é a do MANIFEST.json.
 
 ## Nesta revisão
 

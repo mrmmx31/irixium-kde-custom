@@ -1,3 +1,9 @@
+> Atualização 0.5.0-rc1: o inventário recebido mostra `native_pressed_only=true`,
+> `previous_optional_patch_marker=false` e `prefer :/qt/qml/org/kde/desktop/`.
+> O reparo não consta desse arquivo no disco. Isso não revela a cópia já carregada
+> por um processo em execução. O relato de funcionamento no Preview reforça a
+> investigação Qt Quick; não prova defeito em todos os aplicativos KDE.
+
 > Atualização 0.4.0-rc1: há relato de falha em outros Application Styles.
 > O reparo descrito abaixo continua opcional e experimental, sem confirmação
 > de aplicação/carregamento na sessão. Não equivale a solução universal de ação.
@@ -104,3 +110,38 @@ instalado via qmldir continua sendo parte da aceitação na sessão real.
 - Qt: https://github.com/qt/qtbase/blob/v6.8.2/src/widgets/widgets/qscrollbar.cpp
 - Kvantum: https://github.com/tsujan/Kvantum/blob/V1.1.4/Kvantum/style/Kvantum.cpp
 - Qt qmldir/prefer: https://doc.qt.io/qt-6.8/qtqml-modules-qmldir.html
+
+## Ensaio corrigido nesta revisão
+
+A galeria temporária anterior consultava um retângulo de seta que não é exposto
+pelo KQuickStyleItem 6.13 para scrollbars. Agora identifica o centro da seta por
+`hitTest`, usando o mesmo caminho nativo da interação. Testa as duas orientações
+sem assumir largura do estilo; registra posição e Sunken separadamente.
+
+```sh
+# Fonte instalada copiada sem reparo; pode retornar 1 reproduzindo o defeito:
+bash kvantum/prever-pressao-qtquick.sh --testar --original --estilo Fusion
+# Mesma fonte com o reparo SOMENTE na cópia temporária:
+bash kvantum/prever-pressao-qtquick.sh --testar --estilo Fusion
+# Repetir com --estilo kvantum ou --estilo Breeze quando o plugin estiver presente.
+```
+
+Não força X11/offscreen: usa a plataforma da sessão. `--offscreen` é opcional
+para ensaios headless; esse resultado não certifica a sessão Wayland. A opção
+`--original` não reverte um reparo já instalado: significa exatamente a fonte
+atual do disco, sem aplicar mais alterações. O relatório informa esse caso.
+
+A falta de `python3-pyside6.qtwidgets` no inventário não requer instalar dois
+bindings: PyQt6 é uma alternativa. QtQuick e QtTest ainda precisam estar
+importáveis nesse Python. Os testes informam quando faltar um módulo.
+
+A correção de sistema não mudou nesta revisão. Validar antes de aplicar:
+
+```sh
+bash kvantum/corrigir-pressao-qtquick.sh --verificar --diff
+bash kvantum/corrigir-pressao-qtquick.sh
+```
+
+Reabra Configurações do Sistema. A alteração de ScrollBar.qml/qmldir é
+compartilhada pelos temas de org.kde.desktop; requer autorização e possui backup.
+Não execute sudo na frente nem interprete a atualização do SVG como essa etapa.

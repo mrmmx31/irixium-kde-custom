@@ -1,11 +1,11 @@
-# IrixClassic 0.4.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.5.0-rc1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.4.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.5.0-rc1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -67,6 +67,8 @@ spread_progressbar=true
 progressbar_thickness=18
 no_inactiveness=true
 tooltip_delay=-1
+menu_separator_height=6
+spread_menuitems=false
 
 [GeneralColors]
 window.color=#c1c1c1
@@ -212,8 +214,8 @@ interior.element=ic-radiomark
 
 [Menu]
 inherits=PanelButtonCommand
-frame.element=ic-menu
-interior.element=ic-menu
+frame.element=ic-menupanel
+interior.element=ic-menupanel
 frame.top=2
 frame.bottom=2
 frame.left=2
@@ -221,39 +223,43 @@ frame.right=2
 
 [MenuItem]
 inherits=PanelButtonCommand
-frame.element=ic-menuitem
-interior.element=ic-menuitem
+frame.element=ic-menurow
+interior.element=ic-menurow
 frame.top=2
 frame.bottom=2
 frame.left=2
 frame.right=2
-indicator.element=ic-arrow
+indicator.element=ic-menuindicator
 indicator.size=12
 text.margin.top=1
 text.margin.bottom=1
 text.margin.left=3
 text.margin.right=3
 min_height=20
+text.italic=true
 
 [MenuBar]
 inherits=Menu
-frame.element=ic-bar
-interior.element=ic-bar
+frame.element=ic-menustrip
+interior.element=ic-menustrip
 text.normal.color=#000000
 
 [MenuBarItem]
 inherits=MenuItem
-frame.element=ic-menubaritem
-interior.element=ic-menubaritem
+frame.element=ic-menutitle
+interior.element=ic-menutitle
 text.italic=true
 text.margin.top=1
 text.margin.bottom=1
 min_height=20
+indicator.element=ic-menuindicator
 
 [Toolbar]
 inherits=MenuBar
 indicator.element=ic-toolbar
 indicator.size=10
+frame.element=ic-bar
+interior.element=ic-bar
 
 [Tab]
 inherits=PanelButtonCommand
@@ -282,6 +288,7 @@ interior=true
 inherits=MenuBar
 frame=false
 interior.element=ic-window
+frame.element=ic-bar
 
 [ToolboxTab]
 inherits=PanelButtonCommand
@@ -298,6 +305,8 @@ inherits=MenuBar
 text.normal.color=#000000
 text.focus.color=#000000
 text.italic=true
+frame.element=ic-bar
+interior.element=ic-bar
 
 [HeaderSection]
 inherits=PanelButtonCommand
@@ -399,6 +408,8 @@ interior.element=ic-progress
 
 [ToolTip]
 inherits=Menu
+frame.element=ic-menu
+interior.element=ic-menu
 
 [Focus]
 frame=true
@@ -423,6 +434,9 @@ text.focus.color=#000000
 text.italic=true
 
 # Dedicated style for auto-raised toolbar controls (not menus or tabs).
+frame.element=ic-bar
+interior.element=ic-bar
+
 [ToolbarButton]
 inherits=PanelButtonTool
 frame.element=ic-toolbarbutton

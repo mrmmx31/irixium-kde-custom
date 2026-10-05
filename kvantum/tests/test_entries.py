@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import menu_art as M
 import entry_art as E
 
 def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[canonical(c) for c in e]]
@@ -20,7 +21,7 @@ def effective(c,s):
     d=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
     d.update({k:v for k,v in c[s].items() if k!='inherits'});return d
 ENTRY_PREFIXES=('ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-')
-CHANGED_SECTIONS={'LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'}
+CHANGED_SECTIONS={'Menu','MenuItem','MenuBar','MenuBarItem','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'}
 # Later block 4 has its own full baseline in test_selection.py.
 SELECTION_PREFIXES=('ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')
 
@@ -40,7 +41,7 @@ class Entries(unittest.TestCase):
     def test_only_new_entry_prefixes_added(self):
         added=set(self.nodes)-set(self.base['svg'])
         self.assertTrue(added)
-        self.assertTrue(all(x.startswith(ENTRY_PREFIXES+SELECTION_PREFIXES) for x in added))
+        self.assertTrue(all(x.startswith(ENTRY_PREFIXES+SELECTION_PREFIXES+M.PREFIXES) for x in added))
     def test_other_effective_sections_unchanged(self):
         for section,old in self.base['effective_sections'].items():
             if section in CHANGED_SECTIONS or section=='%General':continue
@@ -48,7 +49,7 @@ class Entries(unittest.TestCase):
     def test_only_three_deliberate_global_options_changed(self):
         old=self.base['effective_sections']['%General'];new=effective(self.c,'%General')
         changed={k for k in set(old)|set(new) if old.get(k)!=new.get(k)}
-        self.assertEqual(changed,{'comment','combo_as_lineedit','combo_focus_rect','square_combo_button'})
+        self.assertEqual(changed,{'comment','combo_as_lineedit','combo_focus_rect','square_combo_button','menu_separator_height','spread_menuitems'})
         self.assertFalse(self.c.getboolean('%General','combo_as_lineedit'))
     def test_palette_scrollbar_and_buttons_not_changed(self):
         for s in ('GeneralColors','Scrollbar','ScrollbarSlider','ScrollbarGroove','PanelButtonCommand','PanelButtonTool','ToolbarButton'):
