@@ -1,0 +1,28 @@
+{
+  "component": "sgi",
+  "kind": "cursor-theme",
+  "source": {
+    "type": "git",
+    "url": "https://github.com/jujum4n/sgi-enhanced.git",
+    "path": "cursor/sgi",
+    "revision": "HEAD"
+  },
+  "author": "jujum4n and contributors",
+  "license": {
+    "declared_by_upstream": "GNU General Public License",
+    "status": "version_not_specified_in_current_upstream_checkout"
+  },
+  "original_design": "Silicon Graphics, Inc. IRIX/SGI cursor style",
+  "verification": {
+    "installed_path": "~/.icons/sgi",
+    "comparison": "Cursor binaries match the upstream cursor/sgi payload; eight absolute links were normalized for portability."
+  },
+  "local_changes": [
+    "Replaced eight upstream absolute links to /home/andres/.icons/sgi with equivalent relative links so the theme is portable."
+  ],
+  "selection": {
+    "kde_config": "~/.config/kcminputrc",
+    "key": "Mouse.cursorTheme",
+    "value": "sgi"
+  }
+}

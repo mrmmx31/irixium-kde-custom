@@ -46,6 +46,41 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Check SGI cursor upstream
+        id: sgi_cursor
+        shell: bash
+        run: |
+          set -euo pipefail
+          current="$(git ls-remote https://github.com/jujum4n/sgi-enhanced.git HEAD | cut -f1)"
+          recorded="$(cat .upstream/sgi-enhanced-commit)"
+          echo "current=$current" >> "$GITHUB_OUTPUT"
+          echo "recorded=$recorded" >> "$GITHUB_OUTPUT"
+          if [ "$current" != "$recorded" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check KDE Store component pages
+        id: kde_store
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          trap 'rm -rf "$tmp"' EXIT
+          for item in "icons:2142965:Irixium icons" "plasma:1457753:Irixium Plasma Style"; do
+            IFS=: read -r kind package_id label <<< "$item"
+            page="$tmp/$kind.html"
+            curl --fail --location --silent --show-error --retry 3 \
+              --connect-timeout 15 --max-time 60 \
+              "https://www.pling.com/p/$package_id/" > "$page"
+            if ! grep -qi 'property="og:title"' "$page"; then
+              echo "KDE Store page for $label has no readable title metadata" >&2
+              exit 1
+            fi
+            echo "$label: https://www.pling.com/p/$package_id/"
+          done
+
       - name: Open GTK review issue
         if: steps.gtk.outputs.changed == 'true'
         env:
@@ -68,4 +103,16 @@ jobs:
           if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
             gh issue create --title "$title" --body \
               "Review the Irixium Kvantum source at https://www.opencode.net/phob1an/irixium/-/commit/$CURRENT_HASH. Do not merge automatically."
+          fi
+
+      - name: Open SGI cursor review issue
+        if: steps.sgi_cursor.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CURRENT_HASH: ${{ steps.sgi_cursor.outputs.current }}
+        run: |
+          title="SGI cursor upstream changed: ${CURRENT_HASH:0:12}"
+          if ! gh issue list --state open --search "\"$title\" in:title" --json title --jq 'length' | grep -q '^1$'; then
+            gh issue create --title "$title" --body \
+              "Review the SGI cursor source at https://github.com/jujum4n/sgi-enhanced/commit/$CURRENT_HASH. Do not merge automatically."
           fi

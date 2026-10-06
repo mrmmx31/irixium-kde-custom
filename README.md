@@ -10,6 +10,10 @@ aplicativos são componentes separados; instalar um não deve trocar o outro.
 | Application Style Irixium | `kvantum/Irixium/` | Base original preservada. |
 | Application Style IrixClassic | `kvantum/IrixClassic/` | Primeira candidata 0.1.0-rc1 para Qt Widgets. |
 | Tema GTK | `gtk/` | Base preservada; não é instalada pelos novos fluxos abaixo. |
+| Ícones Irixium | `icons/Irixium/` | Snapshot do pacote KDE Store 2142965; licença upstream ainda não declarada no payload. |
+| Plasma Style Irixium | `plasma/Irixium/` | Snapshot do pacote KDE Store 1457753; GPL3 declarada pelo pacote. |
+| Look-and-Feel e splash | `look-and-feel/org.magpie.irixium.desktop/` | Splash incluído no pacote; declarações de licença conflitantes preservadas. |
+| Cursores SGI | `cursors/sgi/` | Cursor ativo; cópia verificada do upstream `jujum4n/sgi-enhanced`. |
 
 ## Atualização segura da decoração moderna
 
@@ -124,6 +128,13 @@ A decoração `aurorae/Irixium/` é baseada em Irixium por Phob1an. O Kvantum mo
 é de Mark Whittaker/Phob1an. `gtk/` é baseado em Irixium por TheJollyDuck/Shauna
 Recto. Créditos, licenças e fontes preservadas estão nos respectivos diretórios;
 os textos GPL permanecem em `LICENSE`, `gtk/LICENSE` e nos pacotes.
+
+Os componentes KDE Store preservam seus metadados originais. A licença dos
+ícones não está declarada no snapshot instalado; o Look-and-Feel contém
+declarações conflitantes entre `metadata.desktop` e `metadata.json`. Essas
+pendências não são substituídas por uma suposição local. O cursor `sgi` é
+declarado pelo upstream como GPL, sem versão especificada no checkout atual;
+sua procedência está em `cursors/sgi/ORIGEM.json`.
 
 `applications.png` é o desenho de 22×22 desta personalização. O SVG IrixClassic
 Kvantum é novo; o moderno não é sobrescrito. Os novos utilitários são

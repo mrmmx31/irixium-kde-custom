@@ -1,0 +1,26 @@
+{
+  "component": "Irixium Look-and-Feel and splash",
+  "kind": "plasma-look-and-feel",
+  "source": {
+    "type": "KDE Store / OpenDesktop package",
+    "url": "https://www.pling.com/u/phob1an/",
+    "package_name": "org.magpie.irixium.desktop"
+  },
+  "author": "Mark Whittaker",
+  "license": {
+    "metadata_desktop": "GPL 3+",
+    "metadata_json": "GPL-2.0+",
+    "status": "conflicting_upstream_metadata",
+    "note": "The conflict is preserved and must be resolved with the package maintainer before asserting one license for the complete package."
+  },
+  "local_changes": [],
+  "contents": {
+    "splash": [
+      "contents/splash/Splash.qml",
+      "contents/splash/spinner.svg"
+    ]
+  },
+  "verification": {
+    "installed_path": "~/.local/share/plasma/look-and-feel/org.magpie.irixium.desktop"
+  }
+}
