@@ -153,7 +153,7 @@ class ManagerTests(unittest.TestCase):
         file.write_text('\n'.join(line for line in file.read_text().splitlines()
                                   if 'property bool menuDoubleClickClosesWindow:' not in line)+'\n')
         self.manager.install(d.name)
-        self.assertIn('menuDoubleClickClosesWindow: true',file.read_text())
+        self.assertIn('menuDoubleClickClosesWindow: false',file.read_text())
         self.assertEqual(self.cfg.data['CloseOnDoubleClickOnMenu'],'false')
     def test_local_doubleclick_false_migrates_on_next_update(self):
         d=self.seed();file=d/'contents/ui/Settings.qml'
