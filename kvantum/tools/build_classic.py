@@ -17,6 +17,7 @@ import selection_art as SL
 import menu_art as MN
 import tab_art as TB
 import range_art as RG
+import finish_art as FN
 
 NS = 'http://www.w3.org/2000/svg'
 ET.register_namespace('', NS)
@@ -94,7 +95,7 @@ def slice9(img,n):
 class Atlas:
     def __init__(self):
         self.root=ET.Element('{'+NS+'}svg',{'version':'1.1','width':'768','height':'4096','viewBox':'0 0 768 4096','shape-rendering':'crispEdges'})
-        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.7.0-rc1'
+        ET.SubElement(self.root,'{'+NS+'}title').text='IrixClassic — application controls, 0.7.1'
         ET.SubElement(self.root,'{'+NS+'}desc').text='New integer-grid artwork by mrmmx31. GPL-3.0-or-later. No SGI code or fonts.'
         self.items={}
     def add(self,name,img):
@@ -255,6 +256,8 @@ def build():
     TB.append_tab_assets(a)
     # Block 7 is appended. Earlier SVG resources retain their coordinates.
     RG.append_assets(a)
+    # Finishing: toolbar separator and spin glyphs only.
+    FN.append_assets(a)
     height=((len(a.items)+15)//16)*40
     a.root.set('height',str(height)); a.root.set('viewBox',f'0 0 768 {height}')
     ET.indent(a.root,space='  ')

@@ -60,6 +60,7 @@ def tasks(native):
             mode='qt-widgets-offscreen' if number in ('1','2','3') else 'qt-widgets-session'
             out.append(('native-block-'+number,[sys.executable,'kvantum/tools/'+script,'--testar'],mode,90))
         out.append(('native-integrated',[sys.executable,'kvantum/tools/preview_integrated.py','--testar'],'qt-widgets-session',90))
+        out.append(('native-finishing',[sys.executable,'kvantum/tools/preview_finish.py','--testar'],'qt-widgets-session',90))
     return out
 
 
@@ -141,7 +142,7 @@ def main(argv=None):
     p.add_argument('--nativos',action='store_true');p.add_argument('--comparar-setas',action='store_true')
     a=p.parse_args(argv);folder=make_private_folder(a.saida)
     first=fingerprints(ROOT);info=integrity(ROOT)
-    doc={'review_version':'r2','theme':info,'tasks':[],'native_requested':a.nativos,
+    doc={'review_version':'r3-acabamento','theme':info,'tasks':[],'native_requested':a.nativos,
         'status':'em_execucao','acceptance':[{'block':n,'name':label,'status':'pendente nesta revisão'} for n,label,_ in BLOCKS],
         'notes':['No system patch installed. No global theme or font changed.',
                  'Block 1/2 artwork was approved in prior feedback; this record does not invent new acceptance.']}

@@ -92,19 +92,37 @@ def main(argv=None):
         check('three states cycle',len(set(values))==3)
         click(controls['radio1']);check('exclusive radio group',controls['radio1'].isChecked() and not controls['radio0'].isChecked())
         before=controls['radio2'].isChecked();click(controls['radio2']);check('disabled radio unchanged',controls['radio2'].isChecked()==before)
-        # Real renderer probe; no proxy QStyle and no custom widget painting.
-        for kind,widget,col,primitive in (
-            ('check',controls['on'],(204,0,0),W.QStyle.PrimitiveElement.PE_IndicatorCheckBox),
-            ('radio',controls['radio1'],(0,0,204),W.QStyle.PrimitiveElement.PE_IndicatorRadioButton)):
-            option=W.QStyleOptionButton();option.initFrom(widget);option.rect=C.QRect(0,0,15,15)
-            option.state=W.QStyle.StateFlag.State_Enabled|W.QStyle.StateFlag.State_On|W.QStyle.StateFlag.State_Active
-            image=G.QImage(15,15,G.QImage.Format.Format_ARGB32);image.fill(C.Qt.GlobalColor.transparent)
-            painter=G.QPainter(image);style.drawPrimitive(primitive,option,painter,widget);painter.end()
-            check(kind+' mark reaches real renderer',any(image.pixelColor(x,y).getRgb()[:3]==col for y in range(15) for x in range(15)))
+        # Compare real on/off renderings at this theme's actual indicator size.
+        # Only IrixClassic promises the exact red/blue palette of its own maps.
+        renderer_metrics=[]
+        for kind,widget,col,primitive,se in (
+            ('check',controls['on'],(204,0,0),W.QStyle.PrimitiveElement.PE_IndicatorCheckBox,W.QStyle.SubElement.SE_CheckBoxIndicator),
+            ('radio',controls['radio1'],(0,0,204),W.QStyle.PrimitiveElement.PE_IndicatorRadioButton,W.QStyle.SubElement.SE_RadioButtonIndicator)):
+            option=W.QStyleOptionButton();option.initFrom(widget);option.text=widget.text()
+            bounds=style.subElementRect(se,option,widget)
+            width,height=bounds.width(),bounds.height()
+            if not (0<width<=128 and 0<height<=128):raise ValueError('Dimensão inválida do indicador de teste.')
+            option.rect=C.QRect(0,0,width,height)
+            def render(on):
+                option.state=W.QStyle.StateFlag.State_Enabled|W.QStyle.StateFlag.State_Active
+                option.state |= W.QStyle.StateFlag.State_On if on else W.QStyle.StateFlag.State_Off
+                image=G.QImage(width,height,G.QImage.Format.Format_ARGB32);image.fill(C.Qt.GlobalColor.transparent)
+                painter=G.QPainter(image)
+                try:style.drawPrimitive(primitive,option,painter,widget)
+                finally:painter.end()
+                return [image.pixelColor(x,y).getRgb() for y in range(height) for x in range(width)]
+            off,on=render(False),render(True)
+            renderer_metrics.append({'kind':kind,'size':[width,height],
+                'different_pixels':sum(a!=b for a,b in zip(off,on))})
+            if a.tema=='IrixClassic':
+                check(kind+' mark reaches real renderer',any(pixel[:3]==col and pixel[3]>0 for pixel in on))
+            else:
+                check(kind+' selected rendering differs from unselected',off!=on and any(pixel[3]>0 for pixel in on))
         actionGroup.actions()[1].trigger();check('menu radios exclusive',actionGroup.actions()[1].isChecked() and not actionGroup.actions()[0].isChecked())
         toggle.trigger();check('menu checkbox toggles',not toggle.isChecked())
         print(json.dumps({'qt':C.qVersion(),'style':style.metaObject().className(),'binding':binding,
-                          'platform':app.platformName(),'input_trace':native_input.records,'results':results,'note':'Native behavior only; not a historical pixel-equivalence claim.'},ensure_ascii=False,indent=2))
+                          'platform':app.platformName(),'theme':a.tema,'renderer_metrics':renderer_metrics,
+                          'renderer_policy':'exact_classic_colors' if a.tema=='IrixClassic' else 'theme_own_state_difference','input_trace':native_input.records,'results':results,'note':'Native behavior only; not a historical pixel-equivalence claim.'},ensure_ascii=False,indent=2))
         win.close();app.processEvents();return 0 if all(t['passed'] for t in results) else 1
 if __name__=='__main__':
     try:sys.exit(main())

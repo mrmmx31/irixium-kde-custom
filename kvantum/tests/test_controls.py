@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import finish_art as FN
 import range_art as R
 
 
@@ -19,7 +20,7 @@ def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[
 def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
     d=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
-    d.update({k:v for k,v in c[s].items() if k!='inherits'});return d
+    d.update({k:v for k,v in c[s].items() if k!='inherits'});return FN.prior_effective(s,d)
 
 
 class Controls(unittest.TestCase):
@@ -35,7 +36,7 @@ class Controls(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),3453)
         for name,sha in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[name])),sha,name)
     def test_additions_have_only_reviewed_names(self):
-        added=set(self.nodes)-set(self.base['svg']);self.assertEqual(len(added),1694)
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(FN.PREFIXES)};self.assertEqual(len(added),1694)
         self.assertTrue(all(x.startswith(R.PREFIXES) for x in added))
     def test_svg_ids_are_unique(self):
         names=[x.get('id') for x in self.xml if x.get('id')]
@@ -171,7 +172,9 @@ class Controls(unittest.TestCase):
     def test_roadmap_all_blocks_and_integrated_review(self):
         doc=(ROOT/'PLANO-IRIXCLASSIC.md').read_text()
         for i in range(1,8):self.assertIn('| '+str(i)+'. ',doc)
-        self.assertIn('revisão integrada',doc);self.assertIn('seta KDE continua sem solução confirmada',doc)
+        self.assertIn('revisão integrada',doc)
+        self.assertIn('funcionamento confirmado pelo usuário',doc)
+        self.assertIn('sem regressão observada',doc)
     def test_runtime_limit_no_historical_certification_claim(self):
         doc=(ROOT/'docs/CONTROLES.md').read_text()
         for text in ('não cópias pixel a pixel','State','0–0','decorativas','77','não é possível concluir'):self.assertIn(text,doc)

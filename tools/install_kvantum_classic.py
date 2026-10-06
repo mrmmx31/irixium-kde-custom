@@ -18,7 +18,7 @@ def theme_files(repo: Path) -> dict[str, bytes]:
     source = repo / 'kvantum/IrixClassic'
     no_links(source)
     doc = json.loads((source / 'MANIFEST.json').read_text('utf-8'))
-    if doc.get('version') not in ('0.1.0-rc1', '0.1.0-rc2', '0.2.0-rc1', '0.3.0-rc1', '0.4.0-rc1', '0.5.0-rc1', '0.6.0-rc1', '0.7.0-rc1'):
+    if doc.get('version') not in ('0.1.0-rc1', '0.1.0-rc2', '0.2.0-rc1', '0.3.0-rc1', '0.4.0-rc1', '0.5.0-rc1', '0.6.0-rc1', '0.7.0-rc1', '0.7.1-rc1', '0.7.1'):
         raise Failure('Versão do tema não reconhecida.')
     result = {}
     if not {'IrixClassic.svg','IrixClassic.kvconfig','LICENSE'}.issubset(doc['files']):

@@ -1,50 +1,99 @@
 # Plano mestre — Kvantum IrixClassic
 
-Manutenção: `mrmmx31`. Este arquivo é a referência de continuidade do trabalho.
-Atualizar esta matriz em toda entrega. Não confundir tema Qt Widgets com decoração
-Aurorae, tema GTK, estilo Plasma ou configuração de fontes.
+Manutenção: `mrmmx31`. Referência de continuidade do componente Kvantum.
+
+## Estado atual — 0.7.1 estável
+
+**Promoção autorizada em 06/10/2026.** A candidata 0.7.1-rc1 foi aceita localmente
+com `candidate_accepted_locally` e nenhuma pendência. Toolbar, spinbox e
+conjunto/limites receberam aceite com a mesma data. A promoção não muda desenhos,
+medidas, efeitos ou áreas clicáveis. Não há nova exigência de aceite antes de
+publicar este mesmo conteúdo. Registro: `../distribuicao/promocoes/0.7.1.json`.
+
+| Bloco | Conteúdo | Situação da entrega estável |
+|---|---|---|
+| 1 | Rolagem, quatro setas, trilho, puxador e ranhuras | Incluído; pressão KDE confirmada com reparo separado |
+| 2 | Botões de comando, padrão e ferramentas | Incluído e aprovado no escopo testado |
+| 3 | Campos, combos, spinboxes e molduras | Incluído; limite de aparência readonly documentado |
+| 4 | Checkbox, radio, parcial, foco e indisponibilidade | Incluído; retestes Classic e moderno aprovados |
+| 5 | Menus, submenus, separadores e navegação | Incluído; retestes Classic e moderno aprovados |
+| 6 | Abas, quatro orientações, fechamento e transbordamento | Incluído, com adaptações históricas documentadas |
+| 7 | Sliders, progresso, divisores, listas, árvores, tabelas e complementos | Incluído; controles nativos/limites documentados |
+
+## Lançamento e trabalho após a entrega
+
+1. Fazer merge/commit desta promoção e enviar o commit ao remoto.
+2. Publicar `irixclassic-kvantum-v0.7.1` com o script explícito de publicação.
+3. Receber feedback e corrigir problemas em **nova versão**, partindo da tag estável.
+
+A tag e os ZIPs já publicados são imutáveis por política do projeto. Não há
+reescrita do aceite anterior, nem troca silenciosa da versão. Correções do escopo
+atual seguem para 0.7.2; mudanças maiores de aparência/funcionalidade, para 0.8.0.
+Esses números são planejamento, não releases já produzidas.
+
+## Backlog pós-lançamento (não bloqueia a 0.7.1)
+
+Compatibilidade relatada por outros usuários; melhora incremental de fidelidade;
+acessibilidade e escalas; distinção universal de campos somente leitura quando
+houver suporte adequado; comportamento de widgets personalizados/Qt Quick.
+As limitações aceitas não passam a estar implementadas só pela mudança de canal.
+Manter o Irixium moderno, as decorações, GTK e fontes independentes. Não
+reaplicar o reparo Qt Quick confirmado sem regressão ou alteração do sistema.
+Identificação pública: `mrmmx31`; sem nome civil/e-mail pessoal.
+
+## Histórico de desenvolvimento — não representa pendências atuais
+
+Os textos abaixo registram etapas anteriores, antes do aceite e da promoção.
+O estado corrente é o descrito acima e em LANCAMENTO.json.
 
 ## Estado da entrega
 
-**Atualização r2 — estabilização do executor, sem mudar a aparência 0.7.0-rc1.**
-A rodada nativa recebida em 05/10/2026 confirma quatro alvos válidos na cópia
-Qt Quick temporária corrigida: movimento, pressão, soltura e mudança de pixels.
-O módulo instalado ainda não contém o reparo e falha apenas no estado visual.
-Seleção e menus têm falhas em ensaios isolados; não declarar defeito do tema nem
-aprovação final antes de repetir com alvos clicáveis e movimentos QWindow.
-O roteiro continua: aplicar o reparo opcional separadamente, repetir a integração,
-e então validar visualmente os sete blocos. Ver `docs/REVISAO-R2.md`.
+**Fechamento da candidata — 0.7.1-rc1 preservada.** O desenvolvimento dos sete
+blocos, acabamento e empacotamento está reunido. `distribuicao/fechar-candidata.sh`
+concentra as verificações finais, capturas dos dois temas e de toolbar/spinbox,
+ensaio de instalação/restauração em HOME temporário e parecer vinculado ao aceite
+manual. A confirmação das setas e dos controles já aprovados não é reaberta.
+Não há novos desenhos, alteração de escala/fontes, reaplicação de reparo KDE,
+publicação automática ou promoção para estável. O estado final dos três itens de
+aceite depende da inspeção da sessão de destino, ainda não recebida para 0.7.1.
+Os registros anteriores abaixo são histórico, não novos resultados desta rodada.
 
-### Registro da r1 (preservado como histórico)
 
-**Revisão integrada r1, mantendo a aparência 0.7.0-rc1 byte a byte.**
-Os sete blocos têm implementação ou tratamento nativo documentado. A revisão
-agora dispõe de galeria única e agregador de resultados estáticos/nativos;
-ela não equivale à aprovação final dos blocos 3–7.
+**Consolidação da distribuição r1 — mesma aparência 0.7.1-rc1.**
 
-O COMPARACAO-SETAS fornecido confirmou quatro movimentos e mudanças de pixels
-em Qt Widgets. Nos casos Quick válidos havia pressão na MouseArea sem Sunken.
-Dois casos da cópia corrigida entregaram Sunken e soltura corretos; os casos
-chamados down registraram upPage. A cena anterior sobrepunha o canto das duas
-barras. A revisão r1 corrige o isolamento e valida o destinatário do evento;
-não marca os alvos inválidos como falhas do KDE. Arquivo instalado sem marcador
-no momento da coleta; reparo compartilhado continua opt-in e não é redesenhado.
+Gerador local de dois artefatos candidatos: tema mínimo para Kvantum Manager e
+código-fonte correspondente com instalação/restauração de usuário. Ambos deixam
+fora o reparo compartilhado Qt Quick; não o reaplicar nem investigar sem regressão.
+Nenhuma mudança de SVG, kvconfig, fontes, escala, decoração ou Irixium moderno.
+`distribuicao/CANDIDATA.json` registra o aceite pendente sem convertê-lo em sucesso.
+O pedido para avançar não foi interpretado como envio dos retestes de acabamento.
+Próximo retorno: toolbar/spinbox e os retestes modernos solicitados; depois o teste
+de instalação/restauração do ZIP extraído e a revisão explícita da publicação.
+Ver `../distribuicao/README.md` e executar `bash distribuicao/gerar-kvantum.sh --verificar`.
 
-A seta KDE continua sem solução confirmada na aplicação real; há evidência
-parcial favorável na cópia temporária. Aceitação em Qt/KDE pendente para esta
-revisão integrada. `diagnosticar-setas.sh` continua disponível para inventário,
-mas não substitui o ensaio de interação.
+### Registro do acabamento (continua válido)
 
-Veja `docs/REVISAO-INTEGRADA.md`. Próxima evidência: galeria integrada local e
-quatro alvos válidos na comparação corrigida, depois validação na aplicação real.
+**0.7.1-rc1 — acabamento localizado; sete blocos preservados.**
+
+Setas de rolagem: funcionamento confirmado pelo usuário após o reparo instalado.
+Não reabrir a investigação nem reinstalar o reparo sem regressão observada.
+Capturas recebidas em 100%/14 px: diferença de densidade comprovada. Seleção e
+menus Classic passaram, respectivamente, em 11/11 e 17/17 verificações nativas.
+Isso não equivale a certificar todos os detalhes históricos de cada controle.
+
+Esta candidata corrige a divisória da toolbar e a legibilidade da spinbox;
+aprimora o ensaio moderno e o registro parcial dos menus. Altura de menus e
+cor de campo somente leitura ficam preservadas, com limites explícitos.
+Próximo aceite: separador horizontal/vertical e spinboxes; depois consolidar
+publicação, instalação e cobertura. Nenhuma nova fonte global ou módulo KDE.
 
 | Bloco | Conteúdo obrigatório | Estado | Próxima evidência |
 |---|---|---|---|
-| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho aprovado; Widgets 4/4 observados; pressão Quick ausente, reparo temporário demonstrado em 2 casos; outros alvos antigos inconclusivos | comparar-setas.sh (executor r1 comum, sem canto sobreposto e com alvo validado); instalação KDE separada |
+| 1. Barras de rolagem | Setas ↑↓←→; trilho; puxador; ranhuras; estados; extremos; sem intervalo; horizontal/vertical/RTL | Desenho e funcionamento confirmados pelo usuário; reparo compartilhado preservado | Não alterar sem regressão; conservar testes existentes |
 | 2. Botões | Push button; botão padrão; ferramenta; menu de ferramenta; normal/hover/pressionado/toggled/desativado; foco de teclado | Aprovado pelo usuário em 0.2.0-rc1; preservado nesta revisão | Galeria prever-botoes.sh; tecla Espaço, retorno do relevo, padrão com pressão, disabled e menus de ferramenta |
 | 3. Campos e entradas | Line edit editável e somente leitura; combo editável e de opções; spin box; painéis/frames; caret; seleção; foco; desativado | Implementado para teste em 0.3.0-rc1; cor readonly universal exige suporte fora do SVG | Galeria prever-campos.sh; foco, seleção, limites, RTL; docs/CAMPOS.md |
-| 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Implementado em 0.4.0-rc1 para teste; pressão separada limitada pelo motor Kvantum | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
-| 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Implementado em 0.5.0-rc1 para teste; seleção/pressão, submenu, separador, check/radio e tear-off quando nativo | prever-menus.sh; galeria --qtquick; docs/MENUS.md |
+| 4. Checkboxes e radios | Off/on/parcial; exclusividade; foco; locate highlight; disabled; variantes em menu/lista | Funcional: 11/11 no Classic; geometria da seleção preservada; aceite visual histórico separado | prever-selecao.sh; test_selection.py; docs/SELECAO.md |
+| 5. Menus | Barra; popup; item normal/selecionado/pressionado/desativado; separadores; check/radio; submenu; navegação mouse/teclado; item indisponível | Funcional: 17/17 no Classic; moderno ainda em reteste com registro parcial; densidade preservada | prever-menus.sh; galeria --qtquick; docs/MENUS.md |
 | 6. Abas | Ativa/inativa/hover/desativada; foco; encaixe; quatro orientações; nomes longos; fechar/transbordamento | Implementado para teste em 0.6.0-rc1; sobreposição e estado em primeiro plano referenciados no VkTabPanel; geometria adaptada | prever-abas.sh, --testar, --qtquick; docs/ABAS.md |
 | 7. Sliders e demais controles | Slider/scale; progresso determinado/indeterminado; splitter; headers; listas/tabelas/árvores; seleção; branches; tooltips; dock/toolbox; labels; size grip; MDI; dial | Implementado para ensaio em 0.7.0-rc1; partes nativas e limites históricos explicitados | prever-controles.sh, --testar, --qtquick; docs/COBERTURA-IRIXCLASSIC.md |
 
@@ -174,3 +223,30 @@ pacote foi redesenhado. O merge aceita a base 0.6.0-rc1 e o bloco 7 já aplicado
 sistema. `prever-integracao.sh` compara os mesmos controles em IrixClassic e
 Irixium. Histórico de aprovação, teste estático, execução nativa e fidelidade
 histórica permanecem categorias distintas. A trilha Qt Quick não está encerrada.
+
+## Aceite e acabamento 0.7.1-rc1
+
+- Seleção/menus Classic: retestes recebidos aprovados. Não exigir as cores do
+  Classic no teste do moderno; medir a célula que o QStyle realmente reserva.
+- Toolbar: recurso canônico agora vertical, duas colunas centrais; o motor
+  rotaciona nas toolbars verticais. A alocação continua 10; o cabo não muda.
+- Spinbox: silhueta passa de 5×4 para 7×6 em célula de 12×12. Pressão, limites,
+  repetição e disponibilidade continuam sob o Qt; scrollbar intacta.
+- Menus: execução interrompida grava JSON parcial, etapa e rastreio de eventos.
+  Isso corrige observabilidade; não é aprovação automática do menu moderno.
+- Densidade: manter altura atual da menubar nesta revisão; 24 px da fotografia
+  não são uma altura mínima universal para outras fontes. Sem forçar 24 px.
+- Readonly: mesma superfície da entrada editável; limitação não resolvida pelo
+  SVG. Não tratar readOnly como disabled nem injetar QSS nas aplicações.
+
+## Encerramento técnico e critérios finais
+
+- Código dos sete blocos e ferramentas de distribuição: preparados.
+- Aparência e manifesto: permanecem 0.7.1-rc1; preservar bytes da candidata.
+- Retestes finais: um fluxo, sem instalação global; skip/ausência/interrupção separados.
+- Aceite restante: separador nas duas orientações, spinbox, conjunto/limitações.
+- Publicação: notas e pacotes disponíveis, decisão explícita; não criar tag/push.
+- Escopo não implementável só pelo SVG: documentado, não ocultado nem falsamente concluído.
+
+Procedimento completo: `distribuicao/FECHAMENTO.md`. O programa não altera este
+plano para fingir aceite; o parecer local mantém o vínculo com os hashes testados.

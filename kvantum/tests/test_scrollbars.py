@@ -13,6 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import scrollbar_art as S
 import build_classic as B
+import finish_art as FN
 import range_art as RG
 import menu_art as M
 import tab_art as TB
@@ -36,10 +37,10 @@ class Scrollbars(unittest.TestCase):
     def effective(self,section):
         d=self.effective(self.conf[section]['inherits']) if 'inherits' in self.conf[section] else {}
         d.update({k:v for k,v in self.conf[section].items() if k!='inherits'})
-        return d
+        return FN.prior_effective(section,d)
     def test_other_svg_elements_unchanged(self):
         protected={e.get('id'):canonical(e) for e in self.xml if e.get('id')
-                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')+M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
+                   and not e.get('id').startswith(('ic-scrollarrow-','ic-scroll-','ic-command-','ic-palettebutton-','ic-toolbarbutton-','ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-','ic-checkmark-','menu-ic-checkmark-','item-ic-checkmark-','ic-radiomark-','menu-ic-radiomark-')+M.PREFIXES+TB.PREFIXES+RG.PREFIXES+FN.PREFIXES)}
         self.assertEqual(len(protected),self.baseline['protected_svg_count'])
         self.assertEqual(digest(protected),self.baseline['protected_svg_sha256'])
     def test_other_effective_configurations_unchanged(self):
@@ -153,7 +154,8 @@ class Scrollbars(unittest.TestCase):
     def test_roadmap_covers_all_seven_blocks(self):
         text=(ROOT/'PLANO-IRIXCLASSIC.md').read_text()
         for block in range(1,8): self.assertIn('| '+str(block)+'. ',text)
-        self.assertIn('aceitação em qt/kde pendente',text.lower())
+        self.assertIn('próximo aceite: separador horizontal/vertical e spinboxes',text.lower())
+        self.assertIn('funcionamento confirmado pelo usuário',text)
     def test_historical_limits_are_documented(self):
         text=(ROOT/'docs/ROLAGEM.md').read_text()
         for term in ('Escape','0,7','Sem intervalo','18','impressão'):

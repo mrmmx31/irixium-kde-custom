@@ -10,6 +10,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import finish_art as FN
 import range_art as RG
 import tab_art as A
 
@@ -17,7 +18,7 @@ def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[
 def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
     d=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
-    d.update({k:v for k,v in c[s].items() if k!='inherits'});return d
+    d.update({k:v for k,v in c[s].items() if k!='inherits'});return FN.prior_effective(s,d)
 
 class Tabs(unittest.TestCase):
     @classmethod
@@ -31,7 +32,7 @@ class Tabs(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),3293)
         for n,h in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[n])),h,n)
     def test_only_160_new_tab_resources_added(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(RG.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(RG.PREFIXES+FN.PREFIXES)}
         self.assertEqual(len(added),160)
         self.assertTrue(all(n.startswith(A.PREFIXES) for n in added))
     def test_approved_artwork_generators_and_optional_system_patch_unchanged(self):

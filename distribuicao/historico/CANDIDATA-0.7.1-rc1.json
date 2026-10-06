@@ -1,0 +1,25 @@
+{
+  "theme": "IrixClassic",
+  "theme_version": "0.7.1-rc1",
+  "distribution_revision": "r2-fechamento",
+  "channel": "candidate",
+  "stable_approved": false,
+  "maintainer": "mrmmx31",
+  "observations": {
+    "scrollbar_kde": "Funcionamento confirmado pelo usuário após reparo separado; não reinstalar sem regressão.",
+    "classic_selection_menus": "11/11 e 17/17 no ensaio recebido da aparência 0.7.0; não são um reteste novo de 0.7.1.",
+    "packaging": "Validação de arquivos e geração de ZIP não equivalem ao aceite visual de Qt/KDE.",
+    "closure": "Fluxo de coleta e aceite vinculado por hashes disponível. Não significa que a rodada gráfica final foi executada."
+  },
+  "pending_acceptance": [
+    "Executar fechar-candidata.sh na sessão de destino e registrar os retestes do acabamento e do moderno.",
+    "Registrar aceite visual explícito de toolbar, spinbox e conjunto integrado/limitações.",
+    "Revisar o parecer antes de decidir qualquer versão estável ou publicação."
+  ],
+  "known_limits": [
+    "Cor específica de campo somente leitura não é universalmente implementada pelo SVG.",
+    "Densidade de menus foi preservada; não há certificação de altura histórica única.",
+    "Qt Quick e widgets próprios do aplicativo podem não usar todos os recursos do QStyle.",
+    "Pacotes não incluem o plugin Kvantum, fontes binárias, ícones globais, GTK ou decoração KWin."
+  ]
+}
