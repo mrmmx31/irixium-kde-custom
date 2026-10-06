@@ -7,6 +7,8 @@ Este pacote instala, somente no perfil do usuário:
 - **IRIX Classic**, decoração KWin independente e Tema Global;
 - Plasma Styles separados **Irixium** e **IrixClassic**; o segundo é uma cópia
   nomeada para receber as futuras alterações visuais do Classic;
+- o Classic usa o mesmo layout de desktop, alternância de janelas e alternância
+  de áreas de trabalho do Irixium moderno;
 - tema de ícones **IRIX Classic — SGI**;
 - wallpaper IRIX Classic;
 - scripts para alternar as duas decorações.
