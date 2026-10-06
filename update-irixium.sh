@@ -5,7 +5,7 @@ set -eu
 bundle_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 case "${1:-}" in
   --verificar|--ativar|"")
-    exec "$bundle_dir/modern-rewrite-rc1/instalar.sh" "$@"
+    exec "$bundle_dir/decorations/modern/instalar.sh" "$@"
     ;;
   --aplicar-fontes)
     printf '%s\n' '--aplicar-fontes não faz parte da decoração user-local; use o instalador de fontes separado.' >&2

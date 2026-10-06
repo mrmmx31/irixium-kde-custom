@@ -1,24 +1,9 @@
 # Irixium / IRIX Classic
 
-Personalizações mantidas por **`mrmmx31`**. Decoração de janela e estilo de
-aplicativos são componentes separados; instalar um não deve trocar o outro.
+Temas mantidos por **mrmmx31** para KDE Plasma 6. Todos os instaladores de temas
+usam somente o perfil do usuário atual. Execute **sem sudo**.
 
-| Componente | Diretório | Situação |
-|---|---|---|
-| Decoração Irixium moderno | `modern-rewrite-rc1/` (assets em `aurorae/Irixium/`) | Pacote KWin independente `irixium_modern`; símbolos e efeitos modernos. |
-| Decoração IRIX Classic | `classic-rewrite-rc1/` | Reescrita 1.0.0-rc3; moldura em peças reutilizáveis, sem Canvas de janela inteira. |
-| Application Style Irixium | `kvantum/Irixium/` | Base original preservada. |
-| Application Style IrixClassic | `kvantum/IrixClassic/` | Versão estável 0.7.1 para Qt Widgets. |
-| Tema GTK | `gtk/` | Base preservada; incluída no instalador completo. |
-| Ícones Irixium | `icons/Irixium/` | Snapshot do pacote KDE Store 2142965; licença upstream ainda não declarada no payload. |
-| Plasma Style Irixium | `plasma/Irixium/` | Snapshot do pacote KDE Store 1457753; GPL3 declarada pelo pacote. |
-| Plasma Style IrixClassic | `plasma/IrixClassic/` | Cópia nomeada do Irixium, reservada para futuras alterações do Classic. |
-| Look-and-Feel e splash | `look-and-feel/org.magpie.irixium.desktop/` | Splash incluído no pacote; declarações de licença conflitantes preservadas. |
-| Cursores SGI | `cursors/sgi/` | Cursor ativo; cópia verificada do upstream `jujum4n/sgi-enhanced`. |
-
-## Instalação e atualização do conjunto completo (Plasma 6)
-
-Este é o fluxo principal, em qualquer computador, como usuário normal e **sem sudo**:
+## Instalar e aplicar
 
 ```sh
 bash instalar-irixium.sh --verificar
@@ -26,160 +11,101 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-O primeiro comando verifica todos os arquivos e a presença de Plasma 6, Aurorae,
-KSvg QML e Kvantum Qt 6. Esses programas devem vir dos pacotes da distribuição;
-o instalador não altera o sistema. Os assets dos dois temas ficam no repositório:
-decorações, ícones, cursores SGI, Plasma Styles, GTK Irixium, Kvantum, esquema de
-cores e wallpapers. Não há download automático pela KDE Store nem instalação de SDDM.
+A instalação atualiza 15 componentes gráficos locais, com backup, sem trocar a
+seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
+cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
+Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
+Plasma 6, Aurorae/KSvg Qt 6 e Kvantum Qt 6 devem estar instalados pela distribuição.
 
-A instalação copia **15 componentes** para `XDG_DATA_HOME` e `XDG_CONFIG_HOME` do
-usuário. Ela atualiza também temas já existentes, remove arquivos obsoletos dentro
-dos componentes substituídos e guarda backup em `XDG_STATE_HOME/irixium-suite`.
-Outros temas, arquivos de configuração e usuários não são modificados. A instalação
-preserva a seleção; `aplicar-tema.sh` aplica o tema global e seleciona seu Kvantum
-correspondente, sem redefinir o layout dos painéis.
+Os temas completos e os destinos estão em [components.json](components.json),
+usado pelo instalador e pela auditoria. A aplicação seleciona o esquema de sons
+SGI **quando ele já está instalado e validado**; não modifica volume, mudo,
+Não perturbe nem habilita eventos. `--sem-sons` preserva a seleção de sons.
 
-O seletor de Tema Global do KDE aplica os componentes nativos do Plasma, mas não
-seleciona o tema interno do Kvantum. Para aplicar o conjunto coerente, use o comando
-acima; se preferir o KCM, selecione também IrixClassic ou Irixium no Kvantum Manager.
-A aplicação guarda as configurações anteriores em `XDG_STATE_HOME/irixium-selection`.
+Após atualizar QML em uso, salve o trabalho e encerre/entre novamente na sessão.
+Reabra os aplicativos para carregar Kvantum e ícones. Não há reinício forçado do
+KWin. Os botões mostram relevo durante a pressão e executam a ação na soltura;
+duplo clique no menu fecha também a janela inativa. Somente o clique simples no
+menu aguarda o intervalo de duplo clique do Qt; esse timer não participa do resize.
 
-Depois de atualizar uma decoração **já em uso**, salve o trabalho e saia/entre na
-sessão para descartar o QML mantido em memória pelo KWin. Reabra aplicativos para
-recarregar seus ícones e o Kvantum. O instalador atualiza os caches de ícones disponíveis,
-mas não encerra aplicativos nem reinicia o compositor. Copiar arquivos não substitui
-a instância QML já carregada.
+## Sons SGI: instalação local separada
+
+O esquema, catálogo, mapeamento e instaladores estão em [sons/](sons/README.md).
+Os oito áudios originais **não são versionados nem baixados automaticamente**.
+Em outro computador, forneça uma cópia local autorizada:
 
 ```sh
+bash sons/instalar.sh --origem /caminho/dos/originais
+bash aplicar-tema.sh classic --exigir-sons
+```
+
+Com fontes já preparadas no cache local, `bash sons/instalar.sh` reinstala sem
+rede. O downloader privado de desenvolvimento em `sons/local/` foi preservado,
+continua ignorado pelo Git e nunca é chamado pelo fluxo público. Não o inclua
+em releases; a decisão sobre download público continua pendente.
+
+Para exigir uma instalação com sons completos, audite com `--exigir-sons`.
+Sem os originais, o conjunto gráfico continua instalável e o comando de aplicação
+preserva os sons existentes. O comando com `--exigir-sons` recusa a aplicação,
+em vez de anunciar que um esquema ausente foi configurado.
+
+## Estrutura mantida
+
+| Componente | Fonte |
+|---|---|
+| Decoração IRIX Classic | `decorations/classic/` |
+| Decoração Irixium e seus assets | `decorations/modern/` |
+| Estilos Qt Widgets | `kvantum/IrixClassic/`, `kvantum/Irixium/` |
+| GTK 3/4 | `gtk/` |
+| Ícones | `icons/themes/IrixClassic-SGI/`, `icons/Irixium/` |
+| Cursores | `cursors/sgi/` |
+| Cores | `colors/Irixium.colors` |
+| Plasma Styles | `plasma/IrixClassic/`, `plasma/Irixium/` |
+| Wallpapers | `wallpapers/IrixClassic/`, `wallpapers/Irixium/` |
+| Tema global e splash | `look-and-feel/` |
+| Sons, sem os áudios | `sons/` |
+| Instaladores, auditoria, transações | `tools/` |
+| Testes e validação | `tests/`, `docs/`, testes dos componentes |
+| Empacotamento/release estável do Kvantum | `distribuicao/` |
+
+As decorações não sobrescrevem o Aurorae compartilhado. Os antigos overlays,
+instaladores de sistema e cópias redundantes foram retirados da árvore ativa;
+continuam recuperáveis pelo histórico Git. Veja
+[reorganização e inventário local](docs/REORGANIZACAO-2026-10-06.md).
+
+O hook opcional da Classic só mantém seu pacote disponível no perfil do usuário;
+não troca a seleção. O reparo opcional do KDE Qt Quick em `tools/qtquick_scrollbar_fix.py`
+é uma ferramenta de manutenção separada, fora da instalação dos temas.
+
+## Validar e restaurar
+
+```sh
+python3 tools/audit_suite.py                    # fontes e vínculos no repositório
+python3 tools/audit_suite.py --local --exigir-sons
+bash testar-integracao.sh                      # todos os componentes públicos
 bash instalar-irixium.sh --restaurar --verificar
 bash instalar-irixium.sh --restaurar
-bash aplicar-tema.sh --restaurar   # somente a seleção/configuração anterior
+bash aplicar-tema.sh --restaurar
 ```
 
-A restauração recusa sobrescrever edições posteriores. `--sem-cache` serve para
-instalações de teste em perfis temporários. Os fluxos individuais abaixo continuam
-úteis para desenvolver apenas um componente; `update-irixium.sh` atualiza somente
-a decoração moderna, não o conjunto inteiro.
+As restaurações recusam sobrescrever edições posteriores. Backups ficam em
+`XDG_STATE_HOME/irixium-suite` e `XDG_STATE_HOME/irixium-selection`. Sons possuem
+seus próprios backups e restauração em `sons/restaurar.sh`.
 
-A Classic reutiliza peças SVG geradas de `Pixels.js` no scene graph, mantendo Canvas
-apenas nos três símbolos pequenos. Não redesenha uma imagem do tamanho da janela no
-resize. O duplo clique no menu fecha a janela; o clique simples aguarda somente o intervalo
-de duplo clique do Qt. Esse timer é exclusivo do gesto e não redesenha a moldura. Veja a validação em
-`docs/VALIDACAO-CORRECOES-2026-10-06.md`.
+Para desenvolvimento de componentes individuais, os READMEs das decorações e
+Kvantum descrevem suas prévias, testes e instaladores. `update-irixium.sh` e
+`restaurar-irixium.sh` continuam como atalhos para a decoração moderna.
 
-## Atualização segura da decoração moderna
+## Créditos e licenças
 
-Na raiz do checkout, como usuário normal, **sem sudo**:
+Irixium moderno/Aurorae e Kvantum: Mark Whittaker / Phob1an. GTK: TheJollyDuck /
+Shauna Recto. Cursores: jujum4n e colaboradores. Metadados e procedência ficam
+junto de cada componente e em [UPSTREAMS.md](UPSTREAMS.md).
 
-```sh
-bash update-irixium.sh --verificar
-bash update-irixium.sh
-```
-
-O fluxo instala/atualiza o pacote `irixium_modern` em
-`~/.local/share/kwin/decorations/`, preserva a seleção atual e não altera
-componentes Aurorae compartilhados do sistema. Assim, quem está usando IRIX
-Classic não é trocado para o moderno sem pedir.
-
-Opções explícitas:
-
-```sh
-bash update-irixium.sh --ativar
-```
-
-`--ativar` seleciona `irixium_modern`. O pacote possui seu próprio botão de ações
-e seus próprios assets; nenhuma cópia de `MenuButton.qml`, `AuroraeButtonGroup.qml`
-ou `applications.png` é feita em `/usr`.
-
-**Salve o trabalho, encerre a sessão e entre novamente** para recarregar QML.
-Não há reinício forçado do KWin. Arquivos da Classic e do Kvantum não são alterados.
-
-Restauração da última atualização do pacote moderno:
-
-```sh
-bash restaurar-irixium.sh --verificar
-bash restaurar-irixium.sh
-```
-
-Recibos privados ficam em
-`${XDG_STATE_HOME:-$HOME/.local/state}/irixium-modern/backups/`. A restauração
-somente remove a cópia instalada pelo pacote e recoloca o backup anterior.
-
-## Decoração IRIX Classic
-
-Para atualizar somente a decoração Classic:
-
-```sh
-bash classic-rewrite-rc1/instalar.sh --verificar
-bash classic-rewrite-rc1/instalar.sh
-```
-
-A Classic independente não exige sobrescrever QML de sistema. Suas opções,
-restauração e limitações de integração estão no README próprio. `classic-v4/`,
-`controles-v3/`, `divisorias-v1/` e `divisorias-v2/` ficam como histórico/referência,
-não como etapas que devem ser reinstaladas em sequência.
-
-`moderno/geometria/` é um histórico de integração do Aurorae compartilhado e não
-faz parte do novo fluxo. Não o execute: o pacote moderno independente já contém
-seu layout, assets e controles.
-
-## Application Style IrixClassic (Kvantum)
-
-Primeiro teste em uma galeria Qt Widgets com configuração temporária:
-
-```sh
-bash kvantum/prever-classic.sh
-```
-
-Exige PyQt6 ou PySide6 e Kvantum Qt 6; dependência ausente é informada, não instalada.
-Para copiar o tema sem selecionar:
-
-```sh
-bash kvantum/instalar-classic.sh --verificar
-bash kvantum/instalar-classic.sh
-```
-
-Depois selecione **IrixClassic** no Kvantum Manager, mantendo **kvantum** como
-Application Style do KDE. Ou use `--ativar` para trocar somente a seleção interna
-do Kvantum. Reabra os aplicativos. A decoração da janela não é trocada.
-Restauração: `bash kvantum/restaurar-classic.sh`.
-
-A paleta e o desenho são uma proposta baseada nas referências IRIX; abas e estados
-não documentados são adaptações declaradas. Não há alegação de identidade completa
-com o IRIX. As fontes globais continuam intocadas. Veja `kvantum/IrixClassic/README.md`.
-
-## Desenvolvimento e revisão
-
-```sh
-bash testar-integracao.sh
-./check-upstreams.sh
-```
-
-Os testes automatizados de integração não substituem testes reais no KWin/Qt.
-Confira `docs/VALIDACAO-INTEGRACAO.md`. Nenhum script faz commit ou push.
-Revisões de upstream devem ser propostas em branch separada e revisadas antes do
-merge na branch de destino; nunca substitua personalizações automaticamente.
-
-## Créditos e licença
-
-A decoração `aurorae/Irixium/` é baseada em Irixium por Phob1an. O Kvantum moderno
-é de Mark Whittaker/Phob1an. `gtk/` é baseado em Irixium por TheJollyDuck/Shauna
-Recto. Créditos, licenças e fontes preservadas estão nos respectivos diretórios;
-os textos GPL permanecem em `LICENSE`, `gtk/LICENSE` e nos pacotes.
-
-Os componentes KDE Store preservam seus metadados originais. A licença dos
-ícones não está declarada no snapshot instalado; o Look-and-Feel contém
-declarações conflitantes entre `metadata.desktop` e `metadata.json`. Essas
-pendências não são substituídas por uma suposição local. O cursor `sgi` é
-declarado pelo upstream como GPL, sem versão especificada no checkout atual;
-sua procedência está em `cursors/sgi/ORIGEM.json`.
-
-`applications.png` é o desenho de 22×22 desta personalização. O SVG IrixClassic
-Kvantum é novo; o moderno não é sobrescrito. Os novos utilitários são
-GPL-3.0-or-later. IRIX e SGI são referências/marcas de seus titulares; nenhum
-binário, fonte tipográfica ou código privado do IRIX é incluído.
-
-Fora do Irixium, o `MenuButton.qml` mantém o ícone da janela fornecido por
-`decoration.client.icon`. Quando o cliente não fornece um ícone, usa
-`application-x-executable` como fallback para que o botão de ações não fique
-vazio.
+Créditos/licenças dos assets upstream foram preservados. O snapshot de ícones
+Irixium não declara licença; o tema global upstream tem declarações GPL
+conflitantes. Essas pendências não foram substituídas por uma licença presumida.
+GTK separa licença de código e imagens no seu README. Os sons SGI não recebem
+uma licença local nem entram no pacote público. IRIX/SGI são referências/marcas
+de seus titulares; fontes tipográficas proprietárias e código privado do IRIX
+não são incluídos. Nimbus Sans é fornecida pela distribuição.

@@ -57,7 +57,6 @@ Na raiz do ZIP extraído, como usuário normal:
 
 ```sh
 bash sons/testar.sh
-python3 -B testar-merge.py
 ```
 
 Os testes não acessam a rede nem reproduzem áudio. Exigem Python 3 e Git; os
@@ -67,3 +66,14 @@ os contam como conversões aprovadas. Não instalam dependências.
 O aceite de uso inicial é simples: importar, selecionar IrixClassic Sounds no
 KCM e ouvir a prévia geral e seus cinco atalhos. `sons/ouvir.sh` permite separar
 falha de lookup de falha de reprodução direta, sem alterar as configurações.
+
+
+## Verificação do perfil local em 06/10/2026
+
+A auditoria `python3 tools/audit_suite.py --local --exigir-sons` confirmou que o
+esquema IrixClassic está instalado e selecionado, com os oito originais fixados
+no cache e os 24 eventos/aliases válidos. Conferência de WAV, PCM, identidade e
+manifesto passou sem rede ou reprodução. O usuário informou que o esquema está
+funcional; esta auditoria não acrescenta uma alegação de audição automatizada.
+Os scripts privados em `sons/local/` foram preservados byte a byte e continuam
+fora do Git. Os limites históricos acima descrevem a primeira entrega.

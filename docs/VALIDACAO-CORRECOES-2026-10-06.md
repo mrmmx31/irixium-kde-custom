@@ -70,9 +70,9 @@ Comandos de desenvolvimento para os testes Qt (requerem PyQt6 QtQuick/QtTest;
 
 ```sh
 QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software dbus-run-session -- \
-  /usr/bin/python3 classic-rewrite-rc1/tests/test_native_render.py
+  /usr/bin/python3 decorations/classic/tests/test_native_render.py
 QT_QPA_PLATFORM=offscreen QT_QUICK_BACKEND=software dbus-run-session -- \
-  /usr/bin/python3 classic-rewrite-rc1/tests/test_native_input.py
+  /usr/bin/python3 decorations/classic/tests/test_native_input.py
 ```
 
 Benchmark local, backend software/offscreen, 60 amostras após aquecimento,

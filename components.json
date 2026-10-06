@@ -1,0 +1,107 @@
+{
+  "format": 1,
+  "components": [
+    {
+      "source": "decorations/modern/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_modern"
+    },
+    {
+      "source": "decorations/classic/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_irix_classic_v4"
+    },
+    {
+      "source": "icons/Irixium",
+      "root": "data",
+      "destination": "icons/Irixium"
+    },
+    {
+      "source": "icons/themes/IrixClassic-SGI",
+      "root": "data",
+      "destination": "icons/IrixClassic-SGI"
+    },
+    {
+      "source": "cursors/sgi",
+      "root": "data",
+      "destination": "icons/sgi"
+    },
+    {
+      "source": "gtk",
+      "root": "data",
+      "destination": "themes/Irixium"
+    },
+    {
+      "source": "colors/Irixium.colors",
+      "root": "data",
+      "destination": "color-schemes/Irixium.colors"
+    },
+    {
+      "source": "plasma/Irixium",
+      "root": "data",
+      "destination": "plasma/desktoptheme/Irixium"
+    },
+    {
+      "source": "wallpapers/Irixium",
+      "root": "data",
+      "destination": "wallpapers/Irixium"
+    },
+    {
+      "source": "kvantum/Irixium",
+      "root": "config",
+      "destination": "Kvantum/Irixium"
+    },
+    {
+      "source": "plasma/IrixClassic",
+      "root": "data",
+      "destination": "plasma/desktoptheme/IrixClassic"
+    },
+    {
+      "source": "wallpapers/IrixClassic",
+      "root": "data",
+      "destination": "wallpapers/IrixClassic"
+    },
+    {
+      "source": "kvantum/IrixClassic",
+      "root": "config",
+      "destination": "Kvantum/IrixClassic"
+    },
+    {
+      "source": "look-and-feel/org.magpie.irixium.desktop",
+      "root": "data",
+      "destination": "plasma/look-and-feel/org.magpie.irixium.desktop"
+    },
+    {
+      "source": "look-and-feel/org.magpie.irixclassic.desktop",
+      "root": "data",
+      "destination": "plasma/look-and-feel/org.magpie.irixclassic.desktop"
+    }
+  ],
+  "profiles": {
+    "classic": {
+      "global": "org.magpie.irixclassic.desktop",
+      "kvantum": "IrixClassic",
+      "decoration": "irixium_irix_classic_v4",
+      "icons": "IrixClassic-SGI",
+      "plasma": "IrixClassic",
+      "wallpaper": "IrixClassic",
+      "gtk": "Irixium"
+    },
+    "moderno": {
+      "global": "org.magpie.irixium.desktop",
+      "kvantum": "Irixium",
+      "decoration": "irixium_modern",
+      "icons": "Irixium",
+      "plasma": "Irixium",
+      "wallpaper": "Irixium",
+      "gtk": "Irixium"
+    }
+  },
+  "sounds": {
+    "theme": "IrixClassic",
+    "catalog": "sons/data/catalogo.json",
+    "installer": "sons/instalar.sh",
+    "audio_in_repository": false,
+    "automatic_download": false
+  }
+}

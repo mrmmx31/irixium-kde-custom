@@ -3,4 +3,4 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 set -eu
 bundle_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-exec "$bundle_dir/modern-rewrite-rc1/restaurar.sh" "$@"
+exec "$bundle_dir/decorations/modern/restaurar.sh" "$@"

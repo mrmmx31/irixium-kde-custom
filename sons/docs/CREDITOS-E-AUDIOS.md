@@ -9,10 +9,26 @@ revisada em 24/08/1998 e arquivada em 11/09/2001:
 
 https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html
 
-A página pede atribuição para uso dos sons e comenta seu uso em computadores
-pessoais. Não apresenta uma licença GPL, Creative Commons ou outra licença livre
-formal. Não tratamos esse texto informal como uma autorização irrestrita de
-redistribuição. **Os áudios não são criação de mrmmx31 e não foram relicenciados.**
+A página incentiva uso com atribuição na Web e em computadores pessoais.
+Isso não equivale a uma proibição absoluta de versionar os sons; tampouco
+esclarece redistribuição de um pacote convertido ou relicenciamento.
+**Os áudios não são criação de mrmmx31 e não foram relicenciados.**
+
+## Verificação em 06/10/2026
+
+A [página histórica do organizador](https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html)
+foi consultada novamente. Não possuir uma licença GPL/CC, por si só, não invalida
+uma autorização específica. A dúvida é o alcance do texto e a autoridade para
+autorizar distribuição pública dos originais e WAVs. Não encontramos nesses
+materiais uma autorização inequívoca para esse pacote.
+
+O README e a árvore do [espelho no commit fixado](https://github.com/theodric/IRIX-noises-macOS/tree/08ffcbcb16787d60a33ff881e4a3169a98d428a0)
+não acrescentam licença de redistribuição. A política abaixo é uma decisão
+conservadora do projeto, não uma conclusão de que qualquer versionamento seria
+ilegal. Para alterá-la, precisamos esclarecer essa permissão com o titular ou
+representante autorizado, incluindo conversão e distribuição no GitHub/releases.
+Em caso de dúvida, o [U.S. Copyright Office](https://www.copyright.gov/help/faq/faq-fairuse.html)
+orienta obter permissão; essa orientação não decide o caso específico.
 
 ## Política desta distribuição
 

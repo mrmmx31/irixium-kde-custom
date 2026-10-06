@@ -30,7 +30,7 @@ def digest(data):return hashlib.sha256(data).hexdigest()
 
 def fingerprints(root):
     paths=[]
-    for part in ('kvantum/IrixClassic','kvantum/Irixium','aurorae','classic-rewrite-rc1','moderno','gtk'):
+    for part in ('kvantum/IrixClassic','kvantum/Irixium','decorations','gtk'):
         directory=root/part
         if directory.is_dir():paths.extend(p for p in directory.rglob('*') if p.is_file() and '__pycache__' not in p.parts)
     return {str(p.relative_to(root)):digest(p.read_bytes()) for p in sorted(paths)}

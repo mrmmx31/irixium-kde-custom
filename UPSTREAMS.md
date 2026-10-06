@@ -16,8 +16,9 @@ convenience.
 Use `./check-upstreams.sh` to fetch and display new commits from the GTK
 upstream. Do not overwrite local changes automatically; review upstream
 changes and merge them deliberately. The preserved modern Kvantum source is
-under `kvantum/Irixium/`; `kvantum/IrixClassic/` is reserved for the future
-variant. The Aurorae decoration remains separately under `aurorae/Irixium/`.
+under `kvantum/Irixium/`; `kvantum/IrixClassic/` contains the stable Classic variant. Aurorae artwork
+is maintained directly under `decorations/modern/package/assets/`, with upstream
+metadata and provenance under `decorations/modern/`.
 
 The KDE Store components are package snapshots rather than Git checkouts.
 Their package pages and IDs are monitored for availability by the scheduled

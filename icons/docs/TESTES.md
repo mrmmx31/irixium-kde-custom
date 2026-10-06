@@ -2,7 +2,7 @@
 
 ## Resultados obtidos neste ambiente
 
-- **25 testes automatizados passaram**, sem testes ignorados nesta execução. O log está em `testes-unitarios.txt`.
+- **25 testes automatizados passaram**, sem testes ignorados nesta execução. O log da entrega inicial permanece no histórico Git.
 - Auditoria do tema pronto: **2.628 entradas de imagem**, sendo **2.336 PNGs e 292 SVGs**, **zero erros, zero avisos, zero links simbólicos**.
 - Todos os PNGs foram também decodificados com Pillow. Nenhum estava vazio e todos tinham fundo com transparência.
 - Foram conferidas as dimensões físicas dos PNGs de acordo com o `index.theme`, a integridade por CRC, a estrutura dos SVGs e a ausência de dependências externas proibidas pelo verificador.
@@ -12,7 +12,7 @@
 - A fixture do índice Irixium corresponde ao blob Git `b4ad6335a7fa38dc8d832838aced0635ebf2ac78`. `git apply --check` e a aplicação em uma cópia temporária passaram.
 - As prévias foram renderizadas e inspecionadas visualmente, incluindo dimensões nativas sobre fundos claro e escuro.
 
-Os relatórios de máquina são `validacao-tema.json` e `validacao-renderizacao.json`.
+Os relatórios de máquina da entrega inicial permanecem no histórico Git; não são a validação do pacote atual.
 
 ## Comportamentos de segurança/regressão testados
 
@@ -41,3 +41,18 @@ O auditor é uma ferramenta específica para estrutura de temas, não uma análi
 | Reversão | Selecionar Irixium/Breeze | Verificar que decoração e demais componentes permaneceram iguais |
 
 Ao relatar um defeito, inclua a aplicação, a área, o tamanho pedido, a escala da tela, a versão do Plasma e uma captura. Prefira comparar a mesma aplicação com Irixium, Irixium-Fixed e IRIX Classic — SGI, mantendo o restante da sessão constante.
+
+
+## Estado atual — 06/10/2026
+
+O pacote instalado é 0.3.0. Os números da entrega 0.1.0 acima descrevem apenas
+a base de geração. Na reorganização passaram 27 testes, incluindo geração e
+validação real dos caches GTK dos dois temas e nomes de arquivo compatíveis.
+A auditoria local confirmou todos os arquivos dos dois temas no repositório.
+As capturas QIcon instaladas estão descritas em
+`../../docs/VALIDACAO-CORRECOES-2026-10-06.md`.
+
+Foram retirados logs, relatórios, checksums e prévias estáticas desatualizadas;
+novas evidências devem ser geradas fora do checkout. Use `tools/validate_theme.py`
+com `--report /tmp/relatorio.json`. Os manifestos 0.1/0.2/0.3 no tema são registros
+de geração e expansão usados como referência; não foram apagados nem reescritos.
