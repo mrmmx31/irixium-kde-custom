@@ -40,6 +40,12 @@ backup_and_copy "$base/look-and-feel/org.magpie.irixium.desktop" \
 backup_and_copy "$base/look-and-feel/org.magpie.irixclassic.desktop" \
   "$data_home/plasma/look-and-feel/org.magpie.irixclassic.desktop"
 
+printf '%s\n' 'Instalando os dois Plasma Styles...'
+backup_and_copy "$base/plasma/Irixium" \
+  "$data_home/plasma/desktoptheme/Irixium"
+backup_and_copy "$base/plasma/IrixClassic" \
+  "$data_home/plasma/desktoptheme/IrixClassic"
+
 printf '%s\n' 'Instalando wallpaper no perfil do usuário...'
 backup_and_copy "$base/wallpapers/IrixClassic" \
   "$data_home/wallpapers/IrixClassic"
