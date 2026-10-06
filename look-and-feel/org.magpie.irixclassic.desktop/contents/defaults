@@ -1,9 +1,30 @@
+[kdeglobals][KDE]
+widgetStyle=kvantum
+
+[kdeglobals][General]
+ColorScheme=Irixium
+
 [kdeglobals][Icons]
 Theme=IrixClassic-SGI
 
 [plasmarc][Theme]
 name=IrixClassic
 
+[Wallpaper]
+Image=Irixium
+
+[kcminputrc][Mouse]
+cursorTheme=breeze_cursors
+
+[kwinrc][WindowSwitcher]
+LayoutName=org.kde.breeze.desktop
+
+[kwinrc][DesktopSwitcher]
+LayoutName=org.kde.breeze.desktop
+
 [kwinrc][org.kde.kdecoration2]
 library=org.kde.kwin.aurorae
 theme=irixium_irix_classic_v4
+
+[KSplash]
+Theme=Irixium
