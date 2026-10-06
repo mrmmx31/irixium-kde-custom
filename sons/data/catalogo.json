@@ -1,0 +1,250 @@
+{
+  "schema": 1,
+  "package": "IrixClassic Sounds",
+  "version": "0.1.0",
+  "theme_id": "IrixClassic",
+  "maintainer": "mrmmx31",
+  "audio_in_public_package": false,
+  "original_catalog": "https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html",
+  "source_mirror": {
+    "repository": "theodric/IRIX-noises-macOS",
+    "commit": "08ffcbcb16787d60a33ff881e4a3169a98d428a0",
+    "directory": "irix-sounds-all"
+  },
+  "disabled_events": [
+    "desktop-login",
+    "desktop-logout",
+    "system-bootup",
+    "system-ready",
+    "system-shutdown",
+    "service-login",
+    "service-logout",
+    "desktop-switch"
+  ],
+  "disabled_note": "Sem boot tunes e sem falsa associação de login/logout. DeskSwitch não implementado no IRIX conforme catálogo.",
+  "fallback": "freedesktop",
+  "sounds": [
+    {
+      "id": "error",
+      "label_pt": "Erro",
+      "original_filename": "01.african.thumb.inst.aifc",
+      "source_size": 75452,
+      "git_blob_sha1": "bc716c5f28eeb756f45feb635ad212433dea3d95",
+      "events": [
+        "dialog-error",
+        "dialog-warning",
+        "battery-low",
+        "power-unplug-battery-low"
+      ],
+      "mapping_note": "Erro mantém a finalidade; advertência e bateria baixa são adaptações KDE, não o Warning histórico (chegada de arquivo).",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "fatal",
+      "label_pt": "Erro fatal",
+      "original_filename": "ss1.aifc",
+      "source_size": 95724,
+      "git_blob_sha1": "bd30956267e2740610ab5a1b204cc47cbf9dfa68",
+      "events": [
+        "dialog-error-serious",
+        "dialog-error-fatal",
+        "battery-caution"
+      ],
+      "mapping_note": "Erro fatal é histórico; severidade moderna e battery-caution são adaptações; os limiares são definidos pelo aplicativo.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "arrival",
+      "label_pt": "Chegada de arquivo (Warning no IRIX)",
+      "original_filename": "13.high.chink.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "79cacc74d520f83306ed96c924aae900bd8077c8",
+      "events": [
+        "message-new",
+        "message-new-email",
+        "message-new-instant",
+        "message-new-sms"
+      ],
+      "mapping_note": "Adaptação de chegada de arquivo para chegada de mensagens. Não toca em operações do Dolphin.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "question",
+      "label_pt": "Pergunta",
+      "original_filename": "01.buzz.kerchick.aifc",
+      "source_size": 89204,
+      "git_blob_sha1": "247837c720080c43a216442986dc8ec7778c6dae",
+      "events": [
+        "dialog-question"
+      ],
+      "mapping_note": "Correspondência de finalidade.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "information",
+      "label_pt": "Informação",
+      "original_filename": "08.ting.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "58059efbed03a60722e6b196bfad96e869d2bffe",
+      "events": [
+        "dialog-information",
+        "device-removed",
+        "power-plug"
+      ],
+      "mapping_note": "Informação é histórica; remoção de dispositivo e energia conectada são adaptações.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "launch",
+      "label_pt": "Lançar aplicativo",
+      "original_filename": "05.kerchick.echo.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "e91932e28b9460b9b161605acfe4b1421529a526",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "completion",
+      "label_pt": "Conclusão",
+      "original_filename": "20.zikik.aifc",
+      "source_size": 133180,
+      "git_blob_sha1": "e51ef099127f4756c1ed5204647d243e5d0621c2",
+      "events": [
+        "complete",
+        "complete-download",
+        "complete-copy",
+        "complete-media-burn",
+        "theme-demo"
+      ],
+      "mapping_note": "Conclusão é histórica; os tipos de tarefa e a prévia do tema são adaptações. Não intercepta transferências.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "beep",
+      "label_pt": "Campainha",
+      "original_filename": "ss7.aifc",
+      "source_size": 6520,
+      "git_blob_sha1": "3d8032988bd8b6c0a3d6c1d32507cd9b8b592047",
+      "events": [
+        "bell-window-system",
+        "bell-terminal",
+        "audio-volume-change"
+      ],
+      "mapping_note": "Campainha é histórica; terminal e ajuste de volume são adaptações.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "move",
+      "label_pt": "Mover ícone",
+      "original_filename": "02.xylo.pong.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "13054a85b699a09cee400ccc82978a901cb75444",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "copy",
+      "label_pt": "Copiar ícone",
+      "original_filename": "01.high.toms.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "219b9fcdb982ed16b010a4195b9c1793e27d9ac3",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "shift",
+      "label_pt": "Reposicionar ícone",
+      "original_filename": "ss10.aifc",
+      "source_size": 10934,
+      "git_blob_sha1": "caf851c2d6c2bf1e2206c1d13d4fea10dc9bc1fd",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "dropignore",
+      "label_pt": "Ignorar tentativa de soltar ícone",
+      "original_filename": "02.chick.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "e645413c303606e92c713d2beb26923ab11599da",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "not_implemented_in_desktop"
+    },
+    {
+      "id": "remove",
+      "label_pt": "Excluir definitivamente",
+      "original_filename": "01.rm.aiff",
+      "source_size": 67412,
+      "git_blob_sha1": "cecef4d6dedad7b3ad780d00d1e576c956941a5e",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "trash",
+      "label_pt": "Enviar à lixeira",
+      "original_filename": "19.bong.aifc",
+      "source_size": 91652,
+      "git_blob_sha1": "2b8da6cf5ee31ef344feec0c13db970d4fc0b6c3",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "putaway",
+      "label_pt": "Recolher ícone",
+      "original_filename": "ss11.aifc",
+      "source_size": 9340,
+      "git_blob_sha1": "f664199218bd6a81fcc1c8c199604a83abf00e05",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "obsolete_irix_6_3_6_4"
+    },
+    {
+      "id": "mount",
+      "label_pt": "Montar volume",
+      "original_filename": "24.muted.bong.aifc",
+      "source_size": 133180,
+      "git_blob_sha1": "a4c342a4844e07798b8ea3dc8bec1ae4cb2e6451",
+      "events": [
+        "device-added"
+      ],
+      "mapping_note": "Adaptação de montar volume para dispositivo adicionado; não instala observador de montagem.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "folder",
+      "label_pt": "Abrir pasta",
+      "original_filename": "14.wood.duhdah.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "1d56bc07e353cf4a55c36f0c7861ef214e9ad592",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "remote-folder",
+      "label_pt": "Abrir pasta remota",
+      "original_filename": "18.wood.kasnap.aifc",
+      "source_size": 41224,
+      "git_blob_sha1": "582c125c4db8f9618ecdc40f90fc36b63669b316",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "catalogued"
+    },
+    {
+      "id": "deskswitch",
+      "label_pt": "Trocar de desktop",
+      "original_filename": "05.hi.wood.uhoh.aifc",
+      "source_size": 67412,
+      "git_blob_sha1": "66e221a329b0f33ed2412204e3d6db21fe9631f0",
+      "events": [],
+      "mapping_note": "Reservado; sem associação nem integração nesta versão.",
+      "historical_status": "not_implemented_in_desktop"
+    }
+  ]
+}
