@@ -31,8 +31,8 @@ Decoration {
         minimizeAllowed: decoration.client.minimizeable
         maximizeAllowed: decoration.client.maximizeable
         closeAllowed: decoration.client.closeable
-        closeOnDouble: localSettings.menuDoubleClickClosesWindow
-        menuOnPress: localSettings.menuOpensOnPress
+        closeOnDouble: false
+        menuOnPress: true
         caption: decoration.client.caption
         titleFamily: localSettings.titleFamily
         titlePixels: localSettings.titlePixels
