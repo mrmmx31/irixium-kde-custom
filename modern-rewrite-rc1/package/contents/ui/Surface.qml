@@ -11,7 +11,7 @@ Item {
     property bool minimizeAllowed: true
     property bool maximizeAllowed: true
     property bool closeAllowed: true
-    property bool menuOnPress: true
+    property bool menuOnPress: false
     property bool closeOnDouble: true
     property string caption: ""
     property string titleFamily: "Nimbus Sans"

@@ -9,20 +9,20 @@ function controller(kind='minimize',available=true,menuOnPress=true,closeOnDoubl
  if(r.action)actions.push([r.action,r.button]);return r;}};
 }
 test('hover has no visual pressure or action',()=>{const c=controller();c.send('move');assert(!c.down);assert.equal(c.actions.length,0);});
-test('minimize acts immediately on press exactly once',()=>{const c=controller();c.send('press');assert(!c.down);assert.deepEqual(c.actions,[['activate',1]]);c.send('release');assert.deepEqual(c.actions,[['activate',1]]);});
-test('minimize does not wait for release after press',()=>{const c=controller();c.send('press');c.send('move',0,false);c.send('release',1,false);assert.deepEqual(c.actions,[['activate',1]]);});
-test('maximize acts immediately for all supported buttons',()=>{for(const b of [1,2,4]){const c=controller('maximize');c.send('press',b);assert.deepEqual(c.actions,[['activate',b]]);c.send('release',b);assert.deepEqual(c.actions,[['activate',b]]);}});
-test('grab cancellation cannot repeat an immediate action',()=>{const c=controller();c.send('press');c.send('cancel');assert(!c.down);c.send('release');assert.deepEqual(c.actions,[['activate',1]]);});
+test('minimize shows relief until release and acts exactly once',()=>{const c=controller();c.send('press');assert(c.down);assert.equal(c.actions.length,0);c.send('release');assert(!c.down);assert.deepEqual(c.actions,[['activate',1]]);c.send('release');assert.equal(c.actions.length,1);});
+test('minimize release outside cancels the action',()=>{const c=controller();c.send('press');c.send('move',0,false);assert(!c.down);c.send('release',1,false);assert.deepEqual(c.actions,[]);});
+test('maximize shows relief and acts on release for all supported buttons',()=>{for(const b of [1,2,4]){const c=controller('maximize');c.send('press',b);assert(c.down);assert.deepEqual(c.actions,[]);c.send('release',b);assert(!c.down);assert.deepEqual(c.actions,[['activate',b]]);}});
+test('grab cancellation prevents the pending action',()=>{const c=controller();c.send('press');c.send('cancel');assert(!c.down);c.send('release');assert.deepEqual(c.actions,[]);});
 test('disabled never acts',()=>{const c=controller('minimize',false);for(const e of ['press','release','accessible','double'])c.send(e);assert(!c.down);assert.equal(c.actions.length,0);});
-test('disable-reenable cannot repeat an immediate action',()=>{const c=controller();c.send('press');c.policy.available=false;c.send('cancel');c.policy.available=true;c.send('release');assert.deepEqual(c.actions,[['activate',1]]);});
+test('disable-reenable cannot revive the pending action',()=>{const c=controller();c.send('press');c.policy.available=false;c.send('cancel');c.policy.available=true;c.send('release');assert.deepEqual(c.actions,[]);});
 test('menu opens on press only once',()=>{const c=controller('menu');c.send('press');assert.equal(c.actions.length,1);c.send('release');assert.equal(c.actions.length,1);});
 test('menu cancellation cannot issue a second popup on release',()=>{const c=controller('menu');c.send('press');c.send('cancel');c.send('release');assert.equal(c.actions.length,1);assert(!c.down);});
 test('menu release mode is an explicit local fallback',()=>{const c=controller('menu',true,false);c.send('press');assert.equal(c.actions.length,0);c.send('release');assert.equal(c.actions.length,1);});
-test('close only with opt-in preference and left menu double-click',()=>{for(const enabled of [false,true])for(const k of ['menu','minimize','maximize']){const c=controller(k,true,true,enabled);c.send('press');c.send('release');c.actions.length=0;c.send('double');assert.equal(c.actions.length,enabled&&k==='menu'?1:0);}});
+test('close only with opt-in preference and left menu double-click',()=>{for(const enabled of [false,true])for(const k of ['menu','minimize','maximize']){const c=controller(k,true,true,enabled);c.send('press');c.send('release');c.actions.length=0;c.send('double');c.send('release');assert.equal(c.actions.length,enabled&&k==='menu'?1:0);}});
 test('right menu double-click cannot close',()=>{const c=controller('menu',true,true,true);c.send('double',2);assert.equal(c.actions.length,0);});
 test('left/right/middle maximize preserved',()=>{for(const b of [1,2,4]){const c=controller('maximize');c.send('press',b);c.send('release',b);assert.deepEqual(c.actions,[['activate',b]]);}});
 test('minimize ignores non-left buttons',()=>{for(const b of [2,4]){const c=controller();c.send('press',b);c.send('release',b);assert.equal(c.actions.length,0);}});
-test('each supported maximize press acts once',()=>{const c=controller('maximize');c.send('press',1);c.send('press',2);c.send('release',2);assert(!c.down);assert.deepEqual(c.actions,[['activate',1],['activate',2]]);c.send('release',1);assert.deepEqual(c.actions,[['activate',1],['activate',2]]);});
+test('another button cannot steal a held maximize gesture',()=>{const c=controller('maximize');c.send('press',1);c.send('press',2);c.send('release',2);assert(c.down);assert.deepEqual(c.actions,[]);c.send('release',1);assert.deepEqual(c.actions,[['activate',1]]);});
 test('accessibility activation is capability-checked',()=>{for(const k of ['menu','minimize','maximize']){const c=controller(k);c.send('accessible');assert.deepEqual(c.actions,[['activate',1]]);}});
 test('press outside and unsolicited release are inert',()=>{const c=controller();c.send('press',1,false);c.send('release');assert.equal(c.actions.length,0);});
 test('unknown kind is rejected',()=>{const c=controller('oops');c.send('press');c.send('release');c.send('accessible');assert.equal(c.actions.length,0);});
@@ -50,7 +50,7 @@ test('unsolicited double-click cannot close',()=>{const c=controller('menu',true
 });
 test('second press suspends pending timeout',()=>{const c=controller('menu',true,true,true);
  for(const e of ['press','release','press','timeout'])c.send(e);assert.equal(c.actions.length,0);
- c.send('double');assert.deepEqual(c.actions,[['close',1]]);
+ c.send('double');assert(c.down);assert.deepEqual(c.actions,[]);c.send('release');assert.deepEqual(c.actions,[['close',1]]);
 });
 test('two clicks not recognized as double never close',()=>{const c=controller('menu',true,true,true);
  for(const e of ['press','release','press','release','timeout'])c.send(e);
@@ -86,8 +86,19 @@ test('accessibility request cancels pending click and opens once',()=>{const c=c
  for(const e of ['press','release','accessible','timeout'])c.send(e);
  assert.deepEqual(c.actions,[['activate',1]]);
 });
-test('ordinary minimize/maximize ignore menu timeouts and holds',()=>{for(const k of ['minimize','maximize']){
+test('ordinary minimize/maximize keep relief during holds without acting',()=>{for(const k of ['minimize','maximize']){
  const c=controller(k,true,true,true);c.send('press');c.send('hold');c.send('timeout');
- assert(!c.down);assert.deepEqual(c.actions,[['activate',1]]);c.send('release');assert.deepEqual(c.actions,[['activate',1]]);
+ assert(c.down);assert.deepEqual(c.actions,[]);c.send('release');assert(!c.down);assert.deepEqual(c.actions,[['activate',1]]);
 }});
+test('double-click close shows second relief and cancels on release outside',()=>{
+ const c=controller('menu',true,false,true);
+ for(const e of ['press','release','press','double','hold','timeout'])c.send(e);
+ assert(c.down);assert.deepEqual(c.actions,[]);
+ c.send('release',1,false);c.send('timeout');assert(!c.down);assert.deepEqual(c.actions,[]);
+});
+test('right menu click shows relief and opens on release in the current policy',()=>{
+ const c=controller('menu',true,false,true);c.send('press',2);
+ assert(c.down);assert.deepEqual(c.actions,[]);c.send('release',2);
+ assert(!c.down);assert.deepEqual(c.actions,[['activate',2]]);
+});
 console.log(`${count} testes de máquina de estados: OK (Node.js, não eventos Qt/KWin).`);

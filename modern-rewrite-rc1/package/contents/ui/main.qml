@@ -32,7 +32,7 @@ Decoration {
         maximizeAllowed: decoration.client.maximizeable
         closeAllowed: decoration.client.closeable
         closeOnDouble: decoration.client.closeable
-        menuOnPress: true
+        menuOnPress: false
         caption: decoration.client.caption
         titleFamily: localSettings.titleFamily
         titlePixels: localSettings.titlePixels

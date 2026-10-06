@@ -10,7 +10,7 @@ ROOT=Path(__file__).resolve().parents[1]
 UI=ROOT/'package/contents/ui'
 
 class PreviewContractTests(unittest.TestCase):
-    def test_approved_artwork_and_gestures_unchanged(self):
+    def test_approved_artwork_unchanged(self):
         expected=json.loads((ROOT/'tests/preview-preserved.json').read_text())
         for filename,digest in expected.items():
             with self.subTest(filename=filename):
@@ -21,7 +21,7 @@ class PreviewContractTests(unittest.TestCase):
         self.assertIn('onGridScaleChanged: updateBorders()',code)
         self.assertNotIn('onWidthChanged:',code)
         self.assertNotIn('onHeightChanged:',code)
-        self.assertIn('menuOnPress: true',code)
+        self.assertIn('menuOnPress: false',code)
     def test_resize_uses_fixed_frame_textures(self):
         frame=(UI/'Frame.qml').read_text()
         self.assertIn('fillMode: Image.Tile',frame)

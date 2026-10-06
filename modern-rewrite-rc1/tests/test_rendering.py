@@ -81,7 +81,7 @@ class SourceContracts(unittest.TestCase):
         s=(UI/'ModernButton.qml').read_text();self.assertNotIn('Timer {',s);self.assertNotIn('mouseDoubleClickInterval',s)
         self.assertNotIn('Behavior on',s);self.assertNotIn('onDoubleClicked',s)
     def test_double_click_enabled_only_for_closeable_clients(self):
-        s=(UI/'main.qml').read_text();self.assertIn('menuOnPress: true',s);self.assertIn('closeOnDouble: decoration.client.closeable',s)
+        s=(UI/'main.qml').read_text();self.assertIn('menuOnPress: false',s);self.assertIn('closeOnDouble: decoration.client.closeable',s)
     def test_no_shared_custom_files(self):
         for f in UI.glob('*'):
             if f.suffix in ('.qml','.js'):

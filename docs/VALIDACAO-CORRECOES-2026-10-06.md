@@ -90,3 +90,24 @@ Referências técnicas: a [documentação do Canvas Qt](https://doc.qt.io/qt-6/q
 explica o custo de upload de textura nas atualizações; o protocolo de invalidação
 usado após instalar ícones é o sinal da sessão definido pelo próprio
 [KIconLoader](https://github.com/KDE/kiconthemes/blob/master/src/kiconloader.cpp).
+
+
+## Ajuste de feedback dos botões
+
+A pedido do usuário, ações comuns agora ocorrem na soltura: Classic mantém
+`armed` durante a pressão, permitindo que seu glyph mostre o relevo. O segundo
+clique do menu também conserva o relevo até a soltura que solicita fechar.
+O Irixium conserva seus SVGs pressionados e o menu bitmap ganhou bordas de
+relevo baixo. Clique direito abre o menu ao soltar, sem intervalo adicional.
+Somente a ambiguidade de clique simples/duplo mantém o intervalo Qt já existente.
+Não há novo timer, espera mínima ou Canvas da área inteira.
+
+Referência consultada: [código oficial CDE/dtwm, WmCEvent.c](https://github.com/cdesktopenv/cde/blob/master/cde/programs/dtwm/WmCEvent.c),
+`CheckButtonPressBuiltin` (`PushGadgetIn`) e `CheckButtonReleaseBuiltin`
+(`SetClientState` para minimizar/maximizar).
+
+Teste Qt real: nenhuma ação enquanto o botão está pressionado, imagens dos
+estados normal/pressionado diferentes e exatamente uma ação na soltura.
+Duplo clique ativa/inativa e durante mudanças de foco continua válido.
+Capturas em `/tmp/irix-relevo-20261006`; a espera de 30 ms usada pelo teste para
+capturar uma imagem não existe no código do tema.

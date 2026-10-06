@@ -4,7 +4,7 @@
 // it never prolongs the pressed artwork. Native popup lifecycle belongs to KWin.
 function idle() {
     return {button:0, armed:false, inside:false, menuIssued:false,
-            waiting:false, doubleEligible:false};
+            waiting:false, doubleEligible:false, closePending:false};
 }
 function permits(kind, button, keys) {
     if (kind !== "menu" && kind !== "minimize" && kind !== "maximize") return false;
@@ -13,13 +13,13 @@ function permits(kind, button, keys) {
 }
 function canClose(state, policy, button, keys) {
     return !!(policy.available && policy.kind === "menu" && policy.closeOnDouble
-        && button === keys.left && !state.menuIssued
+        && button === keys.left && !state.menuIssued && !state.closePending
         && (state.waiting || state.doubleEligible));
 }
 function step(state, event, policy, keys) {
     var s = {button:state.button, armed:state.armed, inside:state.inside,
              menuIssued:state.menuIssued, waiting:!!state.waiting,
-             doubleEligible:!!state.doubleEligible};
+             doubleEligible:!!state.doubleEligible, closePending:!!state.closePending};
     var action = "", actionButton = event.button || 0;
     if (!policy.available || event.type === "cancel")
         return {state:idle(), action:"", button:0};
@@ -29,13 +29,9 @@ function step(state, event, policy, keys) {
         var eligible = s.waiting && policy.kind === "menu" && policy.closeOnDouble
             && event.button === keys.left;
         s = {button:event.button, armed:true, inside:true, menuIssued:false,
-             waiting:false, doubleEligible:eligible};
-        if (policy.kind !== "menu") {
-            // Window actions should not wait for the release event. KWin's
-            // native decoration buttons dispatch on press, which avoids a
-            // visible input delay during minimize/maximize transitions.
-            return {state:idle(), action:"activate", button:event.button};
-        }
+             waiting:false, doubleEligible:eligible, closePending:false};
+        // Keep the relief depressed while held. Dispatch on release, without
+        // an animation timer or a frame-wide repaint.
         // Left menu press must NOT post a popup while a double-click is possible.
         // Merely changing menuOnPress to false is not enough: release is also deferred.
         if (policy.kind === "menu" && policy.menuOnPress
@@ -49,9 +45,11 @@ function step(state, event, policy, keys) {
     } else if (event.type === "release") {
         if (s.armed && s.button === event.button) {
             var activate = event.inside && permits(policy.kind,event.button,keys) && !s.menuIssued;
+            var close = s.closePending;
             s = idle();
             if (activate) {
-                if (policy.kind === "menu" && policy.closeOnDouble && event.button === keys.left) {
+                if (close) action = "close";
+                else if (policy.kind === "menu" && policy.closeOnDouble && event.button === keys.left) {
                     s.waiting = true; // no pressed artwork while waiting after release
                     s.inside = true;
                 } else action = "activate";
@@ -60,8 +58,9 @@ function step(state, event, policy, keys) {
     } else if (event.type === "double") {
         // Qt/KWin, not the action timer, supplies the native double-click event.
         if (event.inside && canClose(s,policy,event.button,keys)) {
-            s = idle();
-            action = "close";
+            // The second press also gets visible feedback until its release.
+            s = {button:event.button, armed:true, inside:true, menuIssued:false,
+                 waiting:false, doubleEligible:false, closePending:true};
         }
     } else if (event.type === "timeout") {
         if (s.waiting && policy.kind === "menu" && policy.closeOnDouble) {
@@ -71,7 +70,7 @@ function step(state, event, policy, keys) {
         }
     } else if (event.type === "hold") {
         if (policy.kind === "menu" && s.armed && s.inside && event.inside
-                && s.button === keys.left && !s.menuIssued) {
+                && s.button === keys.left && !s.menuIssued && !s.closePending) {
             s = idle(); // native popup may cancel input synchronously
             action = "activate";
             actionButton = keys.left;

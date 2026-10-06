@@ -12,11 +12,16 @@ Ela usa o adaptador `org.kde.kwin.aurorae`, mas não depende de `MenuButton.qml`
 personalizado em `/usr/share` ou `/usr/lib`. Os SVGs e o PNG do tema Aurorae
 original são mantidos dentro deste pacote.
 
-O botão de ações é parte do pacote. Duplo clique esquerdo fecha a janela; clique
+O botão de ações é parte do pacote. Duplo clique esquerdo fecha a janela na
+segunda soltura; clique
 esquerdo simples aguarda o intervalo de duplo clique do Qt. Clique direito abre
-o menu imediatamente. O timer é exclusivo desse gesto e não participa do resize.
+o menu na soltura, sem espera adicional. O timer é exclusivo desse gesto e não participa do resize.
 O duplo clique também funciona em janelas inativas e durante mudanças de foco,
 sem exigir um clique adicional para ativar a janela.
+
+Os botões mostram o estado pressionado enquanto o mouse está segurado e
+executam a ação ao soltar. O menu bitmap usa bordas de relevo baixo; os demais
+botões usam seus SVGs pressionados. Não há timer para esse feedback.
 
 ## Instalação e seleção
 

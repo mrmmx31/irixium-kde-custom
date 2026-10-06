@@ -20,7 +20,7 @@ local continua sendo uma aproximação, não o arquivo original da SGI.
 
 A interação não acrescenta destaque ao passar o ponteiro. A pressão inverte o
 relevo do compartimento sem mover o símbolo nem impor duração artificial.
-Minimizar/maximizar agem imediatamente na pressão, uma única vez. Cancelamento do mouse, ocultação, redimensionamento e perda
+Minimizar/maximizar mostram o relevo enquanto pressionados e agem na soltura, uma única vez. Cancelamento do mouse, ocultação, redimensionamento e perda
 da capacidade anulam a intenção de clique. A segunda pressão de um duplo clique
 não é engolida inadvertidamente nos controles comuns.
 
@@ -104,9 +104,9 @@ e chama `requestClose()`, não encerramento forçado do processo.
 
 | Gesto no botão do menu, com o fechamento habilitado | Ação |
 |---|---|
-| Duplo clique esquerdo | Solicita Fechar, sem abrir o popup intermediário. |
+| Duplo clique esquerdo | Mantém o segundo relevo pressionado e solicita Fechar na soltura, sem popup intermediário. |
 | Clique esquerdo simples | Aguarda o intervalo de duplo clique do Qt após a soltura e abre o menu uma vez. |
-| Clique direito | Abre o menu na pressão, no perfil padrão. |
+| Clique direito | Mostra o relevo e abre o menu na soltura, sem espera adicional. |
 | Pressionar e manter o esquerdo | Solicita o menu ao receber `pressAndHold` do Qt; não reabre na soltura. |
 | Hover sem pressão | Nenhum efeito adicional. |
 
@@ -124,11 +124,15 @@ Acessibilidade e clique direito não deixam uma abertura esquerda pendente para
 executar mais tarde. A ação de fechar só ocorre com o evento nativo de duplo clique
 precedido de um clique esquerdo válido no mesmo controle.
 
-## Ação imediata dos controles de janela
+## Relevo e ação na soltura
 
-Os botões **Minimizar** e **Maximizar/Restaurar** solicitam a operação no evento
-de pressão, como os controles nativos do KWin, em vez de aguardar a soltura do
-ponteiro. Isso elimina o atraso perceptível entre clicar e iniciar a transição.
+Os botões **Minimizar** e **Maximizar/Restaurar** mantêm o relevo pressionado
+entre a pressão e a soltura, quando solicitam a operação uma única vez. Soltar
+fora do botão ou cancelar o gesto não executa a ação. Não há duração mínima,
+timer de animação nem pintura da moldura inteira. É o padrão de feedback do
+[CDE/dtwm](https://github.com/cdesktopenv/cde/blob/master/cde/programs/dtwm/WmCEvent.c):
+`CheckButtonPressBuiltin` baixa o relevo com `PushGadgetIn` e
+`CheckButtonReleaseBuiltin` executa minimizar/maximizar.
 O botão do menu permanece com o fluxo próprio de clique simples/duplo clique,
 incluindo a espera necessária para distinguir os dois gestos.
 

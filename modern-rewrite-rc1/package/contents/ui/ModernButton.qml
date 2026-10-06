@@ -71,11 +71,14 @@ Item {
     }
     // The bitmap has no pressed variant. Retain local press feedback for this
     // one control only; SVG controls use their actual pressed layers above.
-    Rectangle {
+    Item {
         anchors.fill: parent
         visible: control.rasterArtwork && control.pressed && control.available
-        color: "#403d31"
-        opacity: 0.22
+        Rectangle { anchors.fill: parent; color: "#403d31"; opacity: 0.12 }
+        Rectangle { anchors.top: parent.top; width: parent.width; height: 1; color: "#403d31" }
+        Rectangle { anchors.left: parent.left; width: 1; height: parent.height; color: "#403d31" }
+        Rectangle { anchors.bottom: parent.bottom; width: parent.width; height: 1; color: "#ded7bc" }
+        Rectangle { anchors.right: parent.right; width: 1; height: parent.height; color: "#ded7bc" }
     }
     ButtonInput {
         anchors.fill: parent

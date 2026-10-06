@@ -8,7 +8,7 @@ Item {
     property bool maximizedWindow: false
     property bool minimizeAllowed: true
     property bool maximizeAllowed: true
-    property bool menuOnPress: true
+    property bool menuOnPress: false
     property bool closeOnDouble: true
     property string caption: ""
     property int pixelScale: 1

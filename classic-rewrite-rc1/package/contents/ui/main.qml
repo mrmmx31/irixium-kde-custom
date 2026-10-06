@@ -34,7 +34,7 @@ Decoration {
         maximizeAllowed: decoration.client.maximizeable
         // Wait only for a possible menu double-click; resize never uses this timer.
         closeOnDouble: decoration.client.closeable
-        menuOnPress: true
+        menuOnPress: false
         caption: decoration.client.caption
         pixelScale: root.gridScale
         titleFamily: localSettings.titleFamily
