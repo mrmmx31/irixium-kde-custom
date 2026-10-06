@@ -9,7 +9,7 @@ QtObject {
     property bool titleBold: true
     // Theme-local historical behavior. Does not rewrite the KDE global preference.
     // true: double left click requests Close, when the client permits it.
-    property bool menuDoubleClickClosesWindow: true
+    property bool menuDoubleClickClosesWindow: false
     // Used for right click, and for left click when double-click Close is disabled.
     // With Close enabled, a single left click waits for Qt's double-click interval.
     property bool menuOpensOnPress: true
