@@ -62,11 +62,6 @@ class CatalogTests(unittest.TestCase):
         self.assertIn('system-shutdown',self.c['disabled_events'])
     def test_no_alarm_disabled(self):
         self.assertFalse(any(e.startswith(('dialog','battery','device')) for e in self.c['disabled_events']))
-    def test_urls_pinned_https(self):
-        for s in self.c['sounds']:
-            urls=S.source_urls(self.c,s)
-            self.assertIn(self.c['source_mirror']['commit'],urls[0][0])
-            self.assertTrue(all(u.startswith('https://') for u,_ in urls))
     def test_template_not_empty(self):
         text=(ROOT/'modelo/index.theme').read_text()
         self.assertTrue(text.startswith('[Sound Theme]'))
@@ -98,47 +93,29 @@ class SourceTests(unittest.TestCase):
     def test_truncated_form(self):
         x=self.data[:4]+struct.pack('>I',len(self.data)+300)+self.data[8:]
         with self.assertRaises(S.Failure):S.check_source(x,source_spec(x))
-    def test_network_requires_optin(self):
-        with patch.object(S,'fetch_bytes',side_effect=AssertionError('network')):
-            with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root,None,False)
+    def test_missing_source_never_uses_network(self):
+        with self.assertRaisesRegex(S.Failure, 'use --origem'):
+            S.obtain_source(S.catalog(),self.spec,self.root,None)
         self.assertEqual(list(self.root.iterdir()),[])
     def test_local_source_used(self):
         (self.root/self.spec['original_filename']).write_bytes(self.data)
-        got,label=S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root,False)
+        got,label=S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root)
         self.assertEqual(got,self.data); self.assertEqual(label,'local-pinned-source')
     def test_local_source_mismatch_not_hidden(self):
         (self.root/self.spec['original_filename']).write_bytes(b'corrupt')
-        with patch.object(S,'fetch_bytes',side_effect=AssertionError('network')):
-            with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root,True)
+        with self.assertRaises(S.Failure):
+            S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root)
     def test_cached_source_checked(self):
         f=self.root/'originais'/self.spec['original_filename'];f.parent.mkdir();f.write_bytes(self.data)
-        with patch.object(S,'fetch_bytes',side_effect=AssertionError('network')):
-            got,label=S.obtain_source(S.catalog(),self.spec,self.root,None,True)
+        got,label=S.obtain_source(S.catalog(),self.spec,self.root,None)
         self.assertEqual(got,self.data);self.assertEqual(label,'verified-cache')
     def test_corrupted_cache_refused(self):
         f=self.root/'originais'/self.spec['original_filename'];f.parent.mkdir();f.write_bytes(b'corrupt')
-        with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root,None,False)
-    def test_download_identity_and_cache(self):
-        with patch.object(S,'fetch_bytes',return_value=self.data):
-            got,_=S.obtain_source(S.catalog(),self.spec,self.root,None,True)
-        f=self.root/'originais'/self.spec['original_filename']
-        self.assertEqual(got,f.read_bytes());self.assertEqual(f.stat().st_mode&0o777,0o600)
-    def test_download_fallback(self):
-        with patch.object(S,'fetch_bytes',side_effect=[OSError('unavailable'),self.data]) as f:
-            got,_=S.obtain_source(S.catalog(),self.spec,self.root,None,True)
-            self.assertEqual(f.call_count,2);self.assertEqual(got,self.data)
-    def test_all_sources_failed_no_file(self):
-        with patch.object(S,'fetch_bytes',return_value=b'<html>'):
-            with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root,None,True)
-        self.assertEqual(list(self.root.iterdir()),[])
-    def test_http_refused(self):
-        with self.assertRaises(S.Failure):S.fetch_bytes('http://example.invalid/test','raw')
-    def test_insecure_redirect_refused(self):
-        with self.assertRaises(S.Failure):S.HttpsOnly().redirect_request(None,None,302,'',{},'http://ftp.jurassic.nl/test')
+        with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root,None)
     def test_symlink_source_refused(self):
         real=self.root/'real';real.write_bytes(self.data)
         (self.root/self.spec['original_filename']).symlink_to(real)
-        with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root,False)
+        with self.assertRaises(S.Failure):S.obtain_source(S.catalog(),self.spec,self.root/'cache',self.root)
     def test_relative_xdg_refused(self):
         with patch.dict(os.environ,{'XDG_DATA_HOME':'relative'}):
             with self.assertRaises(S.Failure):S.locations()
@@ -182,7 +159,7 @@ class ThemeTests(unittest.TestCase):
             if s['events']:
                 s.update(source_spec(data,s['original_filename']))
                 (cls.origin/s['original_filename']).write_bytes(data)
-        cls.ready=S.prepare(cls.c,cls.base/'cache',cls.origin,False)
+        cls.ready=S.prepare(cls.c,cls.base/'cache',cls.origin)
     @classmethod
     def tearDownClass(cls):cls.t.cleanup()
     def setUp(self):

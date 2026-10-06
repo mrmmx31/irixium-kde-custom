@@ -17,7 +17,8 @@ Na raiz do pacote extraído, ou do clone após aplicar a pasta `sons/`:
 sudo apt install ffmpeg
 
 bash sons/instalar.sh --verificar
-bash sons/instalar.sh --baixar
+# Organize primeiro os oito AIFF/AIFC originais em uma pasta local:
+bash sons/instalar.sh --origem /caminho/irix-sounds-all
 kcmshell6 kcm_soundtheme
 ```
 
@@ -33,14 +34,14 @@ o caminho nativo do KDE e notifica os aplicativos da alteração.
 ### O que cada etapa faz
 
 `--verificar` não baixa nem escreve: lista dependências, estado e destino.
-`--baixar` autoriza o download dos oito originais (668.084 bytes no total, sem
-contar protocolos/metadados). Os bytes são conferidos com o catálogo fixado antes
-da conversão. Falha de download ou conversão interrompe antes de instalar o tema.
-O cache permite retomar downloads sem repetir arquivos já verificados.
+`--origem` recebe uma pasta local contendo os oito arquivos originais listados em
+`data/catalogo.json`. Os bytes são conferidos com o catálogo fixado antes da
+conversão. Falta, divergência ou falha de conversão interrompe antes de instalar
+o tema. O pacote público não baixa nem redistribui os áudios.
 
-São tentados o espelho GitHub com commit fixado, a cópia preservada da página SGI
-e a API de blobs do mesmo espelho. Não executamos código dessas fontes.
-Requer Internet somente na primeira importação (ou após remoção do cache).
+Os nomes históricos e a referência do espelho usado para conferir identidade
+estão em `docs/CREDITOS-E-AUDIOS.md`. Obtenha os arquivos somente por uma fonte
+que autorize seu uso, organize-os sem renomear e então use `--origem`.
 
 Instala em `${XDG_DATA_HOME:-$HOME/.local/share}/sounds/IrixClassic`.
 Os WAVs são realmente decodificados; não se troca apenas a extensão.
@@ -91,17 +92,22 @@ Assim, o esquema não promete que todo som de todo aplicativo seja IRIX.
 serviços, hooks de pasta/lixeira ou interceptadores. Não há sons por clique.
 Sons de arquivos/pastas ficam reservados para outra etapa.
 
-## Importar sem rede
+## Importar os arquivos autorizados
 
 Com uma cópia local dos oito AIFF/AIFC originais (nomes e bytes do catálogo):
 
 ```sh
+bash sons/instalar.sh --verificar
 bash sons/instalar.sh --origem /caminho/irix-sounds-all
 ```
 
 Arquivos recodificados ou com bytes diferentes são recusados. Não há `--force`.
-Para apenas preparar o tema, use `bash sons/preparar.sh --baixar`.
+Para apenas preparar o tema, use `bash sons/preparar.sh --origem /caminho/irix-sounds-all`.
 Depois é possível instalar sem rede com `bash sons/instalar.sh`.
+
+Nesta cópia de desenvolvimento, um downloader privado pode existir em
+`sons/local/`, que é ignorado pelo Git e não faz parte do pacote público. Ele
+não deve ser copiado para releases nem usado como indicação de licença.
 
 ## Restaurar
 

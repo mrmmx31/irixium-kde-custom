@@ -4,7 +4,7 @@ Manutenção: mrmmx31. Registro de 06/10/2026.
 
 ## Executado nesta entrega
 
-- **52 testes Python** do catálogo, fonte fixada, geração, WAV, instalação e
+- **46 testes Python** do catálogo, fonte fixada, geração, WAV, instalação e
   restauração passaram, inclusive uma execução como usuário comum.
 - **13 testes do aplicador de merge** passaram como usuário comum: verificação
   sem escrita, adição exata, idempotência, reversão, proteção contra edições,
@@ -23,12 +23,13 @@ Manutenção: mrmmx31. Registro de 06/10/2026.
 
 Também passaram três verificações de linha de comando com usuário comum e HOME
 isolado: inventário sem criar arquivos, listagem dos 24 nomes sem tocar áudio e
-recusa de instalar um tema quando faltam as fontes e não há autorização de rede.
+recusa de instalar um tema quando faltam as fontes locais.
 Sintaxe dos seis módulos Python e dos 6 scripts shell conferida.
 
 ## Limites importantes
 
-**Os originais SGI não foram baixados nem decodificados neste ambiente.**
+**Os originais SGI não fazem parte do pacote público nem foram baixados pelo fluxo
+versionado.**
 Os tamanhos e identificadores Git blob foram consultados no espelho fixado,
 mas o acesso de rede do runtime não conseguiu resolver os hosts de download.
 Os testes de conversão utilizaram exclusivamente AIFFs artificiais, com um
@@ -36,9 +37,9 @@ catálogo de ensaio em memória. Isso não valida o som real de nenhuma amostra
 SGI. O catálogo público e o instalador não possuem opção para aceitar substitutos.
 
 A importação dos oito originais, a decodificação de cada um e a conferência
-final de duração/PCM acontecerão na primeira execução local com `--baixar` ou
-`--origem`. Arquivo ausente, divergente, silencioso ou inválido interrompe a
-instalação; não é gerado um tema fictício para fazê-la parecer concluída.
+final de duração/PCM acontecem somente quando o usuário fornece uma pasta local
+com `--origem`. Arquivo ausente, divergente, silencioso ou inválido interrompe
+a instalação; não é gerado um tema fictício para fazê-la parecer concluída.
 
 **Nenhuma sessão KDE/libcanberra foi executada aqui.** libcanberra não está
 instalada neste runtime, e não foi feita uma audição. O índice e os nomes foram
@@ -46,10 +47,9 @@ conferidos contra o código do Plasma 6.3 e a especificação freedesktop; a
 seleção no KCM, o lookup de áudio e a audição ainda precisam da máquina de destino.
 Não é necessário repetir os testes gráficos do Kvantum para isso.
 
-As chamadas de rede nos testes são simuladas. TLS e os limites de download
-são implementados, mas a disponibilidade das fontes externas não é garantida.
-Identificadores Git blob não são assinatura da SGI. Direitos dos áudios são
-separados da licença de código: consulte CREDITOS-E-AUDIOS.md.
+O instalador público não faz chamadas de rede. Identificadores Git blob não são
+assinatura da SGI. Direitos dos áudios são separados da licença de código:
+consulte CREDITOS-E-AUDIOS.md.
 
 ## Reproduzir
 

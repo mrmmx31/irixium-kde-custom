@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""IRIX sounds importer. No Dolphin hook, daemon, global config or system writes.
+"""IRIX sounds importer. No network, Dolphin hook, daemon, global config or
+system writes.
 
-The public package contains no SGI audio. Network access requires --baixar;
-source bytes are checked against pinned Git blob identities before FFmpeg runs.
-Playback and selecting the theme are separate explicit user operations.
+The public package contains no SGI audio and never downloads it. Source bytes
+are checked against pinned Git blob identities before FFmpeg runs. Playback
+and selecting the theme are separate explicit user operations.
 """
 from __future__ import annotations
 import argparse
-import base64
 import configparser
 import hashlib
 import html
@@ -24,11 +24,8 @@ import struct
 import subprocess
 import sys
 import tempfile
-import urllib.error
-import urllib.parse
-import urllib.request
 import wave
-from sound_transaction import (Change, Failure, Transaction, atomic, no_links,
+from sound_transaction import (Change, Failure, Transaction, no_links,
                                snapshot, sha)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -102,49 +99,7 @@ def check_source(data: bytes, s: dict) -> None:
         raise Failure('Arquivo AIFF/AIFC truncado.')
 
 
-def source_urls(c: dict, s: dict):
-    m = c['source_mirror']
-    name = urllib.parse.quote(s['original_filename'])
-    return [
-        ('https://raw.githubusercontent.com/' + m['repository'] + '/' + m['commit']
-         + '/' + m['directory'] + '/' + name, 'raw'),
-        (c['original_catalog'].rsplit('/', 1)[0] + '/' + name, 'raw'),
-        ('https://api.github.com/repos/' + m['repository'] + '/git/blobs/'
-         + s['git_blob_sha1'], 'github_blob'),
-    ]
-
-
-class HttpsOnly(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        u = urllib.parse.urlsplit(newurl)
-        if u.scheme != 'https' or u.hostname not in (
-                'raw.githubusercontent.com', 'api.github.com', 'ftp.jurassic.nl'):
-            raise Failure('Redirecionamento de download recusado.')
-        return super().redirect_request(req, fp, code, msg, headers, newurl)
-
-
-def fetch_bytes(url: str, encoding: str) -> bytes:
-    if urllib.parse.urlsplit(url).scheme != 'https':
-        raise Failure('Download exige HTTPS.')
-    req = urllib.request.Request(url, headers={
-        'User-Agent': 'IrixClassic-Sounds/0.1.0',
-        'Accept': 'application/vnd.github+json' if encoding == 'github_blob' else '*/*'})
-    opener = urllib.request.build_opener(HttpsOnly())
-    cap = MAX_SOURCE * 2 if encoding == 'github_blob' else MAX_SOURCE
-    with opener.open(req, timeout=25) as res:
-        content = res.read(cap + 1)
-    if len(content) > cap:
-        raise Failure('Download excedeu o limite.')
-    if encoding == 'github_blob':
-        obj = json.loads(content)
-        if obj.get('encoding') != 'base64':
-            raise Failure('Codificação GitHub inesperada.')
-        content = base64.b64decode(''.join(obj['content'].split()), validate=True)
-    return content
-
-
-def obtain_source(c: dict, s: dict, cache: Path, origin: Path | None,
-                  allow_network: bool) -> tuple[bytes, str]:
+def obtain_source(c: dict, s: dict, cache: Path, origin: Path | None) -> tuple[bytes, str]:
     # A user-provided source is never silently replaced by an online file.
     if origin:
         p = origin / s['original_filename']; no_links(p)
@@ -158,19 +113,8 @@ def obtain_source(c: dict, s: dict, cache: Path, origin: Path | None,
             raise Failure('Cache excessivo: ' + str(p))
         data = p.read_bytes(); check_source(data, s)
         return data, 'verified-cache'
-    if not allow_network:
-        raise Failure('Fonte ausente. Use instalar.sh --baixar ou --origem DIRETORIO: '
-                      + s['original_filename'])
-    errors = []
-    for url, encoding in source_urls(c, s):
-        try:
-            data = fetch_bytes(url, encoding); check_source(data, s)
-            atomic(p, data, 0o600)
-            return data, url
-        except (OSError, ValueError, KeyError, Failure, urllib.error.URLError) as e:
-            errors.append(str(e))
-    raise Failure('Não foi possível obter ' + s['original_filename']
-                  + '. Nenhum tema foi instalado. Tentativas: ' + '; '.join(errors))
+    raise Failure('Fonte ausente. Organize os arquivos originais e use '
+                  '--origem DIRETORIO: ' + s['original_filename'])
 
 
 def wav_info(path: Path) -> dict:
@@ -312,7 +256,7 @@ Não altera volume ou seleção do KDE. Ajuste o volume antes de ouvir.</p>
             + ''.join(rows) + '</table><p>Veja CREDITS.md e MAPEAMENTO.json para a procedência e as adaptações.</p></html>').encode()
 
 
-def prepare(c: dict, cache: Path, origin: Path | None, network: bool) -> Path:
+def prepare(c: dict, cache: Path, origin: Path | None) -> Path:
     ready = cache / THEME
     if ready.exists():
         validate_theme(ready, c)
@@ -328,7 +272,7 @@ def prepare(c: dict, cache: Path, origin: Path | None, network: bool) -> Path:
         records = {}
         for i, s in enumerate(needed, 1):
             print(f'[{i}/{len(needed)}] {s["original_filename"]}', flush=True)
-            data, origin_label = obtain_source(c, s, cache, origin, network)
+            data, origin_label = obtain_source(c, s, cache, origin)
             p = work / s['original_filename']; p.write_bytes(data)
             wav = root / (s['id'] + '.wav'); info = convert(p, wav)
             records[s['id']] = {'original_filename': s['original_filename'],
@@ -427,14 +371,12 @@ def install(ready: Path, destination: Path, state: Path, c: dict, dry=False):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('install', 'prepare', 'restore', 'verify'))
-    parser.add_argument('--baixar', action='store_true', help='Permite obter os oito originais pela rede.')
     parser.add_argument('--origem', type=Path, help='Pasta com os originais fixados; alternativa sem rede.')
     parser.add_argument('--verificar', action='store_true', help='Somente leitura; não baixa nem escreve.')
     parser.add_argument('--recuperar', action='store_true', help='Recupera restauração/instalação interrompida.')
     args = parser.parse_args(argv)
-    if args.baixar and args.origem: parser.error('Use --baixar OU --origem.')
     if args.recuperar and args.action != 'restore': parser.error('--recuperar exige restore.')
-    if args.action not in ('install', 'prepare') and (args.baixar or args.origem):
+    if args.action not in ('install', 'prepare') and args.origem:
         parser.error('A importação só pertence a install/prepare.')
     c = catalog(); cache, dest, state, config = locations()
     origin = args.origem.expanduser().absolute() if args.origem else None
@@ -443,8 +385,7 @@ def main(argv=None):
         report = verify(c, cache, dest, config)
         if args.action in ('install', 'prepare'):
             report['plan_only'] = True
-            report['requested_download'] = args.baixar
-            report['warning'] = 'Fontes ausentes serão obtidas só na execução com --baixar.'
+            report['warning'] = 'Fontes ausentes devem ser fornecidas com --origem DIRETORIO.'
         print(json.dumps(report, indent=2, ensure_ascii=False))
         return 0
     user_only()
@@ -465,7 +406,7 @@ def main(argv=None):
         return 0
     with tx.locked():
         tx.assert_ready()
-        ready = prepare(c, cache, origin, args.baixar)
+        ready = prepare(c, cache, origin)
         if args.action == 'install': install(ready, dest, state, c)
         else: print('Pronto para instalar:', ready)
     return 0

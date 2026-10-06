@@ -6,7 +6,7 @@ Manutenção: mrmmx31. Componente inicial 0.1.0.
 |---|---|
 | Catálogo e procedência | 19 entradas registradas, oito selecionadas para sons sistêmicos. |
 | Esquema KDE | 24 aliases + oito supressões de login/firmware/desktop; fallback freedesktop. |
-| Importação | Código pronto: HTTPS, bytes fixados, alternativa local e conversão real. |
+| Importação | Alternativa local, bytes fixados e conversão real; sem download no pacote público. |
 | Instalação/restauração | Usuário comum, recibos privados, sem edição global nem privilégios. |
 | Reprodução KDE | Painel nativo e player libcanberra incluídos; audição na máquina de destino pendente. |
 | Dolphin | Adiado por decisão explícita; nenhum hook/plugin instalado. |
