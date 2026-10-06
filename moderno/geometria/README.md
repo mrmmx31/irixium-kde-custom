@@ -1,4 +1,9 @@
-# Irixium moderno — geometria organizada
+# Irixium moderno — geometria organizada (histórico)
+
+> Este complemento pertence ao fluxo Aurorae compartilhado anterior e está
+> substituído pelo `modern-rewrite-rc1/`. Não o execute para a release atual:
+> ele pode alterar componentes compartilhados em `/usr`. O pacote moderno novo
+> é totalmente user-local e possui seus próprios controles.
 
 **Revisão de teste: 1.0.0-rc1. Manutenção: `mrmmx31`.**
 

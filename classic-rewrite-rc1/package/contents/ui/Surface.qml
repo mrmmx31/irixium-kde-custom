@@ -23,7 +23,7 @@ Item {
     signal minimizeRequested()
     signal maximizeRequested(int mouseButton)
     clip: true
-    function repaint() { if (art) art.requestPaint(); }
+    function repaint() { repaintTimer.restart(); }
     function cancelGestures() {
         if (menuInput) menuInput.cancelGesture();
         if (minimizeInput) minimizeInput.cancelGesture();
@@ -39,6 +39,12 @@ Item {
     onPixelScaleChanged: { cancelGestures(); repaint(); }
     onWidthChanged: { cancelGestures(); repaint(); }
     onHeightChanged: { cancelGestures(); repaint(); }
+    Timer {
+        id: repaintTimer
+        interval: 0
+        repeat: false
+        onTriggered: if (art) art.requestPaint()
+    }
     Canvas {
         id: art
         objectName: "irixArtwork"
@@ -46,7 +52,7 @@ Item {
         antialiasing: false
         smooth: false
         renderTarget: Canvas.Image
-        renderStrategy: Canvas.Immediate
+        renderStrategy: Canvas.Cooperative
         onAvailableChanged: { if (available) requestPaint(); }
         Component.onCompleted: requestPaint()
         onPaint: {

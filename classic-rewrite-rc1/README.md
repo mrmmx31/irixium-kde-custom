@@ -81,6 +81,16 @@ ampliação. Alterar o payload extraído do pacote exige regenerar o manifesto d
 desenvolvimento; o instalador detecta alterações acidentais. O manifesto não é
 uma assinatura criptográfica de origem.
 
+### Instalação somente no perfil do usuário
+
+Execute `hooks/instalar-user-hook.sh` como o usuário normal para manter a
+decoração sem alterar componentes globais do KWin. O script cria um serviço
+`systemd --user` e mantém o pacote em `~/.local/share/kwin/decorations/`.
+O serviço usa `--hook`, que é idempotente: só reinstala quando o pacote local
+está ausente ou divergente e preserva a seleção atual no `~/.config/kwinrc`.
+A seleção do Classic ou do moderno é uma ação explícita do usuário. Nenhum
+arquivo em `/usr/share` ou `/usr/lib` é escrito.
+
 ## Menu e fechamento por duplo clique — correção rc2
 
 Esta revisão corrige a disputa entre abrir o menu e reconhecer o segundo clique.

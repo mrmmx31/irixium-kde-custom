@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Update modern Irixium with preflight, a private journal and explicit activation."""
+"""Legacy Aurorae-shared updater.
+
+The release entry point no longer calls this helper. Use modern-rewrite-rc1/
+for the user-local package; this module remains only for historical migration
+tests and must not be used when system files are off-limits.
+"""
 from __future__ import annotations
 import argparse
 import configparser
@@ -123,7 +128,7 @@ def install_plan(repo: Path, user_theme: Path, config: Path, group: Path, menu: 
                     Change(asset, png, 1, 0o644, snapshot(asset))])
     if activate:
         path = config / 'kwinrc'; before = snapshot(path)
-        values = {'library': 'org.kde.kwin.aurorae', 'theme': '__aurorae__svg__Irixium'}
+        values = {'library': 'org.kde.kwin.aurorae', 'theme': 'irixium_modern'}
         src = configparser.ConfigParser(interpolation=None); src.optionxform = str
         src.read_string((repo / 'kwin-decoration.conf').read_text('utf-8'))
         for key in ('BorderSize', 'ButtonsOnLeft', 'ButtonsOnRight'):
