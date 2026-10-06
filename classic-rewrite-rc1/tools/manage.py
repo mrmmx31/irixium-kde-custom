@@ -165,7 +165,7 @@ class Manager:
         print('Atualizará a Classic existente.' if dest.exists() else 'Será a primeira instalação neste destino.')
         return theme_id
     def ensure_user_install(self, theme_id: str) -> None:
-        """Keep the user-local package active without touching system files."""
+        """Keep the user-local package available without changing selection."""
         expected = read_json(BUNDLE/'MANIFEST.json')['package']
         dest = self.base/theme_id
         current = None
@@ -178,17 +178,11 @@ class Manager:
             current.get(rel) == digest for rel,digest in expected.items()
             if rel != 'metadata.json'
         )
-        selected = self.cfg.values() == {'library': LIBRARY, 'theme': theme_id}
         if not matches:
-            self.install(theme_id, activate=True)
-            return
-        if not selected:
-            self.cfg.put('library', LIBRARY)
-            self.cfg.put('theme', theme_id)
-            reconfigure()
-            print(f'Decoração local já instalada; seleção restaurada: {theme_id}')
+            self.install(theme_id, activate=False)
+            print(f'Decoração local instalada sem alterar a seleção atual: {theme_id}')
         else:
-            print(f'Decoração local já instalada e selecionada: {theme_id}')
+            print(f'Decoração local já instalada; seleção atual preservada: {self.cfg.get("theme")}')
     @contextmanager
     def locked(self):
         no_links(self.state)

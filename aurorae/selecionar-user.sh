@@ -3,11 +3,11 @@ set -eu
 
 case "${1:-}" in
   moderno)
-    if [ ! -d "${XDG_DATA_HOME:-"$HOME/.local/share"}/aurorae/themes/Irixium" ]; then
+    if [ ! -d "${XDG_DATA_HOME:-"$HOME/.local/share"}/kwin/decorations/irixium_modern" ]; then
       printf '%s\n' 'Irixium moderno não está instalado no perfil do usuário.' >&2
       exit 1
     fi
-    theme=__aurorae__svg__Irixium
+    theme=irixium_modern
     ;;
   classic)
     if [ ! -d "${XDG_DATA_HOME:-"$HOME/.local/share"}/kwin/decorations/irixium_irix_classic_v4" ]; then

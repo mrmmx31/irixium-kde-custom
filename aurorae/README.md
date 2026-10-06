@@ -2,7 +2,8 @@
 
 Há duas opções independentes:
 
-- **Irixium moderno** — tema Aurorae em `aurorae/Irixium/`;
+- **Irixium moderno** — pacote KWin independente em `modern-rewrite-rc1/`,
+  baseado nos assets Aurorae em `aurorae/Irixium/`;
 - **IRIX Classic** — decoração KWin independente em `classic-rewrite-rc1/package/`.
 
 Instale o moderno sem tocar no sistema:
@@ -25,6 +26,7 @@ bash aurorae/selecionar-user.sh moderno
 bash aurorae/selecionar-user.sh classic
 ```
 
-Os scripts escrevem somente em `~/.local/share`, `~/.config/kwinrc` e no
-estado do usuário. Não instalam `MenuButton.qml`, `AuroraeButtonGroup.qml` ou
-qualquer outro componente em `/usr`.
+O identificador moderno selecionável é `irixium_modern`. Os scripts escrevem
+somente em `~/.local/share`, `~/.config/kwinrc` e no estado do usuário. Não
+instalam `MenuButton.qml`, `AuroraeButtonGroup.qml` ou qualquer outro componente
+em `/usr`.

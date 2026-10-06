@@ -2,7 +2,8 @@
 
 Este pacote instala, somente no perfil do usuário:
 
-- **Irixium Moderno**, decoração Aurorae e Tema Global;
+- **Irixium Moderno**, decoração KWin independente (`irixium_modern`) baseada no
+  adaptador Aurorae, e Tema Global;
 - **IRIX Classic**, decoração KWin independente e Tema Global;
 - tema de ícones **IRIX Classic — SGI**;
 - wallpaper IRIX Classic;
