@@ -17,8 +17,8 @@ Na raiz do pacote extraído, ou do clone após aplicar a pasta `sons/`:
 sudo apt install ffmpeg
 
 bash sons/instalar.sh --verificar
-# Organize primeiro os oito AIFF/AIFC originais em uma pasta local:
-bash sons/instalar.sh --origem /caminho/irix-sounds-all
+# Baixa os oito originais, valida, converte e instala para seu usuário:
+bash sons/instalar.sh --baixar
 kcmshell6 kcm_soundtheme
 ```
 
@@ -37,11 +37,14 @@ o caminho nativo do KDE e notifica os aplicativos da alteração.
 `--origem` recebe uma pasta local contendo os oito arquivos originais listados em
 `data/catalogo.json`. Os bytes são conferidos com o catálogo fixado antes da
 conversão. Falta, divergência ou falha de conversão interrompe antes de instalar
-o tema. O pacote público não baixa nem redistribui os áudios.
+o tema. `--baixar` permite obter arquivos ausentes do arquivo histórico da SGI
+em ftp.jurassic.nl, com o espelho GitHub fixado como alternativa. Todo download
+usa HTTPS e deve coincidir com tamanho, Git blob e formato AIFF/AIFC do catálogo.
+O ZIP continua sem os bytes dos áudios; créditos acompanham o tema instalado.
 
 Os nomes históricos e a referência do espelho usado para conferir identidade
-estão em `docs/CREDITOS-E-AUDIOS.md`. Obtenha os arquivos somente por uma fonte
-que autorize seu uso, organize-os sem renomear e então use `--origem`.
+estão em `docs/CREDITOS-E-AUDIOS.md`. O projeto adota o uso com atribuição descrito na página histórica,
+conforme documentado ali. `--origem` continua disponível para importação sem rede.
 
 Instala em `${XDG_DATA_HOME:-$HOME/.local/share}/sounds/IrixClassic`.
 Os WAVs são realmente decodificados; não se troca apenas a extensão.
@@ -105,9 +108,10 @@ Arquivos recodificados ou com bytes diferentes são recusados. Não há `--force
 Para apenas preparar o tema, use `bash sons/preparar.sh --origem /caminho/irix-sounds-all`.
 Depois é possível instalar sem rede com `bash sons/instalar.sh`.
 
-Nesta cópia de desenvolvimento, um downloader privado pode existir em
-`sons/local/`, que é ignorado pelo Git e não faz parte do pacote público. Ele
-não deve ser copiado para releases nem usado como indicação de licença.
+O downloader agora faz parte de `tools/irix_sounds.py`. Use `--baixar` para
+instalar automaticamente os sons; `--verificar`, aplicação de temas globais e
+instalação sem esse argumento não acessam a rede. A cópia anterior em
+`sons/local/` permanece local, mas já não é necessária.
 
 ## Restaurar
 

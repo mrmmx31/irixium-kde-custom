@@ -95,14 +95,15 @@ def audit(local=False, require_sounds=False):
                     ROOT/'colors/Irixium.colors', ROOT/'cursors/sgi/index.theme']
         failures.extend('Dependência ausente: '+str(p.relative_to(ROOT)) for p in required if not p.is_file())
     sounds = {'audio_in_repository': False, 'automatic_download': False,
-              'installer': doc['sounds']['installer'], 'theme': doc['sounds']['theme']}
+              'installer': doc['sounds']['installer'], 'theme': doc['sounds']['theme'],
+              'download_option': doc['sounds']['download_option']}
     if local or require_sounds:
         module = sound_module()
         c = module.catalog()
         cache, dest, _, sound_config = module.locations()
         sounds.update(module.verify(c, cache, dest, sound_config))
         if require_sounds and not sounds['installed']:
-            failures.append('Sons ausentes: forneça os originais com sons/instalar.sh --origem DIRETORIO.')
+            failures.append('Sons ausentes: use sons/instalar.sh --baixar ou --origem DIRETORIO.')
     selection = None
     if local:
         selected = preference(config, 'kdeglobals', 'KDE', 'LookAndFeelPackage')

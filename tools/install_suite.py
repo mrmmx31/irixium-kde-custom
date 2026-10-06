@@ -169,7 +169,7 @@ def main():
     migrate_user_hook(config, state, dry=args.verificar)
     if not args.verificar:
         print('Os dois temas e suas dependências gráficas foram instalados no seu perfil.')
-        print('Sons SGI: use sons/instalar.sh --origem DIRETORIO, ou o cache local já preparado. Não há download automático.')
+        print('Sons SGI: use sons/instalar.sh --baixar, --origem DIRETORIO ou o cache local já preparado.')
         print('Para aplicar o conjunto: bash aplicar-tema.sh classic (ou moderno).')
         print('Após atualizar QML em uso, salve o trabalho e entre novamente na sessão.')
 

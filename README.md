@@ -31,18 +31,19 @@ menu aguarda o intervalo de duplo clique do Qt; esse timer não participa do res
 ## Sons SGI: instalação local separada
 
 O esquema, catálogo, mapeamento e instaladores estão em [sons/](sons/README.md).
-Os oito áudios originais **não são versionados nem baixados automaticamente**.
-Em outro computador, forneça uma cópia local autorizada:
+Os áudios são baixados e instalados para seu usuário com atribuição à
+[página histórica da SGI](https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html).
+Em outro computador:
 
 ```sh
-bash sons/instalar.sh --origem /caminho/dos/originais
+bash sons/instalar.sh --baixar
 bash aplicar-tema.sh classic --exigir-sons
 ```
 
-Com fontes já preparadas no cache local, `bash sons/instalar.sh` reinstala sem
-rede. O downloader privado de desenvolvimento em `sons/local/` foi preservado,
-continua ignorado pelo Git e nunca é chamado pelo fluxo público. Não o inclua
-em releases; a decisão sobre download público continua pendente.
+O download usa HTTPS e valida os oito originais antes de converter para WAV.
+Os bytes não entram no Git nem nos ZIPs. Com fontes já preparadas no cache local,
+`bash sons/instalar.sh` reinstala sem rede; `--origem DIRETORIO` permite importar
+uma cópia local. O downloader público substitui a necessidade do script privado.
 
 Para exigir uma instalação com sons completos, audite com `--exigir-sons`.
 Sem os originais, o conjunto gráfico continua instalável e o comando de aplicação

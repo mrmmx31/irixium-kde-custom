@@ -6,12 +6,13 @@ mais o código/catálogo do esquema de sons. Use o fluxo do [README](README.md):
 ```sh
 bash instalar-irixium.sh --verificar
 bash instalar-irixium.sh
-bash sons/instalar.sh --origem /caminho/dos/originais
+bash sons/instalar.sh --baixar
 bash aplicar-tema.sh classic --exigir-sons   # ou: moderno
 ```
 
-O terceiro comando exige arquivos locais e não faz download. Com cache local
-preparado, `sons/instalar.sh` funciona sem `--origem`. Áudios e `sons/local/`
+O terceiro comando baixa os oito originais e instala os sons para seu usuário,
+com atribuição e verificação de identidade. Com cache preparado,
+`sons/instalar.sh` funciona sem rede; `--origem` importa arquivos locais. Áudios e `sons/local/`
 não entram em distribuição pública. Não gere arquivos de release a partir de
 um diretório inteiro incluindo arquivos ignorados; use os arquivos versionados.
 
