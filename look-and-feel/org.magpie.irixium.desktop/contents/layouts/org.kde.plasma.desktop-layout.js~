@@ -1,0 +1,205 @@
+var plasma = getApiVersion(1);
+
+var layout = {
+    "desktops": [
+        {
+            "applets": [
+            ],
+            "config": {
+                "/": {
+                    "ItemGeometries-1920x1080": "",
+                    "ItemGeometriesHorizontal": "",
+                    "formfactor": "0",
+                    "immutability": "1",
+                    "lastScreen": "0",
+                    "wallpaperplugin": "org.kde.color"
+                },
+                "/ConfigDialog": {
+                    "DialogHeight": "545",
+                    "DialogWidth": "730"
+                },
+                "/Configuration": {
+                    "PreloadWeight": "0"
+                },
+                "/General": {
+                    "ToolBoxButtonState": "topcenter",
+                    "ToolBoxButtonX": "568",
+                    "arrangement": "1",
+                    "iconSize": "2",
+                    "positions": "{\"1920x1080\":[]}",
+                    "sortMode": "-1",
+                    "textLines": "1"
+                },
+                "/Wallpaper/org.kde.color/General": {
+                    "Color": "76,113,158"
+                },
+                "/Wallpaper/org.kde.image/General": {
+                    "Image": "/usr/share/wallpapers/Patak/",
+                    "SlidePaths": "/usr/share/wallpapers"
+                }
+            },
+            "wallpaperPlugin": "org.kde.color"
+        }
+    ],
+    "panels": [
+        {
+            "alignment": "center",
+            "applets": [
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "100"
+                        },
+                        "/General": {
+                            "favoritesPortedToKAstats": "true"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.kickoff"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.latte.separator"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "localPath": "/home/mark/.local/share/plasma_icons/chromium.desktop",
+                            "url": "file:///usr/share/applications/chromium.desktop"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.icon"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "localPath": "/home/mark/.local/share/plasma_icons/org.kde.dolphin (1).desktop",
+                            "url": "file:///usr/share/applications/org.kde.dolphin.desktop"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.icon"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "localPath": "/home/mark/.local/share/plasma_icons/org.kde.konsole (1).desktop",
+                            "url": "file:///usr/share/applications/org.kde.konsole.desktop"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.icon"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "localPath": "/home/mark/.local/share/plasma_icons/systemsettings.desktop",
+                            "url": "file:///usr/share/applications/systemsettings.desktop"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.icon"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.latte.separator"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        },
+                        "/ConfigDialog": {
+                            "DialogHeight": "450",
+                            "DialogWidth": "600"
+                        },
+                        "/General": {
+                            "forceStripes": "true",
+                            "launchers": "",
+                            "onlyGroupWhenFull": "false",
+                            "showOnlyCurrentActivity": "false",
+                            "showOnlyCurrentDesktop": "false"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.taskmanager"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.latte.separator"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.pager"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.systemtray"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        }
+                    },
+                    "plugin": "org.kde.latte.separator"
+                },
+                {
+                    "config": {
+                        "/": {
+                            "PreloadWeight": "0"
+                        },
+                        "/ConfigDialog": {
+                            "DialogHeight": "450",
+                            "DialogWidth": "600"
+                        },
+                        "/General": {
+                            "showSecondHand": "true"
+                        }
+                    },
+                    "plugin": "org.kde.plasma.analogclock"
+                }
+            ],
+            "config": {
+                "/": {
+                    "formfactor": "2",
+                    "immutability": "1",
+                    "lastScreen": "0",
+                    "wallpaperplugin": "org.kde.image"
+                },
+                "/ConfigDialog": {
+                    "DialogHeight": "82",
+                    "DialogWidth": "1920"
+                },
+                "/Configuration": {
+                    "PreloadWeight": "0"
+                }
+            },
+            "height": 4,
+            "hiding": "normal",
+            "location": "bottom",
+            "maximumLength": 94,
+            "minimumLength": 94,
+            "offset": 0
+        }
+    ],
+    "serializationFormatVersion": "1"
+}
+;
+
+plasma.loadSerializedLayout(layout);
