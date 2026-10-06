@@ -1,0 +1,1138 @@
+{
+  "version": "0.1.0",
+  "canonical_icons": 126,
+  "unique_artworks": 110,
+  "icon_names": 292,
+  "sizes": [
+    16,
+    22,
+    24,
+    32,
+    48,
+    64,
+    96,
+    128
+  ],
+  "icons": [
+    {
+      "category": "places",
+      "name": "folder",
+      "kind": "folder",
+      "variant": "",
+      "aliases": [
+        "inode-directory",
+        "gtk-directory",
+        "stock_folder"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "folder-open",
+      "kind": "folder",
+      "variant": "open",
+      "aliases": [
+        "folder_open"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "user-home",
+      "kind": "folder",
+      "variant": "home",
+      "aliases": [
+        "folder-home",
+        "folder_home",
+        "go-home"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "folder-documents",
+      "kind": "folder",
+      "variant": "documents",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-download",
+      "kind": "folder",
+      "variant": "download",
+      "aliases": [
+        "folder-downloads"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "folder-music",
+      "kind": "folder",
+      "variant": "music",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-pictures",
+      "kind": "folder",
+      "variant": "pictures",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-videos",
+      "kind": "folder",
+      "variant": "videos",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-publicshare",
+      "kind": "folder",
+      "variant": "public",
+      "aliases": [
+        "folder-shared"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "folder-remote",
+      "kind": "folder",
+      "variant": "remote",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-templates",
+      "kind": "folder",
+      "variant": "template",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-saved-search",
+      "kind": "folder",
+      "variant": "search",
+      "aliases": [
+        "folder-search"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "user-trash",
+      "kind": "trash",
+      "variant": "",
+      "aliases": [
+        "user-trash-empty",
+        "trashcan_empty",
+        "emptytrash"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "user-trash-full",
+      "kind": "trash",
+      "variant": "full",
+      "aliases": [
+        "trashcan_full"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "user-desktop",
+      "kind": "monitor",
+      "variant": "",
+      "aliases": [
+        "desktop"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "network-workgroup",
+      "kind": "status",
+      "variant": "network-online",
+      "aliases": [
+        "network",
+        "network-server",
+        "preferences-system-network"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "user-bookmarks",
+      "kind": "action",
+      "variant": "star",
+      "aliases": [
+        "bookmarks",
+        "favorites"
+      ]
+    },
+    {
+      "category": "places",
+      "name": "folder-root",
+      "kind": "folder",
+      "variant": "terminal",
+      "aliases": [
+        "folder-system"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "text-plain",
+      "kind": "paper",
+      "variant": "text",
+      "aliases": [
+        "text-x-generic",
+        "application-octet-stream",
+        "unknown"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "text-x-script",
+      "kind": "paper",
+      "variant": "code",
+      "aliases": [
+        "text-x-python",
+        "text-x-shellscript",
+        "application-x-shellscript",
+        "text-x-java",
+        "text-x-csrc",
+        "text-x-c++src",
+        "text-x-chdr",
+        "text-x-javascript",
+        "application-json",
+        "application-javascript",
+        "application-xml",
+        "text-xml"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "text-html",
+      "kind": "paper",
+      "variant": "code",
+      "aliases": [
+        "application-xhtml+xml"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "application-pdf",
+      "kind": "paper",
+      "variant": "pdf",
+      "aliases": [
+        "application-postscript"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "image-x-generic",
+      "kind": "paper",
+      "variant": "image",
+      "aliases": [
+        "image-png",
+        "image-jpeg",
+        "image-gif",
+        "image-svg+xml",
+        "image-webp",
+        "image-tiff"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "audio-x-generic",
+      "kind": "paper",
+      "variant": "audio",
+      "aliases": [
+        "audio-mpeg",
+        "audio-ogg",
+        "audio-flac",
+        "audio-x-wav"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "video-x-generic",
+      "kind": "paper",
+      "variant": "video",
+      "aliases": [
+        "video-mp4",
+        "video-webm",
+        "video-x-matroska"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "application-x-archive",
+      "kind": "paper",
+      "variant": "archive",
+      "aliases": [
+        "application-zip",
+        "application-x-7z-compressed",
+        "application-x-tar",
+        "application-gzip",
+        "application-x-compressed-tar",
+        "application-x-rar"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "x-office-document",
+      "kind": "paper",
+      "variant": "text",
+      "aliases": [
+        "application-vnd.oasis.opendocument.text",
+        "application-msword",
+        "application-vnd.openxmlformats-officedocument.wordprocessingml.document"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "x-office-spreadsheet",
+      "kind": "paper",
+      "variant": "table",
+      "aliases": [
+        "application-vnd.oasis.opendocument.spreadsheet",
+        "application-vnd.ms-excel",
+        "application-vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "x-office-presentation",
+      "kind": "paper",
+      "variant": "slides",
+      "aliases": [
+        "application-vnd.oasis.opendocument.presentation",
+        "application-vnd.ms-powerpoint"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "application-x-executable",
+      "kind": "app",
+      "variant": "generic",
+      "aliases": [
+        "application-x-desktop",
+        "application-x-sharedlib"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "computer",
+      "kind": "monitor",
+      "variant": "",
+      "aliases": [
+        "video-display"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "drive-harddisk",
+      "kind": "drive",
+      "variant": "",
+      "aliases": [
+        "drive-harddisk-system",
+        "drive-harddisk-solidstate"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "drive-optical",
+      "kind": "drive",
+      "variant": "optical",
+      "aliases": [
+        "media-optical",
+        "media-optical-audio"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "drive-removable-media",
+      "kind": "drive",
+      "variant": "usb",
+      "aliases": [
+        "drive-removable-media-usb",
+        "drive-harddisk-usb",
+        "media-flash"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "printer",
+      "kind": "printer",
+      "variant": "",
+      "aliases": [
+        "printer-network"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "utilities-terminal",
+      "kind": "app",
+      "variant": "terminal",
+      "aliases": [
+        "org.kde.konsole",
+        "konsole",
+        "xterm",
+        "org.wezfurlong.wezterm",
+        "Alacritty",
+        "kitty"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "system-file-manager",
+      "kind": "app",
+      "variant": "files",
+      "aliases": [
+        "org.kde.dolphin",
+        "dolphin",
+        "org.kde.krusader"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "accessories-text-editor",
+      "kind": "app",
+      "variant": "editor",
+      "aliases": [
+        "org.kde.kate",
+        "kate",
+        "org.kde.kwrite",
+        "kwrite"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "internet-web-browser",
+      "kind": "app",
+      "variant": "browser",
+      "aliases": [
+        "firefox",
+        "firefox-esr",
+        "org.mozilla.firefox",
+        "chromium",
+        "chromium-browser",
+        "google-chrome",
+        "com.google.Chrome"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "internet-mail",
+      "kind": "app",
+      "variant": "mail",
+      "aliases": [
+        "org.kde.kmail",
+        "kmail",
+        "thunderbird",
+        "org.mozilla.Thunderbird"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "preferences-system",
+      "kind": "app",
+      "variant": "settings",
+      "aliases": [
+        "systemsettings",
+        "org.kde.systemsettings",
+        "preferences-desktop"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "utilities-system-monitor",
+      "kind": "app",
+      "variant": "monitor",
+      "aliases": [
+        "org.kde.plasma-systemmonitor",
+        "plasma-systemmonitor",
+        "org.kde.ksysguard",
+        "ksysguard"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "accessories-calculator",
+      "kind": "app",
+      "variant": "calculator",
+      "aliases": [
+        "org.kde.kcalc",
+        "kcalc"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "accessories-clock",
+      "kind": "app",
+      "variant": "clock",
+      "aliases": [
+        "org.kde.kclock"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "accessories-archiver",
+      "kind": "app",
+      "variant": "archive",
+      "aliases": [
+        "org.kde.ark",
+        "ark"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "image-viewer",
+      "kind": "app",
+      "variant": "image",
+      "aliases": [
+        "org.kde.gwenview",
+        "gwenview"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "help-browser",
+      "kind": "app",
+      "variant": "help",
+      "aliases": [
+        "org.kde.khelpcenter",
+        "khelpcenter"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "database",
+      "kind": "app",
+      "variant": "database",
+      "aliases": [
+        "dbeaver",
+        "io.dbeaver.DBeaverCommunity"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "multimedia-volume-control",
+      "kind": "app",
+      "variant": "sound",
+      "aliases": [
+        "pavucontrol",
+        "org.kde.kmix",
+        "kmix"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "multimedia-video-player",
+      "kind": "app",
+      "variant": "video",
+      "aliases": [
+        "vlc",
+        "org.videolan.VLC",
+        "mpv"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "applications-development",
+      "kind": "app",
+      "variant": "code",
+      "aliases": [
+        "org.kde.kdevelop",
+        "kdevelop",
+        "code",
+        "code-oss",
+        "com.visualstudio.code"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "applications-office",
+      "kind": "app",
+      "variant": "office",
+      "aliases": [
+        "libreoffice-startcenter"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "office-calendar",
+      "kind": "app",
+      "variant": "calendar",
+      "aliases": [
+        "org.kde.korganizer",
+        "korganizer"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "system-software-install",
+      "kind": "app",
+      "variant": "package",
+      "aliases": [
+        "org.kde.discover",
+        "plasma-discover"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "applications-graphics",
+      "kind": "app",
+      "variant": "paint",
+      "aliases": [
+        "org.kde.krita",
+        "krita",
+        "gimp",
+        "org.gimp.GIMP"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "applets-screenshooter",
+      "kind": "app",
+      "variant": "camera",
+      "aliases": [
+        "org.kde.spectacle",
+        "spectacle"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-internet",
+      "kind": "app",
+      "variant": "browser",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-multimedia",
+      "kind": "app",
+      "variant": "video",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-system",
+      "kind": "app",
+      "variant": "settings",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-utilities",
+      "kind": "app",
+      "variant": "calculator",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-other",
+      "kind": "app",
+      "variant": "generic",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "start-here",
+      "kind": "app",
+      "variant": "computer",
+      "aliases": [
+        "kde",
+        "plasma",
+        "menu-kde"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "go-previous",
+      "kind": "action",
+      "variant": "left",
+      "aliases": [
+        "back"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "go-next",
+      "kind": "action",
+      "variant": "right",
+      "aliases": [
+        "forward"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "go-up",
+      "kind": "action",
+      "variant": "up",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "go-down",
+      "kind": "action",
+      "variant": "down",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-new",
+      "kind": "action",
+      "variant": "new",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-open",
+      "kind": "action",
+      "variant": "open",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-save",
+      "kind": "action",
+      "variant": "save",
+      "aliases": [
+        "document-save-as"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "document-print",
+      "kind": "action",
+      "variant": "print",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-copy",
+      "kind": "action",
+      "variant": "copy",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-cut",
+      "kind": "action",
+      "variant": "cut",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-paste",
+      "kind": "action",
+      "variant": "paste",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-find",
+      "kind": "action",
+      "variant": "search",
+      "aliases": [
+        "system-search"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "view-refresh",
+      "kind": "action",
+      "variant": "refresh",
+      "aliases": [
+        "reload"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "edit-undo",
+      "kind": "action",
+      "variant": "undo",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-redo",
+      "kind": "action",
+      "variant": "redo",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "window-close",
+      "kind": "action",
+      "variant": "error",
+      "aliases": [
+        "dialog-close",
+        "tab-close"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "dialog-cancel",
+      "kind": "action",
+      "variant": "error",
+      "aliases": [
+        "process-stop"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "dialog-ok",
+      "kind": "action",
+      "variant": "check",
+      "aliases": [
+        "dialog-apply"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "list-add",
+      "kind": "action",
+      "variant": "plus",
+      "aliases": [
+        "add"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "list-remove",
+      "kind": "action",
+      "variant": "minus",
+      "aliases": [
+        "remove"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "folder-new",
+      "kind": "action",
+      "variant": "folder-new",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "view-list-icons",
+      "kind": "action",
+      "variant": "grid",
+      "aliases": [
+        "view-grid"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "view-list-details",
+      "kind": "action",
+      "variant": "list",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "view-split-left-right",
+      "kind": "action",
+      "variant": "split",
+      "aliases": [
+        "view-right-new"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "view-hidden",
+      "kind": "action",
+      "variant": "hidden",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "application-menu",
+      "kind": "action",
+      "variant": "menu",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-playback-start",
+      "kind": "action",
+      "variant": "play",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-playback-pause",
+      "kind": "action",
+      "variant": "pause",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-playback-stop",
+      "kind": "action",
+      "variant": "stop",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-record",
+      "kind": "action",
+      "variant": "record",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-skip-forward",
+      "kind": "action",
+      "variant": "skip-forward",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-skip-backward",
+      "kind": "action",
+      "variant": "skip-backward",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "system-lock-screen",
+      "kind": "action",
+      "variant": "lock",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "system-log-out",
+      "kind": "action",
+      "variant": "logout",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "system-shutdown",
+      "kind": "action",
+      "variant": "shutdown",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "system-reboot",
+      "kind": "action",
+      "variant": "refresh",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "dialog-warning",
+      "kind": "status",
+      "variant": "warning",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "dialog-error",
+      "kind": "status",
+      "variant": "error",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "dialog-information",
+      "kind": "status",
+      "variant": "information",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "dialog-question",
+      "kind": "status",
+      "variant": "question",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "task-complete",
+      "kind": "status",
+      "variant": "success",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-muted",
+      "kind": "status",
+      "variant": "volume-muted",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-low",
+      "kind": "status",
+      "variant": "volume-low",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-medium",
+      "kind": "status",
+      "variant": "volume-medium",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-high",
+      "kind": "status",
+      "variant": "volume-high",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired",
+      "kind": "status",
+      "variant": "network-online",
+      "aliases": [
+        "network-idle"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-offline",
+      "kind": "status",
+      "variant": "network-offline",
+      "aliases": [
+        "network-wired-disconnected"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-0",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": [
+        "battery-empty"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-0-charging",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-20",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": [
+        "battery-low"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-20-charging",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-40",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-40-charging",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-60",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": [
+        "battery-good"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-60-charging",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-80",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-80-charging",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": [
+        "battery-full"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-100-charging",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": [
+        "battery-full-charging"
+      ]
+    },
+    {
+      "category": "emblems",
+      "name": "emblem-symbolic-link",
+      "kind": "mark",
+      "variant": "link",
+      "aliases": [
+        "link_overlay",
+        "emblem-link"
+      ]
+    },
+    {
+      "category": "emblems",
+      "name": "emblem-readonly",
+      "kind": "mark",
+      "variant": "lock",
+      "aliases": [
+        "lock_overlay"
+      ]
+    },
+    {
+      "category": "emblems",
+      "name": "emblem-favorite",
+      "kind": "mark",
+      "variant": "star",
+      "aliases": []
+    },
+    {
+      "category": "emblems",
+      "name": "emblem-important",
+      "kind": "mark",
+      "variant": "error",
+      "aliases": []
+    },
+    {
+      "category": "emblems",
+      "name": "emblem-default",
+      "kind": "mark",
+      "variant": "check",
+      "aliases": []
+    }
+  ]
+}
