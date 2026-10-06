@@ -12,7 +12,12 @@
     "status": "not_declared_in_installed_snapshot",
     "note": "The installed index.theme and package files do not contain a license notice. Do not infer GPL from another Irixium component."
   },
-  "local_changes": [],
+  "local_changes": [
+    {
+      "date": "2026-10-06",
+      "change": "Renamed 22x22/places/user-bookmarks copy.png to user-bookmarks-copy.png; whitespace made GTK reject the entire icon cache. Image bytes unchanged."
+    }
+  ],
   "verification": {
     "installed_path": "~/.local/share/icons/Irixium",
     "metadata": "index.theme"

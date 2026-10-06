@@ -67,6 +67,11 @@ const result=vm.runInNewContext(p.body,{G:geom,R:render});process.stdout.write(J
         self.assertEqual(self.run_js('[R.isRaster("file:///x/applications.png"),R.isRaster("file:///x/minimize.svg")]'),[True,False])
 
 class SourceContracts(unittest.TestCase):
+    def test_menu_state_machine_matches_classic(self):
+        classic=ROOT.parent/'classic-rewrite-rc1/package/contents/ui'
+        for name in ('ButtonInput.qml','InputState.js'):
+            self.assertEqual((UI/name).read_bytes(),(classic/name).read_bytes())
+        self.assertIn('onCloseRequested: surface.closeRequested()', (UI/'Surface.qml').read_text())
     def test_frame_actually_uses_asset(self):
         s=(UI/'Surface.qml').read_text();self.assertIn('KSvg.FrameSvgItem',s);self.assertIn('../../assets/decoration.svg',s)
     def test_buttons_select_elements(self):
@@ -75,8 +80,8 @@ class SourceContracts(unittest.TestCase):
     def test_no_timers_or_opacity_animations(self):
         s=(UI/'ModernButton.qml').read_text();self.assertNotIn('Timer {',s);self.assertNotIn('mouseDoubleClickInterval',s)
         self.assertNotIn('Behavior on',s);self.assertNotIn('onDoubleClicked',s)
-    def test_immediate_menu_forced_in_adapter(self):
-        s=(UI/'main.qml').read_text();self.assertIn('menuOnPress: true',s);self.assertIn('closeOnDouble: false',s)
+    def test_double_click_enabled_only_for_closeable_clients(self):
+        s=(UI/'main.qml').read_text();self.assertIn('menuOnPress: true',s);self.assertIn('closeOnDouble: decoration.client.closeable',s)
     def test_no_shared_custom_files(self):
         for f in UI.glob('*'):
             if f.suffix in ('.qml','.js'):

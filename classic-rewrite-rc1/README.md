@@ -7,9 +7,9 @@ IRIX fornecidas por `mrmmx31`. **Revisão candidata: 1.0.0-rc3.** O nome exibido
 ## O que esta revisão faz
 
 Preserva os mapas de pixels aprovados na v4 e a paleta ativa/inativa; reestrutura
-geometria, desenho, entrada de mouse, ligação ao KWin e instalação. Um Canvas
-compartilhado desenha moldura e símbolos na mesma grade. Os elementos de entrada
-não criam superfícies gráficas individuais.
+geometria, desenho, entrada de mouse, ligação ao KWin e instalação. A moldura
+usa peças SVG fixas geradas de Pixels.js, repetidas pelo scene graph. Apenas os
+três símbolos pequenos usam Canvas; redimensionar não redesenha a janela inteira.
 
 O perfil visual permanece: menu 17×5, minimizar 5×5, maximizar/restaurar 15×17,
 borda 8, topo normal 32 e maximizado 24 unidades. São dimensões do desenho; os
@@ -20,8 +20,7 @@ local continua sendo uma aproximação, não o arquivo original da SGI.
 
 A interação não acrescenta destaque ao passar o ponteiro. A pressão inverte o
 relevo do compartimento sem mover o símbolo nem impor duração artificial.
-Minimizar/maximizar agem na soltura dentro do alvo; sair, voltar e soltar é aceito;
-soltar fora cancela. Cancelamento do mouse, ocultação, redimensionamento e perda
+Minimizar/maximizar agem imediatamente na pressão, uma única vez. Cancelamento do mouse, ocultação, redimensionamento e perda
 da capacidade anulam a intenção de clique. A segunda pressão de um duplo clique
 não é engolida inadvertidamente nos controles comuns.
 

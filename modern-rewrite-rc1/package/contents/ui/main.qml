@@ -31,7 +31,7 @@ Decoration {
         minimizeAllowed: decoration.client.minimizeable
         maximizeAllowed: decoration.client.maximizeable
         closeAllowed: decoration.client.closeable
-        closeOnDouble: false
+        closeOnDouble: decoration.client.closeable
         menuOnPress: true
         caption: decoration.client.caption
         titleFamily: localSettings.titleFamily
@@ -55,8 +55,6 @@ Decoration {
                 decoration.requestClose();
         }
     }
-    onWidthChanged: updateBorders()
-    onHeightChanged: updateBorders()
     Component.onCompleted: {
         updateBorders();
         decoration.installTitleItem(face.titleItem);

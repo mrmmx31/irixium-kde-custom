@@ -9,7 +9,7 @@ Item {
     property bool minimizeAllowed: true
     property bool maximizeAllowed: true
     property bool menuOnPress: true
-    property bool closeOnDouble: false
+    property bool closeOnDouble: true
     property string caption: ""
     property int pixelScale: 1
     property string titleFamily: "Nimbus Sans"
@@ -23,47 +23,48 @@ Item {
     signal minimizeRequested()
     signal maximizeRequested(int mouseButton)
     clip: true
-    // IRIX_CLASSIC_RESIZE_DIRECT_R1: invalidate the canvas without a QML timer.
-    // requestPaint() schedules the render itself; it is not a synchronous draw.
-    // Initial loading is still handled by onAvailableChanged/Component.onCompleted.
-    function repaint() {
-        if (art && art.available)
-            art.requestPaint();
-    }
     function cancelGestures() {
         if (menuInput) menuInput.cancelGesture();
         if (minimizeInput) minimizeInput.cancelGesture();
         if (maximizeInput) maximizeInput.cancelGesture();
     }
-    onActiveWindowChanged: {
-        if (!activeWindow) cancelGestures();
-        repaint();
+    onActiveWindowChanged: { if (!activeWindow) cancelGestures(); }
+    onMaximizedWindowChanged: cancelGestures()
+    onPixelScaleChanged: cancelGestures()
+    onWidthChanged: cancelGestures()
+    onHeightChanged: cancelGestures()
+    Frame {
+        width: surface.width / surface.metrics.scale
+        height: surface.height / surface.metrics.scale
+        scale: surface.metrics.scale
+        transformOrigin: Item.TopLeft
+        activeWindow: surface.activeWindow
+        maximizedWindow: surface.maximizedWindow
     }
-    onMaximizedWindowChanged: { cancelGestures(); repaint(); }
-    onMinimizeAllowedChanged: repaint()
-    onMaximizeAllowedChanged: repaint()
-    onPixelScaleChanged: { cancelGestures(); repaint(); }
-    onWidthChanged: { cancelGestures(); repaint(); }
-    onHeightChanged: { cancelGestures(); repaint(); }
-    Canvas {
-        id: art
-        objectName: "irixArtwork"
+    component Glyph: Canvas {
+        property string kind
+        property bool down: false
+        property bool allowed: true
+        readonly property bool activeWindow: surface.activeWindow
+        readonly property int pixelScale: surface.metrics.scale
+        readonly property bool maximizedWindow: surface.maximizedWindow
+        // Only the pressed relief depends on the frame width/parity.
+        readonly property real frameWidth: down ? surface.width : 0
         anchors.fill: parent
         antialiasing: false
         smooth: false
-        renderTarget: Canvas.Image
-        renderStrategy: Canvas.Cooperative
+        onDownChanged: requestPaint()
+        onAllowedChanged: requestPaint()
+        onActiveWindowChanged: requestPaint()
+        onPixelScaleChanged: requestPaint()
+        onMaximizedWindowChanged: requestPaint()
+        onFrameWidthChanged: requestPaint()
         onAvailableChanged: { if (available) requestPaint(); }
-        Component.onCompleted: requestPaint()
         onPaint: {
             var ctx = getContext("2d");
-            ctx.clearRect(0,0,width,height);
-            Artwork.paintDecoration(ctx,width,height,surface.pixelScale,
-                surface.activeWindow,surface.maximizedWindow,{
-                    menu:{enabled:true,down:menuInput.down},
-                    minimize:{enabled:surface.minimizeAllowed,down:minimizeInput.down},
-                    maximize:{enabled:surface.maximizeAllowed,down:maximizeInput.down}
-                });
+            ctx.clearRect(0, 0, width, height);
+            Artwork.paintButton(ctx, kind, width, height, pixelScale,
+                activeWindow, false, down, allowed, frameWidth, maximizedWindow);
         }
     }
     Item {
@@ -93,36 +94,39 @@ Item {
     }
     ButtonInput {
         id: menuInput
+        Glyph { kind: "menu"; down: menuInput.down; allowed: menuInput.available }
         objectName: "irixMenu"
         kind: "menu"; label: "Menu da janela — mais ações"
         menuOnPress: surface.menuOnPress; closeOnDouble: surface.closeOnDouble
         x: surface.metrics.menu.x; y: surface.metrics.menu.y
         width: surface.metrics.menu.w; height: surface.metrics.menu.h
         visible: surface.metrics.menu.visible
-        onDownChanged: surface.repaint()
+
         onActivate: (button) => surface.menuRequested(button)
         onCloseRequested: surface.closeRequested()
     }
     ButtonInput {
         id: minimizeInput
+        Glyph { kind: "minimize"; down: minimizeInput.down; allowed: minimizeInput.available }
         objectName: "irixMinimize"
         kind: "minimize"; label: "Minimizar"
         available: surface.minimizeAllowed
         x: surface.metrics.minimize.x; y: surface.metrics.minimize.y
         width: surface.metrics.minimize.w; height: surface.metrics.minimize.h
         visible: surface.metrics.minimize.visible
-        onDownChanged: surface.repaint()
+
         onActivate: surface.minimizeRequested()
     }
     ButtonInput {
         id: maximizeInput
+        Glyph { kind: "maximize"; down: maximizeInput.down; allowed: maximizeInput.available }
         objectName: "irixMaximize"
         kind: "maximize"; label: surface.maximizedWindow ? "Restaurar" : "Maximizar"
         available: surface.maximizeAllowed
         x: surface.metrics.maximize.x; y: surface.metrics.maximize.y
         width: surface.metrics.maximize.w; height: surface.metrics.maximize.h
         visible: surface.metrics.maximize.visible
-        onDownChanged: surface.repaint()
+
         onActivate: (button) => surface.maximizeRequested(button)
     }
 }

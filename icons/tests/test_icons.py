@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import shutil
 import struct
 import subprocess
 import sys
@@ -111,6 +112,9 @@ class Repairs(unittest.TestCase):
     def test_flattened_symlink_not_png(self):
         (self.src/'24x24/apps/bad.png').write_text('editor.png')
         r=audit(self.src);self.assertIn('invalid-image',{i['code'] for i in r['issues']})
+    def test_whitespace_in_icon_name_rejects_invalid_gtk_cache(self):
+        (self.src/'24x24/apps/invalid name.png').write_bytes(tiny_png(24,24))
+        self.assertIn('invalid-cache-name',{i['code'] for i in audit(self.src)['issues']})
     def test_crc_error(self):
         p=self.src/'24x24/apps/editor.png';b=bytearray(p.read_bytes());b[40]^=1;p.write_bytes(b)
         with self.assertRaises(ValueError):png_size(p)
@@ -146,7 +150,21 @@ class Package(unittest.TestCase):
         theme=ROOT/'themes/IrixClassic-SGI';r=audit(theme)
         self.assertEqual(r['errors'],0);self.assertEqual(r['warnings'],0)
         self.assertEqual(r['symlinks'],0)
-        self.assertEqual(r['png'],2336);self.assertEqual(r['svg'],292)
+        manifest=json.loads((theme/'manifest.json').read_text())
+        # The generated core is mandatory; contributed aliases can extend it.
+        # audit() above validates every image, including those additions.
+        self.assertGreaterEqual(r['png'],manifest['icon_names']*len(manifest['sizes']))
+        self.assertGreaterEqual(r['svg'],manifest['icon_names'])
+    @unittest.skipUnless(shutil.which('gtk-update-icon-cache'), 'GTK cache tool unavailable')
+    def test_both_distributed_themes_generate_valid_gtk_caches(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            for source in (ROOT/'Irixium', ROOT/'themes/IrixClassic-SGI'):
+                target=Path(tmp)/source.name
+                shutil.copytree(source,target,symlinks=False)
+                for options in (['-f','-t'],['--validate']):
+                    p=subprocess.run(['gtk-update-icon-cache',*options,str(target)],capture_output=True,text=True)
+                    self.assertEqual(p.returncode,0,p.stderr)
+
     def test_unique_names(self):
         names=[n for i in build_classic.ITEMS for n in [i['name'],*i['aliases']]]
         self.assertEqual(len(names),len(set(names)))

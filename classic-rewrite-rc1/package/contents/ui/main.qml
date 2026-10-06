@@ -32,11 +32,8 @@ Decoration {
         maximizedWindow: decoration.client.maximized
         minimizeAllowed: decoration.client.minimizeable
         maximizeAllowed: decoration.client.maximizeable
-        // IRIX_CLASSIC_IMMEDIATE_MENU_R1: enforce dispatch on press here.
-        // The installer preserves old Settings.qml values, so changing only
-        // their defaults would silently restore the unwanted waiting policy.
-        // Title-bar and application double-click behavior remain native.
-        closeOnDouble: false
+        // Wait only for a possible menu double-click; resize never uses this timer.
+        closeOnDouble: decoration.client.closeable
         menuOnPress: true
         caption: decoration.client.caption
         pixelScale: root.gridScale
@@ -47,6 +44,9 @@ Decoration {
         onMenuRequested: {
             var r = face.metrics.menu;
             decoration.requestShowWindowMenu(Qt.rect(r.x,r.y,r.w,r.h));
+        }
+        onCloseRequested: {
+            if (decoration.client.closeable) decoration.requestClose();
         }
         onMinimizeRequested: {
             if (decoration.client.minimizeable) decoration.requestMinimize();

@@ -88,9 +88,11 @@ def main():
             point = QPoint(16 + int(menu.property('x')) + 11, 40 + int(menu.property('y')) + 11)
             old = root.property('calls')
             QTest.mousePress(view, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, point)
-            check('menu emits on press, without timer wait', root.property('calls') == old + 1)
+            check('left menu waits for double-click', root.property('calls') == old)
             QTest.mouseRelease(view, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, point)
-            check('menu release does not emit twice', root.property('calls') == old + 1)
+            check('menu release still waits', root.property('calls') == old)
+            QTest.qWait(app.styleHints().mouseDoubleClickInterval() + 100)
+            check('single menu click emits once after native interval', root.property('calls') == old + 1)
     # Move the pointer away from button hover before the comparison image.
     QTest.mouseMove(view, QPoint(440, 120)); QTest.qWait(120)
     if args.saida:

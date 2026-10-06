@@ -12,7 +12,7 @@ Item {
     property bool maximizeAllowed: true
     property bool closeAllowed: true
     property bool menuOnPress: true
-    property bool closeOnDouble: false
+    property bool closeOnDouble: true
     property string caption: ""
     property string titleFamily: "Nimbus Sans"
     property int titlePixels: 14
@@ -20,8 +20,13 @@ Item {
     property bool titleBold: true
     readonly property var metrics: Geometry.metrics(width, maximizedWindow)
     property alias titleItem: titleRegion
-    readonly property bool artworkValid: frameAtlas.hasElementPrefix("decoration")
+    readonly property bool artworkValid: atlasRevision >= 0 && frameAtlas.hasElementPrefix("decoration")
     readonly property string renderedFramePrefix: frameArtwork.prefix
+    property int atlasRevision: 0
+    Connections {
+        target: frameAtlas
+        function onRepaintNeeded() { surface.atlasRevision++; }
+    }
     signal menuRequested(int mouseButton)
     signal minimizeRequested()
     signal maximizeRequested(int mouseButton)
@@ -37,7 +42,11 @@ Item {
         objectName: "irixiumModernFrame"
         anchors.fill: parent
         imagePath: frameAtlas.imagePath
-        prefix: Rendering.framePrefix(frameAtlas, surface.activeWindow, surface.maximizedWindow)
+        prefix: {
+            surface.atlasRevision;
+            frameAtlas.imagePath;
+            return Rendering.framePrefix(frameAtlas, surface.activeWindow, surface.maximizedWindow);
+        }
         enabledBorders: surface.maximizedWindow ? KSvg.FrameSvg.NoBorder
             : KSvg.FrameSvg.TopBorder | KSvg.FrameSvg.BottomBorder
               | KSvg.FrameSvg.LeftBorder | KSvg.FrameSvg.RightBorder
@@ -81,6 +90,7 @@ Item {
         x: surface.metrics.menu.x; y: surface.metrics.menu.y
         width: surface.metrics.menu.w; height: surface.metrics.menu.h
         onActivate: (mouseButton) => surface.menuRequested(mouseButton)
+        onCloseRequested: surface.closeRequested()
     }
     ModernButton {
         id: minimizeButton

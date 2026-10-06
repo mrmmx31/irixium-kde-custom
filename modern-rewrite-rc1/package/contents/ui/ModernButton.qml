@@ -11,10 +11,9 @@ Item {
     property string label: ""
     property bool available: true
     property bool activeWindow: true
-    // Compatibility with existing Surface/configuration. The menu policy is
-    // deliberately immediate, irrespective of previously saved values.
+    // The menu uses the same isolated double-click state machine as Classic.
     property bool menuOnPress: true
-    property bool closeOnDouble: false
+    property bool closeOnDouble: true
     property bool pressed: false
     property bool hovered: pointer.containsMouse
     readonly property bool rasterArtwork: Rendering.isRaster(artwork)
@@ -22,8 +21,16 @@ Item {
         activeWindow, available, pressed, hovered)
     readonly property string renderedElement: rasterArtwork ? "png" : vector.elementId
     readonly property bool artworkValid: rasterArtwork ? menuBitmap.status === Image.Ready
-        : stateAtlas.hasElement(vector.elementId)
+        : (atlasRevision >= 0 && stateAtlas.hasElement(vector.elementId))
+    // hasElement() is a method, not a notifying QML property. Re-evaluate
+    // after the atlas loads, even when pointer/window state has not changed.
+    property int atlasRevision: 0
+    Connections {
+        target: stateAtlas
+        function onRepaintNeeded() { control.atlasRevision++; }
+    }
     signal activate(int mouseButton)
+    signal closeRequested()
 
     Accessible.role: Accessible.Button
     Accessible.name: control.label
@@ -53,7 +60,11 @@ Item {
         anchors.fill: parent
         visible: !control.rasterArtwork
         svg: stateAtlas
-        elementId: Rendering.pickElement(stateAtlas, control.stateCandidates)
+        elementId: {
+            control.atlasRevision;
+            stateAtlas.imagePath;
+            return Rendering.pickElement(stateAtlas, control.stateCandidates);
+        }
         smooth: false
         // Preserve real disabled states; fade only if an older atlas lacks them.
         opacity: !control.available && elementId.indexOf("deactivated") !== 0 ? 0.45 : 1.0
@@ -66,10 +77,22 @@ Item {
         color: "#403d31"
         opacity: 0.22
     }
+    ButtonInput {
+        anchors.fill: parent
+        visible: control.kind === "menu"
+        kind: "menu"
+        label: control.label
+        available: control.available
+        menuOnPress: control.menuOnPress
+        closeOnDouble: control.closeOnDouble
+        onDownChanged: control.pressed = down
+        onActivate: (button) => control.activate(button)
+        onCloseRequested: control.closeRequested()
+    }
     MouseArea {
         id: pointer
         anchors.fill: parent
-        enabled: control.available
+        enabled: control.available && control.kind !== "menu"
         hoverEnabled: true
         acceptedButtons: Qt.LeftButton | Qt.RightButton
         onPressed: (mouse) => {

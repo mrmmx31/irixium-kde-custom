@@ -15,13 +15,21 @@ class PreviewContractTests(unittest.TestCase):
         for filename,digest in expected.items():
             with self.subTest(filename=filename):
                 self.assertEqual(hashlib.sha256((UI/filename).read_bytes()).hexdigest(),digest)
-    def test_existing_adapter_only_adds_preview_component(self):
+    def test_adapter_initializes_borders_without_resize_repaint(self):
         code=(UI/'main.qml').read_text()
-        start=code.index('    // Aurorae disables PreviewItem')
-        end=code.index('    Surface {',start)
-        restored=code[:start]+code[end:]
-        self.assertEqual(hashlib.sha256(restored.encode()).hexdigest(),
-                         'ed2c7f64ebd934f0c26e4d11f804efdaeb8f8f49b6347f76ec2455200f7a8428')
+        self.assertIn('decoration.installTitleItem(face.titleItem)',code)
+        self.assertIn('onGridScaleChanged: updateBorders()',code)
+        self.assertNotIn('onWidthChanged:',code)
+        self.assertNotIn('onHeightChanged:',code)
+        self.assertIn('menuOnPress: true',code)
+    def test_resize_uses_fixed_frame_textures(self):
+        frame=(UI/'Frame.qml').read_text()
+        self.assertIn('fillMode: Image.Tile',frame)
+        self.assertNotIn('Canvas',frame)
+        self.assertNotIn('Timer',frame)
+        surface=(UI/'Surface.qml').read_text()
+        self.assertNotIn('Artwork.paintDecoration(',surface)
+        self.assertNotIn('surface.repaint()',surface)
     def test_adapter_passes_actual_parent_and_identity(self):
         code=(UI/'main.qml').read_text()
         self.assertIn('previewHost: root.parent',code)
