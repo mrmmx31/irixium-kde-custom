@@ -6,6 +6,10 @@ Wallpaper 1920×1080 criado para acompanhar a aparência IRIX Classic do
 projeto. A composição apresenta uma referência visual ao Indigo Magic e uma
 folha de consulta de comandos Linux.
 
+O arquivo também está disponível como pacote Plasma em
+`contents/images/1920x1080.jpg`, com `contents/screenshot.jpg` para a galeria.
+O Tema Global Classic seleciona o pacote pelo identificador `IrixClassic`.
+
 **Autoria:** mrmmx31  
 **Licença:** [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 

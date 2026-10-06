@@ -35,10 +35,29 @@ def main():
     default=Path(__file__).resolve().parents[1]/'themes/IrixClassic-SGI'
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--theme',type=Path,default=default)
+    parser.add_argument('--atualizar',action='store_true',help='substitui a cópia existente com backup no perfil do usuário')
     parser.add_argument('--icons-root',type=Path,default=Path(os.environ.get('XDG_DATA_HOME',str(Path.home()/'.local/share')))/'icons')
     args=parser.parse_args()
     try:
-        dest=install(args.theme,args.icons_root)
+        if args.atualizar:
+            if os.geteuid() == 0:
+                raise ValueError('Execute como usuário normal, sem sudo.')
+            sys.path.insert(0, str(Path(__file__).resolve().parents[2]/'tools'))
+            from user_bundle import Bundle
+            from install_suite import roots, refresh_icons
+            data, config, state = roots()
+            if args.icons_root.absolute() != data/'icons':
+                raise ValueError('--atualizar usa somente XDG_DATA_HOME/icons do usuário.')
+            source=args.theme.expanduser().resolve(strict=True)
+            if audit(source)['errors']:
+                raise ValueError('Tema inválido; execute validate_theme.py.')
+            dest=data/'icons'/source.name
+            bundle=Bundle(state/('irix-icons-'+source.name),[dest])
+            with bundle.locked():
+                bundle.install([(source,dest)])
+            refresh_icons(data)
+        else:
+            dest=install(args.theme,args.icons_root)
         print(f'Instalado: {dest}\nO tema ativo NÃO foi alterado.\nAbra Configurações do Sistema, procure Ícones e selecione o novo tema.')
     except Exception as exc:parser.exit(1,f'Erro: {exc}\n')
 

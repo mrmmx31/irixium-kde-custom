@@ -128,6 +128,46 @@ class SourceTests(unittest.TestCase):
             with self.assertRaises(S.Failure):S.user_only()
 
 
+class DownloadTests(unittest.TestCase):
+    setUp = SourceTests.setUp
+    tearDown = SourceTests.tearDown
+    def test_verified_download_cached(self):
+        with patch.object(S, 'fetch_bytes', return_value=self.data) as fetch:
+            got, source = S.obtain_source(S.catalog(), self.spec, self.root, None, True)
+        self.assertEqual(got, self.data)
+        self.assertTrue(source.startswith('https://ftp.jurassic.nl/'))
+        self.assertEqual((self.root/'originais'/self.spec['original_filename']).read_bytes(), self.data)
+        fetch.assert_called_once()
+
+    def test_bad_download_never_cached(self):
+        with patch.object(S, 'fetch_bytes', return_value=b'<html>wrong file</html>'):
+            with self.assertRaises(S.Failure):
+                S.obtain_source(S.catalog(), self.spec, self.root, None, True)
+        self.assertFalse((self.root/'originais'/self.spec['original_filename']).exists())
+
+    def test_verified_mirror_fallback(self):
+        with patch.object(S, 'fetch_bytes', side_effect=[OSError('unavailable'), self.data]) as fetch:
+            got, source = S.obtain_source(S.catalog(), self.spec, self.root, None, True)
+        self.assertEqual(got, self.data)
+        self.assertIn('/08ffcbcb16787d60a33ff881e4a3169a98d428a0/', source)
+        self.assertEqual(fetch.call_count, 2)
+
+    def test_http_and_redirect_downgrade_refused(self):
+        with self.assertRaises(S.Failure): S.fetch_bytes('http://ftp.jurassic.nl/test', 'raw')
+        for target in ('http://ftp.jurassic.nl/test', 'https://unexpected.example/test'):
+            with self.assertRaises(S.Failure):
+                S.HttpsOnly().redirect_request(None, None, 302, 'redirect', {}, target)
+
+    def test_verify_with_download_option_never_fetches(self):
+        with patch.dict(os.environ, {'XDG_DATA_HOME':str(self.root/'data'),
+                                     'XDG_CONFIG_HOME':str(self.root/'config'),
+                                     'XDG_CACHE_HOME':str(self.root/'cache'),
+                                     'XDG_STATE_HOME':str(self.root/'state')}), \
+             patch.object(S, 'fetch_bytes', side_effect=AssertionError('unexpected network')):
+            self.assertEqual(S.main(['install', '--baixar', '--verificar']), 0)
+        self.assertEqual(list(self.root.iterdir()), [])
+
+
 @unittest.skipUnless(shutil.which('ffmpeg') and shutil.which('ffprobe'),'FFmpeg indisponível')
 class ConversionTests(unittest.TestCase):
     def test_real_aiff_decoder_preserves_pcm(self):

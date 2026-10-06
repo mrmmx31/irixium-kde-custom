@@ -9,10 +9,24 @@ revisada em 24/08/1998 e arquivada em 11/09/2001:
 
 https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html
 
-A página pede atribuição para uso dos sons e comenta seu uso em computadores
-pessoais. Não apresenta uma licença GPL, Creative Commons ou outra licença livre
-formal. Não tratamos esse texto informal como uma autorização irrestrita de
-redistribuição. **Os áudios não são criação de mrmmx31 e não foram relicenciados.**
+A página incentiva uso com atribuição na Web e em computadores pessoais.
+Isso não equivale a uma proibição absoluta de versionar os sons; tampouco
+esclarece redistribuição de um pacote convertido ou relicenciamento.
+**Os áudios não são criação de mrmmx31 e não foram relicenciados.**
+
+## Download com atribuição — 06/10/2026
+
+O projeto adota o uso com atribuição descrito na
+[página histórica do organizador](https://ftp.jurassic.nl/mirrors/ftp.sgi.com/sgi/desktop/sounds/sounds.html),
+conforme decisão do mantenedor. `sons/instalar.sh --baixar` obtém os oito
+originais desse arquivo histórico, usando o espelho fixado como alternativa,
+valida os bytes e converte localmente. A atribuição acima e o link acompanham o
+tema instalado em `CREDITS.md`.
+
+Essa decisão autoriza o downloader no fluxo público do projeto; não declara
+os áudios como GPL, Creative Commons ou domínio público. O espelho identifica
+os bytes e não acrescenta uma licença aos sons. A publicação dos próprios
+arquivos em Git/releases permanece fora do escopo desta alteração.
 
 ## Política desta distribuição
 

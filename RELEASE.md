@@ -1,42 +1,28 @@
-# Pacote completo Irixium KDE
+# Distribuição do conjunto completo
 
-Este pacote instala, somente no perfil do usuário:
-
-- **Irixium Moderno**, decoração KWin independente (`irixium_modern`) baseada no
-  adaptador Aurorae, e Tema Global;
-- **IRIX Classic**, decoração KWin independente e Tema Global;
-- Plasma Styles separados **Irixium** e **IrixClassic**; o segundo é uma cópia
-  nomeada para receber as futuras alterações visuais do Classic;
-- o Classic usa o mesmo layout de desktop, alternância de janelas e alternância
-  de áreas de trabalho do Irixium moderno;
-- tema de ícones **IRIX Classic — SGI**;
-- wallpaper IRIX Classic;
-- scripts para alternar as duas decorações.
-
-## Instalação
-
-Extraia o arquivo e execute:
+O checkout contém os 15 componentes gráficos declarados em `components.json`,
+mais o código/catálogo do esquema de sons. Use o fluxo do [README](README.md):
 
 ```sh
-cd irixium-kde-complete-1.0.0
+bash instalar-irixium.sh --verificar
 bash instalar-irixium.sh
+bash sons/instalar.sh --baixar
+bash aplicar-tema.sh classic --exigir-sons   # ou: moderno
 ```
 
-Não use `sudo`. O instalador grava somente em `~/.local/share`,
-`~/.config/kwinrc` quando uma seleção explícita é feita e no estado do usuário.
-Ele não substitui componentes em `/usr/share` ou `/usr/lib`.
+O terceiro comando baixa os oito originais e instala os sons para seu usuário,
+com atribuição e verificação de identidade. Com cache preparado,
+`sons/instalar.sh` funciona sem rede; `--origem` importa arquivos locais. Áudios e `sons/local/`
+não entram em distribuição pública. Não gere arquivos de release a partir de
+um diretório inteiro incluindo arquivos ignorados; use os arquivos versionados.
 
-Depois, abra **Configurações do Sistema → Aparência → Tema Global**. Os pacotes
-disponíveis são **Irixium Moderno** e **IRIX Classic**.
+A aplicação faz a seleção coerente de Plasma, decoração, Kvantum, GTK, ícones,
+cursores e sons já instalados. Para preservar os sons, use `--sem-sons`. O KCM
+Tema Global sozinho não escolhe a seleção interna do Kvantum nem importa sons.
+Não há alteração de recursos compartilhados de Aurorae ou instalação de SDDM.
 
-O instalador não escolhe automaticamente um Tema Global nem troca a decoração
-ativa. Para alternar apenas a decoração:
-
-```sh
-bash aurorae/selecionar-user.sh moderno
-bash aurorae/selecionar-user.sh classic
-```
-
-O diretório também contém os componentes opcionais de Plasma, Kvantum, GTK,
-cursores e sons. Eles são mantidos separados para não alterar configurações do
-usuário sem confirmação.
+Plasma 6, Aurorae/KSvg, Kvantum Qt 6 e, para importar sons, FFmpeg/ffprobe são
+dependências da distribuição. Após instalar, encerre e entre na sessão para
+recarregar o QML. As versões dos componentes são independentes; a distribuição
+estável do Kvantum 0.7.1 permanece em `distribuicao/`, com seus registros de
+aceite e empacotamento preservados.

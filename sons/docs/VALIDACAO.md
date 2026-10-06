@@ -57,7 +57,6 @@ Na raiz do ZIP extraído, como usuário normal:
 
 ```sh
 bash sons/testar.sh
-python3 -B testar-merge.py
 ```
 
 Os testes não acessam a rede nem reproduzem áudio. Exigem Python 3 e Git; os
@@ -67,3 +66,35 @@ os contam como conversões aprovadas. Não instalam dependências.
 O aceite de uso inicial é simples: importar, selecionar IrixClassic Sounds no
 KCM e ouvir a prévia geral e seus cinco atalhos. `sons/ouvir.sh` permite separar
 falha de lookup de falha de reprodução direta, sem alterar as configurações.
+
+
+## Verificação do perfil local em 06/10/2026
+
+A auditoria `python3 tools/audit_suite.py --local --exigir-sons` confirmou que o
+esquema IrixClassic está instalado e selecionado, com os oito originais fixados
+no cache e os 24 eventos/aliases válidos. Conferência de WAV, PCM, identidade e
+manifesto passou sem rede ou reprodução. O usuário informou que o esquema está
+funcional; esta auditoria não acrescenta uma alegação de audição automatizada.
+Os scripts privados em `sons/local/` foram preservados byte a byte e continuam
+fora do Git. Os limites históricos acima descrevem a primeira entrega.
+
+
+## Downloader público — 06/10/2026
+
+O downloader foi integrado em `tools/irix_sounds.py`, acessível por
+`sons/instalar.sh --baixar`, com atribuição à página histórica da SGI.
+O arquivo histórico é tentado antes do espelho GitHub fixado. HTTPS, limite de
+bytes, tamanho esperado, Git blob e AIFF/AIFC são conferidos antes da conversão.
+`--origem` não usa rede; `--verificar` continua sem download nem escrita mesmo
+quando combinado com `--baixar`. Os áudios ficam fora do Git/ZIPs.
+
+Passaram 51 testes dos sons e 59 testes de integração. Os casos novos verificam
+cache do download válido, recusa de bytes divergentes, alternativa fixada,
+recusa de HTTP/redirecionamentos e verificação sem rede. A auditoria do
+repositório e a sintaxe dos scripts também passaram.
+
+No perfil temporário `/tmp/irix-sons-download-hdsta0xp`, o download real de oito
+originais, conversão para 24 WAVs, instalação com créditos, verificação,
+reinstalação via cache e restauração terminaram com código zero. Log:
+`/tmp/irix-sons-download-hdsta0xp/validation.log`. Sem reprodução de áudio,
+seleção de tema na sessão real ou alteração em configurações de outros usuários.

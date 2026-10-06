@@ -174,6 +174,9 @@ def audit(root: Path) -> dict:
                 issue('warning','absolute-link',rel,'Link absoluto interno; não é portátil.')
         if file.suffix.lower() not in IMAGE_EXT:
             continue
+        if any(ord(c) < 33 or ord(c) > 126 for c in rel):
+            issue('error','invalid-cache-name',rel,
+                  'GTK rejeita o cache inteiro se o nome contiver espaço, controle ou caractere não ASCII.')
         result['image_entries'] += 1
         ext = file.suffix.lower()
         result[ext[1:]] += 1
