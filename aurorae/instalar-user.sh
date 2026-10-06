@@ -7,14 +7,10 @@ destination="$data_home/aurorae/themes/Irixium"
 source="$base/Irixium"
 state="${XDG_STATE_HOME:-"$HOME/.local/state"}/irixium-user"
 
+activate=0
 case "${1:-}" in
   ""|--instalar) ;;
-  --ativar)
-    kwriteconfig6 --file "$HOME/.config/kwinrc" \
-      --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae
-    kwriteconfig6 --file "$HOME/.config/kwinrc" \
-      --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
-    ;;
+  --ativar) activate=1 ;;
   *)
     printf '%s\n' "Uso: $0 [--instalar|--ativar]" >&2
     exit 2
@@ -34,3 +30,10 @@ if [ -e "$destination" ] || [ -L "$destination" ]; then
 fi
 cp -a "$source" "$destination"
 printf '%s\n' "Irixium moderno instalado no perfil do usuário: $destination"
+if [ "$activate" -eq 1 ]; then
+  kwriteconfig6 --file "$HOME/.config/kwinrc" \
+    --group org.kde.kdecoration2 --key library org.kde.kwin.aurorae
+  kwriteconfig6 --file "$HOME/.config/kwinrc" \
+    --group org.kde.kdecoration2 --key theme __aurorae__svg__Irixium
+  printf '%s\n' 'Irixium moderno selecionado no perfil do usuário.'
+fi
