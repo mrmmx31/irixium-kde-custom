@@ -23,7 +23,13 @@ Item {
     signal minimizeRequested()
     signal maximizeRequested(int mouseButton)
     clip: true
-    function repaint() { repaintTimer.restart(); }
+    // IRIX_CLASSIC_RESIZE_DIRECT_R1: invalidate the canvas without a QML timer.
+    // requestPaint() schedules the render itself; it is not a synchronous draw.
+    // Initial loading is still handled by onAvailableChanged/Component.onCompleted.
+    function repaint() {
+        if (art && art.available)
+            art.requestPaint();
+    }
     function cancelGestures() {
         if (menuInput) menuInput.cancelGesture();
         if (minimizeInput) minimizeInput.cancelGesture();
@@ -39,12 +45,6 @@ Item {
     onPixelScaleChanged: { cancelGestures(); repaint(); }
     onWidthChanged: { cancelGestures(); repaint(); }
     onHeightChanged: { cancelGestures(); repaint(); }
-    Timer {
-        id: repaintTimer
-        interval: 0
-        repeat: false
-        onTriggered: if (art) art.requestPaint()
-    }
     Canvas {
         id: art
         objectName: "irixArtwork"
