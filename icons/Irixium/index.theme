@@ -2,7 +2,7 @@
 Name=Irixium
 Comment=Remixed NsCDE
 Example=start-here
-Inherits=hicolor,breeze
+Inherits=breeze,hicolor
 
 # KDE Specific Stuff
 DisplayDepth=32
@@ -10,11 +10,11 @@ LinkOverlay=link_overlay
 LockOverlay=lock_overlay
 ZipOverlay=zip_overlay
 DesktopDefault=24
-DesktopSizes=16,22,32,48
+DesktopSizes=16,22,24,32,48
 ToolbarDefault=24
-ToolbarSizes=16,22,32,48
+ToolbarSizes=16,22,24,32,48
 MainToolbarDefault=24
-MainToolbarSizes=16,22,32,48
+MainToolbarSizes=16,22,24,32,48
 SmallDefault=16
 SmallSizes=16
 PanelDefault=48
@@ -273,7 +273,5 @@ Type=Fixed
 [256x256/places]
 Context=Places
 Size=256
-MinSize=56
-MaxSize=512
-Type=Scalable
+Type=Fixed
 
