@@ -18,6 +18,7 @@ import shutil
 import sys
 import tempfile
 from native_gallery_input import GalleryInput
+from gallery_report import GalleryReport
 ROOT=Path(__file__).resolve().parents[1]
 
 
@@ -26,8 +27,10 @@ def main(argv=None):
     p.add_argument('--testar',action='store_true');p.add_argument('--qtquick',action='store_true')
     p.add_argument('--tema',choices=('IrixClassic','Irixium'),default='IrixClassic')
     p.add_argument('--fonte-px',type=int,default=14);p.add_argument('--capturas',type=Path)
+    p.add_argument('--resultado',type=Path,help='JSON incremental; arquivo novo, sem sobrescrever coleta anterior.')
     a=p.parse_args(argv)
     if not 10<=a.fonte_px<=28:p.error('--fonte-px deve estar entre 10 e 28.')
+    if a.resultado and not a.testar:p.error('--resultado exige --testar.')
     if a.qtquick and a.testar:p.error('--qtquick é galeria manual; os testes automatizados são de Qt Widgets.')
     binding=next((m for m in ('PyQt6','PySide6') if importlib.util.find_spec(m)),None)
     if not binding:
@@ -107,59 +110,85 @@ def main(argv=None):
         layout.addStretch();win.resize(640,340);win.show();win.activateWindow()
         app.processEvents();T.QTest.qWait(150)
         if not a.testar:return app.exec()
-        results=[]
-        def check(name,ok):results.append({'test':name,'passed':bool(ok)})
-        def show(m):
-            m.popup(win.mapToGlobal(C.QPoint(40,80)));app.processEvents();T.QTest.qWait(100)
         native_input=GalleryInput(C,W,T,app)
-        def click(m,act):
-            # QTest.mouseClick uses the QWindow route inside GalleryInput.
-            return native_input.menu_action(m,act)
-        show(menu);check('popup visible',menu.isVisible())
-        if captures:menu.grab().save(str(captures/'01-popup.png'))
-        n=len(log);click(menu,disabled);check('disabled action not triggered',len(log)==n)
-        menu.close();show(menu);click(menu,first);check('mouse triggers action',log and log[-1]==first.text())
-        check('action dismisses popup',not menu.isVisible())
-        show(menu);n=len(log);T.QTest.keyClick(menu,C.Qt.Key.Key_Escape);app.processEvents()
-        check('Escape dismisses without action',not menu.isVisible() and len(log)==n)
-        show(menu);menu.setActiveAction(first);T.QTest.keyClick(menu,C.Qt.Key.Key_Down);app.processEvents()
-        check('keyboard skips disabled action',menu.activeAction()==second)
-        T.QTest.keyClick(menu,C.Qt.Key.Key_Return);app.processEvents()
-        check('Return triggers selected action',log and log[-1]==second.text())
-        show(menu);before=toggle.isChecked();click(menu,toggle)
-        check('checkable item toggles',toggle.isChecked()!=before)
-        show(submenu);click(submenu,radio[1]);check('radio menu exclusive',radio[1].isChecked() and not radio[0].isChecked())
-        # Open a cascade with keyboard, letting QMenu own the full event policy.
-        show(menu);menu.setActiveAction(submenu.menuAction());T.QTest.keyClick(menu,C.Qt.Key.Key_Right)
-        app.processEvents();T.QTest.qWait(300);check('keyboard opens submenu',submenu.isVisible())
-        submenu.close();menu.close()
-        # Actual renderer: isolate the panel from text, symbols and icons.
-        if a.tema=='IrixClassic':
-            flag=W.QStyle.StateFlag
-            for state,flags,corner,face in (
-                ('selected',flag.State_Enabled|flag.State_Active|flag.State_Selected,'#ececec','#dfdfdf'),
-                ('pressed',flag.State_Enabled|flag.State_Active|flag.State_Sunken,'#606060','#b3b3b3'),
-                ('disabled',flag.State_Active|flag.State_Selected,'#c1c1c1','#c1c1c1')):
-                opt=W.QStyleOptionMenuItem();opt.initFrom(menu);opt.rect=C.QRect(0,0,150,24)
-                opt.text='';opt.menuItemType=W.QStyleOptionMenuItem.MenuItemType.Normal
-                opt.checkType=W.QStyleOptionMenuItem.CheckType.NotCheckable;opt.menuHasCheckableItems=False
-                opt.maxIconWidth=0;opt.state=flags;opt.font=font
-                im=G.QImage(150,24,G.QImage.Format.Format_ARGB32);im.fill(G.QColor('#c1c1c1'))
-                painter=G.QPainter(im)
-                try:style.drawControl(W.QStyle.ControlElement.CE_MenuItem,opt,painter,menu)
-                finally:painter.end()
-                check(state+' panel corner',im.pixelColor(0,0).name()==corner)
-                check(state+' panel face',im.pixelColor(70,12).name()==face)
-                if captures:im.save(str(captures/('menurow-'+state+'.png')))
-        win.setLayoutDirection(C.Qt.LayoutDirection.RightToLeft);show(menu)
-        check('RTL popup usable',menu.isVisible() and menu.actionGeometry(first).isValid())
-        menu.close();win.close();app.processEvents()
-        report={'qt':C.qVersion(),'binding':binding,'platform':app.platformName(),
-                'theme':a.tema,'style':style.metaObject().className(),'input_trace':native_input.records,'results':results,
-                'note':'Native Qt Widgets behavior/pixels, not historical equivalence certification.'}
-        print(json.dumps(report,ensure_ascii=False,indent=2))
-        if captures:(captures/'RESULTADO-MENUS.json').write_text(json.dumps(report,indent=2)+'\n')
-        return 0 if all(r['passed'] for r in results) else 1
+        metadata={'qt':C.qVersion(),'binding':binding,'platform':app.platformName(),
+                  'theme':a.tema,'style':style.metaObject().className(),
+                  'note':'Native Qt Widgets behavior/pixels; interruption is not a theme verdict.'}
+        report=GalleryReport(metadata,a.resultado or (captures/'RESULTADO-MENUS.json' if captures else None))
+        report.doc['input_trace']=native_input.records
+        check=report.check
+        completed=False
+        try:
+            def show(m):
+                m.popup(win.mapToGlobal(C.QPoint(40,80)));app.processEvents();T.QTest.qWait(100)
+                # Wait for native exposure; do not force a hidden popup back open.
+                native_input._ready(m)
+            def click(m,act):
+                # QTest.mouseClick uses the QWindow route inside GalleryInput.
+                trace=native_input.menu_action(m,act)
+                report.checkpoint()
+                return trace
+            report.enter('popup_initial')
+            show(menu);check('popup visible',menu.isVisible())
+            if captures:menu.grab().save(str(captures/'01-popup.png'))
+            report.enter('mouse_disabled_action')
+            n=len(log);click(menu,disabled);check('disabled action not triggered',len(log)==n)
+            report.enter('mouse_first_action')
+            menu.close();show(menu);click(menu,first);check('mouse triggers action',log and log[-1]==first.text())
+            check('action dismisses popup',not menu.isVisible())
+            report.enter('keyboard_escape')
+            show(menu);n=len(log);T.QTest.keyClick(menu,C.Qt.Key.Key_Escape);app.processEvents()
+            check('Escape dismisses without action',not menu.isVisible() and len(log)==n)
+            report.enter('keyboard_navigation')
+            show(menu);menu.setActiveAction(first);T.QTest.keyClick(menu,C.Qt.Key.Key_Down);app.processEvents()
+            check('keyboard skips disabled action',menu.activeAction()==second)
+            T.QTest.keyClick(menu,C.Qt.Key.Key_Return);app.processEvents()
+            check('Return triggers selected action',log and log[-1]==second.text())
+            report.enter('mouse_toggle')
+            show(menu);before=toggle.isChecked();click(menu,toggle)
+            check('checkable item toggles',toggle.isChecked()!=before)
+            report.enter('mouse_exclusive_option')
+            show(submenu);click(submenu,radio[1]);check('radio menu exclusive',radio[1].isChecked() and not radio[0].isChecked())
+            # Open a cascade with keyboard, letting QMenu own the full event policy.
+            report.enter('keyboard_submenu')
+            show(menu);menu.setActiveAction(submenu.menuAction());T.QTest.keyClick(menu,C.Qt.Key.Key_Right)
+            app.processEvents();T.QTest.qWait(300);check('keyboard opens submenu',submenu.isVisible())
+            submenu.close();menu.close()
+            # Actual renderer: isolate the panel from text, symbols and icons.
+            report.enter('renderer_classic')
+            if a.tema=='IrixClassic':
+                flag=W.QStyle.StateFlag
+                for state,flags,corner,face in (
+                    ('selected',flag.State_Enabled|flag.State_Active|flag.State_Selected,'#ececec','#dfdfdf'),
+                    ('pressed',flag.State_Enabled|flag.State_Active|flag.State_Sunken,'#606060','#b3b3b3'),
+                    ('disabled',flag.State_Active|flag.State_Selected,'#c1c1c1','#c1c1c1')):
+                    opt=W.QStyleOptionMenuItem();opt.initFrom(menu);opt.rect=C.QRect(0,0,150,24)
+                    opt.text='';opt.menuItemType=W.QStyleOptionMenuItem.MenuItemType.Normal
+                    opt.checkType=W.QStyleOptionMenuItem.CheckType.NotCheckable;opt.menuHasCheckableItems=False
+                    opt.maxIconWidth=0;opt.state=flags;opt.font=font
+                    im=G.QImage(150,24,G.QImage.Format.Format_ARGB32);im.fill(G.QColor('#c1c1c1'))
+                    painter=G.QPainter(im)
+                    try:style.drawControl(W.QStyle.ControlElement.CE_MenuItem,opt,painter,menu)
+                    finally:painter.end()
+                    check(state+' panel corner',im.pixelColor(0,0).name()==corner)
+                    check(state+' panel face',im.pixelColor(70,12).name()==face)
+                    if captures:im.save(str(captures/('menurow-'+state+'.png')))
+            report.enter('rtl_layout')
+            win.setLayoutDirection(C.Qt.LayoutDirection.RightToLeft);show(menu)
+            check('RTL popup usable',menu.isVisible() and menu.actionGeometry(first).isValid())
+            menu.close();app.processEvents()
+            completed=True
+        except (OSError, ValueError, RuntimeError) as exc:
+            report.abort(exc)
+            print('ENSAIO INTERROMPIDO em '+report.doc['current_stage']+': '+str(exc),file=sys.stderr)
+        except KeyboardInterrupt as exc:
+            report.abort(exc)
+        finally:
+            code=report.finish(completed)
+            print(json.dumps(report.doc,ensure_ascii=False,indent=2))
+            for m in (menu,submenu,deep):m.close()
+            win.close();app.processEvents()
+        return code
 
 if __name__=='__main__':
     try:sys.exit(main())

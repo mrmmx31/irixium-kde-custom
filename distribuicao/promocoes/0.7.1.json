@@ -1,0 +1,50 @@
+{
+  "authorization_basis": "Explicit maintainer instruction in the project conversation to promote and publish after candidate acceptance.",
+  "authorization_date": "2026-10-06",
+  "authorized_by": "mrmmx31",
+  "candidate_acceptance": {
+    "date": "2026-10-06",
+    "isolated_install_checks_received": 8,
+    "native_checks_received": 87,
+    "report_sha256": "ab4c16c5b74a9141a0119180f48c1d31081a8e261453b2f068a5d6fe56b1abd1",
+    "source": "Evaluator result supplied by the maintainer in the conversation; original candidate report is not rewritten.",
+    "status": "candidate_accepted_locally",
+    "suite_checks_received": 445
+  },
+  "candidate_files": {
+    "kvantum/IrixClassic/IrixClassic.kvconfig": "1dcdbe2e0a3e2a3daec86ec3e379eb9b1686e6f77e6d2eb5cde9eca849436155",
+    "kvantum/IrixClassic/IrixClassic.svg": "4fbc6268504a4403fa1a2d81042d8356b866b8c13fefa6b0fcf12deda91b1f33",
+    "kvantum/IrixClassic/MANIFEST.json": "fb4f45aca990974c13e215ef18a11a2ca2d7b9d0b32ac6973b048112342b00d0"
+  },
+  "channel": "stable",
+  "component": "IrixClassic Kvantum",
+  "equivalence": {
+    "kvconfig_without_comment_sha256": "1469270acb3925c0f47a10eacf0589f0ffd34be9a0f1aa8020fa0187ae91d03e",
+    "preserved_files": {
+      "kvantum/IrixClassic/LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "kvantum/instalar-classic.sh": "bd2920c941f0e4fa7e8c672d943fee6c89953635922e02dcad91f1bcf60f48bc",
+      "kvantum/restaurar-classic.sh": "ecfee5f1e2481b9b0bb4ff04f7f24e50f752ddb82e6ef5cbe9167668c5aacbdc",
+      "kvantum/tools/button_art.py": "b14f36794fd4e8c91106f2636c2afb086be01fb8f3f9ad8fa97d3421c4b1d67c",
+      "kvantum/tools/entry_art.py": "81ef5aa6bc1c63a0c9a693ee49fb5d89ee7bf5ca7dd51faed1dabdd3f3ea9cf7",
+      "kvantum/tools/finish_art.py": "0f9b0f7ed9c9e12b9a81e753f2b68531ef2869b139433e977c2af3681c77fd00",
+      "kvantum/tools/menu_art.py": "9c205f9ae4ac71e03135f0fb043ad30150653b6a85f1e4efd8dd345b80a298dc",
+      "kvantum/tools/range_art.py": "c58d38bd0899b29623a62630ad12cb603df6c1f6cbb27a3edae87bbc4f82df2d",
+      "kvantum/tools/scrollbar_art.py": "d726344a7dfa12b9679a5e6b16300a54b4a3b49fa120d6e0c06432cc5268442b",
+      "kvantum/tools/selection_art.py": "7a9651a72d76e2cd884c353062b8ecbc8bae5c7ed383088f5201508f7345c83b",
+      "kvantum/tools/tab_art.py": "f1d0cd2b783891b149b0697ae3c94018305c08e00edac799d7681cf29269f94e",
+      "tools/theme_transaction.py": "11ed87967afd669ea2a21d482f7e673b13212c28e6ec398c25dae7760e57a4ae"
+    },
+    "svg_without_title_sha256": "7e81f72197c58e8506dcea634df2f821d5ee645f5f21e733fbdcf5e37aa89afc"
+  },
+  "format": 1,
+  "from_version": "0.7.1-rc1",
+  "note": "Release promotion only. No new UI or behavior. Historical limitations remain in scope; future feedback belongs to new versions.",
+  "publication": {
+    "performed_by_promotion": false,
+    "requested": true,
+    "tag": "irixclassic-kvantum-v0.7.1"
+  },
+  "signed": false,
+  "stable_approved": true,
+  "to_version": "0.7.1"
+}

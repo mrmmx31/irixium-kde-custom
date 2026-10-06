@@ -100,30 +100,38 @@ class GalleryInput:
 
     def menu_action(self, menu, action):
         C, T = self.C, self.T
-        top, window = self._ready(menu)
-        rect = menu.actionGeometry(action).intersected(menu.rect())
-        if not rect.isValid() or menu.actionAt(rect.center()) != action:
-            raise ValueError('Ação não localizada na janela do menu; teste inconclusivo.')
-        observer, events = self._watch(menu)
         row={'kind':'menu', 'action_text':action.text(), 'enabled':action.isEnabled(),
-             'action_rect':self._rect(rect), 'events':events}
+             'events':[], 'stage':'readiness', 'valid_target':False,
+             'visible_before':menu.isVisible(), 'window_exists_before':menu.window().windowHandle() is not None}
+        self.records.append(row)
+        observer=None
         try:
+            top, window = self._ready(menu)
+            rect = menu.actionGeometry(action).intersected(menu.rect())
+            row['action_rect']=self._rect(rect)
+            if not rect.isValid() or menu.actionAt(rect.center()) != action:
+                raise ValueError('Ação não localizada na janela do menu; teste inconclusivo.')
+            observer, events = self._watch(menu)
+            row['events']=events;row['stage']='pointer_approach'
             for x,y in interior_walk(rect.x(),rect.y(),rect.width(),rect.height()):
                 # QWindow overload generates a move instead of QCursor::setPos.
                 T.QTest.mouseMove(window,menu.mapTo(top,C.QPoint(x,y)),5)
                 self.app.processEvents()
+            if not menu.isVisible():raise ValueError('Menu deixou de estar visível durante a aproximação.')
             rect=menu.actionGeometry(action).intersected(menu.rect());point=rect.center()
             if menu.actionAt(point) != action:
                 raise ValueError('A ação mudou de posição durante a aproximação.')
             row['move_events_received']=sum(e['event']=='move' for e in events)
             row['active_before_press']=menu.activeAction().text() if menu.activeAction() else None
-            scene_point=menu.mapTo(top,point)
+            scene_point=menu.mapTo(top,point);row['stage']='click'
             # Keep this a native event sequence, not QAction.trigger or setActiveAction.
             T.QTest.mouseClick(window,C.Qt.MouseButton.LeftButton,C.Qt.KeyboardModifier.NoModifier,scene_point,20)
             self.app.processEvents();T.QTest.qWait(30)
             row['valid_target']=any(e['event']=='press' and rect.contains(C.QPoint(e['x'],e['y'])) for e in events)
-            row['popup_visible_after']=menu.isVisible()
+            row['popup_visible_after']=menu.isVisible();row['stage']='completed'
+        except (ValueError, RuntimeError) as exc:
+            row['error']=str(exc);row['popup_visible_after']=menu.isVisible()
+            raise
         finally:
-            menu.removeEventFilter(observer)
-        self.records.append(row)
+            if observer is not None:menu.removeEventFilter(observer)
         return row

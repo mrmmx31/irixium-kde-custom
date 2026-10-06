@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import finish_art as FN
 import range_art as RG
 import menu_art as M
 import tab_art as TB
@@ -21,7 +22,7 @@ def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[
 def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
     r=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
-    r.update({k:v for k,v in c[s].items() if k!='inherits'});return r
+    r.update({k:v for k,v in c[s].items() if k!='inherits'});return FN.prior_effective(s,r)
 
 class Selection(unittest.TestCase):
     @classmethod
@@ -35,7 +36,7 @@ class Selection(unittest.TestCase):
         self.assertEqual(len(self.base['svg']),2517)
         for n,h in self.base['svg'].items():self.assertEqual(digest(canonical(self.nodes[n])),h,n)
     def test_52_added_resources_are_isolated(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES+FN.PREFIXES)}
         self.assertEqual(len(added),52)
         self.assertTrue(all(n.startswith(A.PREFIXES) for n in added))
     def test_only_interior_routes_and_version_comment_change(self):
@@ -57,7 +58,7 @@ class Selection(unittest.TestCase):
                 for st in ('normal','focused'):
                     for tail in ('','-inactive'):self.assertIn(prefix+v+st+tail,self.nodes)
     def test_no_unreachable_pressed_or_disabled_assets_advertised(self):
-        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES)}
+        added={n for n in set(self.nodes)-set(self.base['svg']) if not n.startswith(M.PREFIXES+TB.PREFIXES+RG.PREFIXES+FN.PREFIXES)}
         self.assertTrue(all('pressed' not in n and 'disabled' not in n for n in added))
     def test_all_cells_15_square(self):
         for n,im in self.atlas.items.items():
@@ -102,10 +103,11 @@ class Selection(unittest.TestCase):
     def test_invalid_values_rejected(self):
         for kind,val in (('radio','mixed'),('bad','on'),('check','invalid')):
             with self.assertRaises(ValueError):A.indicator(kind,val)
-    def test_roadmap_retains_all_seven_blocks_and_unresolved_arrows(self):
+    def test_roadmap_retains_all_seven_blocks_and_confirmed_arrows(self):
         t=(ROOT/'PLANO-IRIXCLASSIC.md').read_text()
         for i in range(1,8):self.assertIn('| '+str(i)+'. ',t)
-        self.assertIn('0.4.0-rc1',t);self.assertIn('diagnosticar-setas.sh',t)
+        self.assertIn('0.4.0-rc1',t);self.assertIn('funcionamento confirmado pelo usuário',t)
+        self.assertIn('11/11 e 17/17',t)
     def test_native_disabled_and_pressed_limit_documented(self):
         t=(ROOT/'docs/SELECAO.md').read_text()
         for text in ('0.7','State_Sunken','tristate','15'):self.assertIn(text,t)

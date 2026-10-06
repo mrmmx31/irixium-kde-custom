@@ -11,6 +11,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import finish_art as FN
 import range_art as RG
 import menu_art as M
 import tab_art as TB
@@ -23,7 +24,7 @@ def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[
 def sha(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
  d=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
- d.update({k:v for k,v in c[s].items() if k!='inherits'});return d
+ d.update({k:v for k,v in c[s].items() if k!='inherits'});return FN.prior_effective(s,d)
 
 class Buttons(unittest.TestCase):
  @classmethod
@@ -33,7 +34,7 @@ class Buttons(unittest.TestCase):
   cls.conf.read(ROOT/'IrixClassic/IrixClassic.kvconfig')
  def test_all_unrelated_svg_elements_and_positions_unchanged(self):
   nodes=ET.parse(ROOT/'IrixClassic/IrixClassic.svg').getroot()
-  data={e.get('id'):canonical(e) for e in nodes if e.get('id') and not e.get('id').startswith(PREFIXES+M.PREFIXES+TB.PREFIXES+RG.PREFIXES)
+  data={e.get('id'):canonical(e) for e in nodes if e.get('id') and not e.get('id').startswith(PREFIXES+M.PREFIXES+TB.PREFIXES+RG.PREFIXES+FN.PREFIXES)
         and not (e.get('id').startswith('ic-scrollarrow-') and e.get('id').endswith(('-pressed','-toggled')))}
   self.assertEqual(len(data),self.base['protected_svg_count']); self.assertEqual(sha(data),self.base['protected_svg_sha256'])
  def test_non_button_effective_configuration_is_unchanged(self):

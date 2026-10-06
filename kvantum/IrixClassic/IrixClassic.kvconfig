@@ -1,11 +1,11 @@
-# IrixClassic 0.7.0-rc1 — application style, not a window decoration.
+# IrixClassic 0.7.1 — application style, not a window decoration.
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Configuration derived from Irixium by Mark Whittaker (Phob1an).
 # SVG primitives are newly drawn. See README.md for historical/adapted elements.
 [%General]
 author=mrmmx31
-comment=IRIX Classic — compact Qt Widgets, integer bevels; test candidate 0.7.0-rc1
+comment=IRIX Classic — compact Qt Widgets, integer bevels; stable release 0.7.1
 respect_DE=true
 animate_states=false
 button_contents_shift=false
@@ -194,7 +194,7 @@ frame.top=2
 frame.bottom=2
 frame.left=2
 frame.right=2
-indicator.element=ic-spinmark
+indicator.element=ic-finish-spinmark
 indicator.size=12
 
 [CheckBox]
@@ -256,7 +256,7 @@ indicator.element=ic-menuindicator
 
 [Toolbar]
 inherits=MenuBar
-indicator.element=ic-toolbar
+indicator.element=ic-finish-toolbar
 indicator.size=10
 frame.element=ic-bar
 interior.element=ic-bar

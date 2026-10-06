@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 import build_classic as B
+import finish_art as FN
 import range_art as RG
 import menu_art as M
 import tab_art as TB
@@ -21,7 +22,7 @@ def canonical(e):return [e.tag,sorted(e.attrib.items()),(e.text or '').strip(),[
 def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
 def effective(c,s):
     d=effective(c,c[s]['inherits']) if c.has_option(s,'inherits') else {}
-    d.update({k:v for k,v in c[s].items() if k!='inherits'});return d
+    d.update({k:v for k,v in c[s].items() if k!='inherits'});return FN.prior_effective(s,d)
 ENTRY_PREFIXES=('ic-input-','ic-inset-','ic-option-','ic-spin-','ic-optionmark-','ic-spinmark-')
 CHANGED_SECTIONS=set(RG.CONFIG_SECTIONS)|{'Tab','TabFrame','TabBarFrame','Menu','MenuItem','MenuBar','MenuBarItem','LineEdit','ComboBox','IndicatorSpinBox','GenericFrame','CheckBox','RadioButton'}
 # Later block 4 has its own full baseline in test_selection.py.
@@ -43,7 +44,7 @@ class Entries(unittest.TestCase):
     def test_only_new_entry_prefixes_added(self):
         added=set(self.nodes)-set(self.base['svg'])
         self.assertTrue(added)
-        self.assertTrue(all(x.startswith(ENTRY_PREFIXES+SELECTION_PREFIXES+M.PREFIXES+TB.PREFIXES+RG.PREFIXES) for x in added))
+        self.assertTrue(all(x.startswith(ENTRY_PREFIXES+SELECTION_PREFIXES+M.PREFIXES+TB.PREFIXES+RG.PREFIXES+FN.PREFIXES) for x in added))
     def test_other_effective_sections_unchanged(self):
         for section,old in self.base['effective_sections'].items():
             if section in CHANGED_SECTIONS or section=='%General':continue
