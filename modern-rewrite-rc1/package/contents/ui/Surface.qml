@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
+import org.kde.ksvg 1.0 as KSvg
+import "Rendering.js" as Rendering
 import "Geometry.js" as Geometry
 
 Item {
@@ -18,50 +20,28 @@ Item {
     property bool titleBold: true
     readonly property var metrics: Geometry.metrics(width, maximizedWindow)
     property alias titleItem: titleRegion
+    readonly property bool artworkValid: frameAtlas.hasElementPrefix("decoration")
+    readonly property string renderedFramePrefix: frameArtwork.prefix
     signal menuRequested(int mouseButton)
     signal minimizeRequested()
     signal maximizeRequested(int mouseButton)
     signal closeRequested()
 
-    Rectangle {
+    // Own assets; KSvg is a renderer, not a dependency on an Aurorae theme.
+    KSvg.FrameSvg {
+        id: frameAtlas
+        imagePath: Rendering.localPath(Qt.resolvedUrl("../../assets/decoration.svg"))
+    }
+    KSvg.FrameSvgItem {
+        id: frameArtwork
+        objectName: "irixiumModernFrame"
         anchors.fill: parent
-        color: surface.activeWindow ? "#c1bca7" : "#b4b4b4"
-    }
-    Rectangle {
-        x: 0
-        y: 0
-        width: parent.width
-        height: surface.metrics.title
-        color: surface.activeWindow ? "#a59f80" : "#868686"
-    }
-    Rectangle {
-        x: 0
-        y: surface.metrics.title - 2
-        width: parent.width
-        height: 2
-        color: surface.activeWindow ? "#5b5746" : "#515151"
-    }
-    Rectangle {
-        x: 0
-        y: surface.metrics.title
-        width: parent.width
-        height: 1
-        color: surface.activeWindow ? "#dad7ca" : "#d2d2d2"
-    }
-    Rectangle {
-        visible: !surface.maximizedWindow
-        x: 0; y: 0; width: 1; height: parent.height
-        color: surface.activeWindow ? "#5b5746" : "#515151"
-    }
-    Rectangle {
-        visible: !surface.maximizedWindow
-        x: parent.width - 1; y: 0; width: 1; height: parent.height
-        color: surface.activeWindow ? "#dad7ca" : "#d2d2d2"
-    }
-    Rectangle {
-        visible: !surface.maximizedWindow
-        x: 0; y: parent.height - 1; width: parent.width; height: 1
-        color: surface.activeWindow ? "#5b5746" : "#515151"
+        imagePath: frameAtlas.imagePath
+        prefix: Rendering.framePrefix(frameAtlas, surface.activeWindow, surface.maximizedWindow)
+        enabledBorders: surface.maximizedWindow ? KSvg.FrameSvg.NoBorder
+            : KSvg.FrameSvg.TopBorder | KSvg.FrameSvg.BottomBorder
+              | KSvg.FrameSvg.LeftBorder | KSvg.FrameSvg.RightBorder
+        smooth: false
     }
     Text {
         objectName: "irixiumModernCaption"
@@ -84,14 +64,15 @@ Item {
     }
     Item {
         id: titleRegion
-        x: surface.metrics.frame
+        x: surface.metrics.caption.x
         y: 0
-        width: Math.max(0, surface.width - 2 * surface.metrics.frame)
+        width: surface.metrics.caption.w
         height: surface.metrics.title
     }
     ModernButton {
         id: menuButton
         objectName: "irixiumModernMenu"
+        activeWindow: surface.activeWindow
         kind: "menu"
         label: "Ações da janela"
         artwork: Qt.resolvedUrl("../../assets/applications.png")
@@ -99,12 +80,12 @@ Item {
         closeOnDouble: surface.closeOnDouble
         x: surface.metrics.menu.x; y: surface.metrics.menu.y
         width: surface.metrics.menu.w; height: surface.metrics.menu.h
-        onActivate: surface.menuRequested(mouseButton)
-        onCloseRequested: surface.closeRequested()
+        onActivate: (mouseButton) => surface.menuRequested(mouseButton)
     }
     ModernButton {
         id: minimizeButton
         objectName: "irixiumModernMinimize"
+        activeWindow: surface.activeWindow
         kind: "minimize"
         label: "Minimizar"
         artwork: Qt.resolvedUrl("../../assets/minimize.svg")
@@ -116,17 +97,19 @@ Item {
     ModernButton {
         id: maximizeButton
         objectName: "irixiumModernMaximize"
+        activeWindow: surface.activeWindow
         kind: "maximize"
         label: surface.maximizedWindow ? "Restaurar" : "Maximizar"
         artwork: Qt.resolvedUrl("../../assets/" + (surface.maximizedWindow ? "restore.svg" : "maximize.svg"))
         available: surface.maximizeAllowed
         x: surface.metrics.maximize.x; y: surface.metrics.maximize.y
         width: surface.metrics.maximize.w; height: surface.metrics.maximize.h
-        onActivate: surface.maximizeRequested(mouseButton)
+        onActivate: (mouseButton) => surface.maximizeRequested(mouseButton)
     }
     ModernButton {
         id: closeButton
         objectName: "irixiumModernClose"
+        activeWindow: surface.activeWindow
         kind: "close"
         label: "Fechar"
         artwork: Qt.resolvedUrl("../../assets/close.svg")

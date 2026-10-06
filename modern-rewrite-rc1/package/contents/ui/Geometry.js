@@ -1,24 +1,33 @@
+// SPDX-FileCopyrightText: 2026 mrmmx31
+// SPDX-License-Identifier: GPL-3.0-or-later
 .pragma library
 
 function metrics(width, maximized) {
     var frame = maximized ? 0 : 7;
     var title = 34;
     var button = 22;
-    var y = maximized ? 6 : 9;
+    var edge = maximized ? 6 : 9;
+    var gap = 6;
+    var titleTop = maximized ? 4 : 7;
+    var y = titleTop + 2;
+    var closeX = width - edge - button;
+    var maximizeX = closeX - button - gap;
+    var minimizeX = maximizeX - button - gap;
+    var captionX = edge + button + 12;
     return {
         width: width,
         border: frame,
         top: title,
         frame: frame,
         title: title,
-        menu: {x: maximized ? 6 : 9, y: y, w: button, h: button},
-        minimize: {x: width - (maximized ? 30 : 79), y: y, w: button, h: button},
-        maximize: {x: width - (maximized ? 54 : 55), y: y, w: button, h: button},
-        close: {x: width - (maximized ? 78 : 31), y: y, w: button, h: button},
+        menu: {x: edge, y: y, w: button, h: button},
+        minimize: {x: minimizeX, y: y, w: button, h: button},
+        maximize: {x: maximizeX, y: y, w: button, h: button},
+        close: {x: closeX, y: y, w: button, h: button},
         caption: {
-            x: (maximized ? 6 : 14),
-            y: 4,
-            w: Math.max(0, width - (maximized ? 84 : 112)),
+            x: captionX,
+            y: titleTop,
+            w: Math.max(0, minimizeX - 12 - captionX),
             h: 26
         }
     };
