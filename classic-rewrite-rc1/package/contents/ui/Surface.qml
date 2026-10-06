@@ -28,7 +28,8 @@ Item {
         if (minimizeInput) minimizeInput.cancelGesture();
         if (maximizeInput) maximizeInput.cancelGesture();
     }
-    onActiveWindowChanged: { if (!activeWindow) cancelGestures(); }
+    // Focus only changes artwork. Preserve the menu's first click so a native
+    // double-click can close an inactive window without an activation step.
     onMaximizedWindowChanged: cancelGestures()
     onPixelScaleChanged: cancelGestures()
     onWidthChanged: cancelGestures()

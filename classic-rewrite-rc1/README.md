@@ -117,7 +117,9 @@ pressionado vem do Qt. **O temporizador não prolonga o efeito gráfico:** o rel
 volta ao normal na soltura, mesmo enquanto a ação simples está pendente.
 
 Cancelamento, saída do botão enquanto o clique está pendente, ocultação, mudança
-de geometria, perda de foco ou mudança de política anulam a ação pendente.
+de geometria ou mudança de política anulam a ação pendente. Mudanças de foco
+preservam o gesto: o duplo clique também fecha uma janela inativa, sem precisar
+ativá-la antes.
 Acessibilidade e clique direito não deixam uma abertura esquerda pendente para
 executar mais tarde. A ação de fechar só ocorre com o evento nativo de duplo clique
 precedido de um clique esquerdo válido no mesmo controle.

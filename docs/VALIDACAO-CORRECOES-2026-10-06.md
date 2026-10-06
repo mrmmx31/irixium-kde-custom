@@ -35,6 +35,11 @@ em `/usr`, `/etc` ou configuração de outros usuários.
   Todas idênticas, sem avisos QML.
 - Eventos reais do Qt nas duas decorações: clique simples aguarda o intervalo
   nativo, duplo clique fecha uma vez sem menu posterior, botão direito imediato.
+- Verificação adicional de foco: janela ativa, inativa, ativada entre os cliques
+  e desativada entre os cliques. Classic cancelava o gesto ao perder foco; agora
+  foco só altera a arte. Os quatro cenários passaram nos dois temas, sem pedido
+  de ativação extra. O teste entrega a segunda pressão e o evento double-click
+  explicitamente, evitando a sequência adicional gerada por `QTest.mouseDClick`.
 - Prévia moderna com KSvg: assets/estados válidos ao carregar, hover, pressão,
   soltura e captura. O teste anterior reproduziu SVGs ausentes; o corrigido passou.
 - KWin Wayland virtual separado, D-Bus privado, perfis temporários: ambas as

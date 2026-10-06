@@ -15,6 +15,8 @@ original são mantidos dentro deste pacote.
 O botão de ações é parte do pacote. Duplo clique esquerdo fecha a janela; clique
 esquerdo simples aguarda o intervalo de duplo clique do Qt. Clique direito abre
 o menu imediatamente. O timer é exclusivo desse gesto e não participa do resize.
+O duplo clique também funciona em janelas inativas e durante mudanças de foco,
+sem exigir um clique adicional para ativar a janela.
 
 ## Instalação e seleção
 
