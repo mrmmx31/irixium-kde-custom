@@ -1,21 +1,32 @@
-# Decorações Aurorae IRIX
+# Decorações IRIX no perfil do usuário
 
-Este diretório separa as duas decorações de janela usadas no projeto:
+Há duas opções independentes:
 
-| Decoração | Localização | Tipo |
-|---|---|---|
-| **Irixium** | `aurorae/Irixium/` | Tema Aurorae moderno, baseado no pacote de Phob1an |
-| **IRIX Classic** | `classic-rewrite-rc1/package/` | Decoração KWin independente, com QML próprio |
+- **Irixium moderno** — pacote KWin independente em `modern-rewrite-rc1/`,
+  baseado nos assets Aurorae em `aurorae/Irixium/`;
+- **IRIX Classic** — decoração KWin independente em `classic-rewrite-rc1/package/`.
 
-`Irixium` preserva os arquivos do tema Aurorae original: SVGs da moldura e
-botões, `Irixiumrc`, metadados e licença. `IRIX Classic` não é uma variante
-do diretório Aurorae: possui outro identificador (`irixium_irix_classic_v4`),
-estrutura KPackage própria e uma implementação QML independente.
+Instale o moderno sem tocar no sistema:
 
-As duas decorações podem coexistir no perfil do usuário. O instalador do
-Classic coloca seus arquivos em `~/.local/share/kwin/decorations/` e não
-altera `/usr/share` nem `/usr/lib`. O tema Aurorae moderno pode ser instalado
-em `~/.local/share/aurorae/themes/Irixium/`.
+```sh
+bash aurorae/instalar-user.sh
+```
 
-O arquivo `applications.png` é um recurso adicional versionado pelo projeto
-para a variante moderna; ele não é instalado por hooks globais do KWin.
+O Classic usa seu instalador próprio:
+
+```sh
+bash classic-rewrite-rc1/instalar.sh --verificar
+bash classic-rewrite-rc1/instalar.sh
+```
+
+Depois de instalar ambas, alterne apenas a seleção do usuário:
+
+```sh
+bash aurorae/selecionar-user.sh moderno
+bash aurorae/selecionar-user.sh classic
+```
+
+O identificador moderno selecionável é `irixium_modern`. Os scripts escrevem
+somente em `~/.local/share`, `~/.config/kwinrc` e no estado do usuário. Não
+instalam `MenuButton.qml`, `AuroraeButtonGroup.qml` ou qualquer outro componente
+em `/usr`.

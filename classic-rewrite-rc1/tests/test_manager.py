@@ -73,6 +73,11 @@ class ManagerTests(unittest.TestCase):
     def test_installer_preserves_config_without_activation(self):
         d=self.seed();self.cfg.data['theme']='Breeze';before=dict(self.cfg.data)
         self.manager.install(d.name);self.assertEqual(self.cfg.data,before)
+    def test_hook_installs_without_forcing_classic_selection(self):
+        self.cfg.data['theme']='irixium_modern'
+        self.manager.ensure_user_install('irixium_irix_classic_v4')
+        self.assertEqual(self.cfg.get('theme'),'irixium_modern')
+        self.assertEqual(self.cfg.get('library'),m.LIBRARY)
     def test_activation_changes_only_two_keys(self):
         d=self.seed();self.cfg.data['theme']='Breeze';self.manager.install(d.name,True)
         self.assertEqual(self.cfg.get('theme'),d.name);self.assertEqual(self.cfg.get('ButtonsOnRight'),'IA')

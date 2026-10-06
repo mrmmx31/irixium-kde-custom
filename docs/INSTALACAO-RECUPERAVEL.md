@@ -60,23 +60,20 @@ a segunda comparação de hashes antes de cada substituição.
 
 ## Migração e uso
 
-O novo `update-irixium.sh` substitui o fluxo antigo. Não usa os recibos legados como
-se fossem seus nem elimina backups antigos. Um recibo de geometria pendente deve
-ser recuperado pelo instalador de geometria original antes da atualização global.
+O `update-irixium.sh` atual instala o pacote `irixium_modern` somente no perfil
+do usuário. Ele não usa os recibos legados, não altera componentes compartilhados
+do Aurorae e não elimina backups antigos.
 
 A ativação agora é intencional:
 
 ```sh
-bash update-irixium.sh                         # instalar; preservar seleção/fontes
-bash update-irixium.sh --ativar                # selecionar o moderno
-bash update-irixium.sh --ativar --aplicar-fontes # também reaplicar fontes
+bash update-irixium.sh          # instalar; preservar seleção
+bash update-irixium.sh --ativar # selecionar irixium_modern
 ```
 
-Não usar sudo na frente. Só as três classes de recurso do Aurorae autorizadas
-pelo auxiliar podem ser escritas com privilégios. Os caminhos reconhecidos são
-as variantes do módulo Qt 6 em `/usr/lib/.../qt6/qml/org/kde/kwin/decoration/`,
-`/usr/share/kwin/aurorae/AuroraeButtonGroup.qml` e a imagem fixa
-`/usr/share/kwin/aurorae/Irixium/applications.png`.
+Não usar sudo na frente. Os únicos destinos são `~/.local/share`,
+`~/.config/kwinrc` quando a ativação é explícita e o estado privado do usuário.
+`--aplicar-fontes` não faz parte desse instalador.
 
 Não execute o instalador antigo a partir de outro clone, pois ele ainda poderá
 reaplicar configurações antigas. Preserve o clone revisado e teste primeiro com

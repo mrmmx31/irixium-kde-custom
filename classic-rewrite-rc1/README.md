@@ -87,8 +87,9 @@ Execute `hooks/instalar-user-hook.sh` como o usuário normal para manter a
 decoração sem alterar componentes globais do KWin. O script cria um serviço
 `systemd --user` e mantém o pacote em `~/.local/share/kwin/decorations/`.
 O serviço usa `--hook`, que é idempotente: só reinstala quando o pacote local
-está ausente ou divergente, e grava a seleção apenas no `~/.config/kwinrc` do
-usuário. Nenhum arquivo em `/usr/share` ou `/usr/lib` é escrito.
+está ausente ou divergente e preserva a seleção atual no `~/.config/kwinrc`.
+A seleção do Classic ou do moderno é uma ação explícita do usuário. Nenhum
+arquivo em `/usr/share` ou `/usr/lib` é escrito.
 
 ## Menu e fechamento por duplo clique — correção rc2
 

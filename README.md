@@ -5,13 +5,14 @@ aplicativos são componentes separados; instalar um não deve trocar o outro.
 
 | Componente | Diretório | Situação |
 |---|---|---|
-| Decoração Irixium moderno | `aurorae/Irixium/` + `moderno/geometria/` | Símbolos e efeitos modernos; margens e divisórias organizadas. |
+| Decoração Irixium moderno | `modern-rewrite-rc1/` (assets em `aurorae/Irixium/`) | Pacote KWin independente `irixium_modern`; símbolos e efeitos modernos. |
 | Decoração IRIX Classic | `classic-rewrite-rc1/` | Reescrita 1.0.0-rc3; preenchimento restrito à miniatura do KCM. |
 | Application Style Irixium | `kvantum/Irixium/` | Base original preservada. |
 | Application Style IrixClassic | `kvantum/IrixClassic/` | Primeira candidata 0.1.0-rc1 para Qt Widgets. |
 | Tema GTK | `gtk/` | Base preservada; não é instalada pelos novos fluxos abaixo. |
 | Ícones Irixium | `icons/Irixium/` | Snapshot do pacote KDE Store 2142965; licença upstream ainda não declarada no payload. |
 | Plasma Style Irixium | `plasma/Irixium/` | Snapshot do pacote KDE Store 1457753; GPL3 declarada pelo pacote. |
+| Plasma Style IrixClassic | `plasma/IrixClassic/` | Cópia nomeada do Irixium, reservada para futuras alterações do Classic. |
 | Look-and-Feel e splash | `look-and-feel/org.magpie.irixium.desktop/` | Splash incluído no pacote; declarações de licença conflitantes preservadas. |
 | Cursores SGI | `cursors/sgi/` | Cursor ativo; cópia verificada do upstream `jujum4n/sgi-enhanced`. |
 
@@ -24,47 +25,34 @@ bash update-irixium.sh --verificar
 bash update-irixium.sh
 ```
 
-**Mudança em relação ao instalador anterior:** sem opções, instala/atualiza o
-Irixium, mas preserva a seleção atual, a disposição global dos botões e as fontes.
-Assim, quem está usando IRIX Classic não é trocado para o moderno sem pedir.
+O fluxo instala/atualiza o pacote `irixium_modern` em
+`~/.local/share/kwin/decorations/`, preserva a seleção atual e não altera
+componentes Aurorae compartilhados do sistema. Assim, quem está usando IRIX
+Classic não é trocado para o moderno sem pedir.
 
 Opções explícitas:
 
 ```sh
 bash update-irixium.sh --ativar
-bash update-irixium.sh --ativar --aplicar-fontes
 ```
 
-`--ativar` seleciona Irixium e aplica a disposição de `kwin-decoration.conf`.
-`--aplicar-fontes` reaplica o perfil declarado em `kde-fonts.conf`. O primeiro
-comando não aplica fontes por implicação. Nenhum muda a escala da tela.
-
-O plano completo é validado antes da primeira escrita. Um recibo privado guarda
-conteúdo e permissões anteriores de cada arquivo afetado; falhas provocam tentativa
-de restauração. A geometria vem exclusivamente de `moderno/geometria/`, nunca do
-`AuroraeButtonGroup.qml` legado na raiz. A seleção/fontes são gravadas por último;
-`reconfigure` só é solicitado depois da conferência final.
-
-Os componentes `MenuButton.qml`, `AuroraeButtonGroup.qml` e a imagem de menu são
-recursos compartilhados do Aurorae: sua cópia exige autorização administrativa
-solicitada pelo próprio instalador. Os comportamentos personalizados continuam
-limitados ao Irixium. Uma versão desconhecida do grupo Aurorae é recusada.
+`--ativar` seleciona `irixium_modern`. O pacote possui seu próprio botão de ações
+e seus próprios assets; nenhuma cópia de `MenuButton.qml`, `AuroraeButtonGroup.qml`
+ou `applications.png` é feita em `/usr`.
 
 **Salve o trabalho, encerre a sessão e entre novamente** para recarregar QML.
 Não há reinício forçado do KWin. Arquivos da Classic e do Kvantum não são alterados.
 
-Restauração da última atualização global:
+Restauração da última atualização do pacote moderno:
 
 ```sh
 bash restaurar-irixium.sh --verificar
 bash restaurar-irixium.sh
 ```
 
-Em caso de interrupção ou restauração não concluída, use `--recuperar`. Recibos:
-`${XDG_STATE_HOME:-$HOME/.local/state}/irixium-update/backups/`.
-Edições posteriores desconhecidas bloqueiam a restauração, em vez de serem apagadas.
-Cópias legadas `*.irixium-original` não são substituídas nem removidas.
-Consulte `docs/INSTALACAO-RECUPERAVEL.md` para limites e recuperação.
+Recibos privados ficam em
+`${XDG_STATE_HOME:-$HOME/.local/state}/irixium-modern/backups/`. A restauração
+somente remove a cópia instalada pelo pacote e recoloca o backup anterior.
 
 ## Decoração IRIX Classic
 
@@ -81,9 +69,9 @@ restauração e limitações de integração estão no README próprio. `classic
 `controles-v3/`, `divisorias-v1/` e `divisorias-v2/` ficam como histórico/referência,
 não como etapas que devem ser reinstaladas em sequência.
 
-Para atualizar somente a geometria do moderno, o complemento existente continua
-válido: `bash moderno/geometria/instalar.sh --verificar`. Não execute dois
-instaladores ao mesmo tempo. O fluxo global coopera com o bloqueio desse módulo.
+`moderno/geometria/` é um histórico de integração do Aurorae compartilhado e não
+faz parte do novo fluxo. Não o execute: o pacote moderno independente já contém
+seu layout, assets e controles.
 
 ## Application Style IrixClassic (Kvantum)
 

@@ -61,7 +61,7 @@ class GlobalPlan(unittest.TestCase):
     def test_activation_explicit_and_last_phase(self):
         changes=self.plan(activate=True)
         c=next(c for c in changes if c.path.name=='kwinrc');self.assertEqual(c.phase,2)
-        self.assertIn(b'theme=__aurorae__svg__Irixium',c.data);self.assertIn(b'Key=unchanged',c.data)
+        self.assertIn(b'theme=irixium_modern',c.data);self.assertIn(b'Key=unchanged',c.data)
         self.assertFalse(any(c.path.name=='kdeglobals' for c in changes))
     def test_fonts_explicit_do_not_touch_theme_selection(self):
         changes=self.plan(fonts=True)
