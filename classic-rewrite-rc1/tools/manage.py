@@ -164,6 +164,31 @@ class Manager:
         print(f'Destino: {dest}\nNome: IRIX Classic\nRevisão: {VERSION}')
         print('Atualizará a Classic existente.' if dest.exists() else 'Será a primeira instalação neste destino.')
         return theme_id
+    def ensure_user_install(self, theme_id: str) -> None:
+        """Keep the user-local package active without touching system files."""
+        expected = read_json(BUNDLE/'MANIFEST.json')['package']
+        dest = self.base/theme_id
+        current = None
+        if dest.is_dir():
+            try:
+                current = tree_hashes(dest)
+            except RuntimeError:
+                current = None
+        matches = current is not None and all(
+            current.get(rel) == digest for rel,digest in expected.items()
+            if rel != 'metadata.json'
+        )
+        selected = self.cfg.values() == {'library': LIBRARY, 'theme': theme_id}
+        if not matches:
+            self.install(theme_id, activate=True)
+            return
+        if not selected:
+            self.cfg.put('library', LIBRARY)
+            self.cfg.put('theme', theme_id)
+            reconfigure()
+            print(f'Decoração local já instalada; seleção restaurada: {theme_id}')
+        else:
+            print(f'Decoração local já instalada e selecionada: {theme_id}')
     @contextmanager
     def locked(self):
         no_links(self.state)
@@ -337,6 +362,8 @@ def main() -> int:
     g=p.add_mutually_exclusive_group()
     g.add_argument('--verificar',action='store_true')
     g.add_argument('--ativar',action='store_true')
+    g.add_argument('--hook',action='store_true',
+                   help='garante a instalação e seleção somente no perfil do usuário')
     g.add_argument('--restaurar',action='store_true')
     g.add_argument('--recuperar',action='store_true')
     p.add_argument('--destino',choices=IDS,help='somente para resolver múltiplas Classic não selecionadas')
@@ -350,6 +377,8 @@ def main() -> int:
             check_environment(); target=m.verify(a.destino)
             if a.verificar:
                 print('Somente leitura. Isto verifica arquivos/ambiente, não renderiza Qt Quick/KWin.')
+            elif a.hook:
+                m.ensure_user_install(target)
             else: m.install(target,a.ativar)
         return 0
     except (OSError,ValueError,KeyError,RuntimeError,subprocess.SubprocessError) as exc:
