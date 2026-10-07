@@ -11,7 +11,7 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-A instalação atualiza 17 componentes gráficos locais, com backup, sem trocar a
+A instalação atualiza 22 componentes gráficos locais, com backup, sem trocar a
 seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
 cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
 Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
@@ -38,6 +38,27 @@ Não há reinício forçado do KWin. Se não houver uma sessão KDE disponível,
 trabalho e encerre/entre novamente na sessão após atualizar o QML. Os botões mostram relevo durante a pressão e executam a ação na soltura;
 duplo clique no menu fecha também a janela inativa. Somente o clique simples no
 menu aguarda o intervalo de duplo clique do Qt; esse timer não participa do resize.
+
+## Painel Classic
+
+O Classic inclui widgets próprios para o menu, três atalhos, Iconbox, bandeja e
+relógio, com relevo compacto inspirado no Indigo Magic/Motif. O pager usa as
+molduras Classic e as tarefas ficam numa fileira de ícones com legenda curta.
+
+Depois de instalar a suíte, atualize o painel existente na sessão KDE do próprio
+usuário; este comando preserva os demais widgets, a ordem e as configurações:
+
+```sh
+python3 tools/classic_panel.py --verificar
+python3 tools/classic_panel.py
+# Voltar aos widgets anteriores usando o backup da alteração:
+python3 tools/classic_panel.py --restaurar
+```
+
+O layout do tema global usa esses widgets em novas instalações. A seleção do tema
+continua preservando o painel existente. O desenho de pressão acompanha o mouse
+enquanto o botão está abaixado; não adiciona espera nem temporizador visual.
+Veja os [testes e limites da validação do painel](plasma/docs/VALIDACAO-PAINEL-2026-10-07.md).
 
 ## Cursores
 

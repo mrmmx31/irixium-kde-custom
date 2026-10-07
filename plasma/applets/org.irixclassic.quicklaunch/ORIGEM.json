@@ -1,0 +1,20 @@
+{
+  "upstream": "KDE plasma-desktop",
+  "upstream_version": "6.3.6",
+  "upstream_applet": "org.kde.plasma.quicklaunch",
+  "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/quicklaunch",
+  "changes": [
+    "Private Classic identifier; raised compact frame and immediate mouse-down feedback."
+  ],
+  "source_files": {
+    "metadata.json": "e775bbae4557c7bc5f793c96b72b82fd0cf2d6bbd7dcad7107d44ea0c36b351b",
+    "contents/config/main.xml": "31f87473ba8103404b57132344a2959bb9d8c9730e6187e777f21bb735fe77d4",
+    "contents/config/config.qml": "96aa3f0a899d95a849c4f037b6e68179ef40e4b27114fa711d0fefa5e4d6eccd",
+    "contents/ui/ConfigGeneral.qml": "fe1cd92303a8b754c9cd77d46cdaf3e97c14871697438de4dc07dc67c56fe8a7",
+    "contents/ui/IconItem.qml": "75c451f460b57ce6dc636d3ad831eb6df738b750b0f4c4bec675807ec4bb5200",
+    "contents/ui/layout.js": "f060add0c2492d3749c5d25ecab61cb37317f5a144e9d1332341ace9d56e9ee9",
+    "contents/ui/Popup.qml": "4739a5e0c41e6288b46adbd181372a9ab2a64836cb9dfb4254ab36bd54bb57ef",
+    "contents/ui/main.qml": "ed47525a353893b011c6d9302e88340b67f33797e04c0338885bab7718f9c6b3",
+    "contents/ui/UrlModel.qml": "1de39d154d78050dcbedc54cf938479c98c3e6ce3f5beb0fdfd5b6f58b092361"
+  }
+}

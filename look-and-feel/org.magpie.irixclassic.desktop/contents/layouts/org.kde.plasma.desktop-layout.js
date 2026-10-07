@@ -9,13 +9,13 @@ panel.maximumLength = geo.width * 3 /4
 panel.lengthMode = "custom"
 panel.floating = true
 
-kickoff = panel.addWidget("org.kde.plasma.kickoff")
+kickoff = panel.addWidget("org.irixclassic.applications")
 
 const globals = ConfigFile("kdeglobals")
 globals.group = "General"
 const user_browser = "file:///usr/share/applications/" + globals.readEntry("BrowserApplication")
 
-const appsLaunch = panel.addWidget("org.kde.plasma.quicklaunch")
+const appsLaunch = panel.addWidget("org.irixclassic.quicklaunch")
 appsLaunch.currentConfigGroup = ["General"]
 appsLaunch.writeConfig("launcherUrls", [user_browser,
                 "file:///usr/share/applications/org.kde.dolphin.desktop",
@@ -25,9 +25,9 @@ appsLaunch.writeConfig("maxSectionCount", 1)
 
 panel.addWidget("org.kde.plasma.panelspacer")
 
-const tasks = panel.addWidget("org.kde.plasma.taskmanager")
+const tasks = panel.addWidget("org.irixclassic.iconbox")
 tasks.currentConfigGroup = ["General"]
-tasks.writeConfig("maxStripes", "2")
+tasks.writeConfig("maxStripes", "1")
 tasks.writeConfig("forceStripes", true)
 tasks.writeConfig("launchers", "")
 tasks.writeConfig("onlyGroupWhenFull", false)
@@ -72,9 +72,9 @@ if (langIds.indexOf(languageId) != -1) {
 }
 
 panel.addWidget("org.kde.plasma.marginsseparator")
-panel.addWidget("org.kde.plasma.systemtray")
+panel.addWidget("org.irixclassic.systemtray")
 panel.addWidget("org.kde.plasma.marginsseparator")
 
-var aclock = panel.addWidget("org.kde.plasma.analogclock")
+var aclock = panel.addWidget("org.irixclassic.analogclock")
 aclock.currentConfigGroup = ["General"]
 aclock.writeConfig("showSecondHand", true)

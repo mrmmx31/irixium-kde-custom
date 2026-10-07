@@ -1,0 +1,17 @@
+{
+  "upstream": "KDE plasma-workspace",
+  "upstream_version": "6.3.6",
+  "upstream_applet": "org.kde.plasma.systemtray",
+  "source": "https://invent.kde.org/plasma/plasma-workspace/-/tree/v6.3.6/applets/systemtray",
+  "license": "LGPL-2.0-or-later (the wrapping QML applet)",
+  "changes": [
+    "Private Classic identifier with X-Plasma-RootPath to reuse the installed upstream SystemTrayContainer C++ plugin.",
+    "Added an SVG frame and a four-pixel inset; minimum dimensions include the eight-pixel total frame allowance.",
+    "Preserved the upstream private tray containment and expanded-state synchronization; no model, activation, timer, or popup changes.",
+    "Only the Classic layout uses this package; the stock system tray and Modern theme are not overridden."
+  ],
+  "source_files": {
+    "metadata.json": "5f3ab97c147b187ecbf3692ee5fb64b294169b1514c3e58e1a44575e8ddfe13c",
+    "contents/ui/main.qml": "104e4b72c5201b18c23dd0ff5dabcc261f6938c87c52bbf94a471f5019b1f99f"
+  }
+}

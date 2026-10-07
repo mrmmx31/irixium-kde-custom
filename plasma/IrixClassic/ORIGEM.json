@@ -13,7 +13,8 @@
   "version": "3.0",
   "local_changes": [
     "Renamed and separated as the starting point for the independent IRIX Classic theme.",
-    "Restored missing widgets/switch.svg from the author’s locally installed Irixium 6.2; retained the existing theme artwork."
+    "Restored missing widgets/switch.svg from the author\u2019s locally installed Irixium 6.2; retained the existing theme artwork.",
+    "Replaced Classic panel, tasks, pager, buttons, item highlights and sliders with opaque compact workstation plates; added state-specific hover/pressed artwork and vertical controls."
   ],
   "verification": {
     "installed_path": "~/.local/share/plasma/desktoptheme/IrixClassic",
@@ -27,5 +28,14 @@
       "source": "locally installed irixium Plasma Style",
       "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
     }
+  },
+  "classic_artwork": {
+    "version": "0.1.0",
+    "author": "IRIX Classic contributors",
+    "license": "GPL-3.0-or-later",
+    "references": [
+      "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch03.html",
+      "https://www.bitsavers.org/pdf/openSoftwareFoundation/motif/OSF_Motif_Style_Guide_Revision_1.2_1993.pdf"
+    ]
   }
 }
