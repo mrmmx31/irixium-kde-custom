@@ -10,7 +10,6 @@ Item {
     property bool maximizedWindow: false
     property bool minimizeAllowed: true
     property bool maximizeAllowed: true
-    property bool closeAllowed: true
     property bool menuOnPress: false
     property bool closeOnDouble: true
     property string caption: ""
@@ -115,17 +114,5 @@ Item {
         x: surface.metrics.maximize.x; y: surface.metrics.maximize.y
         width: surface.metrics.maximize.w; height: surface.metrics.maximize.h
         onActivate: (mouseButton) => surface.maximizeRequested(mouseButton)
-    }
-    ModernButton {
-        id: closeButton
-        objectName: "irixiumModernClose"
-        activeWindow: surface.activeWindow
-        kind: "close"
-        label: "Fechar"
-        artwork: Qt.resolvedUrl("../../assets/close.svg")
-        available: surface.closeAllowed
-        x: surface.metrics.close.x; y: surface.metrics.close.y
-        width: surface.metrics.close.w; height: surface.metrics.close.h
-        onActivate: surface.closeRequested()
     }
 }

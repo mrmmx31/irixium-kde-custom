@@ -12,10 +12,20 @@
   "license": "GPL-3.0",
   "version": "3.0",
   "local_changes": [
-    "Renamed and separated as the starting point for the independent IRIX Classic theme."
+    "Renamed and separated as the starting point for the independent IRIX Classic theme.",
+    "Restored missing widgets/switch.svg from the author’s locally installed Irixium 6.2; retained the existing theme artwork."
   ],
   "verification": {
     "installed_path": "~/.local/share/plasma/desktoptheme/IrixClassic",
     "metadata": "metadata.desktop"
+  },
+  "additional_resources": {
+    "widgets/switch.svg": {
+      "author": "Mark Whittaker (Phob1an)",
+      "upstream_version": "6.2",
+      "license": "GPL-2.0-or-later",
+      "source": "locally installed irixium Plasma Style",
+      "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
+    }
   }
 }

@@ -25,7 +25,9 @@ class ApplySuiteTest(unittest.TestCase):
                 p.parent.mkdir(parents=True,exist_ok=True);p.write_text('fixture')
         for profile in apply_suite.PROFILE_COMPONENTS.values():
             for p in (self.data/'icons'/profile['icons']/'index.theme',
-                      self.data/'icons/sgi/index.theme',
+                      self.data/'icons'/profile['cursor']/'index.theme',
+                      self.data/'icons'/profile['cursor']/'cursors/wait',
+                      self.data/'icons'/profile['cursor']/'cursors/progress',
                       self.data/'color-schemes/Irixium.colors',
                       self.data/'plasma/desktoptheme'/profile['plasma']/'metadata.desktop',
                       self.data/'wallpapers'/profile['wallpaper']/'metadata.json',
@@ -93,6 +95,28 @@ class ApplySuiteTest(unittest.TestCase):
         self.run_apply('--restaurar')
         self.assertEqual(settings.read_bytes(),original)
         self.assertFalse((self.config/'gtk-4.0/settings.ini').exists())
+
+    def test_profile_cursor_is_selected_for_kde_and_gtk_without_changing_size(self):
+        settings = self.config/'kcminputrc'
+        original = b'[Mouse]\ncursorTheme=Before\ncursorSize=48\nX11LibInputXAccelProfileFlat=true\n'
+        settings.write_bytes(original)
+        for profile, cursor in (('classic', 'SGI-Classic'), ('moderno', 'SGI-Irixium')):
+            self.run_apply(profile)
+            self.assertIn(('cursorTheme='+cursor).encode(), settings.read_bytes())
+            self.assertIn(b'cursorSize=48', settings.read_bytes())
+            self.assertIn(b'X11LibInputXAccelProfileFlat=true', settings.read_bytes())
+            for version in ('3.0', '4.0'):
+                self.assertIn(('gtk-cursor-theme-name='+cursor).encode(),
+                              (self.config/f'gtk-{version}/settings.ini').read_bytes())
+            self.run_apply('--restaurar')
+            self.assertEqual(settings.read_bytes(), original)
+
+    def test_missing_profile_cursor_refuses_application_before_writing(self):
+        cursor = self.data/'icons'/apply_suite.PROFILE_COMPONENTS['classic']['cursor']/'index.theme'
+        cursor.unlink()
+        with self.assertRaises(apply_suite.Failure): self.run_apply('classic')
+        self.assertEqual(self.kv.read_bytes(), self.original)
+        self.assertFalse(self.state.exists())
 
     def test_missing_sound_profile_can_be_required_before_native_apply(self):
         with self.assertRaises(apply_suite.Failure):

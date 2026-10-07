@@ -59,7 +59,10 @@ adivinha qual cópia substituir. Apenas na primeira instalação sem nenhuma Cla
 A troca de seleção só acontece com a opção explícita `--ativar`. Ao atualizar a
 Classic já selecionada, ela naturalmente continuará selecionada, mas com novos
 arquivos. **Salve o trabalho, encerre a sessão e entre novamente** para descartar
-os componentes QML em cache. Não use `kwin --replace`.
+os componentes QML em cache. Na instalação pelo repositório completo, também é
+possível executar `python3 ../../tools/reload_decoration.py` no terminal da própria
+sessão KDE: a ferramenta libera a instância antiga e restaura a seleção e o
+arquivo de configuração originais. Não use `kwin --replace`.
 
 Outras decorações v4/v5 que já existirem não são apagadas. Os antigos patches de
 sistema v1/v2/v3 não são removidos nem reutilizados pelo código novo. Nenhum arquivo

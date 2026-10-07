@@ -65,7 +65,9 @@ def main():
                      data/'themes/Irixium/gtk-3.0/gtk.css',
                      data/'themes/Irixium/gtk-4.0/gtk.css',
                      data/'icons'/profile['icons']/'index.theme',
-                     data/'icons/sgi/index.theme',
+                     data/'icons'/profile['cursor']/'index.theme',
+                     data/'icons'/profile['cursor']/'cursors/wait',
+                     data/'icons'/profile['cursor']/'cursors/progress',
                      data/'color-schemes/Irixium.colors',
                      data/'plasma/desktoptheme'/profile['plasma']/'metadata.desktop',
                      data/'wallpapers'/profile['wallpaper']/'metadata.json',
@@ -86,6 +88,7 @@ def main():
     if not tool:
         raise Failure('plasma-apply-lookandfeel ausente; requer Plasma 6.')
     print(f'Tema global: {package}; Kvantum: {kvantum}; decoração: {decoration}')
+    print('Cursor: '+profile['cursor'])
     print('GTK: Irixium; sons: '+(sound_theme or 'seleção atual preservada (esquema SGI não solicitado/disponível)'))
     if args.verificar:
         return
@@ -99,13 +102,16 @@ def main():
         kvconfig = config/'Kvantum/kvantum.kvconfig'
         atomic(kvconfig, edit_ini(decode(before[kvconfig]) or b'', 'General', {'theme':kvantum}))
         subprocess.run([tool,'--apply',package],check=True)
+        cursor_config = config/'kcminputrc'
+        atomic(cursor_config, edit_ini(decode(snapshot(cursor_config)) or b'',
+                                       'Mouse', {'cursorTheme': profile['cursor']}))
         for version in ('3.0', '4.0'):
             gtkconfig = config/f'gtk-{version}/settings.ini'
             original = decode(snapshot(gtkconfig)) or b''
             atomic(gtkconfig, edit_ini(original, 'Settings', {
                 'gtk-theme-name': PROFILE_COMPONENTS[args.tema]['gtk'],
                 'gtk-icon-theme-name': PROFILE_COMPONENTS[args.tema]['icons'],
-                'gtk-cursor-theme-name': 'sgi'}))
+                'gtk-cursor-theme-name': profile['cursor']}))
         if sound_theme:
             globals_file = config/'kdeglobals'
             original = decode(snapshot(globals_file)) or b''

@@ -17,7 +17,7 @@ Rectangle {
         objectName: "previewActive"
         x: 16; y: 40; width: 868; height: 128
         caption: "Ativa: atlas SVG recortado por estado, não reduzido inteiro"
-        onMenuRequested: gallery.registerAction("Menu imediato")
+        onMenuRequested: gallery.registerAction("Menu de ações")
         onMinimizeRequested: gallery.registerAction("Minimizar")
         onMaximizeRequested: gallery.registerAction("Maximizar")
         onCloseRequested: gallery.registerAction("Fechar (somente prévia)")
@@ -38,14 +38,14 @@ Rectangle {
         objectName: "previewMaximized"
         x: 16; y: 324; width: 868; height: 58
         maximizedWindow: true
-        caption: "Maximizada: mesma ordem minimizar / maximizar-restaurar / fechar"
+        caption: "Maximizada: mesma ordem minimizar / maximizar-restaurar"
         Rectangle { x: 0; y: 34; width: parent.width; height: 24; color: "#c0c0c0" }
     }
     Modern.Surface {
         id: disabledFrame
         objectName: "previewDisabled"
         x: 16; y: 397; width: 868; height: 72
-        minimizeAllowed: false; maximizeAllowed: false; closeAllowed: false
+        minimizeAllowed: false; maximizeAllowed: false; closeOnDouble: false
         caption: "Ações indisponíveis: camadas deactivated do SVG"
         Rectangle { x: 7; y: 34; width: parent.width - 14; height: parent.height - 41; color: "#c0c0c0" }
     }

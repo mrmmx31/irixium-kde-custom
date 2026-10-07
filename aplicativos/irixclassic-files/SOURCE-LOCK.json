@@ -1,0 +1,14 @@
+{
+  "component": "IrixClassic Files",
+  "version": "0.1.0-alpha1",
+  "upstream": "Dolphin",
+  "upstream_tag": "v25.04.3",
+  "debian_source": "dolphin",
+  "debian_version": "4:25.04.3-1+deb13u1",
+  "source_policy": "apt-get source with the exact Debian version, verified by the configured signed Debian Sources index; dpkg-source applies the Debian patch series before our changes.",
+  "repository_base": "acdbf159e13b53e8c09fcc671f976688c520faf5",
+  "date": "2026-10-06",
+  "native_validation": "passed_locally_debian13_qt6.8.2_kf6.13_wayland_2026-10-07",
+  "publication": "not_published",
+  "validation_report": "docs/VALIDACAO-LOCAL-2026-10-07.md"
+}

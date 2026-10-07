@@ -15,10 +15,14 @@ linhas no centro da faixa de separação; `spread_menuitems=false` deixa os iten
 dentro do contorno. `submenu_delay=250` e `submenu_overlap=1` são preservados.
 Não são valores certificados como temporização exata do IRIX.
 
-A fonte global não muda. Os rótulos de menu usam a indicação de itálico do
-estilo, em coerência com ObliqueLabelFont do esquema SGI. O sublinhado estilizado
-oblíquo do IRIX não é reproduzido pelo SVG: o Qt desenha os mnemônicos. A política
-`alt_mnemonic` anterior permanece intacta para não afetar os outros controles.
+A fonte global não muda. O tema configura `text.italic=true` em `MenuItem`
+e `MenuBarItem`, buscando ObliqueLabelFont do esquema SGI. Porém, Kvantum 1.1.4
+não aplica essa opção aos itens dos menus suspensos: eles usam a fonte fornecida
+pelo aplicativo/Qt. A captura nativa de 07/10/2026 confirma texto reto no popup.
+Assim, essa chave não comprova fidelidade tipográfica; a limitação consta na
+documentação oficial Theme-Config, em `text.italic`. O sublinhado estilizado
+oblíquo do IRIX também não é reproduzido pelo SVG: o Qt desenha os mnemônicos.
+A política `alt_mnemonic` anterior permanece intacta para não afetar os outros controles.
 
 ## Referências e limites
 
@@ -112,3 +116,11 @@ bash kvantum/restaurar-classic.sh
 
 Sem sudo. Reabrir aplicativos. O instalador não seleciona outro estilo e não
 modifica fontes, GTK ou decorações de janela. O nome continua IrixClassic.
+
+## Verificação em 7 de outubro de 2026
+
+IrixClassic 0.7.1 selecionado; SVG e kvconfig instalados coincidem byte a byte
+com o repositório. Passaram 23 testes de menus e 17 verificações nativas com
+Qt 6.8.2, PyQt6, Wayland e Kvantum::Style. A verificação confirma funcionamento
+e as cores/relevos desenhados; não comprova identidade histórica universal.
+Veja [a revisão de fidelidade](VERIFICACAO-MENUS-2026-10-07.md).

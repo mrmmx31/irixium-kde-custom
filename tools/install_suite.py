@@ -14,7 +14,7 @@ import uuid
 
 from theme_transaction import Failure, no_links, snapshot, image, atomic, replace_checked
 from user_bundle import Bundle
-from components import sources
+from components import sources, cursor_compat_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -115,14 +115,23 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verificar', action='store_true')
     parser.add_argument('--restaurar', action='store_true')
+    parser.add_argument('--recarregar-decoracao', action='store_true',
+                        help='liberar QML antigo da decoração IRIX na sessão do próprio usuário')
     parser.add_argument('--sem-cache', action='store_true', help='para testes sem sessão gráfica')
+    parser.add_argument('--cursor-compat-root', type=Path,
+                        help='raiz de compatibilidade libXcursor; padrão ~/.icons; útil para testes isolados')
     args = parser.parse_args()
     if os.geteuid() == 0:
         raise Failure('Execute como usuário normal, sem sudo.')
     data, config, state = roots()
+    if args.recarregar_decoracao:
+        if args.sem_cache or args.restaurar:
+            parser.error('--recarregar-decoracao exige instalação na sessão gráfica, sem --sem-cache/--restaurar')
+        from reload_decoration import check_session
+        check_session()
     if not args.restaurar:
         check_runtime()
-    pairs = sources(data, config)
+    pairs = sources(data, config) + cursor_compat_sources(args.cursor_compat_root)
     bundle = Bundle(state/'irixium-suite', [dest for _, dest in pairs])
     if args.restaurar:
         if args.verificar:
@@ -139,6 +148,13 @@ def main():
         report = audit(source)
         if report['errors']:
             raise Failure(f'Ícones inválidos em {source}: {report["errors"]} erro(s). Execute icons/tools/validate_theme.py.')
+    sys.path.insert(0, str(ROOT/'cursors/tools'))
+    from cursor_audit import audit_theme as audit_cursors
+    for source, _ in pairs:
+        if source.parent == ROOT/'cursors':
+            report = audit_cursors(source)
+            if report['errors']:
+                raise Failure('Cursores inválidos: '+ '; '.join(report['errors']))
     # Stage metadata with the same ID used by the global theme. Preserve only
     # known appearance settings, not old QML implementations or interaction delays.
     spec = importlib.util.spec_from_file_location('classic_manager', ROOT/'decorations/classic/tools/manage.py')
@@ -167,11 +183,16 @@ def main():
             if not args.sem_cache:
                 refresh_icons(data)
     migrate_user_hook(config, state, dry=args.verificar)
+    if args.recarregar_decoracao:
+        from reload_decoration import reload
+        reload(config/'kwinrc', state/'irixium-decoration-reload', dry=args.verificar)
     if not args.verificar:
         print('Os dois temas e suas dependências gráficas foram instalados no seu perfil.')
         print('Sons SGI: use sons/instalar.sh --baixar, --origem DIRETORIO ou o cache local já preparado.')
         print('Para aplicar o conjunto: bash aplicar-tema.sh classic (ou moderno).')
-        print('Após atualizar QML em uso, salve o trabalho e entre novamente na sessão.')
+        if not args.recarregar_decoracao:
+            print('Para liberar QML antigo em uso: python3 tools/reload_decoration.py (na própria sessão KDE).')
+        print('Reabra os aplicativos para recarregar Kvantum e os ícones.')
 
 
 if __name__ == '__main__':

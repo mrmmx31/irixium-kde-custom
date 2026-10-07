@@ -27,6 +27,16 @@
       "destination": "icons/sgi"
     },
     {
+      "source": "cursors/SGI-Classic",
+      "root": "data",
+      "destination": "icons/SGI-Classic"
+    },
+    {
+      "source": "cursors/SGI-Irixium",
+      "root": "data",
+      "destination": "icons/SGI-Irixium"
+    },
+    {
       "source": "gtk",
       "root": "data",
       "destination": "themes/Irixium"
@@ -85,7 +95,8 @@
       "icons": "IrixClassic-SGI",
       "plasma": "IrixClassic",
       "wallpaper": "IrixClassic",
-      "gtk": "Irixium"
+      "gtk": "Irixium",
+      "cursor": "SGI-Classic"
     },
     "moderno": {
       "global": "org.magpie.irixium.desktop",
@@ -94,7 +105,8 @@
       "icons": "Irixium",
       "plasma": "Irixium",
       "wallpaper": "Irixium",
-      "gtk": "Irixium"
+      "gtk": "Irixium",
+      "cursor": "SGI-Irixium"
     }
   },
   "sounds": {

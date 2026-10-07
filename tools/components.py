@@ -30,3 +30,14 @@ def sources(data, config):
     bases = {'data': data, 'config': config}
     return [(ROOT/e['source'], bases[e['root']]/e['destination'])
             for e in catalog()['components']]
+
+
+def cursor_compat_sources(root=None):
+    """Legacy libXcursor/KCM discovery uses ~/.icons on some distributions.
+
+    An explicit root supports isolated validation without repurposing HOME.
+    These are compatibility destinations, not duplicate repository sources.
+    """
+    root = Path(root).expanduser().absolute() if root is not None else Path.home()/'.icons'
+    return [(ROOT/e['source'], root/Path(e['destination']).name)
+            for e in catalog()['components'] if e['source'].startswith('cursors/')]

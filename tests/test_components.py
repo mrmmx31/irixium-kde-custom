@@ -15,7 +15,7 @@ class ComponentsTest(unittest.TestCase):
     def test_both_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),15)
+        self.assertEqual(len(report['components']),17)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
@@ -56,3 +56,11 @@ class ComponentsTest(unittest.TestCase):
     def test_missing_native_preference_is_reported_as_missing(self):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertIsNone(audit_suite.preference(Path(tmp),'kdeglobals','Icons','Theme'))
+
+    def test_cursor_compatibility_uses_only_the_three_known_theme_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pairs = components.cursor_compat_sources(root)
+            self.assertEqual({p.name for _,p in pairs}, {'sgi','SGI-Classic','SGI-Irixium'})
+            self.assertTrue(all(dest.parent==root for _,dest in pairs))
+            self.assertTrue(all(source.parent==components.ROOT/'cursors' for source,_ in pairs))

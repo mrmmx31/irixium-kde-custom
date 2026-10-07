@@ -1,7 +1,8 @@
 # Distribuição do conjunto completo
 
-O checkout contém os 15 componentes gráficos declarados em `components.json`,
-mais o código/catálogo do esquema de sons. Use o fluxo do [README](README.md):
+O checkout contém os 17 componentes gráficos declarados em `components.json`,
+mais o código/catálogo do esquema de sons. Os três cursores também recebem
+cópias de compatibilidade em `~/.icons`, com backup, para KDE/libXcursor. Use o fluxo do [README](README.md):
 
 ```sh
 bash instalar-irixium.sh --verificar
