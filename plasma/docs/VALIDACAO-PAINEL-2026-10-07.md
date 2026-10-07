@@ -28,6 +28,12 @@ Os arquivos ORIGEM.json registram fontes, licenças e alterações.
 - Na sessão Wayland de lsi, a migração preservou o painel 1822, altura de 64 px,
   largura configurada de 1440 px, posição, demais widgets e os 17 componentes
   internos da bandeja. Foram capturadas imagens da barra antes e depois.
+- A execução pelo próprio usuário p001532 passou na sessão Wayland: os 22
+  componentes instalados conferem com o pacote e o perfil Classic não tem
+  divergências de seleção. A migração preservou o painel 342, os limites
+  configurados de 1440 × 64 px, posição, ordem e os 16 componentes internos
+  da bandeja. Foram substituídos somente os cinco widgets previstos, com
+  recibos de restauração no perfil desse usuário.
 
 Os testes isolados não acionam serviços reais de Wi-Fi/Bluetooth nem abrem
 aplicativos do usuário. A galeria usa controles reais e tarefas demonstrativas;
@@ -36,10 +42,12 @@ janelas abre somente três janelas Qt descartáveis, em Xvfb e D-Bus
 privados, sem ativação de serviços nem um desktop Plasma completo. As capturas
 da sessão lsi verificam a composição final do painel.
 
-A execução no perfil protegido p001532 requer seu próprio terminal KDE e não
-é certificada pelos testes de lsi. O pacote portátil instala os componentes
-somente nesse perfil, produz seu relatório e conserva recibos de restauração.
-A inspeção manual do relevo de pressão nesse usuário continua necessária.
+A instalação e a migração em p001532 foram verificadas por seus próprios
+relatórios `RESULTADO.json` e `AUDITORIA.json`. A inspeção visual do relevo de
+pressão e dos interruptores de Wi-Fi/Bluetooth nesse usuário continua pendente.
+A captura automática foi omitida por ser uma sessão Wayland; a opção
+`--capturar` do pacote portátil permite selecionar somente o painel no Spectacle
+e acrescentar a imagem ao relatório existente.
 
 ## Reprodução
 
