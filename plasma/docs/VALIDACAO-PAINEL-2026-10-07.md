@@ -13,18 +13,28 @@ Os arquivos ORIGEM.json registram fontes, licenças e alterações.
 - Aplicação e restauração reais passaram em um Plasma isolado por Xvfb e D-Bus.
   O teste preservou os 14 componentes internos da bandeja daquele perfil.
 - A galeria Qt/KSvg passou por 56 verificações de pressão, cancelamento, soltura,
-  tarefa ativa, switches, sliders nas duas orientações, listas, botões e resolução de ícones do menu.
-- Os cinco widgets carregaram em hosts Plasma nativos isolados. A tarefa real
+  tarefa ativa, switches, sliders nas duas orientações, listas, botões e
+  resolução de ícones do menu.
+- Os cinco widgets carregaram em hosts Plasma nativos isolados. O lançador
   mostrou o prefixo pressionado enquanto o mouse permaneceu abaixado, mudou
   935 pixels na região da tarefa e cancelou o efeito ao soltar fora.
+- Três janelas Qt descartáveis foram verificadas em um KWin X11 isolado. Os
+  estados ativo, inativo e minimizado vieram do TasksModel nativo, com PID e
+  identificador X11 conferidos. A pressão teve efeito imediato e permaneceu
+  durante a captura de 120 ms, sem executar a ação. Soltar fora cancelou;
+  soltar dentro minimizou a janela ativa, ativou a inativa e restaurou a
+  minimizada. Os estados também foram conferidos diretamente no X11.
+  As regiões pressionadas mudaram 3067, 3697 e 3743 pixels, respectivamente.
 - Na sessão Wayland de lsi, a migração preservou o painel 1822, altura de 64 px,
   largura configurada de 1440 px, posição, demais widgets e os 17 componentes
   internos da bandeja. Foram capturadas imagens da barra antes e depois.
 
 Os testes isolados não acionam serviços reais de Wi-Fi/Bluetooth nem abrem
-aplicativos. A galeria usa controles reais e tarefas demonstrativas; o teste
-dos widgets usa o delegado e o modelo nativos. As capturas da sessão lsi
-verificam a composição final do painel.
+aplicativos do usuário. A galeria usa controles reais e tarefas demonstrativas;
+o teste dos widgets usa o delegado e o modelo nativos. O teste opcional de
+janelas abre somente três janelas Qt descartáveis, em Xvfb e D-Bus
+privados, sem ativação de serviços nem um desktop Plasma completo. As capturas
+da sessão lsi verificam a composição final do painel.
 
 A execução no perfil protegido p001532 requer seu próprio terminal KDE e não
 é certificada pelos testes de lsi. O pacote portátil instala os componentes
@@ -37,11 +47,13 @@ A inspeção manual do relevo de pressão nesse usuário continua necessária.
 bash testar-integracao.sh
 python3 plasma/tools/prever-painel.py --testar --offscreen --capturas /tmp/classic-galeria
 python3 plasma/tools/testar-widgets.py --saida /tmp/classic-widgets
+python3 plasma/tools/testar-widgets.py --widget iconbox --window-tasks --saida /tmp/classic-janelas
 ```
 
 A última ferramenta exige Xvfb, D-Bus, compilador C++, Pillow e os arquivos de
 desenvolvimento de Qt 6 Widgets/Test. Usa somente perfis temporários. As saídas
 devem ser novas para conservar evidências de execuções anteriores.
+O modo `--window-tasks` exige também `kwin_x11`, `xdotool` e `xprop`.
 
 Para atualizar um painel existente, primeiro instale a suíte e execute
 `python3 tools/classic_panel.py --verificar`, seguido do comando sem a opção.
