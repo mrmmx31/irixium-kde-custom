@@ -6,10 +6,50 @@ diretamente o estado do mouse. Os cinco widgets têm identificadores próprios;
 seus modelos e interações vêm do Plasma Desktop 6.3.6.
 Os arquivos ORIGEM.json registram fontes, licenças e alterações.
 
+## Verificação final dos dois perfis em 2026-10-08
+
+As fontes gráficas do commit `1bf81bb` foram instaladas e conferidas nos perfis
+lsi e p001532. As rodadas seguintes registram checkpoints anteriores; suas
+pendências de instalação e composição visual foram encerradas por esta verificação.
+
+- Os dois relatórios de auditoria aprovaram os 22 componentes, as cópias de
+  compatibilidade dos cursores e a seleção Classic. Configurações, IDs, ordem,
+  limites de 1440 × 64 px e filhos da bandeja foram preservados: 17 em lsi e
+  16 em p001532. Cada atualização reiniciou somente o Plasma do próprio usuário.
+- A execução inicial de p001532 criou um recibo central. As execuções seguintes
+  reconheceram os arquivos já atuais e mantiveram as mesmas configurações.
+  O vínculo nativo `lastScreen: -1 → 0` da primeira instalação foi registrado
+  separadamente; o kit não reescreveu essa configuração da bandeja.
+- Os recortes regionais selecionados pelo usuário mostram as fontes atuais:
+  placas do menu e dos três atalhos, Iconbox em uma fileira, fundos pontilhados,
+  bandeja e relógio com alojamentos próprios. Eles medem 1432 × 74 px em lsi e
+  1433 × 79 px em p001532; as dimensões configuradas vêm dos relatórios do painel,
+  e não desses retângulos selecionados. O pager aparece no recorte de lsi;
+  sua ausência no recorte de p001532 não foi apresentada como prova de renderização.
+- O print adicional de lsi mostra os interruptores mecânicos Classic no pop-up
+  de rede. O usuário informou que executou em p001532 e que o resultado parece
+  correto. A confirmação descreve aparência; não certifica uma nova inspeção
+  manual de pressão ou reordenação.
+- O `Task.qml` instalado é idêntico ao usado no teste nativo de três janelas
+  reais: pressão imediata/sustentada, cancelamento e ações de ativa, inativa e
+  minimizada passaram. Não foi acrescentado timer de interação. Os controles
+  usam o recurso Classic conferido nos testes nativos de foco e teclado.
+
+Os relatórios públicos de p001532 foram verificados no sistema hospedeiro:
+seu dono é UID 1003. O UID genérico 65534 observado dentro da sandbox tinha sido
+interpretado incorretamente como fixture; essa classificação foi corrigida.
+Nenhum HOME privado, configuração privada ou D-Bus de p001532 foi acessado.
+As evidências regionais e os relatórios públicos ficam em Downloads, fora do Git.
+
+A reordenação por arraste não foi aprovada no host privado: o mesmo ensaio
+falhou também com o widget upstream. Essa limitação permanece registrada;
+não se afirma que houve uma confirmação manual de reordenação nos perfis reais.
+Os campos manuais pendentes dos JSONs automáticos também permanecem intactos.
+
 ## Rodada de 2026-10-08: bandeja, relógio e áreas de trabalho
 
-A revisão seguinte trabalha somente nas fontes e prévias isoladas. A instalação
-e a conferência nas sessões lsi e p001532 foram adiadas pelo usuário até o final
+A revisão deste checkpoint trabalhou somente nas fontes e prévias isoladas.
+A instalação e a conferência nas sessões lsi e p001532 foram adiadas pelo usuário até o final
 do goal. Os resultados das instalações anteriores abaixo permanecem históricos.
 
 - Bandeja: aro de instrumento com 4 px, poço teal rebaixado de 2 px e conteúdo
@@ -82,9 +122,10 @@ usa a mesma altura de 8 px e mantém os anchors e a fonte anteriores.
   ações com janelas reais permanecem vinculados aos handlers inalterados.
 - Os 11 testes de fonte do painel e a auditoria dos 22 componentes passaram.
 
-Esta rodada permanece em fontes e hosts privados. A instalação nas sessões,
-a renovação do pacote de p001532 e a revisão final da barra ainda estão
-pendentes, conforme o adiamento solicitado pelo usuário.
+Nesse checkpoint, a rodada permanecia em fontes e hosts privados. A instalação
+nas sessões, a renovação do pacote de p001532 e a revisão final da barra estavam
+pendentes, conforme o adiamento solicitado pelo usuário; foram verificadas no
+fechamento registrado no início deste documento.
 
 ### Quicklaunch: cancelamento, popup e ciclo de arraste nativos
 
@@ -145,7 +186,7 @@ pendente, separada dessa aprovação. A tentativa anterior foi preservada.
 A suíte completa `bash testar-integracao.sh` passou novamente nesta rodada:
 722 testes Python em nove grupos, além das verificações dos botões da decoração.
 O log é `/tmp/irix-integracao-final-20261008.log`. A atualização e a inspeção
-visual das sessões ainda precisam do procedimento final por usuário.
+visual das sessões foram concluídas pelo procedimento final por usuário.
 
 ## Refinamento após inspeção visual
 
@@ -174,9 +215,9 @@ demonstrada uma troca de estilo ou um override de ambiente para Breeze.
   preservados. O vínculo interno `lastScreen` da bandeja mudou de -1 para 0,
   correspondente à tela do painel; essa associação foi registrada separadamente.
 
-A confirmação de p001532 abaixo pertence ao primeiro desenho. O refinamento
-novo ainda não foi instalado nessa sessão; o pacote de atualização é separado
-e exige execução pelo próprio usuário.
+A confirmação de p001532 abaixo pertence ao primeiro desenho. Nesse checkpoint,
+o refinamento novo ainda não tinha sido instalado nessa sessão. O pacote separado
+foi executado pelo próprio usuário na verificação final registrada acima.
 
 ## Resultados
 
