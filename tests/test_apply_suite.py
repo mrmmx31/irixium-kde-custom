@@ -15,13 +15,19 @@ class ApplySuiteTest(unittest.TestCase):
     def setUp(self):
         self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
         self.root=Path(self.tmp.name)
+        home_patch=patch('select_gtk.Path.home',return_value=self.root)
+        home_patch.start();self.addCleanup(home_patch.stop)
+        live_patch=patch.object(apply_suite,'native_ready',return_value=False)
+        live_patch.start();self.addCleanup(live_patch.stop)
         self.data,self.config,self.state=[self.root/p for p in ('data','config','state')]
         for package,kvantum,decoration in apply_suite.PROFILES.values():
             for p in (self.data/'plasma/look-and-feel'/package/'contents/defaults',
                       self.config/'Kvantum'/kvantum/(kvantum+'.kvconfig'),
                       self.data/'kwin/decorations'/decoration/'contents/ui/main.qml',
-                      self.data/'themes/Irixium/gtk-3.0/gtk.css',
-                      self.data/'themes/Irixium/gtk-4.0/gtk.css'):
+                      self.data/'themes'/next(p['gtk'] for p in apply_suite.PROFILE_COMPONENTS.values() if p['global']==package)/'gtk-2.0/gtkrc',
+                      self.root/'.themes'/next(p['gtk'] for p in apply_suite.PROFILE_COMPONENTS.values() if p['global']==package)/'gtk-2.0/gtkrc',
+                      self.data/'themes'/next(p['gtk'] for p in apply_suite.PROFILE_COMPONENTS.values() if p['global']==package)/'gtk-3.0/gtk.css',
+                      self.data/'themes'/next(p['gtk'] for p in apply_suite.PROFILE_COMPONENTS.values() if p['global']==package)/'gtk-4.0/gtk.css'):
                 p.parent.mkdir(parents=True,exist_ok=True);p.write_text('fixture')
         for profile in apply_suite.PROFILE_COMPONENTS.values():
             for p in (self.data/'icons'/profile['icons']/'index.theme',
@@ -89,7 +95,7 @@ class ApplySuiteTest(unittest.TestCase):
         original=b'[Settings]\ngtk-theme-name=Before\ngtk-font-name=User font\n'
         settings.write_bytes(original)
         self.run_apply('classic')
-        self.assertIn(b'gtk-theme-name=Irixium',settings.read_bytes())
+        self.assertIn(b'gtk-theme-name=IrixClassic',settings.read_bytes())
         self.assertIn(b'gtk-icon-theme-name=IrixClassic-SGI',settings.read_bytes())
         self.assertIn(b'gtk-font-name=User font',settings.read_bytes())
         self.run_apply('--restaurar')
@@ -117,6 +123,17 @@ class ApplySuiteTest(unittest.TestCase):
         with self.assertRaises(apply_suite.Failure): self.run_apply('classic')
         self.assertEqual(self.kv.read_bytes(), self.original)
         self.assertFalse(self.state.exists())
+
+    def test_gtk2_theme_selection_preserves_preferences_and_is_restored(self):
+        rc = self.root/'.gtkrc-2.0'
+        original = b'gtk-theme-name = "Before"\ngtk-font-name="User font"\ngtk-cursor-theme-size=48\n'
+        rc.write_bytes(original)
+        self.run_apply('classic')
+        self.assertIn(b'gtk-theme-name="IrixClassic"', rc.read_bytes())
+        self.assertIn(b'gtk-font-name="User font"', rc.read_bytes())
+        self.assertIn(b'gtk-cursor-theme-size=48', rc.read_bytes())
+        self.run_apply('--restaurar')
+        self.assertEqual(rc.read_bytes(), original)
 
     def test_missing_sound_profile_can_be_required_before_native_apply(self):
         with self.assertRaises(apply_suite.Failure):

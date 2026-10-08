@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import sys
 
-from components import ROOT, catalog, sources, cursor_compat_sources
+from components import ROOT, catalog, sources, cursor_compat_sources, decoration_sources, gtk_compat_sources
 from install_suite import roots
 from user_bundle import validate_source
 
@@ -43,7 +43,7 @@ def sound_module():
     return irix_sounds
 
 
-def audit(local=False, require_sounds=False, cursor_compat_root=None):
+def audit(local=False, require_sounds=False, cursor_compat_root=None, gtk_compat_root=None):
     doc = catalog()
     data, config, _ = roots()
     failures, components = [], []
@@ -68,17 +68,24 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None):
                 if differences:
                     failures.append('Instalação diferente: '+record['source'])
         components.append(record)
-    for folder in ('decorations/classic', 'decorations/modern'):
+    for package in decoration_sources():
+        folder = package.parent.relative_to(ROOT)
         expected = json.loads((ROOT/folder/'MANIFEST.json').read_text())['package']
         if hashes(ROOT/folder/'package') != expected:
-            failures.append('Manifesto divergente: '+folder)
+            failures.append('Manifesto divergente: '+str(folder))
     compat_reports = []
+    gtk_reports = []
     if local:
         for source, dest in cursor_compat_sources(cursor_compat_root):
             identical = hashes(source) == hashes(dest)
             compat_reports.append({'theme': dest.name, 'destination': str(dest), 'identical': identical})
             if not identical:
                 failures.append('Cursores legados desatualizados: '+str(dest))
+        for source, dest in gtk_compat_sources(gtk_compat_root):
+            identical = hashes(source) == hashes(dest)
+            gtk_reports.append({'theme': dest.name, 'destination': str(dest), 'identical': identical})
+            if not identical:
+                failures.append('Tema GTK2 desatualizado: '+str(dest))
     sys.path.insert(0, str(ROOT/'cursors/tools'))
     from cursor_audit import audit_theme as audit_cursors
     cursor_reports = []
@@ -106,7 +113,8 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None):
                     ROOT/'kvantum'/profile['kvantum']/(profile['kvantum']+'.kvconfig'),
                     ROOT/'wallpapers'/profile['wallpaper']/'metadata.json',
                     ROOT/'look-and-feel'/profile['global']/'contents/splash/Splash.qml',
-                    ROOT/'gtk/gtk-3.0/gtk.css', ROOT/'gtk/gtk-4.0/gtk.css',
+                    ROOT/'gtk'/profile['gtk']/'gtk-2.0/gtkrc',
+                    ROOT/'gtk'/profile['gtk']/'gtk-3.0/gtk.css', ROOT/'gtk'/profile['gtk']/'gtk-4.0/gtk.css',
                     ROOT/'colors/Irixium.colors', ROOT/'cursors'/profile['cursor']/'index.theme']
         failures.extend('Dependência ausente: '+str(p.relative_to(ROOT)) for p in required if not p.is_file())
     sounds = {'audio_in_repository': False, 'automatic_download': False,
@@ -145,6 +153,7 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None):
             if mismatches:
                 failures.append('Seleção do tema global não corresponde a todas as dependências.')
     return {'components': components, 'cursors': cursor_reports, 'cursor_compatibility': compat_reports,
+            'gtk_compatibility': gtk_reports,
             'profiles': doc['profiles'], 'sounds': sounds,
             'active_selection': selection,
             'failures': failures, 'status': 'failed' if failures else 'passed'}
@@ -156,8 +165,9 @@ def main():
     parser.add_argument('--exigir-sons', action='store_true')
     parser.add_argument('--saida', type=Path)
     parser.add_argument('--cursor-compat-root', type=Path)
+    parser.add_argument('--gtk-compat-root', type=Path)
     args = parser.parse_args()
-    report = audit(args.local, args.exigir_sons, args.cursor_compat_root)
+    report = audit(args.local, args.exigir_sons, args.cursor_compat_root, args.gtk_compat_root)
     output = json.dumps(report, ensure_ascii=False, indent=2)+'\n'
     if args.saida:
         args.saida.write_text(output)

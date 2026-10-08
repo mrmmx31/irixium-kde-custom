@@ -1,0 +1,37 @@
+{
+  "componente": "Aurorae Irixium 4.1",
+  "fonte_local": "/home/lsi/.local/share/aurorae/themes/irixium",
+  "identificador_original": "irixium",
+  "versao_metadados": "4.1",
+  "origem_publica": "https://store.kde.org/p/2142963",
+  "evidencia": "Metadados locais e window-decorations.knsregistry do KNewStuff",
+  "destino_pacote": "decorations/modern-41/package",
+  "identificador_independente": "irixium_modern_41",
+  "licenca_metadados": "GPL-2.0+",
+  "licenca_arquivo": "GNU GPL version 3, preservada sem alterações",
+  "licenca_observacao": "Na versão 4.1, os metadados indicam GPL-2.0+ e LICENSE contém GPLv3; ambas as declarações originais estão preservadas.",
+  "implementacao_layout": "Geometria e camadas SVG equivalentes ao Aurorae do KWin 6.3; botão fechar não é criado; menu nativo abre ao soltar sem timer.",
+  "referencias_layout": [
+    "https://develop.kde.org/docs/plasma/aurorae/",
+    "https://raw.githubusercontent.com/KDE/kwin/Plasma/6.3/src/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp"
+  ],
+  "arquivos_originais": {
+    "LICENSE": "840b5fbaa57259124139c65dcd5b9560e623ec24ec294a4197baf83d0811d7a7",
+    "alldesktops.svg": "0a958f33a0b5415c36a1c10a681360ddb501810c40f3f46899f252076d8f22de",
+    "close.svg": "b0e726c3466855c0efbe53b6043f49913f82f34e4242f8b83ce816bb92f6b163",
+    "decoration.svg": "f7331e0ca12168e53a76e83d622f1d16915387c7e1ad8383820fa7514c485a01",
+    "irixiumrc": "19fc731d61774f0292fb4a3b0e994520aec7bf1b243f7de9f0a3a6bf34e6ddea",
+    "keepabove.svg": "993ad7827167a219bd12132cd76646209ed1b44faed96462dd554a540385fdad",
+    "keepbelow.svg": "51bf7bf35b05e486f1768929bcbf53cc713ea87d6378a74171bf0e355a40b9fd",
+    "maximize.svg": "079819ff26ba0f4169a6fbca330e0d2ec307bc316f497f7910167b310258a71a",
+    "metadata.desktop": "cce397f1fef5c90a791efb7b9d6d97af57c2eb718a7f80b13fa753146944299c",
+    "metadata.json": "ee72dbb770af08d04abf92b2223a972e63d9813da8283551ef00bac6c2977015",
+    "minimize.svg": "45e9dc9b2c354b7bccba92bac54fed4480e91014ab9c102c8c9c03f34684fa86",
+    "restore.svg": "aacbe8a1d77981e018cc2d6b5e763537fcf838bb19f4ccc5489efd863af2d756",
+    "shade.svg": "b93fe9e31b9d667bffeeabfbc90373d2fb98b42177898b9f5abcf364a7e181d5"
+  },
+  "arquivos_metadados_preservados": {
+    "metadata.desktop": "package/upstream/metadata.desktop",
+    "metadata.json": "package/upstream/upstream-metadata.json"
+  }
+}

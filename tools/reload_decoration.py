@@ -15,7 +15,7 @@ from theme_transaction import Failure, atomic, decode, edit_ini, image, replace_
 
 AURORAE = 'org.kde.kwin.aurorae'
 BREEZE = 'org.kde.breeze'
-IRIX_IDS = {'irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5', 'irixium_modern'}
+IRIX_IDS = {'irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5', 'irixium_modern', 'irixium_modern_13', 'irixium_modern_41'}
 
 
 def check_session():

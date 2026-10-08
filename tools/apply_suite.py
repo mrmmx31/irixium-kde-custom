@@ -14,6 +14,8 @@ from install_suite import roots
 from theme_transaction import Failure, atomic, decode, edit_ini, snapshot, replace_checked
 
 from components import catalog
+from select_gtk import (gtk_paths, edit_gtkrc, native_ready, notify as notify_gtk,
+                        gsettings as gtk_gsettings, restore_previous, record_failure)
 
 PROFILE_COMPONENTS = catalog()['profiles']
 PROFILES = {name: (p['global'], p['kvantum'], p['decoration'])
@@ -41,18 +43,28 @@ def main():
     paths = [config/name for name in CONFIG_FILES]
     paths += [config/'kdedefaults'/name for name in CONFIG_FILES if '/' not in name]
     paths += [config/'kdedefaults/package']
+    paths += [p for p in gtk_paths(config) if p not in paths]
     if args.restaurar:
         token = (state/'latest').read_text().strip()
         if len(token) != 32 or any(c not in '0123456789abcdef' for c in token):
             raise Failure('Referência de backup inválida.')
-        record = json.loads((state/token/'receipt.json').read_text())
+        receipt = state/token/'receipt.json'
+        record = json.loads(receipt.read_text())
         for entry in record['files']:
             path = Path(entry['path'])
             if path not in paths or snapshot(path) != entry['after']:
                 raise Failure(f'Configuração alterada após aplicação: {path}')
+        gtk = record.get('native_gtk')
+        if gtk and (not native_ready() or gtk_gsettings() != gtk['after'] or
+                    ('theme_after' in gtk and notify_gtk() != gtk['theme_after'])):
+            raise Failure('A seleção GTK nativa mudou; restauração recusada.')
         if not args.verificar:
-            for entry in record['files']:
-                replace_checked(Path(entry['path']), entry['after'], entry['before'])
+            errors = restore_previous({Path(v['path']): v['before'] for v in record['files']},
+                                      theme=gtk['theme_before'] if gtk else None,
+                                      settings=gtk['before'] if gtk else None,
+                                      notify_call=notify_gtk, settings_call=gtk_gsettings)
+            if errors:
+                record_failure(receipt, record, Failure('Restauração da seleção incompleta.'), errors)
             print('Configurações anteriores restauradas. Entre novamente na sessão para recarregar tudo.')
         return
     if not args.tema:
@@ -62,8 +74,10 @@ def main():
     for required in (data/'plasma/look-and-feel'/package/'contents/defaults',
                      config/'Kvantum'/kvantum/(kvantum+'.kvconfig'),
                      data/'kwin/decorations'/decoration/'contents/ui/main.qml',
-                     data/'themes/Irixium/gtk-3.0/gtk.css',
-                     data/'themes/Irixium/gtk-4.0/gtk.css',
+                     data/'themes'/profile['gtk']/'gtk-2.0/gtkrc',
+                     Path.home()/'.themes'/profile['gtk']/'gtk-2.0/gtkrc',
+                     data/'themes'/profile['gtk']/'gtk-3.0/gtk.css',
+                     data/'themes'/profile['gtk']/'gtk-4.0/gtk.css',
                      data/'icons'/profile['icons']/'index.theme',
                      data/'icons'/profile['cursor']/'index.theme',
                      data/'icons'/profile['cursor']/'cursors/wait',
@@ -89,15 +103,19 @@ def main():
         raise Failure('plasma-apply-lookandfeel ausente; requer Plasma 6.')
     print(f'Tema global: {package}; Kvantum: {kvantum}; decoração: {decoration}')
     print('Cursor: '+profile['cursor'])
-    print('GTK: Irixium; sons: '+(sound_theme or 'seleção atual preservada (esquema SGI não solicitado/disponível)'))
+    print('GTK: '+profile['gtk']+'; sons: '+(sound_theme or 'seleção atual preservada (esquema SGI não solicitado/disponível)'))
     if args.verificar:
         return
     # Capture the user files before KDE changes them; unrelated keys are left to KDE.
     before = {path: snapshot(path) for path in paths}
+    native_gtk = {'before': gtk_gsettings(), 'theme_before': notify_gtk()} if native_ready() else None
     token = uuid.uuid4().hex
     receipt = state/token/'receipt.json'
-    atomic(receipt, json.dumps({'status':'prepared','files':[
-        {'path':str(p),'before':value} for p,value in before.items()]}).encode())
+    record = {'status':'prepared', 'files':[
+        {'path':str(p),'before':value} for p,value in before.items()]}
+    if native_gtk:
+        record['native_gtk'] = native_gtk
+    atomic(receipt, json.dumps(record).encode())
     try:
         kvconfig = config/'Kvantum/kvantum.kvconfig'
         atomic(kvconfig, edit_ini(decode(before[kvconfig]) or b'', 'General', {'theme':kvantum}))
@@ -112,18 +130,32 @@ def main():
                 'gtk-theme-name': PROFILE_COMPONENTS[args.tema]['gtk'],
                 'gtk-icon-theme-name': PROFILE_COMPONENTS[args.tema]['icons'],
                 'gtk-cursor-theme-name': profile['cursor']}))
+        gtk2 = gtk_paths(config)[0]
+        atomic(gtk2, edit_gtkrc(decode(before[gtk2]) or b'', {
+            'gtk-theme-name': profile['gtk'], 'gtk-icon-theme-name': profile['icons'],
+            'gtk-cursor-theme-name': profile['cursor']}), before[gtk2].get('mode', 0o600))
+        if native_gtk:
+            notify_gtk(profile['gtk'])
+            if notify_gtk() != profile['gtk']:
+                raise Failure('O KDE não confirmou o tema GTK selecionado.')
+            native_gtk['theme_after'] = profile['gtk']
+            native_gtk['after'] = gtk_gsettings()
         if sound_theme:
             globals_file = config/'kdeglobals'
             original = decode(snapshot(globals_file)) or b''
             atomic(globals_file, edit_ini(original, 'Sounds', {'Theme': sound_theme}))
-    except BaseException:
-        for path, previous in before.items():
-            replace_checked(path, snapshot(path), previous)
+        record.update(status='applied', files=[{'path':str(p),'before':previous,'after':snapshot(p)}
+                                              for p,previous in before.items()])
+        if native_gtk:
+            record['native_gtk'] = native_gtk
+        atomic(receipt,(json.dumps(record,indent=2)+'\n').encode())
+        atomic(state/'latest',(token+'\n').encode())
+    except BaseException as exc:
+        errors = restore_previous(before, theme=native_gtk['theme_before'] if native_gtk else None,
+                                  settings=native_gtk['before'] if native_gtk else None,
+                                  notify_call=notify_gtk, settings_call=gtk_gsettings)
+        record_failure(receipt, record, exc, errors)
         raise
-    record = {'status':'applied','files':[{'path':str(p),'before':previous,'after':snapshot(p)}
-                                        for p,previous in before.items()]}
-    atomic(receipt,(json.dumps(record,indent=2)+'\n').encode())
-    atomic(state/'latest',(token+'\n').encode())
     print(f'Aplicado somente ao usuário atual. Backup: {receipt.parent}')
     print('Reabra os aplicativos para recarregar Kvantum e ícones.')
     print('Para carregar QML atualizado, salve o trabalho e entre novamente na sessão.')

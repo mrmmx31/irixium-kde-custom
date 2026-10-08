@@ -11,11 +11,11 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-A instalação atualiza 22 componentes gráficos locais, com backup, sem trocar a
+A instalação atualiza 26 componentes gráficos locais, com backup, sem trocar a
 seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
 cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
 Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
-Plasma 6, Aurorae/KSvg Qt 6 e Kvantum Qt 6 devem estar instalados pela distribuição.
+Plasma 6, Aurorae/KSvg Qt 6, Kvantum Qt 6 e KSystemStats devem estar instalados pela distribuição.
 
 Os temas completos e os destinos estão em [components.json](components.json),
 usado pelo instalador e pela auditoria. A aplicação seleciona o esquema de sons
@@ -59,6 +59,41 @@ O layout do tema global usa esses widgets em novas instalações. A seleção do
 continua preservando o painel existente. O desenho de pressão acompanha o mouse
 enquanto o botão está abaixado; não adiciona espera nem temporizador visual.
 Veja os [testes e limites da validação do painel](plasma/docs/VALIDACAO-PAINEL-2026-10-07.md).
+
+Para mostrar o pager e acrescentar o monitor gr_osview no desktop:
+
+```sh
+python3 tools/classic_desktop.py --pager --grosview --verificar
+python3 tools/classic_desktop.py --pager --grosview
+```
+
+O pager nativo se oculta com uma única área de trabalho. O helper cria a segunda
+somente nesse caso e conserva as áreas existentes. O gr_osview aparece inicialmente
+no canto superior direito, em 280×220, com CPU, memória, swap, disco e rede reais.
+Ele pode ser movido/redimensionado na edição normal do Plasma; executar novamente
+o helper preserva a posição escolhida e não duplica o widget. O layout Classic
+também inclui o monitor em novas instalações. Veja o [widget](plasma/applets/org.irixclassic.grosview/README.md).
+
+## GTK e decorações opcionais
+
+O Classic seleciona `IrixClassic` para GTK 2, 3 e 4; o Moderno mantém `Irixium`.
+O instalador mantém ambos em XDG e `~/.themes`, pois GTK 2 procura neste último
+caminho. A auditoria confere também essas cópias, como faz com os cursores legados.
+Os controles Classic têm relevos retos, interruptores retangulares e resposta
+imediata à pressão. GTK 2 requer o engine pixmap da distribuição; aplicativos
+libadwaita ou com CSS próprio podem controlar sua aparência. Veja [GTK](gtk/README.md).
+Para atualizar somente a seleção GTK na sessão atual, preservando o restante:
+
+```sh
+python3 tools/select_gtk.py classic
+# Restaurar a seleção anterior, se não houve alterações posteriores:
+python3 tools/select_gtk.py --restaurar
+```
+
+As três [decorações do Moderno](decorations/README.md) são instaladas como opções:
+`irixium_modern`, `irixium_modern_13` e `irixium_modern_41`. Todas exibem menu,
+minimizar e maximizar/restaurar; as variantes importadas não criam o botão fechar.
+Escolha a variante nas configurações de decorações da janela do seu usuário.
 
 ## Cursores
 
@@ -126,7 +161,7 @@ ou mudar associações de arquivos. O componente tem testes e workflow próprios
 | Decoração IRIX Classic | `decorations/classic/` |
 | Decoração Irixium e seus assets | `decorations/modern/` |
 | Estilos Qt Widgets | `kvantum/IrixClassic/`, `kvantum/Irixium/` |
-| GTK 3/4 | `gtk/` |
+| GTK 2/3/4 | `gtk/IrixClassic/` e `gtk/Irixium/` |
 | Ícones | `icons/themes/IrixClassic-SGI/`, `icons/Irixium/` |
 | Três temas de cursores | `cursors/` |
 | Cores | `colors/Irixium.colors` |

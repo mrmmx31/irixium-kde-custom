@@ -37,7 +37,7 @@
       "destination": "icons/SGI-Irixium"
     },
     {
-      "source": "gtk",
+      "source": "gtk/Irixium",
       "root": "data",
       "destination": "themes/Irixium"
     },
@@ -110,6 +110,26 @@
       "source": "plasma/applets/org.irixclassic.analogclock",
       "root": "data",
       "destination": "plasma/plasmoids/org.irixclassic.analogclock"
+    },
+    {
+      "source": "gtk/IrixClassic",
+      "root": "data",
+      "destination": "themes/IrixClassic"
+    },
+    {
+      "source": "decorations/modern-13/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_modern_13"
+    },
+    {
+      "source": "decorations/modern-41/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_modern_41"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.grosview",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.grosview"
     }
   ],
   "profiles": {
@@ -120,7 +140,7 @@
       "icons": "IrixClassic-SGI",
       "plasma": "IrixClassic",
       "wallpaper": "IrixClassic",
-      "gtk": "Irixium",
+      "gtk": "IrixClassic",
       "cursor": "SGI-Classic"
     },
     "moderno": {

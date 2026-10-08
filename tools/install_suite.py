@@ -14,7 +14,7 @@ import uuid
 
 from theme_transaction import Failure, no_links, snapshot, image, atomic, replace_checked
 from user_bundle import Bundle
-from components import sources, cursor_compat_sources
+from components import sources, cursor_compat_sources, decoration_sources, gtk_compat_sources
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -103,9 +103,12 @@ def check_runtime():
         plugins = query('QT_INSTALL_PLUGINS')
         for path, label in [(qml/'org/kde/kwin/decoration/qmldir','Aurorae Qt 6'),
                             (qml/'org/kde/ksvg/qmldir','KSvg QML Qt 6'),
+                            (qml/'org/kde/ksysguard/sensors/qmldir','KSystemStats QML Qt 6'),
                             (plugins/'styles/libkvantum.so','Kvantum Qt 6')]:
             if not path.is_file():
                 missing.append(label)
+    if not shutil.which('ksystemstats'):
+        missing.append('ksystemstats')
     if missing:
         raise Failure('Dependências de execução ausentes: '+', '.join(missing)+
                       '. Instale os pacotes da sua distribuição antes de continuar. Nenhum pacote de sistema foi alterado.')
@@ -120,6 +123,8 @@ def main():
     parser.add_argument('--sem-cache', action='store_true', help='para testes sem sessão gráfica')
     parser.add_argument('--cursor-compat-root', type=Path,
                         help='raiz de compatibilidade libXcursor; padrão ~/.icons; útil para testes isolados')
+    parser.add_argument('--gtk-compat-root', type=Path,
+                        help='raiz de descoberta GTK2; padrão ~/.themes; útil para testes isolados')
     args = parser.parse_args()
     if os.geteuid() == 0:
         raise Failure('Execute como usuário normal, sem sudo.')
@@ -131,7 +136,7 @@ def main():
         check_session()
     if not args.restaurar:
         check_runtime()
-    pairs = sources(data, config) + cursor_compat_sources(args.cursor_compat_root)
+    pairs = sources(data, config) + cursor_compat_sources(args.cursor_compat_root) + gtk_compat_sources(args.gtk_compat_root)
     bundle = Bundle(state/'irixium-suite', [dest for _, dest in pairs])
     if args.restaurar:
         if args.verificar:
@@ -161,20 +166,24 @@ def main():
     classic = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(classic)
     from user_bundle import fingerprint
-    for folder in ('decorations/classic', 'decorations/modern'):
+    for package in decoration_sources():
+        folder = package.parent.relative_to(ROOT)
         expected = json.loads((ROOT/folder/'MANIFEST.json').read_text())['package']
         if fingerprint(ROOT/folder/'package') != expected:
             raise Failure(f'Manifesto divergente: {folder}')
     with tempfile.TemporaryDirectory(prefix='irix-suite-') as tmp:
+        classic_index = next(i for i, (_, dest) in enumerate(pairs)
+                             if dest.name == 'irixium_irix_classic_v4')
+        classic_source, classic_dest = pairs[classic_index]
         staged = Path(tmp)/'classic'
-        shutil.copytree(pairs[1][0], staged)
+        shutil.copytree(classic_source, staged)
         metadata = staged/'metadata.json'
         value = json.loads(metadata.read_text())
-        value['KPlugin']['Id'] = pairs[1][1].name
+        value['KPlugin']['Id'] = classic_dest.name
         metadata.write_text(json.dumps(value, ensure_ascii=False, indent=4)+'\n')
-        if pairs[1][1].exists():
-            classic.merge_settings(pairs[1][1], staged)
-        pairs[1] = (staged, pairs[1][1])
+        if classic_dest.exists():
+            classic.merge_settings(classic_dest, staged)
+        pairs[classic_index] = (staged, classic_dest)
         if args.verificar:
             bundle.install(pairs, dry=True)
         else:

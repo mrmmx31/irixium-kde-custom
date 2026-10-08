@@ -15,7 +15,7 @@ class ComponentsTest(unittest.TestCase):
     def test_both_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),22)
+        self.assertEqual(len(report['components']),26)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
@@ -26,6 +26,16 @@ class ComponentsTest(unittest.TestCase):
             root=Path(tmp);(root/'components.json').write_text(json.dumps(doc))
             with patch.object(components,'ROOT',root),self.assertRaises(Failure):
                 components.catalog()
+
+    def test_classic_gtk_and_optional_modern_decorations_are_installed(self):
+        doc = components.catalog()
+        self.assertEqual(doc['profiles']['classic']['gtk'], 'IrixClassic')
+        self.assertEqual(doc['profiles']['moderno']['gtk'], 'Irixium')
+        destinations = {e['destination'] for e in doc['components']}
+        self.assertTrue({'themes/IrixClassic', 'themes/Irixium',
+            'kwin/decorations/irixium_modern', 'kwin/decorations/irixium_modern_13',
+            'kwin/decorations/irixium_modern_41',
+            'plasma/plasmoids/org.irixclassic.grosview'}.issubset(destinations))
 
     def test_duplicate_destination_is_rejected(self):
         doc=components.catalog();doc['components'].append(doc['components'][0])
@@ -64,3 +74,11 @@ class ComponentsTest(unittest.TestCase):
             self.assertEqual({p.name for _,p in pairs}, {'sgi','SGI-Classic','SGI-Irixium'})
             self.assertTrue(all(dest.parent==root for _,dest in pairs))
             self.assertTrue(all(source.parent==components.ROOT/'cursors' for source,_ in pairs))
+
+    def test_gtk2_discovery_installs_both_themes_in_user_compat_root(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            pairs = components.gtk_compat_sources(root)
+            self.assertEqual({dest.name for _,dest in pairs}, {'IrixClassic', 'Irixium'})
+            self.assertTrue(all(dest.parent == root for _,dest in pairs))
+            self.assertTrue(all((source/'gtk-2.0/gtkrc').is_file() for source,_ in pairs))

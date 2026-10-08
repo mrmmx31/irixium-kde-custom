@@ -41,3 +41,17 @@ def cursor_compat_sources(root=None):
     root = Path(root).expanduser().absolute() if root is not None else Path.home()/'.icons'
     return [(ROOT/e['source'], root/Path(e['destination']).name)
             for e in catalog()['components'] if e['source'].startswith('cursors/')]
+
+
+def decoration_sources():
+    """All optional KWin packages share manifest validation with both defaults."""
+    return [ROOT/e['source'] for e in catalog()['components']
+            if e['root'] == 'data' and e['destination'].startswith('kwin/decorations/')]
+
+
+def gtk_compat_sources(root=None):
+    """GTK2 searches ~/.themes and the system theme directory, not XDG_DATA_HOME."""
+    root = Path(root).expanduser().absolute() if root is not None else Path.home()/'.themes'
+    return [(ROOT/e['source'], root/Path(e['destination']).name)
+            for e in catalog()['components']
+            if e['root'] == 'data' and e['destination'].startswith('themes/')]

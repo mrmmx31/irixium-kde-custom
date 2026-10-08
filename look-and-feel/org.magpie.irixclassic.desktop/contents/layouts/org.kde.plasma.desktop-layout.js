@@ -79,3 +79,10 @@ panel.addWidget("org.kde.plasma.marginsseparator")
 var aclock = panel.addWidget("org.irixclassic.analogclock")
 aclock.currentConfigGroup = ["General"]
 aclock.writeConfig("showSecondHand", true)
+
+// Initial placement only. Existing monitors keep the user's chosen position.
+var desktop = desktopForScreen(panelScreen)
+if (desktop && geo.width >= 312 && geo.height >= 252 &&
+    !desktop.widgets().some(w => w.type === "org.irixclassic.grosview")) {
+    desktop.addWidget("org.irixclassic.grosview", geo.width - 296, 16, 280, 220)
+}
