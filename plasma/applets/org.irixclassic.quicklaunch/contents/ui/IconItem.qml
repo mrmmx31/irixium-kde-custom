@@ -17,17 +17,21 @@ import "layout.js" as LayoutManager
 
 Item {
     id: iconItem
+    objectName: "classicLauncher"
 
     readonly property int itemIndex : index
     property bool dragging : false
     property bool isPopupItem : false
     readonly property var launcher : logic.launcherData(url)
     readonly property string iconName : launcher.iconName || "fork"
+    readonly property bool gridPressed: !isPopupItem && mouseArea.pressed
+        && (mouseArea.pressedButtons & Qt.LeftButton) !== 0
 
     width: isPopupItem ? LayoutManager.popupItemWidth() : grid.cellWidth
     height: isPopupItem ? LayoutManager.popupItemHeight() : grid.cellHeight
 
     KSvg.FrameSvgItem {
+        objectName: "classicLauncherFrame"
         anchors.fill: parent
         anchors.margins: 2
         z: -1
@@ -211,8 +215,23 @@ Item {
                 }
             }
 
+            // Keep the native cell and hit area unchanged. Only the grid
+            // artwork is inset beyond the button's rim, above optional text.
+            Item {
+                id: gridGlyphArea
+                anchors {
+                    left: parent.left
+                    right: parent.right
+                    top: parent.top
+                    bottom: label.visible ? label.top : parent.bottom
+                    margins: 4
+                }
+                visible: !iconItem.isPopupItem
+            }
+
             Kirigami.Icon {
                 id: icon
+                objectName: "classicLauncherGlyph"
 
                 anchors {
                     top: parent.top
@@ -223,10 +242,15 @@ Item {
                 height: width
                 source: url == "quicklaunch:drop" ? "" : iconName
                 active: false
+                transform: Translate {
+                    x: iconItem.gridPressed ? 1 : 0
+                    y: iconItem.gridPressed ? 1 : 0
+                }
             }
 
             PlasmaComponents3.Label {
                 id: label
+                objectName: "classicLauncherLabel"
 
                 anchors {
                     bottom : parent.bottom
@@ -237,6 +261,10 @@ Item {
                 textFormat: Text.PlainText
                 maximumLineCount: 1
                 wrapMode: Text.Wrap
+                transform: Translate {
+                    x: iconItem.gridPressed ? 1 : 0
+                    y: iconItem.gridPressed ? 1 : 0
+                }
             }
 
             KSvg.FrameSvgItem {
@@ -342,8 +370,12 @@ Item {
 
             AnchorChanges {
                 target: icon
+                anchors.left: icon.parent.left
+                anchors.top: icon.parent.top
                 anchors.right: undefined
                 anchors.bottom: undefined
+                anchors.horizontalCenter: undefined
+                anchors.verticalCenter: undefined
             }
 
             AnchorChanges {
@@ -374,8 +406,19 @@ Item {
 
             AnchorChanges {
                 target: icon
-                anchors.right: icon.parent.right
-                anchors.bottom: label.visible ? label.top : icon.parent.bottom
+                anchors.left: undefined
+                anchors.right: undefined
+                anchors.top: undefined
+                anchors.bottom: undefined
+                anchors.horizontalCenter: gridGlyphArea.horizontalCenter
+                anchors.verticalCenter: gridGlyphArea.verticalCenter
+            }
+
+            PropertyChanges {
+                target: icon
+                // Leave one pixel around the glyph for its pressed offset.
+                width: Math.max(0, Math.min(32, gridGlyphArea.width - 2, gridGlyphArea.height - 2))
+                height: icon.width
             }
 
             AnchorChanges {

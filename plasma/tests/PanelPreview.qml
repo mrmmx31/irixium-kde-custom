@@ -44,19 +44,18 @@ Window {
         width: parent.width
         height: 64
         imagePath: artworkRoot + "/widgets/panel-background.svg"
+        smooth: false
         RowLayout {
             anchors.fill: parent
             anchors.margins: 4
             spacing: 4
             // Same location and compact launch group as the Classic layout.
-            KSvg.FrameSvgItem {
+            Item {
                 Layout.preferredWidth: 236
                 Layout.fillHeight: true
-                imagePath: artworkRoot + "/widgets/button.svg"
-                prefix: "normal"
                 Row {
                     anchors.centerIn: parent
-                    spacing: 2
+                    spacing: 4
                     Repeater {
                         model: [
                             {name: "computer", caption: "Applications"},
@@ -64,16 +63,31 @@ Window {
                             {name: "system-file-manager", caption: "Files"},
                             {name: "utilities-terminal", caption: "Console"}
                         ]
-                        // Surrounding launchers are schematic native controls;
-                        // their actual applet models are tested in Plasma hosts.
-                        delegate: PC.ToolButton {
+                        // Each production launcher owns a separate raised plate.
+                        // Actions and configuration use the real applet hosts.
+                        delegate: MouseArea {
                             required property var modelData
-                            width: 55
-                            height: 48
-                            icon.name: modelData.name
-                            icon.width: 32
-                            icon.height: 32
+                            width: 56
+                            height: 56
+                            hoverEnabled: true
+                            activeFocusOnTab: true
                             Accessible.name: modelData.caption
+                            Accessible.role: Accessible.Button
+                            KSvg.FrameSvgItem {
+                                anchors.fill: parent
+                                anchors.margins: 2
+                                imagePath: artworkRoot + "/widgets/button.svg"
+                                prefix: parent.pressed ? "pressed" : (parent.containsMouse ? "hover" : "normal")
+                            }
+                            Kirigami.Icon {
+                                anchors.centerIn: parent
+                                anchors.horizontalCenterOffset: parent.pressed ? 1 : 0
+                                anchors.verticalCenterOffset: parent.pressed ? 1 : 0
+                                width: 32
+                                height: 32
+                                source: modelData.name
+                                active: false
+                            }
                         }
                     }
                 }
@@ -83,19 +97,17 @@ Window {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 imagePath: artworkRoot + "/widgets/iconbox.svg"
-                Rectangle {
+                smooth: false
+                KSvg.FrameSvgItem {
                     objectName: "previewIconboxHeading"
                     x: 3
                     y: 3
                     width: parent.width - 6
                     height: 8
-                    color: "#aaa9a2"
+                    imagePath: artworkRoot + "/widgets/iconbox.svg"
+                    prefix: "heading"
+                    smooth: false
                     clip: true
-                    Rectangle {
-                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-                        height: 1
-                        color: "#41413b"
-                    }
                     Text {
                         anchors { fill: parent; leftMargin: 4; bottomMargin: 1 }
                         text: "Iconbox"

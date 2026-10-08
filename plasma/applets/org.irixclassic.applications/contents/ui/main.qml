@@ -202,29 +202,49 @@ PlasmoidItem {
         readonly property bool shouldHaveLabel: Plasmoid.formFactor !== PlasmaCore.Types.Vertical && Plasmoid.configuration.menuLabel !== ""
 
         readonly property int iconSize: Kirigami.Units.iconSizes.large
+        readonly property int panelPadding: kickoff.inPanel ? 6 : 0
+        readonly property int panelGlyphLimit: 32
+        readonly property Item displayedIcon: imageFallback.visible ? imageFallback : (buttonIcon.valid ? buttonIcon : buttonIconFallback)
+        readonly property real iconAspect: imageFallback.visible
+            ? imageFallback.sourceSize.width / Math.max(1, imageFallback.sourceSize.height)
+            : Math.max(1, displayedIcon.implicitWidth) / Math.max(1, displayedIcon.implicitHeight)
+        // Outer panel metrics use the old transversal extent, never the inset glyph.
+        readonly property real externalIconExtent: Math.min(Kirigami.Units.iconSizes.huge,
+            Math.max(1, kickoff.vertical ? compactRoot.width : compactRoot.height))
+        // Subpixel widths keep extreme image aspects inside both glyph bounds.
+        readonly property real panelGlyphWidth: Math.max(0, Math.min(panelGlyphLimit,
+            Math.max(0, compactRoot.width - 2 * panelPadding - 2),
+            Math.min(panelGlyphLimit, Math.max(0, compactRoot.height - 2 * panelPadding - 2)) * iconAspect))
+        readonly property real panelGlyphHeight: panelGlyphWidth / iconAspect
 
         readonly property var sizing: {
-            const displayedIcon = imageFallback.visible ? imageFallback : (buttonIcon.valid ? buttonIcon : buttonIconFallback);
+            const externalWidth = kickoff.inPanel
+                ? (kickoff.vertical ? externalIconExtent : externalIconExtent * iconAspect)
+                : displayedIcon.width;
+            const externalHeight = kickoff.inPanel
+                ? (kickoff.vertical ? externalIconExtent / iconAspect : externalIconExtent)
+                : displayedIcon.height;
 
             let impWidth = 0;
             if (shouldHaveIcon) {
-                impWidth += displayedIcon.width;
+                impWidth += externalWidth;
             }
             if (shouldHaveLabel) {
-                impWidth += labelTextField.contentWidth + labelTextField.Layout.leftMargin + labelTextField.Layout.rightMargin;
+                const captionWidth = kickoff.inPanel ? labelMetrics.contentWidth : labelTextField.contentWidth;
+                impWidth += captionWidth + labelTextField.Layout.leftMargin + labelTextField.Layout.rightMargin;
             }
-            const impHeight = displayedIcon.height > 0 ? displayedIcon.height : iconSize
+            const impHeight = externalHeight > 0 ? externalHeight : iconSize
 
             // at least square, but can be wider/taller
             if (kickoff.inPanel) {
                 if (kickoff.vertical) {
                     return {
                         preferredWidth: iconSize,
-                        preferredHeight: impHeight
+                        preferredHeight: Math.max(impHeight, 2 * panelPadding + 4)
                     };
                 } else { // horizontal
                     return {
-                        preferredWidth: impWidth,
+                        preferredWidth: shouldHaveIcon ? Math.max(impWidth, 2 * panelPadding + 4) : impWidth,
                         preferredHeight: iconSize
                     };
                 }
@@ -280,20 +300,39 @@ PlasmoidItem {
             onTriggered: kickoff.expanded = true
         }
 
+        // Preserve the old caption width even when the inset presentation elides.
+        PC3.Label {
+            id: labelMetrics
+            visible: false
+            enabled: false
+            height: compactRoot.height
+            text: labelTextField.text
+            textFormat: Text.StyledText
+            wrapMode: Text.NoWrap
+            font: labelTextField.font
+            fontSizeMode: Text.VerticalFit
+            minimumPointSize: labelTextField.minimumPointSize
+        }
+
         RowLayout {
             id: iconLabelRow
             anchors.fill: parent
+            anchors.margins: compactRoot.panelPadding
             spacing: 0
+            transform: Translate {
+                x: kickoff.inPanel && compactRoot.pressed ? 1 : 0
+                y: kickoff.inPanel && compactRoot.pressed ? 1 : 0
+            }
 
             Kirigami.Icon {
                 id: buttonIcon
 
-                Layout.fillWidth: kickoff.vertical
-                Layout.fillHeight: !kickoff.vertical
-                Layout.preferredWidth: kickoff.vertical ? -1 : height / (implicitHeight / implicitWidth)
-                Layout.preferredHeight: !kickoff.vertical ? -1 : width * (implicitHeight / implicitWidth)
-                Layout.maximumHeight: Kirigami.Units.iconSizes.huge
-                Layout.maximumWidth: Kirigami.Units.iconSizes.huge
+                Layout.fillWidth: !kickoff.inPanel && kickoff.vertical
+                Layout.fillHeight: !kickoff.inPanel && !kickoff.vertical
+                Layout.preferredWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : (kickoff.vertical ? -1 : height / (implicitHeight / implicitWidth))
+                Layout.preferredHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : (!kickoff.vertical ? -1 : width * (implicitHeight / implicitWidth))
+                Layout.maximumHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : Kirigami.Units.iconSizes.huge
+                Layout.maximumWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : Kirigami.Units.iconSizes.huge
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 source: Tools.iconOrDefault(Plasmoid.formFactor, Plasmoid.icon)
                 active: false // Classic relief belongs to the frame; keep SGI icon colors.
@@ -304,10 +343,12 @@ PlasmoidItem {
             Kirigami.Icon {
                 id: buttonIconFallback
                 // fallback is assumed to be square
-                Layout.fillWidth: kickoff.vertical
-                Layout.fillHeight: !kickoff.vertical
-                Layout.preferredWidth: kickoff.vertical ? -1 : height
-                Layout.preferredHeight: !kickoff.vertical ? -1 : width
+                Layout.fillWidth: !kickoff.inPanel && kickoff.vertical
+                Layout.fillHeight: !kickoff.inPanel && !kickoff.vertical
+                Layout.preferredWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : (kickoff.vertical ? -1 : height)
+                Layout.preferredHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : (!kickoff.vertical ? -1 : width)
+                Layout.maximumWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : -1
+                Layout.maximumHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : -1
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
 
                 source: buttonIcon.valid ? null : Tools.defaultIconName
@@ -332,12 +373,12 @@ PlasmoidItem {
                         ? value : "";
                 }
 
-                Layout.fillWidth: kickoff.vertical
-                Layout.fillHeight: !kickoff.vertical
-                Layout.preferredWidth: kickoff.vertical ? -1 : height / (implicitHeight / implicitWidth)
-                Layout.preferredHeight: !kickoff.vertical ? -1 : width * (implicitHeight / implicitWidth)
-                Layout.maximumHeight: kickoff.vertical ? -1 : Kirigami.Units.iconSizes.huge
-                Layout.maximumWidth: kickoff.vertical ? Kirigami.Units.iconSizes.huge : -1
+                Layout.fillWidth: !kickoff.inPanel && kickoff.vertical
+                Layout.fillHeight: !kickoff.inPanel && !kickoff.vertical
+                Layout.preferredWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : (kickoff.vertical ? -1 : height / (implicitHeight / implicitWidth))
+                Layout.preferredHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : (!kickoff.vertical ? -1 : width * (implicitHeight / implicitWidth))
+                Layout.maximumHeight: kickoff.inPanel ? compactRoot.panelGlyphHeight : (kickoff.vertical ? -1 : Kirigami.Units.iconSizes.huge)
+                Layout.maximumWidth: kickoff.inPanel ? compactRoot.panelGlyphWidth : (kickoff.vertical ? Kirigami.Units.iconSizes.huge : -1)
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignHCenter
                 fillMode: Image.PreserveAspectFit
             }
@@ -346,6 +387,7 @@ PlasmoidItem {
                 id: labelTextField
 
                 Layout.fillHeight: true
+                Layout.fillWidth: kickoff.inPanel
                 Layout.leftMargin: Kirigami.Units.smallSpacing
                 Layout.rightMargin: Kirigami.Units.smallSpacing
 
@@ -354,7 +396,8 @@ PlasmoidItem {
                 horizontalAlignment: Text.AlignLeft
                 verticalAlignment: Text.AlignVCenter
                 wrapMode: Text.NoWrap
-                fontSizeMode: Text.VerticalFit
+                elide: kickoff.inPanel ? Text.ElideRight : Text.ElideNone
+                fontSizeMode: kickoff.inPanel ? Text.Fit : Text.VerticalFit
                 font.pixelSize: compactRoot.tooSmall ? Kirigami.Theme.defaultFont.pixelSize : Kirigami.Units.iconSizes.roundedIconSize(Kirigami.Units.gridUnit * 2)
                 minimumPointSize: Kirigami.Theme.smallFont.pointSize
                 visible: compactRoot.shouldHaveLabel

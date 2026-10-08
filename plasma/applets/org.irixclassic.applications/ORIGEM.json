@@ -6,7 +6,12 @@
   "changes": [
     "Private Classic identifier; raised compact frame and immediate mouse-down feedback.",
     "Only URL and absolute filename icons are sent to Image; symbolic names remain resolved by Kirigami.Icon.",
-    "Disabled icon hover recoloring; Classic hover and pressed feedback remains in the button frame."
+    "Disabled icon hover recoloring; Classic hover and pressed feedback remains in the button frame.",
+    "Panel content uses six-pixel padding and an aspect-preserving glyph limited to 32 logical pixels; Planar icon geometry stays unchanged.",
+    "Panel outer sizing retains the old transversal/Huge extent and native icon or file aspect instead of measuring the reduced glyph; the original caption fitting is measured separately.",
+    "Only panel content translates one pixel while the existing MouseArea is pressed; click, cancellation, keyboard, DND and the native 250ms drag-open interaction remain intact.",
+    "Panel captions fit inside the inset content using their existing font and native minimum; ellipsis is only a fallback and never feeds outer sizing.",
+    "Custom extreme-aspect images retain aspect-fit inside both glyph bounds, with space for the pressed offset; a 16px minimum icon-containing panel extent prevents degenerate one-pixel buttons. Ordinary tested panel dimensions and Planar sizing are retained."
   ],
   "source_files": {
     "metadata.json": "55efb8bd2da3629c412d8c4cd0551452252e50be74b6e429f284c2fa986b5fe1",

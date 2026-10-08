@@ -43,7 +43,7 @@ def check_assets():
         'listitem': ('normal', 'hover', 'pressed'),
         'slider': ('groove', 'groove-highlight'),
         'panel-background': ('',),
-        'iconbox': ('',),
+        'iconbox': ('', 'heading'),
         'instrument': ('normal', 'pressed'),
         'instrument-well': ('',),
         'task-icon': ('normal', 'normal-hover', 'hover', 'focus', 'focus-hover', 'minimized', 'minimized-hover',

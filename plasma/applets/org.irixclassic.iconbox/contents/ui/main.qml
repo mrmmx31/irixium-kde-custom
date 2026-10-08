@@ -284,9 +284,10 @@ PlasmoidItem {
         objectName: "classicIconboxHousing"
         anchors.fill: parent
         imagePath: "widgets/iconbox"
+        smooth: false
     }
 
-    Rectangle {
+    KSvg.FrameSvgItem {
         objectName: "classicIconboxHeading"
         visible: tasks.headingHeight > 0
         anchors {
@@ -298,14 +299,10 @@ PlasmoidItem {
             topMargin: tasks.frameInset
         }
         height: tasks.headingHeight
-        color: "#aaa9a2"
+        imagePath: "widgets/iconbox"
+        prefix: "heading"
+        smooth: false
         clip: true
-
-        Rectangle {
-            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
-            height: 1
-            color: "#41413b"
-        }
 
         PlasmaComponents3.Label {
             anchors { fill: parent; leftMargin: 4; bottomMargin: 1 }

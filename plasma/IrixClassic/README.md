@@ -5,6 +5,13 @@ Indigo Magic/Motif: square workstation plates, a dark rim, a two-pixel bevel,
 inset housings, and cyan selection on the existing gray palette. It keeps the
 compact 64px panel height. The original Irixium base is attributed in ORIGEM.json.
 
+Panel housings and recessed fields use regular integer-pixel stipple, hard
+ruled edges and a bitmap heading rail. Centers and borders tile at their native
+size instead of stretching the dots. The late-1980s workstation references
+guide this denser treatment while the Classic gray/teal palette and compact
+layout remain the same. Button faces and task caption strips stay solid for
+legibility; pressure feedback comes directly from the native input state.
+
 Tasks use separate square icon wells and caption strips inside a recessed
 Iconbox, with a compact heading. Active selection colors the caption rather
 than the whole task. The org.irixclassic.iconbox widget connects mouse-down

@@ -83,7 +83,10 @@ def stage_fixture(root, widget):
         (desktops / filename).write_text(
             f"[Desktop Entry]\nType=Application\nName={name}\nExec=/bin/false\n"
             f"Icon={icon}\nCategories=Utility;\n")
-        launchers.append(f"applications:{filename}")
+        # Quicklaunch resolves desktop files through KIO; TasksModel uses
+        # its own applications: launcher protocol.
+        launchers.append((desktops / filename).as_uri()
+                         if widget == "quicklaunch" else f"applications:{filename}")
     overrides = []
     if widget in ("iconbox", "quicklaunch"):
         entry = "launchers" if widget == "iconbox" else "launcherUrls"

@@ -26,14 +26,64 @@ do goal. Os resultados das instalações anteriores abaixo permanecem histórico
   opacos antigos as escondiam; os novos centros transparentes deixam a camada
   nativa visível sobre o fundo sólido do painel. Os 65 IDs, os 20 hints e as
   margens de 4 px foram preservados. Seleção e relevo usam somente o aro.
-  A renderização KSvg do recurso passou; miniaturas reais, troca de área e
-  arraste precisam da validação final no pager nativo.
+  No pager KDE nativo, duas janelas Qt reais em KWin/Xvfb privado ficaram
+  visíveis nas miniaturas, e cliques alternaram entre duas áreas e voltaram à
+  primeira. A comparação com o mesmo aro de centro opaco e com o recurso do
+  commit 87e3681 mostrou 0 de 260 pixels da janela visíveis em ambos; o centro
+  transparente mostrou 260 de 260 em cada área. Esse teste usa um host isolado,
+  não um painel de usuário. Arraste e conferência nas sessões permanecem para
+  a validação final.
 
 A galeria desenha retângulos ilustrativos de janelas abaixo da moldura do pager,
 seguindo a ordem de camadas do KDE. Não representa um modelo real de desktops.
 O relógio da galeria usa os SVGs de produção, com horário demonstrativo. A
 prévia conserva 1440 × 64 px e a posição dos grupos; ela não comprova a
 geometria nem o comportamento de uma sessão instalada.
+
+## Rodada de 2026-10-08: superfícies de workstation do fim dos anos 80
+
+As referências seguintes fornecidas pelo usuário pediram um desenho mais
+severo e denso, com textura de bitmap e molduras mecânicas. O painel cinza,
+os encaixes dos instrumentos e os campos teal agora têm stipple regular em
+pixels inteiros. `hint-tile-center` repete os centros; as bordas usam o mosaico
+nativo do KSvg. O pager conserva seus centros transparentes. A faixa Iconbox
+usa a mesma altura de 8 px e mantém os anchors e a fonte anteriores.
+
+- A prévia de 1440 × 64 px e a galeria de controles passaram por 56 verificações
+  de entrada. Elas usam recursos de produção, mas conteúdo demonstrativo.
+- Applications: sete casos em hosts nativos isolados conservaram exatamente as
+  dimensões anteriores, inclusive texto sem ícone, arquivo retangular, painel
+  vertical e Planar. A margem interna de 6 px e o limite de 32 px se aplicam ao
+  painel. Pressão sustentada, deslocamento imediato de 1 px e cancelamento fora
+  passaram. Os modais KIO próprios do fixture foram fechados antes da entrada;
+  essa preparação está registrada no resultado.
+  Outros dois casos verificaram imagens personalizadas 1:80 e 80:1. O mínimo
+  deliberado de 16 px evita um botão de 1 px no caso estreito; há espaço para
+  a moldura e o deslocamento. Os nove casos passaram também em manter o ícone
+  dentro da margem ao pressionar. Os extremos foram testados somente na fonte
+  atual, sem comparação anterior fictícia.
+- Quicklaunch: três modelos nativos em configurações com e sem nomes conservaram
+  as células de 70 × 64 px e a ordem. Ícones de até 32 px ficam centralizados
+  dentro do aro, e ícone/legenda deslocam 1 px ao pressionar. Layout, DND e
+  handlers permanecem iguais. Cancelamento fora, DND e popup real precisam do
+  teste final; uma tentativa isolada travou no processamento de eventos e não
+  foi contada como aprovação.
+- A fixture de Quicklaunch usa URLs `file://` dos arquivos desktop descartáveis;
+  o TasksModel continua usando `applications:`. Nenhuma URL de perfil foi alterada.
+- Relógio de 64 × 56 px e bandeja de 240 × 56 px carregaram sem erros QML com
+  os novos SVGs pontilhados. O containment nativo da bandeja anexou corretamente;
+  o host privado final ficou vazio, sem itens pessoais ou serviços reais de
+  rede. Esta conferência cobre alojamento, carregamento e renderização; a
+  galeria preenchida tem ícones demonstrativos. Os testes anteriores
+  de interação do relógio continuam vinculados à sua lógica inalterada.
+- O Iconbox atual também carregou no host nativo e passou em pressão sustentada
+  e cancelamento. Esse host usa um launcher fixado; os testes anteriores de
+  ações com janelas reais permanecem vinculados aos handlers inalterados.
+- Os 11 testes de fonte do painel e a auditoria dos 22 componentes passaram.
+
+Esta rodada permanece em fontes e hosts privados. A instalação nas sessões,
+a renovação do pacote de p001532 e a revisão final da barra ainda estão
+pendentes, conforme o adiamento solicitado pelo usuário.
 
 ## Refinamento após inspeção visual
 

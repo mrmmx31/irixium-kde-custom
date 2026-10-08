@@ -3,33 +3,38 @@
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="208" height="48" viewBox="0 0 208 48">
   <title>IRIX Classic compact panel housing</title>
-  <desc>Compact workstation relief: square opaque plates, a dark rim and two pixel bevel. No blur, gradient, glow or rounded corners.</desc>
+  <desc>Opaque workstation housing with integer-pixel stipple and hard tiled edges; fixed native margins and direct pressed relief where available.</desc>
   <g id="center" transform="translate(12,12)">
-  <rect width="20" height="20" fill="#c1c1c1"/>
+    <rect width="20" height="20" fill="#c1c1c1"/>
+    <path fill="#9b9b91" d="M0 0h1v1h-1z M4 0h1v1h-1z M8 0h1v1h-1z M12 0h1v1h-1z M16 0h1v1h-1z M0 4h1v1h-1z M4 4h1v1h-1z M8 4h1v1h-1z M12 4h1v1h-1z M16 4h1v1h-1z M0 8h1v1h-1z M4 8h1v1h-1z M8 8h1v1h-1z M12 8h1v1h-1z M16 8h1v1h-1z M0 12h1v1h-1z M4 12h1v1h-1z M8 12h1v1h-1z M12 12h1v1h-1z M16 12h1v1h-1z M0 16h1v1h-1z M4 16h1v1h-1z M8 16h1v1h-1z M12 16h1v1h-1z M16 16h1v1h-1z"/>
   </g>
   <g id="top" transform="translate(12,8)">
   <rect y="0" width="20" height="1" fill="#41413b"/>
   <rect y="1" width="20" height="1" fill="#f4f4e9"/>
   <rect y="2" width="20" height="1" fill="#dfdfd3"/>
   <rect y="3" width="20" height="1" fill="#c1c1c1"/>
+      <path fill="#77776f" d="M0 2h1v1h-1z M2 2h1v1h-1z M4 2h1v1h-1z M6 2h1v1h-1z M8 2h1v1h-1z M10 2h1v1h-1z M12 2h1v1h-1z M14 2h1v1h-1z M16 2h1v1h-1z M18 2h1v1h-1z"/>
   </g>
   <g id="bottom" transform="translate(12,32)">
   <rect y="0" width="20" height="1" fill="#c1c1c1"/>
   <rect y="1" width="20" height="1" fill="#9b9b91"/>
   <rect y="2" width="20" height="1" fill="#77776f"/>
   <rect y="3" width="20" height="1" fill="#41413b"/>
+      <path fill="#77776f" d="M0 1h1v1h-1z M2 1h1v1h-1z M4 1h1v1h-1z M6 1h1v1h-1z M8 1h1v1h-1z M10 1h1v1h-1z M12 1h1v1h-1z M14 1h1v1h-1z M16 1h1v1h-1z M18 1h1v1h-1z"/>
   </g>
   <g id="left" transform="translate(8,12)">
   <rect x="0" width="1" height="20" fill="#41413b"/>
   <rect x="1" width="1" height="20" fill="#f4f4e9"/>
   <rect x="2" width="1" height="20" fill="#dfdfd3"/>
   <rect x="3" width="1" height="20" fill="#c1c1c1"/>
+      <path fill="#77776f" d="M2 0h1v1h-1z M2 2h1v1h-1z M2 4h1v1h-1z M2 6h1v1h-1z M2 8h1v1h-1z M2 10h1v1h-1z M2 12h1v1h-1z M2 14h1v1h-1z M2 16h1v1h-1z M2 18h1v1h-1z"/>
   </g>
   <g id="right" transform="translate(32,12)">
   <rect x="0" width="1" height="20" fill="#c1c1c1"/>
   <rect x="1" width="1" height="20" fill="#9b9b91"/>
   <rect x="2" width="1" height="20" fill="#77776f"/>
   <rect x="3" width="1" height="20" fill="#41413b"/>
+      <path fill="#77776f" d="M1 0h1v1h-1z M1 2h1v1h-1z M1 4h1v1h-1z M1 6h1v1h-1z M1 8h1v1h-1z M1 10h1v1h-1z M1 12h1v1h-1z M1 14h1v1h-1z M1 16h1v1h-1z M1 18h1v1h-1z"/>
   </g>
   <g id="topleft" transform="translate(8,8)">
   <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
@@ -107,5 +112,5 @@
   <rect id="hint-bottom-margin" x="0" y="0" width="4" height="4" fill="#ff00ff" opacity="0"/>
   <rect id="hint-left-margin" x="0" y="0" width="4" height="4" fill="#ff00ff" opacity="0"/>
   <rect id="hint-right-margin" x="0" y="0" width="4" height="4" fill="#ff00ff" opacity="0"/>
-  <rect id="hint-stretch-borders" width="1" height="1" fill="#ff00ff" opacity="0"/>
+  <rect id="hint-tile-center" width="1" height="1" opacity="0"/>
 </svg>
