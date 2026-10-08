@@ -11,16 +11,17 @@ panel.floating = true
 
 kickoff = panel.addWidget("org.irixclassic.applications")
 
-const globals = ConfigFile("kdeglobals")
-globals.group = "General"
-const user_browser = "file:///usr/share/applications/" + globals.readEntry("BrowserApplication")
+const browserId = defaultApplication("browser", true)
+const launcherUrls = []
+if (browserId) {
+    launcherUrls.push("applications:" + encodeURIComponent(browserId))
+}
+launcherUrls.push("applications:org.kde.dolphin.desktop",
+                  "applications:org.kde.konsole.desktop")
 
 const appsLaunch = panel.addWidget("org.irixclassic.quicklaunch")
 appsLaunch.currentConfigGroup = ["General"]
-appsLaunch.writeConfig("launcherUrls", [user_browser,
-                "file:///usr/share/applications/org.kde.dolphin.desktop",
-                "file:///usr/share/applications/org.kde.konsole.desktop"
-                ])
+appsLaunch.writeConfig("launcherUrls", launcherUrls)
 appsLaunch.writeConfig("maxSectionCount", 1)
 
 panel.addWidget("org.kde.plasma.panelspacer")

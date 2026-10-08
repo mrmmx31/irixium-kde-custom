@@ -65,9 +65,10 @@ usa a mesma altura de 8 px e mantém os anchors e a fonte anteriores.
 - Quicklaunch: três modelos nativos em configurações com e sem nomes conservaram
   as células de 70 × 64 px e a ordem. Ícones de até 32 px ficam centralizados
   dentro do aro, e ícone/legenda deslocam 1 px ao pressionar. Layout, DND e
-  handlers permanecem iguais. Cancelamento fora, DND e popup real precisam do
-  teste final; uma tentativa isolada travou no processamento de eventos e não
-  foi contada como aprovação.
+  handlers permanecem iguais. A rodada nativa seguinte verificou cancelamento
+  fora e popup real; a reordenação por arraste continua para o teste final na
+  sessão instalada, conforme detalhado abaixo. A tentativa anterior que travou
+  no processamento de eventos permanece registrada como falha.
 - A fixture de Quicklaunch usa URLs `file://` dos arquivos desktop descartáveis;
   o TasksModel continua usando `applications:`. Nenhuma URL de perfil foi alterada.
 - Relógio de 64 × 56 px e bandeja de 240 × 56 px carregaram sem erros QML com
@@ -84,6 +85,67 @@ usa a mesma altura de 8 px e mantém os anchors e a fonte anteriores.
 Esta rodada permanece em fontes e hosts privados. A instalação nas sessões,
 a renovação do pacote de p001532 e a revisão final da barra ainda estão
 pendentes, conforme o adiamento solicitado pelo usuário.
+
+### Quicklaunch: cancelamento, popup e ciclo de arraste nativos
+
+O host privado da rodada de 2026-10-08 carregou os arquivos de produção do
+commit `b23e655`, com três arquivos desktop descartáveis `file://` e comandos
+`/bin/false`. A entrada veio do XTEST por `xdotool`; um observador assíncrono
+registrou os delegados e estados nativos, sem escrever o modelo ou substituir
+handlers. Xvfb, os diretórios XDG e o D-Bus eram privados, sem ativação de
+serviços. Nenhuma sessão pessoal foi acessada.
+
+- Soltura fora: o MouseArea medido começa em x=5 dentro da primeira célula.
+  Pressionar em (306, 232) mostrou o prefixo `pressed`; soltar em (304, 232)
+  cancelou e voltou a `normal`, conservando os três atalhos e sua ordem.
+  O deslocamento de 2 px ficou abaixo do limiar nativo de arraste de 10 px.
+  A captura pressionada mudou 974 pixels na região de 70 × 64 px da tarefa.
+- Popup: o botão nativo abriu três delegados reais numa janela de 403 × 120 px;
+  Escape fechou essa janela. O teste não lançou os atalhos.
+- DND: o DragArea nativo iniciou a operação e encerrou após a soltura. Os
+  estados `dragActive`, `dragging` e de pressão ficaram desligados ao final,
+  sem perder ou duplicar os três atalhos.
+- Reordenação: arrastar a primeira célula até a terceira não mudou a ordem
+  nesse host. Uma única comparação com o `IconItem.qml` original instalado do
+  KDE reproduziu o mesmo resultado. Ambos registraram
+  `cannot grab mouse: no event is currently being delivered`. Essa evidência
+  delimita a falha do ensaio, mas não aprova a reordenação: seu gate continua
+  falso e o relatório completo continua marcado como falha.
+
+As fontes permaneceram idênticas, os hosts terminaram com código 0 e não
+apareceram erros QML de referência, tipo ou carregamento. O resumo local está em
+`/tmp/irixclassic-quicklaunch-native-interactions-20261008-v4/RESUMO.json`; a
+comparação está em
+`/tmp/irixclassic-quicklaunch-native-interactions-20261008-upstream/RESULTADO.json`.
+A verificação de reordenação no painel real das sessões lsi e p001532 permanece
+para a rodada final. O ciclo de arraste concluído não substitui essa prova.
+
+## Fechamento das fontes: atalhos de perfis novos
+
+O layout novo deixou de concatenar `/usr/share/applications` com uma preferência
+que podia estar vazia. O navegador vem de `defaultApplication("browser", true)`;
+o Quicklaunch Classic resolve seus identificadores desktop por
+`QtCore.StandardPaths`, respeitando `XDG_DATA_HOME` e `XDG_DATA_DIRS`.
+Os tokens do modelo/configuração permanecem iguais. Metadados, lançamento,
+edição e exportação recebem a URL local resolvida. Arquivos ausentes não lançam
+outro aplicativo. A resolução aceita nomes desktop e caminhos relativos;
+identificadores achatados de subdiretórios não são reconstruídos.
+
+Doze casos nativos passaram em Qt 6.8.2: diretório local, diretório XDG adicional,
+precedência, caminho relativo, espaços/percentuais, URLs antigas preservadas,
+arquivo ausente e entradas inválidas. A comparação usa igualdade de QUrl para
+URLs resolvidas e igualdade textual exata para URLs antigas. Clique e Return
+lançaram dois comandos descartáveis que criaram marcadores em `/tmp`; o payload
+MIME e os tokens também foram conferidos. Não houve erros QML nem acesso às
+sessões pessoais. O relatório é
+`/tmp/irixclassic-quicklaunch-xdg-20261008-final/RESULTADO.json`.
+Seu resultado de resolução/lançamento passou; a reordenação física permanece
+pendente, separada dessa aprovação. A tentativa anterior foi preservada.
+
+A suíte completa `bash testar-integracao.sh` passou novamente nesta rodada:
+722 testes Python em nove grupos, além das verificações dos botões da decoração.
+O log é `/tmp/irix-integracao-final-20261008.log`. A atualização e a inspeção
+visual das sessões ainda precisam do procedimento final por usuário.
 
 ## Refinamento após inspeção visual
 

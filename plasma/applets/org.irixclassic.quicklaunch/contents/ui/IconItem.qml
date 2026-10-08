@@ -22,7 +22,8 @@ Item {
     readonly property int itemIndex : index
     property bool dragging : false
     property bool isPopupItem : false
-    readonly property var launcher : logic.launcherData(url)
+    readonly property string backendUrl: root.resolveLauncherUrl(url)
+    readonly property var launcher : logic.launcherData(backendUrl)
     readonly property string iconName : launcher.iconName || "fork"
     readonly property bool gridPressed: !isPopupItem && mouseArea.pressed
         && (mouseArea.pressedButtons & Qt.LeftButton) !== 0
@@ -46,7 +47,9 @@ Item {
         case Qt.Key_Enter:
         case Qt.Key_Return:
         case Qt.Key_Select:
-            logic.openUrl(url);
+            if (backendUrl.length) {
+                logic.openUrl(backendUrl);
+            }
             break;
         case Qt.Key_Menu:
             contextMenu.refreshActions();
@@ -162,7 +165,7 @@ Item {
         delegate: icon
 
         mimeData {
-            url: url
+            url: backendUrl || url
             source: iconItem
         }
 
@@ -211,7 +214,9 @@ Item {
 
             onClicked: {
                 if (mouse.button == Qt.LeftButton) {
-                    logic.openUrl(url)
+                    if (backendUrl.length) {
+                        logic.openUrl(backendUrl)
+                    }
                 }
             }
 
@@ -443,7 +448,7 @@ Item {
 
     function editLauncher()
     {
-        logic.editLauncher(url, itemIndex, isPopupItem);
+        logic.editLauncher(backendUrl || url, itemIndex, isPopupItem);
     }
 
     function removeLauncher()

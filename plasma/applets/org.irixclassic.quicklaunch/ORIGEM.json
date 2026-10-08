@@ -5,7 +5,8 @@
   "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/quicklaunch",
   "changes": [
     "Private Classic identifier; raised compact frame and immediate mouse-down feedback.",
-    "Panel grid glyphs are centered inside the button rim, limited to 32 pixels above optional launcher labels, with immediate one-pixel pressed feedback. Native cell metrics, popup layout, launching, keyboard navigation and drag/drop remain unchanged."
+    "Panel grid glyphs are centered inside the button rim, limited to 32 pixels above optional launcher labels, with immediate one-pixel pressed feedback. Native cell metrics, popup layout, keyboard navigation and drag/drop handlers remain unchanged.",
+    "New Classic layouts store applications: desktop identifiers. QtCore.StandardPaths resolves these tokens through the current user's XDG application directories before native metadata, launching, editing and URL export; existing file URLs and saved model tokens are preserved."
   ],
   "source_files": {
     "metadata.json": "e775bbae4557c7bc5f793c96b72b82fd0cf2d6bbd7dcad7107d44ea0c36b351b",
