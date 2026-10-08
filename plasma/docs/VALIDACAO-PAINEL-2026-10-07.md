@@ -37,6 +37,9 @@ Os arquivos ORIGEM.json registram fontes, licenças e alterações.
   sessão também confirmou a fileira de ícones com legendas, o menu com três
   atalhos à esquerda e as molduras da bandeja e do relógio. O pager preservado
   não aparece nessa captura; seu relevo foi conferido na sessão lsi e na galeria.
+- O usuário confirmou na sessão p001532 que o relevo aparece imediatamente ao
+  manter uma tarefa pressionada e que os interruptores nos pop-ups de Wi-Fi e
+  Bluetooth têm o visual Classic correto.
 
 Os testes isolados não acionam serviços reais de Wi-Fi/Bluetooth nem abrem
 aplicativos do usuário. A galeria usa controles reais e tarefas demonstrativas;
@@ -46,8 +49,10 @@ privados, sem ativação de serviços nem um desktop Plasma completo. As captura
 da sessão lsi verificam a composição final do painel.
 
 A instalação e a migração em p001532 foram verificadas por seus próprios
-relatórios `RESULTADO.json` e `AUDITORIA.json`. A inspeção visual do relevo de
-pressão e dos interruptores de Wi-Fi/Bluetooth nesse usuário continua pendente.
+relatórios `RESULTADO.json` e `AUDITORIA.json`. A confirmação manual do relevo de
+pressão e dos interruptores de Wi-Fi/Bluetooth foi fornecida pelo usuário após
+a captura. Esses campos continuam pendentes no JSON automático, pois o script
+não certifica uma inspeção manual; a confirmação está registrada neste documento.
 A captura foi produzida pelo Spectacle na própria sessão Wayland e foi
 conferido somente o recorte do painel. A imagem estática confirma a composição;
 não comprova o comportamento enquanto o mouse permanece pressionado. A opção
