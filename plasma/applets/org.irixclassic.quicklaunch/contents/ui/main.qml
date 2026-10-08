@@ -283,6 +283,11 @@ PlasmoidItem {
             text: i18nc("@action", "Add Launcher…")
             icon.name: "list-add"
             onTriggered: logic.addLauncher()
+        },
+        PlasmaCore.Action {
+            text: i18nc("@action", "Organize Launchers…")
+            icon.name: "preferences-system"
+            onTriggered: Plasmoid.internalAction("configure").trigger()
         }
     ]
 

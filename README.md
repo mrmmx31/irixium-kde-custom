@@ -45,6 +45,12 @@ O Classic inclui widgets próprios para o menu, três atalhos, Iconbox, bandeja 
 relógio, com relevo compacto inspirado no Indigo Magic/Motif. O pager usa as
 molduras Classic e as tarefas ficam numa fileira de ícones com legenda curta.
 
+Para trocar ou ordenar os atalhos, use o botão direito em um deles e abra
+**Organize Launchers… → Launchers**. A lista oferece adicionar, substituir,
+remover, subir e descer; **Aplicar/OK** salva e **Cancelar** descarta as alterações.
+Substituir conserva a posição e escolhe outro aplicativo sem editar seu arquivo
+`.desktop`. Veja a [configuração dos atalhos](plasma/applets/org.irixclassic.quicklaunch/README.md).
+
 Depois de instalar a suíte, atualize o painel existente na sessão KDE do próprio
 usuário; este comando preserva os demais widgets, a ordem e as configurações:
 

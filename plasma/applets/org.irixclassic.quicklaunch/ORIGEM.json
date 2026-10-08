@@ -1,12 +1,13 @@
 {
-  "upstream": "KDE plasma-desktop",
+  "upstream": "KDE kdeplasma-addons",
   "upstream_version": "6.3.6",
   "upstream_applet": "org.kde.plasma.quicklaunch",
-  "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/quicklaunch",
+  "source": "https://invent.kde.org/plasma/kdeplasma-addons/-/tree/v6.3.6/applets/quicklaunch",
   "changes": [
     "Private Classic identifier; raised compact frame and immediate mouse-down feedback.",
     "Panel grid glyphs are centered inside the button rim, limited to 32 pixels above optional launcher labels, with immediate one-pixel pressed feedback. Native cell metrics, popup layout, keyboard navigation and drag/drop handlers remain unchanged.",
-    "New Classic layouts store applications: desktop identifiers. QtCore.StandardPaths resolves these tokens through the current user's XDG application directories before native metadata, launching, editing and URL export; existing file URLs and saved model tokens are preserved."
+    "New Classic layouts store applications: desktop identifiers. QtCore.StandardPaths resolves these tokens through the current user's XDG application directories before native metadata, launching, editing and URL export; existing file URLs and saved model tokens are preserved.",
+    "An explicit Organize Launchers context action opens a separate ordered configuration category. Add and Replace use the native KOpenWithDialog selector; Remove, Up and Down edit cfg_launcherUrls copies until Plasma Apply/OK, while Cancel leaves saved launchers untouched. Replace preserves its row and refuses stale nonmodal selections. Existing URL tokens, upstream source hashes, press feedback and drag handlers are preserved."
   ],
   "source_files": {
     "metadata.json": "e775bbae4557c7bc5f793c96b72b82fd0cf2d6bbd7dcad7107d44ea0c36b351b",
@@ -18,5 +19,20 @@
     "contents/ui/Popup.qml": "4739a5e0c41e6288b46adbd181372a9ab2a64836cb9dfb4254ab36bd54bb57ef",
     "contents/ui/main.qml": "ed47525a353893b011c6d9302e88340b67f33797e04c0338885bab7718f9c6b3",
     "contents/ui/UrlModel.qml": "1de39d154d78050dcbedc54cf938479c98c3e6ce3f5beb0fdfd5b6f58b092361"
+  },
+  "project_files": {
+    "LICENSE": "edaef632cbb643e4e7a221717a6c441a4c1a7c918e6e4d56debc3d8739b233f6",
+    "README.md": "8d94356705cd5114963ab6d46a654d6fae0baffc5c31401ece3f27b8fed6f3a4",
+    "contents/config/config.qml": "f5c0c216268fd42c46b49307e86ee6472dada74417b05e1db18f16654f4c5384",
+    "contents/config/main.xml": "31f87473ba8103404b57132344a2959bb9d8c9730e6187e777f21bb735fe77d4",
+    "contents/ui/ConfigGeneral.qml": "fe1cd92303a8b754c9cd77d46cdaf3e97c14871697438de4dc07dc67c56fe8a7",
+    "contents/ui/ConfigLaunchers.qml": "eb6efad1a8df8f89e8c5dffed0fb1c27e773815221c5d984f10b1a4936e289ab",
+    "contents/ui/IconItem.qml": "bb0abef29c41991c44ae33214aa2aa299eb9e1f9444fd33a5ae68ca8fead5c72",
+    "contents/ui/Popup.qml": "4739a5e0c41e6288b46adbd181372a9ab2a64836cb9dfb4254ab36bd54bb57ef",
+    "contents/ui/UrlModel.qml": "1de39d154d78050dcbedc54cf938479c98c3e6ce3f5beb0fdfd5b6f58b092361",
+    "contents/ui/launcherurls.js": "1b6db14a99240fbe91151b15782874c8e8db44eb48e2e07552084bc5b7a783f1",
+    "contents/ui/layout.js": "f060add0c2492d3749c5d25ecab61cb37317f5a144e9d1332341ace9d56e9ee9",
+    "contents/ui/main.qml": "0a68528f09f9890720495fd9bd31a9b18c6408d06c4b73a771ac84545bfb40d3",
+    "metadata.json": "fe36de0bc7cb7e0b2dde3da240839fc3070124f4512ad7c246bf3188a07dfce9"
   }
 }

@@ -323,6 +323,7 @@ Item {
 
                 PlasmaExtras.MenuItem {
                     action: Plasmoid.internalAction("configure")
+                    text: i18nc("@action:inmenu", "Organize Launchers…")
                 }
 
                 PlasmaExtras.MenuItem {

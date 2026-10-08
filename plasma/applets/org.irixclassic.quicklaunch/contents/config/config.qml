@@ -9,6 +9,11 @@ import org.kde.plasma.configuration 2.0
 
 ConfigModel {
     ConfigCategory {
+         name: i18nc("@title", "Launchers")
+         icon: "fork"
+         source: "ConfigLaunchers.qml"
+    }
+    ConfigCategory {
          name: i18nc("@title", "General")
          icon: "plasma"
          source: "ConfigGeneral.qml"
