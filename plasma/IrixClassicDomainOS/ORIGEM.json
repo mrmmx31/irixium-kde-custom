@@ -1,0 +1,261 @@
+{
+  "component": "Irix Classic DomainOS Plasma Style",
+  "identifier": "IrixClassicDomainOS",
+  "kind": "plasma-desktop-theme",
+  "version": "0.1.0",
+  "author": "IRIX Classic contributors",
+  "license": "GPL-3.0-or-later (new artwork); GPL-3.0 (inherited resources)",
+  "source": {
+    "type": "independent derivative of repository IrixClassic",
+    "path": "plasma/IrixClassic",
+    "original_author": "Phob1an",
+    "original_url": "https://www.pling.com/p/1457753/",
+    "original_license": "GPL-3.0"
+  },
+  "references": [
+    {
+      "kind": "user-provided panel design",
+      "file": "image-1.png",
+      "sha256": "c05a35c30621437fe37585a46b6ce6ec80e5740031dcd48f28b9e976a7526d26"
+    },
+    {
+      "kind": "user-provided HP workstation panel reference",
+      "file": "image-2.png",
+      "sha256": "508aba94232ee0bf24e01d76cb10e7a43dcd3c1a2a8aab1e225f9654d4179c45"
+    }
+  ],
+  "reference_policy": "Visual study only. Reference screenshots are not copied into or distributed with the theme.",
+  "palette": {
+    "face": "#7894a7",
+    "well": "#607f91",
+    "rim": "#263f4d",
+    "shadow": "#405c6c",
+    "highlight": "#bed0d4",
+    "pale": "#a2d0e7",
+    "blue": "#3296c4",
+    "white": "#ecffff",
+    "text": "#102b37",
+    "selection_rim": "#dddd28"
+  },
+  "local_changes": [
+    "Separate selectable Plasma Style; original Classic files stay byte-identical.",
+    "New straight four-pixel nine-slice bevels, woven pixel housings and ruled lower command rail.",
+    "New opaque Iconbox, instrument sockets, field and popup art; solid-blue dial with white native clock hands.",
+    "Pager active frame uses narrow yellow rim; empty overlay centers preserve native window outlines over an opaque panel.",
+    "Legacy resources retain their element contracts; semi-transparent paint and gradient definitions are flattened and rounded rectangle radii are removed.",
+    "Native shadow contracts remain empty; input states use immediate inverted relief.",
+    "Local colors file supplies the matching Plasma palette without selecting an application scheme or changing a layout."
+  ],
+  "resources": {
+    "dialogs/background.svg": {
+      "sha256": "4123fb60caf8571d3278629c426e7cc3cc4a6c48f8e05ab628dd2b2c325622c3",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "icons/audio.svg": {
+      "sha256": "872f60a0dc496c3334705819341ac34dc9070e66376d3f1a35d5ef9c82872b0b",
+      "source": "derivative of plasma/IrixClassic/icons/audio.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "icons/klipper.svg": {
+      "sha256": "220ca5daa5e6a769ce3d4bebf00ef88fa0a11c432001021b405d4e6b1d95a743",
+      "source": "derivative of plasma/IrixClassic/icons/klipper.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "icons/media.svg": {
+      "sha256": "48b891909f36cf9fe65de959cfec54296e72ac0cda19a9d2d6a44f57a94ccd18",
+      "source": "derivative of plasma/IrixClassic/icons/media.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "icons/start.svg": {
+      "sha256": "f6b3d992fb7301e265e577751add0ca8a400414fa6ae6797018a412686186c9a",
+      "source": "derivative of plasma/IrixClassic/icons/start.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/arrows.svg": {
+      "sha256": "67ac4ca6c970c05c1fa4976b290e1f2e1fb357ab0b875df76d308483a61a2493",
+      "source": "derivative of plasma/IrixClassic/widgets/arrows.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/background.svg": {
+      "sha256": "d8b67967e0ab1535aa896d01f3a901c6c7908e1d31e208664c3248ece94af57b",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/bar_meter_horizontal.svg": {
+      "sha256": "1e39df8b42795454cff36bd153f3c9420677625ea94a943bb0f0dc06b735fbf3",
+      "source": "derivative of plasma/IrixClassic/widgets/bar_meter_horizontal.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/bar_meter_vertical.svg": {
+      "sha256": "1e39df8b42795454cff36bd153f3c9420677625ea94a943bb0f0dc06b735fbf3",
+      "source": "derivative of plasma/IrixClassic/widgets/bar_meter_vertical.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/busywidget.svg": {
+      "sha256": "5fa2e963f2792877806b4977ad8cd634fda624a449ee98b8eeb4c18d7bc4209b",
+      "source": "derivative of plasma/IrixClassic/widgets/busywidget.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/button.svg": {
+      "sha256": "85cb8bfd30fa7d02000092e2ca6a8e84b7824490533b18c87946c9cc33e791a6",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/calendar.svg": {
+      "sha256": "6cac338bc2bec9fa40160ab9b196b80f230e2efd2770f21011d1bbad0fd2fcf3",
+      "source": "derivative of plasma/IrixClassic/widgets/calendar.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/checkmarks.svg": {
+      "sha256": "2c64a75d76c5c855acbc11499995c37d4f46fccdd9d61108cf9bfd50b88854b6",
+      "source": "derivative of plasma/IrixClassic/widgets/checkmarks.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/clock.svg": {
+      "sha256": "3e484d1b3b27b034bcab3ab768e93142bd1a67336e9a2bbea0c25cebc64c838f",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/command-rail.svg": {
+      "sha256": "7c6a7465ac37534bd5a60435f9060f2ca4152a14b4b6a370a3ef91a385217706",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/frame.svg": {
+      "sha256": "58ed9c284127851a76fa85ec0a64542f7952028bf6bad11d58bb5d39eddd9a62",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/iconbox.svg": {
+      "sha256": "5425fb2fef7b6afe2dba8de4c3a2eff5f6a08cb7a90e40f51e5cd6a2362888ec",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/instrument-well.svg": {
+      "sha256": "01af1eb18666ab2fe306bb7bc88646d2177e04eaa433aaef55dd40ee2a8d91e8",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/instrument.svg": {
+      "sha256": "7ee67e0ddbfd6e5bb82eaaccb96cc5c62e40053eb8c644899dede8e40b707a79",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/line.svg": {
+      "sha256": "b684709afbeb8efce02918ee9c8791120144dee764a6f8a2bf5c2d2410669797",
+      "source": "derivative of plasma/IrixClassic/widgets/line.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/lineedit.svg": {
+      "sha256": "dc6d3fb479997c896dc43241dcf9e4d8c991108c8a977b21b2b24eb5e914ff2a",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/listitem.svg": {
+      "sha256": "98d558b5559c286a99311d223cd0d9c008b4db7382d7089b2a2d72579425caa1",
+      "source": "derivative of plasma/IrixClassic/widgets/listitem.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/pager.svg": {
+      "sha256": "20694562c5af3e47e8338e38c417ec1425d0c4f2897a652bcfce18ffaf7bdd18",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/panel-background.svg": {
+      "sha256": "7edcaf31e452659a7779f989dbceb6871f8fd51979e1392902272dd62d9c5b2d",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/plasmoidheading.svg": {
+      "sha256": "ef25aa1b43a183f8af64a3584a6fa26a2636b8f075632b8b0d63ac00ead92d92",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/radiobutton.svg": {
+      "sha256": "c9c8f98957f2d0e5b6ce682512503706a9276880b75b8163f9c85998395e3cf4",
+      "source": "derivative of plasma/IrixClassic/widgets/radiobutton.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/scrollbar.svg": {
+      "sha256": "01892f6e2e78b513502abb6031aafd1515f2720d3ead3e40685e7b8cb42416f0",
+      "source": "derivative of plasma/IrixClassic/widgets/scrollbar.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/slider.svg": {
+      "sha256": "e3cbf260ef2afbabc57f914e531fcaf5327cedcbbe2946d90c2f88c4eea1076c",
+      "source": "derivative of plasma/IrixClassic/widgets/slider.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/switch.svg": {
+      "sha256": "44edf1d42a5a8e330ac3d93f8f0a1b1ba611c946635a1e29702aa882e4374931",
+      "source": "derivative of plasma/IrixClassic/widgets/switch.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/tabbar.svg": {
+      "sha256": "ab0beb437fb63c1ca8522c8d69768f7e606a9de976b0f2e32222218c1e781d7a",
+      "source": "derivative of plasma/IrixClassic/widgets/tabbar.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/task-icon.svg": {
+      "sha256": "af1e938e25d61af736b6bd0fdee095b99f4049de60ffe0b5814a29b3c024a9d2",
+      "source": "derivative of plasma/IrixClassic/widgets/task-icon.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/tasks.svg": {
+      "sha256": "9792721b9d3e28cc1bef0c526097714caeb50793f80f15ec5086c773fa6c4b7b",
+      "source": "derivative of plasma/IrixClassic/widgets/tasks.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    },
+    "widgets/tooltip.svg": {
+      "sha256": "4123fb60caf8571d3278629c426e7cc3cc4a6c48f8e05ab628dd2b2c325622c3",
+      "source": "independently drawn DomainOS SVG",
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later"
+    },
+    "widgets/viewitem.svg": {
+      "sha256": "5686f028b5d09b33c1b71759f6ffc79603e18b40e5cf7379062b74e01ca9c441",
+      "source": "derivative of plasma/IrixClassic/widgets/viewitem.svg",
+      "author": "Phob1an; IRIX Classic contributors",
+      "license": "GPL-3.0"
+    }
+  },
+  "baseline": "CLASSIC-BASELINE.json",
+  "installation": {
+    "path": "~/.local/share/plasma/desktoptheme/IrixClassicDomainOS",
+    "scope": "current user only",
+    "layout_application": "separate explicit per-user selection; no layout changes during installation"
+  }
+}

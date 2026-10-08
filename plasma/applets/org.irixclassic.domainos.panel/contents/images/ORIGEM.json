@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "created": "2026-10-08",
+  "license": "GPL-3.0-or-later",
+  "scope": "Original SVG construction and palette in this directory, not the reference screenshots or HP software.",
+  "method": "New hand-specified geometry written for the repository. Circles, polygon edges and lines were scan-converted into explicit integer SVG rectangles because Qt SVG ignores crispEdges on those primitives. No screenshots, traced reference pixels, embedded raster tiles, HP logo or proprietary theme assets are distributed.",
+  "references": [
+    {
+      "name": "image-1.png",
+      "sha256": "c05a35c30621437fe37585a46b6ce6ec80e5740031dcd48f28b9e976a7526d26",
+      "size": [
+        2103,
+        748
+      ],
+      "role": "User supplied exact panel arrangement and proportions",
+      "distributed": false,
+      "reference_license": "Not supplied; no license or authorship of the reference is asserted here."
+    },
+    {
+      "name": "image-2.png",
+      "sha256": "508aba94232ee0bf24e01d76cb10e7a43dcd3c1a2a8aab1e225f9654d4179c45",
+      "size": [
+        1025,
+        99
+      ],
+      "role": "User supplied HP panel reference for crisp clock, graph, Mail and fixed icon language",
+      "distributed": false,
+      "reference_license": "Not supplied; no license or authorship of the reference is asserted here."
+    }
+  ],
+  "penguin": "Independent geometric monochrome penguin drawing. No Larry Ewing Tux bitmap or SVG is embedded or transformed.",
+  "project_files": {
+    "arrow-down.svg": "a77b861ae9aa4689d4ed91bc1bd4b82788e2ad1f9718f778f4c29fd0e624eb60",
+    "arrow-left.svg": "a272ea2413b0c939707bb037a36c4646b4ec94ee938dc2ed0f7fb34525c3a853",
+    "arrow-right.svg": "db9113ec32820555fb2ae186f7fe9a4b1b01f8888977969a2df3d318e778ae00",
+    "arrow-up.svg": "e1570be85f7d2618dc54d8cfafc6e811fa85860f9cd08a61640abc591f3351db",
+    "clock-face.svg": "03f2c9c3f6015dd74baf1c69add6ced8cddac0a952d730778d38213ab9a36ffa",
+    "clock-reference.svg": "ea5aed4556f3a8203c9ab8f73c625b1686b37d6d92fdad152ff604177e218823",
+    "drawer.svg": "4e741b7e52eea4b84cf4b8269ac63912364ea904e7b2916e188a05dcc8d283a0",
+    "envelope.svg": "3d7054a2d669f9d96793ddeb58051c0e489c8db13ca711ba26d8deceee8ed491",
+    "gnu-linux.svg": "be65e4661702226985ec744fdb38a443f6e03ca205ce2a5b6fa1e2b1e6fbeaa9",
+    "graph-grid.svg": "3851ff12f04372ef0b7626e35cfe8c887c8eab25ddc7f5cd9851624114c1b583",
+    "graph-reference.svg": "a3fc3ba2180f703514d5e086651b32554d3fe422b2d523b16b0075a6b10cf5fc",
+    "help.svg": "6c49250fa906b1fc80bbb5d9867c14eb9f4b84bf9088525fdf622a049e9dccd7",
+    "indicator.svg": "0b81e941095810de7a4128acc5258c67be0c64165ff6ee42e187a5375e34846d",
+    "lock.svg": "d274666afc6b14b56540a1bf79857eee8e9f93f52ef4b82db2377a7fc57766f7",
+    "mail.svg": "d743a8a0664198749a5b66d8be9598a4de06b1d6f864a617636ab9dbfe6097d9",
+    "metal-lines.svg": "85c5f809f427efe192983796d08861425bf8a070a4f0ffbc4c178a4b3115eea1",
+    "metal-weave.svg": "28f3929beff196a1f407ec6dac51434f6768610fdf3c977b707a4baa8ede6568",
+    "network.svg": "fbd6c88b0cdcf27c2dfe636e2811e6cd10114a020a04dd0e968979b32a7dd1ec",
+    "palette.json": "4efa0a952d41e600648df387348becf06f8238b5e2f10ccb3e5d44104e101d8e",
+    "preferences.svg": "ebd7f3e8f59589b24e73a9d6dfe160b57f8d2dc1ed919f92563430a45e23a4fe",
+    "speaker.svg": "e085b8c45d17ed0eb5f33586d2503a43fa1653fabc2e182b7f5b5b36c4ded116",
+    "storage.svg": "3dbfb618232bb149732ded5e7c6b3f1060a1a21c2299309d8e5b1685b4150c77",
+    "terminal.svg": "5d2719617314f013c3c462d30dfacdaa564d6692b19d1a5e08a867a85058eb75",
+    "workstation.svg": "d17a21cff472a73378ff3bff454fbd865a4c81539c427ec89d1c59d7b4636486"
+  },
+  "native_renderer_validation": {
+    "renderer": "Qt 6 QSvgRenderer",
+    "drawings": 23,
+    "solid_palette_only": true,
+    "partial_alpha_pixels": false,
+    "clock_face_center_RGB": [
+      50,
+      150,
+      196
+    ],
+    "reference_screenshots_distributed": false
+  }
+}

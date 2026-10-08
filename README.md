@@ -11,7 +11,7 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-A instalação atualiza 27 componentes locais, com backup, sem trocar a
+A instalação atualiza 30 componentes locais, com backup, sem trocar a
 seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
 cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
 Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
@@ -81,6 +81,24 @@ no canto superior direito, em 280×220, com CPU, memória, swap, disco e rede re
 Ele pode ser movido/redimensionado na edição normal do Plasma; executar novamente
 o helper preserva a posição escolhida e não duplica o widget. O layout Classic
 também inclui o monitor em novas instalações. Veja o [widget](plasma/applets/org.irixclassic.grosview/README.md).
+
+## Irix Classic DomainOS: etapa de desenho
+
+O [Plasma Style Irix Classic DomainOS](plasma/IrixClassicDomainOS/) é uma opção
+independente do Classic atual, inspirada na referência HP e na composição enviada
+pelo usuário. O instalador disponibiliza esse estilo, o applet
+`org.irixclassic.domainos.panel` e o esquema de cores **DomainOS SR14.4**, versão
+confirmada pelo usuário. A instalação mantém o estilo escolhido, os layouts e os
+defaults do perfil Classic. `aplicar-tema.sh classic` continua selecionando o
+conjunto Classic existente.
+
+O applet apresenta o desenho unificado em dois andares: relógio, data, gráfico e
+correio; iconbox; dois quadros de áreas; bandeja 2×3; cinco atalhos inferiores.
+As funções ainda aguardam confirmação **por botão e ação**. Os itens de janela,
+nomes de áreas e símbolos de status usados na apresentação são exemplos do
+desenho: não representam o estado real do KWin, correio ou conectividade.
+O desenho não troca aplicativos, não cria/renomeia áreas de trabalho e não
+substitui o painel em uso. Veja a [matriz de requisitos e funções pendentes](docs/DOMAINOS-REQUISITOS.md).
 
 ## GTK e decorações opcionais
 
@@ -172,8 +190,9 @@ ou mudar associações de arquivos. O componente tem testes e workflow próprios
 | GTK 2/3/4 | `gtk/IrixClassic/` e `gtk/Irixium/` |
 | Ícones | `icons/themes/IrixClassic-SGI/`, `icons/Irixium/` |
 | Três temas de cursores | `cursors/` |
-| Cores | `colors/Irixium.colors` |
-| Plasma Styles | `plasma/IrixClassic/`, `plasma/Irixium/` |
+| Cores | `colors/Irixium.colors`, `colors/DomainOS-SR14.4.colors` |
+| Plasma Styles | `plasma/IrixClassic/`, `plasma/Irixium/`, `plasma/IrixClassicDomainOS/` |
+| Painel DomainOS em desenho | `plasma/applets/org.irixclassic.domainos.panel/` |
 | Wallpapers | `wallpapers/IrixClassic/`, `wallpapers/Irixium/` |
 | Tema global e splash | `look-and-feel/` |
 | Sons, sem os áudios | `sons/` |

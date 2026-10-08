@@ -15,7 +15,7 @@ class ComponentsTest(unittest.TestCase):
     def test_both_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),27)
+        self.assertEqual(len(report['components']),30)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
@@ -36,6 +36,24 @@ class ComponentsTest(unittest.TestCase):
             'kwin/decorations/irixium_modern', 'kwin/decorations/irixium_modern_13',
             'kwin/decorations/irixium_modern_41',
             'plasma/plasmoids/org.irixclassic.grosview'}.issubset(destinations))
+
+    def test_domainos_options_keep_the_classic_profile_and_style_independent(self):
+        doc = components.catalog()
+        self.assertEqual(set(doc['profiles']), {'classic', 'moderno'})
+        self.assertEqual(doc['profiles']['classic'], {
+            'global': 'org.magpie.irixclassic.desktop', 'kvantum': 'IrixClassic',
+            'decoration': 'irixium_irix_classic_v4', 'icons': 'IrixClassic-SGI',
+            'plasma': 'IrixClassic', 'wallpaper': 'IrixClassic',
+            'gtk': 'IrixClassic', 'cursor': 'SGI-Classic'})
+        entries = {e['source']: (e['root'], e['destination']) for e in doc['components']}
+        self.assertEqual(entries['plasma/IrixClassic'],
+                         ('data', 'plasma/desktoptheme/IrixClassic'))
+        self.assertEqual(entries['plasma/IrixClassicDomainOS'],
+                         ('data', 'plasma/desktoptheme/IrixClassicDomainOS'))
+        self.assertEqual(entries['plasma/applets/org.irixclassic.domainos.panel'],
+                         ('data', 'plasma/plasmoids/org.irixclassic.domainos.panel'))
+        self.assertEqual(entries['colors/DomainOS-SR14.4.colors'],
+                         ('data', 'color-schemes/DomainOS-SR14.4.colors'))
 
     def test_duplicate_destination_is_rejected(self):
         doc=components.catalog();doc['components'].append(doc['components'][0])
