@@ -33,7 +33,10 @@ Os arquivos ORIGEM.json registram fontes, licenças e alterações.
   divergências de seleção. A migração preservou o painel 342, os limites
   configurados de 1440 × 64 px, posição, ordem e os 16 componentes internos
   da bandeja. Foram substituídos somente os cinco widgets previstos, com
-  recibos de restauração no perfil desse usuário.
+  recibos de restauração no perfil desse usuário. O recorte da captura dessa
+  sessão também confirmou a fileira de ícones com legendas, o menu com três
+  atalhos à esquerda e as molduras da bandeja e do relógio. O pager preservado
+  não aparece nessa captura; seu relevo foi conferido na sessão lsi e na galeria.
 
 Os testes isolados não acionam serviços reais de Wi-Fi/Bluetooth nem abrem
 aplicativos do usuário. A galeria usa controles reais e tarefas demonstrativas;
@@ -45,9 +48,10 @@ da sessão lsi verificam a composição final do painel.
 A instalação e a migração em p001532 foram verificadas por seus próprios
 relatórios `RESULTADO.json` e `AUDITORIA.json`. A inspeção visual do relevo de
 pressão e dos interruptores de Wi-Fi/Bluetooth nesse usuário continua pendente.
-A captura automática foi omitida por ser uma sessão Wayland; a opção
-`--capturar` do pacote portátil permite selecionar somente o painel no Spectacle
-e acrescentar a imagem ao relatório existente.
+A captura foi produzida pelo Spectacle na própria sessão Wayland e foi
+conferido somente o recorte do painel. A imagem estática confirma a composição;
+não comprova o comportamento enquanto o mouse permanece pressionado. A opção
+`--capturar` do pacote portátil acrescenta a imagem ao relatório existente.
 
 ## Reprodução
 
