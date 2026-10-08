@@ -6,6 +6,35 @@ diretamente o estado do mouse. Os cinco widgets têm identificadores próprios;
 seus modelos e interações vêm do Plasma Desktop 6.3.6.
 Os arquivos ORIGEM.json registram fontes, licenças e alterações.
 
+## Rodada de 2026-10-08: bandeja, relógio e áreas de trabalho
+
+A revisão seguinte trabalha somente nas fontes e prévias isoladas. A instalação
+e a conferência nas sessões lsi e p001532 foram adiadas pelo usuário até o final
+do goal. Os resultados das instalações anteriores abaixo permanecem históricos.
+
+- Bandeja: aro de instrumento com 4 px, poço teal rebaixado de 2 px e conteúdo
+  nativo com margem total de 6 px. O plugin e o containment internos continuam
+  os mesmos; expansão e ações dos itens não foram alteradas.
+- Relógio: mostrador creme com marcas e ponteiros chapados, encaixado num poço
+  quadrado. A moldura usa diretamente `representation.pressed` e o conteúdo
+  desloca 1 px durante a pressão. Os 16 IDs/hints do recurso são válidos;
+  `Hand.qml`, origem do horário e configurações permanecem preservados.
+  Renderizações nativas isoladas de 64 × 56 px conferiram o mostrador de 44 px
+  sem timezone e a opção com timezone elidida. Pressão, tamanho estável e
+  cancelamento fora também passaram no host isolado.
+- Pager: o KDE desenha a moldura acima das miniaturas das janelas. Os centros
+  opacos antigos as escondiam; os novos centros transparentes deixam a camada
+  nativa visível sobre o fundo sólido do painel. Os 65 IDs, os 20 hints e as
+  margens de 4 px foram preservados. Seleção e relevo usam somente o aro.
+  A renderização KSvg do recurso passou; miniaturas reais, troca de área e
+  arraste precisam da validação final no pager nativo.
+
+A galeria desenha retângulos ilustrativos de janelas abaixo da moldura do pager,
+seguindo a ordem de camadas do KDE. Não representa um modelo real de desktops.
+O relógio da galeria usa os SVGs de produção, com horário demonstrativo. A
+prévia conserva 1440 × 64 px e a posição dos grupos; ela não comprova a
+geometria nem o comportamento de uma sessão instalada.
+
 ## Refinamento após inspeção visual
 
 O primeiro desenho ainda envolvia cada tarefa em uma placa completa. A revisão

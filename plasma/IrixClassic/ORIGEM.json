@@ -15,7 +15,8 @@
     "Renamed and separated as the starting point for the independent IRIX Classic theme.",
     "Restored missing widgets/switch.svg from the author’s locally installed Irixium 6.2; retained the existing theme artwork.",
     "Replaced Classic panel, tasks, pager, buttons, item highlights and sliders with opaque compact workstation plates; added state-specific hover/pressed artwork and vertical controls.",
-    "Replaced the inherited rounded/gradient switch with independently drawn mechanical rectangular Classic artwork; separated square task icon wells from caption strips inside a recessed Iconbox."
+    "Replaced the inherited rounded/gradient switch with independently drawn mechanical rectangular Classic artwork; separated square task icon wells from caption strips inside a recessed Iconbox.",
+    "Recessed shared tray field and square analog-clock instrument socket; new flat clock artwork; pager frame centers are transparent so native window outlines remain visible above the opaque panel."
   ],
   "verification": {
     "installed_path": "~/.local/share/plasma/desktoptheme/IrixClassic",
@@ -27,10 +28,34 @@
       "license": "GPL-3.0-or-later",
       "source": "independently drawn Classic artwork for the native Plasma switch contract",
       "sha256": "2bc7ec022e61fe652d2cc6cdc7b07fdf6f69989d8284e67e6deada1cb96121d3"
+    },
+    "widgets/clock.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn analog dial and hands for the native Plasma clock contract",
+      "sha256": "ab38ff6901f534a33c6758109d30d5bdf9f6dde104278dd5a3d8bdbd829820fe"
+    },
+    "widgets/instrument.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn opaque four-pixel Motif instrument housing, normal and pressed states",
+      "sha256": "f0b9339f9c9c237db88a6f68f7d80738b9840ae5d3f898781032e5c4d401eb87"
+    },
+    "widgets/instrument-well.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn opaque two-pixel recessed instrument field",
+      "sha256": "3184d9c47adf05a0ca4dde2f4f089352116334bbfeb32643f07d22eb572881b7"
+    },
+    "widgets/pager.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn recessed desktop frames with transparent centers for native window outlines",
+      "sha256": "d9e3630172ee68206c7f851627fb5604f5a9273b938007b066ee4514d6d7224b"
     }
   },
   "classic_artwork": {
-    "version": "0.2.0",
+    "version": "0.3.0",
     "author": "IRIX Classic contributors",
     "license": "GPL-3.0-or-later",
     "references": [
@@ -45,6 +70,12 @@
       "license": "GPL-2.0-or-later",
       "source": "locally installed irixium Plasma Style",
       "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
+    },
+    "former_widgets/clock.svg": {
+      "author": "Phob1an",
+      "license": "GPL-3.0",
+      "source": "inherited Irixium base recorded in this component provenance",
+      "sha256": "7b1d348c22b69e8bb1b829173a4f388c7b576aaad0f62f204362d25e243fcdc9"
     }
   }
 }

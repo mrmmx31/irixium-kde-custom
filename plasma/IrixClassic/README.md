@@ -16,6 +16,15 @@ The style also supplies listitem/selected+hover resources and both slider
 orientations, preventing those controls from falling back to KDE artwork.
 The existing Irixium modern style is independent and is not redesigned.
 
+The tray has a common recessed teal field inside a four-pixel instrument rim.
+The analog clock uses a cream dial with solid hour marks and hands in a square
+socket. Its rim inverts and the dial moves one pixel while pressed; native time,
+timezone and calendar behavior are retained.
+
+Pager frames have recessed edges and a narrow selection rim. Their centers are
+transparent because KDE places the frame above the native window outlines;
+the opaque panel supplies the background. This keeps those outlines visible.
+
 Wi-Fi/Bluetooth switches have a rectangular lever with grip ridges, a square
 focus frame, gray off/teal on tracks and inverted pressed relief. The original
 rounded Irixium switch was replaced with independently drawn Classic artwork.

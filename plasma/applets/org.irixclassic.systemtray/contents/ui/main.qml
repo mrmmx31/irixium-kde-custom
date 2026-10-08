@@ -17,10 +17,12 @@ PlasmoidItem {
     id: root
 
     readonly property int frameInset: 4
+    readonly property int wellInset: 2
+    readonly property int contentInset: frameInset + wellInset
     property ContainmentItem internalSystray
 
-    Layout.minimumWidth: internalSystray ? internalSystray.Layout.minimumWidth + 2 * frameInset : 0
-    Layout.minimumHeight: internalSystray ? internalSystray.Layout.minimumHeight + 2 * frameInset : 0
+    Layout.minimumWidth: internalSystray ? internalSystray.Layout.minimumWidth + 2 * contentInset : 0
+    Layout.minimumHeight: internalSystray ? internalSystray.Layout.minimumHeight + 2 * contentInset : 0
     Layout.preferredWidth: Layout.minimumWidth
     Layout.preferredHeight: Layout.minimumHeight
 
@@ -29,9 +31,17 @@ PlasmoidItem {
     Plasmoid.status: internalSystray ? internalSystray.plasmoid.status : PlasmaCore.Types.UnknownStatus
 
     KSvg.FrameSvgItem {
+        objectName: "classicTrayHousing"
         anchors.fill: parent
-        imagePath: "widgets/background"
-        prefix: ["normal", ""]
+        imagePath: "widgets/instrument"
+        prefix: "normal"
+    }
+
+    KSvg.FrameSvgItem {
+        objectName: "classicTrayWell"
+        anchors.fill: parent
+        anchors.margins: root.frameInset
+        imagePath: "widgets/instrument-well"
     }
 
     // Synchronize state between the upstream tray and the wrapping applet.
@@ -54,7 +64,7 @@ PlasmoidItem {
         }
         root.internalSystray.parent = root;
         root.internalSystray.anchors.fill = root;
-        root.internalSystray.anchors.margins = root.frameInset;
+        root.internalSystray.anchors.margins = root.contentInset;
     }
 
     Component.onCompleted: attachTray()

@@ -6,7 +6,7 @@
   "license": "LGPL-2.0-or-later (the wrapping QML applet)",
   "changes": [
     "Private Classic identifier with X-Plasma-RootPath to reuse the installed upstream SystemTrayContainer C++ plugin.",
-    "Added an SVG frame and a four-pixel inset; minimum dimensions include the eight-pixel total frame allowance.",
+    "Added a four-pixel instrument rim and a two-pixel recessed teal field; native tray content and minimum dimensions include the six-pixel total inset on each side.",
     "Preserved the upstream private tray containment and expanded-state synchronization; no model, activation, timer, or popup changes.",
     "Only the Classic layout uses this package; the stock system tray and Modern theme are not overridden."
   ],

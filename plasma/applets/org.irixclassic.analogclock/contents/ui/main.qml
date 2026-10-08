@@ -69,10 +69,27 @@ PlasmoidItem {
         id: representation
         objectName: "classicClock"
 
+        readonly property int pressOffset: pressed ? 1 : 0
+
         KSvg.FrameSvgItem {
+            id: clockSocket
+            objectName: "classicClockSocket"
             anchors.fill: parent
-            z: -1
-            imagePath: "widgets/background"
+            imagePath: "widgets/instrument"
+            prefix: representation.pressed ? "pressed" : "normal"
+        }
+
+        KSvg.FrameSvgItem {
+            id: clockWell
+            objectName: "classicClockWell"
+            anchors {
+                fill: parent
+                leftMargin: clockSocket.margins.left
+                rightMargin: clockSocket.margins.right
+                topMargin: clockSocket.margins.top
+                bottomMargin: clockSocket.margins.bottom
+            }
+            imagePath: "widgets/instrument-well"
             prefix: ["normal", ""]
         }
 
@@ -128,119 +145,130 @@ PlasmoidItem {
         }
 
         Item {
-            id: clock
+            id: clockContent
+            objectName: "classicClockContent"
+            x: clockWell.x + clockWell.margins.left + representation.pressOffset
+            y: clockWell.y + clockWell.margins.top + representation.pressOffset
+            width: Math.max(1, clockWell.width - clockWell.margins.left - clockWell.margins.right)
+            height: Math.max(1, clockWell.height - clockWell.margins.top - clockWell.margins.bottom)
 
-            anchors {
-                top: parent.top
-                topMargin: 4
-                bottom: showTimezone ? timezoneBg.top : parent.bottom
-                bottomMargin: 4
-                horizontalCenter: parent.horizontalCenter
+            Item {
+                id: clock
+
+                anchors {
+                    top: parent.top
+                    bottom: showTimezone ? timezoneBg.top : parent.bottom
+                    bottomMargin: showTimezone ? 2 : 0
+                    horizontalCenter: parent.horizontalCenter
+                }
+                width: parent.width
+
+                readonly property double svgScale: face.width / face.naturalSize.width
+                readonly property double horizontalShadowOffset:
+                    Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) + Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) % 2
+                readonly property double verticalShadowOffset:
+                    Math.round(clockSvg.naturalVerticalHandShadowOffset * svgScale) + Math.round(clockSvg.naturalVerticalHandShadowOffset * svgScale) % 2
+
+                KSvg.SvgItem {
+                    id: face
+                    anchors.centerIn: parent
+                    width: Math.min(parent.width, parent.height)
+                    height: Math.min(parent.width, parent.height)
+                    svg: clockSvg
+                    elementId: "ClockFace"
+                }
+
+                Hand {
+                    elementId: "HourHandShadow"
+                    rotationCenterHintId: "hint-hourhandshadow-rotation-center-offset"
+                    horizontalRotationOffset: clock.horizontalShadowOffset
+                    verticalRotationOffset: clock.verticalShadowOffset
+                    rotation: 180 + hours * 30 + (minutes/2)
+                    svgScale: clock.svgScale
+
+                }
+                Hand {
+                    elementId: "HourHand"
+                    rotationCenterHintId: "hint-hourhand-rotation-center-offset"
+                    rotation: 180 + hours * 30 + (minutes/2)
+                    svgScale: clock.svgScale
+                }
+
+                Hand {
+                    elementId: "MinuteHandShadow"
+                    rotationCenterHintId: "hint-minutehandshadow-rotation-center-offset"
+                    horizontalRotationOffset: clock.horizontalShadowOffset
+                    verticalRotationOffset: clock.verticalShadowOffset
+                    rotation: 180 + minutes * 6
+                    svgScale: clock.svgScale
+                }
+                Hand {
+                    elementId: "MinuteHand"
+                    rotationCenterHintId: "hint-minutehand-rotation-center-offset"
+                    rotation: 180 + minutes * 6
+                    svgScale: clock.svgScale
+                }
+
+                Hand {
+                    visible: showSecondsHand
+                    elementId: "SecondHandShadow"
+                    rotationCenterHintId: "hint-secondhandshadow-rotation-center-offset"
+                    horizontalRotationOffset: clock.horizontalShadowOffset
+                    verticalRotationOffset: clock.verticalShadowOffset
+                    rotation: 180 + seconds * 6
+                    svgScale: clock.svgScale
+                }
+                Hand {
+                    visible: showSecondsHand
+                    elementId: "SecondHand"
+                    rotationCenterHintId: "hint-secondhand-rotation-center-offset"
+                    rotation: 180 + seconds * 6
+                    svgScale: clock.svgScale
+                }
+
+                KSvg.SvgItem {
+                    id: center
+                    anchors.centerIn: clock
+                    width: naturalSize.width * clock.svgScale
+                    height: naturalSize.height * clock.svgScale
+                    svg: clockSvg
+                    elementId: "HandCenterScrew"
+                    z: 1000
+                }
+
+                KSvg.SvgItem {
+                    anchors.fill: face
+                    width: naturalSize.width * clock.svgScale
+                    height: naturalSize.height * clock.svgScale
+                    svg: clockSvg
+                    elementId: "Glass"
+                }
             }
-            width: Math.max(1, parent.width - 8)
 
-            readonly property double svgScale: face.width / face.naturalSize.width
-            readonly property double horizontalShadowOffset:
-                Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) + Math.round(clockSvg.naturalHorizontalHandShadowOffset * svgScale) % 2
-            readonly property double verticalShadowOffset:
-                Math.round(clockSvg.naturalVerticalHandShadowOffset * svgScale) + Math.round(clockSvg.naturalVerticalHandShadowOffset * svgScale) % 2
+            KSvg.FrameSvgItem {
+                id: timezoneBg
 
-            KSvg.SvgItem {
-                id: face
-                anchors.centerIn: parent
-                width: Math.min(parent.width, parent.height)
-                height: Math.min(parent.width, parent.height)
-                svg: clockSvg
-                elementId: "ClockFace"
-            }
+                anchors {
+                    horizontalCenter: parent.horizontalCenter
+                    bottom: parent.bottom
+                    bottomMargin: 0
+                }
+                width: Math.min(parent.width, timezoneText.implicitWidth + margins.right + margins.left)
+                height: timezoneText.implicitHeight + margins.top + margins.bottom
+                visible: showTimezone
 
-            Hand {
-                elementId: "HourHandShadow"
-                rotationCenterHintId: "hint-hourhandshadow-rotation-center-offset"
-                horizontalRotationOffset: clock.horizontalShadowOffset
-                verticalRotationOffset: clock.verticalShadowOffset
-                rotation: 180 + hours * 30 + (minutes/2)
-                svgScale: clock.svgScale
+                imagePath: "widgets/instrument-well"
+                prefix: ["normal", ""]
 
-            }
-            Hand {
-                elementId: "HourHand"
-                rotationCenterHintId: "hint-hourhand-rotation-center-offset"
-                rotation: 180 + hours * 30 + (minutes/2)
-                svgScale: clock.svgScale
-            }
-
-            Hand {
-                elementId: "MinuteHandShadow"
-                rotationCenterHintId: "hint-minutehandshadow-rotation-center-offset"
-                horizontalRotationOffset: clock.horizontalShadowOffset
-                verticalRotationOffset: clock.verticalShadowOffset
-                rotation: 180 + minutes * 6
-                svgScale: clock.svgScale
-            }
-            Hand {
-                elementId: "MinuteHand"
-                rotationCenterHintId: "hint-minutehand-rotation-center-offset"
-                rotation: 180 + minutes * 6
-                svgScale: clock.svgScale
-            }
-
-            Hand {
-                visible: showSecondsHand
-                elementId: "SecondHandShadow"
-                rotationCenterHintId: "hint-secondhandshadow-rotation-center-offset"
-                horizontalRotationOffset: clock.horizontalShadowOffset
-                verticalRotationOffset: clock.verticalShadowOffset
-                rotation: 180 + seconds * 6
-                svgScale: clock.svgScale
-            }
-            Hand {
-                visible: showSecondsHand
-                elementId: "SecondHand"
-                rotationCenterHintId: "hint-secondhand-rotation-center-offset"
-                rotation: 180 + seconds * 6
-                svgScale: clock.svgScale
-            }
-
-            KSvg.SvgItem {
-                id: center
-                anchors.centerIn: clock
-                width: naturalSize.width * clock.svgScale
-                height: naturalSize.height * clock.svgScale
-                svg: clockSvg
-                elementId: "HandCenterScrew"
-                z: 1000
-            }
-
-            KSvg.SvgItem {
-                anchors.fill: face
-                width: naturalSize.width * clock.svgScale
-                height: naturalSize.height * clock.svgScale
-                svg: clockSvg
-                elementId: "Glass"
-            }
-        }
-
-        KSvg.FrameSvgItem {
-            id: timezoneBg
-
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom
-                bottomMargin: 10
-            }
-            width: childrenRect.width + margins.right + margins.left
-            height: childrenRect.height + margins.top + margins.bottom
-            visible: showTimezone
-
-            imagePath: "widgets/background"
-
-            PlasmaComponents.Label {
-                id: timezoneText
-                x: timezoneBg.margins.left
-                y: timezoneBg.margins.top
-                text: dataSource.data["Local"]["Timezone"]
-                textFormat: Text.PlainText
+                PlasmaComponents.Label {
+                    id: timezoneText
+                    x: timezoneBg.margins.left
+                    y: timezoneBg.margins.top
+                    width: Math.max(1, timezoneBg.width - timezoneBg.margins.left - timezoneBg.margins.right)
+                    elide: Text.ElideRight
+                    text: dataSource.data["Local"]["Timezone"]
+                    textFormat: Text.PlainText
+                }
             }
         }
     }

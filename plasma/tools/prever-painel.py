@@ -44,6 +44,8 @@ def check_assets():
         'slider': ('groove', 'groove-highlight'),
         'panel-background': ('',),
         'iconbox': ('',),
+        'instrument': ('normal', 'pressed'),
+        'instrument-well': ('',),
         'task-icon': ('normal', 'normal-hover', 'hover', 'focus', 'focus-hover', 'minimized', 'minimized-hover',
                       'attention', 'attention-hover', 'pressed', 'normal-pressed', 'focus-pressed',
                       'minimized-pressed', 'attention-pressed'),
@@ -68,6 +70,18 @@ def check_assets():
                     if element not in ids:
                         raise AssertionError(f'Missing slider/{element}')
         result[resource] = {'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'contract': 'pass'}
+    clock = ARTWORK / 'widgets' / 'clock.svg'
+    clock_ids = [e.get('id') for e in ET.parse(clock).getroot().iter() if e.get('id')]
+    if len(clock_ids) != len(set(clock_ids)):
+        raise AssertionError(f'Duplicate element IDs: {clock}')
+    for element in ('ClockFace', 'Glass', 'HandCenterScrew', 'HourHand', 'MinuteHand', 'SecondHand',
+                    'HourHandShadow', 'MinuteHandShadow', 'SecondHandShadow',
+                    'hint-hourhand-rotation-center-offset', 'hint-minutehand-rotation-center-offset',
+                    'hint-secondhand-rotation-center-offset', 'hint-hourhandshadow-rotation-center-offset',
+                    'hint-minutehandshadow-rotation-center-offset', 'hint-secondhandshadow-rotation-center-offset'):
+        if element not in clock_ids:
+            raise AssertionError(f'Missing clock/{element}')
+    result['clock'] = {'sha256': hashlib.sha256(clock.read_bytes()).hexdigest(), 'contract': 'pass'}
     return result
 
 
@@ -103,6 +117,7 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     report = {'scope': 'native gallery artwork and control input; live task/window actions are separate',
               'task_representation': '24px icon inside a 28px square well, separate 14px caption, 8px Iconbox heading in a 64px panel',
+              'right_section': 'recessed tray field, analog instrument socket, transparent pager frame above illustrative window rectangles; no real desktop model in this gallery',
               'desktop_modified': False, 'network_services_called': False, 'checks': {}, 'artwork': check_assets()}
     if args.offscreen or not (os.environ.get('WAYLAND_DISPLAY') or os.environ.get('DISPLAY')):
         os.environ['QT_QPA_PLATFORM'] = 'offscreen'

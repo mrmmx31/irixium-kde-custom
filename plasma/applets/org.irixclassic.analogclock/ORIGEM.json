@@ -3,7 +3,10 @@
   "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/analog-clock",
   "original_id": "org.kde.plasma.analogclock",
   "changes": [
-    "Private Classic ID and inset panel housing; native time, tooltip and calendar preserved."
+    "Private Classic ID; native time data source, tooltip, timezone configuration, hand rotations and calendar preserved.",
+    "Shared square instrument socket with direct pressed prefix and 1px content displacement; fixed inset well, no interaction timers.",
+    "Original flat cream clock artwork supplied by IrixClassic/widgets/clock.svg; readable hour markers, unshaded hands, native element IDs and explicit rotation hints.",
+    "Optional timezone label remains available and elides inside the instrument instead of overflowing the square housing."
   ],
   "original_files": {
     "metadata.json": "0325008ef97884b36588cf7e5f12becd80877ca6f98bd52ea226bf5c9373ec18",

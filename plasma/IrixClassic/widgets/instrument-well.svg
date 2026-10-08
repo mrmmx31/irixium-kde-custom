@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 IRIX Classic contributors -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <title>IRIX Classic recessed instrument field</title>
+  <desc>Opaque teal instrument field with a two-pixel inset border.</desc>
+  <g id="center" transform="translate(6,6)">
+    <rect x="0" y="0" width="20" height="20" fill="#9ebfbf"/>
+  </g>
+  <g id="top" transform="translate(6,4)">
+    <rect x="0" y="0" width="20" height="1" fill="#41413b"/>
+    <rect x="0" y="1" width="20" height="1" fill="#77776f"/>
+  </g>
+  <g id="bottom" transform="translate(6,26)">
+    <rect x="0" y="0" width="20" height="1" fill="#dfdfd3"/>
+    <rect x="0" y="1" width="20" height="1" fill="#f4f4e9"/>
+  </g>
+  <g id="left" transform="translate(4,6)">
+    <rect x="0" y="0" width="1" height="20" fill="#41413b"/>
+    <rect x="1" y="0" width="1" height="20" fill="#77776f"/>
+  </g>
+  <g id="right" transform="translate(26,6)">
+    <rect x="0" y="0" width="1" height="20" fill="#dfdfd3"/>
+    <rect x="1" y="0" width="1" height="20" fill="#f4f4e9"/>
+  </g>
+  <g id="topleft" transform="translate(4,4)">
+    <rect x="0" y="0" width="2" height="1" fill="#41413b"/>
+    <rect x="0" y="1" width="1" height="1" fill="#41413b"/>
+    <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  </g>
+  <g id="topright" transform="translate(26,4)">
+    <rect x="0" y="0" width="2" height="1" fill="#41413b"/>
+    <rect x="0" y="1" width="1" height="1" fill="#77776f"/>
+    <rect x="1" y="1" width="1" height="1" fill="#f4f4e9"/>
+  </g>
+  <g id="bottomleft" transform="translate(4,26)">
+    <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+    <rect x="1" y="0" width="1" height="1" fill="#dfdfd3"/>
+    <rect x="0" y="1" width="2" height="1" fill="#f4f4e9"/>
+  </g>
+  <g id="bottomright" transform="translate(26,26)">
+    <rect x="0" y="0" width="1" height="1" fill="#dfdfd3"/>
+    <rect x="1" y="0" width="1" height="1" fill="#f4f4e9"/>
+    <rect x="0" y="1" width="2" height="1" fill="#f4f4e9"/>
+  </g>
+  <rect id="hint-top-margin" width="2" height="2" fill="#ff00ff" opacity="0"/>
+  <rect id="hint-bottom-margin" width="2" height="2" fill="#ff00ff" opacity="0"/>
+  <rect id="hint-left-margin" width="2" height="2" fill="#ff00ff" opacity="0"/>
+  <rect id="hint-right-margin" width="2" height="2" fill="#ff00ff" opacity="0"/>
+</svg>

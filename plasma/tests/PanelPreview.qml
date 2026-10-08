@@ -19,6 +19,24 @@ Window {
     KSvg.Svg { id: nativeSwitch; objectName: "nativeSwitchSvg"; imagePath: "widgets/switch" }
     KSvg.Svg { id: nativeSlider; objectName: "nativeSliderSvg"; imagePath: "widgets/slider" }
     KSvg.Svg { id: nativeList; objectName: "nativeListSvg"; imagePath: "widgets/listitem" }
+    KSvg.Svg { id: previewClockSvg; imagePath: artworkRoot + "/widgets/clock.svg" }
+
+    component PreviewHand: KSvg.SvgItem {
+        id: previewHand
+        required property string pivotId
+        required property real dialScale
+        required property real angle
+        svg: previewClockSvg
+        readonly property rect pivot: svg.elementRect(pivotId)
+        readonly property rect bounds: svg.elementRect(elementId)
+        readonly property real pivotX: (pivot.x - bounds.x + pivot.width / 2) * dialScale
+        readonly property real pivotY: (pivot.y - bounds.y + pivot.height / 2) * dialScale
+        width: naturalSize.width * dialScale
+        height: naturalSize.height * dialScale
+        x: parent.width / 2 - pivotX
+        y: parent.height / 2 - pivotY
+        transform: Rotation { angle: previewHand.angle; origin.x: previewHand.pivotX; origin.y: previewHand.pivotY }
+    }
 
     KSvg.FrameSvgItem {
         id: panel
@@ -98,28 +116,33 @@ Window {
                     ControlTile { text: "Settings"; iconName: "preferences-system" }
                 }
             }
-            KSvg.FrameSvgItem {
+            Item {
                 Layout.preferredWidth: 134
                 Layout.fillHeight: true
-                imagePath: artworkRoot + "/widgets/button.svg"
-                prefix: "normal"
                 Row {
                     anchors.centerIn: parent
                     spacing: 4
                     Repeater {
                         model: 2
-                        delegate: KSvg.FrameSvgItem {
+                        delegate: Item {
                             required property int index
                             width: 57
-                            height: 42
-                            imagePath: artworkRoot + "/widgets/pager.svg"
-                            prefix: index === 0 ? "active" : "normal"
+                            height: 52
+                            // Illustrative windows beneath the frame, matching
+                            // the stock pager's actual stacking order.
                             Rectangle {
+                                z: 1
                                 x: 8; y: 9; width: 29; height: 18
                                 color: index === 0 ? "#789c9c" : "#aaa9a2"
                                 border.color: "#41413b"
                             }
-                            Rectangle { x: 26; y: 19; width: 23; height: 14; color: "#c1c1c1"; border.color: "#41413b" }
+                            Rectangle { z: 1; x: 26; y: 25; width: 23; height: 14; color: "#aaa9a2"; border.color: "#41413b" }
+                            KSvg.FrameSvgItem {
+                                anchors.fill: parent
+                                z: 2
+                                imagePath: artworkRoot + "/widgets/pager.svg"
+                                prefix: parent.index === 0 ? "active" : "normal"
+                            }
                         }
                     }
                 }
@@ -127,8 +150,13 @@ Window {
             KSvg.FrameSvgItem {
                 Layout.preferredWidth: 198
                 Layout.fillHeight: true
-                imagePath: artworkRoot + "/widgets/button.svg"
+                imagePath: artworkRoot + "/widgets/instrument.svg"
                 prefix: "normal"
+                KSvg.FrameSvgItem {
+                    anchors.fill: parent
+                    anchors.margins: 4
+                    imagePath: artworkRoot + "/widgets/instrument-well.svg"
+                }
                 Row {
                     anchors.centerIn: parent
                     spacing: 3
@@ -143,31 +171,53 @@ Window {
                     }
                 }
             }
-            KSvg.FrameSvgItem {
+            Item {
+                id: previewClock
                 Layout.preferredWidth: 64
                 Layout.fillHeight: true
-                imagePath: artworkRoot + "/widgets/button.svg"
-                prefix: "normal"
-                // Schematic clock face only; production uses the actual clock applet.
-                Rectangle {
-                    anchors.centerIn: parent
-                    width: 42; height: 42
-                    radius: 21
-                    color: "#e5e5da"
-                    border.color: "#41413b"
-                    Repeater {
-                        model: 12
-                        delegate: Rectangle {
-                            required property int index
-                            width: 1; height: 3
-                            x: 20 + 16 * Math.sin(index * Math.PI / 6)
-                            y: 20 - 16 * Math.cos(index * Math.PI / 6)
-                            color: "#41413b"
-                        }
-                    }
-                    Rectangle { x: 20; y: 8; width: 2; height: 15; color: "#41413b" }
-                    Rectangle { x: 20; y: 20; width: 11; height: 2; color: "#41413b" }
+                KSvg.FrameSvgItem {
+                    anchors.fill: parent
+                    imagePath: artworkRoot + "/widgets/instrument.svg"
+                    prefix: previewClockMouse.pressed ? "pressed" : "normal"
                 }
+                KSvg.FrameSvgItem {
+                    anchors.fill: parent
+                    anchors.margins: 4
+                    imagePath: artworkRoot + "/widgets/instrument-well.svg"
+                }
+                Item {
+                    anchors.centerIn: parent
+                    anchors.horizontalCenterOffset: previewClockMouse.pressed ? 1 : 0
+                    anchors.verticalCenterOffset: previewClockMouse.pressed ? 1 : 0
+                    width: 42
+                    height: 42
+                    KSvg.SvgItem {
+                        id: previewClockFace
+                        anchors.fill: parent
+                        svg: previewClockSvg
+                        elementId: "ClockFace"
+                    }
+                    PreviewHand {
+                        elementId: "HourHand"
+                        pivotId: "hint-hourhand-rotation-center-offset"
+                        dialScale: previewClockFace.width / Math.max(1, previewClockFace.naturalSize.width)
+                        angle: 180 + 10 * 30 + 10 / 2
+                    }
+                    PreviewHand {
+                        elementId: "MinuteHand"
+                        pivotId: "hint-minutehand-rotation-center-offset"
+                        dialScale: previewClockFace.width / Math.max(1, previewClockFace.naturalSize.width)
+                        angle: 180 + 10 * 6
+                    }
+                    KSvg.SvgItem {
+                        anchors.centerIn: parent
+                        width: naturalSize.width * previewClockFace.width / Math.max(1, previewClockFace.naturalSize.width)
+                        height: width
+                        svg: previewClockSvg
+                        elementId: "HandCenterScrew"
+                    }
+                }
+                MouseArea { id: previewClockMouse; anchors.fill: parent }
             }
         }
     }
