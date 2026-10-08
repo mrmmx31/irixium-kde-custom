@@ -3,13 +3,30 @@
 An independent Plasma Style for the user's DomainOS panel design. The existing
 `IrixClassic` option and its panel are retained unchanged. This option uses the
 blue/gray palette and closely spaced woven pixels of the supplied HP workstation
-reference: straight stepped light edges, opaque recessed compartments, ruled
+reference: straight stepped light edges, opaque recessed compartments, hatched
 command rails, a solid blue clock dial, white hands and a narrow yellow pager
 selection border. Button states invert the relief directly, without animation
 or an added timer. There are no gradients, blurred shadows or rounded plates.
-Each new rim combines four narrow 1px bands: a dark contour, light crest,
-counter-relief and blue lip. Raised/pressed states reverse those bands without
-changing the four-pixel native margins, center tile period or resource bounds.
+Each new rim combines four narrow 1px bands: a pale light crest, turquoise
+shoulder, shadow counter-relief and pale blue lip. Raised/pressed states reverse
+the opposing bands without changing the four-pixel native margins, center tile
+period or resource bounds.
+The instrument weave alternates dark `#194b63` and pale `#a3d0e6` cells at each
+physical pixel, repeating every two pixels. The command rail uses `#3e536e`
+and `#c4d5ed`, with **four central grooves**. Each groove has a light row,
+checker row and dark row; a dark cap precedes the group and a light cap follows
+it. The remaining upper/lower margins retain the checker pattern. Its outer
+rim is simple light/dark, without the instruments' turquoise shoulder. These
+colors and frequencies were measured in the DomainOS SR10.4 reference; they
+replace the earlier sparse diagonal weave and full-height horizontal stripes.
+Unlike the instrument weave, the command rail intentionally omits the
+nonvisual `hint-tile-center`: KSvg's hint tiles both directions and would repeat
+the four grooves vertically. Default center stretching preserves their count.
+All visual element IDs/bounds and four-pixel margin hints remain unchanged.
+This native fallback stretches checker spacing with its center and may gain
+interpolated colors at fractional sizes. The separate production panel draws
+the checker in final display pixels; selecting this Style alone cannot provide
+that custom rendering or panel geometry.
 
 The option includes the complete resource vocabulary from Classic, including
 switches, horizontal/vertical sliders, popup frames and item selection. The

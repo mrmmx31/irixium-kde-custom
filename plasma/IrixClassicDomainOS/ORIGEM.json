@@ -22,19 +22,31 @@
       "kind": "user-provided HP workstation panel reference",
       "file": "image-2.png",
       "sha256": "508aba94232ee0bf24e01d76cb10e7a43dcd3c1a2a8aab1e225f9654d4179c45"
+    },
+    {
+      "kind": "DomainOS SR10.4 VUE desktop historical screenshot",
+      "url": "https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png",
+      "sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b"
     }
   ],
   "reference_policy": "Visual study only. Reference screenshots are not copied into or distributed with the theme.",
   "palette": {
     "face": "#7894a7",
     "well": "#607f91",
-    "rim": "#263f4d",
-    "shadow": "#405c6c",
-    "highlight": "#bed0d4",
-    "pale": "#a2d0e7",
-    "blue": "#3296c4",
-    "white": "#ecffff",
+    "rim": "#194b63",
+    "shadow": "#3e536e",
+    "highlight": "#c5e8e6",
+    "pale": "#a3d0e6",
+    "turquoise": "#7acac5",
+    "blue": "#3297c7",
+    "white": "#ffffff",
     "text": "#102b37",
+    "weave": "#6a889a",
+    "active": "#dddd28",
+    "weave_dark": "#194b63",
+    "weave_light": "#a3d0e6",
+    "rail_dark": "#3e536e",
+    "rail_light": "#c4d5ed",
     "selection_rim": "#dddd28"
   },
   "local_changes": [
@@ -45,11 +57,13 @@
     "Legacy resources retain their element contracts; semi-transparent paint and gradient definitions are flattened and rounded rectangle radii are removed.",
     "Native shadow contracts remain empty; input states use immediate inverted relief.",
     "Local colors file supplies the matching Plasma palette without selecting an application scheme or changing a layout.",
-    "HP reference relief refinement: four distinct opaque one-pixel contour/highlight/counter-relief/blue-lip bands; pressed and recessed rims reverse those bands. Four-pixel margins, SVG IDs/bounds and native center tiling stay unchanged."
+    "HP reference relief refinement: four distinct opaque one-pixel contour/highlight/counter-relief/blue-lip bands; pressed and recessed rims reverse those bands. Four-pixel margins, SVG IDs/bounds and native center tiling stay unchanged.",
+    "SR10.4 Motif/VUE finish correction: measured two-color checker instrument wells and three-row hatched command rail; brighter raised crest/turquoise shoulder and immediate opposite relief on press. No resource geometry or margins change.",
+    "Lower command rail correction: four centered light/checker/dark grooves between dark/light caps; surrounding checker margins and a simple two-tone rim. Only nonvisual command-rail hint-tile-center is removed to avoid vertically repeated grooves; all 1906 remaining IDs/bounds and margin contracts stay unchanged."
   ],
   "resources": {
     "dialogs/background.svg": {
-      "sha256": "9422209d1251e5bf8f1a987f6163b6df594f7b010c88b54eea65739984d9b7fa",
+      "sha256": "d3c3b251f15cbdc0094d429f2d08f5e29ee6f0758819ea0b62d1acccd5490b9f",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -85,19 +99,19 @@
       "license": "GPL-3.0"
     },
     "widgets/background.svg": {
-      "sha256": "579b437442ab137bd4f6e2d598f6d200f84a8e57e9f6d61ca5c3ee70490afd9c",
+      "sha256": "375a875ad037d69a8a3e098377b02576e841ea46129ce506c511751e1cc12151",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/bar_meter_horizontal.svg": {
-      "sha256": "1e39df8b42795454cff36bd153f3c9420677625ea94a943bb0f0dc06b735fbf3",
+      "sha256": "a292d2ab871bfae7615d1fd8c85d64dfa902d0f3da79550e59e226aa198ae2ed",
       "source": "derivative of plasma/IrixClassic/widgets/bar_meter_horizontal.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/bar_meter_vertical.svg": {
-      "sha256": "1e39df8b42795454cff36bd153f3c9420677625ea94a943bb0f0dc06b735fbf3",
+      "sha256": "a292d2ab871bfae7615d1fd8c85d64dfa902d0f3da79550e59e226aa198ae2ed",
       "source": "derivative of plasma/IrixClassic/widgets/bar_meter_vertical.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
@@ -109,7 +123,7 @@
       "license": "GPL-3.0"
     },
     "widgets/button.svg": {
-      "sha256": "fc92579ec0469aa9651cdb8fe649850fcebf308785e8c0109596c2c54a2a05e5",
+      "sha256": "f33608244d539ea708672e0456ab6ff821b5e20b2f6ac5d4fbb88cf0ed19844a",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -127,37 +141,37 @@
       "license": "GPL-3.0"
     },
     "widgets/clock.svg": {
-      "sha256": "3e484d1b3b27b034bcab3ab768e93142bd1a67336e9a2bbea0c25cebc64c838f",
+      "sha256": "83320c1e1758721189b1cedadb308ed84babcafb76ff86dee9f41434949b9c8b",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/command-rail.svg": {
-      "sha256": "a09fb9b669a4aecb74c338d227b4f90d0dce948ca2e1d6e7699864f87e97fdd6",
+      "sha256": "cb68c6b6df6c90579c02d3bca8fbb8afc7549a14c9e53958fd644675b32544e3",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/frame.svg": {
-      "sha256": "3a6ec9a08f4bc664983f481883ec240c8e9d6ae85f7f475e8f7a8efacfdc1719",
+      "sha256": "6a4ca46063cee3170c29be3d3210ef5328cc8678579576de5af98786c6cce8d6",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/iconbox.svg": {
-      "sha256": "182439c78188ba2afefff9cd30a5a04df7772bb79e89784221d9d16887e17b75",
+      "sha256": "cc30d6d796b19822f4c33dc9c468117ed4c6d3f5ddc979f53a0722cc24a2187f",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/instrument-well.svg": {
-      "sha256": "8312fbc929b1cc0db77f001a0943119fbb3f2c1f341ae8356351cb4a394b0181",
+      "sha256": "804093ff6f842177fcedd589a6a5c7fed9103f24d1fedc7a19b890b8084faa12",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/instrument.svg": {
-      "sha256": "cc85fc53c6b7d297d62d565b21ec30b6d210353c452488d61dec30df4f013d67",
+      "sha256": "74ca8aac29ddcfc2bdfe7ddbb2d0237c3b71a7106be2ee60b6498b07d830e234",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -169,31 +183,31 @@
       "license": "GPL-3.0"
     },
     "widgets/lineedit.svg": {
-      "sha256": "d1bf8f7ebcce741cbe72d271c1e6792b56886cc861a2fbb88edd62ceea392747",
+      "sha256": "4b8e7a83ecd7b5109408d4df00684667544dac6005ddaa9ca4fcbd801f37360c",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/listitem.svg": {
-      "sha256": "98d558b5559c286a99311d223cd0d9c008b4db7382d7089b2a2d72579425caa1",
+      "sha256": "fceb51006b2f394b9bdb7b900a523a3faea16c587d554becd21cc1a7efb6df2f",
       "source": "derivative of plasma/IrixClassic/widgets/listitem.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/pager.svg": {
-      "sha256": "38b31c1b813e6030610dab1e7d8eb74e060c0451982eb0ffbaa94212991baaf0",
+      "sha256": "9a805a979c575bbc4d95054cd11ac77ccabf48d8a1a3891377d7b68b4a7a99ae",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/panel-background.svg": {
-      "sha256": "bd7d50b6ee4465ee3fe96a5ad5d9c634264e1bdc8511461a74eb5ce9ba2230f5",
+      "sha256": "03b0024c041664b9e5dfbbca416e18bffb2e2af57f9120342221c00340d8202e",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/plasmoidheading.svg": {
-      "sha256": "d6149d60a73d9f0e8ce40597d6e087fdb724043f61a4a69f7bdbf3e3c9ad61ff",
+      "sha256": "4e1fa2f70d540f51e3521da1c4ab2aaab4bdbf88a81068af9d90634805ecd436",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -205,49 +219,49 @@
       "license": "GPL-3.0"
     },
     "widgets/scrollbar.svg": {
-      "sha256": "01892f6e2e78b513502abb6031aafd1515f2720d3ead3e40685e7b8cb42416f0",
+      "sha256": "408f66865eeeb2e9682c44b2f4fa18d9e211623965969296bedd293fc0b9d844",
       "source": "derivative of plasma/IrixClassic/widgets/scrollbar.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/slider.svg": {
-      "sha256": "e3cbf260ef2afbabc57f914e531fcaf5327cedcbbe2946d90c2f88c4eea1076c",
+      "sha256": "dec7352017fbdebe2a4f997665c572df353331731c0f8d5d93d8239b2188e46d",
       "source": "derivative of plasma/IrixClassic/widgets/slider.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/switch.svg": {
-      "sha256": "44edf1d42a5a8e330ac3d93f8f0a1b1ba611c946635a1e29702aa882e4374931",
+      "sha256": "ba970fc474688b8b2bb737c286660384317c4f538eedcc51e09141e87379d00c",
       "source": "derivative of plasma/IrixClassic/widgets/switch.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/tabbar.svg": {
-      "sha256": "ab0beb437fb63c1ca8522c8d69768f7e606a9de976b0f2e32222218c1e781d7a",
+      "sha256": "1233f4eb872131fc666ab25a62ed4b809366362f72b83f784a66f61d1978c02e",
       "source": "derivative of plasma/IrixClassic/widgets/tabbar.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/task-icon.svg": {
-      "sha256": "af1e938e25d61af736b6bd0fdee095b99f4049de60ffe0b5814a29b3c024a9d2",
+      "sha256": "63862fed3c06c29df2060d408643e73b823b9f615d474a5158240c6622aefe99",
       "source": "derivative of plasma/IrixClassic/widgets/task-icon.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/tasks.svg": {
-      "sha256": "9792721b9d3e28cc1bef0c526097714caeb50793f80f15ec5086c773fa6c4b7b",
+      "sha256": "a0c5ad50962d50da97d73a34daa76d4f498b7e0aedd471cfa79e4b0b1ece2941",
       "source": "derivative of plasma/IrixClassic/widgets/tasks.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
     },
     "widgets/tooltip.svg": {
-      "sha256": "9422209d1251e5bf8f1a987f6163b6df594f7b010c88b54eea65739984d9b7fa",
+      "sha256": "d3c3b251f15cbdc0094d429f2d08f5e29ee6f0758819ea0b62d1acccd5490b9f",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/viewitem.svg": {
-      "sha256": "5686f028b5d09b33c1b71759f6ffc79603e18b40e5cf7379062b74e01ca9c441",
+      "sha256": "cde432b6171527e2266aa8638b0137f9768e80860e15aca41ec6553bd6a2bda9",
       "source": "derivative of plasma/IrixClassic/widgets/viewitem.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"
@@ -263,18 +277,52 @@
     "physical_margin": 4,
     "band_width": 1,
     "raised_top_outer_to_inner": [
-      "#263f4d",
-      "#bed0d4",
-      "#405c6c",
-      "#a2d0e7"
+      "#c5e8e6",
+      "#7acac5",
+      "#3e536e",
+      "#a3d0e6"
     ],
     "raised_bottom_inner_to_outer": [
-      "#405c6c",
-      "#a2d0e7",
-      "#6a889a",
-      "#263f4d"
+      "#7894a7",
+      "#a3d0e6",
+      "#3e536e",
+      "#194b63"
     ],
     "sunken": "reverse opposing raised bands",
     "rendering": "opaque discrete pixels; no gradient, filter or animation"
+  },
+  "textures": {
+    "instrument_weave": {
+      "colors": [
+        "#194b63",
+        "#a3d0e6"
+      ],
+      "cell_pixels": 1,
+      "period_pixels": [
+        2,
+        2
+      ],
+      "pattern": "alternating opaque dark/light checker cells"
+    },
+    "command_rail": {
+      "colors": [
+        "#3e536e",
+        "#c4d5ed"
+      ],
+      "background_period_pixels": [
+        2,
+        2
+      ],
+      "groove_count": 4,
+      "groove_rows": [
+        "light",
+        "alternating dark/light cells",
+        "dark"
+      ],
+      "placement": "four centered grooves, dark cap above, light cap below; remaining rows retain the checker background",
+      "center_scaling": "native stretch; hint-tile-center intentionally omitted to prevent vertical groove repetition",
+      "rim": "four-pixel simple light top/left and dark bottom/right",
+      "native_limit": "KSvg center stretching widens checker spacing and may interpolate colors; the panel QML supplies final-pixel checker frequency"
+    }
   }
 }

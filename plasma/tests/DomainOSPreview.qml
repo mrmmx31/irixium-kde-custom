@@ -15,6 +15,7 @@ Window {
     property real drawingScale: 1
     DomainOS.DomainOSPanel {
         id: panel
+        followSystemColors: false
         x: 112
         y: 296
         width: 1942*window.drawingScale

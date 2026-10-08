@@ -12,6 +12,7 @@ import sys
 sys.dont_write_bytecode = True
 
 import argparse
+import configparser
 import hashlib
 import json
 import os
@@ -36,7 +37,17 @@ def hashes(root):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--saida',type=Path,help='New/empty output directory; default a new /tmp directory')
+    parser.add_argument('--esquema',type=Path,default=REPO/'colors/DomainOS-SR10.4.colors',help='KDE color scheme for the private session only')
     args=parser.parse_args()
+    if not args.esquema.is_file():parser.error('Color scheme file does not exist')
+    schema=configparser.ConfigParser(interpolation=None);schema.optionxform=str
+    schema.read(args.esquema)
+    def schema_color(section,key):
+        return '#'+''.join(f'{int(value):02x}' for value in schema[section][key].split(',')[:3])
+    expected_palette={role:schema_color(section,key) for role,section,key in (
+        ('window','Colors:Window','BackgroundNormal'),('base','Colors:View','BackgroundNormal'),
+        ('windowText','Colors:Window','ForegroundNormal'),('highlight','Colors:Selection','BackgroundNormal'),
+        ('highlightedText','Colors:Selection','ForegroundNormal'))}
     for tool in ('c++','pkg-config','xvfb-run','dbus-run-session','kpackagetool6','plasmawindowed'):
         if not shutil.which(tool):parser.error('Missing optional native test tool: '+tool)
     output=args.saida.resolve() if args.saida else Path(tempfile.mkdtemp(prefix='irix-domainos-package-'))
@@ -56,13 +67,13 @@ def main():
         shutil.copytree(style,target,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
         style_inventories[name]={'source_sha256':hashes(style),'staged_matches_source':hashes(style)==hashes(target)}
     (paths['config']/'plasmarc').write_text('[Theme]\nname=IrixClassicDomainOS\n')
-    (paths['config']/'kdeglobals').write_text((REPO/'plasma/IrixClassicDomainOS/colors').read_text())
+    (paths['config']/'kdeglobals').write_text(args.esquema.read_text())
     # No service directories: this isolated session bus cannot activate daemons.
     bus=fixture/'private-bus.conf'
     bus.write_text('<!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-Bus Bus Configuration 1.0//EN"\n"http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">\n<busconfig><type>session</type><listen>unix:tmpdir=/tmp</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>\n')
     env=os.environ.copy()
     for name in ('DISPLAY','WAYLAND_DISPLAY','DBUS_SESSION_BUS_ADDRESS','DBUS_STARTER_ADDRESS','DBUS_STARTER_BUS_TYPE','SESSION_MANAGER','LD_PRELOAD','QML_IMPORT_PATH','QML2_IMPORT_PATH','QT_STYLE_OVERRIDE','QT_QUICK_CONTROLS_STYLE','XDG_SESSION_ID','KDE_FULL_SESSION','KDE_SESSION_VERSION'):env.pop(name,None)
-    env.update(HOME=str(paths['home']),XDG_DATA_HOME=str(paths['data']),XDG_CONFIG_HOME=str(paths['config']),XDG_CACHE_HOME=str(paths['cache']),XDG_STATE_HOME=str(paths['state']),XDG_RUNTIME_DIR=str(paths['runtime']),XDG_DATA_DIRS='/usr/local/share:/usr/share',XDG_CONFIG_DIRS='/etc/xdg',XDG_CURRENT_DESKTOP='NONE',XDG_SESSION_TYPE='x11',QT_QPA_PLATFORM='xcb',QT_QPA_PLATFORMTHEME='generic',QT_ACCESSIBILITY='0',QT_QUICK_BACKEND='software',LIBGL_ALWAYS_SOFTWARE='1',DBUS_SYSTEM_BUS_ADDRESS='unix:path='+str(paths['runtime']/'no-system-bus'))
+    env.update(HOME=str(paths['home']),XDG_DATA_HOME=str(paths['data']),XDG_CONFIG_HOME=str(paths['config']),XDG_CACHE_HOME=str(paths['cache']),XDG_STATE_HOME=str(paths['state']),XDG_RUNTIME_DIR=str(paths['runtime']),XDG_DATA_DIRS='/usr/local/share:/usr/share',XDG_CONFIG_DIRS='/etc/xdg',XDG_CURRENT_DESKTOP='NONE',XDG_SESSION_TYPE='x11',QT_QPA_PLATFORM='xcb',QT_QPA_PLATFORMTHEME='kde',QT_ACCESSIBILITY='0',QT_QUICK_BACKEND='software',LIBGL_ALWAYS_SOFTWARE='1',DBUS_SYSTEM_BUS_ADDRESS='unix:path='+str(paths['runtime']/'no-system-bus'))
     helper_source=REPO/'plasma/tests/domainos-package-host.cpp';helper=output/'domainos-package-host.so'
     flags=shlex.split(subprocess.check_output(['pkg-config','--cflags','--libs','Qt6Widgets'],text=True))
     subprocess.run(['c++','-std=c++17','-shared','-fPIC',str(helper_source),'-o',str(helper),*flags,'-ldl'],check=True)
@@ -77,7 +88,7 @@ def main():
     qml_errors=[line for line in result.stdout.splitlines() if re.search(r'(?:ReferenceError:|TypeError:|SyntaxError:|module .+ is not installed|Type .+ unavailable|is not a type|Cannot assign|Error loading QML|Failed to load QML|QML (?:Image|Item|Rectangle|Text):|Image: Cannot open)',line)]
     images=native.get('images',[]); loaded={Path(record['source']).name for record in images if record.get('status')==1}
     expected_png={'desk.png','xterm.png','winterm.png','john.png','index.png','downl.png'}
-    expected_svg={'metal-weave.svg','metal-lines.svg','clock-face.svg','graph-reference.svg','mail.svg'}
+    expected_svg={'metal-weave.svg','metal-lines.svg','clock-face.svg','graph-reference.svg','mail.svg','applications.svg'}
     names=set(native.get('object_names',[]))
     checks={'kpackage_metadata_discovered':discovered.returncode==0 and IDENTIFIER in discovered.stdout,
             'production_source_copy_byte_identical':source_before==copied,
@@ -95,6 +106,10 @@ def main():
             'all_seven_iconbox_instances_present':native.get('sgi_iconbox_image_items')==7,
             'native_textures_clock_graph_mail_decoded':expected_svg<=loaded,
             'requested_fonts_resolve_without_family_fallback':bool(native.get('rendered_fonts')) and all(record['resolved']==record['requested'] or record['resolved'].startswith(record['requested']+' [') for record in native.get('rendered_fonts',[])),
+            'kde_scheme_matches_native_application_palette':native.get('application_palette')==expected_palette,
+            'panel_follows_native_palette':native.get('follow_system_colors') is True and all(native.get('panel_color_roles',{}).get(role)==native.get('application_palette',{}).get(qt_role) for role,qt_role in (('background','window'),('recessed','base'),('text','windowText'),('blue','highlight'),('white','highlightedText'))),
+            'all_svg_instances_use_recolored_sources':all(record.get('recolored') is True for record in images if record['source'].endswith('.svg')),
+            'applications_drawer_graphic_present': 'domainosApplicationsDrawer' in names and 'applications.svg' in loaded,
             'fixed_modules_present':{'domainosInstitutional','domainosIconbox','domainosPager','domainosTray','domainosTrayNavigation','domainosLowerRail'}<=names,
             'two_workspace_design_blocks':native.get('workspace_count')==2,
             'two_by_three_tray_design_grid':native.get('tray_rows')==2 and native.get('tray_columns')==3,

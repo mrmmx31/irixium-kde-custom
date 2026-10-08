@@ -3,40 +3,301 @@
   "colors": {
     "background": "#7894a7",
     "recessed": "#607f91",
-    "dark": "#263f4d",
-    "shadow": "#405c6c",
-    "highlight": "#bed0d4",
-    "pale": "#a2d0e7",
-    "blue": "#3296c4",
-    "white": "#ecffff",
+    "dark": "#194b63",
+    "shadow": "#3e536e",
+    "highlight": "#c5e8e6",
+    "pale": "#a3d0e6",
+    "blue": "#3297c7",
+    "white": "#ffffff",
     "text": "#102b37",
     "black": "#07141b",
     "green": "#76a52b",
-    "green_dark": "#314a14"
+    "green_dark": "#314a14",
+    "metal_light": "#c4d5ed",
+    "metal_dark": "#3e536e",
+    "chassis_cyan": "#7acac5",
+    "chassis_cyan_shadow": "#406b68"
   },
   "native_icon_size": 32,
   "clock_size": 64,
   "metal_weave_repeat": [
-    4,
-    4
+    2,
+    2
   ],
   "metal_lines_repeat": [
-    64,
-    6
+    2,
+    2
   ],
-  "source": "Quantized and visually reconciled from supplied HP reference image-2.png; design structure from image-1.png.",
-  "rendering": "Opaque solid fills, integer pixel grids, crispEdges; no filters, gradients, shadows or animation.",
+  "source": "Geometric textures and palette reconciled with the user-supplied HP references and the DomainOS SR10.4 Virtual OS Museum screenshot.",
+  "rendering": "Opaque solid fills and pixel-sized relief; texture is rendered at final display scale, not shrunk with the 1942x218 layout.",
   "institutional_emblem": {
-    "treatment": "Matte neutral grayscale; R=G=B in every painted color.",
+    "treatment": "Dark blue lettering and pictogram on a pale/dark checker, raised simple pale/dark frame, as in the HP identification plate.",
     "colors": {
-      "outline": "#404040",
-      "shadow": "#777777",
-      "highlight": "#bebebe",
-      "eye_white": "#e5e5e5",
-      "dark": "#242424",
-      "midtone": "#999999",
-      "lettering": "#454545"
+      "body": "#3e536e",
+      "lettering": "#3e536e",
+      "highlight": "#c4d5ed"
     },
-    "body_palette_unchanged": true
+    "lettering": {
+      "lines": [
+        "GNU/",
+        "LINUX"
+      ],
+      "construction": "Original proportional integer-coordinate capitals; solid two-pixel stems and an exterior upper/left highlight; no font dependency.",
+      "native_glyph_height": 8,
+      "native_stem_width": 2,
+      "native_glyph_gap": 2,
+      "highlight_edges": [
+        "top",
+        "left"
+      ],
+      "highlight_overlaps_body": false,
+      "native_interline": 1
+    },
+    "body_palette_unchanged": true,
+    "revision_authorization": "User requested the original HP relief and non-inverted dark-on-pale colors on 2026-10-08; supersedes the earlier recessed light-on-dark seal.",
+    "drawing_height_at_half_scale": 20,
+    "plate_clearance_at_half_scale": {
+      "top": 3,
+      "bottom": 3
+    }
+  },
+  "metal_weave_colors": [
+    "#194b63",
+    "#a3d0e6"
+  ],
+  "metal_lines_colors": [
+    "#3e536e",
+    "#c4d5ed"
+  ],
+  "command_rail": {
+    "base": "two-color 2x2 checker",
+    "central_grooves": 4,
+    "groove_rows": [
+      "light",
+      "alternating light/dark",
+      "dark"
+    ],
+    "caps": [
+      "dark above",
+      "light below"
+    ],
+    "rendered_at_final_pixel_scale": true,
+    "metal_height_at_half_scale": 26,
+    "checker_margin_at_half_scale": 4
+  },
+  "indicator_lens": {
+    "native_size": [
+      19,
+      14
+    ],
+    "blue_interior": [
+      13,
+      7
+    ],
+    "blue": "#78a0d5",
+    "rim": "#c4d5ed",
+    "inner_shadow": "#3e536e",
+    "rim_size": [
+      17,
+      12
+    ],
+    "rim_offset": [
+      2,
+      2
+    ],
+    "mounting_shadow": "#3e536e",
+    "mounting_shadow_thickness": 2,
+    "right_clearance_at_half_scale": 26,
+    "position": "Centered vertically; reference clearance measured from the inner edge of the cyan chassis."
+  },
+  "chassis_foot": {
+    "cyan_height_at_half_scale": 2,
+    "shadow_height_at_half_scale": 2,
+    "cyan": "#7acac5",
+    "shadow": "#406b68",
+    "part_of_panel": true
+  },
+  "instrument_relief": {
+    "edge_thickness_at_half_scale": 2,
+    "light": "#a3d0e6",
+    "dark": "#194b63",
+    "profile": "simple uniform raised frame; inverted on pointer press",
+    "face_separation_at_half_scale": 4,
+    "empty_gap": 0,
+    "button_size_at_half_scale": [
+      83,
+      75
+    ],
+    "parent_frame": false,
+    "right_edge": "Single button shadow directly adjoining the iconbox frame",
+    "bottom_edge": "Single button shadow directly adjoining the metal rail highlight"
+  },
+  "chassis_border": {
+    "top_at_half_scale": [
+      "#c5e8e6",
+      "#c5e8e6",
+      "#7acac5",
+      "#7acac5"
+    ],
+    "left_at_half_scale": [
+      "#c5e8e6",
+      "#c5e8e6",
+      "#7acac5",
+      "#7acac5"
+    ],
+    "right_at_half_scale": [
+      "#7acac5",
+      "#7acac5",
+      "#406b68",
+      "#406b68"
+    ],
+    "module_relief_is_preserved": true
+  },
+  "upper_module_relief": {
+    "top_sequence_at_half_scale": [
+      "#c5e8e6",
+      "#c5e8e6",
+      "#7acac5",
+      "#7acac5",
+      "#a3d0e6",
+      "#a3d0e6"
+    ],
+    "own_frame_thickness_at_half_scale": 2,
+    "profile": "simple raised pale/dark frame below the cyan chassis; inner controls retain compound profile",
+    "module_top": 8,
+    "module_height": 150,
+    "module_bottom": 158
+  },
+  "instrument_faces": {
+    "reference_cell_size": [
+      76,
+      59
+    ],
+    "current_cell_size_at_half_scale": [
+      83,
+      75
+    ],
+    "uniform_scale": 1.271186440677966,
+    "scale_axis": "height; icons grow uniformly to fit the current 75px-high cells, with their button rectangles and relief unchanged",
+    "reference_blue_clock_face": [
+      48,
+      48
+    ],
+    "reference_date_and_graph": [
+      60,
+      35
+    ],
+    "reference_mail": [
+      56,
+      27
+    ],
+    "date_box_at_half_scale": [
+      76,
+      44.333333333333336
+    ],
+    "graph_box_at_half_scale": [
+      76,
+      45
+    ],
+    "mail_box_at_half_scale": [
+      71,
+      35
+    ],
+    "clock_canvas_at_half_scale": [
+      67,
+      67
+    ],
+    "clock_hand_lengths_at_half_scale": {
+      "minute": 27.035087719298247,
+      "hour": 17.63157894736842
+    },
+    "pixel_rounding_tolerance": 1,
+    "svg_fill_mode": "PreserveAspectFit",
+    "date_lettering": {
+      "historical_family": "Swiss742 Bold (documented HP VUE system family; exact date bitmap unconfirmed)",
+      "historical_reference": "https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuestyle.bsd.html",
+      "family": "Adobe Courier",
+      "weight": "bold",
+      "source": "../fonts/adobe-courier-bold-14.pcf",
+      "native_pixel_size": 14,
+      "item_scale_canonical": 2.542372881355932,
+      "fixed_line_height_native": 17,
+      "reference_white_bounds": [
+        47,
+        27
+      ],
+      "alternative_native_white_bounds": [
+        52,
+        27
+      ],
+      "display_white_bounds_at_half_scale": [
+        65,
+        35
+      ],
+      "exact_reference_match": false,
+      "loaded_only_in_applet": true,
+      "native_font_strategy": "PreferDefault: no forced antialias strategy; Fontconfig controls native rasterization",
+      "smooth": false,
+      "texture_filter": "Qt 6.8 NativeRendering glyph sampler already uses Nearest; Text.smooth=false is explicit but not the glyph filtering control",
+      "bitmap_note": "The PCF strike is naturally one-bit; enabling font antialiasing need not change its glyph pixels.",
+      "choice": "Courier-style monospaced bitmap experiment requested by the user",
+      "optical_offset_canonical": [
+        3,
+        4
+      ]
+    },
+    "clock_cardinal_marks": 4,
+    "clock_blue_bounds_at_half_scale": [
+      61,
+      61
+    ]
+  },
+  "upper_alignment": {
+    "iconbox_tasks_and_arrows": {
+      "y": 26,
+      "height": 98
+    },
+    "task_button_width": 66,
+    "sgi_bitmaps_unchanged": [
+      64,
+      64
+    ],
+    "task_bitmap_pixel_rounding_at_half_scale": 0.5,
+    "pager_card_width": 158,
+    "pager_card_x": [
+      8,
+      176
+    ],
+    "pager_card_y": 12,
+    "tray_well_y": 14,
+    "tray_rows_y": [
+      24,
+      78
+    ],
+    "navigation_rows_y": [
+      16,
+      80
+    ],
+    "pager_samples_clipped_inside_map": true
+  },
+  "applications_drawer": {
+    "stage": "graphic only, without application pinning or drawer action",
+    "icon": "applications.svg",
+    "native_size": [
+      32,
+      24
+    ],
+    "canonical_icon_size": [
+      64,
+      48
+    ],
+    "slot_x": 587,
+    "slot_width": 118,
+    "slot_height": 52,
+    "colors": [
+      "#3e536e",
+      "#c4d5ed"
+    ],
+    "symbol": "Three rectangular program windows stacked with title bars and simple content marks, on an integer 1987-style grid."
   }
 }

@@ -6,11 +6,15 @@ pelo usuário. O Irix Classic atual continua disponível como opção independen
 A referência original HP orienta a nitidez dos desenhos; o projeto do usuário
 orienta a disposição, as proporções e os elementos presentes.
 
-A etapa atual prepara o desenho, os recursos do estilo e sua apresentação nativa
-isolada. Cada função de botão depende de confirmação do usuário antes de ser
-implementada. Os requisitos funcionais abaixo continuam rastreados como parte do
-projeto: uma captura ilustrativa não os implementa nem os comprova. Concluir os
-critérios D0–D10 conclui a etapa de desenho, não todas as funções do memorial.
+O desenho foi aprovado e sua renderização isolada foi verificada. A conexão
+às cores KDE e a seleção simulada também estão implementadas e verificadas.
+A próxima etapa conecta os componentes às funções reais. Cada nova função de
+botão depende da confirmação do usuário antes de ser implementada; decisões
+já confirmadas continuam válidas. Os requisitos funcionais abaixo permanecem
+rastreados: uma captura ilustrativa não os implementa nem os comprova. Os
+critérios D0–D10 descrevem a etapa de desenho, não todas as funções do memorial.
+O texto atualizado para retomar o goal está em
+[DOMAINOS-GOAL-ATUAL.txt](DOMAINOS-GOAL-ATUAL.txt).
 
 ## Referências e geometria
 
@@ -78,6 +82,109 @@ Os botões na lateral direita são **▶ acima e ▲ abaixo**. Eles não devem s
 desenhados como duas setas verticais apenas porque o memorial usa a expressão
 “paginação vertical”. As funções desses dois botões permanecem pendentes.
 
+### Ajuste de proporções solicitado durante a revisão no Xephyr
+
+As tabelas acima registram as medidas do projeto inicial. Na revisão seguinte,
+o usuário pediu ampliar os quatro instrumentos, reduzir a iconbox e igualar a
+largura dos grupos esquerdo e direito. A geometria vigente mantém a chapa de
+1942×218, com os módulos superiores em coordenadas locais:
+
+| Módulo | X | Largura |
+| --- | --- | --- |
+| Quatro instrumentos | 4 | 668 |
+| Iconbox | 672 | 594 |
+| Pager | 1266 | 342 |
+| Bandeja | 1608 | 202 |
+| Setas direitas | 1810 | 124 |
+
+Pager, bandeja e setas somam **668**, como o grupo esquerdo. Os quatro
+instrumentos têm 166×150, posições X 4/170/336/502 e Y = 4. As molduras
+encostam sem espaço vazio entre elas. O primeiro começa depois da lateral
+ciano do chassi; o último termina na iconbox, e todos terminam na barra
+metálica abaixo, sem uma segunda moldura do contêiner. Em 50% são botões de
+83×75. Os desenhos são recentrados dentro dos botões. As faces originais
+de data/gráfico têm 60×35 e a do Mail tem 56×27. A ampliação dos desenhos
+segue aproximadamente a razão entre as alturas dos botões, 75/59, mantendo
+os quatro botões e seus relevos inalterados. O relógio usa um canvas de
+134×134 unidades, ou 67×67 pixels em 50%: o azul ocupa cerca de 61×61 e as
+quatro marcas cardinais têm extensão de 62 pixels. Seus ponteiros afilados
+compartilham o centro e têm raios aproximados de 27/18 pixels em 50%.
+A face de data é 152×88,67 unidades, ou 76×44,33 pixels em 50%. Gráfico e
+Mail usam caixas de 152×90 e 142×70, respectivamente, com `PreserveAspectFit`;
+as faces pintadas medem 76×44,33 e 71×34,23 pixels em 50%, sem deformação.
+
+A data carrega `contents/fonts/adobe-courier-bold-14.pcf` por `FontLoader`
+privado do aplicativo: tamanho bitmap nativo 14, entrelinha fixa 17 e escala
+uniforme `2*75/59` antes da escala do painel. A inscrição branca ocupa cerca
+de 65×35 pixels na captura em 50%. O PCF Latin-1 vem de `font-adobe-75dpi`,
+com licença e procedência em `contents/fonts/LICENSE` e
+`contents/fonts/ORIGEM.json`; não instala fontes globalmente nem altera a
+fonte escolhida pelo usuário. O [manual HP VUE2.01 do SR10.4](https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuestyle.bsd.html)
+documenta Swiss742 Bold como fonte histórica de sistema, mas não confirma
+o bitmap específico da data. Adobe Courier Bold é a experiência monoespaçada
+solicitada pelo usuário, sem alegar reprodução exata da fonte da captura.
+O texto usa `Text.NativeRendering`, `Text.PlainText` e `smooth: false`, com
+estratégia padrão para respeitar as preferências nativas de Qt/Fontconfig.
+Não há `antialiasing: false` forçado nem leitura/escrita de configurações
+globais. O sampler de glifos NativeRendering do Qt 6.8 já usa Nearest;
+`smooth` só controla imagens embutidas, não é tratado como correção de AA
+dos glifos. O PCF permanece naturalmente binário mesmo com antialiasing
+ativado. A preferência foi comprovada em OpenGL usando dois perfis privados
+de Fontconfig e uma fonte vetorial de controle. Fonte, escala e entrelinha
+são preservadas, sem timers ou auxiliares C++ adicionais.
+
+O relevo dos instrumentos tem duas linhas claras no topo/esquerda e duas
+escuras embaixo/direita em 50%, com perfil simples e quatro pixels entre as faces vizinhas,
+como na referência HP. Os demais módulos superiores começam em Y = 8 e têm
+altura 150, expondo suas duas linhas claras próprias abaixo do chassi ciano.
+As molduras externas também são simples; os controles internos mantêm o
+perfil composto. Os sete exemplos da iconbox ficam centrados, com botões
+66×98 em Y = 26, intervalos iguais e bitmaps de 64×64 preservados. Os dois
+cartões do pager têm 158×126, X = 8/176 e Y = 12; suas amostras ficam contidas
+no mapa. A bandeja tem poço em Y = 14, linhas em 24/78, e as setas direitas
+ficam em Y = 16/80, mantendo folgas verticais iguais.
+
+O poço da bandeja fica centralizado, com folgas iguais à esquerda/direita e
+acima/abaixo do grid. O indicador inferior mede 38×28, com aro interno 34×24
+centralizado verticalmente na barra e 52 unidades afastado da direita. Na
+escala 50%, o conjunto mede 19×14, com aro de 17×12 e distância de 26 pixels;
+sua lente azul tem 13×7. O encaixe tem dois pixels de sombra acima/esquerda,
+aro claro e sombra interna inferior/direita. A ampliação do encaixe preserva
+a posição da lente.
+
+O selo GNU/LINUX usa a paleta azul do corpo, substituindo a orientação anterior
+de cinzas neutros. A revisão seguinte corrigiu a inversão: a inscrição bitmap
+em duas linhas é escura sobre trama clara, sem retângulo sólido, e sua moldura
+simples é elevada. O desenho das letras tem hastes uniformes e realce apenas
+fora do contorno escuro. O desenho tem 20 pixels de altura, com três pixels
+livres acima/abaixo na placa de 26 pixels e interlinha de um pixel. Ele mostra
+apenas pressão/cancelamento; não abre ajuda.
+
+A faixa metálica tem quatro sulcos centrais de três linhas, com caps e trama
+acima/abaixo. Na revisão de altura, ela ocupa y = 158 a 210 (52 unidades;
+26 pixels em 50%), com quatro pixels de trama acima e abaixo. O chassi termina
+com friso ciano em y = 210 a 214 e sombra ciano em y = 214 a 218, dois pixels
+cada em 50%. O contêiner dos quatro instrumentos ocupa 154 unidades de altura;
+seus botões continuam com 150, assim como os demais módulos superiores.
+Os conteúdos mantêm as margens equilibradas; o painel total continua 1942 × 218.
+A faixa metálica ocupa X = 8 a 1934: 1926 unidades. As laterais do chassi têm
+espaço próprio: em 50%, a direita apresenta dois pixels ciano e dois de sombra;
+a esquerda, dois claros e dois ciano. O topo tem dois claros e dois ciano. O rodapé
+mantém as mesmas cores e altura. A lente conserva sua folga interna de
+26 pixels à direita. Não se repete o desenho dos riscos pela altura inteira. Os cinco
+símbolos inferiores usam duas cores e canvases 32×24; terminal/teclado,
+paleta com recortes, faixa de ferramentas, cadeado e interrogação seguem as
+silhuetas da referência HP, sem atribuir ações por seu desenho.
+
+A célula antes vazia em X = 587, largura 118 e altura 52 na faixa inferior
+agora contém o botão `domainosApplicationsDrawer`. Seu `applications.svg`
+de 32×24 desenha três janelas quadradas sobrepostas em `#3e536e`/`#c4d5ed`;
+o QML exibe o símbolo em 64×48 unidades. O botão oferece apenas pressão e
+cancelamento. O usuário propôs associar futuramente os aplicativos de
+“pin to task manager” a essa gaveta, mas pediu aguardar seu documento antes
+de implementar o comportamento. Essa função é F32; não altera os cinco
+atalhos inferiores nem a iconbox de janelas minimizadas.
+
 ## Matriz da etapa de desenho
 
 Cada evidência deve ser obtida do estado atual dos arquivos ou da execução
@@ -88,12 +195,12 @@ resultado visual.
 | --- | --- | --- |
 | D0 | Manter o Plasma Style e o painel Irix Classic atuais como opção independente | Comparar hashes da base Classic; preservar seus IDs, defaults do tema global, `profiles.classic` e o mapeamento de migração do painel existente |
 | D1 | Acrescentar o estilo e o applet com identidades próprias, instaláveis offline por usuário | Metadados descobertos como `IrixClassicDomainOS` e `org.irixclassic.domainos.panel`; catálogo e instalação em XDG temporário; configurações e layouts de outros perfis intactos |
-| D2 | Unificar os contêineres em QML para a chapa formar dois andares contínuos | Captura nativa do mesmo componente usado pelo applet; comparar molduras, módulos, proporções e divisão 154/64 com a referência |
-| D3 | Manter relógio circular azul, data monoespaçada de traços rígidos, gráfico azul/branco e correio exatamente na composição esquerda do projeto | Captura geral e detalhe; confirmar os quatro campos, desenhos e cores, sem trocar a face por um relógio digital ou medidor moderno; uma fonte/desenho bitmap local não altera a fonte global do usuário |
+| D2 | Unificar os contêineres em QML para a chapa formar dois andares contínuos | Captura nativa do mesmo componente; comparar molduras e módulos, metal de 26 pixels e rodapé ciano de 2 + 2 pixels em 50%, preservando o painel total |
+| D3 | Manter relógio circular azul, data bitmap proporcional de traços rígidos, gráfico azul/branco e correio na composição esquerda do projeto | Captura geral e detalhe; confirmar os quatro campos, desenhos e cores, sem trocar a face por um relógio digital ou medidor moderno; registrar a experiência Courier solicitada pelo usuário e a família histórica provável Swiss742 e verificar o carregamento privado da fonte |
 | D4 | Desenhar iconbox com sete itens e duas setas Motif laterais | Conferir a ordem `Desk`, `xterm`, `winterm`, `john`, `Index`, `Downl`, `xterm`, as etiquetas curtas e os ícones no padrão IRIX Classic |
 | D5 | Desenhar dois quadros de áreas e miniaturas geométricas | Conferir `Work` e `Procrastination` no exemplo e a borda amarela do segundo quadro; identificar explicitamente os dados como ilustração do desenho |
 | D6 | Desenhar bandeja compacta com seis ícones fixos e dois botões direitos | Conferir matriz 2 × 3, relevo, desenhos inspirados na referência HP e setas ▶/▲; não apresentar os ícones ilustrativos como status real de serviços |
-| D7 | Preservar toda a faixa inferior, seus campos vazios e cinco atalhos | Captura com selo GNU/LINUX monocromático fosco, filetes horizontais, cinco desenhos centrais e indicador pequeno à direita; conferir os intervalos da referência |
+| D7 | Preservar a faixa inferior, os espaços de chapa e os cinco atalhos, com a nova gaveta de aplicativos na célula anterior aos atalhos | Captura com selo GNU/LINUX escuro sobre trama clara e placa simples elevada; quatro sulcos centrais, símbolo da gaveta com três janelas, cinco desenhos de duas cores e lente com aro claro/sombra interna |
 | D8 | Usar a estética UNIX sóbria da referência e preservar os ícones IRIX fora dos elementos fixos | Paleta própria azul aço, chapa opaca e botões ortogonais; relevos por filetes sólidos, sem blur, cantos arredondados ou transições decorativas; círculos do relógio e dos desenhos originais permanecem |
 | D9 | Verificar renderização nativa e estados visuais sem atribuir ações novas aos botões | Prints normal/pressionado/cancelado, geometria estável e logs sem erros QML; componente de produção compartilhado entre preview e applet; teste não chama aplicações, redes, bloqueio ou troca de área |
 | D10 | Manter todas as funções ainda não confirmadas pendentes e todos os perfis protegidos | Revisão dos handlers e bindings, relatório de isolamento, invariantes de configurações reais e lista F abaixo; instalar recursos não altera quantidade/nomes de desktops nem substitui o painel em uso |
@@ -148,6 +255,7 @@ apenas o relevo faz parte do teste do desenho.
 | F29 | Indicador pequeno à direita da faixa inferior | Significado, estados e eventual ação |
 | F30 | Inserção/troca do painel na sessão real | Usuário, tela, altura, posição, substituição ou coexistência, preservação dos widgets/configurações e caminho de restauração |
 | F31 | Alternância de Plasma Style e esquema de cores | Quais recursos mudar, seleção independente do tema global, comportamento da auditoria e restauração; sem reaplicar layouts |
+| F32 | Gaveta de aplicativos fixados | Aguardar o documento funcional do usuário para definir a associação de “pin to task manager”, os aplicativos, sua persistência e os gestos da gaveta; nesta etapa somente o desenho e o relevo de pressão/cancelamento |
 
 ## Plano de bindings nativos, depois das confirmações
 
@@ -266,3 +374,54 @@ substituir o default Classic; hoje ela compara a seleção diretamente com
 `profiles.classic.plasma`. Uma futura migração precisa verificar e preservar
 widgets, IDs, ordem, bandeja interna e configurações antes de alterar a sessão,
 com restauração verificável conforme F30.
+
+
+## Protótipo aprovado e cópia congelada
+
+O usuário aprovou o desenho com Courier bitmap em 08/10/2026 e solicitou
+um backup acessível sem percorrer commits. A cópia foi criada antes da
+conexão às cores do KDE em:
+
+`/home/lsi/Downloads/backups/irix-classic-domainos-prototipo-aprovado-20261008-160442`
+
+Essa pasta contém os fontes, prints, validações, ZIP e SHA256SUMS, foi
+validada e está somente para leitura. **Não atualizar, substituir nem apagar
+essa pasta ou seus arquivos.** Ela permanece como referência aprovada.
+Qualquer revisão pertence à versão de trabalho; backups futuros devem usar
+outra pasta. A conexão às cores será comparada com esse modelo, e a
+substituição do painel em uso exige a aprovação final do usuário.
+
+A conexão aos papéis nativos Window/Base/WindowText/Highlight/
+HighlightedText já está implementada e verificada, recolorindo os mesmos SVGs.
+Os relevos usam
+profundidade tonal relativa à cor da janela, inclusive em esquemas escuros.
+O modo de referência (`followSystemColors: false`) mantém os pixels aprovados.
+Miniaturas, horário/data e dispositivos ainda são ilustrações; suas ações
+continuam nas pendências F. Nenhuma sessão real deve ser alterada nesta fase.
+
+
+## Seleção simulada autorizada na fase visual
+
+Em 08/10/2026, o usuário solicitou simular a troca entre Work/Procrastination
+e entre os itens da Iconbox. Essa autorização permite somente seleção dos
+exemplos dentro da prévia, com índices locais independentes. Não autoriza
+ativar janelas, trocar desktops reais ou substituir o painel da sessão.
+`simulateSelection` permanece false por padrão no applet.
+
+Após a comparação, o usuário preferiu restaurar a lâmpada e a moldura fina
+amarelas do pager original (`#dddd28`), mantendo cabeçalho e texto normais.
+Essa luz conserva sua cor nos esquemas já aprovados. Na orientação seguinte,
+o usuário exigiu proteção do contraste em temas amarelos: se o fundo ou o
+recesso amarelo esconderem a indicação, escolher outro tom do mesmo amarelo
+considerando ambas as superfícies e os estados normal/pressionado. A proteção
+acompanha somente a paleta, sem cálculos novos ao clicar. O modo de referência
+continua usando a cor original. Somente a área ainda não
+selecionada afunda enquanto pressionada; ao soltar, sobe e mantém a luz acesa.
+A área já selecionada permanece elevada durante novos cliques. Arrastar para
+fora cancela a pressão e preserva a seleção anterior. O relevo acompanha o
+estado do mouse, sem timer, transição ou atraso artificial.
+
+A Iconbox mantém a placa Highlight/HighlightedText e o relevo pressionado
+persistente no item selecionado. Seu item anterior volta ao normal. A seleção
+é confirmada ao soltar dentro do botão, e as proporções permanecem iguais.
+O backup aprovado de Downloads permanece intocado.

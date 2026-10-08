@@ -63,7 +63,13 @@ Window {
     }
     KSvg.FrameSvgItem {
         objectName: "commandRail"
-        x: 12; y: 136; width: 584; height: 28
+        x: 12; y: 136; width: 284; height: 32
+        imagePath: artworkRoot + "/widgets/command-rail.svg"
+        smooth: false
+    }
+    KSvg.FrameSvgItem {
+        objectName: "tallCommandRail"
+        x: 312; y: 136; width: 284; height: 40
         imagePath: artworkRoot + "/widgets/command-rail.svg"
         smooth: false
     }

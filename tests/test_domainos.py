@@ -33,6 +33,11 @@ class DomainOSProvenanceTest(unittest.TestCase):
         self.assertTrue(all(not r['distributed'] for r in origin['references']))
         self.assertFalse(any((images / r['name']).exists()
                              for r in origin['references']))
+        fonts = APPLET / 'contents/fonts'
+        font_origin = json.loads((fonts / 'ORIGEM.json').read_text())
+        self.assertEqual(digest(fonts / font_origin['file']), font_origin['sha256'])
+        self.assertEqual(digest(fonts / font_origin['license_file']),
+                         font_origin['license_sha256'])
 
     def test_sgi_iconbox_bitmaps_are_existing_repository_assets(self):
         origin = json.loads((APPLET / 'ICONBOX-ORIGEM.json').read_text())
@@ -43,15 +48,23 @@ class DomainOSProvenanceTest(unittest.TestCase):
                 self.assertEqual(digest(image), record['sha256'])
                 self.assertEqual(image.read_bytes(), source.read_bytes())
 
-    def test_institutional_seal_is_neutral_gray(self):
-        root = ET.parse(APPLET / 'contents/images/gnu-linux.svg').getroot()
+    def test_institutional_seal_uses_body_blue_and_stacked_label(self):
+        images = APPLET / 'contents/images'
+        palette = json.loads((images / 'palette.json').read_text())
+        root = ET.parse(images / 'gnu-linux.svg').getroot()
         fills = {node.get('fill') for node in root.iter() if node.get('fill')}
         self.assertTrue(fills)
-        for color in fills:
-            with self.subTest(color=color):
-                self.assertRegex(color, r'^#[0-9a-fA-F]{6}$')
-                self.assertEqual(color[1:3], color[3:5])
-                self.assertEqual(color[3:5], color[5:7])
+        self.assertLessEqual(fills, set(palette['colors'].values()))
+        self.assertEqual(fills, set(palette['institutional_emblem']['colors'].values()))
+        labels = [node.get('data-label') for node in root.iter()
+                  if node.get('data-label')]
+        self.assertEqual(labels, ['GNU/', 'LINUX'])
+        self.assertEqual(palette['institutional_emblem']['lettering']['lines'], labels)
+        self.assertEqual(palette['institutional_emblem']['colors']['lettering'],
+                         palette['colors']['metal_dark'])
+        self.assertFalse(any(node.get('width')=='101' and node.get('height')=='22'
+                             for node in root.iter()))
+        self.assertFalse(root.findall('.//{http://www.w3.org/2000/svg}text'))
 
     def test_confirmed_sr104_color_scheme_and_origin_match(self):
         scheme = ROOT / 'colors/DomainOS-SR10.4.colors'

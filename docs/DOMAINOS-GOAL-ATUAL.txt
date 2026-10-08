@@ -1,0 +1,29 @@
+Continuar o projeto Irix Classic DomainOS no repositório /home/lsi/irixium-kde-custom, branch #irixfiles, a partir do design aprovado. A próxima etapa é conectar o painel às funções reais do KDE e concluir sua instalação como opção independente do Irix Classic existente.
+
+O desenho está concluído. Preservar a composição, proporções, relevos Motif, barra metálica, selo GNU/LINUX, ícones e Courier bitmap aprovados. O esquema de referência correto é DomainOS SR10.4. A conexão às cores do KDE, a proteção do indicador em esquemas amarelos e as seleções simuladas do pager e da Iconbox já foram implementadas e verificadas; não são pendências de desenho. Essas simulações ainda não controlam janelas, desktops ou dispositivos reais.
+
+Usar docs/DOMAINOS-REQUISITOS.md como referência detalhada das decisões F01–F32 e docs/VALIDACAO-DOMAINOS-2026-10-08.md como registro das verificações. Preservar os requisitos funcionais do memorial, corrigindo as sugestões técnicas quando não correspondem às APIs reais do KDE. Não recomeçar a construção visual nem interpretar dados ilustrativos como integração concluída.
+
+Antes de implementar cada nova função de botão, apresentar a ação e os gestos para minha confirmação. Aproveitar as decisões já confirmadas, sem pedir autorização novamente para o que já foi aprovado. Continuar os testes e a preparação independente enquanto houver decisões pendentes.
+
+As integrações restantes são:
+
+1. Relógio e data reais, monitor gráfico e correio. Definir as fontes dos dados, formatos e ações de abertura conforme as decisões registradas, preservando o desenho de cada instrumento.
+
+2. Iconbox ligada às janelas minimizadas, com ícones IRIX, etiquetas, restauração e navegação pelas setas conforme confirmação. Usar os modelos nativos do KDE; não exigir regras do KWin para observar a minimização. Definir filtros e gestos sem presumir ações adicionais.
+
+3. Pager ligado às áreas reais e às suas miniaturas, mantendo a luz de seleção. Uma área ainda não selecionada afunda enquanto pressionada; ao soltar, sobe e mantém a luz. A área já selecionada permanece elevada durante novos cliques. Vincular áreas por IDs estáveis; Work e Procrastination continuam exemplos até confirmar sua associação. Não impor duas áreas nem renomeá-las automaticamente.
+
+4. Bandeja ligada aos itens e estados reais, com apresentação compacta em duas linhas e paginação conforme confirmação. Preservar o modelo e os recursos nativos dos aplicativos. Implementar a apresentação necessária, sem inventar chaves de configuração para forçar duas linhas ou ícones de 16 pixels. Não ocultar itens ou substituir seus estados por desenhos fixos sem definir a associação correspondente.
+
+5. Selo GNU/LINUX, cinco atalhos inferiores, setas direitas ▶/▲ e indicador inferior: definir separadamente suas ações. A gaveta de aplicativos fixados já tem desenho, mas sua função continua aguardando meu documento; não implementar “pin to task manager” antecipadamente.
+
+6. Instalação e atualização por usuário, com todos os recursos necessários no repositório, alternância entre as opções e restauração verificável. Preservar o Irix Classic atual como opção independente. Testar as integrações em ambiente isolado, com prints, cliques reais, troca de esquema, cancelamento e verificações de desempenho. Após confirmar as funções, validar o resultado funcional no lsi e no p001532 conforme autorização para cada sessão.
+
+Não acrescentar atrasos artificiais, timers de feedback ou repaint forçado aos botões ou ao redimensionamento. Usar mecanismos adequados para atualizar os dados reais sem bloquear a interface.
+
+Não alterar configurações globais nem as configurações individuais de outros usuários. A substituição do painel em uso continua dependendo da minha aprovação após a comparação funcional com o modelo aprovado.
+
+O backup /home/lsi/Downloads/backups/irix-classic-domainos-prototipo-aprovado-20261008-160442 está congelado: não atualizar, substituir ou eliminar seus arquivos. Trabalhar apenas na versão de desenvolvimento e usar esse modelo para comparação.
+
+Concluir esta etapa somente após resolver as decisões aplicáveis e verificar as funções e entregas previstas, incluindo instalação e restauração. Funções expressamente adiadas por mim, como a gaveta aguardando meu documento, continuam registradas para a fase correspondente. Manter o trabalho pendente enquanto faltar algum requisito desta etapa; registrar uma pendência não equivale a implementá-la. Não apresentar o protótipo ilustrativo como painel funcional completo.

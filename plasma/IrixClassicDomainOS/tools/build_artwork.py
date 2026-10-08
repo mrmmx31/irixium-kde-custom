@@ -27,10 +27,12 @@ ET.register_namespace('', NS)
 ET.register_namespace('xlink', 'http://www.w3.org/1999/xlink')
 
 PALETTE = {
-    'face': '#7894a7', 'well': '#607f91', 'rim': '#263f4d',
-    'shadow': '#405c6c', 'highlight': '#bed0d4', 'pale': '#a2d0e7',
-    'blue': '#3296c4', 'white': '#ecffff', 'text': '#102b37',
-    'weave': '#6a889a', 'weave_light': '#82a1b0', 'active': '#dddd28',
+    'face': '#7894a7', 'well': '#607f91', 'rim': '#194b63',
+    'shadow': '#3e536e', 'highlight': '#c5e8e6', 'pale': '#a3d0e6',
+    'turquoise': '#7acac5', 'blue': '#3297c7', 'white': '#ffffff',
+    'text': '#102b37', 'weave': '#6a889a', 'active': '#dddd28',
+    'weave_dark': '#194b63', 'weave_light': '#a3d0e6',
+    'rail_dark': '#3e536e', 'rail_light': '#c4d5ed',
 }
 COLOR_MAP = {
     '#c1c1c1': PALETTE['face'], '#cecec6': PALETTE['face'],
@@ -84,30 +86,57 @@ def hint(parent, identifier, width=1, height=1):
 
 
 def texture(group, width, height, mode):
-    # Explicit pixels work in both QSvgRenderer and KSvg. There is no gradient
-    # or alpha blending: the weave and grooves have fixed discrete shades.
+    # The SR10.4 screenshot uses two-color, one-pixel checker cells for the
+    # upper instrument wells. Its lower rail has FOUR central grooves over a
+    # checker background; those grooves do not repeat throughout its height.
+    # Explicit pixels work in native QSvgRenderer/KSvg without alpha blending.
     if mode == 'weave':
-        for y in range(0, height, 4):
-            for x in range(0, width, 4):
-                for shift, color in [(0, 'highlight'), (1, 'weave_light'), (2, 'rim'), (3, 'shadow')]:
-                    if x+shift < width and y+shift < height:
-                        rect(group, x+shift, y+shift, 1, 1, PALETTE[color])
-    elif mode == 'rules':
-        grooves=('#a5bdcf',PALETTE['face'],'#536f84','#b3c9d9','#6c88a0',PALETTE['shadow'])
         for y in range(height):
-            rect(group, 0, y, width, 1, grooves[y%len(grooves)])
+            for x in range(width):
+                rect(group, x, y, 1, 1,
+                     PALETTE['weave_dark' if (x+y) % 2 else 'weave_light'])
+    elif mode == 'rules':
+        first = (height-12)//2
+        for y in range(height):
+            if first <= y < first+12 and (y-first) % 3 != 1:
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_light' if (y-first) % 3 == 0 else 'rail_dark'])
+            elif y in (first-1, first+12):
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_dark' if y == first-1 else 'rail_light'])
+            else:
+                for x in range(width):
+                    phase = x if first <= y < first+12 else x+y
+                    rect(group, x, y, 1, 1,
+                         PALETTE['rail_light' if phase % 2 else 'rail_dark'])
+    elif mode == 'heading-rules':
+        # The separate Iconbox heading retains its previously approved tile.
+        for y in range(height):
+            if y % 3 != 1:
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_light' if y % 3 == 0 else 'rail_dark'])
+            else:
+                for x in range(width):
+                    rect(group, x, y, 1, 1,
+                         PALETTE['rail_light' if x % 2 else 'rail_dark'])
 
 
-def plate(parent, prefix, ox, oy, margin=4, face=None, pressed=False, mode=None, empty=False, active=False):
+def plate(parent, prefix, ox, oy, margin=4, face=None, pressed=False, mode=None, empty=False, active=False, command_rail=False):
     """One native nine-slice with four hard bands and a counter-relief lip.
 
-    Alternating light/dark steps follow the tight HP reference rather than a
-    light-to-face ramp. Four physical pixels preserve all native geometry.
+    The outer light edge and turquoise shoulder follow the HP reference. A
+    shadow counter-relief and pale inner lip complete the four-pixel contract.
+    Bottom bands use inner-to-outer order, opposite the applet's edge arrays.
     """
     face = face or PALETTE['face']
     size = 24
-    top = [PALETTE['rim'], PALETTE['highlight'], PALETTE['shadow'], PALETTE['pale']]
-    bottom = [PALETTE['shadow'], PALETTE['pale'], PALETTE['weave'], PALETTE['rim']]
+    top = [PALETTE['highlight'], PALETTE['turquoise'], PALETTE['shadow'], PALETTE['pale']]
+    bottom = [PALETTE['face'], PALETTE['pale'], PALETTE['shadow'], PALETTE['rim']]
+    if command_rail:
+        # The reference's lower strip has a simple two-tone rim, with no
+        # turquoise shoulder or counter-relief from the upper instruments.
+        top = [PALETTE['rail_light']]*margin
+        bottom = [PALETTE['rail_dark']]*margin
     if pressed:
         top, bottom = list(reversed(bottom)), list(reversed(top))
     top, bottom = top[:margin], bottom[-margin:]
@@ -147,7 +176,7 @@ def plate(parent, prefix, ox, oy, margin=4, face=None, pressed=False, mode=None,
                 rect(group, px, py, 1, 1, color)
     for side in ('top', 'bottom', 'left', 'right'):
         hint(parent, label('hint-'+side+'-margin'), margin, margin)
-    if mode:
+    if mode and not command_rail:
         hint(parent, label('hint-tile-center'))
 
 
@@ -160,7 +189,8 @@ def major_art():
         ('command-rail', '', False, 'face', 'rules'),
     ]:
         result = svg(name+' opaque plate', 48, 48)
-        plate(result, prefix, 4, 4, face=PALETTE[face], pressed=pressed, mode=mode)
+        plate(result, prefix, 4, 4, face=PALETTE[face], pressed=pressed, mode=mode,
+              command_rail=name=='command-rail')
         write('widgets/'+name+'.svg', result)
     for name in ('instrument', 'button'):
         result = svg(name+' straight raised/pressed rim', 400, 64)
@@ -172,7 +202,7 @@ def major_art():
         write('widgets/'+name+'.svg', result)
     result = svg('recessed iconbox and ruled heading', 96, 96)
     plate(result, '', 4, 4, face=PALETTE['well'], pressed=True, mode='weave')
-    plate(result, 'heading', 48, 4, face=PALETTE['face'], mode='rules')
+    plate(result, 'heading', 48, 4, face=PALETTE['face'], mode='heading-rules')
     write('widgets/iconbox.svg', result)
     result = svg('pager overlay with narrow yellow selection rim', 256, 64)
     for index, state in enumerate(('normal', 'active', 'hover', 'active-hover', 'pressed')):
@@ -270,6 +300,31 @@ def build():
     provenance=HERE/'ORIGEM.json'
     if provenance.exists():
         origin=json.loads(provenance.read_text())
+        origin['palette'] = {**PALETTE, 'selection_rim': PALETTE['active']}
+        origin['bevel'] = {
+            'physical_margin': 4, 'band_width': 1,
+            'raised_top_outer_to_inner': [PALETTE[color] for color in ('highlight', 'turquoise', 'shadow', 'pale')],
+            'raised_bottom_inner_to_outer': [PALETTE[color] for color in ('face', 'pale', 'shadow', 'rim')],
+            'sunken': 'reverse opposing raised bands',
+            'rendering': 'opaque discrete pixels; no gradient, filter or animation',
+        }
+        origin['textures'] = {
+            'instrument_weave': {
+                'colors': [PALETTE['weave_dark'], PALETTE['weave_light']],
+                'cell_pixels': 1, 'period_pixels': [2, 2],
+                'pattern': 'alternating opaque dark/light checker cells',
+            },
+            'command_rail': {
+                'colors': [PALETTE['rail_dark'], PALETTE['rail_light']],
+                'background_period_pixels': [2, 2],
+                'groove_count': 4,
+                'groove_rows': ['light', 'alternating dark/light cells', 'dark'],
+                'placement': 'four centered grooves, dark cap above, light cap below; remaining rows retain the checker background',
+                'center_scaling': 'native stretch; hint-tile-center intentionally omitted to prevent vertical groove repetition',
+                'rim': 'four-pixel simple light top/left and dark bottom/right',
+                'native_limit': 'KSvg center stretching widens checker spacing and may interpolate colors; the panel QML supplies final-pixel checker frequency',
+            },
+        }
         for name, info in origin['resources'].items():
             info['sha256']=hashlib.sha256((HERE/name).read_bytes()).hexdigest()
         provenance.write_text(json.dumps(origin,indent=2,ensure_ascii=False)+'\n')

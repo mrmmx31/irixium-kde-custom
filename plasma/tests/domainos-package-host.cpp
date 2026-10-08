@@ -10,6 +10,7 @@
 #include <QFontDatabase>
 #include <QFontInfo>
 #include <QImage>
+#include <QPalette>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -98,7 +99,9 @@ static void observe()
     for (QObject *object : objects) {
         if (!object->objectName().isEmpty()) names.append(object->objectName());
         if (object->inherits("QQuickImage")) {
-            const QUrl source = object->property("source").toUrl();
+            const QUrl renderedSource = object->property("source").toUrl();
+            const QUrl source = object->property("assetSource").isValid()
+                ? object->property("assetSource").toUrl() : renderedSource;
             if (source.isEmpty()) continue;
             const int status = object->property("status").toInt();
             const bool production = source.toString().contains("org.irixclassic.domainos.panel/contents/images/");
@@ -106,6 +109,7 @@ static void observe()
             allImagesReady = allImagesReady && status == 1; // QQuickImage::Ready
             if (source.toString().contains("/iconbox/")) ++bitmaps;
             images.append(QJsonObject{{"source", source.toString()}, {"status", status},
+                                      {"recolored", renderedSource.scheme() == "data"},
                                       {"smooth", object->property("smooth").toBool()},
                                       {"width", object->property("width").toDouble()},
                                       {"height", object->property("height").toDouble()}});
@@ -131,7 +135,19 @@ static void observe()
         }
         return false;
     };
+    QObject *colors = panel->property("colorPalette").value<QObject *>();
+    const QPalette palette = QApplication::palette();
+    QJsonObject colorRoles;
+    for (const char *role : {"background", "recessed", "blue", "white", "text", "dark", "pale", "metalLight", "metalDark"})
+        if (colors) colorRoles[role] = colors->property(role).value<QColor>().name();
     QJsonObject report{{"public_quick_symbols", true}, {"production_panel_loaded", true},
+        {"follow_system_colors", panel->property("followSystemColors").toBool()},
+        {"panel_color_roles", colorRoles},
+        {"application_palette", QJsonObject{{"window", palette.color(QPalette::Window).name()},
+            {"base", palette.color(QPalette::Base).name()},
+            {"highlight", palette.color(QPalette::Highlight).name()},
+            {"highlightedText", palette.color(QPalette::HighlightedText).name()},
+            {"windowText", palette.color(QPalette::WindowText).name()}}},
         {"production_panel_visible", panel->property("visible").toBool()},
         {"panel_class", QString::fromLatin1(panel->metaObject()->className())},
         {"phase", panel->property("phase").toString()},
