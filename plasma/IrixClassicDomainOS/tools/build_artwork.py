@@ -99,14 +99,17 @@ def texture(group, width, height, mode):
 
 
 def plate(parent, prefix, ox, oy, margin=4, face=None, pressed=False, mode=None, empty=False, active=False):
-    """One native nine-slice with straight four-pixel stepped light edges."""
+    """One native nine-slice with four hard bands and a counter-relief lip.
+
+    Alternating light/dark steps follow the tight HP reference rather than a
+    light-to-face ramp. Four physical pixels preserve all native geometry.
+    """
     face = face or PALETTE['face']
     size = 24
-    top = [PALETTE['rim'], PALETTE['highlight'], PALETTE['pale'], face]
-    bottom = [face, PALETTE['weave'], PALETTE['shadow'], PALETTE['rim']]
+    top = [PALETTE['rim'], PALETTE['highlight'], PALETTE['shadow'], PALETTE['pale']]
+    bottom = [PALETTE['shadow'], PALETTE['pale'], PALETTE['weave'], PALETTE['rim']]
     if pressed:
-        top = [PALETTE['rim'], PALETTE['shadow'], PALETTE['weave'], face]
-        bottom = [face, PALETTE['pale'], PALETTE['highlight'], PALETTE['rim']]
+        top, bottom = list(reversed(bottom)), list(reversed(top))
     top, bottom = top[:margin], bottom[-margin:]
     if active:
         top[0] = bottom[-1] = PALETTE['active']

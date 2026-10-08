@@ -4,7 +4,7 @@ Este applet reúne o desenho do novo painel em uma única chapa. Ele segue as
 proporções do projeto fornecido pelo usuário: relógio azul, data, gráfico e Mail
 à esquerda; Iconbox com ícones IRIX; dois quadros de áreas de trabalho; bandeja
 em duas linhas de três ícones; setas e faixa inferior com cinco atalhos. O Style
-`IrixClassicDomainOS` e o esquema opcional **DomainOS SR14.4** são componentes
+`IrixClassicDomainOS` e o esquema opcional **DomainOS SR10.4** são componentes
 separados. O Classic existente continua disponível.
 
 Esta versão é **um desenho executável para revisão**. Hora/data, gráfico,

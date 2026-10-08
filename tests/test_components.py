@@ -52,8 +52,8 @@ class ComponentsTest(unittest.TestCase):
                          ('data', 'plasma/desktoptheme/IrixClassicDomainOS'))
         self.assertEqual(entries['plasma/applets/org.irixclassic.domainos.panel'],
                          ('data', 'plasma/plasmoids/org.irixclassic.domainos.panel'))
-        self.assertEqual(entries['colors/DomainOS-SR14.4.colors'],
-                         ('data', 'color-schemes/DomainOS-SR14.4.colors'))
+        self.assertEqual(entries['colors/DomainOS-SR10.4.colors'],
+                         ('data', 'color-schemes/DomainOS-SR10.4.colors'))
 
     def test_duplicate_destination_is_rejected(self):
         doc=components.catalog();doc['components'].append(doc['components'][0])

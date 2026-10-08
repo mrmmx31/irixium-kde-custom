@@ -18,6 +18,12 @@ hashes dos desenhos. `palette.json` permite conferir as cores de modo direto.
 A inscrição GNU/LINUX também é feita de pequenos retângulos, sem depender de
 uma fonte instalada ou de conversão de texto em imagem.
 
+O selo usa apenas cinzas neutros foscos (R=G=B), separados da paleta azul da
+chapa. Terminal/teclado, paleta e ferramenta retangular foram refinados pela
+referência HP sem atribuir ações aos desenhos. As molduras QML e do Style
+usam quatro bandas sólidas de um pixel, invertidas na pressão; o marcador e
+a borda do segundo quadro de área usam o mesmo amarelo.
+
 Referências e medidas
 --------------------
 
@@ -54,8 +60,8 @@ Assets para o QML
 | `mail.svg` | 48 × 36 | Cartão postal claro do bloco institucional |
 | `gnu-linux.svg` | 104 × 24 | Selo monocromático da sub-barra |
 | `terminal.svg` | 32 × 32 | Terminal e teclado fixos |
-| `preferences.svg` | 32 × 32 | Engrenagem fixa |
-| `drawer.svg` | 32 × 32 | Gaveta de arquivos fixa |
+| `preferences.svg` | 32 × 32 | Paleta/ferramentas com três recortes; função pendente |
+| `drawer.svg` | 32 × 32 | Bandeja/ferramenta retangular de topo irregular; função pendente |
 | `lock.svg` | 32 × 32 | Cadeado fixo |
 | `help.svg` | 32 × 32 | Interrogação fixa |
 | `network.svg` | 32 × 32 | Rede na bandeja de diagnóstico |
@@ -81,7 +87,7 @@ de qualquer função dos botões depende da confirmação solicitada pelo usuár
 Esquema KDE opcional
 -------------------
 
-`colors/DomainOS-SR14.4.colors`, nome visível **DomainOS SR14.4**, usa a mesma
+`colors/DomainOS-SR10.4.colors`, nome visível **DomainOS SR10.4**, usa a mesma
 paleta. As faces de janela e botão são azul-cinza; a seleção é o azul do relógio,
 e a área de conteúdo tem fundo azul-cinza mais escuro e texto claro. O arquivo
 nunca altera fontes nem configurações por conta própria. Sua instalação e

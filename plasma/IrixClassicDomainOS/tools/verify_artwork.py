@@ -63,6 +63,25 @@ def main():
         for path in sorted(STYLE.rglob('*.svg')):
             renderer=QSvgRenderer(str(path));assert renderer.isValid(),path
             resources[str(path.relative_to(STYLE))]['native_qsvg_valid']=True
+        def edge_bands(renderer, identifier):
+            bounds=renderer.boundsOnElement(identifier)
+            result=QImage(round(bounds.width()),round(bounds.height()),QImage.Format.Format_ARGB32)
+            result.fill(0)
+            painter=QPainter(result)
+            renderer.render(painter,identifier,QRectF(0,0,result.width(),result.height()))
+            painter.end()
+            colors=[result.pixelColor(result.width()//2,y).name() for y in range(result.height())]
+            assert all(result.pixelColor(x,y).alpha()==255 for x in range(result.width()) for y in range(result.height())),identifier
+            return colors
+        button=QSvgRenderer(str(STYLE/'widgets/button.svg'))
+        raised_top=[PALETTE['rim'],PALETTE['highlight'],PALETTE['shadow'],PALETTE['pale']]
+        raised_bottom=[PALETTE['shadow'],PALETTE['pale'],PALETTE['weave'],PALETTE['rim']]
+        checks['native_raised_relief_four_distinct_one_pixel_bands']=edge_bands(button,'normal-top')==raised_top and edge_bands(button,'normal-bottom')==raised_bottom and len(set(raised_top))==len(set(raised_bottom))==4
+        checks['native_pressed_relief_is_reversed_bands']=edge_bands(button,'pressed-top')==list(reversed(raised_bottom)) and edge_bands(button,'pressed-bottom')==list(reversed(raised_top))
+        instrument=QSvgRenderer(str(STYLE/'widgets/instrument.svg'))
+        frame=QSvgRenderer(str(STYLE/'widgets/frame.svg'))
+        checks['native_instrument_and_well_share_compound_relief']=edge_bands(instrument,'normal-top')==raised_top and edge_bands(frame,'plain-top')==list(reversed(raised_bottom))
+        checks['native_relief_keeps_four_pixel_margin_contract']=all(element.attrib['width']=='4' and element.attrib['height']=='4' for filename in ('button','instrument','panel-background','frame','pager','iconbox','command-rail') for element in ET.parse(STYLE/'widgets'/f'{filename}.svg').getroot().iter() if element.attrib.get('id','').endswith(('hint-top-margin','hint-bottom-margin','hint-left-margin','hint-right-margin')))
         clock=QSvgRenderer(str(STYLE/'widgets/clock.svg'))
         face=QImage(64,64,QImage.Format.Format_ARGB32);face.fill(0)
         painter=QPainter(face);clock.render(painter,'ClockFace',QRectF(0,0,64,64));painter.end()

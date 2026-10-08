@@ -7,6 +7,9 @@ reference: straight stepped light edges, opaque recessed compartments, ruled
 command rails, a solid blue clock dial, white hands and a narrow yellow pager
 selection border. Button states invert the relief directly, without animation
 or an added timer. There are no gradients, blurred shadows or rounded plates.
+Each new rim combines four narrow 1px bands: a dark contour, light crest,
+counter-relief and blue lip. Raised/pressed states reverse those bands without
+changing the four-pixel native margins, center tile period or resource bounds.
 
 The option includes the complete resource vocabulary from Classic, including
 switches, horizontal/vertical sliders, popup frames and item selection. The

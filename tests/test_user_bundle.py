@@ -118,7 +118,7 @@ class UserBundleTest(unittest.TestCase):
 
         names = {'plasma/desktoptheme/IrixClassicDomainOS',
                  'plasma/plasmoids/org.irixclassic.domainos.panel',
-                 'color-schemes/DomainOS-SR14.4.colors'}
+                 'color-schemes/DomainOS-SR10.4.colors'}
         pairs = [(source, dest) for source, dest in sources(data, config)
                  if dest.is_relative_to(data) and dest.relative_to(data).as_posix() in names]
         self.assertEqual(len(pairs), 3)

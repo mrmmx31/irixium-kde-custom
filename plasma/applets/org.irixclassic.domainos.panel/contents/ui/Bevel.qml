@@ -8,8 +8,17 @@ Item {
     property color light: "#bed0d4"
     property color dark: "#263f4d"
     property bool sunken: false
-    property int thickness: 2
+    property int thickness: 4
     property url texture
+    // Four solid one-pixel bands, matching the native Style's compound relief.
+    readonly property var raisedTop: [dark, light, "#405c6c", "#a2d0e7"]
+    readonly property var raisedBottom: [dark, "#6a889a", "#a2d0e7", "#405c6c"]
+    function edgeColor(layer, upper) {
+        if (thickness === 1)
+            return (upper !== sunken) ? light : dark
+        const colors = (upper !== sunken) ? raisedTop : raisedBottom
+        return colors[Math.min(layer, colors.length-1)]
+    }
     Rectangle { anchors.fill: parent; color: frame.face; antialiasing: false }
     Image {
         anchors.fill: parent
@@ -19,8 +28,15 @@ Item {
         smooth: false
         mipmap: false
     }
-    Rectangle { x: 0; y: 0; width: parent.width; height: frame.thickness; color: frame.sunken ? frame.dark : frame.light }
-    Rectangle { x: 0; y: 0; width: frame.thickness; height: parent.height; color: frame.sunken ? frame.dark : frame.light }
-    Rectangle { x: 0; y: parent.height-height; width: parent.width; height: frame.thickness; color: frame.sunken ? frame.light : frame.dark }
-    Rectangle { x: parent.width-width; y: 0; width: frame.thickness; height: parent.height; color: frame.sunken ? frame.light : frame.dark }
+    Repeater {
+        model: Math.max(1, frame.thickness)
+        delegate: Item {
+            required property int index
+            anchors.fill: parent
+            Rectangle { x: index; y: index; width: frame.width-2*index; height: 1; color: frame.edgeColor(index, true) }
+            Rectangle { x: index; y: index; width: 1; height: frame.height-2*index; color: frame.edgeColor(index, true) }
+            Rectangle { x: index; y: frame.height-index-1; width: frame.width-2*index; height: 1; color: frame.edgeColor(index, false) }
+            Rectangle { x: frame.width-index-1; y: index; width: 1; height: frame.height-2*index; color: frame.edgeColor(index, false) }
+        }
+    }
 }

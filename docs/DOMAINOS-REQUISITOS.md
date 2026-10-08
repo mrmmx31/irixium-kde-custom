@@ -101,8 +101,9 @@ resultado visual.
 O nome mostrado é **Irix Classic DomainOS**. O diretório e o ID do estilo são
 `IrixClassicDomainOS`; o applet usa `org.irixclassic.domainos.panel`. O catálogo
 instala recursos adicionais sem mudar a escolha do perfil Classic. O esquema
-KDE separado é **DomainOS SR14.4**, no arquivo `colors/DomainOS-SR14.4.colors`;
-o usuário confirmou a identificação 14.4. Ele permite comparar as cores, e sua
+KDE separado é **DomainOS SR10.4**, no arquivo `colors/DomainOS-SR10.4.colors`;
+o usuário confirmou a identificação 10.4 pela [referência VUE](https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png).
+Ele permite comparar as cores, e sua
 instalação não autoriza aplicá-lo automaticamente aos aplicativos ou a outro
 usuário.
 

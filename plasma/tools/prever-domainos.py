@@ -33,7 +33,7 @@ def main():
         if not args.interativo:os.environ['QT_QPA_PLATFORM']='offscreen'
         os.environ.pop('QT_STYLE_OVERRIDE',None)
         from PyQt6 import sip
-        from PyQt6.QtCore import QObject,QPointF,Qt,QUrl,qVersion
+        from PyQt6.QtCore import QObject,QPointF,QRect,Qt,QUrl,qVersion
         from PyQt6.QtGui import QGuiApplication
         from PyQt6.QtQml import QQmlApplicationEngine
         from PyQt6.QtQuick import QQuickItem,QQuickWindow
@@ -73,6 +73,18 @@ def main():
         require('two_illustrative_desktops',panel.property('workspaceCount')==2)
         require('six_tray_icons_in_2x3',panel.property('trayRows')==2 and panel.property('trayColumns')==3)
         require('unconfirmed_functions_are_not_live',panel.property('phase')=='design-awaiting-button-confirmations')
+        def center_color(obj):
+            point=obj.mapToScene(QPointF(obj.width()/2,obj.height()/2)).toPoint()
+            return normal.pixelColor(point).name()
+        require('selected_workspace_marker_is_yellow',center_color(item('domainosWorkspaceMarker_Procrastination'))=='#dddd28')
+        require('unselected_workspace_marker_remains_neutral',center_color(item('domainosWorkspaceMarker_Work'))=='#607f91')
+        selected=item('domainosDeskProcrastination').mapToScene(QPointF(1,10)).toPoint()
+        require('selected_workspace_rim_matches_marker',normal.pixelColor(selected).name()=='#dddd28')
+        mail=item('domainosMail')
+        mail_top=mail.mapToScene(QPointF(mail.width()/2,0)).toPoint()
+        def bands(image):
+            return [image.pixelColor(mail_top.x(),mail_top.y()+i).name() for i in range(4)]
+        require('native_compound_relief_raised',bands(normal)==['#263f4d','#bed0d4','#405c6c','#a2d0e7'])
         geometry={}
         for name in ('domainosInstitutional','domainosIconbox','domainosPager','domainosTray','domainosTrayNavigation','domainosLowerRail'):
             obj=item(name);pos=obj.mapToScene(QPointF(0,0));geometry[name]=[pos.x(),pos.y(),obj.width(),obj.height()]
@@ -86,7 +98,17 @@ def main():
             before=(button.x(),button.y(),button.width(),button.height())
             QTest.mousePress(window,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,point)
             settle();require(name+'_pressed',button.property('pressed'))
-            if name=='domainosMail':capture('PRESSED.png')
+            held=window.grabWindow()
+            origin=button.mapToScene(QPointF(0,0)).toPoint()
+            area=QRect(origin.x(),origin.y(),int(button.width()),int(button.height()))
+            require(name+'_native_visual_changes_when_held',held.copy(area)!=normal.copy(area))
+            if name=='domainosMail':
+                capture('PRESSED.png')
+                require('native_compound_relief_inverts_when_held',bands(held)==['#263f4d','#6a889a','#a2d0e7','#405c6c'])
+            representative={'domainosClock':'PRESSED-CLOCK.png','domainosTask_0':'PRESSED-ICONBOX.png',
+                'domainosWorkspace_Procrastination':'PRESSED-PAGER.png','domainosTray_network':'PRESSED-TRAY.png',
+                'domainosShortcut_preferences':'PRESSED-SHORTCUT.png','domainosTrayNext':'PRESSED-NAVIGATION.png'}
+            if name in representative:capture(representative[name])
             QTest.mouseMove(window,QPointF(20,20).toPoint());settle()
             require(name+'_cancelled_outside',not button.property('pressed'))
             QTest.mouseRelease(window,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,QPointF(20,20).toPoint());settle()

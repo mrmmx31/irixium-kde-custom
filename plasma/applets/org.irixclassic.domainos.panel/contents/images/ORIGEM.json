@@ -36,9 +36,9 @@
     "arrow-up.svg": "e1570be85f7d2618dc54d8cfafc6e811fa85860f9cd08a61640abc591f3351db",
     "clock-face.svg": "03f2c9c3f6015dd74baf1c69add6ced8cddac0a952d730778d38213ab9a36ffa",
     "clock-reference.svg": "ea5aed4556f3a8203c9ab8f73c625b1686b37d6d92fdad152ff604177e218823",
-    "drawer.svg": "4e741b7e52eea4b84cf4b8269ac63912364ea904e7b2916e188a05dcc8d283a0",
+    "drawer.svg": "43aab77a7b5182f6cff1b40585f32c7a898429f6c6e49e04aa042724d1c990e2",
     "envelope.svg": "3d7054a2d669f9d96793ddeb58051c0e489c8db13ca711ba26d8deceee8ed491",
-    "gnu-linux.svg": "be65e4661702226985ec744fdb38a443f6e03ca205ce2a5b6fa1e2b1e6fbeaa9",
+    "gnu-linux.svg": "0bf4d31a4c2ad06a775bacb09b0882f4e093522ad8b0906b6ec0b98ba2dfaada",
     "graph-grid.svg": "3851ff12f04372ef0b7626e35cfe8c887c8eab25ddc7f5cd9851624114c1b583",
     "graph-reference.svg": "a3fc3ba2180f703514d5e086651b32554d3fe422b2d523b16b0075a6b10cf5fc",
     "help.svg": "6c49250fa906b1fc80bbb5d9867c14eb9f4b84bf9088525fdf622a049e9dccd7",
@@ -48,11 +48,11 @@
     "metal-lines.svg": "85c5f809f427efe192983796d08861425bf8a070a4f0ffbc4c178a4b3115eea1",
     "metal-weave.svg": "28f3929beff196a1f407ec6dac51434f6768610fdf3c977b707a4baa8ede6568",
     "network.svg": "fbd6c88b0cdcf27c2dfe636e2811e6cd10114a020a04dd0e968979b32a7dd1ec",
-    "palette.json": "4efa0a952d41e600648df387348becf06f8238b5e2f10ccb3e5d44104e101d8e",
-    "preferences.svg": "ebd7f3e8f59589b24e73a9d6dfe160b57f8d2dc1ed919f92563430a45e23a4fe",
+    "palette.json": "15599b50c43f1dd8fc507fd1d0b3451f0c7d8eb9c4e967a6db42143cc0fdbdb6",
+    "preferences.svg": "7ea53cf5fa9ca02e7717002fe7ad3c7a134871040cb0b997faeb1b829e629d67",
     "speaker.svg": "e085b8c45d17ed0eb5f33586d2503a43fa1653fabc2e182b7f5b5b36c4ded116",
     "storage.svg": "3dbfb618232bb149732ded5e7c6b3f1060a1a21c2299309d8e5b1685b4150c77",
-    "terminal.svg": "5d2719617314f013c3c462d30dfacdaa564d6692b19d1a5e08a867a85058eb75",
+    "terminal.svg": "29141c0cb2af580b51e648377358c03a12c4f3a8c07c7a08a6f62344068c4b77",
     "workstation.svg": "d17a21cff472a73378ff3bff454fbd865a4c81539c427ec89d1c59d7b4636486"
   },
   "native_renderer_validation": {
@@ -66,5 +66,24 @@
       196
     ],
     "reference_screenshots_distributed": false
-  }
+  },
+  "asset_revisions": [
+    {
+      "date": "2026-10-08",
+      "files": [
+        "gnu-linux.svg",
+        "terminal.svg",
+        "preferences.svg",
+        "drawer.svg"
+      ],
+      "changes": [
+        "The institutional emblem uses literal neutral matte grays instead of blue-gray.",
+        "The terminal gains the HP-like multiband monitor frame and perspective keyboard details.",
+        "The second lower-strip symbol is an asymmetric palette/tool silhouette with cutouts instead of a gear.",
+        "The third lower-strip symbol is a low rectangular tool with irregular stepped top, without a filing-action interpretation."
+      ],
+      "actions_assigned": false,
+      "method": "New coordinate-based drawings; no source-reference bitmap pixels are sampled into or embedded in SVG assets."
+    }
+  ]
 }

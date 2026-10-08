@@ -44,11 +44,12 @@
     "Pager active frame uses narrow yellow rim; empty overlay centers preserve native window outlines over an opaque panel.",
     "Legacy resources retain their element contracts; semi-transparent paint and gradient definitions are flattened and rounded rectangle radii are removed.",
     "Native shadow contracts remain empty; input states use immediate inverted relief.",
-    "Local colors file supplies the matching Plasma palette without selecting an application scheme or changing a layout."
+    "Local colors file supplies the matching Plasma palette without selecting an application scheme or changing a layout.",
+    "HP reference relief refinement: four distinct opaque one-pixel contour/highlight/counter-relief/blue-lip bands; pressed and recessed rims reverse those bands. Four-pixel margins, SVG IDs/bounds and native center tiling stay unchanged."
   ],
   "resources": {
     "dialogs/background.svg": {
-      "sha256": "4123fb60caf8571d3278629c426e7cc3cc4a6c48f8e05ab628dd2b2c325622c3",
+      "sha256": "9422209d1251e5bf8f1a987f6163b6df594f7b010c88b54eea65739984d9b7fa",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -84,7 +85,7 @@
       "license": "GPL-3.0"
     },
     "widgets/background.svg": {
-      "sha256": "d8b67967e0ab1535aa896d01f3a901c6c7908e1d31e208664c3248ece94af57b",
+      "sha256": "579b437442ab137bd4f6e2d598f6d200f84a8e57e9f6d61ca5c3ee70490afd9c",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -108,7 +109,7 @@
       "license": "GPL-3.0"
     },
     "widgets/button.svg": {
-      "sha256": "85cb8bfd30fa7d02000092e2ca6a8e84b7824490533b18c87946c9cc33e791a6",
+      "sha256": "fc92579ec0469aa9651cdb8fe649850fcebf308785e8c0109596c2c54a2a05e5",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -132,31 +133,31 @@
       "license": "GPL-3.0-or-later"
     },
     "widgets/command-rail.svg": {
-      "sha256": "7c6a7465ac37534bd5a60435f9060f2ca4152a14b4b6a370a3ef91a385217706",
+      "sha256": "a09fb9b669a4aecb74c338d227b4f90d0dce948ca2e1d6e7699864f87e97fdd6",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/frame.svg": {
-      "sha256": "58ed9c284127851a76fa85ec0a64542f7952028bf6bad11d58bb5d39eddd9a62",
+      "sha256": "3a6ec9a08f4bc664983f481883ec240c8e9d6ae85f7f475e8f7a8efacfdc1719",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/iconbox.svg": {
-      "sha256": "5425fb2fef7b6afe2dba8de4c3a2eff5f6a08cb7a90e40f51e5cd6a2362888ec",
+      "sha256": "182439c78188ba2afefff9cd30a5a04df7772bb79e89784221d9d16887e17b75",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/instrument-well.svg": {
-      "sha256": "01af1eb18666ab2fe306bb7bc88646d2177e04eaa433aaef55dd40ee2a8d91e8",
+      "sha256": "8312fbc929b1cc0db77f001a0943119fbb3f2c1f341ae8356351cb4a394b0181",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/instrument.svg": {
-      "sha256": "7ee67e0ddbfd6e5bb82eaaccb96cc5c62e40053eb8c644899dede8e40b707a79",
+      "sha256": "cc85fc53c6b7d297d62d565b21ec30b6d210353c452488d61dec30df4f013d67",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -168,7 +169,7 @@
       "license": "GPL-3.0"
     },
     "widgets/lineedit.svg": {
-      "sha256": "dc6d3fb479997c896dc43241dcf9e4d8c991108c8a977b21b2b24eb5e914ff2a",
+      "sha256": "d1bf8f7ebcce741cbe72d271c1e6792b56886cc861a2fbb88edd62ceea392747",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -180,19 +181,19 @@
       "license": "GPL-3.0"
     },
     "widgets/pager.svg": {
-      "sha256": "20694562c5af3e47e8338e38c417ec1425d0c4f2897a652bcfce18ffaf7bdd18",
+      "sha256": "38b31c1b813e6030610dab1e7d8eb74e060c0451982eb0ffbaa94212991baaf0",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/panel-background.svg": {
-      "sha256": "7edcaf31e452659a7779f989dbceb6871f8fd51979e1392902272dd62d9c5b2d",
+      "sha256": "bd7d50b6ee4465ee3fe96a5ad5d9c634264e1bdc8511461a74eb5ce9ba2230f5",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
     },
     "widgets/plasmoidheading.svg": {
-      "sha256": "ef25aa1b43a183f8af64a3584a6fa26a2636b8f075632b8b0d63ac00ead92d92",
+      "sha256": "d6149d60a73d9f0e8ce40597d6e087fdb724043f61a4a69f7bdbf3e3c9ad61ff",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -240,7 +241,7 @@
       "license": "GPL-3.0"
     },
     "widgets/tooltip.svg": {
-      "sha256": "4123fb60caf8571d3278629c426e7cc3cc4a6c48f8e05ab628dd2b2c325622c3",
+      "sha256": "9422209d1251e5bf8f1a987f6163b6df594f7b010c88b54eea65739984d9b7fa",
       "source": "independently drawn DomainOS SVG",
       "author": "IRIX Classic contributors",
       "license": "GPL-3.0-or-later"
@@ -257,5 +258,23 @@
     "path": "~/.local/share/plasma/desktoptheme/IrixClassicDomainOS",
     "scope": "current user only",
     "layout_application": "separate explicit per-user selection; no layout changes during installation"
+  },
+  "bevel": {
+    "physical_margin": 4,
+    "band_width": 1,
+    "raised_top_outer_to_inner": [
+      "#263f4d",
+      "#bed0d4",
+      "#405c6c",
+      "#a2d0e7"
+    ],
+    "raised_bottom_inner_to_outer": [
+      "#405c6c",
+      "#a2d0e7",
+      "#6a889a",
+      "#263f4d"
+    ],
+    "sunken": "reverse opposing raised bands",
+    "rendering": "opaque discrete pixels; no gradient, filter or animation"
   }
 }

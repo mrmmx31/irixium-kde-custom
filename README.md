@@ -87,7 +87,7 @@ também inclui o monitor em novas instalações. Veja o [widget](plasma/applets/
 O [Plasma Style Irix Classic DomainOS](plasma/IrixClassicDomainOS/) é uma opção
 independente do Classic atual, inspirada na referência HP e na composição enviada
 pelo usuário. O instalador disponibiliza esse estilo, o applet
-`org.irixclassic.domainos.panel` e o esquema de cores **DomainOS SR14.4**, versão
+`org.irixclassic.domainos.panel` e o esquema de cores **DomainOS SR10.4**, versão
 confirmada pelo usuário. A instalação mantém o estilo escolhido, os layouts e os
 defaults do perfil Classic. `aplicar-tema.sh classic` continua selecionando o
 conjunto Classic existente.
@@ -190,7 +190,7 @@ ou mudar associações de arquivos. O componente tem testes e workflow próprios
 | GTK 2/3/4 | `gtk/IrixClassic/` e `gtk/Irixium/` |
 | Ícones | `icons/themes/IrixClassic-SGI/`, `icons/Irixium/` |
 | Três temas de cursores | `cursors/` |
-| Cores | `colors/Irixium.colors`, `colors/DomainOS-SR14.4.colors` |
+| Cores | `colors/Irixium.colors`, `colors/DomainOS-SR10.4.colors` |
 | Plasma Styles | `plasma/IrixClassic/`, `plasma/Irixium/`, `plasma/IrixClassicDomainOS/` |
 | Painel DomainOS em desenho | `plasma/applets/org.irixclassic.domainos.panel/` |
 | Wallpapers | `wallpapers/IrixClassic/`, `wallpapers/Irixium/` |

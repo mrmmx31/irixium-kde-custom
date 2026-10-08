@@ -20,7 +20,7 @@ Item {
                 color: "#7894a7"
                 border.width: 2
                 border.color: "#263f4d"
-                Rectangle { x: 7; y: 7; width: 11; height: 16; color: "#607f91"; border.color: "#263f4d"; border.width: 2 }
+                Rectangle { objectName: "domainosWorkspaceMarker_"+workspace.name; x: 7; y: 7; width: 11; height: 16; color: workspace.selected ? "#dddd28" : "#607f91"; border.color: "#263f4d"; border.width: 2 }
                 Text {
                     x: 26; y: 1; width: parent.width-x-2; height: 28
                     text: workspace.name
@@ -64,6 +64,6 @@ Item {
         color: "transparent"
         visible: workspace.selected
         border.width: 3
-        border.color: "#e3df30"
+        border.color: "#dddd28"
     }
 }

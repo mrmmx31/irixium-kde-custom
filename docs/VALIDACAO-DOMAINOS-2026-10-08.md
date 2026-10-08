@@ -1,6 +1,6 @@
 # Validação do desenho Irix Classic DomainOS — 2026-10-08
 
-O esquema de cores se chama **DomainOS SR14.4**, conforme a confirmação do
+O esquema de cores se chama **DomainOS SR10.4**, conforme a confirmação do
 usuário. `IrixClassicDomainOS` é uma opção independente. Os 38 arquivos do
 Plasma Style Classic original permanecem idênticos ao inventário registrado
 antes desta adição. Os 27 componentes anteriores, os dois perfis globais e a
@@ -19,18 +19,22 @@ As capturas de referência não são distribuídas no pacote.
 Os testes nativos confirmaram DejaVu Sans Mono e Nimbus Sans, esta última
 resolvida como `Nimbus Sans [UKWN]`, sem substituição de família. O desenho
 reconstrói as texturas e relevos sem copiar o borrado da imagem de projeto.
-O relevo tem bandas mais simples que a referência, e os símbolos fixos são
-redesenhos; a revisão visual pelo usuário continua sendo necessária.
+As molduras usam quatro bandas sólidas de um pixel; o marcador de
+Procrastination e sua borda compartilham o amarelo da referência. O selo
+GNU/LINUX contém apenas cinzas neutros, confirmados na renderização Qt6.
+Terminal/teclado, paleta/ferramentas e ferramenta retangular foram refinados.
+São reconstruções vetoriais dos desenhos, não recortes das referências; a
+revisão visual pelo usuário continua sendo necessária.
 
 ## Verificações executadas
 
 | Verificação | Resultado | Limite da evidência |
 | --- | --- | --- |
 | `tests/test_components.py` e `tests/test_user_bundle.py` | 20 testes aprovados | Catálogo, independência dos defaults e instalação/restauração dos três novos recursos, preservando preferências, layouts e esquema vizinho |
-| `tests/test_domainos.py` | 4 testes aprovados | Baseline Classic, origem/hash dos SVGs, cópias SGI e nome/hash do esquema SR14.4 |
-| `plasma/tools/prever-domainos.py` | 96 verificações aprovadas | QML de produção, composição, pressão/cancelamento em 28 botões, geometria preservada e escala de 50% |
+| `tests/test_domainos.py` | 5 testes aprovados | Baseline Classic, origem/hash dos SVGs, cópias SGI, cinzas neutros do selo e nome/hash do esquema SR10.4 |
+| `plasma/tools/prever-domainos.py` | 135 verificações aprovadas | QML de produção, mudança efetiva de pixels na pressão dos 28 botões, cancelamento, geometria preservada, escala de 50%, marcador amarelo e inversão das quatro bandas |
 | `plasma/tools/testar-domainos-package.py` | 21 verificações aprovadas | KPackage real em `plasmawindowed`, fullRepresentation visível em 1942×218, 40 imagens carregadas, fontes resolvidas e zero erros QML |
-| `plasma/IrixClassicDomainOS/tools/verify_artwork.py` | 14 verificações aprovadas | Qt6 QSvgRenderer, KSvg, trama sem esticar, recursos de controles, relevo e superfícies opacas |
+| `plasma/IrixClassicDomainOS/tools/verify_artwork.py` | 18 verificações aprovadas | Qt6 QSvgRenderer, KSvg, trama sem esticar, recursos de controles, inversão de quatro bandas sólidas e superfícies opacas |
 | Instalador completo e auditoria em XDG temporário | 30 componentes instalados e auditados, zero falhas | Instalação offline, cópias de compatibilidade de cursores/GTK e restauração, com seleção/layouts/áreas preservados |
 
 O builder/verifier do Style também foi executado novamente sem alterações dos
@@ -38,6 +42,11 @@ hashes de saída. As ferramentas não deixam `__pycache__` no componente instala
 O teste da galeria captura o mesmo QML que o applet carrega; não é um mockup
 separado. Os testes usam diretórios privados, e a prova do KPackage utiliza
 Xvfb com D-Bus sem ativação de serviços da sessão real.
+
+A revisão SR10.4 acrescenta prints pressionados representativos do relógio,
+Iconbox, pager, bandeja, navegação e atalho inferior, além de Mail. Os relatórios
+anteriores à correção de versão e aos refinamentos continuam sendo evidência
+histórica; o conjunto SR10.4 deve ser usado para conferir as fontes atuais.
 
 ## Fase e decisões pendentes
 
@@ -60,3 +69,10 @@ A auditoria local passou para os 30 componentes e para a seleção Classic,
 sem divergências. Nenhum painel DomainOS foi inserido. **p001532 não recebeu
 estas novas opções nesta etapa**; não há certificação de execução nelas nesse
 perfil.
+
+Após a confirmação de **SR10.4** pela referência VUE indicada pelo usuário,
+o esquema foi renomeado no catálogo e no perfil lsi. A cópia SR14.4 instalada
+na etapa anterior foi retirada somente depois de conferir seu hash contra o
+recibo de instalação, mantendo um backup da retirada. Os arquivos instalados
+correspondem à revisão refinada; a auditoria local SR10.4 passou novamente.
+As configurações protegidas e o Classic continuaram iguais antes/depois.
