@@ -43,6 +43,10 @@ def check_assets():
         'listitem': ('normal', 'hover', 'pressed'),
         'slider': ('groove', 'groove-highlight'),
         'panel-background': ('',),
+        'iconbox': ('',),
+        'task-icon': ('normal', 'normal-hover', 'hover', 'focus', 'focus-hover', 'minimized', 'minimized-hover',
+                      'attention', 'attention-hover', 'pressed', 'normal-pressed', 'focus-pressed',
+                      'minimized-pressed', 'attention-pressed'),
     }
     result = {}
     for resource, prefixes in required.items():
@@ -98,6 +102,7 @@ def main():
     output = args.capturas.expanduser().resolve()
     output.mkdir(parents=True, exist_ok=True)
     report = {'scope': 'native gallery artwork and control input; live task/window actions are separate',
+              'task_representation': '24px icon inside a 28px square well, separate 14px caption, 8px Iconbox heading in a 64px panel',
               'desktop_modified': False, 'network_services_called': False, 'checks': {}, 'artwork': check_assets()}
     if args.offscreen or not (os.environ.get('WAYLAND_DISPLAY') or os.environ.get('DISPLAY')):
         os.environ['QT_QPA_PLATFORM'] = 'offscreen'

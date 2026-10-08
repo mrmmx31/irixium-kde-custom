@@ -1,9 +1,41 @@
 # Painel Classic: validação local
 
-O painel usa uma fileira de tarefas com ícone e legenda, molduras quadradas e
-relevo de pressão ligado diretamente ao estado do mouse. Os cinco widgets têm
-identificadores próprios; seus modelos e interações vêm do Plasma Desktop 6.3.6.
+O painel usa uma fileira de tarefas em poços quadrados de ícones, com legendas
+separadas dentro de um Iconbox rebaixado. O relevo de pressão acompanha
+diretamente o estado do mouse. Os cinco widgets têm identificadores próprios;
+seus modelos e interações vêm do Plasma Desktop 6.3.6.
 Os arquivos ORIGEM.json registram fontes, licenças e alterações.
+
+## Refinamento após inspeção visual
+
+O primeiro desenho ainda envolvia cada tarefa em uma placa completa. A revisão
+do usuário pediu uma aparência mais próxima do Iconbox SGI e do Motif/CDE.
+O Classic também ainda usava o switch circular com gradientes herdado do
+Irixium. O arquivo instalado e o cache correspondiam a esse recurso; não foi
+demonstrada uma troca de estilo ou um override de ambiente para Breeze.
+
+- O novo alojamento Iconbox tem 56 px de altura, com título de 8 px e tarefas
+  de 42 px: poços de 28 px para ícones de 24 px e legendas separadas de 14 px.
+  A fonte Nimbus Sans itálica efetiva de lsi foi verificada em um host KDE
+  isolado; o tamanho local de 10 px da legenda mantém a família e o estilo.
+- O switch é um recurso Classic próprio: alavanca retangular de 20 × 20 px,
+  ranhuras, relevo invertido ao pressionar, foco quadrado e trilho de 38 × 10 px.
+  Liga/desliga usa os controles Plasma nativos.
+- A galeria final passou por 56 verificações de entrada real; foco e alternância
+  por Space do switch passaram por outras sete verificações.
+- O teste final com três janelas reais no KWin isolado passou: pressão imediata
+  e sustentada, cancelamento, minimização da ativa, ativação da inativa e
+  restauração da minimizada. A geometria da tarefa permanece igual após cancelar.
+  O teste encontrou e corrigiu o alvo automático do DragHandler: `target: null`
+  conserva o reconhecimento de arraste sem deslocar o delegado no layout.
+- Instalação e recarga somente em lsi passaram pela auditoria dos 22 componentes.
+  Painel 1822, limites de 1440 × 64 px, IDs, ordem e os 17 itens da bandeja foram
+  preservados. O vínculo interno `lastScreen` da bandeja mudou de -1 para 0,
+  correspondente à tela do painel; essa associação foi registrada separadamente.
+
+A confirmação de p001532 abaixo pertence ao primeiro desenho. O refinamento
+novo ainda não foi instalado nessa sessão; o pacote de atualização é separado
+e exige execução pelo próprio usuário.
 
 ## Resultados
 

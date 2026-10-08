@@ -52,6 +52,16 @@ static QJsonArray rect(QObject *item, MapToScene map)
     return {origin.x(), origin.y(), item->property("width").toDouble(), item->property("height").toDouble()};
 }
 
+static bool sameRect(const QJsonArray &before, const QJsonArray &after)
+{
+    if (before.size() != 4 || after.size() != 4) return false;
+    for (int index = 0; index < 4; ++index) {
+        // Ignore subpixel rounding; any changed screen pixel fails the gate.
+        if (qAbs(before[index].toDouble() - after[index].toDouble()) > 0.5) return false;
+    }
+    return true;
+}
+
 static void writeReport(const QJsonObject &report)
 {
     QFile file(qEnvironmentVariable("IRIX_TEST_REPORT"));
@@ -142,6 +152,25 @@ static bool matchesState(const QJsonObject &roles, bool active, bool minimized)
     return roles["IsWindow"].toBool() && !roles["IsLauncher"].toBool()
         && !roles["IsGroupParent"].toBool() && roles["IsActive"].toBool() == active
         && roles["IsMinimized"].toBool() == minimized;
+}
+
+static QJsonArray pointerHandlers(QObject *task, MapToScene map)
+{
+    QJsonArray result;
+    for (QObject *object : task->findChildren<QObject *>()) {
+        if (!object->inherits("QQuickPointerHandler")) continue;
+        QJsonObject state{{"class", QString::fromLatin1(object->metaObject()->className())},
+            {"active", object->property("active").toBool()},
+            {"pressed", object->property("pressed").toBool()}};
+        for (const QString &name : {QStringLiteral("parent"), QStringLiteral("target")}) {
+            QObject *item = object->property(name.toLatin1().constData()).value<QObject *>();
+            state[name + "_class"] = item ? QString::fromLatin1(item->metaObject()->className()) : QString();
+            state[name + "_is_task"] = item == task;
+            if (item && item->inherits("QQuickItem")) state[name + "_rect"] = rect(item, map);
+        }
+        result.append(state);
+    }
+    return result;
 }
 
 static void captureWindowTasks(QWindow *window, QObject *root, QJsonObject report,
@@ -235,7 +264,8 @@ static void captureWindowTasks(QWindow *window, QObject *root, QJsonObject repor
         }
         const QPoint point = map(task, {task->property("width").toDouble() / 2,
                                        task->property("height").toDouble() / 2}).toPoint();
-        result["task_rect"] = rect(task, map);
+        const QJsonArray initialTaskRect = rect(task, map);
+        result["task_rect"] = initialTaskRect;
         QTest::mouseMove(window, point);
         QTest::qWait(80);
         const QString normalPath = captureBase + "." + stateName + ".normal.png";
@@ -254,15 +284,24 @@ static void captureWindowTasks(QWindow *window, QObject *root, QJsonObject repor
         QTest::qWait(120); // Settle only this optional test's screenshot.
         result["held_settled_roles_unchanged"] = matchesState(rolesFor(model, id), active, minimized);
         result["held_settled_feedback"] = task->property("classicPressed").toBool();
+        result["held_task_rect"] = rect(task, map);
+        result["held_handlers"] = pointerHandlers(task, map);
         result["pressed_capture"] = grab(window).save(pressedPath);
         result["pressed_capture_file"] = pressedPath;
         QTest::mouseMove(window, {-100, -100});
         QTest::mouseRelease(window, Qt::LeftButton, Qt::NoModifier, {-100, -100});
-        QTest::qWait(80);
+        QTest::qWait(120); // Let only the test fixture settle after cancellation.
         result["cancel_clears_feedback"] = !task->property("classicPressed").toBool();
         result["cancel_roles_unchanged"] = matchesState(rolesFor(model, id), active, minimized);
+        result["cancel_task_rect"] = rect(task, map);
+        result["cancel_task_geometry_unchanged"] = sameRect(initialTaskRect, result["cancel_task_rect"].toArray());
+        result["cancel_handlers"] = pointerHandlers(task, map);
+        result["action_point"] = QJsonArray{point.x(), point.y()};
+        result["action_task_rect_before_press"] = rect(task, map);
         QTest::mouseMove(window, point);
         QTest::mousePress(window, Qt::LeftButton, Qt::NoModifier, point);
+        result["action_task_rect_after_press"] = rect(task, map);
+        result["action_handlers"] = pointerHandlers(task, map);
         result["action_press_feedback"] = task->property("classicPressed").toBool();
         result["action_waited_for_release"] = matchesState(rolesFor(model, id), active, minimized);
         QTest::mouseRelease(window, Qt::LeftButton, Qt::NoModifier, point);

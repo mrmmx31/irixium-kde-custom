@@ -13,8 +13,9 @@
   "version": "3.0",
   "local_changes": [
     "Renamed and separated as the starting point for the independent IRIX Classic theme.",
-    "Restored missing widgets/switch.svg from the author\u2019s locally installed Irixium 6.2; retained the existing theme artwork.",
-    "Replaced Classic panel, tasks, pager, buttons, item highlights and sliders with opaque compact workstation plates; added state-specific hover/pressed artwork and vertical controls."
+    "Restored missing widgets/switch.svg from the author’s locally installed Irixium 6.2; retained the existing theme artwork.",
+    "Replaced Classic panel, tasks, pager, buttons, item highlights and sliders with opaque compact workstation plates; added state-specific hover/pressed artwork and vertical controls.",
+    "Replaced the inherited rounded/gradient switch with independently drawn mechanical rectangular Classic artwork; separated square task icon wells from caption strips inside a recessed Iconbox."
   ],
   "verification": {
     "installed_path": "~/.local/share/plasma/desktoptheme/IrixClassic",
@@ -22,20 +23,28 @@
   },
   "additional_resources": {
     "widgets/switch.svg": {
-      "author": "Mark Whittaker (Phob1an)",
-      "upstream_version": "6.2",
-      "license": "GPL-2.0-or-later",
-      "source": "locally installed irixium Plasma Style",
-      "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn Classic artwork for the native Plasma switch contract",
+      "sha256": "2bc7ec022e61fe652d2cc6cdc7b07fdf6f69989d8284e67e6deada1cb96121d3"
     }
   },
   "classic_artwork": {
-    "version": "0.1.0",
+    "version": "0.2.0",
     "author": "IRIX Classic contributors",
     "license": "GPL-3.0-or-later",
     "references": [
       "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch03.html",
       "https://www.bitsavers.org/pdf/openSoftwareFoundation/motif/OSF_Motif_Style_Guide_Revision_1.2_1993.pdf"
     ]
+  },
+  "historical_resources": {
+    "former_widgets/switch.svg": {
+      "author": "Mark Whittaker (Phob1an)",
+      "upstream_version": "6.2",
+      "license": "GPL-2.0-or-later",
+      "source": "locally installed irixium Plasma Style",
+      "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
+    }
   }
 }

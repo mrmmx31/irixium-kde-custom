@@ -64,10 +64,12 @@ PlasmaCore.ToolTipArea {
     property int previousChildCount: 0
     property alias labelText: label.text
     readonly property bool classicPressed: !inPopup && leftTapHandler.pressed
+    readonly property real classicCaptionHeight: Math.max(14, Math.ceil(label.implicitHeight))
     readonly property real classicIconSize: {
-        const available = Math.min(width - 8, height - label.implicitHeight - 6);
+        const available = Math.min(width - 12, height - classicCaptionHeight - 4);
         return available >= 32 ? 32 : (available >= 24 ? 24 : 16);
     }
+    readonly property real classicWellSize: classicIconSize + 4
     property QtObject contextMenu: null
     readonly property bool smartLauncherEnabled: !inPopup && !model.IsStartup
     property QtObject smartLauncherItem: null
@@ -468,15 +470,19 @@ PlasmaCore.ToolTipArea {
         objectName: "classicTaskFrame"
 
         anchors {
-            fill: parent
-
-            topMargin: (!tasksRoot.vertical && taskList.rows > 1) ? LayoutMetrics.iconMargin : 0
-            bottomMargin: (!tasksRoot.vertical && taskList.rows > 1) ? LayoutMetrics.iconMargin : 0
-            leftMargin: ((inPopup || tasksRoot.vertical) && taskList.columns > 1) ? LayoutMetrics.iconMargin : 0
-            rightMargin: ((inPopup || tasksRoot.vertical) && taskList.columns > 1) ? LayoutMetrics.iconMargin : 0
+            left: inPopup ? parent.left : undefined
+            right: inPopup ? parent.right : undefined
+            horizontalCenter: inPopup ? undefined : parent.horizontalCenter
+            top: parent.top
+            bottom: inPopup ? parent.bottom : undefined
         }
+        width: inPopup ? parent.width : task.classicWellSize
+        height: inPopup ? parent.height : task.classicWellSize
 
-        imagePath: "widgets/tasks"
+        // Panel tasks have an icon well and a distinct caption, rather than
+        // one raised button surrounding both. Native group-popup rows keep
+        // their original task frame and layout.
+        imagePath: inPopup ? "widgets/tasks" : "widgets/task-icon"
         property bool isHovered: task.highlighted && Plasmoid.configuration.taskHoverEffect
         property string basePrefix: "normal"
         // Follow the pointer state directly; the native action still runs on release.
@@ -488,6 +494,12 @@ PlasmaCore.ToolTipArea {
         // Avoid repositioning delegate item after dragFinished
         DragHandler {
             id: dragHandler
+            // Retain dragging from the whole native delegate, including its
+            // caption; only the painted frame is now confined to the icon.
+            parent: task
+            // The native DragHelper carries the drag. Moving the GridLayout
+            // delegate itself would leave it displaced after cancellation.
+            target: null
             grabPermissions: PointerHandler.CanTakeOverFromHandlersOfDifferentType
 
             function setRequestedInhibitDnd(value: bool): void {
@@ -548,7 +560,7 @@ PlasmaCore.ToolTipArea {
             leftMargin: task.inPopup ? adjustMargin(true, parent.width, taskFrame.margins.left) : 0
             top: parent.top
             topMargin: task.inPopup ? adjustMargin(false, parent.height, taskFrame.margins.top)
-                                   : 3 + (task.classicPressed ? 1 : 0)
+                                   : 2 + (task.classicPressed ? 1 : 0)
         }
 
         width: task.inPopup ? Math.max(Kirigami.Units.iconSizes.sizeForLabels, Kirigami.Units.iconSizes.medium) : task.classicIconSize
@@ -579,7 +591,7 @@ PlasmaCore.ToolTipArea {
 
             anchors.fill: parent
 
-            active: task.highlighted
+            active: task.inPopup && task.highlighted
             enabled: true
 
             source: model.decoration
@@ -617,6 +629,35 @@ PlasmaCore.ToolTipArea {
         }
     }
 
+    Rectangle {
+        id: captionStrip
+        objectName: "classicTaskCaptionStrip"
+        visible: !task.inPopup && label.visible
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+            leftMargin: 4
+            rightMargin: 4
+        }
+        height: task.classicCaptionHeight
+        color: task.classicPressed || frame.basePrefix === "focus" ? "#637f7f"
+            : frame.basePrefix === "attention" ? "#aaa27a"
+            : frame.basePrefix === "minimized" ? "#aaa9a2"
+            : frame.isHovered ? "#adc9c7" : "#9ebfbf"
+
+        Rectangle {
+            anchors { left: parent.left; right: parent.right; top: parent.top }
+            height: 1
+            color: task.classicPressed || frame.basePrefix === "focus" ? "#41413b" : "#bfd3d0"
+        }
+        Rectangle {
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+            height: 1
+            color: task.classicPressed || frame.basePrefix === "focus" ? "#bfd3d0" : "#789292"
+        }
+    }
+
     PlasmaComponents3.Label {
         id: label
         objectName: "classicTaskCaption"
@@ -628,13 +669,23 @@ PlasmaCore.ToolTipArea {
             right: parent.right
             verticalCenter: inPopup ? parent.verticalCenter : undefined
             bottom: inPopup ? undefined : parent.bottom
-            leftMargin: inPopup ? taskFrame.margins.left + iconBox.width + LayoutMetrics.labelMargin : 3
-            rightMargin: inPopup ? taskFrame.margins.right + (audioStreamIcon !== null && audioStreamIcon.visible ? (audioStreamIcon.width + LayoutMetrics.labelMargin) : 0) : 3
-            bottomMargin: inPopup ? 0 : 2 - (task.classicPressed ? 1 : 0)
+            leftMargin: inPopup ? taskFrame.margins.left + iconBox.width + LayoutMetrics.labelMargin : 5 + (task.classicPressed ? 1 : 0)
+            rightMargin: inPopup ? taskFrame.margins.right + (audioStreamIcon !== null && audioStreamIcon.visible ? (audioStreamIcon.width + LayoutMetrics.labelMargin) : 0) : 5 - (task.classicPressed ? 1 : 0)
+            bottomMargin: inPopup ? 0 : -(task.classicPressed ? 1 : 0)
         }
 
-        height: inPopup ? parent.height - taskFrame.margins.top - taskFrame.margins.bottom : implicitHeight
-        font: inPopup ? Kirigami.Theme.defaultFont : Kirigami.Theme.smallFont
+        height: inPopup ? parent.height - taskFrame.margins.top - taskFrame.margins.bottom : task.classicCaptionHeight
+        // A panel caption occupies a 14 px rail below the icon well. Bound
+        // only its local pixel size; preserve the configured family/style
+        // and leave native popup rows and desktop fonts unchanged.
+        font: inPopup ? Kirigami.Theme.defaultFont : Qt.font({
+            family: Kirigami.Theme.smallFont.family,
+            styleName: Kirigami.Theme.smallFont.styleName,
+            weight: Kirigami.Theme.smallFont.weight,
+            italic: Kirigami.Theme.smallFont.italic,
+            pixelSize: 10,
+        })
+        color: !inPopup && (task.classicPressed || frame.basePrefix === "focus") ? "#f4f4e9" : Kirigami.Theme.textColor
         wrapMode: (maximumLineCount === 1) ? Text.NoWrap : Text.Wrap
         elide: Text.ElideRight
         textFormat: Text.PlainText

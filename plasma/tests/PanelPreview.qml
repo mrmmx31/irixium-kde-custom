@@ -46,32 +46,56 @@ Window {
                             {name: "system-file-manager", caption: "Files"},
                             {name: "utilities-terminal", caption: "Console"}
                         ]
-                        delegate: ControlTile {
+                        // Surrounding launchers are schematic native controls;
+                        // their actual applet models are tested in Plasma hosts.
+                        delegate: PC.ToolButton {
                             required property var modelData
                             width: 55
                             height: 48
-                            iconName: modelData.name
-                            text: modelData.caption
-                            checkable: false
+                            icon.name: modelData.name
+                            icon.width: 32
+                            icon.height: 32
+                            Accessible.name: modelData.caption
                         }
                     }
                 }
             }
             KSvg.FrameSvgItem {
+                objectName: "previewIconboxHousing"
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                imagePath: artworkRoot + "/widgets/background.svg"
-                prefix: ""
+                imagePath: artworkRoot + "/widgets/iconbox.svg"
+                Rectangle {
+                    objectName: "previewIconboxHeading"
+                    x: 3
+                    y: 3
+                    width: parent.width - 6
+                    height: 8
+                    color: "#aaa9a2"
+                    clip: true
+                    Rectangle {
+                        anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+                        height: 1
+                        color: "#41413b"
+                    }
+                    Text {
+                        anchors { fill: parent; leftMargin: 4; bottomMargin: 1 }
+                        text: "Iconbox"
+                        font.pixelSize: 8
+                        color: "#41413b"
+                        verticalAlignment: Text.AlignVCenter
+                    }
+                }
                 Row {
-                    anchors.left: parent.left
-                    anchors.leftMargin: 4
-                    anchors.verticalCenter: parent.verticalCenter
-                    spacing: 3
-                    ControlTile { objectName: "normalTask"; text: "Console"; iconName: "utilities-terminal"; height: 48 }
-                    ControlTile { objectName: "activeTask"; text: "Editor"; iconName: "text-editor"; checked: true; height: 48 }
-                    ControlTile { objectName: "minimizedTask"; text: "Files"; iconName: "system-file-manager"; baseState: "minimized"; height: 48 }
-                    ControlTile { text: "Browser"; iconName: "internet-web-browser"; height: 48 }
-                    ControlTile { text: "Settings"; iconName: "preferences-system"; height: 48 }
+                    x: 3
+                    y: 11
+                    height: parent.height - 14
+                    spacing: 0
+                    ControlTile { objectName: "normalTask"; text: "Console"; iconName: "utilities-terminal" }
+                    ControlTile { objectName: "activeTask"; text: "Editor"; iconName: "text-editor"; checked: true }
+                    ControlTile { objectName: "minimizedTask"; text: "Files"; iconName: "system-file-manager"; baseState: "minimized" }
+                    ControlTile { text: "Browser"; iconName: "internet-web-browser" }
+                    ControlTile { text: "Settings"; iconName: "preferences-system" }
                 }
             }
             KSvg.FrameSvgItem {

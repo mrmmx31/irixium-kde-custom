@@ -5,18 +5,22 @@ Indigo Magic/Motif: square workstation plates, a dark rim, a two-pixel bevel,
 inset housings, and cyan selection on the existing gray palette. It keeps the
 compact 64px panel height. The original Irixium base is attributed in ORIGEM.json.
 
-Tasks provide state-specific hover and pressed plates. The separate
-org.irixclassic.iconbox widget connects mouse-down directly to that artwork;
-stock KDE tasks do not forward that state. Applications, shortcuts, tray and
-clock have independent Classic widgets. No system QML is overwritten.
+Tasks use separate square icon wells and caption strips inside a recessed
+Iconbox, with a compact heading. Active selection colors the caption rather
+than the whole task. The org.irixclassic.iconbox widget connects mouse-down
+directly to the icon relief and caption displacement; stock KDE tasks do not
+forward that state. Applications, shortcuts, tray and clock have independent
+Classic widgets. No system QML is overwritten.
 
 The style also supplies listitem/selected+hover resources and both slider
 orientations, preventing those controls from falling back to KDE artwork.
 The existing Irixium modern style is independent and is not redesigned.
 
-The Wi-Fi/Bluetooth switch resource comes from the author’s Irixium 6.2
-(GPL-2.0-or-later, LICENSE-switch.txt). Newly drawn plates are
-GPL-3.0-or-later; upstream files retain their original attribution and license.
+Wi-Fi/Bluetooth switches have a rectangular lever with grip ridges, a square
+focus frame, gray off/teal on tracks and inverted pressed relief. The original
+rounded Irixium switch was replaced with independently drawn Classic artwork.
+New artwork is GPL-3.0-or-later; upstream files retain their original attribution
+and license. LICENSE-switch.txt preserves the license of the former resource.
 
 Historical references:
 - [Indigo Magic User Interface Guidelines](https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch03.html)

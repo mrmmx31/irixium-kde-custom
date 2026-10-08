@@ -39,8 +39,11 @@ PlasmoidItem {
     // Keep the native icons-and-text task semantics, including group dialogs.
     readonly property bool iconsOnly: false
     readonly property int frameInset: 3
+    // A compact window-heading rail, above one recessed row of desktop icons.
+    // The panel's 64 px thickness leaves 56 px for the applet itself.
+    readonly property int headingHeight: vertical ? 0 : 8
     readonly property real contentWidth: Math.max(0, width - frameInset * 2)
-    readonly property real contentHeight: Math.max(0, height - frameInset * 2)
+    readonly property real contentHeight: Math.max(0, height - frameInset * 2 - headingHeight)
 
     property Task toolTipOpenedByClick
     property Task toolTipAreaItem
@@ -74,7 +77,7 @@ PlasmoidItem {
         if (shouldShrinkToZero) {
             return Kirigami.Units.gridUnit; // For edit mode
         }
-        return LayoutMetrics.preferredMinHeight() + frameInset * 2;
+        return LayoutMetrics.preferredMinHeight() + frameInset * 2 + headingHeight;
     }
 
 //BEGIN TODO: this is not precise enough: launchers are smaller than full tasks
@@ -94,7 +97,7 @@ PlasmoidItem {
         if (vertical) {
             return taskList.Layout.maximumHeight + frameInset * 2;
         }
-        return LayoutMetrics.preferredMaxHeight() + frameInset * 2;
+        return LayoutMetrics.preferredMinHeight() + frameInset * 2 + headingHeight;
     }
 //END TODO
 
@@ -278,14 +281,47 @@ PlasmoidItem {
     }
 
     KSvg.FrameSvgItem {
+        objectName: "classicIconboxHousing"
         anchors.fill: parent
-        imagePath: "widgets/background"
-        prefix: ["normal", ""]
+        imagePath: "widgets/iconbox"
+    }
+
+    Rectangle {
+        objectName: "classicIconboxHeading"
+        visible: tasks.headingHeight > 0
+        anchors {
+            left: parent.left
+            right: parent.right
+            top: parent.top
+            leftMargin: tasks.frameInset
+            rightMargin: tasks.frameInset
+            topMargin: tasks.frameInset
+        }
+        height: tasks.headingHeight
+        color: "#aaa9a2"
+        clip: true
+
+        Rectangle {
+            anchors { left: parent.left; right: parent.right; bottom: parent.bottom }
+            height: 1
+            color: "#41413b"
+        }
+
+        PlasmaComponents3.Label {
+            anchors { fill: parent; leftMargin: 4; bottomMargin: 1 }
+            text: i18nc("@title:window compact desktop task area", "Iconbox")
+            font.family: Kirigami.Theme.smallFont.family
+            font.pixelSize: 8
+            color: "#41413b"
+            verticalAlignment: Text.AlignVCenter
+            Accessible.ignored: true
+        }
     }
 
     Item {
         anchors.fill: parent
         anchors.margins: tasks.frameInset
+        anchors.topMargin: tasks.frameInset + tasks.headingHeight
 
         TaskManager.VirtualDesktopInfo {
             id: virtualDesktopInfo

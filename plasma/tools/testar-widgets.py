@@ -248,10 +248,12 @@ def run_window_tasks(output, capture_helper, window_helper):
         required = ("state_ready", "identity_verified", "real_window_delegate", "immediate_held_feedback",
                     "held_roles_unchanged", "held_settled_roles_unchanged", "held_settled_feedback",
                     "normal_capture", "pressed_capture", "cancel_clears_feedback",
-                    "cancel_roles_unchanged", "action_press_feedback", "action_waited_for_release",
+                    "cancel_roles_unchanged", "cancel_task_geometry_unchanged", "action_press_feedback", "action_waited_for_release",
                     "release_action_verified", "release_clears_feedback", "x11_action_verified")
         if not all(case.get(key) for key in required) or "-pressed" not in case.get("pressed_prefix", ""):
             failures.append("Native window task feedback/action failed for " + case.get("state", "unknown"))
+        if not case.get("cancel_task_geometry_unchanged"):
+            failures.append("Native task geometry moved after cancellation for " + case.get("state", "unknown"))
         normal = Path(case.get("normal_capture_file", "/nonexistent"))
         pressed = Path(case.get("pressed_capture_file", "/nonexistent"))
         if normal.is_file() and pressed.is_file():

@@ -47,7 +47,9 @@ function preferredMaxWidth() {
 }
 
 function preferredMinHeight() {
-    return 48;
+    // 28 px icon well + a separate 14 px caption fit below the heading
+    // inside the 56 px applet area of a 64 px Plasma panel.
+    return 42;
 }
 
 function preferredMaxHeight() {
