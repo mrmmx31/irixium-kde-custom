@@ -88,7 +88,7 @@ class UserBundleTest(unittest.TestCase):
     def test_all_theme_dependencies_present_and_user_scoped(self):
         data,config = self.root/'data',self.root/'config'
         pairs = sources(data,config)
-        self.assertEqual(len(pairs),26)
+        self.assertEqual(len(pairs),27)
         for source,dest in pairs:
             self.assertTrue(source.exists(),source)
             self.assertTrue(dest.is_relative_to(data) or dest.is_relative_to(config))

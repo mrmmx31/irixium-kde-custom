@@ -11,10 +11,12 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-A instalação atualiza 26 componentes gráficos locais, com backup, sem trocar a
+A instalação atualiza 27 componentes locais, com backup, sem trocar a
 seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
 cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
 Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
+O tema Wine é disponibilizado sem criar ou alterar prefixos automaticamente;
+use o [assistente do Wine Classic](wine/README.md) para escolher um prefixo.
 Plasma 6, Aurorae/KSvg Qt 6, Kvantum Qt 6 e KSystemStats devem estar instalados pela distribuição.
 
 Os temas completos e os destinos estão em [components.json](components.json),

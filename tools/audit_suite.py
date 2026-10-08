@@ -73,6 +73,12 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None, gtk_compat
         expected = json.loads((ROOT/folder/'MANIFEST.json').read_text())['package']
         if hashes(ROOT/folder/'package') != expected:
             failures.append('Manifesto divergente: '+str(folder))
+    for entry in doc['components']:
+        if entry['source'].startswith('wine/'):
+            package=ROOT/entry['source']
+            expected=json.loads((package.parent/'MANIFEST.json').read_text())['package']
+            if hashes(package) != expected:
+                failures.append('Manifesto divergente: '+entry['source'])
     compat_reports = []
     gtk_reports = []
     if local:

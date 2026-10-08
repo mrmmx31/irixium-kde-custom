@@ -2,6 +2,11 @@
   "format": 1,
   "components": [
     {
+      "source": "wine/IrixClassic/package",
+      "root": "data",
+      "destination": "irixium-suite/wine/IrixClassic"
+    },
+    {
       "source": "decorations/modern/package",
       "root": "data",
       "destination": "kwin/decorations/irixium_modern"

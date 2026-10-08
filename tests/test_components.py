@@ -15,7 +15,7 @@ class ComponentsTest(unittest.TestCase):
     def test_both_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),26)
+        self.assertEqual(len(report['components']),27)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
