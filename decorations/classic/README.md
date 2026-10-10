@@ -85,9 +85,14 @@ uma assinatura criptográfica de origem.
 
 ### Instalação somente no perfil do usuário
 
-Execute `hooks/instalar-user-hook.sh` como o usuário normal para manter a
-decoração sem alterar componentes globais do KWin. O script cria um serviço
-`systemd --user` e mantém o pacote em `~/.local/share/kwin/decorations/`.
+No checkout completo deste repositório, execute
+`decorations/classic/hooks/instalar-user-hook.sh` a partir da raiz, como o usuário
+normal, para instalar o hook opcional. Ele depende das ferramentas comuns do
+repositório; o ZIP independente Classic usa somente `instalar.sh`, descrito
+acima. O hook cria um serviço `systemd --user` e copia seu runtime para
+`XDG_DATA_HOME/irixium/hooks/classic`, usando `~/.local/share` quando XDG não
+estiver definido. O serviço funciona mesmo depois de remover o checkout e
+mantém a decoração no diretório `kwin/decorations` desse mesmo perfil.
 O serviço usa `--hook`, que é idempotente: só reinstala quando o pacote local
 está ausente ou divergente e preserva a seleção atual no `~/.config/kwinrc`.
 A seleção do Classic ou do moderno é uma ação explícita do usuário. Nenhum

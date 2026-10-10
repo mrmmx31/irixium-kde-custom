@@ -7,13 +7,14 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
-sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'tools'))
+ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT/'tools'))
 import apply_suite
 
 
 class ApplySuiteTest(unittest.TestCase):
     def setUp(self):
-        self.tmp=tempfile.TemporaryDirectory();self.addCleanup(self.tmp.cleanup)
+        self.tmp=tempfile.TemporaryDirectory(prefix='.gtk-suite-test-',dir=ROOT);self.addCleanup(self.tmp.cleanup)
         self.root=Path(self.tmp.name)
         home_patch=patch('select_gtk.Path.home',return_value=self.root)
         home_patch.start();self.addCleanup(home_patch.stop)
@@ -129,7 +130,7 @@ class ApplySuiteTest(unittest.TestCase):
         original = b'gtk-theme-name = "Before"\ngtk-font-name="User font"\ngtk-cursor-theme-size=48\n'
         rc.write_bytes(original)
         self.run_apply('classic')
-        self.assertIn(b'gtk-theme-name="IrixClassic"', rc.read_bytes())
+        self.assertIn(b'gtk-theme-name="IrixClassic-KDE"', rc.read_bytes())
         self.assertIn(b'gtk-font-name="User font"', rc.read_bytes())
         self.assertIn(b'gtk-cursor-theme-size=48', rc.read_bytes())
         self.run_apply('--restaurar')

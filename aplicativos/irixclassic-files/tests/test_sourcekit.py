@@ -125,7 +125,12 @@ class ArchitectureTests(unittest.TestCase):
     def test_tests_gate_packages(self):
         s=self.text('tools/build.py');self.assertLess(s.index("'ctest'"),s.index("binary_root=work"));self.assertIn('--no-tests=error',s)
     def test_future_source_code_in_archive(self):self.assertIn("source_bundle/'dolphin-debian'",self.text('tools/build.py'))
-    def test_no_mime_default_install(self):self.assertNotIn('MimeType=',self.text('tools/runtime_install.py'));self.assertNotIn('xdg-mime',self.text('tools/runtime_install.py'))
+    def test_directory_mime_registration_without_default_mutation(self):
+        runtime=self.text('tools/runtime_install.py')
+        package=self.text('tools/build_deb.py')
+        self.assertIn('MimeType=inode/directory;application/x-directory;',runtime)
+        self.assertIn('MimeType=inode/directory;application/x-directory;',package)
+        self.assertNotIn('xdg-mime',runtime)
     def test_native_test_sources_included(self):self.assertTrue((ROOT/'tests/tst_application.cpp').is_file());self.assertTrue((ROOT/'tests/tst_core.cpp').is_file())
 
 class RuntimeManifestTests(unittest.TestCase):

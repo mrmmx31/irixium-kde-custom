@@ -10,7 +10,7 @@
   },
   "scope": "New KDE palette only; no license of the HP reference or software is asserted.",
   "source": "The two user-supplied image references recorded in plasma/applets/org.irixclassic.domainos.panel/contents/images/ORIGEM.json.",
-  "file_sha256": "56cdc9ee06c8c4e69733be6e5dee967c1ecf4976ec5b6b8be10de3623eb17ebf",
+  "file_sha256": "9c530d6517d007ddd615b2f585d80198ca9a012d2e2859e8a4414f272145a724",
   "colors": {
     "background": "#7894a7",
     "recessed": "#607f91",
@@ -22,5 +22,7 @@
     "white": "#ffffff",
     "text": "#102b37"
   },
-  "fonts_changed": false
+  "fonts_changed": false,
+  "installed_filename": "DomainOS-SR10-4.colors",
+  "filename_compatibility": "Plasma 6.3 uses QFileInfo.baseName() for the installed scheme ID; no internal dot. Visible name and SR10.4 colors are unchanged."
 }

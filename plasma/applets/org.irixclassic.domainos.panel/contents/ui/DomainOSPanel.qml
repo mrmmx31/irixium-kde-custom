@@ -8,9 +8,14 @@ Item {
     implicitWidth: 1942
     implicitHeight: 218
     readonly property real drawingScale: Math.min(width/1942,height/218)
-    readonly property string phase: "design-awaiting-button-confirmations"
-    readonly property int taskCount: 7
-    readonly property int workspaceCount: 2
+    readonly property string phase: integration ? "functional-integration" : "design-reference"
+    // The sealed-reference preview leaves this null. Native test hosts supply
+    // the same live controller that will be used by the completed applet.
+    property var integration: null
+    signal actionRequested(string action, var anchor)
+    onActionRequested: (action, anchor) => { if (integration) integration.dispatch(action, anchor) }
+    readonly property int taskCount: integration ? integration.tasks.windowCount : 7
+    readonly property int workspaceCount: integration && livePager.item ? livePager.item.desktopCount : 2
     readonly property int trayRows: 2
     readonly property int trayColumns: 3
     property bool followSystemColors: true
@@ -19,6 +24,9 @@ Item {
     property int selectedWorkspaceIndex: 1
     property int selectedTaskIndex: -1
     readonly property QtObject colorPalette: colors
+    readonly property var nativeIconbox: liveIconbox.item
+    readonly property var nativePager: livePager.item
+    readonly property var nativeTrayView: liveTray.item
     DomainOSPalette { id: colors; followSystem: panel.followSystemColors }
     property int clockHour: 5
     property int clockMinute: 0
@@ -35,6 +43,7 @@ Item {
         objectName: "domainosChassis"
         readonly property QtObject domainosPalette: panel.colorPalette
         readonly property real domainosRenderScale: panel.drawingScale
+        readonly property bool domainosBarHintsEnabled: !!panel.integration && panel.integration.settings.barHintsEnabled === true
         width: 1942; height: 218
         x: (panel.width-width*panel.drawingScale)/2
         y: (panel.height-height*panel.drawingScale)/2
@@ -51,12 +60,14 @@ Item {
                 objectName: "domainosClock"
                 x: 4; y: 4; width: 166; height: 150
                 label: "Analog clock"
+                onClicked: panel.actionRequested("clock", this)
                 bevelThickness: 4; simpleRelief: true
                 bevelLight: colors.pale; bevelDark: colors.dark
                 face: colors.recessed
                 PaletteImage { objectName: "domainosClockFace"; x: 16; y: 8; width: 134; height: 134; assetSource: panel.images+"clock-face.svg"; smooth: false }
                 Item {
                     objectName: "domainosClockHands"
+                    visible: !panel.integration || panel.integration.instruments.timeAvailable
                     x: 83; y: 75
                     scale: 134/114; transformOrigin: Item.TopLeft
                     Item {
@@ -78,6 +89,7 @@ Item {
                 objectName: "domainosDate"
                 x: 170; y: 4; width: 166; height: 150
                 label: "Calendar date"
+                onClicked: panel.actionRequested("calendar", this)
                 bevelThickness: 4; simpleRelief: true
                 bevelLight: colors.pale; bevelDark: colors.dark
                 face: colors.recessed
@@ -111,31 +123,68 @@ Item {
                 objectName: "domainosGraph"
                 x: 336; y: 4; width: 166; height: 150
                 label: "System activity graph"
+                onClicked: panel.actionRequested("monitor", this)
                 bevelThickness: 4; simpleRelief: true
                 bevelLight: colors.pale; bevelDark: colors.dark
                 face: colors.recessed
-                imageSource: panel.images+"graph-reference.svg"; imageWidth: 152; imageHeight: 90
+                imageSource: panel.integration ? "" : panel.images+"graph-reference.svg"; imageWidth: 152; imageHeight: 90
+                Loader {
+                    anchors.centerIn: parent; width: 152; height: width*35/60
+                    active: !!panel.integration
+                    sourceComponent: DomainOSGraph {
+                        instruments: panel.integration ? panel.integration.instruments : null
+                    }
+                }
             }
             PanelButton {
+                id: mailButton
                 objectName: "domainosMail"
                 x: 502; y: 4; width: 166; height: 150
-                label: "Mail"
+                readonly property var liveInstruments: panel.integration ? panel.integration.instruments : null
+                readonly property bool countRequested: !!panel.integration && panel.integration.settings.mailCountsEnabled === true
+                label: liveInstruments ? qsTr("Correio")+" · "+(liveInstruments.mailStateAvailable
+                    ? qsTr("%1 mensagem(ns) não lida(s)").arg(liveInstruments.mailUnreadCount)
+                    : liveInstruments.mailStatusText) : qsTr("Correio")
+                onClicked: panel.actionRequested("mail", this)
                 bevelThickness: 4; simpleRelief: true
                 bevelLight: colors.pale; bevelDark: colors.dark
                 face: colors.recessed
                 imageSource: panel.images+"mail.svg"; imageWidth: 142; imageHeight: 70
+                Item {
+                    objectName: "domainosMailUnreadCount"
+                    anchors { horizontalCenter: parent.horizontalCenter; bottom: parent.bottom; bottomMargin: 5 }
+                    width: parent.width-16; height: 32
+                    visible: mailButton.countRequested
+                    Text {
+                        objectName: "domainosMailUnreadText"
+                        anchors.centerIn: parent
+                        width: parent.width/scale
+                        scale: 24/14
+                        text: mailButton.liveInstruments && mailButton.liveInstruments.mailStateAvailable
+                            ? String(mailButton.liveInstruments.mailUnreadCount) : "—"
+                        textFormat: Text.PlainText
+                        font.family: dateFont.status === FontLoader.Ready ? dateFont.name : "Courier"
+                        font.pixelSize: 14; font.bold: true
+                        color: colors.text
+                        horizontalAlignment: Text.AlignHCenter
+                        elide: Text.ElideLeft
+                        renderType: Text.NativeRendering
+                        smooth: false
+                    }
+                }
             }
         }
 
         Bevel {
             objectName: "domainosIconbox"
+            visible: !panel.integration
             x: 672; y: 8; width: 594; height: 150
             simpleRelief: true; light: colors.pale; dark: colors.dark
             texture: panel.images+"metal-weave.svg"
             Bevel { objectName: "domainosIconboxWell"; x: 12; y: 18; width: parent.width-24; height: 114; sunken: true; face: colors.recessed }
             PanelButton { objectName: "domainosIconboxPrevious"; x: 12; y: 26; width: 44; height: 98; label: "Previous icons"; imageSource: panel.images+"arrow-left.svg"; imageWidth: 32 }
             Repeater {
-                model: 7
+                model: panel.integration ? 0 : 7
                 delegate: PanelButton {
                     id: taskButton
                     required property int index
@@ -164,24 +213,72 @@ Item {
             }
             PanelButton { objectName: "domainosIconboxNext"; x: 538; y: 26; width: 44; height: 98; label: "Next icons"; imageSource: panel.images+"arrow-right.svg"; imageWidth: 32 }
         }
+        Loader {
+            id: liveIconbox
+            x: 672; y: 8; width: 594; height: 150
+            active: !!panel.integration
+            sourceComponent: DomainOSIconbox {
+                controller: panel.integration.tasks
+                colorPalette: colors
+                hostItem: panel.integration.hostItem
+                pinnedApplications: panel.integration.applications.pins
+                middleClickAction: panel.integration.settings.middleClickAction === undefined ? 2 : panel.integration.settings.middleClickAction
+                wheelEnabled: panel.integration.settings.wheelEnabled === undefined ? true : panel.integration.settings.wheelEnabled
+                iconboxWheelActivates: panel.integration.settings.iconboxWheelActivates === true
+                wheelSkipMinimized: panel.integration.settings.wheelSkipMinimized === undefined ? true : panel.integration.settings.wheelSkipMinimized
+                interactiveMute: panel.integration.settings.interactiveMute !== false
+                highlightWindows: panel.integration.settings.highlightWindows === true
+                thumbnailsEnabled: panel.integration.settings.iconboxWindowThumbnails === true
+                hintsEnabled: panel.integration.settings.iconboxHintsEnabled !== false
+                onPinRequested: desktopId => panel.integration.applications.pin(desktopId)
+                onUnpinRequested: desktopId => {
+                    const index=panel.integration.applications.pins.indexOf(desktopId)
+                    if (index>=0) panel.integration.applications.unpin(index)
+                }
+                onGroupingPreferencesRequested: (appIds,launcherUrls) => {
+                    panel.integration.settings.tasksGroupingAppIdBlacklist=appIds
+                    panel.integration.settings.tasksGroupingLauncherUrlBlacklist=launcherUrls
+                    if (typeof panel.integration.settings.writeConfig === "function") panel.integration.settings.writeConfig()
+                }
+                onFailure: message => panel.integration.showFailure(message)
+                onOperationStarted: operation => panel.integration.startOperation(operation)
+                onOperationFinished: (operation,success,details) => panel.integration.finishOperation(operation,success,details)
+            }
+        }
 
         Bevel {
             objectName: "domainosPager"
+            visible: !panel.integration
             x: 1266; y: 8; width: 342; height: 150
             simpleRelief: true; light: colors.pale; dark: colors.dark
             texture: panel.images+"metal-weave.svg"
             WorkspaceTile { objectName: "domainosDeskWork"; x: 8; y: 12; width: 158; height: 126; name: "Work"; selected: panel.selectedWorkspaceIndex === 0; onClicked: if (panel.simulateSelection) panel.selectedWorkspaceIndex = 0 }
             WorkspaceTile { objectName: "domainosDeskProcrastination"; x: 176; y: 12; width: 158; height: 126; name: "Procrastination"; second: true; selected: panel.selectedWorkspaceIndex === 1; onClicked: if (panel.simulateSelection) panel.selectedWorkspaceIndex = 1 }
         }
+        Loader {
+            id: livePager
+            x: 1266; y: 8; width: 342; height: 150
+            active: !!panel.integration
+            sourceComponent: DomainOSPager {
+                colorPalette: colors
+                screenGeometry: panel.integration.screenGeometry
+                showOnlyCurrentScreen: panel.integration.settings.pagerCurrentScreen || false
+                wheelActivatesDesktop: panel.integration.settings.pagerWheelActivates || false
+                onOperationStarted: operation => panel.integration.startOperation(operation)
+                onOperationFinished: (operation, success, details) => panel.integration.finishOperation(operation, success, details)
+                onFailure: message => panel.integration.showFailure(message)
+            }
+        }
 
         Bevel {
             objectName: "domainosTray"
+            visible: !panel.integration
             x: 1608; y: 8; width: 202; height: 150
             simpleRelief: true; light: colors.pale; dark: colors.dark
             texture: panel.images+"metal-weave.svg"
             Bevel { objectName: "domainosTrayWell"; x: 8; y: 14; width: 186; height: 122; sunken: true; face: colors.recessed }
             Repeater {
-                model: 6
+                model: panel.integration ? 0 : 6
                 delegate: PanelButton {
                     required property int index
                     objectName: "domainosTray_"+panel.trayIcons[index]
@@ -194,11 +291,25 @@ Item {
         }
         Bevel {
             objectName: "domainosTrayNavigation"
+            visible: !panel.integration
             x: 1810; y: 8; width: 124; height: 150
             simpleRelief: true; light: colors.pale; dark: colors.dark
             texture: panel.images+"metal-weave.svg"
             PanelButton { objectName: "domainosTrayNext"; x: 22; y: 16; width: 80; height: 54; label: "Tray navigation right"; imageSource: panel.images+"arrow-right.svg"; imageWidth: 32 }
             PanelButton { objectName: "domainosTrayExpand"; x: 22; y: 80; width: 80; height: 54; label: "Tray navigation up"; imageSource: panel.images+"arrow-up.svg"; imageWidth: 32 }
+        }
+        Loader {
+            id: liveTray
+            x: 1608; y: 8; width: 326; height: 150
+            active: !!panel.integration
+            sourceComponent: DomainOSTray {
+                nativeTray: panel.integration.nativeTray
+                settings: panel.integration.settings
+                activity: panel.integration.activity
+                colorPalette: colors
+                screenGeometry: panel.integration.screenGeometry
+                onFailure: message => panel.integration.showFailure(message)
+            }
         }
 
         Bevel {
@@ -211,21 +322,21 @@ Item {
                 objectName: "domainosIdentity"
                 x: 0; y: 0; width: 256; height: parent.height
                 label: "GNU/LINUX"
+                onClicked: panel.actionRequested("applications", this)
                 face: colors.shadow; simpleRelief: true; bevelThickness: 4
                 bevelLight: colors.metalLight; bevelDark: colors.shadow
                 texture: panel.images+"metal-lines.svg"
                 PaletteImage { x: 24; y: 2; width: 208; height: 48; assetSource: panel.images+"gnu-linux.svg"; smooth: false }
-                // Institutional seal remains static until the user confirms help.
             }
             Bevel { objectName: "domainosRailLeft"; x: 256; y: 0; width: 331; height: parent.height; texture: panel.images+"metal-lines.svg"; simpleRelief: true; light: colors.metalLight; dark: colors.shadow; grooveCount: 4 }
             PanelButton {
                 objectName: "domainosApplicationsDrawer"
                 x: 587; y: 0; width: 118; height: parent.height
                 label: "Applications drawer"
+                onClicked: panel.actionRequested("pins", this)
                 texture: panel.images+"metal-lines.svg"
                 simpleRelief: true; bevelLight: colors.metalLight; bevelDark: colors.shadow; grooveCount: 4
                 imageSource: panel.images+"applications.svg"; imageWidth: 64; imageHeight: 48
-                // Graphic only: pinning and opening the drawer await design approval.
             }
             Repeater {
                 model: 5
@@ -234,6 +345,7 @@ Item {
                     objectName: "domainosShortcut_"+panel.lowerIcons[index]
                     x: [705,814,930,1048,1166][index]; y: 0; width: [109,116,118,118,119][index]; height: lowerRail.height
                     label: panel.lowerIcons[index]
+                    onClicked: panel.actionRequested(panel.lowerIcons[index], this)
                     texture: panel.images+"metal-lines.svg"
                     simpleRelief: true; bevelLight: colors.metalLight; bevelDark: colors.shadow; grooveCount: 4
                     imageSource: panel.images+panel.lowerIcons[index]+".svg"; imageWidth: 64; imageHeight: 48
@@ -241,11 +353,34 @@ Item {
             }
             Bevel { x: 1285; y: 0; width: 641; height: parent.height; texture: panel.images+"metal-lines.svg"; simpleRelief: true; light: colors.metalLight; dark: colors.shadow; grooveCount: 4 }
             Item {
+                id: activityIndicator
                 objectName: "domainosRightIndicator"
                 // Keep the reference clearance inside the cyan chassis border.
                 x: 1836; y: 10; width: 38; height: 28
                 readonly property color face: colors.lens
+                readonly property var tracker: panel.integration ? panel.integration.activity : null
+                property int presentedSequence: 0
                 PaletteImage { anchors.fill: parent; assetSource: panel.images+"indicator-lens.svg"; smooth: false; mipmap: false }
+                Rectangle {
+                    objectName: "domainosActivityLamp"
+                    // Match the inner lens face at its native 2x drawing scale.
+                    x: 6; y: 8; width: 26; height: 14
+                    visible: activityIndicator.tracker && activityIndicator.tracker.displayLit
+                    color: colors.activityLight
+                }
+                Connections {
+                    target: activityIndicator.Window.window
+                    enabled: !!activityIndicator.tracker && activityIndicator.tracker.presentationPending
+                    // These handlers are delivered on the GUI thread. No QML
+                    // state is changed from before/afterRendering signals.
+                    function onAfterAnimating() {
+                        activityIndicator.presentedSequence = activityIndicator.tracker.sequence
+                    }
+                    function onFrameSwapped() {
+                        if (activityIndicator.tracker)
+                            activityIndicator.tracker.acknowledgePresentation(activityIndicator.presentedSequence)
+                    }
+                }
             }
         }
 

@@ -1,4 +1,10 @@
 Os desenhos do painel Irix Classic DomainOS
+==========================================
+
+Este memorial conserva a construção e as decisões da fase visual. Suas notas
+sobre botões sem função descrevem aquele protótipo. A composição funcional da
+revisão R2 utiliza os mesmos recursos; os comportamentos atuais estão em
+[FUNCTIONAL.md](FUNCTIONAL.md). O backup congelado permanece intocado.
 =========================================
 
 Os SVGs em `contents/images` foram construídos para este repositório a partir
@@ -137,6 +143,12 @@ paleta. As faces de janela e botão são azul-cinza; a seleção é o azul do re
 e a área de conteúdo tem fundo azul-cinza mais escuro e texto claro. O arquivo
 nunca altera fontes nem configurações por conta própria. Sua instalação e
 seleção são responsabilidade do instalador e dos comandos separados da suite.
+
+O destino instalado é `DomainOS-SR10-4.colors`, com identificador
+`DomainOS-SR10-4`. O nome visível continua **DomainOS SR10.4**. Esse nome de arquivo
+evita o truncamento no primeiro ponto feito pelo seletor de cores do Plasma 6.3.
+A arte funcional recebe os papéis de `PlasmaCore.Theme`, sem depender da paleta
+que Kvantum fixa na aplicação. O modo de referência mantém as cores aprovadas.
 
 
 Proporções dos instrumentos e topo dos demais módulos

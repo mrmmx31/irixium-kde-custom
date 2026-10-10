@@ -85,8 +85,9 @@ def main():
         applications.mkdir(parents=True)
         (applications / (ID + '.desktop')).write_text(
             '[Desktop Entry]\nType=Application\nName=IrixClassic Files (experimental)\n'
-            'Comment=Classic file browser based on Dolphin\nExec=irixclassic-files %U\n'
-            'Icon=system-file-manager\nTerminal=false\nCategories=System;FileManager;\nStartupNotify=true\n')
+            'Comment=Classic file manager based on Dolphin\nExec=irixclassic-files %U\n'
+            'Icon=system-file-manager\nTerminal=false\nCategories=System;FileManager;\n'
+            'MimeType=inode/directory;application/x-directory;\nStartupNotify=true\n')
         docs = stage / 'usr/share/doc' / PACKAGE
         docs.mkdir(parents=True)
         shutil.copy2(ROOT / 'debian/README.Debian', docs / 'README.Debian')
@@ -113,10 +114,10 @@ def main():
             'Maintainer: mrmmx31 <mrmmx31@users.noreply.github.com>\nSection: utils\nPriority: optional\n'
             'Installed-Size: ' + str((size + 1023) // 1024) + '\nDepends: ' + depends + '\n'
             'Homepage: https://github.com/mrmmx31/irixium-kde-custom\n'
-            'Description: Experimental classic file browser based on Dolphin\n'
+            'Description: Experimental classic file manager based on Dolphin\n'
             ' Independent Dolphin-derived browser with Pathfinder, contextual Shelf\n'
-            ' and read-only Content Viewer. Keeps per-user settings and does not\n'
-            ' replace Dolphin, configure themes or change default file associations.\n')
+            ' and read-only Content Viewer. Keeps per-user settings and registers\n'
+            ' directory MIME types without changing the user default automatically.\n')
         (control / 'md5sums').write_text(''.join(
             hashlib.md5(path.read_bytes()).hexdigest() + '  ' + path.relative_to(stage).as_posix() + '\n'
             for path in sorted((stage / 'usr').rglob('*')) if path.is_file() and not path.is_symlink()))

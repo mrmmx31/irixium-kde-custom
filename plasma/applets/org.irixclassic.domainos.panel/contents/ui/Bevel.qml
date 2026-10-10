@@ -4,7 +4,11 @@ import QtQuick
 
 Item {
     id: frame
+    // Popups are visually reparented into Qt's overlay, outside the drawing.
+    // An explicit palette keeps their relief/texture on the same scheme.
+    property QtObject paletteOverride: null
     readonly property QtObject colorPalette: {
+        if (frame.paletteOverride) return frame.paletteOverride
         let ancestor = parent
         while (ancestor) {
             if (ancestor.domainosPalette !== undefined) return ancestor.domainosPalette
@@ -12,6 +16,7 @@ Item {
         }
         return null
     }
+    readonly property QtObject domainosPalette: colorPalette
     property color face: colorPalette ? colorPalette.background : "#7894a7"
     property color light: colorPalette ? colorPalette.highlight : "#c5e8e6"
     property color dark: colorPalette ? colorPalette.dark : "#194b63"

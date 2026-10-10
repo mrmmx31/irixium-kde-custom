@@ -89,7 +89,7 @@ private Q_SLOTS:
         auto *window=new DolphinMainWindow;window->openDirectories({QUrl::fromLocalFile(dir.path())},false);auto *shell=new ClassicShell(window);window->show();
         QVERIFY(window->activeViewContainer());auto *view=window->activeViewContainer()->view();
         QTRY_VERIFY_WITH_TIMEOUT(view->itemsCount()>=2,15000);
-        for(const auto &name:{"edit_copy","edit_paste","renamefile","movetotrash","deletefile","edit_undo","new_tab","split_view"}) QVERIFY2(window->actionCollection()->action(QString::fromLatin1(name)),name);
+        for(const auto &name:{"go_back","go_forward","edit_copy","edit_paste","renamefile","movetotrash","deletefile","edit_undo","new_tab","split_view"}) QVERIFY2(window->actionCollection()->action(QString::fromLatin1(name)),name);
         QVERIFY(window->actionCollection()->action(KStandardAction::name(KStandardAction::Redisplay)));
         view->setViewMode(DolphinView::DetailsView);view->setHiddenFilesShown(true);
         shell->navigate(QUrl::fromLocalFile(dir.path()+"/child"));QTRY_COMPARE_WITH_TIMEOUT(view->url(),QUrl::fromLocalFile(dir.path()+"/child"),5000);

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-2.0-or-later
-"""Install only the private bundle; never change MIME defaults or Dolphin files."""
+"""Install the private bundle and register it as a directory handler."""
 from pathlib import Path, PurePosixPath
 import argparse, hashlib, json, os, shlex, shutil, stat, sys, tempfile
-VERSION='0.1.0-alpha1'
+VERSION='0.1.0-alpha2'
 ID='io.github.mrmmx31.irixclassic.files'
 class Failure(RuntimeError):pass
 
@@ -44,7 +44,7 @@ def main():
     shell='#!/bin/sh\nexec '+shlex.quote(str(command))+' "$@"\n'
     # Desktop Exec quoting is not shell quoting. Percent must be escaped separately.
     escaped=str(command).replace('\\','\\\\').replace('"','\\"').replace('`','\\`').replace('$','\\$').replace('%','%%')
-    entry='[Desktop Entry]\nType=Application\nName=IrixClassic Files (experimental)\nComment=Classic file viewer based on Dolphin\nExec="'+escaped+'" %U\nIcon=system-file-manager\nTerminal=false\nCategories=System;FileManager;\nStartupNotify=true\n'
+    entry='[Desktop Entry]\nType=Application\nName=IrixClassic Files (experimental)\nComment=Classic file manager based on Dolphin\nExec="'+escaped+'" %U\nIcon=system-file-manager\nTerminal=false\nCategories=System;FileManager;\nMimeType=inode/directory;application/x-directory;\nStartupNotify=true\n'
     if a.remover:
         if not dest.exists():raise Failure('Private version is not installed')
         verify(dest)
@@ -58,7 +58,7 @@ def main():
     if dest.exists():
         verify(dest)
         if (dest/'BUILD-RESULT.json').read_bytes()!=(source/'BUILD-RESULT.json').read_bytes():raise Failure('Different build under the same experimental version; remove it first')
-    if a.verificar:print('Would install in:',dest,'\nDolphin and default associations will not be changed.');return 0
+    if a.verificar:print('Would install in:',dest,'\nRegisters directory MIME types; the user default is unchanged.');return 0
     base.mkdir(parents=True,exist_ok=True);bindir.mkdir(parents=True,exist_ok=True);applications.mkdir(parents=True,exist_ok=True)
     created=[]
     try:
@@ -75,7 +75,7 @@ def main():
             if p.is_dir():shutil.rmtree(p)
             else:p.unlink(missing_ok=True)
         raise
-    print('Installed:',command,'\nLaunch with:',launcher,'\nNo default file manager or global theme was changed.');return 0
+    print('Installed:',command,'\nLaunch with:',launcher,'\nDirectory MIME types are registered; the user default was not changed.');return 0
 if __name__=='__main__':
     try:sys.exit(main())
     except (Failure,OSError,ValueError,KeyError) as e:print('ERRO:',e,file=sys.stderr);sys.exit(1)

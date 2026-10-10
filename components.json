@@ -17,6 +17,11 @@
       "destination": "kwin/decorations/irixium_irix_classic_v4"
     },
     {
+      "source": "decorations/domainos/package",
+      "root": "data",
+      "destination": "kwin/decorations/domainos_sr104"
+    },
+    {
       "source": "icons/Irixium",
       "root": "data",
       "destination": "icons/Irixium"
@@ -149,7 +154,27 @@
     {
       "source": "colors/DomainOS-SR10.4.colors",
       "root": "data",
-      "destination": "color-schemes/DomainOS-SR10.4.colors"
+      "destination": "color-schemes/DomainOS-SR10-4.colors"
+    },
+    {
+      "source": "gtk/IrixClassic-KDE",
+      "root": "data",
+      "destination": "themes/IrixClassic-KDE"
+    },
+    {
+      "source": "gtk/IrixClassic-KDE-Reload",
+      "root": "data",
+      "destination": "themes/IrixClassic-KDE-Reload"
+    },
+    {
+      "source": "gtk/Irixium-KDE",
+      "root": "data",
+      "destination": "themes/Irixium-KDE"
+    },
+    {
+      "source": "gtk/Irixium-KDE-Reload",
+      "root": "data",
+      "destination": "themes/Irixium-KDE-Reload"
     }
   ],
   "profiles": {
@@ -160,7 +185,7 @@
       "icons": "IrixClassic-SGI",
       "plasma": "IrixClassic",
       "wallpaper": "IrixClassic",
-      "gtk": "IrixClassic",
+      "gtk": "IrixClassic-KDE",
       "cursor": "SGI-Classic"
     },
     "moderno": {
@@ -170,7 +195,7 @@
       "icons": "Irixium",
       "plasma": "Irixium",
       "wallpaper": "Irixium",
-      "gtk": "Irixium",
+      "gtk": "Irixium-KDE",
       "cursor": "SGI-Irixium"
     }
   },

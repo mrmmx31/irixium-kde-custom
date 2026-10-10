@@ -7,7 +7,9 @@ QtObject {
     id: colors
     // Reference mode is only for comparison with the approved prototype.
     property bool followSystem: true
-    property SystemPalette system: SystemPalette { colorGroup: SystemPalette.Active }
+    // Retain the injectable role object used by isolated tests; the default is
+    // the native KDE scheme, independent of application-style palette overrides.
+    property QtObject system: DomainOSKDEPalette {}
     readonly property color background: followSystem ? system.window : "#7894a7"
     readonly property color recessed: followSystem ? system.base : "#607f91"
     readonly property color text: followSystem ? system.windowText : "#102b37"
@@ -31,6 +33,12 @@ QtObject {
     readonly property color pagerLight: pagerTones.light
     readonly property color pagerPressedLight: pagerTones.pressed
     readonly property bool pagerContrastProtected: pagerTones.protected
+    // Activity has its own yellow role: it is not the Pager selection light.
+    // Protect it only when the actual lens/metal surround has a yellow collision.
+    readonly property bool activityContrastProtected: followSystem
+        && (yellowCollision(lens) || yellowCollision(metalLight))
+    readonly property color activityLight: activityContrastProtected
+        ? activityYellowTone() : "#dddd28"
     // The sample LED is an accent, not a live device status indicator.
     readonly property color green: followSystem ? system.highlight : "#76a52b"
     readonly property color greenDark: tone(green, "#76a52b", "#314a14")
@@ -87,6 +95,20 @@ QtObject {
         const light = pagerYellowTone("#dddd28",4)
         const pressed = pagerYellowTone(Qt.lighter(light,1.25),3)
         return {light:light, pressed:pressed, protected:true}
+    }
+    function activityYellowTone() {
+        const original = hsl("#dddd28")
+        let best = "#dddd28", distance = Infinity, fallback = best, bestContrast = -1
+        // Palette changes only; never hover, a frame tick or command timing.
+        for (let step = 1; step < 50; ++step) {
+            const candidate = Qt.hsla(original.h, original.s, step/50, 1)
+            const score = Math.min(contrast(candidate,lens),contrast(candidate,metalLight))
+            if (score > bestContrast) { bestContrast = score; fallback = candidate }
+            if (score >= 3 && Math.abs(step/50-original.l) < distance) {
+                best = candidate; distance = Math.abs(step/50-original.l)
+            }
+        }
+        return distance < Infinity ? best : fallback
     }
 
     function hsl(color) {

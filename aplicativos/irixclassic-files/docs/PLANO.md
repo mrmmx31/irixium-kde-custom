@@ -1,6 +1,6 @@
 # Plano de continuidade — IrixClassic Files
 
-Manutenção: mrmmx31. Versão inicial de desenvolvimento: 0.1.0-alpha1.
+Manutenção: mrmmx31. Versão inicial de desenvolvimento: 0.1.0-alpha2.
 
 | Marco | Entrega | Estado desta rodada |
 |---|---|---|

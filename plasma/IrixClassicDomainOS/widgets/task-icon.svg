@@ -1,664 +1,1008 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- DomainOS derivative of the IrixClassic/Irixium GPL resource. See ORIGEM.json and LICENSE. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="132" height="132" viewBox="0 0 132 132" shape-rendering="crispEdges">
+  <style id="current-color-scheme" type="text/css">/* KSvg supplies the selected KDE color roles at render time. */</style>
   <title>IRIX Classic task icon wells</title>
   <desc>Two-pixel square icon wells only, with immediate reversed relief while held. Captions are separate; active tasks never paint a full-cell blue button.</desc>
   <g id="normal-center" transform="translate(6,6)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="normal-top" transform="translate(6,4)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-bottom" transform="translate(6,26)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-left" transform="translate(4,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-right" transform="translate(26,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-topleft" transform="translate(4,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-topright" transform="translate(26,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-bottomleft" transform="translate(4,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-bottomright" transform="translate(26,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="normal-hint-top-margin" x="4" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hint-bottom-margin" x="4" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hint-left-margin" x="4" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hint-right-margin" x="4" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="normal-hint-top-margin" x="4" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hint-bottom-margin" x="4" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hint-left-margin" x="4" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hint-right-margin" x="4" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="normal-hover-center" transform="translate(38,6)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="normal-hover-top" transform="translate(38,4)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-hover-bottom" transform="translate(38,26)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-hover-left" transform="translate(36,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-hover-right" transform="translate(58,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-hover-topleft" transform="translate(36,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="normal-hover-topright" transform="translate(58,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-hover-bottomleft" transform="translate(36,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-hover-bottomright" transform="translate(58,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="normal-hover-hint-top-margin" x="36" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hover-hint-bottom-margin" x="36" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hover-hint-left-margin" x="36" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-hover-hint-right-margin" x="36" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="normal-hover-hint-top-margin" x="36" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hover-hint-bottom-margin" x="36" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hover-hint-left-margin" x="36" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-hover-hint-right-margin" x="36" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="normal-pressed-center" transform="translate(70,6)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-top" transform="translate(70,4)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-bottom" transform="translate(70,26)">
-    <rect x="0" y="0" width="20" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-left" transform="translate(68,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-right" transform="translate(90,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-topleft" transform="translate(68,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-topright" transform="translate(90,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-bottomleft" transform="translate(68,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="normal-pressed-bottomright" transform="translate(90,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="normal-pressed-hint-top-margin" x="68" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-pressed-hint-bottom-margin" x="68" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-pressed-hint-left-margin" x="68" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="normal-pressed-hint-right-margin" x="68" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="normal-pressed-hint-top-margin" x="68" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-pressed-hint-bottom-margin" x="68" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-pressed-hint-left-margin" x="68" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="normal-pressed-hint-right-margin" x="68" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="focus-center" transform="translate(6,38)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="focus-top" transform="translate(6,36)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-bottom" transform="translate(6,58)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-left" transform="translate(4,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-right" transform="translate(26,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-topleft" transform="translate(4,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-topright" transform="translate(26,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-bottomleft" transform="translate(4,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-bottomright" transform="translate(26,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="focus-hint-top-margin" x="4" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hint-bottom-margin" x="4" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hint-left-margin" x="4" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hint-right-margin" x="4" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="focus-hint-top-margin" x="4" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hint-bottom-margin" x="4" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hint-left-margin" x="4" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hint-right-margin" x="4" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="focus-hover-center" transform="translate(38,38)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="focus-hover-top" transform="translate(38,36)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-hover-bottom" transform="translate(38,58)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-hover-left" transform="translate(36,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-hover-right" transform="translate(58,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-hover-topleft" transform="translate(36,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="focus-hover-topright" transform="translate(58,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-hover-bottomleft" transform="translate(36,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-hover-bottomright" transform="translate(58,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="focus-hover-hint-top-margin" x="36" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hover-hint-bottom-margin" x="36" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hover-hint-left-margin" x="36" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-hover-hint-right-margin" x="36" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="focus-hover-hint-top-margin" x="36" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hover-hint-bottom-margin" x="36" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hover-hint-left-margin" x="36" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-hover-hint-right-margin" x="36" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="focus-pressed-center" transform="translate(70,38)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-top" transform="translate(70,36)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-bottom" transform="translate(70,58)">
-    <rect x="0" y="0" width="20" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-left" transform="translate(68,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-right" transform="translate(90,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-topleft" transform="translate(68,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-topright" transform="translate(90,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-bottomleft" transform="translate(68,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="focus-pressed-bottomright" transform="translate(90,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="focus-pressed-hint-top-margin" x="68" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-pressed-hint-bottom-margin" x="68" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-pressed-hint-left-margin" x="68" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="focus-pressed-hint-right-margin" x="68" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="focus-pressed-hint-top-margin" x="68" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-pressed-hint-bottom-margin" x="68" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-pressed-hint-left-margin" x="68" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="focus-pressed-hint-right-margin" x="68" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="minimized-center" transform="translate(6,70)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="minimized-top" transform="translate(6,68)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-bottom" transform="translate(6,90)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-left" transform="translate(4,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-right" transform="translate(26,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-topleft" transform="translate(4,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-topright" transform="translate(26,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-bottomleft" transform="translate(4,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-bottomright" transform="translate(26,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="minimized-hint-top-margin" x="4" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hint-bottom-margin" x="4" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hint-left-margin" x="4" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hint-right-margin" x="4" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="minimized-hint-top-margin" x="4" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hint-bottom-margin" x="4" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hint-left-margin" x="4" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hint-right-margin" x="4" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="minimized-hover-center" transform="translate(38,70)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-top" transform="translate(38,68)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-bottom" transform="translate(38,90)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-left" transform="translate(36,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-right" transform="translate(58,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-topleft" transform="translate(36,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-topright" transform="translate(58,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-bottomleft" transform="translate(36,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-hover-bottomright" transform="translate(58,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="minimized-hover-hint-top-margin" x="36" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hover-hint-bottom-margin" x="36" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hover-hint-left-margin" x="36" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-hover-hint-right-margin" x="36" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="minimized-hover-hint-top-margin" x="36" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hover-hint-bottom-margin" x="36" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hover-hint-left-margin" x="36" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-hover-hint-right-margin" x="36" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="minimized-pressed-center" transform="translate(70,70)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-top" transform="translate(70,68)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-bottom" transform="translate(70,90)">
-    <rect x="0" y="0" width="20" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-left" transform="translate(68,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-right" transform="translate(90,70)">
-    <rect x="0" y="0" width="1" height="20" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-topleft" transform="translate(68,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-topright" transform="translate(90,68)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-bottomleft" transform="translate(68,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="minimized-pressed-bottomright" transform="translate(90,90)">
-    <rect x="0" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="minimized-pressed-hint-top-margin" x="68" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-pressed-hint-bottom-margin" x="68" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-pressed-hint-left-margin" x="68" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="minimized-pressed-hint-right-margin" x="68" y="68" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="minimized-pressed-hint-top-margin" x="68" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-pressed-hint-bottom-margin" x="68" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-pressed-hint-left-margin" x="68" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="minimized-pressed-hint-right-margin" x="68" y="68" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="attention-center" transform="translate(6,102)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="attention-top" transform="translate(6,100)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-bottom" transform="translate(6,122)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-left" transform="translate(4,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-right" transform="translate(26,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-topleft" transform="translate(4,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-topright" transform="translate(26,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-bottomleft" transform="translate(4,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-bottomright" transform="translate(26,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="attention-hint-top-margin" x="4" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hint-bottom-margin" x="4" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hint-left-margin" x="4" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hint-right-margin" x="4" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="attention-hint-top-margin" x="4" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hint-bottom-margin" x="4" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hint-left-margin" x="4" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hint-right-margin" x="4" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="attention-hover-center" transform="translate(38,102)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="attention-hover-top" transform="translate(38,100)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-hover-bottom" transform="translate(38,122)">
-    <rect x="0" y="0" width="20" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-hover-left" transform="translate(36,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-hover-right" transform="translate(58,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-hover-topleft" transform="translate(36,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="attention-hover-topright" transform="translate(58,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-hover-bottomleft" transform="translate(36,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-hover-bottomright" transform="translate(58,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="attention-hover-hint-top-margin" x="36" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hover-hint-bottom-margin" x="36" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hover-hint-left-margin" x="36" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-hover-hint-right-margin" x="36" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="attention-hover-hint-top-margin" x="36" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hover-hint-bottom-margin" x="36" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hover-hint-left-margin" x="36" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-hover-hint-right-margin" x="36" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="attention-pressed-center" transform="translate(70,102)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-top" transform="translate(70,100)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-bottom" transform="translate(70,122)">
-    <rect x="0" y="0" width="20" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-left" transform="translate(68,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-right" transform="translate(90,102)">
-    <rect x="0" y="0" width="1" height="20" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-topleft" transform="translate(68,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-topright" transform="translate(90,100)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-bottomleft" transform="translate(68,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="attention-pressed-bottomright" transform="translate(90,122)">
-    <rect x="0" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="attention-pressed-hint-top-margin" x="68" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-pressed-hint-bottom-margin" x="68" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-pressed-hint-left-margin" x="68" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="attention-pressed-hint-right-margin" x="68" y="100" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="attention-pressed-hint-top-margin" x="68" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-pressed-hint-bottom-margin" x="68" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-pressed-hint-left-margin" x="68" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="attention-pressed-hint-right-margin" x="68" y="100" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="pressed-center" transform="translate(102,6)">
-    <rect x="0" y="0" width="20" height="20" fill="#6a889a" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="20" fill="#000000" stroke="none" opacity="0.18" data-scheme-shade="darken" />
   </g>
   <g id="pressed-top" transform="translate(102,4)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="pressed-bottom" transform="translate(102,26)">
-    <rect x="0" y="0" width="20" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="pressed-left" transform="translate(100,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="pressed-right" transform="translate(122,6)">
-    <rect x="0" y="0" width="1" height="20" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="pressed-topleft" transform="translate(100,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#3e536e" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
   </g>
   <g id="pressed-topright" transform="translate(122,4)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#3e536e" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="pressed-bottomleft" transform="translate(100,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#3e536e" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.32" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="pressed-bottomright" transform="translate(122,26)">
-    <rect x="0" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="pressed-hint-top-margin" x="100" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="pressed-hint-bottom-margin" x="100" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="pressed-hint-left-margin" x="100" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="pressed-hint-right-margin" x="100" y="4" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="pressed-hint-top-margin" x="100" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="pressed-hint-bottom-margin" x="100" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="pressed-hint-left-margin" x="100" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="pressed-hint-right-margin" x="100" y="4" width="2" height="2" opacity="0" fill="none" stroke="none" />
   <g id="hover-center" transform="translate(102,38)">
-    <rect x="0" y="0" width="20" height="20" fill="#7894a7" />
+    <rect x="0" y="0" width="20" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
   </g>
   <g id="hover-top" transform="translate(102,36)">
-    <rect x="0" y="0" width="20" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="20" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="hover-bottom" transform="translate(102,58)">
-    <rect x="0" y="0" width="20" height="1" fill="#a3d0e6" />
-    <rect x="0" y="1" width="20" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="20" height="1" fill="#ffffff" stroke="none" opacity="0.28" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="20" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="20" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="hover-left" transform="translate(100,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="20" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="hover-right" transform="translate(122,38)">
-    <rect x="0" y="0" width="1" height="20" fill="#a3d0e6" />
-    <rect x="1" y="0" width="1" height="20" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="20" fill="#ffffff" stroke="none" opacity="0.28" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="20" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="20" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="hover-topleft" transform="translate(100,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#c5e8e6" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
   </g>
   <g id="hover-topright" transform="translate(122,36)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#c5e8e6" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="hover-bottomleft" transform="translate(100,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="0" width="1" height="1" fill="#c5e8e6" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.44" data-scheme-shade="lighten" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
   <g id="hover-bottomright" transform="translate(122,58)">
-    <rect x="0" y="0" width="1" height="1" fill="#a3d0e6" />
-    <rect x="1" y="0" width="1" height="1" fill="#194b63" />
-    <rect x="0" y="1" width="1" height="1" fill="#194b63" />
-    <rect x="1" y="1" width="1" height="1" fill="#194b63" />
+    <rect x="0" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="0" width="1" height="1" fill="#ffffff" stroke="none" opacity="0.28" data-scheme-shade="lighten" />
+    <rect x="1" y="0" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="0" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="0" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="0" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
+    <rect x="1" y="1" width="1" height="1" fill="currentColor" stroke="none" class="ColorScheme-Background" />
+    <rect x="1" y="1" width="1" height="1" fill="#000000" stroke="none" opacity="0.54" data-scheme-shade="darken" />
   </g>
-  <rect id="hover-hint-top-margin" x="100" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="hover-hint-bottom-margin" x="100" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="hover-hint-left-margin" x="100" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
-  <rect id="hover-hint-right-margin" x="100" y="36" width="2" height="2" fill="#ff00ff" opacity="0" />
+  <rect id="hover-hint-top-margin" x="100" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="hover-hint-bottom-margin" x="100" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="hover-hint-left-margin" x="100" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
+  <rect id="hover-hint-right-margin" x="100" y="36" width="2" height="2" opacity="0" fill="none" stroke="none" />
 </svg>

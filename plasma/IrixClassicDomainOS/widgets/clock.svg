@@ -2,51 +2,52 @@
 <!-- SPDX-FileCopyrightText: 2026 IRIX Classic contributors -->
 <!-- SPDX-License-Identifier: GPL-3.0-or-later -->
 <svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 256 128">
+  <style id="current-color-scheme" type="text/css">/* KSvg supplies the selected KDE color roles at render time. */</style>
   <title>Irix Classic DomainOS — blue diagnostic clock face and white hands</title>
   <g id="ClockFace">
-    <circle cx="32" cy="32" r="32" fill="#3297c7" />
-    <rect x="31" y="2" width="2" height="3" fill="#ffffff" transform="rotate(0 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(30 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(60 32 32)" />
-    <rect x="31" y="2" width="2" height="3" fill="#ffffff" transform="rotate(90 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(120 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(150 32 32)" />
-    <rect x="31" y="2" width="2" height="3" fill="#ffffff" transform="rotate(180 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(210 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(240 32 32)" />
-    <rect x="31" y="2" width="2" height="3" fill="#ffffff" transform="rotate(270 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(300 32 32)" />
-    <rect x="31" y="2" width="2" height="2" fill="#ffffff" transform="rotate(330 32 32)" />
+    <circle cx="32" cy="32" r="32" fill="currentColor" stroke="none" class="ColorScheme-Highlight" />
+    <rect x="31" y="2" width="2" height="3" transform="rotate(0 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(30 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(60 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="3" transform="rotate(90 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(120 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(150 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="3" transform="rotate(180 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(210 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(240 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="3" transform="rotate(270 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(300 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
+    <rect x="31" y="2" width="2" height="2" transform="rotate(330 32 32)" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
   </g>
   <g id="HourHand" transform="translate(80,0)">
-    <path d="M0 0H8V4H5V22L4 26L3 22V4H0Z" fill="#ffffff" />
+    <path d="M0 0H8V4H5V22L4 26L3 22V4H0Z" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
   </g>
   <g id="HourHandShadow" transform="translate(80,48)">
-    <rect x="0" y="0" width="8" height="26" fill="none" />
+    <rect x="0" y="0" width="8" height="26" fill="none" stroke="none" />
   </g>
-  <rect x="83.5" y="3.5" width="1" height="1" fill="#ff00ff" id="hint-hourhand-rotation-center-offset" />
-  <rect x="83.5" y="51.5" width="1" height="1" fill="#ff00ff" id="hint-hourhandshadow-rotation-center-offset" />
+  <rect x="83.5" y="3.5" width="1" height="1" id="hint-hourhand-rotation-center-offset" fill="none" stroke="none" opacity="0" />
+  <rect x="83.5" y="51.5" width="1" height="1" id="hint-hourhandshadow-rotation-center-offset" fill="none" stroke="none" opacity="0" />
   <g id="MinuteHand" transform="translate(104,0)">
-    <path d="M0 0H6V4H4V28L3 32L2 28V4H0Z" fill="#ffffff" />
+    <path d="M0 0H6V4H4V28L3 32L2 28V4H0Z" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
   </g>
   <g id="MinuteHandShadow" transform="translate(104,48)">
-    <rect x="0" y="0" width="6" height="32" fill="none" />
+    <rect x="0" y="0" width="6" height="32" fill="none" stroke="none" />
   </g>
-  <rect x="106.5" y="3.5" width="1" height="1" fill="#ff00ff" id="hint-minutehand-rotation-center-offset" />
-  <rect x="106.5" y="51.5" width="1" height="1" fill="#ff00ff" id="hint-minutehandshadow-rotation-center-offset" />
+  <rect x="106.5" y="3.5" width="1" height="1" id="hint-minutehand-rotation-center-offset" fill="none" stroke="none" opacity="0" />
+  <rect x="106.5" y="51.5" width="1" height="1" id="hint-minutehandshadow-rotation-center-offset" fill="none" stroke="none" opacity="0" />
   <g id="SecondHand" transform="translate(128,0)">
-    <path d="M0 0H4V4H3V30L2 34L1 30V4H0Z" fill="#ffffff" />
+    <path d="M0 0H4V4H3V30L2 34L1 30V4H0Z" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
   </g>
   <g id="SecondHandShadow" transform="translate(128,48)">
-    <rect x="0" y="0" width="4" height="34" fill="none" />
+    <rect x="0" y="0" width="4" height="34" fill="none" stroke="none" />
   </g>
-  <rect x="129.5" y="3.5" width="1" height="1" fill="#ff00ff" id="hint-secondhand-rotation-center-offset" />
-  <rect x="129.5" y="51.5" width="1" height="1" fill="#ff00ff" id="hint-secondhandshadow-rotation-center-offset" />
+  <rect x="129.5" y="3.5" width="1" height="1" id="hint-secondhand-rotation-center-offset" fill="none" stroke="none" opacity="0" />
+  <rect x="129.5" y="51.5" width="1" height="1" id="hint-secondhandshadow-rotation-center-offset" fill="none" stroke="none" opacity="0" />
   <g id="HandCenterScrew" transform="translate(152,0)">
-    <circle cx="3" cy="3" r="3" fill="#ffffff" />
+    <circle cx="3" cy="3" r="3" fill="currentColor" stroke="none" class="ColorScheme-HighlightedText" />
   </g>
   <g id="Glass" transform="translate(176,0)">
-    <rect x="0" y="0" width="64" height="64" fill="none" />
+    <rect x="0" y="0" width="64" height="64" fill="none" stroke="none" />
   </g>
-  <rect x="0" y="0" width="1" height="1" fill="#ff00ff" id="hint-square-clock" opacity="0" />
+  <rect x="0" y="0" width="1" height="1" id="hint-square-clock" opacity="0" fill="none" stroke="none" />
 </svg>

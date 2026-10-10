@@ -1,2 +1,24 @@
 __pycache__/
 *.py[cod]
+
+# Private DomainOS test/compile workspaces; their reports are kept outside Git.
+/.qa-domainos-*/
+/.qa-calendar-mail-*/
+/.qa-thunderbird-count-*/
+/.qa-task-resources-*/
+/.domainos-*/
+/.g2-qa-*/
+/.mh-qa-*/
+/.ird-fav-*/
+/.native-palette-*/
+/.native-footer-controls-*/
+/.gtk-kde-*/
+/.qa-irix-*/
+/.gtk2-runtime-native-*/
+/.qa-kvantum-*/
+/.gtk2-*-private-proof-*.tar.gz
+/.gtk2-*-private-proof-cleanup-*.json
+/.vscode/
+
+# Roteiro local do emulador, a migrar para outro projeto.
+/docs/domainos-mame-local/

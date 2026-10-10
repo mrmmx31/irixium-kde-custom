@@ -61,6 +61,9 @@ def main():
     applet=paths['data']/'plasma/plasmoids'/IDENTIFIER
     shutil.copytree(source,applet,ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
     copied=hashes(applet);assert copied==source_before,'Production package copy changed bytes'
+    shutil.copytree(REPO/'plasma/applets/org.irixclassic.grosview',
+                    paths['data']/'plasma/plasmoids/org.irixclassic.grosview',
+                    ignore=shutil.ignore_patterns('__pycache__','*.pyc'))
     style_inventories={}
     for name in ('IrixClassic','IrixClassicDomainOS'):
         style=REPO/'plasma'/name;target=paths['data']/'plasma/desktoptheme'/name
@@ -73,7 +76,7 @@ def main():
     bus.write_text('<!DOCTYPE busconfig PUBLIC "-//freedesktop//DTD D-Bus Bus Configuration 1.0//EN"\n"http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">\n<busconfig><type>session</type><listen>unix:tmpdir=/tmp</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>\n')
     env=os.environ.copy()
     for name in ('DISPLAY','WAYLAND_DISPLAY','DBUS_SESSION_BUS_ADDRESS','DBUS_STARTER_ADDRESS','DBUS_STARTER_BUS_TYPE','SESSION_MANAGER','LD_PRELOAD','QML_IMPORT_PATH','QML2_IMPORT_PATH','QT_STYLE_OVERRIDE','QT_QUICK_CONTROLS_STYLE','XDG_SESSION_ID','KDE_FULL_SESSION','KDE_SESSION_VERSION'):env.pop(name,None)
-    env.update(HOME=str(paths['home']),XDG_DATA_HOME=str(paths['data']),XDG_CONFIG_HOME=str(paths['config']),XDG_CACHE_HOME=str(paths['cache']),XDG_STATE_HOME=str(paths['state']),XDG_RUNTIME_DIR=str(paths['runtime']),XDG_DATA_DIRS='/usr/local/share:/usr/share',XDG_CONFIG_DIRS='/etc/xdg',XDG_CURRENT_DESKTOP='NONE',XDG_SESSION_TYPE='x11',QT_QPA_PLATFORM='xcb',QT_QPA_PLATFORMTHEME='kde',QT_ACCESSIBILITY='0',QT_QUICK_BACKEND='software',LIBGL_ALWAYS_SOFTWARE='1',DBUS_SYSTEM_BUS_ADDRESS='unix:path='+str(paths['runtime']/'no-system-bus'))
+    env.update(HOME=str(paths['home']),XDG_DATA_HOME=str(paths['data']),XDG_CONFIG_HOME=str(paths['config']),XDG_CACHE_HOME=str(paths['cache']),XDG_STATE_HOME=str(paths['state']),XDG_RUNTIME_DIR=str(paths['runtime']),XDG_DATA_DIRS='/usr/local/share:/usr/share',XDG_CONFIG_DIRS='/etc/xdg',XDG_CURRENT_DESKTOP='NONE',XDG_SESSION_TYPE='x11',QT_QPA_PLATFORM='xcb',QT_QPA_PLATFORMTHEME='kde',QT_ACCESSIBILITY='0',QT_QUICK_BACKEND='software',LIBGL_ALWAYS_SOFTWARE='1',DBUS_SYSTEM_BUS_ADDRESS='unix:path='+str(paths['runtime']/'no-system-bus'),PULSE_SERVER='unix:'+str(paths['runtime']/'no-audio-server'))
     helper_source=REPO/'plasma/tests/domainos-package-host.cpp';helper=output/'domainos-package-host.so'
     flags=shlex.split(subprocess.check_output(['pkg-config','--cflags','--libs','Qt6Widgets'],text=True))
     subprocess.run(['c++','-std=c++17','-shared','-fPIC',str(helper_source),'-o',str(helper),*flags,'-ldl'],check=True)
@@ -87,8 +90,7 @@ def main():
     native=json.loads(native_file.read_text()) if native_file.is_file() else {}
     qml_errors=[line for line in result.stdout.splitlines() if re.search(r'(?:ReferenceError:|TypeError:|SyntaxError:|module .+ is not installed|Type .+ unavailable|is not a type|Cannot assign|Error loading QML|Failed to load QML|QML (?:Image|Item|Rectangle|Text):|Image: Cannot open)',line)]
     images=native.get('images',[]); loaded={Path(record['source']).name for record in images if record.get('status')==1}
-    expected_png={'desk.png','xterm.png','winterm.png','john.png','index.png','downl.png'}
-    expected_svg={'metal-weave.svg','metal-lines.svg','clock-face.svg','graph-reference.svg','mail.svg','applications.svg'}
+    expected_svg={'metal-weave.svg','metal-lines.svg','clock-face.svg','mail.svg','applications.svg'}
     names=set(native.get('object_names',[]))
     checks={'kpackage_metadata_discovered':discovered.returncode==0 and IDENTIFIER in discovered.stdout,
             'production_source_copy_byte_identical':source_before==copied,
@@ -97,25 +99,27 @@ def main():
             'native_process_exit_zero':result.returncode==0,
             'production_full_representation_loaded':native.get('production_panel_loaded') is True,
             'production_full_representation_visible':native.get('production_panel_visible') is True,
-            'production_class_is_domainos_panel':native.get('panel_class','').startswith('DomainOSPanel_QMLTYPE'),
+            'production_class_is_domainos_functional_panel':native.get('panel_class','').startswith('DomainOSFunctionalPanel_QMLTYPE'),
             'public_qt_quick_abi_checked':native.get('public_quick_symbols') is True,
             'preferred_size_rendered':native.get('drawing_scale',0)>=.95,
             'native_capture_saved':native.get('captured') is True and capture.is_file(),
             'all_production_images_ready':native.get('all_production_images_ready') is True,
-            'all_six_unique_sgi_bitmaps_decoded':expected_png<=loaded,
-            'all_seven_iconbox_instances_present':native.get('sgi_iconbox_image_items')==7,
-            'native_textures_clock_graph_mail_decoded':expected_svg<=loaded,
-            'requested_fonts_resolve_without_family_fallback':bool(native.get('rendered_fonts')) and all(record['resolved']==record['requested'] or record['resolved'].startswith(record['requested']+' [') for record in native.get('rendered_fonts',[])),
+            'illustrative_tasks_are_not_live_tasks':native.get('sgi_iconbox_image_items')==0,
+            'approved_static_textures_decoded':expected_svg<=loaded,
+            'approved_date_font_resolves_without_family_fallback':any(record.get('object_name')=='domainosDateLettering' and
+                (record['resolved']==record['requested'] or record['resolved'].startswith(record['requested']+' [')) for record in native.get('rendered_fonts',[])),
             'kde_scheme_matches_native_application_palette':native.get('application_palette')==expected_palette,
             'panel_follows_native_palette':native.get('follow_system_colors') is True and all(native.get('panel_color_roles',{}).get(role)==native.get('application_palette',{}).get(qt_role) for role,qt_role in (('background','window'),('recessed','base'),('text','windowText'),('blue','highlight'),('white','highlightedText'))),
             'all_svg_instances_use_recolored_sources':all(record.get('recolored') is True for record in images if record['source'].endswith('.svg')),
             'applications_drawer_graphic_present': 'domainosApplicationsDrawer' in names and 'applications.svg' in loaded,
             'fixed_modules_present':{'domainosInstitutional','domainosIconbox','domainosPager','domainosTray','domainosTrayNavigation','domainosLowerRail'}<=names,
-            'two_workspace_design_blocks':native.get('workspace_count')==2,
-            'two_by_three_tray_design_grid':native.get('tray_rows')==2 and native.get('tray_columns')==3,
-            'actions_await_confirmation':native.get('phase')=='design-awaiting-button-confirmations' and native.get('actions_exercised') is False,
+            'missing_kwin_does_not_invent_desktops':native.get('workspace_count')==0,
+            'two_by_three_tray_grid':native.get('tray_rows')==2 and native.get('tray_columns')==3,
+            'functional_startup_does_not_execute_actions':native.get('phase')=='functional-integration' and native.get('actions_exercised') is False
+                and native.get('diagnostics',{}).get('activity')=={'lit':False,'pending':0}
+                and native.get('diagnostics',{}).get('commands')=={},
             'qml_errors_zero':not qml_errors}
-    report={'format':1,'status':'passed' if all(checks.values()) else 'failed','checks':checks,'native':native,'qml_errors':qml_errors,'styles':style_inventories,'production_source_sha256':source_before,'helper_sha256':sha256(helper_source),'qt_compiled':subprocess.check_output(['pkg-config','--modversion','Qt6Widgets'],text=True).strip(),'commands':{'native_host':command,'package_discovery':['kpackagetool6','--type','Plasma/Applet','--list']},'capture':str(capture),'logs':{'host':str(output/'native-host.log'),'package_discovery':str(output/'package-list.log')},'scope':'Real plasmawindowed KPackage fullRepresentation; production sources unchanged. Only the design and asset decoding are verified; button actions, live windows, workspaces and devices are deliberately not activated.','desktop_modified':False,'button_actions_exercised':False,'fixture_scope':str(fixture)}
+    report={'format':1,'status':'passed' if all(checks.values()) else 'failed','checks':checks,'native':native,'qml_errors':qml_errors,'styles':style_inventories,'production_source_sha256':source_before,'helper_sha256':sha256(helper_source),'qt_compiled':subprocess.check_output(['pkg-config','--modversion','Qt6Widgets'],text=True).strip(),'commands':{'native_host':command,'package_discovery':['kpackagetool6','--type','Plasma/Applet','--list']},'capture':str(capture),'logs':{'host':str(output/'native-host.log'),'package_discovery':str(output/'package-list.log')},'scope':'Unmodified production KPackage in native Plasma, without a KWin service. Asset decoding, palette, geometry and unavailable-provider fallback are verified. Native commands, task gestures, desktops and devices are verified separately.','desktop_modified':False,'button_actions_exercised':False,'fixture_scope':str(fixture)}
     (output/'RESULTADO.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'status':report['status'],'checks':checks,'report':str(output/'RESULTADO.json')},indent=2),flush=True)
     return 0 if report['status']=='passed' else 1

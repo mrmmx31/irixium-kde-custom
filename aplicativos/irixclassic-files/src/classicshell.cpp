@@ -106,6 +106,8 @@ ClassicShell::ClassicShell(DolphinMainWindow *window) : QObject(window), m_windo
         else { b->setText(QStringLiteral("?")); b->setToolTip(tr("Upstream action unavailable: %1").arg(id)); b->setEnabled(false); }
         rail->addWidget(b); return b;
     };
+    button(KStandardAction::name(KStandardAction::Back));
+    button(KStandardAction::name(KStandardAction::Forward));
     button(QStringLiteral("icons")); button(QStringLiteral("compact")); button(QStringLiteral("details"));
     button(QStringLiteral("show_preview")); button(QStringLiteral("show_hidden_files"));
     button(QStringLiteral("go_up")); button(KStandardAction::name(KStandardAction::Redisplay)); button(QStringLiteral("toggle_search"));

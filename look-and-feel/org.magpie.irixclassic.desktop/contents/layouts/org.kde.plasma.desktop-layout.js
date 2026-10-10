@@ -16,7 +16,7 @@ const launcherUrls = []
 if (browserId) {
     launcherUrls.push("applications:" + encodeURIComponent(browserId))
 }
-launcherUrls.push("applications:org.kde.dolphin.desktop",
+launcherUrls.push("applications:io.github.mrmmx31.irixclassic.files.desktop",
                   "applications:org.kde.konsole.desktop")
 
 const appsLaunch = panel.addWidget("org.irixclassic.quicklaunch")

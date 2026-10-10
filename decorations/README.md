@@ -1,4 +1,4 @@
-# Decorações Irixium
+# Decorações de janelas
 
 As três opções associadas ao Irixium moderno ficam disponíveis no repositório
 como pacotes independentes. O instalador da suíte instala todas; o perfil
@@ -47,3 +47,43 @@ carregam os arquivos reais e salvam imagens e relatórios JSON; seus caches,
 configurações e cópias temporárias ficam sob `/tmp`. A segunda prévia carrega
 os três `main.qml` pelo plugin `org.kde.kwin.aurorae`, sem trocar a decoração
 da sessão ou instalar arquivos no perfil real.
+
+## DomainOS SR10.4
+
+`domainos/package` fornece a opção **DomainOS SR10.4**, com ID
+`domainos_sr104`, em paralelo ao IRIX Classic. A referência visual é a imagem
+do [VUE no Domain/OS SR10.4, do Virtual OS Museum](https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png).
+O desenho considera somente SR10.4. Nenhuma captura de SR10.4.1 ou de outras
+versões participa desta adaptação.
+
+O catálogo `components.json` inclui o pacote para instalação pela suíte.
+Os perfis globais Classic e Moderno conservam suas decorações atuais; instalar
+esta opção não seleciona o DomainOS e não altera o layout dos botões do KWin.
+`domainos/MANIFEST.json` verifica a integridade do pacote antes da instalação.
+
+Para instalar somente esta decoração, execute como usuário normal:
+
+```sh
+python3 tools/install_domainos_decoration.py --verificar
+python3 tools/install_domainos_decoration.py
+```
+
+O destino é `$XDG_DATA_HOME/kwin/decorations/domainos_sr104`, normalmente
+`~/.local/share/kwin/decorations/domainos_sr104`. Depois, selecione
+**DomainOS SR10.4** em **Configurações do Sistema → Cores e temas → Decorações
+da janela**. O instalador não aplica o tema, reinicia o KWin ou atualiza as
+configurações de outros usuários.
+
+A instalação mantém um backup independente em
+`$XDG_STATE_HOME/irixium-domainos-decoration`, normalmente
+`~/.local/state/irixium-domainos-decoration`. Para conferir e restaurar o último
+backup desta instalação:
+
+```sh
+python3 tools/install_domainos_decoration.py --restaurar --verificar
+python3 tools/install_domainos_decoration.py --restaurar
+```
+
+A restauração verifica se houve edições posteriores no pacote instalado antes
+de substituir arquivos. Ela restaura somente esse pacote; a opção selecionada
+no KDE continua sendo uma preferência do usuário.

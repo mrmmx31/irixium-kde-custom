@@ -5,7 +5,7 @@
 from pathlib import Path
 import argparse,hashlib,json,subprocess,sys,tempfile
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0-alpha1';TAG='irixclassic-files-v'+VERSION
+VERSION='0.1.0-alpha2';TAG='irixclassic-files-v'+VERSION
 REPO='mrmmx31/irixium-kde-custom'
 class Failure(RuntimeError):pass
 

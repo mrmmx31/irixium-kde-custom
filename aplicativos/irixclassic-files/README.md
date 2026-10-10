@@ -1,4 +1,4 @@
-# IrixClassic Files 0.1.0-alpha1
+# IrixClassic Files 0.1.0-alpha2
 
 Manutenção: **mrmmx31**. Derivação experimental do Dolphin para Debian 13.
 **Estado: alpha compilada e testada localmente no Debian 13 em 2026-10-07.**
@@ -12,6 +12,7 @@ A preparação reaproveita `DolphinMainWindow`, `DolphinView`, `DolphinViewConta
 as ações de arquivos e o backend KIO. A nova composição envolve a janela nativa:
 Pathfinder editável, botão para soltar uma pasta e navegar, ancestrais,
 histórico de locais, barra vertical, zoom, Shelf contextual e Content Viewer.
+Os botões voltar e avançar usam o histórico nativo por aba.
 As abas e a vista dividida do Dolphin permanecem acessíveis. Não se presume que
 cada caminho nativo esteja validado apenas porque foi reaproveitado.
 
@@ -36,8 +37,10 @@ as políticas nativas, não as do painel novo.
 - Preferências de vista não são gravadas em `.directory` nem em xattrs de pastas.
 - Bibliotecas privadas com SONAMEs próprios, junto do binário; nenhuma substitui
   `libdolphinprivate` ou `libdolphinvcs` do sistema.
-- Nenhum `FileManager1`, serviço systemd, padrão MIME ou associação de pastas é
-  registrado. Não se conecta às instâncias do Dolphin original.
+- Nenhum `FileManager1` ou serviço systemd é registrado. A entrada `.desktop`
+  declara os tipos MIME de diretório para que o aplicativo possa ser escolhido
+  como gerenciador padrão; a instalação não altera automaticamente a escolha do
+  usuário nem se conecta às instâncias do Dolphin original.
 
 Isto não isola o sistema de arquivos: operações nativas solicitadas pelo usuário
 continuam reais. Lixeira, protocolos, autenticação KIO, lista de Locais do KDE
@@ -91,7 +94,7 @@ Depois de um build aprovado:
 python3 aplicativos/irixclassic-files/tools/create_demo.py \
     --saida "$HOME/Downloads/irixclassic-files-demo"
 
-"$trabalho/IrixClassic-Files-0.1.0-alpha1/bin/irixclassic-files" \
+"$trabalho/IrixClassic-Files-0.1.0-alpha2/bin/irixclassic-files" \
     "$HOME/Downloads/irixclassic-files-demo"
 ```
 
@@ -105,14 +108,16 @@ A biblioteca privada e o helper devem permanecer junto do executável.
 ## Instalar e remover a cópia privada
 
 ```bash
-cd "$trabalho/IrixClassic-Files-0.1.0-alpha1"
+cd "$trabalho/IrixClassic-Files-0.1.0-alpha2"
 python3 instalar.py --verificar
 python3 instalar.py
 ```
 
-Destino: `~/.local/lib/irixclassic-files/0.1.0-alpha1/`, launcher em
+Destino: `~/.local/lib/irixclassic-files/0.1.0-alpha2/`, launcher em
 `~/.local/bin/irixclassic-files` e entrada própria no menu de aplicativos.
-Nada é instalado em `/usr`. Uma versão diferente já presente é recusada.
+Nada é instalado em `/usr`. Uma versão diferente já presente é recusada. A
+entrada registra `inode/directory` e `application/x-directory`, mas não muda
+automaticamente o gerenciador padrão do usuário.
 
 ```bash
 python3 instalar.py --remover --verificar
@@ -125,13 +130,13 @@ Não modifica o Dolphin, o Kvantum estável, as decorações ou `sons/`.
 ## Pacote `.deb` opcional
 
 `tools/build_deb.py` transforma um bundle que passou nos testes nativos em
-`irixclassic-files_0.1.0~alpha1-1_amd64.deb` (ou a arquitetura nativa suportada).
+`irixclassic-files_0.1.0~alpha2-1_amd64.deb` (ou a arquitetura nativa suportada).
 Execute sem sudo, com o fonte correspondente gerado pela mesma construção:
 
 ```bash
 python3 aplicativos/irixclassic-files/tools/build_deb.py \
-    --bundle "$trabalho/IrixClassic-Files-0.1.0-alpha1" \
-    --fonte "$trabalho/pacotes/IrixClassic-Files-0.1.0-alpha1-source.tar.gz" \
+    --bundle "$trabalho/IrixClassic-Files-0.1.0-alpha2" \
+    --fonte "$trabalho/pacotes/IrixClassic-Files-0.1.0-alpha2-source.tar.gz" \
     --saida "$trabalho/debian"
 ```
 
@@ -143,10 +148,10 @@ entregues junto do binário. Não inclui ícones, fontes ou sons SGI.
 
 A instalação normal pelo APT coloca o aplicativo em `/usr`, disponível no menu,
 com bibliotecas sob `/usr/lib/irixclassic-files/`. Isso é uma instalação de
-aplicativo para o sistema, distinta da instalação privada acima. **Nenhuma
-configuração de tema, usuário, Dolphin ou associação padrão é modificada.**
-Não há scripts de manutenção, serviços, registro de FileManager1 ou MimeType
-na entrada desktop. Para testar sem instalação global, extraia com `dpkg-deb -x`
+aplicativo para o sistema, distinta da instalação privada acima. A entrada
+declara os tipos MIME de diretório, mas não substitui automaticamente a escolha
+do usuário nem altera temas ou configurações do Dolphin. Não há scripts de
+manutenção, serviços ou registro de FileManager1. Para testar sem instalação global, extraia com `dpkg-deb -x`
 e execute diretamente o binário interno; veja [README.Debian](debian/README.Debian).
 O workflow também gera o `.deb`, sem publicação automática. Veja a
 [validação do pacote](docs/VALIDACAO-DEB-2026-10-07.md).

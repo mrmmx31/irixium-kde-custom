@@ -88,7 +88,7 @@ class UserBundleTest(unittest.TestCase):
     def test_all_theme_dependencies_present_and_user_scoped(self):
         data,config = self.root/'data',self.root/'config'
         pairs = sources(data,config)
-        self.assertEqual(len(pairs),30)
+        self.assertEqual(len(pairs),35)
         for source,dest in pairs:
             self.assertTrue(source.exists(),source)
             self.assertTrue(dest.is_relative_to(data) or dest.is_relative_to(config))
@@ -118,7 +118,7 @@ class UserBundleTest(unittest.TestCase):
 
         names = {'plasma/desktoptheme/IrixClassicDomainOS',
                  'plasma/plasmoids/org.irixclassic.domainos.panel',
-                 'color-schemes/DomainOS-SR10.4.colors'}
+                 'color-schemes/DomainOS-SR10-4.colors'}
         pairs = [(source, dest) for source, dest in sources(data, config)
                  if dest.is_relative_to(data) and dest.relative_to(data).as_posix() in names]
         self.assertEqual(len(pairs), 3)

@@ -87,8 +87,8 @@ static void observe()
         }
         QTimer::singleShot(100, observe); return;
     }
-    // Allow this fixture's resize/image decoder work to settle. There is no
-    // product timer, synthetic role model, app launch, pointer or device action.
+    // Allow this fixture's resize/image decoder work to settle. No pointer,
+    // application launch or device action is injected by this observer.
     if (++ticks < 10) { QTimer::singleShot(100, observe); return; }
     QList<QObject *> objects;
     walk(host->property("contentItem").value<QObject *>(), children, objects);
@@ -119,7 +119,7 @@ static void observe()
             if (!text.isEmpty()) {
                 labels.append(text);
                 const QFont font = object->property("font").value<QFont>();
-                renderedFonts.append(QJsonObject{{"text", text}, {"requested", font.family()},
+                renderedFonts.append(QJsonObject{{"text", text}, {"object_name", object->objectName()}, {"requested", font.family()},
                     {"resolved", QFontInfo(font).family()}, {"pixel_size", QFontInfo(font).pixelSize()}});
             }
         }
@@ -140,6 +140,8 @@ static void observe()
     QJsonObject colorRoles;
     for (const char *role : {"background", "recessed", "blue", "white", "text", "dark", "pale", "metalLight", "metalDark"})
         if (colors) colorRoles[role] = colors->property(role).value<QColor>().name();
+    QVariant snapshot;
+    QMetaObject::invokeMethod(panel, "diagnosticSnapshot", Qt::DirectConnection, Q_RETURN_ARG(QVariant, snapshot));
     QJsonObject report{{"public_quick_symbols", true}, {"production_panel_loaded", true},
         {"follow_system_colors", panel->property("followSystemColors").toBool()},
         {"panel_color_roles", colorRoles},
@@ -162,8 +164,9 @@ static void observe()
         {"tray_columns", panel->property("trayColumns").toInt()},
         {"fonts_available", QJsonObject{{"Nimbus Sans", available("Nimbus Sans")},
                                         {"DejaVu Sans Mono", available("DejaVu Sans Mono")}}},
+        {"diagnostics", QJsonDocument::fromJson(snapshot.toString().toUtf8()).object()},
         {"actions_exercised", false}, {"desktop_modified", false}};
-    const bool failed = !saved || !panel->property("visible").toBool() || !allImagesReady || bitmaps != 7 || images.isEmpty() || scale < .95;
+    const bool failed = !saved || !panel->property("visible").toBool() || !allImagesReady || images.isEmpty() || scale < .95;
     if (failed) report["failure"] = "The production panel failed capture, image-readiness or preferred-size validation";
     finish(report, failed);
 }

@@ -14,7 +14,7 @@ from install_suite import roots
 from theme_transaction import Failure, atomic, decode, edit_ini, snapshot, replace_checked
 
 from components import catalog
-from select_gtk import (gtk_paths, edit_gtkrc, native_ready, notify as notify_gtk,
+from select_gtk import (gtk_paths, edit_gtkrc, verify_theme_files, wait_for_theme_files, native_ready, notify as notify_gtk,
                         gsettings as gtk_gsettings, restore_previous, record_failure)
 
 PROFILE_COMPONENTS = catalog()['profiles']
@@ -140,6 +140,10 @@ def main():
                 raise Failure('O KDE não confirmou o tema GTK selecionado.')
             native_gtk['theme_after'] = profile['gtk']
             native_gtk['after'] = gtk_gsettings()
+        if native_gtk:
+            wait_for_theme_files(gtk_paths(config), profile['gtk'])
+        else:
+            verify_theme_files(gtk_paths(config), profile['gtk'])
         if sound_theme:
             globals_file = config/'kdeglobals'
             original = decode(snapshot(globals_file)) or b''

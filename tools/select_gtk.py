@@ -3,12 +3,14 @@
 """Seleciona apenas o GTK do perfil, pelo módulo KDE, com backup local verificável."""
 import argparse
 import ast
+import configparser
 import json
 import os
 from pathlib import Path
 import re
 import subprocess
 import sys
+import time
 import uuid
 
 from components import catalog
@@ -40,7 +42,47 @@ def gtk_paths(config, home=None):
     if not rc.is_absolute() or not rc.is_relative_to(home):
         raise Failure('GTK2_RC_FILES aponta para fora deste perfil; seleção GTK recusada.')
     return [rc, *[config/f'gtk-{version}'/name for version in ('3.0', '4.0')
-                  for name in ('settings.ini', 'window_decorations.css')]]
+                  for name in ('settings.ini', 'window_decorations.css', 'gtk.css', 'colors.css')]]
+
+
+def verify_theme_files(paths, theme):
+    """Confirm stored GTK2/3/4 selection; KDE's getter reads only GTK3."""
+    selected = [paths[0], *[path for path in paths[1:] if path.name == 'settings.ini']]
+    for index, path in enumerate(selected):
+        no_links(path)
+        try:
+            text = path.read_text(encoding='utf-8')
+            if index == 0:
+                # GTK2 accepts repeated assignments; the last explicit one is
+                # effective. Do not mistake an earlier matching line for success.
+                assignments = re.findall(r'(?m)^[ \t]*gtk-theme-name[ \t]*=(.*)$', text)
+                value = ast.literal_eval(assignments[-1].strip()) if assignments else None
+            else:
+                parser = configparser.ConfigParser(interpolation=None, strict=False, default_section='')
+                parser.optionxform = str
+                parser.read_string(text)
+                value = parser.get('Settings', 'gtk-theme-name', fallback=None)
+        except (OSError, UnicodeError, ValueError, SyntaxError, configparser.Error) as exc:
+            raise Failure('Não foi possível conferir a seleção GTK: '+str(path)) from exc
+        if value != theme:
+            raise Failure('A seleção GTK não foi confirmada no arquivo: '+str(path))
+
+
+def wait_for_theme_files(paths, theme, *, timeout=2):
+    """GTKConfig commits settings.ini asynchronously (native GLib idle delay).
+
+    Only the separate configuration worker waits. There is no UI timer,
+    repaint loop, desktop restart, or repeated native theme setter here.
+    """
+    deadline = time.monotonic() + timeout
+    while True:
+        try:
+            verify_theme_files(paths, theme)
+            return
+        except Failure:
+            remaining = deadline-time.monotonic()
+            if remaining <= 0: raise
+            time.sleep(min(0.025, remaining))
 
 
 def notify(theme=None):
@@ -117,7 +159,12 @@ def main():
         if len(token) != 32 or any(c not in '0123456789abcdef' for c in token):
             raise Failure('Referência de backup inválida.')
         receipt = json.loads((state/token/'receipt.json').read_text())
-        if {Path(v['path']) for v in receipt['files']} != set(paths):
+        # Old receipts predate the generated color/import files. Preserve their
+        # original five-file scope; a new receipt must contain all nine files.
+        expected = set(paths) if receipt.get('format', 1) == 2 else \
+            {path for path in paths if path.name not in ('gtk.css', 'colors.css')}
+        if receipt.get('format', 1) not in (1, 2) or \
+                {Path(v['path']) for v in receipt['files']} != expected:
             raise Failure('O recibo não corresponde aos arquivos GTK deste perfil.')
         if (notify() != receipt['theme_after'] or gsettings() != receipt['gsettings_after'] or
                 any(snapshot(Path(v['path'])) != v['after'] for v in receipt['files'])):
@@ -150,7 +197,7 @@ def main():
     before = {path: snapshot(path) for path in paths}
     token = uuid.uuid4().hex
     receipt = state/token/'receipt.json'
-    record = {'status': 'prepared', 'theme_before': current, 'theme_after': theme,
+    record = {'format': 2, 'status': 'prepared', 'theme_before': current, 'theme_after': theme,
               'gsettings_before': old_gsettings,
               'files': [{'path': str(p), 'before': v} for p, v in before.items()]}
     atomic(receipt, (json.dumps(record, indent=2)+'\n').encode())
@@ -158,6 +205,7 @@ def main():
         notify(theme)
         if notify() != theme:
             raise Failure('O módulo KDE não confirmou o tema GTK.')
+        wait_for_theme_files(paths, theme)
         # KDE recreates Gtk2's rc; retain modes of any existing private files.
         for path, previous in before.items():
             if previous['exists'] and path.exists():

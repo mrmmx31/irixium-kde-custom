@@ -17,7 +17,7 @@ import sys
 import tempfile
 import xml.etree.ElementTree as ET
 ROOT=Path(__file__).resolve().parents[1]
-VERSION='0.1.0-alpha1'
+VERSION='0.1.0-alpha2'
 DEBIAN_VERSION='4:25.04.3-1+deb13u1'
 
 class Failure(RuntimeError): pass

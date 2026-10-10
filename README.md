@@ -11,13 +11,21 @@ bash instalar-irixium.sh
 bash aplicar-tema.sh classic     # ou: moderno
 ```
 
-A instalação atualiza 30 componentes locais, com backup, sem trocar a
+A instalação atualiza 35 componentes locais, com backup, sem trocar a
 seleção. A aplicação escolhe tema global, decoração, Kvantum, GTK, ícones,
 cursores, cores, Plasma Style e splash correspondentes, sem redefinir painéis.
 Não há download de dependências temáticas pela KDE Store nem instalação de SDDM.
 O tema Wine é disponibilizado sem criar ou alterar prefixos automaticamente;
 use o [assistente do Wine Classic](wine/README.md) para escolher um prefixo.
-Plasma 6, Aurorae/KSvg Qt 6, Kvantum Qt 6 e KSystemStats devem estar instalados pela distribuição.
+A suíte completa exige Plasma 6 com Qt 6.8 ou superior, Aurorae/KSvg Qt 6, Kvantum Qt 6 e KSystemStats instalados pela distribuição.
+O painel DomainOS funcional também exige PyQt6 QtCore/QtDBus do `/usr/bin/python3`
+para sua ponte transitória com o KWin; o script de cores usa também QtGui.
+O instalador verifica essas dependências.
+Ao instalar a partir do checkout fonte, também são necessários um compilador
+C++, `pkg-config` e os SDKs Qt6Widgets/Qt6Qml da mesma versão do Qt em execução
+para compilar o módulo local do painel. O ZIP DomainOS pré-compilado inclui
+esse módulo e dispensa os SDKs de desenvolvimento. O instalador não instala
+pacotes de sistema.
 
 Os temas completos e os destinos estão em [components.json](components.json),
 usado pelo instalador e pela auditoria. A aplicação seleciona o esquema de sons
@@ -82,7 +90,7 @@ Ele pode ser movido/redimensionado na edição normal do Plasma; executar novame
 o helper preserva a posição escolhida e não duplica o widget. O layout Classic
 também inclui o monitor em novas instalações. Veja o [widget](plasma/applets/org.irixclassic.grosview/README.md).
 
-## Irix Classic DomainOS: etapa de desenho
+## Irix Classic DomainOS
 
 O [Plasma Style Irix Classic DomainOS](plasma/IrixClassicDomainOS/) é uma opção
 independente do Classic atual, inspirada na referência HP e na composição enviada
@@ -92,17 +100,100 @@ confirmada pelo usuário. A instalação mantém o estilo escolhido, os layouts 
 defaults do perfil Classic. `aplicar-tema.sh classic` continua selecionando o
 conjunto Classic existente.
 
-O applet apresenta o desenho unificado em dois andares: relógio, data, gráfico e
-correio; iconbox; dois quadros de áreas; bandeja 2×3; cinco atalhos inferiores.
-As funções ainda aguardam confirmação **por botão e ação**. Os itens de janela,
-nomes de áreas e símbolos de status usados na apresentação são exemplos do
-desenho: não representam o estado real do KWin, correio ou conectividade.
-O desenho não troca aplicativos, não cria/renomeia áreas de trabalho e não
-substitui o painel em uso. Veja a [matriz de requisitos e funções pendentes](docs/DOMAINOS-REQUISITOS.md).
+Para disponibilizar somente o painel DomainOS, seu Style/esquema de cores e o
+gr_osview, use o instalador independente como o próprio usuário, sem `sudo`:
+
+```sh
+python3 tools/install_domainos.py --verificar
+python3 tools/install_domainos.py
+# Conferir e restaurar apenas essa instalação independente:
+python3 tools/install_domainos.py --restaurar --verificar
+python3 tools/install_domainos.py --restaurar
+```
+
+São quatro destinos em `XDG_DATA_HOME`, com recibos próprios em
+`XDG_STATE_HOME/irixium-domainos`. Esse comando verifica as dependências KDE/Qt usadas
+por esses componentes e preserva seleção de tema, configurações e painel ativo.
+Não atualiza outros temas, GTK/cursores, caches ou hooks. Sua restauração não usa
+os recibos da suite completa.
+
+Para usar a barra no lugar da atual e associar a troca às opções do Plasma Style:
+
+```sh
+plasma-apply-desktoptheme IrixClassicDomainOS
+python3 tools/activate_domainos.py --verificar
+python3 tools/activate_domainos.py
+python3 tools/domainos_style_bridge.py --instalar --iniciar
+```
+
+A ativação substitui somente o painel escolhido e guarda seu layout anterior em
+arquivos privados. Não mantém uma segunda barra oculta. Com a ponte habilitada,
+selecionar **IrixClassic** no Plasma Style recupera a barra anterior; selecionar
+**IrixClassicDomainOS** volta à DomainOS, conservando suas preferências. Outros
+Styles não acionam essa troca. Em perfis com vários painéis, indique `--painel ID`
+na primeira ativação. Veja o [pacote atual 0.2.11](docs/DOMAINOS-0.2.11.md) e a
+[auditoria dos testes e limites](docs/DOMAINOS-AUDITORIA-2026-10-09.md).
+A avaliação pessoal final nas duas sessões continua separada dos ensaios privados.
+
+A composição funcional preserva o desenho aprovado e conecta hora, calendário,
+rede/gr_osview, tarefas, áreas de trabalho e bandeja aos provedores KDE. A placa
+GNU/LINUX abre aplicativos; a gaveta tem fixados próprios. Seleção de janelas,
+organização em lote e preferências por ferramenta estão no
+[manual do painel](plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md).
+Fonte indisponível não recebe dados ilustrativos. O modo visual de referência
+continua disponível para comparação; arraste entre miniaturas do Pager está adiado.
+
+Para testar em Xephyr sem instalar ou alterar o perfil, execute na sessão gráfica
+do próprio usuário o [assistente de teste](plasma/tools/testar-domainos-sessao.py),
+passando o PNG aprovado:
+
+```sh
+/usr/bin/python3 plasma/tools/testar-domainos-sessao.py --referencia /caminho/PAINEL-APROVADO.png
+```
+
+O assistente usa HOME, KWin e barramentos privados e verifica a troca de áreas
+antes de liberar a prévia. Painel e referência permanecem visíveis nas duas áreas;
+as janelas de tarefas continuam vinculadas às suas áreas. Fechar o Xephyr encerra
+somente a prévia. `--verificar` confere recursos/dependências sem abrir a janela.
+
+Para testar também Qt/Kvantum, GTK3/4, decorações, ícones, cursores e papel de
+parede em um Plasma completo, use o
+[lançador de tema completo](plasma/tools/prever-tema-completo.py) neste checkout,
+com um ZIP DomainOS já construído para a versão Qt instalada:
+
+```sh
+python3 -B plasma/tools/prever-tema-completo.py --pacote /caminho/irixclassic-domainos-0.2.11.zip
+```
+
+Execute na sessão gráfica do usuário, sem sudo. O lançador exige Xephyr,
+bubblewrap, namespaces de usuário e os componentes KDE/Qt/GTK instalados; não
+instala dependências. As galerias usam os controles nativos. Qt6 e GTK3 aparecem
+na primeira área; GTK4 na segunda. Applications oferece Configurações de Cores
+e Kvantum. Para comparar a decoração paralela, acrescente
+`--decoracao domainos_sr104`.
+
+A sessão tem HOME/XDG, compositor e DBus próprios, recursos do tema somente para
+leitura e acesso apenas ao novo display. Rede, áudio, dispositivos, contas e
+autenticação pessoais ficam indisponíveis. Trocar cores nela não altera o perfil
+real. O esquema do painel e as variantes GTK adaptáveis acompanham KDE.
+O Kvantum pode ser adaptado pelo [script de cores](kvantum/README.md), com os
+limites de estados desativados descritos ali. A prévia permanece aberta
+até o usuário fechar a janela externa Xephyr, encerrando somente seus processos.
+
+A revisão R2 reúne as decisões em [requisitos](docs/DOMAINOS-REQUISITOS.md),
+[preferências](docs/DOMAINOS-PREFERENCIAS.md) e
+[rastreabilidade](docs/DOMAINOS-DECISOES-CONSOLIDADAS.md).
+Consulte a [matriz F01–F35](docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md) e o
+[relatório dos testes](docs/VALIDACAO-DOMAINOS-INTEGRACAO-2026-10-08.md)
+para as evidências, comandos de reprodução e limites da validação.
+As alterações posteriores de cliques, menus e dicas estão no
+[relatório de interação de 9 de outubro](docs/VALIDACAO-DOMAINOS-INTERACAO-2026-10-09.md).
+Os ensaios funcionais usam sessões privadas. Instalação e ativação são comandos
+separados; a associação entre Style e layout exige habilitar a ponte no próprio perfil.
 
 ## GTK e decorações opcionais
 
-O Classic seleciona `IrixClassic` para GTK 2, 3 e 4; o Moderno mantém `Irixium`.
+O Classic seleciona `IrixClassic-KDE` para GTK 2, 3 e 4; o Moderno usa `Irixium-KDE`.
 O instalador mantém ambos em XDG e `~/.themes`, pois GTK 2 procura neste último
 caminho. A auditoria confere também essas cópias, como faz com os cursores legados.
 Os controles Classic têm relevos retos, interruptores retangulares e resposta
@@ -115,6 +206,10 @@ python3 tools/select_gtk.py classic
 # Restaurar a seleção anterior, se não houve alterações posteriores:
 python3 tools/select_gtk.py --restaurar
 ```
+
+Para atualizar o Kvantum após aplicar um esquema de cores, execute
+`python3 tools/apply_kvantum_colors.py` na própria sessão KDE. O comando mantém
+os temas originais e gera cópias locais recuperáveis. Veja [Kvantum](kvantum/README.md).
 
 As três [decorações do Moderno](decorations/README.md) são instaladas como opções:
 `irixium_modern`, `irixium_modern_13` e `irixium_modern_41`. Todas exibem menu,
@@ -192,7 +287,7 @@ ou mudar associações de arquivos. O componente tem testes e workflow próprios
 | Três temas de cursores | `cursors/` |
 | Cores | `colors/Irixium.colors`, `colors/DomainOS-SR10.4.colors` |
 | Plasma Styles | `plasma/IrixClassic/`, `plasma/Irixium/`, `plasma/IrixClassicDomainOS/` |
-| Painel DomainOS em desenho | `plasma/applets/org.irixclassic.domainos.panel/` |
+| Painel DomainOS | `plasma/applets/org.irixclassic.domainos.panel/` |
 | Wallpapers | `wallpapers/IrixClassic/`, `wallpapers/Irixium/` |
 | Tema global e splash | `look-and-feel/` |
 | Sons, sem os áudios | `sons/` |
@@ -206,7 +301,9 @@ continuam recuperáveis pelo histórico Git. Veja
 [reorganização e inventário local](docs/REORGANIZACAO-2026-10-06.md).
 
 O hook opcional da Classic só mantém seu pacote disponível no perfil do usuário;
-não troca a seleção. O reparo opcional do KDE Qt Quick em `tools/qtquick_scrollbar_fix.py`
+não troca a seleção. Seu runtime fica em `XDG_DATA_HOME/irixium/hooks/classic`,
+com os arquivos necessários, sem depender da pasta de extração ou do checkout.
+O reparo opcional do KDE Qt Quick em `tools/qtquick_scrollbar_fix.py`
 é uma ferramenta de manutenção separada, fora da instalação dos temas.
 
 ## Validar e restaurar

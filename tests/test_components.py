@@ -15,7 +15,7 @@ class ComponentsTest(unittest.TestCase):
     def test_both_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),30)
+        self.assertEqual(len(report['components']),35)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
@@ -29,10 +29,12 @@ class ComponentsTest(unittest.TestCase):
 
     def test_classic_gtk_and_optional_modern_decorations_are_installed(self):
         doc = components.catalog()
-        self.assertEqual(doc['profiles']['classic']['gtk'], 'IrixClassic')
-        self.assertEqual(doc['profiles']['moderno']['gtk'], 'Irixium')
+        self.assertEqual(doc['profiles']['classic']['gtk'], 'IrixClassic-KDE')
+        self.assertEqual(doc['profiles']['moderno']['gtk'], 'Irixium-KDE')
         destinations = {e['destination'] for e in doc['components']}
         self.assertTrue({'themes/IrixClassic', 'themes/Irixium',
+            'themes/IrixClassic-KDE', 'themes/IrixClassic-KDE-Reload',
+            'themes/Irixium-KDE', 'themes/Irixium-KDE-Reload',
             'kwin/decorations/irixium_modern', 'kwin/decorations/irixium_modern_13',
             'kwin/decorations/irixium_modern_41',
             'plasma/plasmoids/org.irixclassic.grosview'}.issubset(destinations))
@@ -44,7 +46,7 @@ class ComponentsTest(unittest.TestCase):
             'global': 'org.magpie.irixclassic.desktop', 'kvantum': 'IrixClassic',
             'decoration': 'irixium_irix_classic_v4', 'icons': 'IrixClassic-SGI',
             'plasma': 'IrixClassic', 'wallpaper': 'IrixClassic',
-            'gtk': 'IrixClassic', 'cursor': 'SGI-Classic'})
+            'gtk': 'IrixClassic-KDE', 'cursor': 'SGI-Classic'})
         entries = {e['source']: (e['root'], e['destination']) for e in doc['components']}
         self.assertEqual(entries['plasma/IrixClassic'],
                          ('data', 'plasma/desktoptheme/IrixClassic'))
@@ -53,7 +55,12 @@ class ComponentsTest(unittest.TestCase):
         self.assertEqual(entries['plasma/applets/org.irixclassic.domainos.panel'],
                          ('data', 'plasma/plasmoids/org.irixclassic.domainos.panel'))
         self.assertEqual(entries['colors/DomainOS-SR10.4.colors'],
-                         ('data', 'color-schemes/DomainOS-SR10.4.colors'))
+                         ('data', 'color-schemes/DomainOS-SR10-4.colors'))
+        self.assertEqual(entries['decorations/domainos/package'],
+                         ('data', 'kwin/decorations/domainos_sr104'))
+        self.assertIn(components.ROOT/'decorations/domainos/package',
+                      components.decoration_sources())
+        self.assertEqual(doc['profiles']['moderno']['decoration'], 'irixium_modern')
 
     def test_duplicate_destination_is_rejected(self):
         doc=components.catalog();doc['components'].append(doc['components'][0])
@@ -97,6 +104,7 @@ class ComponentsTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             pairs = components.gtk_compat_sources(root)
-            self.assertEqual({dest.name for _,dest in pairs}, {'IrixClassic', 'Irixium'})
+            self.assertEqual({dest.name for _,dest in pairs}, {'IrixClassic', 'Irixium',
+                'IrixClassic-KDE', 'IrixClassic-KDE-Reload', 'Irixium-KDE', 'Irixium-KDE-Reload'})
             self.assertTrue(all(dest.parent == root for _,dest in pairs))
             self.assertTrue(all((source/'gtk-2.0/gtkrc').is_file() for source,_ in pairs))

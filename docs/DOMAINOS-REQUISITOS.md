@@ -1,20 +1,40 @@
 # Irix Classic DomainOS: requisitos e critérios de verificação
 
-O objetivo é acrescentar uma segunda opção de Plasma Style, chamada **Irix
-Classic DomainOS**, e um painel unificado com a composição do projeto enviado
-pelo usuário. O Irix Classic atual continua disponível como opção independente.
-A referência original HP orienta a nitidez dos desenhos; o projeto do usuário
-orienta a disposição, as proporções e os elementos presentes.
+**Revisão funcional R2 — mantenedor `mrmmx31`.** Branch `#irixfiles`;
+base consultada `2f9f6277736ee6c6187cd010d4dd4f4990bb4822`.
 
-O desenho foi aprovado e sua renderização isolada foi verificada. A conexão
-às cores KDE e a seleção simulada também estão implementadas e verificadas.
-A próxima etapa conecta os componentes às funções reais. Cada nova função de
-botão depende da confirmação do usuário antes de ser implementada; decisões
-já confirmadas continuam válidas. Os requisitos funcionais abaixo permanecem
-rastreados: uma captura ilustrativa não os implementa nem os comprova. Os
-critérios D0–D10 descrevem a etapa de desenho, não todas as funções do memorial.
-O texto atualizado para retomar o goal está em
-[DOMAINOS-GOAL-ATUAL.txt](DOMAINOS-GOAL-ATUAL.txt).
+## Escopo e precedência
+
+Acrescentar o Plasma Style **Irix Classic DomainOS** e conectar seu painel aprovado
+às funções reais do KDE, preservando a opção Irix Classic existente. A referência
+histórica é Domain/OS SR10.4 / HP VUE; a aparência aprovada não impõe regressão de
+recursos modernos. O desenho, a conexão às cores e a seleção simulada são o estado
+de protótipo descrito na base. As funções aprovadas abaixo ainda exigem implementação
+e evidência próprias; não foram executadas nesta revisão documental.
+
+A prancheta PCU-VUE-KDE-R1 tem 28 respostas completas. Esclarecimentos posteriores
+fecharam as dúvidas de Iconbox, operações em lote, gaveta, Pager, bandeja, medidores,
+lente e preferências. São fontes complementares, não uma alteração do JSON original.
+Ver [rastreamento](DOMAINOS-DECISOES-CONSOLIDADAS.md),
+[preferências](DOMAINOS-PREFERENCIAS.md) e [goal](DOMAINOS-GOAL-ATUAL.md).
+A entrada legada [DOMAINOS-GOAL-ATUAL.txt](DOMAINOS-GOAL-ATUAL.txt) mantém conteúdo igual.
+
+**Nomenclatura:** `REQ-F01` significa o F01 deste memorial; `RESP-F01` significa a
+resposta F01 da prancheta (gestos). Os F01–F32 originais são preservados, com F33–F35
+acrescentados para requisitos transversais novos. D0–D10 continuam critérios visuais.
+
+A regra de precedência é: decisão explícita mais recente; respostas e justificativas
+da prancheta; proposta original apenas no que foi aceito e não substituído; descrição
+técnica antiga como contexto. Detalhes novos do redator aparecem como **proposta de
+implementação**, não como aprovação expressa. Lacunas técnicas devem ser registradas;
+não devem ser preenchidas silenciosamente por analogias a Windows, IRIX ou KDE.
+
+**As seções de geometria e a matriz visual a seguir são registros da base aprovada.**
+Suas expressões “apenas desenho”, “aguardar documento” e “sem função” descrevem o
+protótipo anterior à integração. Não se sobrepõem aos requisitos funcionais R2 e
+não reabrem decisões já tomadas. A seção posterior substitui a antiga lista que
+marcava todos os F01–F32 como pendentes. Preservar as medições, fontes e paleta;
+nenhum arquivo de fonte, imagem ou código é distribuído por este pacote documental.
 
 ## Referências e geometria
 
@@ -80,7 +100,7 @@ funções. O terceiro desenho não recebe uma função presumida.
 
 Os botões na lateral direita são **▶ acima e ▲ abaixo**. Eles não devem ser
 desenhados como duas setas verticais apenas porque o memorial usa a expressão
-“paginação vertical”. As funções desses dois botões permanecem pendentes.
+“paginação vertical”. As funções desses dois botões eram pendentes na base visual; a R2 as define em REQ-F21/REQ-F22.
 
 ### Ajuste de proporções solicitado durante a revisão no Xephyr
 
@@ -157,8 +177,8 @@ de cinzas neutros. A revisão seguinte corrigiu a inversão: a inscrição bitma
 em duas linhas é escura sobre trama clara, sem retângulo sólido, e sua moldura
 simples é elevada. O desenho das letras tem hastes uniformes e realce apenas
 fora do contorno escuro. O desenho tem 20 pixels de altura, com três pixels
-livres acima/abaixo na placa de 26 pixels e interlinha de um pixel. Ele mostra
-apenas pressão/cancelamento; não abre ajuda.
+livres acima/abaixo na placa de 26 pixels e interlinha de um pixel. Na base visual ele mostrava
+apenas pressão/cancelamento; a função de menu geral é definida em REQ-F01.
 
 A faixa metálica tem quatro sulcos centrais de três linhas, com caps e trama
 acima/abaixo. Na revisão de altura, ela ocupa y = 158 a 210 (52 unidades;
@@ -179,11 +199,10 @@ silhuetas da referência HP, sem atribuir ações por seu desenho.
 A célula antes vazia em X = 587, largura 118 e altura 52 na faixa inferior
 agora contém o botão `domainosApplicationsDrawer`. Seu `applications.svg`
 de 32×24 desenha três janelas quadradas sobrepostas em `#3e536e`/`#c4d5ed`;
-o QML exibe o símbolo em 64×48 unidades. O botão oferece apenas pressão e
-cancelamento. O usuário propôs associar futuramente os aplicativos de
-“pin to task manager” a essa gaveta, mas pediu aguardar seu documento antes
-de implementar o comportamento. Essa função é F32; não altera os cinco
-atalhos inferiores nem a iconbox de janelas minimizadas.
+o QML exibe o símbolo em 64×48 unidades. Na base visual o botão oferecia apenas pressão e
+cancelamento. A R2 confirma a associação dos aplicativos de “pin to task manager”
+à gaveta, conforme REQ-F32. O desenho não altera os cinco atalhos inferiores;
+lançadores fixos e tarefas continuam sendo conceitos separados.
 
 ## Matriz da etapa de desenho
 
@@ -214,167 +233,321 @@ Ele permite comparar as cores, e sua
 instalação não autoriza aplicá-lo automaticamente aos aplicativos ou a outro
 usuário.
 
-## Funções pendentes: confirmação por botão e por ação
+## Requisitos funcionais consolidados — F01–F35
 
-Todos os itens desta tabela estão **pendentes de confirmação**. A aprovação de
-um item não aprova os vizinhos, todos os botões da faixa ou uma mudança de
-configuração do KWin. Cada confirmação deve registrar a ação, o alvo e os
-gestos autorizados antes de adicionar o handler. Pressionar e soltar para avaliar
-apenas o relevo faz parte do teste do desenho.
+**Situação comum:** decisão funcional aprovada; integração/aceite técnico ainda não
+comprovados pelo protótipo. “Aprovado” nesta tabela não é “implementado”. REQ-F14
+contém um subrecurso explicitamente adiado; REQ-F33 inclui uma estrutura sugerida de
+páginas, distinguida no documento próprio. Não usar novamente a tabela antiga de
+pendências para bloquear os comandos já aprovados.
 
-| ID | Controle ou comportamento | Decisão que deve ser confirmada |
+| ID estável | Controle ou comportamento | Decisão consolidada | Origem |
+| --- | --- | --- | --- |
+| REQ-F01 | Placa GNU/LINUX | Abrir menu geral de aplicativos pela placa existente. Não limitar a ajuda a esse emblema. | RESP-A01; esclarecimento do lançador |
+| REQ-F02 | Relógio analógico | Hora local; clique abre consulta de hora/fusos suspensa, não duplica o calendário. | RESP-A02 |
+| REQ-F03 | Data e calendário | Seguir localidade completa do sistema; abrir calendário suspenso e agenda se configurada. | RESP-A03 |
+| REQ-F04 | Instrumento gráfico | Recepção e envio de rede simultâneos por padrão; métrica substituível em preferências; clique abre gr_osview suspenso. | RESP-A04; rodada Q7 |
+| REQ-F05 | Correio institucional | Abrir cliente configurado; Thunderbird como preferência informada. Estado/contagem somente com integração real autorizada. | RESP-A05 |
+| REQ-F06 | Conteúdo da Iconbox | Tarefas reais, abertas e minimizadas segundo filtros do perfil. Só minimizadas é opcional. Agrupamento configurável; fixados na gaveta. | RESP-B01/B04; Q1/Q4; REQ-F35 |
+| REQ-F07 | Seleção e ativação | Clique simples seleciona sem ativar; duplo clique restaura/ativa. Resposta visual imediata. | RESP-B02; Q2 |
+| REQ-F08 | Menus e gestos da Iconbox | Manter menu direito existente e adicionar organização; Ctrl/Shift e grupos conforme REQ-F34. Encerrar à força em submenu. | RESP-B02/B05; Q2/Q3; REQ-F34 |
+| REQ-F09 | Seta esquerda da Iconbox | Voltar um conjunto/página de ícones; indisponível no limite; sem mudar o painel. | RESP-B03 |
+| REQ-F10 | Seta direita da Iconbox | Avançar um conjunto/página de ícones; indisponível no limite; total de tarefas não limitado às células. | RESP-B03; Q1 |
+| REQ-F11 | Primeiro cartão de desktop | Vincular ao desktop real por identidade estável; clique ativa. Estado luminoso/relevo aprovado permanece. | RESP-C01/C02 |
+| REQ-F12 | Segundo cartão de desktop | Mesma regra do primeiro; cartão existente não cria/renomeia desktop durante carregamento. | RESP-C01/C02 |
+| REQ-F13 | Quantidade e nomes de desktops | Permitir criação/remoção/renomeação explícitas, mínimo um; um ocupa módulo, dois lado a lado, mais acessíveis por navegação. | RESP-C01; Q5 |
+| REQ-F14 | Miniaturas e navegação do Pager | Geometria, não screenshots; roda percorre cartões por padrão, troca de desktop é opção. Arraste entre miniaturas adiado. | RESP-C02/C03/C04; Q5 |
+| REQ-F15 | Rede na bandeja | Estado e controle do provedor real; não conectar/desconectar ao abrir a gaveta. | RESP-D01/D05 |
+| REQ-F16 | Volume na bandeja | Manter ação, menu e ajustes nativos; rolagem de volume restrita ao item correspondente. | RESP-D05 |
+| REQ-F17 | Correio/mensagens na bandeja | Item real configurado pelo usuário; não duplicar integração nem inventar status por existir envelope de exemplo. | RESP-A05/D01/D05 |
+| REQ-F18 | Armazenamento na bandeja | Item real de dispositivos, ações explícitas e capacidades do provedor; sem ejetar por navegação. | RESP-D01/D05 |
+| REQ-F19 | Monitoramento na bandeja | Preservar item real escolhido e seu alvo; desenho ilustrativo não comprova um serviço de monitoramento. | RESP-D01/D05 |
+| REQ-F20 | Sexta posição da bandeja | Entrada real escolhida; nenhum LED permanentemente normal sem fonte. Os seis símbolos do protótipo não fixam seis serviços universais. | RESP-D01/D05 |
+| REQ-F21 | ▶ à direita | Excedentes configurados como visíveis; continuação deslocada prioritária, paginação alternativa. Incluir ocultos é preferência. | RESP-D02/D03; Q6 |
+| REQ-F22 | ▲ à direita | Status e notificações; preservar acesso aos itens ocultos. Não repetir compulsoriamente a ▶ nem limpar histórico ao abrir. | RESP-D04; Q6 |
+| REQ-F23 | Política da bandeja | Seis posições 2×3, ordem/visibilidade configuráveis; preservar atenção e provedores; sem ocultação global indiscriminada. | RESP-D01/D02/D05; Q6 |
+| REQ-F24 | Terminal do rodapé | Nova sessão/janela do terminal preferido como usuário normal, sem comando adicional. | RESP-E01 |
+| REQ-F25 | Paleta/preferências do rodapé | Abrir System Settings em Appearance & Style. Central própria do painel é requisito distinto. | RESP-E02; REQ-F33 |
+| REQ-F26 | Sessão do rodapé | Abrir opções de sessão incluindo suspensão e hibernação conforme disponibilidade; nenhuma ação destrutiva automática. | RESP-E03 |
+| REQ-F27 | Cadeado | Solicitar bloqueio real, sem encerrar aplicações; informar impossibilidade/falha. | RESP-E04 |
+| REQ-F28 | Ajuda | Menu na ordem: ajuda local do painel, xman, ajuda KDE. xman acompanha esquema e contraste; ajuda distribuída com o produto. | RESP-E05 |
+| REQ-F29 | Lente de atividade | Acompanhar operação observável; opção de permanência adicional após conclusão desligada por padrão; não atrasar comando. | RESP-E06/F01; Q8 |
+| REQ-F30 | Inserção e migração do painel | Instalação por usuário; painel ativo só substituído com autorização; preservar widgets, identidades e restauração. | RESP-F02; goal original |
+| REQ-F31 | Plasma Style e cores | Variantes independentes; esquema escolhido respeitado sem reaplicar layouts ou alterar outros perfis. | RESP-F02/F03; desenho aprovado |
+| REQ-F32 | Gaveta de fixados | Usar domainosApplicationsDrawer; lista própria com importação opcional; clique solicita nova janela/instância. | RESP-B01; Q4; esclarecimento de localização |
+| REQ-F33 | Central de preferências | Organizar por ferramenta em navegação semelhante ao System Settings, preservando padrões e alternativas aprovadas. | RESP-B04/F01; esclarecimento final 2 |
+| REQ-F34 | Seleção de grupos e operações em lote | Membros escolhidos por checkboxes e seleção acumulada entre grupos; não selecionar grupo inteiro implicitamente; organizar no desktop/monitor atuais. | RESP-B02; Q2/Q3; esclarecimento final 1 |
+| REQ-F35 | Filtro automático da Iconbox | Opcional: contar janelas antes de filtrar e agrupar; maior que limiar liga só minimizadas, menor/igual volta à apresentação normal. | Q1; confirmação final 2 |
+
+## Detalhamento das decisões novas
+
+### Iconbox: conteúdo, contagem e filtro automático
+
+**Decisão confirmada:** manter o padrão atual de tarefas abertas e minimizadas,
+respeitando o escopo configurado de telas, atividades e desktops. O filtro manual
+“somente minimizadas” é uma alternativa. A contagem de tarefas não tem teto funcional
+igual à quantidade de ícones visíveis; as setas dão acesso ao restante.
+
+O modo automático é opcional. A preferência contém habilitação e limiar numérico,
+cujo valor inicial não foi escolhido pelo usuário nesta conversa. Não converter um
+exemplo de documentação em valor aprovado. Sem habilitação explícita, a opção não
+muda o filtro do perfil.
+
+Para decidir a ativação automática, **N** é a quantidade de janelas reais no escopo
+normal da Iconbox, antes de aplicar “somente minimizadas” e independentemente do
+agrupamento. Um grupo de quatro janelas contribui com quatro, não com um. Lançadores
+fixos e ícones da bandeja do sistema não pertencem à contagem. **L** é o limiar.
+
+| Situação, com modo automático habilitado | Apresentação |
+| --- | --- |
+| N é maior que L | Apenas janelas minimizadas do mesmo escopo |
+| N é igual a L ou menor | Volta à apresentação normal do perfil |
+| Um grupo é expandido/recolhido | Não muda N por esse motivo |
+| A janela é minimizada/restaurada | Não muda N por esse motivo; sua inclusão visual depende do modo vigente |
+| Uma janela entra/sai do escopo ou abre/fecha | Recontar com os mesmos critérios |
+
+É um filtro de apresentação. Não minimizar janelas para satisfazer a regra, não
+fechar tarefas e não reduzir o limite total. Contar o resultado já filtrado geraria
+uma condição circular; a regra aprovada usa o conjunto anterior ao filtro.
+
+**Detalhamento proposto para implementação:** apresentar a escolha manual “só
+minimizadas” e a escolha automática como modos distintos, evitando dois checkboxes
+contraditórios. Se o usuário escolher o modo manual, não fazê-lo desaparecer porque
+N diminuiu. Essa organização da preferência precisa de ensaio de interface; a regra
+N/L em si já foi confirmada. Mostrar claramente que o filtro automático está ativo,
+sem acrescentar botões ou mudar as proporções aprovadas.
+
+### Seleção, grupos e menu de operações
+
+**Decisões confirmadas:**
+
+- Clique simples em janela individual seleciona imediatamente, sem restaurá-la.
+  Duplo clique restaura/ativa. Não esperar um segundo clique para mostrar a seleção.
+- Ctrl acrescenta/retira itens; Shift seleciona um intervalo. A seleção não é a
+  mesma coisa que a janela atualmente ativa.
+- Ao selecionar um grupo, apresentar suas janelas com checkboxes. O usuário marca
+  membros, conserva essas escolhas e passa aos próximos itens/grupos. Não incluir
+  todas as janelas do grupo por suposição.
+- Após formar uma seleção de duas ou mais janelas e soltar Ctrl/Shift, abrir o menu
+  de operações em lote. Escape fecha sem executar. O botão direito continua abrindo
+  o menu existente, ampliado com organização.
+- Para organizar, reunir o conjunto escolhido no desktop/monitor atuais. Mosaico,
+  disposição em colunas, disposição em linhas, maximizar e minimizar em massa são
+  comandos distintos. O rótulo deve explicar a disposição, sem ambiguidade entre
+  “vertical” e “horizontal”.
+
+**Detalhamento proposto para tornar o novo seletor de grupos utilizável:** manter a
+lista aberta ao marcar uma caixa; preservar a seleção acumulada ao fechar a lista
+para passar a outro grupo; distinguir visualmente seleção parcial de completa,
+por exemplo mostrando “2 de 4”, sem alterar a chapa principal. A lista é um seletor,
+não o menu de organização: marcar uma caixa não ativa nem executa ação na janela.
+A liberação de Ctrl/Shift durante a navegação da lista não deve interromper cada
+marcação com o menu de operações. Suspender esse automatismo enquanto o seletor de
+grupo estiver aberto e avaliá-lo ao concluir o gesto fora dele é uma solução proposta,
+não um novo gesto já confirmado pelo usuário. Documentar e testar a sequência final.
+
+Exemplo de intenção aprovada: escolher os terminais A e C de um grupo de quatro,
+depois a janela B de outro grupo; a operação tem três alvos, não todas as janelas
+dos dois aplicativos. Não interpretar o fechamento do popup como a ordem de
+restaurar o grupo. O gesto de duplo clique sobre o resumo de um grupo, diferentemente
+de uma janela individual, não foi detalhado; preservar a escolha explícita de membros
+sem introduzir ativação coletiva silenciosa.
+
+**Critérios técnicos propostos de integridade da seleção:** guardar identidade das
+janelas, não posições transitórias da lista; janela nova no grupo não entra na seleção
+sem escolha; janela fechada deixa de ser alvo e não transfere seleção à linha seguinte.
+A operação deve informar alvos que deixaram de existir ou não aceitam a ação.
+Esses critérios evitam atingir janelas que o usuário não escolheu.
+
+O menu contextual normal deve continuar disponível. Fechar normalmente respeita o
+fluxo do aplicativo; “matar processo” fica em submenu. Identificação do processo,
+confirmação e efeitos sobre várias janelas do mesmo processo são questões de segurança
+a validar na implementação; não equiparar a seleção de uma janela à autorização
+para encerrar todos os processos do aplicativo.
+
+### Gaveta: lançadores não são tarefas
+
+**Decisão confirmada:** o botão é `domainosApplicationsDrawer`, na célula que era
+vazia, imediatamente antes do terminal. Não usar `domainosShortcut_drawer` para essa
+função: esse terceiro atalho representa Sessão. O emblema abre o menu geral e a
+gaveta abre apenas os fixados, como entradas distintas.
+
+A lista pertence ao painel DomainOS. A importação dos fixados existentes é opcional
+e não cria sincronização contínua com outra instância. Favoritos do menu de aplicativos
+continuam conceito separado. Retirar um pin não fecha a tarefa nem desinstala o programa.
+Acionar um pin solicita nova janela/instância; não o substitui pela tarefa aberta.
+A janela criada aparece na Iconbox segundo os filtros desta. Se o aplicativo não
+oferecer nova janela, respeitar sua capacidade real; não prometer comportamento
+universal de múltiplas instâncias.
+
+A posição da gaveta já está aprovada. Ordenação, gerenciamento dos pins e importação
+pertencem à página específica de preferências; não ocupam as células de tarefas.
+
+### Pager, bandeja e navegação sem efeitos colaterais
+
+O Pager tem um módulo fixo. Com uma área, a miniatura continua visível e usa seu
+espaço; com duas, aparecem dois cartões; com mais, há navegação e setas inferiores.
+A roda apenas percorre os cartões por padrão. Trocar a área imediatamente pela roda
+é opção explicitamente alternativa. O clique no cartão ativa a área, e clicar na
+atual não executa outro comando. Não apagar/renomear desktops para reproduzir a imagem.
+
+Criar, remover e renomear são ações explícitas com reflexo real no KWin. A criação de
+um perfil novo pode sugerir Work/Procrastination, sem impor esses nomes ao perfil
+existente. Janelas em todas as áreas, múltiplos monitores e minimizadas precisam ter
+representação coerente com dados reais. A solicitação RESP-C03 de conferir a referência
+IRIX permanece pendente de pesquisa; não declarar equivalência histórica integral.
+
+Na bandeja, distinguir:
+
+| Conjunto | Acesso padrão |
+| --- | --- |
+| Até seis entradas escolhidas como visíveis | Matriz 2×3 |
+| Visíveis que excederam seis posições | ▶: continuação deslocada; paginação se necessário |
+| Configuradas como ocultas | Quadro de status/acesso aos ocultos da ▲, sem inserção compulsória na ▶ |
+| Ocultas quando a opção “incluir ocultos na ▶” estiver ligada | Também acessíveis na continuação; não duplicar/destruir provedores |
+| Histórico e controles de notificação | ▲ |
+
+A posição física dos dois botões não muda. A continuação/gaveta não estica a chapa.
+A preferência de incluir ocultos não autoriza perder estados de atenção ou tornar
+itens inacessíveis. Os ícones fornecidos por aplicativos continuam vinculados a seus
+itens reais, com clique/menu próprios. A abertura de uma gaveta não altera volume,
+conexões, dispositivos ou “Não perturbe”.
+
+### Medidores, preferências e lente
+
+O instrumento pequeno mostra recepção e envio de rede simultaneamente. A preferência
+permite escolher outro objeto de medição. O `gr_osview` existente é a base para o
+painel suspenso completo, não um pedido para reescrever todos os sensores.
+Interface(s), unidade, escala e janela temporal precisam estar identificadas no
+detalhe/preferências. A escolha de medir rede é decisão funcional; a afirmação de
+que a referência histórica media rede não foi comprovada por esta consolidação.
+
+O botão de aparência continua indo a Appearance & Style do System Settings. A
+**central de preferências do painel** é organizada por ferramenta, conforme pedido
+final, e não muda esse atalho por dedução. O acesso à nova central e as convenções
+de navegação são detalhados como proposta em `DOMAINOS-PREFERENCIAS.md`.
+
+A lente representa a operação observável. Por padrão, acompanha início e fim.
+A opção “Manter luz acesa após a conclusão” tem checkbox e tempo configurável,
+desabilitada por padrão. O tempo é **adicional depois da conclusão**, não um tempo
+mínimo total de execução. O campo fica sem efeito com a opção desligada.
+
+Se o provedor só confirmar que a solicitação foi enviada, essa é a evidência que
+pode ser comunicada; não manter a lente até um “fim” inventado. Falhas precisam ser
+informadas, não encobertas pelo prolongamento. Animações opcionais de apresentação
+não atrasam comandos, cliques ou repinturas. A aprovação não autoriza importar timers
+do antigo menu de duplo clique ou reintroduzir feedback artificialmente bloqueante.
+
+**Detalhe proposto:** com operações simultâneas, a lente permanece acesa enquanto
+houver operação observável pendente; o prolongamento começa depois da última. Uma
+nova operação cancela o apagamento programado, não a operação. Essa regra é proposta
+para ensaio, pois o usuário definiu o comportamento individual, não concorrência.
+
+## Integração com a base existente — orientação, não implementação nesta revisão
+
+As notas técnicas da versão anterior eram hipóteses condicionadas às confirmações.
+Elas não podem contrariar as decisões R2. Em especial, não fixar `filterNotMinimized`
+ou `GroupDisabled` como política universal: o primeiro passa a seguir o modo escolhido,
+e o segundo não representa o agrupamento configurável aprovado.
+
+Na base consultada existem `org.irixclassic.applications`, `org.irixclassic.iconbox`,
+`org.irixclassic.grosview`, `org.irixclassic.quicklaunch` e
+`org.irixclassic.systemtray`. O painel integrado é `org.irixclassic.domainos.panel`;
+seu `DomainOSPanel.qml` ainda usa dados ilustrativos e seleção local opcional. O
+reaproveitamento deve preservar provedores, identidades e recursos úteis, não incorporar
+apenas uma cópia visual que descarte comportamento já disponível.
+
+As notas anteriores registram `TaskManager.TasksModel`, dados de desktops e modelos
+da bandeja. Confirmar sua disponibilidade na versão realmente instalada antes de
+implementar chamadas. Identidades estáveis e validação do alvo são necessárias; um
+índice de linha ou rótulo de desktop não é identidade persistente. Não criar regras
+KWin só para observar minimização se o modelo já informa o estado.
+
+A grade 2×3 é requisito de apresentação. Não inventar parâmetros universais `rows=2`
+ou `iconSize=16`; o memorial anterior já distinguiu esse desenho das opções reais
+da bandeja. A integração deve preservar seu containment/provedor e mostrar estados
+reais. A conversão das seis imagens ilustrativas em itens reais ainda exige trabalho.
+
+Janelas não são arquivos. Para operações em lote, verificar a API/autorização da
+sessão e o suporte de cada janela; não presumir que a mesma manipulação de geometria
+esteja disponível da mesma forma em X11 e Wayland. Sem capacidade, registrar
+indisponibilidade e a restrição precisa. Isso não autoriza declarar o requisito
+implementado, nem abandonar sua investigação porque depende de integração adicional.
+
+## Matriz de verificação funcional proposta
+
+Estes são critérios para a futura implementação. **Não são resultados de testes
+executados nesta entrega.** A referência visual e D0–D10 continuam sendo comparadas
+sem alterar seus arquivos ou o backup aprovado.
+
+| ID | Ensaio | Critério de resultado |
 | --- | --- | --- |
-| F01 | Selo GNU/LINUX | Selo inerte ou acesso à ajuda; qual aplicativo/comando e qual gesto |
-| F02 | Relógio analógico | Fonte do horário, segundos visíveis ou não, fuso e comportamento de clique |
-| F03 | Bloco de data/calendário | Idioma/formato rígido, aplicativo ou popup e gesto de abertura |
-| F04 | Monitor gráfico | CPU, rede ou combinação; fontes reais, escalas, amostragem e ação ao clicar |
-| F05 | Correio no bloco esquerdo | Aplicativo/conta/alvo, indicador real de correio e ação; o desenho não implica integração com uma conta |
-| F06 | Entrada automática de janelas minimizadas na iconbox | Somente janelas minimizadas; filtros por tela/atividade/desktop, ordem e exclusão de launchers/startups; determinar a migração do gerenciador atual separadamente |
-| F07 | Botão de uma janela na iconbox | Restaurar/ativar, clique simples ou duplo e foco; nenhuma ação de fechar é presumida |
-| F08 | Menu, arrastar e gestos auxiliares da iconbox | Ações do menu contextual, arraste, botão do meio, roda e teclado, cada gesto aprovado separadamente |
-| F09 | Seta esquerda da iconbox | Avançar por item ou página, limites e comportamento quando não houver conteúdo anterior |
-| F10 | Seta direita da iconbox | Avançar por item ou página, limites e comportamento quando não houver conteúdo posterior |
-| F11 | Quadro Work do pager | Qual desktop real representa; clique, teclado, seleção e eventual comportamento ao clicar no desktop atual |
-| F12 | Quadro Procrastination do pager | Qual desktop real representa; clique, teclado e seleção |
-| F13 | Quantidade e nomes de desktops | Confirmar explicitamente a criação/redução para dois e os nomes Work/Procrastination no KWin do usuário escolhido; não inferir autorização da ilustração |
-| F14 | Miniaturas do pager e gestos adicionais | Geometria por tela, janelas visíveis/minimizadas, arraste entre áreas, roda e demais ações |
-| F15 | Rede na bandeja | Fonte do status e popup/ação; confirmar separadamente qualquer alteração de conexão |
-| F16 | Volume na bandeja | Fonte do status, popup e gestos; confirmar alterações de volume/mute |
-| F17 | Correio na bandeja | Diferenciar deste desenho o correio F05; definir fonte, alvo e ação sem presumir duplicação |
-| F18 | Armazenamento na bandeja | Fonte do status, popup e operações permitidas; nenhuma montagem/ejeção automática |
-| F19 | Monitoramento na bandeja | Fonte do status e alvo/aplicativo da abertura |
-| F20 | Sexto indicador da bandeja | Definir o significado do indicador circular verde e seus estados/ações |
-| F21 | Botão ▶ na lateral direita | Determinar se pagina itens, expande ocultos ou executa outra ação; direção do desenho não define sua função |
-| F22 | Botão ▲ na lateral direita | Determinar ação, relação com F21, limites e modo de fechar eventual popup |
-| F23 | Política de itens da bandeja | Identificar os itens críticos e os itens “Sempre ocultos”; confirmar mudanças na seleção individual existente |
-| F24 | Atalho inferior 1: terminal | Executável/alvo, argumentos e gesto de lançamento |
-| F25 | Atalho inferior 2: paleta/ferramentas | Preferências ou outro utilitário; alvo e gesto |
-| F26 | Atalho inferior 3: ferramenta retangular | Identidade e função a decidir; não omitir o quinto desenho nem transformar este em launcher por suposição |
-| F27 | Atalho inferior 4: cadeado | Bloqueio ou outra função, método e gesto; não executar bloqueio nos testes do desenho |
-| F28 | Atalho inferior 5: interrogação | Ajuda, alvo e gesto; confirmar se é distinto do selo F01 |
-| F29 | Indicador pequeno à direita da faixa inferior | Significado, estados e eventual ação |
-| F30 | Inserção/troca do painel na sessão real | Usuário, tela, altura, posição, substituição ou coexistência, preservação dos widgets/configurações e caminho de restauração |
-| F31 | Alternância de Plasma Style e esquema de cores | Quais recursos mudar, seleção independente do tema global, comportamento da auditoria e restauração; sem reaplicar layouts |
-| F32 | Gaveta de aplicativos fixados | Aguardar o documento funcional do usuário para definir a associação de “pin to task manager”, os aplicativos, sua persistência e os gestos da gaveta; nesta etapa somente o desenho e o relevo de pressão/cancelamento |
+| VF01 | Emblema e gaveta | Emblema abre menu geral; botão próprio abre pins; nenhum substitui o atalho de Sessão |
+| VF02 | Relógio/data | Hora/fusos e calendário separados; localidade correta; agenda só quando configurada |
+| VF03 | Rede/medidores | Recepção/envio reais e unidades explícitas; trocar métrica nas preferências; fonte ausente não vira zero |
+| VF04 | Correio | Cliente escolhido abre; contagem só com fonte autorizada; ausência de fonte não vira “sem mensagens” |
+| VF05 | Tarefas e agrupamento | Abertas/minimizadas conforme filtro; grupo não limita contagem; fixados não substituem tarefas |
+| VF06 | Clique/seleção | Primeiro clique seleciona sem espera; duplo restaura; direito preserva menu e inclui organização |
+| VF07 | Grupo por checkboxes | Escolher parte do grupo e passar a outro conserva os alvos, sem incluir todos ou executar ação ao marcar |
+| VF08 | Mudança da lista | Encerrar/reagrupar janelas não transfere seleção para outra identidade |
+| VF09 | Organização | Aplicar disposição a 2/3/6 janelas selecionadas no destino atual; distinguir mosaico, maximizar e minimizar |
+| VF10 | Filtro automático | N>L liga, N≤L retorna; N é anterior ao filtro e ao agrupamento; nada é minimizado/fechado por essa regra |
+| VF11 | Gaveta | Lista própria, importação explícita, pin removido não fecha tarefa; pedido de nova janela não reaproveita task slot como launcher |
+| VF12 | Pager | Uma/duas/várias áreas, setas inferiores, roda só navega no padrão e só troca quando a alternativa é ligada |
+| VF13 | Miniaturas | Sem conteúdo real capturado; capacidades e estados especiais documentados; arraste adiado não fica parcialmente ativo |
+| VF14 | Bandeja | Seis posições, excedentes visíveis na ▶, ocultos/status na ▲, alternativa incluir ocultos, sem perder atenção |
+| VF15 | Comandos de sessão | Abrir diálogo não suspende/desliga; bloqueio verdadeiro; falhas informadas; testar ações sensíveis só com autorização |
+| VF16 | Ajuda | Ordem painel/xman/KDE, ajuda instalável localmente, contraste no esquema escolhido, ausência do xman explicada |
+| VF17 | Lente | Padrão acompanha evento real; tempo adicional adia só apagar; comando concluído não fica bloqueado |
+| VF18 | Preferências | Cada função está em sua ferramenta; padrões/alternativas distinguíveis; valores não escolhidos não apresentados como aprovados |
+| VF19 | Instalação/restauração | Recursos independentes, preservação de outros perfis e do Classic; reversão comprovada antes de substituir painel ativo |
+| VF20 | Desempenho/acessibilidade | Resposta imediata de controles, teclado e foco testáveis; telemetria não impede cliques; desenho estável durante notificações |
 
-## Plano de bindings nativos, depois das confirmações
+## Estado de execução e pendências remanescentes
 
-### Janelas minimizadas
+As decisões funcionais principais desta rodada estão fechadas. A afirmação anterior
+“todos os itens aguardam confirmação” está superada. Não gerar nova prancheta de 28
+itens para perguntar as mesmas coisas. Permanecem:
 
-As fontes locais instaladas em
-`/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/taskmanager/taskmanager.qmltypes` e o
-applet atual `org.irixclassic.iconbox` expõem `TaskManager.TasksModel`.
-`filterNotMinimized: true` elimina as janelas que **não** estão minimizadas. A
-futura iconbox pode usar esse filtro, `launcherList: []` e
-`TaskManager.TasksModel.GroupDisabled`, com exclusão explícita de entradas que
-não tenham `IsWindow`/`IsMinimized`. Os filtros por desktop, atividade e tela
-dependem de F06; não se devem escolher implicitamente.
+**Implementação e verificação:** ligar dados reais, testar comportamento e capacidades,
+preparar preferências, empacotar documentação e validar instalação/restauração. Esta
+consolidação não executou essas tarefas e não muda a fase real do código.
 
-Os roles `AppId`, `AppPid` e `WinIdList` permitem verificar a identidade das
-janelas em testes privados. `Decoration` e o tema IRIX Classic fornecem os ícones
-da iconbox. Depois de F07, `requestActivate(QModelIndex)` permite pedir a
-ativação pela API nativa; os índices precisam vir do modelo atual, inclusive
-depois de filtragem/remoção. Não reutilizar um índice de linha antigo como
-identidade de janela.
+**Adiado por decisão do usuário:** arrastar janelas entre miniaturas do Pager. Manter
+no próximo ciclo; não adiar por associação os menus de movimentação ou a organização
+em lote. A gaveta de fixados não permanece adiada.
 
-O KWin já minimiza a janela e o modelo informa seu estado no X11 e no Wayland.
-Assim, o comportamento descrito como “interceptar” ou “desviar” pode ser
-implementado por observação do modelo e apresentação na iconbox. **Não é
-necessário criar regras novas no KWin para ler janelas minimizadas.** Uma regra
-extra só se justifica se uma ação futura aprovada exigir um comportamento que
-essa API não forneça; seus parâmetros e seu efeito terão de ser confirmados.
-A substituição do gerenciador de tarefas do painel é F06/F30, não um efeito da
-instalação dos arquivos.
+**Precisão a registrar no desenvolvimento:** valores iniciais/ranges do limiar e do
+tempo extra da lente não foram escolhidos; fluxo fino de conclusão do seletor de
+grupo, comando sobre resumo de grupo e monitor considerado “atual” precisam ser
+explicados no ensaio. As soluções propostas acima não podem ser citadas como respostas
+expressas do usuário. Um impedimento nesses detalhes não autoriza trocar uma decisão
+já aprovada sem consulta.
 
-### Áreas de trabalho
+**Pesquisa histórica solicitada:** RESP-C03 requer confronto com a referência IRIX.
+A função exata original de alguns glifos e do gráfico não foi comprovada por esta
+revisão. As funções escolhidas para a adaptação não devem ser apresentadas como
+certeza sobre o HP VUE original.
 
-`TaskManager.VirtualDesktopInfo` oferece `desktopIds`, `desktopNames`,
-`numberOfDesktops` e `currentDesktop`. O backend de pager instalado em
-`org.kde.plasma.private.pager` fornece `PagerModel`, um `TasksModel` por área e
-geometria das janelas. A futura miniatura pode usar essas informações sem
-renomear/criar áreas durante o carregamento do applet.
+## Instalação e evidências
 
-Work e Procrastination são rótulos da referência nesta fase. Quando F11–F14
-forem aprovados, seus vínculos devem persistir **UUIDs/IDs reais estáveis** de
-desktop. O gerenciador D-Bus do KWin em `/VirtualDesktopManager`, interface
-`org.kde.KWin.VirtualDesktopManager`, fornece a lista `desktops` com posição,
-ID e nome; `tools/classic_desktop.py:desktop_state()` já demonstra sua leitura.
-Ela permite manter a identidade UUID separada da posição atual e do nome.
+O preview deve usar o componente efetivo de composição, sem que fixtures sejam
+apresentadas como dados reais. Os ensaios funcionais devem distinguir consulta de
+estado, pedido de ação, execução confirmada e falha. Prints de relevo provam desenho,
+não provam mudança de desktop, leitura de rede ou funcionamento da bandeja.
 
-O backend de tarefas/pager pode fornecer um identificador nativo string ou um
-número de área no X11. A tradução de um UUID aprovado para a posição/ID nativo
-atual deve ser explícita e conferida no momento da ação. O nome mostrado não é
-identidade, e um índice temporário 0/1 não comprova que um desktop representa
-Work ou Procrastination. Após reordenação ou mudanças externas, resolver
-novamente o UUID e sua correspondência no modelo antes de qualquer `changePage`;
-nunca interpretar arbitrariamente o segundo desktop atual como Procrastination.
-Se o UUID desaparecer ou o vínculo não puder ser verificado, não selecionar
-outro desktop por aproximação de nome ou posição.
+Instalar arquivos por usuário não seleciona automaticamente outro estilo, não
+recria o painel e não altera a sessão de outro perfil. A migração do painel ativo
+exige autorização específica e restauração verificável. Os perfis lsi e p001532
+continuam sujeitos à autorização de cada sessão. O backup descrito abaixo é só
+referência. Os caminhos/ferramentas de teste listados no memorial original são contexto
+da base, não uma afirmação de que foram executados novamente nesta revisão.
 
-Forçar dois desktops ou alterar nomes modifica a sessão KWin do usuário alvo e
-depende de F13. A presença de duas miniaturas no desenho não autoriza essa
-mudança, nem garante que o perfil real tenha duas áreas. Não alterar o perfil de
-outro usuário ou configurações compartilhadas.
+## Registro da base visual e backup (histórico)
 
-### Bandeja
-
-O wrapper Classic existente usa a bandeja C++ nativa e seu containment interno.
-Isso mantém os applets e os StatusNotifierItems reais. O arquivo instalado
-`org.kde.plasma.private.systemtray/contents/config/main.xml` expõe `hiddenItems`,
-`shownItems`, `extraItems`, `showAllItems`, `scaleIconsToFit` e `iconSpacing`.
-Ele **não** expõe chaves `rows=2` ou `iconSize=16`.
-
-A apresentação instalada calcula `rowsOrColumns` pela espessura e, com
-`scaleIconsToFit=false`, usa `Kirigami.Units.iconSizes.smallMedium` (22 px).
-Portanto, inserir essas duas chaves inventadas em `appletsrc` não produz uma
-grade estrita 2 × 3 com ícones de 16 px. A fase funcional precisa de uma
-apresentação própria que retenha os modelos/containments nativos, fixe a grade
-visual e implemente a paginação aprovada. A quantidade de linhas e o tamanho
-dos ícones devem ser medidos no runtime, não inferidos do arquivo de
-configuração.
-
-Os ícones HP fixos do desenho não devem substituir silenciosamente bitmaps
-próprios de aplicativos ou simular estados reais de conectividade. Associar
-cada desenho a um status, popup ou ação é F15–F22. Filtrar aplicativos não
-críticos é F23, preservando os itens e configurações individuais até aprovação.
-
-## Verificação nativa e instalação independente
-
-O preview deve instanciar o mesmo componente QML de composição usado pelo
-applet. A galeria pode fornecer os sete itens, dois quadros e seis símbolos da
-referência como fixtures explicitamente declaradas. O relatório deve dizer que
-são dados de desenho, sem afirmar que houve identificação de janelas, troca de
-desktop ou consulta de hardware.
-
-A infraestrutura local possui PyQt6 QtQuick/QtQml, Qt Widgets/Test 6.8.2,
-`plasmawindowed`, `xvfb-run` e `dbus-run-session`.
-`plasma/tools/prever-painel.py` demonstra `QQmlApplicationEngine`,
-`QQuickWindow.grabWindow()` e entrada de ponteiro via `QTest`. O novo runner
-deve preparar XDG data/config/cache/state/runtime em `/tmp`, carregar o estilo
-DomainOS nesse perfil privado e usar DBus privado sem diretórios de ativação.
-Nenhuma ação de botão aprovada para uma fase futura deve ser chamada pelo
-teste atual.
-
-Para descoberta e renderização do pacote completo, a implementação usa
-`plasma/tools/testar-domainos-package.py` e o interposer de teste
-`plasma/tests/domainos-package-host.cpp`. O runner compila o observador Qt 6 e
-executa `plasmawindowed org.irixclassic.domainos.panel` com o preload e os
-caminhos `IRIX_DOMAINOS_CAPTURE`/`IRIX_DOMAINOS_REPORT`, dentro de Xvfb/DBus
-privados. Ele verifica o `fullRepresentation` de produção, as imagens
-carregadas e as famílias de fontes efetivamente resolvidas. A captura do pacote
-é uma evidência adicional à galeria, não prova uma migração de painel real.
-Atrasos de estabilização de captura pertencem somente ao teste; relevo de botão
-no applet é derivado diretamente do estado pressionado.
-
-O instalador declarativo pode copiar o novo estilo, o applet e eventual esquema
-de cores para os destinos XDG do usuário. Instalar esses recursos não seleciona
-o estilo, não recria layouts e não aplica um perfil global. Quando F31 autorizar
-a seleção independente, a auditoria deverá reconhecer a variante opcional sem
-substituir o default Classic; hoje ela compara a seleção diretamente com
-`profiles.classic.plasma`. Uma futura migração precisa verificar e preservar
-widgets, IDs, ordem, bandeja interna e configurações antes de alterar a sessão,
-com restauração verificável conforme F30.
-
+Os trechos abaixo conservam o histórico da base aprovada. Referências a funções
+pendentes descrevem aquele estado anterior à consolidação R2; para decisões vigentes,
+prevalecem REQ-F01–REQ-F35. Não alterar os recursos ou o backup por esta documentação.
 
 ## Protótipo aprovado e cópia congelada
 
@@ -396,8 +569,9 @@ HighlightedText já está implementada e verificada, recolorindo os mesmos SVGs.
 Os relevos usam
 profundidade tonal relativa à cor da janela, inclusive em esquemas escuros.
 O modo de referência (`followSystemColors: false`) mantém os pixels aprovados.
-Miniaturas, horário/data e dispositivos ainda são ilustrações; suas ações
-continuam nas pendências F. Nenhuma sessão real deve ser alterada nesta fase.
+Na base consultada, miniaturas, horário/data e dispositivos eram ilustrações;
+as ações agora confirmadas em F01–F35 ainda precisam de integração. Nenhuma
+sessão real deve ser alterada só por esta revisão documental.
 
 
 ## Seleção simulada autorizada na fase visual
@@ -425,3 +599,10 @@ A Iconbox mantém a placa Highlight/HighlightedText e o relevo pressionado
 persistente no item selecionado. Seu item anterior volta ao normal. A seleção
 é confirmada ao soltar dentro do botão, e as proporções permanecem iguais.
 O backup aprovado de Downloads permanece intocado.
+
+**Correção funcional solicitada em 09/10/2026:** minimizar uma janela selecionada
+deve levantar os relevos do seu botão e rótulo no Iconbox. A seleção, o destaque
+de cor e os checkboxes são preservados para operações em lote. Num grupo, esse
+estado elevado corresponde a todas as janelas minimizadas; grupos mistos mantêm
+o relevo anterior. A pressão física do mouse continua imediata, mesmo numa tarefa
+minimizada. Essa correção não altera o backup da fase visual.

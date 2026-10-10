@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 mrmmx31 -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<kcfg xmlns="http://www.kde.org/standards/kcfg/1.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="configurationSchemaVersion" type="Int"><default>1</default></entry>
+    <entry name="timeZones" type="StringList"><default>Local,UTC</default></entry>
+    <entry name="calendarPlugins" type="StringList"><default></default></entry>
+    <entry name="instrumentMetric" type="String"><default>network</default></entry>
+    <entry name="networkInterface" type="String"><default>all</default></entry>
+    <entry name="customSensorId" type="String"><default></default></entry>
+    <entry name="customSecondarySensorId" type="String"><default></default></entry>
+    <entry name="instrumentSampleInterval" type="Int"><default>1000</default><min>1000</min><max>60000</max></entry>
+    <entry name="instrumentHistoryLength" type="Int"><default>60</default><min>10</min><max>1000</max></entry>
+    <entry name="mailClient" type="String"><default></default></entry>
+    <entry name="mailCountsEnabled" type="Bool"><default>false</default></entry>
+    <entry name="terminalCommand" type="String"><default></default></entry>
+    <entry name="tasksOnlyCurrentDesktop" type="Bool"><default>true</default></entry>
+    <entry name="tasksOnlyCurrentScreen" type="Bool"><default>false</default></entry>
+    <entry name="tasksOnlyCurrentActivity" type="Bool"><default>true</default></entry>
+    <entry name="tasksGroupingMode" type="Int"><default>1</default></entry>
+    <entry name="tasksOnlyGroupWhenFull" type="Bool"><default>true</default></entry>
+    <entry name="tasksSortMode" type="Int"><default>1</default></entry>
+    <entry name="middleClickAction" type="Enum">
+      <choices><choice name="None"/><choice name="Close"/><choice name="NewInstance"/><choice name="ToggleMinimized"/><choice name="ToggleGrouping"/><choice name="BringToCurrentDesktop"/></choices>
+      <default>2</default>
+    </entry>
+    <entry name="wheelEnabled" type="Bool"><default>true</default></entry>
+    <entry name="iconboxWheelActivates" type="Bool"><default>false</default></entry>
+    <entry name="wheelSkipMinimized" type="Bool"><default>true</default></entry>
+    <entry name="interactiveMute" type="Bool"><default>true</default></entry>
+    <entry name="highlightWindows" type="Bool"><default>false</default></entry>
+    <entry name="unhideOnAttention" type="Bool"><default>true</default></entry>
+    <entry name="iconboxWindowThumbnails" type="Bool"><default>false</default></entry>
+    <entry name="iconboxHintsEnabled" type="Bool"><default>true</default></entry>
+    <entry name="barHintsEnabled" type="Bool"><default>false</default></entry>
+    <entry name="tasksFilterMode" type="String"><default>normal</default></entry>
+    <entry name="tasksAutomaticThreshold" type="Int"><default>-1</default><min>-1</min><max>1000000</max></entry>
+    <entry name="tasksGroupingAppIdBlacklist" type="StringList"><default></default></entry>
+    <entry name="tasksGroupingLauncherUrlBlacklist" type="StringList"><default></default></entry>
+    <entry name="pinnedApplications" type="StringList"><default></default></entry>
+    <entry name="applicationsMenuStyle" type="String"><default>domainos</default></entry>
+    <!-- Compatibility settings consumed by KDE's installed MenuRepresentation. -->
+    <entry name="showIconsRootLevel" type="Bool"><default>true</default></entry>
+    <entry name="alignResultsToBottom" type="Bool"><default>false</default></entry>
+    <entry name="pagerWheelActivates" type="Bool"><default>false</default></entry>
+    <entry name="pagerCurrentScreen" type="Bool"><default>false</default></entry>
+    <entry name="trayVisibleItems" type="StringList"><default></default></entry>
+    <entry name="trayHiddenItems" type="StringList"><default></default></entry>
+    <entry name="trayOrder" type="StringList"><default></default></entry>
+    <entry name="trayIncludeHiddenInOverflow" type="Bool"><default>false</default></entry>
+    <entry name="trayOverflowMode" type="String"><default>continuation</default></entry>
+    <entry name="keepActivityLight" type="Bool"><default>false</default></entry>
+    <entry name="activityLightMilliseconds" type="Int"><default>1000</default><min>0</min><max>60000</max></entry>
+  </group>
+</kcfg>

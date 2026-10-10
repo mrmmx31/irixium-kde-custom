@@ -15,6 +15,7 @@ sys.dont_write_bytecode = True
 
 from pathlib import Path
 import hashlib
+import copy
 import json
 import re
 import shutil
@@ -72,6 +73,7 @@ def svg(title, width=256, height=256):
 
 
 def write(name, result):
+    scheme_colors(result, name)
     target = HERE / name
     target.parent.mkdir(parents=True, exist_ok=True)
     ET.indent(result, space='  ')
@@ -223,6 +225,168 @@ def major_art():
         write(name, result)
 
 
+def scheme_colors(result, name):
+    """Keep the historical geometry, deriving every visible paint from KDE.
+
+    KSvg replaces current-color-scheme with the selected KColorScheme roles.
+    It has no Light/Dark roles. A shaded pixel is therefore an opaque thematic
+    surface with a partial white/black mixing endpoint above it, not a fixed
+    blue/gray surface. Glyphs and accents use the native text/selection roles.
+    The PALETTE constants above describe the reference and classify its bands;
+    they never survive as visible colors in the installed artwork.
+    """
+    controls = {'button', 'instrument', 'switch', 'slider', 'scrollbar',
+                'radiobutton', 'tabbar', 'bar_meter_horizontal', 'bar_meter_vertical'}
+    stem = Path(name).stem
+    base = ('TooltipBackground' if stem == 'tooltip' else
+            'ViewBackground' if stem == 'lineedit' else
+            'ButtonBackground' if stem in controls else 'Background')
+    glyph = 'ButtonText' if stem in controls else 'TooltipText' if stem == 'tooltip' else 'Text'
+    light = {PALETTE['highlight']: .44, PALETTE['pale']: .28,
+             PALETTE['turquoise']: .14, PALETTE['rail_light']: .36}
+    dark = {PALETTE['shadow']: .32, PALETTE['rim']: .54,
+            PALETTE['weave']: .18}
+    # Paint is inherited in many original resources. Materialize just paint at
+    # leaves before adding overlays; duplicating a group would duplicate IDs
+    # and incorrectly paint every child over again.
+    shape_tags = {'rect', 'path', 'circle', 'ellipse', 'polygon', 'polyline', 'line', 'use', 'text'}
+    def walk(element, inherited, context):
+        props = dict(part.split(':', 1) for part in element.get('style', '').split(';') if ':' in part)
+        own = {key: element.get(key, props.get(key)) for key in ('fill', 'stroke')}
+        effective = {key: value if value is not None else inherited.get(key) for key, value in own.items()}
+        context = context + [element.get('id', '')]
+        if 'class' in element.attrib:
+            element.attrib['class'] = ' '.join(c for c in element.attrib['class'].split() if not c.startswith('ColorScheme-'))
+            if not element.attrib['class']:
+                del element.attrib['class']
+        for key in ('fill', 'stroke', 'color'):
+            props.pop(key, None)
+            element.attrib.pop(key, None)
+        if props:
+            element.attrib['style'] = ';'.join(key+':'+value for key, value in props.items())
+        else:
+            element.attrib.pop('style', None)
+        tag = element.tag.rsplit('}', 1)[-1]
+        if tag in {'text', 'tspan'}:
+            # Text/tspan subtrees must not be duplicated for relief shading.
+            # Their IDs and font geometry remain unique and their foreground
+            # follows the native role rather than a white reference bitmap.
+            element.attrib.update(fill='currentColor', stroke='none', **{'class': 'ColorScheme-'+glyph})
+            for child in list(element):
+                walk(child, {'fill': '#000000', 'stroke': 'none'}, context)
+            return
+        if tag not in shape_tags:
+            for child in list(element):
+                if child.tag.rsplit('}', 1)[-1] == 'style':
+                    element.remove(child)
+                    continue
+                walk(child, effective, context)
+            return
+        hidden = any(identifier.startswith('hint-') or '-hint-' in identifier for identifier in context)
+        if hidden:
+            element.attrib.update(fill='none', stroke='none', opacity='0')
+            return
+        selected = any(re.search(r'(^|[- +])(active|selected|checked|focus|highlight)([- +]|$)', identifier)
+                       for identifier in context)
+        surface = base
+        if stem == 'plasmoidheading':
+            surface = 'HeaderBackground' if any(identifier.startswith('header-') for identifier in context) else 'Background'
+        elif selected and stem in {'switch', 'slider', 'listitem', 'viewitem', 'tasks', 'bar_meter_horizontal', 'bar_meter_vertical'}:
+            surface = 'Highlight'
+        for key, value in effective.items():
+            if value is None or value == 'none':
+                element.attrib[key] = 'none'
+                continue
+            value = value.lower()
+            shade = 0
+            role = surface
+            if value in light:
+                shade = light[value]
+            elif value in dark:
+                shade = -dark[value]
+            elif value == PALETTE['well']:
+                role = surface if stem == 'plasmoidheading' or selected else 'ViewBackground'
+            elif value in {PALETTE['face'], '#b98976', '#c49a87'}:
+                role = surface
+            elif value in {PALETTE['active'], PALETTE['blue'], '#008080', '#0000ff'}:
+                role = 'Highlight'
+            elif value in {'#000000', '#07141b', PALETTE['text']}:
+                role = 'HighlightedText' if selected and stem.startswith('icon') else glyph
+            elif stem == 'clock' and value == PALETTE['white']:
+                role = 'HighlightedText'
+            elif re.fullmatch(r'#[0-9a-f]{6}', value):
+                channels = [int(value[i:i+2], 16) for i in (1, 3, 5)]
+                if max(channels)-min(channels) < 12:
+                    # Inherited neutral reliefs are shading of their own
+                    # native surface. Black glyphs were handled above.
+                    level = sum(channels)/765
+                    shade = (level-.6)*.9
+                    shade = min(.44, max(-.54, shade))
+                elif channels[0] > channels[1]*1.45 and channels[0] > channels[2]*1.45:
+                    role = 'NegativeText'
+                elif channels[1] > channels[0]*1.45 and channels[1] > channels[2]*1.45:
+                    role = 'PositiveText'
+                else:
+                    role = 'Highlight'
+            else:
+                raise ValueError('Unclassified visible paint in '+name+': '+value)
+            # One class supplies currentColor for both paints. Split the rare
+            # stroke+fill shape so each uses its correct semantic role, while
+            # retaining the original ID/geometry for native element lookup.
+            element.attrib[key] = 'currentColor'
+            paint = copy.deepcopy(element)
+            paint.attrib[key] = 'currentColor'
+            paint.attrib['stroke' if key == 'fill' else 'fill'] = 'none'
+            paint.attrib['class'] = 'ColorScheme-'+role
+            paint.attrib.pop('id', None)
+            pending.append((element, paint, shade, key))
+        # The original shape remains a bounds/ID anchor. Its paint is emitted
+        # immediately after it as role-based leaves, with no duplicate IDs.
+        element.attrib.update(fill='none', stroke='none')
+    pending = []
+    walk(result, {'fill': '#000000', 'stroke': 'none'}, [])
+    parents = {child: parent for parent in result.iter() for child in parent}
+    for anchor in dict.fromkeys(entry[0] for entry in pending):
+        identifier = anchor.attrib.pop('id', None)
+        if identifier:
+            parent = parents[anchor]
+            wrapper = node('g', id=identifier)
+            index = list(parent).index(anchor)
+            parent.remove(anchor)
+            parent.insert(index, wrapper)
+            wrapper.append(anchor)
+    parents = {child: parent for parent in result.iter() for child in parent}
+    grouped = {}
+    for anchor, paint, shade, key in pending:
+        grouped.setdefault(anchor, []).append((paint, shade, key))
+    for anchor, paints in grouped.items():
+        parent = parents[anchor]
+        index = list(parent).index(anchor)
+        for paint, shade, key in paints:
+            parent.insert(index, paint)
+            index += 1
+            if shade:
+                overlay = copy.deepcopy(paint)
+                overlay.attrib.pop('class', None)
+                overlay.attrib[key] = '#ffffff' if shade > 0 else '#000000'
+                props = dict(part.split(':', 1) for part in overlay.get('style', '').split(';') if ':' in part)
+                original_opacity = float(props.pop('opacity', overlay.attrib.get('opacity', '1')))
+                if props:
+                    overlay.attrib['style'] = ';'.join(prop+':'+value for prop, value in props.items())
+                else:
+                    overlay.attrib.pop('style', None)
+                overlay.attrib['opacity'] = str(abs(shade)*original_opacity)
+                overlay.attrib['data-scheme-shade'] = 'lighten' if shade > 0 else 'darken'
+                parent.insert(index, overlay)
+                index += 1
+        # No invisible duplicate leaf is left in the runtime SVG. The wrapper
+        # keeps an original single-shape ID when native lookup needs one.
+        parent.remove(anchor)
+    style = node('style', id='current-color-scheme', type='text/css')
+    style.text = '/* KSvg supplies the selected KDE color roles at render time. */'
+    result.insert(0, style)
+
+
 def clock():
     result = svg('blue diagnostic clock face and white hands', 256, 128)
     result.attrib.pop('shape-rendering')  # A circular dial, as in the reference.
@@ -283,6 +447,7 @@ def derivative(source):
         if identifier.endswith('-shadow'):
             element.attrib['opacity']='0'
     result.attrib['shape-rendering']='crispEdges'
+    scheme_colors(result, str(source.relative_to(BASE)))
     ET.indent(result,space='  ')
     target=HERE/source.relative_to(BASE);target.parent.mkdir(parents=True,exist_ok=True)
     target.write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -301,6 +466,13 @@ def build():
     if provenance.exists():
         origin=json.loads(provenance.read_text())
         origin['palette'] = {**PALETTE, 'selection_rim': PALETTE['active']}
+        origin['runtime_colors'] = {
+            'source': 'selected KDE KColorScheme via native KSvg current-color-scheme roles',
+            'fixed_reference_palette_rendered': False,
+            'surfaces': ['Background', 'HeaderBackground', 'TooltipBackground', 'ViewBackground', 'ButtonBackground'],
+            'accents_and_glyphs': ['Highlight', 'HighlightedText', 'Text', 'ButtonText', 'TooltipText', 'PositiveText', 'NegativeText'],
+            'relief': 'opaque thematic surface mixed with partial white/black mathematical endpoints; no independent hue',
+        }
         origin['bevel'] = {
             'physical_margin': 4, 'band_width': 1,
             'raised_top_outer_to_inner': [PALETTE[color] for color in ('highlight', 'turquoise', 'shadow', 'pale')],
