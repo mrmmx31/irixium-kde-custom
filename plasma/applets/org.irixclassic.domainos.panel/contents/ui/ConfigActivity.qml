@@ -31,7 +31,7 @@ KCM.SimpleKCM {
             wrapMode:Text.Wrap;Layout.fillWidth:true
         }
         QQC.Label {
-            text: qsTr("A lente acompanha o início e o término observáveis dos comandos. A resposta pressionada dos botões é imediata.")
+            text: qsTr("A lente pisca a cada 500 ms durante pedidos pendentes e inicializações informadas pelo KDE. O cursor de espera segue o tema de cursores escolhido. Os botões respondem imediatamente.")
             wrapMode: Text.Wrap; Layout.fillWidth: true
         }
         QQC.CheckBox {

@@ -26,6 +26,32 @@ from panel_layout import SCRIPT as LAYOUT_SCRIPT
 from theme_transaction import Failure, atomic, no_links, snapshot
 
 PLUGIN = 'org.irixclassic.domainos.panel'
+GLOBAL_THEME = 'org.magpie.irixclassic.domainos.desktop'
+IRIX_GLOBAL_THEMES = ('org.magpie.irixclassic.desktop', 'org.magpie.irixium.desktop')
+
+
+def effective_preference(config, file, group, key):
+    """Read the invoking user's actual KConfig precedence, including defaults."""
+    for path in (config/file, config/'kdedefaults'/file):
+        no_links(path)
+        if path.exists() and path.stat().st_uid != os.getuid():
+            raise Failure('Configuração pertence a outro usuário: ' + str(path))
+    environment = dict(os.environ, XDG_CONFIG_HOME=str(config))
+    directories = environment.get('XDG_CONFIG_DIRS') or '/etc/xdg'
+    environment['XDG_CONFIG_DIRS'] = ':'.join(dict.fromkeys([
+        str(config/'kdedefaults'), *directories.split(':')]))
+    result = subprocess.run(['kreadconfig6', '--file', file, '--group', group,
+        '--key', key], env=environment, text=True, capture_output=True, check=True, timeout=10)
+    return result.stdout.rstrip('\r\n')
+
+
+def require_global_choice(config, *, restoring=False):
+    current = effective_preference(config, 'kdeglobals', 'KDE', 'LookAndFeelPackage')
+    expected = IRIX_GLOBAL_THEMES if restoring else (GLOBAL_THEME,)
+    if current not in expected:
+        raise Failure('O Tema Global mudou; a transição do painel foi recusada.')
+    if not restoring and effective_preference(config, 'plasmarc', 'Theme', 'name') != 'IrixClassicDomainOS':
+        raise Failure('O Plasma Style não corresponde ao Tema Global DomainOS.')
 SCRIPT = INSPECTION_SCRIPT + LAYOUT_SCRIPT + r'''
 function domainosPanelSnapshot(panel) {
     var value = panelSnapshot(panel);
@@ -299,6 +325,8 @@ def latest(directory):
     record=json.loads(path.read_text())
     if record.get('format')!=1 or record.get('uid')!=os.getuid() or record.get('token')!=token or record.get('plugin')!=PLUGIN:
         raise Failure('O recibo não pertence a este usuário/applet.')
+    if record.get('origin', 'manual') not in ('manual', 'global'):
+        raise Failure('Origem da ativação inválida.')
     return path,record
 
 
@@ -382,23 +410,27 @@ def wait_seeded(token, settings, tray):
     raise Failure('Preferências do painel/bandeja não foram preservadas na nova instância; barra anterior será mantida.')
 
 
-def activate(before,config,directory,saved_domainos=None):
+def activate(before,config,directory,saved_domainos=None, *, origin='manual'):
+    if origin not in ('manual', 'global'): raise Failure('Origem da ativação inválida.')
+    if origin == 'global': require_global_choice(config)
     settings, tray = ({}, None) if saved_domainos else seed_preferences(before)
     token=uuid.uuid4().hex; path=directory/'backups'/token/'receipt.json'
     record={'format':1,'uid':os.getuid(),'plugin':PLUGIN,'token':token,'status':'prepared',
-        'date':datetime.now(timezone.utc).isoformat(),'before':before,'pins':launchers(before),
+        'date':datetime.now(timezone.utc).isoformat(),'before':before,'pins':launchers(before),'origin':origin,
         'seedSettings':settings,
         'layoutFiles':{name:snapshot(config/name) for name in ('plasma-org.kde.plasma.desktop-appletsrc','plasmashellrc')}}
     if tray: record['seedTray']=tray
     if saved_domainos: record['savedDomainos']=saved_domainos
     save(path,record); atomic(directory/'latest',(token+'\n').encode())
     try:
+        if origin == 'global': require_global_choice(config)
         call(dict(record,action='create'))
         record['created']=wait_ready(token); save(path,record)
         if tray:
             call(dict(record,action='seedTray'))
         if settings or tray:
             record['created']=wait_seeded(token, settings, tray); save(path,record)
+        if origin == 'global': require_global_choice(config)
         record['status']='committing';save(path,record)
         call(dict(record,action='commit'))
         if not reconcile(path,record): raise Failure('A troca não foi concluída; barra anterior preservada.')
@@ -411,13 +443,19 @@ def activate(before,config,directory,saved_domainos=None):
     return path,record
 
 
-def restore(path,record):
+def restore(path,record, *, config=None, global_request=False):
+    if global_request:
+        if record.get('origin', 'manual') != 'global' or config is None:
+            raise Failure('A ativação não pertence a uma escolha de Tema Global.')
+        require_global_choice(config, restoring=True)
     if not record.get('restoreToken'):
         record['restoreToken']=uuid.uuid4().hex;save(path,record)
     current=call({'action':'inspect'}); active=find_created(current,record['token'])
     if active:
         record['savedDomainos']=active; save(path.parent/'domainos-before-restore.json',active);save(path,record)
-    try: result=call(dict(record,action='restore'))
+    try:
+        if global_request: require_global_choice(config, restoring=True)
+        result=call(dict(record,action='restore'))
     except BaseException:
         current=call({'action':'inspect'})
         if find_created(current,record['token']): raise
@@ -431,6 +469,8 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verificar',action='store_true');parser.add_argument('--restaurar',action='store_true')
     parser.add_argument('--painel',type=int);parser.add_argument('--ponte',action='store_true',help='agir somente sobre o painel já autorizado neste perfil')
+    parser.add_argument('--global', dest='global_choice', action='store_true',
+                        help='transição vinculada ao Tema Global efetivo deste usuário')
     args=parser.parse_args()
     if os.geteuid()==0: raise Failure('Execute como usuário normal, sem sudo.')
     if not shutil.which('gdbus'): raise Failure('Instale gdbus da distribuição antes de ativar o painel.')
@@ -443,14 +483,18 @@ def main():
         if previous['status']=='restored': print('Barra Classic já ativa.');return
         print('Restaurar barra Classic a partir de:',old_path.parent)
         if args.verificar:return
-        with locked(directory):restore(old_path,previous)
+        with locked(directory):restore(old_path,previous, config=config, global_request=args.global_choice)
         print('Barra Classic restaurada. Preferências DomainOS preservadas no recibo.');return
     check_runtime(data)
+    if args.global_choice: require_global_choice(config)
     if previous and previous['status'] not in ('restored','active') and not args.verificar:
         with locked(directory):
             if reconcile(old_path,previous):
                 print('DomainOS já ativo; operação anterior conferida.');return
     current=call({'action':'inspect'})
+    if args.global_choice and not previous and any(w['type']==PLUGIN for p in current['state']['panels'] for w in p['widgets']):
+        print('Painel DomainOS já criado pelo layout inicial; nenhum segundo painel ou backup fictício criado.')
+        return
     if previous and previous['status']=='active' and find_created(current,previous['token']):
         print('DomainOS já ativo.');return
     identifier=args.painel
@@ -462,7 +506,8 @@ def main():
     with locked(directory):
         if previous and previous['status'] not in ('restored',):
             if reconcile(old_path,previous):print('DomainOS já ativo.');return
-        path,record=activate(before,config,directory,previous.get('savedDomainos') if previous else None)
+        path,record=activate(before,config,directory,previous.get('savedDomainos') if previous else None,
+                             origin='global' if args.global_choice else 'manual')
     print('DomainOS ativo. Backup somente em arquivo:',path.parent)
     print('Voltar ao Classic: selecione IrixClassic no Plasma Style com a ponte instalada.')
     print('Recuperação manual: python3 tools/activate_domainos.py --restaurar')

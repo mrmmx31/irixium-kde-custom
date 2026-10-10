@@ -60,6 +60,58 @@ class BridgeTests(unittest.TestCase):
                 if state=='restored' and style=='IrixClassicDomainOS': expected=['--ponte']
                 self.assertEqual(bridge.action_for(style,{'status':state}),expected)
 
+    def test_global_install_has_no_activation_or_desktop_side_effects(self):
+        self.receipt.unlink(); (self.locations['activation']/'latest').unlink()
+        atomic(self.config/'kdeglobals', ('[KDE]\nLookAndFeelPackage='+bridge.GLOBAL_THEME+'\n').encode())
+        protected={path:path.read_bytes() for path in (self.config/'kdeglobals',self.config/'plasmarc',self.config/'other-app.conf')}
+        with patch.object(bridge,'session_owner',side_effect=AssertionError('desktop queried while installing')), \
+                patch.object(bridge,'service_command',side_effect=AssertionError('service started while installing')), \
+                contextlib.redirect_stdout(io.StringIO()):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True)
+        control=bridge.read_control(self.locations)
+        self.assertTrue(control['global_enabled']);self.assertFalse(control['style_enabled'])
+        self.assertEqual(control['global_baseline'],bridge.GLOBAL_THEME)
+        self.assertIsNone(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassicDomainOS',None,control))
+        self.assertFalse((self.locations['activation']/'latest').exists())
+        for path,contents in protected.items():self.assertEqual(path.read_bytes(),contents)
+
+    def test_global_dry_install_does_not_create_runtime_state_or_receipt(self):
+        self.receipt.unlink(); (self.locations['activation']/'latest').unlink()
+        with patch.object(bridge,'effective_preference',return_value='org.kde.breeze.desktop'):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True,dry=True)
+        self.assertFalse(self.locations['state'].exists());self.assertFalse(self.locations['runtime'].exists())
+
+    def test_global_choices_preserve_manual_activations_and_pending_transactions(self):
+        control={'global_enabled':True,'style_enabled':False,
+                 'global_baseline':'org.kde.breeze.desktop','panel_id':42}
+        self.assertEqual(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassicDomainOS',None,control),
+                         ['--global','--painel','42'])
+        self.assertIsNone(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassic',None,control))
+        for status in ('prepared','committing','recovery_needed','active'):
+            self.assertIsNone(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassicDomainOS',
+                {'status':status,'origin':'manual'},control))
+        for theme in bridge.IRIX_GLOBAL_THEMES:
+            self.assertIsNone(bridge.panel_action(theme,'IrixClassic',{'status':'active','origin':'manual'},control))
+            self.assertEqual(bridge.panel_action(theme,'IrixClassic',{'status':'active','origin':'global'},control),
+                             ['--global','--ponte','--restaurar'])
+        self.assertIsNone(bridge.panel_action('org.kde.breeze.desktop','breeze',
+            {'status':'active','origin':'global'},control))
+        self.assertEqual(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassicDomainOS',
+            {'status':'restored','origin':'global'},control),['--global','--ponte'])
+
+    def test_updating_panel_id_preserves_unfinished_global_choice(self):
+        self.receipt.unlink(); (self.locations['activation']/'latest').unlink()
+        with patch.object(bridge,'effective_preference',return_value=bridge.IRIX_GLOBAL_THEMES[0]), \
+                contextlib.redirect_stdout(io.StringIO()):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True)
+        with patch.object(bridge,'effective_preference',return_value=bridge.GLOBAL_THEME), \
+                contextlib.redirect_stdout(io.StringIO()):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True,panel=99)
+        control=bridge.read_control(self.locations)
+        self.assertEqual(control['global_baseline'],bridge.IRIX_GLOBAL_THEMES[0])
+        self.assertEqual(bridge.panel_action(bridge.GLOBAL_THEME,'IrixClassicDomainOS',None,control),
+                         ['--global','--painel','99'])
+
     def test_native_defaults_are_read_when_override_key_or_file_is_absent(self):
         fallback=self.config/'kdedefaults/plasmarc'
         atomic(fallback,b'[Theme]\nname=IrixClassic\n')
@@ -329,6 +381,147 @@ class BridgeTests(unittest.TestCase):
         self.assertFalse(locations['unit'].exists())
         self.assertEqual(bundle.latest()[1]['status'],'restored')
         for path,content in protected.items(): self.assertEqual(path.read_bytes(),content)
+
+    def test_suite_detach_disables_only_new_global_worker_and_keeps_runtime_for_recovery(self):
+        self.receipt.unlink();(self.locations['activation']/'latest').unlink()
+        with contextlib.redirect_stdout(io.StringIO()),patch.object(bridge,'effective_preference',return_value='org.kde.breeze.desktop'):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True)
+        before=(self.locations['state']/'control.json').read_bytes()
+        runtime=bridge.fingerprint(self.locations['runtime'])
+        self.assertEqual(bridge.detach_global_choices(self.data,self.config,self.state,dry=True)['status'],'ready')
+        self.assertEqual((self.locations['state']/'control.json').read_bytes(),before)
+        with contextlib.redirect_stdout(io.StringIO()):
+            result=bridge.detach_global_choices(self.data,self.config,self.state)
+        self.assertEqual(result['status'],'detached')
+        control=bridge.read_control(self.locations)
+        self.assertFalse(control['enabled']);self.assertFalse(control['global_enabled'])
+        self.assertFalse(control['style_enabled'])
+        self.assertEqual(bridge.fingerprint(self.locations['runtime']),runtime)
+        self.assertFalse((self.locations['activation']/'latest').exists())
+
+    def test_suite_detach_preserves_prior_style_opt_in_and_rejects_runtime_edits(self):
+        self.install()
+        with contextlib.redirect_stdout(io.StringIO()),patch.object(bridge,'effective_preference',return_value=bridge.IRIX_GLOBAL_THEMES[0]):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True)
+        source=self.locations['runtime']/'tools/activate_domainos.py'
+        original=source.read_bytes();source.write_bytes(original+b'# personal edit\n')
+        before=(self.locations['state']/'control.json').read_bytes()
+        with self.assertRaisesRegex(Failure,'Edição posterior'):
+            bridge.detach_global_choices(self.data,self.config,self.state,dry=True)
+        self.assertEqual((self.locations['state']/'control.json').read_bytes(),before)
+        source.write_bytes(original)
+        with contextlib.redirect_stdout(io.StringIO()):
+            result=bridge.detach_global_choices(self.data,self.config,self.state)
+        self.assertTrue(result['style_enabled']);self.assertTrue(result['enabled'])
+        control=bridge.read_control(self.locations)
+        self.assertFalse(control['global_enabled']);self.assertTrue(control['style_enabled'])
+        self.assertEqual(self.receipt.read_bytes(),(json.dumps(self.record)+'\n').encode())
+
+    def test_real_qt_global_choices_wait_for_style_and_restore_only_owned_activation(self):
+        from PyQt6.QtCore import QCoreApplication
+        application=QCoreApplication.instance() or QCoreApplication([])
+        self.receipt.unlink();(self.locations['activation']/'latest').unlink()
+        initial=bridge.IRIX_GLOBAL_THEMES[0]
+        atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+initial+'\n').encode())
+        atomic(self.config/'plasmarc',b'[Theme]\nname=IrixClassic\n')
+        marker=self.base/'global-executed.json'
+        fake='''import json,os,pathlib,sys
+state=pathlib.Path(os.environ['XDG_STATE_HOME'])/'irixium-domainos-panel'
+pointer=state/'latest'
+token=pointer.read_text().strip() if pointer.exists() else 'b'*32
+receipt=state/'backups'/token/'receipt.json';receipt.parent.mkdir(parents=True,exist_ok=True)
+value=json.loads(receipt.read_text()) if receipt.exists() else {'format':1,'uid':os.getuid(),'token':token,'plugin':'org.irixclassic.domainos.panel'}
+value['status']='restored' if '--restaurar' in sys.argv else 'active'
+value['origin']='global' if '--global' in sys.argv else 'manual'
+receipt.write_text(json.dumps(value));pointer.write_text(token+'\\n')
+marker=pathlib.Path(os.environ['DOMAINOS_BRIDGE_TEST_MARKER'])
+rows=json.loads(marker.read_text()) if marker.exists() else []
+rows.append(sys.argv[1:]);marker.write_text(json.dumps(rows))
+'''
+        atomic(self.source/'tools/activate_domainos.py',fake.encode())
+        with contextlib.redirect_stdout(io.StringIO()):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True,panel=42)
+        def calls():return json.loads(marker.read_text()) if marker.exists() else []
+        def pump(predicate,timeout=5):
+            end=time.monotonic()+timeout
+            while time.monotonic()<end:
+                application.processEvents()
+                if predicate():return True
+                time.sleep(.005)
+            return False
+        with patch.dict(os.environ,{'DOMAINOS_BRIDGE_TEST_MARKER':str(marker)}), \
+                patch.object(bridge,'session_owner'),contextlib.redirect_stdout(io.StringIO()):
+            observer=bridge.watch(self.locations,application)
+            self.assertEqual(calls(),[])
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+bridge.GLOBAL_THEME+'\n').encode())
+            observer.changed() # Observe the real KConfig value before the asynchronous style commit.
+            self.assertIsNone(observer.process);self.assertEqual(calls(),[])
+            atomic(self.config/'plasmarc',b'[Theme]\nname=IrixClassicDomainOS\n')
+            self.assertTrue(pump(lambda:len(calls())==1 and observer.process is None))
+            self.assertEqual(calls(),[['--global','--painel','42']])
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+bridge.IRIX_GLOBAL_THEMES[1]+'\n').encode())
+            self.assertTrue(pump(lambda:len(calls())==2 and observer.process is None))
+            self.assertEqual(calls()[1],['--global','--ponte','--restaurar'])
+            # A manual Style change is independent when this installed mode is Global-only.
+            atomic(self.config/'plasmarc',b'[Theme]\nname=IrixClassicDomainOS\n')
+            end=time.monotonic()+.15
+            while time.monotonic()<end:application.processEvents();time.sleep(.005)
+            self.assertEqual(len(calls()),2)
+            value=bridge.read_control(self.locations);value['enabled']=False
+            bridge.write_control(self.locations,value,'private-test-disable');application.processEvents()
+            observer.watcher.removePaths(observer.watcher.files()+observer.watcher.directories())
+            observer.deleteLater();application.processEvents()
+
+    def test_failed_activation_rollback_receipt_does_not_create_a_retry_loop(self):
+        from PyQt6.QtCore import QCoreApplication
+        application=QCoreApplication.instance() or QCoreApplication([])
+        self.receipt.unlink();(self.locations['activation']/'latest').unlink()
+        initial=bridge.IRIX_GLOBAL_THEMES[0]
+        atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+initial+'\n').encode())
+        atomic(self.config/'plasmarc',b'[Theme]\nname=IrixClassic\n')
+        marker=self.base/'failed-global-executed.json'
+        fake='''import json,os,pathlib,sys,uuid
+state=pathlib.Path(os.environ['XDG_STATE_HOME'])/'irixium-domainos-panel'
+token=uuid.uuid4().hex
+receipt=state/'backups'/token/'receipt.json';receipt.parent.mkdir(parents=True,exist_ok=True)
+value={'format':1,'uid':os.getuid(),'token':token,'plugin':'org.irixclassic.domainos.panel','status':'restored','origin':'global'}
+receipt.write_text(json.dumps(value));(state/'latest').write_text(token+'\\n')
+marker=pathlib.Path(os.environ['DOMAINOS_BRIDGE_TEST_MARKER'])
+rows=json.loads(marker.read_text()) if marker.exists() else []
+rows.append(sys.argv[1:]);marker.write_text(json.dumps(rows))
+sys.exit(1)
+'''
+        atomic(self.source/'tools/activate_domainos.py',fake.encode())
+        with contextlib.redirect_stdout(io.StringIO()):
+            bridge.install_bridge(self.data,self.config,self.state,self.source,global_choices=True)
+        def calls():return json.loads(marker.read_text()) if marker.exists() else []
+        def pump(timeout=.3):
+            end=time.monotonic()+timeout
+            while time.monotonic()<end:application.processEvents();time.sleep(.005)
+        with patch.dict(os.environ,{'DOMAINOS_BRIDGE_TEST_MARKER':str(marker)}), \
+                patch.object(bridge,'session_owner'),contextlib.redirect_stdout(io.StringIO()), \
+                contextlib.redirect_stderr(io.StringIO()):
+            observer=bridge.watch(self.locations,application)
+            atomic(self.config/'plasmarc',b'[Theme]\nname=IrixClassicDomainOS\n')
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+bridge.GLOBAL_THEME+'\n').encode())
+            pump(1)
+            self.assertEqual(calls(),[['--global']])
+            self.assertIsNone(observer.process)
+            self.assertEqual(bridge.activation_record(self.locations)[1]['status'],'restored')
+            # Receipt replacement and an atomic rewrite of the unchanged
+            # preference are not new choices and cannot repeat the failure.
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+bridge.GLOBAL_THEME+'\n').encode())
+            observer.changed();pump()
+            self.assertEqual(len(calls()),1)
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+initial+'\n').encode())
+            pump()
+            atomic(self.config/'kdeglobals',('[KDE]\nLookAndFeelPackage='+bridge.GLOBAL_THEME+'\n').encode())
+            pump(1)
+            self.assertEqual(calls(),[['--global'],['--global','--ponte']])
+            value=bridge.read_control(self.locations);value['enabled']=False
+            bridge.write_control(self.locations,value,'private-test-disable');application.processEvents()
+            observer.watcher.removePaths(observer.watcher.files()+observer.watcher.directories())
+            observer.deleteLater();application.processEvents()
 
     def test_real_qt_file_changes_dispatch_only_two_authorized_styles(self):
         from PyQt6.QtCore import QCoreApplication

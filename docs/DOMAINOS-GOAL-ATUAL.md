@@ -153,3 +153,53 @@ com instalação/restauração documentadas. Registrar bloqueios reais e o arras
 miniaturas adiado, sem declarar toda a integração concluída por uma captura ou teste
 estático. Esta revisão entrega documentação; não contém implementação, testes nativos
 novos, commit, push ou publicação de software.
+
+
+## Ampliação do goal — laboratório de temas Motif (2026-10-10)
+
+A pedido do usuário, entregar um aplicativo reutilizável em C99 com interface
+Motif e organização MVC. O usuário passa a conduzir os ajustes visuais; a IA
+mantém a ferramenta, as traduções de regras e sua aplicação aos temas.
+
+- Modelo: projetos versionados, referência, medidas nativas separadas das
+  propostas, receitas independentes por toolkit, papéis de cores e proveniência.
+- Visão: controles Motif reais, ajustes numéricos, comparação com imagem nativa,
+  prévias de controles reais dos toolkits disponíveis e status de suporte.
+- Controlador: pipeta para medir pixels da tela X11 da prévia, importação e
+  salvamento de projetos, geração privada, abertura de prévias e exportação.
+- Famílias: Motif, GTK1, GTK2, GTK3, GTK4, GTK5 se existir e estiver disponível,
+  Qt5, Qt6, Kvantum e Plasma Style. Ausência de runtime deve aparecer claramente;
+  uma imagem ou outro toolkit não substitui uma prévia nativa.
+- GTK3 é a primeira tradução. Demais tradutores são etapas independentes;
+  receita salva não significa que seu adaptador está implementado ou validado.
+- A pipeta registra RGB16/RGB8, posição e origem. No DomainOS, amostras são
+  evidência ou entrada de esquema; controles continuam usando papéis dinâmicos
+  do esquema KDE. Preservam-se somente as exceções LED/Pager já autorizadas.
+- Aplicar dentro do laboratório altera apenas a prévia. Instalar no tema é
+  uma ação separada, com proposta e diferenças verificáveis, preservando o
+  backup congelado e os perfis pessoais.
+
+Entregar código, compilação documentada, testes significativos do modelo e
+tradutores, comparação nativa Motif/GTK3 e ferramenta aberta para ajuste manual.
+Manter o contrato histórico e sua origem; fontes Motif atuais apoiam o aplicativo
+mas não comprovam a versão exata da biblioteca do Domain/OS SR10.4.
+As demais respostas da prancheta continuam pendentes; não inferir aprovação.
+
+
+### Layout de trabalho solicitado em 2026-10-10
+
+Ao maximizar, usar três painéis: ferramentas/seletores à esquerda; montagem
+interativa acoplada ao centro; trecho de script relacionado à seleção à direita.
+A plataforma e o esquema de teste usam comboboxes. O esquema afeta somente os
+controles em teste, sem alterar o desktop. Atualização manual por botão ou
+checkbox automático, com atraso configurável para reunir várias alterações.
+
+Categorias têm checkbox de visibilidade e controles disponíveis para o toolkit.
+O usuário escolhe e posiciona componentes no preview: setas isoladas, barras,
+botões ou combinações como barra com setas. O painel de ferramentas apresenta
+parâmetros do componente/estado selecionado. Permitir comparar normal,
+pressionado e demais estados suportados, declarando limites do toolkit.
+A segunda prévia é desacoplada e nativa (GTK/Qt/etc), independente da montagem.
+Mostrar código somente do controle/regra em edição, sem despejar o tema inteiro.
+A primeira versão da ferramenta deve ficar aberta para análise enquanto o layout
+é adaptado; avaliações anteriores e projetos salvos devem ser preservados.

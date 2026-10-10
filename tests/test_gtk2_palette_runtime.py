@@ -30,6 +30,12 @@ def files(root):
 
 class Gtk2PaletteRuntimeTests(unittest.TestCase):
     def setUp(self):
+        # Keep the established two-family fixture; DomainOS has separate real
+        # artwork and manifests, exercised by DomainOSGtk2RuntimeTests below.
+        owners={name:family for name,family in runtime.OWNED.items()
+                if family in ('IrixClassic','Irixium')}
+        owner_patch=patch.object(runtime,'OWNED',owners)
+        owner_patch.start();self.addCleanup(owner_patch.stop)
         self.temporary = tempfile.TemporaryDirectory(prefix='.gtk2-runtime-test-', dir=ROOT)
         self.addCleanup(self.temporary.cleanup)
         self.private = Path(self.temporary.name)
@@ -277,6 +283,77 @@ class Gtk2PaletteRuntimeTests(unittest.TestCase):
                                 capture_output=True, text=True, timeout=30)
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)['status'], 'ready')
+        self.assertFalse(self.roots.control.exists())
+
+
+class DomainOSGtk2RuntimeTests(unittest.TestCase):
+    @staticmethod
+    def palette(overrides=None):
+        # Complete synthetic role fixture, never claimed as native exporter
+        # coverage. DomainOS also consumes Selection/Titlebar disabled roles.
+        from domainos_motif_art import DEFAULT
+        return native_export({**DEFAULT, **(overrides or {})})
+
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory(prefix='.gtk2-domainos-runtime-test-',dir=ROOT)
+        self.addCleanup(self.temp.cleanup);self.private=Path(self.temp.name)
+        self.args=tuple(self.private/name for name in ('data','config','state','home'))
+        self.data,self.config,self.state,self.home=self.args
+        for path in self.args:path.mkdir()
+        shutil.copytree(ROOT/'gtk/DomainOS-SR10-4',self.data/'themes/DomainOS-SR10-4')
+        self.css=self.config/'gtk-3.0/colors.css';self.css.parent.mkdir()
+        self.css.write_bytes(self.palette())
+        self.roots=runtime.Roots(*self.args)
+        self.wrappers=[]
+        for path,name in self.roots.wrappers().items():
+            if not name.startswith('DomainOS-'):continue
+            path.parent.mkdir(parents=True,exist_ok=True)
+            path.write_bytes((self.data/'themes/DomainOS-SR10-4/gtk-2.0/gtkrc').read_bytes())
+            path.chmod(0o640);self.wrappers.append(path)
+        self.before={path:snapshot(path) for path in self.wrappers}
+        self.source=self.data/'themes/DomainOS-SR10-4'
+        self.protected=files(self.source)
+
+    def call(self,operation,**options):
+        with redirect_stdout(io.StringIO()):return operation(*self.args,**options)
+
+    def test_own_family_updates_four_wrappers_and_restores_exact_bytes_modes(self):
+        result=self.call(runtime.setup,theme='DomainOS-SR10-4-KDE')
+        self.assertEqual(result['status'],'updated')
+        self.assertEqual(result['themes'],['DomainOS-SR10-4-KDE','DomainOS-SR10-4-KDE-Reload'])
+        record=json.loads(self.roots.control.read_text())
+        self.assertEqual(len(record['themes']),4)
+        self.assertEqual(len(set(result['bundles'].values())),1)
+        self.assertTrue(all('Irix' not in entry['name'] for entry in record['themes']))
+        current=files(self.private)
+        self.assertEqual(self.call(runtime.refresh)['status'],'unchanged')
+        self.assertEqual(files(self.private),current)
+        self.call(runtime.restore)
+        for path,before in self.before.items():self.assertEqual(snapshot(path),before)
+        self.assertEqual(files(self.source),self.protected)
+
+    def test_color_change_rebuilds_actual_pixmaps_without_touching_canonical_art(self):
+        first=self.call(runtime.setup)
+        initial=Path(next(iter(first['bundles'].values())))
+        before={path.name:path.read_bytes() for path in (initial/'assets').glob('*.png')}
+        self.css.write_bytes(self.palette({'theme_button_background_normal_breeze':'#126789',
+                                           'theme_bg_color_breeze':'#204060'}))
+        second=self.call(runtime.refresh)
+        final=Path(next(iter(second['bundles'].values())))
+        after={path.name:path.read_bytes() for path in (final/'assets').glob('*.png')}
+        self.assertEqual(set(before),set(after));self.assertTrue(any(before[name]!=after[name] for name in before))
+        self.assertTrue(initial.is_dir(),'existing GTK2 processes can still reference the preceding immutable bundle')
+        self.assertEqual(files(self.source),self.protected)
+
+    def test_edited_domainos_source_is_rejected_before_wrapper_publication(self):
+        asset=next((self.source/'common/assets').glob('*.png'))
+        asset.write_bytes(asset.read_bytes()+b'edited fixture')
+        before=files(self.private)
+        with self.assertRaises(Failure):self.call(runtime.setup)
+        after=files(self.private)
+        lock=str((self.roots.runtime/'lock').relative_to(self.private))
+        after.pop(lock,None)
+        self.assertEqual(after,before)
         self.assertFalse(self.roots.control.exists())
 
 

@@ -5,11 +5,13 @@ Decoration {
     id:root
     alpha:true
     Settings { id:localSettings }
+    DecorationOptions { id:colors; deco:decoration }
     readonly property int gridScale:Math.max(1,Math.min(3,localSettings.pixelScale))
+    readonly property bool resizeAllowed:decoration.client.resizeable
     function updateBorders() {
         if (!borders || !maximizedBorders || !extendedBorders || !padding) return;
-        borders.setBorders(11*gridScale);
-        borders.setTitle(30*gridScale);
+        borders.setBorders((resizeAllowed ? 11 : 6)*gridScale);
+        borders.setTitle((resizeAllowed ? 30 : 25)*gridScale);
         maximizedBorders.setAllBorders(0);
         maximizedBorders.setTitle(20*gridScale);
         extendedBorders.setAllBorders(0);
@@ -26,7 +28,10 @@ Decoration {
         id:face
         anchors.fill:parent
         activeWindow:decoration.client.active
+        faceColor:colors.titleBarColor
+        captionColor:colors.fontColor
         maximizedWindow:decoration.client.maximized
+        resizeAllowed:root.resizeAllowed
         minimizeAllowed:decoration.client.minimizeable
         maximizeAllowed:decoration.client.maximizeable
         closeOnDouble:decoration.client.closeable
@@ -52,6 +57,7 @@ Decoration {
         }
     }
     onGridScaleChanged:updateBorders()
+    onResizeAllowedChanged:updateBorders()
     Component.onCompleted: {
         updateBorders();
         decoration.installTitleItem(face.titleItem);

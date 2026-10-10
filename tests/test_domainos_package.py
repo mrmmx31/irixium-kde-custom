@@ -132,6 +132,7 @@ class PackageTests(unittest.TestCase):
             'plasma/tests/DomainOSNativeStylePalettePreview.qml',
             'plasma/tests/test_domainos_popup_palette.py',
             'plasma/tests/test_domainos_controls.py',
+            'plasma/tests/test_domainos_palette.py',
             'plasma/tests/test_domainos_tray_refresh_failure.py',
         })
         with zipfile.ZipFile(io.BytesIO(self.content)) as archive:

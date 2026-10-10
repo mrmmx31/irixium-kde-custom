@@ -16,6 +16,19 @@ import time
 sys.dont_write_bytecode=True
 REPO=Path(__file__).resolve().parents[2]
 
+def finalize_report(output,returncode,before,after):
+    """Require the native worker's scenario, independently of profile safety."""
+    receipt=output/"NATIVO.json"
+    report=json.loads(receipt.read_text()) if receipt.is_file() else {
+        "status":"failed","checks":{},"error":(output/"runner.log").read_text()}
+    checks=report["checks"]
+    checks["native_worker_report_available"]=receipt.is_file() and report.get("state",{}).get("checks",{}).get("native_scenario_completed") is True
+    checks["native_runner_exited_zero"]=returncode==0
+    checks["real_profiles_unchanged"]=before==after
+    report["protected_config_sha256"]=before
+    report["status"]="passed" if checks and all(checks.values()) else "failed"
+    return report
+
 def worker(output):
     logs=[];processes=[]
     try:
@@ -111,9 +124,7 @@ PlasmoidItem {
     command=["xvfb-run","-a","-s","-screen 0 1200x700x24 -nolisten tcp","dbus-run-session","--config-file",str(bus_config),"--",sys.executable,str(Path(__file__).resolve()),"--worker","--saida",str(output)]
     with (output/"runner.log").open('w') as runner_log:
         result=subprocess.run(command,env=env,stdout=runner_log,stderr=subprocess.STDOUT,text=True,timeout=40)
-    report=json.loads((output/"NATIVO.json").read_text()) if (output/"NATIVO.json").is_file() else {"status":"failed","checks":{},"error":(output/"runner.log").read_text()}
-    report["checks"]["real_profiles_unchanged"]=before==hashes();report["protected_config_sha256"]=before
-    report["status"]="passed" if report["checks"] and all(report["checks"].values()) else "failed"
+    report=finalize_report(output,result.returncode,before,hashes())
     (output/"RESULTADO.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n")
     print(json.dumps({"status":report["status"],"checks":len(report["checks"]),"report":str(output/"RESULTADO.json")}))
     return 0 if report["status"]=="passed" else 1

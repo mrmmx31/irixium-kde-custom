@@ -92,7 +92,29 @@
     "rounded_corners": false,
     "external_drop_shadow": false,
     "side_border_structure": "2px luz + 7px fundo + 2px sombra",
-    "top_resize_structure": "2px luz + 7px fundo + 1px sombra; título levantado começa logo abaixo."
+    "top_resize_structure": "2px luz + 7px fundo + 1px sombra; título levantado começa logo abaixo.",
+    "fixed_size": {
+      "frameBorderWidth": 5,
+      "measured_client_insets": [
+        6,
+        6,
+        25,
+        6
+      ],
+      "title_height": 20,
+      "corner_grips": false
+    },
+    "normal_frame_resource": {
+      "resizeBorderWidth": 10,
+      "measured_client_insets": [
+        11,
+        11,
+        30,
+        11
+      ],
+      "rule": "resizeable, independent of maximizeable",
+      "one_pixel_inner_surround": "Painted by Vuewm; native client and frame X borders are zero"
+    }
   },
   "glyphs": {
     "menu": {
@@ -202,7 +224,50 @@
       "supports": [
         "distribuição exata SR10.4 com hpvue"
       ]
+    },
+    {
+      "title": "HP VUE 2.01 vuewm(1X), SR10.4 distribution",
+      "url": "https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuewm.bsd.html",
+      "supports": [
+        "frameBorderWidth",
+        "resizeBorderWidth",
+        "clientDecoration",
+        "clientFunctions",
+        "transientDecoration",
+        "transientFunctions"
+      ]
     }
   ],
-  "unproven": "Print não mostra botão pressionado/maximizado nem o menu aberto. Reversão de relevo no pressionar é adaptação funcional Motif plausível, não medição direta do print. Os padrões gráficos SR10.4.1 retornados por busca não foram usados."
+  "unproven": "O print de referência não mostra pressão, maximização nem menu aberto. A pressão do campo do título foi confirmada separadamente na VM SR10.4, com inversão de luz/sombra e soltura restaurando os pixels originais; a adaptação da maximização ocupa a área do KDE. Não foram usados padrões de SR10.4.1.",
+  "runtime_palette": "Actual decoration uses DecorationOptions.titleBarColor/fontColor; measured reference colors reproduce CoralReef through the DomainOS scheme. Relative relief adapts to other selected KDE schemes.",
+  "guest_confirmation": {
+    "os": "Domain/OS 10.4 sys5.3 DN3500",
+    "vue": "HP VUE 2.01",
+    "motif": "Release 1.1; patch not established",
+    "resources": [
+      "frameBorderWidth=5",
+      "resizeBorderWidth=10",
+      "matteWidth=0"
+    ],
+    "client_hints": {
+      "Terminal": "resizable, all functions",
+      "Style Manager": "ALL except RESIZE/MAXIMIZE",
+      "Mouse and Color": "MOVE/CLOSE, transient to Style Manager"
+    },
+    "method": "Read-only xprop/xwininfo, xrdb and native manual; no guest configuration changes or redistributed guest files"
+  },
+  "title_press": {
+    "behavior": "Campo do título inverte luz/sombra somente durante pressão esquerda; soltura restaura o relevo.",
+    "evidence": "Testado na sessão Domain/OS SR10.4/VUE 2.01: pressão esquerda inverte as bordas de um pixel; soltura restaura exatamente o campo do título; texto e interior permanecem inalterados.",
+    "implementation": "PointHandler passivo, sem tomar os gestos de arraste ou duplo clique do KWin.",
+    "native_kwin_tests": "Pressão/soltura, arraste e duplo clique maximizar/restaurar aprovados em sessão Xephyr/KWin privada.",
+    "measured": {
+      "normal_top": "#ffc8c8",
+      "normal_bottom": "#864545",
+      "held_top": "#864545",
+      "held_bottom": "#ffc8c8",
+      "released_different_pixels": 0,
+      "inner_different_pixels": 0
+    }
+  }
 }

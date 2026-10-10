@@ -34,7 +34,7 @@ class GtkSelectionTest(unittest.TestCase):
                 path.write_bytes(b'/* private decoration choice */\n')
             path.chmod(0o640)
         self.before = {path: snapshot(path) for path in self.paths}
-        for theme in ('IrixClassic-KDE', 'Irixium-KDE'):
+        for theme in {profile['gtk'] for profile in select_gtk.catalog()['profiles'].values()}:
             legacy = self.home/'.themes'/theme/'gtk-2.0/gtkrc'
             legacy.parent.mkdir(parents=True, exist_ok=True); legacy.write_text('fixture')
             for version in ('2.0', '3.0', '4.0'):
@@ -102,6 +102,15 @@ class GtkSelectionTest(unittest.TestCase):
         self.run_main('classic', '--verificar')
         self.assert_files_restored(); self.assertFalse(self.state.exists())
         self.assertEqual(self.events, [('notify', None), ('gsettings', None)])
+
+    def test_domainos_selection_and_restore_preserve_independent_font_and_cursor_size(self):
+        self.run_main('domainos')
+        self.assertEqual(self.theme,'DomainOS-SR10-4-KDE')
+        self.assertEqual(self.settings,"'DomainOS-SR10-4-KDE'")
+        for path in self.paths:
+            if path.name in ('settings.ini','.gtkrc-2.0'):
+                self.assertIn(b'User font 12',path.read_bytes());self.assertIn(b'48',path.read_bytes())
+        self.run_main('--restaurar');self.assert_files_restored()
 
     def test_apply_and_restore_keep_exact_file_bytes_modes_and_native_preferences(self):
         self.run_main('classic')

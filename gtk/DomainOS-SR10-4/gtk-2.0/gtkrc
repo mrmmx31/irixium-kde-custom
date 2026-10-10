@@ -1,0 +1,209 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Original SR10.4 Motif reconstruction; native pixmap engine.
+gtk-enable-animations = 0
+gtk-menu-images = 1
+gtk-button-images = 1
+style "domainos-default" {
+  xthickness = 2
+  ythickness = 2
+  GtkWidget::focus-line-width = 1
+  GtkWidget::focus-padding = 1
+  GtkButton::child-displacement-x = 0
+  GtkButton::child-displacement-y = 0
+  GtkCheckButton::indicator-size = 14
+  GtkCheckMenuItem::indicator-size = 14
+  GtkRange::slider-width = 16
+  GtkRange::stepper-size = 16
+  GtkRange::trough-border = 0
+  GtkScrollbar::min-slider-length = 20
+  GtkScrollbar::has-backward-stepper = 1
+  GtkScrollbar::has-forward-stepper = 1
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  base[NORMAL] = "#6688b5"
+  text[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  base[PRELIGHT] = "#6688b5"
+  text[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  base[ACTIVE] = "#6688b5"
+  text[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#3297c7"
+  fg[SELECTED] = "#ffffff"
+  base[SELECTED] = "#6688b5"
+  text[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#78a0d5"
+  fg[INSENSITIVE] = "#ffffff"
+  base[INSENSITIVE] = "#6688b5"
+  text[INSENSITIVE] = "#ffffff"
+  engine "pixmap" {
+    image { function = BOX  state = NORMAL  detail = "button"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "buttondefault"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "togglebutton"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "optionmenu"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "spinbutton_up"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "spinbutton_down"  file = "../common/assets/command-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  state = NORMAL  detail = "entry"  file = "../common/assets/input-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "menu"  file = "../common/assets/menupanel-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "menubar"  file = "../common/assets/menustrip-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "menuitem"  file = "../common/assets/menurow-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = NORMAL  detail = "trough"  file = "../common/assets/scroll-trough-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = NORMAL  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = NORMAL  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = NORMAL  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = NORMAL  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = NORMAL  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = NORMAL  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-normal.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = NORMAL  shadow = OUT  overlay_file = "../common/assets/check-off-normal.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = NORMAL  shadow = OUT  overlay_file = "../common/assets/radio-off-normal.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = NORMAL  shadow = IN  overlay_file = "../common/assets/check-on-normal.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = NORMAL  shadow = IN  overlay_file = "../common/assets/radio-on-normal.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = NORMAL  shadow = ETCHED_IN  overlay_file = "../common/assets/check-mixed-normal.png"  overlay_stretch = FALSE }
+    image { function = EXTENSION  state = NORMAL  file = "../common/assets/tab-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "button"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "buttondefault"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "togglebutton"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "optionmenu"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "spinbutton_up"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "spinbutton_down"  file = "../common/assets/command-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  state = PRELIGHT  detail = "entry"  file = "../common/assets/input-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "menu"  file = "../common/assets/menupanel-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "menubar"  file = "../common/assets/menustrip-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "menuitem"  file = "../common/assets/menurow-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = PRELIGHT  detail = "trough"  file = "../common/assets/scroll-trough-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = PRELIGHT  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = PRELIGHT  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-focused.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = PRELIGHT  shadow = OUT  overlay_file = "../common/assets/check-off-focused.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = PRELIGHT  shadow = OUT  overlay_file = "../common/assets/radio-off-focused.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = PRELIGHT  shadow = IN  overlay_file = "../common/assets/check-on-focused.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = PRELIGHT  shadow = IN  overlay_file = "../common/assets/radio-on-focused.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = PRELIGHT  shadow = ETCHED_IN  overlay_file = "../common/assets/check-mixed-focused.png"  overlay_stretch = FALSE }
+    image { function = EXTENSION  state = PRELIGHT  file = "../common/assets/tab-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "button"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "buttondefault"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "togglebutton"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "optionmenu"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "spinbutton_up"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "spinbutton_down"  file = "../common/assets/command-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  state = ACTIVE  detail = "entry"  file = "../common/assets/input-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "menu"  file = "../common/assets/menupanel-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "menubar"  file = "../common/assets/menustrip-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "menuitem"  file = "../common/assets/menurow-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = ACTIVE  detail = "trough"  file = "../common/assets/scroll-trough-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = ACTIVE  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = ACTIVE  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-pressed.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = ACTIVE  shadow = OUT  overlay_file = "../common/assets/check-off-pressed.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = ACTIVE  shadow = OUT  overlay_file = "../common/assets/radio-off-pressed.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = ACTIVE  shadow = IN  overlay_file = "../common/assets/check-on-pressed.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = ACTIVE  shadow = IN  overlay_file = "../common/assets/radio-on-pressed.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = ACTIVE  shadow = ETCHED_IN  overlay_file = "../common/assets/check-mixed-pressed.png"  overlay_stretch = FALSE }
+    image { function = EXTENSION  state = ACTIVE  file = "../common/assets/tab-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "button"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "buttondefault"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "togglebutton"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "optionmenu"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "spinbutton_up"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "spinbutton_down"  file = "../common/assets/command-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  state = SELECTED  detail = "entry"  file = "../common/assets/input-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "menu"  file = "../common/assets/menupanel-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "menubar"  file = "../common/assets/menustrip-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "menuitem"  file = "../common/assets/menurow-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = SELECTED  detail = "trough"  file = "../common/assets/scroll-trough-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = SELECTED  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = SELECTED  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = SELECTED  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = SELECTED  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = SELECTED  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = SELECTED  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-toggled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = SELECTED  shadow = OUT  overlay_file = "../common/assets/check-off-toggled.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = SELECTED  shadow = OUT  overlay_file = "../common/assets/radio-off-toggled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = SELECTED  shadow = IN  overlay_file = "../common/assets/check-on-toggled.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = SELECTED  shadow = IN  overlay_file = "../common/assets/radio-on-toggled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = SELECTED  shadow = ETCHED_IN  overlay_file = "../common/assets/check-mixed-toggled.png"  overlay_stretch = FALSE }
+    image { function = EXTENSION  state = SELECTED  file = "../common/assets/tab-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "button"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "buttondefault"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "togglebutton"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "optionmenu"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "spinbutton_up"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "spinbutton_down"  file = "../common/assets/command-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  state = INSENSITIVE  detail = "entry"  file = "../common/assets/input-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "menu"  file = "../common/assets/menupanel-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "menubar"  file = "../common/assets/menustrip-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "menuitem"  file = "../common/assets/menurow-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = BOX  state = INSENSITIVE  detail = "trough"  file = "../common/assets/scroll-trough-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = INSENSITIVE  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SLIDER  state = INSENSITIVE  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-disabled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = INSENSITIVE  shadow = OUT  overlay_file = "../common/assets/check-off-disabled.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = INSENSITIVE  shadow = OUT  overlay_file = "../common/assets/radio-off-disabled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = INSENSITIVE  shadow = IN  overlay_file = "../common/assets/check-on-disabled.png"  overlay_stretch = FALSE }
+    image { function = OPTION  state = INSENSITIVE  shadow = IN  overlay_file = "../common/assets/radio-on-disabled.png"  overlay_stretch = FALSE }
+    image { function = CHECK  state = INSENSITIVE  shadow = ETCHED_IN  overlay_file = "../common/assets/check-mixed-disabled.png"  overlay_stretch = FALSE }
+    image { function = EXTENSION  state = INSENSITIVE  file = "../common/assets/tab-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+    image { function = SHADOW  file = "../common/assets/inset-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
+  }
+}
+class "GtkWidget" style : rc "domainos-default"
+style "domainos-button" = "domainos-default" {
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#78a0d5"
+  fg[INSENSITIVE] = "#ffffff"
+}
+class "GtkButton" style : rc "domainos-button"
+style "domainos-header" = "domainos-default" {
+  bg[NORMAL] = "#3297c7"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#3297c7"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#3297c7"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#3297c7"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#3297c7"
+  fg[INSENSITIVE] = "#ffffff"
+}
+class "GtkMenuBar" style : rc "domainos-header"
+class "GtkMenu" style : rc "domainos-header"
+class "GtkMenuItem" style : rc "domainos-header"
+class "GtkToolbar" style : rc "domainos-header"

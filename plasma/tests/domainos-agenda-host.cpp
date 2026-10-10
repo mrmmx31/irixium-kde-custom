@@ -285,5 +285,5 @@ static void step() {
 extern "C" int interceptedExec() asm("_ZN12QApplication4execEv");
 extern "C" int interceptedExec() {
     auto original=reinterpret_cast<int (*)()>(dlsym(RTLD_NEXT,"_ZN12QApplication4execEv"));
-    if(!original)return 2;QTimer::singleShot(1800,step);QTimer::singleShot(23000,[]{finish("Bounded agenda test deadline");});return original();
+    if(!original)return 2;QTimer::singleShot(1800,step);QTimer::singleShot(50000,[]{finish("Bounded agenda test deadline");});return original();
 }

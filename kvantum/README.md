@@ -2,7 +2,8 @@
 
 This directory contains the Kvantum themes used by the KDE **Application
 Style**. `Irixium/` is the preserved modern base; `IrixClassic/` is the
-Classic derivative. The suite installs both in the invoking user's XDG
+Classic derivative. `DomainOS-SR10-4/` is an independent reconstruction of
+the SR10.4 VUE/Motif controls. The suite installs all three in the invoking user's XDG
 configuration directory. Their canonical artwork retains its original colors.
 
 | Field | Value |
@@ -35,12 +36,21 @@ Se `XDG_DATA_HOME` não estiver definido, ele fica em
 O script segue as variáveis XDG do usuário que o executou; nenhum caminho de
 perfil particular está embutido no programa.
 
-O comando requer um dos Temas Globais IRIX, seu Kvantum correspondente,
+O comando requer um dos três Temas Globais da suíte, seu Kvantum correspondente,
 GTK Config do KDE e o Python da distribuição com PyQt6. Obtém os papéis reais
 do KColorScheme pela exportação nativa e a paleta Qt por QGuiApplication,
 sem atribuir uma paleta artificial aos aplicativos de teste. Gera somente
 cópias locais `IrixClassic-KDE`/`IrixClassic-KDE-Reload` ou
-`Irixium-KDE`/`Irixium-KDE-Reload`, preservando fontes, métricas e relevos.
+`Irixium-KDE`/`Irixium-KDE-Reload` ou
+`DomainOS-SR10-4-KDE`/`DomainOS-SR10-4-KDE-Reload`, preservando fontes, métricas e relevos.
+
+A família DomainOS usa relevos Motif de dois pixels, trilhos de 16 pixels e
+setas triangulares de 12 pixels. Os indicadores não têm as estrias do Classic.
+O desenho original e a paleta CoralReef estão registrados em
+[ORIGEM.json](DomainOS-SR10-4/ORIGEM.json), usando somente SR10.4/VUE 2.01.
+As variantes locais mantêm esse desenho enquanto aplicam os papéis KDE.
+Nenhum bitmap ou fonte HP acompanha o pacote. O ensaio Qt6 nativo dos controles
+DomainOS verificou pintura, setas, indicadores e cliques em 14 verificações.
 
 As notificações públicas do Plasma recriam o estilo e recarregam a paleta nas
 aplicações abertas. Não há temporizador de repaint, reinício de aplicações,

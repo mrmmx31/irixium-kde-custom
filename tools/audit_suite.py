@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import sys
 
-from components import ROOT, catalog, sources, cursor_compat_sources, decoration_sources, gtk_compat_sources
+from components import ROOT, catalog, sources, source_for, cursor_compat_sources, decoration_sources, gtk_compat_sources
 from install_suite import roots
 from user_bundle import validate_source
 
@@ -104,7 +104,7 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None, gtk_compat
         cfg = configparser.ConfigParser(interpolation=None)
         cfg.optionxform = str
         cfg.read(ROOT/'look-and-feel'/profile['global']/'contents/defaults')
-        bindings = [('kdeglobals][General', 'ColorScheme', 'Irixium'),
+        bindings = [('kdeglobals][General', 'ColorScheme', profile['colors']),
                     ('kdeglobals][Icons', 'Theme', profile['icons']),
                     ('plasmarc][Theme', 'name', profile['plasma']),
                     ('kcminputrc][Mouse', 'cursorTheme', profile['cursor']),
@@ -115,13 +115,14 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None, gtk_compat
             if cfg.get(group, key, fallback=None) != value:
                 failures.append(f'Dependência incoerente: {name}/{group}/{key}')
         required = [ROOT/'plasma'/profile['plasma']/'metadata.desktop',
-                    ROOT/'icons'/('themes' if name=='classic' else '')/profile['icons']/'index.theme',
+                    source_for('icons/'+profile['icons'], doc=doc)/'index.theme',
                     ROOT/'kvantum'/profile['kvantum']/(profile['kvantum']+'.kvconfig'),
                     ROOT/'wallpapers'/profile['wallpaper']/'metadata.json',
                     ROOT/'look-and-feel'/profile['global']/'contents/splash/Splash.qml',
                     ROOT/'gtk'/profile['gtk']/'gtk-2.0/gtkrc',
                     ROOT/'gtk'/profile['gtk']/'gtk-3.0/gtk.css', ROOT/'gtk'/profile['gtk']/'gtk-4.0/gtk.css',
-                    ROOT/'colors/Irixium.colors', ROOT/'cursors'/profile['cursor']/'index.theme']
+                    source_for('color-schemes/'+profile['colors']+'.colors', doc=doc),
+                    ROOT/'cursors'/profile['cursor']/'index.theme']
         failures.extend('Dependência ausente: '+str(p.relative_to(ROOT)) for p in required if not p.is_file())
     sounds = {'audio_in_repository': False, 'automatic_download': False,
               'installer': doc['sounds']['installer'], 'theme': doc['sounds']['theme'],
@@ -140,7 +141,7 @@ def audit(local=False, require_sounds=False, cursor_compat_root=None, gtk_compat
             if profile['global'] != selected:
                 continue
             checks = [('kdeglobals', 'Icons', 'Theme', profile['icons']),
-                      ('kdeglobals', 'General', 'ColorScheme', 'Irixium'),
+                      ('kdeglobals', 'General', 'ColorScheme', profile['colors']),
                       ('plasmarc', 'Theme', 'name', profile['plasma']),
                       ('kwinrc', 'org.kde.kdecoration2', 'theme', profile['decoration']),
                       ('kcminputrc', 'Mouse', 'cursorTheme', profile['cursor']),

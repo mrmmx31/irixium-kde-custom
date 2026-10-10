@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Real Qt6 Widgets/Kvantum controls, restricted to the owned bwrap preview.
+"""Real Qt5/Qt6 Widgets/Kvantum controls, restricted to the owned bwrap preview.
 
 No stylesheet, setStyle, setPalette, forced font or synthetic theme is used.
 The launcher owns the namespace and public theme resources. This process reads
@@ -76,13 +76,15 @@ def selection():
     return values
 
 
-def main():
+def main(argv=None, default_qt_major=6):
     arguments = argparse.ArgumentParser(description=__doc__)
-    arguments.add_argument('--output', type=Path, default=Path('/home/domainos-test/qtwidgets-proof'))
+    arguments.add_argument('--qt-major', type=int, choices=(5, 6), default=default_qt_major)
+    arguments.add_argument('--output', type=Path)
     arguments.add_argument('--guard-only', action='store_true')
-    args = arguments.parse_args()
+    args = arguments.parse_args(argv)
     guards = private_guards()  # Must run BEFORE importing/initializing Qt.
-    output = args.output.absolute()
+    proof_name = 'qtwidgets-proof' if args.qt_major == 6 else 'qt5widgets-proof'
+    output = (args.output or Path('/home/domainos-test') / proof_name).absolute()
     if not output.is_relative_to(Path('/home/domainos-test')):
         raise RuntimeError('Proof output must remain inside fake HOME')
     if args.guard_only:
@@ -90,20 +92,36 @@ def main():
         return 0
     output.mkdir(parents=True, exist_ok=True)
     os.chmod(output, 0o700)
-    from PyQt6.QtCore import Qt, QT_VERSION_STR, PYQT_VERSION_STR, QTimer
-    from PyQt6.QtGui import QAction, QPalette
-    from PyQt6.QtWidgets import (
-        QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QFormLayout,
-        QGroupBox, QPushButton, QCheckBox, QRadioButton, QComboBox, QSpinBox,
-        QDoubleSpinBox, QLineEdit, QTextEdit, QSlider, QProgressBar, QTabWidget,
-        QLabel, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem,
-        QScrollArea, QToolButton)
+    if args.qt_major == 6:
+        from PyQt6.QtCore import Qt, QT_VERSION_STR, PYQT_VERSION_STR, QTimer, qVersion
+        from PyQt6.QtGui import QAction, QPalette
+        from PyQt6.QtWidgets import (
+            QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QFormLayout,
+            QGroupBox, QPushButton, QCheckBox, QRadioButton, QComboBox, QSpinBox,
+            QDoubleSpinBox, QLineEdit, QTextEdit, QSlider, QProgressBar, QTabWidget,
+            QLabel, QFileDialog, QMessageBox, QTableWidget, QTableWidgetItem,
+            QScrollArea, QToolButton)
+    else:
+        from PyQt5.QtCore import Qt, QT_VERSION_STR, PYQT_VERSION_STR, QTimer, qVersion
+        from PyQt5.QtGui import QPalette
+        from PyQt5.QtWidgets import (
+            QAction, QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
+            QFormLayout, QGroupBox, QPushButton, QCheckBox, QRadioButton, QComboBox,
+            QSpinBox, QDoubleSpinBox, QLineEdit, QTextEdit, QSlider, QProgressBar,
+            QTabWidget, QLabel, QFileDialog, QMessageBox, QTableWidget,
+            QTableWidgetItem, QScrollArea, QToolButton)
     app = QApplication(sys.argv[:1])
-    app.setApplicationName('DomainOS Theme Preview — Qt Widgets')
-    app.setDesktopFileName('org.irixclassic.preview.qtwidgets')
+    app.setApplicationName('DomainOS Theme Preview — Qt Widgets' if args.qt_major == 6
+                           else 'DomainOS Theme Preview — Qt5 Widgets')
+    app.setDesktopFileName('org.irixclassic.preview.qtwidgets' if args.qt_major == 6
+                           else 'org.irixclassic.preview.qt5widgets')
     window = QMainWindow()
-    window.setObjectName('privateQtWidgetsWindow')
-    window.setWindowTitle('IRIX Classic — Qt6 Widgets / Kvantum')
+    window.setObjectName('privateQtWidgetsWindow' if args.qt_major == 6
+                         else 'privateQt5WidgetsWindow')
+    global_theme = selection()['kdeglobals']['KDE']['LookAndFeelPackage']
+    theme_title = ('DomainOS SR10.4' if global_theme == 'org.magpie.irixclassic.domainos.desktop'
+                   else 'IRIX Classic')
+    window.setWindowTitle(theme_title + f' — Qt{args.qt_major} Widgets / Kvantum')
     window.resize(500, 490)
     window.move(20, 80)
     central = QWidget()
@@ -124,7 +142,7 @@ def main():
     group = QGroupBox('Buttons and selection')
     group_layout = QHBoxLayout(group)
     button = QPushButton('Press')
-    button.setObjectName('themePushButton')
+    button.setObjectName('themePushButton' if args.qt_major == 6 else 'qt5ThemePushButton')
     button.clicked.connect(lambda: status.setText('Push button clicked'))
     check = QCheckBox('Checked')
     check.setChecked(True)
@@ -152,7 +170,7 @@ def main():
     numeric_layout.addWidget(decimal)
     form.addRow('Spin boxes:', numeric)
     text = QLineEdit('Editable text')
-    text.setObjectName('themeLineEdit')
+    text.setObjectName('themeLineEdit' if args.qt_major == 6 else 'qt5ThemeLineEdit')
     form.addRow('Text:', text)
     slider = QSlider(Qt.Orientation.Horizontal)
     slider.setRange(0, 100)
@@ -208,6 +226,7 @@ def main():
                 if len(pieces) == 6 and pieces[-1] not in loaded:
                     loaded.append(pieces[-1])
         record.update(qtVersion=QT_VERSION_STR, pyqtVersion=PYQT_VERSION_STR,
+                      qtMajor=args.qt_major, qtRuntimeVersion=qVersion(),
                       platform=app.platformName(), platformTheme=os.environ.get('QT_QPA_PLATFORMTHEME'),
                       style={'objectName': app.style().objectName(), 'className': app.style().metaObject().className()},
                       font=app.font().toString(), selections=selection(), loadedKvantum=loaded,
@@ -283,6 +302,6 @@ def main():
 if __name__ == '__main__':
     try:
         sys.exit(main())
-    except (RuntimeError, OSError, ValueError) as error:
+    except (RuntimeError, OSError, ValueError, ImportError) as error:
         print('Private Qt Widgets demo refused: ' + str(error), file=sys.stderr)
         sys.exit(2)

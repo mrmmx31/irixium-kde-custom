@@ -38,12 +38,13 @@ class Demo(Gtk.Application):
 
     def activate_demo(self, app):
         settings = Gtk.Settings.get_default()
-        self.window = Gtk.ApplicationWindow(application=app, title="NATIVEAPP GTK3 — integrated theme demo PID %d" % os.getpid())
+        theme = settings.get_property("gtk-theme-name")
+        theme_title = "DomainOS SR10.4" if theme.startswith("DomainOS-SR10-4") else "integrated theme demo"
+        self.window = Gtk.ApplicationWindow(application=app, title="NATIVEAPP GTK3 — %s PID %d" % (theme_title, os.getpid()))
         self.window.set_default_size(850, 620)
         outer = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=6)
         outer.set_border_width(6)
         self.window.add(outer)
-        theme = settings.get_property("gtk-theme-name")
         font = settings.get_property("gtk-font-name")
         label = Gtk.Label(label="REAL Gtk3 widgets | theme: %s | font: %s" % (theme, font))
         label.set_xalign(0)

@@ -55,6 +55,7 @@ def check_runtime(data):
             'org/kde/taskmanager', 'org/kde/plasma/core', 'org/kde/plasma/components',
             'org/kde/plasma/extras', 'org/kde/plasma/plasma5support',
             'org/kde/plasma/private/digitalclock', 'org/kde/plasma/private/kicker',
+            'org/kde/plasma/private/keyboardindicator',
             'org/kde/plasma/private/pager', 'org/kde/plasma/private/taskmanager',
             'org/kde/plasma/private/mpris', 'org/kde/plasma/private/volume',
             'org/kde/plasma/private/systemtray', 'org/kde/plasma/private/sessions',

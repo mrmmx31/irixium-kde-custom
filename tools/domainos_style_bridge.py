@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Opt-in, user-only bridge between the Classic and DomainOS Plasma styles.
+"""User-only bridge for DomainOS Global Theme and optional Plasma Style choices.
 
 The bridge observes the user's choice; it never selects a style. Installation
 copies its complete Python runtime into this user's data directory. No service
@@ -20,7 +20,8 @@ import tempfile
 import uuid
 
 sys.dont_write_bytecode = True
-from activate_domainos import latest as activation_latest, session_owner
+from activate_domainos import (latest as activation_latest, session_owner,
+    effective_preference, GLOBAL_THEME, IRIX_GLOBAL_THEMES)
 from install_suite import roots
 from theme_transaction import Failure, atomic, image, no_links, replace_checked, snapshot
 from user_bundle import Bundle, fingerprint
@@ -57,9 +58,11 @@ def private_directory(path):
     os.chmod(path, 0o700)
 
 
-def activation_record(locations):
+def activation_record(locations, *, required=True):
     # The activator validates its receipt identity, plugin, token and user.
     pointer = locations['activation']/'latest'
+    no_links(pointer)
+    if not pointer.exists() and not required: return None, None
     own_file(pointer)
     receipt, record = activation_latest(locations['activation'])
     own_file(receipt)
@@ -78,6 +81,11 @@ def read_control(locations, required=True, verify_runtime=True, allow_previous_r
     if control.get('format') != 1 or control.get('uid') != os.getuid() or control.get('paths') != expected \
             or type(control.get('enabled')) is not bool:
         raise Failure('Controle da ponte não pertence a estes caminhos/usuário.')
+    if any(type(control[key]) is not bool for key in ('global_enabled', 'style_enabled') if key in control) or \
+            ('panel_id' in control and control['panel_id'] is not None and
+             (type(control['panel_id']) is not int or control['panel_id'] <= 0)) or \
+            ('global_baseline' in control and not isinstance(control['global_baseline'], str)):
+        raise Failure('Preferências da ponte inválidas.')
     if verify_runtime:
         for key in ('runtime','unit'):
             expected_fingerprint = control.get('fingerprints',{}).get(key)
@@ -136,11 +144,21 @@ def write_control(locations, control, cause):
     return backup
 
 
-def install_bridge(data, config, state, source_root=ROOT):
+def install_bridge(data, config, state, source_root=ROOT, *, global_choices=False, panel=None, dry=False):
     locations = paths(data,config,state)
-    _, activation = activation_record(locations)
-    if activation.get('status') not in ('active','restored'):
+    if panel is not None and (type(panel) is not int or panel <= 0):
+        raise Failure('ID de painel inválido.')
+    _, activation = activation_record(locations, required=not global_choices)
+    if activation and activation.get('status') not in ('active','restored'):
         raise Failure('Conclua ou restaure a ativação pendente antes de instalar a ponte.')
+    previous = read_control(locations, required=False, allow_previous_runtime=True)
+    if previous is None and any(locations[key].exists() for key in ('runtime','unit')):
+        raise Failure('Destino existente sem recibo da ponte; nenhuma substituição feita.')
+    for name in MODULES: own_file(Path(source_root)/'tools'/name)
+    baseline = (previous or {}).get('global_baseline', '')
+    if global_choices and not (previous and previous.get('global_enabled', False)):
+        baseline = effective_preference(config, 'kdeglobals', 'KDE', 'LookAndFeelPackage')
+    if dry: return locations
     private_directory(locations['state'])
     bundle = Bundle(locations['state']/'installations', (locations['runtime'],locations['unit']))
     with bundle.locked():
@@ -161,6 +179,10 @@ def install_bridge(data, config, state, source_root=ROOT):
                 control = {'format':1,'uid':os.getuid(),'enabled':True,
                     'paths':{key:str(locations[key]) for key in ('runtime','unit','plasmarc','activation')},
                     'fingerprints':{key:fingerprint(locations[key]) for key in ('runtime','unit')}}
+                control.update(global_enabled=global_choices or bool(previous and previous.get('global_enabled')),
+                    style_enabled=bool(previous and previous.get('style_enabled', True)) if global_choices else True,
+                    global_baseline=baseline,
+                    panel_id=panel if panel is not None else (previous or {}).get('panel_id'))
                 backup = write_control(locations,control,'install')
             except BaseException:
                 after_install = bundle.latest()
@@ -201,6 +223,30 @@ def disable_bridge(locations):
     if backup: print('Backup do controle:',backup.parent)
 
 
+def detach_global_choices(data, config, state, *, dry=False):
+    """Detach a removed suite without deleting the separate Style integration.
+
+    Runtime/control backups remain available for recovery. This only changes
+    this bridge's own flags; it never changes any panel or Plasma preference.
+    The installer stops its service before committing a non-dry restoration.
+    """
+    locations=paths(data,config,state)
+    control=read_control(locations,required=False,allow_previous_runtime=True)
+    if not control or not control.get('global_enabled',False):
+        return {'status':'not_enabled','style_enabled':bool(control and control.get('style_enabled',True))}
+    style_enabled=control.get('style_enabled',True)
+    if not dry:
+        bundle=Bundle(locations['state']/'installations',(locations['runtime'],locations['unit']))
+        with bundle.locked():
+            control=read_control(locations,allow_previous_runtime=True)
+            control['global_enabled']=False
+            if not style_enabled:control['enabled']=False
+            backup=write_control(locations,control,'suite-restore-detach-global')
+        if backup:print('Backup do controle Global:',backup.parent)
+    return {'status':'ready' if dry else 'detached','style_enabled':style_enabled,
+            'enabled':control['enabled'] if style_enabled else False}
+
+
 def selected_style(path):
     # Applying a native Global Theme stores its defaults in kdedefaults and
     # removes the corresponding override. An explicit empty value still wins;
@@ -234,26 +280,47 @@ def action_for(style, record):
     return ['--ponte'] if desired == 'active' else ['--ponte','--restaurar']
 
 
+def panel_action(global_theme, style, record, control):
+    """A new Global choice authorizes one guarded transition, never installation."""
+    global_enabled = control.get('global_enabled', False)
+    changed = global_theme != control.get('global_baseline', '')
+    if global_enabled:
+        if record and record.get('origin', 'manual') == 'global' and \
+                record.get('status') == 'active' and global_theme in IRIX_GLOBAL_THEMES:
+            return ['--global', '--ponte', '--restaurar']
+        if changed and global_theme == GLOBAL_THEME and style == 'IrixClassicDomainOS' and \
+                (record is None or record.get('status') == 'restored'):
+            command = ['--global'] + (['--ponte'] if record else [])
+            if not record and control.get('panel_id') is not None:
+                command += ['--painel', str(control['panel_id'])]
+            return command
+    if control.get('style_enabled', True) and record:
+        return action_for(style, record)
+    return None
+
+
 def watch(locations, app=None):
     from PyQt6.QtCore import QCoreApplication, QFileSystemWatcher, QObject, QProcess
     application = app or QCoreApplication(sys.argv)
     session_owner()
     control = read_control(locations)
     if not control['enabled']: raise Failure('A ponte foi desativada neste perfil.')
-    activation_record(locations)  # Never create the first authorization.
+    activation_record(locations, required=not control.get('global_enabled', False))
 
     class Observer(QObject):
         def __init__(self):
             super().__init__(); self.watcher=QFileSystemWatcher(self)
             self.watcher.fileChanged.connect(self.changed)
             self.watcher.directoryChanged.connect(self.changed)
-            self.process=None; self.attempted=None
+            self.process=None; self.attempted=None; self.failed_choice=None
             self.changed()
 
         def arm(self, receipt=None):
             wanted=[locations['plasmarc'],locations['plasmarc'].parent,
                 locations['plasmarc'].parent/'kdedefaults/plasmarc',
                 locations['plasmarc'].parent/'kdedefaults',
+                locations['plasmarc'].parent/'kdeglobals',
+                locations['plasmarc'].parent/'kdedefaults/kdeglobals',
                 locations['state']/'control.json',locations['state'],
                 locations['activation']/'latest',locations['activation']]
             if receipt: wanted.extend([receipt,receipt.parent])
@@ -267,22 +334,40 @@ def watch(locations, app=None):
                 current=read_control(locations)
                 if not current['enabled']:
                     print('Ponte desativada pelo usuário.',flush=True); application.quit(); return
-                receipt,record=activation_record(locations); self.arm(receipt)
+                receipt,record=activation_record(locations, required=not current.get('global_enabled', False)); self.arm(receipt)
                 style=selected_style(locations['plasmarc'])
-                key=(style,record['token'],record.get('status'))
-                arguments=action_for(style,record)
+                global_theme=effective_preference(locations['plasmarc'].parent,
+                    'kdeglobals', 'KDE', 'LookAndFeelPackage') if current.get('global_enabled', False) else ''
+                choice=(global_theme,style,current.get('panel_id'))
+                if self.failed_choice is not None and choice!=self.failed_choice:
+                    self.failed_choice=None
+                key=(global_theme, style, record['token'] if record else None,
+                    record.get('status') if record else None, current.get('panel_id'))
+                arguments=panel_action(global_theme,style,record,current)
                 if self.process is not None: return
                 if arguments is None:
-                    self.attempted=None; return
-                if key==self.attempted: return
+                    self.attempted=None
+                    # Preserve an unfinished DomainOS choice until its matching
+                    # plasmarc defaults arrive. No retry timer or polling loop.
+                    if current.get('global_enabled', False) and global_theme != current.get('global_baseline') and \
+                            not (global_theme == GLOBAL_THEME and style != 'IrixClassicDomainOS'):
+                        current['global_baseline']=global_theme
+                        write_control(locations,current,'observe-global')
+                    return
+                # A failed activator can create a new rollback receipt. That
+                # internal token/status change must not retry the same choice.
+                if key==self.attempted or choice==self.failed_choice: return
                 session_owner()
                 self.attempted=key
+                self.operation_global=global_theme
+                self.operation_choice=choice
                 self.process=QProcess(self)
                 self.process.finished.connect(self.finished)
                 self.process.errorOccurred.connect(self.error)
                 self.process.setProcessChannelMode(QProcess.ProcessChannelMode.MergedChannels)
                 self.process.start('/usr/bin/python3',[str(locations['runtime']/'tools/activate_domainos.py'),*arguments])
-                print(json.dumps({'style':style,'operation':arguments,'state':record['status']},ensure_ascii=False),flush=True)
+                print(json.dumps({'global':global_theme,'style':style,'operation':arguments,
+                    'state':record['status'] if record else 'not_activated'},ensure_ascii=False),flush=True)
             except (OSError,ValueError,RuntimeError,subprocess.SubprocessError) as error:
                 self.arm()
                 print('Ponte: '+str(error),file=sys.stderr,flush=True)
@@ -293,12 +378,20 @@ def watch(locations, app=None):
             output=bytes(process.readAllStandardOutput()).decode(errors='replace').strip()
             if output: print(output,flush=True)
             process.deleteLater()
-            if code: print('Ponte: operação recusada; nenhum novo ensaio automático até outra escolha.',file=sys.stderr,flush=True)
+            if code:
+                self.failed_choice=self.operation_choice
+                print('Ponte: operação recusada; nenhum novo ensaio automático até outra escolha.',file=sys.stderr,flush=True)
+            else:
+                control=read_control(locations)
+                if control.get('global_enabled', False):
+                    control['global_baseline']=self.operation_global
+                    write_control(locations,control,'transition-completed')
             self.changed()
 
         def error(self, error):
             if error==QProcess.ProcessError.FailedToStart:
                 self.process.deleteLater(); self.process=None
+                self.failed_choice=self.operation_choice
                 print('Ponte: não foi possível iniciar o ativador.',file=sys.stderr,flush=True)
 
     observer=Observer()
@@ -314,6 +407,9 @@ def main():
     group.add_argument('--desativar',action='store_true')
     group.add_argument('--verificar',action='store_true')
     parser.add_argument('--iniciar',action='store_true',help='instalar e iniciar o serviço da própria sessão KDE')
+    parser.add_argument('--temas-globais',action='store_true',
+                        help='observar escolhas globais futuras sem trocar o painel durante a instalação')
+    parser.add_argument('--painel',type=int,help='painel escolhido para a primeira ativação pelo Tema Global')
     args=parser.parse_args()
     if os.geteuid()==0: raise Failure('Execute como usuário normal, sem sudo.')
     if args.iniciar and (args.observar or args.desativar or args.verificar):
@@ -322,12 +418,12 @@ def main():
     if args.observar: return watch(locations)
     if args.desativar: return disable_bridge(locations)
     if args.verificar:
-        _,record=activation_record(locations)
+        _,record=activation_record(locations, required=False)
         control=read_control(locations,required=False)
-        print(json.dumps({'uid':os.getuid(),'panel_status':record['status'],
+        print(json.dumps({'uid':os.getuid(),'panel_status':record['status'] if record else 'not_activated',
             'bridge_installed':control is not None,'enabled':bool(control and control['enabled']),
             'selected_style':selected_style(locations['plasmarc'])},ensure_ascii=False,indent=2)); return
-    locations=install_bridge(data,config,state)
+    locations=install_bridge(data,config,state,global_choices=args.temas_globais,panel=args.painel)
     if args.iniciar: start_bridge(locations)
 
 

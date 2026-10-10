@@ -30,6 +30,14 @@ Item {
     property int grooveCount: 0
     property bool selectable: false
     property bool selected: false
+    readonly property bool waitCursor: {
+        let ancestor = parent
+        while (ancestor) {
+            if (ancestor.domainosBusyCursor !== undefined) return ancestor.domainosBusyCursor
+            ancestor = ancestor.parent
+        }
+        return false
+    }
     property bool pressRelief: true
     property bool selectedRelief: true
     activeFocusOnTab: true
@@ -104,6 +112,7 @@ Item {
         anchors.fill: parent
         acceptedButtons: Qt.LeftButton
         hoverEnabled: true
+        cursorShape: button.waitCursor ? Qt.WaitCursor : Qt.ArrowCursor
         preventStealing: false
         // A consumer may simulate selection; no command or device call here.
         onPressed: button.pointerPressed()

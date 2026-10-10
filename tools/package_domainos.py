@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 IRIX Classic contributors
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Build the independent DomainOS 0.2.11 archive; never install or publish.
+"""Build the independent DomainOS 0.2.12-beta.1 archive; never install or publish.
 
 Use explicit resource/support scopes and exclude ignored files. The archive
 contains regular files, licenses, editable sources and the user-local installer.
@@ -22,7 +22,7 @@ from theme_transaction import Failure as NativeFailure
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = '0.2.11'
+VERSION = '0.2.12-beta.1'
 NAME = 'irixclassic-domainos-' + VERSION
 DATE = (1980, 1, 1, 0, 0, 0)
 MAX_FILE = 8 * 1024 * 1024
@@ -35,7 +35,16 @@ TARGETS = {
     'color-schemes/DomainOS-SR10-4.colors': 'colors/DomainOS-SR10.4.colors',
 }
 SOURCE_ONLY = ('plasma/IrixClassic', 'integrations/thunderbird-domainos')
-SUPPORT = ('LICENSE', 'components.json', 'docs/DOMAINOS-0.2.11.md', 'docs/VALIDACAO-DOMAINOS-0.2.11-2026-10-09.md', 'docs/DOMAINOS-0.2.10.md', 'docs/VALIDACAO-DOMAINOS-0.2.10-2026-10-09.md', 'docs/DOMAINOS-0.2.9.md', 'docs/VALIDACAO-DOMAINOS-0.2.9-2026-10-09.md', 'docs/DOMAINOS-0.2.8.md', 'docs/VALIDACAO-DOMAINOS-0.2.8-2026-10-09.md', 'docs/DOMAINOS-0.2.7.md', 'docs/VALIDACAO-DOMAINOS-0.2.7-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-0.2.6-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-0.2.5-2026-10-09.md', 'docs/DOMAINOS-AUDITORIA-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-DICAS-2026-10-09.md',
+SUPPORT = ('docs/RELEASE-1.1.0-beta.1.md', 'LICENSE', 'components.json', 'docs/DOMAINOS-0.2.11.md', 'docs/VALIDACAO-DOMAINOS-0.2.11-2026-10-09.md', 'docs/DOMAINOS-0.2.10.md', 'docs/VALIDACAO-DOMAINOS-0.2.10-2026-10-09.md', 'docs/DOMAINOS-0.2.9.md', 'docs/VALIDACAO-DOMAINOS-0.2.9-2026-10-09.md', 'docs/DOMAINOS-0.2.8.md', 'docs/VALIDACAO-DOMAINOS-0.2.8-2026-10-09.md', 'docs/DOMAINOS-0.2.7.md', 'docs/VALIDACAO-DOMAINOS-0.2.7-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-0.2.6-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-0.2.5-2026-10-09.md', 'docs/DOMAINOS-AUDITORIA-2026-10-09.md', 'docs/VALIDACAO-DOMAINOS-DICAS-2026-10-09.md',
+    'tools/domainos_scrollbar_rules.json', 'docs/DOMAINOS-REGRAS-ROLAGEM.md',
+    'docs/DOMAINOS-FILA-REVISAO-VISUAL.md', 'docs/referencias/domainos-sr104/README.md',
+    'docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json',
+    'docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json',
+    'docs/referencias/domainos-sr104/CONFIGURACOES-VERIFICADAS.json',
+    'docs/referencias/domainos-sr104/trash-can-normal.png',
+    'docs/referencias/domainos-sr104/barra-vertical-normal.png',
+    'docs/referencias/domainos-sr104/barra-horizontal-normal.png',
+    'docs/referencias/domainos-sr104/canto-normal.png',
     'docs/VALIDACAO-DOMAINOS-AJUSTES-2026-10-09.md',
     'docs/VALIDACAO-DOMAINOS-MINIATURAS-PALETA-2026-10-09.md',
     'docs/DOMAINOS-RESILIENCIA-2026-10-09.md', 'tools/monitor_domainos.py', 'tests/test_domainos_monitor.py',
@@ -50,6 +59,7 @@ SUPPORT = ('LICENSE', 'components.json', 'docs/DOMAINOS-0.2.11.md', 'docs/VALIDA
     'tests/test_domainos_style_bridge.py', 'tests/test_domainos_activation_preferences.py',
     'plasma/tests/test_domainos_native_style_palette.py',
     'plasma/tests/test_domainos_popup_palette.py', 'plasma/tests/test_domainos_controls.py',
+    'plasma/tests/test_domainos_palette.py',
     'plasma/tests/test_domainos_tray_refresh_failure.py',
     'plasma/tests/DomainOSNativeStylePalettePreview.qml')
 FORBIDDEN_SUFFIXES = {'.pyc', '.pyo', '.log', '.zip', '.xpi', '.so', '.o', '.wav', '.ogg', '.flac'}

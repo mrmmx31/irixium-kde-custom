@@ -158,12 +158,13 @@ def switch_changed(widget,_property,_data): note("Native Gtk.Switch is " + ("on"
 def activate(app,_data):
     global status
     window=app_window(app)
-    window_title(window,("NATIVEAPP GTK4 — integrated theme demo PID %d" % os.getpid()).encode())
+    theme,font=setting("gtk-theme-name"),setting("gtk-font-name")
+    theme_title="DomainOS SR10.4" if theme.startswith("DomainOS-SR10-4") else "integrated theme demo"
+    window_title(window,("NATIVEAPP GTK4 — %s PID %d" % (theme_title,os.getpid())).encode())
     window_size(window,850,620)
     outer=box_new(1,6)
     for fn in margin: fn(outer,6)
     window_child(window,outer)
-    theme,font=setting("gtk-theme-name"),setting("gtk-font-name")
     append(outer,label("REAL Gtk4 C-ABI widgets | theme: %s | font: %s" % (theme,font)))
     status=label("Only artificial controls/data; no files or personal applications are opened")
     for name,callback in (("record",menu_record),("quit",menu_quit)):

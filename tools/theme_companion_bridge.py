@@ -28,9 +28,11 @@ UNIT = 'irix-theme-companions.service'
 MODULES = ('theme_companion_bridge.py', 'select_companions.py', 'select_gtk.py',
            'theme_transaction.py', 'components.py', 'reload_decoration.py',
            'gtk2_palette.py', 'gtk2_scrollbar_assets.py', 'gtk2_modern_palette.py', 'gtk2_palette_runtime.py',
+           'gtk2_domainos_palette.py', 'domainos_motif_art.py',
            'gtk4_palette_runtime.py', 'user_bundle.py', 'apply_kvantum_colors.py',
            'kvantum_native_palette.py', 'kvantum_palette_runtime.py',
-           'kvantum_classic_palette.py', 'kvantum_modern_palette.py', 'kvantum_palette_config.py')
+           'kvantum_classic_palette.py', 'kvantum_modern_palette.py', 'kvantum_domainos_palette.py',
+           'kvantum_palette_config.py')
 
 
 def locations(data, config, state):
@@ -353,7 +355,12 @@ def watch(data, config, state, home, *, app=None, worker=None):
             self.process = None
             self.queued = False
             self.pending = False
-            self.seen_global = None
+            # Starting or upgrading the integration installs options; it is
+            # not an explicit Global Theme choice. Keep an independently
+            # selected GTK/Kvantum theme until a later native transition.
+            # Initial reconciliation may still refresh an already selected
+            # companion's palette, using its existing ownership guards.
+            self.seen_global = effective_look_and_feel(config)
             self.attempted = None
             self.attempted_native = None
             # Ignore the complex KConfig payload and read its effective value

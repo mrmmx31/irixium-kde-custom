@@ -12,7 +12,7 @@ from user_bundle import Bundle
 from theme_transaction import (Change, Failure, Transaction, atomic, decode,
                                edit_ini, image, no_links, sha, snapshot)
 
-THEMES = ('IrixClassic', 'Irixium')
+THEMES = ('IrixClassic', 'Irixium', 'DomainOS-SR10-4')
 
 
 def accepts(current, theme):
@@ -49,6 +49,8 @@ def render(theme, svg, settings, palette, *, native_qt_palette):
         from kvantum_classic_palette import render as mapper
     elif theme == 'Irixium':
         from kvantum_modern_palette import render as mapper
+    elif theme == 'DomainOS-SR10-4':
+        from kvantum_domainos_palette import render as mapper
     else: raise Failure('Família Kvantum desconhecida.')
     return mapper(svg, settings, palette, native_qt_palette=native_qt_palette)
 

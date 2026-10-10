@@ -1,0 +1,95 @@
+{
+  "system": "Domain/OS SR10.4",
+  "desktop": "HP VUE 2.01",
+  "client": "Trash Can",
+  "capture_date": "2026-10-10",
+  "source_png_sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5",
+  "capture_pixels": [
+    1024,
+    844
+  ],
+  "scope": "Native MAME guest image; no interpolation; normal state only. Empty Trash Can does not demonstrate scrolling or pressed/disabled behavior.",
+  "metrics": {
+    "vertical": {
+      "global_bbox_inclusive": [
+        648,
+        412,
+        662,
+        666
+      ],
+      "width": 15,
+      "height": 255,
+      "up_glyph_bbox_inclusive": [
+        650,
+        414,
+        660,
+        424
+      ],
+      "down_glyph_bbox_inclusive": [
+        650,
+        654,
+        660,
+        664
+      ],
+      "glyph_size": [
+        11,
+        11
+      ],
+      "thumb_cross_size": 11,
+      "arrow_thumb_clearance": 1
+    },
+    "horizontal": {
+      "global_bbox_inclusive": [
+        105,
+        671,
+        643,
+        685
+      ],
+      "width": 539,
+      "height": 15
+    },
+    "scrolled_content": {
+      "frame_relief_px": 2,
+      "vertical_spacing_px": 4,
+      "horizontal_spacing_px": 4
+    }
+  },
+  "crops": {
+    "trash-can-normal.png": {
+      "box_exclusive": [
+        88,
+        342,
+        680,
+        703
+      ],
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+    },
+    "barra-vertical-normal.png": {
+      "box_exclusive": [
+        644,
+        410,
+        664,
+        668
+      ],
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+    },
+    "barra-horizontal-normal.png": {
+      "box_exclusive": [
+        103,
+        667,
+        645,
+        687
+      ],
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    },
+    "canto-normal.png": {
+      "box_exclusive": [
+        626,
+        645,
+        666,
+        690
+      ],
+      "sha256": "fe81e2de89dadc2a7dc2f54c782260d4ac76e8f476d882f613e2db5bea660aff"
+    }
+  }
+}

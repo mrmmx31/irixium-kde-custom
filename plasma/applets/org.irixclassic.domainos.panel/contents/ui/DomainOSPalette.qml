@@ -16,15 +16,19 @@ QtObject {
     readonly property color black: followSystem ? system.buttonText : "#07141b"
     readonly property color blue: followSystem ? system.highlight : "#3297c7"
     readonly property color white: followSystem ? system.highlightedText : "#ffffff"
-    readonly property color dark: tone(background, "#7894a7", "#194b63")
-    readonly property color shadow: tone(background, "#7894a7", "#3e536e")
-    readonly property color highlight: tone(background, "#7894a7", "#c5e8e6")
-    readonly property color pale: tone(background, "#7894a7", "#a3d0e6")
-    readonly property color metalLight: tone(background, "#7894a7", "#c4d5ed")
+    // The live Window role is the native primary ColorSet 3. The approved
+    // prototype's steel background remains an artwork substitution key only;
+    // using it as the live saturation anchor distorted CoralReef's blue/cyan.
+    readonly property color nativePrimary: "#78a0d5"
+    readonly property color dark: tone(background, nativePrimary, "#194b63")
+    readonly property color shadow: tone(background, nativePrimary, "#3e536e")
+    readonly property color highlight: tone(background, nativePrimary, "#c5e8e6")
+    readonly property color pale: tone(background, nativePrimary, "#a3d0e6")
+    readonly property color metalLight: tone(background, nativePrimary, "#c4d5ed")
     readonly property color metalDark: shadow
-    readonly property color cyan: tone(background, "#7894a7", "#7acac5")
-    readonly property color cyanShadow: tone(background, "#7894a7", "#406b68")
-    readonly property color label: tone(background, "#7894a7", "#a2c0ce")
+    readonly property color cyan: tone(background, nativePrimary, "#7acac5")
+    readonly property color cyanShadow: tone(background, nativePrimary, "#406b68")
+    readonly property color label: tone(background, nativePrimary, "#a2c0ce")
     readonly property color lens: tone(blue, "#3297c7", "#78a0d5")
     readonly property color focus: followSystem ? system.highlight : "#dddd28"
     // Preserve the approved yellow; protect it when a yellow scheme hides it.

@@ -88,13 +88,18 @@ class UserBundleTest(unittest.TestCase):
     def test_all_theme_dependencies_present_and_user_scoped(self):
         data,config = self.root/'data',self.root/'config'
         pairs = sources(data,config)
-        self.assertEqual(len(pairs),35)
+        self.assertEqual(len(pairs),40)
         for source,dest in pairs:
             self.assertTrue(source.exists(),source)
             self.assertTrue(dest.is_relative_to(data) or dest.is_relative_to(config))
         targets = {str(d.relative_to(data)) for _,d in pairs if d.is_relative_to(data)}
         self.assertIn('color-schemes/Irixium.colors',targets)
         self.assertTrue({'icons/Irixium','icons/IrixClassic-SGI','icons/sgi'}.issubset(targets))
+        self.assertTrue({'plasma/look-and-feel/org.magpie.irixclassic.domainos.desktop',
+            'themes/DomainOS-SR10-4','themes/DomainOS-SR10-4-KDE',
+            'themes/DomainOS-SR10-4-KDE-Reload'}.issubset(targets))
+        config_targets={str(d.relative_to(config)) for _,d in pairs if d.is_relative_to(config)}
+        self.assertIn('Kvantum/DomainOS-SR10-4',config_targets)
 
     def test_domainos_options_install_and_restore_without_changing_selection_or_layouts(self):
         data, config = self.root/'data', self.root/'config'

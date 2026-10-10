@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 import QtQuick
 import "Geometry.js" as Geometry
+import "Palette.js" as Palette
 Item {
     id: surface
     property bool activeWindow: true
     property bool maximizedWindow: false
+    property bool resizeAllowed: true
     property bool minimizeAllowed: true
     property bool maximizeAllowed: true
     property bool menuOnPress: false
@@ -15,10 +17,17 @@ Item {
     property int titlePixels: 12
     property bool titleItalic: false
     property bool titleBold: true
-    readonly property var metrics: Geometry.metrics(width,pixelScale,maximizedWindow)
-    readonly property color faceColor: activeWindow ? "#fe8282" : "#7acac5"
-    readonly property color lightColor: activeWindow ? "#ffc8c8" : "#c5e8e6"
-    readonly property color darkColor: activeWindow ? "#864545" : "#406b68"
+    readonly property var metrics: Geometry.metrics(width,pixelScale,maximizedWindow,
+        resizeAllowed,minimizeAllowed,maximizeAllowed)
+    // Defaults reproduce the screenshot in standalone reference tests.
+    // The actual decoration binds face/caption to KWin's current color roles.
+    property color faceColor: activeWindow ? "#fe8282" : "#7acac5"
+    property color captionColor: "#ffffff"
+    readonly property color referenceFace: activeWindow ? "#fe8282" : "#7acac5"
+    readonly property color lightColor: Palette.tone(faceColor,referenceFace,
+        activeWindow ? Qt.color("#ffc8c8") : Qt.color("#c5e8e6"))
+    readonly property color darkColor: Palette.tone(faceColor,referenceFace,
+        activeWindow ? Qt.color("#864545") : Qt.color("#406b68"))
     property alias titleItem: titleRegion
     signal menuRequested(int mouseButton)
     signal closeRequested()
@@ -32,6 +41,7 @@ Item {
     }
     // Activating an inactive window must preserve the first menu click.
     onMaximizedWindowChanged: cancelGestures()
+    onResizeAllowedChanged: cancelGestures()
     onPixelScaleChanged: cancelGestures()
     onWidthChanged: cancelGestures()
     onHeightChanged: cancelGestures()
@@ -42,6 +52,8 @@ Item {
         transformOrigin:Item.TopLeft
         activeWindow:surface.activeWindow
         maximizedWindow:surface.maximizedWindow
+        resizeAllowed:surface.resizeAllowed
+        face:surface.faceColor; light:surface.lightColor; dark:surface.darkColor
     }
     component Glyph: Item {
         id: glyph
@@ -74,11 +86,22 @@ Item {
         width:Math.max(0,surface.width-2*x); height:20*surface.metrics.scale
     }
     Relief {
+        id:captionRelief
+        objectName:"domainosTitleRelief"
         x:surface.metrics.caption.x; y:surface.metrics.caption.y
         width:surface.metrics.caption.w
         height:surface.metrics.caption.h-(surface.maximizedWindow ? 0 : surface.metrics.scale)
         lineWidth:surface.metrics.scale
         face:surface.faceColor; light:surface.lightColor; dark:surface.darkColor
+        down:titlePress.active
+        // Observe the pointer passively: KWin still owns moving the window
+        // and the configured titlebar double-click action.
+        PointHandler {
+            id:titlePress
+            objectName:"domainosTitlePress"
+            acceptedButtons:Qt.LeftButton
+            target:null
+        }
     }
     Text {
         objectName:"domainosCaption"
@@ -88,7 +111,7 @@ Item {
         height:surface.metrics.caption.h-surface.metrics.scale
         text:surface.caption
         textFormat:Text.PlainText
-        color:"#ffffff"
+        color:surface.captionColor
         font.family:surface.titleFamily
         font.pixelSize:surface.titlePixels*surface.metrics.scale
         font.bold:surface.titleBold; font.italic:surface.titleItalic

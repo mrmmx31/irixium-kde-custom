@@ -51,8 +51,10 @@ Item {
     Item {
         id: textureLayer
         x: frame.inset; y: frame.inset
-        width: Math.max(0, frame.width-2*frame.inset) * frame.pixelScale
-        height: Math.max(0, frame.height-2*frame.inset) * frame.pixelScale
+        // Image.Tile uses the destination size to center its pattern. Keep
+        // that phase on an integer physical pixel even at fractional scales.
+        width: Math.ceil(Math.max(0, frame.width-2*frame.inset) * frame.pixelScale)
+        height: Math.ceil(Math.max(0, frame.height-2*frame.inset) * frame.pixelScale)
         scale: frame.pixelStep
         transformOrigin: Item.TopLeft
         clip: true

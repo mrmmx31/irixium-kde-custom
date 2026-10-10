@@ -68,7 +68,7 @@ def theme_profile(name, data, config, home):
     profile = doc['profiles'].get(name, {})
     if not all(isinstance(profile.get(key), str) and re.fullmatch(r'[A-Za-z0-9_.-]+', profile[key])
                for key in ('global', 'gtk', 'kvantum')):
-        raise Failure('O catálogo completo dos temas Classic/Moderno é necessário.')
+        raise Failure('O catálogo completo dos temas é necessário.')
     gtk, kvantum = profile['gtk'], profile['kvantum']
     required = [config / 'Kvantum' / kvantum / (kvantum + suffix)
                 for suffix in ('.kvconfig', '.svg')]
@@ -118,7 +118,7 @@ def latest(state, paths):
         raise Failure('O recibo não corresponde aos companions deste perfil.')
     if record.get('status') not in ('prepared', 'applied', 'restoring', 'restored',
                                     'failed_restored', 'recovery_needed') or \
-            record.get('profile') not in ('classic', 'moderno') or \
+            record.get('profile') not in catalog()['profiles'] or \
             not all(isinstance(record.get(key), str) for key in (
                 'global', 'theme_before', 'theme_after', 'gsettings_before')) or \
             (record['status'] in ('applied', 'restoring', 'restored') and (
@@ -265,7 +265,7 @@ def restore(config, state, home, *, dry=False):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('tema', choices=('classic', 'moderno'), nargs='?')
+    parser.add_argument('tema', choices=tuple(catalog()['profiles']), nargs='?')
     parser.add_argument('--verificar', action='store_true')
     parser.add_argument('--restaurar', action='store_true')
     args = parser.parse_args()
@@ -277,7 +277,7 @@ def main():
         result = restore(config, state, Path.home(), dry=args.verificar)
     else:
         if not args.tema:
-            parser.error('informe classic ou moderno')
+            parser.error('informe um perfil de tema do inventário')
         result = select(args.tema, data, config, state, Path.home(), dry=args.verificar)
     print(json.dumps(result, ensure_ascii=False))
 

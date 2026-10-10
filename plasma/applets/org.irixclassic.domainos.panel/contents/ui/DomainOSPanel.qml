@@ -37,6 +37,16 @@ Item {
     readonly property var taskIcons: ["desk.png","xterm.png","winterm.png","john.png","index.png","downl.png","xterm.png"]
     readonly property var trayIcons: ["network","speaker","envelope","storage","workstation","indicator"]
     readonly property var lowerIcons: ["terminal","preferences","drawer","lock","help"]
+    readonly property bool domainosBusyCursor: !!integration && integration.activity.busy
+
+    // VUE shows a front-panel hourglass during an invocation. This passive
+    // handler changes only the cursor; clicks and commands run immediately.
+    // Presentation receipts and the optional LED tail are not pending work.
+    HoverHandler {
+        objectName: "domainosBusyPointer"
+        enabled: panel.domainosBusyCursor
+        cursorShape: Qt.WaitCursor
+    }
 
     Item {
         id: drawing

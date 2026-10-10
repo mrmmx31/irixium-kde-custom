@@ -18,9 +18,16 @@ inclui essa opção, mantendo as decorações padrão dos perfis Classic e Moder
 A restauração independente usa
 `python3 tools/install_domainos_decoration.py --restaurar`.
 
-O desenho tem moldura ciano na janela inativa, rosa na ativa, título branco
-centralizado entre os controles e relevos de um e dois pixels. As laterais e a
-base medem 11 pixels; o topo mede 30 pixels, incluindo a faixa de redimensionar.
+No esquema DomainOS, o desenho tem moldura ciano na janela inativa, rosa na
+ativa e título branco centralizado entre os controles. As cores seguem os
+papéis ativo/inativo do KWin ao selecionar outro esquema; os relevos conservam
+as relações de luz e sombra medidas no original. Nas janelas redimensionáveis,
+as laterais e a base medem 11 pixels; o topo mede 30 pixels, incluindo a faixa de redimensionar.
+Nas janelas de tamanho fixo, as medidas são 6 pixels nas laterais/base e 25 no
+topo, sem os cantos de redimensionar. A regra depende da capacidade de
+redimensionar, independente da capacidade de maximizar. Isso corresponde aos
+recursos nativos `resizeBorderWidth=10` e `frameBorderWidth=5` do Vuewm, mais
+um pixel da moldura interna pintada pelo gerenciador.
 Maximizada, a janela mantém apenas 20 pixels de título. O centro permanece
 transparente para o KWin desenhar o aplicativo, enquanto toda a moldura é opaca.
 
@@ -30,6 +37,13 @@ fora cancela a ação. O duplo clique no menu fecha também uma janela inicialme
 inativa; o clique simples aguarda o intervalo de duplo clique do sistema. Esse
 único temporizador resolve o gesto do menu e não participa do desenho ou do
 redimensionamento.
+
+O campo do título também afunda enquanto o botão esquerdo está pressionado.
+Um observador passivo inverte luz e sombra sem deslocar o texto, preservando o
+arraste e o duplo clique configurados no KWin. O gesto foi testado na VM SR10.4:
+topo/esquerda passam da luz à sombra, base/direita fazem o inverso, e a soltura
+restaura os mesmos pixels. Pressão, soltura, arraste e duplo clique também foram
+verificados em KWin nativo numa sessão Xephyr privada.
 
 O manual de VUE distribuído para SR10.4 indica Swiss 742 bold como fonte média
 e Helvetica bold como pequena. A captura não prova qual dessas fontes estava
@@ -41,12 +55,14 @@ Referências:
 
 - [Captura exata SR10.4 do Virtual OS Museum](https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png).
 - [Manual HP VUE: vuestyle(1X), árvore Domain/OS SR10.4](https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuestyle.bsd.html).
+- [Manual Vuewm: bordas e funções por janela, árvore SR10.4](https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuewm.bsd.html).
 - [Installing DOMAIN Software, março de 1992](https://bitsavers.org/pdf/apollo/008860-A03_Installing_DOMAIN_Software_Mar92.pdf), para identificação da distribuição.
 
 `ORIGEM.json` registra o hash da captura, cores e medidas. Não há arte de
 SR10.4.1 ou de outras versões. A captura não é redistribuída no pacote.
-Os estados pressionado e maximizado são adaptações funcionais: não aparecem
-no print de referência.
+O estado maximizado é uma adaptação funcional para a área disponível no KDE;
+ele não aparece no print de referência. O relevo pressionado do título foi
+confirmado separadamente na VM; as capturas de ensaio não são redistribuídas.
 
 Prévia real de KDecoration3, sem aplicar ao KWin da sessão:
 

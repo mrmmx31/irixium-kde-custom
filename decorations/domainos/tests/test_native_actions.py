@@ -89,6 +89,25 @@ def main():
             except subprocess.CalledProcessError: return ""
         check("both windows belong to this test process", all(str(os.getpid()) in prop(widget, "_NET_WM_PID") for widget in windows))
         check("native frame extents correspond to DomainOS", wait(lambda: "11, 11, 30, 11" in prop(window, "_NET_FRAME_EXTENTS")), prop(window, "_NET_FRAME_EXTENTS"))
+        fixed=TestWindow("DomainOS — diálogo sem redimensionamento")
+        fixed.setFixedSize(310,180); fixed.move(720,120); fixed.show(); windows.append(fixed)
+        check("fixed-size native dialog has thin extents", wait(lambda: "6, 6, 25, 6" in prop(fixed,"_NET_FRAME_EXTENTS")), prop(fixed,"_NET_FRAME_EXTENTS"))
+        restricted=TestWindow("DomainOS — redimensiona sem maximizar")
+        restricted.setWindowFlags(Qt.WindowType.Window | Qt.WindowType.CustomizeWindowHint
+            | Qt.WindowType.WindowTitleHint | Qt.WindowType.WindowMinimizeButtonHint | Qt.WindowType.WindowCloseButtonHint)
+        restricted.move(650,580); restricted.show(); windows.append(restricted)
+        # Qt can hide its maximize button without restricting the WM function.
+        # Set the actual Motif hint on this owned test window: resize/move/
+        # minimize/close allowed, maximize denied, as a separate capability.
+        command("xprop","-id",str(int(restricted.winId())),"-f","_MOTIF_WM_HINTS","32c",
+            "-set","_MOTIF_WM_HINTS","1, 46, 0, 0, 0")
+        # KWin may retain maximize in its WM operations despite that client
+        # hint. The real native proof here concerns resizing and frame extent;
+        # Surface tests separately exercise the supplied maximizeable=false.
+        check("native Motif hint does not disable resizing", wait(lambda:
+            "_NET_WM_ACTION_RESIZE" in prop(restricted,"_NET_WM_ALLOWED_ACTIONS")),
+            prop(restricted,"_MOTIF_WM_HINTS"))
+        check("resizable native window with restricted Motif hint keeps thick extents", wait(lambda: "11, 11, 30, 11" in prop(restricted,"_NET_FRAME_EXTENTS")), prop(restricted,"_NET_FRAME_EXTENTS"))
         def activate(widget):
             command("xdotool", "windowactivate", "--sync", str(int(widget.winId())))
             app.processEvents(); time.sleep(.05)
@@ -114,6 +133,20 @@ def main():
             return app.primaryScreen().grabWindow(0).save(str(output / name))
         activate(window); check("native active/inactive screenshot", screenshot("native-active-inactive.png"))
         original = frame(window)
+        title_rectangle = (original[0]+30, original[1]+10, original[2]-80, 19)
+        title_normal = app.primaryScreen().grabWindow(0).toImage().copy(*title_rectangle)
+        command("xdotool", "mousemove", str(original[0]+original[2]//2), str(original[1]+20), "mousedown", "1")
+        check("native title held screenshot", screenshot("native-title-held.png"))
+        title_held = app.primaryScreen().grabWindow(0).toImage().copy(*title_rectangle)
+        check("native title press reverses painted relief", title_held != title_normal)
+        command("xdotool", "mouseup", "1")
+        check("native title release screenshot", screenshot("native-title-released.png"))
+        check("native title release restores original relief", app.primaryScreen().grabWindow(0).toImage().copy(*title_rectangle) == title_normal)
+        # The passive feedback must preserve KWin's configured double-click.
+        command("xdotool", "click", "--repeat", "2", "--delay", "70", "1")
+        check("native title double click still maximizes", wait(lambda: "_NET_WM_STATE_MAXIMIZED_HORZ" in prop(window, "_NET_WM_STATE")))
+        pointer(window, "maximize"); command("xdotool", "click", "1")
+        check("native title double-click maximization can restore", wait(lambda: "_NET_WM_STATE_MAXIMIZED_HORZ" not in prop(window, "_NET_WM_STATE")))
         pointer(window, "maximize"); command("xdotool", "mousedown", "1"); app.processEvents()
         check("native maximize not dispatched on press", "_NET_WM_STATE_MAXIMIZED_HORZ" not in prop(window, "_NET_WM_STATE"))
         check("native maximize held screenshot", screenshot("native-maximize-held.png"))

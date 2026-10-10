@@ -73,7 +73,7 @@ def run(*, scheme=None, dry=False, restoring=False):
                 notify_qt(config, profile)
         return {'status': 'restored' if results else 'not_installed', 'results': results}
     if not name:
-        raise Failure('Selecione primeiro o Tema Global IRIX Classic ou Irixium.')
+        raise Failure('Selecione primeiro um dos Temas Globais instalados da suíte.')
     profile = theme_profile(name, data, config, home)
     if effective_widget_style(config).lower() != 'kvantum':
         raise Failure('O estilo de aplicativos atual não é Kvantum; sua escolha foi preservada.')

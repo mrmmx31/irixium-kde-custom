@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Original repository palette; provenance: DomainOS-SR10.4.ORIGEM.json
+# Original SR10.4 VUE palette adaptation; provenance: DomainOS-SR10.4.ORIGEM.json
 [ColorEffects:Disabled]
 Color=62,83,110
 ColorAmount=0
@@ -21,16 +21,16 @@ IntensityAmount=0
 IntensityEffect=0
 
 [Colors:Button]
-BackgroundAlternate=96,127,145
-BackgroundNormal=120,148,167
-DecorationFocus=197,232,230
-DecorationHover=197,232,230
-ForegroundActive=16,43,55
-ForegroundInactive=62,83,110
+BackgroundAlternate=102,136,181
+BackgroundNormal=120,160,213
+DecorationFocus=254,130,130
+DecorationHover=196,213,237
+ForegroundActive=255,255,255
+ForegroundInactive=196,213,237
 ForegroundLink=7,20,27
 ForegroundNegative=130,35,35
 ForegroundNeutral=110,73,25
-ForegroundNormal=16,43,55
+ForegroundNormal=255,255,255
 ForegroundPositive=49,74,20
 ForegroundVisited=70,52,94
 
@@ -49,26 +49,26 @@ ForegroundPositive=175,203,126
 ForegroundVisited=190,188,213
 
 [Colors:Header]
-BackgroundAlternate=96,127,145
-BackgroundNormal=120,148,167
-DecorationFocus=197,232,230
-DecorationHover=197,232,230
-ForegroundActive=16,43,55
-ForegroundInactive=62,83,110
+BackgroundAlternate=50,151,199
+BackgroundNormal=50,151,199
+DecorationFocus=254,130,130
+DecorationHover=163,208,230
+ForegroundActive=255,255,255
+ForegroundInactive=163,208,230
 ForegroundLink=7,20,27
 ForegroundNegative=130,35,35
 ForegroundNeutral=110,73,25
-ForegroundNormal=16,43,55
+ForegroundNormal=255,255,255
 ForegroundPositive=49,74,20
 ForegroundVisited=70,52,94
 
 [Colors:Selection]
 BackgroundAlternate=50,151,199
 BackgroundNormal=50,151,199
-DecorationFocus=255,255,255
-DecorationHover=255,255,255
+DecorationFocus=254,130,130
+DecorationHover=163,208,230
 ForegroundActive=255,255,255
-ForegroundInactive=197,232,230
+ForegroundInactive=163,208,230
 ForegroundLink=255,255,255
 ForegroundNegative=255,221,221
 ForegroundNeutral=255,238,208
@@ -77,22 +77,22 @@ ForegroundPositive=226,242,201
 ForegroundVisited=226,226,245
 
 [Colors:Tooltip]
-BackgroundAlternate=120,148,167
-BackgroundNormal=163,208,230
+BackgroundAlternate=102,136,181
+BackgroundNormal=120,160,213
 DecorationFocus=25,75,99
 DecorationHover=25,75,99
-ForegroundActive=16,43,55
-ForegroundInactive=62,83,110
+ForegroundActive=255,255,255
+ForegroundInactive=196,213,237
 ForegroundLink=7,20,27
 ForegroundNegative=130,35,35
 ForegroundNeutral=110,73,25
-ForegroundNormal=16,43,55
+ForegroundNormal=255,255,255
 ForegroundPositive=49,74,20
 ForegroundVisited=70,52,94
 
 [Colors:View]
-BackgroundAlternate=103,135,153
-BackgroundNormal=96,127,145
+BackgroundAlternate=120,160,213
+BackgroundNormal=102,136,181
 DecorationFocus=163,208,230
 DecorationHover=163,208,230
 ForegroundActive=255,255,255
@@ -105,16 +105,16 @@ ForegroundPositive=218,238,190
 ForegroundVisited=218,216,242
 
 [Colors:Window]
-BackgroundAlternate=96,127,145
-BackgroundNormal=120,148,167
-DecorationFocus=197,232,230
-DecorationHover=197,232,230
-ForegroundActive=16,43,55
-ForegroundInactive=62,83,110
+BackgroundAlternate=102,136,181
+BackgroundNormal=120,160,213
+DecorationFocus=254,130,130
+DecorationHover=196,213,237
+ForegroundActive=255,255,255
+ForegroundInactive=196,213,237
 ForegroundLink=7,20,27
 ForegroundNegative=130,35,35
 ForegroundNeutral=110,73,25
-ForegroundNormal=16,43,55
+ForegroundNormal=255,255,255
 ForegroundPositive=49,74,20
 ForegroundVisited=70,52,94
 
@@ -127,9 +127,9 @@ shadeSortColumn=true
 contrast=9
 
 [WM]
-activeBackground=120,148,167
-activeBlend=120,148,167
+activeBackground=254,130,130
+activeBlend=254,130,130
 activeForeground=255,255,255
-inactiveBackground=96,127,145
-inactiveBlend=96,127,145
-inactiveForeground=197,232,230
+inactiveBackground=122,202,197
+inactiveBlend=122,202,197
+inactiveForeground=255,255,255

@@ -1,0 +1,876 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+@define-color insensitive_base_color_breeze #6688b5;
+@define-color insensitive_base_fg_color_breeze #ffffff;
+@define-color insensitive_bg_color_breeze #78a0d5;
+@define-color insensitive_fg_color_breeze #ffffff;
+@define-color insensitive_selected_bg_color_breeze #3297c7;
+@define-color insensitive_selected_fg_color_breeze #ffffff;
+@define-color insensitive_unfocused_bg_color_breeze #78a0d5;
+@define-color insensitive_unfocused_fg_color_breeze #ffffff;
+@define-color insensitive_unfocused_selected_bg_color_breeze #3297c7;
+@define-color insensitive_unfocused_selected_fg_color_breeze #ffffff;
+@define-color theme_base_color_breeze #6688b5;
+@define-color theme_bg_color_breeze #78a0d5;
+@define-color theme_button_background_backdrop_breeze #78a0d5;
+@define-color theme_button_background_backdrop_insensitive_breeze #78a0d5;
+@define-color theme_button_background_insensitive_breeze #78a0d5;
+@define-color theme_button_background_normal_breeze #78a0d5;
+@define-color theme_button_decoration_focus_backdrop_breeze #fe8282;
+@define-color theme_button_decoration_focus_backdrop_insensitive_breeze #fe8282;
+@define-color theme_button_decoration_focus_breeze #fe8282;
+@define-color theme_button_decoration_focus_insensitive_breeze #fe8282;
+@define-color theme_button_foreground_backdrop_breeze #ffffff;
+@define-color theme_button_foreground_backdrop_insensitive_breeze #ffffff;
+@define-color theme_button_foreground_insensitive_breeze #ffffff;
+@define-color theme_button_foreground_normal_breeze #ffffff;
+@define-color theme_fg_color_breeze #ffffff;
+@define-color theme_header_background_backdrop_breeze #3297c7;
+@define-color theme_header_background_breeze #3297c7;
+@define-color theme_header_foreground_backdrop_breeze #ffffff;
+@define-color theme_header_foreground_breeze #ffffff;
+@define-color theme_header_foreground_insensitive_backdrop_breeze #ffffff;
+@define-color theme_header_foreground_insensitive_breeze #ffffff;
+@define-color theme_selected_bg_color_breeze #3297c7;
+@define-color theme_selected_fg_color_breeze #ffffff;
+@define-color theme_text_color_breeze #ffffff;
+@define-color theme_titlebar_background_backdrop_breeze #7acac5;
+@define-color theme_titlebar_background_breeze #fe8282;
+@define-color theme_titlebar_foreground_backdrop_breeze #ffffff;
+@define-color theme_titlebar_foreground_breeze #ffffff;
+@define-color theme_titlebar_foreground_insensitive_backdrop_breeze #ffffff;
+@define-color theme_titlebar_foreground_insensitive_breeze #ffffff;
+@define-color theme_unfocused_base_color_breeze #6688b5;
+@define-color theme_unfocused_bg_color_breeze #78a0d5;
+@define-color theme_unfocused_fg_color_breeze #ffffff;
+@define-color theme_unfocused_selected_bg_color_breeze #3297c7;
+@define-color theme_unfocused_selected_fg_color_breeze #ffffff;
+@define-color theme_unfocused_text_color_breeze #ffffff;
+@define-color theme_unfocused_view_bg_color_breeze #6688b5;
+@define-color theme_unfocused_view_text_color_breeze #ffffff;
+@define-color tooltip_background_breeze #78a0d5;
+@define-color tooltip_text_breeze #ffffff;
+
+* {
+  border-radius: 0; border-style: none; border-width: 0;
+  background-image: none; box-shadow: none; text-shadow: none;
+  -gtk-icon-shadow: none; transition-property: none; transition-duration: 0s;
+  animation-name: none; opacity: 1; outline-style: none;
+}
+label, image { color: inherit; }
+button, .button { min-width: 16px; min-height: 18px; padding: 4px 6px; border: 2px solid; }
+entry, spinbutton { min-height: 18px; padding: 2px 4px; border: 2px solid; }
+textview, .view, treeview, listview, columnview, gridview { border: 0; }
+menubar, toolbar { padding: 0; border: 2px solid; }
+menu, popover > contents { padding: 2px; border: 2px solid; }
+menuitem { min-height: 18px; padding: 2px 6px; border: 2px solid transparent; }
+headerbar, .titlebar { min-height: 20px; padding: 2px; border: 2px solid; }
+notebook > header > tabs > tab { min-height: 18px; padding: 4px 6px; border: 2px solid; }
+notebook > stack, frame > border { border: 2px solid; }
+check, radio { min-width: 14px; min-height: 14px; padding: 0; margin: 2px; border: 0; }
+scrollbar { padding: 0; margin: 0; border: 0; }
+scrollbar trough { min-width: 12px; min-height: 12px; border: 2px solid; }
+scrollbar slider { min-width: 8px; min-height: 16px; border: 2px solid; margin: 0; padding: 0; }
+scrollbar.horizontal slider { min-width: 16px; min-height: 8px; }
+scale trough { min-width: 8px; min-height: 8px; border: 2px solid; }
+scale slider { min-width: 12px; min-height: 20px; border: 2px solid; }
+scale.vertical slider { min-width: 20px; min-height: 12px; }
+progressbar trough, levelbar trough { min-height: 14px; border: 2px solid; }
+progressbar progress, levelbar block.filled { min-height: 14px; border: 2px solid; }
+switch { min-width: 32px; min-height: 16px; border: 2px solid; padding: 0; }
+switch slider { min-width: 14px; min-height: 14px; border: 2px solid; }
+separator { min-width: 2px; min-height: 2px; }
+tooltip { padding: 4px 6px; border: 2px solid; }
+*:focus { outline: 1px dotted; outline-offset: -4px; }
+label:focus, image:focus { outline: none; }
+.background, window, dialog {
+  color: @theme_fg_color_breeze;
+  background-color: @theme_bg_color_breeze;
+  border-color: mix(@theme_bg_color_breeze, #ffffff, 0.56) mix(@theme_bg_color_breeze, #000000, 0.482) mix(@theme_bg_color_breeze, #000000, 0.482) mix(@theme_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+button, .button {
+  color: @theme_button_foreground_normal_breeze;
+  background-color: @theme_button_background_normal_breeze;
+  border-color: mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+entry, spinbutton, textview, .view, treeview, listview, columnview, gridview {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+  border-color: mix(@theme_bg_color_breeze, #000000, 0.482) mix(@theme_bg_color_breeze, #ffffff, 0.56) mix(@theme_bg_color_breeze, #ffffff, 0.56) mix(@theme_bg_color_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+menubar, toolbar, menu, menuitem, popover > contents {
+  color: @theme_header_foreground_breeze;
+  background-color: @theme_header_background_breeze;
+  border-color: mix(@theme_header_background_breeze, #ffffff, 0.55) mix(@theme_header_background_breeze, #000000, 0.502) mix(@theme_header_background_breeze, #000000, 0.502) mix(@theme_header_background_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+headerbar, .titlebar {
+  color: @theme_titlebar_foreground_breeze;
+  background-color: @theme_titlebar_background_breeze;
+  border-color: mix(@theme_titlebar_background_breeze, #ffffff, 0.56) mix(@theme_titlebar_background_breeze, #000000, 0.482) mix(@theme_titlebar_background_breeze, #000000, 0.482) mix(@theme_titlebar_background_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+notebook > stack, notebook > header > tabs > tab, frame > border {
+  color: @theme_fg_color_breeze;
+  background-color: @theme_bg_color_breeze;
+  border-color: mix(@theme_bg_color_breeze, #ffffff, 0.56) mix(@theme_bg_color_breeze, #000000, 0.482) mix(@theme_bg_color_breeze, #000000, 0.482) mix(@theme_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+scrollbar trough, scale trough, progressbar trough, levelbar trough, switch {
+  color: @theme_button_foreground_normal_breeze;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+  border-color: mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+scrollbar slider, scale slider, switch slider {
+  color: @theme_button_foreground_normal_breeze;
+  background-color: @theme_button_background_normal_breeze;
+  border-color: mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+progressbar progress, levelbar block.filled {
+  color: @theme_selected_fg_color_breeze;
+  background-color: @theme_selected_bg_color_breeze;
+  border-color: mix(@theme_selected_bg_color_breeze, #ffffff, 0.55) mix(@theme_selected_bg_color_breeze, #000000, 0.502) mix(@theme_selected_bg_color_breeze, #000000, 0.502) mix(@theme_selected_bg_color_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+tooltip {
+  color: @tooltip_text_breeze;
+  background-color: @tooltip_background_breeze;
+  border-color: mix(@tooltip_background_breeze, #ffffff, 0.56) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+button:active, button:checked, switch:checked slider {
+  color: @theme_button_foreground_normal_breeze;
+  background-color: @theme_button_background_normal_breeze;
+  border-color: mix(@theme_button_background_normal_breeze, #000000, 0.482) mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #ffffff, 0.56) mix(@theme_button_background_normal_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+button.flat {
+  color: @theme_button_foreground_normal_breeze;
+  background-color: @theme_button_background_normal_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+selection, :selected {
+  color: @theme_selected_fg_color_breeze;
+  background-color: @theme_selected_bg_color_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+menuitem {
+  color: @theme_header_foreground_breeze;
+  background-color: @theme_header_background_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+menuitem:hover {
+  color: @theme_header_foreground_breeze;
+  background-color: @theme_header_background_breeze;
+  border-color: mix(@theme_header_background_breeze, #ffffff, 0.55) mix(@theme_header_background_breeze, #000000, 0.502) mix(@theme_header_background_breeze, #000000, 0.502) mix(@theme_header_background_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+menuitem:active {
+  color: @theme_header_foreground_breeze;
+  background-color: @theme_header_background_breeze;
+  border-color: mix(@theme_header_background_breeze, #000000, 0.502) mix(@theme_header_background_breeze, #ffffff, 0.55) mix(@theme_header_background_breeze, #ffffff, 0.55) mix(@theme_header_background_breeze, #000000, 0.502);
+  outline-color: @theme_button_decoration_focus_breeze;
+}
+button.default {
+  box-shadow: 0 0 0 2px @theme_titlebar_background_breeze;
+}
+check {
+  background-image: -gtk-recolor(url("adaptive/check-off-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:checked {
+  background-image: -gtk-recolor(url("adaptive/check-on-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56), warning mix(@theme_button_background_normal_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio {
+  background-image: -gtk-recolor(url("adaptive/radio-off-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:checked {
+  background-image: -gtk-recolor(url("adaptive/radio-on-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56), warning mix(@theme_button_background_normal_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:indeterminate {
+  background-image: -gtk-recolor(url("adaptive/check-mixed-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_foreground_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/check-mixed-normal-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.15));
+  background-position: center, center;
+  background-size: 14px 14px, 14px 14px;
+  background-repeat: no-repeat, no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+combobox arrow {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+menuitem arrow {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander arrow {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander:checked arrow {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+.background:backdrop, window:backdrop, dialog:backdrop {
+  color: @theme_unfocused_fg_color_breeze;
+  background-color: @theme_unfocused_bg_color_breeze;
+  border-color: mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@theme_unfocused_bg_color_breeze, #000000, 0.482) mix(@theme_unfocused_bg_color_breeze, #000000, 0.482) mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+button:backdrop, .button:backdrop {
+  color: @theme_button_foreground_backdrop_breeze;
+  background-color: @theme_button_background_backdrop_breeze;
+  border-color: mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+entry:backdrop, spinbutton:backdrop, textview:backdrop, .view:backdrop, treeview:backdrop, listview:backdrop, columnview:backdrop, gridview:backdrop {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+  border-color: mix(@theme_unfocused_bg_color_breeze, #000000, 0.482) mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@theme_unfocused_bg_color_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+menubar:backdrop, toolbar:backdrop, menu:backdrop, menuitem:backdrop, popover > contents:backdrop {
+  color: @theme_header_foreground_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+headerbar:backdrop, .titlebar:backdrop {
+  color: @theme_titlebar_foreground_backdrop_breeze;
+  background-color: @theme_titlebar_background_backdrop_breeze;
+  border-color: mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+notebook > stack:backdrop, notebook > header > tabs > tab:backdrop, frame > border:backdrop {
+  color: @theme_unfocused_fg_color_breeze;
+  background-color: @theme_unfocused_bg_color_breeze;
+  border-color: mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@theme_unfocused_bg_color_breeze, #000000, 0.482) mix(@theme_unfocused_bg_color_breeze, #000000, 0.482) mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+scrollbar trough:backdrop, scale trough:backdrop, progressbar trough:backdrop, levelbar trough:backdrop, switch:backdrop {
+  color: @theme_button_foreground_backdrop_breeze;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+  border-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+scrollbar slider:backdrop, scale slider:backdrop, switch slider:backdrop {
+  color: @theme_button_foreground_backdrop_breeze;
+  background-color: @theme_button_background_backdrop_breeze;
+  border-color: mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+progressbar progress:backdrop, levelbar block.filled:backdrop {
+  color: @theme_unfocused_selected_fg_color_breeze;
+  background-color: @theme_unfocused_selected_bg_color_breeze;
+  border-color: mix(@theme_unfocused_selected_bg_color_breeze, #ffffff, 0.55) mix(@theme_unfocused_selected_bg_color_breeze, #000000, 0.502) mix(@theme_unfocused_selected_bg_color_breeze, #000000, 0.502) mix(@theme_unfocused_selected_bg_color_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+tooltip:backdrop {
+  color: @tooltip_text_breeze;
+  background-color: @tooltip_background_breeze;
+  border-color: mix(@tooltip_background_breeze, #ffffff, 0.56) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+button:active:backdrop, button:checked:backdrop, switch:checked:backdrop slider {
+  color: @theme_button_foreground_backdrop_breeze;
+  background-color: @theme_button_background_backdrop_breeze;
+  border-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+button.flat:backdrop {
+  color: @theme_button_foreground_backdrop_breeze;
+  background-color: @theme_button_background_backdrop_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+selection:backdrop, :selected:backdrop {
+  color: @theme_unfocused_selected_fg_color_breeze;
+  background-color: @theme_unfocused_selected_bg_color_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+menuitem:backdrop {
+  color: @theme_header_foreground_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+menuitem:hover:backdrop {
+  color: @theme_header_foreground_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+menuitem:active:backdrop {
+  color: @theme_header_foreground_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502);
+  outline-color: @theme_button_decoration_focus_backdrop_breeze;
+}
+button.default:backdrop {
+  box-shadow: 0 0 0 2px @theme_titlebar_background_backdrop_breeze;
+}
+check:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-off-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:checked:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-on-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56), warning mix(@theme_button_background_backdrop_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:backdrop {
+  background-image: -gtk-recolor(url("adaptive/radio-off-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:checked:backdrop {
+  background-image: -gtk-recolor(url("adaptive/radio-on-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56), warning mix(@theme_button_background_backdrop_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:indeterminate:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-mixed-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_foreground_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/check-mixed-normal-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.15));
+  background-position: center, center;
+  background-size: 14px 14px, 14px 14px;
+  background-repeat: no-repeat, no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+combobox arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+menuitem arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander:checked arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+.background:disabled, window:disabled, dialog:disabled {
+  color: @insensitive_fg_color_breeze;
+  background-color: @insensitive_bg_color_breeze;
+  border-color: mix(@insensitive_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_bg_color_breeze, #000000, 0.482) mix(@insensitive_bg_color_breeze, #000000, 0.482) mix(@insensitive_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+button:disabled, .button:disabled {
+  color: @theme_button_foreground_insensitive_breeze;
+  background-color: @theme_button_background_insensitive_breeze;
+  border-color: mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+entry:disabled, spinbutton:disabled, textview:disabled, .view:disabled, treeview:disabled, listview:disabled, columnview:disabled, gridview:disabled {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+  border-color: mix(@insensitive_bg_color_breeze, #000000, 0.482) mix(@insensitive_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_bg_color_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+menubar:disabled, toolbar:disabled, menu:disabled, menuitem:disabled, popover > contents:disabled {
+  color: @theme_header_foreground_insensitive_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+headerbar:disabled, .titlebar:disabled {
+  color: @theme_titlebar_foreground_insensitive_breeze;
+  background-color: @theme_titlebar_background_backdrop_breeze;
+  border-color: mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+notebook > stack:disabled, notebook > header > tabs > tab:disabled, frame > border:disabled {
+  color: @insensitive_fg_color_breeze;
+  background-color: @insensitive_bg_color_breeze;
+  border-color: mix(@insensitive_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_bg_color_breeze, #000000, 0.482) mix(@insensitive_bg_color_breeze, #000000, 0.482) mix(@insensitive_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+scrollbar trough:disabled, scale trough:disabled, progressbar trough:disabled, levelbar trough:disabled, switch:disabled {
+  color: @theme_button_foreground_insensitive_breeze;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+  border-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+scrollbar slider:disabled, scale slider:disabled, switch slider:disabled {
+  color: @theme_button_foreground_insensitive_breeze;
+  background-color: @theme_button_background_insensitive_breeze;
+  border-color: mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+progressbar progress:disabled, levelbar block.filled:disabled {
+  color: @insensitive_selected_fg_color_breeze;
+  background-color: @insensitive_selected_bg_color_breeze;
+  border-color: mix(@insensitive_selected_bg_color_breeze, #ffffff, 0.55) mix(@insensitive_selected_bg_color_breeze, #000000, 0.502) mix(@insensitive_selected_bg_color_breeze, #000000, 0.502) mix(@insensitive_selected_bg_color_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+tooltip:disabled {
+  color: @tooltip_text_breeze;
+  background-color: @tooltip_background_breeze;
+  border-color: mix(@tooltip_background_breeze, #ffffff, 0.56) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+button:active:disabled, button:checked:disabled, switch:checked:disabled slider {
+  color: @theme_button_foreground_insensitive_breeze;
+  background-color: @theme_button_background_insensitive_breeze;
+  border-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_insensitive_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+button.flat:disabled {
+  color: @theme_button_foreground_insensitive_breeze;
+  background-color: @theme_button_background_insensitive_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+selection:disabled, :selected:disabled {
+  color: @insensitive_selected_fg_color_breeze;
+  background-color: @insensitive_selected_bg_color_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+menuitem:disabled {
+  color: @theme_header_foreground_insensitive_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+menuitem:hover:disabled {
+  color: @theme_header_foreground_insensitive_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+menuitem:active:disabled {
+  color: @theme_header_foreground_insensitive_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502);
+  outline-color: @theme_button_decoration_focus_insensitive_breeze;
+}
+button.default:disabled {
+  box-shadow: 0 0 0 2px @theme_titlebar_background_backdrop_breeze;
+}
+check:disabled {
+  background-image: -gtk-recolor(url("adaptive/check-off-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:checked:disabled {
+  background-image: -gtk-recolor(url("adaptive/check-on-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56), warning mix(@theme_button_background_insensitive_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:disabled {
+  background-image: -gtk-recolor(url("adaptive/radio-off-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:checked:disabled {
+  background-image: -gtk-recolor(url("adaptive/radio-on-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56), warning mix(@theme_button_background_insensitive_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:indeterminate:disabled {
+  background-image: -gtk-recolor(url("adaptive/check-mixed-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_foreground_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/check-mixed-disabled-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.15));
+  background-position: center, center;
+  background-size: 14px 14px, 14px 14px;
+  background-repeat: no-repeat, no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+combobox arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+menuitem arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander:checked arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+.background:disabled:backdrop, window:disabled:backdrop, dialog:disabled:backdrop {
+  color: @insensitive_unfocused_fg_color_breeze;
+  background-color: @insensitive_unfocused_bg_color_breeze;
+  border-color: mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482) mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482) mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+button:disabled:backdrop, .button:disabled:backdrop {
+  color: @theme_button_foreground_backdrop_insensitive_breeze;
+  background-color: @theme_button_background_backdrop_insensitive_breeze;
+  border-color: mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+entry:disabled:backdrop, spinbutton:disabled:backdrop, textview:disabled:backdrop, .view:disabled:backdrop, treeview:disabled:backdrop, listview:disabled:backdrop, columnview:disabled:backdrop, gridview:disabled:backdrop {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+  border-color: mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482) mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+menubar:disabled:backdrop, toolbar:disabled:backdrop, menu:disabled:backdrop, menuitem:disabled:backdrop, popover > contents:disabled:backdrop {
+  color: @theme_header_foreground_insensitive_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+headerbar:disabled:backdrop, .titlebar:disabled:backdrop {
+  color: @theme_titlebar_foreground_insensitive_backdrop_breeze;
+  background-color: @theme_titlebar_background_backdrop_breeze;
+  border-color: mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #000000, 0.482) mix(@theme_titlebar_background_backdrop_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+notebook > stack:disabled:backdrop, notebook > header > tabs > tab:disabled:backdrop, frame > border:disabled:backdrop {
+  color: @insensitive_unfocused_fg_color_breeze;
+  background-color: @insensitive_unfocused_bg_color_breeze;
+  border-color: mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56) mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482) mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482) mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+scrollbar trough:disabled:backdrop, scale trough:disabled:backdrop, progressbar trough:disabled:backdrop, levelbar trough:disabled:backdrop, switch:disabled:backdrop {
+  color: @theme_button_foreground_backdrop_insensitive_breeze;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+  border-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+scrollbar slider:disabled:backdrop, scale slider:disabled:backdrop, switch slider:disabled:backdrop {
+  color: @theme_button_foreground_backdrop_insensitive_breeze;
+  background-color: @theme_button_background_backdrop_insensitive_breeze;
+  border-color: mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+progressbar progress:disabled:backdrop, levelbar block.filled:disabled:backdrop {
+  color: @insensitive_unfocused_selected_fg_color_breeze;
+  background-color: @insensitive_unfocused_selected_bg_color_breeze;
+  border-color: mix(@insensitive_unfocused_selected_bg_color_breeze, #ffffff, 0.55) mix(@insensitive_unfocused_selected_bg_color_breeze, #000000, 0.502) mix(@insensitive_unfocused_selected_bg_color_breeze, #000000, 0.502) mix(@insensitive_unfocused_selected_bg_color_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+tooltip:disabled:backdrop {
+  color: @tooltip_text_breeze;
+  background-color: @tooltip_background_breeze;
+  border-color: mix(@tooltip_background_breeze, #ffffff, 0.56) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #000000, 0.482) mix(@tooltip_background_breeze, #ffffff, 0.56);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+button:active:disabled:backdrop, button:checked:disabled:backdrop, switch:checked:disabled:backdrop slider {
+  color: @theme_button_foreground_backdrop_insensitive_breeze;
+  background-color: @theme_button_background_backdrop_insensitive_breeze;
+  border-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56) mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+button.flat:disabled:backdrop {
+  color: @theme_button_foreground_backdrop_insensitive_breeze;
+  background-color: @theme_button_background_backdrop_insensitive_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+selection:disabled:backdrop, :selected:disabled:backdrop {
+  color: @insensitive_unfocused_selected_fg_color_breeze;
+  background-color: @insensitive_unfocused_selected_bg_color_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+menuitem:disabled:backdrop {
+  color: @theme_header_foreground_insensitive_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: transparent;
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+menuitem:hover:disabled:backdrop {
+  color: @theme_header_foreground_insensitive_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+menuitem:active:disabled:backdrop {
+  color: @theme_header_foreground_insensitive_backdrop_breeze;
+  background-color: @theme_header_background_backdrop_breeze;
+  border-color: mix(@theme_header_background_backdrop_breeze, #000000, 0.502) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #ffffff, 0.55) mix(@theme_header_background_backdrop_breeze, #000000, 0.502);
+  outline-color: @theme_button_decoration_focus_backdrop_insensitive_breeze;
+}
+button.default:disabled:backdrop {
+  box-shadow: 0 0 0 2px @theme_titlebar_background_backdrop_breeze;
+}
+check:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-off-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:checked:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-on-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56), warning mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/radio-off-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+radio:checked:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/radio-on-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56), warning mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15));
+  background-position: center;
+  background-size: 14px 14px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+check:indeterminate:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/check-mixed-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_foreground_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/check-mixed-disabled-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15));
+  background-position: center, center;
+  background-size: 14px 14px, 14px 14px;
+  background-repeat: no-repeat, no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: transparent;
+  -gtk-icon-source: none;
+  border-image-source: none;
+}
+combobox arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+menuitem arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+expander:checked arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}

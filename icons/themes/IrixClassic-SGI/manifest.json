@@ -1,8 +1,8 @@
 {
   "version": "0.4.1",
-  "canonical_icons": 953,
-  "unique_artworks": 481,
-  "icon_names": 2380,
+  "canonical_icons": 954,
+  "unique_artworks": 483,
+  "icon_names": 2381,
   "sizes": [
     16,
     22,
@@ -8300,6 +8300,39 @@
       "kind": "menu_alias",
       "variant": "user-desktop",
       "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "list-remove-symbolic",
+      "kind": "action",
+      "variant": "minus",
+      "aliases": []
     }
-  ]
+  ],
+  "symbolic_controls": {
+    "list-add-symbolic": {
+      "format": "svg",
+      "native_grid": 16,
+      "stroke": 2,
+      "extent": 10,
+      "foreground": "currentColor",
+      "kde_role": "ColorScheme-Text",
+      "gtk_role": "foreground",
+      "fixed_sizes": [
+        16
+      ]
+    },
+    "list-remove-symbolic": {
+      "format": "svg",
+      "native_grid": 16,
+      "stroke": 2,
+      "extent": 10,
+      "foreground": "currentColor",
+      "kde_role": "ColorScheme-Text",
+      "gtk_role": "foreground",
+      "fixed_sizes": [
+        16
+      ]
+    }
+  }
 }

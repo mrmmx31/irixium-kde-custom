@@ -49,12 +49,25 @@ Item {
     property var waitingOperationsPopups:[]
     property bool closingOperationsPopups:false
     property bool presentingOperations:false
+    property bool modifierSelectionArmed:false
     property string lastError:""
     property int operationsOpened:0
     readonly property var nativeMenuBridge:nativeLayer.item
     property alias basicContextMenu:basicMenu
     property alias batchContextMenu:operationsMenu
     DomainOSPalette { id:fallbackPalette }
+    DomainOSModifierKeys {
+        onReleased: (remainingModifiers,key) => taskbox.selectionModifiersReleased(remainingModifiers,key)
+    }
+    // Plasma's panel focus frame reads logical bounds without our drawing
+    // scale. Keep keyboard event propagation to taskbox using a receiver
+    // without artwork, rather than giving that frame the scaled Iconbox.
+    Item {
+        id: keyboardFocus
+        objectName: "domainosIconboxKeyboardFocus"
+        width: 0; height: 0
+        activeFocusOnTab: false
+    }
     DomainOSPopupPlacement { id:menuPlacement }
     // A mapped Popup.Window keeps one native parent for its entire lifetime.
     // Its position is independent from the tile used to open this chooser.
@@ -101,11 +114,13 @@ Item {
         const plainClick=!(modifiers & (Qt.ControlModifier | Qt.ShiftModifier))
         if (!plainClick && groupPicker.visible) groupPicker.close()
         if (plainClick && !groupToggle.shouldOpen(anchor || buttonForKey(record.key))) {
+            modifierSelectionArmed=false
             groupPicker.close()
             controller.finishGroupSelection(false)
             return true
         }
-        forceActiveFocus()
+        modifierSelectionArmed=!plainClick
+        keyboardFocus.forceActiveFocus(Qt.MouseFocusReason)
         groupAnchor=anchor
         const selected=controller.selectTask(record.key,modifiers)
         if (selected && plainClick && !record.group) controller.openMemberSelector(record.key)
@@ -117,6 +132,7 @@ Item {
         return handleResult(controller.requestAction(record.key,"activate",undefined,record.pid))
     }
     function doubleClickRecord(record) {
+        modifierSelectionArmed=false
         cancelPendingOperations()
         if (!checkTarget(record)) { fail(qsTr("Essa janela não está mais disponível."));return false }
         if (record.group) {
@@ -209,6 +225,7 @@ Item {
         showPendingOperations(operationsGeneration)
     }
     function openOperations(windows) {
+        modifierSelectionArmed=false
         hideThumbnails()
         const snapshot=windows.slice()
         if (!snapshot.length || !snapshot.every(checkTarget)) {
@@ -373,11 +390,23 @@ Item {
         return null
     }
     onRowsChanged:firstVisible=Math.max(0,Math.min(firstVisible,Math.max(0,(pageCount-1)*visibleCapacity)))
+    function selectionModifiersReleased(remainingModifiers,releasedKey) {
+        if (!modifierSelectionArmed || !controller) return
+        let remaining=remainingModifiers || 0
+        if (releasedKey===Qt.Key_Control) remaining &= ~Qt.ControlModifier
+        if (releasedKey===Qt.Key_Shift) remaining &= ~Qt.ShiftModifier
+        if (remaining & (Qt.ControlModifier | Qt.ShiftModifier)) return
+        // Coalesce the native observer and a focused Qt key event. Releasing
+        // modifiers later in an unrelated application never reopens a menu.
+        modifierSelectionArmed=false
+        controller.modifiersReleased(remaining,releasedKey)
+    }
     Keys.onReleased: event => {
         if (event.key===Qt.Key_Control || event.key===Qt.Key_Shift)
-            controller.modifiersReleased(event.modifiers,event.key)
+            selectionModifiersReleased(event.modifiers,event.key)
     }
     Keys.onEscapePressed: {
+        modifierSelectionArmed=false
         cancelPendingOperations()
         groupPicker.close();operationsMenu.close();basicMenu.close()
     }
@@ -574,7 +603,12 @@ Item {
         closePolicy:Controls.Popup.CloseOnEscape
             | (hintOwner && hintOwner.previewHovered ? Controls.Popup.NoAutoClose
                 : Controls.Popup.CloseOnPressOutsideParent)
-        onAboutToHide:hintOwner=null
+        onAboutToHide:{
+            hintOwner=null
+            // Dismissing the selector ends its modifier gesture. Preserve the
+            // chosen windows, but a later release must not reopen Operations.
+            taskbox.modifierSelectionArmed=false
+        }
         onClosed:{
             hintOwner=null;windowHighlight.clear()
             if (taskbox.controller && taskbox.controller.groupSelectorOpen)
@@ -600,7 +634,7 @@ Item {
                         owner.hideImmediately()
                 })
             }
-            Keys.onReleased:event=>{ if (event.key===Qt.Key_Control || event.key===Qt.Key_Shift) taskbox.controller.modifiersReleased(event.modifiers,event.key) }
+            Keys.onReleased:event=>{ if (event.key===Qt.Key_Control || event.key===Qt.Key_Shift) taskbox.selectionModifiersReleased(event.modifiers,event.key) }
             Text {
                 id:groupHeader;objectName:"domainosGroupHeader"
                 width:parent.width;color:taskbox.domainosPalette.text

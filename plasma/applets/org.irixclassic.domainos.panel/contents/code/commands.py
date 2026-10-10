@@ -59,6 +59,30 @@ def find_desktop_file(identifier):
     raise RuntimeError("Application is not installed: " + identifier)
 
 
+class LauncherOutcomeUnknown(RuntimeError):
+    """The launcher reply timed out after a request may have been submitted."""
+
+
+def run_launcher(command):
+    """Wait for launcher acceptance, never for the application's lifetime."""
+    # Legacy KIO launches may leave stdout/stderr inherited by the application.
+    # A pipe capture would wait for that application to exit after the launcher
+    # itself has already returned. A temporary file preserves useful failure
+    # details without owning or waiting for the application's lifetime.
+    with tempfile.TemporaryFile() as errors:
+        try:
+            result = subprocess.run(command, stdin=subprocess.DEVNULL,
+                stdout=subprocess.DEVNULL, stderr=errors, timeout=20)
+        except subprocess.TimeoutExpired as error:
+            raise LauncherOutcomeUnknown(
+                "Launcher did not reply in time; the application may have started. "
+                "Request state is unknown; do not automatically repeat the request") from error
+        if result.returncode:
+            errors.seek(0)
+            detail = errors.read(8192).decode("utf-8", errors="replace").strip()
+            raise RuntimeError(detail or "Application launcher rejected the request")
+
+
 def launch_desktop(value):
     identifier = desktop_id(value)
     entry = find_desktop_file(identifier)
@@ -72,17 +96,7 @@ def launch_desktop(value):
         if not launcher:
             raise RuntimeError("No KDE or GTK application launcher is installed")
         command = [launcher, identifier]
-    # Legacy KIO launches may leave stdout/stderr inherited by the application.
-    # A pipe capture would wait for that application to exit after the launcher
-    # itself has already returned. A temporary file preserves useful failure
-    # details without owning or waiting for the application's lifetime.
-    with tempfile.TemporaryFile() as errors:
-        result = subprocess.run(command, stdin=subprocess.DEVNULL,
-            stdout=subprocess.DEVNULL, stderr=errors, timeout=20)
-        if result.returncode:
-            errors.seek(0)
-            detail = errors.read(8192).decode("utf-8", errors="replace").strip()
-            raise RuntimeError(detail or "Application launcher rejected the request")
+    run_launcher(command)
     return {"outcome": "request-accepted", "application": identifier,
             "detail": "Launcher accepted the request; application completion is not observed"}
 
@@ -94,6 +108,54 @@ def spawn(command):
                                stderr=subprocess.DEVNULL, start_new_session=True, close_fds=True)
     return {"outcome": "process-started", "pid": process.pid,
             "detail": "Process created; window availability and application completion are not observed"}
+
+
+def desktop_value(value):
+    """Encode a desktop-entry string value, including leading/trailing spaces."""
+    return (value.replace("\\", "\\\\").replace(" ", "\\s")
+            .replace("\n", "\\n").replace("\t", "\\t").replace("\r", "\\r"))
+
+
+def desktop_exec_argument(value):
+    """Quote one literal Exec argument; no shell or field-code expansion.
+
+    Exec quoting and desktop-file value escaping are two distinct layers.
+    Quoting only with shlex would change literal percent codes and backslashes.
+    """
+    value = value.replace("%", "%%")
+    for character in ("\\", '"', "$", "`"):
+        value = value.replace(character, "\\" + character)
+    return ('"' + value + '"').replace("\\", "\\\\").replace(
+        "\n", "\\n").replace("\t", "\\t").replace("\r", "\\r")
+
+
+def launch_argv(command):
+    """Publish a KDE startup request while preserving a literal argv and cwd.
+
+    KIO loads an owned executable temporary Desktop Entry with StartupNotify.
+    Nothing is registered in XDG applications or retained after the request.
+    Startup records belong to KDE; acceptance does not mean a window is ready.
+    """
+    if not command or any(not isinstance(arg, str) or "\0" in arg for arg in command):
+        raise ValueError("Expected a nonempty program argument vector without NUL bytes")
+    if not shutil.which(command[0]):
+        raise RuntimeError("Requested program is not installed")
+    launcher = shutil.which("kioclient6") or shutil.which("kioclient")
+    if not launcher:
+        return {**spawn(command), "startupNotificationRequested": False}
+    with tempfile.TemporaryDirectory(prefix="irix-domainos-launch-") as temporary:
+        entry = Path(temporary) / "command.desktop"
+        entry.write_text("[Desktop Entry]\nType=Application\nStartupNotify=true\n"
+            "Name=" + desktop_value(Path(command[0]).name) + "\n"
+            "Path=" + desktop_value(os.getcwd()) + "\n"
+            "Exec=" + " ".join(desktop_exec_argument(arg) for arg in command) + "\n",
+            encoding="utf-8")
+        # KDE authorizes this private launcher; its containing directory is0700.
+        entry.chmod(0o700)
+        run_launcher([launcher, "--noninteractive", "exec", str(entry)])
+    return {"outcome": "request-accepted", "program": command[0],
+            "startupNotificationRequested": True,
+            "detail": "Launcher accepted the startup request; window availability and application completion are not observed"}
 
 
 def default_mail_client():
@@ -197,7 +259,7 @@ def execute(request):
     if action == "terminal":
         configured = request.get("terminalCommand") or read_setting("kdeglobals", "General", "TerminalApplication")
         command = shlex.split(configured) if configured else ["konsole"]
-        return spawn(command)
+        return launch_argv(command)
     if action == "application":
         return launch_desktop(request.get("desktopId", ""))
     if action == "mail":
@@ -206,11 +268,11 @@ def execute(request):
         return mail_clients()
     if action == "appearance":
         # The category's owner KCM opens Appearance & Style in System Settings.
-        return spawn(["systemsettings", "kcm_lookandfeel"])
+        return launch_argv(["systemsettings", "kcm_lookandfeel"])
     if action == "xman":
-        return spawn(["xman", *xman_colors(request.get("palette", {}))])
+        return launch_argv(["xman", *xman_colors(request.get("palette", {}))])
     if action == "kde-help":
-        return spawn(["khelpcenter", "help:/plasma-desktop"])
+        return launch_argv(["khelpcenter", "help:/plasma-desktop"])
     if action == "lock":
         dbus_call("org.freedesktop.ScreenSaver", "/ScreenSaver", "org.freedesktop.ScreenSaver.Lock")
         try:
@@ -241,7 +303,8 @@ def main(argv=None):
             raise ValueError("Expected a JSON object")
         result = {"ok": True, **execute(request)}
     except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as error:
-        result = {"ok": False, "outcome": "failed", "detail": str(error)}
+        result = {"ok": False, "outcome": "request-state-unknown"
+                  if isinstance(error, LauncherOutcomeUnknown) else "failed", "detail": str(error)}
     result["token"] = request.get("token") if isinstance(request, dict) else None
     print(json.dumps(result, ensure_ascii=False))
     return 0 if result["ok"] else 1

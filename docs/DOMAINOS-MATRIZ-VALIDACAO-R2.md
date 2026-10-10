@@ -1,5 +1,35 @@
 # Revisão independente R2 — F01–F35
 
+## Revisão visual reaberta em 2026-10-10
+
+O estado atual segue a [regra comum](DOMAINOS-REGRAS-ROLAGEM.md), levantada antes
+da tradução: FTP leu 10 recursos e o xrdb atual não declara as medidas do
+XmScrollBar. As medidas 15/2/11/1/4 vêm do Trash Can SR10.4; pressionar/soltar
+a seta inferior foi observado na VM. GTK3 já lê o contrato, com 620/620 ensaios
+nativos, 18/18 de desenho/integridade e 4/4 focados do refactor. Sua moldura
+principal de TreeView preenchida continua pendente. As outras famílias não
+recebem conclusão por analogia; o [relatório GTK3](DOMAINOS-COMPARACAO-ROLAGEM-GTK3.md)
+delimita o resultado.
+
+A prévia completa R13 abriu com 18/18 verificações iniciais. O clique real do
+Terminal passou 12/12, incluindo token QML, helper com StartupNotify, modelo
+nativo TaskManager, luz/cursor durante a inicialização e limpeza sem cauda.
+O semiperíodo observado teve mediana de 516 ms para o temporizador de 500 ms.
+O ensaio usa X11 e um cliente temporário; não comprova prontidão de aplicações
+pessoais, Wayland ou inicialização que o modelo KDE omite por coincidir com
+janela já aberta. A configuração Terminal foi restaurada após o ensaio.
+
+As configurações pessoais ficaram fora das alterações e a VM manteve seu
+perfil de desempenho. O backup aprovado não foi atualizado ou eliminado.
+Os registros anteriores abaixo conservam sua revisão e suas limitações;
+este adendo não transforma o projeto inteiro em concluído.
+
+Os relatos da seta GTK3 e da seta no System Settings reabrem a revisão visual
+dos controles de rolagem. A [fila de trabalho](DOMAINOS-FILA-REVISAO-VISUAL.md)
+registra as famílias separadamente e usa o Trash Can real do SR10.4 como
+referência. As provas históricas abaixo conservam seu escopo; elas não encerram
+a comparação de setas, botões, trilhos e encaixes nas outras famílias.
+
 ## Reabertura do aceite: troca de tema global e GTK
 
 O relato mais recente em lsi/p001532 reabre o aceite pessoal de aparência.
@@ -609,3 +639,535 @@ O comando é `/tmp/irix-tema-completo` via Alt+F2 na sessão correspondente.
 A inicialização da prévia em lsi não substitui esse aceite manual. Não houve
 instalação global, commit, push ou publicação nesta rodada; o backup congelado
 em Downloads permaneceu intocado. Arraste entre miniaturas continua adiado.
+
+## Comparação com a VM SR10.4 — cores e relevos, 2026-10-10
+
+Esta revisão substitui a limitação histórica de F31/VF20 sobre cores fixas do
+GTK/Kvantum no tema DomainOS. A referência foi a VM em execução: Domain/OS
+SR10.4, HP VUE 2.01 e manuais instalados do Motif Release 1.1. O nível de patch
+do Motif não foi identificado. Não foram usadas referências de SR10.4.1.
+
+A leitura dos oito conjuntos CoralReef e da colormap nativa mostrou que a barra
+estava saturada demais. Agora, o relevo da faixa superior usa o conjunto 5
+(`#a3d0e6` / `#194b63`) e o da faixa metálica usa o conjunto 3
+(`#c4d5ed` / `#3e536e`). As janelas usam o azul primário `#78a0d5`; moldura
+ativa coral `#fe8282` e inativa ciano `#7acac5`. São os valores da referência,
+reconstruídos a partir dos papéis de cor atuais: trocar o esquema continua
+alterando as superfícies, sem uma exceção pelo nome do esquema.
+
+- **Paleta e aplicações abertas:** a prévia descartável R5 passou **40/40**
+  verificações no percurso DomainOS → Breeze Dark → Irixium → amarelo de teste
+  → DomainOS. Qt6 com `Kvantum::Style`, GTK3 e menu de fixados foram medidos
+  renderizados. Não houve reinício dos aplicativos, injeção de paleta ou mudança
+  de fonte/geometria; os hashes das configurações do host ficaram iguais.
+  A troca usa o script público `tools/apply_kvantum_colors.py` após aplicar o
+  esquema KDE, conforme a estratégia aprovada para o Kvantum.
+- **Paleta Qt completa:** o leitor KDE registrou os 21 papéis em cada grupo
+  Active/Inactive/Disabled. Os oito papéis consultados na QApplication com
+  Kvantum coincidiram com os correspondentes do leitor; não se infere disso
+  igualdade de pintura de todos os controles.
+- **Controles Motif:** a adaptação de GTK/Kvantum passou **160/160** verificações
+  nativas dirigidas de face, relevo e indicadores marcados. As setas nativas
+  GTK3 passaram **816/816**, com diferença máxima de zero nos 320 recortes
+  comparados em quatro esquemas. GTK4 não oferece botões de seta nativos nas
+  barras de rolagem; essa diferença de API permanece explícita.
+- **Limite histórico:** VUE atribui conjuntos secundários por aplicativo
+  (Vuefile 5, Vuehelp 6, Vuestyle 7). O esquema comum do KDE não reproduz essas
+  escolhas por cliente. A seleção de listas mantém o papel semântico KDE;
+  não foi acrescentada uma política de cores por aplicativo.
+
+Recibos locais de QA, fora do pacote publicado:
+`.qa-domainos-sr104-native-colors-preview-r5/FINAL-DOMAINOS-RECEIPT.json`,
+`.qa-domainos-motif-relief-r4/NATIVE-COMPARISON.json` e
+`.qa-domainos-palette-native-calibration-r1/NATIVE-BEFORE-AFTER.json`.
+A captura final DomainOS tem SHA256
+`279fe204257021d58d7515f7fdd22c7f6a903dc5906436454cf3cf32c9337bac`.
+Esses ensaios não encerram o aceite pessoal nem comprovam a correção dos
+pop-ups da Iconbox: essa investigação continua separada.
+
+### Favoritos externos na gaveta — F32
+
+O verificador atual passou **53/53** em um perfil privado. Um segundo cliente
+Kicker/KAStats real definiu e reordenou os favoritos; a gaveta seguiu a ordem
+desse menu ao reabrir, mesmo com a ordem local diferente. O clique lançou a
+entrada desktop correspondente à identidade, não ao índice anterior do
+provedor. Preferências permaneceu primeiro e bloqueado, os fixados do painel
+na segunda seção e os favoritos na terceira, com separadores. Controles de
+ordenação/remoção ficaram até 28 px e o nome conservou ao menos 200 px.
+
+O ensaio também verificou zero alterações de bytes nas estatísticas e nos
+metadados do menu externo feitas pela leitura de ordem, e zero mudanças nos
+perfis pessoais. Recibo:
+`/tmp/irix-domainos-favorites-completion-audit-20261010-r2/RESULTADO.json`, SHA256
+`69dc251b674bbb86450585db72d9e2c2671338f00ed1dd488757977ae51c9a90`.
+A primeira tentativa, impedida pela restrição do socket D-Bus no sandbox,
+permanece registrada separadamente; não foi convertida em resultado positivo.
+
+### Agenda Manaus e flutuação nativa — F03 e X10
+
+O comando público `plasma/tools/testar-domainos-agenda.py --manaus-2026
+--validar-unicidade` passou **138/138** com o Runtime atual e o plugin KHolidays
+nativo. Os quinze feriados locais de 2026 apareceram uma única vez na fonte e
+na agenda visível; nove datas de ponto facultativo não viraram feriados. Os
+casos fora de 2026 não receberam eventos locais extrapolados. Abrir, fechar e
+descarregar o provedor preservou a sessão e os arquivos pessoais. O alcance
+continua sendo Manaus/AM/Brasil em 2026, sem promessa de calendário regional
+para outros anos. Recibo:
+`/tmp/irix-domainos-manaus2026-regressao-20261010-r5/RESULTADO.json`, SHA256
+`702d3dfcf50911bff645e71e7b52783d57328d6cb30568813fa5269a96a79bd7`.
+Somente os limites de espera do observador de QA foram ampliados; as asserções,
+os dados e os tempos do produto permaneceram iguais. Tentativas anteriores
+incompletas continuam registradas como tal.
+
+O comando público `plasma/tools/testar-domainos-fundo.py` passou **44/44** em
+KWin/Plasma/Xvfb privados. A margem inferior nativa foi de 8 px com a janela
+restaurada, zero ao maximizar e novamente 8 px ao restaurar. O desenho manteve
+971 × 109 px e escala 50%, sem recorte, nas cinco situações inspecionadas.
+A associação `NoBackground` cedeu ao adicionar outro widget e voltou somente
+quando o painel continha apenas DomainOS. A restauração conservou as escolhas
+anteriores de fundo, inclusive ao recuperar um painel salvo pela versão antiga.
+Não houve erro QML dos nossos applets, mudança das fontes durante o ensaio ou
+alteração das configurações pessoais. Os processos próprios foram encerrados.
+Recibo: `/tmp/irix-domainos-native-floating-final-20261010-r1/RESULTADO.json`,
+SHA256 `2be4ed238d365a763cd35c143d88a7a08701ef18ec74127c833eb49e582f86fc`.
+
+### Iconbox: seleção, foco e operações — revisão R8
+
+A extensão lateral que aparecia ao abrir o seletor vinha do indicador de foco
+do painel KDE: seu retângulo acompanhava a largura lógica da Iconbox, antes
+da escala do desenho. O receptor de foco agora tem tamanho zero. A Iconbox
+continua recebendo teclado sem aumentar o desenho, a máscara do painel ou a
+área de entrada. No ensaio X11 R2, os 14 recortes da faixa lateral tiveram
+zero pixels diferentes com seletor e menu abertos ou fechados. Esse recibo
+pertence à cópia privada que validou a solução; a entrega R8 contém a solução.
+
+Como o painel nativo não aceita foco de janela, a liberação de Ctrl/Shift
+também é observada por `KeyboardIndicator.KeyState`, módulo existente no
+Plasma. Só os estados desses dois modificadores são consultados. Não há
+captura de texto, grab de teclado, temporizador ou alteração do KDE. O
+primeiro evento que conclui uma seleção desarma o gesto antes de abrir
+Operações, evitando que o evento Qt e o evento global abram duas vezes o menu.
+Fechar o seletor também desarma esse gesto, conservando as janelas escolhidas.
+
+- **Qt e ciclo dos pop-ups:** **11/11** testes de regressão, com eventos Qt
+  reais e controladores de tarefas deliberadamente substituídos. Cobrem
+  transição seletor → Operações, liberação dos modificadores, fechamento,
+  descarte de identidades antigas e organização por ponteiro/teclado.
+- **Modificadores X11:** o microteste independente passou **42/42** com
+  Ctrl/Shift reais, janela sem foco e liberações rápidas nas duas ordens.
+  O sinal bruto pode conservar momentaneamente o bit da tecla recém-solta;
+  o chamador remove esse bit antes de decidir se resta outro modificador.
+  O ensaio comprova esse protocolo X11, sem estender o resultado ao backend
+  global de modificadores do Wayland.
+- **Painel X11 atual:** o recibo R4 passou **13/13** com entradas nativas
+  de ponteiro e teclado. Ctrl selecionou duas identidades Qt/GTK reais e
+  abriu Operações uma única vez ao soltar. Com Ctrl+Shift, a primeira
+  liberação aguardou a última; liberações duplicadas ou sem gesto não
+  reabriram o menu. No seletor de grupo, a conclusão segue o protocolo de
+  Continuar seleção/Operações, sem interromper cada marcação. Clicar fora
+  com Ctrl pressionado conservou as escolhas e não abriu menu ao soltar.
+  Operações apareceu completo na primeira abertura, com 275 × 246 px;
+  Colunas organizou os dois PIDs selecionados e conservou as três janelas
+  excluídas. Geometria, máscara e `NoBackground` do painel ficaram iguais.
+  A faixa lateral teve zero pixels diferentes nos quinze estados de
+  pop-ups/gestos. Após Colunas, 98 pixels da margem transparente mudaram
+  porque as janelas atrás dela foram movidas; esse resultado bruto foi
+  conservado e não foi chamado de erro ou igualdade de desenho.
+- **Janelas Wayland:** o comando público `testar-domainos-grupos-wayland.py`
+  passou **75/75** com a Iconbox R8 em um KWin privado e o host instalado
+  `plasmawindowed`. Restaurar pelo título, acumular/desmarcar checkboxes,
+  conservar a seleção ao reabrir, contar antes de agrupar/filtrar, organizar
+  em colunas e minimizar em lote atuaram nos UUIDs/PIDs escolhidos.
+  As janelas excluídas permaneceram intactas. O ensaio não exercita a
+  liberação global de modificadores em um painel Wayland sem foco.
+
+Recibos locais:
+`.qa-domainos-popup-native-headless-focus-r2/PROXY-GHOST-RECEIPT.json`,
+`.qa-domainos-modifiers-native-microprobe-r1/RESULTADO.json` e
+`/tmp/irix-domainos-current-iconbox-wayland-20261010-r1/RESULTADO.json`.
+O último tem SHA256
+`9564f57c76dee6fcc3d975d513f46763817f1280932ae9a719db80aed49bc38e`.
+Todos os processos de teste próprios foram encerrados; os perfis pessoais
+e as fontes permaneceram iguais durante os respectivos ensaios.
+
+O recibo X11 atual está em
+`.qa-domainos-popup-native-public-r4/NATIVE-R8-QA/FINAL-RECEIPT.json`, SHA256
+`9db431470b9b8444fa589fb37cb6d205e95d65544233381d09b962652b5c1d62`.
+A fixture agrupou as galerias Python pelo nome do executável porque seu
+catálogo KService descartável não resolveu todas as entradas. Duas janelas
+foram fixadas temporariamente pela interface para testar seleção direta;
+não houve substituição do modelo de tarefas. O timeout inicial por esperar
+Operações enquanto o seletor de grupo ainda estava aberto permanece como
+tentativa inválida do observador, separado da prova final.
+
+### Identidade das janelas na prévia completa
+
+Xephyr e os aplicativos privados agora compartilham o namespace de PIDs.
+Isso permite que XRes autentique o PID real de cada janela e que a ponte
+de operações conserve sua verificação de identidade. A prévia mantém HOME,
+usuário, mounts, rede, IPC e D-Bus próprios. A versão anterior escondia os
+PIDs internos do servidor X e a ponte recusava corretamente as operações.
+
+O encerramento identifica o worker pelo marcador exclusivo da própria prévia
+antes de sinalizá-lo; o worker encerra os seus filhos no bloco de limpeza.
+Os lançadores desktop das galerias também usam os IDs declarados pelos
+aplicativos. Esses ajustes pertencem ao lançador de testes, sem remover
+verificações de identidade do produto ou reiniciar a sessão pessoal.
+
+Fechar o display R4 encerrou os dezessete processos registrados/adicionados,
+incluindo servidor X, supervisor e worker. Um segundo ensaio de inicialização
+**18/18**, R5, conferiu o caminho de SIGTERM no supervisor: todos os processos
+registrados e identificados pelo marcador próprio também encerraram.
+Os dois recibos conservaram o perfil pessoal. O worker ainda registra o
+SIGTERM esperado como `failed/error=0`; esse estado bruto está preservado
+ao lado dos recibos de limpeza e não foi renomeado como sucesso de execução.
+Recibos: `.qa-domainos-popup-native-public-r4/OWNED-NORMAL-CLOSE-CLEANUP.json`
+e `.qa-domainos-popup-native-term-r5/OWNED-SUPERVISOR-TERM-CLEANUP.json`.
+
+### ZIP portátil R8
+
+O ZIP existente, sem reconstrução, passou **4/4** métodos originais de teste
+e **18/18** verificações da revisão. Os métodos cobrem payload alterado,
+entradas inseguras/duplicadas/links, omissão de runtime obrigatório e
+instalação → repetição → restauração dos quatro destinos em perfis
+descartáveis. Foram preservados os bytes, modos, backups e configurações
+anteriores. O teste de reconstrução determinística e os quatro testes de
+inventário de checkout não foram executados nessa validação específica.
+
+O módulo de modificadores, o gate de fechamento do seletor e a dependência
+do módulo KDE nos dois instaladores coincidem com as fontes atuais. O ZIP
+mantém 275 entradas, 940551 bytes e SHA256
+`e7f4a53c788aaa472854094aca23de9cfc6ab3cccad64c9803c519f88b2699f7`.
+Recibo: `.qa-domainos-portable-r8-validation-r1/RESULTADO.json`.
+Essa prova é de instalação offline do pacote independente de quatro
+recursos; GTK, Kvantum, decoração e terceiro tema global pertencem ao
+instalador da suíte completa, com validação e entrega próprias.
+
+### Instalação como opção no lsi
+
+O instalador normal da suíte concluiu a atualização de 40 componentes em
+52 destinos, incluindo as compatibilidades GTK2/Xcursor, e compilou o
+módulo nativo no stage privado com o mesmo SHA256 do pacote R8. Foram
+instalados o terceiro tema global `org.magpie.irixclassic.domainos.desktop`,
+a decoração `domainos_sr104`, GTK/Kvantum DomainOS e o painel atual. A
+atualização incremental modificou 18 destinos; backups, fingerprints e
+28 overlays gerenciados foram conferidos pelos seus recibos.
+
+A leitura nativa pós-instalação passou **16/16**. Global Classic, nome do
+esquema, Kvantum, grupos efetivos de cores/WM, IDs do painel/desktop/tray,
+geometria configurada, 45 preferências e dois desktops ficaram iguais.
+Os três registries do Wine também conservaram seus hashes. O GTK permaneceu
+na família Classic e passou de `IrixClassic-KDE` para a variante gerenciada
+`IrixClassic-KDE-Reload`; fontes, ícones, cursor e demais opções ficaram
+iguais. As pontes renovadas estão ativas, com 21 e 11 módulos verificados.
+O baseline Classic e o recibo manual do painel foram mantidos; a ponte
+não executou transição de painel durante a instalação.
+
+Recibos locais:
+`/tmp/irix-domainos-host-suite-r8-postinstall-summary-20261010.json` e
+`/tmp/irix-domainos-host-installed-r8-audit-20261010-r2.json`.
+A instalação verifica os arquivos no disco. Os módulos que já estavam
+carregados no Plasma pessoal não foram reiniciados ou descarregados;
+o aceite visual e funcional usa a nova prévia. A instalação em p001532
+continua dependendo de execução pelo próprio usuário na sua sessão.
+
+### Lançador portátil com recursos imutáveis
+
+Dois problemas anteriores à abertura foram reproduzidos no export R8 real:
+o destino automático diretamente em `/tmp` falhava no guard de propriedade,
+e `copytree` preservava as permissões de somente leitura ao normalizar
+decorações e gerar paletas GTK privadas. O lançador agora cria um pai
+temporário privado com `tempfile` e concede escrita somente ao dono das
+cópias de trabalho. O guard de destinos e os recursos publicados mantêm
+suas restrições. Os três testes de regressão de
+`plasma/tests/test_preview_private_copies.py` passaram, incluindo escrita
+real de metadata/CSS na cópia e conservação dos bytes/modos da fonte.
+
+As tentativas recusadas ficaram registradas separadamente em
+`.qa-domainos-suite-delivery-r8/PREVIEW-FAILED-ATTEMPTS.json`. Não foram
+convertidas em inicializações positivas. O export R8 permanece imutável;
+a correção do lançador é distribuída em uma edição R10 própria, conservando
+o ZIP e os recursos gráficos validados anteriormente. A tentativa R9 também
+reproduziu uma cópia de galeria ainda sem escrita; essa quinta cópia agora
+usa o mesmo tratamento privado. O recibo dessa falha anterior à GUI foi
+conservado em `.qa-domainos-readonly-export-native-r9/READONLY-GALLERY-FAILURE.json`.
+
+
+A edição R10 congelada passou **17/17** verificações de integridade e os
+**3/3** testes públicos existentes contra o lançador exportado. A abertura
+real com destino temporário automático passou **18/18**, seguida de **8/8**
+verificações de cores nativas: Qt/Kvantum com os oito papéis ativos do
+esquema e GTK3/GTK4 com a família e pixels esperados. O encerramento normal
+eliminou os processos próprios, preservou o perfil real e manteve os
+31.603 registros e hashes do export. O estado bruto de shutdown esperado
+continua registrado separadamente; ele não foi reclassificado.
+
+Recibos: `.qa-domainos-r10-export-validation-r1/RESULTADO.json` e
+`.qa-domainos-readonly-export-native-r10/RESULTADO.json`. A derivação nativa
+usa Xvfb no lugar do Xephyr e o caminho R10 declarado; o painel, os helpers,
+o módulo nativo e as galerias são os recursos publicados. Os três aliases
+temporários foram promovidos para R10, com backup dos anteriores e recibo
+em `.qa-domainos-suite-delivery-r8/R10-ALIASES.json`. O comando
+`/tmp/irix-domainos-completo` inicia diretamente o terceiro perfil DomainOS
+numa sessão privada do usuário que o executa. Essa prévia não substitui
+a instalação nem o aceite pessoal em p001532.
+
+
+A prévia visível R10 foi aberta no lsi pelo alias público, sem derivação
+Xvfb: display `:67`, perfil DomainOS, decoração `domainos_sr104`, pacote
+original e lançador final. As **18/18** verificações de abertura passaram;
+os hashes do perfil pessoal continuaram iguais. A janela foi deixada aberta
+para aceite manual, sem fechar as cinco prévias anteriores nem a VM.
+Recibo: `.qa-domainos-suite-delivery-r8/R10-LSI-VISIBLE.json`. O aceite
+visual/funcional do revisor e a execução pela própria sessão p001532
+continuam pendentes; essa abertura não conclui a integração inteira.
+
+### Conferência atual da VM e limite de pintura GTK3
+
+Nova consulta somente leitura confirmou Domain/OS SR10.4, CoralReef e os
+oito conjuntos da colormap. Os seis arquivos de configuração relidos por
+FTP e os conjuntos consultados por Telnet coincidiram com o levantamento
+anterior. Os **12/12** papéis medidos do esquema público continuam iguais
+à VM, incluindo controles, seleção e molduras ativa/inativa. A captura
+atual confirmou também as duas texturas distintas da barra.
+
+O Style Manager e seus diálogos Color/Mouse usam o conjunto secundário 7
+(`#768ca1` / rebaixo `#647788`), enquanto a paleta compartilhada KDE usa o
+conjunto primário 3. Essa diferença já declarada não indica que a atualização
+de cores do Qt/GTK deixou de funcionar.
+
+Há uma diferença pequena de pintura no relevo GTK3 da prévia R10:
+`#c4d6ed`, contra `#c4d5ed` na VM, no Qt e no painel, isto é, um nível a mais
+no canal verde. Foi observada nas bordas do botão e na linha do grupo.
+A fonte e o fator de mistura são iguais; quantização no processamento GTK
+é uma hipótese compatível, não uma causa rastreada. Não se afirma igualdade
+de todos os pixels. Nenhuma configuração, foco ou entrada da VM foi alterada.
+O perfil permanece CPU principal 100%, Ethernet 10%, frameskip 4 e sem throttle.
+
+Recibo local somente de observação:
+`/tmp/irix-domainos-reference-20261010/live-observation-r2/CURRENT-COMPARISON-SUMMARY.json`.
+A comparação dirigida adicional está em
+`.qa-domainos-live-color-review-20261010/COMPARACAO.json`.
+
+### Instalar opções preserva as escolhas existentes
+
+A ponte de GTK/Kvantum agora lê o Tema Global efetivo como estado inicial.
+Iniciar ou atualizar a integração não equivale a escolher novamente esse
+tema: a primeira reconciliação e mudanças apenas de cores usam o caminho
+de paleta, preservando seleções independentes. Uma mudança posterior da
+identidade do Tema Global continua selecionando seus companions. Reaplicar
+a mesma identidade não constitui uma transição nesse observador; os comandos
+explícitos de aplicação/sincronização continuam disponíveis.
+
+O teste usa QFileSystemWatcher e QProcess reais em um perfil descartável;
+barramento e worker são fixtures, sem seleção gráfica pessoal. A regressão
+da ponte passou **18/18**, seleção de companions **28/28** e restauração da
+integração global **4/4**. Recibo:
+`.qa-domainos-companion-baseline-20261010/RESULTADO.json`.
+
+### Distribuição portátil dos três temas
+
+A distribuição completa acrescenta o fechamento dos auxiliares públicos ao
+catálogo dos **40 componentes**, reutilizando o módulo nativo verificado do
+ZIP independente. A instalação continua verificando sua arquitetura e ABI Qt;
+não depende do SDK temporário da máquina de desenvolvimento. O ZIP independente
+continua contendo quatro componentes, e a prévia R10 continua sendo uma prévia.
+
+O ciclo real da suíte em HOME/XDG/TMPDIR privados passou **13/13** verificações:
+instalação, reinstalação e restauração dos 40 recursos, backups úteis,
+preferências independentes e bytes/modos da fonte preservados. Compilador,
+`moc` e `pkg-config` foram bloqueados no ensaio; nenhum foi chamado. Os
+31.286 arquivos/aliases foram verificados sem caminhos de perfis pessoais.
+As três regressões novas e os vinte testes pertinentes existentes passaram.
+Recibo: `.qa-domainos-suite-package-r1/RESULTADO.json`.
+
+A edição R2 muda somente o lembrete de áudio opcional e seu manifesto; não
+acrescenta áudios à distribuição gráfica. Inventário, módulo nativo, seus sete
+arquivos de entrada e demais recursos coincidem com R1. Essa equivalência foi
+conferida separadamente, sem repetir o ciclo inteiro ou um teste gráfico.
+Recibo: `.qa-domainos-suite-package-r1/R2-MESSAGE-DELTA-RESULTADO.json`.
+
+O lançador temporário deste host valida o SHA256 do R2, extrai em pasta própria
+e chama o instalador público. Seu `--verificar` real passou em HOME privado,
+sem criar configuração, dados ou estado, e sem abrir GUI ou serviço pessoal.
+Recibo: `.qa-domainos-suite-bootstrap-r2/RESULTADO.json`. Esse lançador facilita
+o teste em p001532 e não integra os caminhos temporários ao produto publicado.
+Instalação e aceite na sessão pessoal de p001532 continuam pendentes.
+
+### Distribuição R3 e aplicação sem o módulo opcional de áudio
+
+A revisão dos comandos anunciados encontrou uma falha no aplicador da edição
+R2: a aplicação padrão importava um auxiliar de áudio ausente da distribuição
+gráfica. Instalar e verificar os recursos não demonstrava esse caminho. O
+aplicador agora preserva a escolha de sons quando esse suporte opcional não
+está incluído; `--exigir-sons` continua recusando a aplicação antes de efeitos.
+Erros internos de um auxiliar presente continuam sendo reportados.
+
+As regressões do aplicador passaram **21/21**. O wrapper real do arquivo R2,
+com somente o aplicador corrigido sobreposto, passou **9/9** verificações de
+aplicação/restauração em perfil privado. Arquivos, transação e backups são
+reais; a chamada de aplicação do KDE é um processo de teste explícito. Esse
+ensaio não demonstra uma nova troca gráfica de Tema Global.
+Recibo: `.qa-domainos-suite-optional-sounds-r1/RESULTADO.json`.
+
+A distribuição R3 inclui essa correção e um README próprio, correspondente
+a `docs/DISTRIBUICAO-SUITE.md`. Seus **40 componentes**, arte e módulo nativo
+permanecem iguais. Passaram **8/8** verificações de manifesto, modos, aliases,
+fechamento dos imports obrigatórios e presença dos 12 comandos anunciados.
+R1 e R2 foram preservados. Não se repetiu o ciclo completo de instalação nem
+se contou essa conferência como teste de GUI.
+Recibo: `.qa-domainos-suite-package-r3/RESULTADO.json`.
+
+O lançador temporário foi atualizado para o SHA256 do R3. Seu `--verificar`
+real passou em HOME/XDG/TMPDIR privados, sem criar configuração, dados ou
+estado. Recibo: `.qa-domainos-suite-bootstrap-r3/RESULTADO.json`. A instalação
+pessoal anterior no lsi e o aceite pendente dos dois perfis continuam sendo
+registros separados dessas provas da distribuição.
+
+### Paginação nativa com as fontes atuais da Iconbox
+
+A paginação atual foi verificada com TaskManager/KWin instalados e **16
+janelas reais próprias**, além da janela do instrumento. Cliques Qt nas
+duas setas produziram as páginas 0 → 7 → 14 → 7 → 0, sem ativar tarefas.
+As dimensões das células e as identidades das janelas permaneceram iguais;
+a última página continha os três itens restantes. Passaram **36/36**
+verificações nativas. O ensaio separado com tarefas de teste passou **12/12**.
+
+O recibo consolidado registra os hashes das fontes atuais e o encerramento
+dos recursos privados observáveis, incluindo o limite de não ter registrado
+individualmente todos os PIDs auxiliares. Esse teste não usa janelas pessoais
+nem demonstra Wayland ou o painel completo. Recibo:
+`.qa-domainos-iconbox-current-navigation-r1/RESULTADO.json`.
+
+Foi corrigido também um falso positivo no runner público: sem recibo nativo
+e sem conclusão explícita do cenário, ele deve falhar, mesmo que o perfil
+pessoal permaneça preservado. As cinco regressões desse contrato passaram.
+
+### F15/F18: modelos reais e controles nativos preservados
+
+Um ensaio privado abriu, fechou e reabriu os applets originais de rede e
+dispositivos pelos slots do adaptador atual. NetworkManager informou estado
+70 e conectividade 4; seu modelo nativo apresentou **18 entradas**. O modelo
+de DeviceNotifier apresentou **cinco dispositivos**, com contagens de remoção
+e montagem fornecidas pelo próprio modelo. As identidades dos applets e das
+representações foram preservadas. Recriar o NetworkModel ao reabrir é o
+comportamento original do PopupDialog do KDE.
+
+Passaram **17/17** verificações observacionais. A revisão dos delegates
+originais confirmou os ramos de estado, disponibilidade e ações explícitas:
+Connect/Disconnect continuam no handler de rede; as ações de dispositivos
+continuam em `deviceActions`. Esse conjunto comprova a integração e
+preservação dos controles previstas em F15/F18. Não demonstra sucesso físico
+de conexão, montagem ou ejeção, que não foram executadas neste ensaio.
+
+O barramento do sistema foi exposto somente por getters explicitamente
+permitidos no proxy. RequestScan não é permitido; o applet original pode
+solicitá-lo ao abrir, portanto não se alega varredura irrestrita. As 54
+entradas booleanas observadas não foram mapeadas a capacidades específicas.
+Houve duas referências a binding loops e uma a acesso negado, sem atribuição:
+os textos brutos dos provedores foram descartados para não guardar dados
+pessoais. Não se afirma ausência de avisos nem se atribui o acesso negado a
+RequestScan. Os processos próprios foram encerrados. Nenhuma captura ou
+identificador de rede/disco foi salvo.
+
+Recibo final: `.qa-domainos-provider-readonly-native-r1/FINAL-RECEIPT.json`;
+escopo dos controles e da política:
+`.qa-domainos-provider-readonly-native-r1/NATIVE-CONTROL-SOURCE-REVIEW.json` e
+`.qa-domainos-provider-readonly-native-r1/POLICY-PROOF.json`.
+
+### Recibos pessoais da instalação como opções
+
+Chegaram os recibos públicos do instalador executado pelos UIDs de lsi e
+p001532. Ambos informam **40 componentes instalados como opções**, com o
+SHA256 da distribuição R2 conferida. A autoria e o UID declarado coincidem.
+Os dois registros mantêm `personal_acceptance: false`.
+
+Esses recibos encerram a pendência de execução do instalador nas duas
+sessões; não enumeram hashes atuais de todos os arquivos pessoais nem
+comprovam aceite visual/funcional. A correção e distribuição R3 continuam
+validadas separadamente; não se alega aplicação pessoal do R3 por esses
+recibos R2. Observação somente leitura:
+`.qa-domainos-suite-personal-receipts-20261010/RESULTADO.json`.
+
+No lsi, a conferência somente leitura dos dois runtimes pessoais encontrou
+**zero diferenças**: 22 arquivos de companions e 11 da ponte DomainOS
+coincidem com a fonte e com o R3. Os serviços estão ativos e iniciaram depois
+da gravação desses arquivos. A verificação do runtime e a restauração em
+modo de consulta passaram, sem instalação, restauração real ou restart.
+Não foi necessário atualizar novamente. Recibo:
+`.qa-domainos-suite-personal-runtime-20261010/RESULTADO.json`.
+
+### Correção do critério de encerramento
+
+A expressão anterior “aceite manual das prévias nas duas sessões” não é
+uma exigência adicional de F30. O requisito exige instalação por usuário,
+preservação, substituição autorizada e restauração. A autorização já
+concedida não precisa ser solicitada novamente; também não se exige nova
+aprovação subjetiva do desenho a cada revisão.
+
+O pedido do usuário “Vamos testar lá no final do goal” mantém uma etapa
+concreta de teste funcional em p001532. Os recibos públicos encerram a
+pendência de instalação, mas não mostram interação com as preferências,
+Aplicar/Descartar e a Iconbox na sessão desse perfil. A prévia e seus
+controles continuam disponíveis por `/tmp/irix-domainos-completo` via
+Alt+F2. A pendência vigente é essa verificação funcional final, sem criar
+outro checklist, refazer instalação ou solicitar novamente aprovação do
+desenho. Os ensaios técnicos já registrados continuam com seus escopos;
+nenhuma confirmação pessoal é inferida deles.
+
+### Correções solicitadas no reteste: espera e seta GTK3
+
+O reteste do usuário mostrou duas lacunas que os recibos anteriores não
+cobriam. O ensaio da lente comprovava pulsos para tokens pendentes, mas os
+lançamentos curtos encerravam o token no retorno do auxiliar; isso não
+reproduzia a espera do VUE pelo aparecimento do cliente. A comparação GTK
+com o próprio asset gerado também aceitava a iluminação invertida da seta
+inferior. As classificações desses dois pontos foram reabertas antes da
+correção; os demais resultados mantêm seus escopos originais.
+
+O gerador GTK3 agora aplica a iluminação depois de escolher a direção da
+silhueta. Assim, a seta inferior mantém luz no alto/esquerda e sombra no
+lado direito e na ponta, conforme o controle da referência SR10.4. O teste
+de uma tabela GTK3 real passou **540/540** verificações em duas paletas KDE
+exportadas e duas identidades adaptativas, incluindo o encontro inferior
+direito das barras, pressão/soltura, hover, desativação e limites de rolagem.
+As **18/18** regressões do desenho passaram. Os 939 recursos conferidos de
+GTK2, CSS comum GTK4 e Kvantum permaneceram byte a byte iguais. Esse ensaio
+não exercita transporte de paleta em tempo real nem a nova prévia completa.
+Recibo: `.qa-domainos-gtk3-scroll-corner-r1/FINAL-RECEIPT.json`.
+
+As nove prévias Xephyr antigas foram encerradas por seus próprios displays,
+com supervisores e workers autenticados. O MAME permaneceu no mesmo
+processo. Os recibos de encerramento apresentam os mesmos hashes finais do
+perfil do host; comparar uma prévia antiga com seu início também inclui as
+alterações pessoais feitas enquanto esteve aberta. A prévia mais recente
+preservou seu snapshot inicial. Recibo:
+`.qa-domainos-led-gtk-correction-20261010/PREVIAS-ENCERRADAS.json`.
+
+A espera luminosa agora combina os pedidos realmente pendentes com os
+registros `IsStartup` do modelo nativo do KDE. O retorno rápido do auxiliar
+não encerra um startup ainda observado. O LED alterna a cada 500 ms, como
+`waitingBlinkRate` no manual do VUE 2.01; o cursor de espera usa o pacote de
+cursores escolhido. Nenhum clique é adiado. A cauda opcional permanece
+desligada por padrão e, quando habilitada, começa somente após o último
+pedido/startup pendente, sem prolongar o cursor.
+
+Passaram **45/45** verificações de controlador/renderização e **50/50** da
+bandeja. O primeiro conjunto inclui concorrência, perda/destruição do
+provedor, prioridade do cursor e ausência de repintura ociosa. Os casos de
+startup desse ensaio usam um modelo explícito de teste; o lançamento real
+do auxiliar usa um processo marcador privado. Portanto, esses resultados
+não comprovam por si só a notificação de startup de um aplicativo KDE real.
+A primeira tentativa isolada dessa integração expirou em 60 segundos e foi
+preservada como inconclusiva, com limpeza dos processos próprios. Recibo:
+`.qa-domainos-activity-native-20261010/FINAL-RECEIPT.json`.
+
+Na VM SR10.4, um lançamento válido mostrou alternância do LED e o fim
+da espera ao aparecer o cliente, depois de 4,878 segundos emulados. A
+ampulheta estava na posição do ponteiro; não se comprovou substituição do
+bitmap de cada botão nem iluminação sincronizada de toda a faixa metálica.
+A adaptação conserva o amarelo autorizado para o LED e a luz do pager.
+A limpeza fechou apenas o diálogo aberto durante a observação, sem aplicar
+configurações. O MAME manteve captura solta, frameskip 4 e throttle
+desligado. Recibo da limpeza:
+`.qa-domainos-led-gtk-correction-20261010/VM-OWN-DIALOG-CANCEL.json`.

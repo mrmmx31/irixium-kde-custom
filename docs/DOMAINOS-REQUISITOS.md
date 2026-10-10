@@ -3,6 +3,29 @@
 **Revisão funcional R2 — mantenedor `mrmmx31`.** Branch `#irixfiles`;
 base consultada `2f9f6277736ee6c6187cd010d4dd4f4990bb4822`.
 
+## Atualização de precedência — 2026-10-10
+
+As decisões explícitas posteriores abaixo prevalecem sobre os contratos antigos
+do corpo R2 quando houver diferença. O texto original continua preservado como
+histórico; esta atualização registra comportamento solicitado, não prova de
+execução ou aceite.
+
+| Tema | Decisão vigente |
+| --- | --- |
+| Gaveta e favoritos | Ler os favoritos do menu Applications do KDE e acompanhar sua ordem, em seção separada. Manter os fixados próprios da barra independentes; sua importação continua explícita e não altera a origem. |
+| Preferências na gaveta | Item permanente, fixo e não removível no topo; depois vêm os fixados da barra e, com separadores, os favoritos do KDE. |
+| Dicas e prévias | Dicas gerais da barra desligadas por padrão; dicas textuais da Iconbox ligadas. Miniaturas e realce das janelas ao passar o mouse são alternativas desligadas por padrão, habilitadas nas preferências. |
+| Clique simples na Iconbox | Selecionar imediatamente e abrir a lista, inclusive para uma única janela, sem restaurá-la por esse clique. Ctrl/Shift conservam a seleção acumulativa. |
+| Duplo clique individual | Minimizar a janela ativa, restaurar a minimizada ou ativar a inativa. Um grupo mantém a escolha explícita de membros, sem operação coletiva implícita. |
+| Título no seletor | Sem checkbox marcado, restaurar/ativar a janela do título. Durante a seleção por checkbox, o título marca/desmarca; esvaziar a seleção recupera a restauração direta. |
+| Roda na Iconbox | Percorrer os itens como as setas laterais, sem ativar janelas. Alternar janelas pela roda permanece opção nas preferências. |
+
+O [manual funcional atual](../plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md)
+descreve os gestos e os padrões; a [matriz de validação](DOMAINOS-MATRIZ-VALIDACAO-R2.md)
+separa implementação, provas e limites. A entrega da suíte completa em p001532
+está em andamento. Esse registro não declara instalação concluída, ativação do
+tema ou aceite pessoal nessa sessão, nem antecipa o aceite da prévia no lsi.
+
 ## Escopo e precedência
 
 Acrescentar o Plasma Style **Irix Classic DomainOS** e conectar seu painel aprovado

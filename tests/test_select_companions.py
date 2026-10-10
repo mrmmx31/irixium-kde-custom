@@ -163,6 +163,22 @@ class CompanionSelectionTests(unittest.TestCase):
         self.assertEqual(self.calls, [('notify', None), ('gsettings', None)])
         self.assert_restored(); self.assert_protected_unchanged()
 
+    def test_domainos_selection_and_owned_aliases_survive_observer_restart_and_restore(self):
+        profile=companions.catalog()['profiles']['domainos']
+        self.globals.write_text(self.globals.read_text().replace('org.magpie.irixclassic.desktop',profile['global']))
+        self.protected_before[self.globals]=snapshot(self.globals)
+        self.assertEqual(self.select('domainos')['status'],'applied')
+        self.assertEqual(companions.kvantum_theme(self.paths[0]),'DomainOS-SR10-4')
+        self.assertEqual(self.receipt()[1]['profile'],'domainos')
+        self.assert_protected_unchanged()
+        self.assertEqual(self.restore()['status'],'restored');self.assert_restored()
+        self.owned_kvantum_alias(theme='DomainOS-SR10-4',alias='DomainOS-SR10-4-KDE-Reload')
+        self.fixture_gtk_selection('DomainOS-SR10-4-KDE-Reload')
+        before={path:snapshot(path) for path in self.paths}
+        self.assertEqual(self.select('domainos')['status'],'unchanged')
+        self.assertEqual({path:snapshot(path) for path in self.paths},before)
+        self.assert_protected_unchanged()
+
     def test_apply_restore_ten_files_modes_and_native_state_without_global_changes(self):
         self.assertEqual(self.select()['status'], 'applied')
         _, record = self.receipt()

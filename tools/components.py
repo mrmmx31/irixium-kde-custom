@@ -5,12 +5,25 @@ from pathlib import Path
 from theme_transaction import Failure
 
 ROOT = Path(__file__).resolve().parents[1]
+PROFILES = frozenset(('classic', 'moderno', 'domainos'))
+INDEPENDENT_SCOPE = 'Independent DomainOS four-component user install'
 
 
 def catalog():
     doc = json.loads((ROOT/'components.json').read_text())
-    if doc.get('format') != 1 or set(doc['profiles']) != {'classic', 'moderno'}:
+    names = set(doc.get('profiles', {}))
+    independent = doc.get('scope') == INDEPENDENT_SCOPE
+    if doc.get('format') != 1 or (names != PROFILES if not independent else
+            doc.get('profiles') != {'classic': {}, 'moderno': {}}):
         raise Failure('Inventário incompatível.')
+    if independent:
+        expected = {
+            ('data', 'plasma/plasmoids/org.irixclassic.domainos.panel'),
+            ('data', 'plasma/plasmoids/org.irixclassic.grosview'),
+            ('data', 'plasma/desktoptheme/IrixClassicDomainOS'),
+            ('data', 'color-schemes/DomainOS-SR10-4.colors')}
+        if {(e.get('root'), e.get('destination')) for e in doc.get('components', [])} != expected:
+            raise Failure('Inventário DomainOS independente fora do escopo.')
     seen = set()
     for entry in doc['components']:
         if entry['root'] not in ('data', 'config'):
@@ -24,6 +37,15 @@ def catalog():
             raise Failure('Componente duplicado.')
         seen.add(dest)
     return doc
+
+
+def source_for(destination, *, root='data', doc=None):
+    """Resolve a profile resource through the inventory, never its profile name."""
+    matches = [entry for entry in (doc or catalog())['components']
+               if entry['root'] == root and entry['destination'] == destination]
+    if len(matches) != 1:
+        raise Failure('Componente não declarado no inventário: ' + destination)
+    return ROOT/matches[0]['source']
 
 
 def sources(data, config):

@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Command boundary: no shell, no MIME writes, truthful launcher outcomes."""
 import importlib.util
+import io
+import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -14,20 +17,95 @@ SPEC.loader.exec_module(commands)
 
 class CommandsTest(unittest.TestCase):
     def test_terminal_keeps_metacharacters_as_arguments(self):
-        with patch.object(commands.shutil, "which", return_value="/usr/bin/terminal"), \
+        with patch.object(commands.shutil, "which", side_effect=lambda name: "/usr/bin/terminal" if name == "terminal" else None), \
                 patch.object(commands.subprocess, "Popen", return_value=Mock(pid=123)) as start:
             result = commands.execute({"action": "terminal", "terminalCommand": 'terminal "$(touch /tmp/no)" "a;b"'})
         self.assertEqual(start.call_args.args[0], ["terminal", "$(touch /tmp/no)", "a;b"])
         self.assertNotIn("shell", start.call_args.kwargs)
         self.assertEqual(result["outcome"], "process-started")
         self.assertIn("not observed", result["detail"])
+        self.assertFalse(result["startupNotificationRequested"])
 
     def test_terminal_uses_session_preference_without_changing_it(self):
         with patch.object(commands, "read_setting", return_value="preferred-terminal --new-window") as setting, \
-                patch.object(commands, "spawn", return_value={}) as start:
+                patch.object(commands, "launch_argv", return_value={}) as start:
             commands.execute({"action": "terminal"})
         setting.assert_called_once_with("kdeglobals", "General", "TerminalApplication")
         start.assert_called_once_with(["preferred-terminal", "--new-window"])
+
+    def test_builtin_commands_preserve_argument_vectors(self):
+        palette = dict(background="#ffffff", foreground="#000000", selection="#334455", selectionText="#ffffff")
+        for request, expected in (
+                ({"action": "appearance"}, ["systemsettings", "kcm_lookandfeel"]),
+                ({"action": "kde-help"}, ["khelpcenter", "help:/plasma-desktop"]),
+                ({"action": "xman", "palette": palette}, ["xman", *commands.xman_colors(palette)])):
+            with self.subTest(request=request), patch.object(commands, "launch_argv", return_value={}) as start:
+                commands.execute(request)
+                start.assert_called_once_with(expected)
+
+    def test_argv_launch_uses_executable_private_entry_preserves_cwd_and_cleans_acceptance(self):
+        entries = []
+        def accepted(argv, **kwargs):
+            entry = Path(argv[-1]);entries.append(entry)
+            self.assertEqual(argv[:3], ["/usr/bin/kioclient", "--noninteractive", "exec"])
+            self.assertEqual(entry.stat().st_mode & 0o777, 0o700)
+            self.assertEqual(entry.parent.stat().st_mode & 0o777, 0o700)
+            text = entry.read_text()
+            self.assertIn("StartupNotify=true\n", text)
+            self.assertIn("Path=/private/current\\sspace/dir\n", text)
+            self.assertIn('"literal%%f"', text)
+            self.assertIn('""', text)
+            self.assertIn('"*menu.background: #789abc"', text)
+            self.assertNotIn("shell", kwargs)
+            return Mock(returncode=0)
+        with patch.object(commands.shutil, "which", side_effect=lambda name: None if name == "kioclient6" else "/usr/bin/"+name), \
+                patch.object(commands.os, "getcwd", return_value="/private/current space/dir"), \
+                patch.object(commands.subprocess, "run", side_effect=accepted), \
+                patch.object(commands.subprocess, "Popen") as spawn:
+            result = commands.launch_argv(["terminal", "literal%f", "*menu.background: #789abc", ""])
+        spawn.assert_not_called()
+        self.assertEqual(result["outcome"], "request-accepted")
+        self.assertTrue(result["startupNotificationRequested"])
+        self.assertNotIn("pid", result)
+        self.assertTrue(entries)
+        self.assertTrue(all(not path.parent.exists() for path in entries))
+
+    def test_argv_launcher_errors_clean_files_and_never_spawn_again(self):
+        for failure in ("reject", "timeout"):
+            entries = []
+            def fail(argv, **kwargs):
+                entries.append(Path(argv[-1]))
+                if failure == "timeout":
+                    raise commands.subprocess.TimeoutExpired(argv, 20)
+                kwargs["stderr"].write(b"explicit rejection")
+                return Mock(returncode=1)
+            exception = commands.LauncherOutcomeUnknown if failure == "timeout" else RuntimeError
+            with self.subTest(failure=failure), patch.object(commands.shutil, "which", return_value="/usr/bin/kioclient"), \
+                    patch.object(commands.subprocess, "run", side_effect=fail), \
+                    patch.object(commands.subprocess, "Popen") as spawn:
+                with self.assertRaises(exception) as caught:
+                    commands.launch_argv(["terminal"])
+                if failure == "timeout":self.assertIn("do not automatically repeat", str(caught.exception))
+                spawn.assert_not_called()
+            self.assertTrue(entries)
+            self.assertTrue(all(not path.parent.exists() for path in entries))
+
+    def test_timeout_json_is_unknown_application_state_not_completion_or_retry(self):
+        with patch.object(commands, "execute", side_effect=commands.LauncherOutcomeUnknown("request state unknown; application may have started")), \
+                patch("sys.stdout", new_callable=io.StringIO) as stream:
+            status = commands.main([json.dumps({"action": "terminal", "token": 3})])
+        response = json.loads(stream.getvalue())
+        self.assertEqual(status, 1)
+        self.assertFalse(response["ok"])
+        self.assertEqual(response["outcome"], "request-state-unknown")
+        self.assertEqual(response["token"], 3)
+
+    def test_invalid_argv_fails_without_tempfile_or_process(self):
+        for argv in ([], ["terminal", "bad\0value"], ["terminal", 3]):
+            with self.subTest(argv=argv), patch.object(commands.tempfile, "TemporaryDirectory") as temporary, \
+                    patch.object(commands.subprocess, "Popen") as spawn:
+                with self.assertRaises(ValueError):commands.launch_argv(argv)
+                temporary.assert_not_called();spawn.assert_not_called()
 
     def test_mail_uses_default_without_compose_uri(self):
         with patch.object(commands, "default_mail_client", return_value="mail.desktop"), \

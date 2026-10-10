@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "scope": "Motif C99 MVC application and real GTK3 previews; X11 scale 1. Not historical fidelity approval or other toolkit translation.",
+  "product_sha256": {
+    "tools/theme-lab/src/model.c": "7610d16a68abffd422babfad1ba3d987c3b46649349fc854804d7218676a39ee",
+    "tools/theme-lab/src/view.c": "61a4b9fdda62fe5c9e4adefc9bf5bbcbc205c734ad2ed92fe2516e6befb508a9",
+    "tools/theme-lab/src/controller.c": "9d1c0005af5d36497f60f313de8fa89e1cafdb05a6e934e5e1a2d1615b05c736",
+    "tools/theme-lab/src/preview_event.c": "f167bfa84fd8edd1430790a2e479e557500c56af1cabf0318942ed58d8b6f808",
+    "tools/theme-lab/src/native_colors.cpp": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465",
+    "tools/theme-lab/backend.py": "c3c8e0ae9bd1f90b2adbcaf214507d0b644abda482adf8f523f500bb8fa76b0a",
+    "tools/theme-lab/preview_gtk.py": "8299bdd4cf7eb938621319e943818a971dc513433eeabf0ba67fa130c9d460a8",
+    "tools/theme-lab/build/theme-lab": "e787a3e96aea62af8468dd5e7281cc4766d282a07f6337d375fa0332ced6d4ff",
+    "tools/theme-lab/build/theme-lab-colors": "f6562702f82d5963aaab0f2883ff9e0551a43da97bae3fe7a9cc9418381d765f",
+    "plasma/tools/abrir-laboratorio-temas.py": "d7542690790e56a42e2d77a4a9ac25bcd1c137f0f4319a93e6d5c6419fe68873",
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3"
+  },
+  "native_checks": [
+    {
+      "id": "controls_visible_list_preserves_all16_initial",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "model_mask": 65535,
+        "selected_positions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "id": "compact_native_arrow_smoke16",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "controls": 16,
+        "arrow": {
+          "index": 12,
+          "klass": "Button",
+          "x": 474,
+          "y": 401,
+          "width": 15,
+          "height": 15,
+          "state": 128,
+          "sensitive": true,
+          "focused": false,
+          "button_role_rgb8": [
+            120,
+            160,
+            213
+          ]
+        }
+      }
+    },
+    {
+      "id": "arrow_native_click",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {}
+    },
+    {
+      "id": "embedded_shift_tab_return",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "tab_control": 5,
+        "shift_tab_control": 4,
+        "toplevel_focus": true
+      }
+    },
+    {
+      "id": "controls_visible_list_preserved_after_ctrl_select",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "model_mask": 65535,
+        "selected_positions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "id": "arrow_editor_disabled",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "state": 136,
+        "sensitive": false
+      }
+    },
+    {
+      "id": "arrow_editor_backdrop",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "state": 192,
+        "sensitive": true
+      }
+    },
+    {
+      "id": "arrow_editor_normal",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "state": 128,
+        "sensitive": true
+      }
+    },
+    {
+      "id": "ctrl_drag_pointer_distance",
+      "passed": true,
+      "snapshot": "run-e6cd958bd6",
+      "evidence": {
+        "pointer_delta": [
+          24,
+          18
+        ],
+        "widget_delta": [
+          24,
+          18
+        ]
+      }
+    },
+    {
+      "id": "arrow_editor_pressed_after_popup_map",
+      "passed": true,
+      "snapshot": "run-7b0803b5b3",
+      "evidence": {
+        "state": 129
+      }
+    },
+    {
+      "id": "restart_keeps_16_visible",
+      "passed": true,
+      "snapshot": "run-7b0803b5b3",
+      "evidence": {
+        "controls": 16,
+        "selected_positions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      }
+    },
+    {
+      "id": "separate_preview_applied_scene",
+      "passed": true,
+      "snapshot": "run-7b0803b5b3",
+      "evidence": {
+        "controls": 16,
+        "xid": 10485767,
+        "project_sha256": "5d46e79649226a2c5d9fca76fd67699412b796e9ecaa749d181c12a478da23aa"
+      }
+    },
+    {
+      "id": "detached_shift_tab_comparison",
+      "passed": true,
+      "snapshot": "run-7b0803b5b3",
+      "evidence": {
+        "tab_control": 5,
+        "shift_tab_control": 4,
+        "toplevel_focus": true
+      }
+    },
+    {
+      "id": "selected_scheme_reaches_native_button_role",
+      "passed": true,
+      "snapshot": "run-7b0803b5b3",
+      "evidence": {
+        "observed_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "expected_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "role_source_sha256": "0befa2c469f94c301abbb9015502f64a379de7259da386536b1aceb5d9db3110",
+        "original_report_preserved": true
+      }
+    }
+  ],
+  "native_checks_resolved": 14,
+  "evidence_reports_sha256": {
+    "run-e6cd958bd6": "fede5f2abea0e56b6afe94ec861f8197c5d7339e19a3b2d3d786be59bbe356af",
+    "run-7b0803b5b3": "45b93bd211a7aca64a0618f2b79fc13f5a2d9844c122b61d1132f70e0c35bc94",
+    "palette_correlation": "278afe1b5506afc3d0f0a7cd0656efe7b138fa121ef1ca52a184ddd249f6211e"
+  },
+  "oracle_corrections": [
+    "The first Pressed run read an unmapped popup; the final run waits for IsViewable.",
+    "The first BreezeDark oracle used Window RGB, not Button RGB; the independent KColorScheme Button-role correlation resolves it without changing the product or rerunning GUI."
+  ],
+  "host_profiles_unchanged": true,
+  "protected_profile_count": 8,
+  "live_window": {
+    "opened": true,
+    "input_sent": false,
+    "initial_family": "gtk3",
+    "v1_preserved": true,
+    "separate_project_directory": true,
+    "frozen_binary_sha256": "e787a3e96aea62af8468dd5e7281cc4766d282a07f6337d375fa0332ced6d4ff"
+  },
+  "images_sha256": {
+    "07-FINAL-THREE-PANELS.png": "c8b09daa44108fa5925aaf8f0b125e8470a7090c9231d1f9d4cb34a92826e994",
+    "08-SEPARATE-NATIVE.png": "6b4388d202e1f15bf3713414ba0b8328e58f9e7b1f98059c2135ae249d9d70d6",
+    "09-BREEZE-DARK-NATIVE.png": "6545e9070e9d8f735a1bf77d8a311a768b6c4a760b602d6bd3a630ddad2080b6",
+    "V2-OPEN.png": "57b6a4afc91bdfc994106a0864881df724cd40d85cf19fc632c2bb3d9f5c820b"
+  },
+  "reuse_limits": [
+    "Earlier debounce/pipette/native input proofs remain scoped to their original snapshots.",
+    "GTK1/GTK5 unavailable; GTK2/GTK4/Qt5/Qt6/Kvantum/Plasma recipe translation pending.",
+    "Forced states are editing demonstrations, not evidence of historical DomainOS behaviour.",
+    "Native pixels are not rescaled to fit a narrower pane; scroll the preview."
+  ]
+}

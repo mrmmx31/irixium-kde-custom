@@ -175,6 +175,31 @@
       "source": "gtk/Irixium-KDE-Reload",
       "root": "data",
       "destination": "themes/Irixium-KDE-Reload"
+    },
+    {
+      "source": "look-and-feel/org.magpie.irixclassic.domainos.desktop",
+      "root": "data",
+      "destination": "plasma/look-and-feel/org.magpie.irixclassic.domainos.desktop"
+    },
+    {
+      "source": "kvantum/DomainOS-SR10-4",
+      "root": "config",
+      "destination": "Kvantum/DomainOS-SR10-4"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4-KDE",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4-KDE"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4-KDE-Reload",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4-KDE-Reload"
     }
   ],
   "profiles": {
@@ -186,7 +211,8 @@
       "plasma": "IrixClassic",
       "wallpaper": "IrixClassic",
       "gtk": "IrixClassic-KDE",
-      "cursor": "SGI-Classic"
+      "cursor": "SGI-Classic",
+      "colors": "Irixium"
     },
     "moderno": {
       "global": "org.magpie.irixium.desktop",
@@ -196,7 +222,19 @@
       "plasma": "Irixium",
       "wallpaper": "Irixium",
       "gtk": "Irixium-KDE",
-      "cursor": "SGI-Irixium"
+      "cursor": "SGI-Irixium",
+      "colors": "Irixium"
+    },
+    "domainos": {
+      "global": "org.magpie.irixclassic.domainos.desktop",
+      "kvantum": "DomainOS-SR10-4",
+      "decoration": "domainos_sr104",
+      "icons": "IrixClassic-SGI",
+      "plasma": "IrixClassicDomainOS",
+      "wallpaper": "IrixClassic",
+      "gtk": "DomainOS-SR10-4-KDE",
+      "cursor": "SGI-Classic",
+      "colors": "DomainOS-SR10-4"
     }
   },
   "sounds": {

@@ -71,6 +71,7 @@ Item {
     }
     DomainOSActivity {
         id: activityTracker
+        startupModel: taskController.identityModel
         keepLightAfterCompletion: runtime.settings.keepActivityLight || false
         extraLightMilliseconds: runtime.settings.activityLightMilliseconds === undefined ? 1000 : runtime.settings.activityLightMilliseconds
     }

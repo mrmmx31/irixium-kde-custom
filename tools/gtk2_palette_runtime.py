@@ -24,7 +24,9 @@ from theme_transaction import (Change, Failure, Transaction, decode, image,
                                no_links, replace_checked, sha, snapshot)
 
 OWNED = {'IrixClassic-KDE': 'IrixClassic', 'IrixClassic-KDE-Reload': 'IrixClassic',
-         'Irixium-KDE': 'Irixium', 'Irixium-KDE-Reload': 'Irixium'}
+         'Irixium-KDE': 'Irixium', 'Irixium-KDE-Reload': 'Irixium',
+         'DomainOS-SR10-4-KDE': 'DomainOS-SR10-4',
+         'DomainOS-SR10-4-KDE-Reload': 'DomainOS-SR10-4'}
 FORMAT = 1
 MAX_CSS = 256 * 1024
 
@@ -190,9 +192,11 @@ def _renderer(name, renderers):
     if name == 'IrixClassic-KDE':
         return prepare
     try:
+        if name == 'DomainOS-SR10-4-KDE':
+            return importlib.import_module('gtk2_domainos_palette').prepare_domainos
         return importlib.import_module('gtk2_modern_palette').prepare_modern
     except (ImportError, AttributeError) as error:
-        raise Failure('O renderer GTK2 Moderno instalado é necessário para Irixium-KDE.') from error
+        raise Failure('O renderer GTK2 instalado é necessário para ' + name + '.') from error
 
 
 def _update(roots, *, setup, theme_name=None, colors_path=None, dry=False,

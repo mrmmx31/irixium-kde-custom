@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "scope": "Referência Motif instalada interativa, isolada da edição GTK3; não comprova fidelidade integral à VM.",
+  "sources": {
+    "tools/theme-lab/build/theme-lab": "e59001d397ed903fc0ad6706b56d4fedb665be7597c7e61b9fed1a73fa241008",
+    "tools/theme-lab/src/view.c": "44810ae87ce51edd3b903b867bc7ba1d43b309e332353929516f65b0d275cfa3",
+    "tools/theme-lab/src/controller.c": "89b1923437dfc56846d4afc099698246a2941c1c45ce7b4ccabbd8f2a2580b82",
+    "tools/theme-lab/backend.py": "5915344c2efd1c47778cf0ad791c7c0540b116b649528c9d7ac1e0fff8bc9c7f",
+    "tools/theme-lab/preview_gtk.py": "8299bdd4cf7eb938621319e943818a971dc513433eeabf0ba67fa130c9d460a8"
+  },
+  "checks": [
+    {
+      "id": "motif_reference_real_16_controls",
+      "passed": true,
+      "evidence": {
+        "count": 16,
+        "classes": {
+          "nativePushButton": "XmPushButton",
+          "nativeToggleButton": "XmToggleButton",
+          "nativeCheckButton": "XmToggleButton",
+          "nativeRadioButton": "XmToggleButton",
+          "nativeTextField": "XmTextField",
+          "nativeComboBox": "XmComboBox",
+          "nativeSpinBox": "XmSpinBox",
+          "nativeMultilineText": "XmText",
+          "nativeHorizontalScale": "XmScale",
+          "nativeVerticalScale": "XmScale",
+          "nativeHorizontalScrollBar": "XmScrollBar",
+          "nativeVerticalScrollBar": "XmScrollBar",
+          "nativeArrowButton": "XmArrowButton",
+          "nativeLevelScale": "XmScale",
+          "nativeList": "XmList",
+          "nativeControlFrame": "XmFrame"
+        }
+      }
+    },
+    {
+      "id": "reference_geometry_independent_of_gtk3",
+      "passed": true,
+      "evidence": {
+        "reference_bar_height": 15,
+        "gtk3_bar_recipe": 17,
+        "reference_arrow_width": 15,
+        "gtk3_arrow_width": 17
+      }
+    },
+    {
+      "id": "historical_image_hidden_at_start",
+      "passed": true
+    },
+    {
+      "id": "reference_native_arm_disarm",
+      "passed": true,
+      "evidence": [
+        {
+          "widget": "nativePushButton",
+          "action": "arm"
+        },
+        {
+          "widget": "nativePushButton",
+          "action": "disarm"
+        }
+      ]
+    },
+    {
+      "id": "reference_scroll_native_action",
+      "passed": true,
+      "evidence": {
+        "before": 35,
+        "after": 34
+      }
+    },
+    {
+      "id": "reference_clicks_do_not_edit_projects",
+      "passed": true,
+      "evidence": {
+        "before": {
+          "working.json": "21c9d74e0f4d111f37fc15b44617378be43b0c2871c17642b3cada2434cdc851",
+          "scene.json": "21c9d74e0f4d111f37fc15b44617378be43b0c2871c17642b3cada2434cdc851"
+        },
+        "after": {
+          "working.json": "21c9d74e0f4d111f37fc15b44617378be43b0c2871c17642b3cada2434cdc851",
+          "scene.json": "21c9d74e0f4d111f37fc15b44617378be43b0c2871c17642b3cada2434cdc851"
+        }
+      }
+    },
+    {
+      "id": "gtk3_keyboard_remains_native",
+      "passed": true,
+      "evidence": {
+        "tab_control": 5,
+        "shift_tab_control": 4
+      }
+    },
+    {
+      "id": "historical_image_separate_1to1",
+      "passed": true,
+      "evidence": {
+        "width": 592,
+        "height": 361
+      }
+    },
+    {
+      "id": "motif_reference_palette_DomainOS-SR10.4",
+      "passed": true,
+      "evidence": {
+        "actual": [
+          120,
+          160,
+          213
+        ],
+        "expected": [
+          120,
+          160,
+          213
+        ]
+      }
+    },
+    {
+      "id": "motif_reference_palette_BreezeDark",
+      "passed": true,
+      "evidence": {
+        "actual": [
+          41,
+          44,
+          48
+        ],
+        "expected": [
+          41,
+          44,
+          48
+        ]
+      }
+    },
+    {
+      "id": "motif_reference_palette_QA-Neutral",
+      "passed": true,
+      "evidence": {
+        "actual": [
+          184,
+          184,
+          184
+        ],
+        "expected": [
+          184,
+          184,
+          184
+        ]
+      }
+    },
+    {
+      "id": "motif_reference_palette_QA-Yellow",
+      "passed": true,
+      "evidence": {
+        "actual": [
+          232,
+          210,
+          80
+        ],
+        "expected": [
+          232,
+          210,
+          80
+        ]
+      }
+    }
+  ],
+  "passed": 12,
+  "native_runs": [
+    "run-b3bfeee0b1",
+    "run-aa2f2557ed"
+  ],
+  "personal_profiles_unchanged": true,
+  "reviewer_approval": false,
+  "test_corrections": [
+    "A sonda de teste foi corrigida para consultar XtDisplayOfObject em gadgets, sem alteração do produto.",
+    "O controle GTK de rolagem é um contêiner; sua altura externa não é a espessura do scrollbar. A independência foi medida na seta isolada e na receita.",
+    "A leitura GTK Button foi comparada inicialmente ao papel Window por engano. O relatório bruto foi preservado; quatro ensaios posteriores conferiram os papéis Motif selecionados."
+  ],
+  "pending": [
+    "Campos numéricos com incremento; dimensões dos componentes; controle de visibilidade da prévia separada.",
+    "Mapeamento de face personalizada GTK3 em controles genéricos; o ensaio de referência não valida esse mapeamento.",
+    "Demais tradutores e validação manual do usuário."
+  ]
+}

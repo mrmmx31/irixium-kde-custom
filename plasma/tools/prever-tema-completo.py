@@ -4,20 +4,25 @@
 
 No startplasma, installer, systemd user import, personal bus or real HOME is used.
 The parent owns Xephyr; bwrap exposes only its X socket and read-only theme
-resources to a separate user/mount/network/PID namespace. Closing Xephyr ends
-that namespace. Qt and GTK galleries use actual installed toolkit styles.
+resources to separate user/mount/network namespaces and a disposable HOME.
+Process IDs remain in Xephyr's namespace so XRes can authenticate window
+operations. Closing Xephyr stops the owned session. Qt and GTK galleries use
+actual installed toolkit styles.
 """
 import argparse
 import configparser
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
 import re
 import signal
 import shutil
+import stat
 import subprocess
 import sys
+import tempfile
 import time
 import traceback
 import uuid
@@ -27,7 +32,8 @@ SCRIPT = Path(__file__).resolve()
 REPO = SCRIPT.parents[2] if len(SCRIPT.parents) > 2 else Path("/suite")
 APPLET = "org.irixclassic.domainos.panel"
 INNER_HOME = Path("/home/domainos-test")
-GLOBAL_THEMES = ("org.kde.breeze.desktop", "org.magpie.irixclassic.desktop", "org.magpie.irixium.desktop")
+GLOBAL_THEMES = ("org.kde.breeze.desktop", "org.magpie.irixclassic.desktop", "org.magpie.irixium.desktop",
+                 "org.magpie.irixclassic.domainos.desktop")
 
 
 def write_json(path, data):
@@ -40,11 +46,21 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
 
-def initial_color_scheme(requested, package_root, catalog):
+def copy_private_tree(source, target):
+    """Copy immutable published assets into an editable private runtime tree."""
+    shutil.copytree(source, target)
+    for path in (target, *target.rglob("*")):
+        # copytree resolves source symlinks into owned copies. Retain existing
+        # read/execute permissions and add write only for the private owner.
+        path.chmod(stat.S_IMODE(path.stat().st_mode) | stat.S_IWUSR)
+
+
+def initial_color_scheme(requested, package_root, catalog, theme="org.magpie.irixclassic.desktop"):
     defaults = configparser.ConfigParser(interpolation=None)
     defaults.optionxform = str
-    defaults.read(REPO / "look-and-feel/org.magpie.irixclassic.desktop/contents/defaults")
-    name = requested or defaults.get("kdeglobals][General", "ColorScheme")
+    defaults.read(REPO / ("look-and-feel/"+theme+"/contents/defaults"))
+    name = requested or ("BreezeLight" if theme == "org.kde.breeze.desktop"
+                         else defaults.get("kdeglobals][General", "ColorScheme"))
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,100}", name):
         raise RuntimeError("Nome inválido para o esquema inicial da prévia")
     for entry in catalog["components"]:
@@ -82,8 +98,13 @@ def wait_for(check, timeout=15):
     raise TimeoutError("A sessão privada não ficou pronta dentro do prazo")
 
 
-def run(argv, **kwargs):
-    return subprocess.run(argv, capture_output=True, text=True, timeout=8, **kwargs)
+def run(argv, *, timeout=8, **kwargs):
+    return subprocess.run(argv, capture_output=True, text=True, timeout=timeout, **kwargs)
+
+
+def desktop_count_ready(result):
+    """A successful script reply can still precede Plasma's desktop loading."""
+    return result.returncode == 0 and result.stdout.strip().isdigit() and int(result.stdout.strip()) > 0
 
 
 def worker():
@@ -100,8 +121,15 @@ def worker():
     output = Path("/out")
     manifest = json.loads((output / "MANIFESTO.json").read_text())
     report = {"status": "starting", "checks": {}, "processes": {},
-              "display": os.environ["DISPLAY"], "scope": "Whole Plasma in a disposable bwrap namespace; hardware/audio/network/authentication unavailable."}
+              "worker_pid": os.getpid(), "display": os.environ["DISPLAY"],
+              "scope": "Private HOME, user/mount/network namespaces and X11 display; shared PID namespace for authenticated XRes window operations. Hardware/audio/network/authentication unavailable."}
     logs, children = [], []
+
+    def terminate(_number, _frame):
+        raise SystemExit(0)
+
+    signal.signal(signal.SIGTERM, terminate)
+    signal.signal(signal.SIGINT, terminate)
 
     def save():
         write_json(output / "RESULTADO.json", report)
@@ -115,8 +143,8 @@ def worker():
         save()
         return process
 
-    def dbus(service, path, method, *args):
-        result = run(["qdbus6", service, path, method, *args])
+    def dbus(service, path, method, *args, timeout=8):
+        result = run(["qdbus6", service, path, method, *args], timeout=timeout)
         if result.returncode:
             raise RuntimeError(result.stderr.strip() or result.stdout.strip())
         return result.stdout.strip()
@@ -132,7 +160,10 @@ def worker():
 
     try:
         report["namespace"] = {name: os.stat("/proc/self/ns/" + name).st_ino for name in ("mnt", "net", "pid", "user")}
-        report["checks"]["namespaces_differ_from_parent"] = all(report["namespace"][key] != value for key, value in manifest["parent_namespaces"].items())
+        report["checks"]["namespaces_differ_from_parent"] = all(report["namespace"][key]
+            != manifest["parent_namespaces"][key] for key in ("mnt", "net", "user"))
+        report["checks"]["shared_pid_namespace_for_authenticated_x11"] = (
+            report["namespace"]["pid"] == manifest["parent_namespaces"]["pid"])
         report["checks"]["fake_identity_no_personal_home_or_bus"] = True
         resource_mounts = {resource["mount"] for resource in manifest["resources"]}
         report["checks"]["read_only_resources"] = all("ro" in line.split()[5].split(",") for line in Path("/proc/self/mountinfo").read_text().splitlines() if line.split()[4] == "/usr" or line.split()[4] in resource_mounts)
@@ -143,8 +174,14 @@ def worker():
         start("dbus", ["dbus-daemon", "--nofork", "--config-file=/fixture/bus.conf"])
         wait_for(lambda: Path("/run/user/1000/bus").exists(), 3)
         start("xsettings", ["xsettingsd", "-c", str(home / ".config/xsettingsd/xsettingsd.conf")])
-        start("kded", ["kded6"])
-        wait_for(lambda: dbus_ready("org.kde.kded6", "/kded", "org.kde.kded6.loadedModules"), 10)
+        kded = start("kded", ["kded6"])
+        def kded_ready():
+            if kded.poll() is not None:
+                raise RuntimeError("O KDED privado encerrou na abertura; consulte kded.log")
+            return dbus_ready("org.kde.kded6", "/kded", "org.kde.kded6.loadedModules")
+        # Cold startup can load the new Kvantum artwork and all KDED modules.
+        # Only preview readiness gets this bound; user actions keep their paths.
+        wait_for(kded_ready, 30)
         dbus("org.kde.kded6", "/kded", "org.kde.kded6.loadModule", "gtkconfig")
         wait_for(lambda: dbus_ready("org.kde.kded6", "/modules/gtkconfig", "org.kde.GtkConfig.gtkTheme"), 10)
         if Path("/fixture/theme-companions/tools/theme_companion_bridge.py").is_file():
@@ -153,51 +190,106 @@ def worker():
             companion = start("theme_companions", ["/usr/bin/python3", "-B",
                 str(home/".local/share/irixium/theme-companions/tools/theme_companion_bridge.py"), "--observar"])
             def companion_ready():
-                target = home/".local/state/irixium-gtk4-palette/IrixClassic-KDE/native-selection.json"
+                target = home/(".local/state/irixium-gtk4-palette/"+manifest.get("gtk_family","IrixClassic-KDE")+"/native-selection.json")
                 if companion.poll() is not None:
                     raise RuntimeError("A integração GTK da prévia encerrou; consulte theme_companions.log")
                 return target.is_file() and json.loads(target.read_text()).get("status") == "applied"
-            wait_for(companion_ready, 15)
+            if manifest.get("initial_global_theme") != "org.kde.breeze.desktop":
+                wait_for(companion_ready, 15)
             report["checks"]["native_gtk_companions_ready"] = True
         kwin = start("kwin", ["kwin_x11", "--replace"])
         wait_for(lambda: dbus_ready("org.kde.KWin", "/KWin", "supportInformation"), 10)
         for name, path in (("activities", "/usr/lib/x86_64-linux-gnu/libexec/kactivitymanagerd"), ("sensors", "/usr/bin/ksystemstats")):
             if Path(path).is_file():
-                start(name, [path])
+                process = start(name, [path])
+                if name == "activities":
+                    def activities_ready():
+                        if process.poll() is not None:
+                            raise RuntimeError("O serviço privado de atividades encerrou; consulte activities.log")
+                        return dbus_ready("org.kde.ActivityManager", "/ActivityManager/Activities",
+                                          "org.kde.ActivityManager.Activities.CurrentActivity")
+                    wait_for(activities_ready, 30)
         plasma_env = os.environ.copy()
         if Path("/fixture/theme-probe.so").is_file():
             plasma_env["LD_PRELOAD"] = "/fixture/theme-probe.so"
         plasma = start("plasma", ["plasmashell", "--no-respawn"], plasma_env)
-        wait_for(lambda: dbus_ready("org.kde.plasmashell", "/PlasmaShell", "evaluateScript", "print(desktops().length)"), 20)
+        def desktop_ready():
+            if plasma.poll() is not None:
+                raise RuntimeError("O Plasma privado encerrou; consulte plasma.log")
+            try:
+                return desktop_count_ready(run(["qdbus6", "org.kde.plasmashell", "/PlasmaShell",
+                    "evaluateScript", "print(desktops().length)"], timeout=2))
+            except subprocess.TimeoutExpired:
+                return False
+        wait_for(desktop_ready, 30)
         layout = """
-            panels().forEach(p => p.remove());
+            // The Global Theme may already have constructed its initial panel.
+            // Reuse it after native readiness instead of deleting a cold applet
+            // while its tray and QML are still being initialized.
+            var own=panels().filter(p => p.widgets().length === 1 &&
+                p.widgets()[0].type === "org.irixclassic.domainos.panel");
+            var p=own.length === 1 ? own[0] : null;
+            if (!p) { panels().forEach(p => p.remove()); p = new Panel; }
             desktops().forEach(d => {
                 d.wallpaperPlugin = "org.kde.image";
                 d.currentConfigGroup = ["Wallpaper", "org.kde.image", "General"];
                 d.writeConfig("Image", "file:///home/domainos-test/.local/share/wallpapers/IrixClassic/contents/images/1920x1080.jpg");
             });
-            var p = new Panel;
             p.location = "bottom"; p.alignment = "center"; p.height = 109;
             p.lengthMode = "custom"; p.minimumLength = 971; p.maximumLength = 971;
             p.length = 971; p.hiding = "none"; p.floating = true;
-            var w = p.addWidget("org.irixclassic.domainos.panel");
+            var w = p.widgets().find(w => w.type === "org.irixclassic.domainos.panel") ||
+                p.addWidget("org.irixclassic.domainos.panel");
             w.currentConfigGroup = ["General"];
-            w.writeConfig("keepActivityLight", true);
-            w.writeConfig("activityLightMilliseconds", 300);
             w.writeConfig("terminalCommand", "/usr/bin/xterm");
             w.reloadConfig();
             print(JSON.stringify({panel:p.id,widget:w.id,type:w.type}));
         """
-        reply = dbus("org.kde.plasmashell", "/PlasmaShell", "evaluateScript", layout)
+        if manifest.get("initial_panel") == "classic":
+            layout='''
+                panels().forEach(p => p.remove());
+                var p=new Panel; p.location="bottom";p.height=48;p.floating=true;
+                p.addWidget("org.kde.plasma.kickoff");
+                var w=p.addWidget("org.kde.plasma.taskmanager");
+                p.addWidget("org.kde.plasma.pager");
+                p.addWidget("org.kde.plasma.systemtray");
+                p.addWidget("org.kde.plasma.digitalclock");
+                print(JSON.stringify({panel:p.id,widget:w.id,type:w.type}));
+            '''
+        # One initial construction can load the cold QML/native tray. Give this
+        # single preview setup operation a bounded startup allowance; never
+        # retry a timed-out mutation, and keep interactive commands at 8s.
+        layout_started = time.monotonic()
+        reply = dbus("org.kde.plasmashell", "/PlasmaShell", "evaluateScript", layout, timeout=30)
+        report["initial_layout_seconds"] = round(time.monotonic() - layout_started, 3)
         report["panel"] = json.loads(reply)
-        report["checks"]["actual_plasmashell_production_panel"] = report["panel"].get("type") == APPLET
+        report["checks"]["actual_plasmashell_production_panel"] = report["panel"].get("type") == (
+            "org.kde.plasma.taskmanager" if manifest.get("initial_panel") == "classic" else APPLET)
+        style_bridge=home/".local/share/irixclassic/domainos-style-bridge/tools/domainos_style_bridge.py"
+        bridge_install=run(["/usr/bin/python3","-B","/fixture/theme-companions/tools/domainos_style_bridge.py",
+            "--instalar","--temas-globais"])
+        if bridge_install.returncode: raise RuntimeError(bridge_install.stderr or bridge_install.stdout)
+        start("global_panel_bridge",["/usr/bin/python3","-B",str(style_bridge),"--observar"])
+        if manifest.get("initial_global_theme") != "org.kde.breeze.desktop":
+            palette_apply=run(["/usr/bin/python3","-B",str(home/".local/share/irixium/theme-companions/tools/apply_kvantum_colors.py")])
+            if palette_apply.returncode: raise RuntimeError(palette_apply.stderr or palette_apply.stdout)
+            report["checks"]["native_initial_qt_palette_applied"]=True
         start("qt6", ["/usr/bin/python3", "-B", "/fixture/gallery/qt6_demo.py"])
         start("gtk3", ["/usr/bin/python3", "-B", "/fixture/gallery/gtk3_demo.py"])
         start("gtk4", ["/usr/bin/python3", "-B", "/fixture/gallery/gtk4_demo.py"])
+        gallery_names = ["GTK3", "GTK4", "Qt6"]
+        if manifest.get("all_galleries"):
+            start("gtk2", ["/usr/bin/python3", "-B", "/fixture/gallery/gtk2_demo.py"])
+            start("qt5", ["/usr/bin/python3", "-B", "/fixture/gallery/qt5_demo.py"])
+            start("qtquick6", ["/usr/bin/python3", "-B", "/fixture/gallery/qtquick_demo.py", "--qt-major", "6"])
+            gallery_names += ["GTK2", "Qt5", "QtQuick6"]
+            if manifest.get("qtquick5_available"):
+                start("qtquick5", ["/usr/bin/python3", "-B", "/fixture/gallery/qtquick_demo.py", "--qt-major", "5"])
+                gallery_names.append("QtQuick5")
         # Wait for actual windows, then place them without repaint substitutes.
         def windows():
             found = {}
-            for name in ("GTK3", "GTK4", "Qt6"):
+            for name in gallery_names:
                 result = run(["xdotool", "search", "--onlyvisible", "--name", name])
                 if result.returncode or not result.stdout.strip():
                     return None
@@ -217,7 +309,8 @@ def worker():
             if (extra>0) {var length=p.maximumLength+extra;p.minimumLength=length;p.maximumLength=length;}
             print(JSON.stringify({before:before,added:extra,afterLength:p.maximumLength}));
         """
-        report["native_gutter_compensation"] = json.loads(dbus("org.kde.plasmashell", "/PlasmaShell", "evaluateScript", fit))
+        if manifest.get("initial_panel") != "classic":
+            report["native_gutter_compensation"] = json.loads(dbus("org.kde.plasmashell", "/PlasmaShell", "evaluateScript", fit))
         placements = (("Qt6", 10, 45, 660, 590), ("GTK3", 705, 45, 870, 590), ("GTK4", 405, 145, 850, 620))
         for name, x, y, width, height in placements:
             moved = run(["xdotool", "windowmove", window_list[name], str(x), str(y)])
@@ -226,6 +319,21 @@ def worker():
         # GTK4 is accessible on the second private desktop instead of obscuring
         # the initial Qt6/GTK3 side-by-side inspection.
         run(["xdotool", "set_desktop_for_window", window_list["GTK4"], "1"])
+        if manifest.get("all_galleries"):
+            extra_placements = [
+                    ("GTK2", "1", 10, 45, 760, 680),
+                    ("GTK4", "1", 790, 45, 780, 680),
+                    ("Qt5", "2", 10, 45, 750, 680),
+                    ("QtQuick6", "2", 790, 45, 780, 680)]
+            if manifest.get("qtquick5_available"):
+                extra_placements.append(("QtQuick5", "3", 410, 45, 780, 680))
+            for name, desktop, x, y, width, height in extra_placements:
+                placed = [run(["xdotool", "windowmove", window_list[name], str(x), str(y)]),
+                          run(["xdotool", "windowsize", window_list[name], str(width), str(height)]),
+                          run(["xdotool", "set_desktop_for_window", window_list[name], desktop])]
+                report["checks"]["native_window_" + name] = all(value.returncode == 0 for value in placed)
+            report["available_galleries"] = gallery_names
+            report["unavailable_galleries"] = manifest.get("unavailable_galleries", [])
         run(["xdotool", "set_desktop", "0"])
         qt_report = wait_for(lambda: (home / "qtwidgets-proof/RESULTADO.json") if (home / "qtwidgets-proof/RESULTADO.json").is_file() else None, 5)
         report["qt6_gallery"] = json.loads(qt_report.read_text())
@@ -236,8 +344,10 @@ def worker():
         # The gallery reports installed plugin mappings rather than just a
         # requested config value. Both pieces of evidence are kept.
         mappings = Path("/proc/" + str(report["processes"]["qt6"]["pid"]) + "/maps").read_text()
-        report["checks"]["kvantum_loaded_into_real_qt_widgets"] = "kvantum" in mappings.lower()
-        report["checks"]["private_gtk_classic_requested"] = 'gtk-theme-name=IrixClassic-KDE' in (home / ".config/gtk-3.0/settings.ini").read_text()
+        report["checks"]["selected_style_loaded_into_real_qt_widgets"] = (
+            "breeze" if manifest.get("initial_global_theme") == "org.kde.breeze.desktop" else "kvantum") in mappings.lower()
+        if manifest.get("initial_global_theme") != "org.kde.breeze.desktop":
+            report["checks"]["private_gtk_family_requested"] = ('gtk-theme-name='+manifest.get("gtk_family","IrixClassic-KDE")) in (home / ".config/gtk-3.0/settings.ini").read_text()
         report["checks"]["all_native_apps_alive"] = all(process.poll() is None for process in children)
         report["checks"]["personal_dbus_services_not_owned"] = all(name not in dbus("org.freedesktop.DBus", "/org/freedesktop/DBus", "ListNames").splitlines() for name in ("org.freedesktop.systemd1", "org.freedesktop.portal.Desktop", "org.kde.kwalletd6"))
         capture = run(["/usr/bin/python3", "-B", "/fixture/prever-tema-completo.py", "--capture"])
@@ -261,6 +371,10 @@ def worker():
                         applied = run(["plasma-apply-colorscheme", scheme])
                         if applied.returncode:
                             raise RuntimeError(applied.stderr or applied.stdout)
+                        # Exercise the public manual Kvantum script after KDE
+                        # commits a color scheme; never substitute GUI colors.
+                        palette_apply=run(["/usr/bin/python3","-B",str(home/".local/share/irixium/theme-companions/tools/apply_kvantum_colors.py")])
+                        if palette_apply.returncode: raise RuntimeError(palette_apply.stderr or palette_apply.stdout)
                         response.update(ok=True, scheme=scheme, stdout=applied.stdout)
                     elif payload.get("action") == "theme":
                         theme = payload.get("theme", "")
@@ -300,6 +414,7 @@ def worker():
         write_json(output / "ERRO.json", {"error": str(error)})
         raise
     finally:
+        signal.signal(signal.SIGTERM, signal.SIG_IGN)
         for process in reversed(children):
             stop(process)
         for log in logs:
@@ -328,10 +443,15 @@ def supervisor(output):
         with (output / "Xephyr.log").open("w") as log:
             # Only Xephyr, which embeds the new display, receives the host GUI
             # environment. No host environment is passed into bwrap.
-            xephyr = subprocess.Popen(["Xephyr", manifest["display"], "-screen", "1600x1000", "-auth", str(output / "Xauthority"), "-nolisten", "tcp", "-extension", "MIT-SHM", "-noreset", "-br", "-title", "IRIX — GTK, Kvantum e cores; teste isolado"], stdout=log, stderr=subprocess.STDOUT)
+            title = ("DomainOS SR10.4 — tema completo; teste isolado"
+                     if manifest.get("initial_global_theme") == "org.magpie.irixclassic.domainos.desktop"
+                     else "IRIX — GTK, Kvantum e cores; teste isolado")
+            xephyr = subprocess.Popen(["Xephyr", manifest["display"], "-screen", "1600x1000", "-auth", str(output / "Xauthority"), "-nolisten", "tcp", "-extension", "MIT-SHM", "-noreset", "-br", "-title", title], stdout=log, stderr=subprocess.STDOUT)
         env = dict(os.environ, DISPLAY=manifest["display"], XAUTHORITY=str(output / "Xauthority"))
         wait_for(lambda: xephyr.poll() is None and run(["xdpyinfo"], env=env).returncode == 0, 10)
-        cmd = ["unshare", "--user", "--map-root-user", "--net", "bwrap", "--unshare-user", "--unshare-ipc", "--unshare-pid", "--unshare-uts", "--uid", "1000", "--gid", "1000", "--clearenv", "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin", "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64", "--ro-bind", str(output / "etc"), "/etc", "--proc", "/proc", "--dev", "/dev", "--bind", str(output / "run"), "/run", "--bind", str(output / "tmp"), "/tmp", "--bind", str(output / "home"), str(INNER_HOME), "--bind", str(output), "/out", "--ro-bind", str(output / "fixture"), "/fixture", "--ro-bind", "/tmp/.X11-unix/X" + manifest["display"].lstrip(":"), "/tmp/.X11-unix/X" + manifest["display"].lstrip(":"), "--ro-bind", str(output / "Xauthority"), str(INNER_HOME / ".Xauthority"), "--ro-bind", str(output / "applications"), "/usr/share/applications"]
+        # Xephyr runs in the parent PID namespace. Giving its clients different
+        # PIDs breaks XRes authentication; retain the production identity guard.
+        cmd = ["unshare", "--user", "--map-root-user", "--net", "bwrap", "--unshare-user", "--unshare-ipc", "--unshare-uts", "--uid", "1000", "--gid", "1000", "--clearenv", "--ro-bind", "/usr", "/usr", "--symlink", "usr/bin", "/bin", "--symlink", "usr/lib", "/lib", "--symlink", "usr/lib64", "/lib64", "--ro-bind", str(output / "etc"), "/etc", "--proc", "/proc", "--dev", "/dev", "--bind", str(output / "run"), "/run", "--bind", str(output / "tmp"), "/tmp", "--bind", str(output / "home"), str(INNER_HOME), "--bind", str(output), "/out", "--ro-bind", str(output / "fixture"), "/fixture", "--ro-bind", "/tmp/.X11-unix/X" + manifest["display"].lstrip(":"), "/tmp/.X11-unix/X" + manifest["display"].lstrip(":"), "--ro-bind", str(output / "Xauthority"), str(INNER_HOME / ".Xauthority"), "--ro-bind", str(output / "applications"), "/usr/share/applications"]
         for resource in manifest["resources"]:
             cmd.extend(["--ro-bind", resource["source"], resource["mount"]])
         for key, value in manifest["environment"].items():
@@ -348,6 +468,23 @@ def supervisor(output):
     finally:
         signal.signal(signal.SIGTERM, signal.SIG_IGN)
         signal.signal(signal.SIGINT, signal.SIG_IGN)
+        # Ask the authenticated worker to run its child cleanup before bwrap
+        # stops. This also covers terminating the supervisor with Xephyr open.
+        try:
+            current = json.loads((output / "RESULTADO.json").read_text())
+            worker_pid = int(current.get("worker_pid", 0))
+            if worker_pid > 1:
+                marker = ("IRIX_DOMAINOS_PREVIEW_ID="
+                          + manifest["environment"]["IRIX_DOMAINOS_PREVIEW_ID"]).encode()
+                environment = Path(f"/proc/{worker_pid}/environ").read_bytes().split(b"\0")
+                if marker in environment:
+                    os.kill(worker_pid, signal.SIGTERM)
+                    for _ in range(60):
+                        if not Path(f"/proc/{worker_pid}").exists():
+                            break
+                        time.sleep(.1)
+        except (OSError, ValueError, KeyError, json.JSONDecodeError):
+            pass
         stop(container)
         stop(xephyr)
         before = manifest["protected_before"]
@@ -424,7 +561,8 @@ def prepare(args):
     # directory to XDG_CONFIG_DIRS; our isolated session must do the same.
     (config / "kdedefaults").mkdir()
     (output / "home/.themes").mkdir()
-    adaptive_names = {"IrixClassic-KDE", "IrixClassic-KDE-Reload", "Irixium-KDE", "Irixium-KDE-Reload"}
+    adaptive_names = {"IrixClassic-KDE", "IrixClassic-KDE-Reload", "Irixium-KDE", "Irixium-KDE-Reload",
+                      "DomainOS-SR10-4-KDE", "DomainOS-SR10-4-KDE-Reload"}
     for index, entry in enumerate(catalog["components"]):
         source = package_root / entry["source"]
         if not source.exists():
@@ -436,19 +574,19 @@ def prepare(args):
         if entry["destination"].startswith("themes/") and target.name in adaptive_names:
             # Runtime palettes modify only private copies. Public resources and
             # both actual profiles remain read-only outside this namespace.
-            shutil.copytree(source, target)
-            shutil.copytree(source, output/"home/.themes"/target.name)
+            copy_private_tree(source, target)
+            copy_private_tree(source, output/"home/.themes"/target.name)
             continue
         if entry["destination"].startswith("kwin/decorations/"):
             # Match the normal installer's discovery path/IDs, but only inside
             # the disposable HOME. The source package is never rewritten.
             normalized = output / "decorations" / target.name
-            shutil.copytree(source, normalized)
+            copy_private_tree(source, normalized)
             metadata = json.loads((normalized / "metadata.json").read_text())
             metadata["KPlugin"]["Id"] = target.name
             write_json(normalized / "metadata.json", metadata)
             legacy = data / "aurorae/themes" / target.name
-            shutil.copytree(normalized, legacy)
+            copy_private_tree(normalized, legacy)
             source = normalized
         # Direct mounts retain sibling imports used by production QML (notably
         # the grosview instruments); arbitrary symlink roots break that API.
@@ -464,12 +602,17 @@ def prepare(args):
             resources.append({"source": str(source.resolve()), "mount": str(INNER_HOME/".themes"/target.name),
                 "component": entry["source"]+":gtk2-compat"})
     (output / "home/.icons").symlink_to(".local/share/icons", target_is_directory=True)
-    initial_scheme, initial_source = initial_color_scheme(args.esquema, package_root, catalog)
+    initial_global=args.tema or "org.magpie.irixclassic.desktop"
+    profile=next((p for p in catalog["profiles"].values() if p["global"] == initial_global),catalog["profiles"]["classic"])
+    gtk_family=profile["gtk"] if initial_global != "org.kde.breeze.desktop" else "Breeze"
+    initial_decoration=args.decoracao or profile["decoration"]
+    initial_scheme, initial_source = initial_color_scheme(args.esquema, package_root, catalog,initial_global)
     scheme = configparser.ConfigParser(interpolation=None)
     scheme.optionxform = str
     scheme.read(initial_source)
-    scheme["KDE"] = {"widgetStyle": "kvantum", "LookAndFeelPackage": "org.magpie.irixclassic.desktop", "SingleClick": "false"}
-    scheme["Icons"] = {"Theme": "IrixClassic-SGI"}
+    scheme["KDE"] = {"widgetStyle": "breeze" if initial_global == "org.kde.breeze.desktop" else "kvantum",
+                     "LookAndFeelPackage": initial_global, "SingleClick": "false"}
+    scheme["Icons"] = {"Theme": profile["icons"]}
     scheme["General"]["ColorScheme"] = initial_scheme
     scheme["General"]["font"] = "Nimbus Sans,10,-1,5,50,0,0,0,0,0"
     scheme["General"]["fixed"] = "Nimbus Mono PS,10,-1,5,50,0,0,0,0,0"
@@ -485,29 +628,32 @@ def prepare(args):
     yellow["Colors:Selection"]["BackgroundNormal"] = "245,208,0"
     with (data / "color-schemes/PreviewYellowContrast.colors").open("w") as handle:
         yellow.write(handle)
-    (config / "plasmarc").write_text("[Theme]\nname=IrixClassicDomainOS\n")
-    (config / "Kvantum/kvantum.kvconfig").write_text("[General]\ntheme=IrixClassic\n")
+    (config / "plasmarc").write_text("[Theme]\nname="+("breeze" if initial_global == "org.kde.breeze.desktop" else profile["plasma"])+"\n")
+    (config / "Kvantum/kvantum.kvconfig").write_text("[General]\ntheme="+profile["kvantum"]+"\n")
     (config / "kcminputrc").write_text("[Mouse]\ncursorTheme=SGI-Classic\ncursorSize=24\n")
-    (config / "kwinrc").write_text("[Desktops]\nNumber=2\nName_1=Work\nName_2=Procrastination\n[Compositing]\nEnabled=true\n[org.kde.kdecoration2]\nlibrary=org.kde.kwin.aurorae\ntheme=" + args.decoracao + "\nButtonsOnLeft=M\nButtonsOnRight=IA\n")
+    quick5_available = bool(importlib.util.find_spec("PyQt5") and importlib.util.find_spec("PyQt5.QtQuick")) if args.todas_galerias else False
+    desktop_config = ("Number=" + str(4 if quick5_available else 3) + "\nName_1=GTK3 e Qt6\nName_2=GTK2 e GTK4\nName_3=Qt5 e Qt Quick6\n" + ("Name_4=Qt Quick5\n" if quick5_available else "")) if args.todas_galerias else "Number=2\nName_1=Work\nName_2=Procrastination\n"
+    (config / "kwinrc").write_text("[Desktops]\n" + desktop_config + "[Compositing]\nEnabled=true\n[org.kde.kdecoration2]\nlibrary=org.kde.kwin.aurorae\ntheme=" + initial_decoration + "\nButtonsOnLeft=M\nButtonsOnRight=IA\n")
     (config / "plasma-org.kde.plasma.desktop-appletsrc").write_text("[General]\nfirstRun=false\n")
     for version in ("3.0", "4.0"):
         directory = config / ("gtk-" + version)
         directory.mkdir()
-        (directory / "settings.ini").write_text("[Settings]\ngtk-theme-name=IrixClassic-KDE\ngtk-icon-theme-name=IrixClassic-SGI\ngtk-font-name=Nimbus Sans 10\ngtk-cursor-theme-name=SGI-Classic\ngtk-cursor-theme-size=24\ngtk-application-prefer-dark-theme=false\n")
-    (output / "home/.gtkrc-2.0").write_text('gtk-theme-name="IrixClassic-KDE"\ngtk-icon-theme-name="IrixClassic-SGI"\ngtk-font-name="Nimbus Sans 10"\ngtk-cursor-theme-name="SGI-Classic"\n')
+        (directory / "settings.ini").write_text("[Settings]\ngtk-theme-name="+gtk_family+"\ngtk-icon-theme-name="+profile["icons"]+"\ngtk-font-name=Nimbus Sans 10\ngtk-cursor-theme-name=SGI-Classic\ngtk-cursor-theme-size=24\ngtk-application-prefer-dark-theme=false\n")
+    (output / "home/.gtkrc-2.0").write_text('gtk-theme-name="'+gtk_family+'"\ngtk-icon-theme-name="'+profile["icons"]+'"\ngtk-font-name="Nimbus Sans 10"\ngtk-cursor-theme-name="SGI-Classic"\n')
     (config / "xsettingsd").mkdir()
-    (config / "xsettingsd/xsettingsd.conf").write_text('Net/ThemeName "IrixClassic"\nNet/IconThemeName "IrixClassic-SGI"\nGtk/FontName "Nimbus Sans 10"\nGtk/CursorThemeName "SGI-Classic"\nGtk/CursorThemeSize 24\nXft/Antialias 1\nXft/DPI 98304\n')
+    (config / "xsettingsd/xsettingsd.conf").write_text('Net/ThemeName "'+gtk_family+'"\nNet/IconThemeName "'+profile["icons"]+'"\nGtk/FontName "Nimbus Sans 10"\nGtk/CursorThemeName "SGI-Classic"\nGtk/CursorThemeSize 24\nXft/Antialias 1\nXft/DPI 98304\n')
     (config / "pulse").mkdir()
     (config / "pulse/client.conf").write_text("autospawn=no\nauto-connect-display=no\nauto-connect-localhost=no\n")
     gallery = output / "fixture/gallery"
-    shutil.copytree(args.galeria_gtk, gallery)
+    copy_private_tree(args.galeria_gtk, gallery)
     shutil.copyfile(args.galeria_qt, gallery / "qt6_demo.py")
     shutil.copyfile(Path(__file__), output / "fixture/prever-tema-completo.py")
     sys.path.insert(0, str(REPO/"tools"))
     from theme_companion_bridge import MODULES
+    from domainos_style_bridge import MODULES as PANEL_MODULES
     integration = output/"fixture/theme-companions"
     (integration/"tools").mkdir(parents=True)
-    for module in MODULES:
+    for module in sorted(set(MODULES)|set(PANEL_MODULES)):
         shutil.copyfile(REPO/"tools"/module, integration/"tools"/module)
     shutil.copyfile(REPO/"components.json", integration/"components.json")
     if args.observador:
@@ -523,17 +669,29 @@ def prepare(args):
         "gtk2": ("Galeria GTK2 — Classic", "/usr/bin/python3 -B /fixture/gallery/gtk2_demo.py", "applications-development"),
         "gtk3": ("Galeria GTK3 — Classic", "/usr/bin/python3 -B /fixture/gallery/gtk3_demo.py", "applications-development"),
         "gtk4": ("Galeria GTK4 — Classic", "/usr/bin/python3 -B /fixture/gallery/gtk4_demo.py", "applications-development"),
+        "qt5": ("Galeria Qt5 — Kvantum", "/usr/bin/python3 -B /fixture/gallery/qt5_demo.py", "applications-development"),
+        "qtquick6": ("Galeria Qt Quick6 — KDE", "/usr/bin/python3 -B /fixture/gallery/qtquick_demo.py --qt-major 6", "applications-development"),
         "settings": ("Configurações desta prévia", "/usr/bin/systemsettings", "preferences-system"),
         "kvantum": ("Kvantum desta prévia", "/usr/bin/kvantummanager", "preferences-desktop-theme"),
         "files": ("IrixClassic Files desta prévia", "/usr/bin/irixclassic-files", "system-file-manager"),
         "terminal": ("Terminal desta prévia", "/usr/bin/xterm", "utilities-terminal"),
     }
+    if quick5_available:
+        launchers["qtquick5"] = ("Galeria Qt Quick5 — KDE", "/usr/bin/python3 -B /fixture/gallery/qtquick_demo.py --qt-major 5", "applications-development")
     desktop = output / "home/Desktop"
     desktop.mkdir()
     for key, (name, command, icon) in launchers.items():
         text = "[Desktop Entry]\nType=Application\nName=" + name + "\nExec=" + command + "\nIcon=" + icon + "\nCategories=Utility;\nDBusActivatable=false\nTerminal=false\n"
-        (output / "applications" / ("irix-preview-" + key + ".desktop")).write_text(text)
-    (output / "home/LEIA-ME.txt").write_text("PRÉVIA PRIVADA DO TEMA\n\nQt6 e GTK3 na área Work; GTK4 em Procrastination.\nUse Applications para abrir Configurações, Kvantum, Files e terminal.\nAs escolhas desta janela ficam apenas neste perfil temporário.\nRede, áudio, bloqueio e contas pessoais não estão conectados.\nFeche a janela externa Xephyr para encerrar somente a prévia.\n")
+        # Match the IDs announced by the gallery before its windows map. This
+        # keeps Python-based Qt and GTK demos in their own native task groups.
+        desktop_id = {"qt6": "org.irixclassic.preview.qtwidgets",
+                      "gtk3": "org.irixclassic.NativeGTK3Demo",
+                      "gtk4": "org.irixclassic.NativeGTK4Demo"}.get(key, "irix-preview-" + key)
+        (output / "applications" / (desktop_id + ".desktop")).write_text(text)
+    gallery_help = "Área 1: GTK3 e Qt6. Área 2: GTK2 e GTK4. Área 3: Qt5 e Qt Quick6.\n" if args.todas_galerias else "Qt6 e GTK3 na área Work; GTK4 em Procrastination.\n"
+    if quick5_available:
+        gallery_help += "Área 4: Qt Quick5.\n"
+    (output / "home/LEIA-ME.txt").write_text("PRÉVIA PRIVADA DO TEMA\n\n" + gallery_help + "Use Applications para abrir Configurações, Kvantum, Files e terminal.\nAs escolhas desta janela ficam apenas neste perfil temporário.\nRede, áudio, bloqueio e contas pessoais não estão conectados.\nFeche a janela externa Xephyr para encerrar somente a prévia.\n")
     authority = output / "Xauthority"
     result = run(["xauth", "-f", str(authority), "add", ":" + str(number), "MIT-MAGIC-COOKIE-1", os.urandom(16).hex()])
     if result.returncode:
@@ -552,18 +710,22 @@ def prepare(args):
         "XCURSOR_THEME": "SGI-Classic", "XCURSOR_SIZE": "24", "XCURSOR_PATH": str(INNER_HOME / ".local/share/icons") + ":/usr/share/icons",
         "PULSE_CLIENTCONFIG": str(INNER_HOME / ".config/pulse/client.conf"), "PULSE_SERVER": "unix:/run/disabled-pulse", "PIPEWIRE_RUNTIME_DIR": "/run/user/1000", "PIPEWIRE_REMOTE": "disabled-pipewire",
         "IRIX_DOMAINOS_PRIVATE_XEPHYR": "1", "PRIVATE_XEPHYR": "1", "IRIX_DOMAINOS_PRIVATE_NAMESPACE": "bwrap", "IRIX_DOMAINOS_SESSION_ROOT": str(INNER_HOME),
+        "IRIX_DOMAINOS_PREVIEW_ID": uuid.uuid4().hex,
     }
     manifest = {"uid": os.getuid(), "display": ":" + str(number), "resources": resources, "environment": environment, "protected_before": before,
                 "launcher_sha256": digest(Path(__file__)),
                 "initial_color_scheme": initial_scheme, "initial_color_source_sha256": digest(initial_source),
+                "initial_global_theme":initial_global,"gtk_family":gtk_family,"initial_panel":args.painel_inicial,
+                "all_galleries":args.todas_galerias,"qtquick5_available":quick5_available,"motif_lab_requested":args.laboratorio_regras,
+                "unavailable_galleries":["GTK1 (not installed; no configured package candidate)"] + ([] if quick5_available else ["QtQuick5 Python binding"]),
                 "parent_namespaces": {name: os.stat("/proc/self/ns/" + name).st_ino for name in ("mnt", "net", "pid", "user")},
-                "package": str(args.pacote.resolve()), "package_sha256": digest(args.pacote), "decoration": args.decoracao,
+                "package": str(args.pacote.resolve()), "package_sha256": digest(args.pacote), "decoration": initial_decoration,
                 "native_plugin_sha256": digest(native), "fonts": "Nimbus Sans 10; Nimbus Mono PS 10", "layout": "Qt6/GTK3 desktop 1; GTK4 desktop 2"}
     write_json(output / "MANIFESTO.json", manifest)
     with (output / "supervisor.log").open("w") as log:
         process = subprocess.Popen([sys.executable, "-B", str(Path(__file__).resolve()), "--supervisor", str(output)], stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
     try:
-        wait_for(lambda: (output / "PRONTO.json").exists() or (output / "ERRO.json").exists() or process.poll() is not None, 65)
+        wait_for(lambda: (output / "PRONTO.json").exists() or (output / "ERRO.json").exists() or process.poll() is not None, 150)
         if not (output / "PRONTO.json").is_file():
             raise RuntimeError((output / "ERRO.json").read_text() if (output / "ERRO.json").exists() else "Supervisor encerrou; consulte os logs")
     except BaseException:
@@ -576,6 +738,13 @@ def prepare(args):
             stop(process)
         raise
     write_json(output / "PERFIL-PRESERVADO-AO-ABRIR.json", {"unchanged": all(digest(Path(path)) == value for path, value in before.items()), "protected_paths": list(before)})
+    if args.laboratorio_regras:
+        addon = Path(__file__).with_name("abrir-laboratorio-temas.py")
+        opened = run([sys.executable, "-B", str(addon), "--sessao", str(output), "--raiz", str(REPO)])
+        write_json(output / "LABORATORIO-MOTIF.json", {"returncode": opened.returncode,
+                   "stdout": opened.stdout, "stderr": opened.stderr})
+        if opened.returncode:
+            raise RuntimeError("A prévia continua aberta; o laboratório Motif não abriu: " + opened.stderr)
     print(json.dumps({"status": "open", "display": manifest["display"], "supervisor_pid": process.pid, "report": str(output / "RESULTADO.json"), "capture": str(output / "TEMA-COMPLETO.png")}, ensure_ascii=False))
 
 
@@ -611,8 +780,12 @@ def main():
     parser.add_argument("--comando", choices=("colors", "theme", "capture", "probe", "settings"))
     parser.add_argument("--esquema", help="Initial private color scheme, or scheme for the colors command; defaults to the Classic global theme")
     parser.add_argument("--tema", choices=GLOBAL_THEMES, help="Private preview global theme; keeps the panel layout")
-    parser.add_argument("--saida", type=Path, default=Path("/tmp/irix-tema-completo-" + str(os.getuid()) + "-" + str(time.time_ns())))
-    parser.add_argument("--decoracao", choices=("irixium_irix_classic_v4", "domainos_sr104"), default="irixium_irix_classic_v4")
+    parser.add_argument("--saida", type=Path,
+                        help="New session directory inside an owned folder; default: private temporary folder")
+    parser.add_argument("--decoracao", choices=("irixium_irix_classic_v4", "domainos_sr104"), help="Defaults to the selected Global Theme")
+    parser.add_argument("--painel-inicial", choices=("domainos","classic"),default="domainos",help="Start with the production panel or a KDE panel for migration testing")
+    parser.add_argument("--todas-galerias", action="store_true", help="Open available GTK2/3/4, Qt5/6 Widgets and Qt Quick galleries on private desktops")
+    parser.add_argument("--laboratorio-regras", action="store_true", help="Open the compiled Motif MVC laboratory in the same private Xephyr")
     parser.add_argument("--worker", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--capture", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument("--supervisor", type=Path, help=argparse.SUPPRESS)
@@ -628,6 +801,12 @@ def main():
     elif not all((args.pacote, args.galeria_gtk, args.galeria_qt)):
         parser.error("Informe --pacote")
     else:
+        if args.laboratorio_regras and not (REPO / "tools/theme-lab/build/theme-lab").is_file():
+            parser.error("Compile a ferramenta: make -C tools/theme-lab")
+        if args.saida is None:
+            # /tmp belongs to root. Make an owned private parent first so the
+            # same destination guard also works for a launch without --saida.
+            args.saida = Path(tempfile.mkdtemp(prefix="irix-tema-completo-")) / "sessao"
         prepare(args)
 
 

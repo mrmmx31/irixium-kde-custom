@@ -1,7 +1,7 @@
 # Temas GTK
 
-Os perfis Classic e Modern usam, respectivamente, `IrixClassic-KDE` e
-`Irixium-KDE`. Essas variantes acompanham os papéis de cores exportados pelo
+Os perfis Classic, Modern e DomainOS usam, respectivamente, `IrixClassic-KDE`,
+`Irixium-KDE` e `DomainOS-SR10-4-KDE`. Essas variantes acompanham os papéis de cores exportados pelo
 KDE para GTK2, GTK3 e GTK4, preservando o desenho de cada família.
 
 | Pasta | Uso |
@@ -12,12 +12,22 @@ KDE para GTK2, GTK3 e GTK4, preservando o desenho de cada família.
 | [Irixium-KDE-Reload](Irixium-KDE-Reload/) | Segunda identidade do mesmo desenho Irixium para recarga nativa |
 | [IrixClassic](IrixClassic/) | Variante Classic original com paleta própria |
 | [Irixium](Irixium/) | Tema moderno original, preservado byte a byte |
+| [DomainOS-SR10-4](DomainOS-SR10-4/) | Desenho Motif SR10.4 com paleta CoralReef de referência |
+| [DomainOS-SR10-4-KDE](DomainOS-SR10-4-KDE/) | Desenho Motif SR10.4 adaptável ao esquema KDE |
+| [DomainOS-SR10-4-KDE-Reload](DomainOS-SR10-4-KDE-Reload/) | Segunda identidade Motif para recarga nativa |
 
 A suíte instala as pastas completas no diretório XDG de temas do usuário e
 em `~/.themes`, necessário para a descoberta GTK2. Não instala arquivos em
 `/usr/share`, não seleciona temas de outros usuários e não altera o login SDDM.
 Os arquivos originais também são a fonte local para gerar os recursos GTK2;
 não há download de temas durante uma troca de cores.
+
+As barras DomainOS seguem a
+[especificação comum SR10.4](../docs/DOMAINOS-REGRAS-ROLAGEM.md).
+O gerador GTK3 lê o contrato JSON antes de construir os controles. A
+[fila de revisão](../docs/DOMAINOS-FILA-REVISAO-VISUAL.md) distingue famílias
+validadas e pendências: a moldura principal da tabela GTK3 preenchida ainda
+requer adaptação; GTK2 e GTK4 não recebem a conclusão da etapa GTK3.
 
 ## Troca de tema e cores
 
@@ -28,7 +38,7 @@ essas partes às escolhas feitas nas Configurações do Sistema. Ele usa eventos
 KConfig e a exportação `gtk-3.0/colors.css` do GTK Config. Não há sondagem
 periódica nem temporizador de redesenho do painel.
 
-Ao selecionar um dos dois Temas Globais IRIX, o observador seleciona seu
+Ao selecionar um dos três Temas Globais da suíte, o observador seleciona seu
 Kvantum e GTK correspondentes. Ao selecionar outro Tema Global, deixa a
 seleção a cargo do KDE. Uma troca apenas do esquema de cores preserva um
 nome GTK independente escolhido pelo usuário.
@@ -59,7 +69,7 @@ usam cantos fixos e faixas de relevo com tamanho transversal inteiro. No GTK4,
 somente o eixo uniforme dessas faixas é esticado, evitando os fragmentos vistos
 com a repetição de imagens simbólicas no renderer Cairo.
 
-Os temas Kvantum canônicos IrixClassic e Irixium conservam suas cores nos SVG e
+Os temas Kvantum canônicos IrixClassic, Irixium e DomainOS-SR10-4 conservam suas cores nos SVG e
 em `GeneralColors`. Para criar variantes locais que acompanham o esquema KDE,
 use [apply_kvantum_colors.py](../tools/apply_kvantum_colors.py) depois de aplicar
 as cores nas Configurações do Sistema. Esse comando manual integra o runtime
@@ -110,6 +120,19 @@ O Classic usa os mapas locais GPL-3.0-or-later de `kvantum/tools/` e sua traduç
 GTK. Veja [origem](IrixClassic/ORIGEM.json), [compatibilidade](IrixClassic/README.md)
 e [licença](IrixClassic/LICENSE). Os construtores adaptáveis ficam em
 [gtk/tools](tools/), com inventários dos arquivos produzidos em cada variante.
+
+DomainOS é uma família própria: relevo Motif de dois pixels, barras de 16 pixels,
+setas triangulares de 12 pixels e indicadores sem as estrias Classic. A arte foi
+redesenhada com coordenadas inteiras a partir da captura SR10.4 e das medidas do
+VUE 2.01/Motif 1.1 na VM. As cores vêm dos papéis da paleta CoralReef nativa.
+[build_kde_domainos.py](tools/build_kde_domainos.py) constrói os aliases;
+[origem](DomainOS-SR10-4/ORIGEM.json) registra referência e inventário. Não são
+redistribuídos imagens, programas ou fontes HP. Nimbus Sans aproxima a fonte
+bitmap Swiss 742; GTK4 conserva sua limitação nativa de ausência de steppers.
+O reteste GTK3 das duas identidades e estados das setas passou 408 verificações.
+O VUE selecionava oito conjuntos de cores por aplicativo. A adaptação usa os
+papéis de uma paleta global KDE; ela não reproduz automaticamente essa seleção
+individual de cores por programa.
 
 Os ensaios usam widgets reais GTK2/3/4, exportação nativa de cores e processos
 já abertos, em perfis privados. Conferem fundos, texto, estados e transparência

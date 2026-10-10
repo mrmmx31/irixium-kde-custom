@@ -96,8 +96,9 @@ def worker(output):
     checks["panel_binds_the_actual_tracker"] = tray.property("activity") == tracker
     checks["owned_provider_adopted_and_exact_geometry"] = len(value(tray.property("entries"))) == 8 \
         and tray.property("width") == 326 and tray.property("height") == 150
-    checks["default_tail_off_one_existing_timer"] = not tracker.property("keepLightAfterCompletion") \
-        and len([obj for obj in tracker.findChildren(QObject) if "Timer" in obj.metaObject().className()]) == 1
+    blink = tracker.findChild(QObject, "domainosBusyBlink")
+    checks["default_tail_off_and_blink_idle"] = not tracker.property("keepLightAfterCompletion") \
+        and blink is not None and not blink.property("running")
     overflow = request("overflow")
     checks["overflow_opens_with_presentation_receipt_not_fake_pending"] = popup_open("Overflow") \
         and overflow["presentationPending"] and not overflow["lit"] and not overflow["tailLit"]
@@ -179,8 +180,8 @@ def worker(output):
     baseline_frames = [0]
     host.frameSwapped.connect(lambda: baseline_frames.__setitem__(0, baseline_frames[0] + 1))
     QTest.qWait(350)
-    checks["no_idle_frame_loop_or_extra_activity_timer"] = baseline_frames[0] <= 1 \
-        and len([obj for obj in tracker.findChildren(QObject) if "Timer" in obj.metaObject().className()]) == 1
+    checks["no_idle_frame_loop_or_running_busy_blink"] = baseline_frames[0] <= 1 \
+        and not blink.property("running")
     errors = [w for w in warnings if any(key in w for key in (
         "Error:", "Binding loop", "Cannot assign", "Unable to assign", "is not a function", "Cannot read"))]
     checks["qml_errors_zero"] = not errors

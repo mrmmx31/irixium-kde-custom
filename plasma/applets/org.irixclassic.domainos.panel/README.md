@@ -35,6 +35,28 @@ e as limitações. A referência visual continua disponível em `DomainOSPanel.q
 sem controlador funcional. Seu desenho e o backup congelado não são substituídos
 pela integração.
 
+Terminal, Aparência, xman e Ajuda KDE usam KIO com um Desktop Entry temporário
+privado para solicitar a notificação de inicialização, preservando argumentos e
+diretório de trabalho. O arquivo é removido e não entra no catálogo do usuário.
+O retorno confirma a aceitação do pedido; a espera visual acompanha os registros
+reais do TaskManager. Sem KIO, a criação direta do processo informa sua limitação.
+Um timeout do launcher mantém o estado da aplicação desconhecido e não provoca
+uma nova tentativa automática. A espera desse caminho foi verificada em X11;
+o contexto de ativação Wayland ainda não foi comprovado.
+O `TasksModel` pode absorver a inicialização de um aplicativo com janela já
+aberta; sem esse registro, o painel confirma somente o pedido, sem inventar
+uma espera por PID, título ou duração fixa.
+
+No tema global DomainOS, as cores seguem a paleta CoralReef da VM SR10.4:
+o alto do painel usa os tons do conjunto 5; a chapa usa a luz e a sombra do
+conjunto 3; as molduras ativa e inativa usam os conjuntos 1 e 2. O cálculo
+dinâmico parte da cor primária nativa, evitando a saturação excessiva que
+ocorria ao usar o fundo antigo do protótipo como referência. Outros esquemas
+KDE continuam recolorindo essas relações; o modo de comparação conserva o
+desenho aprovado. A VM atribui ainda cores secundárias por aplicativo — por
+exemplo, o conjunto 7 ao Style Manager e o 6 ao Help — que uma única paleta
+global KDE não distingue automaticamente.
+
 ## Instalação por usuário
 
 Na raiz do repositório, como o próprio usuário e sem `sudo`:
@@ -132,6 +154,16 @@ amarela original nos esquemas aprovados e protege seu contraste em fundos amarel
 contratos dos componentes. As capturas externas de referência não integram o pacote.
 O relevo não depende de timers ou transições: amostragem dos instrumentos, observação
 de operações e permanência opcional da lente têm funções separadas do clique.
+
+A indicação de espera do VUE usa `waitingBlinkRate` de 500 ms por meio ciclo.
+A lente do painel acompanha esse ritmo enquanto há uma operação observável
+pendente e interrompe o pulso na conclusão. Pedidos já aceitos em um único turno
+têm somente a confirmação de apresentação. Nos lançadores, a observação atual
+termina na confirmação do processo auxiliar; ela não mede o tempo até a janela
+do aplicativo aparecer. O VUE original podia esperar o mapeamento dessa janela.
+O tempo opcional após a conclusão permanece desabilitado por padrão e só
+posterga o apagamento. O LED mantém seu amarelo, com proteção de contraste;
+a seleção do pager conserva seu comportamento independente.
 
 ## Ensaios isolados
 

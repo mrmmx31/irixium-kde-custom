@@ -59,6 +59,27 @@ def main():
         return view.grabWindow().save(str(args.saida / name))
     interval = app.styleHints().mouseDoubleClickInterval()
     try:
+        title = surface.findChild(QQuickItem, "domainosTitleRelief")
+        check("passive title feedback component present", title is not None)
+        title_position = point(title)
+        title_rectangle = title.mapRectToScene(QRectF(0, 0, title.width(), title.height())).toRect()
+        title_normal = view.grabWindow().copy(title_rectangle)
+        calls.clear()
+        QTest.mousePress(view, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, title_position)
+        check("title immediately depressed with no window-button action", title.property("down") and not calls)
+        QTest.qWait(30)
+        title_held = view.grabWindow().copy(title_rectangle)
+        check("title reverses relief while held", title_normal != title_held)
+        check("title held screenshot", capture("title-held.png"))
+        QTest.mouseMove(view, QPoint(400, 200))
+        check("passive title feedback follows held pointer outside title", title.property("down") and not calls)
+        QTest.mouseRelease(view, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, QPoint(400, 200))
+        QTest.qWait(30)
+        check("title returns to original relief after release", not title.property("down")
+              and not calls and view.grabWindow().copy(title_rectangle) == title_normal)
+        QTest.mousePress(view, Qt.MouseButton.RightButton, Qt.KeyboardModifier.NoModifier, title_position)
+        check("right title press does not apply left-button feedback", not title.property("down"))
+        QTest.mouseRelease(view, Qt.MouseButton.RightButton, Qt.KeyboardModifier.NoModifier, title_position)
         for name in ("Minimize", "Maximize"):
             button = buttons[name]; position = point(button)
             calls.clear(); QTest.mouseMove(view, position); QTest.qWait(30)
@@ -103,9 +124,27 @@ def main():
         for name, property_name in (("Minimize", "minimizeAllowed"), ("Maximize", "maximizeAllowed")):
             button = buttons[name]; position = point(button); calls.clear()
             surface.setProperty(property_name, False)
-            QTest.mouseClick(view, Qt.MouseButton.LeftButton, Qt.KeyboardModifier.NoModifier, position)
-            check(name + " unavailable control dispatches no action", not calls and not button.property("down"))
+            check(name + " unavailable control is omitted", not button.isVisible() and not button.property("down") and not calls)
             surface.setProperty(property_name, True)
+        # Resizing and maximizing are separate capabilities. A resizable
+        # window without maximize keeps the thick frame; a fixed-size dialog
+        # has the thin frame and no drawn corner grips, at both pixel scales.
+        for scale in (1, 2):
+            surface.setProperty("pixelScale", scale); view.resize(400*scale, 240*scale)
+            surface.setProperty("maximizeAllowed", False)
+            surface.setProperty("resizeAllowed", True); QTest.qWait(30)
+            check("resizable without maximize retains thick inset " + str(scale), buttons["Menu"].x() == 10*scale)
+            surface.setProperty("resizeAllowed", False); QTest.qWait(30)
+            check("fixed-size dialog has thin title inset " + str(scale), buttons["Menu"].x() == 5*scale)
+            check("dialog omits maximize " + str(scale), not buttons["Maximize"].isVisible())
+            thin=view.grabWindow()
+            check("fixed-size dialog screenshot " + str(scale), thin.save(str(args.saida / ("dialog-thin-"+str(scale)+".png"))))
+            view.setColor(QColor("#ff00ff")); QTest.qWait(30)
+            thin=view.grabWindow()
+            check("thin client starts at measured 6px/25px inset " + str(scale),
+                thin.pixelColor(6*scale,25*scale).name() == "#ff00ff"
+                and thin.pixelColor(5*scale,25*scale).name() != "#ff00ff")
+        surface.setProperty("resizeAllowed", True); surface.setProperty("maximizeAllowed", True)
         surface.setProperty("activeWindow", True); surface.setProperty("caption", "Help Index")
         for width, height, scale in ((380, 351, 1), (577, 346, 1), (101, 70, 1), (1400, 780, 1), (380, 351, 2)):
             surface.setProperty("pixelScale", scale); view.resize(width * scale, height * scale); QTest.qWait(50)

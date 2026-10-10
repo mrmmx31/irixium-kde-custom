@@ -1,0 +1,37 @@
+{
+  "kind": "original_integer_motif_control_reconstruction",
+  "license": "GPL-3.0-or-later",
+  "version": "DomainOS SR10.4",
+  "reference_sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b",
+  "reference_distributed": false,
+  "geometry": {
+    "bevel": 2,
+    "scrollbar": 16,
+    "triangle": 12,
+    "thumb_grips": 0,
+    "check_radio": 14
+  },
+  "excluded": [
+    "SR10.4.1",
+    "other versions",
+    "HP bitmaps",
+    "HP fonts",
+    "HP software"
+  ],
+  "files": {
+    "DomainOS-SR10-4.kvconfig": "9a8c3f5b9a5882745bb78fc5375b8771e1f28336c217042db775fff55bdd5569",
+    "DomainOS-SR10-4.svg": "6e395e91c9bc614fb60044a1c8e88bfd698e8a16271a641d411e826e173f2f52",
+    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "color_policy": {
+    "primary_relief": "Current Window/Button face with calibrated relative light/shadow levels",
+    "secondary_relief": "Current Header/Selection face with calibrated relative light/shadow levels",
+    "inset_view": "KDE View face/text with enclosing Window color-set shadows",
+    "marked_check_radio": "Select interior relative to current Button face and reversed relief"
+  },
+  "adaptation_limits": [
+    "KDE shared application palette does not represent eight per-client VUE color sets",
+    "KDE list/text selection keeps the exported Selection role rather than native XmList reverse video",
+    "KDE/user fonts and existing control metrics are preserved"
+  ]
+}

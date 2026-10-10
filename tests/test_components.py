@@ -12,10 +12,10 @@ from theme_transaction import Failure
 
 
 class ComponentsTest(unittest.TestCase):
-    def test_both_profiles_have_all_shipped_dependencies(self):
+    def test_three_profiles_have_all_shipped_dependencies(self):
         report=audit_suite.audit()
         self.assertEqual(report['failures'],[])
-        self.assertEqual(len(report['components']),35)
+        self.assertEqual(len(report['components']),40)
         self.assertFalse(report['sounds']['automatic_download'])
         self.assertFalse(report['sounds']['audio_in_repository'])
 
@@ -41,12 +41,12 @@ class ComponentsTest(unittest.TestCase):
 
     def test_domainos_options_keep_the_classic_profile_and_style_independent(self):
         doc = components.catalog()
-        self.assertEqual(set(doc['profiles']), {'classic', 'moderno'})
+        self.assertEqual(set(doc['profiles']), {'classic', 'moderno', 'domainos'})
         self.assertEqual(doc['profiles']['classic'], {
             'global': 'org.magpie.irixclassic.desktop', 'kvantum': 'IrixClassic',
             'decoration': 'irixium_irix_classic_v4', 'icons': 'IrixClassic-SGI',
             'plasma': 'IrixClassic', 'wallpaper': 'IrixClassic',
-            'gtk': 'IrixClassic-KDE', 'cursor': 'SGI-Classic'})
+            'gtk': 'IrixClassic-KDE', 'cursor': 'SGI-Classic','colors':'Irixium'})
         entries = {e['source']: (e['root'], e['destination']) for e in doc['components']}
         self.assertEqual(entries['plasma/IrixClassic'],
                          ('data', 'plasma/desktoptheme/IrixClassic'))
@@ -68,6 +68,24 @@ class ComponentsTest(unittest.TestCase):
             root=Path(tmp);(root/'components.json').write_text(json.dumps(doc))
             with patch.object(components,'ROOT',root),self.assertRaises(Failure):
                 components.catalog()
+
+    def test_independent_catalog_requires_its_explicit_four_component_scope(self):
+        doc=components.catalog()
+        targets={'plasma/plasmoids/org.irixclassic.domainos.panel',
+                 'plasma/plasmoids/org.irixclassic.grosview',
+                 'plasma/desktoptheme/IrixClassicDomainOS','color-schemes/DomainOS-SR10-4.colors'}
+        minimal={'format':1,'scope':components.INDEPENDENT_SCOPE,
+                 'profiles':{'classic':{},'moderno':{}},
+                 'components':[entry for entry in doc['components'] if entry['destination'] in targets]}
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);file=root/'components.json'
+            file.write_text(json.dumps(minimal))
+            with patch.object(components,'ROOT',root):self.assertEqual(components.catalog(),minimal)
+            invalid=dict(minimal);invalid.pop('scope');file.write_text(json.dumps(invalid))
+            with patch.object(components,'ROOT',root),self.assertRaises(Failure):components.catalog()
+            invalid=dict(minimal,components=minimal['components']+[doc['components'][0]])
+            file.write_text(json.dumps(invalid))
+            with patch.object(components,'ROOT',root),self.assertRaises(Failure):components.catalog()
 
     def test_local_comparison_normalizes_materialized_links(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -105,6 +123,7 @@ class ComponentsTest(unittest.TestCase):
             root = Path(tmp)
             pairs = components.gtk_compat_sources(root)
             self.assertEqual({dest.name for _,dest in pairs}, {'IrixClassic', 'Irixium',
-                'IrixClassic-KDE', 'IrixClassic-KDE-Reload', 'Irixium-KDE', 'Irixium-KDE-Reload'})
+                'IrixClassic-KDE', 'IrixClassic-KDE-Reload', 'Irixium-KDE', 'Irixium-KDE-Reload',
+                'DomainOS-SR10-4','DomainOS-SR10-4-KDE','DomainOS-SR10-4-KDE-Reload'})
             self.assertTrue(all(dest.parent == root for _,dest in pairs))
             self.assertTrue(all((source/'gtk-2.0/gtkrc').is_file() for source,_ in pairs))

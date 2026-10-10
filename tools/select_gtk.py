@@ -142,7 +142,7 @@ def record_failure(receipt, record, error, recovery_errors):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('tema', choices=('classic', 'moderno'), nargs='?')
+    parser.add_argument('tema', choices=tuple(catalog()['profiles']), nargs='?')
     parser.add_argument('--verificar', action='store_true')
     parser.add_argument('--restaurar', action='store_true')
     args = parser.parse_args()
@@ -180,7 +180,7 @@ def main():
         print('GTK anterior restaurado.' if not args.verificar else 'Backup GTK conferido.')
         return
     if not args.tema:
-        parser.error('informe classic ou moderno')
+        parser.error('informe um perfil de tema do inventário')
     theme = catalog()['profiles'][args.tema]['gtk']
     legacy = Path.home()/'.themes'/theme/'gtk-2.0/gtkrc'
     if not legacy.is_file():

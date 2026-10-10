@@ -6,13 +6,14 @@ import os
 from pathlib import Path
 import sys
 import tempfile
+import time
 import unittest
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 import theme_companion_bridge as bridge
-from theme_transaction import Failure, snapshot
+from theme_transaction import Failure, atomic, snapshot
 
 
 class CompanionBridgeTest(unittest.TestCase):
@@ -98,6 +99,69 @@ class CompanionBridgeTest(unittest.TestCase):
                 patch('gtk2_palette_runtime.setup') as setup, patch('gtk4_palette_runtime.refresh') as refresh:
             self.assertEqual(self.sync(companions=False)['gtk2_palette']['status'], 'preserved_independent_gtk_theme')
             select.assert_not_called(); setup.assert_not_called(); refresh.assert_not_called()
+
+    def test_native_file_observer_preserves_startup_choices_and_handles_later_global_transition(self):
+        from PyQt6.QtCore import QCoreApplication
+        from PyQt6.QtDBus import QDBusConnection
+        application = QCoreApplication.instance() or QCoreApplication([])
+        classic = bridge.catalog()['profiles']['classic']['global']
+        domainos = bridge.catalog()['profiles']['domainos']['global']
+        kde = self.config/'kdeglobals'
+        atomic(kde, ('[KDE]\nLookAndFeelPackage='+classic+'\nwidgetStyle=breeze\n').encode())
+        atomic(self.config/'Kvantum/kvantum.kvconfig', b'[General]\ntheme=OtherKvantum\n')
+        atomic(self.config/'gtk-3.0/settings.ini', b'[Settings]\ngtk-theme-name=OtherGTK\n')
+        atomic(self.config/'plasma-org.kde.plasma.desktop-appletsrc', b'[Containments][42]\nplugin=org.kde.panel\n')
+        protected = {path: snapshot(path) for path in self.config.rglob('*') if path.is_file()}
+        self.install()
+        marker = self.home/'workers.json'
+        worker = self.home/'worker.py'
+        worker.write_text('''import json, os, pathlib, sys
+path = pathlib.Path(os.environ['IRIX_COMPANION_TEST_MARKER'])
+rows = json.loads(path.read_text()) if path.exists() else []
+rows.append(sys.argv[1:])
+path.write_text(json.dumps(rows))
+''')
+        class PrivateNotificationBus:
+            def connect(self, *arguments):
+                return True
+        def calls():
+            return json.loads(marker.read_text()) if marker.exists() else []
+        def pump(predicate, timeout=5):
+            deadline = time.monotonic()+timeout
+            while time.monotonic() < deadline:
+                application.processEvents()
+                if predicate():
+                    return True
+                time.sleep(.005)
+            return False
+        environment = {'IRIX_COMPANION_TEST_MARKER': str(marker)}
+        with patch.dict(os.environ, environment), \
+                patch('reload_decoration.check_session'), \
+                patch.object(QDBusConnection, 'sessionBus', return_value=PrivateNotificationBus()), \
+                patch.object(bridge, 'notify', return_value='OtherGTK'), \
+                contextlib.redirect_stdout(io.StringIO()):
+            observer = bridge.watch(self.data, self.config, self.state, self.home,
+                                    app=application, worker=worker)
+            try:
+                self.assertTrue(pump(lambda: len(calls()) == 1 and observer.process is None))
+                self.assertIn('--somente-paleta', calls()[0])
+                for path, before in protected.items():
+                    self.assertEqual(snapshot(path), before)
+                # A color change must not select the Global Theme's companions.
+                atomic(kde, kde.read_bytes()+b'[General]\nColorScheme=OtherColors\n')
+                self.assertTrue(pump(lambda: len(calls()) == 2 and observer.process is None))
+                self.assertIn('--somente-paleta', calls()[1])
+                # The subsequent explicit Global Theme choice does select them.
+                atomic(kde, ('[KDE]\nLookAndFeelPackage='+domainos+'\n').encode())
+                self.assertTrue(pump(lambda: len(calls()) == 3 and observer.process is None))
+                self.assertNotIn('--somente-paleta', calls()[2])
+                bridge.verify_runtime(self.paths)
+            finally:
+                if observer.process is not None:
+                    observer.process.terminate(); observer.process.waitForFinished(2000)
+                paths = observer.watcher.files()+observer.watcher.directories()
+                if paths: observer.watcher.removePaths(paths)
+                observer.deleteLater(); application.processEvents()
 
     def test_native_source_change_is_visible_even_with_stale_gtk_export(self):
         self.config.mkdir()

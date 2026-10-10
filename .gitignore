@@ -3,6 +3,8 @@ __pycache__/
 
 # Private DomainOS test/compile workspaces; their reports are kept outside Git.
 /.qa-domainos-*/
+/.qa-domainos-native-colors-final-audit-r2
+/plasma/tools/.qa-*.py
 /.qa-calendar-mail-*/
 /.qa-thunderbird-count-*/
 /.qa-task-resources-*/
@@ -16,6 +18,7 @@ __pycache__/
 /.qa-irix-*/
 /.gtk2-runtime-native-*/
 /.qa-kvantum-*/
+/.qa-theme-lab-*/
 /.gtk2-*-private-proof-*.tar.gz
 /.gtk2-*-private-proof-cleanup-*.json
 /.vscode/

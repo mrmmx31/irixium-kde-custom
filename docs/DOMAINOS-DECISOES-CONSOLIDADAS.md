@@ -3,6 +3,36 @@
 **Mantenedor:** `mrmmx31`. Consolidação documental, não assinatura digital nem
 registro de implementação executada. O JSON original permanece inalterado.
 
+## Atualização de precedência — 2026-10-10
+
+A revisão visual solicitada em 2026-10-10 usa o Trash Can real do SR10.4 e segue
+uma família de controles por vez. A [fila de revisão](DOMAINOS-FILA-REVISAO-VISUAL.md)
+deve ser consultada a cada retomada: inclui o defeito GTK3 e a seta do System
+Settings, sem transformar validação de uma família em conclusão das demais.
+O usuário determinou que a regra seja levantada antes do desenho. A
+[especificação comum](DOMAINOS-REGRAS-ROLAGEM.md) e seu contrato JSON são a
+referência única; cada família traduz e compara essas regras na sua etapa.
+
+Este adendo registra decisões explícitas posteriores à consolidação R2. Elas
+prevalecem quando divergirem do corpo histórico, que permanece preservado. Não
+altera o JSON recebido, os anexos do goal nem o backup congelado.
+
+| Decisão posterior | Efeito sobre a leitura da R2 |
+| --- | --- |
+| Favoritos do Applications na gaveta | Ler e acompanhar os favoritos do KDE na mesma ordem, em seção separada. Os pins próprios da barra continuam independentes; importar pins não escreve na origem. |
+| Preferências permanentes | Item fixo e não removível no topo da gaveta, seguido dos fixados da barra e depois dos favoritos do KDE, com separadores. |
+| Dicas e prévias opcionais | Dicas gerais desligadas; texto da Iconbox ligado por padrão. Miniaturas e realce ao passar o mouse desligados, disponíveis por opção nas preferências. |
+| Clique simples | Selecionar imediatamente e abrir a lista, mesmo com uma só janela, sem restaurá-la. Ctrl/Shift continuam compondo seleção acumulativa. |
+| Duplo clique individual | Minimizar a ativa, restaurar a minimizada ou ativar a inativa. O grupo mantém a escolha de membros, sem ativação coletiva implícita. |
+| Título na lista do grupo | Sem checkbox marcado, restaurar/ativar aquela janela. Durante seleção por checkbox, marcar/desmarcar; desmarcar todos devolve a restauração direta. |
+| Roda na Iconbox | Percorrer itens como as setas; ativar janelas pela roda somente como alternativa nas preferências. |
+
+O [manual funcional atual](../plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md)
+documenta os contratos atuais; a [matriz de validação](DOMAINOS-MATRIZ-VALIDACAO-R2.md)
+discrimina as provas. A entrega da suíte completa em p001532 está em andamento;
+este adendo não declara instalação concluída, ativação ou aceite nessa sessão.
+O aceite pessoal da prévia no lsi também não é inferido da documentação.
+
 ## Fontes e precedência
 
 Base Git consultada: `#irixfiles`, commit

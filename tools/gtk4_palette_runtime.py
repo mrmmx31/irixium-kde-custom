@@ -20,7 +20,7 @@ from select_gtk import gtk_paths, notify, gsettings, restore_previous, wait_for_
 from theme_transaction import (Change, Failure, Transaction, atomic, decode, image,
                                no_links, replace_checked, sha, snapshot)
 
-THEMES = ('IrixClassic-KDE', 'Irixium-KDE')
+THEMES = ('IrixClassic-KDE', 'Irixium-KDE', 'DomainOS-SR10-4-KDE')
 IMPORT = re.compile(r'@import\s+url\(\s*["\']([^"\']+\.css)["\']\s*\)\s*;')
 ROLE = re.compile(r'(?<![\w-])([A-Za-z_][A-Za-z0-9_]*_breeze)\b')
 MARKER = b'/* IRIX owned GTK4 palette entry point */\n'

@@ -5,6 +5,29 @@ solicitada; não contém código, nem afirma que essa central já existe no prot
 Ler com [requisitos](DOMAINOS-REQUISITOS.md) e
 [rastreamento das decisões](DOMAINOS-DECISOES-CONSOLIDADAS.md).
 
+## Atualização de precedência — 2026-10-10
+
+As decisões explícitas posteriores abaixo prevalecem sobre as propostas e os
+padrões antigos do corpo R2 quando houver diferença. O catálogo original continua
+preservado; esta atualização registra as escolhas do usuário, sem transformar a
+descrição das preferências em prova de implementação ou aceite.
+
+| Ferramenta | Padrão e alternativa vigentes |
+| --- | --- |
+| Gaveta de aplicativos | Preferências permanentes, fixas e não removíveis no topo; fixados próprios da barra em seguida; favoritos do KDE em seção separada, lidos do menu Applications e na mesma ordem. A importação de fixados continua explícita e não escreve na origem. |
+| Dicas da barra | Desligadas por padrão, com opção de habilitação. |
+| Dicas da Iconbox | Texto ligado por padrão, com opção de desligar ou trocar por miniaturas. Miniaturas e realce de janelas ao passar o mouse são opções desligadas por padrão. |
+| Clique simples na Iconbox | Selecionar imediatamente e abrir a lista, inclusive com uma só janela, sem restaurá-la. Ctrl/Shift mantêm a seleção acumulativa. |
+| Duplo clique individual | Minimizar a ativa, restaurar a minimizada ou ativar a inativa; o grupo conserva a lista de membros, sem operação coletiva implícita. |
+| Título no seletor | Sem checkbox marcado, restaurar/ativar aquela janela; durante seleção por checkbox, marcar/desmarcar. Desmarcar todos recupera a restauração direta. |
+| Roda na Iconbox | Percorrer os itens como as setas por padrão; alternar janelas somente quando a alternativa for habilitada. |
+
+O [manual funcional atual](../plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md)
+explica as opções efetivas, e a [matriz de validação](DOMAINOS-MATRIZ-VALIDACAO-R2.md)
+registra as provas e seus limites. A entrega da suíte completa em p001532 está
+em andamento; instalação, ativação e aceite pessoal continuam etapas distintas.
+Esse registro não antecipa o aceite da prévia no lsi.
+
 ## 1. Diretriz aprovada e limites
 
 O usuário pediu preferências amplas **organizadas por ferramenta**, com navegação

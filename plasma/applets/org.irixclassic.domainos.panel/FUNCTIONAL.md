@@ -230,7 +230,7 @@ vazias conservam a política nativa desta instância, incluindo escolhas existen
 ## Placa GNU/LINUX, gaveta e faixa metálica
 
 A placa **GNU/LINUX** abre o catálogo de aplicativos nativo do KDE, com pesquisa
-na categoria, navegação, favoritos e recentes conforme o provedor. **Configure
+global de aplicativos, navegação, favoritos e recentes conforme o provedor. **Configure
 panel…** abre as preferências do applet. A gaveta apresenta os favoritos pelo
 mesmo modelo nativo e na mesma ordem desse menu, incluindo a interface KDE
 opcional. A lista própria de fixados continua em armazenamento independente.
@@ -264,18 +264,53 @@ O comando de terminal aceita executável e argumentos separados sem shell:
 `konsole --new-tab` é um exemplo, enquanto `|`, `>` e `&&` não são interpretados.
 O xman utiliza cores derivadas da paleta atual; exige xman instalado e um display
 X11/XWayland disponível. Correio, terminal e xman ausentes são erros explícitos.
+Terminal, Aparência, xman e Ajuda KDE anunciam o lançamento pelo KIO usando um
+Desktop Entry executável temporário, com `StartupNotify=true`. O arquivo fica
+num diretório privado de cada pedido, conserva os argumentos literais e o
+diretório de trabalho e é eliminado após a resposta ou erro. Não é instalado
+no catálogo de aplicativos do usuário. A resposta confirma somente a aceitação
+do pedido, sem devolver o PID do launcher como se fosse o da aplicação.
+Se KIO não estiver instalado, esses comandos usam a criação direta do processo
+e informam que não solicitaram uma notificação de inicialização. Se KIO já
+recebeu o pedido e não responder a tempo, o estado da solicitação é desconhecido:
+a aplicação pode ter iniciado, e o painel não repete o comando automaticamente.
 
 A lente inferior acompanha pedidos em andamento e seus resultados observáveis.
+Durante a espera, pisca com 500 ms acesa e 500 ms apagada, como o recurso
+`waitingBlinkRate` do HP VUE 2.01. O painel mostra o cursor de espera do tema de
+cursores selecionado, sem bloquear botões ou atrasar comandos. O cursor não
+permanece durante o tempo adicional opcional da lente.
 Ao acender, usa amarelo com proteção de contraste se a superfície conflita com
 essa cor. O sinal de um pedido imediato fica pendente de apresentação até um
 quadro efetivamente apresentado; a ação e seu resultado não aguardam esse quadro.
 Um launcher/TaskManager pode confirmar apenas a aceitação do pedido, sem confirmar
 que uma janela apareceu ou que a aplicação terminou. A lente não fabrica essa
-conclusão. No catálogo, nos favoritos e nas ações contextuais de aplicativos,
-o retorno do provedor nativo encerra a operação observada; navegar por categorias
-ou editar favoritos não acende a lente. **Manter a luz acesa depois da conclusão** é opcional e desligado
+conclusão. Em paralelo, observa os registros reais `IsStartup` que o TaskManager
+do KDE publica, inclusive para lançamentos externos. Essa espera continua depois
+da resposta do launcher enquanto o KDE mantiver o registro, sem atribuí-lo a
+uma janela ou declarar sucesso quando ele desaparecer. O caminho KIO desses
+quatro atalhos foi verificado em X11 com inicialização lenta e argumentos
+preservados. Em Wayland, a notificação depende também do token de ativação e
+do contexto da sessão; essa espera não foi comprovada pelo ensaio X11.
+O fallback por `Popen`, aplicativos sem notificação de inicialização e instâncias
+já abertas podem não publicar `IsStartup`: nesses casos, a adaptação confirma
+apenas o pedido observado.
+O modelo unificado `TasksModel` também pode omitir registros de inicialização
+quando já há uma janela correspondente aberta. Portanto, a ausência de
+`IsStartup` não comprova que uma janela está pronta nem que o lançamento falhou.
+No catálogo, nos favoritos e nas ações contextuais de aplicativos, o retorno do
+provedor nativo encerra o pedido; navegar por categorias ou editar favoritos
+não acende a lente por si só. **Manter a luz acesa depois da conclusão** é opcional e desligado
 inicialmente; seu tempo adicional só posterga apagar a luz. Não atrasa o clique,
-o comando ou o relevo pressionado.
+o comando ou o relevo pressionado. Com operações simultâneas, o tempo adicional
+começa somente depois do último pedido ou registro de inicialização observado.
+
+A VM SR10.4 confirmou LED alternando, ampulheta no painel e fim da espera quando
+o novo cliente apareceu. O contorno coral observado era foco do painel; não há
+evidência de todos os botões metálicos piscando juntos. O cursor SGI Classic
+reutilizado no KDE tem seu próprio desenho de espera; não redistribuímos o cursor
+Apollo nem substituímos o bitmap dos botões. A lente mantém o amarelo aprovado
+pelo usuário, com proteção de contraste, e a luz do pager permanece independente.
 
 ## Preferências e valores técnicos iniciais
 

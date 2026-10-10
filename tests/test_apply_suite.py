@@ -1,8 +1,12 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 from contextlib import redirect_stdout
+import builtins
 import io
 import json
+import os
 from pathlib import Path
+import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -35,7 +39,7 @@ class ApplySuiteTest(unittest.TestCase):
                       self.data/'icons'/profile['cursor']/'index.theme',
                       self.data/'icons'/profile['cursor']/'cursors/wait',
                       self.data/'icons'/profile['cursor']/'cursors/progress',
-                      self.data/'color-schemes/Irixium.colors',
+                      self.data/'color-schemes'/(profile['colors']+'.colors'),
                       self.data/'plasma/desktoptheme'/profile['plasma']/'metadata.desktop',
                       self.data/'wallpapers'/profile['wallpaper']/'metadata.json',
                       self.data/'plasma/look-and-feel'/profile['global']/'contents/splash/Splash.qml'):
@@ -57,6 +61,20 @@ class ApplySuiteTest(unittest.TestCase):
     def test_dry_run_does_not_write(self):
         call=self.run_apply('classic','--verificar');call.assert_not_called()
         self.assertEqual(self.kv.read_bytes(),self.original);self.assertFalse(self.state.exists())
+
+    def test_domainos_uses_own_companions_and_scheme_without_resetting_layout(self):
+        call=self.run_apply('domainos')
+        call.assert_called_once_with(['/fake/plasma-apply-lookandfeel','--apply',
+            'org.magpie.irixclassic.domainos.desktop'],check=True)
+        self.assertIn(b'theme=DomainOS-SR10-4',self.kv.read_bytes())
+        self.assertIn(b'gtk-theme-name=DomainOS-SR10-4-KDE',
+                      (self.config/'gtk-3.0/settings.ini').read_bytes())
+        self.run_apply('--restaurar');self.assertEqual(self.kv.read_bytes(),self.original)
+
+    def test_domainos_requires_own_scheme_even_when_irixium_exists(self):
+        (self.data/'color-schemes/DomainOS-SR10-4.colors').unlink()
+        with self.assertRaises(apply_suite.Failure):self.run_apply('domainos')
+        self.assertEqual(self.kv.read_bytes(),self.original)
 
     def test_matching_kvantum_preserves_exceptions_and_native_apply_preserves_layout(self):
         call=self.run_apply('classic')
@@ -141,6 +159,110 @@ class ApplySuiteTest(unittest.TestCase):
             self.run_apply('classic','--exigir-sons')
         self.assertEqual(self.kv.read_bytes(),self.original)
         self.assertFalse(self.state.exists())
+
+    def test_absent_optional_sound_support_preserves_selection_by_default(self):
+        original_import = builtins.__import__
+        def absent(name, *args, **kwargs):
+            if name == 'audit_suite':
+                raise ModuleNotFoundError("No module named 'audit_suite'", name=name)
+            return original_import(name, *args, **kwargs)
+        globals_file = self.config/'kdeglobals'
+        original = b'[Sounds]\nTheme=User sounds\nEnable=false\n'
+        globals_file.write_bytes(original)
+        with patch('builtins.__import__', side_effect=absent):
+            call = self.run_apply('classic')
+        call.assert_called_once()
+        self.assertEqual(globals_file.read_bytes(), original)
+        self.assertIn(b'theme=IrixClassic', self.kv.read_bytes())
+
+    def test_absent_required_sound_support_refuses_before_selection(self):
+        original_import = builtins.__import__
+        def absent(name, *args, **kwargs):
+            if name == 'audit_suite':
+                raise ModuleNotFoundError("No module named 'audit_suite'", name=name)
+            return original_import(name, *args, **kwargs)
+        with patch('builtins.__import__', side_effect=absent):
+            with self.assertRaisesRegex(apply_suite.Failure, 'Suporte opcional de sons ausente'):
+                self.run_apply('classic', '--exigir-sons')
+        self.assertEqual(self.kv.read_bytes(), self.original)
+        self.assertFalse(self.state.exists())
+
+    def test_no_sounds_never_imports_optional_support(self):
+        with patch.object(apply_suite, 'optional_sound_module', side_effect=AssertionError('unexpected sound import')):
+            call = self.run_apply('classic', '--sem-sons')
+        call.assert_called_once()
+
+    def test_existing_sound_support_import_failure_is_not_optional(self):
+        error = ModuleNotFoundError("No module named 'irix_sounds'", name='irix_sounds')
+        with patch('audit_suite.sound_module', side_effect=error):
+            with self.assertRaises(ModuleNotFoundError) as caught:
+                self.run_apply('classic')
+        self.assertIs(caught.exception, error)
+        self.assertEqual(self.kv.read_bytes(), self.original)
+        self.assertFalse(self.state.exists())
+
+    def test_existing_sound_catalog_failure_is_not_optional(self):
+        from types import SimpleNamespace
+        theme = self.data/'sounds/IrixClassic'; theme.mkdir(parents=True)
+        def corrupt(): raise apply_suite.Failure('catálogo de sons corrompido')
+        module = SimpleNamespace(THEME='IrixClassic', catalog=corrupt, validate_theme=lambda *_: None)
+        with patch('audit_suite.sound_module', return_value=module):
+            with self.assertRaisesRegex(apply_suite.Failure, 'catálogo de sons corrompido'):
+                self.run_apply('classic')
+        self.assertEqual(self.kv.read_bytes(), self.original)
+        self.assertFalse(self.state.exists())
+
+    def test_distribution_wrapper_without_sounds_applies_and_restores_in_private_session(self):
+        """Real wrapper/files/backup, private D-Bus; only KDE apply is a process double."""
+        session = shutil.which('dbus-run-session')
+        if not session:
+            self.skipTest('dbus-run-session required for the private wrapper test')
+        distribution = self.root/'distribution'
+        shutil.copytree(ROOT/'tools', distribution/'tools',
+                        ignore=shutil.ignore_patterns('audit_suite.py', '__pycache__'))
+        shutil.copy2(ROOT/'components.json', distribution/'components.json')
+        shutil.copy2(ROOT/'aplicar-tema.sh', distribution/'aplicar-tema.sh')
+        binary = self.root/'bin'; binary.mkdir()
+        native = binary/'plasma-apply-lookandfeel'
+        calls = self.root/'KDE-APPLY-CALLS.jsonl'
+        native.write_text('#!/usr/bin/python3\nimport json,os,sys\n'
+            'with open(os.environ["PRIVATE_KDE_APPLY_LOG"],"a") as f:\n'
+            ' f.write(json.dumps({"args":sys.argv[1:],"home":os.environ["HOME"],'
+            '"bus":os.environ["DBUS_SESSION_BUS_ADDRESS"]})+"\\n")\n')
+        native.chmod(0o755)
+        runtime = self.root/'runtime'; runtime.mkdir(mode=0o700)
+        env = dict(os.environ, HOME=str(self.root), XDG_DATA_HOME=str(self.data),
+            XDG_CONFIG_HOME=str(self.config), XDG_STATE_HOME=str(self.state),
+            XDG_RUNTIME_DIR=str(runtime), PATH=str(binary)+os.pathsep+'/usr/bin:/bin',
+            PRIVATE_KDE_APPLY_LOG=str(calls), PYTHONDONTWRITEBYTECODE='1')
+        for name in ('DBUS_SESSION_BUS_ADDRESS', 'DBUS_SYSTEM_BUS_ADDRESS', 'DISPLAY',
+                     'WAYLAND_DISPLAY', 'PYTHONPATH', 'PYTHONHOME', 'GTK2_RC_FILES', 'XDG_CONFIG_DIRS'):
+            env.pop(name, None)
+        globals_file = self.config/'kdeglobals'
+        original = b'[Sounds]\nTheme=User sounds\nEnable=false\n'
+        globals_file.write_bytes(original)
+        def wrapper(*arguments):
+            return subprocess.run([session, '--', '/bin/bash', str(distribution/'aplicar-tema.sh'),
+                                   *arguments], env=env, capture_output=True, text=True, timeout=20)
+        required = wrapper('classic', '--exigir-sons')
+        self.assertNotEqual(required.returncode, 0)
+        self.assertIn('Suporte opcional de sons ausente', required.stderr)
+        self.assertFalse(calls.exists()); self.assertFalse(self.state.exists())
+        applied = wrapper('classic')
+        self.assertEqual(applied.returncode, 0, applied.stdout+applied.stderr)
+        self.assertEqual(globals_file.read_bytes(), original)
+        self.assertIn(b'theme=IrixClassic', self.kv.read_bytes())
+        call = json.loads(calls.read_text())
+        self.assertEqual(call['args'], ['--apply', apply_suite.PROFILES['classic'][0]])
+        self.assertEqual(call['home'], str(self.root))
+        self.assertNotEqual(call['bus'], os.environ.get('DBUS_SESSION_BUS_ADDRESS'))
+        restored = wrapper('--restaurar')
+        self.assertEqual(restored.returncode, 0, restored.stdout+restored.stderr)
+        self.assertEqual(self.kv.read_bytes(), self.original)
+        self.assertEqual(globals_file.read_bytes(), original)
+        without = wrapper('classic', '--sem-sons')
+        self.assertEqual(without.returncode, 0, without.stdout+without.stderr)
+        self.assertEqual(globals_file.read_bytes(), original)
 
     def test_validated_sound_profile_selects_theme_without_enabling_sounds(self):
         from types import SimpleNamespace

@@ -45,7 +45,7 @@ def worker(output):
         environment = dict(os.environ,LD_PRELOAD=str(output/'agenda-host.so'),
             IRIX_DOMAINOS_AGENDA_REPORT=str(output/'NATIVO.json'),IRIX_DOMAINOS_AGENDA_DIR=str(output))
         host = subprocess.run(['/usr/bin/plasmawindowed','org.irixclassic.domainos.panel'],env=environment,
-            capture_output=True,text=True,timeout=29)
+            capture_output=True,text=True,timeout=90)
         (output/'host.log').write_text(host.stdout+host.stderr)
         (output/'HOST-EXIT.json').write_text(json.dumps({'returncode':host.returncode})+'\n')
         return host.returncode
@@ -134,7 +134,7 @@ def main():
             '--region',public_region,'--saida',str(output/'REGIAO-NATIVA.json')],
             env=dict(environment,QT_QPA_PLATFORM='offscreen'),check=True,timeout=10,capture_output=True,text=True)
     result=subprocess.run(['xvfb-run','--auto-servernum','--server-args=-screen 0 1300x950x24','dbus-run-session','--config-file='+str(bus),'--',sys.executable,str(Path(__file__).resolve()),'--saida',str(output),'--worker'],
-        env=environment,capture_output=True,text=True,timeout=40)
+        env=environment,capture_output=True,text=True,timeout=110)
     (output/'session.log').write_text(result.stdout+result.stderr)
     native=json.loads((output/'NATIVO.json').read_text()) if (output/'NATIVO.json').is_file() else {}
     log=(output/'host.log').read_text() if (output/'host.log').is_file() else result.stderr

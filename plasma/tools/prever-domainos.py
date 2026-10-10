@@ -73,7 +73,7 @@ def main():
         require('seven_iconbox_entries',panel.property('taskCount')==7)
         require('two_illustrative_desktops',panel.property('workspaceCount')==2)
         require('six_tray_icons_in_2x3',panel.property('trayRows')==2 and panel.property('trayColumns')==3)
-        require('unconfirmed_functions_are_not_live',panel.property('phase')=='design-awaiting-button-confirmations')
+        require('reference_fixture_has_no_live_runtime',panel.property('phase')=='design-reference')
         def center_color(obj):
             point=obj.mapToScene(QPointF(obj.width()/2,obj.height()/2)).toPoint()
             return normal.pixelColor(point).name()

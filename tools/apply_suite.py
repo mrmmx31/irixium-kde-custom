@@ -27,6 +27,20 @@ CONFIG_FILES = ('kdeglobals', 'kwinrc', 'plasmarc', 'ksplashrc', 'kcminputrc',
                 'Kvantum/kvantum.kvconfig', 'gtk-3.0/settings.ini', 'gtk-4.0/settings.ini')
 
 
+def optional_sound_module(*, required=False):
+    """The graphical distribution omits sounds; broken installed support is an error."""
+    try:
+        from audit_suite import sound_module
+    except ModuleNotFoundError as exc:
+        if exc.name != 'audit_suite':
+            raise
+        if required:
+            raise Failure('Suporte opcional de sons ausente nesta distribuição gráfica; '
+                          '--exigir-sons requer o instalador e o esquema SGI separados.') from exc
+        return None
+    return sound_module()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('tema', choices=PROFILES, nargs='?')
@@ -68,7 +82,7 @@ def main():
             print('Configurações anteriores restauradas. Entre novamente na sessão para recarregar tudo.')
         return
     if not args.tema:
-        parser.error('informe classic ou moderno')
+        parser.error('informe um perfil de tema do inventário')
     package, kvantum, decoration = PROFILES[args.tema]
     profile = PROFILE_COMPONENTS[args.tema]
     for required in (data/'plasma/look-and-feel'/package/'contents/defaults',
@@ -82,7 +96,7 @@ def main():
                      data/'icons'/profile['cursor']/'index.theme',
                      data/'icons'/profile['cursor']/'cursors/wait',
                      data/'icons'/profile['cursor']/'cursors/progress',
-                     data/'color-schemes/Irixium.colors',
+                     data/'color-schemes'/(profile['colors']+'.colors'),
                      data/'plasma/desktoptheme'/profile['plasma']/'metadata.desktop',
                      data/'wallpapers'/profile['wallpaper']/'metadata.json',
                      data/'plasma/look-and-feel'/package/'contents/splash/Splash.qml'):
@@ -90,14 +104,14 @@ def main():
             raise Failure(f'Componente ausente: {required}. Execute instalar-irixium.sh.')
     sound_theme = None
     if not args.sem_sons:
-        from audit_suite import sound_module
-        module = sound_module()
-        theme = data/'sounds'/module.THEME
-        if theme.exists():
-            module.validate_theme(theme, module.catalog())
-            sound_theme = module.THEME
-        elif args.exigir_sons:
-            raise Failure('Esquema SGI ausente. Use sons/instalar.sh --origem DIRETORIO; nenhum áudio será baixado.')
+        module = optional_sound_module(required=args.exigir_sons)
+        if module is not None:
+            theme = data/'sounds'/module.THEME
+            if theme.exists():
+                module.validate_theme(theme, module.catalog())
+                sound_theme = module.THEME
+            elif args.exigir_sons:
+                raise Failure('Esquema SGI ausente. Use sons/instalar.sh --origem DIRETORIO; nenhum áudio será baixado.')
     tool = shutil.which('plasma-apply-lookandfeel')
     if not tool:
         raise Failure('plasma-apply-lookandfeel ausente; requer Plasma 6.')
