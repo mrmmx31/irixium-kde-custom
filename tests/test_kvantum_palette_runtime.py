@@ -312,6 +312,7 @@ class Cli(unittest.TestCase):
                  (cli, 'read', {'return_value': self.native}),
                  (cli, 'refresh', {'return_value': {'status': 'ready'}}),
                  (cli, 'export_colors', {'return_value': 'frozen-input'}),
+                 (cli, 'apply_color_scheme', {'return_value': {'status': 'applied'}}),
                  (cli.subprocess, 'run', {})]
         self.mocks = {}
         for obj, name, options in specs:
@@ -375,8 +376,8 @@ class Cli(unittest.TestCase):
 
     def test_scheme_change_is_explicit_and_native_data_must_match_export(self):
         cli.run(scheme='DomainOS-SR10-4')
-        self.mocks['run'].assert_called_once_with(['plasma-apply-colorscheme', 'DomainOS-SR10-4'],
-            capture_output=True, text=True, check=True, timeout=20)
+        self.mocks['apply_color_scheme'].assert_called_once_with(
+            self.data, self.config, self.state, 'DomainOS-SR10-4')
         self.assertEqual(self.mocks['refresh'].call_args.kwargs['native'], self.native)
         self.mocks['refresh'].reset_mock()
         self.mocks['read'].return_value = {**self.native, 'source_signature': 'changed-after-export'}

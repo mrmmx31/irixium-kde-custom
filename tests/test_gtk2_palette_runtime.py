@@ -81,6 +81,17 @@ class Gtk2PaletteRuntimeTests(unittest.TestCase):
         for path, data in self.protected.items():
             self.assertEqual(Path(path).read_bytes(), data, path)
 
+    def test_restored_binding_accepts_new_wrapper_as_baseline_and_preserves_it(self):
+        self.call(runtime.setup)
+        self.call(runtime.restore)
+        target = next(iter(self.roots.wrappers()))
+        replacement = target.read_bytes() + b'\n# installed revision or user customization\n'
+        target.write_bytes(replacement)
+        self.assertEqual(self.call(runtime.setup)['status'], 'updated')
+        self.assertIn(b'# installed revision or user customization', target.read_bytes())
+        self.call(runtime.restore)
+        self.assertEqual(target.read_bytes(), replacement)
+
     def test_setup_shares_two_bundles_across_eight_owned_copies_and_is_idempotent(self):
         result = self.call(runtime.setup)
         self.assertEqual(result['status'], 'updated')

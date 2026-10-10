@@ -14,6 +14,8 @@ from install_suite import roots
 from theme_transaction import Failure, atomic, decode, edit_ini, snapshot, replace_checked
 
 from components import catalog
+from apply_color_scheme import apply as apply_color_scheme
+from reload_decoration import reload as reload_decoration
 from select_gtk import (gtk_paths, edit_gtkrc, verify_theme_files, wait_for_theme_files, native_ready, notify as notify_gtk,
                         gsettings as gtk_gsettings, restore_previous, record_failure)
 
@@ -134,6 +136,8 @@ def main():
         kvconfig = config/'Kvantum/kvantum.kvconfig'
         atomic(kvconfig, edit_ini(decode(before[kvconfig]) or b'', 'General', {'theme':kvantum}))
         subprocess.run([tool,'--apply',package],check=True)
+        if native_gtk:
+            record['native_colors'] = apply_color_scheme(data, config, state.parent, profile['colors'])
         cursor_config = config/'kcminputrc'
         atomic(cursor_config, edit_ini(decode(snapshot(cursor_config)) or b'',
                                        'Mouse', {'cursorTheme': profile['cursor']}))
@@ -162,6 +166,9 @@ def main():
             globals_file = config/'kdeglobals'
             original = decode(snapshot(globals_file)) or b''
             atomic(globals_file, edit_ini(original, 'Sounds', {'Theme': sound_theme}))
+        if native_gtk:
+            reloaded = reload_decoration(config/'kwinrc', state.parent/'irixium-decoration-reload')
+            record['decoration_reload'] = str(reloaded) if reloaded else None
         record.update(status='applied', files=[{'path':str(p),'before':previous,'after':snapshot(p)}
                                               for p,previous in before.items()])
         if native_gtk:

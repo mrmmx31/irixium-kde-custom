@@ -225,7 +225,11 @@ def _update(roots, *, setup, theme_name=None, colors_path=None, dry=False,
         active = _active(roots)
         if not setup and (active is None or active[1]['status'] != 'active'):
             return {'status': 'ignored', 'reason': 'not_set_up'}, []
-        if active is not None:
+        # A restored journal no longer owns the wrappers. Installation or a
+        # user's edit may replace them before the next explicit setup; use
+        # their current bytes as the new baseline, preserving those edits.
+        # Active journals still reject changes made outside their transaction.
+        if active is not None and active[1]['status'] == 'active':
             _validate_active(roots, active[1])
         old_record = active[1] if active and active[1]['status'] == 'active' else None
         installed = {path: name for path, name in roots.wrappers().items() if path.exists()}

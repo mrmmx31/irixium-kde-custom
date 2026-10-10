@@ -29,7 +29,7 @@ MODULES = ('theme_companion_bridge.py', 'select_companions.py', 'select_gtk.py',
            'theme_transaction.py', 'components.py', 'reload_decoration.py',
            'gtk2_palette.py', 'gtk2_scrollbar_assets.py', 'gtk2_modern_palette.py', 'gtk2_palette_runtime.py',
            'gtk2_domainos_palette.py', 'domainos_motif_art.py',
-           'gtk4_palette_runtime.py', 'user_bundle.py', 'apply_kvantum_colors.py',
+           'gtk4_palette_runtime.py', 'user_bundle.py', 'apply_kvantum_colors.py', 'apply_color_scheme.py',
            'kvantum_native_palette.py', 'kvantum_palette_runtime.py',
            'kvantum_classic_palette.py', 'kvantum_modern_palette.py', 'kvantum_domainos_palette.py',
            'kvantum_palette_config.py')

@@ -76,6 +76,25 @@ class ApplySuiteTest(unittest.TestCase):
         with self.assertRaises(apply_suite.Failure):self.run_apply('domainos')
         self.assertEqual(self.kv.read_bytes(),self.original)
 
+    def test_live_apply_reapplies_effective_colors_and_reloads_decoration(self):
+        chosen = ['Before']
+        def native_theme(value=None):
+            if value is not None: chosen[0] = value
+            return chosen[0]
+        with patch.object(apply_suite, 'native_ready', return_value=True), \
+             patch.object(apply_suite, 'gtk_gsettings', return_value={}), \
+             patch.object(apply_suite, 'notify_gtk', side_effect=native_theme), \
+             patch.object(apply_suite, 'wait_for_theme_files'), \
+             patch.object(apply_suite, 'apply_color_scheme', return_value={'status':'applied'}) as palette, \
+             patch.object(apply_suite, 'reload_decoration', return_value=self.state/'reload.json') as decoration:
+            self.run_apply('domainos')
+        palette.assert_called_once_with(self.data, self.config, self.state, 'DomainOS-SR10-4')
+        decoration.assert_called_once_with(self.config/'kwinrc',self.state/'irixium-decoration-reload')
+        token=(self.state/'irixium-selection/latest').read_text().strip()
+        receipt=json.loads((self.state/'irixium-selection'/token/'receipt.json').read_text())
+        self.assertEqual(receipt['native_colors']['status'],'applied')
+        self.assertIsNotNone(receipt['decoration_reload'])
+
     def test_matching_kvantum_preserves_exceptions_and_native_apply_preserves_layout(self):
         call=self.run_apply('classic')
         call.assert_called_once_with(['/fake/plasma-apply-lookandfeel','--apply','org.magpie.irixclassic.desktop'],check=True)

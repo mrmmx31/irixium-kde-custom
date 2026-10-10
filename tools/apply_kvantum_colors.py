@@ -12,6 +12,7 @@ import sys
 
 sys.dont_write_bytecode = True
 from components import catalog
+from apply_color_scheme import apply as apply_color_scheme
 from kvantum_native_palette import read
 from kvantum_palette_runtime import THEMES, accepts, refresh, restore
 from select_companions import effective_look_and_feel, kvantum_theme, require_global, theme_profile
@@ -80,8 +81,7 @@ def run(*, scheme=None, dry=False, restoring=False):
     if not accepts(kvantum_theme(config/'Kvantum/kvantum.kvconfig'), profile['kvantum']):
         raise Failure('O tema Kvantum atual é independente; sua escolha foi preservada.')
     if scheme:
-        subprocess.run(['plasma-apply-colorscheme', scheme], capture_output=True,
-            text=True, check=True, timeout=20)
+        apply_color_scheme(data, config, state, scheme)
         require_global(config, profile['global'])
     if dry:
         native = read(config)

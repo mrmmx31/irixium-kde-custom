@@ -21,6 +21,16 @@ scrollbar.vertical button.up { margin-bottom: 1px; }
 scrollbar.vertical button.down { margin-top: 1px; }
 scrollbar.horizontal button.up { margin-right: 1px; }
 scrollbar.horizontal button.down { margin-left: 1px; }
+textview text, textview border {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+  caret-color: @theme_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_text_color_breeze;
+}
+textview text selection {
+  color: @theme_selected_fg_color_breeze;
+  background-color: @theme_selected_bg_color_breeze;
+}
 scrollbar contents {
   background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
   background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
@@ -184,6 +194,16 @@ scrollbar.horizontal button.down:active {
   -gtk-icon-source: none;
   box-shadow: none;
   background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+textview:backdrop text, textview:backdrop border {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+  caret-color: @theme_unfocused_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_unfocused_text_color_breeze;
+}
+textview:backdrop text selection {
+  color: @theme_unfocused_selected_fg_color_breeze;
+  background-color: @theme_unfocused_selected_bg_color_breeze;
 }
 scrollbar:backdrop contents {
   background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
@@ -349,6 +369,16 @@ scrollbar.horizontal button.down:active:backdrop {
   box-shadow: none;
   background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
 }
+textview:disabled text, textview:disabled border {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+  caret-color: @insensitive_base_fg_color_breeze;
+  -gtk-secondary-caret-color: @insensitive_base_fg_color_breeze;
+}
+textview:disabled text selection {
+  color: @insensitive_selected_fg_color_breeze;
+  background-color: @insensitive_selected_bg_color_breeze;
+}
 scrollbar:disabled contents {
   background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
   background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
@@ -512,6 +542,16 @@ scrollbar.horizontal button.down:active:disabled {
   -gtk-icon-source: none;
   box-shadow: none;
   background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+textview:disabled:backdrop text, textview:disabled:backdrop border {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+  caret-color: @theme_unfocused_view_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_unfocused_view_text_color_breeze;
+}
+textview:disabled:backdrop text selection {
+  color: @insensitive_unfocused_selected_fg_color_breeze;
+  background-color: @insensitive_unfocused_selected_bg_color_breeze;
 }
 scrollbar:disabled:backdrop contents {
   background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));

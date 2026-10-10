@@ -27,10 +27,10 @@ from theme_transaction import Failure, no_links
 from user_bundle import fingerprint, validate_source
 
 ROOT = Path(__file__).resolve().parents[1]
-NAME = 'irix-suite-1.1.0-beta.1'
+NAME = 'irix-suite-1.1.0-beta.2'
 PROFILES = frozenset(('classic', 'moderno', 'domainos'))
 SUPPORT = (
-    'LICENSE', 'docs/RELEASE-1.1.0-beta.1.md', 'docs/DISTRIBUICAO-SUITE.md', 'docs/INSTALACAO-RECUPERAVEL.md',
+    'LICENSE', 'docs/RELEASE-1.1.0-beta.2.md', 'docs/DISTRIBUICAO-SUITE.md', 'docs/INSTALACAO-RECUPERAVEL.md',
     'tools/domainos_scrollbar_rules.json', 'docs/DOMAINOS-REGRAS-ROLAGEM.md',
     'docs/DOMAINOS-FILA-REVISAO-VISUAL.md', 'docs/referencias/domainos-sr104/README.md',
     'docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json',

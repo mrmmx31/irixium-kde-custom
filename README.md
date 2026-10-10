@@ -3,8 +3,8 @@
 Temas mantidos por **mrmmx31** para KDE Plasma 6. Todos os instaladores de temas
 usam somente o perfil do usuário atual. Execute **sem sudo**.
 
-A [pré-release 1.1.0-beta.1](https://github.com/mrmmx31/irixium-kde-custom/releases/tag/v1.1.0-beta.1)
-contém o conjunto gráfico completo pré-compilado. [Notas e limites](docs/RELEASE-1.1.0-beta.1.md).
+A [pré-release 1.1.0-beta.2](https://github.com/mrmmx31/irixium-kde-custom/releases/tag/v1.1.0-beta.2)
+contém o conjunto gráfico completo pré-compilado. [Notas e limites](docs/RELEASE-1.1.0-beta.2.md).
 
 ## Instalar e aplicar
 

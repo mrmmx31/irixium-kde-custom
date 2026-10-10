@@ -9,13 +9,14 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+import time
 import uuid
 
 from theme_transaction import Failure, atomic, decode, edit_ini, image, replace_checked, snapshot
 
 AURORAE = 'org.kde.kwin.aurorae'
 BREEZE = 'org.kde.breeze'
-IRIX_IDS = {'irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5', 'irixium_modern', 'irixium_modern_13', 'irixium_modern_41'}
+IRIX_IDS = {'irix_classic', 'irixium_irix_classic_v4', 'irixium_irix_classic_v5', 'irixium_modern', 'irixium_modern_13', 'irixium_modern_41', 'domainos_sr104'}
 
 
 def check_session():
@@ -44,6 +45,18 @@ def selection(call):
     return plugin[1] if plugin else None, theme[1] if theme else None
 
 
+def wait_selection(call, expected, *, plugin_only=False, timeout=3):
+    """KWin reconfigure is asynchronous; wait for the actual loaded plugin."""
+    deadline = time.monotonic()+timeout
+    while True:
+        actual = selection(call)
+        if (actual[0] == expected[0] if plugin_only else actual == expected):
+            return True
+        if time.monotonic() >= deadline:
+            return False
+        time.sleep(0.05)
+
+
 def reload(config, state, *, call=kwin, dry=False):
     initial = selection(call)
     if initial[0] != AURORAE or initial[1] not in IRIX_IDS:
@@ -63,12 +76,12 @@ def reload(config, state, *, call=kwin, dry=False):
         # Aurorae caches QML components by theme ID. Using a native plugin
         # releases its QML engine before returning to the same IRIX selection.
         call('reconfigure')
-        if selection(call)[0] != BREEZE:
+        if not wait_selection(call, (BREEZE, None), plugin_only=True):
             raise Failure('KWin não carregou a decoração nativa para liberar o QML antigo.')
     finally:
         replace_checked(config, intermediate, before)
         call('reconfigure')
-    if selection(call) != initial:
+    if not wait_selection(call, initial):
         raise Failure('A seleção da decoração não voltou ao estado anterior. Backup: '+str(receipt))
     record['status'] = 'reloaded'
     record['after'] = snapshot(config)

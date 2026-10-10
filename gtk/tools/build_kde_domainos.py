@@ -308,6 +308,19 @@ scrollbar.horizontal button.down { margin-left: @ARROW_GAP@px; }
     directions = (('vertical', 'up', 'up'), ('vertical', 'down', 'down'),
                   ('horizontal', 'up', 'left'), ('horizontal', 'down', 'right'))
     for state, suffix in ((0, ''), (1, ':backdrop'), (2, ':disabled'), (3, ':disabled:backdrop')):
+        # GtkTextView paints its text window through a separate CSS node.
+        # GtkSourceView's Classic scheme (also used by Mousepad's "none")
+        # sets the root background from its line-number style. Leaving the
+        # text node transparent pairs that light surface with our View ink.
+        # Style the painted node explicitly; application syntax tags and
+        # deliberately selected editor schemes keep their own precedence.
+        v = state_css('view', state)
+        output.append(rule('textview'+suffix+' text, textview'+suffix+' border', {
+            'color': v('ink'), 'background-color': v('face'),
+            'caret-color': v('ink'), '-gtk-secondary-caret-color': v('ink')}))
+        selection = state_css('selection', state)
+        output.append(rule('textview'+suffix+' text selection', {
+            'color': selection('ink'), 'background-color': selection('face')}))
         e = state_css('button', state)
         params = adaptive_assets.expression('gtk3-trough-frame', e, prefix='adaptive/', manifest=manifest)
         params.update({'background-color': e('trough'), 'border-color': 'transparent'})

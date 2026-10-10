@@ -2,7 +2,7 @@
 
 Esta distribuição disponibiliza três temas globais e os 40 componentes do
 catálogo `components.json`. Extraia o arquivo e execute os comandos abaixo
-dentro da pasta `irix-suite-1.1.0-beta.1`, como seu usuário normal, sem `sudo`.
+dentro da pasta `irix-suite-1.1.0-beta.2`, como seu usuário normal, sem `sudo`.
 
 ## Requisitos
 

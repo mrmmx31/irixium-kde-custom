@@ -38,6 +38,17 @@ class ReloadTests(unittest.TestCase):
         self.original=b'[org.kde.kdecoration2]\nlibrary=org.kde.kwin.aurorae\ntheme=irixium_modern\nButtonsOnRight=IA\n'
         self.config.write_bytes(self.original);self.run_reload()
         self.assertEqual(self.config.read_bytes(),self.original)
+    def test_restores_domainos_selection_and_preferences(self):
+        self.original=b'[org.kde.kdecoration2]\nlibrary=org.kde.kwin.aurorae\ntheme=domainos_sr104\nButtonsOnRight=IA\n'
+        self.config.write_bytes(self.original)
+        receipt=self.run_reload()
+        self.assertEqual(json.loads(receipt.read_text())['status'],'reloaded')
+        self.assertEqual(self.config.read_bytes(),self.original)
+    def test_waits_for_asynchronous_native_plugin_change(self):
+        values=iter(['Plugin: org.kde.kwin.aurorae\nTheme: domainos_sr104\n',
+                     'Plugin: org.kde.breeze\nTheme: Breeze\n'])
+        with patch.object(module.time,'sleep'):
+            self.assertTrue(module.wait_selection(lambda _:next(values),(module.BREEZE,None),plugin_only=True))
     def test_absent_user_config_returns_to_absence(self):
         self.config.unlink();self.run_reload();self.assertFalse(self.config.exists())
     def test_failure_still_restores_configuration_and_reconfigures(self):

@@ -324,6 +324,56 @@ face de botões GTK3 continua pendente no recibo. Nenhuma resposta da prancheta
 foi preenchida automaticamente.
 
 Beta: pacote íntegro, auditoria de 40 componentes aprovada; instalação e
-aplicação em lsi concluídas. KWin confirmou `domainos_sr104`, GTK2/3/4 e
+seleção em lsi inicialmente conferidas. KWin confirmou `domainos_sr104`, GTK2/3/4 e
 Kvantum selecionados. Painel recarregado pelo serviço da própria sessão.
 [Recibo](review/RELEASE-1.1.0-beta.1.json). Próximo item: revisão da ferramenta.
+
+### Retorno sobre a beta — correção ativa
+
+O usuário relatou cores e barra sem atualização. A seleção do tema e o restart
+foram conferidos antes, mas não os RGB efetivos. Diagnóstico: o KDE recusou
+reaplicar um esquema com o mesmo ID e conservou grupos antigos; a ponte GTK2
+validou um journal já restaurado contra arquivos atualizados pelo instalador.
+Corrigir a aplicação explícita e a retomada após restauração; conferir papéis
+reais KDE/GTK/Qt e o painel carregado antes de anunciar esta correção.
+A ferramenta fica temporariamente atrás desta falha de aplicação.
+
+Correção R2 aplicada em lsi: papéis Window/Button/View e WM conferidos contra
+o arquivo instalado; Qt/Kvantum e Plasma retornaram as mesmas cores efetivas;
+GTK3 confirmou janela/botão/conteúdo nativos. O painel foi recarregado e manteve
+os IDs 2268/2269 e altura 109; serviços ativos. A recarga recuperável passou a
+incluir DomainOS e aguardar o KWin. A captura privada confirmou título inativo
+ciano e ativo coral; o usuário respondeu “Sim, agora correspondem”.
+[Recibo R2](review/PALETA-APLICACAO-20261010-R2.json). A confirmação se refere
+às decorações nesta sessão, não à fidelidade das demais famílias.
+
+Distribuição corretiva: suíte 1.1.0-beta.2; painel 0.2.12-beta.1 preservado,
+com auxiliares de aplicação e superfície de texto GTK3 corrigidos. Reutilizar as provas dos
+recursos inalterados da beta.1. p001532 não foi reaplicado nesta correção.
+Próximo item: retomar spin/tamanhos, hints, medidas comparáveis, busca e execução
+nativa do laboratório. O pipeline de eventos de métricas está em rascunho;
+a view e o emissor nativo ainda precisam ser concluídos antes de compilar.
+
+### Retorno Mousepad — contraste da área de texto GTK3
+
+O usuário relatou texto branco sobre fundo quase branco no Mousepad aberto.
+Etapa ativa: superfície de texto GTK3, incluindo o nó `text` do GtkTextView e
+o GtkSourceView usado pelo editor. A prova R2 consultou o contexto do controle
+externo; ela não comprovou o fundo efetivamente desenhado nesse nó interno.
+Reproduzir com texto artificial, corrigir pelos papéis View/Text do KDE e
+conferir os pixels em quatro esquemas antes da beta.2. Preservar o documento
+aberto; não trocar sua preferência de realce de sintaxe nem reiniciar o editor.
+
+Causa reproduzida com texto artificial: Mousepad 0.6.3 mapeia “none” para
+GtkSourceView Classic, que define o fundo externo a partir do estilo dos números
+de linha. O nó `text` transparente combinava esse fundo claro com o texto branco.
+O tema agora define explicitamente o par View/Text nesse nó e Selection na
+seleção. O contexto externo pode continuar indicando a cor do esquema do editor;
+a prova válida é a superfície pintada. Ensaio nativo: 48 casos em quatro snapshots
+KDE, dois controles e seis estados, todos com os pixels dos papéis esperados.
+Escopo: texto GTK3; não comprova realce de sintaxe, fonte histórica ou outra família.
+Aplicação em lsi concluída pela atualização recuperável da suíte e recarga nativa
+GTK, com o Mousepad e seu documento abertos. O usuário confirmou “Sim, consigo
+ler”. [Recibo R3](review/GTK3-TEXTO-20261010-R3.json). A beta.2 incorpora essa
+correção; p001532 não foi alterado. Próximo item: melhorias já solicitadas do
+laboratório, preservando as revisões das outras famílias na fila.

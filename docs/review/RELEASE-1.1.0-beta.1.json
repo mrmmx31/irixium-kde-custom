@@ -21,5 +21,10 @@
   "panel_reloaded": true,
   "installation_backup": "irixium-suite/backups/b337c57899dd40538a705f0cccf4b406",
   "selection_backup": "irixium-selection/7841152a48f04b408e13f092c8893c4c",
-  "limits": "Fidelity review pending by family; experimental Theme Lab. Classic reload attempt restored selection; actual DomainOS loaded by global theme apply."
+  "limits": "Fidelity review pending by family; experimental Theme Lab. Classic reload attempt restored selection; actual DomainOS loaded by global theme apply.",
+  "post_release_correction": {
+    "user_report": "Selected IDs matched but actual KDE RGB remained old; GTK2 restored journal blocked synchronization.",
+    "original_evidence_limit": "Selection and service restart did not verify the effective palette.",
+    "follow_up": "PALETA-APLICACAO-20261010-R2.json"
+  }
 }
