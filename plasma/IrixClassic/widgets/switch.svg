@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 IRIX Classic contributors -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="64" viewBox="0 0 160 64" shape-rendering="crispEdges">
+  <title>IRIX Classic mechanical switch</title>
+  <desc>Opaque rectangular 20 px lever with pixel bevel and grip ridges. Gray off track, teal on track, inverted pressed relief, square keyboard focus. Preserves the native Plasma 38 by 10 bar hint.</desc>
+  <g id="inactive-center" transform="translate(7,3)">
+  <rect width="20" height="4" fill="#c1c1c1"/>
+  </g>
+  <g id="inactive-top" transform="translate(7,0)">
+  <rect y="0" width="20" height="1" fill="#41413b"/>
+  <rect y="1" width="20" height="1" fill="#77776f"/>
+  <rect y="2" width="20" height="1" fill="#9b9b91"/>
+  </g>
+  <g id="inactive-bottom" transform="translate(7,7)">
+  <rect y="0" width="20" height="1" fill="#dfdfd3"/>
+  <rect y="1" width="20" height="1" fill="#f4f4e9"/>
+  <rect y="2" width="20" height="1" fill="#41413b"/>
+  </g>
+  <g id="inactive-left" transform="translate(4,3)">
+  <rect x="0" width="1" height="4" fill="#41413b"/>
+  <rect x="1" width="1" height="4" fill="#77776f"/>
+  <rect x="2" width="1" height="4" fill="#9b9b91"/>
+  </g>
+  <g id="inactive-right" transform="translate(27,3)">
+  <rect x="0" width="1" height="4" fill="#dfdfd3"/>
+  <rect x="1" width="1" height="4" fill="#f4f4e9"/>
+  <rect x="2" width="1" height="4" fill="#41413b"/>
+  </g>
+  <g id="inactive-topleft" transform="translate(4,0)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="2" width="1" height="1" fill="#9b9b91"/>
+  </g>
+  <g id="inactive-topright" transform="translate(27,0)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="2" width="1" height="1" fill="#9b9b91"/>
+  <rect x="1" y="2" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <g id="inactive-bottomleft" transform="translate(4,7)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="0" width="1" height="1" fill="#9b9b91"/>
+  <rect x="0" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <g id="inactive-bottomright" transform="translate(27,7)">
+  <rect x="0" y="0" width="1" height="1" fill="#dfdfd3"/>
+  <rect x="1" y="0" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="1" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <rect id="inactive-hint-top-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="inactive-hint-bottom-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="inactive-hint-left-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="inactive-hint-right-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <g id="active-center" transform="translate(41,3)">
+  <rect width="20" height="4" fill="#9ebfbf"/>
+  </g>
+  <g id="active-top" transform="translate(41,0)">
+  <rect y="0" width="20" height="1" fill="#41413b"/>
+  <rect y="1" width="20" height="1" fill="#77776f"/>
+  <rect y="2" width="20" height="1" fill="#9b9b91"/>
+  </g>
+  <g id="active-bottom" transform="translate(41,7)">
+  <rect y="0" width="20" height="1" fill="#dfdfd3"/>
+  <rect y="1" width="20" height="1" fill="#f4f4e9"/>
+  <rect y="2" width="20" height="1" fill="#41413b"/>
+  </g>
+  <g id="active-left" transform="translate(38,3)">
+  <rect x="0" width="1" height="4" fill="#41413b"/>
+  <rect x="1" width="1" height="4" fill="#77776f"/>
+  <rect x="2" width="1" height="4" fill="#9b9b91"/>
+  </g>
+  <g id="active-right" transform="translate(61,3)">
+  <rect x="0" width="1" height="4" fill="#dfdfd3"/>
+  <rect x="1" width="1" height="4" fill="#f4f4e9"/>
+  <rect x="2" width="1" height="4" fill="#41413b"/>
+  </g>
+  <g id="active-topleft" transform="translate(38,0)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="2" width="1" height="1" fill="#9b9b91"/>
+  </g>
+  <g id="active-topright" transform="translate(61,0)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="2" width="1" height="1" fill="#9b9b91"/>
+  <rect x="1" y="2" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <g id="active-bottomleft" transform="translate(38,7)">
+  <rect x="0" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="0" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="0" width="1" height="1" fill="#9b9b91"/>
+  <rect x="0" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="1" width="1" height="1" fill="#77776f"/>
+  <rect x="2" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <g id="active-bottomright" transform="translate(61,7)">
+  <rect x="0" y="0" width="1" height="1" fill="#dfdfd3"/>
+  <rect x="1" y="0" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="0" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="1" y="1" width="1" height="1" fill="#f4f4e9"/>
+  <rect x="2" y="1" width="1" height="1" fill="#41413b"/>
+  <rect x="0" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="1" y="2" width="1" height="1" fill="#41413b"/>
+  <rect x="2" y="2" width="1" height="1" fill="#41413b"/>
+  </g>
+  <rect id="active-hint-top-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="active-hint-bottom-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="active-hint-left-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="active-hint-right-margin" width="3" height="3" fill="#ff00ff" opacity="0"/>
+  <rect id="hint-bar-size" x="112" width="38" height="10" fill="#ff00ff" opacity="0"/>
+  <g id="handle" transform="translate(4,36)">
+  <rect width="20" height="20" fill="#41413b"/>
+  <path d="M1 1 H19 L17 3 H3 V17 L1 19 Z" fill="#f4f4e9"/>
+  <path d="M1 19 H19 V1 L17 3 V17 H3 Z" fill="#77776f"/>
+  <rect x="3" y="3" width="14" height="14" fill="#c1c1c1"/>
+  <rect x="7" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="8" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="10" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="11" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="13" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="14" y="7" width="1" height="6" fill="#f4f4e9"/>
+  </g>
+  <g id="handle-hover" transform="translate(32,36)">
+  <rect width="20" height="20" fill="#41413b"/>
+  <path d="M1 1 H19 L17 3 H3 V17 L1 19 Z" fill="#f4f4e9"/>
+  <path d="M1 19 H19 V1 L17 3 V17 H3 Z" fill="#77776f"/>
+  <rect x="3" y="3" width="14" height="14" fill="#cecec6"/>
+  <rect x="7" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="8" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="10" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="11" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="13" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="14" y="7" width="1" height="6" fill="#f4f4e9"/>
+  </g>
+  <g id="handle-pressed" transform="translate(60,36)">
+  <rect width="20" height="20" fill="#41413b"/>
+  <path d="M1 1 H19 L17 3 H3 V17 L1 19 Z" fill="#9b9b91"/>
+  <path d="M1 19 H19 V1 L17 3 V17 H3 Z" fill="#f4f4e9"/>
+  <rect x="3" y="3" width="14" height="14" fill="#b0b0a8"/>
+  <rect x="7" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="8" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="10" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="11" y="7" width="1" height="6" fill="#f4f4e9"/>
+  <rect x="13" y="7" width="1" height="6" fill="#41413b"/>
+  <rect x="14" y="7" width="1" height="6" fill="#f4f4e9"/>
+  </g>
+  <g id="handle-focus" transform="translate(88,35)"><rect x="0.5" y="0.5" width="21" height="21" fill="none" stroke="#41413b" stroke-width="1" stroke-dasharray="2 2"/></g>
+  <g id="handle-shadow" transform="translate(116,35)"><rect width="22" height="22" fill="none"/><rect x="21" y="2" width="1" height="20" fill="#77776f"/><rect x="2" y="21" width="20" height="1" fill="#77776f"/></g>
+</svg>

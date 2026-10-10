@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "id": "domainos-project-r1",
+  "title": "Projeto DomainOS — 10 grupos para conferir",
+  "revision": "1.0",
+  "date": "2026-10-10",
+  "source_documents": [
+    "docs/DOMAINOS-GOAL-ATUAL.md",
+    "docs/DOMAINOS-REQUISITOS.md",
+    "docs/DOMAINOS-PREFERENCIAS.md",
+    "docs/DOMAINOS-DECISOES-CONSOLIDADAS.md",
+    "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+    "docs/DOMAINOS-FILA-REVISAO-VISUAL.md",
+    "docs/DOMAINOS-REGRAS-ROLAGEM.md",
+    "docs/DISTRIBUICAO-SUITE.md"
+  ],
+  "items": [
+    {
+      "id": "P01",
+      "title": "Applications e gaveta de fixados",
+      "scope": "Busca de aplicações; preferências permanentes; pins da barra; favoritos do KDE na ordem de origem, em seções separadas.",
+      "technical_status": "proved",
+      "conclusion": "Catálogo, busca, favoritos e ordem têm evidências. Preferências ficam fixas no topo; pins e favoritos são separados. A origem dos favoritos é consultada ao abrir, sem promessa de atualização instantânea com a gaveta aberta.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F01", "F32"],
+      "check_steps": [
+        "Abra Applications e procure uma aplicação pelo nome.",
+        "Confira as três seções da gaveta e a ordem dos favoritos.",
+        "Abra e feche cada menu repetindo o clique no mesmo botão."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P02",
+      "title": "Relógio, calendário e feriados",
+      "scope": "Hora e fusos; data/localidade; calendário; feriados de Manaus, Amazonas e Brasil.",
+      "technical_status": "proved",
+      "conclusion": "Relógio e calendário usam fontes reais e botões separados. Os feriados de Manaus/AM/Brasil foram conferidos para 2026, sem duplicatas; outros anos não foram preenchidos por suposição. Agenda depende de fonte configurada.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F02", "F03"],
+      "check_steps": [
+        "Confira data e hora; abra os fusos pelo relógio.",
+        "Abra o calendário pela data e confira os feriados de 2026."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P03",
+      "title": "Rede, gr_osview e correio",
+      "scope": "Recepção/envio e unidades; outras métricas; gr_osview; cliente de correio e contagem opcional autorizada.",
+      "technical_status": "proved",
+      "conclusion": "RX/TX e gr_osview têm evidência com provedores reais. A contagem de correio foi comprovada em Thunderbird descartável e é opcional; isso não declara a extensão instalada no perfil pessoal. Fonte ausente não vira zero.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "integrations/thunderbird-domainos/README.md"
+      ],
+      "requirement_ids": ["F04", "F05", "F17"],
+      "check_steps": [
+        "Confira RX/TX e abra gr_osview pelo gráfico.",
+        "Confira o cliente de correio escolhido e o estado da integração."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P04",
+      "title": "Iconbox: cliques, grupos e rolagem",
+      "scope": "Tarefas abertas/minimizadas; clique simples e duplo; setas e roda; agrupamento e filtro automático opcional.",
+      "technical_status": "proved",
+      "conclusion": "Há evidências de lista, restauração por título, navegação sem ativação e filtro por contagem anterior ao agrupamento. Algumas provas de duplo clique usam modelos controlados; não equivalem a uma validação de todos os aplicativos.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F06", "F07", "F09", "F10", "F35"],
+      "check_steps": [
+        "Use um clique para abrir a lista e dois para minimizar/restaurar uma janela.",
+        "Use a roda e as setas: devem percorrer os itens sem ativar janelas.",
+        "Abra um grupo e confira os títulos sem marcar caixas."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P05",
+      "title": "Seleção, Operações e pin temporário",
+      "scope": "Checkboxes entre grupos; Ctrl/Shift; menus direito e do meio; operações nas janelas escolhidas; pin temporário e unpin.",
+      "technical_status": "proved",
+      "conclusion": "Seleção parcial, menu Operações e organização têm provas nativas nos escopos registrados. Janelas excluídas foram preservadas. Pin/unpin tem prova própria; não se presume nova execução de todos os layouts em cada revisão.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F08", "F34"],
+      "check_steps": [
+        "Marque uma caixa e continue a seleção em outro grupo.",
+        "Abra Operações e confira se lista ações para os membros escolhidos.",
+        "Fixe uma janela temporariamente; confira Unpin no menu direito."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P06",
+      "title": "Pager e áreas de trabalho",
+      "scope": "Identidades e nomes de áreas; seleção com luz; uma/duas/várias áreas; navegação e elevação pela geometria da janela.",
+      "technical_status": "proved",
+      "conclusion": "Áreas por identidade estável, luz, nomes e elevação pela geometria têm evidências nativas delimitadas por backend. A roda navega no padrão. Arrastar janelas entre cartões permanece adiado, conforme a decisão anterior.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F11", "F12", "F13", "F14"],
+      "check_steps": [
+        "Troque de área e confira a luz sem afundamento permanente.",
+        "Clique na geometria de uma janela e confira se ela vem à frente.",
+        "Confira nomes, quantidade e navegação nas preferências."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P07",
+      "title": "Bandeja, excedentes e notificações",
+      "scope": "Seis posições; ordem/visibilidade; provedores nativos; estado ocupado; volume; excedentes e ocultos.",
+      "technical_status": "proved",
+      "conclusion": "Provedores reais, ordem, atenção, excedentes e abertura/fechamento têm evidências. A roda de volume foi conferida no alvo. Ações físicas de conectar, montar ou ejetar não foram executadas; não se presume suporte a todo hardware.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F15", "F16", "F18", "F19", "F20", "F21", "F22", "F23"],
+      "check_steps": [
+        "Confira a textura dos espaços ocupados e dos vazios.",
+        "Confira ordem, excedentes e ocultos; repita o clique para fechar.",
+        "Confira se a roda altera volume somente sobre o item de volume."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P08",
+      "title": "Rodapé, ajuda e LED de espera",
+      "scope": "Terminal, aparência, sessão, bloqueio e ajuda; luz e cursor durante a inicialização; tempo extra opcional.",
+      "technical_status": "proved",
+      "conclusion": "Comandos e ajuda têm provas próprias. O LED atual foi conferido por clique real no Terminal da R13, com espera até mapear e cauda desligada. A prova do LED é X11; o KDE pode omitir startup associado a uma janela já existente.",
+      "evidence": [
+        "docs/DOMAINOS-FILA-REVISAO-VISUAL.md",
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F24", "F25", "F26", "F27", "F28", "F29"],
+      "check_steps": [
+        "Confira os menus de Sessão e Ajuda sem executar ações de sessão.",
+        "Abra o teste de espera do LED de 3 segundos e observe luz/cursor.",
+        "Confira se luz e cursor voltam ao normal após a janela abrir."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P09",
+      "title": "Preferências, dicas e miniaturas",
+      "scope": "Categorias do painel; Aplicar/Descartar; padrões gerais e por categoria; dicas, miniaturas e realce opcionais.",
+      "technical_status": "proved",
+      "conclusion": "A central e a persistência têm evidências. O padrão é dicas gerais desligadas, texto da Iconbox ligado, miniaturas e realce desligados. Esses estados técnicos não substituem sua conferência de legibilidade e estabilidade.",
+      "evidence": [
+        "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md",
+        "docs/DOMAINOS-PREFERENCIAS.md",
+        "plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md"
+      ],
+      "requirement_ids": ["F33"],
+      "check_steps": [
+        "Abra Preferências pela gaveta e confira as categorias do painel.",
+        "Altere uma opção temporária; confira Descartar, Aplicar e Padrões.",
+        "Confira dicas e miniaturas nos títulos completos e cortados."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "P10",
+      "title": "Temas, cores, decorações e suíte",
+      "scope": "Três temas globais; estilos e decorações; GTK/Qt/Kvantum; cores; pacote por usuário, migração e restauração.",
+      "technical_status": "partial",
+      "conclusion": "Trocas e scripts têm evidências. A revisão visual segue aberta: cores das setas, moldura GTK3 e demais famílias. GTK1 não tem cobertura DomainOS comprovada; falta o teste funcional final em p001532. Integridade não comprova fidelidade.",
+      "evidence": [
+        "docs/DISTRIBUICAO-SUITE.md",
+        "docs/DOMAINOS-REGRAS-ROLAGEM.md",
+        "docs/DOMAINOS-FILA-REVISAO-VISUAL.md",
+        "docs/DOMAINOS-COMPARACAO-ROLAGEM-GTK3.md"
+      ],
+      "requirement_ids": ["F30", "F31"],
+      "check_steps": [
+        "Confira a troca de tema e esquema na prévia isolada.",
+        "Compare GTK e Qt com o DomainOS; detalhe a família que divergir.",
+        "Confira os nomes e as opções de decoração disponíveis."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    }
+  ]
+}

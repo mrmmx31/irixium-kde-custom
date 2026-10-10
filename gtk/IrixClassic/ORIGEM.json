@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "name": "IrixClassic GTK",
+  "author": "mrmmx31",
+  "license": "GPL-3.0-or-later",
+  "date": "2026-10-08",
+  "kind": "Local GTK2/3/4 translation of this repository's Classic reconstruction",
+  "sources": [
+    "kvantum/IrixClassic/IrixClassic.kvconfig",
+    "kvantum/tools/button_art.py",
+    "kvantum/tools/entry_art.py",
+    "kvantum/tools/menu_art.py",
+    "kvantum/tools/range_art.py",
+    "kvantum/tools/scrollbar_art.py",
+    "kvantum/tools/selection_art.py",
+    "kvantum/tools/tab_art.py",
+    "decorations/classic/package/contents/ui/Artwork.js",
+    "look-and-feel/org.magpie.irixclassic.desktop/contents/defaults"
+  ],
+  "builder": "gtk/tools/build_classic.py",
+  "adaptations": [
+    "Native GTK CSS nodes and GTK2 pixmap drawing functions replace Kvantum IDs.",
+    "Keyboard focus uses GTK dotted outlines and the Classic input focus rim.",
+    "GTK switches are square GTK-specific adaptations; GTK2 has no switch widget.",
+    "GTK4 scrollbars have no steppers; persistent 18px troughs and grips are styled.",
+    "GTK3/4 tabs retain native rectangular geometry and Classic integer bevels.",
+    "CSS/gtkrc inherits each profile's gtk-font-name, with italic menu titles and no bundled font.",
+    "Disabled indicators map the local colored marks to gray; native GTK2 can emboss disabled text.",
+    "Hover on command buttons is visually inert; native menu/list locate feedback remains immediate."
+  ],
+  "not_embedded": ["SGI code", "screenshots", "fonts", "Irixium modern raster assets"],
+  "historical_claim": "Independent reconstruction and toolkit adaptation, no universal IRIX pixel-identity claim"
+}

@@ -1,0 +1,50 @@
+{
+  "kind": "original_palette",
+  "license": "GPL-3.0-or-later",
+  "name": "DomainOS SR10.4",
+  "version_reference": {
+    "title": "Domain_OS SR10.4 - 01 VUE desktop",
+    "url": "https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png",
+    "role": "Exact SR10.4 reference for the measured VUE controls and palette; confirmed against the running SR10.4 guest.",
+    "distributed": false
+  },
+  "scope": "New KDE palette only; no license of the HP reference or software is asserted.",
+  "source": "Domain_OS SR10.4 - 01 VUE desktop.png plus read-only resources from the running Domain/OS SR10.4 HP VUE 2.01 guest. Original repository adaptation of measured colors; no HP file is distributed.",
+  "file_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+  "colors": {
+    "primary_background": "#78a0d5",
+    "primary_select_trough": "#6688b5",
+    "primary_light": "#c4d5ed",
+    "primary_shadow": "#3e536e",
+    "secondary_blue": "#3297c7",
+    "secondary_light": "#a3d0e6",
+    "secondary_shadow": "#194b63",
+    "active_frame": "#fe8282",
+    "inactive_frame": "#7acac5",
+    "foreground": "#ffffff"
+  },
+  "fonts_changed": false,
+  "installed_filename": "DomainOS-SR10-4.colors",
+  "filename_compatibility": "Plasma 6.3 uses QFileInfo.baseName() for the installed scheme ID; no internal dot. Visible name and SR10.4 colors are unchanged.",
+  "guest_version_evidence": "uname: DomainOS node_123 10.4 sys5.3 DN3500; installed HP VUE 2.01 manuals; xrdb primary #7848a075d500; CoralReef palette.vue; native XQueryColors confirms primary/top/bottom/select/foreground roles",
+  "mapping": {
+    "Window/Button": "VUE primary set 3",
+    "View": "Primary recessed/select tone",
+    "Header/Selection": "VUE set 5 used by Vuefile menus and upper front panel",
+    "WM/active": "VUE active color set 1",
+    "WM/inactive": "VUE inactive color set 2",
+    "FrontPanel/top": "VUE set 5 top shadow #a3d0e6 and bottom shadow #194b63; alternating integer pixels",
+    "FrontPanel/bottom": "VUE set 3 top shadow #c4d5ed and bottom shadow #3e536e; four raised ribs"
+  },
+  "limits": [
+    "KDE shares one palette across applications. VUE secondary sets 4/6/7/8 were assigned per application, which a global KDE scheme cannot reproduce without application-specific overrides.",
+    "Light and shadow are reconstructed relative to current KDE color roles; no static blue is applied after a scheme change."
+  ],
+  "panel_runtime_calibration": "Window primary #78a0d5 is the relative HSL anchor for native runtime relief tones. The former prototype steel #7894a7 remains only a reference-mode/artwork key. All runtime surfaces still derive from current KDE roles; no scheme-name special case is used.",
+  "native_secondary_assignments": {
+    "Vuefile": "5: blue menus, primary select 3 in recessed content",
+    "Vuehelp": "6: salmon secondary menus/dialogs",
+    "Vuestyle": "7: gray-blue menus/dialogs; selected indicators use select 7 with reversed shadows",
+    "XmList": "Selected row in Vuestyle is reverse-video; KDE Selection retains its own shared semantic role"
+  }
+}

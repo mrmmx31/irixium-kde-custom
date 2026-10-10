@@ -1,0 +1,65 @@
+{
+  "license": "GPL-3.0-or-later",
+  "kind": "original_integer_control_reconstruction",
+  "version": "DomainOS SR10.4",
+  "reference": "Domain_OS SR10.4 - 01 VUE desktop.png",
+  "reference_sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b",
+  "guest_evidence": "HP VUE 2.01 resources and man pages read from the SR10.4 guest; Swiss 742 bold 12pt system font; primary color set 3, secondary menus set 4 with application overrides",
+  "geometry": {
+    "bevel": 2,
+    "gtk2_stepper": 16,
+    "generic_triangle": 12,
+    "check_radio": 14,
+    "scrollbar_thumb_grips": 0
+  },
+  "gtk3_scrollbar_contract": {
+    "path": "tools/domainos_scrollbar_rules.json",
+    "sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "schema_version": 1,
+    "identity": "domainos-sr104-trash-can-scrollbars"
+  },
+  "gtk3_scrollbar_geometry": {
+    "bar": 15,
+    "triangle": 11,
+    "thumb_width": 11,
+    "enclosing_shadow": 2,
+    "arrow_thumb_gap": 1,
+    "view_bar_gap": 4,
+    "view_inset": 2,
+    "origin": "measurement_vm"
+  },
+  "gtk3_scrollbar_relief": {
+    "normal": "Direction-specific integer triangle; light upper/left, shadow lower/right. Orient silhouette before applying light.",
+    "pressed": "Exchange light and shadow while held; preserve silhouette; release restores normal relief.",
+    "pressed_origin": "measurement_vm_down_only",
+    "pressed_source": "TRASH-DOWN-CYCLE",
+    "unverified_native_states": [
+      "up_pressed",
+      "left_pressed",
+      "right_pressed",
+      "hover",
+      "disabled",
+      "thumb_drag"
+    ]
+  },
+  "color_policy": {
+    "primary_relief": "Light/dark derived from the current Window or Button face",
+    "secondary_relief": "Light/dark derived from the current Header or Selection face",
+    "inset_view": "KDE View face/text with enclosing Window color-set shadows",
+    "marked_check_radio": "Select-color interior relative to the Button face and reversed relief"
+  },
+  "adaptations": [
+    "KDE has one shared application palette, rather than eight per-client VUE color sets; Vuefile, Vuehelp and Vuestyle used distinct secondary sets",
+    "KDE list/text selection keeps the exported Selection role; native VUE XmList could use foreground/background reverse video",
+    "GTK3 TreeView does not paint the main CSS frame for its populated scrollable body; no per-cell shadow, widget wrapper or toolkit patch is used to imitate it",
+    "Modern GTK controls absent in VUE are drawn with the same square two-pixel relief",
+    "GTK4 has no native scrollbar arrow buttons",
+    "No proprietary font is distributed; application fonts remain KDE/user settings"
+  ],
+  "excluded": [
+    "SR10.4.1",
+    "other DomainOS versions",
+    "HP bitmaps, fonts, binaries or source code"
+  ],
+  "reference_distributed": false
+}

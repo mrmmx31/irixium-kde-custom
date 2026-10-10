@@ -63,7 +63,10 @@ def run_quick(mode,stylename='kvantum',manual=False,qml_file=None,offscreen=Fals
         for ext in ('svg','kvconfig'):shutil.copyfile(ROOT/'IrixClassic'/('IrixClassic.'+ext),dest/('IrixClassic.'+ext))
         (config/'Kvantum/kvantum.kvconfig').write_text('[General]\ntheme=IrixClassic\n',encoding='utf-8')
         (config/'kdeglobals').write_text('[KDE]\nwidgetStyle='+stylename+'\n',encoding='utf-8')
-        os.environ['XDG_CONFIG_HOME']=str(config);os.environ['QT_STYLE_OVERRIDE']=stylename
+        os.environ['XDG_CONFIG_HOME']=str(config)
+        # QT_STYLE_OVERRIDE can also select a nonexistent Qt Quick style named
+        # kvantum. The Widgets style is selected explicitly below.
+        os.environ.pop('QT_STYLE_OVERRIDE',None)
         os.environ['QT_QUICK_CONTROLS_STYLE']='org.kde.desktop'
         if offscreen:
             os.environ['QT_QPA_PLATFORM']='offscreen';os.environ['QT_QUICK_BACKEND']='software'
@@ -73,7 +76,9 @@ def run_quick(mode,stylename='kvantum',manual=False,qml_file=None,offscreen=Fals
         scene=root/'Scene.qml';scene.write_text(text,encoding='utf-8')
         app=W.QApplication(['irix-arrow-runtime']);style=W.QStyleFactory.create(stylename)
         if style is None:return {'status':'skipped','reason':stylename+' style not installed'},77
-        app.setStyle(style);view=Q.QQuickView();warnings=[]
+        app.setStyle(style)
+        os.environ['QT_QUICK_CONTROLS_STYLE']='org.kde.desktop'
+        view=Q.QQuickView();warnings=[]
         view.engine().warnings.connect(lambda e:warnings.extend(x.toString() for x in e))
         view.setTitle('Setas — '+stylename+' / '+mode);view.setSource(C.QUrl.fromLocalFile(str(scene)))
         if view.status()==Q.QQuickView.Status.Error:

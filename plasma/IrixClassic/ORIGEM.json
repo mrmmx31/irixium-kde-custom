@@ -12,10 +12,83 @@
   "license": "GPL-3.0",
   "version": "3.0",
   "local_changes": [
-    "Renamed and separated as the starting point for the independent IRIX Classic theme."
+    "Renamed and separated as the starting point for the independent IRIX Classic theme.",
+    "Restored missing widgets/switch.svg from the author’s locally installed Irixium 6.2; retained the existing theme artwork.",
+    "Replaced Classic panel, tasks, pager, buttons, item highlights and sliders with opaque compact workstation plates; added state-specific hover/pressed artwork and vertical controls.",
+    "Replaced the inherited rounded/gradient switch with independently drawn mechanical rectangular Classic artwork; separated square task icon wells from caption strips inside a recessed Iconbox.",
+    "Recessed shared tray field and square analog-clock instrument socket; new flat clock artwork; pager frame centers are transparent so native window outlines remain visible above the opaque panel.",
+    "Late-1980s workstation surfaces: tiled integer-pixel stipple in gray panel housings and recessed teal fields; dark ruled edges and bitmap Iconbox heading, preserving panel geometry and native input handling."
   ],
   "verification": {
     "installed_path": "~/.local/share/plasma/desktoptheme/IrixClassic",
     "metadata": "metadata.desktop"
+  },
+  "additional_resources": {
+    "widgets/switch.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn Classic artwork for the native Plasma switch contract",
+      "sha256": "2bc7ec022e61fe652d2cc6cdc7b07fdf6f69989d8284e67e6deada1cb96121d3"
+    },
+    "widgets/clock.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn analog dial and hands for the native Plasma clock contract",
+      "sha256": "ab38ff6901f534a33c6758109d30d5bdf9f6dde104278dd5a3d8bdbd829820fe"
+    },
+    "widgets/instrument.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn opaque four-pixel instrument housing with tiled stipple, ruled edges and direct inverted pressed state",
+      "sha256": "bce75ccdbb356635e98c7d8f4e540303744be79a95b8ff9021083bd920eb89bb"
+    },
+    "widgets/instrument-well.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn opaque two-pixel recessed teal field with tiled integer-pixel stipple",
+      "sha256": "52c10998de438b3f5c046a55e1197297f03abde662ea9dfa301492a261a83ac3"
+    },
+    "widgets/pager.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn recessed desktop frames with transparent centers for native window outlines",
+      "sha256": "d9e3630172ee68206c7f851627fb5604f5a9273b938007b066ee4514d6d7224b"
+    },
+    "widgets/panel-background.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn opaque compact panel housing with tiled pixel stipple and fixed four-pixel margins",
+      "sha256": "b7e135c598c6e117e0c76d7a134c3d9439fc293a983ba59d1d914acf9a885333"
+    },
+    "widgets/iconbox.svg": {
+      "author": "IRIX Classic contributors",
+      "license": "GPL-3.0-or-later",
+      "source": "independently drawn recessed teal Iconbox with tiled pixel stipple, separate eight-pixel heading rail and unchanged three-pixel margins",
+      "sha256": "0126df9b044290982e87207a4ae6355037ef1bed8f91f1e71aaedf948470e6a7"
+    }
+  },
+  "classic_artwork": {
+    "version": "0.4.0",
+    "author": "IRIX Classic contributors",
+    "license": "GPL-3.0-or-later",
+    "references": [
+      "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch03.html",
+      "https://www.bitsavers.org/pdf/openSoftwareFoundation/motif/OSF_Motif_Style_Guide_Revision_1.2_1993.pdf"
+    ]
+  },
+  "historical_resources": {
+    "former_widgets/switch.svg": {
+      "author": "Mark Whittaker (Phob1an)",
+      "upstream_version": "6.2",
+      "license": "GPL-2.0-or-later",
+      "source": "locally installed irixium Plasma Style",
+      "sha256": "a8c8ec1121b9d5b0b716a561cc3a9abe113394a41ced9504bf4bbcf00bfb0fd5"
+    },
+    "former_widgets/clock.svg": {
+      "author": "Phob1an",
+      "license": "GPL-3.0",
+      "source": "inherited Irixium base recorded in this component provenance",
+      "sha256": "7b1d348c22b69e8bb1b829173a4f388c7b576aaad0f62f204362d25e243fcdc9"
+    }
   }
 }

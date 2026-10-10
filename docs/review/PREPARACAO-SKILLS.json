@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "purpose": "Portable AI skills: visual review boards and existing-session MAME controls",
+  "user_answers_included": false,
+  "credentials_included": false,
+  "files": {
+    "skills/mame-live-control/SKILL.md": "fd509c0c5f481176f12110cd03b83a5009987862cbddfb4c9b531528b2d33c28",
+    "skills/mame-live-control/agents/openai.yaml": "7b34c14ec82402628410e2d216049fe7bb316d59ee60217802f24f7c88f47875",
+    "skills/mame-live-control/references/live-session.md": "e1949130b29c6ac2db6cfcc63e7bf3159c3da182366311bd482cd5c236c2e185",
+    "skills/mame-live-control/scripts/mame_bridge.lua": "e6bf8fe36ad42e67685fbfe3520ec93708ab3bd384eee40a5fb6064ac57c8aa2",
+    "skills/mame-live-control/scripts/mame_control.py": "db5a3ab62109d520a84236716b5b6235ecef527eb3488b0dd2d1453342038762",
+    "skills/mame-live-control/scripts/mame_mouse_capture.lua": "b6ac3aa9c3dbcf0bf2fb4ab739d4c65760b86c54a0d27c9f36a7ac1ddc3b6af7",
+    "skills/mame-live-control/scripts/mame_mouse_control.lua": "0329ff9f94e1d400569f8000d1bf708a9f36cfb2084b9c1684fe7e469dc1d2f1",
+    "skills/mame-live-control/scripts/readonly_probe.lua": "558aec3da245152f8177a664098f1178ef2fa5f1097950cd7d42526b13f9a45f",
+    "skills/mame-live-control/scripts/test_offline.py": "6f301530e5dc5d979c417622acbc3cddb695fe8999c8fc3e99ead2f38978d223",
+    "skills/retro-ui-review/SKILL.md": "38147ec1bfd772804a47442713a98de31bf751138108f5286dd359960a11a85c",
+    "skills/retro-ui-review/agents/openai.yaml": "5a975d48880be60ce53c751ebdb42c62ad6ea6f811bb35ca3c740d6e73771325",
+    "skills/retro-ui-review/references/checklist-format.md": "d08ff3117466b08f0421721145701bfd08427fdfc57d73eace5e82662802da5d",
+    "skills/retro-ui-review/scripts/review_board.py": "53af790da8d35f6d62fc76c511654b2923c76d3fdefa9ee622187f4e184ab89c"
+  },
+  "validation": {
+    "skill_metadata": "both_valid",
+    "review_boards": "two_boards_ten_items_each_no_user_preapproval",
+    "answer_persistence": "roundtrip_history_criterion_change_symlinks_concurrency_size_malformed_and_fifo_cases_passed_offline",
+    "mame_controls": "19_offline_tests_passed_lua_5_4_mock_mame_services_no_live_vm_commands",
+    "gtk_window": "observed_via_kwin_wayland_not_minimized_after_window_title_scope_fix"
+  },
+  "archive_filename": "domainos-review-skills-20261010-r1.zip",
+  "archive_sha256": "2a366da34a8c3de29911421f86d96c634661afa46674f1a3474f4eabfd23c43c",
+  "archive_bytes": 29454
+}

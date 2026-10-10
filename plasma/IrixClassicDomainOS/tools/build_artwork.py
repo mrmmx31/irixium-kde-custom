@@ -1,0 +1,506 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 IRIX Classic contributors
+# SPDX-License-Identifier: GPL-3.0-or-later
+"""Build DomainOS resources without modifying the independent Classic option.
+
+The frame contract comes from the existing GPL theme. Panel, instrument,
+Iconbox, command rail, pager, clock and field art are new integer-pixel SVG.
+No screenshot bitmap is copied into the product.
+"""
+import sys
+
+# These maintainer helpers live inside a catalogued theme component. Running
+# them must not add interpreter caches to its installed/source inventory.
+sys.dont_write_bytecode = True
+
+from pathlib import Path
+import hashlib
+import copy
+import json
+import re
+import shutil
+import xml.etree.ElementTree as ET
+
+HERE = Path(__file__).resolve().parents[1]
+BASE = HERE.parent / 'IrixClassic'
+NS = 'http://www.w3.org/2000/svg'
+ET.register_namespace('', NS)
+ET.register_namespace('xlink', 'http://www.w3.org/1999/xlink')
+
+PALETTE = {
+    'face': '#7894a7', 'well': '#607f91', 'rim': '#194b63',
+    'shadow': '#3e536e', 'highlight': '#c5e8e6', 'pale': '#a3d0e6',
+    'turquoise': '#7acac5', 'blue': '#3297c7', 'white': '#ffffff',
+    'text': '#102b37', 'weave': '#6a889a', 'active': '#dddd28',
+    'weave_dark': '#194b63', 'weave_light': '#a3d0e6',
+    'rail_dark': '#3e536e', 'rail_light': '#c4d5ed',
+}
+COLOR_MAP = {
+    '#c1c1c1': PALETTE['face'], '#cecec6': PALETTE['face'],
+    '#bdbcb4': PALETTE['face'], '#b0b0a8': PALETTE['well'],
+    '#41413b': PALETTE['rim'], '#344f4f': PALETTE['rim'],
+    '#77776f': PALETTE['shadow'], '#77776b': PALETTE['shadow'],
+    '#637f7f': PALETTE['shadow'], '#55554f': PALETTE['shadow'],
+    '#9b9b91': PALETTE['weave'], '#aaa9a2': PALETTE['weave'],
+    '#f4f4e9': PALETTE['highlight'], '#dfdfd3': PALETTE['pale'],
+    '#9ebfbf': PALETTE['well'], '#abcaca': PALETTE['pale'],
+    '#789c9c': PALETTE['weave'], '#789292': PALETTE['weave'],
+    '#bfd3d0': PALETTE['highlight'], '#cce0dc': PALETTE['pale'],
+    '#cdb981': '#b98976', '#d6c58e': '#c49a87', '#89aaaa': PALETTE['well'],
+    '#b98e8e': PALETTE['well'], '#e4dddd': PALETTE['highlight'],
+    '#dadada': PALETTE['pale'], '#ececec': PALETTE['highlight'],
+    '#919191': PALETTE['weave'], '#606060': PALETTE['shadow'],
+    '#696969': PALETTE['shadow'], '#2f2f2f': PALETTE['rim'],
+    '#ededed': PALETTE['highlight'], '#8caaa9': PALETTE['well'],
+    '#adadad': PALETTE['face'], '#d6d6d6': PALETTE['pale'],
+    '#828282': PALETTE['shadow'], '#85a4c3': PALETTE['blue'],
+    '#bed6ef': PALETTE['pale'], '#6a849a': PALETTE['shadow'],
+}
+
+
+def node(tag, **attrs):
+    return ET.Element('{'+NS+'}'+tag, {k.replace('_', '-'): str(v) for k, v in attrs.items()})
+
+
+def rect(parent, x, y, w, h, color, **attrs):
+    parent.append(node('rect', x=x, y=y, width=w, height=h, fill=color, **attrs))
+
+
+def svg(title, width=256, height=256):
+    result = node('svg', width=width, height=height, viewBox=f'0 0 {width} {height}', shape_rendering='crispEdges')
+    ET.SubElement(result, '{'+NS+'}title').text = 'Irix Classic DomainOS — '+title
+    return result
+
+
+def write(name, result):
+    scheme_colors(result, name)
+    target = HERE / name
+    target.parent.mkdir(parents=True, exist_ok=True)
+    ET.indent(result, space='  ')
+    target.write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
+                      '<!-- SPDX-FileCopyrightText: 2026 IRIX Classic contributors -->\n'
+                      '<!-- SPDX-License-Identifier: GPL-3.0-or-later -->\n'
+                      + ET.tostring(result, encoding='unicode')+'\n')
+
+
+def hint(parent, identifier, width=1, height=1):
+    rect(parent, 0, 0, width, height, '#ff00ff', id=identifier, opacity=0)
+
+
+def texture(group, width, height, mode):
+    # The SR10.4 screenshot uses two-color, one-pixel checker cells for the
+    # upper instrument wells. Its lower rail has FOUR central grooves over a
+    # checker background; those grooves do not repeat throughout its height.
+    # Explicit pixels work in native QSvgRenderer/KSvg without alpha blending.
+    if mode == 'weave':
+        for y in range(height):
+            for x in range(width):
+                rect(group, x, y, 1, 1,
+                     PALETTE['weave_dark' if (x+y) % 2 else 'weave_light'])
+    elif mode == 'rules':
+        first = (height-12)//2
+        for y in range(height):
+            if first <= y < first+12 and (y-first) % 3 != 1:
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_light' if (y-first) % 3 == 0 else 'rail_dark'])
+            elif y in (first-1, first+12):
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_dark' if y == first-1 else 'rail_light'])
+            else:
+                for x in range(width):
+                    phase = x if first <= y < first+12 else x+y
+                    rect(group, x, y, 1, 1,
+                         PALETTE['rail_light' if phase % 2 else 'rail_dark'])
+    elif mode == 'heading-rules':
+        # The separate Iconbox heading retains its previously approved tile.
+        for y in range(height):
+            if y % 3 != 1:
+                rect(group, 0, y, width, 1,
+                     PALETTE['rail_light' if y % 3 == 0 else 'rail_dark'])
+            else:
+                for x in range(width):
+                    rect(group, x, y, 1, 1,
+                         PALETTE['rail_light' if x % 2 else 'rail_dark'])
+
+
+def plate(parent, prefix, ox, oy, margin=4, face=None, pressed=False, mode=None, empty=False, active=False, command_rail=False):
+    """One native nine-slice with four hard bands and a counter-relief lip.
+
+    The outer light edge and turquoise shoulder follow the HP reference. A
+    shadow counter-relief and pale inner lip complete the four-pixel contract.
+    Bottom bands use inner-to-outer order, opposite the applet's edge arrays.
+    """
+    face = face or PALETTE['face']
+    size = 24
+    top = [PALETTE['highlight'], PALETTE['turquoise'], PALETTE['shadow'], PALETTE['pale']]
+    bottom = [PALETTE['face'], PALETTE['pale'], PALETTE['shadow'], PALETTE['rim']]
+    if command_rail:
+        # The reference's lower strip has a simple two-tone rim, with no
+        # turquoise shoulder or counter-relief from the upper instruments.
+        top = [PALETTE['rail_light']]*margin
+        bottom = [PALETTE['rail_dark']]*margin
+    if pressed:
+        top, bottom = list(reversed(bottom)), list(reversed(top))
+    top, bottom = top[:margin], bottom[-margin:]
+    if active:
+        top[0] = bottom[-1] = PALETTE['active']
+    label = lambda suffix: prefix+'-'+suffix if prefix else suffix
+    # All pieces tile/stretch independently; no transparent holes in housings.
+    for piece, x, y, w, h in [
+        ('center', margin, margin, size, size),
+        ('top', margin, 0, size, margin),
+        ('bottom', margin, size+margin, size, margin),
+        ('left', 0, margin, margin, size),
+        ('right', size+margin, margin, margin, size),
+        ('topleft', 0, 0, margin, margin),
+        ('topright', size+margin, 0, margin, margin),
+        ('bottomleft', 0, size+margin, margin, margin),
+        ('bottomright', size+margin, size+margin, margin, margin),
+    ]:
+        group = node('g', id=label(piece), transform=f'translate({ox+x},{oy+y})')
+        parent.append(group)
+        if piece == 'center':
+            # Pager frames are an overlay; only the underlying panel is opaque.
+            rect(group, 0, 0, w, h, 'none' if empty else face)
+            if mode and not empty:
+                texture(group, w, h, mode)
+            continue
+        for py in range(h):
+            for px in range(w):
+                if piece == 'top': color = top[py]
+                elif piece == 'bottom': color = bottom[py]
+                elif piece == 'left': color = top[px]
+                elif piece == 'right': color = bottom[px]
+                elif piece == 'topleft': color = top[min(px, py)]
+                elif piece == 'topright': color = top[py] if py < margin-1-px else bottom[px]
+                elif piece == 'bottomleft': color = top[px] if px < margin-1-py else bottom[py]
+                else: color = bottom[max(px, py)]
+                rect(group, px, py, 1, 1, color)
+    for side in ('top', 'bottom', 'left', 'right'):
+        hint(parent, label('hint-'+side+'-margin'), margin, margin)
+    if mode and not command_rail:
+        hint(parent, label('hint-tile-center'))
+
+
+def major_art():
+    for name, prefix, pressed, face, mode in [
+        ('panel-background', '', False, 'face', 'weave'),
+        ('background', '', True, 'well', None),
+        ('instrument-well', '', True, 'well', 'weave'),
+        ('frame', 'plain', True, 'well', 'weave'),
+        ('command-rail', '', False, 'face', 'rules'),
+    ]:
+        result = svg(name+' opaque plate', 48, 48)
+        plate(result, prefix, 4, 4, face=PALETTE[face], pressed=pressed, mode=mode,
+              command_rail=name=='command-rail')
+        write('widgets/'+name+'.svg', result)
+    for name in ('instrument', 'button'):
+        result = svg(name+' straight raised/pressed rim', 400, 64)
+        states = ('normal', 'pressed') if name == 'instrument' else ('normal', 'hover', 'pressed', 'focus-background', 'toolbutton-hover', 'toolbutton-pressed', 'focus', 'toolbutton-focus')
+        for index, state in enumerate(states):
+            plate(result, state, 4+index*48, 4, pressed='pressed' in state,
+                  mode='weave' if name == 'instrument' else None,
+                  active=state in ('focus', 'toolbutton-focus'))
+        write('widgets/'+name+'.svg', result)
+    result = svg('recessed iconbox and ruled heading', 96, 96)
+    plate(result, '', 4, 4, face=PALETTE['well'], pressed=True, mode='weave')
+    plate(result, 'heading', 48, 4, face=PALETTE['face'], mode='heading-rules')
+    write('widgets/iconbox.svg', result)
+    result = svg('pager overlay with narrow yellow selection rim', 256, 64)
+    for index, state in enumerate(('normal', 'active', 'hover', 'active-hover', 'pressed')):
+        plate(result, state, 4+index*48, 4, face=PALETTE['well'], pressed=True,
+              empty=True, active='active' in state)
+    write('widgets/pager.svg', result)
+    for filename, variants in [('lineedit', ('base', 'focus')), ('plasmoidheading', ('header', 'footer'))]:
+        result = svg(filename+' rigid field', 160, 64)
+        for index, state in enumerate(variants):
+            plate(result, state, 4+index*48, 4, face=PALETTE['well'], pressed=filename=='lineedit', active=state=='focus')
+        if filename == 'lineedit':
+            hint(result, 'hint-focus-over-base')
+            hint(result, 'hint-compose-over-borders')
+        write('widgets/'+filename+'.svg', result)
+    for name in ('dialogs/background.svg', 'widgets/tooltip.svg'):
+        result = svg('opaque popup plate', 48, 48)
+        plate(result, '', 4, 4)
+        write(name, result)
+
+
+def scheme_colors(result, name):
+    """Keep the historical geometry, deriving every visible paint from KDE.
+
+    KSvg replaces current-color-scheme with the selected KColorScheme roles.
+    It has no Light/Dark roles. A shaded pixel is therefore an opaque thematic
+    surface with a partial white/black mixing endpoint above it, not a fixed
+    blue/gray surface. Glyphs and accents use the native text/selection roles.
+    The PALETTE constants above describe the reference and classify its bands;
+    they never survive as visible colors in the installed artwork.
+    """
+    controls = {'button', 'instrument', 'switch', 'slider', 'scrollbar',
+                'radiobutton', 'tabbar', 'bar_meter_horizontal', 'bar_meter_vertical'}
+    stem = Path(name).stem
+    base = ('TooltipBackground' if stem == 'tooltip' else
+            'ViewBackground' if stem == 'lineedit' else
+            'ButtonBackground' if stem in controls else 'Background')
+    glyph = 'ButtonText' if stem in controls else 'TooltipText' if stem == 'tooltip' else 'Text'
+    light = {PALETTE['highlight']: .44, PALETTE['pale']: .28,
+             PALETTE['turquoise']: .14, PALETTE['rail_light']: .36}
+    dark = {PALETTE['shadow']: .32, PALETTE['rim']: .54,
+            PALETTE['weave']: .18}
+    # Paint is inherited in many original resources. Materialize just paint at
+    # leaves before adding overlays; duplicating a group would duplicate IDs
+    # and incorrectly paint every child over again.
+    shape_tags = {'rect', 'path', 'circle', 'ellipse', 'polygon', 'polyline', 'line', 'use', 'text'}
+    def walk(element, inherited, context):
+        props = dict(part.split(':', 1) for part in element.get('style', '').split(';') if ':' in part)
+        own = {key: element.get(key, props.get(key)) for key in ('fill', 'stroke')}
+        effective = {key: value if value is not None else inherited.get(key) for key, value in own.items()}
+        context = context + [element.get('id', '')]
+        if 'class' in element.attrib:
+            element.attrib['class'] = ' '.join(c for c in element.attrib['class'].split() if not c.startswith('ColorScheme-'))
+            if not element.attrib['class']:
+                del element.attrib['class']
+        for key in ('fill', 'stroke', 'color'):
+            props.pop(key, None)
+            element.attrib.pop(key, None)
+        if props:
+            element.attrib['style'] = ';'.join(key+':'+value for key, value in props.items())
+        else:
+            element.attrib.pop('style', None)
+        tag = element.tag.rsplit('}', 1)[-1]
+        if tag in {'text', 'tspan'}:
+            # Text/tspan subtrees must not be duplicated for relief shading.
+            # Their IDs and font geometry remain unique and their foreground
+            # follows the native role rather than a white reference bitmap.
+            element.attrib.update(fill='currentColor', stroke='none', **{'class': 'ColorScheme-'+glyph})
+            for child in list(element):
+                walk(child, {'fill': '#000000', 'stroke': 'none'}, context)
+            return
+        if tag not in shape_tags:
+            for child in list(element):
+                if child.tag.rsplit('}', 1)[-1] == 'style':
+                    element.remove(child)
+                    continue
+                walk(child, effective, context)
+            return
+        hidden = any(identifier.startswith('hint-') or '-hint-' in identifier for identifier in context)
+        if hidden:
+            element.attrib.update(fill='none', stroke='none', opacity='0')
+            return
+        selected = any(re.search(r'(^|[- +])(active|selected|checked|focus|highlight)([- +]|$)', identifier)
+                       for identifier in context)
+        surface = base
+        if stem == 'plasmoidheading':
+            surface = 'HeaderBackground' if any(identifier.startswith('header-') for identifier in context) else 'Background'
+        elif selected and stem in {'switch', 'slider', 'listitem', 'viewitem', 'tasks', 'bar_meter_horizontal', 'bar_meter_vertical'}:
+            surface = 'Highlight'
+        for key, value in effective.items():
+            if value is None or value == 'none':
+                element.attrib[key] = 'none'
+                continue
+            value = value.lower()
+            shade = 0
+            role = surface
+            if value in light:
+                shade = light[value]
+            elif value in dark:
+                shade = -dark[value]
+            elif value == PALETTE['well']:
+                role = surface if stem == 'plasmoidheading' or selected else 'ViewBackground'
+            elif value in {PALETTE['face'], '#b98976', '#c49a87'}:
+                role = surface
+            elif value in {PALETTE['active'], PALETTE['blue'], '#008080', '#0000ff'}:
+                role = 'Highlight'
+            elif value in {'#000000', '#07141b', PALETTE['text']}:
+                role = 'HighlightedText' if selected and stem.startswith('icon') else glyph
+            elif stem == 'clock' and value == PALETTE['white']:
+                role = 'HighlightedText'
+            elif re.fullmatch(r'#[0-9a-f]{6}', value):
+                channels = [int(value[i:i+2], 16) for i in (1, 3, 5)]
+                if max(channels)-min(channels) < 12:
+                    # Inherited neutral reliefs are shading of their own
+                    # native surface. Black glyphs were handled above.
+                    level = sum(channels)/765
+                    shade = (level-.6)*.9
+                    shade = min(.44, max(-.54, shade))
+                elif channels[0] > channels[1]*1.45 and channels[0] > channels[2]*1.45:
+                    role = 'NegativeText'
+                elif channels[1] > channels[0]*1.45 and channels[1] > channels[2]*1.45:
+                    role = 'PositiveText'
+                else:
+                    role = 'Highlight'
+            else:
+                raise ValueError('Unclassified visible paint in '+name+': '+value)
+            # One class supplies currentColor for both paints. Split the rare
+            # stroke+fill shape so each uses its correct semantic role, while
+            # retaining the original ID/geometry for native element lookup.
+            element.attrib[key] = 'currentColor'
+            paint = copy.deepcopy(element)
+            paint.attrib[key] = 'currentColor'
+            paint.attrib['stroke' if key == 'fill' else 'fill'] = 'none'
+            paint.attrib['class'] = 'ColorScheme-'+role
+            paint.attrib.pop('id', None)
+            pending.append((element, paint, shade, key))
+        # The original shape remains a bounds/ID anchor. Its paint is emitted
+        # immediately after it as role-based leaves, with no duplicate IDs.
+        element.attrib.update(fill='none', stroke='none')
+    pending = []
+    walk(result, {'fill': '#000000', 'stroke': 'none'}, [])
+    parents = {child: parent for parent in result.iter() for child in parent}
+    for anchor in dict.fromkeys(entry[0] for entry in pending):
+        identifier = anchor.attrib.pop('id', None)
+        if identifier:
+            parent = parents[anchor]
+            wrapper = node('g', id=identifier)
+            index = list(parent).index(anchor)
+            parent.remove(anchor)
+            parent.insert(index, wrapper)
+            wrapper.append(anchor)
+    parents = {child: parent for parent in result.iter() for child in parent}
+    grouped = {}
+    for anchor, paint, shade, key in pending:
+        grouped.setdefault(anchor, []).append((paint, shade, key))
+    for anchor, paints in grouped.items():
+        parent = parents[anchor]
+        index = list(parent).index(anchor)
+        for paint, shade, key in paints:
+            parent.insert(index, paint)
+            index += 1
+            if shade:
+                overlay = copy.deepcopy(paint)
+                overlay.attrib.pop('class', None)
+                overlay.attrib[key] = '#ffffff' if shade > 0 else '#000000'
+                props = dict(part.split(':', 1) for part in overlay.get('style', '').split(';') if ':' in part)
+                original_opacity = float(props.pop('opacity', overlay.attrib.get('opacity', '1')))
+                if props:
+                    overlay.attrib['style'] = ';'.join(prop+':'+value for prop, value in props.items())
+                else:
+                    overlay.attrib.pop('style', None)
+                overlay.attrib['opacity'] = str(abs(shade)*original_opacity)
+                overlay.attrib['data-scheme-shade'] = 'lighten' if shade > 0 else 'darken'
+                parent.insert(index, overlay)
+                index += 1
+        # No invisible duplicate leaf is left in the runtime SVG. The wrapper
+        # keeps an original single-shape ID when native lookup needs one.
+        parent.remove(anchor)
+    style = node('style', id='current-color-scheme', type='text/css')
+    style.text = '/* KSvg supplies the selected KDE color roles at render time. */'
+    result.insert(0, style)
+
+
+def clock():
+    result = svg('blue diagnostic clock face and white hands', 256, 128)
+    result.attrib.pop('shape-rendering')  # A circular dial, as in the reference.
+    face = node('g', id='ClockFace'); result.append(face)
+    face.append(node('circle', cx=32, cy=32, r=32, fill=PALETTE['blue']))
+    for hour in range(12):
+        rect(face, 31, 2, 2, 3 if hour % 3 == 0 else 2, PALETTE['white'], transform=f'rotate({hour*30} 32 32)')
+    for identifier, x, w, h in [('HourHand',80,8,26), ('MinuteHand',104,6,32), ('SecondHand',128,4,34)]:
+        hand = node('g', id=identifier, transform=f'translate({x},0)'); result.append(hand)
+        middle=w//2
+        hand.append(node('path', d=f'M0 0H{w}V4H{middle+1}V{h-4}L{middle} {h}L{middle-1} {h-4}V4H0Z', fill=PALETTE['white']))
+        shadow=node('g',id=identifier+'Shadow',transform=f'translate({x},48)'); result.append(shadow)
+        rect(shadow,0,0,w,h,'none')
+        rect(result,x+middle-.5,3.5,1,1,'#ff00ff',id='hint-'+identifier.lower()+'-rotation-center-offset')
+        rect(result,x+middle-.5,51.5,1,1,'#ff00ff',id='hint-'+identifier.lower()+'shadow-rotation-center-offset')
+    screw=node('g',id='HandCenterScrew',transform='translate(152,0)'); result.append(screw)
+    screw.append(node('circle',cx=3,cy=3,r=3,fill=PALETTE['white']))
+    glass=node('g',id='Glass',transform='translate(176,0)'); result.append(glass)
+    rect(glass,0,0,64,64,'none')
+    hint(result,'hint-square-clock')
+    write('widgets/clock.svg',result)
+
+
+def derivative(source):
+    """Retain existing resource IDs while replacing incompatible rendering."""
+    result=ET.parse(source).getroot()
+    gradients={}
+    for element in result.iter():
+        if element.tag.rsplit('}',1)[-1] in ('linearGradient','radialGradient'):
+            stop=next((child for child in element.iter() if child.tag.rsplit('}',1)[-1]=='stop'),None)
+            if stop is not None:
+                match=re.search(r'stop-color:([^;]+)',stop.attrib.get('style',''))
+                gradients[element.attrib['id']]=match.group(1) if match else stop.attrib.get('stop-color',PALETTE['shadow'])
+    for parent in result.iter():
+        for element in list(parent):
+            if element.tag.rsplit('}',1)[-1] in ('linearGradient','radialGradient','filter','namedview','metadata') or element.tag.startswith('{http://www.inkscape.org'):
+                parent.remove(element)
+    for element in result.iter():
+        for key,value in list(element.attrib.items()):
+            if key.startswith('{http://www.inkscape.org') or key.startswith('{http://sodipodi.sourceforge.net'):
+                del element.attrib[key];continue
+            value=re.sub(r'url\(#([^)]*)\)',lambda m:gradients.get(m.group(1),m.group(0)),value)
+            value=re.sub(r'#[0-9a-fA-F]{6}',lambda m: COLOR_MAP.get(m.group(0).lower(),m.group(0)),value)
+            if key=='style':
+                props=dict(part.split(':',1) for part in value.split(';') if ':' in part)
+                for opacity in ('opacity','fill-opacity','stroke-opacity'):
+                    if opacity in props and float(props[opacity]) not in (0,1): props[opacity]='1'
+                props.pop('filter',None)
+                props['stroke-linejoin']='miter'; props['stroke-linecap']='square'
+                value=';'.join(k+':'+v for k,v in props.items())
+            if key in ('opacity','fill-opacity','stroke-opacity') and float(value) not in (0,1): value='1'
+            if key in ('rx','ry'):value='0'
+            element.attrib[key]=value
+    # Shadows remain a contract placeholder without being drawn, and hints
+    # have no visible role. Pager centers are handled by their own overlay art.
+    for element in result.iter():
+        identifier=element.attrib.get('id','')
+        if identifier.endswith('-shadow'):
+            element.attrib['opacity']='0'
+    result.attrib['shape-rendering']='crispEdges'
+    scheme_colors(result, str(source.relative_to(BASE)))
+    ET.indent(result,space='  ')
+    target=HERE/source.relative_to(BASE);target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text('<?xml version="1.0" encoding="UTF-8"?>\n'
+                      '<!-- DomainOS derivative of the IrixClassic/Irixium GPL resource. See ORIGEM.json and LICENSE. -->\n'
+                      +ET.tostring(result,encoding='unicode')+'\n')
+
+
+def build():
+    baseline={str(p.relative_to(BASE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(BASE.rglob('*')) if p.is_file()}
+    for source in sorted(BASE.rglob('*.svg')): derivative(source)
+    shutil.copyfile(BASE/'LICENSE',HERE/'LICENSE')
+    shutil.copyfile(BASE/'LICENSE-switch.txt',HERE/'LICENSE-switch.txt')
+    major_art();clock()
+    (HERE/'CLASSIC-BASELINE.json').write_text(json.dumps(baseline,indent=2)+'\n')
+    provenance=HERE/'ORIGEM.json'
+    if provenance.exists():
+        origin=json.loads(provenance.read_text())
+        origin['palette'] = {**PALETTE, 'selection_rim': PALETTE['active']}
+        origin['runtime_colors'] = {
+            'source': 'selected KDE KColorScheme via native KSvg current-color-scheme roles',
+            'fixed_reference_palette_rendered': False,
+            'surfaces': ['Background', 'HeaderBackground', 'TooltipBackground', 'ViewBackground', 'ButtonBackground'],
+            'accents_and_glyphs': ['Highlight', 'HighlightedText', 'Text', 'ButtonText', 'TooltipText', 'PositiveText', 'NegativeText'],
+            'relief': 'opaque thematic surface mixed with partial white/black mathematical endpoints; no independent hue',
+        }
+        origin['bevel'] = {
+            'physical_margin': 4, 'band_width': 1,
+            'raised_top_outer_to_inner': [PALETTE[color] for color in ('highlight', 'turquoise', 'shadow', 'pale')],
+            'raised_bottom_inner_to_outer': [PALETTE[color] for color in ('face', 'pale', 'shadow', 'rim')],
+            'sunken': 'reverse opposing raised bands',
+            'rendering': 'opaque discrete pixels; no gradient, filter or animation',
+        }
+        origin['textures'] = {
+            'instrument_weave': {
+                'colors': [PALETTE['weave_dark'], PALETTE['weave_light']],
+                'cell_pixels': 1, 'period_pixels': [2, 2],
+                'pattern': 'alternating opaque dark/light checker cells',
+            },
+            'command_rail': {
+                'colors': [PALETTE['rail_dark'], PALETTE['rail_light']],
+                'background_period_pixels': [2, 2],
+                'groove_count': 4,
+                'groove_rows': ['light', 'alternating dark/light cells', 'dark'],
+                'placement': 'four centered grooves, dark cap above, light cap below; remaining rows retain the checker background',
+                'center_scaling': 'native stretch; hint-tile-center intentionally omitted to prevent vertical groove repetition',
+                'rim': 'four-pixel simple light top/left and dark bottom/right',
+                'native_limit': 'KSvg center stretching widens checker spacing and may interpolate colors; the panel QML supplies final-pixel checker frequency',
+            },
+        }
+        for name, info in origin['resources'].items():
+            info['sha256']=hashlib.sha256((HERE/name).read_bytes()).hexdigest()
+        provenance.write_text(json.dumps(origin,indent=2,ensure_ascii=False)+'\n')
+    print(json.dumps({'files':len(list(HERE.rglob('*.svg'))),'original_classic_unchanged':baseline=={str(p.relative_to(BASE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(BASE.rglob('*')) if p.is_file()}},indent=2))
+
+
+if __name__=='__main__':build()

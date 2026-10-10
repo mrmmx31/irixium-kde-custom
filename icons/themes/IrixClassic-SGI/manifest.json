@@ -1,13 +1,14 @@
 {
-  "version": "0.1.0",
-  "canonical_icons": 126,
-  "unique_artworks": 110,
-  "icon_names": 292,
+  "version": "0.4.1",
+  "canonical_icons": 954,
+  "unique_artworks": 483,
+  "icon_names": 2381,
   "sizes": [
     16,
     22,
     24,
     32,
+    44,
     48,
     64,
     96,
@@ -22,7 +23,8 @@
       "aliases": [
         "inode-directory",
         "gtk-directory",
-        "stock_folder"
+        "stock_folder",
+        "folder-favorites"
       ]
     },
     {
@@ -122,7 +124,10 @@
       "aliases": [
         "user-trash-empty",
         "trashcan_empty",
-        "emptytrash"
+        "emptytrash",
+        "edit-clear",
+        "edit-clear-history",
+        "edit-delete"
       ]
     },
     {
@@ -140,7 +145,8 @@
       "kind": "monitor",
       "variant": "",
       "aliases": [
-        "desktop"
+        "desktop",
+        "show-background"
       ]
     },
     {
@@ -161,7 +167,8 @@
       "variant": "star",
       "aliases": [
         "bookmarks",
-        "favorites"
+        "favorites",
+        "bookmark"
       ]
     },
     {
@@ -181,7 +188,123 @@
       "aliases": [
         "text-x-generic",
         "application-octet-stream",
-        "unknown"
+        "unknown",
+        "application-vnd.adobe.pdx",
+        "application-vnd.adobe.xfdf",
+        "application-vnd.fdf",
+        "application-vnd.kde.bluedevil-sendfile",
+        "application-vnd.kde.kleopatra.keygroup",
+        "application-vnd.kde.kpatience.savedstate",
+        "application-vnd.ms-publisher",
+        "application-vnd.oasis.opendocument.graphics",
+        "application-vnd.oasis.opendocument.graphics-template",
+        "application-vnd.plain",
+        "application-vnd.quark.quarkxpress",
+        "application-vnd.visio",
+        "application-x-abicollab",
+        "application-x-ace",
+        "application-x-alz",
+        "application-x-app-package",
+        "application-x-apple-diskimage",
+        "application-x-ar",
+        "application-x-arc",
+        "application-x-bittorrent",
+        "application-x-brasero",
+        "application-x-brotli",
+        "application-x-bzdvi",
+        "application-x-cantor",
+        "application-x-cdrdao-toc",
+        "application-x-chrome-extension",
+        "application-x-cisco-vpn-settings",
+        "application-x-crossmark",
+        "application-x-designer",
+        "application-x-ear",
+        "application-x-go-sgf",
+        "application-x-gzdvi",
+        "application-x-kalgebra",
+        "application-x-kcachegrind",
+        "application-x-kig",
+        "application-x-kmplot",
+        "application-x-kolf",
+        "application-x-kourse",
+        "application-x-krdc",
+        "application-x-krita",
+        "application-x-kvtml",
+        "application-x-kwallet",
+        "application-x-lhz",
+        "application-x-lokalize-project",
+        "application-x-mate-saved-search",
+        "application-x-mate-theme-package",
+        "application-x-mif",
+        "application-x-ms-dos-executable",
+        "application-x-ms-wim",
+        "application-x-msi",
+        "application-x-openbox-theme",
+        "application-x-openvpn-profile",
+        "application-x-pagemaker",
+        "application-x-palapeli-puzzle",
+        "application-x-palm-database",
+        "application-x-pem-file",
+        "application-x-pem-key",
+        "application-x-redhat-package-manager",
+        "application-x-remmina",
+        "application-x-rocs",
+        "application-x-spkac",
+        "application-x-spkac+base64",
+        "application-x-toc",
+        "application-x-tuberling",
+        "application-x-uml",
+        "application-x-vmware-enc-vm",
+        "application-x-vmware-team",
+        "application-x-vmware-vm",
+        "application-x-vnd.akonadi.calendar.event",
+        "application-x-vnd.akonadi.calendar.journal",
+        "application-x-vnd.akonadi.calendar.todo",
+        "application-x-vnd.kde.contactgroup",
+        "application-x-war",
+        "application-x-wpg",
+        "application-x-wwf",
+        "application-x-x509-ca-cert",
+        "application-x-x509-user-cert",
+        "application-x-xliff",
+        "application-x-xpraconfig",
+        "application-x-zerosize",
+        "application-x-zoo",
+        "document-edit",
+        "format-number-percent",
+        "format-text-bold",
+        "format-text-italic",
+        "format-text-strikethrough",
+        "format-text-underline",
+        "inode-vnd.kde.service.knavalbattle",
+        "text-calendar",
+        "text-comma-separated-values",
+        "text-directory",
+        "text-english",
+        "text-feathernotes-fnx",
+        "text-ico",
+        "text-lazarus-code-inlay",
+        "text-lazarus-form",
+        "text-lazarus-package",
+        "text-lazarus-package-link",
+        "text-lazarus-project-information",
+        "text-richtext",
+        "text-vcard",
+        "text-vnd.wap.wml",
+        "text-x-c",
+        "text-x-comma-separated-values",
+        "text-x-gettext-translation",
+        "text-x-gettext-translation-template",
+        "text-x-ldif",
+        "text-x-markdown",
+        "text-x-moc",
+        "text-x-pascal",
+        "text-x-patch",
+        "text-x-php",
+        "text-x-tcl",
+        "text-x-vcard",
+        "text-x-xmi",
+        "x-content-software"
       ]
     },
     {
@@ -201,7 +324,46 @@
         "application-json",
         "application-javascript",
         "application-xml",
-        "text-xml"
+        "text-xml",
+        "application-atom+xml",
+        "application-metalink+xml",
+        "application-rdf+xml",
+        "application-rss+xml",
+        "application-sql",
+        "application-vnd.adobe.xdp+xml",
+        "application-vnd.mozilla.xul+xml",
+        "application-vnd.ms-htmlhelp",
+        "application-vnd.oasis.opendocument.graphics-flat-xml",
+        "application-vnd.oasis.opendocument.text-flat-xml",
+        "application-vnd.sun.xml.calc",
+        "application-vnd.sun.xml.calc.template",
+        "application-vnd.sun.xml.draw",
+        "application-vnd.sun.xml.draw.template",
+        "application-vnd.sun.xml.impress",
+        "application-vnd.sun.xml.impress.template",
+        "application-vnd.sun.xml.writer",
+        "application-vnd.sun.xml.writer.global",
+        "application-vnd.sun.xml.writer.template",
+        "application-x-executable-script",
+        "application-x-fictionbook+xml",
+        "application-x-javascript",
+        "application-x-mobipocket-subscription",
+        "application-xhtml_xml",
+        "application-xspf+xml",
+        "text-fb2+xml",
+        "text-lazarus-project-source",
+        "text-lazarus-resource",
+        "text-x-apt-sources-list",
+        "text-x-c++",
+        "text-x-c++hdr",
+        "text-x-makefile",
+        "text-xml-svg",
+        "x-scheme-handler-rlogin",
+        "x-scheme-handler-ssh",
+        "x-scheme-handler-telnet",
+        "x-scheme-handler-vscode",
+        "x-scheme-handler-xpra+ssh",
+        "x-scheme-handler-xprassh"
       ]
     },
     {
@@ -219,7 +381,18 @@
       "kind": "paper",
       "variant": "pdf",
       "aliases": [
-        "application-postscript"
+        "application-postscript",
+        "application-oxps",
+        "application-vnd.ms-xpsdocument",
+        "application-x-bzpdf",
+        "application-x-bzpostscript",
+        "application-x-gzpdf",
+        "application-x-gzpostscript",
+        "application-x-lzpdf",
+        "application-x-pdf",
+        "application-x-xzpdf",
+        "text-pdf",
+        "text-x-pdf"
       ]
     },
     {
@@ -233,7 +406,119 @@
         "image-gif",
         "image-svg+xml",
         "image-webp",
-        "image-tiff"
+        "image-tiff",
+        "application-ico",
+        "application-pcx",
+        "application-vnd.corel-draw",
+        "application-x-navi-animation",
+        "application-x-raw-disk-image-xz-compressed",
+        "image",
+        "image-avif",
+        "image-avs",
+        "image-bie",
+        "image-bmp",
+        "image-cmyk",
+        "image-dcx",
+        "image-eps",
+        "image-fax",
+        "image-fax-g3",
+        "image-fits",
+        "image-g3fax",
+        "image-gray",
+        "image-heif",
+        "image-ico",
+        "image-icon",
+        "image-jp2",
+        "image-jpeg2000",
+        "image-jpg",
+        "image-jpx",
+        "image-jxl",
+        "image-miff",
+        "image-mono",
+        "image-mtv",
+        "image-openraster",
+        "image-pcd",
+        "image-pcx",
+        "image-pdf",
+        "image-pict",
+        "image-pjpeg",
+        "image-ps",
+        "image-qtif",
+        "image-rad",
+        "image-rgba",
+        "image-rla",
+        "image-rle",
+        "image-sgi",
+        "image-sun-raster",
+        "image-svg",
+        "image-svg+xml-compressed",
+        "image-svg-xml",
+        "image-targa",
+        "image-uyvy",
+        "image-vid",
+        "image-viff",
+        "image-vnd.adobe.photoshop",
+        "image-vnd.adobe.svg+xml",
+        "image-vnd.djvu",
+        "image-vnd.djvu+multipage",
+        "image-vnd.microsoft.icon",
+        "image-vnd.rn-realpix",
+        "image-vnd.wap.wbmp",
+        "image-vnd.zbrush.pcx",
+        "image-wmf",
+        "image-x-MS-bmp",
+        "image-x-adobe-dng",
+        "image-x-bmp",
+        "image-x-bzeps",
+        "image-x-canon-cr2",
+        "image-x-canon-crw",
+        "image-x-compressed-xcf",
+        "image-x-dds",
+        "image-x-djvu",
+        "image-x-emf",
+        "image-x-eps",
+        "image-x-epson-erf",
+        "image-x-exr",
+        "image-x-freehand",
+        "image-x-fuji-raf",
+        "image-x-gray",
+        "image-x-gzeps",
+        "image-x-hdr",
+        "image-x-icb",
+        "image-x-icns",
+        "image-x-ico",
+        "image-x-icon",
+        "image-x-minolta-mrw",
+        "image-x-mng",
+        "image-x-ms-bmp",
+        "image-x-nikon-nef",
+        "image-x-olympus-orf",
+        "image-x-pcx",
+        "image-x-pdf",
+        "image-x-pentax-pef",
+        "image-x-pic",
+        "image-x-png",
+        "image-x-portable-anymap",
+        "image-x-portable-bitmap",
+        "image-x-portable-graymap",
+        "image-x-portable-pixmap",
+        "image-x-psd",
+        "image-x-quicktime",
+        "image-x-rgb",
+        "image-x-sony-arw",
+        "image-x-sun-raster",
+        "image-x-targa",
+        "image-x-tga",
+        "image-x-webp",
+        "image-x-win-bitmap",
+        "image-x-wmf",
+        "image-x-xbitmap",
+        "image-x-xcf",
+        "image-x-xpixmap",
+        "image-x-xwindowdump",
+        "image-xpm",
+        "image-yuv",
+        "x-content-image-picturecd"
       ]
     },
     {
@@ -245,7 +530,92 @@
         "audio-mpeg",
         "audio-ogg",
         "audio-flac",
-        "audio-x-wav"
+        "audio-x-wav",
+        "application-ogg",
+        "audio-3gpp",
+        "audio-3gpp2",
+        "audio-AMR",
+        "audio-AMR-WB",
+        "audio-aac",
+        "audio-ac3",
+        "audio-aiff",
+        "audio-amr",
+        "audio-amr-wb",
+        "audio-basic",
+        "audio-dv",
+        "audio-eac3",
+        "audio-m3u",
+        "audio-m4a",
+        "audio-midi",
+        "audio-mp1",
+        "audio-mp2",
+        "audio-mp3",
+        "audio-mp4",
+        "audio-mpeg2",
+        "audio-mpeg3",
+        "audio-mpegurl",
+        "audio-mpg",
+        "audio-musepack",
+        "audio-opus",
+        "audio-prs.sid",
+        "audio-rn-mpeg",
+        "audio-scpls",
+        "audio-vnd.dolby.heaac.1",
+        "audio-vnd.dolby.heaac.2",
+        "audio-vnd.dolby.mlp",
+        "audio-vnd.dts",
+        "audio-vnd.dts.hd",
+        "audio-vnd.rn-realaudio",
+        "audio-vnd.wave",
+        "audio-vorbis",
+        "audio-wav",
+        "audio-webm",
+        "audio-x-aac",
+        "audio-x-adpcm",
+        "audio-x-aiff",
+        "audio-x-ape",
+        "audio-x-flac",
+        "audio-x-gsm",
+        "audio-x-it",
+        "audio-x-m4a",
+        "audio-x-matroska",
+        "audio-x-mod",
+        "audio-x-mp1",
+        "audio-x-mp2",
+        "audio-x-mp3",
+        "audio-x-mp3-playlist",
+        "audio-x-mpeg",
+        "audio-x-mpegurl",
+        "audio-x-mpg",
+        "audio-x-ms-asf",
+        "audio-x-ms-asx",
+        "audio-x-ms-wax",
+        "audio-x-ms-wma",
+        "audio-x-musepack",
+        "audio-x-oggflac",
+        "audio-x-pls",
+        "audio-x-pn-aiff",
+        "audio-x-pn-au",
+        "audio-x-pn-realaudio",
+        "audio-x-pn-realaudio-plugin",
+        "audio-x-pn-wav",
+        "audio-x-pn-windows-acm",
+        "audio-x-pn-windows-pcm",
+        "audio-x-real-audio",
+        "audio-x-realaudio",
+        "audio-x-riff",
+        "audio-x-s3m",
+        "audio-x-scpls",
+        "audio-x-shorten",
+        "audio-x-speex",
+        "audio-x-stm",
+        "audio-x-tta",
+        "audio-x-vorbis",
+        "audio-x-vorbis+ogg",
+        "audio-x-wavpack",
+        "audio-x-xm",
+        "x-content-audio-cdda",
+        "x-content-audio-player"
       ]
     },
     {
@@ -256,7 +626,94 @@
       "aliases": [
         "video-mp4",
         "video-webm",
-        "video-x-matroska"
+        "video-x-matroska",
+        "application-mpeg4-iod",
+        "application-mpeg4-muxcodetable",
+        "application-mxf",
+        "application-ram",
+        "application-sdp",
+        "application-smil",
+        "application-streamingmedia",
+        "application-vnd.apple.mpegurl",
+        "application-vnd.ms-asf",
+        "application-vnd.ms-wpl",
+        "application-vnd.rn-realmedia",
+        "application-vnd.rn-realmedia-vbr",
+        "application-x-extension-m4a",
+        "application-x-extension-mp4",
+        "application-x-flac",
+        "application-x-flash-video",
+        "application-x-matroska",
+        "application-x-mpegurl",
+        "application-x-ogg",
+        "application-x-ogm",
+        "application-x-ogm-audio",
+        "application-x-ogm-video",
+        "application-x-quicktime-media-link",
+        "application-x-quicktimeplayer",
+        "application-x-shockwave-flash",
+        "application-x-shorten",
+        "application-x-smil",
+        "application-x-streamingmedia",
+        "misc-ultravox",
+        "text-google-video-pointer",
+        "text-x-google-video-pointer",
+        "video-3gp",
+        "video-3gpp",
+        "video-3gpp2",
+        "video-avi",
+        "video-divx",
+        "video-dv",
+        "video-fli",
+        "video-flv",
+        "video-mkv",
+        "video-mp2t",
+        "video-mp4v-es",
+        "video-mpeg",
+        "video-mpeg-system",
+        "video-msvideo",
+        "video-ogg",
+        "video-quicktime",
+        "video-vnd.avi",
+        "video-vnd.divx",
+        "video-vnd.mpegurl",
+        "video-vnd.rn-realvideo",
+        "video-x-anim",
+        "video-x-avi",
+        "video-x-flc",
+        "video-x-fli",
+        "video-x-flic",
+        "video-x-flv",
+        "video-x-m4v",
+        "video-x-mng",
+        "video-x-mpeg",
+        "video-x-mpeg-system",
+        "video-x-mpeg2",
+        "video-x-mpeg3",
+        "video-x-ms-afs",
+        "video-x-ms-asf",
+        "video-x-ms-asf-plugin",
+        "video-x-ms-asx",
+        "video-x-ms-wm",
+        "video-x-ms-wmv",
+        "video-x-ms-wmx",
+        "video-x-ms-wvx",
+        "video-x-ms-wvxvideo",
+        "video-x-msvideo",
+        "video-x-nsv",
+        "video-x-ogm",
+        "video-x-ogm+ogg",
+        "video-x-theora",
+        "video-x-theora+ogg",
+        "x-content-video-bluray",
+        "x-content-video-dvd",
+        "x-content-video-svcd",
+        "x-content-video-vcd",
+        "x-scheme-handler-mms",
+        "x-scheme-handler-mmsh",
+        "x-scheme-handler-rtmp",
+        "x-scheme-handler-rtp",
+        "x-scheme-handler-rtsp"
       ]
     },
     {
@@ -270,7 +727,97 @@
         "application-x-tar",
         "application-gzip",
         "application-x-compressed-tar",
-        "application-x-rar"
+        "application-x-rar",
+        "application-arj",
+        "application-bzip2",
+        "application-java-archive",
+        "application-vnd.android.package-archive",
+        "application-vnd.appimage",
+        "application-vnd.debian.binary-package",
+        "application-vnd.flatpak",
+        "application-vnd.flatpak.ref",
+        "application-vnd.flatpak.repo",
+        "application-vnd.kde.okular-archive",
+        "application-vnd.ms-cab-compressed",
+        "application-vnd.openofficeorg.extension",
+        "application-vnd.rar",
+        "application-vnd.snap",
+        "application-vnd.squashfs",
+        "application-vnd.stardivision.calc",
+        "application-vnd.stardivision.chart",
+        "application-vnd.stardivision.draw",
+        "application-vnd.stardivision.impress",
+        "application-vnd.stardivision.writer",
+        "application-vnd.stardivision.writer-global",
+        "application-x-7z-compressed-tar",
+        "application-x-arj",
+        "application-x-bcpio",
+        "application-x-brotli-compressed-tar",
+        "application-x-bzip",
+        "application-x-bzip-brotli-tar",
+        "application-x-bzip-compressed-tar",
+        "application-x-bzip1",
+        "application-x-bzip1-compressed-tar",
+        "application-x-bzip2",
+        "application-x-bzip2-compressed-tar",
+        "application-x-bzip3",
+        "application-x-bzip3-compressed-tar",
+        "application-x-cabinet",
+        "application-x-cb7",
+        "application-x-cbt",
+        "application-x-compress",
+        "application-x-cpio",
+        "application-x-cpio-compressed",
+        "application-x-deb",
+        "application-x-debian-package",
+        "application-x-gtar",
+        "application-x-gzip",
+        "application-x-iso9660-appimage",
+        "application-x-java-archive",
+        "application-x-lha",
+        "application-x-lrzip",
+        "application-x-lrzip-compressed-tar",
+        "application-x-lz4",
+        "application-x-lz4-compressed-tar",
+        "application-x-lzh-compressed",
+        "application-x-lzip",
+        "application-x-lzip-compressed-tar",
+        "application-x-lzma",
+        "application-x-lzma-compressed-tar",
+        "application-x-lzop",
+        "application-x-lzop-compressed-tar",
+        "application-x-mimearchive",
+        "application-x-rar-compressed",
+        "application-x-rpm",
+        "application-x-rzip",
+        "application-x-rzip-compressed-tar",
+        "application-x-source-rpm",
+        "application-x-starcalc",
+        "application-x-starchart",
+        "application-x-stardraw",
+        "application-x-starimpress",
+        "application-x-starwriter",
+        "application-x-starwriter-global",
+        "application-x-stuffit",
+        "application-x-sv4cpio",
+        "application-x-sv4crc",
+        "application-x-tarz",
+        "application-x-tzo",
+        "application-x-webarchive",
+        "application-x-xar",
+        "application-x-xpinstall",
+        "application-x-xz",
+        "application-x-xz-compressed-tar",
+        "application-x-zip",
+        "application-x-zip-compressed",
+        "application-x-zip-compressed-fb2",
+        "application-x-zpaq",
+        "application-x-zstd-compressed-tar",
+        "application-zlib",
+        "application-zstd",
+        "x-scheme-handler-flatpak+https",
+        "x-scheme-handler-vnd.sun.star.webdav",
+        "x-scheme-handler-vnd.sun.star.webdavs"
       ]
     },
     {
@@ -281,7 +828,52 @@
       "aliases": [
         "application-vnd.oasis.opendocument.text",
         "application-msword",
-        "application-vnd.openxmlformats-officedocument.wordprocessingml.document"
+        "application-vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "application-cherrytree-ctb",
+        "application-cherrytree-ctd",
+        "application-cherrytree-ctx",
+        "application-cherrytree-ctz",
+        "application-clarisworks",
+        "application-macwriteii",
+        "application-rtf",
+        "application-vnd.apple.pages",
+        "application-vnd.lotus-wordpro",
+        "application-vnd.ms-word",
+        "application-vnd.ms-word.document.macroEnabled.12",
+        "application-vnd.ms-word.document.macroenabled.12",
+        "application-vnd.ms-word.template.macroEnabled.12",
+        "application-vnd.ms-works",
+        "application-vnd.oasis.opendocument.text-master",
+        "application-vnd.oasis.opendocument.text-master-template",
+        "application-vnd.oasis.opendocument.text-template",
+        "application-vnd.oasis.opendocument.text-web",
+        "application-vnd.openxmlformats-officedocument.wordprocessingml.template",
+        "application-vnd.palm",
+        "application-vnd.wordperfect",
+        "application-wordperfect",
+        "application-wordperfect5.1",
+        "application-wordperfect6",
+        "application-x-abiword",
+        "application-x-aportisdoc",
+        "application-x-applix-word",
+        "application-x-code-workspace",
+        "application-x-doc",
+        "application-x-extension-txt",
+        "application-x-hwp",
+        "application-x-iwork-pages-sffpages",
+        "application-x-kword",
+        "application-x-mswrite",
+        "application-x-pocket-word",
+        "application-x-raw-disk-image",
+        "application-x-sony-bbeb",
+        "application-x-t602",
+        "text-abiword",
+        "text-rtf",
+        "text-x-abiword",
+        "text-x-xml-abiword",
+        "x-scheme-handler-ms-word",
+        "x-scheme-handler-vnd.libreoffice.cmis",
+        "x-scheme-handler-vnd.libreoffice.command"
       ]
     },
     {
@@ -292,7 +884,38 @@
       "aliases": [
         "application-vnd.oasis.opendocument.spreadsheet",
         "application-vnd.ms-excel",
-        "application-vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        "application-vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application-csv",
+        "application-excel",
+        "application-msexcel",
+        "application-tab-separated-values",
+        "application-vnd.apache.parquet",
+        "application-vnd.apple.numbers",
+        "application-vnd.lotus-1-2-3",
+        "application-vnd.ms-excel.sheet.binary.macroEnabled.12",
+        "application-vnd.ms-excel.sheet.macroEnabled.12",
+        "application-vnd.ms-excel.template.macroEnabled.12",
+        "application-vnd.oasis.opendocument.chart",
+        "application-vnd.oasis.opendocument.chart-template",
+        "application-vnd.oasis.opendocument.spreadsheet-flat-xml",
+        "application-vnd.oasis.opendocument.spreadsheet-template",
+        "application-vnd.openxmlformats-officedocument.spreadsheetml.template",
+        "application-x-123",
+        "application-x-dbase",
+        "application-x-dbf",
+        "application-x-dos_ms_excel",
+        "application-x-excel",
+        "application-x-gnumeric",
+        "application-x-iwork-numbers-sffnumbers",
+        "application-x-ms-excel",
+        "application-x-msexcel",
+        "application-x-quattropro",
+        "gnumeric-format-thousand-separator",
+        "text-csv",
+        "text-spreadsheet",
+        "text-tab-separated-values",
+        "text-x-csv",
+        "x-scheme-handler-ms-excel"
       ]
     },
     {
@@ -302,7 +925,21 @@
       "variant": "slides",
       "aliases": [
         "application-vnd.oasis.opendocument.presentation",
-        "application-vnd.ms-powerpoint"
+        "application-vnd.ms-powerpoint",
+        "application-mspowerpoint",
+        "application-vnd.apple.keynote",
+        "application-vnd.ms-powerpoint.presentation.macroEnabled.12",
+        "application-vnd.ms-powerpoint.slideshow.macroEnabled.12",
+        "application-vnd.ms-powerpoint.template.macroEnabled.12",
+        "application-vnd.oasis.opendocument.presentation-flat-xml",
+        "application-vnd.oasis.opendocument.presentation-template",
+        "application-vnd.openxmlformats-officedocument.presentationml.presentation",
+        "application-vnd.openxmlformats-officedocument.presentationml.slide",
+        "application-vnd.openxmlformats-officedocument.presentationml.slideshow",
+        "application-vnd.openxmlformats-officedocument.presentationml.template",
+        "application-x-iwork-keynote-sffkey",
+        "view-presentation",
+        "x-scheme-handler-ms-powerpoint"
       ]
     },
     {
@@ -321,7 +958,16 @@
       "kind": "monitor",
       "variant": "",
       "aliases": [
-        "video-display"
+        "video-display",
+        "computer-laptop",
+        "preferences-desktop-display",
+        "preferences-desktop-display-color",
+        "preferences-desktop-display-randr",
+        "preferences-desktop-screensaver",
+        "preferences-desktop-touchscreen",
+        "wayland",
+        "xorg",
+        "xwaylandvideobridge"
       ]
     },
     {
@@ -331,7 +977,13 @@
       "variant": "",
       "aliases": [
         "drive-harddisk-system",
-        "drive-harddisk-solidstate"
+        "drive-harddisk-solidstate",
+        "device-notifier",
+        "disk-quota",
+        "drive-removable-media-usb-pendrive",
+        "fsview",
+        "mate-disk-usage-analyzer",
+        "update-low"
       ]
     },
     {
@@ -341,7 +993,10 @@
       "variant": "optical",
       "aliases": [
         "media-optical",
-        "media-optical-audio"
+        "media-optical-audio",
+        "application-vnd.efi.iso",
+        "application-x-cd-image",
+        "application-x-cue"
       ]
     },
     {
@@ -352,7 +1007,8 @@
       "aliases": [
         "drive-removable-media-usb",
         "drive-harddisk-usb",
-        "media-flash"
+        "media-flash",
+        "org.xfce.volman"
       ]
     },
     {
@@ -372,10 +1028,13 @@
       "aliases": [
         "org.kde.konsole",
         "konsole",
-        "xterm",
         "org.wezfurlong.wezterm",
         "Alacritty",
-        "kitty"
+        "kitty",
+        "mini.xterm",
+        "run",
+        "system-run",
+        "terminal"
       ]
     },
     {
@@ -395,10 +1054,22 @@
       "kind": "app",
       "variant": "editor",
       "aliases": [
-        "org.kde.kate",
-        "kate",
-        "org.kde.kwrite",
-        "kwrite"
+        "12AD_wordicon.0",
+        "BF4E_WINWORD.0",
+        "DC11_misc.1",
+        "bookmarks-organize",
+        "dialog-password",
+        "edit-entry",
+        "edit-none",
+        "edit-select-all",
+        "edit-select-none",
+        "gvim",
+        "knotes",
+        "mintstick",
+        "org.xfce.settings.editor",
+        "org.xfce.xfwm4",
+        "org.xfce.xfwm4-tweaks",
+        "password"
       ]
     },
     {
@@ -412,8 +1083,19 @@
         "org.mozilla.firefox",
         "chromium",
         "chromium-browser",
-        "google-chrome",
-        "com.google.Chrome"
+        "DC11_misc.9",
+        "brave-browser",
+        "chrome-aghbiahbpaijignceidepookljebhfak-Default",
+        "chrome-mpnpojknpmmopombnjdcgaaiekajbnjb-Default",
+        "com.github.fries1234.ncsa-mosaic",
+        "im-google",
+        "im-yahoo",
+        "konqueror",
+        "microsoft-edge",
+        "org.xfce.webbrowser",
+        "view-web-browser-dom-tree",
+        "web-browser",
+        "webengine"
       ]
     },
     {
@@ -425,7 +1107,19 @@
         "org.kde.kmail",
         "kmail",
         "thunderbird",
-        "org.mozilla.Thunderbird"
+        "org.mozilla.Thunderbird",
+        "9E5F_outicon.0",
+        "akonadi-ews",
+        "chrome-fmgjjmmmlfnkbppncabfkddbjimcfncm-Default",
+        "mail-message",
+        "mail-message-new",
+        "mail-message-new-list",
+        "mail-receive",
+        "mail-reply-sender",
+        "org.kde.merkuro.mail",
+        "org.xfce.mailreader",
+        "ox",
+        "view-pim-mail"
       ]
     },
     {
@@ -436,7 +1130,53 @@
       "aliases": [
         "systemsettings",
         "org.kde.systemsettings",
-        "preferences-desktop"
+        "preferences-desktop",
+        "brightnesssettings",
+        "configure",
+        "configure-toolbars",
+        "gtkconfig",
+        "krunner",
+        "org.xfce.settings.appearance",
+        "org.xfce.settings.default-applications",
+        "org.xfce.settings.display",
+        "org.xfce.settings.manager",
+        "preferences",
+        "preferences-desktop-accessibility",
+        "preferences-desktop-baloo",
+        "preferences-desktop-default-applications",
+        "preferences-desktop-emoticons",
+        "preferences-desktop-feedback",
+        "preferences-desktop-filetype-association",
+        "preferences-desktop-filter",
+        "preferences-desktop-gaming",
+        "preferences-desktop-launch-feedback",
+        "preferences-desktop-locale",
+        "preferences-desktop-online-accounts",
+        "preferences-desktop-peripherals",
+        "preferences-desktop-plasma",
+        "preferences-desktop-splash",
+        "preferences-desktop-tablet",
+        "preferences-desktop-thunderbolt",
+        "preferences-devices-cpu",
+        "preferences-devices-printer",
+        "preferences-other",
+        "preferences-plugin-script",
+        "preferences-smart-status",
+        "preferences-system-details",
+        "preferences-system-disks",
+        "preferences-system-performance",
+        "preferences-system-services",
+        "preferences-system-session",
+        "preferences-system-session-services",
+        "preferences-system-splash",
+        "preferences-system-tabbox",
+        "preferences-web-browser-adblock",
+        "preferences-web-browser-cookies",
+        "preferences-web-browser-identification",
+        "services",
+        "settings-configure",
+        "system-suspend-uninhibited",
+        "widget-alternatives"
       ]
     },
     {
@@ -448,7 +1188,11 @@
         "org.kde.plasma-systemmonitor",
         "plasma-systemmonitor",
         "org.kde.ksysguard",
-        "ksysguard"
+        "ksysguard",
+        "7886_Graflink.0",
+        "ksysguardd",
+        "mate-system-log",
+        "tool-animator"
       ]
     },
     {
@@ -458,7 +1202,8 @@
       "variant": "calculator",
       "aliases": [
         "org.kde.kcalc",
-        "kcalc"
+        "kcalc",
+        "qalculatebackend"
       ]
     },
     {
@@ -467,7 +1212,12 @@
       "kind": "app",
       "variant": "clock",
       "aliases": [
-        "org.kde.kclock"
+        "org.kde.kclock",
+        "chronometer",
+        "preferences-system-date-time",
+        "preferences-system-time",
+        "time-admin",
+        "view-history"
       ]
     },
     {
@@ -477,7 +1227,14 @@
       "variant": "archive",
       "aliases": [
         "org.kde.ark",
-        "ark"
+        "ark",
+        "EA23_7zFM.0",
+        "kup",
+        "mark-location",
+        "preferences-system-backup",
+        "preferences-system-backups",
+        "utilities-file-archiver",
+        "webarchiver"
       ]
     },
     {
@@ -487,7 +1244,9 @@
       "variant": "image",
       "aliases": [
         "org.kde.gwenview",
-        "gwenview"
+        "gwenview",
+        "document-preview",
+        "xfp"
       ]
     },
     {
@@ -507,7 +1266,14 @@
       "variant": "database",
       "aliases": [
         "dbeaver",
-        "io.dbeaver.DBeaverCommunity"
+        "io.dbeaver.DBeaverCommunity",
+        "739A_msqry32.0",
+        "848C_ACREADME.0",
+        "87ED_accicons.0",
+        "8C29_MSACCESS.0",
+        "DC11_misc.11",
+        "org.xfce.settings.accessibility",
+        "security-medium"
       ]
     },
     {
@@ -518,7 +1284,16 @@
       "aliases": [
         "pavucontrol",
         "org.kde.kmix",
-        "kmix"
+        "kmix",
+        "audacious",
+        "audio-card",
+        "com.github.wwmm.easyeffects",
+        "elisa",
+        "juk",
+        "minuet",
+        "org.kde.krecorder",
+        "preferences-desktop-multimedia",
+        "preferences-desktop-sound"
       ]
     },
     {
@@ -529,7 +1304,13 @@
       "aliases": [
         "vlc",
         "org.videolan.VLC",
-        "mpv"
+        "mpv",
+        "chrome-agimnkijcaahngcdmfeangaknmldooml-Default",
+        "dragonplayer",
+        "im-youtube",
+        "player-volume",
+        "smplayer",
+        "tvtrusted"
       ]
     },
     {
@@ -540,9 +1321,10 @@
       "aliases": [
         "org.kde.kdevelop",
         "kdevelop",
-        "code",
-        "code-oss",
-        "com.visualstudio.code"
+        "9423_mainicon.0",
+        "DA62_unins000.0",
+        "fork",
+        "rocs"
       ]
     },
     {
@@ -551,7 +1333,19 @@
       "kind": "app",
       "variant": "office",
       "aliases": [
-        "libreoffice-startcenter"
+        "libreoffice-startcenter",
+        "0C39_bindico.0",
+        "14FC_MSOW.2",
+        "14FC_MSOW.4",
+        "1CA3_BINDER.0",
+        "1EA5_MSOFFICE.0",
+        "3102_Acme.0",
+        "5B05_Binder.0",
+        "DC11_misc.2",
+        "DC11_misc.3",
+        "DC11_misc.5",
+        "DC11_misc.6",
+        "office-chart-area"
       ]
     },
     {
@@ -561,7 +1355,18 @@
       "variant": "calendar",
       "aliases": [
         "org.kde.korganizer",
-        "korganizer"
+        "korganizer",
+        "C478_SCHDPL32.0",
+        "konsolekalendar",
+        "view-calendar",
+        "view-calendar-agenda",
+        "view-calendar-holiday",
+        "view-calendar-special-occasion",
+        "view-calendar-tasks",
+        "view-calendar-workweek",
+        "view-pim-calendar",
+        "x-scheme-handler-webcal",
+        "x-scheme-handler-webcals"
       ]
     },
     {
@@ -571,7 +1376,14 @@
       "variant": "package",
       "aliases": [
         "org.kde.discover",
-        "plasma-discover"
+        "plasma-discover",
+        "baloo",
+        "get-hot-new-stuff",
+        "package-x-generic",
+        "plasmadiscover",
+        "software-update-available",
+        "software-update-urgent",
+        "system-software-update"
       ]
     },
     {
@@ -580,10 +1392,25 @@
       "kind": "app",
       "variant": "paint",
       "aliases": [
-        "org.kde.krita",
-        "krita",
-        "gimp",
-        "org.gimp.GIMP"
+        "brasero",
+        "color-management",
+        "color-picker",
+        "draw-freehand",
+        "gtk-select-color",
+        "imagegallery",
+        "kcolorchooser",
+        "kimagemapeditor",
+        "kolourpaint",
+        "org.xfce.settings.color",
+        "preferences-colors",
+        "preferences-desktop-color",
+        "preferences-desktop-icons",
+        "preferences-desktop-plasma-theme",
+        "preferences-desktop-theme",
+        "preferences-desktop-theme-applications",
+        "preferences-desktop-theme-global",
+        "preferences-desktop-wallpaper",
+        "preferences-look-and-feel"
       ]
     },
     {
@@ -593,7 +1420,12 @@
       "variant": "camera",
       "aliases": [
         "org.kde.spectacle",
-        "spectacle"
+        "spectacle",
+        "camera-photo",
+        "com.obsproject.Studio",
+        "kamoso",
+        "org.gnome.Cheese",
+        "org.gnome.Screenshot"
       ]
     },
     {
@@ -613,9 +1445,11 @@
     {
       "category": "categories",
       "name": "applications-system",
-      "kind": "app",
-      "variant": "settings",
-      "aliases": []
+      "kind": "identity",
+      "variant": "system",
+      "aliases": [
+        "applications-system-symbolic"
+      ]
     },
     {
       "category": "categories",
@@ -639,7 +1473,8 @@
       "aliases": [
         "kde",
         "plasma",
-        "menu-kde"
+        "menu-kde",
+        "start-here-kde"
       ]
     },
     {
@@ -648,7 +1483,10 @@
       "kind": "action",
       "variant": "left",
       "aliases": [
-        "back"
+        "back",
+        "arrow-left",
+        "go-back",
+        "go-previous-view"
       ]
     },
     {
@@ -657,7 +1495,9 @@
       "kind": "action",
       "variant": "right",
       "aliases": [
-        "forward"
+        "forward",
+        "arrow-right",
+        "go-forward"
       ]
     },
     {
@@ -665,28 +1505,38 @@
       "name": "go-up",
       "kind": "action",
       "variant": "up",
-      "aliases": []
+      "aliases": [
+        "arrow-up"
+      ]
     },
     {
       "category": "actions",
       "name": "go-down",
       "kind": "action",
       "variant": "down",
-      "aliases": []
+      "aliases": [
+        "arrow-down"
+      ]
     },
     {
       "category": "actions",
       "name": "document-new",
       "kind": "action",
       "variant": "new",
-      "aliases": []
+      "aliases": [
+        "tab-new"
+      ]
     },
     {
       "category": "actions",
       "name": "document-open",
       "kind": "action",
       "variant": "open",
-      "aliases": []
+      "aliases": [
+        "document-open-folder",
+        "document-open-recent",
+        "quickopen"
+      ]
     },
     {
       "category": "actions",
@@ -709,7 +1559,9 @@
       "name": "edit-copy",
       "kind": "action",
       "variant": "copy",
-      "aliases": []
+      "aliases": [
+        "document-multiple"
+      ]
     },
     {
       "category": "actions",
@@ -731,7 +1583,10 @@
       "kind": "action",
       "variant": "search",
       "aliases": [
-        "system-search"
+        "system-search",
+        "org.xfce.appfinder",
+        "preferences-desktop-search",
+        "preferences-system-search"
       ]
     },
     {
@@ -782,7 +1637,10 @@
       "kind": "action",
       "variant": "check",
       "aliases": [
-        "dialog-apply"
+        "dialog-apply",
+        "checkmark",
+        "dialog-ok-apply",
+        "view-pim-tasks"
       ]
     },
     {
@@ -800,7 +1658,10 @@
       "kind": "action",
       "variant": "minus",
       "aliases": [
-        "remove"
+        "remove",
+        "delete",
+        "edit-delete-remove",
+        "entry-delete"
       ]
     },
     {
@@ -832,7 +1693,8 @@
       "kind": "action",
       "variant": "split",
       "aliases": [
-        "view-right-new"
+        "view-right-new",
+        "filename-divider"
       ]
     },
     {
@@ -847,7 +1709,10 @@
       "name": "application-menu",
       "kind": "action",
       "variant": "menu",
-      "aliases": []
+      "aliases": [
+        "show-menu",
+        "view-more"
+      ]
     },
     {
       "category": "actions",
@@ -903,7 +1768,11 @@
       "name": "system-log-out",
       "kind": "action",
       "variant": "logout",
-      "aliases": []
+      "aliases": [
+        "application-exit",
+        "gnome-logout",
+        "xfsm-logout"
+      ]
     },
     {
       "category": "actions",
@@ -938,7 +1807,14 @@
       "name": "dialog-information",
       "kind": "status",
       "variant": "information",
-      "aliases": []
+      "aliases": [
+        "documentinfo",
+        "help-about",
+        "ktip",
+        "lxqt-about",
+        "org.xfce.about",
+        "showinfo"
+      ]
     },
     {
       "category": "status",
@@ -959,7 +1835,9 @@
       "name": "audio-volume-muted",
       "kind": "status",
       "variant": "volume-muted",
-      "aliases": []
+      "aliases": [
+        "audio-volume-off"
+      ]
     },
     {
       "category": "status",
@@ -980,7 +1858,10 @@
       "name": "audio-volume-high",
       "kind": "status",
       "variant": "volume-high",
-      "aliases": []
+      "aliases": [
+        "audio-volume-high-danger",
+        "audio-volume-high-warning"
+      ]
     },
     {
       "category": "status",
@@ -997,7 +1878,10 @@
       "kind": "status",
       "variant": "network-offline",
       "aliases": [
-        "network-wired-disconnected"
+        "network-wired-disconnected",
+        "network-disconnect",
+        "network-flightmode-off",
+        "network-unavailable"
       ]
     },
     {
@@ -1022,7 +1906,8 @@
       "kind": "status",
       "variant": "battery-20",
       "aliases": [
-        "battery-low"
+        "battery-low",
+        "battery-caution"
       ]
     },
     {
@@ -1060,7 +1945,9 @@
       "name": "battery-60-charging",
       "kind": "status",
       "variant": "battery-60-charging",
-      "aliases": []
+      "aliases": [
+        "battery-charging"
+      ]
     },
     {
       "category": "status",
@@ -1082,7 +1969,8 @@
       "kind": "status",
       "variant": "battery-100",
       "aliases": [
-        "battery-full"
+        "battery-full",
+        "battery-full-charged"
       ]
     },
     {
@@ -1091,7 +1979,11 @@
       "kind": "status",
       "variant": "battery-100-charging",
       "aliases": [
-        "battery-full-charging"
+        "battery-full-charging",
+        "battery-caution-charging",
+        "battery-empty-charging",
+        "battery-good-charging",
+        "battery-low-charging"
       ]
     },
     {
@@ -1133,6 +2025,6314 @@
       "kind": "mark",
       "variant": "check",
       "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-user",
+      "kind": "ext",
+      "variant": "user",
+      "aliases": [
+        "user",
+        "user-identity"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-users",
+      "kind": "ext",
+      "variant": "users",
+      "aliases": [
+        "system-switch-user",
+        "system-users"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-keyboard",
+      "kind": "ext",
+      "variant": "keyboard",
+      "aliases": [
+        "input-caps-on",
+        "input-keyboard",
+        "input-keyboard-battery"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-mouse",
+      "kind": "ext",
+      "variant": "mouse",
+      "aliases": [
+        "cursor-arrow",
+        "input-mouse"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-cpu",
+      "kind": "ext",
+      "variant": "cpu",
+      "aliases": [
+        "cpu"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-memory",
+      "kind": "ext",
+      "variant": "memory",
+      "aliases": [
+        "memory"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-phone",
+      "kind": "ext",
+      "variant": "phone",
+      "aliases": [
+        "call-start",
+        "network-mobile-on"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-chat",
+      "kind": "ext",
+      "variant": "chat",
+      "aliases": [
+        "message-new"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-rss",
+      "kind": "ext",
+      "variant": "rss",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "sgi-download",
+      "kind": "ext",
+      "variant": "download",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "sgi-upload",
+      "kind": "ext",
+      "variant": "upload",
+      "aliases": [
+        "document-send",
+        "document-share",
+        "kaccounts-nextcloud",
+        "phabricator-purpose6",
+        "reviewboard-purpose6"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-shield",
+      "kind": "ext",
+      "variant": "shield",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-vpn",
+      "kind": "ext",
+      "variant": "vpn",
+      "aliases": [
+        "network-vpn"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-key",
+      "kind": "ext",
+      "variant": "key",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-font",
+      "kind": "ext",
+      "variant": "font",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-book",
+      "kind": "ext",
+      "variant": "book",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-game",
+      "kind": "ext",
+      "variant": "game",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-math",
+      "kind": "ext",
+      "variant": "math",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-science",
+      "kind": "ext",
+      "variant": "science",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-map",
+      "kind": "ext",
+      "variant": "map",
+      "aliases": [
+        "compass",
+        "map-globe"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-pin",
+      "kind": "ext",
+      "variant": "pin",
+      "aliases": [
+        "window-pin",
+        "window-unpin"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-cloud",
+      "kind": "ext",
+      "variant": "cloud",
+      "aliases": [
+        "noneyet",
+        "weather-none-available"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-sun",
+      "kind": "ext",
+      "variant": "sun",
+      "aliases": [
+        "brightness-high",
+        "redshift-status-on",
+        "video-display-brightness",
+        "weather-clear"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-weather",
+      "kind": "ext",
+      "variant": "weather",
+      "aliases": [
+        "weather-few-clouds"
+      ]
+    },
+    {
+      "category": "devices",
+      "name": "sgi-scanner",
+      "kind": "ext",
+      "variant": "scanner",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-bug",
+      "kind": "ext",
+      "variant": "bug",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-window",
+      "kind": "ext",
+      "variant": "window",
+      "aliases": [
+        "transform-scale",
+        "window-new"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-workspace",
+      "kind": "ext",
+      "variant": "workspace",
+      "aliases": [
+        "activities",
+        "dashboard-show",
+        "object-group",
+        "transform-move",
+        "view-group",
+        "virtual-desktops"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-clipboard",
+      "kind": "ext",
+      "variant": "clipboard",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "sgi-eye",
+      "kind": "ext",
+      "variant": "eye",
+      "aliases": [
+        "view-choose",
+        "view-pim-journal",
+        "view-sidetree",
+        "view-visible"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-filter",
+      "kind": "ext",
+      "variant": "filter",
+      "aliases": [
+        "view-filter"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-tag",
+      "kind": "ext",
+      "variant": "tag",
+      "aliases": [
+        "tag"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-airplane",
+      "kind": "ext",
+      "variant": "airplane",
+      "aliases": [
+        "airplane-mode",
+        "network-flightmode-on"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-sleep",
+      "kind": "ext",
+      "variant": "sleep",
+      "aliases": [
+        "system-suspend",
+        "system-suspend-hibernate"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-zoom",
+      "kind": "ext",
+      "variant": "zoom",
+      "aliases": [
+        "zoom-original"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-sort",
+      "kind": "ext",
+      "variant": "sort",
+      "aliases": [
+        "kruler"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-chart",
+      "kind": "ext",
+      "variant": "chart",
+      "aliases": [
+        "kt-speed-limits",
+        "speedometer"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-split",
+      "kind": "ext",
+      "variant": "split",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "sgi-eject",
+      "kind": "ext",
+      "variant": "eject",
+      "aliases": [
+        "media-eject"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-shuffle",
+      "kind": "ext",
+      "variant": "shuffle",
+      "aliases": [
+        "media-playlist-shuffle"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-face",
+      "kind": "ext",
+      "variant": "face",
+      "aliases": [
+        "face-angel",
+        "face-laughing",
+        "face-smile-big"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "sgi-qr",
+      "kind": "ext",
+      "variant": "qr",
+      "aliases": [
+        "view-barcode-qr"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-network",
+      "kind": "ext",
+      "variant": "network",
+      "aliases": [
+        "network-card",
+        "network-limited"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "sgi-settings",
+      "kind": "ext",
+      "variant": "settings",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-user",
+      "kind": "app_ext",
+      "variant": "user",
+      "aliases": [
+        "preferences-desktop-personal",
+        "preferences-system-login",
+        "user-info"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-users",
+      "kind": "app_ext",
+      "variant": "users",
+      "aliases": [
+        "2EA2_WRKGADM.0",
+        "config-users",
+        "preferences-desktop-user",
+        "preferences-desktop-user-feedback",
+        "preferences-desktop-user-password",
+        "preferences-system-user",
+        "preferences-system-users",
+        "view-pim-contacts"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-keyboard",
+      "kind": "app_ext",
+      "variant": "keyboard",
+      "aliases": [
+        "ibus",
+        "ibus-setup",
+        "org.xfce.settings.mouse",
+        "preferences-desktop-gestures",
+        "preferences-desktop-gestures-screenedges",
+        "preferences-desktop-gestures-touch",
+        "preferences-desktop-keyboard",
+        "preferences-desktop-keyboard-shortcut",
+        "preferences-desktop-keyboard-shortcuts",
+        "preferences-system-windows-shortcuts",
+        "preferences-web-browser-shortcuts"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-mouse",
+      "kind": "app_ext",
+      "variant": "mouse",
+      "aliases": [
+        "preferences-desktop-cursors",
+        "preferences-desktop-mouse",
+        "preferences-desktop-touchpad"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-cpu",
+      "kind": "app_ext",
+      "variant": "cpu",
+      "aliases": [
+        "hwinfo",
+        "lm-studio"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-memory",
+      "kind": "app_ext",
+      "variant": "memory",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-phone",
+      "kind": "app_ext",
+      "variant": "phone",
+      "aliases": [
+        "kdeconnect",
+        "preferences-kde-connect"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-chat",
+      "kind": "app_ext",
+      "variant": "chat",
+      "aliases": [
+        "discord",
+        "element-desktop",
+        "im-user",
+        "io.github.Hexchat",
+        "org.ferdium.Ferdium",
+        "org.kde.tokodon",
+        "org.telegram.desktop",
+        "tag-people",
+        "telegram"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-rss",
+      "kind": "app_ext",
+      "variant": "rss",
+      "aliases": [
+        "akregator",
+        "alligator",
+        "kasts",
+        "view-pim-news"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-download",
+      "kind": "app_ext",
+      "variant": "download",
+      "aliases": [
+        "deluge",
+        "kget",
+        "org.kde.kget",
+        "qbittorrent"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-upload",
+      "kind": "app_ext",
+      "variant": "upload",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-shield",
+      "kind": "app_ext",
+      "variant": "shield",
+      "aliases": [
+        "preferences-security",
+        "preferences-system-firewall",
+        "preferences-system-privacy"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-vpn",
+      "kind": "app_ext",
+      "variant": "vpn",
+      "aliases": [
+        "piavpn",
+        "security-high",
+        "squawker-vpn"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-key",
+      "kind": "app_ext",
+      "variant": "key",
+      "aliases": [
+        "clock",
+        "document-encrypt",
+        "drive-multidisk",
+        "edit-select",
+        "input-keyboard-brightness",
+        "input-keyboard-virtual",
+        "input-keyboard-virtual-off",
+        "input-keyboard-virtual-on",
+        "kgpg",
+        "lock",
+        "org.mate.KeyboardLayout",
+        "org.xfce.settings.keyboard"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-font",
+      "kind": "app_ext",
+      "variant": "font",
+      "aliases": [
+        "accessories-character-map",
+        "kfontview",
+        "preferences-desktop-font",
+        "preferences-desktop-font-installer",
+        "tools-check-spelling"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-book",
+      "kind": "app_ext",
+      "variant": "book",
+      "aliases": [
+        "019D_LazarusProject.0",
+        "1DA0_7-zip.0",
+        "857C_BS9532.0",
+        "C06E_winhlp32.0",
+        "accessories-dictionary",
+        "babelfish",
+        "contact-new",
+        "help-contextual",
+        "okular",
+        "org.gnome.Yelp",
+        "tools-report-bug"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-game",
+      "kind": "app_ext",
+      "variant": "game",
+      "aliases": [
+        "roll"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-math",
+      "kind": "app_ext",
+      "variant": "math",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-science",
+      "kind": "app_ext",
+      "variant": "science",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-map",
+      "kind": "app_ext",
+      "variant": "map",
+      "aliases": [
+        "kgeography",
+        "marble"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-pin",
+      "kind": "app_ext",
+      "variant": "pin",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-cloud",
+      "kind": "app_ext",
+      "variant": "cloud",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-sun",
+      "kind": "app_ext",
+      "variant": "sun",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-weather",
+      "kind": "app_ext",
+      "variant": "weather",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-scanner",
+      "kind": "app_ext",
+      "variant": "scanner",
+      "aliases": [
+        "xsane"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-bug",
+      "kind": "app_ext",
+      "variant": "bug",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-window",
+      "kind": "app_ext",
+      "variant": "window",
+      "aliases": [
+        "applications-all",
+        "kwin",
+        "preferences-desktop-effects",
+        "preferences-desktop-theme-windowdecorations",
+        "preferences-system-windows",
+        "preferences-system-windows-actions",
+        "preferences-system-windows-advanced",
+        "preferences-system-windows-effects",
+        "preferences-system-windows-move",
+        "qemu",
+        "wine",
+        "wmtweaks",
+        "xfwm4"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-workspace",
+      "kind": "app_ext",
+      "variant": "workspace",
+      "aliases": [
+        "distribute-horizontal-x",
+        "mate-desktop",
+        "mate-panel",
+        "mate-session-properties",
+        "org.kde.plasma.folder",
+        "org.kde.plasma.pager",
+        "org.xfce.panel",
+        "org.xfce.session",
+        "org.xfce.workspaces",
+        "org.xfce.xfdesktop",
+        "plasma-browser-integration",
+        "plasma-search",
+        "plasmashell",
+        "plasmavault",
+        "preferences-desktop-activities",
+        "preferences-desktop-virtual",
+        "preferences-desktop-workspaces",
+        "xfce4-workspaces"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-clipboard",
+      "kind": "app_ext",
+      "variant": "clipboard",
+      "aliases": [
+        "diodon",
+        "klipper"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-eye",
+      "kind": "app_ext",
+      "variant": "eye",
+      "aliases": [
+        "preferences-system-windows-script-test"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-filter",
+      "kind": "app_ext",
+      "variant": "filter",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-tag",
+      "kind": "app_ext",
+      "variant": "tag",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-airplane",
+      "kind": "app_ext",
+      "variant": "airplane",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-sleep",
+      "kind": "app_ext",
+      "variant": "sleep",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-zoom",
+      "kind": "app_ext",
+      "variant": "zoom",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-sort",
+      "kind": "app_ext",
+      "variant": "sort",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-chart",
+      "kind": "app_ext",
+      "variant": "chart",
+      "aliases": [
+        "filelight",
+        "mate-power-statistics"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-split",
+      "kind": "app_ext",
+      "variant": "split",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-eject",
+      "kind": "app_ext",
+      "variant": "eject",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-shuffle",
+      "kind": "app_ext",
+      "variant": "shuffle",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-face",
+      "kind": "app_ext",
+      "variant": "face",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-qr",
+      "kind": "app_ext",
+      "variant": "qr",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-network",
+      "kind": "app_ext",
+      "variant": "network",
+      "aliases": [
+        "FreeRDP",
+        "filezilla",
+        "folder-network",
+        "io.github.input_leap.input-leap",
+        "knetattach",
+        "krdc",
+        "krfb",
+        "org.remmina.Remmina",
+        "preferences-system-network-connection",
+        "preferences-system-network-proxy",
+        "preferences-system-network-share-windows",
+        "preferences-system-network-sharing",
+        "preferences-system-sharing",
+        "remmina",
+        "xpra",
+        "xpra-shadow"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-settings",
+      "kind": "app_ext",
+      "variant": "settings",
+      "aliases": [
+        "preferences-plugin"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-key",
+      "kind": "paper_ext",
+      "variant": "key",
+      "aliases": [
+        "application-pgp-encrypted",
+        "application-pgp-keys",
+        "application-pgp-signature",
+        "application-pkcs10",
+        "application-pkcs10+pem",
+        "application-pkcs12",
+        "application-pkcs12+pem",
+        "application-pkcs7-mime",
+        "application-pkcs7-mime+pem",
+        "application-pkcs8",
+        "application-pkcs8+pem",
+        "application-pkix-cert",
+        "application-pkix-cert+pem",
+        "application-pkix-crl",
+        "application-pkix-crl+pem",
+        "application-x-pkcs12",
+        "application-x-pkcs7-certificates",
+        "x-scheme-handler-piavpn"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-book",
+      "kind": "paper_ext",
+      "variant": "book",
+      "aliases": [
+        "application-docbook+xml",
+        "application-epub+zip",
+        "application-ereader",
+        "application-oebps-package+xml",
+        "application-prs.plucker",
+        "application-vnd-comicbook.rar",
+        "application-vnd.comicbook+zip",
+        "application-vnd.comicbook-rar",
+        "application-x-cbc",
+        "application-x-cbr",
+        "application-x-cbz",
+        "application-x-mobi8-ebook",
+        "application-x-mobipocket-ebook",
+        "application-x-ruby",
+        "text-wiki",
+        "x-scheme-handler-man"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-font",
+      "kind": "paper_ext",
+      "variant": "font",
+      "aliases": [
+        "application-vnd.kde.fontspackage",
+        "application-x-font-bdf",
+        "application-x-font-otf",
+        "application-x-font-pcf",
+        "application-x-font-ttf",
+        "application-x-font-type1",
+        "font-collection",
+        "font-otf",
+        "font-ttf"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-map",
+      "kind": "paper_ext",
+      "variant": "map",
+      "aliases": [
+        "application-geo+json",
+        "application-gpx+xml",
+        "application-vnd.google-earth.kml+xml",
+        "application-vnd.google-earth.kmz",
+        "application-x-esri-shape",
+        "application-x-kgeo",
+        "x-scheme-handler-geo",
+        "x-scheme-handler-worldwind"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-math",
+      "kind": "paper_ext",
+      "variant": "math",
+      "aliases": [
+        "application-mathml+xml",
+        "application-vnd.oasis.opendocument.formula",
+        "application-vnd.oasis.opendocument.formula-template",
+        "application-vnd.stardivision.math",
+        "application-vnd.sun.xml.math",
+        "application-x-dvi",
+        "application-x-starmath",
+        "text-mathml",
+        "text-x-tex"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-science",
+      "kind": "paper_ext",
+      "variant": "science",
+      "aliases": [
+        "chemical-x-cml"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-phone",
+      "kind": "paper_ext",
+      "variant": "phone",
+      "aliases": [
+        "x-scheme-handler-msteams",
+        "x-scheme-handler-sms",
+        "x-scheme-handler-tel",
+        "x-scheme-handler-tg",
+        "x-scheme-handler-tokodon",
+        "x-scheme-handler-web+ap"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-game",
+      "kind": "paper_ext",
+      "variant": "game",
+      "aliases": []
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-cloud",
+      "kind": "paper_ext",
+      "variant": "cloud",
+      "aliases": []
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-network",
+      "kind": "paper_ext",
+      "variant": "network",
+      "aliases": [
+        "application-mbox",
+        "application-ms-tnef",
+        "message-rfc822",
+        "x-scheme-handler-appstream",
+        "x-scheme-handler-apt",
+        "x-scheme-handler-calibre",
+        "x-scheme-handler-chromium",
+        "x-scheme-handler-clipboard",
+        "x-scheme-handler-discord",
+        "x-scheme-handler-element",
+        "x-scheme-handler-ferdium",
+        "x-scheme-handler-ghelp",
+        "x-scheme-handler-google-chrome",
+        "x-scheme-handler-gopher",
+        "x-scheme-handler-help",
+        "x-scheme-handler-http",
+        "x-scheme-handler-https",
+        "x-scheme-handler-icy",
+        "x-scheme-handler-icyx",
+        "x-scheme-handler-info",
+        "x-scheme-handler-io.element.desktop",
+        "x-scheme-handler-irc",
+        "x-scheme-handler-ircs",
+        "x-scheme-handler-jetbrains",
+        "x-scheme-handler-kbattleship",
+        "x-scheme-handler-lmstudio",
+        "x-scheme-handler-magnet",
+        "x-scheme-handler-mailto",
+        "x-scheme-handler-mid",
+        "x-scheme-handler-ms-access",
+        "x-scheme-handler-ms-visio",
+        "x-scheme-handler-news",
+        "x-scheme-handler-rdp",
+        "x-scheme-handler-remmina",
+        "x-scheme-handler-snap",
+        "x-scheme-handler-spice",
+        "x-scheme-handler-systemsettings",
+        "x-scheme-handler-tonsite",
+        "x-scheme-handler-vmrc",
+        "x-scheme-handler-vnc",
+        "x-scheme-handler-xpra",
+        "x-scheme-handler-xpra+ssl",
+        "x-scheme-handler-xpra+tcp",
+        "x-scheme-handler-xpra+tls",
+        "x-scheme-handler-xpra+ws",
+        "x-scheme-handler-xpra+wss",
+        "x-scheme-handler-xpras",
+        "x-scheme-handler-xprassl",
+        "x-scheme-handler-xpratcp",
+        "x-scheme-handler-xpratls",
+        "x-scheme-handler-xpraws",
+        "x-scheme-handler-xprawss"
+      ]
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-window",
+      "kind": "paper_ext",
+      "variant": "window",
+      "aliases": []
+    },
+    {
+      "category": "mimetypes",
+      "name": "sgi-file-tag",
+      "kind": "paper_ext",
+      "variant": "tag",
+      "aliases": [
+        "document-properties"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-00",
+      "kind": "ext",
+      "variant": "wifi-0",
+      "aliases": [
+        "nm-signal-00"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-25",
+      "kind": "ext",
+      "variant": "wifi-25",
+      "aliases": [
+        "nm-signal-25"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-50",
+      "kind": "ext",
+      "variant": "wifi-50",
+      "aliases": [
+        "nm-signal-50"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-75",
+      "kind": "ext",
+      "variant": "wifi-75",
+      "aliases": [
+        "nm-signal-75"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-100",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": [
+        "network-wireless",
+        "network-wireless-on",
+        "nm-device-wireless",
+        "nm-signal-100"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-disconnected",
+      "kind": "ext",
+      "variant": "wifi-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-acquiring",
+      "kind": "ext",
+      "variant": "wifi-acquiring",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-hotspot",
+      "kind": "ext",
+      "variant": "wifi-hotspot",
+      "aliases": [
+        "preferences-system-hotspots"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "battery-missing",
+      "kind": "ext",
+      "variant": "battery-missing",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery",
+      "kind": "ext",
+      "variant": "battery",
+      "aliases": [
+        "battery-profile-balanced",
+        "battery-profile-performance",
+        "battery-profile-powersave",
+        "battery-ups",
+        "mate-power-manager",
+        "preferences-power-management",
+        "preferences-system-power-management",
+        "preferences-system-power-management-profile"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "notifications",
+      "kind": "ext",
+      "variant": "bell",
+      "aliases": [
+        "mate-notification-properties",
+        "org.xfce.notification",
+        "preferences-desktop-notification",
+        "preferences-desktop-notification-bell",
+        "preferences-desktop-notifications"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "notification-disabled",
+      "kind": "ext",
+      "variant": "bell-off",
+      "aliases": [
+        "notifications-disabled"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "bluetooth",
+      "kind": "ext",
+      "variant": "bluetooth",
+      "aliases": [
+        "preferences-system-bluetooth"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "bluetooth-active",
+      "kind": "ext",
+      "variant": "bluetooth-active",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "bluetooth-disabled",
+      "kind": "ext",
+      "variant": "bluetooth-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-low",
+      "kind": "ext",
+      "variant": "mic-low",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-medium",
+      "kind": "ext",
+      "variant": "mic-medium",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-high",
+      "kind": "ext",
+      "variant": "mic-high",
+      "aliases": [
+        "audio-input-microphone",
+        "irc-voice"
+      ]
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-muted",
+      "kind": "ext",
+      "variant": "mic-muted",
+      "aliases": [
+        "microphone-disabled"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "window-minimize",
+      "kind": "ext",
+      "variant": "window-minimize",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "window-maximize",
+      "kind": "ext",
+      "variant": "window-maximize",
+      "aliases": [
+        "view-fullscreen"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "window-restore",
+      "kind": "ext",
+      "variant": "window-restore",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "window-above",
+      "kind": "ext",
+      "variant": "window-above",
+      "aliases": [
+        "window-keep-above"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "window-below",
+      "kind": "ext",
+      "variant": "window-below",
+      "aliases": [
+        "window-keep-below"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "window-shade",
+      "kind": "ext",
+      "variant": "window-shade",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "airplane-mode-symbolic",
+      "kind": "ext",
+      "variant": "airplane",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-high-symbolic",
+      "kind": "status",
+      "variant": "volume-high",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-low-symbolic",
+      "kind": "status",
+      "variant": "volume-low",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-medium-symbolic",
+      "kind": "status",
+      "variant": "volume-medium",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-muted-symbolic",
+      "kind": "status",
+      "variant": "volume-muted",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-off-symbolic",
+      "kind": "status",
+      "variant": "volume-muted",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-0-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-20-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-40-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-60-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-80-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-caution-symbolic",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-empty-symbolic",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-full-charged-symbolic",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-full-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-full-symbolic",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-good-symbolic",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-low-symbolic",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-missing-symbolic",
+      "kind": "ext",
+      "variant": "battery-missing",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-disabled-symbolic",
+      "kind": "ext",
+      "variant": "mic-muted",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-high-symbolic",
+      "kind": "ext",
+      "variant": "mic-high",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-low-symbolic",
+      "kind": "ext",
+      "variant": "mic-low",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-medium-symbolic",
+      "kind": "ext",
+      "variant": "mic-medium",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "microphone-sensitivity-muted-symbolic",
+      "kind": "ext",
+      "variant": "mic-muted",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-idle-symbolic",
+      "kind": "status",
+      "variant": "network-online",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-offline-symbolic",
+      "kind": "status",
+      "variant": "network-offline",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-symbolic",
+      "kind": "status",
+      "variant": "network-online",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-acquiring-symbolic",
+      "kind": "ext",
+      "variant": "wifi-acquiring",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-00-symbolic",
+      "kind": "ext",
+      "variant": "wifi-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-100-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-25-symbolic",
+      "kind": "ext",
+      "variant": "wifi-25",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-50-symbolic",
+      "kind": "ext",
+      "variant": "wifi-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-75-symbolic",
+      "kind": "ext",
+      "variant": "wifi-75",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-disconnected-symbolic",
+      "kind": "ext",
+      "variant": "wifi-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "nm-signal-00-symbolic",
+      "kind": "ext",
+      "variant": "wifi-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "nm-signal-100-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "nm-signal-25-symbolic",
+      "kind": "ext",
+      "variant": "wifi-25",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "nm-signal-50-symbolic",
+      "kind": "ext",
+      "variant": "wifi-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "nm-signal-75-symbolic",
+      "kind": "ext",
+      "variant": "wifi-75",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "notification-disabled-symbolic",
+      "kind": "ext",
+      "variant": "bell-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "notifications-symbolic",
+      "kind": "ext",
+      "variant": "bell",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "showinfo-symbolic",
+      "kind": "status",
+      "variant": "information",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "start-here-kde-symbolic",
+      "kind": "app",
+      "variant": "computer",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "application-menu-symbolic",
+      "kind": "action",
+      "variant": "menu",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "applications-all-symbolic",
+      "kind": "app_ext",
+      "variant": "window",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "camera-on-symbolic",
+      "kind": "app",
+      "variant": "camera",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "camera-photo-symbolic",
+      "kind": "app",
+      "variant": "camera",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "configure-symbolic",
+      "kind": "app",
+      "variant": "settings",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "dialog-cancel-symbolic",
+      "kind": "action",
+      "variant": "error",
+      "aliases": []
+    },
+    {
+      "category": "mimetypes",
+      "name": "document-edit-symbolic",
+      "kind": "paper",
+      "variant": "text",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-open-folder-symbolic",
+      "kind": "action",
+      "variant": "open",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-open-symbolic",
+      "kind": "action",
+      "variant": "open",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "document-share-symbolic",
+      "kind": "ext",
+      "variant": "upload",
+      "aliases": []
+    },
+    {
+      "category": "devices",
+      "name": "drive-removable-media-symbolic",
+      "kind": "drive",
+      "variant": "usb",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "edit-clear-symbolic",
+      "kind": "trash",
+      "variant": "",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-copy-symbolic",
+      "kind": "action",
+      "variant": "copy",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-delete-remove-symbolic",
+      "kind": "action",
+      "variant": "minus",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "edit-select-all-symbolic",
+      "kind": "app",
+      "variant": "editor",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "edit-undo-symbolic",
+      "kind": "action",
+      "variant": "undo",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "emblem-music-symbolic",
+      "kind": "app",
+      "variant": "sound",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "folder-image-symbolic",
+      "kind": "app",
+      "variant": "paint",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-open-symbolic",
+      "kind": "folder",
+      "variant": "open",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "folder-symbolic",
+      "kind": "folder",
+      "variant": "",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "go-home-symbolic",
+      "kind": "folder",
+      "variant": "home",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "go-next-symbolic",
+      "kind": "action",
+      "variant": "right",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "go-previous-symbolic",
+      "kind": "action",
+      "variant": "left",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "go-up-symbolic",
+      "kind": "action",
+      "variant": "up",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "im-user-symbolic",
+      "kind": "app_ext",
+      "variant": "chat",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "im-youtube-symbolic",
+      "kind": "app",
+      "variant": "video",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "internet-web-browser-symbolic",
+      "kind": "app",
+      "variant": "browser",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kdeconnect-symbolic",
+      "kind": "app_ext",
+      "variant": "phone",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "klipper-symbolic",
+      "kind": "app_ext",
+      "variant": "clipboard",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "knotes-symbolic",
+      "kind": "app",
+      "variant": "editor",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "list-add-symbolic",
+      "kind": "action",
+      "variant": "plus",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mark-location-symbolic",
+      "kind": "app",
+      "variant": "archive",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-playback-stop-symbolic",
+      "kind": "action",
+      "variant": "stop",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-skip-backward-symbolic",
+      "kind": "action",
+      "variant": "skip-backward",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "media-skip-forward-symbolic",
+      "kind": "action",
+      "variant": "skip-forward",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "object-rotate-left-symbolic",
+      "kind": "ext",
+      "variant": "workspace",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "preferences-system-bluetooth-symbolic",
+      "kind": "ext",
+      "variant": "bluetooth",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "system-run-symbolic",
+      "kind": "app",
+      "variant": "terminal",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "view-more-symbolic",
+      "kind": "action",
+      "variant": "menu",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "view-refresh-symbolic",
+      "kind": "action",
+      "variant": "refresh",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "weather-none-available-symbolic",
+      "kind": "ext",
+      "variant": "cloud",
+      "aliases": []
+    },
+    {
+      "category": "places",
+      "name": "trash-empty-symbolic",
+      "kind": "trash",
+      "variant": "",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-high-danger-symbolic",
+      "kind": "status",
+      "variant": "volume-high",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "audio-volume-high-warning-symbolic",
+      "kind": "status",
+      "variant": "volume-high",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-charging",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-0-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-profile-balanced",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-profile-performance",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-profile-powersave",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-000-symbolic",
+      "kind": "status",
+      "variant": "battery-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010",
+      "kind": "status",
+      "variant": "battery-10",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-charging",
+      "kind": "status",
+      "variant": "battery-10-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-10-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-10-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-10-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-10-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-profile-balanced",
+      "kind": "status",
+      "variant": "battery-10",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-profile-performance",
+      "kind": "status",
+      "variant": "battery-10",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-profile-powersave",
+      "kind": "status",
+      "variant": "battery-10",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-010-symbolic",
+      "kind": "status",
+      "variant": "battery-10",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-charging",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-20-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-profile-balanced",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-profile-performance",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-profile-powersave",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-020-symbolic",
+      "kind": "status",
+      "variant": "battery-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030",
+      "kind": "status",
+      "variant": "battery-30",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-charging",
+      "kind": "status",
+      "variant": "battery-30-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-30-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-30-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-30-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-30-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-profile-balanced",
+      "kind": "status",
+      "variant": "battery-30",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-profile-performance",
+      "kind": "status",
+      "variant": "battery-30",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-profile-powersave",
+      "kind": "status",
+      "variant": "battery-30",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-030-symbolic",
+      "kind": "status",
+      "variant": "battery-30",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-charging",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-40-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-profile-balanced",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-profile-performance",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-profile-powersave",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-040-symbolic",
+      "kind": "status",
+      "variant": "battery-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050",
+      "kind": "status",
+      "variant": "battery-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-charging",
+      "kind": "status",
+      "variant": "battery-50-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-50-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-50-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-50-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-50-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-profile-balanced",
+      "kind": "status",
+      "variant": "battery-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-profile-performance",
+      "kind": "status",
+      "variant": "battery-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-profile-powersave",
+      "kind": "status",
+      "variant": "battery-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-050-symbolic",
+      "kind": "status",
+      "variant": "battery-50",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-charging",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-60-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-profile-balanced",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-profile-performance",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-profile-powersave",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-060-symbolic",
+      "kind": "status",
+      "variant": "battery-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070",
+      "kind": "status",
+      "variant": "battery-70",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-charging",
+      "kind": "status",
+      "variant": "battery-70-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-70-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-70-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-70-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-70-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-profile-balanced",
+      "kind": "status",
+      "variant": "battery-70",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-profile-performance",
+      "kind": "status",
+      "variant": "battery-70",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-profile-powersave",
+      "kind": "status",
+      "variant": "battery-70",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-070-symbolic",
+      "kind": "status",
+      "variant": "battery-70",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-charging",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-80-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-profile-balanced",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-profile-performance",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-profile-powersave",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-080-symbolic",
+      "kind": "status",
+      "variant": "battery-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090",
+      "kind": "status",
+      "variant": "battery-90",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-charging",
+      "kind": "status",
+      "variant": "battery-90-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-90-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-90-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-90-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-90-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-profile-balanced",
+      "kind": "status",
+      "variant": "battery-90",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-profile-performance",
+      "kind": "status",
+      "variant": "battery-90",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-profile-powersave",
+      "kind": "status",
+      "variant": "battery-90",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-090-symbolic",
+      "kind": "status",
+      "variant": "battery-90",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-charging-profile-balanced",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-charging-profile-performance",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-charging-profile-powersave",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-profile-balanced",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-profile-performance",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-profile-powersave",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-100-symbolic",
+      "kind": "status",
+      "variant": "battery-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-caution-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-empty-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-good-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-low-charging-symbolic",
+      "kind": "status",
+      "variant": "battery-100-charging",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-profile-balanced-symbolic",
+      "kind": "ext",
+      "variant": "battery",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-profile-performance-symbolic",
+      "kind": "ext",
+      "variant": "battery",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "battery-profile-powersave-symbolic",
+      "kind": "ext",
+      "variant": "battery",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth",
+      "kind": "ext",
+      "variant": "bluetooth",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-activated",
+      "kind": "ext",
+      "variant": "bluetooth-active",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-activated-locked",
+      "kind": "ext",
+      "variant": "bluetooth-active-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-activated-locked-symbolic",
+      "kind": "ext",
+      "variant": "bluetooth-active-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-activated-symbolic",
+      "kind": "ext",
+      "variant": "bluetooth-active",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-inactive-symbolic",
+      "kind": "ext",
+      "variant": "bluetooth-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-bluetooth-symbolic",
+      "kind": "ext",
+      "variant": "bluetooth",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-flightmode-off-symbolic",
+      "kind": "status",
+      "variant": "network-offline",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-flightmode-on-symbolic",
+      "kind": "ext",
+      "variant": "network",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-limited-symbolic",
+      "kind": "ext",
+      "variant": "network",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-5g",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-edge",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-gprs",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hspa",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsupa",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-lte",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-umts",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-0-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-5g",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-edge",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-gprs",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hspa",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsupa",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-lte",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-umts",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-100-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-5g",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-edge",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-gprs",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hspa",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsupa",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-lte",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-umts",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-20-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-5g",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-edge",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-gprs",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hspa",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsupa",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-lte",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-umts",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-40-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-5g",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-edge",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-gprs",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hspa",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsupa",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-lte",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-umts",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-60-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-5g",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-5g-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-edge",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-edge-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-edge-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-edge-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-gprs",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-gprs-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-gprs-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-gprs-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsdpa",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsdpa-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsdpa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsdpa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hspa",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hspa-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hspa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hspa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsupa",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsupa-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsupa-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-hsupa-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-lte",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-lte-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-lte-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-lte-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-umts",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-umts-locked",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-umts-locked-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-80-umts-symbolic",
+      "kind": "ext",
+      "variant": "mobile-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-available",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-available-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-off",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-off-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-mobile-on-symbolic",
+      "kind": "ext",
+      "variant": "mobile-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-activated",
+      "kind": "ext",
+      "variant": "wired-activated",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-activated-limited",
+      "kind": "ext",
+      "variant": "wired-activated-limited",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-activated-locked",
+      "kind": "ext",
+      "variant": "wired-activated-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-activated-symbolic",
+      "kind": "ext",
+      "variant": "wired-activated",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-available",
+      "kind": "ext",
+      "variant": "wired-available",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-disconnected-symbolic",
+      "kind": "ext",
+      "variant": "wired-disconnected",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-unavailable",
+      "kind": "ext",
+      "variant": "wired-unavailable",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wired-unavailable-symbolic",
+      "kind": "ext",
+      "variant": "wired-unavailable",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-0",
+      "kind": "ext",
+      "variant": "wifi-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-0-limited",
+      "kind": "ext",
+      "variant": "wifi-0",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-0-locked",
+      "kind": "ext",
+      "variant": "wifi-0-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-100",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-100-limited",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-100-locked",
+      "kind": "ext",
+      "variant": "wifi-100-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-20",
+      "kind": "ext",
+      "variant": "wifi-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-20-limited",
+      "kind": "ext",
+      "variant": "wifi-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-20-locked",
+      "kind": "ext",
+      "variant": "wifi-20-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-40",
+      "kind": "ext",
+      "variant": "wifi-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-40-limited",
+      "kind": "ext",
+      "variant": "wifi-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-40-locked",
+      "kind": "ext",
+      "variant": "wifi-40-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-60",
+      "kind": "ext",
+      "variant": "wifi-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-60-limited",
+      "kind": "ext",
+      "variant": "wifi-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-60-locked",
+      "kind": "ext",
+      "variant": "wifi-60-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-80",
+      "kind": "ext",
+      "variant": "wifi-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-80-limited",
+      "kind": "ext",
+      "variant": "wifi-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-80-locked",
+      "kind": "ext",
+      "variant": "wifi-80-locked",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-available",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-bluetooth",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-bluetooth-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-20",
+      "kind": "ext",
+      "variant": "wifi-20",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-40",
+      "kind": "ext",
+      "variant": "wifi-40",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-60",
+      "kind": "ext",
+      "variant": "wifi-60",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-connected-80",
+      "kind": "ext",
+      "variant": "wifi-80",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-off",
+      "kind": "ext",
+      "variant": "wifi-off",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-excellent",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-excellent-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-good",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-good-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-none",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-none-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-ok",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-ok-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-weak",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "status",
+      "name": "network-wireless-signal-weak-symbolic",
+      "kind": "ext",
+      "variant": "wifi-100",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-spreadsheet",
+      "kind": "app_ext",
+      "variant": "spreadsheet",
+      "aliases": [
+        "1317_xlicons.0",
+        "1B08_EXCEL.0",
+        "chrome-fhihpiojkbmbpdjeoajapmgkhlnakfjf-Default"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "sgi-app-presentation",
+      "kind": "app_ext",
+      "variant": "presentation",
+      "aliases": [
+        "00CE_pptico.0",
+        "0CC9_POWERPNT.0",
+        "chrome-kefjledonklijopmnomlcbpllchaibag-Default"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "vscode",
+      "kind": "identity",
+      "variant": "vscode",
+      "aliases": [
+        "code",
+        "code-oss",
+        "com.visualstudio.code",
+        "com.microsoft.VSCode"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "idea",
+      "kind": "identity",
+      "variant": "idea",
+      "aliases": [
+        "jetbrains-idea",
+        "intellij-idea"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "texdoctk",
+      "kind": "identity",
+      "variant": "texdoctk",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "snxgui",
+      "kind": "identity",
+      "variant": "snx",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-education",
+      "kind": "identity",
+      "variant": "education",
+      "aliases": [
+        "applications-education-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-science",
+      "kind": "identity",
+      "variant": "science",
+      "aliases": [
+        "applications-science-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games",
+      "kind": "identity",
+      "variant": "games",
+      "aliases": [
+        "applications-games-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-arcade",
+      "kind": "identity",
+      "variant": "arcade",
+      "aliases": [
+        "applications-games-arcade-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-board",
+      "kind": "identity",
+      "variant": "board",
+      "aliases": [
+        "applications-games-board-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-card",
+      "kind": "identity",
+      "variant": "cards",
+      "aliases": [
+        "applications-games-card-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-children",
+      "kind": "identity",
+      "variant": "children",
+      "aliases": [
+        "applications-games-children-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-logic",
+      "kind": "identity",
+      "variant": "logic",
+      "aliases": [
+        "applications-games-logic-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-games-strategy",
+      "kind": "identity",
+      "variant": "strategy",
+      "aliases": [
+        "applications-games-strategy-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-education-language",
+      "kind": "identity",
+      "variant": "languages",
+      "aliases": [
+        "applications-education-language-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-education-mathematics",
+      "kind": "identity",
+      "variant": "mathematics",
+      "aliases": [
+        "applications-education-mathematics-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-education-miscellaneous",
+      "kind": "identity",
+      "variant": "misc-education",
+      "aliases": [
+        "applications-education-miscellaneous-symbolic"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "eom",
+      "kind": "identity",
+      "variant": "eom",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "gpicview",
+      "kind": "identity",
+      "variant": "gpicview",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lximage-qt",
+      "kind": "identity",
+      "variant": "lximage",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "display-im7.q16",
+      "kind": "identity",
+      "variant": "imagemagick",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.kontrast",
+      "kind": "identity",
+      "variant": "kontrast",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "libreoffice-draw",
+      "kind": "identity",
+      "variant": "lo-draw",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "tdeiconedit",
+      "kind": "identity",
+      "variant": "icon-editor",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "gimp",
+      "kind": "identity",
+      "variant": "gimp",
+      "aliases": [
+        "org.gimp.GIMP"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "krita",
+      "kind": "identity",
+      "variant": "krita",
+      "aliases": [
+        "org.kde.krita"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "AdobeReader9",
+      "kind": "identity",
+      "variant": "adobe",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "atril",
+      "kind": "identity",
+      "variant": "atril",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "calibre-gui",
+      "kind": "identity",
+      "variant": "calibre",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "calibre-viewer",
+      "kind": "identity",
+      "variant": "ebook-viewer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "calibre-ebook-edit",
+      "kind": "identity",
+      "variant": "ebook-editor",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "calibre-lrfviewer",
+      "kind": "identity",
+      "variant": "lrf-reader",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qpdfview",
+      "kind": "identity",
+      "variant": "qpdfview",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xpdf",
+      "kind": "identity",
+      "variant": "xpdf",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lokalize",
+      "kind": "identity",
+      "variant": "lokalize",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "abiword",
+      "kind": "identity",
+      "variant": "abiword",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "libreoffice-writer",
+      "kind": "identity",
+      "variant": "lo-writer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "libreoffice-calc",
+      "kind": "identity",
+      "variant": "lo-calc",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "libreoffice-impress",
+      "kind": "identity",
+      "variant": "lo-impress",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "libreoffice-math",
+      "kind": "identity",
+      "variant": "lo-math",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kontact",
+      "kind": "identity",
+      "variant": "kontact",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kaddressbook",
+      "kind": "identity",
+      "variant": "addressbook",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.merkuro.contact",
+      "kind": "identity",
+      "variant": "merkuro-contacts",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.merkuro.calendar",
+      "kind": "identity",
+      "variant": "merkuro-calendar",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sieveeditor",
+      "kind": "identity",
+      "variant": "sieveeditor",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "contact-theme-editor",
+      "kind": "identity",
+      "variant": "contact-theme",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "contact-print-theme-editor",
+      "kind": "identity",
+      "variant": "contact-print",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mail-header-theme-editor",
+      "kind": "identity",
+      "variant": "mail-theme",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kate",
+      "kind": "identity",
+      "variant": "kate",
+      "aliases": [
+        "org.kde.kate"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "kwrite",
+      "kind": "identity",
+      "variant": "kwrite",
+      "aliases": [
+        "org.kde.kwrite"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "org.gnome.gedit",
+      "kind": "identity",
+      "variant": "gedit",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.xfce.mousepad",
+      "kind": "identity",
+      "variant": "mousepad",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "featherpad",
+      "kind": "identity",
+      "variant": "featherpad",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "feathernotes",
+      "kind": "identity",
+      "variant": "feathernotes",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "cherrytree",
+      "kind": "identity",
+      "variant": "cherrytree",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "notepadqq",
+      "kind": "identity",
+      "variant": "notepadqq",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "pluma",
+      "kind": "identity",
+      "variant": "pluma",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xfw",
+      "kind": "identity",
+      "variant": "xfw",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xfi",
+      "kind": "identity",
+      "variant": "xfi",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "powershell",
+      "kind": "identity",
+      "variant": "powershell",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lxterminal",
+      "kind": "identity",
+      "variant": "lxterminal",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mate-terminal",
+      "kind": "identity",
+      "variant": "mate-terminal",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qterminal",
+      "kind": "identity",
+      "variant": "qterminal",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qterminal-drop",
+      "kind": "identity",
+      "variant": "qterminal-drop",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.xfce.terminal",
+      "kind": "identity",
+      "variant": "xfce-terminal",
+      "aliases": [
+        "org.xfce.terminalemulator"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "org.xfce.terminal-settings",
+      "kind": "identity",
+      "variant": "terminal-settings",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xterm",
+      "kind": "identity",
+      "variant": "xterm",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "uxterm",
+      "kind": "identity",
+      "variant": "uxterm",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "yakuake",
+      "kind": "identity",
+      "variant": "yakuake",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.isoimagewriter",
+      "kind": "identity",
+      "variant": "iso-writer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mintstick-writer",
+      "kind": "identity",
+      "variant": "usb-writer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mintstick-format",
+      "kind": "identity",
+      "variant": "usb-format",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "gparted",
+      "kind": "identity",
+      "variant": "gparted",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "partitionmanager",
+      "kind": "identity",
+      "variant": "partitionmanager",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kdf",
+      "kind": "identity",
+      "variant": "diskfree",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kwikdisk",
+      "kind": "identity",
+      "variant": "kwikdisk",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "disks",
+      "kind": "identity",
+      "variant": "usermount",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.gnome.DiskUtility",
+      "kind": "identity",
+      "variant": "gnome-disks",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "htop",
+      "kind": "identity",
+      "variant": "htop",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qps",
+      "kind": "identity",
+      "variant": "qps",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksystemlog",
+      "kind": "identity",
+      "variant": "ksystemlog",
+      "aliases": [
+        "utilities-log-viewer"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "crashed-processes-viewer",
+      "kind": "identity",
+      "variant": "crashviewer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "etherape",
+      "kind": "identity",
+      "variant": "etherape",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "nmapsi4",
+      "kind": "identity",
+      "variant": "nmapsi",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "barrier",
+      "kind": "identity",
+      "variant": "barrier",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "quicksynergy",
+      "kind": "identity",
+      "variant": "quicksynergy",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "smb4k",
+      "kind": "identity",
+      "variant": "smb4k",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kwalletmanager",
+      "kind": "identity",
+      "variant": "kwallet",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kleopatra",
+      "kind": "identity",
+      "variant": "kleopatra",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.kwatchgnupg",
+      "kind": "identity",
+      "variant": "gpglog",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.gnome.FileRoller",
+      "kind": "identity",
+      "variant": "file-roller",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "engrampa",
+      "kind": "identity",
+      "variant": "engrampa",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xarchiver",
+      "kind": "identity",
+      "variant": "xarchiver",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kalarm",
+      "kind": "identity",
+      "variant": "kalarm",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ktimer",
+      "kind": "identity",
+      "variant": "ktimer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kteatime",
+      "kind": "identity",
+      "variant": "kteatime",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kcharselect",
+      "kind": "identity",
+      "variant": "kcharselect",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "gucharmap",
+      "kind": "identity",
+      "variant": "gucharmap",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mate-font-viewer",
+      "kind": "identity",
+      "variant": "fontviewer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "galculator",
+      "kind": "identity",
+      "variant": "galculator",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "mate-calculator",
+      "kind": "identity",
+      "variant": "mate-calculator",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmousetool",
+      "kind": "identity",
+      "variant": "mouse-tool",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmouth",
+      "kind": "identity",
+      "variant": "kmouth",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "plasma-emojier",
+      "kind": "identity",
+      "variant": "emojier",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "sweeper",
+      "kind": "identity",
+      "variant": "sweeper",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kvantum",
+      "kind": "identity",
+      "variant": "kvantum",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "galternatives",
+      "kind": "identity",
+      "variant": "galternatives",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "winetricks",
+      "kind": "identity",
+      "variant": "winetricks",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "vmware-player",
+      "kind": "identity",
+      "variant": "vmware-player",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "vmware-workstation",
+      "kind": "identity",
+      "variant": "vmware-workstation",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "virt-manager",
+      "kind": "identity",
+      "variant": "virt-manager",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "openbox",
+      "kind": "identity",
+      "variant": "openbox",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "q4wine",
+      "kind": "identity",
+      "variant": "q4wine",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "obconf",
+      "kind": "identity",
+      "variant": "obconf",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "WPrefs",
+      "kind": "identity",
+      "variant": "wPrefs",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xscreensaver",
+      "kind": "identity",
+      "variant": "xscreensaver",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.xfce.thunar",
+      "kind": "identity",
+      "variant": "thunar",
+      "aliases": [
+        "org.xfce.filemanager"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "thunar-bulk-rename",
+      "kind": "identity",
+      "variant": "thunar-rename",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "pcmanfm",
+      "kind": "identity",
+      "variant": "pcmanfm",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "pcmanfm-qt",
+      "kind": "identity",
+      "variant": "pcmanfm-qt",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xfe",
+      "kind": "identity",
+      "variant": "xfe",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmenuedit",
+      "kind": "identity",
+      "variant": "kmenuedit",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qlipper",
+      "kind": "identity",
+      "variant": "clipboard",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "shutter",
+      "kind": "identity",
+      "variant": "shutter",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "screengrab",
+      "kind": "identity",
+      "variant": "screengrab",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmag",
+      "kind": "identity",
+      "variant": "kmag",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kfind",
+      "kind": "identity",
+      "variant": "kfind",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "android-studio",
+      "kind": "identity",
+      "variant": "android-studio",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "tesourarias-mc",
+      "kind": "identity",
+      "variant": "tesourarias",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "agenda-cientifica",
+      "kind": "identity",
+      "variant": "scientific-agenda",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "blinken",
+      "kind": "identity",
+      "variant": "game-blinken",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "bomber",
+      "kind": "identity",
+      "variant": "game-bomber",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "bovo",
+      "kind": "identity",
+      "variant": "game-bovo",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "fifteenpuzzle",
+      "kind": "identity",
+      "variant": "game-fifteenpuzzle",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "gnugo48",
+      "kind": "identity",
+      "variant": "game-gnugo48",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "granatier",
+      "kind": "identity",
+      "variant": "game-granatier",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kajongg",
+      "kind": "identity",
+      "variant": "game-kajongg",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kapman",
+      "kind": "identity",
+      "variant": "game-kapman",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "katomic",
+      "kind": "identity",
+      "variant": "game-katomic",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kblackbox",
+      "kind": "identity",
+      "variant": "game-kblackbox",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kblocks",
+      "kind": "identity",
+      "variant": "game-kblocks",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kbounce",
+      "kind": "identity",
+      "variant": "game-kbounce",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kbreakout",
+      "kind": "identity",
+      "variant": "game-kbreakout",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kdiamond",
+      "kind": "identity",
+      "variant": "game-kdiamond",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kfourinline",
+      "kind": "identity",
+      "variant": "game-kfourinline",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kgoldrunner",
+      "kind": "identity",
+      "variant": "game-kgoldrunner",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "khangman",
+      "kind": "identity",
+      "variant": "game-khangman",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kigo",
+      "kind": "identity",
+      "variant": "game-kigo",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "killbots",
+      "kind": "identity",
+      "variant": "game-killbots",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kiriki",
+      "kind": "identity",
+      "variant": "game-kiriki",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kjumpingcube",
+      "kind": "identity",
+      "variant": "game-kjumpingcube",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "klickety",
+      "kind": "identity",
+      "variant": "game-klickety",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "klines",
+      "kind": "identity",
+      "variant": "game-klines",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmahjongg",
+      "kind": "identity",
+      "variant": "game-kmahjongg",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmines",
+      "kind": "identity",
+      "variant": "game-kmines",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "knavalbattle",
+      "kind": "identity",
+      "variant": "game-knavalbattle",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "knetwalk",
+      "kind": "identity",
+      "variant": "game-knetwalk",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "knights",
+      "kind": "identity",
+      "variant": "game-knights",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kolf",
+      "kind": "identity",
+      "variant": "game-kolf",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kollision",
+      "kind": "identity",
+      "variant": "game-kollision",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "konquest",
+      "kind": "identity",
+      "variant": "game-konquest",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kpat",
+      "kind": "identity",
+      "variant": "game-kpat",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kreversi",
+      "kind": "identity",
+      "variant": "game-kreversi",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksame",
+      "kind": "identity",
+      "variant": "game-ksame",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kshisen",
+      "kind": "identity",
+      "variant": "game-kshisen",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksirk",
+      "kind": "identity",
+      "variant": "game-ksirk",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksnakeduel",
+      "kind": "identity",
+      "variant": "game-ksnakeduel",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kspaceduel",
+      "kind": "identity",
+      "variant": "game-kspaceduel",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksquares",
+      "kind": "identity",
+      "variant": "game-ksquares",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ksudoku",
+      "kind": "identity",
+      "variant": "game-ksudoku",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ktuberling",
+      "kind": "identity",
+      "variant": "game-ktuberling",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kturtle",
+      "kind": "identity",
+      "variant": "game-kturtle",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kubrick",
+      "kind": "identity",
+      "variant": "game-kubrick",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lskat",
+      "kind": "identity",
+      "variant": "game-lskat",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "palapeli",
+      "kind": "identity",
+      "variant": "game-palapeli",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "picmi",
+      "kind": "identity",
+      "variant": "game-picmi",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "skladnik",
+      "kind": "identity",
+      "variant": "game-skladnik",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "artikulate",
+      "kind": "identity",
+      "variant": "edu-artikulate",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "cantor",
+      "kind": "identity",
+      "variant": "edu-cantor",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kalgebra",
+      "kind": "identity",
+      "variant": "edu-kalgebra",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kbruch",
+      "kind": "identity",
+      "variant": "edu-kbruch",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kig",
+      "kind": "identity",
+      "variant": "edu-kig",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kmplot",
+      "kind": "identity",
+      "variant": "edu-kmplot",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kalzium",
+      "kind": "identity",
+      "variant": "edu-kalzium",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "step",
+      "kind": "identity",
+      "variant": "edu-step",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kanagram",
+      "kind": "identity",
+      "variant": "edu-kanagram",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kiten",
+      "kind": "identity",
+      "variant": "edu-kiten",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "klettres",
+      "kind": "identity",
+      "variant": "edu-klettres",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "parley",
+      "kind": "identity",
+      "variant": "edu-parley",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ktouch",
+      "kind": "identity",
+      "variant": "edu-ktouch",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.kde.kwordquiz",
+      "kind": "identity",
+      "variant": "edu-wordquiz",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "cervisia",
+      "kind": "identity",
+      "variant": "cervisia",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kompare",
+      "kind": "identity",
+      "variant": "kompare",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.gnome.Meld",
+      "kind": "identity",
+      "variant": "meld",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kapptemplate",
+      "kind": "identity",
+      "variant": "kapptemplate",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kuiviewer",
+      "kind": "identity",
+      "variant": "kuiviewer",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "umbrello",
+      "kind": "identity",
+      "variant": "umbrello",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lazarus-40",
+      "kind": "identity",
+      "variant": "lazarus",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "okteta",
+      "kind": "identity",
+      "variant": "okteta",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "kcachegrind",
+      "kind": "identity",
+      "variant": "kcachegrind",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "akonadiconsole",
+      "kind": "identity",
+      "variant": "akonadiconsole",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-development-translation",
+      "kind": "identity",
+      "variant": "translation-category",
+      "aliases": [
+        "applications-development-translation-symbolic"
+      ]
+    },
+    {
+      "category": "categories",
+      "name": "applications-development-web",
+      "kind": "identity",
+      "variant": "web-category",
+      "aliases": [
+        "applications-development-web-symbolic"
+      ]
+    },
+    {
+      "category": "apps",
+      "name": "qt5ct",
+      "kind": "identity",
+      "variant": "qt5ct",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "qt6ct",
+      "kind": "identity",
+      "variant": "qt6ct",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "user_icon",
+      "kind": "identity",
+      "variant": "userinfo",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "vmware-netcfg",
+      "kind": "identity",
+      "variant": "vmware-netcfg",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "synaptic",
+      "kind": "identity",
+      "variant": "synaptic",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "org.gnome.Software",
+      "kind": "identity",
+      "variant": "gnome-software",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "thunar-settings",
+      "kind": "identity",
+      "variant": "thunar-settings",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "lxtask",
+      "kind": "identity",
+      "variant": "lxtask",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "xfa",
+      "kind": "identity",
+      "variant": "xfa",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "ktnef",
+      "kind": "identity",
+      "variant": "ktnef",
+      "aliases": []
+    },
+    {
+      "category": "apps",
+      "name": "google-chrome",
+      "kind": "identity",
+      "variant": "chrome",
+      "aliases": [
+        "com.google.Chrome"
+      ]
+    },
+    {
+      "category": "actions",
+      "name": "project-open",
+      "kind": "identity",
+      "variant": "kate-project",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "git",
+      "kind": "identity",
+      "variant": "kate-git",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "accessories-text-editor-symbolic",
+      "kind": "menu_alias",
+      "variant": "accessories-text-editor",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-development-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-development",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-graphics-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-graphics",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-internet-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-internet",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-multimedia-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-multimedia",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-network-symbolic",
+      "kind": "menu_alias",
+      "variant": "network-workgroup",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-office-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-office",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-other-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-other",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-toys-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-games",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "applications-utilities-symbolic",
+      "kind": "menu_alias",
+      "variant": "applications-utilities",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "help-about-symbolic",
+      "kind": "menu_alias",
+      "variant": "dialog-information",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "office-calendar-symbolic",
+      "kind": "menu_alias",
+      "variant": "office-calendar",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "preferences-desktop-accessibility-symbolic",
+      "kind": "menu_alias",
+      "variant": "preferences-system",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "preferences-desktop-peripherals-symbolic",
+      "kind": "menu_alias",
+      "variant": "preferences-system",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "preferences-system-symbolic",
+      "kind": "menu_alias",
+      "variant": "preferences-system",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "system-file-manager-symbolic",
+      "kind": "menu_alias",
+      "variant": "system-file-manager",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "user-desktop-symbolic",
+      "kind": "menu_alias",
+      "variant": "user-desktop",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "utilities-terminal-symbolic",
+      "kind": "menu_alias",
+      "variant": "utilities-terminal",
+      "aliases": []
+    },
+    {
+      "category": "categories",
+      "name": "x-symbolic",
+      "kind": "menu_alias",
+      "variant": "user-desktop",
+      "aliases": []
+    },
+    {
+      "category": "actions",
+      "name": "list-remove-symbolic",
+      "kind": "action",
+      "variant": "minus",
+      "aliases": []
     }
-  ]
+  ],
+  "symbolic_controls": {
+    "list-add-symbolic": {
+      "format": "svg",
+      "native_grid": 16,
+      "stroke": 2,
+      "extent": 10,
+      "foreground": "currentColor",
+      "kde_role": "ColorScheme-Text",
+      "gtk_role": "foreground",
+      "fixed_sizes": [
+        16
+      ]
+    },
+    "list-remove-symbolic": {
+      "format": "svg",
+      "native_grid": 16,
+      "stroke": 2,
+      "extent": 10,
+      "foreground": "currentColor",
+      "kde_role": "ColorScheme-Text",
+      "gtk_role": "foreground",
+      "fixed_sizes": [
+        16
+      ]
+    }
+  }
 }

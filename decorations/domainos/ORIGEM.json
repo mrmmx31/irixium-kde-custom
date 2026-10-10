@@ -1,0 +1,273 @@
+{
+  "scope": {
+    "version": "DomainOS SR10.4",
+    "excluded": [
+      "SR10.4.1",
+      "SR10.4.1.2",
+      "outras versões",
+      "barra azul externa do emulador MAME",
+      "cores/bordas internas do aplicativo"
+    ]
+  },
+  "reference": {
+    "path": "Domain_OS SR10.4 - 01 VUE desktop.png",
+    "sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b",
+    "size": [
+      1034,
+      868
+    ],
+    "url": "https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png",
+    "version_evidence": "uname visível no terminal: DomainOS mess 10.4 sys5.3 DN3500"
+  },
+  "samples": {
+    "inactive_file_manager": {
+      "outer_rectangle_xywh": [
+        37,
+        372,
+        577,
+        346
+      ],
+      "client_origin": [
+        48,
+        402
+      ],
+      "client_bottom_exclusive": 707
+    },
+    "active_help_index": {
+      "outer_rectangle_xywh": [
+        629,
+        370,
+        380,
+        351
+      ],
+      "client_origin": [
+        640,
+        400
+      ]
+    },
+    "terminal": {
+      "outer_title_y": 49,
+      "button_title_y": 59
+    }
+  },
+  "palette": {
+    "inactive": {
+      "background": "#7acac5",
+      "top_left_highlight": "#c5e8e6",
+      "bottom_right_shadow": "#406b68",
+      "caption": "#ffffff"
+    },
+    "active": {
+      "background": "#fe8282",
+      "top_left_highlight": "#ffc8c8",
+      "bottom_right_shadow": "#864545",
+      "caption": "#ffffff"
+    },
+    "status": "RGB medido exatamente no PNG; associação ativo/inativo inferida pela janela Help Index em foco vs demais janelas turquesas e confirmada pela documentação activeColorSetId/inactiveColorSetId."
+  },
+  "geometry": {
+    "top_decoration_total": 30,
+    "top_resize_strip": 10,
+    "title_and_buttons_height": 20,
+    "left_border": 11,
+    "right_border": 11,
+    "bottom_border": 11,
+    "frame_bevel": 2,
+    "button_bevel": 1,
+    "button_size": [
+      20,
+      20
+    ],
+    "button_layout": {
+      "left": [
+        "menu"
+      ],
+      "right": [
+        "minimize",
+        "maximize"
+      ],
+      "close_button": false
+    },
+    "title_alignment": "Centro do campo entre menu à esquerda e dois botões à direita; deslocamento -10px em relação ao centro total da janela.",
+    "rounded_corners": false,
+    "external_drop_shadow": false,
+    "side_border_structure": "2px luz + 7px fundo + 2px sombra",
+    "top_resize_structure": "2px luz + 7px fundo + 1px sombra; título levantado começa logo abaixo.",
+    "fixed_size": {
+      "frameBorderWidth": 5,
+      "measured_client_insets": [
+        6,
+        6,
+        25,
+        6
+      ],
+      "title_height": 20,
+      "corner_grips": false
+    },
+    "normal_frame_resource": {
+      "resizeBorderWidth": 10,
+      "measured_client_insets": [
+        11,
+        11,
+        30,
+        11
+      ],
+      "rule": "resizeable, independent of maximizeable",
+      "one_pixel_inner_surround": "Painted by Vuewm; native client and frame X borders are zero"
+    }
+  },
+  "glyphs": {
+    "menu": {
+      "size": [
+        12,
+        4
+      ],
+      "shape": "retângulo horizontal levantado com face da mesma cor do botão; luz no topo/esquerda, sombra embaixo/direita; não hamburger preto",
+      "sample_xy": [
+        51,
+        390
+      ]
+    },
+    "minimize": {
+      "size": [
+        4,
+        4
+      ],
+      "shape": "quadradinho levantado; não travessão",
+      "sample_xy": [
+        572,
+        390
+      ]
+    },
+    "maximize": {
+      "size": [
+        12,
+        12
+      ],
+      "shape": "quadrado levantado vazado com face da mesma cor do botão",
+      "sample_xy": [
+        588,
+        386
+      ]
+    }
+  },
+  "caption_metrics": {
+    "File Manager": {
+      "white_pixels_bounds_xyxy": [
+        279,
+        387,
+        351,
+        398
+      ],
+      "ink_size": [
+        73,
+        12
+      ]
+    },
+    "Terminal Window": {
+      "white_pixels_bounds_xyxy": [
+        334,
+        64,
+        435,
+        72
+      ],
+      "ink_size": [
+        102,
+        9
+      ]
+    },
+    "Help Index": {
+      "white_pixels_bounds_xyxy": [
+        780,
+        385,
+        838,
+        396
+      ],
+      "ink_size": [
+        59,
+        12
+      ]
+    },
+    "rendering": "texto branco binário sem antialias no PNG"
+  },
+  "fonts": {
+    "primary_evidence_url": "https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuestyle.bsd.html",
+    "document_origin": "manual HP copyright1990 indexado como Domain/OS SR10.4; cabeçalho HP VUE2.01, igual versão visível da Help no print.",
+    "document_default_medium_system_MR": "-*-swiss*742-bold-r-normal-*-120-*",
+    "document_default_small_system_MR": "-*-helvetica-bold-r-normal-*-100-*",
+    "conclusion": "Família sans bitmap bold para rótulos/caption, de 9px corpo maiúsculo a12px descendentes na imagem. Swiss742 é candidata documental; não é possível demonstrar apenas pelo PNG que esta captura usa exatamente o default médio.",
+    "adaptation": "Nimbus Sans bold 12 px, sem antialias, como aproximação livre. Na prévia Qt, Help Index mede59×11px, frente59×12px no print; 13px produz64×13px. A fonte exata do print não é demonstrada e não é redistribuída."
+  },
+  "sources": [
+    {
+      "title": "Virtual OS Museum — captura exata Domain_OS SR10.4 - 01 VUE desktop",
+      "url": "https://virtualosmuseum.org/images/more_screenshots/Domain_OS%20SR10.4%20-%2001%20VUE%20desktop.png",
+      "supports": [
+        "arte",
+        "versão10.4",
+        "geometria",
+        "cores medidas"
+      ]
+    },
+    {
+      "title": "Hewlett-Packard — vuestyle(1X), distribuição Apollo Domain/OS SR10.4",
+      "url": "https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuestyle.bsd.html",
+      "supports": [
+        "frames activeColorSetId1 e inactiveColorSetId2",
+        "fontes de rótulos Swiss742/Helvetica",
+        "relevo com topShadowColor/bottomShadowColor"
+      ]
+    },
+    {
+      "title": "Installing DOMAIN Software, março1992 — exemplo os.v.10.4 e hpvue1.0",
+      "url": "https://bitsavers.org/pdf/apollo/008860-A03_Installing_DOMAIN_Software_Mar92.pdf",
+      "supports": [
+        "distribuição exata SR10.4 com hpvue"
+      ]
+    },
+    {
+      "title": "HP VUE 2.01 vuewm(1X), SR10.4 distribution",
+      "url": "https://typewritten.org/Manual/Apollo/Domain%3AOS/SR10.4/man1X/vuewm.bsd.html",
+      "supports": [
+        "frameBorderWidth",
+        "resizeBorderWidth",
+        "clientDecoration",
+        "clientFunctions",
+        "transientDecoration",
+        "transientFunctions"
+      ]
+    }
+  ],
+  "unproven": "O print de referência não mostra pressão, maximização nem menu aberto. A pressão do campo do título foi confirmada separadamente na VM SR10.4, com inversão de luz/sombra e soltura restaurando os pixels originais; a adaptação da maximização ocupa a área do KDE. Não foram usados padrões de SR10.4.1.",
+  "runtime_palette": "Actual decoration uses DecorationOptions.titleBarColor/fontColor; measured reference colors reproduce CoralReef through the DomainOS scheme. Relative relief adapts to other selected KDE schemes.",
+  "guest_confirmation": {
+    "os": "Domain/OS 10.4 sys5.3 DN3500",
+    "vue": "HP VUE 2.01",
+    "motif": "Release 1.1; patch not established",
+    "resources": [
+      "frameBorderWidth=5",
+      "resizeBorderWidth=10",
+      "matteWidth=0"
+    ],
+    "client_hints": {
+      "Terminal": "resizable, all functions",
+      "Style Manager": "ALL except RESIZE/MAXIMIZE",
+      "Mouse and Color": "MOVE/CLOSE, transient to Style Manager"
+    },
+    "method": "Read-only xprop/xwininfo, xrdb and native manual; no guest configuration changes or redistributed guest files"
+  },
+  "title_press": {
+    "behavior": "Campo do título inverte luz/sombra somente durante pressão esquerda; soltura restaura o relevo.",
+    "evidence": "Testado na sessão Domain/OS SR10.4/VUE 2.01: pressão esquerda inverte as bordas de um pixel; soltura restaura exatamente o campo do título; texto e interior permanecem inalterados.",
+    "implementation": "PointHandler passivo, sem tomar os gestos de arraste ou duplo clique do KWin.",
+    "native_kwin_tests": "Pressão/soltura, arraste e duplo clique maximizar/restaurar aprovados em sessão Xephyr/KWin privada.",
+    "measured": {
+      "normal_top": "#ffc8c8",
+      "normal_bottom": "#864545",
+      "held_top": "#864545",
+      "held_bottom": "#ffc8c8",
+      "released_different_pixels": 0,
+      "inner_different_pixels": 0
+    }
+  }
+}

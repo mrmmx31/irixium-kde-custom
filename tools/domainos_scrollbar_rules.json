@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "identity": "domainos-sr104-trash-can-scrollbars",
+  "system": "Domain/OS SR10.4",
+  "desktop": "HP VUE 2.01",
+  "reference_client": "Trash Can",
+  "scope": "Project reconstruction baseline from the exact guest. These dimensions are measured widget output, not established universal Motif defaults.",
+  "geometry": {
+    "unit": "native_pixel",
+    "bar_px": 15,
+    "shadow_px": 2,
+    "arrow_px": 11,
+    "thumb_cross_px": 11,
+    "arrow_thumb_gap_px": 1,
+    "view_bar_gap_px": 4,
+    "view_inset_px": 2,
+    "origin": "measurement_vm",
+    "source": "TRASH-NORMAL",
+    "configured_resource_value": null,
+    "verified_c_default": null,
+    "relations": [
+      "bar_px = arrow_px + 2 * shadow_px",
+      "thumb_cross_px = arrow_px"
+    ]
+  },
+  "relief": {
+    "normal_arrow": "Direction-specific integer triangle; light upper/left, shadow lower/right. Orient silhouette before applying light.",
+    "normal_arrow_origin": "measurement_vm",
+    "trough": "Continuous inset enclosing frame; two-pixel shadows. Do not add a separate rectangular border around each arrow.",
+    "thumb": "Raised frame, distinct from the enclosing trough frame.",
+    "view": "Inset content frame, separate from the scrollbar trough.",
+    "junction": "Face between the two bars; lower and right arrows retain their full allocation.",
+    "pressed_arrow": "Exchange light and shadow while held; preserve silhouette; release restores normal relief.",
+    "pressed_arrow_origin": "measurement_vm_down_only",
+    "pressed_source": "TRASH-DOWN-CYCLE",
+    "unverified_native_states": ["up_pressed", "left_pressed", "right_pressed", "hover", "disabled", "thumb_drag"]
+  },
+  "thumb_length": {
+    "policy": "Use each toolkit's scroll range and page size; do not copy the empty Trash Can's nearly full-length thumb as a constant.",
+    "origin": "adaptation_and_inference",
+    "verified_c_minimum": null
+  },
+  "palette": {
+    "product_policy": "Derive face, text, light, shadow and trough from the selected KDE color roles. Native RGB samples are evidence only, never product constants.",
+    "product_policy_origin": "user_requirement",
+    "range_boundary_arrow": {
+      "color_policy": "parent_scrollbar_state",
+      "input_policy": "Preserve each toolkit's unavailable-range input state; this paint rule never enables a blocked arrow.",
+      "origin": "adaptation_based_on_native_observation",
+      "source": "TRASH-NORMAL",
+      "observed_scope": "The native empty Trash Can paints all four arrows with the normal enclosing palette; its down hold/release changes relief. Keep enclosing palette continuity at a range endpoint in the adaptation.",
+      "whole_widget_insensitive": "Separate state; use its current KDE insensitive roles. Native SR10.4 XtSensitive=False appearance remains unverified."
+    },
+    "reference_rgb_only": {
+      "face": "#78a0d5",
+      "light": "#c4d5ed",
+      "shadow": "#3e536e",
+      "trough": "#6688b5"
+    },
+    "native_color_set": "Vuefile secondaryColorSetId 5",
+    "native_color_set_source": "VUEFILE-CONFIG",
+    "limit": "VUE applications can use different color sets; modern KDE role translation is an adaptation, not proof that all original windows used the same RGB values."
+  },
+  "sources": {
+    "TRASH-NORMAL": {
+      "kind": "measurement_vm",
+      "sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5",
+      "public_metrics": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "public_crop": "docs/referencias/domainos-sr104/trash-can-normal.png"
+    },
+    "TRASH-DOWN-CYCLE": {
+      "kind": "controlled_vm_observation",
+      "normal_sha256": "cab2b598869a7e6909a9de583b75e7ba0e630c59478816d37440b9ce3f30a46b",
+      "held_sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568",
+      "released_sha256": "1a5c823b09e65f00d309bdf6b2c0820981e68a3a427c8b35a451a977d228a62b",
+      "glyph_box_exclusive": [650, 654, 661, 665],
+      "public_observation": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+      "changed_light_shadow_pixels": 53,
+      "release_changed_glyph_pixels": 0,
+      "limit": "Nine white pixels outside the triangle in its bounding cell are cursor/context, preserved in the reference. Down press/release only."
+    },
+    "VUEFILE-CONFIG": {
+      "kind": "guest_config_via_readonly_ftp",
+      "guest_path": "/usr/X11/lib/app-defaults/Vuefile",
+      "sha256": "052b89bee515c80096011eeb1744173dc42979fddabcbeccec71cc9adf4e66e0",
+      "observed": "secondaryColorSetId=5; XmpIcon overrides; no scrollbar geometry resource in this file."
+    },
+    "MOTIF-BINARY": {
+      "kind": "guest_runtime_binary",
+      "guest_path": "/lib/xmlib1.1",
+      "sha256": "b284c7cbc2fc79ecd1ed55325edb27e416e7fc278963e21bb9ff657ea7c2b160",
+      "observed": "Motif resource names and sr10.4_beta3/lib/Xm source paths; not the corresponding C source or resource numeric defaults.",
+      "exact_patch": null
+    }
+  },
+  "implementation_scope": {
+    "GTK3": "First consumer; fidelity review remains partial for the main frame of populated GtkTreeView.",
+    "GTK2": "Queued; translation and native comparison required.",
+    "GTK4": "Queued; document native lack of scrollbar arrow buttons.",
+    "GTK1": "Queued; establish actual support before claiming coverage.",
+    "Qt_Widgets_Kvantum": "Queued; reported lower-arrow defect remains open.",
+    "Qt_Quick": "Queued; identify actual System Settings control/style first.",
+    "Plasma_Style": "Queued; independent SVG/native comparison required."
+  }
+}

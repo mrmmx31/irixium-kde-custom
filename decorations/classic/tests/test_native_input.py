@@ -29,7 +29,8 @@ def main():
         prefix='irixiumModern' if modern else 'irix'
         pressure='pressed' if modern else 'down'
         menu=root.findChild(QQuickItem,prefix+'Menu')
-        for suffix in ('Minimize','Maximize','Close') if modern else ('Minimize','Maximize'):
+        if modern: assert root.findChild(QQuickItem,'irixiumModernClose') is None
+        for suffix in ('Minimize','Maximize'):
             button=root.findChild(QQuickItem,prefix+suffix)
             assert button is not None,(folder,suffix)
             pos=QPoint(int(button.x()+button.width()/2),int(button.y()+button.height()/2))
@@ -53,7 +54,7 @@ def main():
         QTest.mousePress(v,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,point)
         assert menu.property(pressure) and calls==[],(folder,'menu relief')
         QTest.qWait(30)
-        if evidence:v.grabWindow().save(str(evidence/(folder+'-Menu-pressionado.png')))
+        if evidence:v.grabWindow().save(str(evidence/(folder.replace('/','-')+'-Menu-pressionado.png')))
         QTest.mouseRelease(v,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,point)
         QTest.qWait(interval+100)
         assert calls==['menu'],(folder,calls)
@@ -81,7 +82,7 @@ def main():
             QGuiApplication.sendEvent(v,event)
             assert calls==[] and menu.property(pressure),(folder,'second press relief',calls)
             QTest.qWait(30)
-            if evidence:v.grabWindow().save(str(evidence/(folder+'-Duplo-pressionado.png')))
+            if evidence:v.grabWindow().save(str(evidence/(folder.replace('/','-')+'-Duplo-pressionado.png')))
             QTest.mouseRelease(v,Qt.MouseButton.LeftButton,Qt.KeyboardModifier.NoModifier,point)
             scenario=(folder, first_active, second_active, calls)
             assert calls==['close'],scenario

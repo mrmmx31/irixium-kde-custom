@@ -1,0 +1,39 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+@import url("../common/gtk.css");
+
+/* GTK3 owns stepper visibility; no overlay scrollbars in the Classic host. */
+* {
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+  -GtkScrollbar-has-secondary-backward-stepper: false;
+  -GtkScrollbar-has-secondary-forward-stepper: false;
+  -GtkTreeView-expander-size: 9;
+  -GtkTreeView-horizontal-separator: 2;
+  -GtkTreeView-vertical-separator: 2;
+}
+
+treeview.view { background-color: @theme_base_color; }
+treeview.view:selected { background-color: @theme_selected_bg_color; }
+treeview.view:selected:backdrop { background-color: @inactive_selection; }
+treeview.view header button { padding: 1px 3px; }
+treeview.view.expander { -gtk-icon-source: url("../common/assets/arrow-right-normal.png"); }
+treeview.view.expander:checked { -gtk-icon-source: url("../common/assets/arrow-down-normal.png"); }
+
+scrollbar button { min-width: 18px; min-height: 18px; padding: 0; border: none; }
+scrollbar.vertical button.up { background-image: url("../common/assets/stepper-up-normal.png"); }
+scrollbar.vertical button.down { background-image: url("../common/assets/stepper-down-normal.png"); }
+scrollbar.horizontal button.up { background-image: url("../common/assets/stepper-left-normal.png"); }
+scrollbar.horizontal button.down { background-image: url("../common/assets/stepper-right-normal.png"); }
+scrollbar.vertical button.up:active { background-image: url("../common/assets/stepper-up-pressed.png"); }
+scrollbar.vertical button.down:active { background-image: url("../common/assets/stepper-down-pressed.png"); }
+scrollbar.horizontal button.up:active { background-image: url("../common/assets/stepper-left-pressed.png"); }
+scrollbar.horizontal button.down:active { background-image: url("../common/assets/stepper-right-pressed.png"); }
+scrollbar.vertical button.up:disabled { background-image: url("../common/assets/stepper-up-disabled.png"); }
+scrollbar.vertical button.down:disabled { background-image: url("../common/assets/stepper-down-disabled.png"); }
+scrollbar.horizontal button.up:disabled { background-image: url("../common/assets/stepper-left-disabled.png"); }
+scrollbar.horizontal button.down:disabled { background-image: url("../common/assets/stepper-right-disabled.png"); }
+
+combobox arrow { background-image: url("../common/assets/optionmark-normal.png"); }
+combobox button:active arrow { background-image: url("../common/assets/optionmark-pressed.png"); }
+combobox button:disabled arrow { background-image: url("../common/assets/optionmark-disabled.png"); }

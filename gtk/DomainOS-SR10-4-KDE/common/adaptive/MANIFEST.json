@@ -1,0 +1,3174 @@
+{
+  "schema": 1,
+  "algorithm": "Original Motif semantic three-channel integer masks",
+  "assets": {
+    "arrow-up-normal": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-up-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-up-normal": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-up-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-up-normal-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-down-normal": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-down-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-down-normal": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-down-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-down-normal-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-left-normal": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-left-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-left-normal": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-left-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-left-normal-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-right-normal": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-right-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-right-normal": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-right-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-right-normal-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-off-normal": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-off-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-on-normal": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-on-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-off-normal": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-off-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-on-normal": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-on-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-mixed-normal": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-mixed-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "ink",
+                "light"
+              ]
+            },
+            {
+              "file": "check-mixed-normal-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-up-focused": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-up-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-up-focused": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-up-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-up-focused-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-down-focused": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-down-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-down-focused": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-down-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-down-focused-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-left-focused": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-left-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-left-focused": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-left-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-left-focused-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-right-focused": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-right-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-right-focused": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-right-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-right-focused-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-off-focused": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-off-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-on-focused": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-on-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-off-focused": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-off-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-on-focused": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-on-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-mixed-focused": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-mixed-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "ink",
+                "light"
+              ]
+            },
+            {
+              "file": "check-mixed-focused-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-up-pressed": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-up-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-up-pressed": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-up-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-up-pressed-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-down-pressed": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-down-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-down-pressed": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-down-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-down-pressed-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-left-pressed": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-left-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-left-pressed": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-left-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-left-pressed-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-right-pressed": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-right-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-right-pressed": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-right-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-right-pressed-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-off-pressed": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-off-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-on-pressed": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-on-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-off-pressed": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-off-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-on-pressed": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-on-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-mixed-pressed": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-mixed-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "ink",
+                "light"
+              ]
+            },
+            {
+              "file": "check-mixed-pressed-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-up-toggled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-up-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-up-toggled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-up-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-up-toggled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-down-toggled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-down-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-down-toggled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-down-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-down-toggled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-left-toggled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-left-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-left-toggled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-left-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-left-toggled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-right-toggled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-right-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-right-toggled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-right-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-right-toggled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-off-toggled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-off-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-on-toggled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-on-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-off-toggled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-off-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-on-toggled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-on-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-mixed-toggled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-mixed-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "ink",
+                "light"
+              ]
+            },
+            {
+              "file": "check-mixed-toggled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-up-disabled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-up-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-up-disabled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-up-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-up-disabled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-down-disabled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-down-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-down-disabled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-down-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-down-disabled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-left-disabled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-left-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-left-disabled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-left-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-left-disabled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "arrow-right-disabled": {
+      "width": 12,
+      "height": 12,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            12,
+            12
+          ],
+          "position": "center",
+          "size": "12px 12px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "arrow-right-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "stepper-right-disabled": {
+      "width": 16,
+      "height": 16,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "position": "center",
+          "size": "16px 16px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "stepper-right-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            },
+            {
+              "file": "stepper-right-disabled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-off-disabled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-off-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-on-disabled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-on-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-off-disabled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-off-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "radio-on-disabled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "radio-on-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light",
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "check-mixed-disabled": {
+      "width": 14,
+      "height": 14,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            14,
+            14
+          ],
+          "position": "center",
+          "size": "14px 14px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "check-mixed-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "ink",
+                "light"
+              ]
+            },
+            {
+              "file": "check-mixed-disabled-1-symbolic.svg",
+              "colors": [
+                "trough"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-up-normal": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-up-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-down-normal": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-down-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-left-normal": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-left-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-right-normal": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-right-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-up-focused": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-up-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-down-focused": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-down-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-left-focused": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-left-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-right-focused": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-right-focused-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-up-pressed": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-up-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-down-pressed": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-down-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-left-pressed": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-left-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-right-pressed": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-right-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-up-toggled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-up-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-down-toggled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-down-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-left-toggled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-left-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-right-toggled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-right-toggled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-up-disabled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-up-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-down-disabled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-down-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-left-disabled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-left-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-stepper-right-disabled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-stepper-right-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-trough-frame": {
+      "width": 24,
+      "height": 24,
+      "border": 2,
+      "family": "button",
+      "slices": [
+        {
+          "part": "top-left",
+          "box": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "position": "left top",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-top-left-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "top-right",
+          "box": [
+            22,
+            0,
+            24,
+            2
+          ],
+          "position": "right top",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-top-right-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom-left",
+          "box": [
+            0,
+            22,
+            2,
+            24
+          ],
+          "position": "left bottom",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-bottom-left-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom-right",
+          "box": [
+            22,
+            22,
+            24,
+            24
+          ],
+          "position": "right bottom",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-bottom-right-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "top",
+          "box": [
+            2,
+            0,
+            3,
+            2
+          ],
+          "position": "left top",
+          "size": "1px 2px",
+          "repeat": "repeat-x",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-top-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom",
+          "box": [
+            2,
+            22,
+            3,
+            24
+          ],
+          "position": "left bottom",
+          "size": "1px 2px",
+          "repeat": "repeat-x",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-bottom-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "left",
+          "box": [
+            0,
+            2,
+            2,
+            3
+          ],
+          "position": "left top",
+          "size": "2px 1px",
+          "repeat": "repeat-y",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-left-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "right",
+          "box": [
+            22,
+            2,
+            24,
+            3
+          ],
+          "position": "right top",
+          "size": "2px 1px",
+          "repeat": "repeat-y",
+          "layers": [
+            {
+              "file": "gtk3-trough-frame-right-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-thumb-frame": {
+      "width": 24,
+      "height": 24,
+      "border": 2,
+      "family": "button",
+      "slices": [
+        {
+          "part": "top-left",
+          "box": [
+            0,
+            0,
+            2,
+            2
+          ],
+          "position": "left top",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-top-left-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "top-right",
+          "box": [
+            22,
+            0,
+            24,
+            2
+          ],
+          "position": "right top",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-top-right-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom-left",
+          "box": [
+            0,
+            22,
+            2,
+            24
+          ],
+          "position": "left bottom",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-bottom-left-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom-right",
+          "box": [
+            22,
+            22,
+            24,
+            24
+          ],
+          "position": "right bottom",
+          "size": "2px 2px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-bottom-right-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "top",
+          "box": [
+            2,
+            0,
+            3,
+            2
+          ],
+          "position": "left top",
+          "size": "1px 2px",
+          "repeat": "repeat-x",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-top-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "bottom",
+          "box": [
+            2,
+            22,
+            3,
+            24
+          ],
+          "position": "left bottom",
+          "size": "1px 2px",
+          "repeat": "repeat-x",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-bottom-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "left",
+          "box": [
+            0,
+            2,
+            2,
+            3
+          ],
+          "position": "left top",
+          "size": "2px 1px",
+          "repeat": "repeat-y",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-left-0-symbolic.svg",
+              "colors": [
+                "light"
+              ]
+            }
+          ]
+        },
+        {
+          "part": "right",
+          "box": [
+            22,
+            2,
+            24,
+            3
+          ],
+          "position": "right top",
+          "size": "2px 1px",
+          "repeat": "repeat-y",
+          "layers": [
+            {
+              "file": "gtk3-thumb-frame-right-0-symbolic.svg",
+              "colors": [
+                "dark"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "files": {
+    "arrow-up-normal-0-symbolic.svg": "77e4dcb83447fafe575b8204320d7f1c6f6e9d573b0adcc41efa8226159e17e5",
+    "stepper-up-normal-0-symbolic.svg": "47c1233b7152feea7f43ec2df407134e08bbbbb54f5acff7b3eef71f6021f3fa",
+    "stepper-up-normal-1-symbolic.svg": "99f8161fd336cf5637d9c2ee541e25d2078c04da8df0d7a52b4e1bb635bde875",
+    "arrow-down-normal-0-symbolic.svg": "34df026065328d0cd7fb52c3e27acfb9127e1561022773108ff78f050cac44e3",
+    "stepper-down-normal-0-symbolic.svg": "adb2aa3f8d5ae560f8f2dffb705536d23d3dca8fcf39ea0e49c3a0439a327fc1",
+    "stepper-down-normal-1-symbolic.svg": "dba3378c1bbb19855bbeb42adc63986e766c09b3626f1c76cfb6c1e54f4b55dc",
+    "arrow-left-normal-0-symbolic.svg": "c39c9bec604072efae05d44204cf7b276f3d2ee32162b8f7d352cdae83e51b91",
+    "stepper-left-normal-0-symbolic.svg": "d320e5b292346c6705828d82c342bd92cc40a83fd1b4b9c1ac6407ae580205a4",
+    "stepper-left-normal-1-symbolic.svg": "7d8ac72eaf707009a5a5dad6674325f4648689f7f5dc916fa9d22f51775e6cab",
+    "arrow-right-normal-0-symbolic.svg": "33bfaff60fc93add08ebd5a849bf26d1f2a50041bdc9637bd63dd47c748d1a2b",
+    "stepper-right-normal-0-symbolic.svg": "09abe18cb41dc514e4d3361cd09147416019f6c0d26766708db47666007c0c01",
+    "stepper-right-normal-1-symbolic.svg": "b7573d85a283cc5097a2379ed8558e873b3d59cfc6bf0f3f4e22f8747f230f3e",
+    "check-off-normal-0-symbolic.svg": "3a9fe2f48d4fe768f6349916ac0c8a3e1609c549cb5917e10ed6cf475255e74d",
+    "check-on-normal-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "radio-off-normal-0-symbolic.svg": "b552248894c5b5b86338ce98c51a33afe0ac7b9e4a9e812dc1cd4028f6c35fdd",
+    "radio-on-normal-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "check-mixed-normal-0-symbolic.svg": "1aded9ed0d1c30f8ba01ba201e59b77f56e69c1d94fb3f2411a8311a037f539c",
+    "check-mixed-normal-1-symbolic.svg": "2b229cd37a24debef6c71aa78f230edf0aa588070855949f27c76ed8108c4d0a",
+    "arrow-up-focused-0-symbolic.svg": "77e4dcb83447fafe575b8204320d7f1c6f6e9d573b0adcc41efa8226159e17e5",
+    "stepper-up-focused-0-symbolic.svg": "47c1233b7152feea7f43ec2df407134e08bbbbb54f5acff7b3eef71f6021f3fa",
+    "stepper-up-focused-1-symbolic.svg": "99f8161fd336cf5637d9c2ee541e25d2078c04da8df0d7a52b4e1bb635bde875",
+    "arrow-down-focused-0-symbolic.svg": "34df026065328d0cd7fb52c3e27acfb9127e1561022773108ff78f050cac44e3",
+    "stepper-down-focused-0-symbolic.svg": "adb2aa3f8d5ae560f8f2dffb705536d23d3dca8fcf39ea0e49c3a0439a327fc1",
+    "stepper-down-focused-1-symbolic.svg": "dba3378c1bbb19855bbeb42adc63986e766c09b3626f1c76cfb6c1e54f4b55dc",
+    "arrow-left-focused-0-symbolic.svg": "c39c9bec604072efae05d44204cf7b276f3d2ee32162b8f7d352cdae83e51b91",
+    "stepper-left-focused-0-symbolic.svg": "d320e5b292346c6705828d82c342bd92cc40a83fd1b4b9c1ac6407ae580205a4",
+    "stepper-left-focused-1-symbolic.svg": "7d8ac72eaf707009a5a5dad6674325f4648689f7f5dc916fa9d22f51775e6cab",
+    "arrow-right-focused-0-symbolic.svg": "33bfaff60fc93add08ebd5a849bf26d1f2a50041bdc9637bd63dd47c748d1a2b",
+    "stepper-right-focused-0-symbolic.svg": "09abe18cb41dc514e4d3361cd09147416019f6c0d26766708db47666007c0c01",
+    "stepper-right-focused-1-symbolic.svg": "b7573d85a283cc5097a2379ed8558e873b3d59cfc6bf0f3f4e22f8747f230f3e",
+    "check-off-focused-0-symbolic.svg": "3a9fe2f48d4fe768f6349916ac0c8a3e1609c549cb5917e10ed6cf475255e74d",
+    "check-on-focused-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "radio-off-focused-0-symbolic.svg": "b552248894c5b5b86338ce98c51a33afe0ac7b9e4a9e812dc1cd4028f6c35fdd",
+    "radio-on-focused-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "check-mixed-focused-0-symbolic.svg": "1aded9ed0d1c30f8ba01ba201e59b77f56e69c1d94fb3f2411a8311a037f539c",
+    "check-mixed-focused-1-symbolic.svg": "2b229cd37a24debef6c71aa78f230edf0aa588070855949f27c76ed8108c4d0a",
+    "arrow-up-pressed-0-symbolic.svg": "aa7d6e31066e36dd064320b9fe3a3f84dec7a91a2c4581cc2bc9eb6a213e76a1",
+    "stepper-up-pressed-0-symbolic.svg": "f298c4e7a197abe7f3dd31480ba102b760c300c0f7b0077a81e9a10b4c76b8c6",
+    "stepper-up-pressed-1-symbolic.svg": "99f8161fd336cf5637d9c2ee541e25d2078c04da8df0d7a52b4e1bb635bde875",
+    "arrow-down-pressed-0-symbolic.svg": "02c86f304ff8595c512c937560d36dfde608cbdbb711913e9017523302a0a463",
+    "stepper-down-pressed-0-symbolic.svg": "cef9d66a5b622952c0cde9d6c2607a862ae32664ccddf62fba39f9fa41934e7e",
+    "stepper-down-pressed-1-symbolic.svg": "dba3378c1bbb19855bbeb42adc63986e766c09b3626f1c76cfb6c1e54f4b55dc",
+    "arrow-left-pressed-0-symbolic.svg": "cab101108f3dfabb3a81526bc7a82b829aeb99177d4ec29083cb59cff3e59069",
+    "stepper-left-pressed-0-symbolic.svg": "4cee2c3410d2b900a30734403dfab1a88dabe406c71e1acf0b82677056275ebe",
+    "stepper-left-pressed-1-symbolic.svg": "7d8ac72eaf707009a5a5dad6674325f4648689f7f5dc916fa9d22f51775e6cab",
+    "arrow-right-pressed-0-symbolic.svg": "62505d918eaec69cdc169a522e43ed603ab36f2e01ac3418299b10e561143ac8",
+    "stepper-right-pressed-0-symbolic.svg": "f327dc79d12bb4142a6b735a2469efaf45b257806ee3d63541d52f796aa17706",
+    "stepper-right-pressed-1-symbolic.svg": "b7573d85a283cc5097a2379ed8558e873b3d59cfc6bf0f3f4e22f8747f230f3e",
+    "check-off-pressed-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "check-on-pressed-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "radio-off-pressed-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "radio-on-pressed-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "check-mixed-pressed-0-symbolic.svg": "1aded9ed0d1c30f8ba01ba201e59b77f56e69c1d94fb3f2411a8311a037f539c",
+    "check-mixed-pressed-1-symbolic.svg": "2b229cd37a24debef6c71aa78f230edf0aa588070855949f27c76ed8108c4d0a",
+    "arrow-up-toggled-0-symbolic.svg": "aa7d6e31066e36dd064320b9fe3a3f84dec7a91a2c4581cc2bc9eb6a213e76a1",
+    "stepper-up-toggled-0-symbolic.svg": "f298c4e7a197abe7f3dd31480ba102b760c300c0f7b0077a81e9a10b4c76b8c6",
+    "stepper-up-toggled-1-symbolic.svg": "99f8161fd336cf5637d9c2ee541e25d2078c04da8df0d7a52b4e1bb635bde875",
+    "arrow-down-toggled-0-symbolic.svg": "02c86f304ff8595c512c937560d36dfde608cbdbb711913e9017523302a0a463",
+    "stepper-down-toggled-0-symbolic.svg": "cef9d66a5b622952c0cde9d6c2607a862ae32664ccddf62fba39f9fa41934e7e",
+    "stepper-down-toggled-1-symbolic.svg": "dba3378c1bbb19855bbeb42adc63986e766c09b3626f1c76cfb6c1e54f4b55dc",
+    "arrow-left-toggled-0-symbolic.svg": "cab101108f3dfabb3a81526bc7a82b829aeb99177d4ec29083cb59cff3e59069",
+    "stepper-left-toggled-0-symbolic.svg": "4cee2c3410d2b900a30734403dfab1a88dabe406c71e1acf0b82677056275ebe",
+    "stepper-left-toggled-1-symbolic.svg": "7d8ac72eaf707009a5a5dad6674325f4648689f7f5dc916fa9d22f51775e6cab",
+    "arrow-right-toggled-0-symbolic.svg": "62505d918eaec69cdc169a522e43ed603ab36f2e01ac3418299b10e561143ac8",
+    "stepper-right-toggled-0-symbolic.svg": "f327dc79d12bb4142a6b735a2469efaf45b257806ee3d63541d52f796aa17706",
+    "stepper-right-toggled-1-symbolic.svg": "b7573d85a283cc5097a2379ed8558e873b3d59cfc6bf0f3f4e22f8747f230f3e",
+    "check-off-toggled-0-symbolic.svg": "3a9fe2f48d4fe768f6349916ac0c8a3e1609c549cb5917e10ed6cf475255e74d",
+    "check-on-toggled-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "radio-off-toggled-0-symbolic.svg": "b552248894c5b5b86338ce98c51a33afe0ac7b9e4a9e812dc1cd4028f6c35fdd",
+    "radio-on-toggled-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "check-mixed-toggled-0-symbolic.svg": "1aded9ed0d1c30f8ba01ba201e59b77f56e69c1d94fb3f2411a8311a037f539c",
+    "check-mixed-toggled-1-symbolic.svg": "2b229cd37a24debef6c71aa78f230edf0aa588070855949f27c76ed8108c4d0a",
+    "arrow-up-disabled-0-symbolic.svg": "77e4dcb83447fafe575b8204320d7f1c6f6e9d573b0adcc41efa8226159e17e5",
+    "stepper-up-disabled-0-symbolic.svg": "47c1233b7152feea7f43ec2df407134e08bbbbb54f5acff7b3eef71f6021f3fa",
+    "stepper-up-disabled-1-symbolic.svg": "99f8161fd336cf5637d9c2ee541e25d2078c04da8df0d7a52b4e1bb635bde875",
+    "arrow-down-disabled-0-symbolic.svg": "34df026065328d0cd7fb52c3e27acfb9127e1561022773108ff78f050cac44e3",
+    "stepper-down-disabled-0-symbolic.svg": "adb2aa3f8d5ae560f8f2dffb705536d23d3dca8fcf39ea0e49c3a0439a327fc1",
+    "stepper-down-disabled-1-symbolic.svg": "dba3378c1bbb19855bbeb42adc63986e766c09b3626f1c76cfb6c1e54f4b55dc",
+    "arrow-left-disabled-0-symbolic.svg": "c39c9bec604072efae05d44204cf7b276f3d2ee32162b8f7d352cdae83e51b91",
+    "stepper-left-disabled-0-symbolic.svg": "d320e5b292346c6705828d82c342bd92cc40a83fd1b4b9c1ac6407ae580205a4",
+    "stepper-left-disabled-1-symbolic.svg": "7d8ac72eaf707009a5a5dad6674325f4648689f7f5dc916fa9d22f51775e6cab",
+    "arrow-right-disabled-0-symbolic.svg": "33bfaff60fc93add08ebd5a849bf26d1f2a50041bdc9637bd63dd47c748d1a2b",
+    "stepper-right-disabled-0-symbolic.svg": "09abe18cb41dc514e4d3361cd09147416019f6c0d26766708db47666007c0c01",
+    "stepper-right-disabled-1-symbolic.svg": "b7573d85a283cc5097a2379ed8558e873b3d59cfc6bf0f3f4e22f8747f230f3e",
+    "check-off-disabled-0-symbolic.svg": "3a9fe2f48d4fe768f6349916ac0c8a3e1609c549cb5917e10ed6cf475255e74d",
+    "check-on-disabled-0-symbolic.svg": "418dcc68d9039ae76a5577b4ddbec7ac441a12c3dc61475362b179bb894e14c0",
+    "radio-off-disabled-0-symbolic.svg": "b552248894c5b5b86338ce98c51a33afe0ac7b9e4a9e812dc1cd4028f6c35fdd",
+    "radio-on-disabled-0-symbolic.svg": "4835e910237f24085639fa447b46654ef43dd7552f48d8b261e352794575949d",
+    "check-mixed-disabled-0-symbolic.svg": "1aded9ed0d1c30f8ba01ba201e59b77f56e69c1d94fb3f2411a8311a037f539c",
+    "check-mixed-disabled-1-symbolic.svg": "2b229cd37a24debef6c71aa78f230edf0aa588070855949f27c76ed8108c4d0a",
+    "gtk3-stepper-up-normal-0-symbolic.svg": "33bdf6db2ee3b2b857e30ed34d244fc1478aebaaf7e459be300463dd9bf4397e",
+    "gtk3-stepper-down-normal-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
+    "gtk3-stepper-left-normal-0-symbolic.svg": "fe6f404b4645d564b88f509796309d79e65f4a77528a9b7b1009a62ed16092af",
+    "gtk3-stepper-right-normal-0-symbolic.svg": "4e8adc100725c5c7fe635cb3667ef8ddba709cba183e77388131218845a2f2a3",
+    "gtk3-stepper-up-focused-0-symbolic.svg": "33bdf6db2ee3b2b857e30ed34d244fc1478aebaaf7e459be300463dd9bf4397e",
+    "gtk3-stepper-down-focused-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
+    "gtk3-stepper-left-focused-0-symbolic.svg": "fe6f404b4645d564b88f509796309d79e65f4a77528a9b7b1009a62ed16092af",
+    "gtk3-stepper-right-focused-0-symbolic.svg": "4e8adc100725c5c7fe635cb3667ef8ddba709cba183e77388131218845a2f2a3",
+    "gtk3-stepper-up-pressed-0-symbolic.svg": "76d8379ba342d5ba410366612f39abbe42693a69396a9b465b9d4ac8adb72c1c",
+    "gtk3-stepper-down-pressed-0-symbolic.svg": "8e548405db16e57e8d39eac1bf909586e7c50a03f3aa106b2ccd5ba615b970e4",
+    "gtk3-stepper-left-pressed-0-symbolic.svg": "1445a0c331f62c486bb6ae17b9e6360bac02800aa116b0d1be9b7f2937fe971a",
+    "gtk3-stepper-right-pressed-0-symbolic.svg": "cc5ff8496d1c316c04ec3f3838f3b77e21fe7cca15e474abcb884730652874ba",
+    "gtk3-stepper-up-toggled-0-symbolic.svg": "76d8379ba342d5ba410366612f39abbe42693a69396a9b465b9d4ac8adb72c1c",
+    "gtk3-stepper-down-toggled-0-symbolic.svg": "8e548405db16e57e8d39eac1bf909586e7c50a03f3aa106b2ccd5ba615b970e4",
+    "gtk3-stepper-left-toggled-0-symbolic.svg": "1445a0c331f62c486bb6ae17b9e6360bac02800aa116b0d1be9b7f2937fe971a",
+    "gtk3-stepper-right-toggled-0-symbolic.svg": "cc5ff8496d1c316c04ec3f3838f3b77e21fe7cca15e474abcb884730652874ba",
+    "gtk3-stepper-up-disabled-0-symbolic.svg": "33bdf6db2ee3b2b857e30ed34d244fc1478aebaaf7e459be300463dd9bf4397e",
+    "gtk3-stepper-down-disabled-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
+    "gtk3-stepper-left-disabled-0-symbolic.svg": "fe6f404b4645d564b88f509796309d79e65f4a77528a9b7b1009a62ed16092af",
+    "gtk3-stepper-right-disabled-0-symbolic.svg": "4e8adc100725c5c7fe635cb3667ef8ddba709cba183e77388131218845a2f2a3",
+    "gtk3-trough-frame-top-left-0-symbolic.svg": "5a4ed6ddba286fb79db0786ac68abcfe931b7c5c61afb5891500e61e2b943d4d",
+    "gtk3-trough-frame-top-right-0-symbolic.svg": "f2bda5084c18a9c4b17819f85362a41b0bb5abb5ce1969029c1a3df626139e65",
+    "gtk3-trough-frame-bottom-left-0-symbolic.svg": "f2bda5084c18a9c4b17819f85362a41b0bb5abb5ce1969029c1a3df626139e65",
+    "gtk3-trough-frame-bottom-right-0-symbolic.svg": "5a4ed6ddba286fb79db0786ac68abcfe931b7c5c61afb5891500e61e2b943d4d",
+    "gtk3-trough-frame-top-0-symbolic.svg": "a5730bc23bbe3ac852910fbca3a65eaadccfcb3d5c65b7d324a692ec474b228c",
+    "gtk3-trough-frame-bottom-0-symbolic.svg": "a5730bc23bbe3ac852910fbca3a65eaadccfcb3d5c65b7d324a692ec474b228c",
+    "gtk3-trough-frame-left-0-symbolic.svg": "f539364b0033c85c6de9592d04922f35e38afae8808b97e5f354fdaffb833d17",
+    "gtk3-trough-frame-right-0-symbolic.svg": "f539364b0033c85c6de9592d04922f35e38afae8808b97e5f354fdaffb833d17",
+    "gtk3-thumb-frame-top-left-0-symbolic.svg": "5a4ed6ddba286fb79db0786ac68abcfe931b7c5c61afb5891500e61e2b943d4d",
+    "gtk3-thumb-frame-top-right-0-symbolic.svg": "de6b712bf8dc11d2dd9ef806a94bbeb1a66bb7f0b45ed798e4a0c7bdae0aaa4a",
+    "gtk3-thumb-frame-bottom-left-0-symbolic.svg": "de6b712bf8dc11d2dd9ef806a94bbeb1a66bb7f0b45ed798e4a0c7bdae0aaa4a",
+    "gtk3-thumb-frame-bottom-right-0-symbolic.svg": "5a4ed6ddba286fb79db0786ac68abcfe931b7c5c61afb5891500e61e2b943d4d",
+    "gtk3-thumb-frame-top-0-symbolic.svg": "a5730bc23bbe3ac852910fbca3a65eaadccfcb3d5c65b7d324a692ec474b228c",
+    "gtk3-thumb-frame-bottom-0-symbolic.svg": "a5730bc23bbe3ac852910fbca3a65eaadccfcb3d5c65b7d324a692ec474b228c",
+    "gtk3-thumb-frame-left-0-symbolic.svg": "f539364b0033c85c6de9592d04922f35e38afae8808b97e5f354fdaffb833d17",
+    "gtk3-thumb-frame-right-0-symbolic.svg": "f539364b0033c85c6de9592d04922f35e38afae8808b97e5f354fdaffb833d17"
+  }
+}

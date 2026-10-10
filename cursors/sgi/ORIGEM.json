@@ -2,27 +2,22 @@
   "component": "sgi",
   "kind": "cursor-theme",
   "source": {
-    "type": "git",
-    "url": "https://github.com/jujum4n/sgi-enhanced.git",
+    "url": "https://github.com/jujum4n/sgi-enhanced",
+    "revision": "b7a02161f8e13da639d2ecff5735436c9f447d67",
     "path": "cursor/sgi",
-    "revision": "HEAD"
+    "original_artist": "BEHRZ, credited by upstream",
+    "verified_original_binaries": 49
   },
-  "author": "jujum4n and contributors",
   "license": {
-    "declared_by_upstream": "GNU General Public License",
-    "status": "version_not_specified_in_current_upstream_checkout"
+    "upstream_declaration": "GNU General Public License; version unspecified; complete license absent upstream",
+    "integration_code": "GPL-3.0-or-later"
   },
-  "original_design": "Silicon Graphics, Inc. IRIX/SGI cursor style",
-  "verification": {
-    "installed_path": "~/.icons/sgi",
-    "comparison": "Cursor binaries match the upstream cursor/sgi payload; eight absolute links were normalized for portability."
-  },
+  "original_design": "SGI/IRIX-inspired recreation; not a dump of original IRIX cursor fonts",
   "local_changes": [
-    "Replaced eight upstream absolute links to /home/andres/.icons/sgi with equivalent relative links so the theme is portable."
+    "Qt, X11 and Wayland aliases; wait and progress distinct; resize axes corrected",
+    "24,32,48,64,96 sizes; hotspots scaled with the pixels",
+    "Open/closed hand, vertical text and zoom artwork generated locally"
   ],
-  "selection": {
-    "kde_config": "~/.config/kcminputrc",
-    "key": "Mouse.cursorTheme",
-    "value": "sgi"
-  }
+  "busy_design": "Original static hourglass, kept as alternative",
+  "linked_profile": null
 }

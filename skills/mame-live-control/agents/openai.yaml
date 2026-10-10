@@ -1,0 +1,7 @@
+interface:
+  display_name: "Controle de sessão MAME"
+  short_description: "Controle Lua seguro de uma sessão MAME já aberta"
+  default_prompt: "Use $mame-live-control para inspecionar e controlar a sessão MAME já aberta, preservando o estado do convidado."
+
+policy:
+  allow_implicit_invocation: true

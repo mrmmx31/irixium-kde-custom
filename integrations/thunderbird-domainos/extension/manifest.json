@@ -1,0 +1,14 @@
+{
+  "manifest_version": 2,
+  "name": "DomainOS Thunderbird unread count",
+  "version": "0.1.0",
+  "description": "Publishes only the aggregate unread count of physical message folders to the local DomainOS panel.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "domainos-mail-count@irixclassic.local",
+      "strict_min_version": "140.0"
+    }
+  },
+  "permissions": ["accountsRead", "nativeMessaging"],
+  "background": {"scripts": ["background.js"], "persistent": true}
+}

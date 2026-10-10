@@ -1,0 +1,17 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+@import url("../common/gtk.css");
+
+/* GTK4 has no scrollbar stepper API. Keep a full-width persistent trough. */
+scrollbar { min-width: 18px; min-height: 18px; }
+listview, gridview, columnview { color: @theme_text_color; background-color: @theme_base_color; }
+listview row, columnview row { padding: 2px 3px; min-height: 18px; }
+columnview header button { padding: 1px 3px; }
+dropdown > button { padding: 1px 3px; }
+dropdown arrow { background-image: url("../common/assets/optionmark-normal.png"); }
+dropdown button:checked arrow { background-image: url("../common/assets/optionmark-pressed.png"); }
+dropdown:disabled arrow { background-image: url("../common/assets/optionmark-disabled.png"); }
+popover.menu contents { padding: 2px; }
+popover.menu modelbutton { min-height: 20px; padding: 2px 3px; }
+menubutton arrow { background-image: url("../common/assets/optionmark-normal.png"); }
+expander-widget > box > title > expander { -gtk-icon-source: url("../common/assets/arrow-right-normal.png"); }
+expander-widget > box > title > expander:checked { -gtk-icon-source: url("../common/assets/arrow-down-normal.png"); }

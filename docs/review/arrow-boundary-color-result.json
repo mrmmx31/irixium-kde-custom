@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "date": "2026-10-10",
+  "scope": "GTK3 range-boundary arrow colors, both orientations, normal/backdrop parent and whole-parent insensitive; native TreeView scrollbars and true blocked XTest clicks on private Xvfb. No other family is covered.",
+  "color_policy": "Palette follows the current KDE Button roles; range-boundary child insensitivity does not replace sensitive-parent colors. Whole-parent insensitive remains a separate dynamic KDE state.",
+  "origin": "Adaptation based on native empty SR10.4 Trash Can palette continuity. True historical XtSensitive=False paint remains unverified.",
+  "passed": 468,
+  "total": 468,
+  "palettes": {
+    "gray": {
+      "passed": 115,
+      "checks": 115,
+      "blocked_click_checks": 16,
+      "max_channel_difference": 0,
+      "screen_difference": 0,
+      "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35"
+    },
+    "blue": {
+      "passed": 115,
+      "checks": 115,
+      "blocked_click_checks": 16,
+      "max_channel_difference": 0,
+      "screen_difference": 0,
+      "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70"
+    },
+    "dark": {
+      "passed": 115,
+      "checks": 115,
+      "blocked_click_checks": 16,
+      "max_channel_difference": 1,
+      "screen_difference": 0,
+      "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6"
+    },
+    "yellow": {
+      "passed": 115,
+      "checks": 115,
+      "blocked_click_checks": 16,
+      "max_channel_difference": 0,
+      "screen_difference": 0,
+      "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc"
+    }
+  },
+  "input_origin": "All four inputs are preserved real KDE bridge role snapshots, normalized without synthesizing colors; this test does not exercise live scheme switching or the exporter.",
+  "native_reference_comparison": {
+    "lower-bound:up": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "894d232895f914593eac32f9dce3785a86a12c78d8565f4ac2990373a3b84d9e",
+      "current_sha256": "40e584435d5e17854d2dbeae3a13804b4b6cc8dea22cc6698c5ff92e008c894f"
+    },
+    "lower-bound:down": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "b12cfed694b78a99c0b532df5d9c5d43b32758054e01ccca1b79827cb159d048",
+      "current_sha256": "a46f4f8116250f4e13b771fb5325f80020bd7614aca7b066819c3dde9ee20deb"
+    },
+    "lower-bound:left": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "d870c57013c2cf85e2d05445013bc58a7c3f81dd94769b1e4be5c09481d36695",
+      "current_sha256": "b74d51c9f46d04d2532d733dbbb839a3dda7b4563eb6bfc08d0289be1534c665"
+    },
+    "lower-bound:right": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "5aac901bad1b6cb3b2a546fa34f59ba38b4ff8d7ef3ddd0ee68e798de0bb9c60",
+      "current_sha256": "13b7f46f2471271a064fb6218193df94b52bde1cdb1c7a31c6630644f5101f61"
+    },
+    "upper-bound:up": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "894d232895f914593eac32f9dce3785a86a12c78d8565f4ac2990373a3b84d9e",
+      "current_sha256": "40e584435d5e17854d2dbeae3a13804b4b6cc8dea22cc6698c5ff92e008c894f"
+    },
+    "upper-bound:down": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "b12cfed694b78a99c0b532df5d9c5d43b32758054e01ccca1b79827cb159d048",
+      "current_sha256": "a46f4f8116250f4e13b771fb5325f80020bd7614aca7b066819c3dde9ee20deb"
+    },
+    "upper-bound:left": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "d870c57013c2cf85e2d05445013bc58a7c3f81dd94769b1e4be5c09481d36695",
+      "current_sha256": "b74d51c9f46d04d2532d733dbbb839a3dda7b4563eb6bfc08d0289be1534c665"
+    },
+    "upper-bound:right": {
+      "size": [
+        11,
+        11
+      ],
+      "different_pixels": 0,
+      "max_channel_difference": 0,
+      "reference_sha256": "5aac901bad1b6cb3b2a546fa34f59ba38b4ff8d7ef3ddd0ee68e798de0bb9c60",
+      "current_sha256": "13b7f46f2471271a064fb6218193df94b52bde1cdb1c7a31c6630644f5101f61"
+    }
+  },
+  "shared_css_sha256": "2cb3dd77ce782338ffbf66573fe08226a4861e72c01763cbc201b68bdcc79cff",
+  "source_sha256": {
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "gtk/tools/build_kde_domainos.py": "a505475b4fdf6063124cdc24c4c3467b305cd98c6fb740a5cac9311d4fc45ef2",
+    "tools/domainos_motif_art.py": "8566413452b205dcbea4537f179be2eb69441909cb3214bcb6d657b67b35096f",
+    "gtk/tests/test_domainos_native_steppers.py": "649f602640b95daee5f7a3ca721a77644aa99f5b4b9031cff8685d79aa223201",
+    "gtk/tests/test_domainos_native_scroll_corner.py": "e03f88e2fee2b3a1aae60036c386cf809c9a94d19ae0150a66b1532b6d2b1314"
+  },
+  "unchanged_resources": 757,
+  "contract_guard_test": "Missing or unsupported range-boundary paint policy is rejected; focused contract test passed.",
+  "open": [
+    "Populated GtkTreeView main frame",
+    "Historical truly insensitive Motif state",
+    "Other toolkit visual families",
+    "Final p001532 validation"
+  ],
+  "reviewer_status": "unreviewed",
+  "r13_preview": "Preserved frozen revision; not updated in place.",
+  "public_images": [
+    "docs/review/images/arrow-colors-boundary-r2/down-GTK3-corrected.png",
+    "docs/review/images/arrow-colors-boundary-r2/left-GTK3-corrected.png",
+    "docs/review/images/arrow-colors-boundary-r2/right-GTK3-corrected.png",
+    "docs/review/images/arrow-colors-boundary-r2/up-GTK3-corrected.png"
+  ]
+}

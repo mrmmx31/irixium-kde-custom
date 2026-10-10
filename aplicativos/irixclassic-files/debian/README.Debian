@@ -1,0 +1,24 @@
+IrixClassic Files — pacote experimental para Debian 13
+
+O pacote instala um aplicativo independente, suas duas bibliotecas privadas e
+um worker de prévias. Não substitui os arquivos do Dolphin nem inclui scripts que
+apliquem temas, migrem configurações ou alterem automaticamente a escolha do
+gerenciador de arquivos. A entrada `.desktop` registra os tipos MIME de
+diretório, permitindo selecioná-lo como padrão nas configurações do KDE.
+
+Instalar com dependências (opcional, como instalação normal de aplicativo):
+  sudo apt install ./irixclassic-files_0.1.0~alpha2-1_amd64.deb
+
+Executar:
+  irixclassic-files /caminho/de/uma/pasta
+
+Para testar sem instalação global:
+  dpkg-deb -x ./irixclassic-files_0.1.0~alpha2-1_amd64.deb /tmp/irixclassic-deb
+  /tmp/irixclassic-deb/usr/lib/irixclassic-files/bin/irixclassic-files /uma/pasta
+
+O launcher em /usr/bin usa o destino da instalação normal; ao extrair o pacote,
+execute diretamente o binário interno, que encontra as bibliotecas relativas.
+
+As preferências e a Shelf continuam por usuário. Remover o pacote não apaga esses
+dados. O aplicativo permanece alpha, baseado na fonte Dolphin Debian fixada.
+Código-fonte correspondente é entregue ao lado do .deb; o SHA-256 está no recibo.

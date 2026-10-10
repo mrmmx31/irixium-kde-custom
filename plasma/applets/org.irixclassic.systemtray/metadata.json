@@ -1,0 +1,28 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "mart@kde.org",
+                "Name": "Marco Martin"
+            },
+            {
+                "Name": "mrmmx31",
+                "Task": "Classic frame adaptation"
+            }
+        ],
+        "Category": "Windows and Tasks",
+        "Description": "The KDE system tray in a recessed Classic instrument housing",
+        "Description[pt_BR]": "Área de notificação do KDE em um instrumento Classic com campo rebaixado",
+        "EnabledByDefault": false,
+        "Icon": "preferences-desktop-notification",
+        "Id": "org.irixclassic.systemtray",
+        "License": "LGPL-2.0-or-later",
+        "Name": "IRIX Classic System Tray",
+        "Name[pt_BR]": "Área de notificação IRIX Classic",
+        "Version": "0.2.0",
+        "Website": "https://github.com/mrmmx31/irixium-kde-custom"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0",
+    "X-Plasma-RootPath": "org.kde.plasma.systemtray"
+}

@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "id": "domainos-visual-r1",
+  "title": "Revisão visual — 10 grupos",
+  "revision": "1.0",
+  "date": "2026-10-10",
+  "source_documents": [
+    "docs/DOMAINOS-FILA-REVISAO-VISUAL.md",
+    "docs/DOMAINOS-REGRAS-ROLAGEM.md",
+    "docs/DOMAINOS-COMPARACAO-ROLAGEM-GTK3.md",
+    "docs/DOMAINOS-CORES-SETAS-REVISAO.md"
+  ],
+  "items": [
+    {
+      "id": "V01",
+      "title": "Cores e harmonia das setas",
+      "scope": "Uma regra comum de face, luz, sombra e trilho; separar seta normal de desabilitada antes de adaptar cada família.",
+      "technical_status": "partial",
+      "conclusion": "Na R13, GTK3 baixo/direita coincidem com o original normal. Cima/esquerda usam cores desabilitadas diferentes. Falta comprovar a regra histórica desse estado; o resultado não se estende às demais famílias.",
+      "evidence": ["docs/DOMAINOS-CORES-SETAS-REVISAO.md", "tools/domainos_scrollbar_rules.json"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Compare setas e trilho com o Trash Can da VM SR10.4.",
+        "Distinga setas normais das que chegaram ao limite da rolagem.",
+        "Explique qual família e direção apresenta cores divergentes."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V02",
+      "title": "GTK3: barras, relevo e encaixe",
+      "scope": "Barras horizontal e vertical; quatro setas; trilho, thumb, moldura do conteúdo e canto entre barras.",
+      "technical_status": "partial",
+      "conclusion": "Medidas e triângulos normais foram comparados. A moldura principal da tabela preenchida continua pendente, assim como os estados históricos ainda sem referência. A família não está concluída.",
+      "evidence": ["docs/DOMAINOS-COMPARACAO-ROLAGEM-GTK3.md", "docs/referencias/domainos-sr104/trash-can-normal.png"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Compare relevo do botão, trilho e thumb nas duas orientações.",
+        "Confira moldura da tabela e o encaixe no canto inferior direito.",
+        "Confira a seta inferior ao pressionar e soltar."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V03",
+      "title": "GTK2: comparação própria",
+      "scope": "Widgets GTK2 reais e seus assets; não herdar a conclusão técnica ou visual do GTK3.",
+      "technical_status": "pending",
+      "conclusion": "Está na fila. Os recursos GTK2 foram preservados na etapa GTK3; isso comprova preservação, não equivalência com o Motif SR10.4. Precisa de comparação própria de cores, geometria e estados.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "gtk/README.md"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Em aplicativo GTK2, compare as duas barras e suas setas.",
+        "Confira relevo normal, pressionado e no limite da rolagem."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V04",
+      "title": "GTK4: desenho e limites da API",
+      "scope": "Barras GTK4 reais; iluminação e encaixe; distinguir suporte do toolkit de fidelidade histórica.",
+      "technical_status": "pending",
+      "conclusion": "Está na fila. Deve-se registrar a presença ou ausência de botões de seta na API GTK4 e a adaptação possível. Não foi comprovada a equivalência visual com o GTK3 ou com a VM.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "gtk/README.md"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Confira trilho, thumb e encaixe em aplicativo GTK4 real.",
+        "Marque como dúvida qualquer limitação que precise de adaptação."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V05",
+      "title": "GTK1: suporte efetivamente disponível",
+      "scope": "Confirmar versão, aplicativo e cobertura DomainOS antes de avaliar aparência.",
+      "technical_status": "pending",
+      "conclusion": "Há recursos GTK1 legados no projeto, mas uma variante DomainOS completa não foi demonstrada. Ausência de aplicativo de teste ou de cobertura deve ser registrada; não presumida como conclusão.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "gtk/Irixium/gtk-1.2/gtkrc"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Indique se você usa algum aplicativo GTK1 que deva ser atendido.",
+        "Se ainda não houver aplicativo disponível, marque Não testei."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V06",
+      "title": "Qt Widgets e Kvantum",
+      "scope": "Controles Qt Widgets; tema base e variante de paleta; seta inferior já relatada pelo usuário.",
+      "technical_status": "pending",
+      "conclusion": "Troca de paleta tem evidências próprias, mas a revisão das barras está aberta. Comparar desenho e estados do Kvantum com o contrato comum; a seta inferior relatada ainda não está encerrada.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "kvantum/README.md"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Compare setas, botões, trilho e thumb nas duas orientações.",
+        "Confira cores dos controles Qt após trocar o esquema.",
+        "Confira o encontro das barras e a seta inferior."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V07",
+      "title": "Qt Quick e System Settings",
+      "scope": "Controles Qt Quick no KDE, separados de Qt Widgets; identificar o componente da seta antes de corrigir.",
+      "technical_status": "pending",
+      "conclusion": "O defeito da seta inferior no System Settings está registrado. A janela reúne tecnologias distintas; atribuí-lo automaticamente ao Kvantum seria incorreto. Precisa de identificação e comparação próprias.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Confira a barra lateral e a barra do conteúdo no System Settings.",
+        "Compare cores, centralidade e relevo das setas com a VM."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V08",
+      "title": "Plasma Style: controles próprios",
+      "scope": "Widgets SVG e controles reais do Plasma, sem confundi-los com o layout da barra ou com Qt Quick.",
+      "technical_status": "pending",
+      "conclusion": "Está na fila. A aparência dos controles próprios do Plasma precisa de comparação independente; escolher um Plasma Style não comprova a troca do layout nem a aparência de outras tecnologias.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "plasma/IrixClassicDomainOS/widgets/scrollbar.svg"],
+      "requirement_ids": ["F31"],
+      "check_steps": [
+        "Confira as barras dos controles do Plasma e seus estados.",
+        "Compare iluminação, trilho e encaixe com a regra comum."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V09",
+      "title": "Chapa metálica e desenho do LED",
+      "scope": "Escala efetiva, linhas metálicas e borrão à direita, perto do LED e do ícone Applications; preservar o design aprovado.",
+      "technical_status": "pending",
+      "conclusion": "O borrão e a escala da chapa seguem na fila visual. O funcionamento de espera do LED foi comprovado na R13, mas isso não aprova seu desenho. A luz do Pager permanece fora desta correção.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md"],
+      "requirement_ids": ["F29", "F31"],
+      "check_steps": [
+        "Compare chapa, ícone Applications e entorno do LED em escala nativa.",
+        "Observe a espera com o teste de lançamento de 3 segundos.",
+        "Diferencie desenho, nitidez e comportamento na sua explicação."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "V10",
+      "title": "Conjunto: decorações e esquemas de cores",
+      "scope": "Harmonia entre janela, menu, painel e toolkits; normal/pressionado; esquemas DomainOS, neutro, escuro e amarelo.",
+      "technical_status": "pending",
+      "conclusion": "A avaliação conjunta virá após corrigir cada família. Deve conferir molduras grossas/finas e título pressionado, além de cores dinâmicas. Somente LED e luz do Pager têm exceção estática autorizada, sujeita a contraste.",
+      "evidence": ["docs/DOMAINOS-FILA-REVISAO-VISUAL.md", "decorations/domainos/README.md", "docs/DOMAINOS-DECISOES-CONSOLIDADAS.md"],
+      "requirement_ids": ["F30", "F31"],
+      "check_steps": [
+        "Compare as molduras de janelas normais e de diálogos com a VM.",
+        "Confira o título ao manter pressionado e ao soltar.",
+        "Confira a harmonia e o contraste após trocar o esquema de cores."
+      ],
+      "review_status": "unreviewed",
+      "review_note": ""
+    }
+  ]
+}
