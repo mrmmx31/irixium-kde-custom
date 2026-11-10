@@ -62,6 +62,38 @@ fora desse conjunto: não engrossar a barra para imitar o afastamento.
 O [registro de métricas](referencias/domainos-sr104/TRASH-CAN-METRICAS.json)
 contém coordenadas e hashes da [referência normal](referencias/domainos-sr104/trash-can-normal.png).
 
+Na adaptação GTK2, os cinco pixels terminais que unem cada botão de seta ao
+trilho são um perfil próprio medido na captura SR10.4, não um bevel genérico.
+O contrato compartilhado `tools/domainos_scrollbar_rules.json` registra esses
+perfis como papéis semânticos (`dark`, `light`, `face`, `trough`); a paleta KDE
+ativa resolve as cores em cada geração. GTK2 mantém barra de 15 px, seta/célula
+de 11/15 px e `stepper-spacing=0`. Os quatro encaixes normal horizontal e
+vertical foram comparados em escala 1:1. Isso não comprova estados pressionados
+ou desabilitados dos quatro encaixes. O resultado GTK2 publicado usa
+integralmente a receita R584, restaurada em R761 e escolhida pelo usuário:
+engine `pixmap`, sem forçar `GtkScrolledWindow::scrollbar-spacing` nem
+`GtkRange::trough-under-steppers`. O `view_bar_gap_px=4` e as experiências
+posteriores continuam no contrato como evidência e hipóteses de adaptação, mas
+não são promovidos silenciosamente ao produto. Os caps normais de cinco pixels
+do trilho continuam separados por orientação e resolvidos pelos papéis KDE
+atuais. Estados VUE pressionados e insensíveis continuam sem comparação direta,
+e I517 continua separada para entrada explícita na VM.
+
+Nos thumbs normais, a leitura Motif registra que os dois extremos longitudinais
+continuam o perfil transversal do corpo. Em R740/R742 foram ensaiados assets GTK2
+por orientação para remover tampas adicionais e a comparação das geometrias
+ensaiadas coincidiu com o raster SR10.4. R761 restaurou a receita R584 por
+decisão do usuário; portanto esse ensaio permanece evidência e não integra o
+gerador GTK2 publicado. Isso não presume estados pressionado/insensível nem
+comprimentos fixos para outras aplicações.
+
+O raster SR10.4 medido no corpo do trilho é `DDLLFFFFFFFDDLL`. O perfil
+`DDFFFFFFFFFFFLL` foi uma adaptação intermediária R760 e foi substituído quando
+R761 restaurou integralmente R584. Ele permanece documentado para comparação,
+não como entrada ativa do gerador. Os tokens do resultado R584 continuam
+resolvidos pela paleta KDE ativa; o raster da VM é referência medida e não RGB
+fixo. A avaliação visual final continua pendente.
+
 O comprimento do thumb depende da quantidade de conteúdo e do intervalo de
 rolagem. O Trash Can vazio tem um thumb quase integral; copiar esse comprimento
 para todas as aplicações seria uma regra incorreta. O mínimo C original ainda

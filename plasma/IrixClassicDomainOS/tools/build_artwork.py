@@ -413,6 +413,22 @@ def clock():
 def derivative(source):
     """Retain existing resource IDs while replacing incompatible rendering."""
     result=ET.parse(source).getroot()
+    if source.relative_to(BASE).as_posix() == 'widgets/scrollbar.svg':
+        # The real Plasma Components.ScrollBar uses this hint as the thumb's
+        # minimum cross-size, then adds the SVG insets on both sides. SR10.4
+        # measures an 11px thumb inside a 15px bar, so use 11px artwork and
+        # 2px cross-axis margins instead of inheriting Classic's 12+8/12+4.
+        vertical_cross_insets = {
+            'slider-hint-left-inset', 'slider-hint-right-inset',
+            'mouseover-slider-hint-left-inset', 'mouseover-slider-hint-right-inset',
+            'background-vertical-hint-left-inset', 'background-vertical-hint-right-inset',
+        }
+        for element in result.iter():
+            identifier = element.attrib.get('id')
+            if identifier == 'hint-scrollbar-size':
+                element.attrib.update(width='11', height='11')
+            elif identifier in vertical_cross_insets:
+                element.attrib['width'] = '2'
     gradients={}
     for element in result.iter():
         if element.tag.rsplit('}',1)[-1] in ('linearGradient','radialGradient'):
@@ -466,6 +482,10 @@ def build():
     if provenance.exists():
         origin=json.loads(provenance.read_text())
         origin['palette'] = {**PALETTE, 'selection_rim': PALETTE['active']}
+        scrollbar_note = ('Plasma Components.ScrollBar: SVG size hint 11x11 plus 2px cross-axis insets yields 15px total thickness; '
+                          'measured against Domain/OS SR10.4/VUE2.01 (bar 15px, thumb cross-size 11px).')
+        if scrollbar_note not in origin['local_changes']:
+            origin['local_changes'].append(scrollbar_note)
         origin['runtime_colors'] = {
             'source': 'selected KDE KColorScheme via native KSvg current-color-scheme roles',
             'fixed_reference_palette_rendered': False,

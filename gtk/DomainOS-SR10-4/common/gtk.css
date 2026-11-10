@@ -236,17 +236,6 @@ check:indeterminate {
   -gtk-icon-source: none;
   border-image-source: none;
 }
-combobox arrow {
-  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
-  background-position: center;
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-clip: border-box;
-  min-width: 12px;
-  min-height: 12px;
-  -gtk-icon-source: none;
-}
 menuitem arrow {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
   background-position: center;
@@ -262,6 +251,17 @@ expander arrow {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
   background-position: center;
   background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+combobox arrow {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
   background-repeat: no-repeat;
   background-origin: border-box;
   background-clip: border-box;
@@ -434,17 +434,6 @@ check:indeterminate:backdrop {
   -gtk-icon-source: none;
   border-image-source: none;
 }
-combobox arrow:backdrop {
-  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
-  background-position: center;
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-clip: border-box;
-  min-width: 12px;
-  min-height: 12px;
-  -gtk-icon-source: none;
-}
 menuitem arrow:backdrop {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
   background-position: center;
@@ -460,6 +449,17 @@ expander arrow:backdrop {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
   background-position: center;
   background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+combobox arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
   background-repeat: no-repeat;
   background-origin: border-box;
   background-clip: border-box;
@@ -632,17 +632,6 @@ check:indeterminate:disabled {
   -gtk-icon-source: none;
   border-image-source: none;
 }
-combobox arrow:disabled {
-  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
-  background-position: center;
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-clip: border-box;
-  min-width: 12px;
-  min-height: 12px;
-  -gtk-icon-source: none;
-}
 menuitem arrow:disabled {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
   background-position: center;
@@ -658,6 +647,17 @@ expander arrow:disabled {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
   background-position: center;
   background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+combobox arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
   background-repeat: no-repeat;
   background-origin: border-box;
   background-clip: border-box;
@@ -830,17 +830,6 @@ check:indeterminate:disabled:backdrop {
   -gtk-icon-source: none;
   border-image-source: none;
 }
-combobox arrow:disabled:backdrop {
-  background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
-  background-position: center;
-  background-size: 12px 12px;
-  background-repeat: no-repeat;
-  background-origin: border-box;
-  background-clip: border-box;
-  min-width: 12px;
-  min-height: 12px;
-  -gtk-icon-source: none;
-}
 menuitem arrow:disabled:backdrop {
   background-image: -gtk-recolor(url("adaptive/arrow-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
   background-position: center;
@@ -863,10 +852,43 @@ expander arrow:disabled:backdrop {
   min-height: 12px;
   -gtk-icon-source: none;
 }
+combobox arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
 expander:checked arrow:disabled:backdrop {
   background-image: -gtk-recolor(url("adaptive/arrow-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
   background-position: center;
   background-size: 12px 12px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+button.combo:active arrow {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-pressed-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 12px;
+  min-height: 12px;
+  -gtk-icon-source: none;
+}
+button.combo:active arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-combobox-arrow-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
   background-repeat: no-repeat;
   background-origin: border-box;
   background-clip: border-box;

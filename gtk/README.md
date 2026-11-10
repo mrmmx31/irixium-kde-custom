@@ -22,9 +22,18 @@ em `~/.themes`, necessário para a descoberta GTK2. Não instala arquivos em
 Os arquivos originais também são a fonte local para gerar os recursos GTK2;
 não há download de temas durante uma troca de cores.
 
+As três variantes DomainOS GTK2 usam o engine `pixmap` da distribuição. Esse é
+o resultado completo R584 restaurado por R761 e escolhido pelo usuário como a
+base mais correta para as próximas conferências. O instalador normal não compila
+nem instala o engine experimental `domainos-pixbuf`; seus fontes e o instalador
+dedicado permanecem separados para estudos reversíveis, sem integrar o perfil
+publicado.
+
 As barras DomainOS seguem a
 [especificação comum SR10.4](../docs/DOMAINOS-REGRAS-ROLAGEM.md).
-O gerador GTK3 lê o contrato JSON antes de construir os controles. A
+Os geradores GTK2 e GTK3 leem o contrato JSON. O GTK2 publicado conserva a
+receita R584; métricas posteriores continuam registradas como evidência e não
+são ativadas implicitamente. GTK3 aplica sua regra de moldura e espaçamento. A
 [fila de revisão](../docs/DOMAINOS-FILA-REVISAO-VISUAL.md) distingue famílias
 validadas e pendências: a moldura principal da tabela GTK3 preenchida ainda
 requer adaptação; GTK2 e GTK4 não recebem a conclusão da etapa GTK3.

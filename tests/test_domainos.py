@@ -78,6 +78,24 @@ class DomainOSProvenanceTest(unittest.TestCase):
         self.assertFalse((ROOT / 'colors/DomainOS-SR14.1.colors').exists())
         self.assertFalse((ROOT / 'colors/DomainOS-SR14.4.colors').exists())
 
+    def test_plasma_scrollbar_geometry_matches_sr104_control_contract(self):
+        asset = STYLE / 'widgets/scrollbar.svg'
+        root = ET.parse(asset).getroot()
+        elements = {node.get('id'): node for node in root.iter() if node.get('id')}
+        size = elements['hint-scrollbar-size']
+        self.assertEqual((size.get('width'), size.get('height')), ('11', '11'))
+        # Plasma Components.ScrollBar adds the per-side SVG insets to this
+        # hint. Two pixels on either cross-axis edge produce a 15px control.
+        for name in (
+            'slider-hint-left-inset', 'slider-hint-right-inset',
+            'mouseover-slider-hint-left-inset', 'mouseover-slider-hint-right-inset',
+            'background-vertical-hint-left-inset', 'background-vertical-hint-right-inset',
+        ):
+            with self.subTest(name=name):
+                self.assertEqual(elements[name].get('width'), '2')
+        origin = json.loads((STYLE / 'ORIGEM.json').read_text())
+        self.assertEqual(origin['resources']['widgets/scrollbar.svg']['sha256'], digest(asset))
+
 
 if __name__ == '__main__':
     unittest.main()

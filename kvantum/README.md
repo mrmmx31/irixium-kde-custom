@@ -44,8 +44,9 @@ cópias locais `IrixClassic-KDE`/`IrixClassic-KDE-Reload` ou
 `Irixium-KDE`/`Irixium-KDE-Reload` ou
 `DomainOS-SR10-4-KDE`/`DomainOS-SR10-4-KDE-Reload`, preservando fontes, métricas e relevos.
 
-A família DomainOS usa relevos Motif de dois pixels, trilhos de 16 pixels e
-setas triangulares de 12 pixels. Os indicadores não têm as estrias do Classic.
+A família DomainOS usa relevos Motif de dois pixels, barras de 15 pixels e
+setas de 11×11 pixels, conforme medidas da VM SR10.4/VUE 2.01. Os indicadores
+não têm as estrias do Classic.
 O desenho original e a paleta CoralReef estão registrados em
 [ORIGEM.json](DomainOS-SR10-4/ORIGEM.json), usando somente SR10.4/VUE 2.01.
 As variantes locais mantêm esse desenho enquanto aplicam os papéis KDE.

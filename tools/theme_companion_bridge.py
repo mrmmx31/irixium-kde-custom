@@ -28,11 +28,13 @@ UNIT = 'irix-theme-companions.service'
 MODULES = ('theme_companion_bridge.py', 'select_companions.py', 'select_gtk.py',
            'theme_transaction.py', 'components.py', 'reload_decoration.py',
            'gtk2_palette.py', 'gtk2_scrollbar_assets.py', 'gtk2_modern_palette.py', 'gtk2_palette_runtime.py',
-           'gtk2_domainos_palette.py', 'domainos_motif_art.py',
+           'gtk2_domainos_palette.py', 'gtk2_reload_notify.py', 'domainos_motif_art.py',
            'gtk4_palette_runtime.py', 'user_bundle.py', 'apply_kvantum_colors.py', 'apply_color_scheme.py',
            'kvantum_native_palette.py', 'kvantum_palette_runtime.py',
            'kvantum_classic_palette.py', 'kvantum_modern_palette.py', 'kvantum_domainos_palette.py',
            'kvantum_palette_config.py')
+RESOURCES = ('domainos_scrollbar_rules.json',)
+RUNTIME_FILES = MODULES + RESOURCES
 
 
 def locations(data, config, state):
@@ -85,7 +87,7 @@ def install(data, config, state, home, *, source_root=ROOT, dry=False):
     paths = locations(data, config, state)
     bundle = Bundle(paths['state']/'installation', (paths['runtime'], paths['unit'], paths['control']))
     no_links(source_root)
-    required = [source_root/'tools'/name for name in MODULES] + [source_root/'components.json']
+    required = [source_root/'tools'/name for name in RUNTIME_FILES] + [source_root/'components.json']
     for file in required:
         no_links(file)
         if not file.is_file(): raise Failure('Dependência da integração ausente: ' + str(file))
@@ -94,7 +96,7 @@ def install(data, config, state, home, *, source_root=ROOT, dry=False):
     # Use this user's state directory. In particular, do not populate /tmp with
     # another complete icon/theme tree just to install a few helper modules.
     if dry:
-        return {'status': 'ready', 'unit': UNIT, 'modules': len(MODULES)}
+        return {'status': 'ready', 'modules': len(MODULES), 'resources': len(RESOURCES), 'unit': UNIT}
     paths['state'].mkdir(parents=True, mode=0o700, exist_ok=True)
     with bundle.locked(), tempfile.TemporaryDirectory(prefix='.stage-', dir=paths['state']) as temp:
         if bundle.latest(): verify_runtime(paths)
@@ -328,6 +330,9 @@ def synchronize(data, config, state, home, *, companions=True, palette=True, nat
             else: status = None
             operation = refresh if status == 'active' else setup
             result['gtk2_palette'] = operation(data, config, state, home, profile['gtk'])
+            if result['gtk2_palette'].get('native_reload_required'):
+                from gtk2_reload_notify import reload_open_windows
+                result['gtk2_palette']['native_reload'] = reload_open_windows()
             from gtk4_palette_runtime import refresh as refresh_gtk4
             result['gtk4_palette'] = refresh_gtk4(data, config, state, home, profile['gtk'],
                 force_reload=result['gtk2_palette'].get('native_reload_required', False))

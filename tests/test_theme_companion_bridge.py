@@ -18,7 +18,9 @@ from theme_transaction import Failure, atomic, snapshot
 
 class CompanionBridgeTest(unittest.TestCase):
     def setUp(self):
-        self.temp = tempfile.TemporaryDirectory(prefix='.gtk-kde-bridge-test-', dir=ROOT)
+        temp_root = Path.home()/'tempia'
+        temp_root.mkdir(parents=True, exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(prefix='gtk-kde-bridge-test-', dir=temp_root)
         self.addCleanup(self.temp.cleanup)
         self.home = Path(self.temp.name)
         self.data, self.config, self.state = [self.home/name for name in ('data', 'config', 'state')]
@@ -35,7 +37,7 @@ class CompanionBridgeTest(unittest.TestCase):
         self.assertEqual(self.install()['status'], 'installed')
         bridge.verify_runtime(self.paths)
         runtime = self.paths['runtime']
-        self.assertEqual({file.name for file in (runtime/'tools').iterdir()}, set(bridge.MODULES))
+        self.assertEqual({file.name for file in (runtime/'tools').iterdir()}, set(bridge.RUNTIME_FILES))
         self.assertEqual(json.loads((runtime/'components.json').read_text())['profiles'], bridge.catalog()['profiles'])
         unit = self.paths['unit'].read_text()
         self.assertIn(str(runtime/'tools/theme_companion_bridge.py'), unit)
@@ -253,10 +255,18 @@ path.write_text(json.dumps(rows))
                     patch.object(bridge, 'require_global'), \
                     patch.object(bridge, 'notify', return_value=profile['gtk']), \
                     patch('gtk2_palette_runtime.setup', return_value={'native_reload_required': changed}), \
+                    patch('gtk2_reload_notify.reload_open_windows', return_value={
+                        'status': 'sent', 'windows_considered': 1,
+                        'events_sent': 1, 'racing_x_errors': 0}) as reload_windows, \
                     patch('gtk4_palette_runtime.refresh', return_value={'status': 'unchanged'}) as refresh:
-                self.sync(companions=False)
+                result = self.sync(companions=False)
                 refresh.assert_called_once_with(self.data, self.config, self.state, self.home,
                     profile['gtk'], force_reload=changed)
+                if changed:
+                    reload_windows.assert_called_once_with()
+                    self.assertEqual(result['gtk2_palette']['native_reload']['events_sent'], 1)
+                else:
+                    reload_windows.assert_not_called()
 
 
 if __name__ == '__main__': unittest.main()

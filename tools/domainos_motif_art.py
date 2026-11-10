@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
 
@@ -18,6 +19,39 @@ NAME = 'DomainOS-SR10-4'
 STATES = ('normal', 'focused', 'pressed', 'toggled', 'disabled')
 NS = 'http://www.w3.org/2000/svg'
 ET.register_namespace('', NS)
+
+# 15px normal scrollbar cells transcribed as integer semantic pixels from the
+# SR10.4/VUE2.01 native bar crops. These are vector source tokens, not bitmaps.
+SCROLLBAR_STEPPERS = {
+    'up': (
+        'DDDDDDDDDDDDDDD', 'DDDDDDDDDDDDDDL', 'DD.....L.....LL',
+        'DD....LLD....LL', 'DD....LLD....LL', 'DD...LLFDD...LL',
+        'DD...LLFDD...LL', 'DD..LLFFFDD..LL', 'DD..LLFFFDD..LL',
+        'DD.LLFFFFFDD.LL', 'DD.LLFFFFFDD.LL', 'DDLLDDDDDDDDDLL',
+        'DDLDDDDDDDDDDLL', 'DD...........LL', 'DDLLLLLLLLLLLLL',
+    ),
+    'down': (
+        'DDLDDDDDDDDDDLL', 'DD...........LL', 'DDLLLLLLLLLLLLL',
+        'DDLLLLLLLLLDDLL', 'DD.LLFFFFFDD.LL', 'DD.LLFFFFFDD.LL',
+        'DD..LLFFFDD..LL', 'DD..LLFFFDD..LL', 'DD...LLFDD...LL',
+        'DD...LLFDD...LL', 'DD....LDD....LL', 'DD....LDD....LL',
+        'DD.....D.....LL', 'DDLLLLLLLLLLLLL', 'DLLLLLLLLLLLLLL',
+    ),
+    'left': (
+        'DDDDDDDDDDDDDDD', 'DDDDDDDDDDDDDDD', 'DD.........LL.L',
+        'DD.......LLLD.L', 'DD.....LLLLDD.L', 'DD...LLLLFFDD.L',
+        'DD.LLLLFFFFDD.L', 'DDLLLFFFFFFDD.L', 'DD.DDDDFFFFDD.L',
+        'DD...DDDDFFDD.L', 'DD.....DDDDDD.L', 'DD.......DDDD.L',
+        'DD.........DD.L', 'DDLLLLLLLLLLLLL', 'DLLLLLLLLLLLLLL',
+    ),
+    'right': (
+        'DDDDDDDDDDDDDDD', 'DDDDDDDDDDDDDDL', 'L.LL.........LL',
+        'D.LLLL.......LL', 'D.LLLLLL.....LL', 'D.LLFFLLLL...LL',
+        'D.LLFFFFLLLL.LL', 'D.LLFFFFFFDDDLL', 'D.LLFFFFDDDD.LL',
+        'D.LLFFDDDD...LL', 'D.LLDDDD.....LL', 'D.LDDD.......LL',
+        'D.LD.........LL', 'LLLLLLLLLLLLLLL', 'LLLLLLLLLLLLLLL',
+    ),
+}
 
 ROLES = {
     'window': ('theme_bg_color_breeze', 'theme_unfocused_bg_color_breeze', 'insensitive_bg_color_breeze', 'insensitive_unfocused_bg_color_breeze'),
@@ -114,9 +148,10 @@ def bevel(image, thickness=2, down=False):
     return image
 
 
-def surface(state='normal', *, width=24, height=24, down=False, flat=False):
+def surface(state='normal', *, width=24, height=24, down=False, flat=False, thickness=2):
     image = blank(width, height, 'face')
-    return image if flat else bevel(image, down=down or state in ('pressed', 'toggled'))
+    return image if flat else bevel(image, thickness=thickness,
+                                    down=down or state in ('pressed', 'toggled'))
 
 
 def triangle(state='normal', direction='up', *, size=12):
@@ -154,6 +189,77 @@ def stepper(state='normal', direction='up'):
         for x, token in enumerate(row):
             if token is not None: image[y+2][x+2] = token
     return image
+
+
+def kvantum_scrollbar_triangle(state='normal', direction='up'):
+    """Eleven-pixel VUE scrollbar glyph, separate from other Qt arrows."""
+    if direction not in ('up', 'down', 'left', 'right'):
+        raise ValueError('Unknown scrollbar direction')
+    roles = {'L': 'light', 'D': 'dark', 'F': 'face', '.': None}
+    image = [[roles[token] for token in row[2:13]]
+             for row in SCROLLBAR_STEPPERS[direction][2:13]]
+    if state in ('pressed', 'toggled'):
+        image = [['dark' if token == 'light' else 'light' if token == 'dark' else token
+                  for token in row] for row in image]
+    return image
+
+
+def kvantum_scrollbar_stepper(state='normal', direction='up', *,
+                              bar_px=15, shadow_px=2, arrow_px=11):
+    """Generate an integer scrollbar cell from the shared metric recipe.
+
+    The measured SR10.4 15/2/11 geometry uses the original semantic pixels.
+    Other odd glyph sizes use nearest-neighbour expansion inside the requested
+    bevel; there is no filtered scaling or final RGB in this geometry helper.
+    """
+    if direction not in SCROLLBAR_STEPPERS:
+        raise ValueError('Unknown scrollbar direction')
+    if (any(type(value) is not int for value in (bar_px, shadow_px, arrow_px)) or
+            bar_px != arrow_px + 2 * shadow_px or arrow_px < 3 or
+            not arrow_px & 1 or shadow_px < 0):
+        raise ValueError('Scrollbar metrics require an odd arrow and bar = arrow + 2 × relief')
+    if (bar_px, shadow_px, arrow_px) == (15, 2, 11):
+        roles = {'D': 'dark', 'L': 'light', 'F': 'face', '.': 'trough'}
+        image = [[roles[token] for token in row] for row in SCROLLBAR_STEPPERS[direction]]
+        arrow = kvantum_scrollbar_triangle(state, direction)
+        for y, row in enumerate(arrow):
+            for x, token in enumerate(row):
+                if token is not None: image[y+2][x+2] = token
+        return image
+    source = kvantum_scrollbar_triangle(state, direction)
+    source_size = len(source)
+    glyph = [[source[min(source_size - 1, y * source_size // arrow_px)]
+                    [min(source_size - 1, x * source_size // arrow_px)]
+              for x in range(arrow_px)] for y in range(arrow_px)]
+    image = blank(bar_px, bar_px, 'trough')
+    bevel(image, thickness=shadow_px, down=True)
+    for y, row in enumerate(glyph):
+        for x, token in enumerate(row):
+            if token is not None:
+                image[y + shadow_px][x + shadow_px] = token
+    return image
+
+
+def svg_assets(scrollbar_geometry=None):
+    """Kvantum-only scrollbar geometry; shared GTK/Motif assets stay intact."""
+    result = assets()
+    geometry = scrollbar_geometry or {'bar_px': 15, 'shadow_px': 2, 'arrow_px': 11}
+    shadow = geometry['shadow_px']
+    if shadow != 2:
+        for state in STATES:
+            trough = surface(state, width=24, height=24, down=True, thickness=shadow)
+            for y in range(shadow, 24-shadow):
+                for x in range(shadow, 24-shadow):
+                    trough[y][x] = 'trough'
+            result['scroll-trough-'+state] = (trough, 'button', shadow)
+            result['scroll-thumb-'+state] = (
+                surface(state, width=24, height=24, thickness=shadow), 'button', shadow)
+    for state in STATES:
+        for direction in ('up', 'down', 'left', 'right'):
+            result['stepper-'+direction+'-'+state] = (
+                kvantum_scrollbar_stepper(state, direction, **{
+                    key: geometry[key] for key in ('bar_px', 'shadow_px', 'arrow_px')}), 'button', 0)
+    return result
 
 
 def toggle(kind, state='normal', selected=False, mixed=False):
@@ -204,6 +310,52 @@ def assets():
     return result
 
 
+def gtk2_assets():
+    """Add GTK2-only scroll cells from the shared SR10.4 15/2/11 contract."""
+    result = assets()
+    for state in STATES:
+        for direction in ('up', 'down', 'left', 'right'):
+            result['scrollbar-stepper-' + direction + '-' + state] = (
+                kvantum_scrollbar_stepper(state, direction), 'button', 0)
+            result['scrollbar-arrow-' + direction + '-' + state] = (
+                kvantum_scrollbar_triangle(state, direction), 'button', 0)
+    return result
+
+
+def gtk2_stepper_trough_junctions():
+    """Read the measured VM profile, GTK2 visual override and measured caps."""
+    contract = json.loads(Path(__file__).with_name('domainos_scrollbar_rules.json').read_text(encoding='utf-8'))
+    junction = contract['relief']['gtk2_stepper_trough_junction']
+    legend = junction['legend']
+    mapping = {'D': 'dark', 'L': 'light', 'F': 'face', 'T': 'trough'}
+    if legend != {'D': 'dark', 'L': 'light', 'F': 'face', 'T': 'trough'}:
+        raise ValueError('GTK2 scrollbar junction legend differs from the renderer contract')
+    patterns = junction['normal_caps']
+    expected = {
+        'horizontal_start_rows': (15, 5), 'horizontal_end_rows': (15, 5),
+        'vertical_start_rows': (5, 15), 'vertical_end_rows': (5, 15),
+    }
+    result = {}
+    cross_axis = junction['normal_cross_axis_profile']
+    if len(cross_axis) != 15 or any(token not in mapping for token in cross_axis):
+        raise ValueError('Invalid native GTK2 scrollbar cross-axis profile')
+    result['normal_cross_axis_profile'] = tuple(mapping[token] for token in cross_axis)
+    adaptation = junction.get('gtk2_adaptation_cross_axis_profile')
+    if adaptation:
+        body = adaptation.get('profile') if isinstance(adaptation, dict) else None
+        if (not isinstance(body, str) or len(body) != 15
+                or any(token not in mapping for token in body)):
+            raise ValueError('Invalid GTK2 visual-adaptation cross-axis profile')
+        result['gtk2_adaptation_cross_axis_profile'] = tuple(mapping[token] for token in body)
+    for name, (height, width) in expected.items():
+        rows = patterns[name]
+        if (len(rows) != height or any(len(row) != width for row in rows)
+                or any(token not in mapping for row in rows for token in row)):
+            raise ValueError('Invalid native GTK2 scrollbar junction raster: ' + name)
+        result[name] = tuple(tuple(mapping[token] for token in row) for row in rows)
+    return result
+
+
 def slices(image, border):
     height, width = len(image), len(image[0])
     if not border: return {'': image}
@@ -216,7 +368,7 @@ def slices(image, border):
     return {name: [row[x0:x1] for row in image[y0:y1]] for name, (x0, y0, x1, y1) in bounds.items()}
 
 
-def svg(palette=None):
+def svg(palette=None, *, scrollbar_geometry=None):
     palette = DEFAULT if palette is None else palette
     root = ET.Element('{'+NS+'}svg', {'version': '1.1', 'width': '768', 'height': '8192',
         'viewBox': '0 0 768 8192', 'shape-rendering': 'crispEdges'})
@@ -249,7 +401,7 @@ def svg(palette=None):
         for xx, yy, ww, hh, token in sorted(rectangles, key=lambda box: (box[1], box[0])):
             color = evaluate(pixel_plan(family, token, inactive=inactive, disabled=disabled), palette)
             ET.SubElement(group, '{'+NS+'}rect', {'x': str(xx), 'y': str(yy), 'width': str(ww), 'height': str(hh), 'fill': color})
-    for name, (pixels, family, border) in assets().items():
+    for name, (pixels, family, border) in svg_assets(scrollbar_geometry).items():
         disabled = name.endswith('-disabled')
         for inactive in (False, True):
             prefix = 'dm-'+name+('-inactive' if inactive else '')
@@ -297,8 +449,11 @@ def svg(palette=None):
     return (ET.tostring(root, encoding='unicode', xml_declaration=False)+'\n').encode()
 
 
-def kvconfig():
-    general = '''# SPDX-FileCopyrightText: 2026 mrmmx31
+def kvconfig(scrollbar_extent_px, scrollbar_relief_px=2):
+    if (type(scrollbar_extent_px) is not int or not 1 <= scrollbar_extent_px <= 128 or
+            type(scrollbar_relief_px) is not int or not 0 <= scrollbar_relief_px <= 64):
+        raise ValueError('Kvantum scrollbar extent/relief must be integer pixel metrics')
+    general = f'''# SPDX-FileCopyrightText: 2026 mrmmx31
 # SPDX-License-Identifier: GPL-3.0-or-later
 # New Motif/VUE SR10.4 adaptation; no extracted HP theme resources.
 [%General]
@@ -322,7 +477,7 @@ scroll_arrows=true
 scrollbar_in_view=false
 transient_scrollbar=false
 transient_groove=false
-scroll_width=16
+scroll_width={scrollbar_extent_px}
 scroll_min_extent=20
 splitter_width=5
 slider_width=14
@@ -399,9 +554,10 @@ no_selection_tint=true
     sections.append('[TreeExpander]\nindicator.element=dm-arrow\nindicator.size=12\n')
     panel('GroupBox', 'inset', interior=False)
     panel('ItemView', 'row', frame=0, minimum=18)
-    sections.append('[Scrollbar]\nframe=false\ninterior=false\nindicator.element=dm-stepper\nindicator.size=16\n')
-    panel('ScrollbarGroove', 'scroll-trough')
-    panel('ScrollbarSlider', 'scroll-thumb', extra='indicator.element=dm-empty\nindicator.size=1\n')
+    sections.append('[Scrollbar]\nframe=false\ninterior=false\nindicator.element=dm-stepper\nindicator.size=' + str(scrollbar_extent_px) + '\n')
+    panel('ScrollbarGroove', 'scroll-trough', frame=scrollbar_relief_px)
+    panel('ScrollbarSlider', 'scroll-thumb', frame=scrollbar_relief_px,
+          extra='indicator.element=dm-empty\nindicator.size=1\n')
     panel('Splitter', 'command', extra='indicator.element=dm-empty\nindicator.size=1\n')
     panel('Slider', 'scroll-trough')
     panel('SliderCursor', 'range-thumb', extra='indicator.element=dm-empty\nindicator.size=1\n')

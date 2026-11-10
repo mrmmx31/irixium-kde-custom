@@ -21,7 +21,7 @@ import zipfile
 sys.dont_write_bytecode = True
 from domainos_native_menu import BINARY_SOURCE, MANIFEST_SOURCE, BUILD_INPUTS, validate_payload
 from package_domainos import verify_archive, NAME as NATIVE_PACKAGE
-from theme_companion_bridge import MODULES as COMPANION_MODULES
+from theme_companion_bridge import MODULES as COMPANION_MODULES, RESOURCES as COMPANION_RESOURCES
 from domainos_style_bridge import MODULES as PANEL_MODULES
 from theme_transaction import Failure, no_links
 from user_bundle import fingerprint, validate_source
@@ -47,7 +47,7 @@ SUPPORT = (
     'tests/test_suite_distribution.py',
     'plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md',
 )
-TOOLS = tuple(sorted(set(COMPANION_MODULES + PANEL_MODULES + (
+TOOLS = tuple(sorted(set(COMPANION_MODULES + COMPANION_RESOURCES + PANEL_MODULES + (
     'classic_hook_runtime.py', 'apply_suite.py', 'package_suite.py',
     'package_domainos.py',
 ))))

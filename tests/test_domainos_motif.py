@@ -6,6 +6,7 @@ import importlib.util
 import io
 import json
 from pathlib import Path
+import re
 import sys
 import tempfile
 import unittest
@@ -92,6 +93,23 @@ class MotifArtworkTest(unittest.TestCase):
                            for token in ('light', 'dark', 'trough'))
             self.assertEqual(actual, expected)
 
+    def test_gtk2_scrollbar_assets_follow_shared_sr104_geometry(self):
+        assets = art.gtk2_assets()
+        for state in art.STATES:
+            for direction in ('up', 'down', 'left', 'right'):
+                cell = assets['scrollbar-stepper-'+direction+'-'+state][0]
+                glyph = assets['scrollbar-arrow-'+direction+'-'+state][0]
+                self.assertEqual((len(cell), len(cell[0])), (15, 15))
+                self.assertEqual((len(glyph), len(glyph[0])), (11, 11))
+                self.assertEqual(cell, art.kvantum_scrollbar_stepper(state, direction))
+                self.assertEqual(glyph, art.kvantum_scrollbar_triangle(state, direction))
+        rc = builder.gtk2_rc().decode()
+        self.assertIn('GtkRange::slider-width = 11', rc)
+        self.assertIn('GtkRange::stepper-size = 15', rc)
+        self.assertIn('GtkRange::trough-border = 2', rc)
+        self.assertIn('scrollbar-stepper-down-normal.png', rc)
+        self.assertIn('scrollbar-arrow-down-normal.png', rc)
+
     def test_inset_view_preserves_its_face_and_uses_container_shadows(self):
         palette = exported()
         palette['theme_base_color_breeze'] = '#456789'
@@ -119,8 +137,39 @@ class KvantumDomainOSTest(unittest.TestCase):
         cls.config = (source/(art.NAME+'.kvconfig')).read_bytes()
 
     def test_canonical_bytes_match_public_generator(self):
-        self.assertEqual(self.svg, art.svg())
-        self.assertEqual(self.config, art.kvconfig())
+        expected_svg, expected_config = kv.sources()
+        self.assertEqual(self.svg, expected_svg)
+        self.assertEqual(self.config, expected_config)
+
+    def test_kvantum_scrollbar_uses_native_integer_geometry_only(self):
+        for state in art.STATES:
+            for direction in ('up', 'down', 'left', 'right'):
+                cell = art.kvantum_scrollbar_stepper(state, direction)
+                glyph = art.kvantum_scrollbar_triangle(state, direction)
+                self.assertEqual((len(cell), len(cell[0])), (15, 15))
+                self.assertEqual((len(glyph), len(glyph[0])), (11, 11))
+                expected = [[token if token is not None else 'trough' for token in row]
+                            for row in glyph]
+                self.assertEqual([row[2:13] for row in cell[2:13]], expected)
+                svg_cell = art.svg_assets()['stepper-'+direction+'-'+state][0]
+                self.assertEqual((len(svg_cell), len(svg_cell[0])), (15, 15))
+        # Generic arrows stay separate; the GTK2 scrollbar has its own cells.
+        shared = art.assets()['stepper-down-normal'][0]
+        self.assertEqual((len(shared), len(shared[0])), (16, 16))
+        gtk_cell = art.gtk2_assets()['scrollbar-stepper-down-normal'][0]
+        self.assertEqual((len(gtk_cell), len(gtk_cell[0])), (15, 15))
+        config = kv.sources()[1].decode()
+        self.assertIn('scroll_width=15', config)
+        self.assertIn('indicator.size=15', config)
+
+    def test_kvantum_down_arrow_matches_saved_sr104_normal_and_held_pixels(self):
+        reference = json.loads((ROOT/'docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json').read_text())
+        roles = {'L': 'light', 'D': 'dark', 'F': 'face', '.': None, 'C': None}
+        rows = reference['glyph_rows_with_context']
+        for state, image in (('normal','TRASH-DOWN-NORMAL.png'),
+                             ('pressed','TRASH-DOWN-HELD.png')):
+            expected = [[roles[token] for token in row] for row in rows[image]]
+            self.assertEqual(art.kvantum_scrollbar_triangle(state, 'down'), expected)
 
     def test_three_schemes_change_paint_without_geometry_or_source_mutation(self):
         results = [kv.render(self.svg, self.config, exported(kind), native_qt_palette=QT) for kind in ('blue', 'dark', 'yellow')]
@@ -238,29 +287,183 @@ class GtkDomainOSTest(unittest.TestCase):
                 self.assertNotIn('/home/', path.read_text())
                 self.assertNotIn('IrixClassic', path.read_text())
 
+    def test_published_gtk2_source_is_the_selected_r584_baseline(self):
+        expected = 'efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7'
+        for name in builder.IDENTITIES:
+            payload = (ROOT/'gtk'/name/'gtk-2.0/gtkrc').read_bytes()
+            self.assertEqual(hashlib.sha256(payload).hexdigest(), expected, name)
+            self.assertIn(b'engine "pixmap"', payload)
+            self.assertNotIn(b'domainos-pixbuf', payload)
+            self.assertNotIn(b'GtkRange::trough-under-steppers', payload)
+            self.assertNotIn(b'GtkScrolledWindow::scrollbar-spacing', payload)
+
     def test_gtk2_preparation_is_immutable_and_distinct_by_scheme(self):
         with tempfile.TemporaryDirectory() as folder:
             destination = Path(folder)/'generated'
-            outputs = [gtk2.prepare_domainos(ROOT/'gtk'/ (art.NAME+'-KDE'), css(exported(kind)), destination) for kind in ('blue', 'dark', 'yellow')]
+            palettes = [exported(kind) for kind in ('blue', 'dark', 'yellow')]
+            outputs = [gtk2.prepare_domainos(ROOT/'gtk'/ (art.NAME+'-KDE'), css(palette), destination) for palette in palettes]
             self.assertFalse(destination.exists())
             self.assertEqual(len({value.directory for value in outputs}), 3)
-            for value in outputs:
+            for value, palette in zip(outputs, palettes):
                 self.assertGreater(value.manifest['asset_count'], 50)
-                self.assertNotIn(b'../common/assets/', value.files[value.gtkrc])
+                generated_rc = value.files[value.gtkrc]
+                self.assertNotIn(b'../common/assets/', generated_rc)
                 self.assertIn(b'function = STEPPER', value.files[value.gtkrc])
+                self.assertRegex(generated_rc.decode(), r'widget "\*gtk-tooltip\*" style : highest "domainos-tooltip-[0-9a-f]{10}"')
+                self.assertIn(('bg[NORMAL] = "'+palette['tooltip_background_breeze']+'"').encode(), generated_rc)
+                self.assertIn(('fg[NORMAL] = "'+palette['tooltip_text_breeze']+'"').encode(), generated_rc)
+                self.assertIn(b'GtkRange::slider-width = 11', generated_rc)
+                self.assertIn(b'GtkRange::stepper-size = 15', generated_rc)
+                self.assertIn(b'GtkRange::trough-border = 2', generated_rc)
+                self.assertIn(b'assets/scrollbar-stepper-down-normal.png', generated_rc)
+                self.assertIn(b'assets/scrollbar-arrow-down-normal.png', generated_rc)
+            rendered_cells = []
+            for value in outputs:
+                matches = [payload for path, payload in value.files.items()
+                           if path.name == 'scrollbar-stepper-down-normal.png']
+                self.assertEqual(len(matches), 1)
+                rendered_cells.append(matches[0])
+            self.assertEqual(len(set(rendered_cells)), 3)
+            generated_assets = [{path.name: payload for path, payload in value.files.items()}
+                                for value in outputs]
+            from PIL import Image
+            modes = ('normal', 'focused', 'pressed', 'toggled', 'disabled')
+            for direction in ('up', 'down', 'left', 'right'):
+                for mode in modes:
+                    name = f'scrollbar-arrow-{direction}-{mode}.png'
+                    variants = [assets[name] for assets in generated_assets]
+                    pixel_values = []
+                    for payload in variants:
+                        with Image.open(io.BytesIO(payload)) as image:
+                            pixel_values.append(image.convert('RGBA').tobytes())
+                    self.assertEqual(len(set(pixel_values)), 3, name)
+
+    def test_gtk2_all_steppers_keep_square_overlays_for_all_states(self):
+        with tempfile.TemporaryDirectory() as folder:
+            prepared = gtk2.prepare_domainos(
+                ROOT/'gtk'/(art.NAME+'-KDE'), css(exported()), Path(folder)/'generated')
+        rc = prepared.files[prepared.gtkrc].decode()
+        states = ('NORMAL', 'PRELIGHT', 'ACTIVE', 'SELECTED', 'INSENSITIVE')
+        directions = ('UP', 'DOWN', 'LEFT', 'RIGHT')
+        expected = {(state, direction) for state in states
+                    for direction in directions}
+        stepper_matches = re.findall(
+            r'image \{ function = STEPPER  state = (\w+)  arrow_direction = (UP|DOWN|LEFT|RIGHT)  '
+            r'orientation = (VERTICAL|HORIZONTAL)  ([^}]+) \}', rc)
+        arrow_matches = re.findall(
+            r'image \{ function = ARROW  state = (\w+)  arrow_direction = (UP|DOWN|LEFT|RIGHT)  '
+            r'([^}]+) \}', rc)
+        self.assertEqual({(state, direction) for state, direction, _, _ in stepper_matches}, expected)
+        self.assertEqual(len(stepper_matches), len(expected))
+        self.assertEqual({(state, direction) for state, direction, _ in arrow_matches}, expected)
+        self.assertEqual(len(arrow_matches), len(expected))
+        assets = {path.name: content for path, content in prepared.files.items()}
+        from PIL import Image
+        mode = {'NORMAL': 'normal', 'PRELIGHT': 'focused', 'ACTIVE': 'pressed',
+                'SELECTED': 'toggled', 'INSENSITIVE': 'disabled'}
+        orientation = {'UP': 'VERTICAL', 'DOWN': 'VERTICAL',
+                       'LEFT': 'HORIZONTAL', 'RIGHT': 'HORIZONTAL'}
+        for state, direction, actual_orientation, body in stepper_matches:
+            self.assertEqual(actual_orientation, orientation[direction])
+            background = re.search(
+                rf'overlay_file = "assets/(scrollbar-stepper-{direction.lower()}-{mode[state]})\.png"',
+                body)
+            self.assertIsNotNone(background, (state, direction, body))
+            self.assertIn('overlay_stretch = FALSE', body)
+            self.assertNotRegex(body, r'(?<!overlay_)file\s*=')
+            with Image.open(io.BytesIO(assets[background.group(1)+'.png'])) as image:
+                self.assertEqual(image.size, (15, 15), (state, direction, 'cell'))
+        for state, direction, body in arrow_matches:
+            asset_match = re.search(
+                rf'overlay_file = "assets/(scrollbar-arrow-{direction.lower()}-{mode[state]})\.png"',
+                body)
+            self.assertIsNotNone(asset_match, (state, direction, body))
+            self.assertIn('overlay_stretch = FALSE', body)
+            self.assertNotRegex(body, r'(?<!overlay_)file\s*=')
+            with Image.open(io.BytesIO(assets[asset_match.group(1)+'.png'])) as image:
+                self.assertEqual(image.size, (11, 11), (state, direction, 'glyph'))
+
+    def test_gtk2_palette_reload_uses_deterministic_fresh_style_names(self):
+        source = (ROOT/'gtk'/(art.NAME+'-KDE')/'gtk-2.0/gtkrc').read_text()
+        first, changed = exported('blue'), exported('dark')
+        rendered_a = gtk2.rc_colors(source, first)
+        rendered_a_again = gtk2.rc_colors(source, first)
+        rendered_b = gtk2.rc_colors(source, changed)
+        self.assertEqual(rendered_a, rendered_a_again)
+        self.assertNotEqual(rendered_a, rendered_b)
+        self.assertRegex(rendered_a, r'style "domainos-default-[0-9a-f]{10}"')
+        self.assertRegex(rendered_a, r'widget "\*gtk-tooltip\*" style : highest "domainos-tooltip-[0-9a-f]{10}"')
+        self.assertNotIn('style "domainos-default"', rendered_a)
+        self.assertIn(first['theme_button_background_normal_breeze'], rendered_a)
+        self.assertIn(changed['theme_button_background_normal_breeze'], rendered_b)
+
+    def test_gtk2_iconview_palette_tracks_view_and_selection_roles(self):
+        source = builder.gtk2_rc()
+        self.assertIn('style "domainos-iconview" = "domainos-default" {', source.decode())
+        self.assertIn('widget_class "*GtkIconView" style : highest "domainos-iconview"', source.decode())
+        # Grid geometry is intentionally absent: the native GtkIconView object
+        # owns it, so a theme must not imply those properties were adapted.
+        self.assertNotRegex(source.decode(), r'GtkIconView::(?:columns|item-width|item-padding|column-spacing|row-spacing|margin|spacing)')
+        palette = exported('dark')
+        palette.update({
+            'theme_base_color_breeze': '#123456',
+            'theme_text_color_breeze': '#234567',
+            'theme_selected_bg_color_breeze': '#345678',
+            'theme_selected_fg_color_breeze': '#456789',
+            'insensitive_base_color_breeze': '#56789a',
+            'insensitive_base_fg_color_breeze': '#6789ab',
+        })
+        rendered = gtk2.rc_colors(source.decode(), palette)
+        self.assertIn('bg[NORMAL] = "#123456"', rendered)
+        self.assertIn('base[NORMAL] = "#123456"', rendered)
+        self.assertIn('fg[NORMAL] = "#234567"', rendered)
+        self.assertIn('text[NORMAL] = "#234567"', rendered)
+        selected_face, selected_ink = gtk2.iconview_selected_colors(palette)
+        self.assertIn('bg[SELECTED] = "'+selected_face+'"', rendered)
+        self.assertIn('base[SELECTED] = "'+selected_face+'"', rendered)
+        self.assertIn('fg[SELECTED] = "'+selected_ink+'"', rendered)
+        self.assertIn('text[SELECTED] = "'+selected_ink+'"', rendered)
+        self.assertIn('base[INSENSITIVE] = "#56789a"', rendered)
+        self.assertIn('text[INSENSITIVE] = "#6789ab"', rendered)
+        for kind in ('blue', 'dark', 'yellow'):
+            scheme = exported(kind)
+            output = gtk2.rc_colors(source.decode(), scheme)
+            self.assertIn('base[NORMAL] = "'+scheme['theme_base_color_breeze'].lower()+'"', output)
+            face, ink = gtk2.iconview_selected_colors(scheme)
+            self.assertIn('base[SELECTED] = "'+face.lower()+'"', output)
+            self.assertIn('text[SELECTED] = "'+ink.lower()+'"', output)
+
+    def test_iconview_selection_uses_active_kde_selection_roles(self):
+        results = {}
+        for kind in ('blue', 'dark', 'yellow'):
+            scheme = exported(kind)
+            face, ink = gtk2.iconview_selected_colors(scheme)
+            self.assertEqual(face, scheme['theme_selected_bg_color_breeze'])
+            self.assertEqual(ink, scheme['theme_selected_fg_color_breeze'])
+            results[kind] = (face, ink)
+        self.assertEqual(len(set(results.values())), 3)
+
+        # Selection must change when Selection roles change, independently of
+        # the unchanged View roles.
+        scheme = exported('blue')
+        original = gtk2.iconview_selected_colors(scheme)
+        scheme['theme_selected_bg_color_breeze'] = '#7648a1'
+        scheme['theme_selected_fg_color_breeze'] = '#f0e9f7'
+        self.assertEqual(gtk2.iconview_selected_colors(scheme), ('#7648a1', '#f0e9f7'))
+        self.assertNotEqual(gtk2.iconview_selected_colors(scheme), original)
 
     def test_gtk2_rejects_modified_assets_even_with_modified_manifest(self):
         with tempfile.TemporaryDirectory() as folder:
             source = Path(folder)/'theme'
             builder.build(source)
-            target = source/'common/assets/stepper-up-normal.png'
+            target = source/'common/assets/scrollbar-stepper-up-normal.png'
             from PIL import Image
             with Image.open(target) as source_image:
                 changed = source_image.convert('RGBA')
             changed.putpixel((5, 5), (0, 0, 0, 255))
             changed.save(target)
             manifest = json.loads((source/'MANIFEST.json').read_text())
-            manifest['files']['common/assets/stepper-up-normal.png'] = hashlib.sha256(target.read_bytes()).hexdigest()
+            manifest['files']['common/assets/scrollbar-stepper-up-normal.png'] = hashlib.sha256(target.read_bytes()).hexdigest()
             (source/'MANIFEST.json').write_text(json.dumps(manifest))
             with self.assertRaisesRegex(Failure, 'desenho original'):
                 gtk2.prepare_domainos(source, css(exported()), Path(folder)/'output')

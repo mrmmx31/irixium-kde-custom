@@ -2702,6 +2702,96 @@
         }
       ]
     },
+    "gtk3-combobox-arrow-normal": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-combobox-arrow-normal-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-combobox-arrow-pressed": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-combobox-arrow-pressed-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "gtk3-combobox-arrow-disabled": {
+      "width": 11,
+      "height": 11,
+      "border": 0,
+      "family": "button",
+      "slices": [
+        {
+          "part": "glyph",
+          "box": [
+            0,
+            0,
+            11,
+            11
+          ],
+          "position": "center",
+          "size": "11px 11px",
+          "repeat": "no-repeat",
+          "layers": [
+            {
+              "file": "gtk3-combobox-arrow-disabled-0-symbolic.svg",
+              "colors": [
+                "dark",
+                "face",
+                "light"
+              ]
+            }
+          ]
+        }
+      ]
+    },
     "gtk3-trough-frame": {
       "width": 24,
       "height": 24,
@@ -3154,6 +3244,9 @@
     "gtk3-stepper-down-disabled-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
     "gtk3-stepper-left-disabled-0-symbolic.svg": "fe6f404b4645d564b88f509796309d79e65f4a77528a9b7b1009a62ed16092af",
     "gtk3-stepper-right-disabled-0-symbolic.svg": "4e8adc100725c5c7fe635cb3667ef8ddba709cba183e77388131218845a2f2a3",
+    "gtk3-combobox-arrow-normal-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
+    "gtk3-combobox-arrow-pressed-0-symbolic.svg": "8e548405db16e57e8d39eac1bf909586e7c50a03f3aa106b2ccd5ba615b970e4",
+    "gtk3-combobox-arrow-disabled-0-symbolic.svg": "0bb2e69b2eeddf50333dd1150375da5f00a65032ce0b1fe80e7eb1030e559ed6",
     "gtk3-trough-frame-top-left-0-symbolic.svg": "5a4ed6ddba286fb79db0786ac68abcfe931b7c5c61afb5891500e61e2b943d4d",
     "gtk3-trough-frame-top-right-0-symbolic.svg": "f2bda5084c18a9c4b17819f85362a41b0bb5abb5ce1969029c1a3df626139e65",
     "gtk3-trough-frame-bottom-left-0-symbolic.svg": "f2bda5084c18a9c4b17819f85362a41b0bb5abb5ce1969029c1a3df626139e65",

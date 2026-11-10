@@ -7,14 +7,16 @@
   "guest_evidence": "HP VUE 2.01 resources and man pages read from the SR10.4 guest; Swiss 742 bold 12pt system font; primary color set 3, secondary menus set 4 with application overrides",
   "geometry": {
     "bevel": 2,
-    "gtk2_stepper": 16,
+    "gtk2_scrollbar_cell": 15,
+    "gtk2_scrollbar_arrow": 11,
+    "gtk2_scrollbar_trough_border": 2,
     "generic_triangle": 12,
     "check_radio": 14,
     "scrollbar_thumb_grips": 0
   },
   "gtk3_scrollbar_contract": {
     "path": "tools/domainos_scrollbar_rules.json",
-    "sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "sha256": "e0904324ffac83f6cd3a0d8439cc23ccb7c5b0448727a585c8e1ee6a33d3ed27",
     "schema_version": 1,
     "identity": "domainos-sr104-trash-can-scrollbars"
   },

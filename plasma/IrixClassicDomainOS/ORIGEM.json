@@ -59,7 +59,8 @@
     "Native tooltip/dialog frames use the selected KDE color scheme; the style deliberately has no local colors file. The historical DomainOS-SR10.4 scheme remains a separate option.",
     "HP reference relief refinement: four distinct opaque one-pixel contour/highlight/counter-relief/blue-lip bands; pressed and recessed rims reverse those bands. Four-pixel margins, SVG IDs/bounds and native center tiling stay unchanged.",
     "SR10.4 Motif/VUE finish correction: measured two-color checker instrument wells and three-row hatched command rail; brighter raised crest/turquoise shoulder and immediate opposite relief on press. No resource geometry or margins change.",
-    "Lower command rail correction: four centered light/checker/dark grooves between dark/light caps; surrounding checker margins and a simple two-tone rim. Only nonvisual command-rail hint-tile-center is removed to avoid vertically repeated grooves; all 1906 remaining IDs/bounds and margin contracts stay unchanged."
+    "Lower command rail correction: four centered light/checker/dark grooves between dark/light caps; surrounding checker margins and a simple two-tone rim. Only nonvisual command-rail hint-tile-center is removed to avoid vertically repeated grooves; all 1906 remaining IDs/bounds and margin contracts stay unchanged.",
+    "Plasma Components.ScrollBar: SVG size hint 11x11 plus 2px cross-axis insets yields 15px total thickness; measured against Domain/OS SR10.4/VUE2.01 (bar 15px, thumb cross-size 11px)."
   ],
   "resources": {
     "dialogs/background.svg": {
@@ -219,7 +220,7 @@
       "license": "GPL-3.0"
     },
     "widgets/scrollbar.svg": {
-      "sha256": "bc512d7dfe2474a023806613962a48928dde5aa2d331b2c79210673aae930b93",
+      "sha256": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
       "source": "derivative of plasma/IrixClassic/widgets/scrollbar.svg",
       "author": "Phob1an; IRIX Classic contributors",
       "license": "GPL-3.0"

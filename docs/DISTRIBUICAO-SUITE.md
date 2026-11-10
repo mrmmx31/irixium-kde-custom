@@ -9,13 +9,20 @@ dentro da pasta `irix-suite-1.1.0-beta.2`, como seu usuário normal, sem `sudo`.
 Requer GNU/Linux x86_64, KDE Plasma 6 com Qt 6.8 ou superior, Aurorae, KSvg,
 KSystemStats, Kvantum Qt 6 e GTK Config do KDE. As pontes usam PyQt6
 QtCore/QtDBus/QtGui e Pillow do Python da distribuição em `/usr/bin/python3`.
-GTK 2 usa o engine pixmap instalado pela distribuição. Aplicativos libadwaita
-ou com estilos próprios podem controlar sua aparência.
+GTK 2 usa o engine `pixmap` instalado pela distribuição. A instalação normal
+não exige compilador nem headers GTK2. Aplicativos libadwaita ou com estilos
+próprios podem controlar sua aparência.
 
-O módulo nativo do painel já está incluído; esta distribuição não exige
-compilador nem SDK de desenvolvimento. A arquitetura e a ABI das bibliotecas
-Qt/C++ precisam ser compatíveis com o módulo. O instalador verifica as
-dependências e o manifesto nativo antes de instalar; não instala pacotes de
+O perfil DomainOS publicado usa o engine `pixmap` do resultado R584. O comando
+`tools/install_domainos_gtk2_engine.py` é um ensaio separado e reversível do
+engine `domainos-pixbuf`; ele não integra a instalação normal nem deve ser usado
+para substituir R584 durante uma reaplicação do tema. Quando um estudo desse
+engine for explicitamente autorizado, use primeiro `--verificar` e reverta com
+`--restaurar` ao encerrar a experiência.
+
+O módulo nativo do painel já está incluído. A arquitetura e a ABI das
+bibliotecas Qt/C++ precisam ser compatíveis com o módulo. O instalador verifica
+as dependências e o manifesto nativo antes de instalar; não instala pacotes de
 sistema. Incompatibilidade exige um pacote construído para a plataforma.
 
 ## Instalar e escolher um tema

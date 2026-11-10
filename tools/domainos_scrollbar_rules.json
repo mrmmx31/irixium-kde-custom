@@ -28,12 +28,101 @@
     "normal_arrow_origin": "measurement_vm",
     "trough": "Continuous inset enclosing frame; two-pixel shadows. Do not add a separate rectangular border around each arrow.",
     "thumb": "Raised frame, distinct from the enclosing trough frame.",
+    "normal_thumb_boundary": {
+      "policy": "At both longitudinal endpoints, continue the normal cross-axis thumb relief; do not add a separate horizontal or vertical end-cap bevel.",
+      "origin": "measurement_vm",
+      "source": "TRASH-NORMAL",
+      "scope": "normal thumb start and end, horizontal and vertical orientations",
+      "unverified_states": [
+        "hover",
+        "pressed",
+        "disabled",
+        "thumb_drag"
+      ]
+    },
     "view": "Inset content frame, separate from the scrollbar trough.",
     "junction": "Face between the two bars; lower and right arrows retain their full allocation.",
     "pressed_arrow": "Exchange light and shadow while held; preserve silhouette; release restores normal relief.",
     "pressed_arrow_origin": "measurement_vm_down_only",
     "pressed_source": "TRASH-DOWN-CYCLE",
-    "unverified_native_states": ["up_pressed", "left_pressed", "right_pressed", "hover", "disabled", "thumb_drag"]
+    "gtk2_stepper_trough_junction": {
+      "source": "TRASH-NORMAL",
+      "origin": "measurement_vm",
+      "unit": "native_pixel",
+      "cap_px": 5,
+      "legend": {
+        "D": "dark",
+        "L": "light",
+        "F": "face",
+        "T": "trough"
+      },
+      "normal_caps": {
+        "horizontal_start_rows": [
+          "DDDDD",
+          "DDDDD",
+          "LLLLL",
+          "LLLLL",
+          "LFFFF",
+          "LFFFF",
+          "LFFFF",
+          "LFFFF",
+          "LFFFF",
+          "LFFFF",
+          "LFFFF",
+          "LDDDD",
+          "DDDDD",
+          "LLLLL",
+          "LLLLL"
+        ],
+        "horizontal_end_rows": [
+          "DDDDD",
+          "DDDDD",
+          "LLLLL",
+          "LLLLL",
+          "FFFFD",
+          "FFFFD",
+          "FFFFD",
+          "FFFFD",
+          "FFFFD",
+          "FFFFD",
+          "FFFFD",
+          "DDDDD",
+          "DDDDD",
+          "LLLLL",
+          "LLLLL"
+        ],
+        "vertical_start_rows": [
+          "DDLLLLLLLLLLDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL"
+        ],
+        "vertical_end_rows": [
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLFFFFFFFDDLL",
+          "DDLLDDDDDDDDDLL"
+        ]
+      },
+      "normal_cross_axis_profile": "DDLLFFFFFFFDDLL",
+      "gtk2_adaptation_cross_axis_profile": {
+        "profile": "DDFFFFFFFFFFFLL",
+        "origin": "user_visual_feedback",
+        "reason": "Intermediate R760 review profile. R761 restored the complete R584 result selected by the user; retain this entry only as historical evidence and never activate it implicitly.",
+        "status": "superseded_by_r761_r584"
+      },
+      "state_policy": "Keep the measured VM raster as reference evidence. The current GTK2 product baseline is the complete R584 pixmap result restored by R761; the R760 adaptation profile above is historical only. Resolve every semantic token from current KDE roles."
+    },
+    "unverified_native_states": [
+      "up_pressed",
+      "left_pressed",
+      "right_pressed",
+      "hover",
+      "disabled",
+      "thumb_drag"
+    ]
   },
   "thumb_length": {
     "policy": "Use each toolkit's scroll range and page size; do not copy the empty Trash Can's nearly full-length thumb as a constant.",
@@ -73,7 +162,12 @@
       "normal_sha256": "cab2b598869a7e6909a9de583b75e7ba0e630c59478816d37440b9ce3f30a46b",
       "held_sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568",
       "released_sha256": "1a5c823b09e65f00d309bdf6b2c0820981e68a3a427c8b35a451a977d228a62b",
-      "glyph_box_exclusive": [650, 654, 661, 665],
+      "glyph_box_exclusive": [
+        650,
+        654,
+        661,
+        665
+      ],
       "public_observation": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
       "changed_light_shadow_pixels": 53,
       "release_changed_glyph_pixels": 0,

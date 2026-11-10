@@ -125,6 +125,14 @@ def gtk3_assets(*, geometry=None):
     geometry = gtk3_scrollbar_rules()['geometry'] if geometry is None else geometry
     result = {'gtk3-stepper-'+direction+'-'+state: (gtk3_arrow(state, direction, geometry=geometry), 'button', 0)
             for state in art.STATES for direction in ('up', 'down', 'left', 'right')}
+    # GtkComboBox's arrow uses the same direction-aware light-from-upper-left
+    # relief as the native stepper. The generic rotated triangle reverses that
+    # light on downward arrows, making the closed control look sunken.
+    result.update({
+        'gtk3-combobox-arrow-normal': (gtk3_arrow('normal', 'down', geometry=geometry), 'button', 0),
+        'gtk3-combobox-arrow-pressed': (gtk3_arrow('pressed', 'down', geometry=geometry), 'button', 0),
+        'gtk3-combobox-arrow-disabled': (gtk3_arrow('disabled', 'down', geometry=geometry), 'button', 0),
+    })
     # Sampling extent is a backend detail; only fixed corners and one-pixel
     # repeat strips are exported, never a historical minimum thumb length.
     extent = 2*(geometry['arrow_px']+geometry['arrow_thumb_gap_px'])
@@ -258,13 +266,26 @@ label:focus, image:focus { outline: none; }
         params = adaptive_assets.expression('check-mixed-'+('disabled' if state & 2 else 'normal'), lambda token: e(token), prefix='adaptive/', manifest=manifest)
         params.update({'background-color': 'transparent', '-gtk-icon-source': 'none', 'border-image-source': 'none'})
         output.append(rule('check:indeterminate'+suffix, params))
-        for selector, direction in (('combobox arrow', 'down'), ('menuitem arrow', 'right'), ('expander arrow', 'right')):
+        for selector, direction in (('menuitem arrow', 'right'), ('expander arrow', 'right')):
             params = adaptive_assets.expression('arrow-'+direction+'-normal', lambda token: e(token), prefix='adaptive/', manifest=manifest)
             params.update({'min-width': '12px', 'min-height': '12px', '-gtk-icon-source': 'none'})
             output.append(rule(selector+suffix, params))
+        combo_mode = 'disabled' if state & 2 else 'normal'
+        params = adaptive_assets.expression('gtk3-combobox-arrow-'+combo_mode, lambda token: e(token),
+                                            prefix='adaptive/', manifest=manifest)
+        params.update({'min-width': '12px', 'min-height': '12px', '-gtk-icon-source': 'none'})
+        output.append(rule('combobox arrow'+suffix, params))
         params = adaptive_assets.expression('arrow-down-normal', lambda token: e(token), prefix='adaptive/', manifest=manifest)
         params.update({'min-width': '12px', 'min-height': '12px', '-gtk-icon-source': 'none'})
         output.append(rule('expander:checked arrow'+suffix, params))
+    for state, suffix in ((0, ''), (1, ':backdrop')):
+        e = state_css('button', state)
+        params = adaptive_assets.expression('gtk3-combobox-arrow-pressed', lambda token: e(token),
+                                            prefix='adaptive/', manifest=manifest)
+        params.update({'min-width': '12px', 'min-height': '12px', '-gtk-icon-source': 'none'})
+        # The arrow is a separate CSS node below the internal .combo toggle
+        # button; the outer combobox itself stays NORMAL while it is clicked.
+        output.append(rule('button.combo:active arrow'+suffix, params))
     return ''.join(output)
 
 
@@ -368,7 +389,7 @@ def gtk2_rc(palette=None):
         'style "domainos-default" {\n  xthickness = 2\n  ythickness = 2\n',
         '  GtkWidget::focus-line-width = 1\n  GtkWidget::focus-padding = 1\n  GtkButton::child-displacement-x = 0\n  GtkButton::child-displacement-y = 0\n',
         '  GtkCheckButton::indicator-size = 14\n  GtkCheckMenuItem::indicator-size = 14\n',
-        '  GtkRange::slider-width = 16\n  GtkRange::stepper-size = 16\n  GtkRange::trough-border = 0\n',
+        '  GtkRange::slider-width = 11\n  GtkRange::stepper-size = 15\n  GtkRange::trough-border = 2\n',
         '  GtkScrollbar::min-slider-length = 20\n  GtkScrollbar::has-backward-stepper = 1\n  GtkScrollbar::has-forward-stepper = 1\n']
     for state in ('NORMAL', 'PRELIGHT', 'ACTIVE', 'SELECTED', 'INSENSITIVE'):
         disabled = state == 'INSENSITIVE'
@@ -393,9 +414,9 @@ def gtk2_rc(palette=None):
         for orientation in ('VERTICAL', 'HORIZONTAL'):
             image('SLIDER', 'scroll-thumb-'+mode, state=gtkstate, detail='slider', orientation=orientation)
         for direction in ('up', 'down', 'left', 'right'):
-            image('STEPPER', 'stepper-'+direction+'-'+mode, border=0, state=gtkstate,
+            image('STEPPER', 'scrollbar-stepper-'+direction+'-'+mode, border=0, overlay=True, state=gtkstate,
                 arrow_direction=direction.upper(), orientation='VERTICAL' if direction in ('up', 'down') else 'HORIZONTAL')
-            image('ARROW', 'arrow-'+direction+'-'+mode, overlay=True, state=gtkstate, arrow_direction=direction.upper())
+            image('ARROW', 'scrollbar-arrow-'+direction+'-'+mode, overlay=True, state=gtkstate, arrow_direction=direction.upper())
         for shadow, selected in (('OUT', False), ('IN', True)):
             for kind, function in (('check', 'CHECK'), ('radio', 'OPTION')):
                 image(function, kind+('-on-' if selected else '-off-')+mode, overlay=True, state=gtkstate, shadow=shadow)
@@ -403,6 +424,17 @@ def gtk2_rc(palette=None):
         image('EXTENSION', 'tab-'+mode, state=gtkstate)
     image('SHADOW', 'inset-normal')
     output += ['  }\n}\nclass "GtkWidget" style : rc "domainos-default"\n']
+    # GtkIconView is the closest GTK2 control to HP VUE's XmpIcon file grid.
+    # Its colors are theme-owned, while columns, item width/padding and grid
+    # spacing remain application-owned GtkIconView properties.
+    output.append('style "domainos-iconview" = "domainos-default" {\n')
+    for state in ('NORMAL', 'PRELIGHT', 'ACTIVE', 'SELECTED', 'INSENSITIVE'):
+        family = 'selection' if state == 'SELECTED' else 'view'
+        disabled = state == 'INSENSITIVE'
+        for field, token in (('bg', 'face'), ('fg', 'ink'),
+                             ('base', 'face'), ('text', 'ink')):
+            output.append(f'  {field}[{state}] = "{value(family, token, disabled)}"\n')
+    output.append('}\nwidget_class "*GtkIconView" style : highest "domainos-iconview"\n')
     for style, family, classes in (('button', 'button', ('GtkButton',)), ('header', 'header', ('GtkMenuBar', 'GtkMenu', 'GtkMenuItem', 'GtkToolbar'))):
         output.append('style "domainos-'+style+'" = "domainos-default" {\n')
         for state in ('NORMAL', 'PRELIGHT', 'ACTIVE', 'SELECTED', 'INSENSITIVE'):
@@ -429,14 +461,16 @@ def build(destination, *, theme_name=art.NAME+'-KDE'):
         (destination/f'gtk-{version}/gtk.css').write_text(text)
         (destination/f'gtk-{version}/gtk-dark.css').write_text(LICENSE+'@import url("gtk.css");\n')
     (destination/'gtk-2.0/gtkrc').write_bytes(gtk2_rc())
-    for name, (pixels, family, _border) in art.assets().items():
+    for name, (pixels, family, _border) in art.gtk2_assets().items():
         (destination/'common/assets'/ (name+'.png')).write_bytes(png(pixels, family, art.DEFAULT, disabled=name.endswith('-disabled')))
     (destination/'index.theme').write_text('[Desktop Entry]\nType=X-GNOME-Metatheme\nName='+theme_name+'\nComment=Original DomainOS SR10.4 Motif reconstruction\nEncoding=UTF-8\n\n[X-GNOME-Metatheme]\nGtkTheme='+theme_name+'\n')
     (destination/'LICENSE').write_bytes((ROOT/'decorations/domainos/LICENSE').read_bytes())
     origin = {'license': 'GPL-3.0-or-later', 'kind': 'original_integer_control_reconstruction', 'version': 'DomainOS SR10.4',
         'reference': 'Domain_OS SR10.4 - 01 VUE desktop.png', 'reference_sha256': 'fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b',
         'guest_evidence': 'HP VUE 2.01 resources and man pages read from the SR10.4 guest; Swiss 742 bold 12pt system font; primary color set 3, secondary menus set 4 with application overrides',
-        'geometry': {'bevel': 2, 'gtk2_stepper': 16, 'generic_triangle': 12, 'check_radio': 14, 'scrollbar_thumb_grips': 0},
+        'geometry': {'bevel': 2, 'gtk2_scrollbar_cell': 15, 'gtk2_scrollbar_arrow': 11,
+                     'gtk2_scrollbar_trough_border': 2, 'generic_triangle': 12,
+                     'check_radio': 14, 'scrollbar_thumb_grips': 0},
         'gtk3_scrollbar_contract': {'path': str(SCROLLBAR_RULES.relative_to(ROOT)),
                                   'sha256': hashlib.sha256(SCROLLBAR_RULES.read_bytes()).hexdigest(),
                                   'schema_version': contract['schema_version'], 'identity': contract['identity']},

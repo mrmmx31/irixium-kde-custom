@@ -12,9 +12,9 @@ style "domainos-default" {
   GtkButton::child-displacement-y = 0
   GtkCheckButton::indicator-size = 14
   GtkCheckMenuItem::indicator-size = 14
-  GtkRange::slider-width = 16
-  GtkRange::stepper-size = 16
-  GtkRange::trough-border = 0
+  GtkRange::slider-width = 11
+  GtkRange::stepper-size = 15
+  GtkRange::trough-border = 2
   GtkScrollbar::min-slider-length = 20
   GtkScrollbar::has-backward-stepper = 1
   GtkScrollbar::has-forward-stepper = 1
@@ -52,14 +52,14 @@ style "domainos-default" {
     image { function = BOX  state = NORMAL  detail = "trough"  file = "../common/assets/scroll-trough-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = NORMAL  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = NORMAL  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-normal.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
-    image { function = STEPPER  state = NORMAL  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = NORMAL  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-normal.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = NORMAL  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = NORMAL  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-normal.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = NORMAL  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-normal.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-normal.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = NORMAL  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = UP  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-up-normal.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = NORMAL  arrow_direction = UP  overlay_file = "../common/assets/scrollbar-arrow-up-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = DOWN  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-down-normal.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = NORMAL  arrow_direction = DOWN  overlay_file = "../common/assets/scrollbar-arrow-down-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-left-normal.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = NORMAL  arrow_direction = LEFT  overlay_file = "../common/assets/scrollbar-arrow-left-normal.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-right-normal.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = NORMAL  arrow_direction = RIGHT  overlay_file = "../common/assets/scrollbar-arrow-right-normal.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = NORMAL  shadow = OUT  overlay_file = "../common/assets/check-off-normal.png"  overlay_stretch = FALSE }
     image { function = OPTION  state = NORMAL  shadow = OUT  overlay_file = "../common/assets/radio-off-normal.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = NORMAL  shadow = IN  overlay_file = "../common/assets/check-on-normal.png"  overlay_stretch = FALSE }
@@ -79,14 +79,14 @@ style "domainos-default" {
     image { function = BOX  state = PRELIGHT  detail = "trough"  file = "../common/assets/scroll-trough-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = PRELIGHT  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = PRELIGHT  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-focused.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
-    image { function = STEPPER  state = PRELIGHT  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = PRELIGHT  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-focused.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = PRELIGHT  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = PRELIGHT  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-focused.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = PRELIGHT  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = PRELIGHT  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-focused.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = PRELIGHT  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-focused.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = PRELIGHT  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = UP  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-up-focused.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = UP  overlay_file = "../common/assets/scrollbar-arrow-up-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = DOWN  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-down-focused.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = DOWN  overlay_file = "../common/assets/scrollbar-arrow-down-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-left-focused.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = LEFT  overlay_file = "../common/assets/scrollbar-arrow-left-focused.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = PRELIGHT  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-right-focused.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = PRELIGHT  arrow_direction = RIGHT  overlay_file = "../common/assets/scrollbar-arrow-right-focused.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = PRELIGHT  shadow = OUT  overlay_file = "../common/assets/check-off-focused.png"  overlay_stretch = FALSE }
     image { function = OPTION  state = PRELIGHT  shadow = OUT  overlay_file = "../common/assets/radio-off-focused.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = PRELIGHT  shadow = IN  overlay_file = "../common/assets/check-on-focused.png"  overlay_stretch = FALSE }
@@ -106,14 +106,14 @@ style "domainos-default" {
     image { function = BOX  state = ACTIVE  detail = "trough"  file = "../common/assets/scroll-trough-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = ACTIVE  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = ACTIVE  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-pressed.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
-    image { function = STEPPER  state = ACTIVE  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = ACTIVE  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-pressed.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = ACTIVE  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = ACTIVE  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-pressed.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = ACTIVE  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-pressed.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-pressed.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = ACTIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = UP  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-up-pressed.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = UP  overlay_file = "../common/assets/scrollbar-arrow-up-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = DOWN  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-down-pressed.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = DOWN  overlay_file = "../common/assets/scrollbar-arrow-down-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-left-pressed.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = LEFT  overlay_file = "../common/assets/scrollbar-arrow-left-pressed.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-right-pressed.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = ACTIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/scrollbar-arrow-right-pressed.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = ACTIVE  shadow = OUT  overlay_file = "../common/assets/check-off-pressed.png"  overlay_stretch = FALSE }
     image { function = OPTION  state = ACTIVE  shadow = OUT  overlay_file = "../common/assets/radio-off-pressed.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = ACTIVE  shadow = IN  overlay_file = "../common/assets/check-on-pressed.png"  overlay_stretch = FALSE }
@@ -133,14 +133,14 @@ style "domainos-default" {
     image { function = BOX  state = SELECTED  detail = "trough"  file = "../common/assets/scroll-trough-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = SELECTED  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = SELECTED  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-toggled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
-    image { function = STEPPER  state = SELECTED  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = SELECTED  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-toggled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = SELECTED  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = SELECTED  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-toggled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = SELECTED  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = SELECTED  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-toggled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = SELECTED  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-toggled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = SELECTED  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = UP  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-up-toggled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = SELECTED  arrow_direction = UP  overlay_file = "../common/assets/scrollbar-arrow-up-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = DOWN  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-down-toggled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = SELECTED  arrow_direction = DOWN  overlay_file = "../common/assets/scrollbar-arrow-down-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-left-toggled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = SELECTED  arrow_direction = LEFT  overlay_file = "../common/assets/scrollbar-arrow-left-toggled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = SELECTED  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-right-toggled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = SELECTED  arrow_direction = RIGHT  overlay_file = "../common/assets/scrollbar-arrow-right-toggled.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = SELECTED  shadow = OUT  overlay_file = "../common/assets/check-off-toggled.png"  overlay_stretch = FALSE }
     image { function = OPTION  state = SELECTED  shadow = OUT  overlay_file = "../common/assets/radio-off-toggled.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = SELECTED  shadow = IN  overlay_file = "../common/assets/check-on-toggled.png"  overlay_stretch = FALSE }
@@ -160,14 +160,14 @@ style "domainos-default" {
     image { function = BOX  state = INSENSITIVE  detail = "trough"  file = "../common/assets/scroll-trough-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = INSENSITIVE  detail = "slider"  orientation = VERTICAL  file = "../common/assets/scroll-thumb-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
     image { function = SLIDER  state = INSENSITIVE  detail = "slider"  orientation = HORIZONTAL  file = "../common/assets/scroll-thumb-disabled.png"  border = { 2, 2, 2, 2 }  stretch = TRUE }
-    image { function = STEPPER  state = INSENSITIVE  arrow_direction = UP  orientation = VERTICAL  file = "../common/assets/stepper-up-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = INSENSITIVE  arrow_direction = UP  overlay_file = "../common/assets/arrow-up-disabled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = INSENSITIVE  arrow_direction = DOWN  orientation = VERTICAL  file = "../common/assets/stepper-down-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = INSENSITIVE  arrow_direction = DOWN  overlay_file = "../common/assets/arrow-down-disabled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = INSENSITIVE  arrow_direction = LEFT  orientation = HORIZONTAL  file = "../common/assets/stepper-left-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = INSENSITIVE  arrow_direction = LEFT  overlay_file = "../common/assets/arrow-left-disabled.png"  overlay_stretch = FALSE }
-    image { function = STEPPER  state = INSENSITIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  file = "../common/assets/stepper-right-disabled.png"  border = { 0, 0, 0, 0 }  stretch = TRUE }
-    image { function = ARROW  state = INSENSITIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/arrow-right-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = UP  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-up-disabled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = UP  overlay_file = "../common/assets/scrollbar-arrow-up-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = DOWN  orientation = VERTICAL  overlay_file = "../common/assets/scrollbar-stepper-down-disabled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = DOWN  overlay_file = "../common/assets/scrollbar-arrow-down-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-left-disabled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = LEFT  overlay_file = "../common/assets/scrollbar-arrow-left-disabled.png"  overlay_stretch = FALSE }
+    image { function = STEPPER  state = INSENSITIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = "../common/assets/scrollbar-stepper-right-disabled.png"  overlay_stretch = FALSE }
+    image { function = ARROW  state = INSENSITIVE  arrow_direction = RIGHT  overlay_file = "../common/assets/scrollbar-arrow-right-disabled.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = INSENSITIVE  shadow = OUT  overlay_file = "../common/assets/check-off-disabled.png"  overlay_stretch = FALSE }
     image { function = OPTION  state = INSENSITIVE  shadow = OUT  overlay_file = "../common/assets/radio-off-disabled.png"  overlay_stretch = FALSE }
     image { function = CHECK  state = INSENSITIVE  shadow = IN  overlay_file = "../common/assets/check-on-disabled.png"  overlay_stretch = FALSE }
@@ -178,6 +178,29 @@ style "domainos-default" {
   }
 }
 class "GtkWidget" style : rc "domainos-default"
+style "domainos-iconview" = "domainos-default" {
+  bg[NORMAL] = "#6688b5"
+  fg[NORMAL] = "#ffffff"
+  base[NORMAL] = "#6688b5"
+  text[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#6688b5"
+  fg[PRELIGHT] = "#ffffff"
+  base[PRELIGHT] = "#6688b5"
+  text[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#6688b5"
+  fg[ACTIVE] = "#ffffff"
+  base[ACTIVE] = "#6688b5"
+  text[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#3297c7"
+  fg[SELECTED] = "#ffffff"
+  base[SELECTED] = "#3297c7"
+  text[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6688b5"
+  fg[INSENSITIVE] = "#ffffff"
+  base[INSENSITIVE] = "#6688b5"
+  text[INSENSITIVE] = "#ffffff"
+}
+widget_class "*GtkIconView" style : highest "domainos-iconview"
 style "domainos-button" = "domainos-default" {
   bg[NORMAL] = "#78a0d5"
   fg[NORMAL] = "#ffffff"
