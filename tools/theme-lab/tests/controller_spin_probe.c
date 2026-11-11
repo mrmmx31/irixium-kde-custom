@@ -89,6 +89,16 @@ static void geometry(json_object *root,Widget w,const char *name) {
     for(int i=0;i<4;++i)json_object_array_add(a,json_object_new_int(values[i]));
     json_object_object_add(root,name,a);
 }
+static void select_left_page(int page) {
+    Widget combo=XtNameToWidget(shell,"*leftPanelSelector"),list=NULL;
+    if(!combo||page<0||page>5)return;
+    XtVaGetValues(combo,XmNlist,&list,NULL);
+    if(list)XmListSelectPos(list,page+1,False);
+    XmComboBoxCallbackStruct event={0};
+    event.reason=XmCR_SELECT;event.item_position=page;
+    XtVaSetValues(combo,XmNselectedPosition,page,NULL);
+    XtCallCallbacks(combo,XmNselectionCallback,&event);
+}
 static void report(XtPointer data,XtIntervalId *id) {
     const char *path=getenv("TL_SPIN_PROBE");
     (void)data;(void)id;
@@ -100,6 +110,26 @@ static void report(XtPointer data,XtIntervalId *id) {
             if(f) {
                 char input[80]={0};int value;
                 (void)fgets(input,sizeof(input),f);fclose(f);remove(command);
+                char action_name[40]={0};
+                if(sscanf(input,"action %39s",action_name)==1) {
+                    static const char *const keys[]={
+                        "apply","save","load","export","import_delta",
+                        "reconstruct_files","manual_paint","quit",
+                        "projectUndo","projectRedo","projectMark",
+                        "projectRestore","projectResetPart"};
+                    static const char *const widgets[]={
+                        "*menuRefresh","*menuSave","*menuLoad","*menuExport",
+                        "*menuImportDelta","*menuReconstructFiles",
+                        "*menuManualPaint","*menuQuit","*projectUndoMenu",
+                        "*projectRedoMenu","*projectMarkMenu",
+                        "*projectRestoreMenu","*projectResetPartMenu"};
+                    for(size_t i=0;i<sizeof(keys)/sizeof(keys[0]);++i)
+                        if(!strcmp(action_name,keys[i])) {
+                            Widget action=XtNameToWidget(shell,(char *)widgets[i]);
+                            if(action)XtCallCallbacks(action,XmNactivateCallback,NULL);
+                            goto command_complete;
+                        }
+                }
                 Widget target=input[0]=='h'?XtNameToWidget(shell,"*controlHeight*fieldValue"):width;
                 char tree_kind[32];int tree_index;
                 if(sscanf(input,"tree %31s %d",tree_kind,&tree_index)==2&&tree_index>=0&&tree_index<16) {
@@ -112,13 +142,20 @@ static void report(XtPointer data,XtIntervalId *id) {
                 }
                 if(!strncmp(input,"family",6))target=XtNameToWidget(shell,"*familyCombo");
                 if(!strncmp(input,"automatic",9))target=XtNameToWidget(shell,"*automaticPreview");
-                if(!strncmp(input,"separate",8))target=XtNameToWidget(shell,"*separatePreview");
-                if(!strncmp(input,"edit-state",10))target=XtNameToWidget(shell,"*editState");
-                if(input[0]=='m')target=XtNameToWidget(shell,"*nativeMetrics");
-                if(input[0]=='n')target=XtNameToWidget(shell,"*notesText");
+                if(!strncmp(input,"separate",8)){select_left_page(4);target=XtNameToWidget(shell,"*separatePreview");}
+                if(!strncmp(input,"edit-state",10)){select_left_page(1);target=XtNameToWidget(shell,"*editState");}
+                if(input[0]=='m'){select_left_page(1);target=XtNameToWidget(shell,"*nativeMetrics");}
+                if(input[0]=='n'){select_left_page(4);target=XtNameToWidget(shell,"*notesText");}
+                if(input[0]=='\0'||input[0]=='w'||input[0]=='h'||!strncmp(input,"set-width",9)||
+                   !strncmp(input,"set-height",10)||!strncmp(input,"anchor",6))
+                    select_left_page(1);
                 if(!strncmp(input,"gap",3))target=XtNameToWidget(shell,"*partGap*fieldValue");
                 else if(input[0]=='g')target=XtNameToWidget(shell,"*partGlyph*fieldValue");
                 if(!strncmp(input,"shadow",6))target=XtNameToWidget(shell,"*partShadow*fieldValue");
+                if(!strncmp(input,"gap",3)||input[0]=='g'||!strncmp(input,"shadow",6)||
+                   !strncmp(input,"piece",5)||!strncmp(input,"relief-",7))select_left_page(2);
+                if(!strncmp(input,"tree",4)||!strncmp(input,"control",7)||
+                   !strncmp(input,"focus-control",13))select_left_page(0);
                 if(sscanf(input,"family-select %d",&value)==1&&value>=0&&value<TL_FAMILY_COUNT) {
                     Widget combo=XtNameToWidget(shell,"*familyCombo"),list=NULL;
                     XtVaGetValues(combo,XmNlist,&list,NULL);
@@ -186,6 +223,8 @@ static void report(XtPointer data,XtIntervalId *id) {
                         XmScrollBarSetValues(bar,next,slider,0,0,True);
                     }
                 }
+command_complete:
+                ;
             }
         }
         json_object *root=json_object_new_object();

@@ -6,6 +6,7 @@
 #include <X11/cursorfont.h>
 #include <X11/keysym.h>
 #include <Xm/ComboBox.h>
+#include <Xm/CascadeB.h>
 #include <Xm/DrawingA.h>
 #include <Xm/Form.h>
 #include <Xm/Frame.h>
@@ -18,6 +19,7 @@
 #include <Xm/Protocols.h>
 #include <Xm/PushB.h>
 #include <Xm/RowColumn.h>
+#include <Xm/Separator.h>
 #include <Xm/Scale.h>
 #include <Xm/ScrollBar.h>
 #include <Xm/ScrolledW.h>
@@ -106,7 +108,8 @@ static int gtk4_control_translated(int control) {
          control == CONTROL_SCROLL_V;
 }
 struct TLManualPaintView {
-  Widget shell, root, form, header, header_labels[6];
+  Widget shell, root, form, menu_bar, header, header_labels[6];
+  Widget sidebar, main_panel;
   Widget family, reference_family, control, state, part, variant, canvas,
       scroll, status,
       dimensions, raster_note, recipe_output;
@@ -1419,9 +1422,8 @@ static void palette_apply(TLManualPaintView *v) {
   XtVaSetValues(v->root, XmNbackground, bg, NULL);
   palette_widget(v->form, v->palette_pixels);
   cursor_palette(v);
-  /* Selectors live on the Header band but remain ordinary controls: their
-   * chrome follows Button/View roles while only the band and captions follow
-   * Header. This also keeps them dynamic in an X server without resource DB. */
+  /* Selectors remain ordinary controls in the tools sidebar. Their chrome
+   * follows Button/View roles; only the real menu band follows Header. */
   Widget header_combos[] = {v->family, v->reference_family, v->control,
                             v->part, v->variant, v->state};
   for (size_t i = 0; i < sizeof(header_combos) / sizeof(header_combos[0]); ++i)
@@ -1444,9 +1446,7 @@ static void palette_apply(TLManualPaintView *v) {
                                   ? v->palette_pixels[ROLE_TEXT]
                                   : v->palette_pixels[ROLE_FACE];
     }
-    palette_header_widget(v->header, v->header_pixels);
-    for (int i = 0; i < 6; ++i)
-      palette_header_widget(v->header_labels[i], v->header_pixels);
+    palette_header_widget(v->menu_bar, v->header_pixels);
   }
   XtVaSetValues(v->canvas, XmNbackground, v->palette_pixels[ROLE_VIEW], NULL);
   XtVaSetValues(v->reference_canvas, XmNbackground,
@@ -1726,6 +1726,85 @@ static void resize_event(Widget w, XtPointer client, XEvent *event,
   if (event->type == ConfigureNotify)
     canvas_redraw(v);
 }
+
+static Widget paint_menu_create(Widget menu_bar, const char *name,
+                                const char *label, char mnemonic,
+                                int position, const char *hint) {
+  Widget popup = XmCreatePulldownMenu(menu_bar, (char *)name, NULL, 0);
+  XmString title = text_compound(label);
+  char cascade_name[96];
+  (void)snprintf(cascade_name, sizeof(cascade_name), "%sCascade", name);
+  Widget cascade = XtVaCreateManagedWidget(
+      cascade_name, xmCascadeButtonWidgetClass, menu_bar, XmNlabelString, title,
+      XmNsubMenuId, popup, XmNmnemonic, mnemonic, XmNpositionIndex, position,
+      NULL);
+  XmStringFree(title);
+  tl_ui_hint(cascade, hint);
+  return popup;
+}
+
+static Widget paint_menu_item(Widget menu, const char *name,
+                              const char *label, const char *hint,
+                              XtCallbackProc callback, XtPointer data) {
+  XmString title = text_compound(label);
+  Widget item = XtVaCreateManagedWidget(name, xmPushButtonWidgetClass, menu,
+                                        XmNlabelString, title, NULL);
+  XmStringFree(title);
+  tl_ui_hint(item, hint);
+  XtAddCallback(item, XmNactivateCallback, callback, data);
+  return item;
+}
+
+static void paint_menu_separator(Widget menu, const char *name) {
+  (void)XtVaCreateManagedWidget(name, xmSeparatorWidgetClass, menu, NULL);
+}
+
+static void paint_help_button(Widget w, XtPointer client, XtPointer call) {
+  TLManualPaintView *v = client;
+  (void)w;
+  (void)call;
+  status_set(v,
+             "Fluxo: escolha alvo e referência, copie uma amostra se quiser, "
+             "desenhe no canvas e salve. Dicas detalham unidade e limite.");
+}
+
+static void paint_menus_create(TLManualPaintView *v) {
+  Widget file = paint_menu_create(
+      v->menu_bar, "paintFileMenu", "Arquivo", 'A', 0,
+      "Salva a camada raster ou fecha somente o editor de pintura manual.");
+  Widget edit = paint_menu_create(
+      v->menu_bar, "paintEditMenu", "Editar", 'E', 1,
+      "Desfaz ou refaz operações raster inteiras sem alterar a receita do tema.");
+  Widget display = paint_menu_create(
+      v->menu_bar, "paintDisplayMenu", "Exibir", 'x', 2,
+      "Alterna recursos de visualização que não mudam os pixels da arte.");
+  Widget help = paint_menu_create(
+      v->menu_bar, "paintHelpMenu", "Ajuda", 'j', 3,
+      "Mostra o fluxo do editor; cada controle também possui uma dica detalhada.");
+  Widget help_cascade = XtNameToWidget(v->menu_bar, "*paintHelpMenuCascade");
+  if (help_cascade)
+    XtVaSetValues(v->menu_bar, XmNmenuHelpWidget, help_cascade, NULL);
+  paint_menu_item(file, "paintMenuSave", "Salvar",
+                  "Grava atomicamente a camada raster complementar do projeto.",
+                  save_button, v);
+  paint_menu_separator(file, "paintFileSeparator");
+  paint_menu_item(file, "paintMenuClose", "Fechar",
+                  "Fecha somente este editor depois de preservar a camada.",
+                  close_protocol, v);
+  paint_menu_item(edit, "paintMenuUndo", "Desfazer",
+                  "Desfaz uma operação raster inteira; atalho Ctrl+Z no canvas.",
+                  undo_button, v);
+  paint_menu_item(edit, "paintMenuRedo", "Refazer",
+                  "Refaz uma operação raster; atalhos Ctrl+Y e Ctrl+Shift+Z no canvas.",
+                  redo_button, v);
+  paint_menu_item(display, "paintMenuGrid", "Alternar grade",
+                  "Alterna somente a grade visual; pixels e escala 1:1 não mudam.",
+                  grid_button, v);
+  paint_menu_item(help, "paintMenuHelp", "Ajuda do editor",
+                  "Resume o fluxo seguro no rodapé sem alterar a camada.",
+                  paint_help_button, v);
+}
+
 TLManualPaintView *tl_manual_paint_view_open(
     Widget parent, const char *path, int family, int control, int state,
     const unsigned short rgb[6][3], XmFontList inherited_font,
@@ -1795,11 +1874,40 @@ TLManualPaintView *tl_manual_paint_view_open(
   v->root = XtVaCreateManagedWidget(
       "manualPaintRoot", xmFormWidgetClass, v->shell, XmNfractionBase, 100,
       XmNmarginWidth, 0, XmNmarginHeight, 0, NULL);
+  v->menu_bar = XmCreateMenuBar(v->root, "manualPaintMenuBar", NULL, 0);
+  XtVaSetValues(v->menu_bar, XmNleftAttachment, XmATTACH_FORM,
+                XmNrightAttachment, XmATTACH_FORM,
+                XmNtopAttachment, XmATTACH_FORM, NULL);
+  XtManageChild(v->menu_bar);
+  paint_menus_create(v);
+  v->form = XtVaCreateManagedWidget(
+      "manualPaintForm", xmFormWidgetClass, v->root, XmNfractionBase, 100,
+      XmNmarginWidth, 8, XmNmarginHeight, 8,
+      XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
+      XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, v->menu_bar,
+      XmNbottomAttachment, XmATTACH_FORM, NULL);
+  Widget sidebar_scroll = XtVaCreateManagedWidget(
+      "manualPaintSidebarScroll", xmScrolledWindowWidgetClass, v->form,
+      XmNscrollingPolicy, XmAUTOMATIC,
+      XmNscrollBarDisplayPolicy, XmAS_NEEDED,
+      XmNleftAttachment, XmATTACH_FORM,
+      XmNrightAttachment, XmATTACH_POSITION, XmNrightPosition, 26,
+      XmNtopAttachment, XmATTACH_FORM, XmNbottomAttachment, XmATTACH_FORM,
+      NULL);
+  v->sidebar = XtVaCreateManagedWidget(
+      "manualPaintSidebar", xmRowColumnWidgetClass, sidebar_scroll,
+      XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT,
+      XmNspacing, 7, XmNmarginWidth, 5, XmNmarginHeight, 5,
+      XmNwidth, 380, NULL);
+  v->main_panel = XtVaCreateManagedWidget(
+      "manualPaintMain", xmFormWidgetClass, v->form, XmNfractionBase, 100,
+      XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 26,
+      XmNleftOffset, 7, XmNrightAttachment, XmATTACH_FORM,
+      XmNtopAttachment, XmATTACH_FORM, XmNbottomAttachment, XmATTACH_FORM,
+      NULL);
   v->header = XtVaCreateManagedWidget(
-      "manualPaintSelectors", xmRowColumnWidgetClass, v->root, XmNorientation,
-      XmHORIZONTAL, XmNpacking, XmPACK_TIGHT, XmNleftAttachment, XmATTACH_FORM,
-      XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_FORM,
-      XmNspacing, 5, NULL);
+      "manualPaintSelectors", xmRowColumnWidgetClass, v->sidebar, XmNorientation,
+      XmVERTICAL, XmNpacking, XmPACK_TIGHT, XmNspacing, 3, NULL);
   v->header_labels[0] =
       label_new(v->header, "familyLabel", "Plataforma da arte");
   v->family = combo_new(v->header, "paintFamily", family_names, TL_FAMILY_COUNT);
@@ -1836,18 +1944,12 @@ TLManualPaintView *tl_manual_paint_view_open(
              "direção e antes/depois do cursor conforme a orientação.");
   tl_ui_hint(v->state, "Estado visual da camada: normal, hover, pressionado, "
                        "desabilitado ou backdrop.");
-  v->form = XtVaCreateManagedWidget(
-      "manualPaintForm", xmFormWidgetClass, v->root, XmNfractionBase, 100,
-      XmNmarginWidth, 8, XmNmarginHeight, 8,
-      XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
-      XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, v->header,
-      XmNbottomAttachment, XmATTACH_FORM, NULL);
-  Widget form = v->form;
+  Widget form = v->main_panel;
+  Widget sidebar = v->sidebar;
   Widget toolrow = XtVaCreateManagedWidget(
-      "manualPaintTools", xmRowColumnWidgetClass, form, XmNorientation,
-      XmHORIZONTAL, XmNpacking, XmPACK_TIGHT, XmNleftAttachment, XmATTACH_FORM,
-      XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_FORM,
-      XmNtopOffset, 8, XmNspacing, 4, XmNradioBehavior, True,
+      "manualPaintTools", xmRowColumnWidgetClass, sidebar, XmNorientation,
+      XmHORIZONTAL, XmNpacking, XmPACK_COLUMN, XmNnumColumns, 5,
+      XmNspacing, 4, XmNradioBehavior, True,
       XmNradioAlwaysOne, True, NULL);
   for (int i = 0; i < 6; i++) {
     v->tools[i] = XtVaCreateManagedWidget(
@@ -1889,41 +1991,38 @@ TLManualPaintView *tl_manual_paint_view_open(
       "3. Escolha ferramenta e desenhe na arte à direita");
   XtVaSetValues(flow_hint, XmNleftAttachment, XmATTACH_FORM,
                 XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment,
-                XmATTACH_WIDGET, XmNtopWidget, toolrow, XmNtopOffset, 4,
-                NULL);
+                XmATTACH_FORM, NULL);
   Widget probe_sizes = XtVaCreateManagedWidget(
-      "paintNativeProbeDimensions", xmRowColumnWidgetClass, form,
-      XmNorientation, XmHORIZONTAL, XmNpacking, XmPACK_TIGHT,
-      XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
-      XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, flow_hint, XmNtopOffset,
-      8, XmNspacing, 8, NULL);
+      "paintNativeProbeDimensions", xmRowColumnWidgetClass, sidebar,
+      XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT,
+      XmNspacing, 5, NULL);
   XmString probe_length_title =
       text_compound("Ensaio nativo: comprimento (px)");
   v->probe_length_scale = XtVaCreateManagedWidget(
       "paintProbeLength", xmScaleWidgetClass, probe_sizes, XmNorientation,
       XmHORIZONTAL, XmNminimum, 15, XmNmaximum, 512, XmNvalue, 120,
-      XmNshowValue, True, XmNtitleString, probe_length_title, XmNwidth, 285,
+      XmNshowValue, True, XmNtitleString, probe_length_title, XmNwidth, 350,
       NULL);
   XmStringFree(probe_length_title);
   XmString probe_thickness_title = text_compound("Espessura solicitada (px)");
   v->probe_thickness_scale = XtVaCreateManagedWidget(
       "paintProbeThickness", xmScaleWidgetClass, probe_sizes, XmNorientation,
       XmHORIZONTAL, XmNminimum, 1, XmNmaximum, 64, XmNvalue, 15,
-      XmNshowValue, True, XmNtitleString, probe_thickness_title, XmNwidth, 245,
+      XmNshowValue, True, XmNtitleString, probe_thickness_title, XmNwidth, 350,
       NULL);
   XmStringFree(probe_thickness_title);
   XmString probe_value_title = text_compound("Posição do cursor (0–100)");
   v->probe_value_scale = XtVaCreateManagedWidget(
       "paintProbeValue", xmScaleWidgetClass, probe_sizes, XmNorientation,
       XmHORIZONTAL, XmNminimum, 0, XmNmaximum, 75, XmNvalue, 25,
-      XmNshowValue, True, XmNtitleString, probe_value_title, XmNwidth, 245,
+      XmNshowValue, True, XmNtitleString, probe_value_title, XmNwidth, 350,
       NULL);
   XmStringFree(probe_value_title);
   XmString probe_page_title = text_compound("Página visível / thumb (1–100)");
   v->probe_page_scale = XtVaCreateManagedWidget(
       "paintProbePage", xmScaleWidgetClass, probe_sizes, XmNorientation,
       XmHORIZONTAL, XmNminimum, 1, XmNmaximum, 100, XmNvalue, 25,
-      XmNshowValue, True, XmNtitleString, probe_page_title, XmNwidth, 245, NULL);
+      XmNshowValue, True, XmNtitleString, probe_page_title, XmNwidth, 350, NULL);
   XmStringFree(probe_page_title);
   tl_ui_numeric_hint(
       v->probe_length_scale,
@@ -1941,11 +2040,9 @@ TLManualPaintView *tl_manual_paint_view_open(
       "Página visível no intervalo privado 0–100. O toolkit calcula o tamanho "
       "do thumb a partir deste valor.");
   Widget sizes = XtVaCreateManagedWidget(
-      "paintDimensions", xmRowColumnWidgetClass, form, XmNorientation,
-      XmVERTICAL, XmNpacking, XmPACK_TIGHT, XmNleftAttachment, XmATTACH_FORM,
-      XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_WIDGET,
-      XmNtopWidget, probe_sizes, XmNtopOffset, 6, XmNspacing, 22,
-      XmNmarginHeight, 20, NULL);
+      "paintDimensions", xmRowColumnWidgetClass, sidebar, XmNorientation,
+      XmVERTICAL, XmNpacking, XmPACK_TIGHT, XmNspacing, 8,
+      XmNmarginHeight, 6, NULL);
   v->dimensions = label_new(sizes, "paintDimensionLabel",
                             "Camada raster em pixels de arte; zoom separado.");
   XmString width_title = text_compound("Largura da arte (px)");
@@ -1966,10 +2063,60 @@ TLManualPaintView *tl_manual_paint_view_open(
   tl_ui_numeric_hint(v->height_scale,
                      "Altura da arte: 8-256 px; reduzir recorta, ampliar "
                      "cria área vazia.");
+  v->reference_label = label_new(sidebar, "referenceSampleLabel",
+                                 "Referência: escala 4:1");
+  Widget reference_scroll = XtVaCreateManagedWidget(
+      "referenceSampleScroll", xmScrolledWindowWidgetClass, sidebar,
+      XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
+      XmNwidth, 350, XmNheight, 150, NULL);
+  v->reference_canvas = XtVaCreateManagedWidget(
+      "referenceSampleCanvas", xmDrawingAreaWidgetClass, reference_scroll,
+      XmNwidth, 320, XmNheight, 130, XmNresizePolicy, XmRESIZE_NONE, NULL);
+  tl_ui_hint(v->reference_label,
+             "Referência selecionável, somente leitura; compare forma e "
+             "medidas no zoom compartilhado. Use Copiar referência somente "
+             "quando quiser editar uma cópia.");
+  tl_ui_surface_hint(v->reference_canvas, v->reference_label);
+  v->copy_reference = XtVaCreateManagedWidget(
+      "paintCopyReference", xmPushButtonWidgetClass, sidebar,
+      XmNsensitive, False, NULL);
+  text_set(v->copy_reference, "Copiar referência");
+  tl_ui_hint(v->copy_reference,
+             "Substitui explicitamente a peça selecionada pela imagem exibida "
+             "na referência, como um único passo de Undo. Fontes sem captura "
+             "de peça exigem Controle inteiro. Não altera a prévia nativa nem "
+             "a receita do tema.");
+  XtAddCallback(v->copy_reference, XmNactivateCallback,
+                copy_reference_button, v);
+  v->native_label = label_new(sidebar, "nativeSampleLabel",
+                              "Prévia nativa: escala 4:1");
+  Widget native_scroll = XtVaCreateManagedWidget(
+      "nativeSampleScroll", xmScrolledWindowWidgetClass, sidebar,
+      XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
+      XmNwidth, 350, XmNheight, 150, NULL);
+  v->native_canvas = XtVaCreateManagedWidget(
+      "nativeSampleCanvas", xmDrawingAreaWidgetClass, native_scroll,
+      XmNwidth, 320, XmNheight, 130, XmNresizePolicy, XmRESIZE_NONE, NULL);
+  tl_ui_hint(v->native_label,
+             "Prévia nativa atual, somente leitura; compare com a referência "
+             "no mesmo zoom explícito.");
+  tl_ui_surface_hint(v->native_canvas, v->native_label);
+  v->copy_native = XtVaCreateManagedWidget(
+      "paintCopyNative", xmPushButtonWidgetClass, sidebar,
+      XmNsensitive, False, NULL);
+  text_set(v->copy_native, "Copiar prévia nativa");
+  tl_ui_hint(v->copy_native,
+             "Substitui a peça selecionada pela captura nativa, como um único "
+             "passo de Undo; a captura deve corresponder à peça. Não altera a "
+             "fonte da referência nem a receita do tema.");
+  XtAddCallback(v->copy_native, XmNactivateCallback, copy_native_button, v);
+  XtAddCallback(v->reference_canvas, XmNexposeCallback, sample_draw, v);
+  XtAddCallback(v->native_canvas, XmNexposeCallback, sample_draw, v);
   Widget actions = XtVaCreateManagedWidget(
       "paintActions", xmRowColumnWidgetClass, form, XmNorientation,
       XmHORIZONTAL, XmNpacking, XmPACK_TIGHT, XmNleftAttachment, XmATTACH_FORM,
-      XmNbottomAttachment, XmATTACH_FORM, XmNspacing, 5, NULL);
+      XmNrightAttachment, XmATTACH_FORM, XmNbottomAttachment, XmATTACH_FORM,
+      XmNspacing, 5, NULL);
   Widget undo = XtVaCreateManagedWidget("paintUndo", xmPushButtonWidgetClass,
                                         actions, NULL);
   text_set(undo, "Desfazer");
@@ -1982,26 +2129,6 @@ TLManualPaintView *tl_manual_paint_view_open(
   tl_ui_hint(redo, "Refaz uma operação raster desfeita (Ctrl+Y); o histórico é "
                    "independente da receita.");
   XtAddCallback(redo, XmNactivateCallback, redo_button, v);
-  v->copy_reference = XtVaCreateManagedWidget(
-      "paintCopyReference", xmPushButtonWidgetClass, actions,
-      XmNsensitive, False, NULL);
-  text_set(v->copy_reference, "Copiar referência");
-  tl_ui_hint(v->copy_reference,
-             "Substitui explicitamente a peça selecionada pela imagem exibida "
-             "à esquerda, como um único passo de Undo. Fontes sem captura de "
-             "peça exigem Controle inteiro. Não altera a prévia nativa nem a "
-             "receita do tema.");
-  XtAddCallback(v->copy_reference, XmNactivateCallback,
-                copy_reference_button, v);
-  v->copy_native = XtVaCreateManagedWidget(
-      "paintCopyNative", xmPushButtonWidgetClass, actions,
-      XmNsensitive, False, NULL);
-  text_set(v->copy_native, "Copiar prévia nativa");
-  tl_ui_hint(v->copy_native,
-             "Substitui a peça selecionada pela captura nativa central, como "
-             "um único passo de Undo; a captura deve corresponder à peça. Não "
-             "altera a fonte da referência nem a receita do tema.");
-  XtAddCallback(v->copy_native, XmNactivateCallback, copy_native_button, v);
   Widget sample_minus = XtVaCreateManagedWidget(
       "paintSampleZoomOut", xmPushButtonWidgetClass, actions, NULL);
   text_set(sample_minus, "Amostras -");
@@ -2033,83 +2160,40 @@ TLManualPaintView *tl_manual_paint_view_open(
   XtAddCallback(close, XmNactivateCallback, close_protocol, v);
   v->status = label_new(form, "paintStatus",
                         "Camada raster independente; receita não alterada.");
-  XtVaSetValues(v->status, XmNleftAttachment, XmATTACH_WIDGET, XmNleftWidget,
-                actions, XmNrightAttachment, XmATTACH_FORM, XmNbottomAttachment,
-                XmATTACH_FORM, NULL);
+  XtVaSetValues(v->status, XmNleftAttachment, XmATTACH_FORM,
+                XmNrightAttachment, XmATTACH_FORM, XmNbottomAttachment,
+                XmATTACH_WIDGET, XmNbottomWidget, actions, XmNbottomOffset, 3,
+                NULL);
   v->raster_note = label_new(
       form, "paintRasterBoundary",
       "Camada raster é arte separada, não render do toolkit. O estado vale para "
       "ela; a amostra nativa mostra a captura atual.");
   XtVaSetValues(v->raster_note, XmNleftAttachment, XmATTACH_FORM,
                 XmNrightAttachment, XmATTACH_FORM, XmNbottomAttachment,
-                XmATTACH_WIDGET, XmNbottomWidget, actions, XmNbottomOffset, 3,
+                XmATTACH_WIDGET, XmNbottomWidget, v->status, XmNbottomOffset, 3,
                 NULL);
-  v->reference_label = label_new(form, "referenceSampleLabel",
-                                 "Referência Motif: escala 4:1");
-  XtVaSetValues(v->reference_label, XmNleftAttachment, XmATTACH_FORM,
-                XmNleftPosition, 0, XmNrightAttachment, XmATTACH_POSITION,
-                XmNrightPosition, 33, XmNtopAttachment, XmATTACH_WIDGET,
-                XmNtopWidget, sizes, NULL);
-  v->native_label =
-      label_new(form, "nativeSampleLabel", "Prévia nativa: escala 4:1");
-  XtVaSetValues(v->native_label, XmNleftAttachment, XmATTACH_POSITION,
-                XmNleftPosition, 34, XmNrightAttachment, XmATTACH_POSITION,
-                XmNrightPosition, 67, XmNtopAttachment, XmATTACH_WIDGET,
-                XmNtopWidget, sizes, NULL);
   Widget paint_label =
       label_new(form, "manualSampleLabel", "Camada manual: pixels de arte");
-  XtVaSetValues(paint_label, XmNleftAttachment, XmATTACH_POSITION,
-                XmNleftPosition, 68, XmNrightAttachment, XmATTACH_FORM,
-                XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, sizes, NULL);
+  XtVaSetValues(paint_label, XmNleftAttachment, XmATTACH_FORM,
+                XmNrightAttachment, XmATTACH_FORM,
+                XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, flow_hint,
+                XmNtopOffset, 5, NULL);
   v->recipe_output = XtVaCreateManagedWidget(
       "paintRecipeOutput", xmTextWidgetClass, form, XmNeditMode,
       XmMULTI_LINE_EDIT, XmNeditable, False, XmNcursorPositionVisible, False,
       XmNrows, 2, XmNwordWrap, True, XmNscrollHorizontal, False,
-      XmNscrollVertical, False, XmNleftAttachment, XmATTACH_POSITION,
-      XmNleftPosition, 68, XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment,
+      XmNscrollVertical, False, XmNleftAttachment, XmATTACH_FORM,
+      XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment,
       XmATTACH_WIDGET, XmNtopWidget, paint_label, XmNheight, 44, NULL);
   tl_ui_hint(
       v->recipe_output,
       "Saída somente leitura para o controle e estado escolhidos. A pintura "
       "raster só será convertida quando houver mapeamento nativo verificável.");
-  Widget reference_scroll = XtVaCreateManagedWidget(
-      "referenceSampleScroll", xmScrolledWindowWidgetClass, form,
-      XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
-      XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_POSITION,
-      XmNrightPosition, 33, XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget,
-      v->reference_label, XmNbottomAttachment, XmATTACH_WIDGET, XmNbottomWidget,
-      v->raster_note, XmNbottomOffset, 3, NULL);
-  v->reference_canvas = XtVaCreateManagedWidget(
-      "referenceSampleCanvas", xmDrawingAreaWidgetClass, reference_scroll,
-      XmNwidth,
-      740, XmNheight, 410, XmNresizePolicy, XmRESIZE_NONE, NULL);
-  tl_ui_hint(v->reference_label,
-             "Referência selecionável, somente leitura; compare forma e "
-             "medidas no zoom compartilhado. Use Copiar referência somente "
-             "quando quiser editar uma cópia.");
-  tl_ui_surface_hint(v->reference_canvas, v->reference_label);
-  Widget native_scroll = XtVaCreateManagedWidget(
-      "nativeSampleScroll", xmScrolledWindowWidgetClass, form,
-      XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
-      XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 34,
-      XmNrightAttachment, XmATTACH_POSITION, XmNrightPosition, 67,
-      XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, v->native_label,
-      XmNbottomAttachment, XmATTACH_WIDGET, XmNbottomWidget, v->raster_note,
-      XmNbottomOffset, 3, NULL);
-  v->native_canvas = XtVaCreateManagedWidget(
-      "nativeSampleCanvas", xmDrawingAreaWidgetClass, native_scroll, XmNwidth,
-      740, XmNheight, 410, XmNresizePolicy, XmRESIZE_NONE, NULL);
-  tl_ui_hint(v->native_label,
-             "Prévia nativa atual, somente leitura; compare com a referência "
-             "no mesmo zoom explícito.");
-  tl_ui_surface_hint(v->native_canvas, v->native_label);
-  XtAddCallback(v->reference_canvas, XmNexposeCallback, sample_draw, v);
-  XtAddCallback(v->native_canvas, XmNexposeCallback, sample_draw, v);
   v->scroll = XtVaCreateManagedWidget(
       "paintCanvasScroll", xmScrolledWindowWidgetClass, form,
       XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
-      XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 68,
-      XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_WIDGET,
+      XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
+      XmNtopAttachment, XmATTACH_WIDGET,
       XmNtopWidget, v->recipe_output, XmNbottomAttachment, XmATTACH_WIDGET,
       XmNbottomWidget, v->raster_note, XmNbottomOffset, 3, NULL);
   v->canvas = XtVaCreateManagedWidget(

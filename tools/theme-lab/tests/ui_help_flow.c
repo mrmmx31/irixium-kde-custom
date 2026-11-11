@@ -62,13 +62,16 @@ static void count_activation(Widget widget,XtPointer data,XtPointer call){
     (void)widget;(void)call;++*(int*)data;
 }
 void tl_test_history_hover(TLView *view,Widget shell){
-    const char *names[]={"*projectUndo","*projectRedo","*projectMark",
-        "*projectRestore","*projectResetPart"};
-    Widget area=find(shell,"*recipeScroll"),tip=XmToolTipGetLabel(shell);
-    CHECK(tip);tl_view_history_state(view,1,1,1);
+    const char *names[]={"*projectUndoMenu","*projectRedoMenu","*projectMarkMenu",
+        "*projectRestoreMenu","*projectResetPartMenu"};
+    Widget cascade=find(shell,"*toolsMenuCascade"),tools=NULL,tip=NULL;
+    XtVaGetValues(cascade,XmNsubMenuId,&tools,NULL);CHECK(tools);
+    tip=find(tools,"*menuHintLabel");
+    tl_view_history_state(view,1,1,1);
+    wait_ms(shell,300);click(cascade,0);wait_ms(shell,200);
     for(size_t i=0;i<sizeof(names)/sizeof(*names);++i){
         Widget owner=find(shell,names[i]);
-        XmScrollVisible(area,owner,4,4);wait_ms(shell,160);
+        CHECK(mapped(owner));
         Position ox,oy,tx,ty;Dimension ow,oh,tw,th;
         XtTranslateCoords(owner,0,0,&ox,&oy);
         XtVaGetValues(owner,XmNwidth,&ow,XmNheight,&oh,NULL);
@@ -95,19 +98,18 @@ void tl_test_history_hover(TLView *view,Widget shell){
     XtVaGetValues(undo,XmNwidth,&w,XmNheight,&h,NULL);
     XWarpPointer(XtDisplay(shell),None,DefaultRootWindow(XtDisplay(shell)),0,0,0,0,x+w/2,y+h/2);
     XFlush(XtDisplay(shell));wait_ms(shell,400);
-    Widget bridge=XtNameToWidget(undo,"*disabledControlHintLabel");CHECK(bridge&&!mapped(bridge));
-    wait_ms(shell,550);CHECK(mapped(bridge)&&!mapped(tip)&&!XtIsSensitive(undo));
-    Position bx,by;Dimension bw,bh;XtTranslateCoords(bridge,0,0,&bx,&by);
-    XtVaGetValues(bridge,XmNwidth,&bw,XmNheight,&bh,NULL);
+    wait_ms(shell,550);CHECK(mapped(tip)&&!XtIsSensitive(undo));
+    Position bx,by;Dimension bw,bh;XtTranslateCoords(tip,0,0,&bx,&by);
+    XtVaGetValues(tip,XmNwidth,&bw,XmNheight,&bh,NULL);
     CHECK(bx>=0&&by>=0&&bx+bw<=WidthOfScreen(XtScreen(shell))&&by+bh<=HeightOfScreen(XtScreen(shell)));
     CHECK(bx+bw<=x||bx>=x+w||by+bh<=y||by>=y+h);
-    wait_ms(shell,400);CHECK(mapped(bridge));
+    wait_ms(shell,400);CHECK(mapped(tip));
     int activations=0;XtAddCallback(undo,XmNactivateCallback,count_activation,&activations);
     click(undo,0);CHECK(!activations&&!XtIsSensitive(undo));
     XtRemoveCallback(undo,XmNactivateCallback,count_activation,&activations);
     XWarpPointer(XtDisplay(shell),None,DefaultRootWindow(XtDisplay(shell)),0,0,0,0,0,0);
-    XFlush(XtDisplay(shell));wait_ms(shell,160);CHECK(!mapped(bridge));
-    printf("History disabled Undo: delayed bridge, bounds/non-overlap, stable400, click blocked and leave passed\n");
+    XFlush(XtDisplay(shell));wait_ms(shell,160);CHECK(!mapped(tip));
+    printf("History disabled Undo menu: delayed hint, bounds/non-overlap and click blocked passed\n");
 }
 static void file_hover(Widget dialog){
     const unsigned char tags[]={XmDIALOG_FILTER_TEXT,XmDIALOG_TEXT,

@@ -40,7 +40,16 @@ void tl_test_export_review_native(TLView *view,Widget shell);
 void tl_test_file_dialog_native(TLView *view,Widget shell);
 void tl_test_history_hover(TLView *view,Widget shell);
 void tl_test_dynamic_hints(TLView *view,Widget shell,TLModel *model);
-static void dispatch(void *data, TLAction action, int argument) { (void)data; (void)action; (void)argument; }
+static TLAction dispatched_action;
+static int dispatched_action_valid = 0;
+static int dispatch_count = 0;
+static void dispatch(void *data, TLAction action, int argument) {
+    (void)data;
+    (void)argument;
+    dispatched_action = action;
+    dispatched_action_valid = 1;
+    ++dispatch_count;
+}
 static void timer(XtPointer data, XtIntervalId *id) { *(int *)data=1; (void)id; }
 static void drain(XtAppContext app) {
     int finished=0;
@@ -93,6 +102,73 @@ static void check_header_layout_palette(TLView *view, Widget shell,
     expect_pixel_rgb(menu, XmNbackground, header[0]);
     expect_pixel_rgb(workspace, XmNbackground, body[0]);
 
+    Widget left_panel = XtNameToWidget(shell, "*leftToolPanel");
+    Widget page_selector = XtNameToWidget(shell, "*leftPanelSelector");
+    Widget page_host = XtNameToWidget(shell, "*recipeEditor");
+    Widget motif_panel = XtNameToWidget(shell, "*motifReferenceFrame");
+    Widget target_panel = XtNameToWidget(shell, "*nativePreview");
+    CHECK(left_panel && page_selector && page_host && motif_panel && target_panel);
+    WidgetList page_children = NULL;
+    Cardinal page_count = 0;
+    int named_pages = 0, managed_pages = 0;
+    XtVaGetValues(page_host, XtNchildren, &page_children,
+                  XtNnumChildren, &page_count, NULL);
+    for (Cardinal i = 0; i < page_count; ++i) {
+        if (strcmp(XtName(page_children[i]), "leftPanelPage") != 0)
+            continue;
+        ++named_pages;
+        if (XtIsManaged(page_children[i])) ++managed_pages;
+    }
+    CHECK(named_pages == 6 && managed_pages == 1);
+    XmString *page_items = NULL;
+    XtVaGetValues(page_selector, XmNitems, &page_items, NULL);
+    XmComboBoxCallbackStruct page_change = {
+        .reason = XmCR_SELECT, .event = NULL,
+        .item_or_text = page_items[3], .item_position = 3};
+    XtVaSetValues(page_selector, XmNselectedPosition, 3, NULL);
+    XtCallCallbacks(page_selector, XmNselectionCallback, &page_change);
+    drain(app);
+    int logical_page = 0;
+    managed_pages = 0;
+    for (Cardinal i = 0; i < page_count; ++i) {
+        if (strcmp(XtName(page_children[i]), "leftPanelPage") != 0)
+            continue;
+        if (XtIsManaged(page_children[i])) {
+            ++managed_pages;
+            CHECK(logical_page == 3);
+        }
+        ++logical_page;
+    }
+    CHECK(managed_pages == 1);
+    static const struct {
+        const char *path;
+        TLAction action;
+    } menu_actions[] = {
+        {"*menuSave", TL_SAVE},
+        {"*menuHistoricalImage", TL_REFERENCE},
+        {"*menuRefresh", TL_APPLY},
+        {"*menuManualPaint", TL_MANUAL_PAINT},
+        {"*projectUndoMenu", TL_PROJECT_UNDO}
+    };
+    for (size_t i = 0; i < sizeof(menu_actions) / sizeof(menu_actions[0]); ++i) {
+        Widget item = XtNameToWidget(shell, (char *)menu_actions[i].path);
+        CHECK(item);
+        int before = dispatch_count;
+        dispatched_action_valid = 0;
+        XtCallCallbacks(item, XmNactivateCallback, NULL);
+        CHECK(dispatch_count == before + 1 &&
+              dispatched_action_valid &&
+              dispatched_action == menu_actions[i].action);
+    }
+    Position lx, ly, tx, ty;
+    Dimension lw, lh, tw, th;
+    XtTranslateCoords(motif_panel, 0, 0, &lx, &ly);
+    XtTranslateCoords(target_panel, 0, 0, &tx, &ty);
+    XtVaGetValues(motif_panel, XmNwidth, &lw, XmNheight, &lh, NULL);
+    XtVaGetValues(target_panel, XmNwidth, &tw, XmNheight, &th, NULL);
+    CHECK(tx >= lx + (Position)lw && abs((int)lw - (int)tw) <= 16);
+    CHECK(abs((int)lh - (int)th) <= 2 && ly == ty);
+
     const char *tmpdir = getenv("TMPDIR");
     char path[4096], error[256];
     CHECK(tmpdir && tmpdir[0] == '/');
@@ -108,24 +184,40 @@ static void check_header_layout_palette(TLView *view, Widget shell,
     drain(app);
     Widget paint_shell = XtNameToWidget(shell, "*manualPaintEditor");
     Widget paint_root = XtNameToWidget(paint_shell, "*manualPaintRoot");
-    Widget paint_header = XtNameToWidget(paint_shell, "*manualPaintSelectors");
+    Widget paint_menu = XtNameToWidget(paint_shell, "*manualPaintMenuBar");
     Widget paint_workspace = XtNameToWidget(paint_shell, "*manualPaintForm");
+    Widget paint_sidebar = XtNameToWidget(paint_shell, "*manualPaintSidebarScroll");
+    Widget paint_main = XtNameToWidget(paint_shell, "*manualPaintMain");
     Widget paint_combo = XtNameToWidget(paint_shell, "*paintFamily");
-    CHECK(paint_shell && paint_root && paint_header && paint_workspace &&
-          paint_combo);
+    CHECK(paint_shell && paint_root && paint_menu && paint_workspace &&
+          paint_sidebar && paint_main && paint_combo);
     XtTranslateCoords(paint_root, 0, 0, &rx, &ry);
-    XtTranslateCoords(paint_header, 0, 0, &mx, &my);
+    XtTranslateCoords(paint_menu, 0, 0, &mx, &my);
     XtTranslateCoords(paint_workspace, 0, 0, &wx, &wy);
     XtVaGetValues(paint_root, XmNwidth, &rw, NULL);
-    XtVaGetValues(paint_header, XmNwidth, &mw, XmNheight, &mh, NULL);
+    XtVaGetValues(paint_menu, XmNwidth, &mw, XmNheight, &mh, NULL);
     XtVaGetValues(paint_workspace, XmNwidth, &ww, NULL);
     CHECK(mx == rx && my == ry && mw == rw);
     CHECK(wx == rx && wy >= my + (Position)mh && ww == rw);
-    expect_pixel_rgb(paint_header, XmNbackground, header[0]);
+    Position sx, sy, ax, ay;
+    Dimension sw, sh, aw, ah;
+    XtTranslateCoords(paint_sidebar, 0, 0, &sx, &sy);
+    XtTranslateCoords(paint_main, 0, 0, &ax, &ay);
+    XtVaGetValues(paint_sidebar, XmNwidth, &sw, XmNheight, &sh, NULL);
+    XtVaGetValues(paint_main, XmNwidth, &aw, XmNheight, &ah, NULL);
+    CHECK(sx >= wx && sy >= wy && ax >= sx + (Position)sw);
+    CHECK(abs((int)sh - (int)ah) <= 2 && sw < aw);
+    expect_pixel_rgb(paint_menu, XmNbackground, header[0]);
     expect_pixel_rgb(paint_workspace, XmNbackground, body[0]);
     expect_pixel_rgb(paint_combo, XmNbackground, body[0]);
+    const char *capture_wait = getenv("TL_LAYOUT_CAPTURE_WAIT");
+    if (capture_wait) {
+        unsigned long seconds = strtoul(capture_wait, NULL, 10);
+        if (seconds > 10) seconds = 10;
+        sleep((unsigned int)seconds);
+    }
     CHECK(unlink(path) == 0);
-    puts("Theme Lab headers: full-width outer bands and independent dynamic Header/Button roles verified in both forms.");
+    puts("Theme Lab layout: full-width menu bands, dynamic Header/Button roles and left-tools/manual-canvas split verified.");
 }
 static char *text(Widget label) {
     XmString value;
@@ -386,10 +478,16 @@ static void check_manual_paint_hints(Widget parent, XtAppContext app) {
         {"*nativeSampleCanvas", "*nativeSampleLabel", "Prévia nativa atual"},
         {"*manualPaintCanvas", "*manualSampleLabel", "pixels de arte"}
     };
+    Widget sidebar_scroll = XtNameToWidget(shell, "*manualPaintSidebarScroll");
+    CHECK(sidebar_scroll);
     for (size_t i = 0; i < sizeof(canvases) / sizeof(canvases[0]); ++i) {
         Widget canvas = XtNameToWidget(shell, (char *)canvases[i].canvas);
         Widget source = XtNameToWidget(shell, (char *)canvases[i].source);
         CHECK(canvas && source && has_direct_hint(source));
+        if (i < 2) {
+            XmScrollVisible(sidebar_scroll, canvas, 4, 4);
+            paint_hint_wait(app, 120);
+        }
         XmString compound = NULL;
         XtVaGetValues(source, XmNtoolTipString, &compound, NULL);
         char *tip = XmStringUnparse(compound, NULL, XmCHARSET_TEXT,

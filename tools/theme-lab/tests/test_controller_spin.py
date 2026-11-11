@@ -257,6 +257,17 @@ def main():
                 return {}
 
         def click(key, arrow=False):
+            menu_actions = {
+                'apply', 'save', 'load', 'export', 'import_delta',
+                'reconstruct_files', 'manual_paint', 'quit',
+                'projectUndo', 'projectRedo', 'projectMark',
+                'projectRestore', 'projectResetPart'
+            }
+            if key in menu_actions:
+                command_file = output / 'home/reveal-spin'
+                command_file.write_text(f'action {key}')
+                wait(lambda: not command_file.exists(), 5)
+                return
             if key in ("automaticPreview", "separatePreview"):
                 (output / "home/reveal-spin").write_text("automatic" if key == "automaticPreview" else "separate")
                 wait(lambda: not (output / "home/reveal-spin").exists(), 5)
@@ -1509,7 +1520,10 @@ def main():
         edit('controlWidth*fieldValue', 1)
         edit('controlHeight*fieldValue', 1)
         click('apply')
-        minimum = wait(lambda: matching_native(1))
+        def refreshed_minimum():
+            value = matching_native(1)
+            return value if value and value != (width, height) else None
+        minimum = wait(refreshed_minimum)
         assert minimum[0] > 1 and minimum[1] > 1, minimum
         results['request_below_native_minimum'] = {'requested': [1, 1], 'both_allocated': minimum}
         move_separate()

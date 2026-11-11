@@ -4,6 +4,14 @@ Aplicativo C99/Motif organizado em MVC. O usuário edita projetos e compara
 controles reais; a ferramenta exporta propostas privadas. Não instala temas
 nem modifica a configuração do desktop pessoal.
 
+A interface principal mantém a barra de menus fora dos painéis, uma faixa de
+contexto no topo, seis páginas mutuamente exclusivas na lateral e duas áreas
+equivalentes de comparação (Motif e família-alvo). O editor de pintura manual
+usa a mesma separação: fontes e ferramentas na lateral rolável e somente a arte
+editável no canvas amplo. O contrato visual e a proveniência das propostas de
+2026-11-11 estão em
+`docs/review/THEMELAB-REDESIGN-TARGET-20261111.md`.
+
 ## Compilar
 
 No Debian, dependências de compilação:
@@ -71,8 +79,11 @@ pessoal nem a fidelidade visual).
 
 ## Ajustar e guardar
 
-1. No painel esquerdo, escolha plataforma e esquema de teste. Cada família tem
-   receita independente. O esquema altera somente os controles em teste.
+1. Na faixa de contexto, escolha plataforma e esquema de teste. Cada família
+   tem receita independente. O esquema altera somente os controles em teste.
+   O seletor lateral ou o menu **Exibir** alternam Catálogo, Controle e
+   medições, Peça e geometria, Cores e relevo, Modelo e referências e Código da
+   proposta sem destruir widgets ou aplicar a receita.
 2. No catálogo em árvore, use +/− para expandir ou recolher categorias.
    O checkbox da categoria controla sua visibilidade na montagem e preserva
    as escolhas individuais. O checkbox do controle controla sua presença;
@@ -83,13 +94,14 @@ pessoal nem a fidelidade visual).
    intervalo em milissegundos reúne as alterações antes de atualizar.
 3. No canvas, `Ctrl+clique` seleciona e `Ctrl+arraste` posiciona. Cliques comuns
    mantêm a operação nativa. Também é possível digitar X/Y e atualizar.
-   O terceiro painel contém apenas o trecho do controle/estado selecionado.
+   O trecho do controle/estado selecionado fica em **Código da proposta**.
    Estados forçados são uma ferramenta de edição, não uma prova histórica.
 4. A referência central usa controles **Motif reais**, com receita própria e o
    mesmo esquema de teste. Cliques nela exercitam o Motif e não editam GTK3.
-   Na Pintura manual, o segundo painel é uma captura nativa independente da
-   família selecionada: GTK2 e GTK3 usam controles reais em janela offscreen,
-   recortados na alocação pedida e exibidos em escala 1:1 ao lado do Motif.
+   Na Pintura manual, a lateral contém a referência e uma captura nativa
+   independente da família selecionada: GTK2 e GTK3 usam controles reais em
+   janela offscreen, recortados na alocação pedida e apresentados sem ocupar o
+   canvas editável.
    Uma família sem capturador aparece explicitamente indisponível; nunca recebe
    uma cópia da imagem Motif como substituta.
    **Imagem histórica** abre o PNG atual em outra janela, em escala 1:1;
@@ -243,8 +255,9 @@ O editor Motif em `src/view/manual_paint_view.c` e o modelo em
 `src/paint/model.c` mantêm uma camada separada por família, controle e estado.
 Oferece lápis, borracha, linha, retângulo, preenchimento, pipeta, papéis de cor
 do esquema KDE, grade, zoom de trabalho e dimensões em pixels de arte. A
-comparação reporta a medida nativa dos dois widgets e mantém a camada raster em
-coluna própria; o zoom não altera o tamanho lógico informado.
+comparação reporta a medida nativa dos dois widgets e mantém a camada raster no
+canvas principal; o zoom não altera o tamanho lógico informado. Menus Arquivo,
+Editar, Exibir e Ajuda ficam em faixa própria, fora da lateral e do canvas.
 
 O arquivo complementar `manual-paint.json`, dentro do diretório de trabalho,
 não se mistura ao JSON da Prancheta nem à receita. Cada ação concluída e cada
@@ -265,11 +278,11 @@ capturas em todas as famílias.
 Uso atual do editor:
 
 1. escolha `Plataforma da arte`, `Controle`, `Peça`, `Variante` e `Estado` na
-   faixa superior; em uma barra, `Peça = Seta` isola a arte da seta e
+   lateral rolável; em uma barra, `Peça = Seta` isola a arte da seta e
    `Variante = Inicial/Final/Cima/Baixo/Esquerda/Direita` identifica a posição;
 2. escolha `Fonte da referência` independentemente da plataforma editada. A
-   troca substitui apenas a amostra da esquerda: não muda a família da arte,
-   não redimensiona a camada manual e não altera a prévia nativa central;
+   troca substitui apenas a amostra de referência: não muda a família da arte,
+   não redimensiona a camada manual e não altera a prévia nativa;
 3. ajuste `Ensaio nativo: comprimento`, `Espessura`, `Posição do cursor` e
    `Página visível` para observar o toolkit em outros tamanhos. Esses quatro
    valores pertencem somente à amostra privada e não alteram a receita nem o
@@ -286,7 +299,7 @@ Uso atual do editor:
 6. ajuste `Largura da arte` e `Altura da arte` somente quando quiser mudar o
    bitmap da peça; reduzir recorta e ampliar acrescenta área vazia;
 7. escolha Lápis, Borracha, Linha, Retângulo, Preencher ou Pipeta e desenhe
-   apenas no canvas da direita. Cada ferramenta aplica um cursor próprio; o
+   apenas no canvas principal. Cada ferramenta aplica um cursor próprio; o
    canvas abre em zoom 4:1, mas o arquivo continua em pixels de arte;
 8. use Salvar para persistir a camada separada. Desfazer/Refazer continuam por
    documento, inclusive depois de trocar de peça.

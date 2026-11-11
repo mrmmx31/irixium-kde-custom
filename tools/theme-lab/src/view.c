@@ -40,6 +40,7 @@
 #include <Xm/Protocols.h>
 #include <Xm/ComboBox.h>
 #include <Xm/CascadeB.h>
+#include <Xm/Separator.h>
 #include <Xm/SpinB.h>
 #include <Xm/ArrowB.h>
 #include <Xm/LabelG.h>
@@ -58,6 +59,15 @@
 
 enum { FACE, TEXT, VIEW, SELECTION, LIGHT, SHADOW, TROUGH, COLOR_COUNT };
 enum { PREVIEW_COUNT = TL_CONTROL_COUNT, ACTION_COUNT = 12, SCHEME_LIMIT = 128 };
+enum {
+    TL_PAGE_CATALOG,
+    TL_PAGE_CONTROL,
+    TL_PAGE_GEOMETRY,
+    TL_PAGE_COLORS,
+    TL_PAGE_MODEL,
+    TL_PAGE_CODE,
+    TL_PAGE_COUNT
+};
 enum { XE_EMBEDDED_NOTIFY, XE_WINDOW_ACTIVATE, XE_WINDOW_DEACTIVATE,
        XE_REQUEST_FOCUS, XE_FOCUS_IN, XE_FOCUS_OUT, XE_FOCUS_NEXT, XE_FOCUS_PREV };
 enum { XE_FOCUS_CURRENT, XE_FOCUS_FIRST, XE_FOCUS_LAST };
@@ -85,6 +95,11 @@ typedef struct {
     int control;
 } ControlBinding;
 
+typedef struct {
+    struct TLView *view;
+    int page;
+} PageBinding;
+
 typedef struct FileChoice {
     struct TLView *view;
     Widget dialog;
@@ -100,6 +115,10 @@ struct TLView {
     Widget history_controls;
     TLEditorStore *editors;
     Widget shell, root, workspace, menu_bar, family_combo, scheme_combo, name, reference_path;
+    Widget context_bar, page_selector, page_host, pages[TL_PAGE_COUNT];
+    Widget history_menu_items[5];
+    PageBinding page_bindings[TL_PAGE_COUNT];
+    int selected_page;
     Widget fields[TL_FIELD_COUNT], scale_fields[2], scale_geometry, factors[3], roles[4], notes, palette_scope;
     Widget part_combo, part_fields[TL_SCROLL_PARAM_COUNT], part_notice, part_captions[TL_SCROLL_PARAM_COUNT];
     TLPartReliefEditor *part_relief_editor;
@@ -129,6 +148,7 @@ struct TLView {
     int preview_sizes[TL_CONTROL_COUNT][2], reference_sizes[TL_CONTROL_COUNT][2];
     Dimension preview_base_sizes[TL_CONTROL_COUNT][2], reference_base_sizes[TL_CONTROL_COUNT][2];
     ActionBinding bindings[ACTION_COUNT + 1];
+    ActionBinding history_bindings[5];
     ControlBinding control_bindings[TL_CONTROL_COUNT];
     TLDispatch dispatch;
     void *context;
@@ -977,21 +997,197 @@ static Widget section(Widget parent, const char *name, const char *title)
                     XmNspacing, 3, XmNmarginWidth, 0, XmNmarginHeight, 0, NULL);
 }
 
-/* The center column keeps its original scrollable minimum.  Once the clip is
- * wider, the comparison stack follows the usable width instead of leaving an
- * unused strip beside both panels.  Once it is taller than the minimum,
- * distribute only the extra vertical space between the native-family and
- * Motif viewports in their existing 370:240 ratio.  The inner canvases remain
- * 1:1 and scroll independently; this changes viewport space, not control
- * geometry or historical scale. */
+static Widget menu_create(Widget menu_bar, const char *name,
+                          const char *label, char mnemonic, int position,
+                          const char *hint)
+{
+    char cascade_name[96];
+    Widget popup = XmCreatePulldownMenu(menu_bar, (char *)name, NULL, 0);
+    XmString title = compound(label);
+    snprintf(cascade_name, sizeof(cascade_name), "%sCascade", name);
+    Widget cascade = XtVaCreateManagedWidget(cascade_name, xmCascadeButtonWidgetClass,
+          menu_bar, XmNlabelString, title, XmNsubMenuId, popup,
+          XmNmnemonic, mnemonic, XmNpositionIndex, position, NULL);
+    XmStringFree(title);
+    tl_ui_hint(cascade, hint);
+    return popup;
+}
+
+static Widget menu_item(Widget menu, const char *name, const char *label,
+                        const char *hint, XtCallbackProc callback,
+                        XtPointer data)
+{
+    XmString title = compound(label);
+    Widget item = XtVaCreateManagedWidget(name, xmPushButtonWidgetClass, menu,
+                                          XmNlabelString, title, NULL);
+    XmStringFree(title);
+    tl_ui_hint(item, hint);
+    if (callback)
+        XtAddCallback(item, XmNactivateCallback, callback, data);
+    return item;
+}
+
+static void menu_separator(Widget menu, const char *name)
+{
+    (void)XtVaCreateManagedWidget(name, xmSeparatorWidgetClass, menu, NULL);
+}
+
+static void page_show(TLView *view, int page)
+{
+    if (!view || page < 0 || page >= TL_PAGE_COUNT)
+        return;
+    for (int i = 0; i < TL_PAGE_COUNT; ++i) {
+        if (!view->pages[i])
+            continue;
+        if (i == page)
+            XtManageChild(view->pages[i]);
+        else
+            XtUnmanageChild(view->pages[i]);
+    }
+    view->selected_page = page;
+    if (view->page_selector)
+        XtVaSetValues(view->page_selector, XmNselectedPosition, page, NULL);
+}
+
+static void page_combo_callback(Widget widget, XtPointer client, XtPointer call)
+{
+    TLView *view = client;
+    int page = combo_callback_index(widget, call);
+    if (page >= 0)
+        page_show(view, page);
+}
+
+static void page_menu_callback(Widget widget, XtPointer client, XtPointer call)
+{
+    PageBinding *binding = client;
+    (void)widget;
+    (void)call;
+    page_show(binding->view, binding->page);
+}
+
+static void menus_create(TLView *view)
+{
+    static const char *const page_labels[TL_PAGE_COUNT] = {
+        "Catálogo", "Controle e medições", "Peça e geometria",
+        "Cores e relevo", "Modelo e referências", "Código da proposta"
+    };
+    static const char *const page_hints[TL_PAGE_COUNT] = {
+        "Mostra a árvore de famílias e controles; trocar de página não altera a seleção.",
+        "Mostra estado, posição, dimensões solicitadas e medidas nativas do controle em edição.",
+        "Mostra peças independentes, geometria compartilhada e medidas específicas da escala GTK2.",
+        "Mostra papéis KDE e fatores de relevo; nenhuma entrada define uma cor RGB final estática.",
+        "Mostra nome, referência histórica, notas, limites e resultado da pipeta.",
+        "Mostra busca e trecho da proposta somente leitura; gerar código não aplica o tema."
+    };
+    Widget file, reference, comparison, tools, display;
+    Widget help_cascade;
+    const int file_actions[] = {1, 2, 8, 5, 11};
+    const char *const file_names[] = {"menuSave", "menuLoad", "menuImportDelta",
+                                      "menuExport", "menuQuit"};
+    const int reference_actions[] = {6, 3};
+    const char *const reference_names[] = {"menuHistoricalImage", "menuPicker"};
+    const int comparison_actions[] = {0, 4};
+    const char *const comparison_names[] = {"menuRefresh", "menuSeparatePreview"};
+    const int tool_actions[] = {10, 7, 9};
+    const char *const tool_names[] = {"menuManualPaint", "menuRestoreFamily",
+                                      "menuReconstructFiles"};
+    static const char *const action_labels[ACTION_COUNT] = {
+        "Atualizar", "Salvar", "Carregar", "Pipeta", "Prévia separada",
+        "Exportar", "Imagem histórica", "Restaurar família", "Importar delta",
+        "Reconstruir arquivos", "Pintura manual", "Sair"
+    };
+    static const char *const history_names[5] = {
+        "projectUndoMenu", "projectRedoMenu", "projectMarkMenu",
+        "projectRestoreMenu", "projectResetPartMenu"
+    };
+    static const char *const history_labels[5] = {
+        "Desfazer projeto", "Refazer projeto", "Guardar ponto",
+        "Voltar ao ponto", "Resetar peça"
+    };
+    static const char *const history_hints[5] = {
+        "Desfaz um ajuste do projeto. O Undo próprio dos campos de texto permanece separado.",
+        "Refaz um ajuste do projeto. O Redo próprio dos campos de texto permanece separado.",
+        "Guarda o projeto atual como ponto persistente de comparação.",
+        "Recupera o ponto guardado como uma alteração que também pode ser desfeita.",
+        "Remove somente os ajustes da peça selecionada; Desfazer projeto recupera a peça."
+    };
+    static const TLAction history_actions[5] = {
+        TL_PROJECT_UNDO, TL_PROJECT_REDO, TL_PROJECT_MARK,
+        TL_PROJECT_RESTORE, TL_PROJECT_RESET_PART
+    };
+
+    help_cascade = XtNameToWidget(view->menu_bar, "*helpCascade");
+    if (help_cascade)
+        XtVaSetValues(help_cascade, XmNpositionIndex, 5, NULL);
+    file = menu_create(view->menu_bar, "fileMenu", "Arquivo", 'A', 0,
+                       "Operações persistentes do projeto e saída do laboratório.");
+    reference = menu_create(view->menu_bar, "referenceMenu", "Referência", 'R', 1,
+                            "Imagem histórica e amostra de cor, separadas das prévias nativas.");
+    comparison = menu_create(view->menu_bar, "comparisonMenu", "Comparação", 'C', 2,
+                             "Atualização e janela de prévia da família selecionada.");
+    tools = menu_create(view->menu_bar, "toolsMenu", "Ferramentas", 'F', 3,
+                        "Pintura, reconstrução e histórico recuperável do projeto.");
+    display = menu_create(view->menu_bar, "displayMenu", "Exibir", 'E', 4,
+                          "Escolhe qual grupo de ferramentas aparece na coluna esquerda.");
+
+    for (size_t i = 0; i < sizeof(file_actions) / sizeof(file_actions[0]); ++i) {
+        int action = file_actions[i];
+        if (i == 4) menu_separator(file, "fileExitSeparator");
+        menu_item(file, file_names[i], action_labels[action], tl_ui_action_hint(action),
+                  action_callback, &view->bindings[action]);
+    }
+    for (size_t i = 0; i < sizeof(reference_actions) / sizeof(reference_actions[0]); ++i) {
+        int action = reference_actions[i];
+        menu_item(reference, reference_names[i], action_labels[action],
+                  tl_ui_action_hint(action), action_callback, &view->bindings[action]);
+    }
+    for (size_t i = 0; i < sizeof(comparison_actions) / sizeof(comparison_actions[0]); ++i) {
+        int action = comparison_actions[i];
+        menu_item(comparison, comparison_names[i], action_labels[action],
+                  tl_ui_action_hint(action), action_callback, &view->bindings[action]);
+    }
+    for (size_t i = 0; i < sizeof(tool_actions) / sizeof(tool_actions[0]); ++i) {
+        int action = tool_actions[i];
+        menu_item(tools, tool_names[i], action_labels[action], tl_ui_action_hint(action),
+                  action_callback, &view->bindings[action]);
+    }
+    menu_separator(tools, "toolsHistorySeparator");
+    for (int i = 0; i < 5; ++i) {
+        view->history_bindings[i].view = view;
+        view->history_bindings[i].action = history_actions[i];
+        view->history_menu_items[i] = menu_item(
+            tools, history_names[i], history_labels[i], history_hints[i],
+            action_callback, &view->history_bindings[i]);
+    }
+    for (int i = 0; i < TL_PAGE_COUNT; ++i) {
+        view->page_bindings[i].view = view;
+        view->page_bindings[i].page = i;
+        menu_item(display, "displayPage", page_labels[i], page_hints[i],
+                  page_menu_callback, &view->page_bindings[i]);
+    }
+    /* Motif does not post ordinary Primitive tooltips for pulldown entries in
+     * this runtime.  Install the same delayed, palette-aware bridge used by
+     * the editor menu after every child has been created. */
+    tl_ui_menu_hints(file);
+    tl_ui_menu_hints(reference);
+    tl_ui_menu_hints(comparison);
+    tl_ui_menu_hints(tools);
+    tl_ui_menu_hints(display);
+}
+
+/* The comparison keeps a scrollable minimum.  Above that minimum, Motif and
+ * the selected family divide extra horizontal space and both receive the same
+ * extra viewport height.  Their inner canvases remain 1:1 and scroll
+ * independently; only the viewport grows, never control geometry or the
+ * historical scale. */
 static void preview_stack_resize(TLView *view)
 {
     Widget clip = NULL;
     Dimension clip_width = 0, clip_height = 0;
-    Dimension stack_width = 0, stack_height = 0, wanted_width = 0;
+    Dimension stack_width = 0, stack_height = 0, wanted_width = 0, wanted_height = 0;
     Dimension native_width = 0, motif_width = 0;
     Dimension native_height = 0, motif_height = 0;
-    unsigned long width_extra, extra, total, native_extra;
+    unsigned long width_extra, height_extra, native_extra;
 
     if (view == NULL || view->preview_stack_scroll == NULL ||
         view->preview_stack == NULL || view->preview_canvas_scroll == NULL ||
@@ -1011,8 +1207,14 @@ static void preview_stack_resize(TLView *view)
         !native_width || !motif_width || !native_height || !motif_height)
         return;
     if (!view->preview_stack_layout_ready) {
-        view->preview_stack_min_width = stack_width;
-        view->preview_stack_min_height = stack_height;
+        unsigned long combined_width = (unsigned long)native_width +
+                                       motif_width + 24;
+        Dimension tallest = native_height > motif_height ? native_height : motif_height;
+        unsigned long combined_height = (unsigned long)tallest + 72;
+        view->preview_stack_min_width =
+            combined_width > stack_width ? (Dimension)combined_width : stack_width;
+        view->preview_stack_min_height =
+            combined_height > stack_height ? (Dimension)combined_height : stack_height;
         view->preview_canvas_min_width = native_width;
         view->motif_reference_min_width = motif_width;
         view->preview_canvas_min_height = native_height;
@@ -1022,8 +1224,10 @@ static void preview_stack_resize(TLView *view)
     wanted_width = clip_width > view->preview_stack_min_width ?
                    clip_width : view->preview_stack_min_width;
     width_extra = (unsigned long)wanted_width - view->preview_stack_min_width;
-    native_width = (Dimension)(view->preview_canvas_min_width + width_extra);
-    motif_width = (Dimension)(view->motif_reference_min_width + width_extra);
+    native_extra = width_extra / 2;
+    motif_width = (Dimension)(view->motif_reference_min_width + native_extra);
+    native_width = (Dimension)(view->preview_canvas_min_width +
+                               width_extra - native_extra);
     {
         Dimension current_native = 0, current_motif = 0;
         XtVaGetValues(view->preview_canvas_scroll, XmNwidth, &current_native, NULL);
@@ -1035,19 +1239,13 @@ static void preview_stack_resize(TLView *view)
     }
     if (stack_width != wanted_width)
         XtVaSetValues(view->preview_stack, XmNwidth, wanted_width, NULL);
-    if (clip_height <= view->preview_stack_min_height) {
-        native_height = view->preview_canvas_min_height;
-        motif_height = view->motif_reference_min_height;
-    } else {
-        extra = (unsigned long)clip_height - view->preview_stack_min_height;
-        total = (unsigned long)view->preview_canvas_min_height +
-                view->motif_reference_min_height;
-        native_extra = total ?
-            (extra * view->preview_canvas_min_height + total / 2) / total : extra / 2;
-        native_height = (Dimension)(view->preview_canvas_min_height + native_extra);
-        motif_height = (Dimension)(view->motif_reference_min_height +
-                                   extra - native_extra);
-    }
+    wanted_height = clip_height > view->preview_stack_min_height ?
+                    clip_height : view->preview_stack_min_height;
+    height_extra = (unsigned long)wanted_height - view->preview_stack_min_height;
+    native_height = (Dimension)(view->preview_canvas_min_height + height_extra);
+    motif_height = (Dimension)(view->motif_reference_min_height + height_extra);
+    if (stack_height != wanted_height)
+        XtVaSetValues(view->preview_stack, XmNheight, wanted_height, NULL);
     {
         Dimension current_native = 0, current_motif = 0;
         XtVaGetValues(view->preview_canvas_scroll, XmNheight, &current_native, NULL);
@@ -1631,9 +1829,15 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
         TL_EXPORT, TL_REFERENCE, TL_RESET, TL_IMPORT_DELTA, TL_RECONSTRUCT_FILES, TL_MANUAL_PAINT, TL_QUIT
     };
     static const char *const initial_schemes[] = { "Esquema KDE atual" };
+    static const char *const page_labels[TL_PAGE_COUNT] = {
+        "Catálogo", "Controle e medições", "Peça e geometria",
+        "Cores e relevo", "Modelo e referências", "Código da proposta"
+    };
     TLView *view = (TLView *)calloc(1, sizeof(*view));
     Widget body, editor_scroll, editor, preview_scroll, previews, code_group;
     Widget group, reference_frame, reference_scroll, bottom, action_row;
+    Widget native_panel;
+    Widget left_panel;
     Atom delete_window;
     int i;
     if (view == NULL) return NULL;
@@ -1659,6 +1863,32 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
            XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
            XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, view->menu_bar,
            XmNbottomAttachment, XmATTACH_FORM, NULL);
+    for (i = 0; i < ACTION_COUNT; ++i) {
+        view->bindings[i].view = view;
+        view->bindings[i].action = actions[i];
+    }
+    menus_create(view);
+    view->context_bar = XtVaCreateManagedWidget(
+           "themeLabContextBar", xmRowColumnWidgetClass, view->workspace,
+           XmNorientation, XmHORIZONTAL, XmNpacking, XmPACK_TIGHT,
+           XmNspacing, 8, XmNleftAttachment, XmATTACH_FORM,
+           XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_FORM,
+           NULL);
+    (void)label_new(view->context_bar, "familyHeading", "Família");
+    view->family_combo = combo_new(view->context_bar, "familyCombo",
+                                   tl_family_labels, TL_FAMILY_COUNT);
+    XtAddCallback(view->family_combo, XmNselectionCallback, family_callback, view);
+    (void)label_new(view->context_bar, "schemeHeading", "Esquema da prévia");
+    view->scheme_combo = combo_new(view->context_bar, "schemeCombo",
+                                   initial_schemes, 1);
+    XtAddCallback(view->scheme_combo, XmNselectionCallback, changed_callback, view);
+    view->automatic = XtVaCreateManagedWidget(
+           "automaticPreview", xmToggleButtonWidgetClass, view->context_bar, NULL);
+    label_set(view->automatic, "Atualização automática");
+    XtAddCallback(view->automatic, XmNvalueChangedCallback, changed_callback, view);
+    number_row(view, view->context_bar, "delayRow", "Intervalo (ms)", 7,
+               &view->delay, 100, 10000, 100, 0);
+    XtAddCallback(view->delay, XmNvalueChangedCallback, changed_callback, view);
     bottom = XtVaCreateManagedWidget("viewFooter", xmRowColumnWidgetClass, view->workspace,
            XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT, XmNspacing, 3,
            XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
@@ -1671,42 +1901,60 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
               action_row, NULL);
         label_set(button, action_labels[i]);
         tl_ui_hint(button, tl_ui_action_hint(i));
-        view->bindings[i].view = view; view->bindings[i].action = actions[i];
         XtAddCallback(button, XmNactivateCallback, action_callback, &view->bindings[i]);
     }
     view->history_controls=tl_history_controls_create(bottom,dispatch,context);
+    /* Menus are the public action surface in the redesigned layout.  Keep the
+     * established button widgets alive, but hidden, so project shortcuts,
+     * state propagation and older automation names remain compatible. */
+    XtUnmanageChild(action_row);
+    XtUnmanageChild(view->history_controls);
     view->status = label_new(bottom, "controllerStatus", "Pronto. Edição privada de receitas.");
     XtVaSetValues(view->status, XmNrecomputeSize, False, XmNwidth, 1200, NULL);
     body = XtVaCreateManagedWidget("threePanels", xmFormWidgetClass, view->workspace,
           XmNfractionBase, 100, XmNleftAttachment, XmATTACH_FORM,
-          XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_FORM,
+          XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_WIDGET,
+          XmNtopWidget, view->context_bar, XmNtopOffset, 6,
           XmNbottomAttachment, XmATTACH_WIDGET, XmNbottomWidget, bottom, XmNbottomOffset, 6, NULL);
-    editor_scroll = XtVaCreateManagedWidget("recipeScroll", xmScrolledWindowWidgetClass, body,
-          XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
+    left_panel = XtVaCreateManagedWidget(
+          "leftToolPanel", xmFormWidgetClass, body, XmNfractionBase, 100,
           XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_POSITION,
-          XmNrightPosition, 33, XmNtopAttachment, XmATTACH_FORM,
+          XmNrightPosition, 29, XmNtopAttachment, XmATTACH_FORM,
+          XmNbottomAttachment, XmATTACH_FORM, NULL);
+    view->page_selector = combo_new(left_panel, "leftPanelSelector",
+                                    page_labels, TL_PAGE_COUNT);
+    XtVaSetValues(view->page_selector, XmNleftAttachment, XmATTACH_FORM,
+                  XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment,
+                  XmATTACH_FORM, NULL);
+    XtAddCallback(view->page_selector, XmNselectionCallback,
+                  page_combo_callback, view);
+    tl_ui_hint(view->page_selector,
+               "Escolhe o grupo mostrado à esquerda. Trocar de página preserva "
+               "campos, seleções e histórico e não aplica a receita.");
+    editor_scroll = XtVaCreateManagedWidget("recipeScroll", xmScrolledWindowWidgetClass, left_panel,
+          XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
+          XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
+          XmNtopAttachment, XmATTACH_WIDGET, XmNtopWidget, view->page_selector,
+          XmNtopOffset, 5,
           XmNbottomAttachment, XmATTACH_FORM, NULL);
     editor = XtVaCreateManagedWidget("recipeEditor", xmRowColumnWidgetClass, editor_scroll,
           XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT,
           XmNspacing, 6, XmNmarginWidth, 4, XmNmarginHeight, 4, XmNwidth, 380, NULL);
-    (void)label_new(editor, "toolsHeading", "Ferramentas / receita da família");
-    (void)label_new(editor, "familyHeading", "Família de controles");
-    view->family_combo = combo_new(editor, "familyCombo", tl_family_labels, TL_FAMILY_COUNT);
-    XtAddCallback(view->family_combo, XmNselectionCallback, family_callback, view);
-    (void)label_new(editor, "schemeHeading", "Esquema usado apenas na prévia");
-    view->scheme_combo = combo_new(editor, "schemeCombo", initial_schemes, 1);
-    XtAddCallback(view->scheme_combo, XmNselectionCallback, changed_callback, view);
-    view->automatic = XtVaCreateManagedWidget("automaticPreview", xmToggleButtonWidgetClass, editor, NULL);
-    label_set(view->automatic, "Atualização automática");
-    XtAddCallback(view->automatic, XmNvalueChangedCallback, changed_callback, view);
-    view->separate = XtVaCreateManagedWidget("separatePreview", xmToggleButtonWidgetClass, editor, NULL);
-    label_set(view->separate, "Mostrar prévia separada");
-    XtAddCallback(view->separate, XmNvalueChangedCallback, separate_callback, view);
-    number_row(view, editor, "delayRow", "Intervalo da prévia (ms)", 7, &view->delay, 100, 10000, 100, 0);
-    XtAddCallback(view->delay, XmNvalueChangedCallback, changed_callback, view);
-    group = section(editor, "catalogSection", "Catálogo de controles");
+    view->page_host = editor;
+    for (i = 0; i < TL_PAGE_COUNT; ++i) {
+        view->pages[i] = XtVaCreateManagedWidget(
+            "leftPanelPage", xmRowColumnWidgetClass, editor,
+            XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT,
+            XmNspacing, 6, XmNmarginWidth, 1, XmNmarginHeight, 1,
+            XmNwidth, 370, NULL);
+        if (i != TL_PAGE_CATALOG)
+            XtUnmanageChild(view->pages[i]);
+    }
+    view->selected_page = TL_PAGE_CATALOG;
+    group = section(view->pages[TL_PAGE_CATALOG], "catalogSection", "Catálogo de controles");
     view->catalog=tl_catalog_create(group,category_labels,control_labels,control_category,catalog_changed,view);
-    group = section(editor, "controlEdit", "Controle selecionado / posição no canvas");
+    group = section(view->pages[TL_PAGE_CONTROL], "controlEdit",
+                    "Controle selecionado / posição no canvas");
     view->control_label = label_new(group, "selectedControl", "Controle em edição: botão");
     (void)label_new(group, "stateHeading", "Estado em edição");
     view->edit_state = combo_new(group, "editState", state_labels, 4);
@@ -1723,15 +1971,22 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
     number_row(view, group, "controlHeight", "Altura (0 = automática)", 6, &view->size[1], 0, 2048, 1, 0);
     for (i = 0; i < 2; ++i) XtAddCallback(view->size[i], XmNvalueChangedCallback, changed_callback, view);
     view->metric_summary = label_new(group, "nativeMetrics", "Aguardando medidas nativas.");
-    view->capability = label_new(editor, "familyCapability", "Aguardando inventário nativo.");
+    view->capability = label_new(view->pages[TL_PAGE_CONTROL], "familyCapability",
+                                 "Aguardando inventário nativo.");
     XtVaSetValues(view->capability, XmNrecomputeSize, False, XmNwidth, 360, XmNheight, 75, NULL);
-    (void)field_row(editor, "modelNameRow", "Nome do modelo", 18, &view->name);
+    (void)field_row(view->pages[TL_PAGE_MODEL], "modelNameRow", "Nome do modelo", 18, &view->name);
     XtVaSetValues(view->name, XmNmaxLength, 255, NULL);
     XtAddCallback(view->name, XmNvalueChangedCallback, changed_callback, view);
-    (void)field_row(editor, "referencePathRow", "Referência PNG", 18, &view->reference_path);
+    (void)field_row(view->pages[TL_PAGE_MODEL], "referencePathRow", "Referência PNG", 18, &view->reference_path);
     XtVaSetValues(view->reference_path, XmNmaxLength, TL_PATH_MAX - 1, NULL);
     XtAddCallback(view->reference_path, XmNvalueChangedCallback, changed_callback, view);
-    group = section(editor, "scrollbarParts", "Ajuste independente da peça");
+    view->separate = XtVaCreateManagedWidget(
+        "separatePreview", xmToggleButtonWidgetClass,
+        view->pages[TL_PAGE_MODEL], NULL);
+    label_set(view->separate, "Mostrar prévia separada");
+    XtAddCallback(view->separate, XmNvalueChangedCallback, separate_callback, view);
+    group = section(view->pages[TL_PAGE_GEOMETRY], "scrollbarParts",
+                    "Ajuste independente da peça");
     const char *part_labels[] = {"Seta", "Botão da seta", "Trilho", "Cursor", "Encaixe"};
     view->part_combo=combo_new(group,"scrollPartCombo",part_labels,TL_SCROLL_PART_COUNT);
     XtAddCallback(view->part_combo,XmNselectionCallback,selected_part_callback,view);
@@ -1750,21 +2005,25 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
     for(i=0;i<3;i++) {
         tl_ui_hint(part_widgets[i],part_hints[i]);
     }
-    group = section(editor, "geometryFields", "Geometria compartilhada — pixels");
+    group = section(view->pages[TL_PAGE_GEOMETRY], "geometryFields",
+                    "Geometria compartilhada — pixels");
     for (i = 0; i < TL_FIELD_COUNT; ++i) {
         number_row(view, group, tl_field_ids[i], tl_field_labels[i], 6, &view->fields[i],
                    i == 8 ? 6 : 0, i == 8 ? 48 : (i == 0 ? 127 : 128),
                    i == 0 || i == 2 || i == 3 ? 2 : 1, 0);
         XtAddCallback(view->fields[i], XmNvalueChangedCallback, changed_callback, view);
     }
-    view->scale_geometry = section(editor, "gtk2ScaleGeometry", "GTK2 — cursor da escala (px)");
+    view->scale_geometry = section(view->pages[TL_PAGE_GEOMETRY],
+                                   "gtk2ScaleGeometry",
+                                   "GTK2 — cursor da escala (px)");
     number_row(view, view->scale_geometry, "gtk2ScaleWidth", "Largura transversal", 6,
                &view->scale_fields[0], 1, 128, 1, 0);
     number_row(view, view->scale_geometry, "gtk2ScaleLength", "Comprimento", 6,
                &view->scale_fields[1], 1, 128, 1, 0);
     for (i = 0; i < 2; ++i)
         XtAddCallback(view->scale_fields[i], XmNvalueChangedCallback, changed_callback, view);
-    group = section(editor, "paletteFields", "Papéis e fatores KDE — controle em edição");
+    group = section(view->pages[TL_PAGE_COLORS], "paletteFields",
+                    "Papéis e fatores KDE — controle em edição");
     for (i = 0; i < 3; ++i) {
         number_row(view, group, "factorRow", factor_labels[i], 8, &view->factors[i], 0, 10000, 100, 4);
         XtAddCallback(view->factors[i], XmNvalueChangedCallback, changed_callback, view);
@@ -1774,27 +2033,33 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
         XtAddCallback(view->roles[i], XmNvalueChangedCallback, changed_callback, view);
     }
     view->palette_scope=label_new(group,"paletteScope","Controle selecionado: herda papéis/fatores da família.");
-    group = section(editor, "recipeNotes", "Notas / limites da adaptação");
+    group = section(view->pages[TL_PAGE_MODEL], "recipeNotes",
+                    "Notas / limites da adaptação");
     view->notes = XtVaCreateManagedWidget("notesText", xmTextWidgetClass, group,
          XmNeditMode, XmMULTI_LINE_EDIT, XmNrows, 4, XmNcolumns, 28,
          XmNwordWrap, True, XmNmaxLength, 2047, NULL);
     XtAddCallback(view->notes, XmNvalueChangedCallback, changed_callback, view);
-    view->pick_summary = label_new(editor, "pickSummary", "Pipeta: sem amostra.");
+    view->pick_summary = label_new(view->pages[TL_PAGE_MODEL], "pickSummary",
+                                   "Pipeta: sem amostra.");
     XtVaSetValues(view->pick_summary, XmNrecomputeSize, False, XmNwidth, 360, XmNheight, 110, NULL);
     preview_scroll = XtVaCreateManagedWidget("previewScroll", xmScrolledWindowWidgetClass, body,
           XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
-          XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 33, XmNleftOffset, 5,
-          XmNrightAttachment, XmATTACH_POSITION, XmNrightPosition, 75, XmNrightOffset, 5,
+          XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 29, XmNleftOffset, 6,
+          XmNrightAttachment, XmATTACH_FORM,
           XmNtopAttachment, XmATTACH_FORM, XmNbottomAttachment, XmATTACH_FORM, NULL);
     view->preview_stack_scroll = preview_scroll;
-    previews = XtVaCreateManagedWidget("previewStack", xmRowColumnWidgetClass, preview_scroll,
-          XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT,
-          XmNresizeWidth, False, XmNspacing, 7,
+    previews = XtVaCreateManagedWidget(
+          "previewStack", xmFormWidgetClass, preview_scroll,
+          XmNfractionBase, 100, XmNwidth, 1044, XmNheight, 500,
+          XmNresizePolicy, XmRESIZE_GROW,
           XmNmarginWidth, 4, XmNmarginHeight, 4, NULL);
     view->preview_stack = previews;
-    preview_create(view, previews);
     reference_frame = XtVaCreateManagedWidget("motifReferenceFrame", xmFrameWidgetClass, previews,
-          XmNshadowType, XmSHADOW_IN, XmNshadowThickness, 2, NULL);
+          XmNshadowType, XmSHADOW_IN, XmNshadowThickness, 2,
+          XmNleftAttachment, XmATTACH_FORM,
+          XmNrightAttachment, XmATTACH_POSITION, XmNrightPosition, 50,
+          XmNrightOffset, 4, XmNtopAttachment, XmATTACH_FORM,
+          XmNbottomAttachment, XmATTACH_FORM, NULL);
     view->motif_reference_frame = reference_frame;
     group = XtVaCreateManagedWidget("referenceGroup", xmRowColumnWidgetClass, reference_frame,
           XmNorientation, XmVERTICAL, XmNpacking, XmPACK_TIGHT, NULL);
@@ -1804,7 +2069,7 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
                   XmNwidth, 500, XmNheight, 40, NULL);
     reference_scroll = XtVaCreateManagedWidget("motifReferenceScroll", xmScrolledWindowWidgetClass, group,
           XmNscrollingPolicy, XmAUTOMATIC, XmNscrollBarDisplayPolicy, XmAS_NEEDED,
-          XmNwidth, 510, XmNheight, 240, NULL);
+          XmNwidth, 510, XmNheight, 370, NULL);
     view->motif_reference_scroll = reference_scroll;
     view->motif_reference_form = XtVaCreateManagedWidget("motifReferenceControls", xmFormWidgetClass,
           reference_scroll, XmNwidth, 740, XmNheight, 410, XmNresizePolicy, XmRESIZE_NONE, NULL);
@@ -1812,6 +2077,14 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
     for (i = 0; i < TL_CONTROL_COUNT; ++i)
         XtAddEventHandler(view->motif_reference_widgets[i], StructureNotifyMask, False,
                           metrics_geometry_event, view);
+    preview_create(view, previews);
+    native_panel = XtNameToWidget(previews, "*nativePreview");
+    if (native_panel)
+        XtVaSetValues(native_panel,
+                      XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 50,
+                      XmNleftOffset, 4, XmNrightAttachment, XmATTACH_FORM,
+                      XmNtopAttachment, XmATTACH_FORM,
+                      XmNbottomAttachment, XmATTACH_FORM, NULL);
     XtAddEventHandler(preview_scroll, StructureNotifyMask, False,
                       preview_stack_resize_event, view);
     /* The historical image remains a separate modeless window. Loading the
@@ -1835,10 +2108,9 @@ TLView *tl_view_create(Widget shell, TLDispatch dispatch, void *context)
           reference_scroll, XmNwidth, 480, XmNheight, 210,
           XmNresizePolicy, XmRESIZE_NONE, XmNmarginWidth, 0, XmNmarginHeight, 0, NULL);
     XtAddCallback(view->reference_area, XmNexposeCallback, reference_expose, view);
-    code_group = XtVaCreateManagedWidget("codePanel", xmFormWidgetClass, body,
-          XmNleftAttachment, XmATTACH_POSITION, XmNleftPosition, 75,
-          XmNrightAttachment, XmATTACH_FORM, XmNtopAttachment, XmATTACH_FORM,
-          XmNbottomAttachment, XmATTACH_FORM, NULL);
+    code_group = XtVaCreateManagedWidget(
+          "codePanel", xmFormWidgetClass, view->pages[TL_PAGE_CODE],
+          XmNwidth, 360, XmNheight, 620, XmNresizePolicy, XmRESIZE_GROW, NULL);
     group = label_new(code_group, "codeHeading", "Código da proposta — somente leitura");
     XtVaSetValues(group, XmNleftAttachment, XmATTACH_FORM, XmNrightAttachment, XmATTACH_FORM,
                   XmNtopAttachment, XmATTACH_FORM, NULL);
@@ -3773,5 +4045,9 @@ int tl_view_editor_checkpoint(TLView *view,char *error,size_t capacity) {
 }
 
 void tl_view_history_state(TLView *view,int undo,int redo,int point) {
+    if (!view) return;
     tl_history_controls_state(view->history_controls,undo,redo,point);
+    if (view->history_menu_items[0]) XtSetSensitive(view->history_menu_items[0], undo);
+    if (view->history_menu_items[1]) XtSetSensitive(view->history_menu_items[1], redo);
+    if (view->history_menu_items[3]) XtSetSensitive(view->history_menu_items[3], point);
 }

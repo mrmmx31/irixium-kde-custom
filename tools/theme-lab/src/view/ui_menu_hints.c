@@ -9,7 +9,7 @@
  * No translation, grab, focus or editor callback is replaced. */
 typedef struct {
     Widget menu, owner, shell, label;
-    XtIntervalId delay, duration;
+    XtIntervalId delay, duration, watch;
 } MenuHint;
 
 static void hide(MenuHint *hint) {
@@ -80,21 +80,67 @@ static void post(XtPointer data,XtIntervalId *id) {
 }
 static void crossing(Widget owner,XtPointer data,XEvent *event,Boolean *dispatch) {
     MenuHint *hint=data;(void)dispatch;
-    if(event->type==EnterNotify){
+    if(event->type==EnterNotify||event->type==MotionNotify){
         /* Releasing the native menu grab can synthesize Enter after the
          * activation/unmap. It is not a new hover request. */
-        if(event->xcrossing.mode==NotifyUngrab){hide(hint);return;}
+        if(event->type==EnterNotify&&event->xcrossing.mode==NotifyUngrab){hide(hint);return;}
+        if(hint->owner==owner&&(hint->delay||hint->duration))return;
         hide(hint);hint->owner=owner;
         hint->delay=XtAppAddTimeOut(XtWidgetToApplicationContext(owner),750,post,hint);
     }else if(hint->owner==owner)hide(hint);
 }
+static void menu_motion(Widget menu,XtPointer data,XEvent *event,Boolean *dispatch) {
+    MenuHint *hint=data;(void)dispatch;
+    if(event->type==LeaveNotify){
+        if(event->xcrossing.detail!=NotifyInferior)hide(hint);
+        return;
+    }
+    if(event->type!=MotionNotify)return;
+    Window root=None,child=None;int rx=0,ry=0,x=0,y=0;unsigned mask=0;
+    if(!XQueryPointer(XtDisplay(menu),XtWindow(menu),&root,&child,&rx,&ry,&x,&y,&mask)||
+        child==None){hide(hint);return;}
+    Widget owner=XtWindowToWidget(XtDisplay(menu),child);
+    if(!owner||XtParent(owner)!=menu){hide(hint);return;}
+    if(hint->owner==owner&&(hint->delay||hint->duration))return;
+    hide(hint);hint->owner=owner;
+    hint->delay=XtAppAddTimeOut(XtWidgetToApplicationContext(owner),750,post,hint);
+}
+static void watch_pointer(XtPointer data,XtIntervalId *id) {
+    MenuHint *hint=data;(void)id;hint->watch=0;
+    if(!XtIsManaged(hint->menu)||!XtIsRealized(hint->menu))return;
+    Window root=None,child=None;int rx=0,ry=0,x=0,y=0;unsigned mask=0;
+    Widget owner=NULL;XmString text=NULL;
+    if(XQueryPointer(XtDisplay(hint->menu),XtWindow(hint->menu),&root,&child,
+        &rx,&ry,&x,&y,&mask)&&child!=None)
+        owner=XtWindowToWidget(XtDisplay(hint->menu),child);
+    if(!owner||XtParent(owner)!=hint->menu)owner=NULL;
+    if(owner)XtVaGetValues(owner,XmNtoolTipString,&text,NULL);
+    if(!text)owner=NULL;
+    if(owner!=hint->owner){
+        hide(hint);
+        if(owner){
+            hint->owner=owner;
+            hint->delay=XtAppAddTimeOut(XtWidgetToApplicationContext(owner),750,post,hint);
+        }
+    }
+    hint->watch=XtAppAddTimeOut(XtWidgetToApplicationContext(hint->menu),50,
+        watch_pointer,hint);
+}
+static void mapped_menu(Widget w,XtPointer data,XtPointer call){
+    MenuHint *hint=data;(void)w;(void)call;
+    if(!hint->watch)hint->watch=XtAppAddTimeOut(
+        XtWidgetToApplicationContext(hint->menu),1,watch_pointer,hint);
+}
 static void unmapped(Widget w,XtPointer data,XtPointer call){
-    (void)w;(void)call;hide(data);
+    MenuHint *hint=data;(void)w;(void)call;
+    if(hint->watch){XtRemoveTimeOut(hint->watch);hint->watch=0;}
+    hide(hint);
 }
 static void destroyed(Widget w,XtPointer data,XtPointer call){
     MenuHint *hint=data;(void)w;(void)call;
     if(hint->delay)XtRemoveTimeOut(hint->delay);
     if(hint->duration)XtRemoveTimeOut(hint->duration);
+    if(hint->watch)XtRemoveTimeOut(hint->watch);
     free(hint);
 }
 void tl_ui_menu_hints(Widget menu) {
@@ -107,8 +153,16 @@ void tl_ui_menu_hints(Widget menu) {
     WidgetList children=NULL;Cardinal count=0;
     XtVaGetValues(menu,XtNchildren,&children,XtNnumChildren,&count,NULL);
     for(Cardinal i=0;i<count;++i)
-        XtAddEventHandler(children[i],EnterWindowMask|LeaveWindowMask|ButtonPressMask,
+        /* Raw handlers keep the explanatory hover available while an action
+         * is insensitive.  Activation remains blocked by Xt sensitivity; no
+         * translation, callback or native menu grab is replaced. */
+        XtAddRawEventHandler(children[i],EnterWindowMask|LeaveWindowMask|ButtonPressMask,
             False,crossing,hint);
+    /* Motion selected on the parent receives propagation from an insensitive
+     * child, for which Xt intentionally suppresses that child's handlers. */
+    XtAddRawEventHandler(menu,PointerMotionMask|LeaveWindowMask,False,
+        menu_motion,hint);
+    XtAddCallback(menu,XmNmapCallback,mapped_menu,hint);
     XtAddCallback(menu,XmNunmapCallback,unmapped,hint);
     XtAddCallback(menu,XtNdestroyCallback,destroyed,hint);
 }

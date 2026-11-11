@@ -19038,3 +19038,51 @@ mas não estão conectados; nenhuma ferramenta externa foi apresentada como se
 estivesse ativa. O próximo passo visual continua sendo receber as propostas e
 inspirações do usuário e, se ele conectar um desses plugins, usá-lo para
 explorar o redesenho. Não há proposta selecionada nem aceite humano registrado.
+
+### Redesenho estrutural do ThemeLab a partir das seis propostas — 2026-11-11
+
+As seis imagens entregues pelo usuário foram copiadas sem alteração para
+`~/tempia/domainos-theme-work/themelab-redesign-proposals-20261111-r1/` e
+receberam hashes e dimensões no contrato
+`docs/review/THEMELAB-REDESIGN-TARGET-20261111.md`. As duas comparações formais
+1:1 ficaram em `themelab-redesign-main-compare-20261111-r1/` e
+`themelab-redesign-paint-compare-20261111-r1/`. Como as dimensões diferem, os
+recibos recusam diferença de pixels e registram `not_comparable`; os mockups não
+foram tratados como renderização nativa nem como cores finais do tema.
+
+A interface principal agora tem barra de menus própria, faixa de contexto e
+seis páginas mutuamente exclusivas na lateral: Catálogo, Controle e medições,
+Peça e geometria, Cores e relevo, Modelo e referências e Código da proposta.
+As ações anteriores continuam ligadas aos mesmos callbacks; os botões antigos
+ficam vivos, porém ocultos, para preservar atalhos e automações. O código saiu
+da terceira coluna fixa. Motif e família-alvo ocupam duas metades equivalentes
+que crescem juntas; apenas os viewports crescem, mantendo os canvases internos
+em escala 1:1 e com rolagem independente.
+
+O editor de pintura manual recebeu menus Arquivo, Editar, Exibir e Ajuda. Alvo,
+ferramentas, dimensões, referência e ensaio nativo ficam na lateral rolável;
+referência e prévia conservam cópia explícita e recuperável, enquanto o canvas
+editável usa toda a área principal. Família da arte e fonte da referência
+continuam independentes. Papéis e cabeçalhos são resolvidos pelas paletas KDE
+atuais; nenhum RGB final dos mockups foi incorporado.
+
+A captura sintética principal está em
+`~/tempia/domainos-theme-work/themelab-layout-check-20261111-GRIcpL/main.png`
+(SHA-256 `78086b55e54c2f5df0f12192ec75a1d3b034cd946c9609731b1f2540794284a4`).
+A captura sintética do editor reorganizado está em
+`~/tempia/domainos-theme-work/themelab-redesign-layout-20261111-ILEMbm/manual-paint.png`
+(SHA-256 `3da19f68926e2651c87139405adb546c5da8ee01e6f56002722d2223c7f3e36f`).
+São evidências de layout sob Xvfb, não aceite visual na sessão pessoal.
+
+Passaram a compilação com `-Werror`, as verificações de modelo/backend/cena,
+o teste focado de layout (menu externo, seis páginas, troca para a quarta página,
+comparação lateral equivalente e divisão lateral/canvas), métricas nativas,
+dicas de 60 controles do editor, cópia independente das duas fontes, catálogo
+com 16 IDs, importação R584, seleção de combobox, cinco cursores reais e a
+recuperação de texto com Undo/Redo/clipboard. As cinco ações de histórico no
+novo menu Ferramentas também passaram a prova de atraso, limites, não
+sobresposição e estabilidade da dica em quatro esquemas; a ação Undo
+desabilitada conserva a explicação visível e continua bloqueando o clique. O
+próximo gate é o usuário abrir
+esta versão na sessão escolhida e avaliar visualmente menus, proporções,
+rolagem lateral e canvas. Nenhum aceite humano foi inferido.
