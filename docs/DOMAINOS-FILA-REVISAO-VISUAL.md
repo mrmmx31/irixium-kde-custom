@@ -19011,3 +19011,30 @@ também existem caches/estados grandes que não foram atribuídos a este surto.
 Nenhum journal, cache ou histórico foi apagado. Continuam pendentes a proteção
 contra nova contaminação pelo XRDP, a dívida do binding sem `NOTIFY` e a
 confirmação visual do usuário; nenhum aceite foi inferido.
+
+### Comparador visual 1:1 do ThemeLab — 2026-11-11
+
+Foi acrescentado ao laboratório um fluxo local e reproduzível para comparar
+capturas e propostas PNG sem alterar o tema nem o desktop. O helper
+`tools/theme-lab/visual_compare.py` aceita somente arquivos regulares, recusa
+links, restringe os resultados a diretórios privados e vazios sob
+`~/tempia/domainos-theme-work/`, preserva escala 1:1 e registra hashes,
+dimensões, proveniência e modos dos artefatos. Imagens com dimensões distintas
+recebem `not_comparable` e não geram diferença de pixels. Mesmo com canvases
+iguais, o recibo mantém o alinhamento de coordenadas como `unverified`, pois a
+métrica técnica não demonstra correspondência semântica nem fidelidade visual.
+
+A validação real comparou as capturas versionadas
+`07-FINAL-THREE-PANELS.png` e `01-MOTIF-REFERENCE.png`. A prancha 1:1 ficou em
+`~/tempia/domainos-theme-work/themelab-visual-compare-validation-20261111-r1/`,
+com SHA-256 `a612a884943e5de02c788b867a3ccce92cea9a0a2fd466fac0540ccab9a0f703`.
+O recibo registra 904.137 pixels diferentes de 1.600.000, mas esse valor é
+somente uma diferença de canvases e não avalia qual layout deve ser escolhido.
+
+Passaram os quatro testes específicos do comparador e a suíte completa do
+ThemeLab: 1027 verificações do modelo, 42 do backend, 16 da cena, quatro Qt5 e
+21 Qt6. Product Design e Figma continuam disponíveis no catálogo de plugins,
+mas não estão conectados; nenhuma ferramenta externa foi apresentada como se
+estivesse ativa. O próximo passo visual continua sendo receber as propostas e
+inspirações do usuário e, se ele conectar um desses plugins, usá-lo para
+explorar o redesenho. Não há proposta selecionada nem aceite humano registrado.

@@ -121,6 +121,26 @@ GTK3: barra = seta + 2 × sombra; thumb transversal = seta; seta ímpar;
 moldura = sombra. Padding/fonte iniciais são defaults da ferramenta, não medidas
 comprovadas da referência histórica.
 
+## Comparar propostas visuais
+
+`visual_compare.py` gera uma prancha lado a lado sem redimensionamento e um
+recibo com hashes, dimensões e proveniência. A diferença absoluta de pixels só
+é calculada quando as duas imagens PNG têm dimensões idênticas; tamanhos
+distintos ficam explicitamente `not_comparable`, sem escala ou recorte oculto.
+Dimensões iguais habilitam a métrica, mas não provam que os conteúdos ocupem
+coordenadas correspondentes: o recibo mantém o alinhamento como `unverified`
+até a revisão manual.
+As saídas são novas evidências privadas e precisam ficar em um diretório vazio,
+modo 0700, abaixo de `~/tempia/domainos-theme-work/`:
+
+```sh
+python3 -B tools/theme-lab/visual_compare.py atual.png proposta.png \
+  --output-dir ~/tempia/domainos-theme-work/comparacao-proposta-01
+```
+
+O artefato técnico não aprova uma proposta nem substitui a inspeção de widgets
+nativos. Cores finais do tema continuam derivadas dos papéis do esquema KDE.
+
 Cor medida é evidência. O DomainOS usa papéis como
 `Colors:Button/BackgroundNormal` do esquema KDE atual; a pipeta não cria cores
 finais fixas nos widgets. O campo de fatores regula luz, sombra e trilho.

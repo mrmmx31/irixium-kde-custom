@@ -62,6 +62,7 @@ check: $(BUILD)/model-test $(BUILD)/preview-event-test $(BUILD)/code-search-test
 	/usr/bin/python3 -B tests/test_preview_scene.py
 	/usr/bin/python3 -B tests/test_qt5_scrollbar_recipe.py
 	/usr/bin/python3 -B tests/test_qt6_scrollbar_recipe.py
+	/usr/bin/python3 -B tests/test_visual_compare.py
 check-manual-paint-model: $(BUILD)/manual-paint-model-test
 	"$(BUILD)/manual-paint-model-test" "$(abspath $(BUILD))/manual-paint-model-test.json"
 $(BUILD)/manual-paint-model-test: tests/manual_paint_model_test.c src/paint/model.c include/manual_paint.h | $(BUILD)
