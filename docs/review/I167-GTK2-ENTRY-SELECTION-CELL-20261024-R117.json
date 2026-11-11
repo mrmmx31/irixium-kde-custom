@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R117",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Correct the GTK2 selected-cell measurement against native VUE",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "source": "R113 idle selection and caret measurements",
+    "main_vm_touched": false
+  },
+  "method": {
+    "gtk": "GTK 2.24.33, mapped GtkEntry on isolated Xvfb",
+    "entry_allocation_px": [320, 34],
+    "candidate_font": "DejaVu Sans Mono 9.25, temporary measurement override only",
+    "text": "a*a",
+    "selection_endpoints": [1, 2],
+    "schemes": ["DomainOS", "Breeze Light", "Breeze Dark"]
+  },
+  "result": {
+    "vue_character_cell_px": [8, 16],
+    "gtk2_pango_selected_character_rect_px": [8, 16],
+    "gtk2_pango_logical_line_px": [24, 16],
+    "selection_cell_window_xywh_px": [28, 25, 8, 16],
+    "selection_role_color_reaches_both_horizontal_edges": true,
+    "same_selected_raster_for_both_caret_endpoints": true,
+    "endpoint_capture_pixel_difference": 0,
+    "schemes_verified": 3
+  },
+  "correction_to_r116": "The earlier 7x16 result counted only unobscured background fill and omitted a column occupied by the selected glyph. Pango's character rectangle and the captured role-color edges establish an 8x16 selected cell. The apparent one-pixel width difference is resolved; the prior receipt remains as the original measurement record.",
+  "font_policy": "The candidate reproduces the measured cell geometry, but its family is not proven to be the VUE field font. Do not impose it as the product font. Keep the product font configurable and leave exact family identity open.",
+  "evidence": {
+    "analysis_json": {
+      "path": "~/tempia/i167-line-metrics-r116/output-font-dejavu-mono-9_25-dual-end/R117-SELECTION-CELL-ANALYSIS.json",
+      "sha256": "81b72a22f36d4eff7a14f877f532f6a67b66565e4c9b60248290f2d69d72aae6"
+    },
+    "runtime_result_json": {
+      "path": "~/tempia/i167-line-metrics-r116/output-font-dejavu-mono-9_25-dual-end/RESULTADO.json",
+      "sha256": "b3f930eaa44c3488c83f4b10c2c78f93af34e7472cd01d1f90d75d116fac439f"
+    },
+    "dual_endpoint_probe": {
+      "path": "~/tempia/i167-line-metrics-r116/probe_entry_font_9_25_dual_end.py",
+      "sha256": "b807ae45c59c5827e6f74c0572cb5c451cc52ff8ecd261900b58bd40d5668161"
+    },
+    "analysis_script": {
+      "path": "~/tempia/i167-line-metrics-r116/analyze_r117_selection_cell.py",
+      "sha256": "2a2e4aa2a7298aaab4b3e13c1d4e1de9c16fdf4f59695c274602f6466a7bfdb6"
+    },
+    "capture_root": "~/tempia/i167-line-metrics-r116/output-font-dejavu-mono-9_25-dual-end/"
+  },
+  "limits": [
+    "The exact font family configured by this VUE field remains unidentified.",
+    "No product source, installed theme, personal GTK profile, XChat window, guest file, or MAME configuration changed.",
+    "The result is isolated GTK2 measurement evidence, not user approval or a full application integration proof."
+  ],
+  "next": "Continue the authorized GTK2 palette-refresh and application reload integration checks; keep the exact historical font family unresolved and do not add a product font override without evidence."
+}

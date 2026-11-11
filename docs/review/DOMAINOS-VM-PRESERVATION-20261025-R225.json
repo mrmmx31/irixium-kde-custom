@@ -1,0 +1,43 @@
+{
+  "receipt": "R225",
+  "date": "2026-10-25",
+  "scope": "Preservacao da VM assistente Domain/OS SR10.4 exclusiva deste projeto",
+  "result": "verified-local-retention",
+  "versioned_rules": [
+    "docs/DOMAINOS-REGRAS-VM.md",
+    "vm/domainos-sr10.4-assistant/README.md",
+    "vm/domainos-sr10.4-assistant/MANIFEST.json",
+    "vm/domainos-sr10.4-assistant/verify.sh",
+    "docs/DOMAINOS-INDICE-REGRAS.md",
+    "AGENTS.md"
+  ],
+  "canonical_disk": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "repository_local_hardlink": "vm/domainos-sr10.4-assistant/private/dn3500_sr10.4.assistant-20261018.awd",
+  "disk_identity_readback": {
+    "same_device_and_inode": true,
+    "size_bytes": 398458880,
+    "sha256_taken_while_active": false
+  },
+  "runtime_readback": {
+    "mame_process": 274368,
+    "machine": "dn3500",
+    "disk_argument_matches_canonical": true,
+    "frameskip": 4,
+    "throttled": false,
+    "guest_input_sent": false,
+    "guest_or_network_configuration_changed": false
+  },
+  "git_policy": {
+    "rules_and_manifest_staged": true,
+    "disk_binary_in_git": false,
+    "disk_binary_reason": "398 MB live mutable guest system image; not copied or snapshotted while MAME is using it",
+    "fresh_clone_contains_disk": false
+  },
+  "reboot_resume": "Preserve ~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/ and run vm/domainos-sr10.4-assistant/verify.sh before starting MAME.",
+  "limits": [
+    "The two hard links preserve the local file if either one pathname is removed; they are one inode, not two backups.",
+    "This does not protect against loss of the host storage or removal of both links.",
+    "The approved pristine Downloads backup is documented separately and is not a replacement for the active clone state.",
+    "No VM shutdown or offline backup was performed."
+  ]
+}

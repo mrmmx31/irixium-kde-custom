@@ -1,0 +1,66 @@
+{
+  "checked_at": "2026-10-11T17:51:11.397688+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "arrow",
+  "coverage": {
+    "integrated": 14,
+    "total": 16,
+    "percentage": 87.5,
+    "scope": "Tipos do catálogo GTK2; não fidelidade ou avanço do goal"
+  },
+  "native": {
+    "foundation": ".qa-t04-arrow-integration/foundation/RESULTADO.json",
+    "scenes": ".qa-t04-arrow-integration/scenes-measured/RESULTADO.json",
+    "gestures": ".qa-t04-arrow-integration/gestures-measured/RESULTADO.json",
+    "controller": ".qa-theme-lab-spin-_xl6s56t/RESULTADO.json",
+    "scene_count": 24,
+    "rebuild_count": 8,
+    "directional_foundation_controls": 96,
+    "gesture_origins": 2,
+    "natural_request_fixture": [
+      19,
+      19
+    ],
+    "natural_request_scope": "GtkButton/GtkArrow GTK2 desta receita; não medida Motif histórica"
+  },
+  "tests": {
+    "paint": 6,
+    "integration": 4,
+    "recipe": 5,
+    "scale_regression": 4,
+    "gtk2_contract": 4,
+    "scene_contract": 15,
+    "runtime": 2,
+    "c_receipt": "passed",
+    "strict_build": "passed",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "gtk2_arrows.py": "ec2a3493e1786b5fdaea68ff33f21371fb839e23d1793280eba9db8502f73a46",
+    "gtk2_recipe.py": "74ddf6813de7ce960ece68fbf48529623cc51b356e6170ed24ad914148491888",
+    "gtk2_generation.py": "00c23400f69a291f3270886b979e6c563955aa39de87b0ef5e47b19ddd22bb2f",
+    "gtk2_session.py": "a22c4a6a3e6728dd5512efcf25d446ca25a902c9aa71ac6581e1061160248288",
+    "native_scene_gtk2.py": "fc028f71402a5b4a2767c364a545faf259e2177bb9203678a2d7925ae8794796",
+    "backend.py": "4b0c412c8481cd48a9eaa291e8d41841fdccc2020fc054d6f27e3b0db5f2a57e",
+    "src/controller/generated_preview.c": "503e1ee7469c55e04f49e89e7a10aed29f94521848cd0a77265df4bac35630dd",
+    "tests/probe_gtk2_arrow_scene.py": "a189a06f58116130105b3fb0b395ac81040d812bae71796ac8339bd643c0f375"
+  },
+  "scope": "GtkButton/GtkArrow nativos integrados em geração/recibo/binding/código/cena/sessão/controlador. Geometria/relevo do botão e glyph independentes. Ctrl montagem não aciona clique, clique normal publica evento. Reconstrução altera tamanho/estilo proposto sem alterar os assets de steppers/cursor/trilho. Medição natural inclui filho visível antes da customização.",
+  "limits": [
+    "Foco forçado e pressão forçada da cena ainda pendentes; pressão real testada.",
+    "Direção da amostra integrada é para baixo; fundação comprova quatro direções.",
+    "Sem certificação histórica ou matriz completa de pixels de foco."
+  ],
+  "failed_attempts": [
+    "Pasta artificial de reconstrução sem0700 recusada; fixture corrigida, validador preservado.",
+    "Medição inicial8×8 omitia filho GtkArrow escondido; corrigido child.show antes de medir, cena/controlador/gestos repetidos com mínimo19×19."
+  ],
+  "delivery": {
+    "status": "open",
+    "pid": 2836448,
+    "display": ":61",
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-fe89109a7f6d46568310b0c07d2dcc13/MANIFESTO.json",
+    "preservation": ".qa-t04-arrow-integration/delivery-preservation.json"
+  }
+}

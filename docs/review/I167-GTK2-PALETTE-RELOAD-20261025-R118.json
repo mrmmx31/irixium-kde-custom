@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "R118",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "GTK2 palette refresh reaches already-open X11 windows",
+  "reference": {
+    "gtk": "GTK 2.24.33",
+    "session": "Private Xvfb; private XDG home under ~/tempia",
+    "domainos_guest_touched": false,
+    "personal_desktop_apps_targeted": false
+  },
+  "change": {
+    "behavior": "When the GTK2 palette runtime reports native_reload_required, the KDE companion bridge broadcasts GTK2's native _GTK_READ_RCFILES ClientMessage to X11 top-level clients. Unchanged GTK2 output does not trigger the broadcast.",
+    "color_policy": "The notification changes no colors. GTK2 pixmaps and RC continue to derive color values from the current KDE palette roles.",
+    "limits": "GTK2 reload uses X11. A missing DISPLAY or unavailable X11 server is reported as an error; no GTK2 Wayland reload path is claimed. Other toolkit clients may receive the event and ignore its unrecognized message type."
+  },
+  "verification": {
+    "bridge_unit_tests": {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest tests.test_theme_companion_bridge -v",
+      "passed": 18,
+      "failed": 0
+    },
+    "native_reload_tests": {
+      "command": "TMPDIR=~/tempia/i167-r118/xvfb xvfb-run -a env IRIX_GTK2_RELOAD_TEST=1 GTK_MODULES= python3 -B tests/test_gtk2_reload_notify.py -v",
+      "passed": 2,
+      "failed": 0
+    },
+    "native_palette_refresh": {
+      "result": "passed",
+      "gtk2_version": "2.24.33",
+      "display": ":513",
+      "windows_considered": 3,
+      "events_sent": 3,
+      "racing_x_errors": 0,
+      "face_rgb_before": [82, 103, 124],
+      "face_rgb_after": [180, 55, 82],
+      "changed_pixels": 46275,
+      "before_capture_sha256": "5fe2ebb580a1b57024e81538b05a41001f26215f4048fd95047cd1cf3c8c5c1a",
+      "after_capture_sha256": "a514a72db715d7f2b2782034985771e1d9d68f48ee76edcc9009c79ca64ed1d8",
+      "restoration": "restored"
+    },
+    "recorded_code_changes": {
+      "files": 11,
+      "all_content_verified": true,
+      "patch_bytes": 54771,
+      "patch_sha256": "bee2101838d511d963cdbeb773e8d2505d8f2e01e1ec47e122bab18e21bbed30",
+      "patch_readback_matches_prepared": true
+    },
+    "scripts_catalog": {
+      "previous_count": 39,
+      "new_count": 41,
+      "all_previous_entries_preserved": true
+    }
+  },
+  "unverified": [
+    "The complete KDE Color Scheme/XSettings notification -> companion service -> GTKConfig export -> GTK2 broadcast path was not run as an isolated end-to-end session.",
+    "No live user GTK2 window, personal theme/profile, XChat, installed service, or MAME guest was modified or restarted.",
+    "This receipt proves native reload behavior and integration dispatch in isolation; it does not prove historical visual fidelity or human acceptance."
+  ],
+  "evidence": {
+    "probe_result": {
+      "path": "~/tempia/i167-r118/native-broadcast/result.json",
+      "sha256": "248e14c1c0f9bd65df57ef7cd3628ace86dbab56e16f8f7251304fa98d13ae10"
+    },
+    "probe_script": {
+      "path": "~/tempia/i167-r118/probe_broadcast.py",
+      "sha256": "1fc4d486f21c8eef2abded353b3d89a3293a0dacbef18db010d4b3ee12a3bc4d"
+    },
+    "reload_test": {
+      "path": "tests/test_gtk2_reload_notify.py",
+      "sha256": "5a8c0ccaea20b6a057d1169d9017f094bf5a3f19472c7d1bc8f64d172241a6e4"
+    },
+    "implementation": {
+      "path": "tools/gtk2_reload_notify.py",
+      "sha256": "a4e4df2e9972d6000c4765ab57cde8a61ced3eae7ab98532f39d63373a89a0c5"
+    },
+    "board_diff": {
+      "files": 11,
+      "patch_sha256": "bee2101838d511d963cdbeb773e8d2505d8f2e01e1ec47e122bab18e21bbed30"
+    },
+    "board_scripts_record": "~/tempia/i167-r118/scripts-record-r118.json"
+  },
+  "next": "Isolate and verify the KDE/XSettings-to-companion-to-GTK2 end-to-end notification path. Then audit the remaining GTK2 acceptance gaps under I167; keep the user profile and XChat untouched until the GTK2 stage is complete.",
+  "progress_estimate": "About 98% technical coverage for I167; this is not a historical visual-fidelity score or human approval."
+}

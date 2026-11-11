@@ -1,0 +1,48 @@
+{
+  "id": "T07-GTK4-1024X768-20261018-R2",
+  "task": "T07",
+  "date_utc": "2026-10-18T16:12:02Z",
+  "scope": "Retest the two tooltip width failures in the real GTK4 gallery at 1024x768 after shortening those native tooltips; no historical pixel comparison or alternate palette matrix.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "geometry": [
+      1024,
+      768
+    ],
+    "theme": "Default",
+    "font": "Sans 10",
+    "xephyr_restored_to": [
+      1280,
+      800
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "c354adde9b342e97b2d806a129dfe62d9598e4e3cd27024aadb9526645654807",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79"
+  },
+  "correction": "Shortened the read-only GtkEntry hint to “Campo não editável.” and the GtkScale hint to “Escala, sem unidade: 0–100; passo 1. Progresso independente.”",
+  "matrix": {
+    "status": "passed",
+    "mapped": 31,
+    "passed": 31,
+    "failed": 0,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "all_tips_within_screen": true,
+    "no_tip_covers_hover_point": true,
+    "small_control_nonoverlap": true,
+    "scrollbar_clicks_with_hint_open": 2,
+    "closed_after_leave": true,
+    "native_tooltips_restored": true,
+    "temporary_anchors_removed": true
+  },
+  "stderr_limit": "The run emitted an accessibility DBus warning (“Cannot initialize inotify: Too many open files” / bus connection message) after the matrix result; the harness returned status passed and all 31 cases completed.",
+  "limitations": [
+    "This proves GTK4 hint placement in these two Xephyr geometries, not historical visual fidelity.",
+    "Other palettes and control states remain outside this probe.",
+    "No changes were made to KDE palettes or production theme files in this retest."
+  ],
+  "raw_output": "~/tempia/t07-gtk4-current-r31-20261018/1024-fixed.stdout"
+}

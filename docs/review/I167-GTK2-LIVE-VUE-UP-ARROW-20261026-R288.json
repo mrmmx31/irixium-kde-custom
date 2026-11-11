@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R288",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "live-clone-normal-up-arrow-matches-retained-vue-and-gtk2",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only 1:1 comparison of the live-clone screenshot's normal vertical-up stepper to retained SR10.4 pixels and GTK2."
+  },
+  "vm_identity": {
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "result": "canonical disk identity passed; MAME PID 1313710 uses the canonical runtime disk; no second MAME was reported",
+    "profile": "No MAME command or guest input was sent in this comparison; R286 records the session profile as frameskip 4, unthrottled, unpaused, uncaptured, and no pending request."
+  },
+  "images": {
+    "live_clone_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r282.png",
+      "sha256": "d4d6d3b129db78ff66810db98f295df68dabfe9b10c773484af7db7ea76c45e8",
+      "crop": [593, 466, 608, 481]
+    },
+    "retained_sr104_vertical": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "crop": [4, 2, 19, 17]
+    },
+    "gtk2_normal": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+      "sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+      "crop": [1019, 341, 1034, 356]
+    },
+    "scale": "15x15 RGB pixels at 1:1; no resizing or normalization"
+  },
+  "comparison": {
+    "live_clone_vs_retained_sr104": {"different_pixels": 0, "of": 225},
+    "live_clone_vs_gtk2": {"different_pixels": 0, "of": 225},
+    "retained_sr104_vs_gtk2": {"different_pixels": 0, "of": 225},
+    "result": "The visible vertical-up arrow in the retained live-clone File Manager screenshot is pixel-identical to both the retained SR10.4 normal crop and the GTK2 normal preview crop."
+  },
+  "artifacts": {
+    "contact_sheet": "~/tempia/ia-tema/evidence/I167/r288-vue-gtk2-up-arrow-native-scale.png",
+    "contact_sheet_scope": "Nearest-neighbor enlargement for inspection; numeric comparisons use original 15x15 source crops."
+  },
+  "limits": [
+    "R282 is a retained capture, not a new MAME screenshot from this turn; the VM was only identified read-only.",
+    "This covers one normal vertical-up arrow only. It does not prove horizontal current-guest appearance, any held state, insensitive state, scrolling behavior, or user acceptance."
+  ],
+  "changes": {
+    "theme_or_profile_changed": false,
+    "vm_or_guest_changed": false,
+    "other_family_changed": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "changed": false,
+    "basis": "The live-clone comparison strengthens provenance for an already measured normal arrow but does not close a new control state. Not a visual-fidelity score."
+  },
+  "next": "Continue I167/GTK2. Historical held-state comparisons for left, right, and up remain open; resume those only when a fresh VM image shows the guest pointer on the target arrow."
+}

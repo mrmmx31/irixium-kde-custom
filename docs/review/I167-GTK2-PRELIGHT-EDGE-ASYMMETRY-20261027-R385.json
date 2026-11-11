@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "R385",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Record the GTK2 generated down-stepper PRELIGHT edge inconsistency before correcting the palette-derived composition.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "evidence": {
+    "R383_runtime_capture": "docs/review/I167-GTK2-STEPPER-HOVER-PRELIGHT-XVFB-20261027-R383.json",
+    "current_palette_bundle": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/bundles/e290e42babe1a13f34b00e1024397075739e28ce5d83a5814f27fdfca3a920dd",
+    "bundle_source_rc_matches_current": true,
+    "bundle_source_asset_hashes_match_current": true,
+    "generated_down_normal_sha256": "3131718393bed432792456ecfcd8a692c5c633a0d5ee7c7e4d53839d7d288502",
+    "generated_down_focused_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+    "source_down_normal_equals_focused": true,
+    "generator": "tools/gtk2_domainos_palette.py repair_active_vertical_stepper_edges",
+    "cause": "The generator copies the KDE-role-derived trough face into row 0, x=2..12, of down-normal and down-pressed, but not down-focused. GTK2 PRELIGHT therefore differs from the source-equivalent normal state by 11 pixels only for the lower arrow."
+  },
+  "interpretation": "This is a generated-state inconsistency introduced by the orientation edge repair, not a demonstrated mismatch to historical SR10.4 hover. The source artwork has identical normal and focused pixels; preserving that relation after applying the role-derived edge correction avoids a hover-only discontinuity.",
+  "planned_change": "Apply the same palette-derived trough face to down-focused row 0, x=2..12. Keep pressed relief and all other cells unchanged. Validate exact normal/PRELIGHT equality after generation across two palettes and retain the native hover comparison as unverified.",
+  "state_before_change": true
+}

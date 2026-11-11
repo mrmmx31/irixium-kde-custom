@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R473",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Apply the authorized DomainOS GTK2 R470 dynamic-palette update transactionally to the user theme, then verify its installed native rendering at 1:1.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "beta_theme_authorization": {
+      "board_item": "P10",
+      "user_revision": 1,
+      "authorized": true,
+      "note": "User authorized applying beta releases to the current account without waiting for visual review."
+    }
+  },
+  "implementation": {
+    "mechanism": "gtk2_palette_runtime.setup",
+    "theme_filter": "DomainOS-SR10-4-KDE",
+    "palette_source": "/home/lsi/.config/gtk-3.0/colors.css",
+    "palette_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "bundle_id": "9de5e374399417a7ba3deaf8cc0c89ad6a22f3e42f10d798f71f75a7ccc86c48",
+    "transaction": {
+      "receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261027T150517-4ddbc2245175/receipt.json",
+      "receipt_sha256": "5d8f8628e4e9701b09f11904dfdfa1acf3ae32c018313f051372c7413085461b",
+      "status": "installed",
+      "entries": 118,
+      "immutable_palette_resources": 113,
+      "theme_wrappers_and_journal": 5
+    },
+    "updated_wrappers": [
+      "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc"
+    ],
+    "other_theme_wrappers_changed": false,
+    "code_checkout_modified": false
+  },
+  "post_install_render": {
+    "gtk": "2.24.33",
+    "theme_setting": "DomainOS-SR10-4-KDE",
+    "display": ":189",
+    "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r473-domainos-gtk2-install-20261027/installed-theme-horizontal.png",
+    "capture_sha256": "a7518d3f0f1f916cd43d13c43f7f8cda67b4baf564f9875d4f35f2ea09dce76a",
+    "scrollbar_allocation_px": [360, 15],
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "scale": "1:1",
+    "left_stepper": {"size_px": [15, 15], "different_pixels_vs_vue": 0, "center_11x11_differences": 0},
+    "right_stepper": {"size_px": [15, 15], "different_pixels_vs_vue": 0, "center_11x11_differences": 0}
+  },
+  "result": "The installed DomainOS GTK2 normal horizontal stepper cells now match the current SR10.4/VUE cells exactly, 0/225 pixels each. The 11x11 arrow centers remain unchanged; R470 corrects only the outer-relief trough corners. The running desktop and its applications were not restarted or reloaded.",
+  "limits": [
+    "This validates a private Xvfb render of the installed theme, not a live user's application window.",
+    "No personal GTK2 application was open for a same-session visual check.",
+    "Historical pressed, hover, disabled and thumb-drag states still need direct SR10.4 evidence; the VM guard remains unaffected."
+  ],
+  "next": "Continue the GTK2 native-state audit when the current VM input guard permits it. When the user's GTK2 app is open, validate only its scrollbar and do not restart it without the corresponding authorization."
+}

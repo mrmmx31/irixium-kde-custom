@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_canvas_native.py", line 54, in <module>
+    if child.returncode or child.stderr: raise RuntimeError(child.stderr or child.stdout)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_canvas.py", line 55, in <module>
+    assert pixels == [color] * 64, (label, color, sorted(set(pixels)))
+           ^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('insensitive', (109, 153, 208), [(120, 160, 213)])
+

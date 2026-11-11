@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T10:12:02.538704+00:00",
+  "item": "I194",
+  "revision": 1,
+  "status": "in_progress",
+  "evidence": "docs/referencias/domainos-sr104/i194-checkbox-integration",
+  "proof": {
+    "native_origins": 8,
+    "palettes": 4,
+    "asset_parity": 36,
+    "pure_tests": 52,
+    "snippet_suite": 7,
+    "receipt_gate": true,
+    "selection_preserved_in_native_session": true,
+    "initial_size": [
+      180,
+      50
+    ],
+    "updated_size": [
+      200,
+      60
+    ]
+  },
+  "fixture_issue": "A former checkbox rejection expectation was changed to unsupported entry; first suite failure preserved.",
+  "remaining": [
+    "Strict checkbox selection transport and seed per origin on Controller Apply",
+    "Real Motif controller native input/size and regression tests"
+  ],
+  "stage_estimate_percent": 65,
+  "parent_I167_estimate_percent": 88,
+  "estimate_basis": "Scene/generation/snippet/receipt complete and native checked; controller lifecycle remains pending.",
+  "historical_fidelity_claimed": false,
+  "human_approval_inferred": false,
+  "personal_session_changed": false,
+  "sha256": {
+    "gtk2_checks.py": "d87bf9f4d4a62d5d64fc53bae36716879174de2d87c35cd88bd23b9486b672ab",
+    "gtk2_indicators.py": "c185291cd9a0643f2e98e8b0a97eccb440614f3a42780f989b3c67beca42b584",
+    "gtk2_radios.py": "bc39b7da40a7615b4326317f974e6f461ddc567964e09640e0a6b662dacaa68e",
+    "gtk2_generation.py": "92de85c5b0b3ca8f6e45c3edfb8aadc5ee85eb138f52fb0be9507a8f73bec537",
+    "native_scene_gtk2.py": "8c18abbfeaba902f171a6a59954296b8673cd237ef706435d97c33a817fa6e6f",
+    "gtk2_session.py": "5da8f16d5c36dbcf5d9510cf54fa87e58a5c69e24b2c435b5e31e8e1cd633d89",
+    "backend.py": "b46b19c00c223f44f240ec0cdde9031205b1bfb465e320b5b512fe01c46663e5",
+    "src/controller/generated_preview.c": "a71ab32347d0962a68d9cd60ef6db9c2780cd3ba74a30519c09d1bb3e21dd00b",
+    "tests/test_gtk2_snippet.py": "8df433770de403f47149e4ae95d5f303298e3211b091c9fe1a9c57a9e14f97de",
+    "tests/probe_gtk2_button_scene.py": "8c0b788ab25fb023b2aa0638dc9c50efc443163e92776c6af7c2afdcc4b1dcb5"
+  }
+}

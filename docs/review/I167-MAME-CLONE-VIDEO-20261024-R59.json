@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-VIDEO-20261024-R59",
+  "observed_at": "2026-10-24T03:35:00Z",
+  "item": "I167",
+  "scope": "Read-only health check of the assistant-owned Domain/OS SR10.4 clone, prompted by the pending GTK2 GtkEntry comparison",
+  "vm": {
+    "process_pid": 2745483,
+    "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "lua_bridge": "responsive",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mame_process_state": "running",
+    "matching_host_window": false,
+    "guest_network": "The clone TAP device tap-mess-0-0 was absent; read-only Telnet connect probes timed out."
+  },
+  "capture": {
+    "method": "MAME screen:snapshot from :apollo_screen:screen through the existing correlated Lua bridge",
+    "path": "~/tempia/domainos-assistant-vm-20261018/sessao/capturas/current-status-20261023.png",
+    "dimensions_px": [1024, 844],
+    "pure_black_pixels": 819640,
+    "total_pixels": 864256,
+    "pure_black_fraction": 0.9484,
+    "observation": "Guest display is black except for the Apollo command/status strip at the bottom; no VUE desktop or test fields are visible."
+  },
+  "actions": {
+    "guest_input_sent": false,
+    "mame_restarted": false,
+    "disk_or_guest_files_changed": false,
+    "performance_profile_changed": false
+  },
+  "result": "MAME and the Lua bridge are responsive, but the clone is not currently usable for graphical comparison. Do not infer GTK2 focus, caret or selection behavior from it until the guest display is visible again.",
+  "next": "Continue only with GTK2 I167 evidence independent of this VM state. Restore VM visibility only under an explicit live-session action that preserves the disk and profile; do not restart based on this observation alone."
+}

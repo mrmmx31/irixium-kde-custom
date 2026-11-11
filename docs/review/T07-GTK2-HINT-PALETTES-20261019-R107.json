@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-HINT-PALETTES-20261019-R107",
+  "date": "2026-10-19",
+  "item": "T07",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 4,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee"
+  },
+  "environment": {
+    "display": ":83",
+    "xserver": "Xephyr",
+    "geometry": "1280x800",
+    "window_manager": "Openbox",
+    "xsettings": "private test profile",
+    "gtk2_runtime": "2.24.33-2+deb12u1"
+  },
+  "source": {
+    "test": "tools/theme-lab/tests/test_gtk2_hint_palettes.py",
+    "test_sha256": "cf106d7f4e1ca250d81f9e66d089b5698ac1fbca8c222d801801a07cbdd3643c",
+    "probe": "tools/theme-lab/tests/probe_gtk_hint_hover.py",
+    "probe_sha256": "9692eef594a7d774613de5e7f746c46afa4798006d6c3617a98d7fcaa9c82070"
+  },
+  "result": {
+    "status": "passed",
+    "native_cases": 8,
+    "role_fixtures": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "origins": ["separate dialog", "embedded panel"],
+    "per_case": {
+      "tooltip_delay_ms": 500,
+      "stability_ms": 400,
+      "overlap_pixels": 0,
+      "inside_screen": true,
+      "closed_after_pointer_leave": true,
+      "push_action_preserved": true
+    },
+    "color_pixels": {
+      "face": "more than 22,000 exact matches per capture",
+      "text": "2,297 exact matches per capture"
+    }
+  },
+  "limitations": [
+    "The four colors are delivered through isolated GTK2 RC fixtures; this does not prove that the GTK2 theme generator or installed theme reloads selected KDE schemes.",
+    "One push control and one Xephyr geometry; other applications, controls, states, layouts and human visual approval remain open.",
+    "No product source, personal profile or other Xephyr session was changed."
+  ],
+  "artifacts": "~/tempia/t07-gtk2-palettes-r107-20261019/",
+  "next": "Check the remaining T07 inventory and continue only an authorized gap; do not count fixture palette colors as production GTK2 theme integration."
+}

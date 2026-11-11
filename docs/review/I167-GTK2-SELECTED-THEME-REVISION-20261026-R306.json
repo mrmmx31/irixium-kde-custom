@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "id": "R306",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "user-selected-gtk2-theme-is-older-than-current-repository-revision; no-install",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only GTK2 selected-theme provenance and current-repository geometry comparison; no profile change."
+  },
+  "environment": {
+    "session_type": "wayland",
+    "selected_gtk2_theme": "DomainOS-SR10-4-KDE",
+    "selected_theme_path": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+    "source_theme_path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE",
+    "user_profile_changed": false,
+    "application_restarted": false,
+    "installation_performed": false
+  },
+  "geometry": {
+    "installed_origin": {
+      "bevel": 2,
+      "gtk2_stepper": 16,
+      "generic_triangle": 12,
+      "check_radio": 14,
+      "scrollbar_thumb_grips": 0
+    },
+    "repository_origin": {
+      "bevel": 2,
+      "generic_triangle": 12,
+      "check_radio": 14,
+      "scrollbar_thumb_grips": 0,
+      "gtk2_scrollbar_cell": 15,
+      "gtk2_scrollbar_arrow": 11,
+      "gtk2_scrollbar_trough_border": 2
+    },
+    "installed_gtkrc": {
+      "slider_width": 16,
+      "stepper_size": 16,
+      "trough_border": 0,
+      "asset_names": "generic stepper-*/arrow-*"
+    },
+    "repository_gtkrc": {
+      "slider_width": 11,
+      "stepper_size": 15,
+      "trough_border": 2,
+      "asset_names": "scrollbar-stepper-*/scrollbar-arrow-*"
+    },
+    "normal_reference_comparison": "R305 directly proved current repository 15x15 stepper cells exact against SR10.4 retained crops in all four directions; installed 16x16/12x12 assets are a different, older revision."
+  },
+  "assets": [
+    {
+      "direction": "left",
+      "installed": {
+        "glyph": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/arrow-left-normal.png",
+        "glyph_size_px": [
+          12,
+          12
+        ],
+        "glyph_sha256": "d29a872def5d904833f307ba9df393267c2f237940850c7bc76de201d4ad3d98",
+        "cell": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/stepper-left-normal.png",
+        "cell_size_px": [
+          16,
+          16
+        ],
+        "cell_sha256": "e5f9f439c9797087583341a2dbabece486852eaf4935869276a1901afdca21f0"
+      },
+      "repository": {
+        "glyph": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-left-normal.png",
+        "glyph_size_px": [
+          11,
+          11
+        ],
+        "glyph_sha256": "c97e0ecc88ff4267ffaa612a241dfe22141e73337c75adf1858d69ab9f899771",
+        "cell": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png",
+        "cell_size_px": [
+          15,
+          15
+        ],
+        "cell_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      }
+    },
+    {
+      "direction": "right",
+      "installed": {
+        "glyph": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/arrow-right-normal.png",
+        "glyph_size_px": [
+          12,
+          12
+        ],
+        "glyph_sha256": "86a678dd0c73c2e81a355ada052b8b9be4e800b0d51609de46a95c11ee51db6e",
+        "cell": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/stepper-right-normal.png",
+        "cell_size_px": [
+          16,
+          16
+        ],
+        "cell_sha256": "46d8148a1ca9d6d041be73c3b8eaf9f9cb87cbf9a26b03df3a3deb62e3c88754"
+      },
+      "repository": {
+        "glyph": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-right-normal.png",
+        "glyph_size_px": [
+          11,
+          11
+        ],
+        "glyph_sha256": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15",
+        "cell": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png",
+        "cell_size_px": [
+          15,
+          15
+        ],
+        "cell_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      }
+    },
+    {
+      "direction": "up",
+      "installed": {
+        "glyph": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/arrow-up-normal.png",
+        "glyph_size_px": [
+          12,
+          12
+        ],
+        "glyph_sha256": "2cdb410a0e6ae0f43faa064282b2c87969b65bd2dd9bc6f1c2368864cdaca0ce",
+        "cell": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/stepper-up-normal.png",
+        "cell_size_px": [
+          16,
+          16
+        ],
+        "cell_sha256": "7a1acdf3388f2926d1af07265d3b70a4f9817c3d20753c3ed11a363ce1181a27"
+      },
+      "repository": {
+        "glyph": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-up-normal.png",
+        "glyph_size_px": [
+          11,
+          11
+        ],
+        "glyph_sha256": "e64ee256137328439d7f3be112a5fa4c1a13512ce91b8495acca9d6f5f1746b3",
+        "cell": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+        "cell_size_px": [
+          15,
+          15
+        ],
+        "cell_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7"
+      }
+    },
+    {
+      "direction": "down",
+      "installed": {
+        "glyph": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/arrow-down-normal.png",
+        "glyph_size_px": [
+          12,
+          12
+        ],
+        "glyph_sha256": "682c5d32670288bcb4641a74ec95c5f638d01707a6aa6bfabd342097200ac2fc",
+        "cell": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/stepper-down-normal.png",
+        "cell_size_px": [
+          16,
+          16
+        ],
+        "cell_sha256": "f4e8b2c00c90b0599a17f441a62200eff5443949ab63488ecec85ad2152dfdab"
+      },
+      "repository": {
+        "glyph": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-down-normal.png",
+        "glyph_size_px": [
+          11,
+          11
+        ],
+        "glyph_sha256": "2a7eb7f01808de83d3addc80c391c99e8014445a16adb1d967eb0dd3cf6865d3",
+        "cell": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-normal.png",
+        "cell_size_px": [
+          15,
+          15
+        ],
+        "cell_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"
+      }
+    }
+  ],
+  "hashes": {
+    "user_gtk2_selector": {
+      "path": "/home/lsi/.gtkrc-2.0",
+      "sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192"
+    },
+    "installed_gtkrc": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3"
+    },
+    "installed_origin": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/ORIGEM.json",
+      "sha256": "7ef4c4a2f66013b47972cd596bbe8ca38c6fc367b9903f0dd2188fa339f92b15"
+    },
+    "installed_manifest": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/MANIFEST.json",
+      "sha256": "8f65f1ed81c635b408e2769b2d9dffa82a448cc16fc573ebc9d9b68dc9a39ec5"
+    },
+    "source_gtkrc": {
+      "path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203"
+    },
+    "source_origin": {
+      "path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE/ORIGEM.json",
+      "sha256": "fe615ef3e15b5adb7fae79b4d9a792f38edf4b2ade16ca36a3ffadd5fffcc4cd"
+    },
+    "source_manifest": {
+      "path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE/MANIFEST.json",
+      "sha256": "707c0103e111ed1d09050afd9655d598fef16341161d2d839d5dca96bd2a1268"
+    }
+  },
+  "manifest_audit": {
+    "installed": {
+      "declared_files": 260,
+      "mismatches": [
+        "gtk-2.0/gtkrc",
+        "gtk-4.0/gtk.css"
+      ],
+      "missing": []
+    },
+    "repository": {
+      "declared_files": 300,
+      "mismatches": [],
+      "missing": []
+    }
+  },
+  "vm_recheck": {
+    "pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "version": "0.276",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "pending": null,
+    "snapshot": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-current-r306-20261026.png",
+    "snapshot_sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "guest_image": "black",
+    "input_sent": false,
+    "focus_changed": false
+  },
+  "conclusion": "The user session selects DomainOS-SR10-4-KDE, but its installed GTK2 files do not match the current repository revision: the installed style is 16px cell/12px glyph; the current source package is 15px cell/11px glyph and its normal cells match retained SR10.4 pixels. This explains why the real application can disagree with the current preview; it does not prove exactly what is visible in an already-running process. Do not treat the old production copy as review of the current GTK2 build.",
+  "limits": [
+    "No user-profile installation or GTK2 process restart was performed.",
+    "A running GTK2 process may keep an older style in memory; no process was inspected or restarted.",
+    "The physical wake gate prevents remaining historical held-state checks for left/right/up.",
+    "Human visual review of the current repository build remains open."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Adds read-only identification of the configured GTK2 theme revision and explains production/preview divergence; historical pressed states and human review remain open. Not a visual-fidelity score."
+  }
+}

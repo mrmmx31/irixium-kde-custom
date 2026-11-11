@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R108",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Corrected interpretation of R106 pointer images",
+  "evidence_source": {
+    "kind": "offline visual reinspection of existing MAME screenshots; no guest input",
+    "files": [
+      "/home/lsi/tempia/i167-vue-current-r106.png",
+      "/home/lsi/tempia/i167-vue-pointer-one-step-r106.png",
+      "/home/lsi/tempia/i167-vue-pointer-20-steps-r106.png",
+      "/home/lsi/tempia/i167-vue-pointer-diagonal-one-step-r106.png",
+      "/home/lsi/tempia/i167-vue-current-after-diagonal-step-r106.png"
+    ],
+    "comparison_crop": "/home/lsi/tempia/i167-r106-pointer-recheck-r108.png",
+    "comparison_crop_sha256": "32bfd378656856b9313ad5f5cdca13313f81703a0357ea4e3198a72aff0c6763"
+  },
+  "correction": {
+    "supersedes": "The R106 interpretation that one counter produced only a small local pointer displacement.",
+    "observed": "The pointer starts clipped at the left screen edge, appears over the File Name text after one counter image, and appears in the lower-left panel region after the 20-step image.",
+    "interpretation": "The changed pixel count is small because the pointer glyph occupies few pixels; it does not measure travel distance. The text caret and mouse pointer are distinct.",
+    "consequence": "Relative counters are nonlocal in this session and are not suitable for precise text selection."
+  },
+  "verification": {
+    "new_guest_input": false,
+    "search_started": false,
+    "guest_files_changed": false,
+    "main_vm_or_other_sessions_touched": false,
+    "xchat_or_installed_theme_changed": false
+  },
+  "remaining": [
+    "Do not send more relative counters to target the field.",
+    "Continue only the authorized GTK2 item with existing valid implementation evidence.",
+    "A paired native SR10.4 selection capture needs a precise, verified input route; selection appearance remains unproven."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "I167 technical implementation/evidence coverage only; not historical fidelity.",
+    "basis": "This correction improves input-route evidence, but adds no GTK2 implementation test or native selection pair."
+  }
+}

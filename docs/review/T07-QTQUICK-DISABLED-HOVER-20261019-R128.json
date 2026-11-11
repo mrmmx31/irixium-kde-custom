@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-DISABLED-HOVER-20261019-R128",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:24:20Z",
+  "status": "passed_scoped",
+  "scope": "QtQuick5 disabled-control hint delivery only; seven controls in the native KDE gallery. QtQuick6 behavior was rechecked for regression.",
+  "runtime": {
+    "display": "Xephyr :82, host 1600x1000; isolated gallery process uses a disposable HOME and private D-Bus/network namespace",
+    "style": "org.kde.desktop",
+    "product_theme_or_user_config_changed": false,
+    "qtquick5": "Qt 5.15.15",
+    "qtquick6": "Qt 6.8.2",
+    "gallery_window": "660x560 native KDE Controls"
+  },
+  "implementation": {
+    "file": "plasma/tests/galerias-nativas/qtquick_demo.py",
+    "approach": "QtQuick5 HoverHandlers on the relevant containing layouts map pointer coordinates to the disabled QQuickItems. A 750 ms timer reveals the existing attached native ToolTip. Leaving or changing target cancels/restarts it.",
+    "safety": "The controls remain disabled; the route changes only which existing ToolTip is visible. It does not set enabled, accept a click, synthesize painting, or replace KDE palette roles.",
+    "qtquick6": "Coordinate routing is disabled; its native hover path remains unchanged."
+  },
+  "method": {
+    "probe": "Focused derivative of the R4 QtQuick native gallery probe; filters to visible disabled controls only and keeps cold check, tooltip geometry, stable 400 ms interval, and leave-dismiss checks.",
+    "runner": "run_t07_qtquick_matrix_r4.py --quick with production gallery and disposable profile",
+    "declared_delay_ms": 750,
+    "cold_check_ms": 300,
+    "stable_ms": 400,
+    "tested_controls": [
+      "Button",
+      "CheckBox",
+      "Switch",
+      "ComboBox",
+      "SpinBox",
+      "TextField",
+      "Slider"
+    ]
+  },
+  "results": {
+    "qtquick5": {
+      "matrix_sha256": "33d53926b3d3a6dad2b88c35d34c033847d497af09479a92a448d655f997418f",
+      "status": "passed",
+      "shown": 7,
+      "non_hoverable": 0,
+      "skipped": 0,
+      "failures": 0,
+      "observed_delay_after_cold_check_ms": [
+        500,
+        550
+      ],
+      "stable_ms": 400,
+      "dismiss_after_leave_ms": [
+        200,
+        300
+      ],
+      "geometry": "all seven tooltip rectangles were inside the screen and did not overlap their owning control"
+    },
+    "qtquick6": {
+      "matrix_sha256": "683440f51f4b2c9c32efc67030b783b92ca1f2b81254dd7c80eaf21be7648190",
+      "status": "passed",
+      "shown": 7,
+      "non_hoverable": 0,
+      "skipped": 0,
+      "failures": 0,
+      "observed_delay_after_cold_check_ms": [
+        450,
+        550
+      ],
+      "stable_ms": 400,
+      "dismiss_after_leave_ms": [
+        200,
+        300
+      ],
+      "geometry": "all seven tooltip rectangles were inside the screen and did not overlap their owning control"
+    }
+  },
+  "integration_limit": "The first broad mixed-control run was not accepted as final evidence: the probe reported early visible hints on already enabled targets during its cold check, a contamination also described in R127. Its first attempt also preceded the local Button-row handler. The final R128 claim is limited to the focused seven-disabled-control runs; no claim is made that the complete mixed QtQuick5 matrix passed.",
+  "source": {
+    "before_sha256": "510074477e170cb3889f323cfd6646f60eb127e50f89782554019d1a73748244",
+    "after_sha256": "9f97e66f1ec96b3dd918fb3ac96457ba2d2a05976bfe29bfb4115a9f2fd36508",
+    "disabled_probe": "~/tempia/probe_t07_qtquick_disabled_only_r128.py",
+    "disabled_probe_sha256": "2999e25633972688687fca5d3e7e7bbc5696d8bc2f0b8c4d21c54c3ea0058b19",
+    "runner": "~/tempia/run_t07_qtquick_matrix_r4.py",
+    "runner_sha256": "ed72565a5a9fd38ea2f572623c8b477b3d75106ff4eb438826c3ede4cd084d55"
+  },
+  "change_record": {
+    "registered": true,
+    "record_id": "record-71gjdrto",
+    "comparison_verified": true,
+    "content_verified": true,
+    "diff_sha256": "7faee64f269ca3c5b68daed8fd7279d9a9b55095a2e0db7d98114fd2839389b3",
+    "diff_matches_prepared_patch": true
+  },
+  "artifacts": [
+    "~/tempia/t07-qtquick5-disabled-only-r128-20261019/",
+    "~/tempia/t07-qtquick6-disabled-only-r128-20261019/"
+  ],
+  "remaining": [
+    "Retest the combined enabled and disabled QtQuick5 gallery with a probe that drains stale popups between targets; R128 did not claim that mixed matrix.",
+    "T07 still has other controls/layouts, theme-role combinations, and review items listed in the inventory; this receipt does not complete T07."
+  ],
+  "next": "Continue T07 with the next uncovered hint scope after the combined-matrix probe issue is documented.",
+  "scripts_record": {
+    "registered": true,
+    "user_revision": 4,
+    "script_count": 10,
+    "files_changed": true,
+    "readback": "~/tempia/t07-r128-scripts-after.json"
+  }
+}

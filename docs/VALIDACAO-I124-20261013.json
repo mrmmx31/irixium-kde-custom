@@ -1,0 +1,25 @@
+{
+  "item": "I124",
+  "checked_at": "2026-10-13",
+  "scope": "offline verification of Theme Lab project-progress recovery and separation from Work Board data",
+  "evidence": {
+    "project_history_document": "tools/theme-lab/PROJECT-HISTORY.md",
+    "existing_i119_delivery_receipt": "docs/review/I119-ENTREGA-LSI-20261011.json",
+    "tests": {
+      "check-project-history": "passed",
+      "check-project-history-store": "passed",
+      "check-project-session": "passed",
+      "check-project-history-controller": "passed"
+    },
+    "proved": ["UTF-8 history", "recovery", "Undo/Redo", "checkpoint", "CAS conflict", "busy lock", "write failure", "corruption preservation", "transactional controller actions"],
+    "separation": "project-history.json is separate from editor-journal.json and Work Board responses/SQLite+locale/interface data"
+  },
+  "coordination": {
+    "Q165": "closed at user revision 2; states inventory/script as separate future proposal after 200-item capacity was reached",
+    "current_board": "Q102 is active; I124/Q165 are not in current definitions",
+    "production": "left open and untouched; no second writable instance started"
+  },
+  "limits": ["No user-owned Work Board draft or response changed", "No GUI on Xephyr :61 touched", "No new joint inventory/transfer-size proposal created because current Q102 source and full I124 definition are not available in active board"],
+  "technical_progress_estimate_percent": 100,
+  "basis": "Existing source, delivery receipt and scoped test targets cover the I124 recovery-storage behavior; human evaluation remains separate"
+}

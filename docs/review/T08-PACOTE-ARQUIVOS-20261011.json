@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-11T13:11:37.700883+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "partial_not_delivered",
+  "changes": [
+    "PACKAGE guarda somente arquivos alterados/novos; reuse e removed registram dependências e remoções.",
+    "Recibos GTK3/GTK2 validados por hash antes de selecionar artefatos.",
+    "Reconstrução confere base inteira e payload antes de criar nova pasta; nenhuma substituição.",
+    "Sem base verificável, snapshot explícito; dependências externas e proveniência em DEPENDENCIES.json."
+  ],
+  "checks": {
+    "artifact_delta": "6 passed",
+    "proposal_export": "12 passed",
+    "backend_regression": "33 passed, includes two real GTK3 generations with artificial effective roles and byte-exact reconstruction",
+    "runtime_dependencies": "2 passed"
+  },
+  "evidence_scope": "Geração/bytes/integridade; não prova pintura nativa ou fidelidade histórica.",
+  "remaining": [
+    "Comparação e pacote na interface.",
+    "Comando/fluxo de importação e testes nativos de abrir/salvar.",
+    "Entrega pessoal e avaliação coordenadas."
+  ],
+  "estimated_stage_progress_percent": 50,
+  "percentage_basis": "Exportação privada, delta de modelo, paleta externa e artefatos verificados; fluxos GUI, entrega e avaliação permanecem.",
+  "personal_gui_changed": false
+}

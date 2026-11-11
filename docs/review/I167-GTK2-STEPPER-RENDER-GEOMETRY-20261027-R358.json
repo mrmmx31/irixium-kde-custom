@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "R358",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Audit GTK2 GtkRange and pixbuf-engine source to distinguish expose clipping from the engine's reconstructed stepper render geometry",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source": {
+    "gtk": "GTK+ 2.24.33 source package captured in ~/tempia/ia-tema/source-audit/I167-gtk2-pixmap-20261027/gtk+2.0-2.24.33",
+    "files": [
+      "gtk/gtkrange.c:1729-1833",
+      "gtk/gtkrange.c:2110-2138",
+      "gtk/gtkrange.c:3246-3325",
+      "gtk/gtkrange.c:3528-3570",
+      "modules/engines/pixbuf/pixbuf-draw.c:103-163",
+      "modules/engines/pixbuf/pixbuf-draw.c:446-455",
+      "modules/engines/pixbuf/pixbuf-draw.c:483-569",
+      "modules/engines/pixbuf/pixbuf-render.c:766-795",
+      "modules/engines/pixbuf/pixbuf-render.c:930-970"
+    ]
+  },
+  "findings": [
+    "GtkRange calculates horizontal stepper rectangles from range_rect, focus_width, trough_border and trough_under_steppers. With trough_under_steppers enabled, stepper height is range_rect.height + 2*focus_width - 2*trough_border and its origin is offset by focus_width + trough_border.",
+    "draw_stepper intersects the expose area with that stepper rectangle and passes the intersection to gtk_paint_box and gtk_paint_arrow.",
+    "The pixbuf engine reconstructs the composite stepper destination as stepper_size by slider_width, then gives the same area to draw_simple_image.",
+    "The measured 15x11 paint footprint is explained by the 15x11 allocated stepper rectangle created by GtkRange, not by a pixbuf engine bug alone. The four outer pixels fall outside that rectangle and are clipped.",
+    "An overlay may be positioned beyond the reconstructed destination when not stretched, but theme_pixbuf_render still receives the intersection bounded to the allocated stepper rectangle. R356's sentinel footprint at y=2..12 is consistent with the source."
+  ],
+  "correction": {
+    "supersedes": "No R356 source conclusion; this adds the GtkRange layout cause",
+    "retained": "R356 installed-baseline hash match, selected pixbuf engine, active palette layer, and observed sentinel pixel footprint",
+    "withdrawn": "The assistant's later assertion that R356 did not prove exposure clipping; GtkRange layout and draw_stepper source now confirm it"
+  },
+  "changes": {
+    "repository_theme_code": false,
+    "installed_theme": false,
+    "user_applications_restarted": false,
+    "vm_input_or_state": false,
+    "colors_or_schemes": false
+  },
+  "next": "Evaluate whether GTK2 style properties can preserve the measured x=2 inset and 15px stepper height while maintaining the 15px scrollbar thickness and recessed trough. Measure any candidate in an isolated probe before considering the installed theme."
+}

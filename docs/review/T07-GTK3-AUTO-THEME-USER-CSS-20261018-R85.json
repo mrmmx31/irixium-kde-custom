@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-AUTO-THEME-USER-CSS-20261018-R85",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "authorization": "Saved AI Work Board state: section=work; user.authorized=true; authorized_definition matches current definition_sha256.",
+  "status": "passed_scoped_integration",
+  "scope": "GTK3 3.24.49 selected the private DomainOS theme itself from GTK Settings; GTK user CSS imported colors.css at its normal priority. No T07_THEME_DIR/manual screen CssProvider priority override and no substitutions in the theme CSS. Check tooltip context and visible native tooltip pixels in five private palette fixtures on owned Xephyr :81.",
+  "fixture_method": {
+    "theme": "Private copy of gtk/DomainOS-SR10-4-KDE-Reload selected by GTK as T07DomainOSLive; selection confirmed with Gtk.Settings.get_property(gtk-theme-name).",
+    "user_css": "gtk-3.0/gtk.css imports colors.css. The fixture starts from the live user KDE GTKConfig colors.css file, then substitutes only tooltip_background_breeze and tooltip_text_breeze inside private copies to create discriminating palette inputs; no host files changed.",
+    "palettes": "DomainOS, Irixium, Breeze Light, Breeze Dark, and synthetic yellow."
+  },
+  "result": {
+    "cases": 5,
+    "passed": 5,
+    "all_native_tooltips": true,
+    "exact_pixels_per_case": {
+      "background": 29966,
+      "text": 238
+    },
+    "css_parse_warnings": false
+  },
+  "rows": [
+    {
+      "palette": "DomainOS",
+      "expected_background": "#78a0d5",
+      "expected_text": "#ffffff",
+      "gtk_settings_theme": "T07DomainOSLive",
+      "style_path": "tooltip:dir-ltr.background",
+      "style_background": "rgb(120,160,213)",
+      "style_foreground": "rgb(255,255,255)",
+      "tooltip_child_text_colors": [
+        "rgb(255,255,255)"
+      ],
+      "exact_background_pixels": 29966,
+      "exact_text_pixels": 238,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_rect": [
+        316,
+        362,
+        567,
+        69
+      ],
+      "control_rect": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "overlap_pixels": 0,
+      "within_screen": true,
+      "closed_after_pointer_leave": true,
+      "passed": true
+    },
+    {
+      "palette": "Irixium",
+      "expected_background": "#c1c1c1",
+      "expected_text": "#000000",
+      "gtk_settings_theme": "T07DomainOSLive",
+      "style_path": "tooltip:dir-ltr.background",
+      "style_background": "rgb(193,193,193)",
+      "style_foreground": "rgb(0,0,0)",
+      "tooltip_child_text_colors": [
+        "rgb(0,0,0)"
+      ],
+      "exact_background_pixels": 29966,
+      "exact_text_pixels": 238,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_rect": [
+        316,
+        362,
+        567,
+        69
+      ],
+      "control_rect": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "overlap_pixels": 0,
+      "within_screen": true,
+      "closed_after_pointer_leave": true,
+      "passed": true
+    },
+    {
+      "palette": "BreezeLight",
+      "expected_background": "#f7f7f7",
+      "expected_text": "#232629",
+      "gtk_settings_theme": "T07DomainOSLive",
+      "style_path": "tooltip:dir-ltr.background",
+      "style_background": "rgb(247,247,247)",
+      "style_foreground": "rgb(35,38,41)",
+      "tooltip_child_text_colors": [
+        "rgb(35,38,41)"
+      ],
+      "exact_background_pixels": 29966,
+      "exact_text_pixels": 238,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_rect": [
+        316,
+        362,
+        567,
+        69
+      ],
+      "control_rect": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "overlap_pixels": 0,
+      "within_screen": true,
+      "closed_after_pointer_leave": true,
+      "passed": true
+    },
+    {
+      "palette": "BreezeDark",
+      "expected_background": "#292c30",
+      "expected_text": "#fcfcfc",
+      "gtk_settings_theme": "T07DomainOSLive",
+      "style_path": "tooltip:dir-ltr.background",
+      "style_background": "rgb(41,44,48)",
+      "style_foreground": "rgb(252,252,252)",
+      "tooltip_child_text_colors": [
+        "rgb(252,252,252)"
+      ],
+      "exact_background_pixels": 29966,
+      "exact_text_pixels": 238,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_rect": [
+        316,
+        362,
+        567,
+        69
+      ],
+      "control_rect": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "overlap_pixels": 0,
+      "within_screen": true,
+      "closed_after_pointer_leave": true,
+      "passed": true
+    },
+    {
+      "palette": "TestYellow",
+      "expected_background": "#ecd870",
+      "expected_text": "#201c0c",
+      "gtk_settings_theme": "T07DomainOSLive",
+      "style_path": "tooltip:dir-ltr.background",
+      "style_background": "rgb(236,216,112)",
+      "style_foreground": "rgb(32,28,12)",
+      "tooltip_child_text_colors": [
+        "rgb(32,28,12)"
+      ],
+      "exact_background_pixels": 29966,
+      "exact_text_pixels": 238,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_rect": [
+        316,
+        362,
+        567,
+        69
+      ],
+      "control_rect": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "overlap_pixels": 0,
+      "within_screen": true,
+      "closed_after_pointer_leave": true,
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css": "b638e00c58fc33cb53abd8221f405e885d84ca2187370420bf35b91cac540136",
+    "live_exporter_seed": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "probe": "3dce4f99adeba87a7976d3d5a98d22b0788838817d2b9ea36d5224134d4273f9"
+  },
+  "artifacts": "~/tempia/t07-gtk3-live-provider-20261018-r85/",
+  "limits": [
+    "The KDE GTKConfig exporter was not run against five changing KColorSchemes; only the fixture color file was transformed from the live exported format.",
+    "One GTK3 button and one 1280x800 layout; no other GTK versions/layouts or human visual review.",
+    "No product changes or personal profile changes during this proof."
+  ],
+  "conclusion": "The corrected tooltip.background selector wins in the real GTK theme/user-CSS provider composition; GTK settings selected the theme without a manual provider. The user colors.css layer overrides the theme aliases, and rendered tooltip pixels follow all five fixture role pairs. This closes the provider-priority gap left by R83 but not live exporter re-emission on scheme changes.",
+  "next": "T07 can move to another distinct approved gap; keep actual GTKConfig palette re-emission during real scheme changes as an explicit remaining limit unless independently testable in an isolated KDE session."
+}

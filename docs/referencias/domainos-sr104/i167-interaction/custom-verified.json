@@ -1,0 +1,131 @@
+{
+  "rows": [
+    {
+      "cycle": {
+        "direction": "left",
+        "start": 25,
+        "held_value": 24.0,
+        "released_value": 24.0,
+        "blocked": false,
+        "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/left-held.png",
+        "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/left-released.png"
+      },
+      "held": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "release": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "raised_trough_top_verified": true,
+      "sunken_thumb_top_verified": true
+    },
+    {
+      "cycle": {
+        "direction": "right",
+        "start": 25,
+        "held_value": 26.0,
+        "released_value": 26.0,
+        "blocked": false,
+        "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/right-held.png",
+        "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/right-released.png"
+      },
+      "held": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "release": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "raised_trough_top_verified": true,
+      "sunken_thumb_top_verified": true
+    },
+    {
+      "cycle": {
+        "direction": "up",
+        "start": 25,
+        "held_value": 24.0,
+        "released_value": 24.0,
+        "blocked": false,
+        "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/up-held.png",
+        "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/up-released.png"
+      },
+      "held": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "release": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "raised_trough_top_verified": true,
+      "sunken_thumb_top_verified": true
+    },
+    {
+      "cycle": {
+        "direction": "down",
+        "start": 25,
+        "held_value": 26.0,
+        "released_value": 26.0,
+        "blocked": false,
+        "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/down-held.png",
+        "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/custom-relief/cycles/down-released.png"
+      },
+      "held": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "release": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "raised_trough_top_verified": true,
+      "sunken_thumb_top_verified": true
+    }
+  ],
+  "palette_origin": {
+    "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+    "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+    "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+    "gtkconfig_policy_version": "6.3.4",
+    "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+    "kf_colorscheme_version": "6.13.0",
+    "kind": "native_kcolorscheme_selected_file",
+    "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+    "path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+    "qt_version": "6.8.2",
+    "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "titlebar": "Header active/inactive",
+    "tooltip": "Active Tooltip in every state",
+    "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+    "helper": {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/build/theme-lab-colors",
+      "sha256": "f6562702f82d5963aaab0f2883ff9e0551a43da97bae3fe7a9cc9418381d765f"
+    },
+    "helper_source": {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/src/native_colors.cpp",
+      "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+    },
+    "snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd",
+    "role_fallbacks": {},
+    "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+  }
+}

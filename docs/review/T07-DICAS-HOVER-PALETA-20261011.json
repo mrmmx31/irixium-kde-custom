@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-11T10:34:28.032775+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "implemented": [
+    "Dicas nos16 controles Motif em canvas e referência:32 instâncias; orientações distinguem amostra, runtime e padrão histórico.",
+    "Tooltip auxiliar recebe fonte UTF-8 FontSet e paleta da interface; esquema de teste altera só prévia.",
+    "Parágrafos limitados a70 caracteres por linha, quebrando espaços ASCII sem cortar bytes multibyte."
+  ],
+  "proof": {
+    "hover": "Nove ações e dica longa de âncora, em tela940×700, no botão inferior direito; espera400ms não mostra,950ms mostra;400ms de observações estáveis; saída100ms fecha; sair antes do prazo cancela postagem. Bounds e não sobreposição do botão verificados.",
+    "palettes": "DomainOS, BreezeLight, BreezeDark, TestYellow: bg/fg efetivos do tooltip obtidos via XQueryColors correspondem aos papéis da interface; inversão da paleta da prévia não altera tooltip; FontSet comprovado como recurso, não todos os glyphs.",
+    "resources": "26 caminhos editor/seletores, nove ações e32 controles Motif; payload UTF-8 das ações preservado independentemente de quebras XmString.",
+    "regression": "Métricas e âncoras Motif passaram, com cursor fora dos controles para não encobrir leitura de pixels.",
+    "strict_build": "passed"
+  },
+  "remaining": [
+    "Menu de ajuda e orientação por níveis novice/intermediate/expert.",
+    "Cobertura dos controles nativos estrangeiros e ações criadas dinamicamente, com testes próprios.",
+    "Hover em outros cantos/fontes/layouts e aparência completa do popup; prova atual é somente tela/fonte e posição declaradas.",
+    "Entrega pessoal coordenada, sem interromper edição."
+  ],
+  "estimated_progress_percent": 50,
+  "percentage_basis": "Estimativa T07: recursos e primeira validação nativa de hover concluídos; ajuda por nível, cobertura restante e entrega ainda faltam. Não é percentual do goal/fidelidade.",
+  "personal_window_reopened": false,
+  "native_render_all_languages_proven": false,
+  "hashes": {
+    "tools/theme-lab/include/ui_hints.h": "85f866b81340ecfe4462a51c9568ac97669a287ec130cbb489da7ab5879d0dd2",
+    "tools/theme-lab/src/view/ui_hints.c": "fa194e473c68126cdd0e0f15a802643ac1ea4a34b2ecaec394f853c2ab6ea84d",
+    "tools/theme-lab/src/view.c": "bdb186b6b3919de69153d4f5a3e6d5be85cc77b872ab4ec414b6b32e9eb277fa",
+    "tools/theme-lab/tests/ui_hints_native.c": "78b74792127018fb04413949882be5cf88d07b986b592fa5052787cf17d92978",
+    "tools/theme-lab/tests/native_metrics_view.c": "77418bc943668042b67ff97239f21fd189cee34c2f9f97ed41739ca7dfcf1a2c",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "b7cdf53334d7e1b8f3ff84c0f5c3081496f0fe21abb7f837a3ceac07e9ac1bfc",
+    "tools/theme-lab/Makefile": "6312820bfdea1134fa7ae5b5abc9080c4d6588e2776e35ccc2d851691ca2596f",
+    ".qa-t07-hints/hover-final-r4.log": "a445aa1599867fa4071d196cd526af6d0503562c34619e0f01f0dd9d7b393abc",
+    ".qa-t07-hints/palettes-final-r3.json": "d5c5e1dd6b4b75f212156f1fb68f0a1302123bb217bb5602788247b68f383828",
+    ".qa-t07-hints/metrics-regression-final.log": "a67a8c8855585e6f06ed46e3919c41f28fea5b58dd914098c21540c4c90b9286",
+    ".qa-t07-hints/wrapped-build-r1.log": "e64d5295bb2505119491aec31cfaeb69265c6cd9f0238eced5d042cea5e656d5"
+  }
+}

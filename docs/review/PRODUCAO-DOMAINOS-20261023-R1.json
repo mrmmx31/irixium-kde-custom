@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "scope": "Read-only production check of the DomainOS panel and application themes in the active lsi session.",
+  "request": "Use ready DomainOS panel and application-theme work in the currently open lsi profile and test it in production.",
+  "evidence": {
+    "installer_verification": {
+      "command": "TMPDIR=~/tempia python3 tools/install_suite.py --verificar",
+      "exit_code": 0,
+      "result": "52 installed suite components verified; no files changed.",
+      "pending_generated_resources": 13,
+      "resource_families": ["GTK2", "GTK4"],
+      "native_module": "build_required reported by the read-only checker"
+    },
+    "theme_selection_verification": {
+      "command": "TMPDIR=~/tempia bash aplicar-tema.sh domainos --verificar",
+      "exit_code": 1,
+      "result": "Theme files reported altered/incomplete/extra; checker refused and preserved them. No files changed."
+    },
+    "effective_session_selection": {
+      "look_and_feel": "org.magpie.irixclassic.domainos.desktop",
+      "color_scheme": "DomainOS-SR10-4",
+      "decoration": "domainos_sr104",
+      "plasma_style": "IrixClassicDomainOS",
+      "kvantum": "DomainOS-SR10-4",
+      "gtk2": "DomainOS-SR10-4-KDE",
+      "gtk3": "DomainOS-SR10-4-KDE",
+      "gtk4": "DomainOS-SR10-4-KDE",
+      "style_bridge": "active",
+      "theme_companion_bridge": "active"
+    },
+    "panel": {
+      "configured_applet": "org.irixclassic.domainos.panel",
+      "source_qml_sha256": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+      "installed_qml_sha256": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+      "match": true
+    },
+    "gtk2_i167_r55": "The palette-sensitive GTK2 RC namespace fix passed its isolated probe, but the KDE/XSettings event route is not proven and this patch is not deployed."
+  },
+  "decision": "The completed panel and DomainOS application-theme suite are already installed and selected in the active lsi session, so no duplicate install or panel restart was needed. Do not deploy R55 or run the whole-suite writer: the live readiness checks still show pending GTK2/GTK4 generated resources and the GTK2 live-notification route is unverified. Continue the active authorized GTK2 investigation in isolation.",
+  "limits": [
+    "This is configuration and artifact readback, not a fresh human visual acceptance.",
+    "No user application or Plasma process was restarted or closed.",
+    "No file, setting, theme resource, or applet was changed during this check."
+  ],
+  "progress_estimate": "I167 remains about 93% technical coverage; this percentage is not visual fidelity or human approval."
+}

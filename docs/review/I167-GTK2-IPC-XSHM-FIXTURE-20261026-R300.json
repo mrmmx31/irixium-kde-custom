@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R300",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "passed-fixture-ipc-xshm-diagnosis-and-gtk2-controller-reopen",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Validate GTK2 controls and the Theme Lab controller in isolated private Xvfb/bwrap fixtures; no user-session installation."
+  },
+  "diagnosis": {
+    "failure": "Detached GTK2 preview reopening after Undo/Redo failed in the previous fixture when the GTK2 child attempted MIT-SHM XShmAttach.",
+    "cause": "The test runner starts Xvfb outside bwrap, then launches GTK2 inside bwrap --unshare-ipc. The server and client consequently do not share the IPC namespace required by MIT-SHM.",
+    "api_probe": {
+      "gtk_init_check": true,
+      "gdk_use_xshm_before_setter": true,
+      "gdk_use_xshm_after_setter_called_post_init": true,
+      "meaning": "Calling Gdk.set_use_xshm(False) after GTK initializes does not disable the active XShm path in this setup."
+    }
+  },
+  "change": {
+    "file": "tools/theme-lab/tests/test_controller_spin.py",
+    "scope": "For GTK2 controller fixtures only, launch the fixture-owned Xvfb with MIT-SHM disabled. Keep bwrap --unshare-ipc enabled. GTK2 uses the regular X image path in this test fixture.",
+    "product_code_changed": false,
+    "preview_gtk2_py_changed": false,
+    "user_session_or_xephyr_touched": false,
+    "vm_input_sent": false
+  },
+  "tests": [
+    {
+      "status": "passed",
+      "method": "Temporary runner copy with MIT-SHM disabled only on its disposable Xvfb server.",
+      "scope": "Full GTK2 combo controller sequence including detached close/reopen, project Undo/Redo, resize, Save/Load, restart and preserved pending edits.",
+      "evidence": "/home/lsi/tempia/ia-tema/evidence/I167/r300-private-ipc-xshm/diagnostic-shared-xshm-disabled.json"
+    },
+    {
+      "status": "passed",
+      "method": "Repository runner with the GTK2-only Xvfb fixture adjustment.",
+      "scope": "Same full GTK2 combo controller sequence; coupled and detached native GTK2 combo both measured 300x50 after Apply; GTK2-only selection and project history behavior remained intact.",
+      "evidence": "/home/lsi/tempia/ia-tema/evidence/I167/r300-private-ipc-xshm/runner-shared-xshm-disabled.json"
+    },
+    {
+      "status": "passed",
+      "method": "python3 -m py_compile tools/theme-lab/tests/test_controller_spin.py"
+    }
+  ],
+  "source_hashes": {
+    "tools/theme-lab/tests/test_controller_spin.py": "8f2040f5f2038358af6e182903046b6c7096593caf8b311051d786fd3ca47c0d",
+    "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f",
+    "controller_probe_binary": "1cdf1013c646dbc8eb5125fdae6dcfecfe7da318f0982208bbd367f9a5b74f76"
+  },
+  "limits": [
+    "This fixes a private test-fixture mismatch; it does not change production preview behavior.",
+    "The GTK2 recipe remains partial. Historical held-state comparisons for left, right and up, full coupled-control audit and user visual review remain open.",
+    "No evidence here establishes historical visual fidelity or authorizes installation into XChat or the user profile."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 85,
+    "basis": "The prior repeated-detached-preview lifecycle gap is now covered through Undo/Redo, Save/Load and controller restart in the GTK2 fixture. This is technical coverage, not a visual-fidelity score."
+  }
+}

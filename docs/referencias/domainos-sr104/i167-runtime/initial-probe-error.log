@@ -1,0 +1,6 @@
+Gtk-Message: 03:48:41.264: Failed to load module "atk-bridge": 'gtk_module_display_init': /usr/lib/x86_64-linux-gnu/gtk-2.0/modules/libgail.so: undefined symbol: gtk_module_display_init
+Traceback (most recent call last):
+  File "/tmp/i167-runtime-probe.py", line 15, in <module>
+    a=b.get_allocation();r['widgets'].append({'type':b.__gtype__.name,'allocation':[a.x,a.y,a.width,a.height],'properties':{p:b.style_get_property(p) for p in props}})
+                                                                                                                              ~~~~~~~~~~~~~~~~~~~~^^^
+TypeError: Gtk.Widget.style_get_property() takes exactly 3 arguments (2 given)

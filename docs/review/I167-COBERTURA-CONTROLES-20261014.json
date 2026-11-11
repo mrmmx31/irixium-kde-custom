@@ -1,0 +1,270 @@
+{
+  "id": "I167",
+  "date": "2026-10-14",
+  "status": "partial_adapter_coverage_verified",
+  "catalog_count": 16,
+  "snippet_count": 16,
+  "scene_admitted_count": 16,
+  "combined_native_render_count": 16,
+  "coverage_percent": 100.0,
+  "coverage_basis": "16/16 control types emit a GTK2 fragment and are accepted by the GTK2 scene; all 16 real widgets mounted and were mapped/within viewport together in eight real GTK2 scenes. This is control-type capability coverage only, not full adapter completion or visual fidelity.",
+  "snippets": [
+    {
+      "control": "push",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "b4d0d8418bc8a9538d8a44502f03fbbdef7c1dbf4cbe36a02308f9b447d37188",
+      "static_rgb_found": false
+    },
+    {
+      "control": "toggle",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "78c603bc24d530d6ba12a556fa2eb6f62ceb8740a9c81849d513233db78d606c",
+      "static_rgb_found": false
+    },
+    {
+      "control": "check",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "23f1ef654067dcc26193d814cd9f33fc19b9a5f1041e96f65527e99577e66c3e",
+      "static_rgb_found": false
+    },
+    {
+      "control": "radio",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "41b3807f4447801fdb1b47bf9762eb2d9c8de8064d309a39e13eea82818255d2",
+      "static_rgb_found": false
+    },
+    {
+      "control": "entry",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "bb4512154cdaee9cbeb0e4fbbe417c15bbc69a011e5b5526016550ba9fd71ba4",
+      "static_rgb_found": false
+    },
+    {
+      "control": "combo",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "3ace18c6bfcac55e4445cc246a912496babc29036d6371e8a3232b2adaee0f11",
+      "static_rgb_found": false
+    },
+    {
+      "control": "spin",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "242f8a3eb91882b7f5d8c3ad119d950fbe5baa00fc96f24b2ef6e40830a70549",
+      "static_rgb_found": false
+    },
+    {
+      "control": "text",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "0ddffc2705d3291bae0b164c6c73e6121224afa0d0d5a753b2e1682474e453ed",
+      "static_rgb_found": false
+    },
+    {
+      "control": "scale_h",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "cf6963ca72ba741f6720ac460709e5a63266693d0b5fb8ae1f768b316689b16b",
+      "static_rgb_found": false
+    },
+    {
+      "control": "scale_v",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "cf6963ca72ba741f6720ac460709e5a63266693d0b5fb8ae1f768b316689b16b",
+      "static_rgb_found": false
+    },
+    {
+      "control": "scroll_h",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "147ebeac014fb6e037e2eeb36dac7fb0c04e7ec516c1f70269a38ea4e7a6c2e9",
+      "static_rgb_found": false
+    },
+    {
+      "control": "scroll_v",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "cab1200106b9f64b08129bf3622734f6be298b36c290b1a47d902abb155c0739",
+      "static_rgb_found": false
+    },
+    {
+      "control": "arrow",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "6f858632cf1cae858e4e1a3736c7a09c3fc172c8671cbc9d6f51d755f40e900c",
+      "static_rgb_found": false
+    },
+    {
+      "control": "progress",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "4273cb119c4335d63ee64c4c19fb722c8a15aa72afeae120c22b07c45456b02a",
+      "static_rgb_found": false
+    },
+    {
+      "control": "list",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "86b579b65636bd666da5a8b1541e502be17e59d4a0ddc678ef09f92af57b830b",
+      "static_rgb_found": false
+    },
+    {
+      "control": "frame",
+      "status": "ok",
+      "source_kind": "translated_native_fragment",
+      "source_sha256": "3be8ea037fd8a054e3d08f8fc30e0dcdd20d9b5c5ed835279306cf9d63d82a3d",
+      "static_rgb_found": false
+    }
+  ],
+  "native_scene": {
+    "command": "python3 -B tools/theme-lab/tests/test_gtk2_all_controls_native.py",
+    "result": "passed",
+    "runtime": "GTK2 2.24 native widgets in private Xvfb",
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "origins": [
+      "separate Window",
+      "coupled GtkPlug/XEmbed"
+    ],
+    "scene_count": 8,
+    "controls_per_scene": 16,
+    "allocation_and_visibility": "All controls reported native allocations; mapped/drawable and local bounds were asserted.",
+    "receipt_sha256": "aa92681cd1351ea83a00dde67cbf48918fa0c32a4df6f688c2a2dfc421b630ea",
+    "capture_files": {
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/BreezeDark/coupled-all-controls.png": "82c094de89b79f9e4a1c21cf09ee02f30c38eabbcdd6d754623a79c79c34c1e0",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/BreezeDark/separate-all-controls.png": "fc0b45df0e5cf1ac7f68bb8227b336f1dbdbcd2e88d9dd343b7f1c42bcd99839",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/BreezeLight/coupled-all-controls.png": "7d6cf90774ec97f4b79fa12c9430cedd96f93c082ad39590c70859e1718bddfc",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/BreezeLight/separate-all-controls.png": "fecc120a07930f06083a49a26cbebc830f99fb580f605d5f234b32ca955e0d0b",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/DomainOS/coupled-all-controls.png": "8381816634f3dcce4a551ee311ed5389ef0e64f88751f61888ef7d989e130b4d",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/DomainOS/separate-all-controls.png": "85f45036ceb4fdaf1b587b970bd534ef27f48bb42e909858f7bc3b54e59d244c",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/TestYellow/coupled-all-controls.png": "e5ba05f10c5735712e2acb443fbbcab146ce7e6658a7f236ad98663056272b53",
+      "docs/referencias/domainos-sr104/i167-all-controls/20261014/TestYellow/separate-all-controls.png": "b530deab760abc5eec85395160d2c17b70f5eb8c91f5a790cfff53141400b975"
+    }
+  },
+  "other_route_evidence": [
+    "docs/review/I167-GTK2-PUBLIC-NATIVE-20261014.json (public launcher smoke test for both scrollbar orientations in two schemes)",
+    "docs/review/I193-CONTROLADOR-CONCLUIDO-20261011.json",
+    "docs/review/I194-CONTROLADOR-CONCLUIDO-20261011.json",
+    "docs/review/I195-CONTROLADOR-CONCLUIDO-20261011.json",
+    "docs/review/I200-GTK2-ENTRY-FOUNDATION-20261014.json"
+  ],
+  "remaining": [
+    "The combined eight-scene proof uses normal state; it does not cover every control-specific pressed, disabled, backdrop, hover, focus, inconsistent, RTL or reload state.",
+    "A real DomainOS SR10.4/HP VUE 2.01 visual comparison for all GTK2 controls is not established by GTK2 screenshots.",
+    "Manual approval remains separate and unfilled.",
+    "The combined public run clicks push, toggle, check and radio; it does not interact with every editable/range/list control in one run."
+  ],
+  "not_claimed": [
+    "full I167 completion",
+    "historical visual fidelity",
+    "user approval",
+    "all controller interactions or state coverage"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk2_all_controls_native.py": "a6ee926c3fda34b98847b2626946cf3b816f52cea240a4109bbb1bdc56a09b0d",
+    "tools/theme-lab/tests/test_gtk2_all_controls_native.py": "5710565f2813bcff83266c0b84a3f2878ad0314984a83c1909b62546e451dc3e",
+    "tools/theme-lab/tests/test_gtk2_snippet.py": "cb6d5d4e6c4906ddf633b7025d43c268f09141066e393f7cb7c91eddc6e02d5d",
+    "tools/theme-lab/backend.py": "4f65c32cc08ef1231117bff7121115e889a9dcdf45ecfb1f4c5d7bccfe6bb576",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe",
+    "tools/theme-lab/gtk2_session.py": "99c1fdbc773649a5e694d8f0ed3f447fd2d6eb5e8b091fd04278cdbea100e998",
+    "tools/theme-lab/scene_contract.py": "d0115114af988c8b7547b7527eb9bb879e1c6a16c43db1f6cbf49e1948add40a",
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "9d4a5c8f40eda551720515bcb24bf4c589cd3e80b7e293633ae98b35ee4070e8",
+    "tools/theme-lab/preview_gtk2.py": "d8ffd8d289f15361abd35ebe9f81ed76265fb7154e4b5ee95378b89707f1db3c",
+    "tools/theme-lab/preview_event_writer.py": "3dcb0466b1390383e155100b51012ddd77dfa46c9996b11498b60783646748ac"
+  },
+  "supersedes": "docs/review/I167-COBERTURA-CONTROLES-20261011.json for present source coverage only; the 2026-10-11 receipt is retained as historical evidence.",
+  "public_route": {
+    "scheme": "DomainOS-SR10.4",
+    "native_controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "native_control_count": 16,
+    "native_events": 36,
+    "clicks": [
+      {
+        "control_id": "push",
+        "state": {
+          "clicked": true
+        }
+      },
+      {
+        "control_id": "toggle",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "check",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "radio",
+        "state": {
+          "selected_member": 1
+        }
+      }
+    ],
+    "guards_verified": true,
+    "window_closed_normally": true,
+    "preview_exit_code": 0,
+    "recipe_applied": false,
+    "capture": "docs/referencias/domainos-sr104/i167-public-all-controls/20261014/DomainOS-preview.png",
+    "capture_sha256": "f2b2535dd61cd0c4bdb34cefb2c14ffe2477f5a46d8c4afc942d5fbb822703ab",
+    "native_clicks": [
+      {
+        "control_id": "push",
+        "state": {
+          "clicked": true
+        }
+      },
+      {
+        "control_id": "toggle",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "check",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "radio",
+        "state": {
+          "selected_member": 1
+        }
+      }
+    ],
+    "scope": "Real public backend-generated GTK2 preview, 16 IDs and metrics in one DomainOS run; real clicks on push/toggle/check/radio. Other control interactions are covered by their own scoped tests, not this combined route."
+  },
+  "receipt_sha256": "be881c3125fbdc293d780a9b635d133704bde2aaff977485505206cda56973c3"
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-VUE-VISIBILITY-20261024-R71",
+  "observed_at": "2026-10-24T04:26:24Z",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "process_pid": 2745483,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "~/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "process_alive": true,
+    "read_only_probe_request": "4c8a3391eb564635b38ca5b213885abd",
+    "capture_request": "069f66e96841428b99100a24c1de8442",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "pending_after": null
+  },
+  "capture": {
+    "method": "Existing correlated Lua bridge; screen:snapshot on :apollo_screen:screen",
+    "path": "~/tempia/i167-live-r71/domainos-screen.png",
+    "sha256": "ff1f7f368b304298b95f8030c0d3be4008dbf816bf6cd39ef03c8b953bcd4035",
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "pure_black_pixels": 819640,
+    "pure_black_fraction": 0.9483764069905213,
+    "observation": "The current frame is byte-identical to R67: black screen with only the Apollo command/status strip; no VUE desktop or GtkEntry reference is visible."
+  },
+  "actions": {
+    "guest_input_sent": false,
+    "mame_restarted": false,
+    "disk_or_guest_files_changed": false,
+    "performance_profile_changed": false,
+    "other_sessions_touched": false
+  },
+  "result": "The clone and correlated bridge remain healthy, but the display is unchanged and cannot support historical GTK2 focus/caret/selection comparison. Exact screenshot hash match confirms no new visual reference.",
+  "next": "Do not retry capture until guest display state changes. Continue only GTK2 work independent of the unavailable VUE image; no reset/restart is authorized by this evidence."
+}

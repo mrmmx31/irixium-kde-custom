@@ -1,0 +1,59 @@
+{
+  "id": "R604",
+  "date_local": "2026-10-28T14:17:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "user_observation": {
+    "kde_menu": "After the prior Plasma reload, the KDE applications menu opens but closes when the pointer moves over it. The search shows a text caret, but typed characters do not enter.",
+    "panel_menu": "The panel's own Applications menu opens without focusing search; the user must click the field before searching.",
+    "launch": "A double click on some applications may stall; retrying may be followed by a full plasmashell restart. The application and approximate time are not yet identified."
+  },
+  "source_analysis": {
+    "kicker_item_list_view": "On Wayland, Kicker creates category submenus from hover and invokes windowSystem.forceActive on the child dialog. The local adapter had translated every such call to QWindow.requestActivate, even when no new pointer activation event occurred.",
+    "qt_wayland": "QtWayland 6.8.2 guards automatic activation for Qt.Popup windows; a hover-created submenu should use its transient popup activation rather than request top-level activation.",
+    "own_menu": "The previous panel menu only called forceActiveFocus after visibility and did not explicitly request activation of its PlasmaCore.Dialog window."
+  },
+  "changes": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+      "change": "Issue root popup activation synchronously while handling the launcher input, then restore Kicker search focus only after the popup window reports active. The Wayland submenu adapter now focuses within the native transient popup without requesting QWindow activation on hover."
+    },
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "change": "Request activation of the panel's own PlasmaCore.Dialog on menu opening and focus its search field after activeChanged."
+    }
+  ],
+  "deployment": {
+    "installed_path": "~/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/",
+    "backup_path": "records/ia-tema/P01/R604-before-install/contents/ui/",
+    "installer_backup": "/home/lsi/.local/state/irixium-domainos/backups/9d890691c51247aaab5a812594cc4d26",
+    "source_hashes": {
+      "DomainOSApplications.qml": "5f92e781f6fd4de8e472bede6db8e3fce0dd6f7e1880f8a5b1ffbd56419598c8",
+      "DomainOSKdeApplicationMenu.qml": "77b92680d89ed485c5f056949bf9f54ad05291110f368698f0c54e3d4a6d3c21"
+    },
+    "installed_matches_source": true,
+    "plasmashell_pid": 711522,
+    "plasmashell_restarted": false,
+    "loaded_runtime_contains_change": false
+  },
+  "validation": {
+    "Qt_QWindow_requestActivate_and_activeChanged_API_confirmed_from_installed_headers": true,
+    "update_domainos_qml_py_dry_run": "passed; one panel component verified",
+    "qmlformat_parse": "passed for both changed QML files; formatter output discarded, files unchanged",
+    "qmllint": "Attempted; private Kicker plugin does not ship qmltypes, so Kicker types remain unresolved in static analysis.",
+    "qml_runtime_or_interactive_test": false,
+    "user_acceptance": "pending",
+    "double_click_cause": "unknown; no application relaunched and no current coredump was found since the R599 shell start"
+  },
+  "board_follow_up": {
+    "Q510": "Assistant reply now records the direct-chat symptom and requests only app identity/time and whether the whole shell restarted; user revision/note remain unchanged.",
+    "Q511": "Assistant reply now records the direct-chat hover/search/focus observation and asks only which pointer transition caused closure; user revision/note remain unchanged."
+  },
+  "remaining": [
+    "Reload the user's plasmashell at a time that does not interrupt their work, then verify KDE menu hover and immediate search typing.",
+    "Verify the panel's own Applications menu focuses its search without a click.",
+    "Keep Q510 open to identify the affected application and timing before reproducing the reported double-click stall/restart."
+  ]
+}

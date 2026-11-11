@@ -110,11 +110,14 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--saida',type=Path,required=True)
     parser.add_argument('--worker',action='store_true',help=argparse.SUPPRESS)
+    parser.add_argument('--operation',choices=['columns','rows','mosaic','maximize'],default='columns',help='Non-columns proves only that selected command, skipping minimization/filter stages')
     args=parser.parse_args();output=args.saida.resolve()
     if args.worker:return worker(output)
-    if not output.is_relative_to(Path('/tmp')) or output==Path('/tmp') or output.exists():parser.error('Use a new directory under /tmp')
+    scratch=(output.is_relative_to(Path('/tmp')) and output!=Path('/tmp')) or (output.parent==REPO and output.name.startswith('.qa-domainos-'))
+    if not scratch or output.exists():parser.error('Use a new directory under /tmp or a .qa-domainos-* directory directly under the repository')
     output.mkdir(mode=0o700)
     environment=os.environ.copy()
+    environment['IRIX_DOMAINOS_GROUP_OPERATION']=args.operation
     config=Path(environment.get('XDG_CONFIG_HOME',str(Path.home()/'.config')))
     protected=lambda:{str(config/name):digest(config/name) for name in ('kdeglobals','kwinrc','plasmarc','plasma-org.kde.plasma.desktop-appletsrc')}
     before=protected()
@@ -195,6 +198,9 @@ PlasmoidItem {
     checks=report['checks']
     checks.update(private_worker_exited_cleanly=runner.returncode==0,real_profiles_unchanged=before==protected(),production_sources_unchanged=all(digest(REPO/name)==value for name,value in sources.items()),installed_authorized_host_identity_unchanged=host_identity=={name:digest(Path(name)) for name in host_identity},privilege_protocol_checks_not_disabled='KWIN_WAYLAND_NO_PERMISSION_CHECKS' not in environment,no_artificial_desktop_entries=not (output/'data/applications').exists())
     report.update(protected_config_sha256={'before':before,'after':protected()},source_sha256=sources,host_identity_sha256=host_identity,scope='Actual grouped checkbox/title/menu gestures, including direct title restoration of a minimized member without checkbox selection and selection-only title toggles once checked. Production Iconbox -> Tasks -> WindowOperations -> transient KWin helper, owned native Wayland UUIDs/PIDs, real geometry/minimized results and before-filter/before-group N/L counting. Private compositor/session/data only; no real profile or existing preview was changed.',protocol_limit='xdg_toplevel does not expose a minimized configure state to QWidget. External minimization is confirmed by KWin helper results and the separate native TasksModel observation; native title restoration is additionally confirmed by owned client focus. No QWidget::isMinimized claim is made for the external batch.')
+    report['tested_operation']=args.operation
+    if args.operation!='columns':
+        report['scope']='Own native Wayland group checkbox selection -> own Operations panel -> '+args.operation+' -> actual KWin confirmed selected windows; no minimization or filtering stages. Directed Qt input, not physical compositor seat. Private profiles only.'
     report['status']='passed' if checks and all(checks.values()) else 'failed'
     (output/'RESULTADO.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n')
     print(json.dumps({'status':report['status'],'checks':len(checks),'result':str(output/'RESULTADO.json')}))

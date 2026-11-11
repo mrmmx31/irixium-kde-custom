@@ -1,0 +1,15 @@
+
+(probe_control_hints.py:2243837): dbind-WARNING **: 07:02:37.106: Couldn't connect to accessibility bus: Failed to connect to socket /run/user/1000/at-spi/bus_1: No such file or directory
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_control_hints.py", line 29, in <module>
+    widgets = {identifier: NativeScene.factory(owner, identifier, index)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 405, in factory
+    hint_module.bind_control_hint(widget, identifier, 'gtk3')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/control_hints.py", line 33, in bind_control_hint
+    text = control_hint(identifier, family)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/control_hints.py", line 26, in control_hint
+    return (family.upper() + ' nativo. ' + CONTROL_HINTS[identifier] +
+                                           ~~~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'progress'

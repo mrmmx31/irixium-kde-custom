@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "id": "R708",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Apply the measured GTK2 arrow-cell alignment and native four-pixel scrolled-window gap to the lsi user's DomainOS theme, preserving dynamic KDE role colors and open clients.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "implementation": {
+    "status": "installed_and_native_reload_sent",
+    "selected_theme_after_reload": "DomainOS-SR10-4-KDE-Reload",
+    "gtk2_variants_updated": [
+      "DomainOS-SR10-4",
+      "DomainOS-SR10-4-KDE",
+      "DomainOS-SR10-4-KDE-Reload"
+    ],
+    "package_files_updated": 18,
+    "package_scope": "gtk-2.0/gtkrc, MANIFEST.json and ORIGEM.json for the three DomainOS variants in ~/.local/share/themes and ~/.themes only",
+    "gtkrc_sha256": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af",
+    "installed_engine": {
+      "path": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+      "sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+      "changed_in_this_step": false
+    },
+    "dynamic_kde_palette": {
+      "status": "active",
+      "kde_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "managed_gtk2_wrappers": 12,
+      "role_assets": 221,
+      "active_control_sha256": "73e20d073bad5ee7a902e142e42ad9efb620cb96f3c4ba1fe5a9435f7b4346eb"
+    },
+    "receipt_paths": {
+      "theme_packages": "~/.local/state/irixium-domainos-gtk2-theme/backups/b710f712deee41d98f5849c32b3b2e85/receipt.json",
+      "palette_restore": "~/.local/state/irixium-gtk2-palette/backups/20261029T053432-d750eaac005f/receipt.json",
+      "theme_companion_install": "~/.local/state/irixium-theme-companions/installation/backups/8f3528fcf3d74f9a9e84d50733704cff/receipt.json"
+    },
+    "service": {
+      "name": "irix-theme-companions.service",
+      "status": "active",
+      "restarted": true,
+      "scope": "user-level GTK/Kvantum companion observer; no Plasma or desktop restart"
+    },
+    "native_reload": {
+      "status": "sent",
+      "windows_considered": 147,
+      "events_sent": 147,
+      "racing_x_errors": 0,
+      "applications_restarted": false,
+      "xchat_pids_before_and_after": [
+        "1321694",
+        "1327599"
+      ]
+    }
+  },
+  "validation": {
+    "source_package_manifests": "all GTK2 source manifest hashes matched before installation",
+    "native_scrolledwindow": {
+      "gtk_version": "2.24.33",
+      "engine": "domainos-pixbuf",
+      "allocation": "557x273",
+      "horizontal_bar": "538x15",
+      "vertical_bar": "15x254",
+      "endpoint_arrow_regions": {
+        "horizontal_start": "0/225 pixels different",
+        "horizontal_end": "0/225 pixels different",
+        "vertical_start": "0/225 pixels different",
+        "vertical_end": "0/225 pixels different"
+      },
+      "limits": "The four-pixel content gap reduces each allocated bar by one pixel; this is expected from the VUE geometry. Thumb length and direct pressed-state comparison in the VM are outside this proof."
+    },
+    "gtk2_palette_runtime_tests": "9 passed",
+    "engine_installer_preflight": "ready",
+    "theme_companion_installer_preflight": "ready",
+    "rollback_preflight": "all twelve active GTK2 wrappers matched their journaled post-images before package replacement"
+  },
+  "board_trace": {
+    "item": "I167",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "reply": "saved; item remains running",
+    "code_changes": "registered and read back: four files; all full contents verified; exported diff bytes matched",
+    "scripts": "registered and read back: seven scripts, including the previous R698 record; files_changed=true"
+  },
+  "evidence": {
+    "captures": [
+      "../../records/ia-tema/I167/R708/captures/gtk2-scrolledwindow-horizontal.png",
+      "../../records/ia-tema/I167/R708/captures/gtk2-scrolledwindow-vertical.png",
+      "../../records/ia-tema/I167/R708/captures/gtk2-scrolledwindow-full.png"
+    ],
+    "package_install_report": "../../records/ia-tema/I167/R708/package-install.json",
+    "probe_source": "../../records/ia-tema/I167/R708/probe/scrolled.c",
+    "endpoint_pixel_comparison": "../../records/ia-tema/I167/R708/probe/endpoint-pixel-comparison.json"
+  },
+  "limits": [
+    "The user has not yet visually evaluated the refreshed GTK2 application.",
+    "The VUE held-arrow interaction and thumb-drag still require the separate I517 authorization; no input was sent to the VM.",
+    "The broadcast reached X11 windows but does not prove that every GTK2 client visibly repainted."
+  ],
+  "coverage_estimate": {
+    "percent": 94,
+    "basis": "Technical I167 coverage: the measured GTK2 endpoint alignment and four-pixel gap are now in the installed role-driven recipe; the live profile is active and received native reload. This is not a visual-fidelity score or human acceptance."
+  }
+}

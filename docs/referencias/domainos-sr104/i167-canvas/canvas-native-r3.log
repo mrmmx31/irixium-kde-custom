@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_canvas_native.py", line 37, in <module>
+    receipt = generate_scrollbar_snapshot(backend, ROOT, folder, model, source)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/gtk2_generation.py", line 24, in generate_scrollbar_snapshot
+    colors, origin = api.native_roles(root, Path(selected['path']), builder.art, selected['sha256'])
+                     ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/backend.py", line 585, in native_roles
+    raise Unavailable('Leitura nativa KDE indisponível: ' + str(result.get('reason', child.stderr.strip())))
+backend.Unavailable: Leitura nativa KDE indisponível: Use --config /absolute/selected.colors

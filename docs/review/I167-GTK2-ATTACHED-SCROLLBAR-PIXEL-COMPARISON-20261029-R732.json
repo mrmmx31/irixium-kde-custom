@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "id": "R732",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Pixel-level comparison of the GTK2 scrollbar in the two user attachments against the recorded native Domain/OS SR10.4 HP VUE 2.01 vertical scrollbar crop.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "xchat_full_screenshot": {
+      "path": "/home/lsi/.xchat2/codex-files/e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "file_mtime_local": "2026-10-29T05:04:24-04:00",
+      "limit": "Most of the lower screenshot is covered by a gray region; it cannot show the complete scrollbar."
+    },
+    "gtk2_scrollbar_crop": {
+      "path": "/home/lsi/.xchat2/codex-files/d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "file_mtime_local": "2026-10-29T05:04:24-04:00",
+      "observed_scrollbar_bbox_in_crop_inclusive": [
+        47,
+        37,
+        61,
+        607
+      ],
+      "observed_width_px": 15,
+      "limit": "The crop does not expose enough of the enclosing scrolled-window frame to measure content-to-scrollbar spacing."
+    },
+    "motif_reference": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "metrics_path": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "source": "Native Domain/OS SR10.4, HP VUE 2.01 guest capture; 1:1 pixels, normal state."
+    },
+    "r731_native_candidate": {
+      "path": "records/ia-tema/I167/R732/candidate-short.png",
+      "source_path": "/home/lsi/tempia/domainos-theme-work/I167/R731-relief-candidate/candidate-short.png",
+      "sha256": "dac60e295e85420796e70bb521adfc2bfaa657e141f6d16c076e948ff874b8c6",
+      "file_mtime_local": "2026-10-29T05:11:20-04:00",
+      "method": "Existing GTK2 2.24.33 native isolated candidate, rendered from the current KDE semantic-role export immediately before the user-profile installation. A byte-identical copy is preserved under records/ia-tema so it survives Tempia cleanup."
+    }
+  },
+  "measurements": {
+    "straight_trough_cross_axis": {
+      "gtk2_attachment_profile": "DDLLFFFFFFFDDLL",
+      "motif_sr104_profile": "DDLLFFFFFFFDDLL",
+      "pixel_match": "15/15",
+      "interpretation": "The attachment reproduces the literal measured VM raster, including the internal light/light and dark/dark rails. This is the profile that the user previously reported as visually reading outward."
+    },
+    "r731_candidate_trough_cross_axis": {
+      "vertical_profile": "DDFFFFFFFFFFFLL",
+      "r731_adaptation_profile": "DDFFFFFFFFFFFLL",
+      "match": "15/15",
+      "difference_from_literal_vm": "4/15 cross-axis pixels per straight row: offsets 2-3 replace the inner light pair and offsets 11-12 replace the inner dark pair with face. The 15 px width and the two-pixel outer dark/light edge groups remain."
+    },
+    "r731_candidate_vertical_geometry": {
+      "allocation_px": [
+        15,
+        255
+      ],
+      "up_arrow_cell_rgb_match": "225/225",
+      "down_arrow_cell_rgb_match": "225/225",
+      "scope": "Normal state in the isolated GTK2 2.24.33 candidate; independent of the thumb-length mismatch in the user attachment."
+    },
+    "r731_candidate_horizontal_geometry": {
+      "allocation_px": [
+        539,
+        15
+      ],
+      "left_arrow_cell_rgb_match": "225/225",
+      "right_arrow_cell_rgb_match": "225/225",
+      "candidate_body_profile_at_uncovered_rows": "DDFFFFFFFFFFFLL",
+      "profile_match": "15/15 against the R731 adaptation profile",
+      "reference_limit": "The horizontal VUE Trash Can thumb nearly fills its track, so it does not expose an equivalent long straight trough section for a direct cross-axis raster comparison."
+    },
+    "gtk2_adaptation_installed_by_r731": {
+      "profile": "DDFFFFFFFFFFFLL",
+      "interpretation": "Separate visual adaptation that removes the two inner pairs while preserving the VM raster as reference. R731 applied it after the attached capture timestamp."
+    },
+    "arrow_cells": {
+      "up": {
+        "gtk2_roi_xywh": [
+          47,
+          37,
+          15,
+          15
+        ],
+        "motif_roi_xywh": [
+          4,
+          2,
+          15,
+          15
+        ],
+        "dark_light_silhouette_match": "225/225",
+        "rgb_differences": "61/225",
+        "difference": "Arrow artwork and bevel mask align; the differing pixels are the face fill (#6f95c6 in the attachment versus #6688b5 in the measured VM crop)."
+      },
+      "down": {
+        "gtk2_roi_xywh": [
+          47,
+          593,
+          15,
+          15
+        ],
+        "motif_roi_xywh": [
+          4,
+          242,
+          15,
+          15
+        ],
+        "comparison_status": "not equivalent",
+        "reason": "The GTK2 thumb reaches y=594 and overlaps the estimated lower 15 px arrow cell at y=593..607. Its visible down arrow cannot be compared against the native empty Trash Can crop without a matched thumb endpoint/state. A one-row offset appears in the unnormalized crop and is not enough evidence to change glyph geometry."
+      }
+    },
+    "thumb": {
+      "observed_span_at_center_x": [
+        451,
+        594
+      ],
+      "observed_length_px": 144,
+      "interpretation": "Do not compare this length directly with the Trash Can reference: its nearly full thumb is caused by the empty content and is not a constant. It also reaches the lower arrow cell in this screenshot, obscuring an equivalent down-arrow comparison."
+    },
+    "pointer": {
+      "observed": "Red pointer is beside the scrollbar, not over the arrow cells or trough in the narrow crop."
+    }
+  },
+  "deployment_timing": {
+    "attached_capture_precedes_r731_application": true,
+    "evidence": "Both attachment files have mtime 05:04:24 local. The R731 native candidate has mtime 05:11:20 local and the user-theme backup/deployment receipt has mtime 05:13:55 local. The attachments therefore show the earlier live profile; the candidate validates the generated post-R731 profile before deployment.",
+    "current_profile_readback": {
+      "gtkrc": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "palette_bundle_id": "dc0aa8ec162b5a516008a29e95d9cc28329906a507fbe46a49566a59f074e15d",
+      "active_palette_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "bundle_manifest_present": true,
+      "palette_resources_in_active_profile": true,
+      "limit": "Filesystem readback confirms the GTK2 profile points to the R731 palette bundle; it does not prove the already-open application's repaint."
+    },
+    "current_live_capture_after_r731": "not obtained"
+  },
+  "result": "The narrow attachment is a pre-R731 live view: its 15 px body has the old internal rails, its upper arrow silhouette matches the VM but its face fill is lighter, and its thumb obscures the lower arrow cell. The existing R731 native GTK2 candidate has all four vertical and horizontal 15x15 arrow cells RGB-identical to the VM (225/225 each) and the intended adapted body profile in both orientations. The vertical track comparison directly shows four removed inner-rail pixels per straight row; the VUE horizontal reference does not expose a comparable body section because its thumb nearly fills the track. This proves the candidate rendering before deployment, not a fresh capture of the user's live application after reload or human acceptance.",
+  "changes": [],
+  "next": "Keep the current GTK2-only R731 adaptation in place. The generated/native isolated result is now compared; the remaining evidence is whether the user's already-open GTK2 application displays it after the reload. Do not infer an enclosing-frame spacing defect from this crop or repeat an installation.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "I167 technical coverage remains unchanged; the open live visual acceptance is not represented as a fidelity percentage."
+  }
+}

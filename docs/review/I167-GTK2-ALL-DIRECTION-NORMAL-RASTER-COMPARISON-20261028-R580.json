@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "id": "R580",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the four GTK2 normal arrow glyphs and 15x15 stepper cells against corresponding pixels in the native Domain/OS SR10.4 HP VUE 2.01 Trash Can capture.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "reference": {
+      "file": "docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+      "dimensions": [
+        592,
+        361
+      ],
+      "coordinate_basis": "Global positions from TRASH-CAN-METRICAS.json; horizontal end cells are the 15px endpoints of the measured 539x15 horizontal bar, with glyphs centered at a 2px inset. Crop origin in the full desktop image is (88,342).",
+      "metrics_file": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "metrics_sha256": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07",
+      "parent_capture_sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5"
+    },
+    "gtk2_theme_assets": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets/",
+    "palette_note": "The compared theme assets are the DomainOS scheme rendering. R578 independently verifies that all 20 arrow assets are regenerated from KDE roles and change across three real .colors schemas; this receipt covers the DomainOS-colored normal raster only."
+  },
+  "method": {
+    "comparison": "Decode source RGB and asset RGBA. Compare RGB for every fully opaque asset pixel at the corresponding measured source coordinate; no resize, interpolation, or color conversion beyond RGBA-to-RGB channel selection.",
+    "arrow_global_boxes_inclusive": {
+      "up": [
+        650,
+        414,
+        660,
+        424
+      ],
+      "down": [
+        650,
+        654,
+        660,
+        664
+      ],
+      "left": [
+        107,
+        673,
+        117,
+        683
+      ],
+      "right": [
+        631,
+        673,
+        641,
+        683
+      ]
+    },
+    "stepper_global_boxes_inclusive": {
+      "up": [
+        648,
+        412,
+        662,
+        426
+      ],
+      "down": [
+        648,
+        652,
+        662,
+        666
+      ],
+      "left": [
+        105,
+        671,
+        119,
+        685
+      ],
+      "right": [
+        629,
+        671,
+        643,
+        685
+      ]
+    }
+  },
+  "result": {
+    "arrows": {
+      "per_direction": "71/71 opaque RGB pixels identical in the 11x11 glyph",
+      "directions": [
+        "up",
+        "down",
+        "left",
+        "right"
+      ],
+      "all_four_identical": true
+    },
+    "stepper_cells": {
+      "per_direction": "225/225 RGB pixels identical in the 15x15 cell",
+      "directions": [
+        "up",
+        "down",
+        "left",
+        "right"
+      ],
+      "all_four_identical": true,
+      "asset_sha256": {
+        "up": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "down": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "left": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "right": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      }
+    }
+  },
+  "limits": [
+    "This is an image-to-asset comparison of the normal state, not a live GTK2 widget capture or evidence of GTK2 event delivery.",
+    "It does not cover pressed, hover, disabled, selection, or scroll-thumb states; R557 remains the historical pressed-state evidence for the down glyph only.",
+    "A pixel match to the empty Trash Can does not establish spacing, behavior, or appearance in the user's specific GTK2 application."
+  ],
+  "reconciliation": {
+    "R496_R553": "The normal horizontal bar/cell geometry remains exact in earlier measurements.",
+    "R557": "Down glyph normal/pressed/release historical pixels remain exact; this receipt extends normal-state coverage to up/left/right and full stepper cells.",
+    "changes_record": "The R576/R577 test-only source change is separately registered and content-verified as R579."
+  },
+  "next": "Do not change already matching normal geometry. Continue only with a reproducible GTK2 held-state target; the saved Board currently still lacks I500 authorization and Q501's application/state response."
+}

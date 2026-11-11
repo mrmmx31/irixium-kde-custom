@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R450",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile the shared GTK2 scrollbar rule's unverified native states with existing GTK2 runtime and SR10.4 evidence.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "sources": {
+    "shared_rule": {
+      "path": "tools/domainos_scrollbar_rules.json",
+      "sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+      "unverified_native_states": [
+        "up_pressed",
+        "left_pressed",
+        "right_pressed",
+        "hover",
+        "disabled",
+        "thumb_drag"
+      ]
+    },
+    "normal_cells": {
+      "receipt": "docs/review/I167-GTK2-INSTALLED-THEME-STEPPERS-20261027-R394.json",
+      "sha256": "740ebf543a75b81b3bc735b6ed5f3b38609284e54b84250e64d6df7468116b88",
+      "scope": "All four normal GTK2 15x15 stepper cells compared with live SR10.4/VUE; each matched 0/225 pixels. The smaller horizontal normal glyph was not reproduced."
+    },
+    "gtk2_pressed_matrix": {
+      "receipt": "docs/review/I167-GTK2-SETAS-CICLO-20261023-R52.json",
+      "sha256": "6bf21361a2905777d9190ef4d944e91421d30d3b52f8b3aafd07630049ebffab",
+      "scope": "GTK2 2.24.33 applies the 53-pixel light/shadow swap and restores release across all four directions; this is a GTK2 runtime check, not four direct held VUE captures."
+    },
+    "down_reference_cycle": {
+      "gtk2_receipt": "docs/review/I167-GTK2-SETA-PRESSIONADA-20261023-R51.json",
+      "gtk2_sha256": "1aabc4dae76e453c58dba4ee8d7e658dd44a47885375e9f0e335b060a01394f1",
+      "live_receipt": "docs/review/I167-MAME-LIVE-DOWN-ARROW-HELD-20261027-R434.json",
+      "live_sha256": "500206026c220986ae77aba9ead0f893be2cd6b2e983055036698867be1a71aa",
+      "scope": "The recorded SR10.4 down cycle supports normal/held/released GTK2 pixels. The newer live R434 press shows 37 visible matching pixels; 16 expected relief pixels are hidden under the cursor, so the current live comparison is partial."
+    },
+    "hover": {
+      "gtk2_receipts": [
+        "docs/review/I167-GTK2-STEPPER-HOVER-PRELIGHT-XVFB-20261027-R383.json",
+        "docs/review/I167-GTK2-PRELIGHT-RUNTIME-RECHECK-20261027-R387.json"
+      ],
+      "sha256": [
+        "2cb2f2f13938bb334fb165213c7ee4a7b5c6790f1176e87ffcb528761c6262d4",
+        "e409914466b491bb1945efcaeef4029342849b35de2fe12de87645b0069c8f38"
+      ],
+      "scope": "GTK2/Xvfb hover behavior verified; direct VUE hover comparison remains unverified."
+    },
+    "disabled": {
+      "gtk2_receipt": "docs/review/I167-GTK2-DISABLED-STEPPER-UNDERLAY-FIX-20261027-R380.json",
+      "sha256": "918cdc791421dadb6cde669b0ac9faa5a7b639715030447fcfe2f137bd330a55",
+      "scope": "GTK2 disabled asset composition verified; direct Xt/VUE insensitive appearance remains unverified."
+    },
+    "latest_vm_state": {
+      "receipt": "docs/review/I167-DOMAINOS-CURRENT-SCREEN-READONLY-20261027-R449.json",
+      "sha256": "0baa32daf2a99240c4eb894306f36a6425cc03e5f11211c8890948d5880e5324",
+      "scope": "Guest framebuffer is black; VM is active, but verify.sh exit 4 blocks graphical input while the distinct Prancheta MAME is active."
+    }
+  },
+  "gap_matrix": {
+    "up_pressed": "GTK2 runtime proof only; no direct held VUE capture.",
+    "left_pressed": "GTK2 runtime proof only; no direct held VUE capture.",
+    "right_pressed": "GTK2 runtime proof only; no direct held VUE capture.",
+    "hover": "GTK2 runtime proof only; no direct VUE hover capture.",
+    "disabled": "GTK2 asset/runtime proof only; no direct VUE insensitive capture.",
+    "thumb_drag": "No direct SR10.4 interaction measurement identified in the rule or reviewed receipts.",
+    "down_pressed": "Historical reference exists and current live press is partly observed; full current-capture comparison remains incomplete because the cursor occluded 16 of 53 changed pixels.",
+    "normal_horizontal_geometry": "Direct installed GTK2 versus live VUE comparison is 0/225 per R394; do not resize without a new measured discrepancy."
+  },
+  "result": "The current queue summary overstated the remaining work as only a horizontal held-arrow capture. The contract requires separate native evidence for six states; GTK2 runtime success cannot substitute for SR10.4/VUE evidence. No theme, user profile, application or VM was changed.",
+  "next": "Keep I167 on GTK2. Once the other MAME releases the guard and the VUE target is visible, prioritize a cursor-clear horizontal held capture, then close the remaining native states in the same scrollbar-family review. Do not infer hover, insensitive behavior or thumb drag from GTK2 alone."
+}

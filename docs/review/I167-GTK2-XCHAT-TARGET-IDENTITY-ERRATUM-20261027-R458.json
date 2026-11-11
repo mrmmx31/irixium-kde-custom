@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "R458",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct the target identity assumed by R457 before treating GTK2 process age as evidence about the user's XChat scrollbar.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observation": {
+    "method": "Read process identity only with ps -p 3951437,3951675 -o pid,lstart,etime,comm,args.",
+    "processes": [
+      {
+        "pid": 3951437,
+        "executable": "/home/lsi/.cache/codex-xchat/hom/xchat",
+        "url": "irc://127.0.0.1:16668/#codex"
+      },
+      {
+        "pid": 3951675,
+        "executable": "/home/lsi/.cache/codex-xchat/prd/xchat",
+        "url": "irc://127.0.0.1:16667/#codex"
+      }
+    ],
+    "started_before_asset_update": true
+  },
+  "correction": "R457 correctly observed that these two processes predate the deployed GTK2 asset timestamp, but their executable paths identify them as Codex HOM/PRD XChat instances. Their age does not establish that the user's personal XChat process has stale arrow assets. No user application was identified by this check.",
+  "result": "Withdraw the R457 stale-cache inference as evidence about the user's XChat. Keep it only as a fact about the two Codex XChat processes. The normal horizontal 15x15 GTK2/VUE crops still match 0/225 pixels in R394/R453; this does not resolve the user's live visual report.",
+  "limits": [
+    "Read process metadata only; no window title, chat contents, screenshot, focus, input, restart, or GTK configuration was accessed.",
+    "No MAME input or application change was made.",
+    "MAME PID 3971019 belongs to the separate Prancheta VM and PID 3971377 to this project's canonical VM; verify.sh returns 4 while both are active."
+  ],
+  "next": "After the separate MAME instance releases the guard, resume the native SR10.4 state comparison. Then identify the user's GTK2 target explicitly and compare only its scrollbar, without reading conversation content. Do not alter normal arrow geometry without a reproduced pixel difference."
+}

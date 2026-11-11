@@ -1,0 +1,48 @@
+{
+  "item": "I167",
+  "revision": "R44",
+  "checked_at_utc": "2026-10-23T02:08:37Z",
+  "family": "GTK2 GtkEntry in NativeSession; focus/caret evidence boundary",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "available_entry_capture": "~/tempia/domainos-vue-study/controls/text-fields/help-snapshot-search-field-static-20261014.png",
+    "available_state": "blank and static; does not show focus, caret, or selected text",
+    "live_vm_observation": "not available: existing MAME request f2127393cf7642a4896dceae1977ea71 remains pending with no correlated reply; no new guest command sent",
+    "normal_face_evidence": "R34 remains valid: 131x30 crop, 3930 pixels, 0 differences; this does not cover focused/selected state"
+  },
+  "validation": {
+    "gtk2": "2.24.33",
+    "scenes": 24,
+    "matrix": "four schemes (DomainOS, BreezeLight, BreezeDark, artificial yellow) x normal/disabled/backdrop x coupled/separate",
+    "result": "passed; native GtkEntry size, text, font, sensitivity, palette-derived interior role, and eight transactional rebuilds preserving text and Undo/Redo",
+    "unit_tests": "3 passed: missing-role guard, dynamic style qualification, unsupported forced press state",
+    "visual_inspection": "DomainOS separate normal NativeSession capture inspected at native scale; capture includes the isolated host background and no historical-focus claim",
+    "theme_lab_project_model_unchanged": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk2_entries.py": "41a237aa3914b475c3a2c8562328666181cc99b471bb153038234fa194e674e6",
+    "tools/theme-lab/tests/probe_gtk2_entry_scene.py": "9bb2fbc900b04c6b69cb28ebc9d162a8cccea9f41f51110e244bf333d36b5304"
+  },
+  "artifacts": {
+    "root": "~/tempia/i167-gtk2-entry-r44/native-session",
+    "result_sha256": "67542c02d7c1a98a1d35af71fbcbb266f52af0444bf53e3cfec12d7fd8ff57dd",
+    "domainos_separate_normal": "~/tempia/i167-gtk2-entry-r44/native-session/DomainOS/separate-0.png",
+    "domainos_separate_normal_sha256": "0b842d626c089596a0e23b8825dc9cea32e24a8908c3904548dcbb4273352cf3"
+  },
+  "changes": {
+    "product_source_changed": false,
+    "user_profile_changed": false,
+    "xchat_changed": false,
+    "vm_changed": false
+  },
+  "limits": [
+    "Entry focus ring, caret and selected-text appearance remain unverified against SR10.4; the available historical image is blank and static.",
+    "The NativeSession test verifies GTK2 integration/roles, not historical fidelity or public Theme Lab controller routing.",
+    "Do not apply GTK2 to XChat until the remaining GTK2 family and final route gates pass."
+  ],
+  "next": "Continue the GTK2 scrollbar public-preview junction/asset comparison using the current arrow recipe; R41 isolated-arrow tests do not supersede the older public junction discrepancy. Keep Entry focused-state claims explicitly unverified."
+}

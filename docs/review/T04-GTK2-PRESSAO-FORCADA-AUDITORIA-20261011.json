@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T19:22:54.600297+00:00",
+  "stage": "T04 next GTK2 forced pressed state audit",
+  "sources_sha256": {
+    "tools/theme-lab/preview_gtk.py": "28bf208b4d8dd87d59800ec9b426536b7bfa551bd4fd2d56afef3a3d47021a36",
+    "tools/theme-lab/native_scene_gtk2.py": "4bc18f59663625215fef7a791028178656f8abe9e53f4bec710c2a9347713fe7",
+    "tools/theme-lab/gtk2_buttons.py": "ffa5dafa2628ea94087b239f2ce1121a537e23fe8af8a438f4077913788c3a5f",
+    "tools/theme-lab/gtk2_recipe.py": "74ddf6813de7ce960ece68fbf48529623cc51b356e6170ed24ad914148491888"
+  },
+  "findings": [
+    "GTK3 editor demonstration maintains ACTIVE state flag via state-flags-changed; sensitivity uses its separate property",
+    "GTK2 currently rejects forced_state1 before scene creation; do not remove guard merely because pressed pixmap masks exist",
+    "GTK2 paint contracts already define pressed button/thumb/arrow assets and native held input has separate evidence",
+    "Forced display state is not equivalent to a native press/release or activation; its effect on internal widget geometry and ongoing native input remains unproven",
+    "Backdrops in GTK2 are named generated styles; no direct transplantation of GTK3 state flags"
+  ],
+  "next_steps": [
+    "Select one native control for demonstration and compare its internal state/geometry to actual held input",
+    "Prove released native interaction still works and no activation is emitted by demonstration",
+    "Connect capability/renderer/generation only for proved controls; retain explicit pending cases",
+    "Respect current KDE roles and preserve recipes/states across both origins/rebuild"
+  ],
+  "implemented": false,
+  "historical_fidelity_claimed": false,
+  "current_anchor_verification_not_complete": true
+}

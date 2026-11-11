@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-11T11:07:54.549131+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial_with_known_defect",
+  "estimated_stage_percent": 80,
+  "basis": "Não aumentar a estimativa enquanto GTK2 falha no requisito de não sobreposição.",
+  "change": "query-tooltip informa a área do controle composto em coordenadas do widget pela API nativa; nenhuma cor final inserida.",
+  "gtk3_hover": {
+    "status": "passed",
+    "native_delay_ms": 500,
+    "button_rect": [
+      540,
+      340,
+      120,
+      36
+    ],
+    "tooltip_rect": [
+      301,
+      386,
+      599,
+      81
+    ],
+    "stable_ms": 400,
+    "scope": "Um botão push real, um layout, tela940x700; sai ao afastar o mouse"
+  },
+  "gtk2_hover": {
+    "status": "failed",
+    "button_rect": [
+      540,
+      340,
+      120,
+      36
+    ],
+    "tooltip_rect": [
+      586,
+      370,
+      354,
+      84
+    ],
+    "defect": "Dica cobre seis pixels da borda inferior; set_tip_area não alterou esse posicionamento.",
+    "next": "Resolver posicionamento nativo GTK2, preservando paleta, atraso, fechamento e eventos."
+  },
+  "coverage_revalidated": {
+    "gtk3": "16 tipos/30widgets, X11/display confirmados",
+    "gtk2": "6 tipos/13widgets, X11/display confirmados",
+    "pure_regression": "15 testes passaram"
+  },
+  "isolation_correction": "GDK_BACKEND=wayland herdado fazia as provas GTK3 anteriores usarem Wayland apesar do Xvfb. Probes agora fixam x11, removem WAYLAND_DISPLAY e exigem nome do display igual ao DISPLAY do Xvfb antes de criar controles. Rodadas GTK3 anteriores não certificam isolamento; processos terminaram/fecharam suas janelas, sem ponteiro Wayland ou alteração de tema.",
+  "previous_evidence_superseded": "T07-DICAS-CENAS-NATIVAS-20261011.json: alegação de isolamento da prova GTK3 anterior substituída por foreign-gtk3-isolated-r3.log. Cobertura revalidada.",
+  "api_reference": "https://docs.gtk.org/gtk3/method.Tooltip.set_tip_area.html",
+  "sources": {
+    "tools/theme-lab/control_hints.py": "a9f225c8bf8ed565b35a7b3d85ce2b5e20ea14b47c5356539d5f4ac0d4995e9c",
+    "tools/theme-lab/tests/probe_control_hints.py": "8577a5bf7022032df2f178e392fd8f6c9c41ece3cf7a2ff5eb85e5008cde5f0f",
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "23189a08cb34b9d46898f6c02ac79b68201fb36939758dbb3e66e5309290bda5",
+    "tools/theme-lab/Makefile": "0d5e137752c8bbaa4ef92a8abb90dcc2ac95628836932e06b6f48dccf7ef64b7"
+  },
+  "evidence": [
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk2-r1.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk2-r2.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk2-r3.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk3-r1.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk3-r2.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/hover-gtk3-r3.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/foreign-gtk2-isolated-r3.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/foreign-gtk3-isolated-r3.log",
+    "docs/referencias/domainos-sr104/t07-gtk-hover/foreign-layout-query-regression.log"
+  ],
+  "human_approval_filled": false,
+  "personal_tool_reopened": false,
+  "remaining": [
+    "GTK2 não sobrepor controle",
+    "Mais layouts/controles e cores de hover",
+    "Demais galerias usadas pelo backend",
+    "Entrega pessoal coordenada"
+  ]
+}

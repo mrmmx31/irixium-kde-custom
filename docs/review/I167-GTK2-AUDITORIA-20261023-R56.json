@@ -1,0 +1,60 @@
+{
+  "id": "I167",
+  "receipt": "R56",
+  "date": "2026-10-23",
+  "family": "GTK2 audit reconciliation and GtkTreeView row-height theme boundary",
+  "authorization": {
+    "section": "work",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true
+  },
+  "audit": {
+    "previous_snapshot": "I167 R46 listed several open gaps; later receipts now supersede some of those entries.",
+    "closed_or_superseded": [
+      {
+        "gap": "GTK2 ComboBox Header relief was reported at 0.56, producing #a5d1e6 instead of #a3d0e6.",
+        "superseding_receipt": "R48",
+        "evidence": "GTK2 2.24.33, 24 native scenes across four KDE schemes, three states and coupled/separate previews. The selected Header light token is RGB [163,208,230] (#a3d0e6); ratio remains 0.55 over the current KDE role, with no fixed final product RGB."
+      },
+      {
+        "gap": "The short GtkTextView sample was clipped due to artificial preview margins.",
+        "superseding_receipt": "R47",
+        "evidence": "The artificial 8 px preview margin was removed. Short samples show no scrollbars or clipping; the local Motif fixture still wraps into three lines while GTK2 wraps into two due to toolkit/font metrics. This remains a comparison difference, not a theme-controlled margin."
+      },
+      {
+        "gap": "GTK2 scale width/length fields were not exposed and persistent in the C Theme Lab UI.",
+        "superseding_receipt": "R54",
+        "evidence": "UI readback and persistence verified for the independent GTK2 slider width/length fields, default 8x27 px, range 1..128; frame sensitivity and associated tests passed."
+      }
+    ],
+    "row_height": {
+      "previous_receipts": ["R42", "R48"],
+      "runtime": "GTK2 2.24.33",
+      "measured_rows_px": 24,
+      "local_motif_fixture_rows_px": 19,
+      "renderer_ypad_default": 2,
+      "application_renderer_ypad_zero_rows_px": 20,
+      "gtkrc_cell_renderer_ypad_override": "ignored by the runtime probe",
+      "theme_controlled_cell_separator": 0,
+      "source_support": [
+        "GTK+ 2.24 reference manual: GtkCellRenderer ypad is a renderer property; GtkTreeView vertical-separator is a read-only style property: https://ftp.ccp4.ac.uk/ccp4/7.0/unpacked/checkout/gtk%2B-2.24.23/docs/reference/gtk/html/GtkCellRenderer.html",
+        "GTK+ 2.24 reference manual: vertical-separator is read-only and controls vertical space between cells: https://ftp.ccp4.ac.uk/ccp4/7.0/unpacked/checkout/gtk%2B-2.24.23/docs/reference/gtk/html/GtkTreeView.html"
+      ],
+      "decision": "Keep zero theme-controlled cell separators and do not shrink the KDE-derived font. The remaining 4 px difference from the local Motif fixture depends on application-owned GtkCellRendererText ypad and cannot be corrected by the GTK2 theme RC tested here. This does not prove a 19 px SR10.4 VM metric."
+    }
+  },
+  "unresolved": [
+    "R55 directly proved that a targeted _GTK_READ_RCFILES event refreshes GTK2 pixmaps, but the live KDE/XSettings notification route remains unproven.",
+    "Board item I484 requests that route-specific work and remains user.authorized=false; no bridge change, session event, or XChat action was made.",
+    "GTK2 focus/caret/selection and other controls without a paired SR10.4 guest capture remain historically unverified."
+  ],
+  "changes": {
+    "product_code": false,
+    "user_profile": false,
+    "xchat": false,
+    "mame": false,
+    "docs_and_receipt": true
+  },
+  "next": "Use R56 instead of stale R46 entries for these three resolved audit points. Continue independent authorized I167 GTK2 gaps one family at a time; do not deploy GTK2 to XChat while I167 remains partial."
+}

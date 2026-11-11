@@ -1,0 +1,68 @@
+{
+  "date": "2026-10-10T19:32:03.691405+00:00",
+  "scope": "I085 revision 3: single replacement progress notice in the lower left column",
+  "implementation": "delivered",
+  "user_approval": "pending",
+  "tests": {
+    "native": {
+      "readonly_lower_left_panel_matches_scope_scale": true,
+      "external_reply_updates_without_focus_cursor_draft_or_history_change": true,
+      "selection_is_preserved_during_live_update": true,
+      "undo_redo_remain_available_after_progress_updates": true,
+      "invalid_json_keeps_last_progress_and_editor_usable_without_rewriting_input": true,
+      "valid_json_resumes_monitor_while_draft_remains_intact": true,
+      "updates_from_another_item_replace_the_notice_without_accumulating": true,
+      "monitor_supports_select_copy_and_rejects_typing_without_committing": true,
+      "monitor_does_not_grant_authorization": true
+    },
+    "reload": {
+      "title_and_taskbar_name_are_explicit_utf8": true,
+      "unchanged_reload_keeps_tabs_geometry_and_utf8_draft": true,
+      "live_added_sections_and_all_old_tabs_are_accessible": true,
+      "partial_definition_preserves_sections_items_and_responses": true,
+      "undo_redo_still_work_after_dynamic_and_partial_reloads": true
+    },
+    "model_without_gui_dependencies": "passed, owned/immutable data, newest notice only, bounded UTF-8, current consent/revision, no user notes"
+  },
+  "delivery": {
+    "date": "2026-10-10T19:30:31.285820+00:00",
+    "pid": 1240346,
+    "display": ":1",
+    "preservation": {
+      "user_records_identical": true,
+      "drafts_identical": true,
+      "undo_histories_identical": true,
+      "navigation_identical": true,
+      "user_approval_filled_by_assistant": false
+    }
+  },
+  "source_sha256": {
+    "Makefile": "eda36ce54465288ed0c4b967cd6be3ed5ca9404532eccc5d5b0e022296ce7584",
+    "PROTOCOLO.md": "9999782a2ddaff9135a0339fd9875296e1a1b07846b4466c9568ea46cc1ae9a3",
+    "include/work_board/progress.h": "c150aab50d6c3503c3f67da0c8fd74b0c25640301682be1a081dc052b52aceb5",
+    "include/work_board/view.h": "b7ae094d0f2255fbfa9257b287e4cb14ea1730724477ccc7d0709ff1396649d3",
+    "src/controller/internal.h": "518bdccc0aad9bd895f1c5191b3c835ca4009d713c17b024f05e0d0ef522542a",
+    "src/controller/lifecycle.c": "7da07a372392505cd6b93fc8653d1110dc7ab1740be2b33a974dff5a4d4bea1d",
+    "src/controller/progress_watch.c": "99c5502ea97b8a454e583611f0cb77cb64f88738bf6b2b21e6dbf5ad8855bbf8",
+    "src/model/progress.c": "02c8ddcb4d4fc6d3e50a0fbde5da64ba8ae12e9f98534b679a39081fc7ea1631",
+    "src/view/internal.h": "5ac35e5074629d3dd463790122fd351cdb7ae087cc99cfb0ef0a50578f6eb9d0",
+    "src/view/panels.c": "3429667f3df1706875bbc70254c3015a2b6e1422561c549f63be995ed5fd4303",
+    "src/view/progress.c": "56b122ee396c20f59f2e5ffec70832b8669de7d994437084e0f43be7628da874",
+    "tests/native_progress_probe.c": "99c9375a7f8c00e295decdd075bd49ccd00242ddbd5ae257e027814fec745bef",
+    "tests/test_progress.py": "f0e7659c77d4966b39e93b3f6255c02ef63cdb72ad52573405291b4054be2847",
+    "tests/test_progress_model.py": "a17b25a079375261dfec71688dd0cd690fc23c784cb07fb50d25ffdf306aacb5",
+    "docs/ACOMPANHAMENTO.md": "8b5d75521e1b9a4952e9ee03f145993ae21339a637ca6cb9351b5a285f7618ac",
+    "docs/MANUTENCAO.md": "4c607dcc0ec9d1d179b32886780c6e0139f6da6209b29cba6a67385c8ad43b5b",
+    "docs/ARQUITETURA.md": "f67caf6c446eb262bd960cb921f120d1a23cbf49a6a0e5502db1fe59af4b1d3f",
+    "docs/FILA-PRANCHETA.md": "dbf2e12e9f828dce72ab516f0fc803f15b460fa25b213dc0d4edda5f201c781a"
+  },
+  "limits": [
+    "Reads the last saved assistant notice every 2 s; no agent/process telemetry or autonomous task execution.",
+    "One notice, up to 1600 bytes of reply at a UTF-8 boundary; complete response remains with its item.",
+    "Editor/detail view refresh remains explicit; progress polling never reloads it.",
+    "Pane divider position is adjustable but not persisted.",
+    "Read-only monitor supports selection/copy; no editable field introduced.",
+    "Native screenshot containing personal notes stays in private XDG recovery, not the public project.",
+    "I083/I084/I086/I088 and the three-document migration are not implemented by this scope."
+  ]
+}

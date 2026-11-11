@@ -1,0 +1,34 @@
+{
+  "item": "P04",
+  "title": "Iconbox: cliques, grupos e rolagem",
+  "recorded_at": "2026-10-17T00:38:51Z",
+  "scope": "Reportar falhas silenciosas ao abrir Operações e validar o caminho nativo do botão de operações da seleção de grupo.",
+  "result": "partial_pass",
+  "changes": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml",
+      "sha256": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+      "detail": "Quando openAt() retorna false sem emitir failure nem preencher lastError (por exemplo, conteúdo nativo com geometria zero), a Iconbox agora informa a falha e limpa o estado pendente."
+    },
+    {
+      "file": "plasma/tests/test_domainos_operations_handoff.py",
+      "sha256": "ae72ba9a2700bf1e90b67e9dbeadd6bb251b03a6fb16d474249a1cce3f30bddf",
+      "detail": "Teste de regressão reproduz a rejeição silenciosa por altura zero; 12 testes de handoff passaram em Qt offscreen."
+    }
+  ],
+  "native_evidence": {
+    "display": "Xephyr :71, Qt 6/XCB, Openbox privado; sem reiniciar plasmashell ou alterar o perfil normal.",
+    "test": "test_domainos_operations_native.NativeOperations.test_position_and_native_keyboard",
+    "result": "pass; clique no botão Operações exibiu as 10 linhas, posicionou o menu acima do botão dentro da tela e manteve a navegação por teclado.",
+    "screenshot": "~/tempia/p04-operations-native-20261016/operations-button-open.png",
+    "screenshot_sha256": "884307bf194cdec19a81f64e66eaebdcdb649514ceea625c01dbfd2392465d78",
+    "log": "~/tempia/p04-operations-native-20261016/test-xephyr71.log",
+    "log_sha256": "7ef042b3341e5aaf0b41ec82513a9636ef1d9a98c5d5a4decb6cd42e2c5d00b0"
+  },
+  "limits": [
+    "A falha específica relatada na sessão normal LSI ainda não foi reproduzida no Plasma completo; o teste nativo usa o componente Qt/QML real em harness isolado.",
+    "Não houve instalação nem reinício do painel normal.",
+    "O aviso de geometria zero é diagnóstico/recuperação de um caminho silencioso; não prova que esse era o gatilho original."
+  ],
+  "next": "A pessoa deve validar o clique na sessão normal quando a alteração for instalada; se persistir, recolher lastError e seguir a causa observada."
+}

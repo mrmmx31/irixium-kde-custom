@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "R397",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Check whether the current host pointer can be mapped to the project MAME window using read-only X11 window metadata, without moving the pointer or sending guest input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "mame_pid": 3971377,
+    "canonical_guest_capture": "~/tempia/ia-tema/evidence/I167/r396-vm-current/domainos-sr104-current.png",
+    "mame_profile_probe": {"paused": false, "frameskip": 4, "throttled": false, "captured": false, "pending_request": null}
+  },
+  "observed": {
+    "xdotool_host_pointer": {"x": 600, "y": 100, "screen": 0, "window_id": 31457283},
+    "wmctrl_available": false,
+    "grim_available": false,
+    "xwininfo_available": true,
+    "x11_window_with_mame_pid_found": false
+  },
+  "result": "The host X11 query did not identify a window belonging to the MAME PID, and host pointer coordinates have no verified transform to the guest snapshot. This does not establish whether MAME is Wayland-native, unmapped, or otherwise absent from this X11 tree. The method cannot confirm that the cursor is over a guest scrollbar arrow.",
+  "changes": {
+    "host_pointer_moved": false,
+    "guest_input": false,
+    "window_focus_changed": false,
+    "vm_profile_changed": false,
+    "other_vm_touched": false
+  },
+  "next": "Do not use host X11 coordinates or guessed counter calibration to press a guest arrow. Obtain a current image that visibly correlates the pointer with the MAME guest target, or request the user to position the pointer, before one bounded held/released comparison."
+}

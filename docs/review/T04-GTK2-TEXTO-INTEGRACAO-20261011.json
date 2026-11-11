@@ -1,0 +1,67 @@
+{
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "text",
+  "coverage": {
+    "integrated": 9,
+    "total": 16,
+    "percentage": 56.25,
+    "scope": "Catalog types; not historical fidelity or overall goal"
+  },
+  "native": {
+    "scene": ".qa-t04-text-integration/scenes-final/RESULTADO.json",
+    "keyboard_log": ".qa-t04-text-integration/edit.log",
+    "controller": ".qa-theme-lab-spin-lxsq5bsb/RESULTADO.json",
+    "scenes": 24,
+    "keyboard_origins": 2,
+    "rebuilds": 8
+  },
+  "tests": {
+    "integration": 3,
+    "entry_guards": 2,
+    "progress_guards": 4,
+    "scene_contract": 15,
+    "runtime": 2,
+    "c_receipt": "passed",
+    "strict_build": "passed"
+  },
+  "hashes": {
+    "gtk2_text.py": "72dac43f4dba63aa185c9c1a6866032aef93ea3ce4ae274480b9cce4e04694f7",
+    "gtk2_generation.py": "b9af2ca58a7e0205fb44a39fbae99203a41ba226512ef7551dc432789c12f290",
+    "gtk2_session.py": "a2f917b5b18d7c220674f1d3c46850d3acb8992c596396cb1ac737ac97c8537f",
+    "native_scene_gtk2.py": "e6f6b70542a431498b39a98cd785477b4d77eeaa28ef11142838ab5b1ec7eb43",
+    "backend.py": "69152a768938dbdfc5476e6140927f55b05308b0c5214730483db9cf670de407",
+    "src/controller/generated_preview.c": "cc826bc20aad4d066ce6b87df3267c05e90909e3e2d9a7a6624389f679419d15"
+  },
+  "scope": "Native TextView in ScrolledWindow, Unicode/multiline, four palettes and explicit disabled/backdrop, coupled/separate, size/margins/scrolling, process-local history, native clipboard/shortcuts; controller persistence uses saved project scene.",
+  "limitations": [
+    "GTK sample text/history does not persist across process replacement or handoff",
+    "Full selection/text/scrollbar pixels not proved here",
+    "No historical visual approval",
+    "Forced pressed/focus states unsupported"
+  ],
+  "post_initial_native_change": "Explicit TextView child sensitivity; affected 24-scene matrix repeated and passed. Normal editing/controller behaviour unchanged (True was native default).",
+  "failed_attempts": [
+    "Controller first failed searching previous GTK2 window title. Test now accepts old/new title; original failure retained."
+  ],
+  "capture_examined": ".qa-t04-text-integration/scenes-final/DomainOS/separate-0.png",
+  "delivery": {
+    "status": "open",
+    "display": ":61",
+    "pid": 2713950,
+    "manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-7dbc43a2a3fd47249e0367604c428929/MANIFESTO.json",
+    "preservation": {
+      "source_alive": true,
+      "source_pid": 2702591,
+      "destination_pid": 2713950,
+      "source_working.json": true,
+      "source_scene.json": true,
+      "source_editor-journal.json": true,
+      "source_project-history.json": true,
+      "destination_scene.json": true,
+      "destination_project-history.json": true,
+      "old_text_histories": true
+    },
+    "scope": "Saved scene resumed without forced family change; GTK sample text not imported across processes"
+  }
+}

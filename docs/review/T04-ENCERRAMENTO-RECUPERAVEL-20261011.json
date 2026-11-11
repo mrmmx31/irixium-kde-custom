@@ -1,0 +1,31 @@
+{
+  "status": "passed_scoped_native_recovery",
+  "result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-on0szrs6/RESULTADO.json",
+  "result_sha256": "788caff6d5d7f35f3d716fc64bd639cb0418dc28033ab994b815241da650c253",
+  "proof": {
+    "status": "passed",
+    "invalid_close_refused": true,
+    "invalid_text_preserved": true,
+    "autosave_after_refusal": true,
+    "second_signal_closed": true,
+    "personal_profile_exposed": false,
+    "historical_fidelity_claimed": false
+  },
+  "negative_evidence": ".qa-t04-anchor-foundation/quit-recovery-negative-evidence.json",
+  "baseline_failure": "quit-recovery-before-r3: campo inválido preservado e saída recusada; correção para221 não salvou, working manteve0.",
+  "additional_failure": "Primeira correção recuperou autosave; sinal repetido encerrou sem retorno zero. Programa mínimo com flags do projeto confirmou handler_reset_to_default=1.",
+  "changes": [
+    "Consumir o sinal e continuar tick após fechamento recusado.",
+    "Instalar tratadores persistentes com sigaction."
+  ],
+  "source_sha256": {
+    "tools/theme-lab/src/controller.c": "1896a0cdc11fd7b5b355b81b371e7294cd037cf8c9e36e0a3fb57dfb028804e4",
+    "tools/theme-lab/tests/controller_quit_recovery.py": "805d5faa2c597d713d9f0286e7a0cf5dea571c4cd342684228b6e5ffc5ea12f2",
+    "tools/theme-lab/tests/controller_spin_probe.c": "636724c05d55ba1d0dae59265c9f39878eed9273cc84be00438bfc8aa6a673f8",
+    "tools/theme-lab/tests/test_controller_spin.py": "505a41affad315d7002e0957dc88a0bad3d7c366b190a76b4f56bcd4eb532f2c"
+  },
+  "personal_instance_updated": false,
+  "personal_close_cause_proven": false,
+  "historical_fidelity_claimed": false,
+  "user_approval_claimed": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": "R607",
+  "date_local": "2026-10-28T14:33:43-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "source_basis": {
+    "kicker_submenu": "Installed ItemListDialog inherits Kicker.SubMenu/PlasmaCore.Dialog.",
+    "libplasma_focus_out": "R598 confirms PlasmaCore.Dialog considers active transient ancestors and descendants before emitting windowDeactivated.",
+    "root_before": "The borrowed MenuRepresentation was hosted in QtQuick.Controls.Popup.Window, so its root popup did not share the PlasmaCore.Dialog window type used by Kicker submenus. This was a structural mismatch, not a proven runtime cause."
+  },
+  "change": {
+    "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "details": [
+      "Host Kicker MenuRepresentation in PlasmaCore.Dialog.PopupMenu, matching native Kicker submenu dialog type.",
+      "Set visualParent to the actual panel launcher, use PlasmaCore.Types.BottomEdge, preserve the search-focus reset and the current Kicker window-system adapter.",
+      "Remove QtQuick Popup closePolicy/DomainOSPopupPlacement from this root because the dialog owns its transient placement and dismissal."
+    ]
+  },
+  "deployment": {
+    "backup_source": "records/ia-tema/P01/R607-before-install/DomainOSKdeApplicationMenu.qml",
+    "install_backups": [
+      "/home/lsi/.local/state/irixium-domainos/backups/495082dbf167438b947111f40625d291",
+      "/home/lsi/.local/state/irixium-domainos/backups/c40afe4ff70e4d47b3a2ce36f6fa2817"
+    ],
+    "final_plasmashell_pid": 745055,
+    "restart_count": 0,
+    "source_installed_sha256": "e7cf2b0c35ad5b9f0006abb311966629300e30abfca7d949b7fa41fecebed805",
+    "installed_matches_source": true
+  },
+  "validation": {
+    "qmlformat_parse": "passed",
+    "first_reload": "failed because PlasmaCore.Dialog has no offset property; the erroneous property was removed immediately and the corrected version reinstalled.",
+    "corrected_runtime_load": "No applet-load or QML error referencing DomainOSKdeApplicationMenu.qml or DomainOSApplications.qml in the new PID journal; plasmashell active.",
+    "kwin_restarted": false,
+    "other_session_restarted": false,
+    "manual_hover_and_keyboard_acceptance": "pending"
+  },
+  "remaining": [
+    "User validation: type immediately in the KDE menu, hover over a category/submenu, and type immediately in the panel menu.",
+    "The double-click application remains unidentified; no launch was repeated."
+  ],
+  "historical_coredump_audit": {
+    "2026-10-24": {
+      "pid": 2713616,
+      "signal": "SIGSEGV",
+      "crash_thread": "KWindowShadow::destroy -> KF6WindowSystemKWaylandPlugin -> wl_proxy_get_version while PlasmaQuick objects were being destroyed.",
+      "control_group": "codex-xchat-bridge-16668.service",
+      "menu_correlation": "No Kicker/DomainOS menu frame; this is a Wayland window-shadow teardown crash in a bridge-launched plasmashell, not proof of the reported application launch sequence."
+    },
+    "2026-10-26": {
+      "pid": 1423570,
+      "signal": "SIGABRT",
+      "crash_thread": "libdbus _dbus_warn_check_failed / QtDBus QDBusServiceWatcher::serviceUnregistered.",
+      "control_group": "codex-xchat-bridge-16667.service",
+      "menu_correlation": "No Kicker/DomainOS menu frame; no app identity or launch correlation."
+    },
+    "current_user_shell_since_R607": "No new coredump or automatic service restart; R607 load was followed by a second deliberate reload to remove invalid offset, final PID 745055."
+  }
+}

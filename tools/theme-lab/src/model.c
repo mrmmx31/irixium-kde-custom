@@ -2,6 +2,7 @@
 /* The Model reads recipes and evidence. It never changes a desktop theme. */
 #define _POSIX_C_SOURCE 200809L
 #include "theme_lab.h"
+#include "control_dimensions.h"
 #include <json-c/json.h>
 #include <ctype.h>
 #include <errno.h>
@@ -36,6 +37,10 @@ const char *const tl_field_labels[TL_FIELD_COUNT] = {
     "Barra (px)", "Sombra (px)", "Seta (px)", "Thumb transversal (px)",
     "Seta/Thumb (px)", "Conteúdo/Barra (px)", "Moldura (px)",
     "Espaço do controle (px)", "Fonte (px)"
+};
+const char *const tl_control_ids[TL_CONTROL_COUNT] = {
+    "push", "toggle", "check", "radio", "entry", "combo", "spin", "text",
+    "scale_h", "scale_v", "scroll_h", "scroll_v", "arrow", "progress", "list", "frame"
 };
 
 static int fail(char *error, size_t capacity, const char *format, ...)
@@ -100,13 +105,19 @@ void tl_model_init(TLModel *model)
     if (!model) return;
     memset(model, 0, sizeof(*model));
     model->schema_version = 1;
-    model->selected = TL_MOTIF;
+    /* The Motif recipe is the historical reference panel. Start editing the
+     * primary adaptation target so a fresh laboratory session compares GTK3
+     * against Motif instead of showing a confusing Motif/Motif pair. */
+    model->selected = TL_GTK3;
     model->automatic_preview = 0;
+    model->separate_preview = 0;
     model->debounce_ms = 600;
     strcpy(model->name, "DomainOS SR10.4 — proposta");
     model->native_measured = geometry;
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         model->recipes[i].geometry = geometry;
+        model->recipes[i].scale_slider_width_px = 8;
+        model->recipes[i].scale_slider_length_px = 27;
         model->recipes[i].palette = palette;
         model->recipes[i].visible_categories = (1 << TL_CATEGORY_COUNT) - 1;
         model->recipes[i].visible_controls = (1 << TL_CONTROL_COUNT) - 1;
@@ -135,6 +146,21 @@ static int semantic_role(const char *role, size_t capacity)
     if (!slash || slash == cursor || !slash[1]) return 0;
     for (; *cursor; cursor++)
         if (cursor != slash && !isalnum(*cursor) && *cursor != '_') return 0;
+    return 1;
+}
+
+static int validate_palette(const TLPaletteRules *p, const char *scope,
+                            char *error, size_t capacity)
+{
+    if (!semantic_role(p->face_role,sizeof(p->face_role)) ||
+        !semantic_role(p->text_role,sizeof(p->text_role)) ||
+        !semantic_role(p->view_role,sizeof(p->view_role)) ||
+        !semantic_role(p->selection_role,sizeof(p->selection_role)))
+        return fail(error,capacity,"%s: use papéis semânticos Colors:Grupo/Papel",scope);
+    if (!isfinite(p->light) || !isfinite(p->shade) || !isfinite(p->trough) ||
+        p->light<0 || p->light>1 || p->shade<0 || p->shade>1 ||
+        p->trough<0 || p->trough>1)
+        return fail(error,capacity,"%s: fatores de luz/sombra devem ficar entre 0 e 1",scope);
     return 1;
 }
 
@@ -182,12 +208,14 @@ static int validate_model(const TLModel *model, char *error, size_t capacity)
     int i, control, axis;
     clear_error(error, capacity);
     if (!model) return fail(error, capacity, "Projeto ausente");
-    if (model->schema_version != 1)
+    if (model->schema_version < 1 || model->schema_version > 4)
         return fail(error, capacity, "Versão de projeto não suportada");
     if ((int)model->selected < 0 || (int)model->selected >= TL_FAMILY_COUNT)
         return fail(error, capacity, "Família selecionada inválida");
     if (!portable_scheme(model->color_scheme, sizeof(model->color_scheme)))
         return fail(error, capacity, "Use um ID portátil de esquema, sem caminhos");
+    if (model->separate_preview != 0 && model->separate_preview != 1)
+        return fail(error, capacity, "Prévia separada requer estado booleano");
     if ((model->automatic_preview != 0 && model->automatic_preview != 1) ||
         model->debounce_ms < 100 || model->debounce_ms > 10000)
         return fail(error, capacity, "Prévia automática requer estado booleano e intervalo de 100 a 10000 ms");
@@ -204,14 +232,57 @@ static int validate_model(const TLModel *model, char *error, size_t capacity)
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         const TLRecipe *recipe = &model->recipes[i];
         const TLPaletteRules *p = &recipe->palette;
+        if (tl_scroll_parts_validate(&recipe->scrollbar_parts,error,capacity)) return 0;
+        if (i == TL_GTK3 && recipe->scrollbar_parts.parts[TL_SCROLL_ARROW].present) {
+            const TLPartRecipe *arrow=&recipe->scrollbar_parts.parts[TL_SCROLL_ARROW];
+            int size=(arrow->present & 1U)?arrow->values[0]:recipe->geometry.arrow_px;
+            int shadow=(arrow->present & 2U)?arrow->values[1]:recipe->geometry.shadow_px;
+            if(size<3 || !(size&1) || size>recipe->geometry.arrow_px || 2*shadow>=size)
+                return fail(error,capacity,"Seta: tamanho ímpar de 3 até o espaço reservado; relevo menor que metade");
+        }
+        if (i == TL_GTK3 && recipe->scrollbar_parts.parts[TL_SCROLL_ARROW_BUTTON].present) {
+            const TLPartRecipe *arrow=&recipe->scrollbar_parts.parts[TL_SCROLL_ARROW];
+            const TLPartRecipe *button=&recipe->scrollbar_parts.parts[TL_SCROLL_ARROW_BUTTON];
+            int glyph=(arrow->present & 1U)?arrow->values[0]:recipe->geometry.arrow_px;
+            int padding=(button->present & 1U)?button->values[0]:0;
+            int shadow=(button->present & 2U)?button->values[1]:recipe->geometry.shadow_px;
+            int outer=recipe->geometry.arrow_px+2*recipe->geometry.shadow_px;
+            if(glyph+2*(padding+shadow)>outer)
+                return fail(error,capacity,"Botão isolado: moldura/espaço devem caber sem cobrir a seta nem aumentar o botão");
+        }
+        if (i == TL_GTK3 && recipe->scrollbar_parts.parts[TL_SCROLL_TROUGH].present) {
+            const TLPartRecipe *trough=&recipe->scrollbar_parts.parts[TL_SCROLL_TROUGH];
+            int thickness=(trough->present & 1U)?trough->values[0]:recipe->geometry.bar_px;
+            int shadow=(trough->present & 2U)?trough->values[1]:recipe->geometry.shadow_px;
+            int reserved=recipe->geometry.arrow_px>recipe->geometry.thumb_cross_px?
+                         recipe->geometry.arrow_px:recipe->geometry.thumb_cross_px;
+            if(thickness<reserved+2*shadow)
+                return fail(error,capacity,"Trilho: espessura deve acomodar seta e cursor sem cortar suas alocações");
+        }
+        if (i == TL_GTK3 && recipe->scrollbar_parts.parts[TL_SCROLL_THUMB].present) {
+            const TLPartRecipe *thumb=&recipe->scrollbar_parts.parts[TL_SCROLL_THUMB];
+            const TLPartRecipe *trough=&recipe->scrollbar_parts.parts[TL_SCROLL_TROUGH];
+            int cross=(thumb->present & 1U)?thumb->values[0]:recipe->geometry.thumb_cross_px;
+            int shadow=(thumb->present & 2U)?thumb->values[1]:recipe->geometry.shadow_px;
+            int thickness=(trough->present & 1U)?trough->values[0]:recipe->geometry.bar_px;
+            int trough_shadow=(trough->present & 2U)?trough->values[1]:recipe->geometry.shadow_px;
+            int available=thickness-2*trough_shadow;
+            if(cross<=2*shadow || cross>available || (available-cross)%2)
+                return fail(error,capacity,"Cursor: largura deve caber no trilho com margens inteiras simétricas e relevo menor que metade");
+        }
         if (recipe->visible_categories < 0 ||
             recipe->visible_categories >= (1 << TL_CATEGORY_COUNT) ||
             recipe->visible_controls < 0 ||
             recipe->visible_controls >= (1 << TL_CONTROL_COUNT) ||
             recipe->selected_control < 0 || recipe->selected_control >= TL_CONTROL_COUNT ||
-            recipe->edit_state < 0 || recipe->edit_state > 3)
+            recipe->edit_state < 0 || recipe->edit_state > 3 ||
+            recipe->selected_scroll_part < 0 || recipe->selected_scroll_part >= TL_SCROLL_PART_COUNT)
             return fail(error, capacity, "%s: categoria, controle ou estado de edição inválido",
                         tl_family_ids[i]);
+        for(control=0;control<TL_CONTROL_COUNT;control++)
+            if(recipe->length_anchor[control]<0 || recipe->length_anchor[control]>1 ||
+               (recipe->length_anchor[control] && tl_control_long_axis(control)<0))
+                return fail(error,capacity,"Âncora inválida; somente barras têm extremidade longitudinal");
         for (control = 0; control < TL_CONTROL_COUNT; control++)
             for (axis = 0; axis < 2; axis++)
                 if (recipe->positions[control][axis] < 0 || recipe->positions[control][axis] > 2048)
@@ -224,23 +295,26 @@ static int validate_model(const TLModel *model, char *error, size_t capacity)
                                 tl_family_ids[i]);
         if (!validate_geometry(&recipe->geometry, i == TL_MOTIF || i == TL_GTK3,
                                tl_family_ids[i], error, capacity)) return 0;
+        if (i == TL_GTK2 &&
+            (recipe->scale_slider_width_px < 1 || recipe->scale_slider_width_px > 128 ||
+             recipe->scale_slider_length_px < 1 || recipe->scale_slider_length_px > 128))
+            return fail(error, capacity, "gtk2: largura e comprimento do cursor de escala devem ficar entre 1 e 128 px");
         if (i == TL_GTK3 &&
             (!(recipe->geometry.bar_px & 1) ||
              recipe->geometry.arrow_px <= 2 * recipe->geometry.shadow_px ||
              recipe->geometry.view_inset_px != recipe->geometry.shadow_px))
             return fail(error, capacity,
                         "gtk3: barra ímpar, seta > 2 × sombra e moldura = sombra");
-        if (!semantic_role(p->face_role, sizeof(p->face_role)) ||
-            !semantic_role(p->text_role, sizeof(p->text_role)) ||
-            !semantic_role(p->view_role, sizeof(p->view_role)) ||
-            !semantic_role(p->selection_role, sizeof(p->selection_role)))
-            return fail(error, capacity, "%s: use papéis semânticos Colors:Grupo/Papel",
-                        tl_family_ids[i]);
-        if (!isfinite(p->light) || !isfinite(p->shade) || !isfinite(p->trough) ||
-            p->light < 0 || p->light > 1 || p->shade < 0 || p->shade > 1 ||
-            p->trough < 0 || p->trough > 1)
-            return fail(error, capacity, "%s: fatores de luz/sombra devem ficar entre 0 e 1",
-                        tl_family_ids[i]);
+        if (!validate_palette(p,tl_family_ids[i],error,capacity)) return 0;
+        for(control=0;control<TL_CONTROL_COUNT;control++) {
+            char scope[128];
+            if(recipe->control_palette_custom[control]>1)
+                return fail(error,capacity,"%s: estado de papel por controle inválido",tl_family_ids[i]);
+            if(recipe->control_palette_custom[control]) {
+                (void)snprintf(scope,sizeof(scope),"%s/%s",tl_family_ids[i],tl_control_ids[control]);
+                if(!validate_palette(&recipe->control_palettes[control],scope,error,capacity)) return 0;
+            }
+        }
         if (!terminated(recipe->notes, sizeof(recipe->notes)))
             return fail(error, capacity, "%s: anotação sem terminação", tl_family_ids[i]);
     }
@@ -331,6 +405,21 @@ static int decode_pairs(struct json_object *object, const char *key,
     return 1;
 }
 
+static int decode_anchors(struct json_object *object, TLRecipe *recipe, char *error, size_t capacity)
+{
+    struct json_object *array;
+    if(!json_object_object_get_ex(object,"length_anchor",&array))return 1;
+    if(!json_object_is_type(array,json_type_array) || json_object_array_length(array)!=TL_CONTROL_COUNT)
+        return fail(error,capacity,"length_anchor deve conter 16 inteiros");
+    for(int i=0;i<TL_CONTROL_COUNT;i++) {
+        struct json_object *value=json_object_array_get_idx(array,(size_t)i);
+        if(!json_object_is_type(value,json_type_int) || json_object_get_int64(value)<0 || json_object_get_int64(value)>1)
+            return fail(error,capacity,"Âncora deve ser inteiro 0 ou 1");
+        recipe->length_anchor[i]=json_object_get_int(value);
+    }
+    return 1;
+}
+
 static int decode_layout(struct json_object *object, TLRecipe *recipe,
                          char *error, size_t capacity)
 {
@@ -341,8 +430,10 @@ static int decode_layout(struct json_object *object, TLRecipe *recipe,
            optional_int(object, "selected_control", 0, TL_CONTROL_COUNT - 1,
                         &recipe->selected_control, error, capacity) &&
            optional_int(object, "edit_state", 0, 3, &recipe->edit_state, error, capacity) &&
+           optional_int(object, "selected_scroll_part", 0, TL_SCROLL_PART_COUNT-1, &recipe->selected_scroll_part, error, capacity) &&
            decode_pairs(object, "positions", recipe->positions, error, capacity) &&
-           decode_pairs(object, "sizes", recipe->sizes, error, capacity);
+           decode_pairs(object, "sizes", recipe->sizes, error, capacity) &&
+           decode_anchors(object,recipe,error,capacity);
 }
 
 static int fraction_member(struct json_object *object, const char *key, double *target,
@@ -384,6 +475,25 @@ static int decode_palette(struct json_object *object, TLPaletteRules *p,
            fraction_member(object, "trough", &p->trough, error, capacity);
 }
 
+static int decode_control_palettes(struct json_object *object, TLRecipe *recipe,
+                                   char *error, size_t capacity)
+{
+    int i, found=0;
+    struct json_object *value;
+    if(!json_object_is_type(object,json_type_object))
+        return fail(error,capacity,"control_palettes deve ser objeto");
+    for(i=0;i<TL_CONTROL_COUNT;i++) {
+        if(json_object_object_get_ex(object,tl_control_ids[i],&value)) {
+            if(!decode_palette(value,&recipe->control_palettes[i],error,capacity)) return 0;
+            recipe->control_palette_custom[i]=1;
+            found++;
+        }
+    }
+    if(found!=json_object_object_length(object))
+        return fail(error,capacity,"control_palettes contém um controle desconhecido");
+    return 1;
+}
+
 static int decode_rgb(struct json_object *object, const char *key, unsigned int maximum,
                       unsigned int rgb[3], char *error, size_t capacity)
 {
@@ -412,7 +522,7 @@ static int decode_model(struct json_object *root, TLModel *model, char *error, s
     unsigned int rgb16[3], rgb8[3];
     uint64_t visual;
     int i, selected = -1;
-    if (!int_member(root, "schema_version", 1, 1, &model->schema_version, error, capacity) ||
+    if (!int_member(root, "schema_version", 1, 4, &model->schema_version, error, capacity) ||
         !string_member(root, "kind", kind, sizeof(kind), error, capacity) ||
         !string_member(root, "selected_family", family, sizeof(family), error, capacity)) return 0;
     if (strcmp(kind, "theme_lab_project")) return fail(error, capacity, "Tipo de projeto não suportado");
@@ -422,6 +532,11 @@ static int decode_model(struct json_object *root, TLModel *model, char *error, s
     if (json_object_object_get_ex(root, "color_scheme", &value) &&
         !string_member(root, "color_scheme", model->color_scheme,
                        sizeof(model->color_scheme), error, capacity)) return 0;
+    if (json_object_object_get_ex(root, "separate_preview", &value)) {
+        if (!json_object_is_type(value, json_type_boolean))
+            return fail(error, capacity, "separate_preview deve ser booleano");
+        model->separate_preview = json_object_get_boolean(value);
+    }
     if (json_object_object_get_ex(root, "automatic_preview", &value)) {
         if (!json_object_is_type(value, json_type_boolean))
             return fail(error, capacity, "automatic_preview deve ser booleano");
@@ -450,6 +565,27 @@ static int decode_model(struct json_object *root, TLModel *model, char *error, s
             !decode_palette(palette, &r->palette, error, capacity) ||
             !string_member(recipe, "notes", r->notes, sizeof(r->notes), error, capacity) ||
             !decode_layout(recipe, r, error, capacity)) return 0;
+        if (i == TL_GTK2 && model->schema_version >= 4 &&
+            (!optional_int(geometry, "scale_slider_width_px", 1, 128,
+                           &r->scale_slider_width_px, error, capacity) ||
+             !optional_int(geometry, "scale_slider_length_px", 1, 128,
+                           &r->scale_slider_length_px, error, capacity))) return 0;
+        if (i != TL_GTK2 &&
+            (json_object_object_get_ex(geometry, "scale_slider_width_px", &value) ||
+             json_object_object_get_ex(geometry, "scale_slider_length_px", &value)))
+            return fail(error, capacity, "%s: dimensões GtkScale só pertencem à receita GTK2", tl_family_ids[i]);
+        if(model->schema_version<2 && json_object_object_get_ex(recipe,"length_anchor",&value))
+            return fail(error,capacity,"Âncoras exigem schema_version=2");
+        if (json_object_object_get_ex(recipe,"scrollbar_parts",&value)) {
+            if (model->schema_version < 2)
+                return fail(error,capacity,"Receitas por peça exigem schema_version=2");
+            if (tl_scroll_parts_decode(&r->scrollbar_parts,value,error,capacity)) return 0;
+        }
+        if(json_object_object_get_ex(recipe,"control_palettes",&value)) {
+            if(model->schema_version<3)
+                return fail(error,capacity,"Papéis por controle exigem schema_version=3");
+            if(!decode_control_palettes(value,r,error,capacity)) return 0;
+        }
     }
     if (!member(root, "picked", json_type_object, &pick, error, capacity) ||
         !member(pick, "valid", json_type_boolean, &value, error, capacity)) return 0;
@@ -645,6 +781,18 @@ static struct json_object *encode_palette(const TLPaletteRules *p)
     return object;
 }
 
+static struct json_object *encode_control_palettes(const TLRecipe *recipe)
+{
+    struct json_object *object=json_object_new_object();
+    int control;
+    if(!object) return NULL;
+    for(control=0;control<TL_CONTROL_COUNT;control++)
+        if(recipe->control_palette_custom[control])
+            json_object_object_add(object,tl_control_ids[control],
+                                   encode_palette(&recipe->control_palettes[control]));
+    return object;
+}
+
 static struct json_object *encode_model(const TLModel *model)
 {
     struct json_object *root = json_object_new_object();
@@ -657,12 +805,24 @@ static struct json_object *encode_model(const TLModel *model)
     time_t now = time(NULL);
     struct tm utc;
     int i;
-    json_object_object_add(root, "schema_version", json_object_new_int(model->schema_version));
+    int version=model->schema_version;
+    for(int family=0;family<TL_FAMILY_COUNT;family++)
+        if(tl_scroll_parts_any(&model->recipes[family].scrollbar_parts) || model->recipes[family].selected_scroll_part)version=2;
+    for(int family=0;family<TL_FAMILY_COUNT;family++)
+        for(int control=0;control<TL_CONTROL_COUNT;control++)
+            if(model->recipes[family].length_anchor[control])version=2;
+    for(int family=0;family<TL_FAMILY_COUNT;family++)
+        for(int control=0;control<TL_CONTROL_COUNT;control++)
+            if(model->recipes[family].control_palette_custom[control])version=3;
+    if(model->recipes[TL_GTK2].scale_slider_width_px!=8 ||
+       model->recipes[TL_GTK2].scale_slider_length_px!=27)version=4;
+    json_object_object_add(root, "schema_version", json_object_new_int(version));
     json_object_object_add(root, "kind", json_object_new_string("theme_lab_project"));
     json_object_object_add(root, "name", json_object_new_string(model->name));
     json_object_object_add(root, "reference", json_object_new_string(model->reference));
     json_object_object_add(root, "selected_family", json_object_new_string(tl_family_ids[model->selected]));
     json_object_object_add(root, "color_scheme", json_object_new_string(model->color_scheme));
+    json_object_object_add(root, "separate_preview", json_object_new_boolean(model->separate_preview));
     json_object_object_add(root, "automatic_preview", json_object_new_boolean(model->automatic_preview));
     json_object_object_add(root, "debounce_ms", json_object_new_int(model->debounce_ms));
     json_object_object_add(root, "native_measured", encode_geometry(&model->native_measured));
@@ -686,7 +846,20 @@ static struct json_object *encode_model(const TLModel *model)
         struct json_object *sizes = json_object_new_array();
         int control;
         json_object_object_add(recipe, "geometry", encode_geometry(&r->geometry));
+        if (i == TL_GTK2 && version >= 4) {
+            struct json_object *gtk2_geometry;
+            json_object_object_get_ex(recipe, "geometry", &gtk2_geometry);
+            json_object_object_add(gtk2_geometry, "scale_slider_width_px",
+                                   json_object_new_int(r->scale_slider_width_px));
+            json_object_object_add(gtk2_geometry, "scale_slider_length_px",
+                                   json_object_new_int(r->scale_slider_length_px));
+        }
+        if (version >= 2)
+            json_object_object_add(recipe,"scrollbar_parts",tl_scroll_parts_encode(&r->scrollbar_parts));
+        json_object_object_add(recipe,"selected_scroll_part",json_object_new_int(r->selected_scroll_part));
         json_object_object_add(recipe, "palette", encode_palette(&r->palette));
+        if(version>=3)
+            json_object_object_add(recipe,"control_palettes",encode_control_palettes(r));
         json_object_object_add(recipe, "notes", json_object_new_string(r->notes));
         json_object_object_add(recipe, "visible_categories", json_object_new_int(r->visible_categories));
         json_object_object_add(recipe, "visible_controls", json_object_new_int(r->visible_controls));
@@ -704,6 +877,12 @@ static struct json_object *encode_model(const TLModel *model)
         }
         json_object_object_add(recipe, "positions", positions);
         json_object_object_add(recipe, "sizes", sizes);
+        if(version>=2) {
+            json_object *anchors=json_object_new_array();
+            for(control=0;control<TL_CONTROL_COUNT;control++)
+                json_object_array_add(anchors,json_object_new_int(r->length_anchor[control]));
+            json_object_object_add(recipe,"length_anchor",anchors);
+        }
         json_object_object_add(recipes, tl_family_ids[i], recipe);
         if (i < 3) {
             json_object_array_add(rgb16, json_object_new_int(model->picked.rgb16[i]));
@@ -846,4 +1025,20 @@ finished:
     if (directory >= 0) close(directory);
     json_object_put(root);
     return result ? 0 : -1;
+}
+
+struct json_object *tl_model_encode(const TLModel *model,char *error,size_t capacity)
+{
+    if(tl_model_validate(model,error,capacity))return NULL;
+    struct json_object *root=encode_model(model);
+    if(!root) {fail(error,capacity,"Memória insuficiente");return NULL;}
+    json_object_object_del(root,"exported_at");return root;
+}
+int tl_model_decode(TLModel *model,struct json_object *object,char *error,size_t capacity)
+{
+    TLModel candidate;
+    if(!model)return fail(error,capacity,"Projeto ausente"),-1;
+    tl_model_init(&candidate);
+    if(!decode_model(object,&candidate,error,capacity))return -1;
+    *model=candidate;return 0;
 }

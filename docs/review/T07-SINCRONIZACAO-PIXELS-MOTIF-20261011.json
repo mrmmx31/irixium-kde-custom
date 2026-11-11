@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T11:53:37.572563+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "no progress toward active T07; channel request independently verified",
+  "failure_reproduced": {
+    "run": "motif-native-recheck-r2",
+    "exit_code": 1,
+    "observation": "Uniform background at slider shadow sample without server diagnostics"
+  },
+  "change": "Test fixture now XSyncs, drains pending Xt events with 2000-event bound, then XSyncs before native pixel sampling. Original top/bottom pixel assertions remain unchanged. No product painting changed.",
+  "build_exit_code": 0,
+  "runs": [
+    {
+      "name": "motif-paint-settled-r1",
+      "exit_code": 0,
+      "pending_events": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "motif-paint-settled-r2",
+      "exit_code": 0,
+      "pending_events": [
+        43,
+        0
+      ]
+    }
+  ],
+  "conclusion": "Results support a capture/native repaint synchronization race; internal timing cause not fully characterized. Both orientations and remaining full native metrics assertions pass in these runs.",
+  "warnings": "Existing FontSet missing charsets warnings retained; glyph fidelity not certified.",
+  "source_sha256": "41cb828640b2c3e49593df7707430851279fe39c808a8265b50fdb365e452111",
+  "evidence_sha256": {
+    "pixel-diagnostics-r1.log": "c515e141260480bc4a08382d198fbe764b422cf1988b09e646db56c3bfae2f00",
+    "pixel-diagnostics-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191",
+    "motif-native-recheck-r2.log": "9a26261737147b967f06d7ac9e2103937eb0cb47d1a9dd35764121555808c6be",
+    "motif-native-recheck-r2.err": "f3fa0d56c334a4a9ab96c0b24d3ef2642641eca83ed7ebabc7c1e42e73e2d1d8",
+    "pixel-settle-build.log": "b2b95e63c69617a18df3bbcf1ad2e60ef98430c25139ff07e3d57f99e550329d",
+    "motif-paint-settled-r1.log": "f827ed45f2aa3c9fc02c7054285c5dfefdad8e99be4e93b4b6fd88476049768f",
+    "motif-paint-settled-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191",
+    "motif-paint-settled-r2.log": "610a68dbd199749ac9b8399499cd51f1d71995041b231bb4e33f13590274b0d3",
+    "motif-paint-settled-r2.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191"
+  },
+  "remaining": [
+    "Representative hover of dialog and editor popup controls",
+    "Other layouts and menu-line hover geometry",
+    "Coordinated personal handoff and human evaluation"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "personal_session_modified": false,
+  "historical_fidelity_claim": false
+}

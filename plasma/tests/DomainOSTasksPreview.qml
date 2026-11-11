@@ -16,7 +16,11 @@ Window {
     property int screen: 0
     property var requests: []
     property var layouts: []
+    property var restores: []
     property var terminations: []
+    property bool preflightBlocked:false
+    property bool preflightTransportFailure:false
+    property int preflightCount:0
     property int organizationRequests: 0
     property int contextRequests: 0
     property bool legacyInterface:true
@@ -47,7 +51,7 @@ Window {
     function state() { return JSON.stringify({windowCount:tasks.windowCount,rows:tasks.taskRows,
         selected:tasks.selectedKeys,group:tasks.groupSelectorKey,members:tasks.groupMembers,
         filter:tasks.effectiveMinimizedOnly,thresholdRequired:tasks.automaticThresholdRequired,
-        requests:requests,layouts:layouts,terminations:terminations,
+        requests:requests,layouts:layouts,restores:restores,terminations:terminations,
         identitiesUnavailable:tasks.identityUnavailableCount,
         organizationRequests:organizationRequests,contextRequests:contextRequests}) }
     function act(key,action,argument) { return JSON.stringify(tasks.requestAction(key,action,argument)) }
@@ -67,7 +71,26 @@ Window {
     }
     QtObject {
         id: geometry
+        property int nextToken:0
+        signal reported(var report)
         function requestLayout(payload) { host.layouts=host.layouts.concat([payload]); return {state:"requested"} }
+        function requestRestore(payload) { host.restores=host.restores.concat([payload]); return {state:"requested"} }
+        function requestPreflight(payload) {
+            const token=++nextToken
+            ++host.preflightCount
+            const rows=payload.windows.map(window=>({key:window.key,pid:window.pid,
+                title:window.key==="window:3" ? "Window 3" : window.key,
+                maximizeMode:window.key==="window:3" ? 1 : 0,tile:null,
+                minSize:{width:360,height:240},maxSize:{width:2147483647,height:2147483647}}))
+            Qt.callLater(()=>geometry.reported(host.preflightTransportFailure
+                ? {ok:false,token:token,outcome:"failed",detail:"Falha simulada da ponte nativa."}
+                : {ok:true,token:token,outcome:"preflight",
+                available:!host.preflightBlocked,geometryAvailable:!host.preflightBlocked,
+                detail:host.preflightBlocked
+                    ? "A organização em lote está indisponível porque um diálogo da aplicação ainda tem uma relação de janela pai não resolvida."
+                    : "",windows:rows}))
+            return {state:"requested",token:token}
+        }
     }
     QtObject {
         id: process

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R652",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-reload-stepper-stretch-regression-fixed-historical-held-states-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "erratum_to": "R651",
+  "finding": {
+    "r651_correction": "R651 incorrectly described the repository Reload gtkrc as using non-stretched overlays. The actual pre-R652 Reload source used file= and stretch=TRUE for STEPPER; the profile installed for lsi already used overlay_file and overlay_stretch=FALSE.",
+    "mechanism": "GTK2 generator emitted stretched STEPPER image rules. With the 11px slider-width, existing R332/R511 evidence identifies this path as capable of compressing a 15x15 stepper bitmap in the cross-axis.",
+    "fix": "Generator now emits overlay_file and overlay_stretch=FALSE for each 15x15 GTK2 stepper, preserving separate 11x11 ARROW overlays. The Reload gtkrc now equals exact generator output and the KDE base gtkrc byte-for-byte. Manifests now track the builder and GTK2 gtkrc hashes.",
+    "colors": "No palette colors or KDE role mappings were changed; the correction is geometry/asset composition only."
+  },
+  "artifacts": {
+    "generator": "gtk/tools/build_kde_domainos.py",
+    "generator_sha256": "fe8fcb8819093170a091e89f3ffe08e1ca79505c85bba966b0da61fd2e4113f4",
+    "reload_gtkrc": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "reload_gtkrc_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "base_gtkrc_matches_generator": true,
+    "reload_gtkrc_matches_generator": true,
+    "manifests": [
+      "gtk/DomainOS-SR10-4-KDE/MANIFEST.json",
+      "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json"
+    ],
+    "changes_record": "records/ia-tema/I167/R652/changes-verified.json",
+    "changes_patch": "records/ia-tema/I167/R652/changes.patch",
+    "installed_profile": "~/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "installed_profile_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "installed_profile_state": "already uses 15x15 non-stretched stepper overlays; no installation/reload was needed",
+    "palette_companion_service": "active; MainPID=1060526; SubState=running",
+    "semantic_art_manifest_hash": "Kept unchanged; no shared artwork-source or other-family regeneration was included in R652."
+  },
+  "verification": {
+    "focused_test": "TMPDIR=/home/lsi/tempia/domainos-theme-work PYTHONPATH=tests python3 -m unittest test_domainos_motif.GtkDomainOSTest.test_gtk2_all_steppers_keep_square_overlays_for_all_states",
+    "result": "passed: 1 test, all 4 directions and 5 states; asserts overlay_file, overlay_stretch=FALSE, no stretched file=, 15x15 cells and 11x11 glyphs",
+    "changes_record": "verified by board CLI; 5 changed files, exact before/after content verified, exported diff matched prepared patch",
+    "vm_input": false,
+    "user_profile_modified": false,
+    "desktop_reloaded": false,
+    "other_family_or_board_section_modified": false,
+    "isolated_full_package_generation": {
+      "output": "~/tempia/domainos-theme-work/I167/R652-generated/full-package",
+      "gtk2_rc_and_40_stepper_arrow_assets_match_source_manifest": true,
+      "out_of_scope_manifest_file_hash_differences": [
+        "ORIGEM.json",
+        "common/adaptive/MANIFEST.json",
+        "common/gtk.css",
+        "gtk-4.0/gtk.css"
+      ],
+      "handling": "Left untouched because this correction is scoped to GTK2; the full package is not claimed byte-for-byte reproducible across other families."
+    }
+  },
+  "remaining": [
+    "Canonical SR10.4/VUE held-state captures for up and horizontal GTK2 arrows remain pending; Q515 is unanswered and no portal input was opened.",
+    "Manual visual acceptance remains separate."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The package regeneration regression is fixed, but historical pressed-state comparison for upper/horizontal arrows remains pending. This is technical coverage, not a fidelity score."
+  }
+}

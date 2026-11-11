@@ -1,0 +1,1362 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-THREE-PALETTES-FULL-20261019-R115",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:34:28Z",
+  "purpose": "Combinar o RC GTK2 real gerado para três esquemas KDE com a matriz nativa de 16 tipos, ampliando R108/R113 para a cobertura cruzada de paleta e controles.",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":83 Xephyr existente, mantida aberta",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "scene": "NativeSession GTK2 com homes/XDG isolados em ~/tempia; Openbox privado preexistente da sessão T07",
+    "scheme_rc_sha256": {
+      "DomainOS": "996c1c81fb6757a7bd8f22228674f7e5c0388d0866c0bd6321013dd0ea62b12d",
+      "BreezeLight": "cf94a46df7af920e07d054ffe94cc1e32b72b3e6233d50294e1ddc5f55a3ebab",
+      "BreezeDark": "c539d879c785e3026e9ce061ddbfdf48422908ce443f6ed8403bbd1dccafe910"
+    },
+    "tooltip_roles": {
+      "DomainOS": [
+        "#78a0d5",
+        "#ffffff"
+      ],
+      "BreezeLight": [
+        "#f7f7f7",
+        "#232629"
+      ],
+      "BreezeDark": [
+        "#292c30",
+        "#fcfcfc"
+      ]
+    },
+    "personal_profile_changed": false
+  },
+  "method": "48 hovers nativos (16 tipos × 3 RCs gerados); cada caso mediu atraso frio, estabilidade, posicionamento, dismiss ao sair e pixels dos papéis Tooltip no popup.",
+  "result": {
+    "passed": 48,
+    "failed": 0,
+    "total": 48,
+    "controls": [
+      {
+        "palette": "DomainOS",
+        "control": "push",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          260,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 12860,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "push",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          260,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 12848,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "push",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          260,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 12848,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "DomainOS",
+        "control": "arrow",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          280,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 13807,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 26
+      },
+      {
+        "palette": "DomainOS",
+        "control": "check",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          259,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 12761,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "DomainOS",
+        "control": "combo",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          328,
+          380,
+          266,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 13533,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "DomainOS",
+        "control": "entry",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14621,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 25
+      },
+      {
+        "palette": "DomainOS",
+        "control": "frame",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14550,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "DomainOS",
+        "control": "list",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14552,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "DomainOS",
+        "control": "progress",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          305,
+          380,
+          312,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 15688,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "DomainOS",
+        "control": "radio",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          323,
+          380,
+          275,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 13646,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "DomainOS",
+        "control": "scale_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          324,
+          380,
+          274,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 13692,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "DomainOS",
+        "control": "scale_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          322,
+          380,
+          278,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14021,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "DomainOS",
+        "control": "scroll_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 15467,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "DomainOS",
+        "control": "scroll_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 15531,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "DomainOS",
+        "control": "spin",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          311,
+          380,
+          299,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14869,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "DomainOS",
+        "control": "text",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14514,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "DomainOS",
+        "control": "toggle",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          279,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          120,
+          160,
+          213
+        ],
+        "tooltip_face_matching_pixels": 14162,
+        "tooltip_text_rgb8": [
+          255,
+          255,
+          255
+        ],
+        "tooltip_text_matching_pixels": 26
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "arrow",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          280,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 13795,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 26
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "check",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          259,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 12749,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "combo",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          328,
+          380,
+          266,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 13521,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "entry",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14609,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 25
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "frame",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14538,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "list",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14540,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "progress",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          305,
+          380,
+          312,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 15676,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "radio",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          323,
+          380,
+          275,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 13634,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "scale_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          324,
+          380,
+          274,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 13680,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "scale_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          322,
+          380,
+          278,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14009,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "scroll_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 15455,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "scroll_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 15519,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "spin",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          311,
+          380,
+          299,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14857,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "text",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14502,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeLight",
+        "control": "toggle",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          279,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          247,
+          247,
+          247
+        ],
+        "tooltip_face_matching_pixels": 14150,
+        "tooltip_text_rgb8": [
+          35,
+          38,
+          41
+        ],
+        "tooltip_text_matching_pixels": 26
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "arrow",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          280,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 13795,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 26
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "check",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          331,
+          380,
+          259,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 12749,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "combo",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          328,
+          380,
+          266,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 13521,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "entry",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14609,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 25
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "frame",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14538,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 24
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "list",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14540,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "progress",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          305,
+          380,
+          312,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 15676,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "radio",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          323,
+          380,
+          275,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 13634,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 23
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "scale_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          324,
+          380,
+          274,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 13680,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "scale_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          322,
+          380,
+          278,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14009,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 29
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "scroll_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 15455,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "scroll_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 15519,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 30
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "spin",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          311,
+          380,
+          299,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14857,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "text",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14502,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 28
+      },
+      {
+        "palette": "BreezeDark",
+        "control": "toggle",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "stability_ms": 400,
+        "overlap_pixels": 0,
+        "closed_after_pointer_leave": true,
+        "tooltip_rect": [
+          321,
+          380,
+          279,
+          68
+        ],
+        "tooltip_face_rgb8": [
+          41,
+          44,
+          48
+        ],
+        "tooltip_face_matching_pixels": 14150,
+        "tooltip_text_rgb8": [
+          252,
+          252,
+          252
+        ],
+        "tooltip_text_matching_pixels": 26
+      }
+    ]
+  },
+  "artifacts": [
+    "/home/lsi/tempia/t07-gtk2-three-palettes-full-r115-r2-20261019/RESULTADO.json",
+    "/home/lsi/tempia/t07-gtk2-three-palettes-full-r115-r2-20261019/cases/ (48 capturas PNG e resultados por caso)",
+    "/home/lsi/tempia/t07-gtk2-three-palettes-full-r115-r2-20261019/themes/ (3 RCs gerados preservados)",
+    "/home/lsi/tempia/t07-gtk2-three-palettes-full-r115-r2-20261019/probe_gtk2_palette.py"
+  ],
+  "source_sha256": {
+    "private_probe_copy": "0d077d3184b4caa07e7c286a361108bdcc133336f5b68e4f810b5e253edbb38c",
+    "combined_result": "225781d14aa7dc21b13b49de8ce8b1346980d6e944c2b55414347ea672df7722"
+  },
+  "diagnostics": [
+    "A primeira tentativa de agregador foi preservada em ~/tempia/t07-gtk2-three-palettes-full-r115-20261019; o seu smoke exibiu os pixels corretos, mas o runner comparou listas JSON com tuplas Python. Não é falha GTK. A execução corrigida r2 completou 48/48. Avisos do parser GTK sobre opções de imagem sem filename não impediram as galerias nem os hovers."
+  ],
+  "limits": [
+    "Uma geometria/cena GTK2 e estes três RCs; não comprova reexportação em processo GTK2 recém-aberto após troca do esquema nem outros layouts/aplicações.",
+    "Não comprova equivalência histórica com a VM Domain/OS SR10.4, qualidade semântica de todos os textos ou aprovação humana.",
+    "Uma demonstração de cobertura GTK2 de dicas/paletas, não uma validação geral de todos os papéis de cores GTK2."
+  ],
+  "conclusion": "Os 16 tipos GTK2 renderizaram dicas com os papéis Tooltip e pixels coincidentes nas três paletas geradas (DomainOS, BreezeLight e BreezeDark), sem atraso/estabilidade/posicionamento/dismiss fora dos critérios do probe. T07 permanece em andamento."
+}

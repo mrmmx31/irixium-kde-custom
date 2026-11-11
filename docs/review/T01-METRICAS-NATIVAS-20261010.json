@@ -1,0 +1,219 @@
+{
+  "at": "2026-10-11T01:01:41.725445+00:00",
+  "item": "T01",
+  "user_revision": 4,
+  "definition_sha256": "652e5e5cba17c3b4fd773a6da8c0a0a226441840045a5d2fcca6be546764b0f3",
+  "phase": "updated_lab_open_old_preserved",
+  "implemented": [
+    "GTK3 allocation/minimum/preferred emitter with origin and scale",
+    "Motif reference allocation and preferred geometry",
+    "read-only metrics display",
+    "transactional stale-scene parser",
+    "cache invalidated on new scene only",
+    "removed implicit GTK3 140x44 minimum",
+    "gesture callback cleanup on scene replacement",
+    "Camada modular de edição Motif com histórico por campo/controle e journal separado"
+  ],
+  "remaining": [
+    "Avaliação manual da atualização; antiga permanece aberta pois rascunhos dos widgets não têm journal comprovado"
+  ],
+  "human_approval_filled": false,
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "Implementação, provas privadas e atualização aberta com projeto salvo preservado; conferência humana e decisão sobre a antiga ainda pendentes.",
+  "personal_session_modified": false,
+  "vm_modified": false,
+  "hashes": {
+    "tools/theme-lab/src/native_metrics.c": "3ab91c9a2d9ecc632eb26f8a3ba73fdb215aef2fb548dcdea6bf9a973d0bfb39",
+    "tools/theme-lab/src/view.c": "2679d57438f782bdc25c0a226d571b4162f50c7b2de9860ccb31b99b6d09398e",
+    "tools/theme-lab/src/controller.c": "d0bc7e9db7cf440606ee9cadea4a0cf31617b685d9a48904637b345b702218cc",
+    "tools/theme-lab/src/preview_event.c": "ebf7e8efe74c130d0ee4e3401a8cc823fcc0a5ca22d5d30737b9c9a01e681952",
+    "tools/theme-lab/preview_gtk.py": "c2af714f11b8867717813180f63303971e35ec8949b48cc90842d459e18f69a0",
+    "tools/theme-lab/tests/native_metrics_view.c": "f196ee4e413526fd4cc166c7a8c6ea805895f0f47b36f5ced1a2626fee526481",
+    "tools/theme-lab/tests/test_native_metrics.py": "2b3ce042772d71172ce3000c7cff3b1c0c0e96bd61f6cc55fc66b0e0c970694c",
+    "tools/theme-lab/tests/controller_spin_probe.c": "51e61daf2da6942f1b4b94ace94e78fd34a09afd973e29d9e8a781a3b9fdd79d",
+    "tools/theme-lab/tests/test_controller_spin.py": "ba8f7509cc1af0667b7edd329c9f41a7abcb83d43085d98e8c12d7d02fc05659",
+    "tools/theme-lab/Makefile": "fa15f01a04af3f5adeecf2c575d74308aa9e95efec50c4e451d2e83860841497",
+    "tools/theme-lab/build/theme-lab": "ec53264581ab92d7fb9010d5ac399d4680b9be50a17c2b2fe6a135c13e9d23c5",
+    "tools/theme-lab/include/text_editor.h": "3f516bcddc84f1f0debd0d03deb2df99a5a2a452431b9ec091065ef836f99f2a",
+    "tools/theme-lab/src/editor/internal.h": "f3b7c615832f1dddd19b7b1c8f66bcd15b5032c4b74458ecee0a78dc4a60643e",
+    "tools/theme-lab/src/editor/view.c": "f9221793d6cc39c08472233505f3258b509dfa6b83f597283881102cffcdd217",
+    "tools/theme-lab/src/editor/store.c": "e5c33e1b8ffb4a5dc77232d347fa300f659ddd6efb4118c1e45ef1441307dd71",
+    "tools/theme-lab/tests/test_editor_store.py": "d5eeee537a829106518b833c6e4cde564f55df4cd52873deb9f9133fce227ed8",
+    "plasma/tools/abrir-laboratorio-temas.py": "a3f4d75eef86d392f87d9514174791736f6941b803f0542830da63f9084cc628",
+    "plasma/tests/test_lab_resume.py": "857e0ccffc221f1adf4b1666ab91e1d113ae25bf66be77e2ebaf2181d1d445f8",
+    "tools/theme-lab/README.md": "123939a719a8de9c8963cfaabe2b740959372a415546a866f17f11b0f47bf491",
+    "plasma/tests/test_lab_mounts.py": "281347c445bcf06fcdded0d5eb6147b5caac987ff764eadbffbb7351bf27f3a4"
+  },
+  "checks": {
+    "build_Wall_Wextra_Werror": "passed",
+    "model_checks": 689,
+    "backend_tests": 15,
+    "scene_tests": 14,
+    "ipc_metrics_tests": "passed",
+    "native_motif_view": "passed",
+    "native_gtk3_all_16_controls_both_origins_resize_and_stale_callback": "passed",
+    "native_controller_spin_generation_both_origins_manual_and_automatic": "passed",
+    "native_minimum_and_zero_automatic_both_origins": "passed",
+    "editor_store_validation_cases": 14,
+    "resume_transport_tests": 8,
+    "implicit_saved_project_resume_distinct_from_raw_draft": "passed",
+    "addon_mount_contract_tests": 4
+  },
+  "warnings": [
+    "Private Motif probe: missing font charsets warning; this test does not certify typography.",
+    "Existing GTK3 add_with_viewport API deprecation.",
+    "Private namespace lacks FUSE device; GVFS emitted a mount warning. Control/measurement tests completed; file-manager mounting not covered.",
+    "/tmp reached its inode limit during an earlier expanded run; only completed test generations removed. Final run used private repository output."
+  ],
+  "native_controller_evidence": {
+    "path": ".qa-theme-lab-spin-_p3dl59v/RESULTADO.json",
+    "sha256": "ebfe6fecd71f2eb4a3ecf9ded561a9df3142c7600b0958d15d3daeb2d98aada2",
+    "result": {
+      "initial_coupled": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 72 x 25 px; preferido 72x 25Mínimo: toolkit não forneceGTK3 acoplado: 220 x 80 px lógicos; escala1Mínimo 220 x 80; preferido 220 x 80GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM.",
+      "initial_both": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 72 x 25 px; preferido 72x 25Mínimo: toolkit não forneceGTK3 acoplado: 220 x 80 px lógicos; escala1Mínimo 220 x 80; preferido 220 x 80GTK3 separado: 220 x 80 px lógicos; escala1Mínimo 220 x 80; preferido 220 x 80Medidas da amostra; não são defaults daVM.",
+      "manual_spin_both": "Pedido em edição: 221 x 80 (0 =automático)Motif referência: 72 x 25 px; preferido 72x 25Mínimo: toolkit não forneceGTK3 acoplado: 221 x 80 px lógicos; escala1Mínimo 221 x 80; preferido 221 x 80GTK3 separado: 221 x 80 px lógicos; escala1Mínimo 221 x 80; preferido 221 x 80Medidas da amostra; não são defaults daVM.",
+      "automatic_spin_both": "Pedido em edição: 221 x 81 (0 =automático)Motif referência: 72 x 25 px; preferido 72x 25Mínimo: toolkit não forneceGTK3 acoplado: 221 x 81 px lógicos; escala1Mínimo 221 x 81; preferido 221 x 81GTK3 separado: 221 x 81 px lógicos; escala1Mínimo 221 x 81; preferido 221 x 81Medidas da amostra; não são defaults daVM.",
+      "request_below_native_minimum": {
+        "requested": [
+          1,
+          1
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "automatic_native_size": {
+        "requested": [
+          0,
+          0
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "status": "passed",
+      "motif_reference": [
+        72,
+        25
+      ],
+      "spin_input": "X11 pointer",
+      "limit_input": "XmTextFieldSetString / real valueChanged callback",
+      "personal_profile_exposed": false,
+      "historical_fidelity_claimed": false
+    },
+    "capture": ".qa-theme-lab-spin-_p3dl59v/native.png",
+    "capture_sha256": "43fc3088940834b57594297378472acb74cd2e2ba5506e4b0aa5d167c3aa3ba2",
+    "visual_scope": "Actual coupled/separate GTK3 controls, independent Motif reference and measured sizes. No historical appearance claim."
+  },
+  "native_editor_evidence": {
+    "path": ".qa-theme-lab-spin-8wih82ap/RESULTADO.json",
+    "sha256": "c29433b04923eec541299829324cdf21f8b76f62c4110a8fb6d64e97701eca86",
+    "result": {
+      "native_multistep_undo_redo": true,
+      "native_utf8_copy_cut_paste_selection": true,
+      "scheme_catalog_refresh_preserves_draft": true,
+      "model_save_after_native_edit": true,
+      "draft_and_history_checkpoint": true,
+      "reopened_draft_and_undo_redo": true,
+      "numeric_native_select_undo_redo": true,
+      "native_keyboard_edit_menu_six_actions": true,
+      "numeric_home_end_preserve_value": true,
+      "control_switch_preserves_independent_undo": true,
+      "sample_recovery_keys_remain_independent": true,
+      "status": "passed",
+      "personal_profile_exposed": false
+    },
+    "scope": "Teclado X11 real; troca de controle e refresh do catálogo por APIs nativas do controlador. Ambiente privado, sem entrega pessoal."
+  },
+  "handoff_request": {
+    "session": "655784eeee5df4bef5cf3122bf922d84f422fb1ae12be66c2c0b4dd68b722416",
+    "request_id": "4e0b35f59661e65a93441ec3a69e7ad52aa4576caec1d5f4700da3374ed98365",
+    "item": "T01",
+    "revision": 4,
+    "target_pid": 1047663,
+    "display": ":61",
+    "board_pid": 1473170,
+    "available": true,
+    "permitted_at_request": false,
+    "colleague_request_not_reused": true,
+    "consumed": true,
+    "request_absent_verified": true
+  },
+  "native_resume_evidence": {
+    "path": ".qa-theme-lab-spin-96rfg8gg/RESULTADO.json",
+    "sha256": "6d82994d822e3995ec4efb8925f5c51338b315b13f7dde490b9476e63e4edeb9",
+    "result": {
+      "native_multistep_undo_redo": true,
+      "native_utf8_copy_cut_paste_selection": true,
+      "scheme_catalog_refresh_preserves_draft": true,
+      "model_save_after_native_edit": true,
+      "draft_and_history_checkpoint": true,
+      "implicit_working_project_recovery_preserves_saved_notes": true,
+      "reopened_draft_and_undo_redo": true,
+      "numeric_native_select_undo_redo": true,
+      "native_keyboard_edit_menu_six_actions": true,
+      "numeric_home_end_preserve_value": true,
+      "control_switch_preserves_independent_undo": true,
+      "sample_recovery_keys_remain_independent": true,
+      "status": "passed",
+      "personal_profile_exposed": false
+    },
+    "scope": "Retomada implícita por working.json, sem --project/--family, no controlador real em ambiente privado."
+  },
+  "handoff_preflight": {
+    "session_verified": true,
+    "display": ":61",
+    "essential_processes": {
+      "worker": 1026417,
+      "dbus": 1026421,
+      "kwin": 1026812,
+      "plasma": 1026941,
+      "xephyr": 1026401
+    },
+    "binary_elf": true,
+    "binary_sha256": "ec53264581ab92d7fb9010d5ac399d4680b9be50a17c2b2fe6a135c13e9d23c5",
+    "stale_binary_inputs": [],
+    "helper_present": true,
+    "stale_helper_inputs": [],
+    "window_input_sent": false
+  },
+  "handoff": {
+    "new_pid": 1480868,
+    "new_window": "33554574",
+    "display": ":61",
+    "addon": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-d0857e0ae7af42dcb9d9ad3ddacc88d5",
+    "saved_project_preservation": {
+      "saved_project_equal": true,
+      "new_automatic_size_families": [
+        "motif",
+        "gtk1",
+        "gtk2",
+        "gtk3",
+        "gtk4",
+        "gtk5",
+        "qt5",
+        "qt6",
+        "kvantum",
+        "plasma"
+      ],
+      "old_widget_drafts_and_undo_proven": false,
+      "old_window_kept_open": true
+    },
+    "old_pid": 1047663,
+    "old_window_kept_open": true,
+    "capture": "/tmp/theme-lab-handoff-t01/delivered.png",
+    "capture_sha256": "4f777ab05eb8ced2111f3098f1d70d1ae3882b9c3222a312ec8c314b45dab2cb",
+    "close_auto_review_rejected": "Old editor has no journal; JSON comparison alone cannot prove raw widget text preserved. Safer alternative used: keep old open.",
+    "transport": "nsenter proved private worker, new independent bwrap user/net/mount namespace, recursive bind of only existing X socket directory; no relay or new X server",
+    "source_socket_inode": 3111076,
+    "source_socket_nlink": 0
+  },
+  "channel_coordination": {
+    "Q091_revision": 12,
+    "Q102_notice_explicitly_requested": true,
+    "colleague_previous_reply_preserved": true,
+    "colleague_tasks_not_assumed": true
+  }
+}

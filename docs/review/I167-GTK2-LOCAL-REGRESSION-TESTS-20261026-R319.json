@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "R319",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "verification",
+  "status": "local-gtk2-palette-and-scrollbar-tests-passed;visual-gate-open",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Run local GTK2 palette-runtime and scrollbar-asset regression tests while VM ownership is unresolved."
+  },
+  "tests": {
+    "command": "pytest -q tests/test_gtk2_palette_runtime.py tests/test_gtk2_scrollbar_assets.py",
+    "result": "24 passed in 46.29s"
+  },
+  "limits": [
+    "These tests verify local palette/runtime and asset contracts only.",
+    "They do not compare a live GTK2 widget with HP VUE or certify historical fidelity.",
+    "No user application, installed theme, MAME process, guest input or VM disk was changed."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Regression suite passes; the native visual comparison and manual review remain incomplete."
+  },
+  "next_step": "Resolve ownership of the duplicate MAME processes through the XChat channel the user is creating; then continue the authorized GTK2 comparison on the visible project VM."
+}

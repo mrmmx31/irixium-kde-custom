@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R657",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "status": "coupled-separate-normal-match; edited-arrow-pressure-preview-unavailable",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "test": {
+    "command": "TL_TEST_OUTPUT_DIR=~/tempia/domainos-theme-work/I167-R657 /usr/bin/python3 -B tools/theme-lab/tests/test_controller_spin.py ~/tempia/domainos-theme-work/I167-R656/build/controller-spin-probe --gtk2-arrow-pressure --scheme DomainOS-SR10.4",
+    "controller_probe_sha256": "1ab00b39bd5c8338773708b1dce84cafb1d7550838a6e1c64b30e8e55dbc8289",
+    "status": "failed",
+    "failure": "Timeout waiting for native controller/preview condition",
+    "private_xvfb": true,
+    "desktop_or_vm_touched": false,
+    "test_script_sha256": "8f2040f5f2038358af6e182903046b6c7096593caf8b311051d786fd3ca47c0d",
+    "pressure_helper_sha256": "dd4178a2aeaf058eeb9ca7180c3b7563828b420ed1949b938d17b1de446cdd19"
+  },
+  "observations": {
+    "initial_normal_scene": {
+      "coupled_edge_pixels_different": 0,
+      "separate_edge_pixels_different": 0,
+      "edge_pixels_per_control": 1024
+    },
+    "requested_control": "standalone GTK2 arrow control, selected_control=12, edit_state=pressed",
+    "probe_status": "Prévia indisponível: Prévia GTK2 indisponível: GTK2: demonstração forçada de pressão pendente; use interação nativa.",
+    "native_controls_after_request": 0,
+    "actual_pointer_interaction": "R655 separately proved native scrollbar arrow press/release in the private GTK2 gallery; this failed controller path attempts an editor-forced state rather than pointer input."
+  },
+  "changes": {
+    "source": false,
+    "user_profile": false,
+    "other_board_sections": false
+  },
+  "remaining": [
+    "Inspect why the controller's state-apply/rebuild path does not supply the GTK2 press bridge to both preview origins; repair only the GTK2 path if the cause is confirmed.",
+    "Do not treat this forced-state timeout as failure of the separately verified native pointer gesture.",
+    "Canonical VM held-state comparison remains gated by Q515."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The two origin scenes match for normal edge painting, but the editor-driven pressed-state transition timed out. Native pointer pressure is covered independently by R655. Not a fidelity score."
+  },
+  "artifacts": "records/ia-tema/I167/R657/ARTIFACTS.json"
+}

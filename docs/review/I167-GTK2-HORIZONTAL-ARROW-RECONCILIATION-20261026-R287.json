@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R287",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "normal-horizontal-cells-reconfirmed-pixel-identical-user-visual-report-open",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Reconcile the GTK2 horizontal-arrow width report against the existing native 1:1 SR10.4 comparison; no theme edits."
+  },
+  "inputs": {
+    "vue_crop": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    },
+    "gtk2_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+      "sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+      "receipt": "docs/review/I167-GTK2-HORIZONTAL-ARROW-COMPARISON-20261026-R233.json"
+    },
+    "method": "Recomputed exact RGB equality from retained PNGs with Pillow; half-open 15x15 crops, no resize, interpolation, or color normalization."
+  },
+  "results": {
+    "left": {
+      "vue_crop": [2, 4, 17, 19],
+      "gtk2_crop": [976, 402, 991, 417],
+      "cell_px": [15, 15],
+      "different_pixels": 0,
+      "distinct_rgb_values_each": 4
+    },
+    "right": {
+      "vue_crop": [527, 4, 542, 19],
+      "gtk2_crop": [1002, 402, 1017, 417],
+      "cell_px": [15, 15],
+      "different_pixels": 0,
+      "distinct_rgb_values_each": 4
+    }
+  },
+  "interpretation": {
+    "confirmed": "In this retained GTK2 2.24.33 normal-state preview, both horizontal stepper cells, including glyph footprint and bevel pixels, are byte-for-pixel equivalent to the retained SR10.4 crops.",
+    "not_confirmed": "This does not establish that every GTK2 application, installed resource copy, scale, or state matches. The user's separate visual impression remains open until its exact GTK2 context is identified or reviewed against this pair.",
+    "decision": "Do not change the 15px GTK2 normal stepper geometry or assets based on the contradicted measurement alone. No colors, files in the user profile, application, VM, or other toolkit were changed."
+  },
+  "validation": {
+    "source_sha256_matches_R233": true,
+    "gtk2_sha256_matches_R233": true,
+    "exact_crop_comparison": "passed: 0/225 differing pixels for left and right",
+    "visual_review": "The existing R273 contact sheet was inspected; this is technical image evidence, not user acceptance."
+  },
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "changed": false,
+    "basis": "This reconciles a previously open metric using existing evidence and adds no new control/state coverage. It is not a visual-fidelity score."
+  },
+  "next": "Continue I167/GTK2 independent checks. For historical pressed left/right/up comparisons, resume only after a fresh VM image shows the physical guest pointer over the intended arrow; if the user still sees the normal horizontal glyph as smaller, compare the exact app/state before changing the already-matched asset."
+}

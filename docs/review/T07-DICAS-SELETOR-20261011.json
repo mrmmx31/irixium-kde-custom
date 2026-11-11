@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-11T11:00:39.484180+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "estimated_stage_percent": 75,
+  "basis": "Três etapas principais anteriores e cobertura dinâmica ampliada; inventário completo e entrega ainda pendentes. Não é porcentagem do goal ou fidelidade.",
+  "implemented": [
+    "Onze dicas nos componentes nativos do seletor de arquivos",
+    "Seis dicas no menu de edição",
+    "Atualização de paleta de seletores abertos e tooltip auxiliar sem substituir entrada/histórico"
+  ],
+  "tests": {
+    "file_dialog_four_schemes": "passed: DomainOS, BreezeLight, BreezeDark, TestYellow",
+    "edit_safety": "Digitação, Undo/Redo, Ctrl+A/C/X/V, clipboard privado; texto/histórico preservados na troca de paleta",
+    "callbacks": "Cancelar não chama destino; Confirmar chama uma vez com caminho; nenhuma gravação real",
+    "help_regression": "passed",
+    "strict_build": "passed"
+  },
+  "harness_corrections": [
+    "End/Ctrl+End não moveram cursor no Xvfb; fixture posiciona cursor explicitamente, navegação não validada",
+    "Helper click consultava widget destruído pelo callback de Cancelar; captura XtAppContext antes do clique",
+    "Primeira rodada não carregava esquemas no ramo do seletor; corrigido antes da prova final"
+  ],
+  "warnings": [
+    "Missing charsets in String to FontSet conversion: fidelidade de glyphs não comprovada",
+    "XtRemoveGrab warning preservado nos logs; não convertido em êxito histórico"
+  ],
+  "evidence": [
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-palettes-r3.json",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-help-regression-r1.log",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-all-final.log",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-build-r9.log",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-native-r2.log",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-native-r3.log",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-palettes-r1.json",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-palettes-r2.json",
+    "docs/referencias/domainos-sr104/t07-file-dialog/file-dialog-gdb-r1.log"
+  ],
+  "sources": {
+    "tools/theme-lab/src/view.c": "915c579713dd45fb730bf807d5b0e2731b786cb193b4c0b3e880e966cd03423d",
+    "tools/theme-lab/src/view/ui_hints.c": "daa5519e8ad0b5bbdf7e93e9fcdf6c3cb6eaceed5caecf4a77e916cb41581712",
+    "tools/theme-lab/src/editor/view.c": "e53f291bd066332277e509edc658a79a0733d975e048ec18454ca7a7f3a2c390",
+    "tools/theme-lab/include/ui_hints.h": "a2c5ca060d9bb989046ce64a8ee8649d52f6ee9f21d790d06225fb4e4d5fe280",
+    "tools/theme-lab/tests/ui_help_flow.c": "471611ca6dbd2c138b5758402cc4bd4dcab1dcd1824ac291e1f22cf02178f055",
+    "tools/theme-lab/tests/native_metrics_view.c": "9a292e34fd7418b5647788d901dd85a886d3d477f69b2ab346c06a6cc466361c",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "1e1099a23e7fa518b19f1c2431d899bb1e8099e701501997b3128aa1bb1ee27f",
+    "tools/theme-lab/Makefile": "1cb985ed1f14371184b55c693fdf4abcc07b2a1ea747f7977f13fa94bdf876c4"
+  },
+  "remaining": [
+    "Inventário de dicas em controles estrangeiros e ações dinâmicas restantes",
+    "Hover em layouts adicionais",
+    "Entrega pessoal coordenada e avaliação humana"
+  ],
+  "personal_window_reopened": false,
+  "human_approval_filled": false
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-VUE-HELP-CLICK-RECAPTURE-20261025-R161",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "documentation": {
+    "ui_instruction": "HP Visual User Environment Users Guide, Nov 1991, HP VUE Version 2.01, section Module 26: close the Help Viewer using its File menu.",
+    "url": "https://bitsavers.org/pdf/hp/9000_hpux/9.x/B1171-90042_HP_Visual_User_Environment_Users_Guide_Nov91.pdf",
+    "scope_limit": "This guide documents the same HP VUE 2.01 release, but its publication is for HP-UX; it is used only for the Help Viewer operation, not as a visual or metric substitute for the Domain/OS SR10.4 VM. The SR10.4 hpvue2 man page identifies HP VUE 2.01 on Domain/OS.",
+    "domainos_version_url": "https://www.typewritten.org/Manual/Apollo/Domain:OS/SR10.4/man1/hpvue2.html"
+  },
+  "native_target": {
+    "screen": "Help Viewer over File Manager; File menu visible at guest coordinate (103,106)",
+    "mame_window_xid": "0x1c00008",
+    "mame_pid": 274368,
+    "window_geometry_host": "+885+59 1024x844",
+    "initial_host_pointer": {"x": 200, "y": 950},
+    "initial_hook_captured": false,
+    "initial_mouse_device": "none"
+  },
+  "test": {
+    "input": "One XTest left click at host coordinate (988,165), aligned to the visible Help Viewer File menu, while MAME held focus.",
+    "result": "The capture hook transitioned to captured=true, mouse=true, mouse_device=mouse. The guest cursor did not move and the menu did not open: the first click is consumed by the capture transition.",
+    "release": "Alt_R was held for 100 ms and released; host pointer then returned to (200,950)."
+  },
+  "final_state": {
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "paused": false,
+    "host_pointer": {"x": 200, "y": 950},
+    "guest_files_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "conclusion": "The exact first-click capture behavior is confirmed: any left click that reaches the focused MAME window while released triggers capture and is consumed; AltGr releases it and returns the host pointer outside. This explains recapture when the user wakes/activates the guest by clicking inside MAME. Keyboard wake (R160) does not recapture. This test does not explain capture on keyboard-only, motion-only or focus-only activation.",
+  "next": "Keep wake-by-click and intentional recapture behavior distinct. Do not change the hook until the user confirms whether the reported wake uses a click; if it does, decide whether that first click should be wake-only or remain the documented recapture action.",
+  "status": "first_click_recapture_reproduced_and_released_user_wake_action_pending"
+}

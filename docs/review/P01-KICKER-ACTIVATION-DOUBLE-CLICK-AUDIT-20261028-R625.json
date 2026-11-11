@@ -1,0 +1,53 @@
+{
+  "id": "R625",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 application menu activation behavior",
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "read-only audit of installed Kicker and DomainOS activation paths",
+    "production_state_changed": false,
+    "board_state_changed": false
+  },
+  "observations": {
+    "kicker_menu_item": {
+      "source": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDelegate.qml",
+      "lines": "104-113",
+      "behavior": "On each MouseArea.onReleased for a leaf item, calls model.trigger and sets kicker.expanded=false.",
+      "double_click_specific_handler_found": false
+    },
+    "domainos_application_entry": {
+      "source": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "lines": "619-625",
+      "behavior": "ItemDelegate.onClicked dispatches the selected filtered entry; no explicit double-click debounce in this handler."
+    },
+    "domainos_pinned_application": {
+      "source": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "lines": "294-299",
+      "behavior": "launchPin calls commands.openApplication and closes the popup."
+    },
+    "launcher": {
+      "source": "plasma/applets/org.irixclassic.domainos.panel/contents/code/commands.py",
+      "lines": "86-101",
+      "behavior": "launch_desktop submits one request to kioclient6/kioclient or gtk-launch and reports launcher acceptance; it does not observe application completion."
+    }
+  },
+  "interpretation": {
+    "status": "static_path_only",
+    "finding": "Neither audited path has a handler explicitly dedicated to suppressing a second activation. This does not establish that a physical double-click dispatches twice after the popup closes.",
+    "plasma_restart_cause": "unknown; no correlated live reproduction or coredump evidence was produced",
+    "production_fix_indicated": false,
+    "human_acceptance": false
+  },
+  "next": [
+    "Keep the user's double-click/restart report separate from the open-menu hover/focus issue.",
+    "If the report recurs with a timestamp, correlate it to plasmashell journal/coredump and reproduce in an isolated menu session before changing activation semantics."
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "status": "passed_scoped_controller",
+  "scope": "Real Motif controller GTK2 pressure; native keyboard selection, Apply, Save/Load, Undo/Redo and restart",
+  "completed": [
+    "Test wrapper compiled (14391 exit0).",
+    "Normal relief matched both GTK2 origins in r2,904 edge pixels each.",
+    "Standalone native Motif keyboard input passed; measured real list pointer input reached pressure state1 in working/applied scene.",
+    "Observed actual X geometry established detached-window overlap as the failed coupled capture cause.",
+    "Real pointer selection, Apply, Undo/Redo with explicit Apply, native Save/Load and process restart passed in both GTK2 origins.",
+    "Applied scene bytes preserved by restart; saved project and other-family recipes preserved."
+  ],
+  "attempts": [
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure.log",
+      "result": "terminal: shared /tmp Xvfb startup failed before UI"
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r2.log",
+      "result": "terminal: normal pixels passed both origins; center click did not open ComboBox list, state stayed0"
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r3.log",
+      "result": "terminal: startup plus detached open did not reach native metrics within45s; working separate true, scene separate false; cause not established"
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r4.log",
+      "result": "terminal: normal pixels passed both origins; keyboard selection remained0. Archived image proves selector arrow clipped horizontally."
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r5.log",
+      "result": "terminal: after horizontal reveal keyboard selection remained0; private X focus read as PointerRoot1."
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r6.log",
+      "result": "terminal: explicit shell focus verified2097714, selection remained0; additional diagnostic input after deadline not accepted as unmodified proof."
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r7.log",
+      "result": "terminal: measured native item selected1 and scene1; detached pressed edges passed, coupled capture obscured."
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/controller-pressure-r8.log",
+      "result": "terminal: root-only detached move confirmed; after Apply detached returned0,0, coupled absolute455,122. Detached640x420 covered coupled button; captured black region is occlusion, not palette proof."
+    }
+  ],
+  "current": {
+    "session_id": 52016,
+    "exit_code": 0,
+    "log": ".qa-t04-anchor-foundation/controller-pressure-r9.log"
+  },
+  "remaining": [
+    "Frozen coordinated delivery"
+  ],
+  "startup_followup": "Investigate opening detached preview during initial generation separately; timeout does not prove a pressure defect or terminal runtime until authoritative process outcome.",
+  "sources": {
+    "tools/theme-lab/tests/controller_gtk2_pressure.py": "8f91afa437de50298b77378ae4f8f4c1701e9be3c15dbcb18e0ee7a269e70e63",
+    "tools/theme-lab/tests/controller_spin_probe.c": "a479e07e679c5742380247fca6a35a95892efa68ceadd0d92f725992fba97eec",
+    "tools/theme-lab/tests/test_controller_spin.py": "433e5f7b656fb738cb6b5158f8d32e84005e15bb5671537f8e6d28c3cc64153c"
+  },
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false,
+  "minimal_combo_proof": {
+    "path": ".qa-t04-anchor-foundation/motif-combo-input.json",
+    "scope": "Standalone Motif drop-down-list; Home/Down/Return emitted event1 and selected1. Does not prove controller input."
+  },
+  "result": {
+    "path": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/RESULTADO.json",
+    "sha256": "427485d422aa4dd9e3010753121d24c60ded0c42493c0f11545d72f0b1c799d8",
+    "native_edges": 10848,
+    "differences": 0,
+    "captures": [
+      {
+        "label": "normal",
+        "separate": true,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/normal-separate-0.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "normal",
+        "separate": false,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/normal-coupled-1.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "pressed",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/pressed-separate-2.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "pressed",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/pressed-coupled-3.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "undo",
+        "separate": true,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/undo-separate-4.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "undo",
+        "separate": false,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/undo-coupled-5.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "redo",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/redo-separate-6.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "redo",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/redo-coupled-7.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "restart",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/restart-separate-8.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "restart",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/restart-coupled-9.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "loaded",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/loaded-separate-10.png",
+        "edge_pixels": 904,
+        "differences": 0
+      },
+      {
+        "label": "loaded",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-bj_hpsyv/loaded-coupled-11.png",
+        "edge_pixels": 904,
+        "differences": 0
+      }
+    ],
+    "other_recipes_preserved": true
+  },
+  "next": "Prepare immutable addon, confirm current user-session manifest and coordinate fresh theme reopening; retain source and all data histories.",
+  "scope_limits": [
+    "Main pressure controller proof uses pointer selection; standalone Motif keyboard proof does not certify this controller keyboard route.",
+    "Edge comparison only; text/focus and historical fidelity not claimed.",
+    "No frozen candidate delivered to personal session yet.",
+    "Detached window recreated at0,0 after Apply; fixture repositions it before captures to avoid X11 occlusion."
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "R488",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate GTK2 scrollbar stepper normal/held/released rendering in the three alternate KDE color schemes after the palette painter change.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": "Ran the actual GTK2 2.24.33 separate preview in private Xvfb/bwrap environments with the current project recipes. Captured horizontal and vertical arrows in normal, mouse-held, and released states at scale factor 1; verified each 15x15 arrow cell and palette-role pixels against the same scheme's generated assets.",
+  "result": {
+    "status": "passed",
+    "schemes": 3,
+    "gtk2_version": "2.24.33",
+    "directions_per_scheme": 4,
+    "states": [
+      "normal",
+      "held",
+      "released"
+    ],
+    "normal_arrow_pixel_differences": 0,
+    "held_arrow_pixel_differences": 0,
+    "released_arrow_pixel_differences": 0,
+    "role_color_match": true,
+    "held_changed_pixels_per_direction": 53,
+    "released_difference_from_normal": 0,
+    "native_preview_events": {
+      "BreezeClassic": 15,
+      "BreezeDark": 15,
+      "KvBeige": 17
+    }
+  },
+  "runs": [
+    {
+      "scheme": "BreezeClassic",
+      "output": "/home/lsi/tempia/.qa-gtk2-public-dcsi735y",
+      "capture": "/home/lsi/tempia/.qa-gtk2-public-dcsi735y/preview.png",
+      "capture_sha256": "45f998c5a0b1cffab425570efc6dc65144128b0d1aab60cb9359f2206b41e442",
+      "project_sha256": "3ba435e51c316be7d873bf4b43269ee6d12b865e23cc4346c923ae15bda7fb7f"
+    },
+    {
+      "scheme": "BreezeDark",
+      "output": "/home/lsi/tempia/.qa-gtk2-public-sdy_kpbb",
+      "capture": "/home/lsi/tempia/.qa-gtk2-public-sdy_kpbb/preview.png",
+      "capture_sha256": "0914c3e49c8e9c557ec35a95702e44e589c3189a4a777c1c78d66861ac3da20a",
+      "project_sha256": "4ab3901de3462d1853afb1fe2c4d43459008cf5e3bf4d00e99869aa24cfac195"
+    },
+    {
+      "scheme": "KvBeige",
+      "output": "/home/lsi/tempia/.qa-gtk2-public-66k81cu1",
+      "capture": "/home/lsi/tempia/.qa-gtk2-public-66k81cu1/preview.png",
+      "capture_sha256": "4a18900b6758ba9b35bde6cf9e10faeeceb9c9da0bae395006700f542d680b74",
+      "project_sha256": "f5e860544a45cff229ceeb5566872e0ced60217748d258ea9f48c57c4b073431"
+    }
+  ],
+  "renderer_source_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+  "limits": [
+    "This confirms GTK2 runtime parity with generated assets and working held/released interaction in these schemes; it does not establish historical VUE pressed-state fidelity.",
+    "No theme profile, user application, XChat process, or MAME guest was changed or restarted.",
+    "The earlier BreezeClassic test wrapper initially missed a Python import path; its already captured output was validated successfully before this clean matrix was run."
+  ],
+  "changes": {
+    "source_changed": false,
+    "user_profile_changed": false,
+    "xchat_restarted": false,
+    "mame_input_sent": false,
+    "vm_changed": false
+  },
+  "next": "Continue I167 with the historical VM state comparison only when the MAME ownership guard permits it; retain manual visual review as pending."
+}

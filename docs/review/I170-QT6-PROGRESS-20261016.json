@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "step": "progress",
+  "date": "2026-10-16",
+  "status": "passed",
+  "scope": "One real Qt6 QProgressBar with KDE-role-derived colors and state tracking; Qt retains range, fill fraction, value and text formatting.",
+  "recipe": {
+    "surface": "Normal, backdrop and disabled track/chunk surfaces plus text ink are generated from selected KDE view/selection roles; focus relief uses KDE focus roles.",
+    "state": "domainosState is updated from top-level window activation and native focus/enabled events."
+  },
+  "validation": {
+    "qt6_recipe_tests": "23/23 passed, including actual Qt6 QProgressBar rendering in DomainOS, neutral, dark and yellow palettes; value/text and fill change, backdrop and disabled states validated.",
+    "qt5_regression_tests": "4/4 passed.",
+    "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; private namespace guards passed; preview exited 0 and Xephyr remained open.",
+    "widget": {
+      "applied": true,
+      "scope": "one real QProgressBar; Qt retains range, fill fraction, text and value semantics",
+      "objectName": "domainosRecipeProgress",
+      "widgetClass": "RecipeProgressBar",
+      "range": [
+        0,
+        100
+      ],
+      "value": 43,
+      "text": "43%",
+      "states": [
+        "normal",
+        "backdrop",
+        "disabled",
+        "focused"
+      ],
+      "textColorSource": "KDE view ink role derived from the selected color scheme",
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "sizeHint": [
+        95,
+        29
+      ],
+      "limitations": [
+        "This real-widget recipe is not a claim of historical SR10.4 fidelity."
+      ]
+    },
+    "compilation": "python3 -m py_compile passed for Qt6 gallery, recipe, route, progress widget/probe and tests."
+  },
+  "evidence": {
+    "public_report": "/home/lsi/tempia/i170-qt6-public-5w2551dt/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "public_report_sha256": "593b3145c612d567e11c3216e07aad6092c19e30dc6d039b3a0aafa502b740c7",
+    "native_result": "/home/lsi/tempia/i170-qt6-public-5w2551dt/home/qtwidgets-proof/RESULTADO.json",
+    "native_result_sha256": "6913a3a739df020d5c0f8d35f8db25e625007530eeb4132358b700626f2473a1",
+    "preview_receipt": "/home/lsi/tempia/i170-qt6-public-5w2551dt/home/out/revisions/20261016T135234-cdbadbb53c7f/qt6-PREVIEW.json",
+    "preview_receipt_sha256": "51363309cebff77eedced73c448f4a6d52b891b32fdf88d21fb06bcbcec60666",
+    "qt6_test_log": "/home/lsi/tempia/i170-qt6-progress-20261016/qt6-tests.log",
+    "qt6_test_log_sha256": "57e43108ffd7dd4d92595c07d401e374d7a2bce6e16a80bdd8e6cea8cbd28c99",
+    "qt5_test_log": "/home/lsi/tempia/i170-qt6-progress-20261016/qt5-regression.log",
+    "qt5_test_log_sha256": "62b3016ad2e3981873b367f188d4a36f5c279a45f01e7c10140daff7bf7caf02",
+    "screenshot": "docs/review/I170-QT6-PROGRESS-20261016.png",
+    "screenshot_sha256": "ebe92d9a173f612cb7bf277786e3353c2703a30c9f7523cdaa2f7af7bb9fc5b9",
+    "display": ":68"
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "9c31aa6040569b3888ce99226565cc6c2a55d38f605cf24f63de5409eb21b770",
+    "tools/theme-lab/qt6_scrollbar_route.py": "60a389f29c57ee5ff64a5c573de6d74d87abf2aee2bbf783c9e3c55acc1478f1",
+    "tools/theme-lab/qt6_progress_widget.py": "253dc3a5c8119ced92e3c6e96d23f0d0282395bc643f6d757d89797bddefceef",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "47080972e12357eac12defe2dc026bb6723f540121e33dc0eaf28854f078efd9",
+    "tools/theme-lab/tests/probe_qt6_progress_widget.py": "6a081c335260f3be4a8c871b31daeae5118b3fe964ab5e5875998b7a70ec3194",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "d766062c4b2bf7d2680360026aeb5f61827b0dca7e0690e0a560b6b8444e317a",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "ac9ce4ed3c9b68c6f1226e247918cf6ed623c8b64c8ec1050e1654cad8ab3f95"
+  },
+  "limits": [
+    "No direct matching QProgressBar measurement or appearance comparison was made in the Domain/OS SR10.4 VM.",
+    "Automated palette/state tests do not establish historical fidelity or human approval."
+  ]
+}

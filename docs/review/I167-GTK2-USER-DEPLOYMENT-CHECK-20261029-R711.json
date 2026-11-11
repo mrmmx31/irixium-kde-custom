@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "R711",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Check whether the current GTK2 DomainOS source revision is installed for user lsi without changing other toolkit families.",
+  "result": "already_installed_and_active",
+  "evidence": {
+    "selected_user_theme": "DomainOS-SR10-4-KDE-Reload",
+    "profile_file": "~/.gtkrc-2.0",
+    "source_gtkrc_sha256": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af",
+    "installed_gtkrc_sha256": "5163752d3fb45a73700843fcce49a88080c49148745314b23badb0f705edbd9d",
+    "installed_base_gtkrc_sha256_after_removing_owned_palette_include": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af",
+    "source_matches_installed_base": true,
+    "matched_variants_and_roots": "DomainOS-SR10-4, DomainOS-SR10-4-KDE and DomainOS-SR10-4-KDE-Reload in both ~/.themes and ~/.local/share/themes",
+    "runtime_palette": "active KDE-role include retained in adaptive wrappers; 12 wrappers and 221 resources",
+    "prior_deployment": "R708 installed the same source gtkrc hash and sent native reload to open GTK2 X11 windows without restarting XChat.",
+    "vm_wake_capture": {
+      "path": "~/tempia/domainos-theme-work/I167/R720-vue-awake.png",
+      "sha256": "5477735a5e4574112ffb28eb5e2123d33424162b0cb95a277dd4ab30f7ecb62e",
+      "result": "VUE visible after one Shift pulse; no mouse input"
+    }
+  },
+  "correction": "The first R711 draft incorrectly treated the managed 200-byte KDE palette include as a source mismatch. Removing only that exact generated block yields the source hash byte-for-byte. R708 already deployed the current GTK2 recipe.",
+  "action": "No reinstallation was needed. No GTK2 files or application processes changed in this check.",
+  "pending": [
+    "Human visual review of the already installed GTK2 theme remains pending.",
+    "Direct VUE arrow press/release comparison remains governed by I517 authorization."
+  ],
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing I167 technical coverage estimate; this profile check adds deployment evidence only and does not measure visual fidelity or human acceptance."
+  }
+}

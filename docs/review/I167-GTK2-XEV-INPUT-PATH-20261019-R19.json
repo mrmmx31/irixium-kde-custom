@@ -1,0 +1,28 @@
+{
+  "item": "I167",
+  "revision": "R19",
+  "checked_at_utc": "2026-10-19T14:58:35Z",
+  "family": "GTK2 public preview input delivery diagnosis",
+  "display": ":82",
+  "probe": {
+    "client": "xev",
+    "window": "0x200001",
+    "root_point": [
+      100,
+      100
+    ],
+    "command": "xdotool mousemove 100 100 click 1"
+  },
+  "observed": [
+    "EnterNotify",
+    "MotionNotify",
+    "ButtonPress button 1",
+    "ButtonRelease button 1"
+  ],
+  "interpretation": "Xephyr delivered the pointer click to a simple X window. This does not establish delivery to the GTK2 preview control or explain the prior nondeterministic public interaction.",
+  "session": "Xephyr :82 was no longer running at follow-up; the reason is unknown. The separate :84 Theme Lab session remains active.",
+  "mame": "No guest command sent. Read-only bridge status found unresolved request f2127393cf7642a4896dceae1977ea71; preserved without retry or overwrite.",
+  "product_changes": false,
+  "status": "diagnostic only; GTK2 public interaction remains unresolved",
+  "next": "Do not repeat the full public matrix. Instrument delivery at the GTK2 widget/adjustment boundary in an isolated, stable session."
+}

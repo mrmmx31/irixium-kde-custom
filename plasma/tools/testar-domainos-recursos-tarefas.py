@@ -23,7 +23,8 @@ def main():
     output.mkdir(mode=0o700);config=Path(os.environ.get('XDG_CONFIG_HOME',str(Path.home()/'.config')))
     def hashes():return {name:hashlib.sha256((config/name).read_bytes()).hexdigest() if (config/name).is_file() else None for name in ('kdeglobals','kwinrc','plasmarc','plasma-org.kde.plasma.desktop-appletsrc')}
     before=hashes();checks={};errors=[];failure=None
-    with tempfile.TemporaryDirectory(prefix='.qa-task-resources-',dir=REPO) as folder:
+    temp_root=Path.home()/'tempia';temp_root.mkdir(mode=0o700,exist_ok=True)
+    with tempfile.TemporaryDirectory(prefix='p04-task-resources-',dir=temp_root) as folder:
         root=Path(folder)
         for key,name in (('HOME','home'),('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('XDG_CACHE_HOME','cache'),('XDG_RUNTIME_DIR','runtime')):
             p=root/name;p.mkdir(mode=0o700);os.environ[key]=str(p)

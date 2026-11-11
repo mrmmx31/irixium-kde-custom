@@ -1,0 +1,39 @@
+{
+  "item": "P04",
+  "recorded_at": "2026-10-18",
+  "scope": "Recheck the selected-window Operations popup against the reported normal-session failure.",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 3
+  },
+  "current_session": {
+    "compositor": "KWin Wayland",
+    "plasmashell_pid_before": 549235,
+    "plasmashell_pid_after": 1987593,
+    "panel_after_reload": "Containment 2268, bottom edge, 109 px; DomainOS applet 2269, 971 x 109 px",
+    "layout": "The normal user panel remained loaded after replacement. A full layout dump timed out once; focused read-only script and D-Bus status succeeded."
+  },
+  "installed_file_sync": {
+    "file": "~/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml",
+    "previous_sha256": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "current_sha256": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+    "source_sha256": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+    "difference": "The installed Oct 10 file lacked the current diagnostic for a silent openAt() rejection. This sync adds the diagnostic and pending-state cleanup; it does not claim to fix an unobserved root cause.",
+    "backup": "~/tempia/p04-wayland-native-20261018/DomainOSIconbox.installed-before.qml",
+    "reload_log": "~/tempia/p04-wayland-native-20261018/plasmashell-reload.log"
+  },
+  "wayland_component_probe": {
+    "test_file": "plasma/tests/test_domainos_operations_handoff.py",
+    "runner": "test_footer_pointer_opens_once_after_synchronous_close; test_silent_zero_geometry_rejection_is_reported",
+    "result": "2/2 passed under QT_QPA_PLATFORM=wayland using the production Iconbox QML and isolated test configuration.",
+    "report": "~/tempia/p04-wayland-native-20261018/result.json",
+    "limitations": [
+      "The popup was exercised in a test-owned QQuickWindow under the normal Wayland compositor, not by clicking the real panel button.",
+      "The isolated test profile could not load the IrixClassicDomainOS Plasma theme/Kirigami style, so this is interaction evidence, not a visual check.",
+      "No user application window was clicked, closed, or modified."
+    ]
+  },
+  "result": "partial_pass",
+  "remaining": "The real panel is now reloaded with the current diagnostic. A physical click on Operations in the actual panel remains unverified; keep P04 open for the user's live check and capture lastError if it recurs."
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R675",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Make GTK2 proposal generation follow the controls actually visible in the native scene, including the category visibility mask.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "finding": {
+    "scene_contract": "scene_contract.scene(model, 'gtk2') returns controls after applying visible_categories and visible_controls.",
+    "previous_generation": "GTK2 generation used scene() only for validation, always included both scrollbar IDs and push/toggle, and gated remaining painters on visible_controls alone.",
+    "impact": "A saved GTK2 recipe could emit/report translations for controls hidden by category or per-control selection."
+  },
+  "change": {
+    "file": "tools/theme-lab/gtk2_generation.py",
+    "sha256": "dd4d9c5cced4b507268aa359234d3f7dd02687911381aa70d4fbab595f0d89ba",
+    "details": [
+      "Use IDs from scene_contract.scene() as the requested control set.",
+      "Call each non-scrollbar painter only for controls present in that set.",
+      "Do not invoke scrollbar painting when neither scrollbar is visible; emit the KDE-role canvas RC instead.",
+      "Record scene_controls, translated_controls, and untranslated_controls separately in catalog order."
+    ]
+  },
+  "verification": {
+    "method": "Static source review against scene_contract.CONTROLS/CATEGORIES and the GTK2 painter dispatch.",
+    "git_diff_check": "passed",
+    "tests_run": false,
+    "native_preview_after_change": false,
+    "historical_comparison_after_change": false
+  },
+  "limits": [
+    "This changes Theme Lab recipe generation only; it does not modify or reinstall the user's GTK2 theme.",
+    "The shared scrollbar painter still emits its paired orientation assets whenever at least one scrollbar is selected.",
+    "Native preview integration and visual fidelity after this change remain unverified.",
+    "No MAME input, application restart, or other toolkit-family edit occurred."
+  ],
+  "next": "Continue I167 GTK2 by reviewing the isolated native preview path after this generation change; historical held-state interaction remains gated by I517.",
+  "technical_coverage_estimate": {
+    "percent": 95,
+    "basis": "The previously deployed normal GTK2 scrollbar geometry remains covered; this static generator correction does not close native preview verification, held-state comparison, or manual acceptance. Not a fidelity score."
+  }
+}

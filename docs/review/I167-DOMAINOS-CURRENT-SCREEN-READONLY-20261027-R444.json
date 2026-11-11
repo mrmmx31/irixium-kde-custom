@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R444",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read the current guest screen and MAME profile without graphical input, before the next GTK2 horizontal stepper comparison.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "second_mame_pid": 3971019,
+    "second_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "second_vm_contacted": false,
+    "verify_script_blocks_graphical_input": true
+  },
+  "method": {
+    "capture": "Read-only manager.machine.screens[':apollo_screen:screen']:snapshot(path) through the correlated project MAME bridge.",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false
+    },
+    "bridge_before": "pending=null, reply=null, pending_files=[]",
+    "bridge_after": "capture completed with correlated reply; no pending request or input operation",
+    "guest_input_sent": false,
+    "host_focus_changed": false
+  },
+  "observation": {
+    "image": "~/tempia/ia-tema/evidence/I167/r444-current-screen-20261027.png",
+    "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "dimensions": [1024, 844],
+    "screen_state": "The 1024x800 guest desktop region is uniformly black (RGB 0,0,0); the Apollo command strip remains visible at the bottom.",
+    "target": "No VUE window, horizontal scrollbar, pointer target or GTK2 comparison target is visible.",
+    "comparison_to_R437": "R437 showed the VUE desktop and a horizontal scrollbar; R444 shows the guest desktop region black. The state changed between captures."
+  },
+  "result": {
+    "classification": "Fresh read-only state check; the guest image is not currently usable for the held-arrow comparison.",
+    "historical_appearance_proven": false,
+    "interpretation": "Do not infer an application, theme or disk failure from the black guest region. No wake input was attempted because verify.sh detects the separate active Prancheta MAME process."
+  },
+  "cleanup": {
+    "bridge_pending": false,
+    "project_vm_paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "second_vm_changed": false,
+    "guest_disk_modified_by_test": false
+  },
+  "next": "When the separate MAME no longer blocks the guarded input path, revalidate the current project PID/disk and bridge, wake the project guest with the documented one-frame Shift attempt if still black, then capture the visible horizontal GTK2/VUE target before any press. Do not send input to the other VM."
+}

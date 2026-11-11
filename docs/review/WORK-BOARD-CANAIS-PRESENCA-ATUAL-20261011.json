@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T09:52:05.770977+00:00",
+  "channels": [
+    {
+      "id": "Q091",
+      "title": "Canal — Tema e laboratório",
+      "owner": "IA do tema e laboratório",
+      "revision": 31
+    },
+    {
+      "id": "Q102",
+      "title": "Canal — Prancheta / outra IA",
+      "owner": "IA da Prancheta",
+      "revision": 47
+    }
+  ],
+  "result": "Pedido já implementado e conferido no estado atual: canais em faixa fixa, separados da lista de tarefas e independentes de filtros. Nenhuma resposta, histórico ou janela alterado.",
+  "source_sha256": {
+    "src/view/channels.c": "47845bcc5e8eb8838bc447948f44b0ffd9ceb4418687bea5cfc3238b43059ea7",
+    "src/model/filter.c": "8ce6bc38053110235a2eaf42d5990599e3e7b0ac313cef5cd4904938c5fa9dce",
+    "src/view/task_list.c": "100e0fc81343757280359155cdee7cd50b6f32407d62a162152ea749d5c06e2d"
+  },
+  "existing_native_evidence": "WORK-BOARD-CANAIS-FIXOS-20261010.json",
+  "scope_progress_percent": 100,
+  "limitation": "Conferência atual de estado e código; ensaio visual anterior reutilizado, sem nova reabertura."
+}

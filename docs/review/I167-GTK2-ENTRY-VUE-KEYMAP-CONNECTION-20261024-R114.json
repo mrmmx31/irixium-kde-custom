@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "R114",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Read-only guest keymap query could not reach the clone",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "target": "Authorized assistant MAME clone PID 3759847",
+    "main_vm_touched": false
+  },
+  "method": {
+    "script": "~/tempia/i167-vue-current-r110/query_x_keymap_r114.py",
+    "script_sha256": "2af507a4f42aab738a3131a8ae4bd8cb9f65f7abc6db724651f628a304329786",
+    "attempted_commands_after_login": [
+      "echo DISPLAY=$DISPLAY",
+      "ls -l /usr/bin/X11/xmodmap /usr/bin/xmodmap /usr/X11/bin/xmodmap",
+      "/usr/bin/X11/xmodmap -pm",
+      "/usr/bin/X11/xmodmap -pk"
+    ],
+    "connection_result": "Timed out at 'Trying 10.253.104.20...' before the login prompt; no credentials or guest commands were sent.",
+    "host_route": "10.253.104.20 via 192.168.1.1 dev wlp89s0 src 192.168.1.16",
+    "private_tap_state": "tap-mess-1000-0 DOWN, 192.168.240.1/24",
+    "transcript": "~/tempia/i167-vue-current-r110/x-keymap-read-r114.json"
+  },
+  "result": {
+    "guest_keymap_obtained": false,
+    "vm_or_network_changed": false,
+    "retry_performed": false,
+    "claim_limit": "This records current connection failure only; it does not prove the guest or its service is permanently unavailable. Do not retry unless the route/session state changes."
+  },
+  "next": "Continue I167/GTK2 by comparing the newly visible native selected-character state with the existing GTK2 palette render. Revisit keymap only after guest connectivity is restored or a different existing read-only route is confirmed."
+}

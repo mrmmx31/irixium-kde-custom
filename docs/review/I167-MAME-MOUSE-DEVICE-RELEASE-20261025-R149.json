@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-MOUSE-DEVICE-RELEASE-20261025-R149",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "evidence": {
+    "official_mame_behavior": "The MAME command-line documentation explains that mouse_device can automatically enable mouse input for systems with mouse controls, and that this may capture the host pointer even when the general mouse option is off.",
+    "live_before_correction": {
+      "mouse": false,
+      "mouse_device": "mouse",
+      "mouseprovider": "auto",
+      "background_input": false,
+      "hook_version": 2
+    },
+    "change": "Updated the clone's mouse-altgr.lua to set mouse=false and mouse_device=none on release; on deliberate left-click recapture it restores mouse_device=mouse and mouse=true. It saves and restores the initial options on emulator stop.",
+    "script_path": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/sessao/mouse-altgr.lua",
+    "script_sha256": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a",
+    "runtime_update": "Loaded version 3 into the existing MAME process without restarting; explicitly left the mouse released.",
+    "live_after_correction": {
+      "hook_version": 3,
+      "hook_captured": false,
+      "mouse": false,
+      "mouse_device": "none",
+      "paused": false,
+      "mame_pid": 274368
+    },
+    "host_pointer_check": "X11 pointer window PID was 263503 while MAME PID was 274368, consistent with the pointer being outside the MAME window at the time of check."
+  },
+  "limits": "The screen-wake/activation sequence was not reproduced after this change, so persistence through that trigger still needs direct validation. MAME loaded the script successfully; standalone luac was not installed. The original VM and its configuration remain untouched.",
+  "status": "automatic_mouse_device_release_fixed_in_clone_wake_retest_pending"
+}

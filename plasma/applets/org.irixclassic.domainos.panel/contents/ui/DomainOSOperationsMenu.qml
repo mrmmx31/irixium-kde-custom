@@ -15,12 +15,12 @@ Controls.Popup {
     property string lastError: ""
     readonly property QtObject colors: iconbox.domainosPalette
     readonly property var items: [heading, pin, firstSeparator, columns, rows,
-        mosaic, collect, secondSeparator, maximize, minimize]
+        mosaic, collect, secondSeparator, maximize, restore, minimize]
     readonly property int count: items.length
     readonly property real naturalContentWidth: items.reduce((width, item) =>
         Math.max(width, item.implicitWidth), 0)
     readonly property real naturalContentHeight: {
-        // All ten fixed rows exist even while the popup is hidden. Item.visible
+        // All eleven fixed rows exist even while the popup is hidden. Item.visible
         // is effective visibility here, so filtering on it would measure zero.
         return items.reduce((height, item) => height + item.implicitHeight, 0)
             + Math.max(0, items.length - 1) * menuRows.spacing
@@ -121,6 +121,21 @@ Controls.Popup {
         }
         return false
     }
+    function handleKey(event) {
+        if (event.key === Qt.Key_Down) moveFocus(1)
+        else if (event.key === Qt.Key_Up) moveFocus(-1)
+        else if (event.key === Qt.Key_Home) endFocus(false)
+        else if (event.key === Qt.Key_End) endFocus(true)
+        else if (event.key === Qt.Key_Tab) moveFocus(event.modifiers & Qt.ShiftModifier ? -1 : 1)
+        else if (event.key === Qt.Key_Backtab) moveFocus(-1)
+        else if (event.key === Qt.Key_Escape) close()
+        else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter || event.key === Qt.Key_Space) {
+            const row = itemAt(currentIndex)
+            if (row && enabledAction(currentIndex)) invoke(row.operation)
+        } else { event.accepted = false; return false }
+        event.accepted = true
+        return true
+    }
     function invoke(operation) {
         const index = items.findIndex(item => item.operation === operation)
         if (!enabledAction(index) || !iconbox.menuSelection.every(iconbox.checkTarget))
@@ -163,20 +178,7 @@ Controls.Popup {
                 ? Controls.ScrollBar.AlwaysOn : Controls.ScrollBar.AlwaysOff
         }
         Keys.priority: Keys.BeforeItem
-        Keys.onPressed: event => {
-            if (event.key === Qt.Key_Down) menu.moveFocus(1)
-            else if (event.key === Qt.Key_Up) menu.moveFocus(-1)
-            else if (event.key === Qt.Key_Home) menu.endFocus(false)
-            else if (event.key === Qt.Key_End) menu.endFocus(true)
-            else if (event.key === Qt.Key_Tab) menu.moveFocus(event.modifiers & Qt.ShiftModifier ? -1 : 1)
-            else if (event.key === Qt.Key_Backtab) menu.moveFocus(-1)
-            else if (event.key === Qt.Key_Escape) menu.close()
-            else if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter || event.key === Qt.Key_Space) {
-                const row = menu.itemAt(menu.currentIndex)
-                if (row && menu.enabledAction(menu.currentIndex)) menu.invoke(row.operation)
-            } else { event.accepted = false; return }
-            event.accepted = true
-        }
+        Keys.onPressed: event => menu.handleKey(event)
         Column {
             id: menuRows
             width: scroller.availableWidth
@@ -233,6 +235,12 @@ Controls.Popup {
                 enabled: menu.iconbox.geometryReady(menu.iconbox.menuSelection, "maximize")
             }
             OperationRow {
+                id: restore; objectName: "domainosBatchRestore"; operation: "restore"
+                text: qsTr("Restaurar selecionadas")
+                helpText: qsTr("Remove minimização e maximização, traz todo o conjunto selecionado à frente e deixa a última janela selecionada ativa, sem alterar manualmente sua posição.")
+                enabled: menu.iconbox.geometryReady(menu.iconbox.menuSelection, "restore")
+            }
+            OperationRow {
                 id: minimize; objectName: "domainosBatchMinimize"; operation: "minimize"
                 text: qsTr("Minimizar selecionadas")
                 enabled: menu.iconbox.geometryReady(menu.iconbox.menuSelection, "minimize")
@@ -251,6 +259,7 @@ Controls.Popup {
     component OperationRow: Controls.AbstractButton {
         id: row
         required property string operation
+        property string helpText: ""
         readonly property bool emphasized: hovered || activeFocus
         width: menuRows.width
         implicitWidth: label.implicitWidth + leftPadding + rightPadding
@@ -265,8 +274,13 @@ Controls.Popup {
         activeFocusOnTab: true
         Accessible.role: Accessible.MenuItem
         Accessible.name: text
+        Accessible.description: helpText
+        Controls.ToolTip.visible: hovered && helpText.length > 0
+        Controls.ToolTip.delay: 700
+        Controls.ToolTip.text: helpText
+        Keys.priority: Keys.BeforeItem
+        Keys.onPressed: event => menu.handleKey(event)
         onClicked: menu.invoke(operation)
-        onHoveredChanged: if (hovered && enabled) menu.currentIndex = menu.items.indexOf(row)
         contentItem: Text {
             id: label
             text: row.text

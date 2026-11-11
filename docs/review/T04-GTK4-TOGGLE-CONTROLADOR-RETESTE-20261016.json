@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "at": "2026-10-16T09:05:00Z",
+  "item": "T04",
+  "authority_revision": 9,
+  "scope": "Reteste do GTK4 Toggle no código atual: worker, controlador Motif, paletas, Apply, seleção, layout, histórico e persistência.",
+  "build": {
+    "command": "TMPDIR=~/tempia/build-tmp make -C tools/theme-lab BUILD=~/tempia/t04-gtk4-build -j4 all + controller-spin-probe + preview-event-file-test",
+    "theme_lab_sha256": "50e4c6ed3449f4acb64c223708657967598b54604348ba2dc8cf1adde2beea3c",
+    "controller_probe_sha256": "d1059307cdb686b9f23dd8f41c02056b8ea5380c527ac11b956d4c0ddb178eb7",
+    "gtk4_host_bridge_sha256": "0b936bbab7e780786d67db385f5c55c49b1c763aa670aef826130dcfac29e201",
+    "preview_event_reader_sha256": "d52b3abe8b252b959e340e5f7d83a161abf7191259ca433ae91275baf72c1f4b",
+    "workspace_binary_matches_staged": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/backend.py": "a691ba80784cce53a7fb154d5d816f094841b8737fb7cb176d655563adcb5842",
+    "tools/theme-lab/preview_gtk.py": "28bf208b4d8dd87d59800ec9b426536b7bfa551bd4fd2d56afef3a3d47021a36",
+    "tools/theme-lab/gtk4_toggles.py": "00937b6ac81d2ea4b03d6a2611a4f1c37111a93a0d8cfe54b1ca357eef21763a",
+    "tools/theme-lab/gtk4_route.py": "35e22f3da1661648c77303801f310674f0754e3043063c31c663a0327e506848",
+    "tools/theme-lab/gtk4_worker.py": "dd749b0cb0bdd7e85d9d43fe157a96834173bb3dbee4df202fdfd0ed2b707ea7",
+    "tools/theme-lab/src/controller.c": "157bb3f55b1e5dfb1796b16ad4052112d36ba0ab737e149a03d4aaa8a23b4258",
+    "tools/theme-lab/src/native_colors.cpp": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6",
+    "tools/theme-lab/src/preview_event.c": "f97ed03552c9ef78226e1eac2cbed2f0bdb601214328a8c2fcc495647412f606",
+    "tools/theme-lab/include/preview_event.h": "91e97572d716e1928e5ba58a3ea8df397cea09a8d1525010722df2dfe45307c1",
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "3a7cd1fe1df42f8baa7044ad77e2f9f01446e4d972201948ced3d88ce1b0151c"
+  },
+  "unit_tests": {
+    "toggle": 5,
+    "route": 7,
+    "snippet": 5,
+    "scene_contract": 4,
+    "layout_transaction": 6,
+    "status": "all passed"
+  },
+  "private_worker": {
+    "separate": {
+      "status": "passed_toggle_worker",
+      "origin": "separate",
+      "native_clicks": 3,
+      "ctrl_layout_without_toggle_activation": true,
+      "responsive_during_generation": true,
+      "selection_preserved_on_reload": true,
+      "unsupported_preserves_scene": true,
+      "events_identity_verified": true,
+      "closed_exit_code": 0,
+      "backend_route_used": true,
+      "public_controller_connected": false,
+      "result_sha256": "169694b49d7ecea1bc53d3d22b4b2066c40e84b103abb4042fcf1ff36122f2be",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-toggle-worker/qa/gtk4-worker-ekvbjfu3"
+    },
+    "coupled": {
+      "status": "passed_toggle_worker",
+      "origin": "coupled",
+      "native_clicks": 3,
+      "ctrl_layout_without_toggle_activation": true,
+      "responsive_during_generation": true,
+      "selection_preserved_on_reload": true,
+      "unsupported_preserves_scene": true,
+      "events_identity_verified": true,
+      "closed_exit_code": 0,
+      "backend_route_used": true,
+      "public_controller_connected": false,
+      "result_sha256": "1dfb6bf86afce5ccb45159b2470ceb15b3563f1905a406f73d58822b984e55de",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-toggle-worker/qa/gtk4-worker-8ho5cxgd"
+    }
+  },
+  "controller": {
+    "apply_undo_redo": {
+      "status": "passed",
+      "scope": "C controller native GTK4 toggle Apply/relaunch, independent selection and Undo/Redo",
+      "scene_bytes_preserved_after_restart": null,
+      "all_recipes_preserved": null,
+      "saved_detached_preference_preserved": null,
+      "load_preserved_previous_scene_until_apply": null,
+      "independent_selection_preserved": true,
+      "detached_close_reopen": true,
+      "native_drag_without_toggle_activation": true,
+      "project_undo_redo": true,
+      "gtk3_recipe_preserved": true,
+      "save_load_restart_certified": false,
+      "captures": 14,
+      "result_sha256": "dc4f1358fc3449ddcd296710f4856c6eafc6f88f7152fd32eb4b9c6b7412e7e0",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-7y5jlr9y"
+    },
+    "save_load_restart": {
+      "status": "passed",
+      "scope": "Real Motif Save/Load dialogs and GTK4 toggle controller restart",
+      "scene_bytes_preserved_after_restart": true,
+      "all_recipes_preserved": true,
+      "saved_detached_preference_preserved": true,
+      "load_preserved_previous_scene_until_apply": true,
+      "independent_selection_preserved": null,
+      "detached_close_reopen": null,
+      "native_drag_without_toggle_activation": null,
+      "project_undo_redo": null,
+      "gtk3_recipe_preserved": null,
+      "save_load_restart_certified": null,
+      "captures": 0,
+      "result_sha256": "78d792baf82ab3d2c5f1eefee3ccf16939dc0db7c9fff756f7a2ee31af2f0c6b",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-82gmauge"
+    },
+    "DomainOS-SR10.4": {
+      "status": "passed",
+      "scheme": "DomainOS-SR10.4",
+      "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+      "other_recipes_preserved": true,
+      "captures": 16,
+      "edge_pixels": 14464,
+      "edge_pixel_differences": 0,
+      "result_sha256": "bb81703941977c01fe3b1ec28cbc54dbc597a1460466702434de1c24015d82f0",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-ronjkof0"
+    },
+    "BreezeLight": {
+      "status": "passed",
+      "scheme": "BreezeLight",
+      "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+      "other_recipes_preserved": true,
+      "captures": 16,
+      "edge_pixels": 14464,
+      "edge_pixel_differences": 0,
+      "result_sha256": "5f38ce92c63573c39ee418ae3ae854103b70d30b6223e1acfe4ab676a06548ef",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-otoc2dsu"
+    },
+    "BreezeDark": {
+      "status": "passed",
+      "scheme": "BreezeDark",
+      "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+      "other_recipes_preserved": true,
+      "captures": 16,
+      "edge_pixels": 14464,
+      "edge_pixel_differences": 0,
+      "result_sha256": "c21aba10b01434c86785db92a77aa817b6e1b6b51ac6c459a5f00ebcf1213d6b",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-krh02p16"
+    },
+    "TestYellow": {
+      "status": "passed",
+      "scheme": "TestYellow",
+      "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+      "other_recipes_preserved": true,
+      "captures": 16,
+      "edge_pixels": 14464,
+      "edge_pixel_differences": 0,
+      "result_sha256": "b83e5a8fb486584bf30cb243149da95f0f5a2b9b75168c1fbda12ff512d92657",
+      "qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-9hxiil0x"
+    }
+  },
+  "asserted_total": {
+    "native_worker_origins_passed": 2,
+    "native_controller_matrix_schemes": 4,
+    "matrix_captures": 64,
+    "matrix_edge_pixel_differences": 0
+  },
+  "environment": {
+    "existing_xephyr": {
+      "61": "left open and unchanged",
+      "68": "left open and unchanged"
+    },
+    "test_display": "private Xvfb on a temporary /tmp mount backed by ~/tempia; host /tmp remained untouched at 100% capacity",
+    "inotify": "Host max_user_instances=384, 405 current inotify FDs for UID 1000; private D-Bus reported EMFILE but the GTK4 controller assertions completed. No limits changed and no processes stopped.",
+    "fonts": "The current DomainOS fixture includes and bind-mounts the host /etc/fonts, /etc/ld.so.cache, /etc/alternatives and host /usr. Its namespace log still contains fontconfig ‘No font found’ and Motif missing-charset warnings; attribution is unverified, so this receipt certifies state/edge metrics only, not glyph or font fidelity.",
+    "font_fixture_qa_path": "/home/lsi/tempia/board/t04-gtk4-controller/qa/gtk4-controller-ronjkof0",
+    "data": "All scenarios used synthetic projects under ~/tempia; no user project, Xephyr state, or theme installation was changed."
+  },
+  "delivery": {
+    "status": "staged build and controller verification complete; no release handoff or replacement performed in this record",
+    "remaining": "The staged binary matches the workspace build. Exact T04 re-open request is pending user permission (request 5dee444e8816308b0696e9815c6005e9fc1e69036cdecf584aade65142264074); do not relaunch until permitted. After handoff, inspect current-font rendering and obtain human review.",
+    "historical_fidelity_claimed": false,
+    "human_approval_claimed": false,
+    "estimated_unit_progress_percent": 88,
+    "percentage_basis": "GTK4 Toggle fundação/sessão/controlador/persistência/paletas e testes nativos atuais passaram; build estável em stage. Falta congelar/abrir a versão atual e confirmação pós-abertura; não é percentual do goal geral."
+  }
+}

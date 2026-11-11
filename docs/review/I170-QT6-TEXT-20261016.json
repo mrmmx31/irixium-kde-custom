@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "step": "text",
+  "date": "2026-10-16",
+  "status": "passed",
+  "scope": "One real Qt6 QTextEdit in the private gallery; KDE-role stylesheet, top-level backdrop tracking, native UTF-8 editing and clipboard semantics.",
+  "recipe": {
+    "palette": "QTextEdit normal, focused, backdrop and disabled states consume selected KDE color roles; selection uses the KDE highlight roles.",
+    "backdrop": "[domainosBackdrop=\"true\"] is tracked from window activation/deactivation, avoiding QSS :!active matching the idle editor.",
+    "editing": "Qt native multiline UTF-8 editing, selection, undo/redo and clipboard shortcuts remain available."
+  },
+  "validation": {
+    "qt6_recipe_tests": "17/17 passed. The text test exercised a real PyQt6 QTextEdit across DomainOS, neutral, dark and yellow KDE role palettes; verified normal/backdrop/disabled/focus pixels and native multiline edit/undo/redo/clipboard/context-menu actions.",
+    "qt5_regression_tests": "4/4 passed.",
+    "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; private namespace guards passed; preview exited 0 and Xephyr remained open.",
+    "widget": {
+      "applied": true,
+      "scope": "one real QTextEdit; Qt retains multiline UTF-8 editing, undo/redo, keyboard, selection and clipboard semantics",
+      "objectName": "domainosRecipeText",
+      "states": [
+        "normal",
+        "focused",
+        "backdrop",
+        "disabled"
+      ],
+      "backdropSelector": "[domainosBackdrop=\"true\"]",
+      "backdropTracksTopLevelActivation": true,
+      "source": "/home/domainos-test/out/revisions/20261016T133704-cbf33babf25b/qt6-scrollbar-snapshot/qt6-scrollbar.qss",
+      "sizeHint": [
+        256,
+        192
+      ],
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "limitations": [
+        "QSS state mapping does not establish historical SR10.4 fidelity or full controller integration."
+      ]
+    },
+    "editing_probe": "tools/theme-lab/tests/probe_qt6_text_widget.py validates multiline UTF-8, repeated undo/redo to exact prior content, Ctrl+Z, Ctrl+Y, Ctrl+Shift+Z, Ctrl+C/V/X/A, and native context-menu editing actions.",
+    "compilation": "python3 -m py_compile passed for the Qt6 gallery, recipe, route, tracker, probes and tests."
+  },
+  "evidence": {
+    "public_report": "/home/lsi/tempia/i170-qt6-public-34i2752_/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "public_report_sha256": "3b54d26e50766bbecfff923aa7d4287d39d623ac92813b8468f55e9b60fc5a14",
+    "native_result": "/home/lsi/tempia/i170-qt6-public-34i2752_/home/qtwidgets-proof/RESULTADO.json",
+    "native_result_sha256": "f69407085d642d13ac2bdfc3618e77f5b12357a95007825dbe5c431a04afa6f8",
+    "preview_receipt": "/home/lsi/tempia/i170-qt6-public-34i2752_/home/out/revisions/20261016T133704-cbf33babf25b/qt6-PREVIEW.json",
+    "preview_receipt_sha256": "bdb8f6957fe52d08129b51d0f2886171d8d90757f73d73b80d6b1d202830bf70",
+    "qt6_test_log": "/home/lsi/tempia/i170-qt6-text-20261016/qt6-tests.log",
+    "qt6_test_log_sha256": "da89cbf4708fa07ad6dec5139a29dd74d0f89f11b5e8e0fef31083fd52e4235c",
+    "qt5_test_log": "/home/lsi/tempia/i170-qt6-text-20261016/qt5-regression.log",
+    "qt5_test_log_sha256": "addd48c154d03b208033dfb47103766bc8226d3cb0a5b65dc9cc87b36215c922",
+    "screenshot": "docs/review/I170-QT6-TEXT-20261016.png",
+    "screenshot_sha256": "5a0e34ce844ea97df5c0470cfb0283a8a21b29a31e06b13046000d05fbb9c7d2",
+    "display": ":68"
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "3dc267e7817a80941dda3bc9c923e42994d19b7df671886b68eaae32cda5f014",
+    "tools/theme-lab/qt6_scrollbar_route.py": "f1941887bc4d8943688f772f063f7d8f8d9e46b95d195b60e8aba635ff6f3cb8",
+    "tools/theme-lab/qt6_scale_widget.py": "be5027d2731b3b42a7797d7e4b9a5eb5322e60a4e9be046676f352143534e5f5",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "5c1eb5d257edd0efd372160999ce6a81a2d9d61cfa8bf23d5b11a57371ff7f1f",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "fc2b2968cb590fcd489e4abe261e4c40c05fbefff867576f3f6e33d7b6a53e6a",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "b5038bad85baaf4114a6959e63809024a342f82649aa7068a7c0a7b4567fc484",
+    "tools/theme-lab/tests/probe_qt6_text_widget.py": "e7d23367064ec3a8a0b6c58a54b2b591aaea0420576184a4c648017a8e79e786"
+  },
+  "limits": [
+    "No direct QTextEdit comparison or matching metric was obtained from the Domain/OS SR10.4 VM.",
+    "Automated palette and native-widget checks do not establish historical fidelity or human approval."
+  ]
+}

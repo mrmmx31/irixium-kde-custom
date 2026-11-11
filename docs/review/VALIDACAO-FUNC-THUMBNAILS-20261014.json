@@ -1,0 +1,101 @@
+{
+  "work_board_item": "FUNC-thumbnails",
+  "user_revision": 2,
+  "definition_sha256": "bc6034fc268d37f1faf094423e58fc1cdca76d213c0bb0b524eddddcaf9ba4b3",
+  "status": "partial",
+  "assistant_status": "waiting_user",
+  "human_verdict_preserved": "refuse",
+  "source_changes": {
+    "product_qml_modified": false,
+    "test_added": "plasma/tests/test_domainos_iconbox_thumbnails.py",
+    "native_test_helper_updated": "plasma/tests/domainos-thumbnails-host.cpp",
+    "helper_reason": "The previous Xephyr probe posted QTest mouse-move events without moving the native cursor used by Plasma ToolTipArea enter/leave hit-testing."
+  },
+  "installed_source_snapshot": {
+    "path": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui",
+    "matching_files": [
+      "DomainOSIconbox.qml",
+      "DomainOSWindowThumbnails.qml",
+      "DomainOSWindowPreviewContents.qml"
+    ],
+    "sha256_matches_current_source": true,
+    "running_plasmashell_reload_proved": false
+  },
+  "tests": {
+    "component_lifecycle": {
+      "status": "passed",
+      "command": "python3 -B plasma/tests/test_domainos_thumbnails.py",
+      "passed": 16,
+      "total": 16,
+      "scope": "Private offscreen Qt fixture; unavailable-provider fallback, card activation, title mode, and provider lifecycle."
+    },
+    "full_iconbox_mode_integration": {
+      "status": "passed",
+      "command": "python3 -B plasma/tests/test_domainos_iconbox_thumbnails.py",
+      "passed": 1,
+      "total": 1,
+      "scope": "Production DomainOSIconbox and task-cell delegates with private fixture tasks; clickable unavailable cards; returning to titles removes preview content while retaining the same visible icon and label through hover."
+    },
+    "native_lifecycle": {
+      "status": "passed",
+      "command": "python3 -B plasma/tools/testar-domainos-miniaturas-lifecycle.py --saida /tmp/domainos-thumbnails-lifecycle-20261014-r1",
+      "passed": 59,
+      "total": 59,
+      "scope": "Real plasmawindowed, private KWin/Xvfb, three owned native windows, real cursor movement; empty cards and click, twelve tooltip-owner transitions, eight mode transitions, unload on close. No user profile change.",
+      "captures": [
+        {
+          "path": "/tmp/domainos-thumbnails-lifecycle-20261014-r1/EMPTY-CARDS.png",
+          "size_px": [564, 404],
+          "sha256": "bef49dbc649c03c79273648ffcfc9bc3931eb228dfd1897e2a3ac38234f97ac2"
+        },
+        {
+          "path": "/tmp/domainos-thumbnails-lifecycle-20261014-r1/RESTORED-TITLES.png",
+          "size_px": [488, 100],
+          "sha256": "2a98a25027df892ec90c59b46d48a5ef069c14aba206414b29c8db276a92b24c"
+        }
+      ]
+    },
+    "xephyr_native_capture": {
+      "status": "limited",
+      "command": "python3 -B plasma/tools/testar-domainos-miniaturas.py --saida /tmp/domainos-p09-thumbnails-xephyr-20261014-r2 --xephyr",
+      "passed_checks": 15,
+      "total_checks": 17,
+      "failed_checks": ["native_scenario_completed", "private_worker_exited_cleanly"],
+      "observed": {
+        "native_tooltip_visible": true,
+        "providers_created": 2,
+        "providers_loaded": 2,
+        "provider_frames_available": 0,
+        "fallback_cards_visible": true
+      },
+      "capture": {
+        "path": "/tmp/domainos-p09-thumbnails-xephyr-20261014-r2/NATIVE-THUMBNAILS-UNAVAILABLE.png",
+        "size_px": [564, 214],
+        "sha256": "1d991cadde3c875e16d260786484ec2677f4ad23ab28d5bf7797e490a94ddac0"
+      },
+      "limit": "The private KWin compositor inside Xephyr did not provide frames for its two owned test windows. This does not establish whether live-session thumbnail capture works; the observed fallback remains visible."
+    },
+    "broader_iconbox_suite": {
+      "status": "stopped_before_thumbnail_checks",
+      "command": "python3 -B plasma/tools/testar-domainos-iconbox.py --saida /tmp/domainos-iconbox-thumbnails-20261014-r1",
+      "completed_checks": 40,
+      "stopping_assertion": "escape_closes_operations_without_actions",
+      "scope_note": "An unrelated operations-menu assertion stopped the broader gesture suite before its later scenarios; this run is not evidence for or against thumbnail behavior."
+    }
+  },
+  "source_sha256": {
+    "plasma/tests/test_domainos_iconbox_thumbnails.py": "f2383e205404a0890f298cd057dd785e583f02f7a3d395d86ac8dbc170dc9a14",
+    "plasma/tests/domainos-thumbnails-host.cpp": "4af49b5ef337c5e5df33bdb3fc92c8f3bf9720c43b57b29a2467c955481381a7",
+    "plasma/tests/test_domainos_thumbnails.py": "694eda4b38732b45cab66fb8d09fb96a31621123c1b5b7e28df730987142a931",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowThumbnails.qml": "9cd7d0654e00935de42872698e18dc6692c0683553fc65aab513b76c801a4728",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowPreviewContents.qml": "7455a1c3576cabb01efd2a341ebd3b792b141eeafd83917e6d1f9c3e333a704e",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617559f15d01"
+  },
+  "remaining": [
+    "No product QML change was indicated by the focused tests; the requested fallback and mode switch work in the current source fixtures.",
+    "Positive thumbnail frames still need a native compositor session that actually provides them.",
+    "The user's refused evaluation remains unchanged; no manual approval was filled in."
+  ],
+  "recorded_at": "2026-10-14"
+}

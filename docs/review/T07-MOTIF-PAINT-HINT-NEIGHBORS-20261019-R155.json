@@ -1,0 +1,16 @@
+{
+  "item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-19T17:38:00Z",
+  "status": "defect-confirmed-before-fix",
+  "scope": "Hint placement in the Motif Manual Paint window only; no theme palette or historical visual changes.",
+  "evidence": {
+    "display": ":86",
+    "application_pid": 248739,
+    "capture": "~/tempia/goal-continue-20261019/hover-family.png",
+    "target": "Manual Paint family ComboBox",
+    "observed": "The native Motif tooltip stays outside its owner but is drawn over the tool buttons in the row below. Those neighboring controls are partially obscured while the hint is visible."
+  },
+  "impact": "T07's current geometry probe verifies owner separation, not separation from other interactive widgets. The Paint window demonstrates that owner-only validation is insufficient.",
+  "next": "Find a Motif-native placement mechanism or an app-local layout adjustment; extend a native test to assert no interactive sibling is covered before changing the implementation."
+}

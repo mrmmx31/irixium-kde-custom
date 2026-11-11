@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "item": "P04",
+  "user_revision": 3,
+  "checked_at": "2026-10-16",
+  "scope": "Read-only comparison of the installed Iconbox QML with the source already tested on Xephyr :61; no click injection or desktop mutation.",
+  "environment": {
+    "normal_session": "LSI native Wayland; Xwayland is :1",
+    "installed_applet": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel",
+    "normal_input_test": "not performed"
+  },
+  "source_and_installed_hashes": {
+    "DomainOSIconbox.qml": {
+      "source": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+      "installed": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+      "match": true
+    },
+    "DomainOSOperationsPanel.qml": {
+      "source": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+      "installed": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+      "match": true
+    },
+    "DomainOSOperationsMenu.qml": {
+      "source": "bf00dbd0ff3129b81274cddbe2bfbbc7ae5afa2bb8b00fba621f7cbf458c9895",
+      "installed": "bf00dbd0ff3129b81274cddbe2bfbbc7ae5afa2bb8b00fba621f7cbf458c9895",
+      "match": true
+    }
+  },
+  "prior_isolated_evidence": "docs/review/P04-OPERACOES-XEPHYR-20261015.json: two synthetic grouped windows; Operations popup remained visible, selection persisted on reopening, no action invoked.",
+  "limitation": "Matching installed/source hashes do not prove that the physical click in the normal Wayland session opens the popup. Available xdotool targets X11; no supported safe Wayland input injector is installed. No input was sent.",
+  "result": "Installed code matches the tested source. The user-reported production-session failure remains unresolved pending a normal-LSI click result or another safe native input route. No code/configuration changed."
+}

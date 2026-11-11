@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "R374",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Capture the native GTK2 vertical down-stepper normal, held, and released states in isolated Xvfb.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "fixture": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb via xvfb-run",
+    "input": "xdotool pointer/button events confined to the private Xvfb display",
+    "theme_bundle": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/bundles/41e63f50494e5c95229d803105e0bdf2309013898b5cb53ccf1d52d0ac9a8e5c",
+    "probe_source": "~/tempia/ia-tema/evidence/I167/r374-held-down-release-private-xvfb/held-probe.c",
+    "probe_source_sha256": "e10970976abb0def501114531ccad04fea69b8a52041c78c0792c13b5426dd3a"
+  },
+  "captures": {
+    "hover_normal": {
+      "path": "~/tempia/ia-tema/evidence/I167/r374-held-down-release-private-xvfb/hover-normal.png",
+      "sha256": "8b2819244994ac9e5875e7172cf68b1da31c95e5721a5c966013538aad9d1473"
+    },
+    "pressed": {
+      "path": "~/tempia/ia-tema/evidence/I167/r374-held-down-release-private-xvfb/pressed.png",
+      "sha256": "ae2d325158ec4d426074810418e84d640c5ee8b457e2c599c9100561b93af997"
+    },
+    "released_outside": {
+      "path": "~/tempia/ia-tema/evidence/I167/r374-held-down-release-private-xvfb/released-outside.png",
+      "sha256": "795ea7d3053ebe99e133b60cd91eab380c4120c4b92433797e382c0331018918"
+    }
+  },
+  "comparison": {
+    "cell_xyxy_exclusive": [
+      0,
+      526,
+      15,
+      541
+    ],
+    "reference_assets": [
+      "assets/scrollbar-stepper-down-normal.png",
+      "assets/scrollbar-stepper-down-pressed.png"
+    ],
+    "normal_vs_generated_normal": {
+      "different_pixels": 0,
+      "pixels_compared": 225
+    },
+    "held_vs_generated_pressed": {
+      "different_pixels": 0,
+      "pixels_compared": 225
+    },
+    "released_vs_generated_normal": {
+      "different_pixels": 0,
+      "pixels_compared": 225
+    },
+    "normal_to_held_glyph_change": {
+      "different_pixels": 53,
+      "pixels_compared": 225
+    },
+    "outer_trough_band_change_during_press": {
+      "different_pixels": 0,
+      "pixels_compared": 22
+    },
+    "release_to_normal_cell": {
+      "different_pixels": 0,
+      "pixels_compared": 225
+    }
+  },
+  "interpretation": "The GTK2 widget received a held pointer event in the isolated Xvfb. Its rendered lower cell exactly matches the generated normal and pressed assets. The 53 changed glyph pixels match the SR10.4 down-arrow transition mask; the outer trough band stays unchanged during the hold. Moving the pointer outside before release capture avoids mixing hover with relief. The whole scrollbar differs after the click because its thumb/value moved; the isolated arrow cell returns exactly to the normal asset.",
+  "limits": [
+    "This is native GTK2 runtime evidence in private Xvfb, not a live user application or new VM capture.",
+    "Only the vertical down direction was pressed; other directions, hover/disabled states, full application comparison and human visual review remain open.",
+    "No theme was installed and no desktop or VM input was sent."
+  ],
+  "validation": {
+    "gtk2_runtime_tests": "7 passed in this turn",
+    "py_compile": "passed in this turn",
+    "git_diff_check": "passed in this turn"
+  }
+}

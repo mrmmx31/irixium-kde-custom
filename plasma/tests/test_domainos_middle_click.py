@@ -11,7 +11,9 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
-_private = tempfile.TemporaryDirectory(prefix=".qa-domainos-middle-", dir=ROOT)
+private_root = Path(os.environ.get("IRIX_TEST_PRIVATE_ROOT", str(ROOT))).expanduser()
+private_root.mkdir(mode=0o700, parents=True, exist_ok=True)
+_private = tempfile.TemporaryDirectory(prefix=".qa-domainos-middle-", dir=private_root)
 for key in ("HOME", "XDG_CONFIG_HOME", "XDG_DATA_HOME", "XDG_CACHE_HOME", "XDG_STATE_HOME", "XDG_RUNTIME_DIR", "TMPDIR"):
     path = Path(_private.name) / key.lower()
     path.mkdir(mode=0o700)

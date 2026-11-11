@@ -1,0 +1,46 @@
+{
+  "id": "T07-MANUAL-PAINT-RECOVERY-DIALOG-HINTS-20261029-R161",
+  "work_item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-29T06:05:01Z",
+  "status": "implemented-static-review-pending",
+  "scope": "Add contextual hints to visible OK buttons in the manual-paint recovery result and load-error dialogs; retain the existing destination file-selector hints.",
+  "authority": {
+    "section": "work",
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+    "user_revision": 4,
+    "authorized": true,
+    "verdict": "approve"
+  },
+  "implementation": {
+    "file": "tools/theme-lab/src/view/manual_paint_recovery.c",
+    "sha256": "1feb41d9de17c5fc250ef0150e7e5c95c8766f0846e3327d79166e461e4f7718",
+    "before_sha256": "526df786487aceaeff04f0ae16e05504f6a86f8476a5949dbb6fd5a8e0a4fe9c",
+    "change": "The result dialog explains whether OK closes a recovery success or failure notice, preserving the source layer. The load-error dialog explains that OK closes the notice and that recovery copies valid layers to a new destination. The destination selector already receives its OK hint through tl_ui_file_dialog_hints.",
+    "change_record": {
+      "base_ref": "snapshot:sha256:570008b76c283ba83024b863bae150fff1c8e315ab7095ebe57881cb5cffbca5",
+      "result_ref": "worktree:sha256:1feb41d9de17c5fc250ef0150e7e5c95c8766f0846e3327d79166e461e4f7718",
+      "diff_sha256": "817397ee053f91416f9e60e7b2549c165e80704895a3c112cfd75e0328617c34",
+      "verification": "changes-comparison matched T07 definition and user revision 4; changes-diff matched the prepared patch byte-for-byte; all complete before/after contents were verified."
+    }
+  },
+  "static_audit": {
+    "message_dialog_call_sites": "Both Motif message-dialog paths now hint their visible OK button.",
+    "destination_selector": "The visible OK button already receives the existing path-specific file-dialog hint.",
+    "scope_limit": "Source inspection only; no runtime or rendered-tooltip claim."
+  },
+  "validation": {
+    "performed": [
+      "Static source inspection of dialog constructors and hint bindings.",
+      "Board change record content/hash verification.",
+      "JSON receipt parse and whitespace validation."
+    ],
+    "not_performed": [
+      "Build.",
+      "Automated tests.",
+      "GUI/Xephyr inspection."
+    ],
+    "manual_review": "Pending; no Xephyr session was opened or altered."
+  },
+  "next": "Keep T07 running for the user-controlled visual review; do not infer acceptance from this source correction."
+}

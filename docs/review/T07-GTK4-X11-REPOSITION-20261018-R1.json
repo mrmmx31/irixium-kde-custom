@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "kind": "domainos_review_evidence",
+  "item": "T07",
+  "family": "GTK4",
+  "subtask": "Tooltip position over vertical scrollbars",
+  "recorded_at": "2026-10-18",
+  "environment": {
+    "display": ":91",
+    "resolution": "1600x1200",
+    "session": "existing Xephyr, reused user session bus",
+    "gtk": "4.18.6"
+  },
+  "baseline": {
+    "exit_code": 0,
+    "mapped_targets": 31,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "stable_ms": 400,
+    "closed_after_leave": true,
+    "vertical_scrollbars": [
+      {"page": 0, "control_rect_px": [820,333,15,232], "tooltip_rect_px": [621,461,420,51], "overlap": true},
+      {"page": 1, "control_rect_px": [828,102,15,486], "tooltip_rect_px": [629,357,420,51], "overlap": true}
+    ],
+    "limitations": [
+      "The accessibility bus connection was refused; the hover assertions completed.",
+      "No palette or historical pixel comparison was performed."
+    ]
+  },
+  "prototype": {
+    "method": "Temporary harness-only Xlib XMoveWindow relocation of GTK4 native tooltip to the right of its hovered scrollbar.",
+    "exit_code": 0,
+    "mapped_targets": 31,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "page0_vertical_scrollbar": {
+      "initial_after_move_px": [840,461,420,51],
+      "stable_px": [840,461,420,51],
+      "overlap": false
+    },
+    "page1_vertical_scrollbar": {
+      "initial_after_move_px": [848,357,420,51],
+      "stable_px": [629,357,420,51],
+      "overlap": true,
+      "interpretation": "GTK repositioned the tooltip during initial layout, undoing the XMoveWindow placement."
+    },
+    "harness_aggregate_caveat": "The existing small_control_nonoverlap flag used the post-move initial position, not the final stable position. The page1 stable rectangle was independently checked against the scrollbar and overlaps it. Do not use that aggregate as proof of stable non-overlap."
+  },
+  "product_changes_retained": false,
+  "worker_sha256_restored": "b5ad2f09b0ef4645d318fbb32099fac7351a728898dd9a961440ad40a9609",
+  "artifacts": {
+    "baseline_stdout": "~/tempia/t07-gtk4-reuse-bus-20261018/probe.stdout",
+    "baseline_stderr": "~/tempia/t07-gtk4-reuse-bus-20261018/probe.stderr",
+    "prototype_stdout": "~/tempia/t07-gtk4-reuse-bus-20261018/xmove.stdout",
+    "prototype_stderr": "~/tempia/t07-gtk4-reuse-bus-20261018/xmove.stderr"
+  },
+  "conclusion": "GTK4 native tooltip coverage works, but the stable placement requirement remains partial for vertical scrollbars. Reusing the existing bus avoids the private-D-Bus timeout. Direct X11 movement is not a stable correction; no product implementation was changed."
+}

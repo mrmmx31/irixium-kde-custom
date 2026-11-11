@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-11T05:34:37.752298+00:00",
+  "item": "I118",
+  "revision": 1,
+  "scope": "GTK3 arrow disabled/backdrop proposal overrides",
+  "native_pixels": {
+    "result": ".qa-theme-lab-arrow-context-mh_hfz03/home/results/RESULTADO.json",
+    "sha256": "1fb285f39aebf30a5de50c0c1469928872ed8c82f5d2a2b966a30f005d7114ee",
+    "passed": true,
+    "cases": 24,
+    "checks": 1344,
+    "states": [
+      "normal baseline",
+      "disabled",
+      "disabled-backdrop",
+      "backdrop",
+      "restored"
+    ],
+    "input": "Native set_sensitive, controlled BACKDROP flag; not WM focus handling",
+    "schemes": [
+      "DomainOS-SR10.4",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ]
+  },
+  "native_css": {
+    "log": "/tmp/i118-context-css.log",
+    "combinations": 12,
+    "passed": true
+  },
+  "backend": {
+    "log": "/tmp/i118-context-backend-final2.log",
+    "count": 28,
+    "passed": true,
+    "initial_test_failure": "Expected nonexistent insensitive face role; corrected assertion to existing shared state_css face contract without changing palette rule"
+  },
+  "editor": {
+    "build": "/tmp/i118-context-editor-build.log",
+    "unit": "/tmp/i118-context-editor-unit.log",
+    "pointer_session": 26505,
+    "pointer_log": "/tmp/i118-context-editor-native.log",
+    "pointer_status": "passed",
+    "terminal_exit": 0,
+    "result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-om1ajaet/RESULTADO.json",
+    "disabled_backdrop_editor_independent": true,
+    "reload_preserved": true
+  },
+  "visual_inspection": "DomainOS-SR10.4-disabled-raised-1/disabled-backdrop.png examined: two real bars, all arrow shapes and frames visible",
+  "historical_fidelity_claimed": false,
+  "personal_window_changed": false,
+  "scope_progress_percent": 55,
+  "remaining": [
+    "Hover/focus rules and translation",
+    "Other pieces",
+    "Preview startup/reopen readiness",
+    "Personal delivery"
+  ],
+  "hashes": {
+    "tools/theme-lab/backend.py": "0b575fc0e654409b120e915c1fe9fbfa7d188016dc08c5f77c24b55acedcedc4",
+    "tools/theme-lab/src/view/part_relief_editor.c": "c96bd243e98070237a5a183958d128eade97de32843cbe53aeead4505e6420ad",
+    "tools/theme-lab/tests/test_backend.py": "0239bcb91b55b629ce96f45b8eb008e6f86c924a2b8eef367427614f182fa6ec",
+    "tools/theme-lab/tests/test_state_relief_css.py": "4c82f0ce1699111dded120a3440ec14d758b80479238d67e95a3ab935a6813ea",
+    "tools/theme-lab/tests/test_arrow_relief_native.py": "0aad5a4fec5efae13714e249a23341fb53d03af0df2f564aa6c421adadf890a4",
+    "tools/theme-lab/tests/test_arrow_relief_context_native.py": "e08953ab4ed0f61e8146b4563de6d2518e99288780cc9f7d77d9d405b87607a8",
+    "tools/theme-lab/tests/test_controller_spin.py": "6959528295c21c4f4a7e966d104fe854bbdc64f1dcfb8e886e959e83bf529d29"
+  }
+}

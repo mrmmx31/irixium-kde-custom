@@ -1,0 +1,112 @@
+{
+  "id": "I437",
+  "recorded_at": "2026-10-17",
+  "scope": "Qt Widgets QScrollArea and QTextEdit/QPlainTextEdit viewport-to-scrollbar gap; no arrow artwork changes",
+  "reference": {
+    "system": "Domain/OS SR10.4 / HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "target_gap_px": 4,
+    "measured_guest_metrics": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json"
+  },
+  "implementation": {
+    "mechanism": "per-widget QAbstractScrollArea.setViewportMargins after visible geometry measurement",
+    "global_style_changed": false,
+    "palette_changed": false,
+    "scrollbar_extent_changed": false,
+    "unsupported_classes": "QTreeView-based list widgets are recorded as skipped; their bar/viewport geometry did not provide a stable adjacent rectangle in the native gallery."
+  },
+  "evidence": {
+    "direct_probe_dir": "/home/lsi/tempia/i437-qt-spacing-20261017-r4",
+    "qt5": {
+      "areas": {
+        "final_gap_px": [
+          4,
+          4
+        ],
+        "target_gap_px": 4,
+        "added_margin_px": 0,
+        "finalized": true,
+        "palette_unchanged": true,
+        "extent_unchanged": true,
+        "normal_arrow_pixels_equal": true,
+        "press_changed_pixels": 57,
+        "release_diff_pixels": 0
+      },
+      "plainTextEdits": {
+        "final_gap_px": [
+          4,
+          4
+        ],
+        "target_gap_px": 4,
+        "added_margin_px": 0,
+        "finalized": true,
+        "palette_unchanged": true,
+        "extent_unchanged": true,
+        "normal_arrow_pixels_equal": true,
+        "press_changed_pixels": 57,
+        "release_diff_pixels": 0
+      }
+    },
+    "qt6": {
+      "areas": {
+        "final_gap_px": [
+          4,
+          4
+        ],
+        "target_gap_px": 4,
+        "added_margin_px": 0,
+        "finalized": true,
+        "palette_unchanged": true,
+        "extent_unchanged": true,
+        "normal_arrow_pixels_equal": true,
+        "press_changed_pixels": 57,
+        "release_diff_pixels": 0
+      },
+      "plainTextEdits": {
+        "final_gap_px": [
+          4,
+          4
+        ],
+        "target_gap_px": 4,
+        "added_margin_px": 0,
+        "finalized": true,
+        "palette_unchanged": true,
+        "extent_unchanged": true,
+        "normal_arrow_pixels_equal": true,
+        "press_changed_pixels": 57,
+        "release_diff_pixels": 0
+      }
+    },
+    "integrated_qt5": "/home/lsi/tempia/qt5-scrollbar-xephyr/run-84fae502db52/home/qt5widgets-proof/RESULTADO.json",
+    "integrated_qt6": "/home/lsi/tempia/i170-qt6-public-esdzsgv6/home/qtwidgets-proof/RESULTADO.json",
+    "integrated_qt5_status": "passed after aligning stale Qt5 combo receipt keys",
+    "integrated_qt6_status": "passed with test wait increased to 65 s; the first run hit the previous 35 s timeout before the gallery completed its proof",
+    "integration_guards": {
+      "qt5_personal_home_exposed": false,
+      "qt5_system_bus_exposed": false,
+      "qt6_personal_home_exposed": false,
+      "qt6_system_bus_exposed": false
+    }
+  },
+  "limits": [
+    "Technical geometry proof does not claim historical pixel fidelity or human visual approval.",
+    "Disabled and hover arrow fidelity are not part of the spacing proof.",
+    "This receipt does not complete the broad arrow comparison requested for the next review phase."
+  ],
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qt_scrollbar_spacing.py": "9acdce92c99a127ebb2a69d02fb3390a7d15a706b8876c8cba5248d25bc1de27",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "fc327c8e27543902f13749bc8a38e754b9fce3ed1c164617a82034e138a5f4db",
+    "tools/theme-lab/tests/probe_qt_scroll_spacing.py": "ef4259caeaaf958243b5242107acde6930bda135b0795d8919bd14a075d9df41",
+    "tools/theme-lab/tests/probe_qt5_scrollbar_widget.py": "f821e55019669b183a76d43cdf7b32fa76d752b2002aacd6595d18630a10ff33",
+    "tools/theme-lab/tests/probe_qt6_scrollbar_widget.py": "1138b2f2420cf7000349c3b8a918dcfcaa4294c78b78bed74b0e0d86e2b662fb",
+    "tools/theme-lab/tests/test_qt5_scrollbar_xephyr.py": "8c89a828cee342488cec8757785cf67f973d1eb1562f5d7c0d0e2c448e0b1d35",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "79809373c561c9bd5ae689850663527ecad2030fb69925813764b120f2da1b4a",
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07",
+    "docs/referencias/domainos-sr104/trash-can-normal.png": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+  },
+  "board_closure": {
+    "status": "pending",
+    "reason": "The board requires full verified Before/After versions before done. qt6_demo.py already contains local changes from other demands and no exact pre-change snapshot exists; no unrelated diff was attributed or base invented. The waiting reply was not saved because the board state file was busy."
+  }
+}

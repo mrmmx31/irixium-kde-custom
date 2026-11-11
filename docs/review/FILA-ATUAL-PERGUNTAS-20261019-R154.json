@@ -1,0 +1,19 @@
+{
+  "id": "FILA-ATUAL-PERGUNTAS-20261019-R154",
+  "checked_at_utc": "2026-10-19T17:30:15Z",
+  "scope": "Acknowledge the user's statement that all pending questions in Fila Atual were answered; close only answered question items in section work.",
+  "agent_context": "theme",
+  "section": "work",
+  "items": [
+    {"id":"Q335","revision":2,"closure":"closed","answer":"Keep Volume visible; current appearance is okay and icons are deferred."},
+    {"id":"Q338","revision":2,"closure":"closed","answer":"Thumbnails are accessible; session cache and reduced flicker are a separate follow-up."},
+    {"id":"Q359","revision":2,"closure":"closed","answer":"Use gedit as the GTK3 frame integration example; create a separately authorized task before implementation."},
+    {"id":"Q360","revision":2,"closure":"closed","answer":"Operations works in the production session; no broader P04 conclusion inferred."},
+    {"id":"Q372","revision":2,"closure":"closed","answer":"Choose an isolated, DomainOS-specific QML integration; its own demand and authorization are still required."},
+    {"id":"Q373","revision":1,"closure":"closed","answer":"Choose a read-only transient bridge from the tray owner to ConfigView; proposal only, no implementation authorization."}
+  ],
+  "preserved": ["All user notes, verdicts, authorization values, revisions, and response timestamps."],
+  "non_authorizations": ["Closing a question does not authorize its derived implementation or change any task authorization."],
+  "verification": "Read-back confirmed closure_event.state=closed for all six IDs, assistant status done, and original user revisions unchanged.",
+  "result": "All six answered questions in the work section were acknowledged and closed. No other section or task was modified."
+}

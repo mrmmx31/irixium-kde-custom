@@ -1,0 +1,89 @@
+{
+  "item": "I178",
+  "revision": 1,
+  "definition_sha256": "7a6c44875b14758256a3b4f39725df782846232438ebc2b3b8b416bde2609984",
+  "date": "2026-10-14",
+  "status": "waiting_user_architecture_choice",
+  "scope": "GTK3 populated GtkTreeView frame, without painting cells; Domain/OS SR10.4 / HP VUE 2.01 contract 2px inset.",
+  "environment": {
+    "display": ":69",
+    "resolution_px": [
+      1600,
+      1200
+    ],
+    "gtk": [
+      3,
+      24,
+      49
+    ],
+    "theme": "DomainOS-SR10-4-KDE-Reload",
+    "scale": "1:1",
+    "fixture": "Native GtkScrolledWindow + GtkTreeView, artificial 65-row ListStore and one selected row; separate empty-tree baseline."
+  },
+  "palette_inputs": {
+    "blue": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "yellow": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc"
+  },
+  "captures": {
+    "blue-empty-baseline.png": "5affa16e054737118ecfecd25a352ab6136a4949eb02122f7f13660c5687785e",
+    "yellow-filled-baseline.png": "acb729c6ab4af953e12cd36d3ee2fc1face738fe9b5a8e7c212b8c31adb92242",
+    "yellow-filled-inset-shadow.png": "71e6316c7b4d7f9b48e3555588c41e79f7934763147ebccb74fb7d71b7c078e2",
+    "yellow-filled-solid-frame.png": "aa6019d312d5f14317cfd4e90b3ac74db6e6b758494fe99d1ae4fc48074bb62a",
+    "yellow-filled-transparent-border.png": "acb729c6ab4af953e12cd36d3ee2fc1face738fe9b5a8e7c212b8c31adb92242"
+  },
+  "pixel_comparison": {
+    "transparent_border": {
+      "bbox": null,
+      "changed_pixels": 0
+    },
+    "inset_shadow": {
+      "bbox": [
+        0,
+        35,
+        661,
+        481
+      ],
+      "changed_pixels": 44054
+    },
+    "solid_frame": {
+      "bbox": [
+        0,
+        35,
+        661,
+        481
+      ],
+      "changed_pixels": 44054
+    }
+  },
+  "finding": "GtkTreeView border:2px solid transparent produced 0 changed pixels versus same-palette baseline. Opaque 2px CSS border and inset box-shadow changed 44,054 pixels across the populated content region and visibly drew repeated borders in cells/rows. The enclosing GtkViewport frame remains separate from a main TreeView frame. No product file was changed.",
+  "limitation": "A safe frame cannot be delivered through this GTK3 theme CSS route. Application-level composition (e.g. wrapping the view with an explicit frame/overlay) requires a separately scoped app integration and cannot be inferred from this item.",
+  "cleanup": "Temporary probe processes stopped; only isolated files under /home/lsi/tempia/domainos-i178-20261014; Xephyr layout and personal profile unchanged.",
+  "next": "Question Q359 asks whether to preserve the documented GTK3 theme limitation or open a separate authorized application-integration demand. Do not modify another toolkit or app before authorization.",
+  "capture_dimensions_px": {
+    "blue-empty-baseline.png": [
+      680,
+      500
+    ],
+    "yellow-filled-baseline.png": [
+      680,
+      500
+    ],
+    "yellow-filled-inset-shadow.png": [
+      680,
+      500
+    ],
+    "yellow-filled-solid-frame.png": [
+      680,
+      500
+    ],
+    "yellow-filled-transparent-border.png": [
+      680,
+      500
+    ]
+  },
+  "empty_tree_capture_source": {
+    "rows": 0,
+    "palette": "blue",
+    "source_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70"
+  }
+}

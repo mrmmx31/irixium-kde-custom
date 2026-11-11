@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R511",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Regression coverage for the GTK2 DomainOS horizontal stepper route that previously scaled 15x15 assets into a 15x11 destination.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "file": "tests/test_domainos_motif.py",
+    "before_sha256": "da4c30b21cc94aad817ec268f27c782e2860243947b60f2438a9833cb71f2b1c",
+    "after_sha256": "3294b1b0decbb04cd26384157b70f626347be93a1923f07cf275007d4e2a6a92",
+    "base_snapshot": "~/tempia/domainos-theme-work/i167-r511-before/tests/test_domainos_motif.py",
+    "summary": "One test covers all 10 generated horizontal LEFT/RIGHT STEPPER mappings across NORMAL, PRELIGHT, ACTIVE, SELECTED, and INSENSITIVE. It requires overlay_file, overlay_stretch=FALSE, rejects plain file= stretching, and verifies referenced PNGs are 15x15."
+  },
+  "validation": [
+    {
+      "command": "TMPDIR=/home/lsi/tempia/domainos-theme-work PYTHONPATH=tests python3 -m unittest test_domainos_motif.GtkDomainOSTest.test_gtk2_horizontal_steppers_keep_square_overlays_for_all_states",
+      "result": "passed: 1 test"
+    },
+    {
+      "command": "TMPDIR=/home/lsi/tempia/domainos-theme-work PYTHONPATH=tests python3 -m unittest test_domainos_motif",
+      "result": "passed: 26 tests"
+    }
+  ],
+  "limits": [
+    "This guards generated GTK2 configuration and asset dimensions; it does not replace native interaction rendering or historical VUE held-state evidence.",
+    "V03 remains unreviewed; no acceptance inferred.",
+    "No installed theme, user application, desktop settings, or VM was changed."
+  ],
+  "status": "recorded test-only code change; GTK2 visual work remains partial",
+  "code_change_record": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "recorded": true,
+    "record_sha256": "30eecb7eea490d639aaac6a1a0362f09306ed5180877645a58b09a090bfa94a6",
+    "evidence_dir": "~/tempia/board/diff-records/record-tcr4hyuu"
+  }
+}

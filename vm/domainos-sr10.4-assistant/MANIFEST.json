@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "project_owner": "irixium-kde-custom",
+  "purpose": "VM de referência principal deste projeto para Domain/OS SR10.4 com HP VUE 2.01 em Apollo DN3500 no MAME",
+  "canonical_disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "repository_local_hardlink": "vm/domainos-sr10.4-assistant/private/dn3500_sr10.4.assistant-20261018.awd",
+  "disk_size_bytes": 398458880,
+  "disk_policy": "runtime disk and private disk name are hard links to the same live inode; ignored by Git; never copy or replace while MAME is running",
+  "base_backup": {
+    "path": "~/Downloads/DomainOS-SR10.4-backup-base-20261014.zip",
+    "archive_sha256": "fa79d20bf59c8dc28d7a9893186085411dca29c0650ea7dbea4739c0ea54206c",
+    "member": "DomainOS-SR10.4/discos/dn3500_sr10.4.awd",
+    "member_sha256": "de5d44ad44b62a9ab7368902a8fb1c65aed7994877122794f5d9469706737645",
+    "warning": "pristine base only; not a replacement for the current assistant clone"
+  },
+  "mame": {
+    "version": "0.276",
+    "machine": "dn3500",
+    "launch_script": "vm/domainos-sr10.4-assistant/runtime/abrir-domainos-assistant-vm.sh",
+    "profile": {
+      "main_cpu_percent": 100,
+      "ethernet_cpu_percent": 10,
+      "frameskip": 4,
+      "throttled": false,
+      "apply_clocks_after_network_ready": true
+    },
+    "mouse_capture": "AltGr releases capture temporarily; user reports capture returns when MAME window is reactivated with pointer outside",
+    "screen_wake": "physical mouse movement or physical keyboard input"
+  },
+  "network": {
+    "isolation": "MAME-specific network namespace; created by launch script",
+    "guest_address": "192.168.240.2",
+    "host_alias": "10.253.104.20",
+    "ftp_port": 21,
+    "ftp_mode": "active; client return/source address 192.168.240.1 via helper",
+    "telnet_port": 23,
+    "helper": "vm/domainos-sr10.4-assistant/runtime/run-in-assistant-vm-network.sh",
+    "direct_guest_access_from_host": false,
+    "retired_aliases": [
+      "10.253.104.10"
+    ]
+  },
+  "configuration_and_rules": "docs/DOMAINOS-REGRAS-VM.md",
+  "owner_scope": "This VM is exclusive to irixium-kde-custom and must not be shared with other projects or substituted with another clone.",
+  "canonical_runtime": "vm/domainos-sr10.4-assistant/runtime/",
+  "legacy_tempia_path": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/ (symlink to canonical runtime)"
+}

@@ -1,0 +1,49 @@
+{
+  "id": "R595",
+  "date_utc": "2026-10-28T17:51:38Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "upstream": {
+    "repository": "https://github.com/KDE/plasma-workspace",
+    "tag": "v6.3.6",
+    "file": "applets/kicker/plugin/windowsystem.cpp",
+    "sha256": "598dde77dd4dc486a15b75183c2ce9bf05dbbf12fe60e15bd383c72b9793f797"
+  },
+  "confirmed_source_path": [
+    {
+      "file": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListView.qml",
+      "lines": "64-77",
+      "fact": "A 70 ms hover submenu creation turns hideOnWindowDeactivate off, creates the dialog, calls windowSystem.forceActive(childDialog.mainItem), then sets mainItem.focus=true."
+    },
+    {
+      "file": "applets/kicker/plugin/windowsystem.cpp",
+      "lines": "33-39",
+      "fact": "The exact Plasma 6.3.6 WindowSystem::forceActive implementation unconditionally calls KX11Extras::forceActiveWindow(window->winId()); it has no Wayland guard."
+    },
+    {
+      "file": "applets/kicker/plugin/windowsystem.cpp",
+      "lines": "62-68",
+      "fact": "monitorWindowVisibility only connects QQuickWindow::visibilityChanged; it is not the source of the X11-only warning."
+    },
+    {
+      "file": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDialog.qml",
+      "lines": "29-32",
+      "fact": "The submenu sets kicker.expanded=false when that dialog receives windowDeactivated, except during destruction."
+    }
+  ],
+  "journal_correlation": "Current lsi plasmashell PID 505510 reported the X11-only forceActiveWindow warning, ItemListDialog shadow recreation failures and eglSwapBuffers surface 0x0 during menu activity on Wayland.",
+  "interpretation": "The warning is explained exactly by Kicker v6.3.6 source. A Wayland focus-transfer failure followed by submenu deactivation is a credible route to the reported close-on-hover, but the logs do not prove that sequence caused the user symptom. R593 still lacks live validation.",
+  "action": "No code change. Keep KDE source untouched. If R593 does not resolve the live case, isolate a theme-local compatibility wrapper that avoids the X11-only forceActive method on Wayland and uses a Wayland-supported focus/activation path.",
+  "validation": {
+    "exact_tag_source_verified": true,
+    "current_runtime_reproduced": false,
+    "tests_run": false,
+    "plasmashell_restarted": false
+  },
+  "next": [
+    "Load R593 only during a safe reload and observe focus, search typing, and hover into a category submenu.",
+    "If failure remains, implement the compatibility wrapper in this repository and compare its behavior; do not patch /usr/share KDE source.",
+    "Use Q510 answer to pursue the app-launch stall separately."
+  ]
+}

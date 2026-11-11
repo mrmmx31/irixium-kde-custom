@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T13:02:19.130027+00:00",
+  "item": "T08",
+  "revision": 1,
+  "status": "partial",
+  "changes": [
+    "Exportação usa --export e generated/exports, preservando latest.json da prévia.",
+    "SCENE.json e COMPARISON.json registram cena salva, hashes e diferenças exatas.",
+    "Instalação e execução visual não são inferidas da comparação."
+  ],
+  "checks": {
+    "proposal_export": "3 passed",
+    "runtime_dependency_closure": "2 passed",
+    "strict_product_build": "passed",
+    "backend_initial": "33 tests, 2 ENOSPC errors: /tmp inode exhaustion",
+    "backend_retry": "33 passed in private repository directory"
+  },
+  "remaining": [
+    "Pacote reduzido a mudanças e dependências.",
+    "Comparação e caminho da exportação na interface.",
+    "Fluxos nativos de abrir/salvar/importar e recuperação."
+  ],
+  "personal_windows_changed": false,
+  "estimated_stage_progress_percent": 20,
+  "percentage_basis": "Primeira etapa de isolamento/comparação; pacote mínimo, UI e fluxos nativos ainda pendentes."
+}

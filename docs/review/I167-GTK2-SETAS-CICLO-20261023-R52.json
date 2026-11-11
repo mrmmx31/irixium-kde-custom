@@ -1,0 +1,70 @@
+{
+  "id": "I167",
+  "receipt": "R52",
+  "date": "2026-10-23",
+  "checked_at_utc": "2026-10-23T03:28:00Z",
+  "family": "GTK2 scrollbar arrows: held/released consistency in four directions",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "reference_rule": "tools/domainos_scrollbar_rules.json: while held, exchange light/dark relief, preserve face and silhouette; release restores normal.",
+  "validation": {
+    "gtk2": "2.24.33",
+    "suite": "R45 public DomainOS-SR10.4 palette run",
+    "result_file": "~/tempia/.qa-gtk2-public-v3snxnog/results.json",
+    "result_sha256": "ff4109fbf2ff751102eb7f8ed277de99365b9f3b31f1a96c212cd84890935093",
+    "screenshots_sha256": {
+      "arrow-scroll_h-left-hover.png": "3fc03ea48e5923184dd63a07a0d96bd0b9561770cdd0e4b9d38a4c966804d85f",
+      "arrow-scroll_h-left-held.png": "ab1cac24934dd4f236413736e6228994497b5fea7b25c75bfff98653b853a623",
+      "arrow-scroll_h-left-released.png": "4de070cc3810a592c33d6e91ba58eeed19b59b8438bab89c2b0f8d321a2ac080",
+      "arrow-scroll_h-right-hover.png": "4de070cc3810a592c33d6e91ba58eeed19b59b8438bab89c2b0f8d321a2ac080",
+      "arrow-scroll_h-right-held.png": "bcf94c9821ec391047c84f0566a5b2ac71f4f88545fffa7c9fd64bc50d6f3681",
+      "arrow-scroll_h-right-released.png": "3fc03ea48e5923184dd63a07a0d96bd0b9561770cdd0e4b9d38a4c966804d85f",
+      "arrow-scroll_v-up-hover.png": "3fc03ea48e5923184dd63a07a0d96bd0b9561770cdd0e4b9d38a4c966804d85f",
+      "arrow-scroll_v-up-held.png": "cf418912122c8e648b58411b917de173d35986350e56f308af68bcc3fac62d92",
+      "arrow-scroll_v-up-released.png": "38a972dfb52449afdd263b5a6bc475a1b1d1b4b21cb72a942118008d252af977",
+      "arrow-scroll_v-down-hover.png": "38a972dfb52449afdd263b5a6bc475a1b1d1b4b21cb72a942118008d252af977",
+      "arrow-scroll_v-down-held.png": "fc32c3338484184a124edfc38072e37a4f9bb8836bad50b033fe49d5871931cb",
+      "arrow-scroll_v-down-released.png": "3fc03ea48e5923184dd63a07a0d96bd0b9561770cdd0e4b9d38a4c966804d85f"
+    },
+    "directions": {
+      "left": {
+        "normal_to_held_changed_pixels": 53,
+        "expected_relief_pixels": 53,
+        "swapped_rule_difference_pixels": 0,
+        "release_to_hover_difference_pixels": 0
+      },
+      "right": {
+        "normal_to_held_changed_pixels": 53,
+        "expected_relief_pixels": 53,
+        "swapped_rule_difference_pixels": 0,
+        "release_to_hover_difference_pixels": 0
+      },
+      "up": {
+        "normal_to_held_changed_pixels": 53,
+        "expected_relief_pixels": 53,
+        "swapped_rule_difference_pixels": 0,
+        "release_to_hover_difference_pixels": 0
+      },
+      "down": {
+        "normal_to_held_changed_pixels": 53,
+        "expected_relief_pixels": 53,
+        "swapped_rule_difference_pixels": 0,
+        "release_to_hover_difference_pixels": 0
+      }
+    },
+    "pixel_method": "For each captured 15x15 native cell, compared held against a copy of the previous/released cell with semantic light and dark swapped in the 11x11 glyph area. Also compared the released cell with the hover baseline."
+  },
+  "historical_scope": {
+    "direct_vm_comparison": "down arrow only, R51; matches recorded SR10.4 glyph in both states",
+    "other_directions": "up/left/right pass the shared pressed relief rule, but have no separate pressed SR10.4 capture"
+  },
+  "limits": [
+    "This verifies public GTK2 widget rendering and state transitions, not historical pressed-state pixel identity for up/left/right.",
+    "No source changes, user profile/XChat changes, or MAME commands."
+  ],
+  "next": "Continue the authorized GTK2 family audit; keep SR10.4 historical claims limited to the measured down-arrow cycle and obtain additional native captures only when the existing MAME request is resolved."
+}

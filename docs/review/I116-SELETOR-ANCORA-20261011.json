@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T03:39:46.075108+00:00",
+  "item": "I116",
+  "revision": 1,
+  "phase": "anchor_selector_integration",
+  "implementation": [
+    "Combobox Início/Fim só nas barras Motif/GTK3 com hint",
+    "Troca preserva origem por tamanho e deslocamento nativos; recusa medida ausente e geometria ainda não aplicada",
+    "Offset GTK opcional e validado no IPC; controles ainda não mapeados continuam reportando dimensões sem inventar offset",
+    "Controller salva representação nova na cena com hash atualizado; demais famílias continuam bloqueadas",
+    "Arraste Motif usa extremidade e restrições XmForm"
+  ],
+  "checks": {
+    "strict_C99": "passed",
+    "model": 935,
+    "backend": 24,
+    "scene": 15,
+    "IPC_offset_pair_types_stale_transactional": "passed",
+    "native_Motif_selector_operation_roundtrip": "passed",
+    "GTK_selector_arithmetic_with_supplied_offset": "passed",
+    "GTK_offsets_measured_in_both_native_origins": "passed",
+    "GTK_native_anchor_both_origins": "passed",
+    "missing_and_pending_metrics_refused_without_mutating_recipe": "passed"
+  },
+  "remaining": [
+    "Teste do clique do seletor pelo controlador completo com persistência e eventos nativos",
+    "Entrega pessoal coordenada"
+  ],
+  "estimated_stage_progress_percent": 90,
+  "limits": [
+    "Teste da operação GTK no seletor usa offset fornecido artificialmente; emissão do offset foi provada separadamente em GTK real. Não substitui ensaio completo do controlador.",
+    "Nenhuma janela pessoal recarregada ou avaliação humana preenchida",
+    "Não comprova fidelidade histórica de fontes/cores"
+  ],
+  "hashes": {
+    "tools/theme-lab/src/view.c": "bd98bd29b06f90ab222bf0f602e42a01b48f504ec2a6135978f42dbd8781a4fa",
+    "tools/theme-lab/src/controller.c": "2c380d7f8922a70e23c4cff84bcf40d2e407b1080e49f217e54a8b1fd2848720",
+    "tools/theme-lab/preview_gtk.py": "bfc3ad8a88ab3bba04d89583fc45a78a3d7ee806afb938c1f7c92d95e9d91215",
+    "tools/theme-lab/src/preview_event.c": "5f6293e74353e0e6fb25a3c07e01e67bad1e8efa94b1743f86dbaa4075a34b32",
+    "tools/theme-lab/include/native_metrics.h": "006c2452656dacdb63c4a4c1fa396d59798f8ea2a3fd27ce5f55d60067eb3515",
+    "tools/theme-lab/tests/native_metrics_view.c": "ae88f1cd3370fc448def94aee4fcb7cbdb6e197e89bab7480b00c3b840339833",
+    "tools/theme-lab/tests/test_native_metrics.py": "75a03e522c5077ea1d59d1e6e4a33940027decc0dbc28fc6898a7d711c4469fc",
+    "tools/theme-lab/tests/preview_event_test.c": "3cc65803376cf18a061d33582cbe87a4572888447e5de3f6edccea58bfb51b68",
+    "tools/theme-lab/backend.py": "fce4ac80bd2ca080963bf706f0c34ccb926f26330810e014bc8deee5bb44e005",
+    ".qa-i116-selector/native-r3.log": "200afa58323f0bf8091eac99046284c82abeb39d206208e2dde09e96a6bf3d80"
+  }
+}

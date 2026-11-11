@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "R661",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "filemanager-resting-down-cell-context-delta-isolated",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source_capture": {
+    "path": "records/ia-tema/I167/R660/domainos-sr104-after-wake-r660.png",
+    "sha256": "e19e032319afc07f9dd737f709318205480564e731c613df99f89c001457fdb6",
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "state": "resting; no mouse input; pointer at top edge outside scrollbar cells"
+  },
+  "comparison": {
+    "method": "1:1 RGB cell comparison; no resampling",
+    "capture_origin_xy": [622, 372],
+    "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "reference_origin_xy": [4, 242],
+    "cell_px": [15, 15],
+    "different_pixels": 11,
+    "difference_bbox_xyxy": [2, 0, 12, 0],
+    "different_pixels_by_row": {"0": 11, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0, "14": 0},
+    "observed_row0_rgb": "#6688b5 across inner x=2..12",
+    "reference_row0_rgb": "x=2 is #c4d5ed; x=3..12 are #3e536e"
+  },
+  "cross_context": {
+    "second_visible_window_down_arrow": "0/225 differences in R660",
+    "gtk2_installed_renderer_down_arrow": "0/225 differences in R500"
+  },
+  "interpretation": "The File Manager cell preserves its outer rails and remaining 14 rows exactly; its top inner bevel row is replaced by face color. This is a context-specific resting-state delta. Thumb/endpoint composition, application-specific rendering, and disabled-state are hypotheses only; cause not established. Do not change GTK2 geometry or colors from this single observation.",
+  "side_effects": {
+    "additional_vm_input": false,
+    "desktop_or_user_theme_changed": false,
+    "applications_restarted": false
+  },
+  "artifacts": "records/ia-tema/I167/R661/ARTIFACTS.json"
+}

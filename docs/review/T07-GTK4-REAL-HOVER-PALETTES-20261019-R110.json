@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-REAL-HOVER-PALETTES-20261019-R110",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed",
+  "recorded_at": "2026-10-19T04:59:53Z",
+  "runtime": {
+    "gtk": "4.18.6",
+    "display": ":292 (private Xvfb)",
+    "resolution_px": [800, 600],
+    "theme": "private copy of DomainOS-SR10-4-KDE-Reload; no installed or personal theme files changed",
+    "interaction": "real X11 pointer entered the native button; DelayedPopoverHint opened its GTK4 popover",
+    "session_bus": "not used; the single-window probe has no D-Bus dependency"
+  },
+  "results": [
+    {"schema":"DomainOS","tooltip_background":"#78a0d5","tooltip_text":"#ffffff","sample":"#78a0d5","background_pixels":4326,"text_pixels":43,"popup_px":[243,27],"passed":true},
+    {"schema":"Irixium","tooltip_background":"#c1c1c1","tooltip_text":"#000000","sample":"#c1c1c1","background_pixels":4326,"text_pixels":43,"popup_px":[243,27],"passed":true},
+    {"schema":"BreezeLight","tooltip_background":"#f7f7f7","tooltip_text":"#232629","sample":"#f7f7f7","background_pixels":4326,"text_pixels":43,"popup_px":[243,27],"passed":true},
+    {"schema":"BreezeDark","tooltip_background":"#292c30","tooltip_text":"#fcfcfc","sample":"#292c30","background_pixels":4326,"text_pixels":43,"popup_px":[243,27],"passed":true}
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk4_hint_popover.py": "1ee694b5757a9a64d06e6e613bac0259efa03cfdb4c78f88d48773ce1b19b8",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-4.0/gtk.css": "e40930eca9395c8fcb0adc5709c001d36488c20e81e0814290ac76b493e3a7e3",
+    "~/tempia/t07-gtk4-real-hover-palettes-r110-20261019/run.py": "8a49516548fdf3315e88766ef4b67e7beae6ec11e81f85770bf2beb5651fb23a",
+    "~/tempia/t07-gtk4-real-hover-palettes-r110-20261019/probe-hover.py": "6ddc7cf28455560bfbba62481df176af075729493e1238f53702b62af72f06e3"
+  },
+  "diagnostics": [
+    "One initial infrastructure attempt did not reach GTK: the short-lived background Xvfb was terminated when its launcher shell ended, and a separate dbus-run-session attempt hit the per-user inotify-instance limit. The probe does not require D-Bus; rerunning under a persistent private Xvfb without a session bus passed. These were harness setup failures, not GTK product failures."
+  ],
+  "artifacts": "~/tempia/t07-gtk4-real-hover-palettes-r110-20261019/",
+  "limits": [
+    "Color values were loaded into a private copy of the actual theme CSS from the corresponding KDE schema role files; this validates GTK4 role consumption, not the system-wide schema-change notification/export pipeline.",
+    "One small native popup was checked in each palette; exact cold delay, dismissal, stable geometry, and full 31-control matrix are covered separately by R87 only under its tested palette.",
+    "No historical pixel-fidelity comparison or user visual approval is claimed."
+  ],
+  "conclusion": "Actual pointer hover produced the semantically marked GTK4 hint in all four role-distinct schemas, and the rendered popup face/text pixels matched each schema's Tooltip roles. The 243x27 popup geometry remained constant. Together with R87 interaction geometry and R86 palette coverage, this closes the integration gap between hover and palette rendering within the bounded single-popup scope; T07 remains in progress."
+}

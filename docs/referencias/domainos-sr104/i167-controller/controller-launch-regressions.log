@@ -1,0 +1,19 @@
+make: Entering directory '/home/lsi/irixium-kde-custom/tools/theme-lab'
+cc -Iinclude -I/usr/include/json-c -I/usr/include/libpng16  -O2 -g -std=c99 -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700  tests/model_test.c src/model.c src/model/scrollbar_parts.c src/model/part_states.c src/model/control_dimensions.c -ljson-c  -lm -o "build/model-test"
+cd "/home/lsi/irixium-kde-custom/tools/theme-lab/../.." && "/home/lsi/irixium-kde-custom/tools/theme-lab/build/model-test"
+Model: 947 verificações offline passaram; nenhuma GUI ou tema foi alterado.
+"build/preview-event-test"
+IPC checks passed: stale scene, bounds, family isolation, identity, transactional parsing, native metrics and scale.
+/usr/bin/python3 -B tests/test_backend.py
+.................................
+----------------------------------------------------------------------
+Ran 33 tests in 1.792s
+
+OK
+/usr/bin/python3 -B tests/test_preview_scene.py
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.003s
+
+OK
+make: Leaving directory '/home/lsi/irixium-kde-custom/tools/theme-lab'

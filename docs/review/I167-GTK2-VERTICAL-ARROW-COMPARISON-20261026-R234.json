@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-VERTICAL-ARROW-COMPARISON-20261026-R234",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "pixel-match-found-visual-review-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "GTK2 vertical scrollbar up/down stepper arrows, normal state"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "project-owned assistant clone",
+    "retained_native_trash_can": {
+      "capture_date": "2026-10-10",
+      "path": "docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+    },
+    "vertical_crop": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "capture_box_in_source": [644, 410, 664, 668],
+      "normal_state": true
+    }
+  },
+  "comparison": {
+    "gtk2_runtime": "GTK2 2.24.33",
+    "gtk2_screenshot": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+    "gtk2_screenshot_sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+    "gtk2_screenshot_px": [1600, 1000],
+    "method": "Compare 15x15 RGB crops using exact pixel equality at 1:1; no resize, interpolation, or color normalization.",
+    "cells": [
+      {
+        "direction": "up",
+        "source_crop_half_open": [4, 2, 19, 17],
+        "gtk2_screen_origin": [1019, 341],
+        "size_px": [15, 15],
+        "pixel_differences": 0,
+        "glyph_bbox_px": [11, 11]
+      },
+      {
+        "direction": "down",
+        "source_crop_half_open": [4, 242, 19, 257],
+        "gtk2_screen_origin": [1019, 384],
+        "size_px": [15, 15],
+        "pixel_differences": 0,
+        "glyph_bbox_px": [11, 11]
+      }
+    ],
+    "result": "The normal GTK2 vertical up/down cells exactly match the corresponding SR10.4 reference pixels. Together with R233, all four normal GTK2 scrollbar directions have exact 15x15 cell matches in this preview. This does not validate held or insensitive states, scrolling behavior, or the whole widget."
+  },
+  "safety": {
+    "vm_guest_files_changed": false,
+    "vm_profile_changed": false,
+    "theme_changed": false,
+    "user_desktop_theme_changed": false
+  },
+  "limitations": [
+    "The live VM screenshot after wake shows File Manager and Terminal, not the Trash Can. This measurement reuses the retained native Trash Can capture from the same approved SR10.4/VUE reference machine.",
+    "Only normal-state stepper cells were measured. The user's visual acceptance remains pending."
+  ],
+  "next": "Keep GTK2 active. Continue with a distinct held/released scrollbar state that has a valid SR10.4 comparison, or use the user's exact GTK2 application/state if the arrow still appears smaller. Do not change the matched normal assets on this evidence.",
+  "technical_coverage_estimate": {
+    "percent": 78,
+    "basis": "R224's 76% baseline plus exact normal-state horizontal cells in R233 and vertical cells here; this is technical coverage, not a visual-fidelity score.",
+    "not_a_visual_fidelity_score": true
+  }
+}

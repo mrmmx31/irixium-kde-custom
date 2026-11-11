@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK3",
+  "status": "passed_with_scope_limit",
+  "runtime": {
+    "gtk": "3.24.49",
+    "display": ":81",
+    "resolution": "1280x800",
+    "theme": "T07HintRoles fixture, private HOME/XDG",
+    "font": "Adwaita/Sans 10"
+  },
+  "scope": "NativeScene push tooltip: cold hover, 500 ms delay, bounds and non-overlap, 400 ms stability, dismissal after pointer leave, and exact background/text pixel matches using five isolated CSS-role fixtures.",
+  "results": [
+    {"scheme":"DomainOS SR10.4","tooltip_background":"#78a0d5","tooltip_text":"#ffffff","background_exact_pixels":32494,"text_exact_pixels":238,"geometry_px":[316,362,567,69]},
+    {"scheme":"Breeze Light","tooltip_background":"#f7f7f7","tooltip_text":"#232629","background_exact_pixels":32494,"text_exact_pixels":238,"geometry_px":[316,362,567,69]},
+    {"scheme":"Breeze Dark","tooltip_background":"#292c30","tooltip_text":"#fcfcfc","background_exact_pixels":32494,"text_exact_pixels":238,"geometry_px":[316,362,567,69]},
+    {"scheme":"Irixium","tooltip_background":"#c1c1c1","tooltip_text":"#000000","background_exact_pixels":32494,"text_exact_pixels":238,"geometry_px":[316,362,567,69]},
+    {"scheme":"TestYellow (synthetic)","tooltip_background":"#ecd870","tooltip_text":"#201c0c","background_exact_pixels":32494,"text_exact_pixels":238,"geometry_px":[316,362,567,69]}
+  ],
+  "invariants": {
+    "cold_delay_ms": 500,
+    "stable_hover_ms": 400,
+    "within_display": true,
+    "non_overlap": true,
+    "dismissed_on_leave": true,
+    "native_tooltip_window": true,
+    "host_profile_changed": false,
+    "product_files_changed": false
+  },
+  "fixture_definition": "Each private GTK3 theme stylesheet takes the tooltip background and foreground from the selected KDE [Colors:Tooltip] roles; TestYellow uses synthetic fixture values only. The values are not written to a product theme.",
+  "limitations": [
+    "This proves GTK3 native tooltip rendering with role-derived fixture CSS; it does not exercise or certify the repository GTK3 theme exporter or installed user theme.",
+    "One control, one layout, one resolution and one font. Other controls/layouts and human review remain open.",
+    "This is palette and tooltip behavior evidence, not DomainOS SR10.4 historical fidelity."
+  ],
+  "artifacts": {
+    "runner": "~/tempia/t07-gtk3-tooltip-palettes-20261018-r81/run.py",
+    "result_and_captures": "~/tempia/t07-gtk3-tooltip-palettes-20261018-r81/",
+    "probe_sha256": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "runner_sha256": "07b2b951628b36ad11d7df8fd639722d13210e933833e02b4110aa1d687747aa",
+    "domainos_scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "irixium_scheme_sha256": "3941115cb04949238cdfd249db20071bb2d41ce9b448a58b8f4b02f005c29769",
+    "breeze_light_scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+    "breeze_dark_scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "R242",
+  "date": "2026-10-26",
+  "scope": "I167 GTK2 / XmpIcon live pointer preflight",
+  "vm": "Canonical Domain/OS SR10.4 + HP VUE 2.01 assistant clone; MAME PID 1313710; canonical disk verified; one MAME process.",
+  "state": {
+    "channel_pending": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "image_visible": true,
+    "path": "/node_12345",
+    "xmpicon_grid_visible": true
+  },
+  "capture_transition": {
+    "read_only_probe": "captured=false",
+    "later_read_only_snapshot_command": "captured=true, wait_button_up=false, mouse=true, mouse_device=mouse",
+    "interpretation": "The hook state changed between queries. Cause not established; no attempt to clear or force it."
+  },
+  "screenshot": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-xmpicon-preflight-r242.png",
+    "sha256": "8becae33562a8d36eec4193a41f949232509f65f36823877ba7cf82e2273061c",
+    "type": "native guest screen:snapshot"
+  },
+  "input_sent": false,
+  "next": "Do not send pointer motion while host capture is active. Resume only after the live probe confirms capture is released; otherwise continue non-input GTK2 checks."
+}

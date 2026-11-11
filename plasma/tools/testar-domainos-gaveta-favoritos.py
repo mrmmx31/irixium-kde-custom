@@ -77,7 +77,9 @@ PlasmoidItem {
             return JSON.stringify({popup:apps.popupVisible,pins:fixtureSettings.pinnedApplications.slice(),drawer:drawer,
                 orderBusy:apps.favoriteOrderBusy,orderSequence:apps.favoriteOrderSequence,
                 orderMessage:apps.favoriteOrderMessage,orderOrigin:apps.favoriteOrderOrigin,overlay:apps.externalFavoriteOrder.slice(),
-                native:rows(nativeRows),peer:rows(peerRows),configureRequests:configureRequests,pinLaunchRequests:pinLaunchRequests,
+                native:rows(nativeRows),independent:rows(independentRows),peer:rows(peerRows),
+                orderReady:apps.favoriteOrderReady,configureRequests:configureRequests,pinLaunchRequests:pinLaunchRequests,
+                provider:apps.providerFavorites,providerRevision:apps.favoriteProviderRevision,
                 dispatchBegins:dispatchBegins,dispatchReports:dispatchReports,ownRequestedFirst:ownRequestedFirst,peerRequestedFirst:peerRequestedFirst,
                 nativeFavoriteClass:String(apps.sharedFavoritesModel),peerFavoriteClass:String(peer.favoritesModel),
                 nativeKdeMenuSameFavorites:bridge ? bridge.globalFavorites===apps.sharedFavoritesModel : false})
@@ -86,7 +88,8 @@ PlasmoidItem {
             if(name==="seed") {for(const id of entries)peer.favoritesModel.addFavorite(id);apps.showDrawer(anchor);return true}
             if(name==="peerRemove") {peer.favoritesModel.removeFavorite(entries[1]);return true}
             if(name==="peerAdd") {peer.favoritesModel.addFavorite(entries[1]);return true}
-            if(name==="ownMove") {ownRequestedFirst=String(nativeRows.itemAt(2).favoriteId);apps.sharedFavoritesModel.moveRow(2,0);return true}
+            if(name==="ownMove") {ownRequestedFirst=String(independentRows.itemAt(2).favoriteId);independent.moveRow(2,0);return true}
+            if(name==="peerReload") {peer.favoritesModel.initForClient("org.kde.plasma.kicker.favorites.instance-42");return true}
             if(name==="peerMove") {
                 // Make independent-client order observable: choose a member
                 // different from the DomainOS provider's current first row.
@@ -101,6 +104,23 @@ PlasmoidItem {
             if(name==="coalesced") {
                 for(let count=0;count<4;count++){apps.close();apps.showDrawer(anchor)}
                 return true
+            }
+            if(name==="moveGuards") {
+                const ordering=apps.favoriteOrderingController
+                const before=JSON.stringify(apps.orderedFavorites.map(row=>row.favoriteId))
+                const first=apps.orderedFavorites[0].favoriteId,last=apps.orderedFavorites[2].favoriteId
+                const snapshot=ordering.capture(first,1)
+                let checks={}
+                checks.favorite_first_cannot_move_up=ordering.capture(first,-1)===null
+                checks.favorite_last_cannot_move_down=ordering.capture(last,1)===null
+                checks.favorite_unknown_identity_cannot_move=ordering.capture("absent.desktop",1)===null
+                checks.favorite_fractional_direction_rejected=ordering.capture(first,0.5)===null
+                checks.favorite_stale_generation_rejected=!ordering.move(Object.assign({},snapshot,{generation:snapshot.generation-1}))
+                checks.favorite_other_activity_rejected=!ordering.move(Object.assign({},snapshot,{activity:"other-activity"}))
+                checks.favorite_changed_neighbor_rejected=!ordering.move(Object.assign({},snapshot,{neighborId:"absent.desktop"}))
+                checks.favorite_other_client_rejected=!ordering.move(Object.assign({},snapshot,{client:"other-client"}))
+                checks.favorite_rejected_requests_preserve_order=JSON.stringify(apps.orderedFavorites.map(row=>row.favoriteId))===before
+                return JSON.stringify(checks)
             }
             if(name==="protocolFailures") {
                 const saved=JSON.stringify(apps.externalFavoriteOrder),savedMessage=apps.favoriteOrderMessage
@@ -135,6 +155,7 @@ PlasmoidItem {
                 for(let row=0;row<31;++row)if(row!==2)expected.push(row)
                 checks.thirty_two_unranked_members_preserve_native_order=JSON.stringify(sorted.map(row=>row.providerRow))===JSON.stringify(expected)
                 apps.favoriteOrderMessage=savedMessage
+                apps.favoriteOrderReady=true
                 return JSON.stringify(checks)
             }
             if(name==="kde") {fixtureSettings.applicationsMenuStyle="kde";apps.showDrawer(anchor);return true}
@@ -161,6 +182,14 @@ PlasmoidItem {
         Kicker.RootModel {
             id:peer;appletInterface:host;flat:true;showAllApps:true;showPowerSession:false
             Component.onCompleted:favoritesModel.initForClient("org.kde.plasma.kicker.favorites.instance-42")
+        }
+        Kicker.KAStatsFavoritesModel {
+            id:independent
+            Component.onCompleted:initForClient("org.irixclassic.domainos.private-independent")
+        }
+        Repeater {
+            id:independentRows;model:independent
+            delegate:Item {required property var model;readonly property string favoriteId:String(model.favoriteId || "");readonly property string title:String(model.display || "");visible:false}
         }
         Repeater {
             id:nativeRows;model:apps.sharedFavoritesModel
@@ -194,11 +223,12 @@ def main():
     output=Path(evidence_workspace.name)
     config = Path(os.environ.get('XDG_CONFIG_HOME', str(Path.home()/'.config')))
     protected = lambda: {str(config/name):digest(config/name) for name in
-        ('kdeglobals','kwinrc','plasmarc','plasma-org.kde.plasma.desktop-appletsrc')}
+        ('kdeglobals','kwinrc','plasmarc','plasma-org.kde.plasma.desktop-appletsrc','kactivitymanagerd-statsrc')}
     before = protected()
     # Other agents can still edit unrelated Iconbox/Pager components. Hash the
     # drawer and its direct shared dependencies, never imply full-release freeze.
     dependencies=('ui/DomainOSApplications.qml','ui/DomainOSApplicationMenu.qml',
+        'ui/DomainOSFavoriteOrdering.qml','ui/DomainOSFavoriteMoveButton.qml','ui/DomainOSButton.qml',
         'ui/DomainOSKdeApplicationMenu.qml','ui/DomainOSControlPalette.qml',
         'ui/DomainOSPopupToggle.qml','ui/DomainOSPalette.qml','code/ApplicationActions.js',
         'code/favorite_order.py','code/pin_import.py')
@@ -280,7 +310,7 @@ def main():
         if re.search(r'ReferenceError:|TypeError:|SyntaxError:|Cannot assign|Binding loop|is not a type|Type .+ unavailable|module .+ is not installed',line)] if (output/'host.log').is_file() else ['Native host did not save diagnostics']
     cleanup=json.loads((output/'cleanup.json').read_text()) if (output/'cleanup.json').is_file() else {}
     checks.update(private_host_exited_cleanly=completed.returncode==0,
-        native_scenario_finished_without_error=not native.get('failure'),
+        native_scenario_finished_without_error=bool(native) and not native.get('failure'),
         qml_runtime_errors_zero=not diagnostics,real_profiles_unchanged=before==protected(),
         production_sources_unchanged=all(digest(REPO/name)==value for name,value in sources.items()),
         own_daemons_stopped=cleanup.get('own_daemons_exited') is True)

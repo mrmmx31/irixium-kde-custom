@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "id": "R737",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Recheck both currently visible GTK2 XChat vertical scrollbars after R731; compare normal arrow cells and distinguish the long trough from content-dependent thumb relief without retaining any conversation text.",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "map_state": "IsViewable",
+    "client_dimensions_px": [870, 601],
+    "gtk_library_mapped": "libgtk-x11-2.0.so.0.2400.33",
+    "theme_engine_mapped": "libdomainos-pixbuf.so"
+  },
+  "capture": {
+    "method": "Captured the identified X11 client to memory, converted XWD to PPM in memory, and wrote only two 15-pixel-wide scrollbar crops. No full-window image, text, focus change, input, or application restart was retained or performed.",
+    "display": ":1",
+    "capture_time_utc": "2026-10-29T10:05:46Z",
+    "temporary_directory": "/home/lsi/tempia/domainos-theme-work/I167/R737-live-XChat-bars-20261029T100546Z",
+    "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "crops": [
+      {
+        "role": "left-list",
+        "client_xywh_px": [217, 64, 15, 535],
+        "dimensions_px": [15, 535],
+        "recorded_path": "records/ia-tema/I167/R737/left-list-vertical-scrollbar.png",
+        "sha256": "8db2876a0555c013eb99f99cfcd34308f641af6ed5b256ca6ce6dbbc028c88fa"
+      },
+      {
+        "role": "right-pane",
+        "client_xywh_px": [749, 98, 15, 465],
+        "dimensions_px": [15, 465],
+        "recorded_path": "records/ia-tema/I167/R737/right-pane-vertical-scrollbar.png",
+        "sha256": "7dbf5ae697cd5580392f73f5fde6a2987ea9b8bfce743ad5e120429dbcc17e69"
+      }
+    ]
+  },
+  "comparison": {
+    "reference": "Native Domain/OS SR10.4 HP VUE 2.01 Trash Can scrollbar, normal state, measured at 1:1.",
+    "normal_arrow_cells": {
+      "cell_size_px": [15, 15],
+      "reference_glyph_size_px": [11, 11],
+      "left_list_up_client_xy": [217, 64],
+      "left_list_down_client_xy": [217, 584],
+      "right_pane_up_client_xy": [749, 98],
+      "right_pane_down_client_xy": [749, 548],
+      "direct_rgb_equal_to_motif": {
+        "left_list_up": "225/225",
+        "left_list_down": "225/225",
+        "right_pane_up": "225/225",
+        "right_pane_down": "225/225"
+      }
+    },
+    "cross_axis_profiles": {
+      "motif_measured_trough": "DDLLFFFFFFFDDLL",
+      "gtk2_r731_adapted_trough": "DDFFFFFFFFFFFLL",
+      "raised_thumb_candidate_profile": "DDLLFFFFFFFDDLL",
+      "left_list": {
+        "scrollbar_height_px": 535,
+        "adapted_trough_rows_y_in_client_inclusive": [398, 578],
+        "adapted_trough_rows": 181,
+        "raised_thumb_profile_rows_y_in_client_inclusive": [83, 395],
+        "raised_thumb_profile_rows": 313,
+        "sample_trough_cross_section_client_y": 450,
+        "sample_thumb_cross_section_client_y": 200
+      },
+      "right_pane": {
+        "scrollbar_height_px": 465,
+        "adapted_trough_rows_y_in_client_inclusive": [118, 525],
+        "adapted_trough_rows": 408,
+        "raised_thumb_profile_rows_y_in_client_inclusive": [528, 543],
+        "raised_thumb_profile_rows": 16,
+        "thumb_total_visual_span_px": 22,
+        "sample_trough_cross_section_client_y": 218,
+        "sample_thumb_cross_section_client_y": 530
+      },
+      "interpretation": "The long non-thumb trough in both live GTK2 bars uses the R731 flatter profile. The separate raised/beveled band is the content-dependent thumb (about 318 px in the left list and 22 px in the right pane, including boundary rows). Do not read the thumb's raised relief as the R726 trough regression. The Motif Trash Can is empty and its near-full thumb does not establish a universal GTK2 thumb length."
+    },
+    "direct_rgb_cross_section_matches": {
+      "motif_sample": "barra-vertical-normal.png x=4..18, y=40",
+      "left_list_thumb_sample": "15/15 pixels",
+      "right_pane_thumb_sample": "15/15 pixels",
+      "left_list_trough_sample": "11/15 pixels; differences at cross-axis offsets 2, 3, 11, 12",
+      "right_pane_trough_sample": "11/15 pixels; differences at cross-axis offsets 2, 3, 11, 12",
+      "scope": "One normal-state cross-section per thumb/trough; this is not a full pixel comparison of the scrollbar or all states."
+    },
+    "content_to_scrollbar_spacing": {
+      "measurement_method": "In-memory column color histograms from the same mapped XChat client. No neighboring pixel strip or text was saved.",
+      "left_list": {
+        "sample_y_client_px_inclusive": [90, 389],
+        "last_content_column_observed": 210,
+        "light_edge_columns": [211, 212],
+        "face_gap_columns": [213, 216],
+        "scrollbar_start_x_client_px": 217,
+        "interpretation": "Observed 2 light edge columns followed by 4 face columns before the scrollbar; consistent with the measured 2 px view inset plus 4 px view-to-bar gap."
+      },
+      "right_pane": {
+        "sample_y_client_px_inclusive": [125, 519],
+        "uniform_content_background_columns": [737, 744],
+        "transition_columns": [745, 748],
+        "transition_colors": ["#c4d5ed x2", "#78a0d5 x2"],
+        "scrollbar_start_x_client_px": 749,
+        "interpretation": "Four screen columns separate the uniform content background from the scrollbar; the content/frame boundary is not visually separable in this pane, so the semantic frame-versus-gap split is not claimed."
+      }
+    },
+    "palette": "Normal arrow pixels match the current SR10.4 reference RGB in this capture. GTK2 product colors remain resolved from current KDE semantic roles; reference RGB is measurement evidence, not a hard-coded color target.",
+    "horizontal_bar": "Not established by this vertical-only capture."
+  },
+  "result": "A fresh post-R731 capture of two real GTK2 XChat scrollbars confirms that all four visible normal arrow cells match the SR10.4 Motif reference pixel-for-pixel. It also separates the adapted trough from the raised thumb, whose length changes with each pane's content. No horizontal, pressed, or disabled state was tested.",
+  "changes": [],
+  "next": "Keep GTK2 active in T04. I167 remains open for the user's visual assessment of the R731 trough/raised-thumb distinction. Pressed/disabled VM input and thumb dragging remain behind separate board authorizations I517 and I518."
+}

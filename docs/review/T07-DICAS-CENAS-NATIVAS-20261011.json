@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-11T11:03:38.953457+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "previous_goal_turn": "progress: seletor e dicas dinâmicas implementados/verificados",
+  "estimated_stage_percent": 80,
+  "basis": "Cobertura de recursos ampliada para as duas cenas nativas implementadas; hover estrangeiro, galerias e entrega ainda não concluídos. Não representa goal ou fidelidade histórica.",
+  "native_proofs": {
+    "gtk3": {
+      "types": 16,
+      "widgets": 30
+    },
+    "gtk2": {
+      "types": 6,
+      "widgets": 13
+    }
+  },
+  "regressions": {
+    "gtk3_scene_contract": "15 passed",
+    "gtk2_scene_contract": "4 passed"
+  },
+  "change": "Explicação específica de cada tipo, Ctrl+clique/arraste, unidade/limite; aplicada a filhos de controles compostos, sem alterar paleta, eventos ou medidas.",
+  "failed_attempts": [
+    "Identificador level não coincidia com progress do catálogo; corrigido antes da prova GTK3 final",
+    "Double de Button do teste puro não oferecia API tooltip; atualizado sem remover assertions anteriores"
+  ],
+  "limits": [
+    "Recursos atribuídos não provam atraso, estabilidade ou não sobreposição de tooltip GTK",
+    "Outras galerias e estados insensitive não auditados",
+    "Aviso atk-bridge da fixture GTK2 conservado no log",
+    "Runtime/dicas não certificam tradutores de outras famílias"
+  ],
+  "remaining": [
+    "Hover GTK2/GTK3 em layouts adicionais",
+    "Inventário e dicas das galerias GTK4/Qt5/Qt6/Kvantum/Plasma usadas pelo backend",
+    "Entrega pessoal coordenada"
+  ],
+  "sources": {
+    "tools/theme-lab/control_hints.py": "d91ab24d09d37f14d5b04c57ae8811627dcadb92cbff1113e4689be68972d440",
+    "tools/theme-lab/preview_gtk.py": "bcd6780c0dfac68009140650898d10b863a5a3d81d3bba12714aece2fb1d7c72",
+    "tools/theme-lab/native_scene_gtk2.py": "25a0ed105f087eebd8056a019b713c919ff2d14c95f5fca67c4904b7f43930ba",
+    "tools/theme-lab/tests/probe_control_hints.py": "4e11cf1cd82f8b01a567b0081ae309048090d403279f08fb9eb545d9dc0fe8e6",
+    "tools/theme-lab/tests/test_preview_scene.py": "73d18e88f5a0a26332c8779102081a0aa214db5865265fe32ae7baabb02f9b9e",
+    "tools/theme-lab/Makefile": "8dd1806a2fd7f3b75a1b692376adb042860e3c6241cefbf6d955170aacab2000"
+  },
+  "evidence": [
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-gtk2-native-r1.log",
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-gtk3-native-r1.log",
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-gtk3-native-r2.log",
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-layout-pure.log",
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-layout-pure-r2.log",
+    "docs/referencias/domainos-sr104/t07-foreign-hints/foreign-gtk2-contract.log"
+  ],
+  "human_approval_filled": false,
+  "personal_window_reopened": false
+}

@@ -1,0 +1,38 @@
+{
+  "item": "P10",
+  "instance": "assistant-clone-20261018",
+  "checked_at_local": "2026-10-18",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_namespace": "net:[4026533751]",
+    "frameskip": 4,
+    "throttled": false,
+    "paused": false,
+    "original_vm_modified": false
+  },
+  "guest_process_evidence": {
+    "source": "read-only `ps -ef` over Telnet after logging in as user",
+    "processes_seen": ["/etc/Xdomain :0", "vuewm", "vuefile", "vuesession", "/usr/X11/bin/hpvue2", "xterm", "xload"],
+    "meaning": "VUE processes are running; this alone does not prove the desktop pixels are visible."
+  },
+  "capture": {
+    "mame_screen_snapshot": "~/tempia/domainos-assistant-vm-20261018/captures/sr104-live-r28.png",
+    "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "result": "black guest image except the Apollo command bar; no usable visual reference"
+  },
+  "native_x_capture_attempt": {
+    "tool": "/usr/X11/bin/xwd",
+    "display": ":0",
+    "output_target_in_clone": "/users/user/domainos-vue-20261018-r30.xwd",
+    "result": "Telnet did not return to the shell within the bounded wait; the output file could not be verified."
+  },
+  "service_state_after_attempt": {
+    "ftp_21": "TCP connection timed out before FTP greeting",
+    "telnet_23": "TCP connection timed out before negotiation/banner",
+    "mame_control": "probe still returned OK after the service timeouts",
+    "action": "No reboot, process termination, network rewrite, or retry of the guest capture was performed."
+  },
+  "previous_service_evidence": "R27 before the native X capture attempt: FTP root login and active listing of 27 entries succeeded; Telnet login reached the SR10.4 shell.",
+  "next": "Keep P10 waiting for a responsive guest display/network path; advance to another authorized Fila Atual item."
+}

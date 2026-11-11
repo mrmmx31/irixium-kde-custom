@@ -1,0 +1,27 @@
+{
+  "item": "I124",
+  "revision": "R4",
+  "checked_at_utc": "2026-10-19T15:11:08Z",
+  "scope": "Theme Lab Motif editor checkpoint and native editing in disposable Xvfb session",
+  "evidence": {
+    "isolated_strict_build": "passed in ~/tempia/i458-stability-20261019/build",
+    "manual_paint_model": "passed: context switch, draw/fill, undo/redo, resize, project save/resume",
+    "editor_store": "passed: 22 checks; UTF-8 accepted and invalid files preserved",
+    "controller_editor_probe": "passed in dynamically allocated Xvfb with disposable project and home; user profile not exposed",
+    "verified": [
+      "multi-step native Undo/Redo",
+      "UTF-8 clipboard paste, selection, copy, cut, paste",
+      "scheme catalog refresh preserves unsaved draft",
+      "draft checkpoint and editor history persist",
+      "latest proposal recovers after controller re-open while text Undo remains independent",
+      "native numeric editor Undo/Redo and Ctrl+A interception",
+      "six native keyboard edit-menu actions",
+      "independent editor histories and UTF-8 across scripts"
+    ]
+  },
+  "finding": "The prior failure was in test assumptions: an accented sample used unreliable xdotool Unicode typing, and the corrected clipboard test must expect Undo to restore the complete previous text because paste is one native edit operation. The corrected controller probe passed; no product data-loss defect was observed.",
+  "source_change": "tools/theme-lab/tests/test_controller_spin.py: use paste_utf8 for the accented draft and assert full previous-text restoration after Undo of a replacement paste.",
+  "product_or_personal_state_changed": false,
+  "manual_visual_approval": "pending",
+  "next": "Continue the remaining authorized work items; do not infer user approval from this technical probe."
+}

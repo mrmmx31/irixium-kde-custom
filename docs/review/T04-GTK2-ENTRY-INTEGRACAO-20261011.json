@@ -1,0 +1,68 @@
+{
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "entry",
+  "catalog_coverage": {
+    "integrated": 8,
+    "total": 16,
+    "percentage": 50,
+    "scope": "Types, not historical fidelity or global goal"
+  },
+  "native_scene": {
+    "path": ".qa-t04-entry-integration/scenes/RESULTADO.json",
+    "scenes": 24,
+    "rebuilds": 8,
+    "scope": "Real GTK2 Entry, 4 palettes, normal/disabled/explicit backdrop, coupled/separate: size, Unicode, font and sensitivity; eight transactional rebuilds preserve text/Undo/Redo. Interior pixels match effective view roles; not keyboard/clipboard or complete pixel/state or historical fidelity approval."
+  },
+  "controller": {
+    "path": ".qa-theme-lab-spin-hjgcr419/RESULTADO.json",
+    "scope": "Native gtk2 coupled/separate resizing, saved toggle, native Save/Load, project Undo/Redo and process restart with on/off preference; pending410×50 retained while applied300×50 scene bytes preserved."
+  },
+  "tests": {
+    "entry_paint": 3,
+    "integration_guards": 2,
+    "progress_guards": 4,
+    "scene_contract": 15,
+    "runtime": 2,
+    "c_receipt": "passed",
+    "strict_build": "passed"
+  },
+  "hashes": {
+    "gtk2_entries.py": "aab07ef31462ab916bb4f6afa68e60d6d3a454c7315ec4db3657d5703c9600eb",
+    "gtk2_generation.py": "60731b730ce2aff2e215d50a2c1aa3614dafbcc0164cc03188c35c54898482fb",
+    "gtk2_session.py": "09f80400255b336b2d07bca07e3270f7cbb331c5f33d66914093074ef800e0d5",
+    "native_scene_gtk2.py": "e04bdc61fbf4a9771f58f50f6335f82445b68ea15ef9ba040577e3d45529edc9",
+    "backend.py": "5b4eeca9d9a948d3b971965027949635990afbbd989d7c460fc85d3d7b8807e6",
+    "src/controller/generated_preview.c": "da3181f424821a7b72ddcafc8249e33958507a7d3c213ace1554d29f61266417"
+  },
+  "limitations": [
+    "GTK sample history remains process-local; not imported by controller process replacement or handoff",
+    "No complete selection/text pixel matrix or historical approval",
+    "Forced pressed/focus states remain unsupported"
+  ],
+  "post_native_changes": "backend snippet gained explicit KDE origin parameter; dedicated integration pure test verifies fragment and missing-origin guard. Native scene/session/generator/paint unchanged after their proof.",
+  "capture_examined": ".qa-t04-entry-integration/scenes/DomainOS/separate-0.png",
+  "failed_attempts": [
+    "controller.log/err: fixture expected control13 instead of Entry4; corrected run terminal passed",
+    "snippet smoke first used unsupported keyword: exposed missing origin forwarding; corrected and guarded"
+  ],
+  "delivery": {
+    "status": "open",
+    "display": ":61",
+    "pid": 2702591,
+    "manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-6c0c24c5d0cd4daea7185fd86f73ff90/MANIFESTO.json",
+    "preservation": {
+      "source_alive": true,
+      "source_pid": 2692415,
+      "destination_pid": 2702591,
+      "source_working.json": true,
+      "source_scene.json": true,
+      "source_editor-journal.json": true,
+      "source_project-history.json": true,
+      "destination_scene.json": true,
+      "destination_project-history.json": true,
+      "old_text_histories": true
+    },
+    "scope": "Saved scene resumed; no forced family switch. GTK sample text not imported across processes."
+  }
+}

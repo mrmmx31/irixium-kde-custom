@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-11T15:18:29.664224+00:00",
+  "phase": "prepared_not_launched",
+  "item": "T02",
+  "revision": 1,
+  "definition_sha256": "e5e2abb18df75f4ee5911127564b78bbc1a398493a8d902c7b92e2d8293444d9",
+  "source_pid": 1947021,
+  "source_starttime": 35312649,
+  "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+  "source_manifest_sha256": "cf7cb75bfbba07e0a1bfcac7dc2c8d9e7e368d5d5a9186154541536e13061dca",
+  "delivery": "New private instance in verified existing Xephyr61; origin stays open. Snapshot four files via launcher, no generated outputs.",
+  "scope": [
+    "T02 catalog/keyboard",
+    "T07 hints/help",
+    "T08 project/export/resume",
+    "T09 execution/recovery"
+  ],
+  "coordination": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "ac745215f9366d50955e44ced73ec10f693ef77680ad79785b5f71f5e3ae63bd",
+      "item_id": "T02",
+      "user_revision": 1,
+      "definition_sha256": "e5e2abb18df75f4ee5911127564b78bbc1a398493a8d902c7b92e2d8293444d9",
+      "application": "Laboratório — catálogo e recuperação no Xephyr :61 (origem PID1947021)",
+      "reason": "Entrega acumulada T02/T07/T08/T09: catálogo em árvore e Enter, dicas/Ajuda, projetos/exportação e recuperação. Nova instância no Xephyr :61 copia projeto salvo, cena, rascunhos e Undo/Redo; mantém origem PID1947021 aberta. Salve ajustes e pause a edição antes de liberar. Texto sem checkpoint não é importado. Não muda o tema pessoal.",
+      "requested_at": "2026-10-11T15:18:29.601Z"
+    },
+    "available": true,
+    "permitted": false,
+    "scope_current": true
+  },
+  "reason_replaced": "Concrete scope now includes T02/T09 beyond old T08; not renewed due to elapsed time.",
+  "remaining": [
+    "Current exact theme permission",
+    "Launch and inspect frozen fixture and four saved files"
+  ],
+  "limits": [
+    "No unsaved text promise",
+    "No installation/theme/profile/VM changes"
+  ],
+  "sha256": {
+    "plasma/tools/abrir-laboratorio-temas.py": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d",
+    "tools/theme-lab/build/theme-lab": "550f294489e2e0d6cf2849a82258c68a468ff8570566458d7c92d2978f14010f",
+    "tools/theme-lab/src/view/control_catalog.c": "4eeff588182227cea05e59e1b2c932107f68a125bf61acb71fe20e78628c5d52"
+  }
+}

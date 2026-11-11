@@ -178,8 +178,31 @@ static void tick() {
         checks["group_operations_button_clicked"]=click("domainosGroupOrganize");phase=3;
     } else if(phase==3) {
         if(!current["operationsPopup"].toBool()){QTimer::singleShot(100,tick);return;}
-        checks["columns_menu_clicked"]=click("domainosBatchColumns");phase=4;
+        const auto mode=qEnvironmentVariable("IRIX_DOMAINOS_GROUP_OPERATION","columns");
+        const QMap<QString,QString> buttons{{"columns","domainosBatchColumns"},{"rows","domainosBatchRows"},{"mosaic","domainosBatchMosaic"},{"maximize","domainosBatchMaximize"}};
+        checks[mode+"_menu_clicked"]=buttons.contains(mode) && click(buttons.value(mode));phase=4;
     } else if(phase==4) {
+        const auto mode=qEnvironmentVariable("IRIX_DOMAINOS_GROUP_OPERATION","columns");
+        if(mode!="columns") {
+            if(!reportReady(current,1,mode) || target(current,0)["geometry"]==target(snapshots["selected"].toObject(),0)["geometry"]) {QTimer::singleShot(100,tick);return;}
+            checks[mode+"_confirmed_by_kwin"]=true;
+            checks[mode+"_only_selected_native_uuids"]=reportOnlySelected(current);
+            checks[mode+"_remaining_group_member_untouched"]=untouched(snapshots["selected"].toObject(),current,2);
+            checks[mode+"_independent_task_untouched"]=untouched(snapshots["selected"].toObject(),current,3);
+            checks["selection_survives_confirmed_"+mode]=selectedExactly(current);
+            if(mode=="maximize") {
+                checks["maximize_actual_clients_and_native_task_state"]=owned[0]->isMaximized() && owned[1]->isMaximized()
+                    && target(current,0)["maximized"].toBool() && target(current,1)["maximized"].toBool();
+            } else {
+                const auto a=target(current,0)["geometry"].toObject(),b=target(current,1)["geometry"].toObject();
+                checks[mode+"_actual_client_allocation_changed"]=owned[0]->width()>260 && owned[1]->width()>260;
+                checks[mode+"_disjoint_native_rectangles"]=mode=="rows"
+                    ? a["bottom"].toInt()<b["top"].toInt() || b["bottom"].toInt()<a["top"].toInt()
+                    : a["right"].toInt()<b["left"].toInt() || b["right"].toInt()<a["left"].toInt()
+                        || a["bottom"].toInt()<b["top"].toInt() || b["bottom"].toInt()<a["top"].toInt();
+            }
+            snapshots[mode]=current;checks["native_scenario_completed"]=true;complete();return;
+        }
         if(!reportReady(current,1,"columns") || target(current,0)["geometry"]==target(snapshots["selected"].toObject(),0)["geometry"]) {QTimer::singleShot(100,tick);return;}
         checks["production_window_ops_columns_confirmed_by_kwin"]=true;
         checks["columns_helper_reports_only_two_selected_uuids"]=reportOnlySelected(current);

@@ -1,0 +1,257 @@
+{
+  "at": "2026-10-11T03:31:43.388944+00:00",
+  "item": "I116",
+  "user_revision": 1,
+  "definition_sha256": "50c8f8b85d53750c14ebf94af1548b1bc19f7218e816be70f87357f1b9afb70d",
+  "phase": "gtk3_native_anchor_positioning",
+  "native": {
+    "passed": true,
+    "measurements": [
+      {
+        "origin": "separate",
+        "request": 260,
+        "control": 10,
+        "position": [
+          140,
+          41
+        ],
+        "size": [
+          260,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 260,
+        "control": 11,
+        "position": [
+          16,
+          140
+        ],
+        "size": [
+          15,
+          260
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 1,
+        "control": 10,
+        "position": [
+          352,
+          41
+        ],
+        "size": [
+          48,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 1,
+        "control": 11,
+        "position": [
+          16,
+          352
+        ],
+        "size": [
+          15,
+          48
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 0,
+        "control": 10,
+        "position": [
+          352,
+          41
+        ],
+        "size": [
+          48,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 0,
+        "control": 11,
+        "position": [
+          16,
+          352
+        ],
+        "size": [
+          15,
+          48
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 180,
+        "control": 10,
+        "position": [
+          220,
+          41
+        ],
+        "size": [
+          180,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "separate",
+        "request": 180,
+        "control": 11,
+        "position": [
+          16,
+          220
+        ],
+        "size": [
+          15,
+          180
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 260,
+        "control": 10,
+        "position": [
+          140,
+          41
+        ],
+        "size": [
+          260,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 260,
+        "control": 11,
+        "position": [
+          16,
+          140
+        ],
+        "size": [
+          15,
+          260
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 1,
+        "control": 10,
+        "position": [
+          352,
+          41
+        ],
+        "size": [
+          48,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 1,
+        "control": 11,
+        "position": [
+          16,
+          352
+        ],
+        "size": [
+          15,
+          48
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 0,
+        "control": 10,
+        "position": [
+          352,
+          41
+        ],
+        "size": [
+          48,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 0,
+        "control": 11,
+        "position": [
+          16,
+          352
+        ],
+        "size": [
+          15,
+          48
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 180,
+        "control": 10,
+        "position": [
+          220,
+          41
+        ],
+        "size": [
+          180,
+          15
+        ],
+        "trailing_edge": 400
+      },
+      {
+        "origin": "coupled",
+        "request": 180,
+        "control": 11,
+        "position": [
+          16,
+          220
+        ],
+        "size": [
+          15,
+          180
+        ],
+        "trailing_edge": 400
+      }
+    ]
+  },
+  "checks": {
+    "model": 935,
+    "backend": 24,
+    "scene": 15,
+    "ipc": "passed",
+    "native_Motif_metrics": "passed",
+    "native_GTK3_tests": 2
+  },
+  "failure_corrected": "translate_coordinates pode retornar None durante size-allocate inicial. Atualização idle limitada após disposição; cancelada em troca de cena/fechamento e ignorada durante arraste.",
+  "limits": [
+    "Teste usa GTK3 real em Xvfb privado; não compara fidelidade histórica ou cores.",
+    "Seletor, Motif e entrega pessoal pendentes. Controlador/backend continuam recusando aplicação de âncora final até ligação completa.",
+    "Nenhuma janela pessoal ou VM alterada."
+  ],
+  "estimated_stage_progress_percent": 80,
+  "percentage_basis": "Persistência, trava longitudinal e posicionamento GTK3 comprovados; seletor, Motif e entrega ainda faltam.",
+  "hashes": {
+    "tools/theme-lab/preview_gtk.py": "0e3528f4c43f6c3dc41486ba2b3dfce37b1b575aefad57ffce928ee0745fefa8",
+    "tools/theme-lab/tests/test_native_metrics.py": "c9b6aada2e0aa076599346570a90a0ee49f84750bbebc67e5e0aee9ec4ae1666",
+    "tools/theme-lab/tests/test_preview_scene.py": "bcb692bad63d01e111f7e3100536830f308049649437a36432e8f5aebfb3ab6c"
+  }
+}

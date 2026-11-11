@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XMPICON-INPUT-PATH-20261025-R197",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 506, "y": 394},
+    "guest_screen": "VUE desktop visible after a bounded Shift wake",
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "apollo_mouse_ports": {"x": 3, "y": 106},
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "actions": [
+    {
+      "kind": "blank desktop capture click and host relative movement",
+      "input": "A 60 ms XTest left click at guest desktop coordinate (900,300), in visibly empty space, was consumed for the documented recapture path; then a relative host XTest move of (-300,+150) was sent without a button.",
+      "observation": "The hook reported captured=true during the move, but the guest screenshot did not show a cursor over XmpIcon or a selection. Pixel differences against the nearby baseline were confined to clock/pager animation areas; no target hover was established."
+    },
+    {
+      "kind": "one-axis Apollo X counter sample",
+      "input": "With hook released and mouse/device none, Mouse X was sampled from 3 to 19 for 18 frames, snapshotted, and cleared on frame 21.",
+      "completion": {"done": true, "frame": 65, "held": false, "error": null},
+      "observation": "The paired native snapshots showed no cursor displacement from this sample in the current post-capture state; only clock/pager animation pixels changed. This differs from the earlier R191 state and is inconclusive as a cursor calibration."
+    }
+  ],
+  "final_state": {
+    "guest_screen": "VUE desktop visible; Terminal and File Manager remain open; no icon selected or opened",
+    "hook_captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "apollo_mouse_ports": {"x": 3, "y": 106},
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 506, "y": 394},
+    "host_focus_and_pointer_restored": true,
+    "capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/final-current-r197.png",
+      "sha256": "f492c07d83aaddd2f0c4618b696a3f4651e261a09de6d32aea3dc896b899960a"
+    }
+  },
+  "limits": "The intentional blank-space click verified the known capture-on-click behavior, not the reported physical screen-wake sequence. XTest relative motion and this counter sample did not yield a paired XmpIcon hover. No guest files/configuration were changed. Lua hook state is not a direct SDL grab query.",
+  "next": "Do not repeat the blank click or one-axis sample without a new trajectory hypothesis. Continue only with the physical wake event when observable; otherwise proceed to the next independently measurable GTK2 control/state in I167 without applying the partial adapter to XChat.",
+  "status": "recapture_click_verified;_xmpicon_hover_not_obtained;_host_state_restored"
+}

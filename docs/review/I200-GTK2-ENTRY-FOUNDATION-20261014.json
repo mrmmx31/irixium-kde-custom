@@ -1,0 +1,92 @@
+{
+  "id": "I200",
+  "date": "2026-10-14",
+  "status": "technical_scope_passed",
+  "environment": {
+    "display": "private Xvfb via xvfb-run",
+    "backend": "X11",
+    "gtk": "GTK 2 native GtkEntry",
+    "theme_installation": false,
+    "personal_profile_modified": false
+  },
+  "commands": [
+    "python3 -B tools/theme-lab/tests/test_gtk2_entry_paint.py",
+    "python3 -B tools/theme-lab/tests/test_gtk2_entry_integration.py",
+    "python3 -B tools/theme-lab/tests/test_gtk2_entry_keyboard_native.py",
+    "xvfb-run -a env T04_PRIVATE_ENTRY=1 GTK_MODULES= GDK_BACKEND=x11 /usr/bin/python3 -B tools/theme-lab/tests/probe_gtk2_entry_paint.py docs/referencias/domainos-sr104/i200-gtk2-entry/20261014"
+  ],
+  "tests": {
+    "entry_paint": "3 passed",
+    "entry_integration": "2 passed",
+    "native_scenes": 24,
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "states": [
+      "normal",
+      "disabled",
+      "backdrop"
+    ],
+    "origins": [
+      "separate",
+      "coupled"
+    ],
+    "allocation_px": [
+      260,
+      44
+    ],
+    "native_role_pixel_check": "passed",
+    "model_unchanged": true
+  },
+  "editing": {
+    "utf8_text": true,
+    "select_all": true,
+    "selection_replacement": true,
+    "copy_paste_cut": true,
+    "undo_ctrl_z": true,
+    "redo_ctrl_y": true,
+    "redo_ctrl_shift_z": true,
+    "replacement_undo_steps": 4,
+    "edit_menu_actions": [
+      "gtk-copy",
+      "gtk-cut",
+      "gtk-paste",
+      "gtk-select-all",
+      "redo",
+      "undo"
+    ],
+    "native_popup_actions": [
+      "",
+      "_insert unicode control character",
+      "gtk-copy",
+      "gtk-cut",
+      "gtk-delete",
+      "gtk-paste",
+      "gtk-select-all",
+      "input _methods",
+      "redo",
+      "undo"
+    ]
+  },
+  "limits": [
+    "GTK2 GtkEntry foundation only; no integration with the Theme Lab controller or full scene lifecycle.",
+    "The test proves native keyboard/clipboard actions for this GtkEntry route, not text-history persistence across application restart.",
+    "The scene suite is not a DomainOS historical visual approval and does not establish Motif size equivalence."
+  ],
+  "artifacts": {
+    "native_result": "docs/referencias/domainos-sr104/i200-gtk2-entry/20261014/RESULTADO.json",
+    "screenshots": "docs/referencias/domainos-sr104/i200-gtk2-entry/20261014/{DomainOS,BreezeLight,BreezeDark,TestYellow}/",
+    "source_sha256": {
+      "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "a8a7642975a79cdf1aebc776e31435854454555f569b7d7f3f12734a1607af5c",
+      "tools/theme-lab/tests/test_gtk2_entry_keyboard_native.py": "436f60c18ff8e67a07e9a63aa04191430568cc3bf2f5f961432e973e5b28070d",
+      "tools/theme-lab/tests/test_gtk2_entry_paint.py": "602aeb48a11d9f0463984f8b6fa3ab68231e5d6ed255bb8aa2f64a29b0fff3c8",
+      "tools/theme-lab/tests/test_gtk2_entry_integration.py": "ce54f2d912ced5f630e80b5eb0d54c35430bdd78ef23f47b5041ce6e9e800b0a",
+      "tools/theme-lab/preview_text_editing.py": "0b0e251dc2c55bde8c3ad38c72592fcfe3e87340d7c5e31b37b5a531424b6c8e",
+      "tools/theme-lab/gtk2_entries.py": "aab07ef31462ab916bb4f6afa68e60d6d3a454c7315ec4db3657d5703c9600eb"
+    },
+    "result_sha256": "ce6c5867a792f795bea5d9917359c3e913e48f6aad55b3b874274b9a38a98b85"
+  }
+}

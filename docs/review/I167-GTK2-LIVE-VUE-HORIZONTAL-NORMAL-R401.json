@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R401",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reawaken the project-owned SR10.4 clone, recheck the live normal horizontal scrollbar against its retained VUE image and current GTK2 assets, and verify bounded input cleanup.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "project_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "wake": {
+    "initial_image": "Black guest framebuffer from a read-only screen:snapshot.",
+    "method": "One-frame guest-injected :kbd:keyboard4/Shift pulse; automatically released on frame 2, then snapshot at frame 65. This is not a physical host key event.",
+    "done": true,
+    "held_after": false,
+    "error": null,
+    "capture": "~/tempia/ia-tema/evidence/I167/r401-vue-after-wake.png",
+    "capture_sha256": "34608860ae038f82dc57492f476b7dbd78f6058c9e282e69bd30f76605efd87b"
+  },
+  "comparison": {
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "reference_size_px": [542, 20],
+    "live_crop_xyxy": [50, 695, 592, 715],
+    "live_full_bar_different_pixels": 0,
+    "compared_pixels": 10840,
+    "left_stepper_different_pixels": 0,
+    "right_stepper_different_pixels": 0,
+    "gtk2_assets": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-{left,right,up,down}-normal.png",
+    "all_four_current_gtk2_cells_different_pixels": 0,
+    "pixels_per_cell": 225
+  },
+  "input_and_cleanup": {
+    "mouse_motion": "Two single measured Apollo relative-counter steps (+1,+1 then -1,0); no button was pressed. The guest pointer was not visibly confirmed over an arrow in the resulting native captures, so no held-arrow test was sent.",
+    "mouse_operation_done": true,
+    "mouse_error": null,
+    "cleanup_error": null,
+    "mouse_capture_after": false,
+    "paused_after": false,
+    "frameskip_after": 4,
+    "cpu_clock_percentages": "Not queried in R401; no clock settings were changed.",
+    "throttled_after": false,
+    "channel_pending_after": false,
+    "other_vm_contacted": false,
+    "guest_files_changed": false,
+    "mame_restarted": false,
+    "host_focus_or_pointer_changed": false
+  },
+  "diagnostic_note": "A read-only Lua status query tried field:read(), which this MAME input-field object does not implement; it returned an error without changing input. A follow-up queried the operation object successfully and confirmed the key and mouse callbacks had completed with input released and no cleanup error.",
+  "result": "The current live VUE horizontal bar is pixel-identical to the retained normal-state sample, and its left/right cells match the installed GTK2 normal assets. This reconfirms normal geometry only. The pointer target was not confirmed, so horizontal press/hold remains unverified; do not infer it from these normal-state pixels.",
+  "artifacts": {
+    "post_motion_capture": "~/tempia/ia-tema/evidence/I167/r401-vue-after-mouse-step.png",
+    "post_calibration_capture": "~/tempia/ia-tema/evidence/I167/r401-vue-mouse-calibrate-left.png",
+    "pointer_delta_crop": "~/tempia/ia-tema/evidence/I167/r401-pointer-delta.png"
+  },
+  "next": "Continue only I167/GTK2. A horizontal held-state comparison requires a current native image that clearly places the guest pointer on the intended arrow; do not send another relative-counter move based on guessed pixel-to-counter mapping."
+}

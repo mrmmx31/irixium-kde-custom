@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-11T07:49:23.428448+00:00",
+  "item": "I167",
+  "revision": 1,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "phase": "runtime_and_adapter_gap_audited",
+  "runtime": "2.24.33",
+  "pixmap_engine_installed": true,
+  "engine_path": "/usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so",
+  "native_properties": {
+    "runtime": "2.24.33",
+    "private_display": ":205",
+    "gui_native": true,
+    "recipe_applied": false,
+    "historical_fidelity_claimed": false,
+    "widgets": [
+      {
+        "type": "GtkHScrollbar",
+        "allocation": [
+          0,
+          0,
+          51,
+          16
+        ],
+        "properties": {
+          "slider-width": 14,
+          "stepper-size": 14,
+          "trough-border": 1,
+          "min-slider-length": 21,
+          "has-backward-stepper": true,
+          "has-forward-stepper": true,
+          "stepper-spacing": 0,
+          "trough-under-steppers": true
+        }
+      },
+      {
+        "type": "GtkVScrollbar",
+        "allocation": [
+          0,
+          20,
+          51,
+          51
+        ],
+        "properties": {
+          "slider-width": 14,
+          "stepper-size": 14,
+          "trough-border": 1,
+          "min-slider-length": 21,
+          "has-backward-stepper": true,
+          "has-forward-stepper": true,
+          "stepper-spacing": 0,
+          "trough-under-steppers": true
+        }
+      }
+    ]
+  },
+  "probe_terminal": 0,
+  "probe_initial_failure": "GTK2 GIR style_get_property requires GValue argument; corrected fixture, production unchanged",
+  "recipe_applied": false,
+  "gaps": [
+    "generate supports GTK3 only; GTK2 receipt not_implemented",
+    "Embedded preview and event validator currently accept GTK3 only",
+    "Detached GTK2 demo inherits profile; does not apply per-family recipe",
+    "Existing gtk2_rc theme builder uses generic geometry, not proposed GTK2 recipe"
+  ],
+  "next": "Build independent GTK2 recipe translator and native recipe preview; validate geometry/states and four KDE role palettes",
+  "installed": false,
+  "scope_progress_percent": 10,
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "689f398125aabc9e8d5f5b0c058741aa4160544a5284bb7a418f9b48c24da02a"
+  },
+  "historical_fidelity_claimed": false
+}

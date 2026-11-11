@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-FOCUS-PREVIEW-20261024-R139",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2 GtkIconView selected and keyboard-focused state, local visual preview only",
+  "runtime": {
+    "gtk": [
+      2,
+      24,
+      33
+    ],
+    "schema": "DomainOS-SR10.4",
+    "selected_path": "6",
+    "selected_count": 1,
+    "has_focus": true,
+    "allocation": [
+      532,
+      243
+    ],
+    "capture": "/home/lsi/tempia/i167-r139-gtk2-iconview-focused-preview/gtk2-iconview-selected-focus.png"
+  },
+  "capture_sha256": "4a65df3e4d53d6bbe021289cb72855936918ebd832f6bec676a5d9059313c7fd",
+  "observation": "GTK2 draws the selected item label with Selection role and a visible focus outline around the text cell; the icon pixmap itself retains its native pixels.",
+  "comparison_limit": "Available VUE File Manager capture has no selected item or keyboard-focus indicator in the grid, and assistant MAME clone PID 3759847 is absent. This is not evidence of historical parity or a mismatch.",
+  "no_changes": {
+    "theme_source_changed": false,
+    "personal_profile_changed": false,
+    "guest_files_changed": false,
+    "xchat_restarted": false
+  },
+  "status": "local_native_selected_focus_capture_available_historical_pair_pending",
+  "user_acceptance": "pending",
+  "next": "When the same authorized SR10.4 clone is available, create a controlled XmpIcon selection/focus observation and compare at 1:1 with the capture."
+}

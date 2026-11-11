@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "R323",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "r322-reversed; gtk2-palette-journal-consistent",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2-only continuation and repair of the assistant's reversible R322 user-local install."
+  },
+  "cause": {
+    "r322": "The user-local bundle replaced the GTK2 gtkrc in ~/.themes without updating the GTK2 adaptive-palette journal. The active journal still expected the prior wrapper, which coordinates ~/.themes and ~/.local/share/themes.",
+    "discovery_paths": "tools/components.py documents ~/.themes and the system theme directory as GTK2 theme lookup roots. tools/gtk2_palette_runtime.py separately owns wrapper gtkrc files in both XDG_DATA_HOME/themes and ~/.themes; the XDG copy is therefore part of the palette transaction even though it is not GTK2's theme lookup directory.",
+    "observed_before_rollback": {
+      "journal_status": "active",
+      "journal_theme_wrappers": 12,
+      "mismatched_wrapper": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "expected_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+      "observed_sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203"
+    }
+  },
+  "recovery": {
+    "method": "Bundle.restore() using the R322 transaction receipt and exact guarded backup",
+    "bundle_state": "/home/lsi/tempia/ia-tema/install-state/i167-gtk2-kde",
+    "latest_bundle_status": "restored",
+    "restored_gtkrc_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "restored_metrics": {
+      "slider_width": 16,
+      "stepper_size": 16,
+      "trough_border": 0
+    },
+    "journal_after_restore": {
+      "status": "active",
+      "theme_wrappers": 12,
+      "hash_mismatches": 0
+    }
+  },
+  "verification": {
+    "command": "TMPDIR=/home/lsi/tempia python3 -m pytest -q tests/test_gtk2_palette_runtime.py",
+    "result": "20 passed in 58.50s",
+    "test_scope": "GTK2 palette runtime test module; does not prove historical pixel fidelity or XChat appearance",
+    "live_profile_dry_refresh": {
+      "result": "unchanged",
+      "wrappers_validated": 12,
+      "mutations": 0
+    },
+    "effective_generated_overlay": {
+      "include": "/home/lsi/.local/share/irixium/gtk2-palette/c33f7a5a1b14e5edc7a882a8194a3a8d2b955c59652b4d9fd1dfef655d05afa1/gtkrc",
+      "rc_sha256": "4601517534d4b38377b11101e03949bbd093025dce6f132640aacd4128365226",
+      "source_rc_sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203",
+      "effective_metrics": {
+        "slider_width": 11,
+        "stepper_size": 15,
+        "trough_border": 2
+      },
+      "rendered_assets": 106,
+      "generated_roles_match_current_kde_export": true,
+      "wrapper_matches_active_journal": true
+    }
+  },
+  "safety": {
+    "theme_selection_changed": false,
+    "gtk3_or_gtk4_changed": false,
+    "xchat_restarted_or_signaled": false,
+    "vm_input_sent": false,
+    "vm_disk_modified": false,
+    "repository_theme_sources_changed_this_step": false
+  },
+  "current_state": {
+    "source_recipe": {
+      "path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203",
+      "metrics": "slider 11 px, stepper 15 px, trough border 2 px"
+    },
+    "installed_wrapper_fallback": {
+      "sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+      "metrics": "slider 16 px, stepper 16 px, trough border 0 px; overridden by the generated palette include on GTK2 load"
+    },
+    "mame": {
+      "pids": [3600675, 3601189],
+      "same_canonical_disk_inode": true,
+      "cgroup": "user.slice/user-1000.slice/user@1000.service/app.slice/codex-xchat-bridge-16667.service",
+      "input_or_termination_sent": false,
+      "status": "ownership is not isolated; do not send guest input"
+    }
+  },
+  "next": "Request visual review after a GTK2 application is reopened; do not restart or signal the open XChats. Resume held-state historical VM comparison only after MAME ownership is resolved.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "The rollback repaired the palette journal and confirmed the generated effective GTK2 recipe remains 15/11/2 with current KDE roles. Horizontal normal state is already pixel-matched; held states, live-app visual review, and historical VM comparison remain open.",
+    "not_a_visual_fidelity_score": true
+  }
+}

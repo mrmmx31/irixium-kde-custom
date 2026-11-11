@@ -1,0 +1,61 @@
+{
+  "status": "passed_scoped_public_preflight",
+  "native_preview": {
+    "status": "passed",
+    "rows": [
+      {
+        "origin": "separate",
+        "exit_code": 0,
+        "observed": [
+          {
+            "state": 1,
+            "size": [
+              220,
+              80
+            ]
+          }
+        ],
+        "bindings_closed": true
+      },
+      {
+        "origin": "coupled",
+        "exit_code": 0,
+        "observed": [
+          {
+            "state": 1,
+            "size": [
+              220,
+              80
+            ]
+          }
+        ],
+        "bindings_closed": true
+      }
+    ],
+    "scope": "Real preview main; owned fixture substitutes only coordination guard; not Motif controller.",
+    "historical_fidelity_claimed": false
+  },
+  "native_preview_result": "/home/lsi/irixium-kde-custom/.qa-t04-public-pressure-main-r2/RESULTADO.json",
+  "runtime_result": "/home/lsi/irixium-kde-custom/.qa-t04-anchor-foundation/gtk2-public-runtime-capability.json",
+  "tests": {
+    "public_preflight": 3,
+    "scene_contract": 9,
+    "runtime_probe_failures": 5
+  },
+  "build": "make -C tools/theme-lab completed, session99918 exit0",
+  "sources": {
+    "tools/theme-lab/backend.py": "c5d48bbd7d9d463e8db666328f3addee12da00481a2e75b52b7b05afecf8fa1b",
+    "tools/theme-lab/preview_gtk2.py": "de70c765f81a3b6c2f6f63c76bfb57bb4f060b0b591aa0726273f41e72389f12",
+    "tools/theme-lab/gtk2_press_bridge.py": "7eb796b8e3f8e62067718fec2cc770b65b15915ac5198c87ead3c3d0b75d8f23",
+    "tools/theme-lab/src/controller.c": "7c28541c073b5699f5251ed5a7c73e44f52f82b11609c49c5866b20dace60884",
+    "tools/theme-lab/tests/test_gtk2_public_pressure.py": "c11e59bb48dbcae41591a433bd40e3ad561dd6ea9e6c4d9dacba429db90184d4",
+    "tools/theme-lab/tests/probe_gtk2_public_pressure.py": "16f7d96561e2a48cc186e57a8b9d63aca42ea17b98bd7579cab710aa35ea7390"
+  },
+  "limits": [
+    "Main proof replaces coordination guard only, inherits real NativeSession pressure preflight.",
+    "First main fixture used a callable mock that also mocked static preflight: superseded by inherited observed class in r2.",
+    "Motif controller persistence/restart and frozen delivery remain unproved.",
+    "No historical fidelity, human approval or personal-session update claimed."
+  ],
+  "next": "Real Motif controller pressure selection, Apply, save/load, Undo/Redo and restart in both origins; then coordinated frozen delivery."
+}

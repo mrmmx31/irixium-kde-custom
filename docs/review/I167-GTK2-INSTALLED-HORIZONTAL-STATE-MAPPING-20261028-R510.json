@@ -1,0 +1,509 @@
+{
+  "schema_version": 1,
+  "id": "R510",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of all installed GTK2 horizontal scrollbar stepper state mappings and asset dimensions in the current user profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "selection": {
+    "user_config": "/home/lsi/.gtkrc-2.0",
+    "user_config_sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+    "theme": "DomainOS-SR10-4-KDE"
+  },
+  "installed_rcs": {
+    "copies": [
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      }
+    ],
+    "all_identical": true,
+    "mapping_mode": "overlay_file with overlay_stretch=FALSE for every checked horizontal state"
+  },
+  "audit": {
+    "states": [
+      "normal",
+      "prelight",
+      "active",
+      "selected",
+      "insensitive"
+    ],
+    "directions": [
+      "left",
+      "right"
+    ],
+    "per_rc_mappings": 10,
+    "rc_copies": 4,
+    "total_mappings": 40,
+    "all_assets_15x15": true,
+    "unique_asset_names": 10,
+    "distinct_asset_content_hashes": 4,
+    "rows": [
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "normal",
+        "asset": "scrollbar-stepper-left-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-left-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "active",
+        "asset": "scrollbar-stepper-left-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "selected",
+        "asset": "scrollbar-stepper-left-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-left-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "normal",
+        "asset": "scrollbar-stepper-right-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-right-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "active",
+        "asset": "scrollbar-stepper-right-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "selected",
+        "asset": "scrollbar-stepper-right-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-right-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "normal",
+        "asset": "scrollbar-stepper-left-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-left-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "active",
+        "asset": "scrollbar-stepper-left-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "selected",
+        "asset": "scrollbar-stepper-left-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-left-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "normal",
+        "asset": "scrollbar-stepper-right-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-right-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "active",
+        "asset": "scrollbar-stepper-right-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "selected",
+        "asset": "scrollbar-stepper-right-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-right-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "normal",
+        "asset": "scrollbar-stepper-left-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-left-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "active",
+        "asset": "scrollbar-stepper-left-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "selected",
+        "asset": "scrollbar-stepper-left-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-left-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "normal",
+        "asset": "scrollbar-stepper-right-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-right-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "active",
+        "asset": "scrollbar-stepper-right-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "selected",
+        "asset": "scrollbar-stepper-right-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-right-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "normal",
+        "asset": "scrollbar-stepper-left-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-left-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "active",
+        "asset": "scrollbar-stepper-left-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "selected",
+        "asset": "scrollbar-stepper-left-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-left-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "normal",
+        "asset": "scrollbar-stepper-right-normal.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "prelight",
+        "asset": "scrollbar-stepper-right-focused.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "active",
+        "asset": "scrollbar-stepper-right-pressed.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "selected",
+        "asset": "scrollbar-stepper-right-toggled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+      },
+      {
+        "root": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "state": "insensitive",
+        "asset": "scrollbar-stepper-right-disabled.png",
+        "asset_dimensions_px": [
+          15,
+          15
+        ],
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+      }
+    ]
+  },
+  "result": "All 40 installed horizontal left/right state mappings use non-stretched overlay_file and 15x15 assets. This configuration cannot recreate the old 15x11 file= squeeze by scaling these source images. Some states intentionally resolve to identical role-rendered image bytes; this audit does not imply different visuals for every state.",
+  "limits": [
+    "This checks selected configuration and PNG source dimensions, not each GTK2 interaction render or already-open app memory.",
+    "It does not prove historical VUE hover/insensitive/pressed horizontal states.",
+    "No files, profile, app, desktop or VM were modified."
+  ],
+  "next": "If the observed arrow still looks short, use Q501 to identify the app and state, then compare that live GTK2 output without replacing the current square assets absent a reproducer."
+}

@@ -1,0 +1,68 @@
+{
+  "id": "R632",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "closed": false,
+    "board_generation": 9116,
+    "item_generation": 9100
+  },
+  "method": {
+    "kind": "private PlasmaWindowed Kicker fixture with a scheduled 500 ms activation attempt and a guard that refuses input unless active=true",
+    "compositor": "private kwin_wayland --virtual, scale 1",
+    "input": "authorized org_kde_kwin_fake_input v5 client; not invoked because activation guard failed",
+    "production_sources_changed": false,
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "own_private_daemons_exited": true,
+    "private_runtime_removed": true,
+    "durable_evidence": "records/ia-tema/P01/R632-plasmawindowed-activation-limit-20261028/",
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R632-kicker-activation-no-capture-20261028/"
+  },
+  "observations": {
+    "fixture_ready": true,
+    "window_geometry_global": {
+      "x": 0,
+      "y": 0,
+      "width": 1022,
+      "height": 731
+    },
+    "window_visibility": "Qt::FullScreen (value 5)",
+    "window_active_at_ready": false,
+    "activation_timer_request_logged": false,
+    "delayed_activation_confirmed": false,
+    "fake_input_sent": false,
+    "kicker_popup_opened": false,
+    "search_tested": false,
+    "cleanup_confirmed": true,
+    "broad_RESULTADO_acceptance": false
+  },
+  "comparison": {
+    "R628": "A standalone C++ QQuickView called showFullScreen() and requestActivate(); its QWindow activeChanged signal reported true and fake pointer/keyboard input changed native QML state.",
+    "R630_R632": "The PlasmaWindowed wrapper reached the QML ready marker but remained active=false. In R632 neither the scheduled timer callback nor a QML activation confirmation was logged. The input guard therefore withheld all input.",
+    "interpretation": "The failure is in establishing a verified active input target for this PlasmaWindowed test fixture. It is not evidence that Kicker itself closes or ignores input."
+  },
+  "interpretation": {
+    "status": "plasmawindowed_fixture_activation_unverified",
+    "production_fix_indicated": false,
+    "double_click_crash_is_separate": true,
+    "human_acceptance": false
+  },
+  "evidence_files": {
+    "testar-r632-activation-no-capture.py": "5c081700098b2a87f005abe70dc359ccfb9e51a3cdc6b00ad141c4692ca8b54f",
+    "host.log": "dad81de21d23b4dca4561305bed87ca7b4b7a26d143128871a26e3038dadf63d",
+    "kwin.log": "362b036e46aa38bc7137db807ecb308de040445f4993e59fe22938abbf5bcc49",
+    "cleanup.json": "d7fc667c7422ed2454d74b1e5134e8d0022642d5ad01d4c9aca7d32d83862b3c",
+    "RESULTADO.json": "32fcf86f05e0558c91998a0580c221df3134487253619333041649ce933a1d46"
+  },
+  "next": [
+    "Replace PlasmaWindowed with an actual private plasmashell panel fixture, or host the real menu inside the proven active QQuickView path without changing production.",
+    "Confirm the fixture window is active and its output/surface coordinates before sending one known-control click.",
+    "After verified input, exercise the KDE menu's launcher click, immediate search typing, category hover/dismissal, and repeat-open behavior; keep double-click crash diagnosis separate."
+  ]
+}

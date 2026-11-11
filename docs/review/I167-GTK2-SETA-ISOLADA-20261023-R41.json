@@ -1,0 +1,46 @@
+{
+  "id": "I167-R41",
+  "title": "GTK2 seta isolada e medida natural",
+  "date": "2026-10-23",
+  "status": "technical_pass_with_historical_visual_limit",
+  "change": "A regra GTK2 da seta remove a reserva visual de foco (focus-line-width=0 e focus-padding=0), preservando ativação por teclado. O motivo é alinhar XmNhighlightThickness=0 do XmArrowButton Motif local.",
+  "measurement": {
+    "glyph_px": 11,
+    "bevel_px": 2,
+    "motif_local_natural_request_px": [
+      15,
+      15
+    ],
+    "gtk2_before_px": [
+      21,
+      21
+    ],
+    "gtk2_after_px": [
+      15,
+      15
+    ],
+    "basis": "GTK2.24.33 actual native widget request and local Motif reference geometry; not a Domain/OS VM measurement"
+  },
+  "validation": {
+    "integration_tests": "4 passed",
+    "paint_tests": "6 passed",
+    "native_scenes": "24 passed: four color schemes, three states, separate/coupled previews; all report natural request 15x15",
+    "interaction_scenes": "16 controls passed: normal/backdrop, four directions, both origins; keyboard activation and press/release retained",
+    "python_compile": "passed",
+    "git_diff_check": "passed",
+    "warning": "GTK emitted an atk-bridge module ABI warning in isolated Xvfb; tested controls and assertions passed"
+  },
+  "colors": "GTK2 assets continue to read semantic KDE role values; no final static RGB was introduced.",
+  "limitation": "The laboratory's central native canvas does not yet map GTK2, so this receipt proves native GTK2 geometry/state and the local Motif geometry contract, not a paired GTK2-vs-SR10.4 screenshot. The VM comparison remains gated by the already-pending MAME request.",
+  "user_session": "XChat and the personal desktop were not changed. GTK2 as a whole is still in progress, so no partial installation was applied.",
+  "artifacts": "~/tempia/i167-gtk2-arrow-r41/",
+  "source": {
+    "path": "tools/theme-lab/gtk2_arrows.py",
+    "sha256": "aa794e38164dc1311c7302d22a949dc40c1e931429e530502e27174596ebaa59"
+  },
+  "authorized_scope": {
+    "item": "I167",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "at": "2026-10-11T15:35:18.896016+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "phase": "gtk2_progress_native_unit",
+  "translated_controls": [
+    "push",
+    "toggle",
+    "check",
+    "radio",
+    "scroll_h",
+    "scroll_v",
+    "progress"
+  ],
+  "catalog_coverage": {
+    "implemented": 7,
+    "total": 16,
+    "percent": 43.75,
+    "basis": "Control kinds integrated in GTK2; not visual fidelity or goal completion."
+  },
+  "tests": {
+    "private_native_scenes": 24,
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "states": [
+      "normal",
+      "disabled",
+      "explicit_backdrop"
+    ],
+    "origins": [
+      "coupled",
+      "separate"
+    ],
+    "pixels": "Two interior fill/track pixels per scene match effective selection/view roles. Not full glyph/border/text coverage.",
+    "native_controller": {
+      "status": "passed",
+      "scope": "Real Motif controller → generated receipt → native GTK2 coupled/separate progress, resizing and separate close; other family recipe unchanged. Persistence of separate checkbox not tested.",
+      "native": [
+        {
+          "control": 13,
+          "separate": 0,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 300,
+          "height": 50,
+          "natural_width": 150,
+          "natural_height": 29
+        },
+        {
+          "control": 13,
+          "separate": 1,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 300,
+          "height": 50,
+          "natural_width": 150,
+          "natural_height": 29
+        }
+      ],
+      "gtk2_still_partial": true
+    },
+    "public_fixture": ".qa-theme-lab-spin-eqsp8rvj",
+    "pure_progress": 4,
+    "scene_contract": 4,
+    "runtime_files": 2,
+    "strict_build": "product/probe/receipt-test passed",
+    "receipt_gate": "legacy cases plus progress identity required, malformed and duplicate rejected",
+    "scoped_diff": "passed tools/theme-lab"
+  },
+  "fixes": [
+    "Forced disabled ProgressBar painted with normal/prelight roles; generation now provides an explicitly disabled style and widget name.",
+    "Repeated RC parsing retained former palette pixels; progress style/widget names scoped to generation identity, image names content-addressed.",
+    "Progress identity includes text roles and must match frozen RC binding before GTK mutation.",
+    "Controller accepts progress as strict optional extension of existing partial GTK2 lists, requiring valid style ID."
+  ],
+  "failed_evidence": [
+    "/tmp inodes exhausted, no personal cleanup",
+    "Outer test initially lacked writable /proc for user mapping",
+    "Separate test window covered toggle after Apply; corrected private window position, no product behavior changed for this fixture failure",
+    "Reset styles/content image names alone did not solve old RC merging; logs preserved"
+  ],
+  "remaining": [
+    "Persist separate-preview checkbox in project; current controller keeps want_separate in memory only.",
+    "Other GTK2 control kinds and forced states still unsupported.",
+    "Other GTK2 RC consumers require their own same-process palette review; progress proof is not all GTK2 widgets.",
+    "Other adapters GTK4/Qt5/Qt6/Kvantum/Plasma pending, GTK1/GTK5 unavailable.",
+    "Manual delivery and historical visual approval separate; no VM change or fidelity claim."
+  ],
+  "next": "T04 separate checkbox persistence across save/load/reopen, then remaining GTK2 controls.",
+  "sha256": {
+    "tools/theme-lab/gtk2_progress.py": "d071397402432a2a24c3aab06cda2161c30683b67ff7f29234e3a66cedc12a59",
+    "tools/theme-lab/gtk2_generation.py": "5882843a9dc116b8f19fde3700175c49268c0567bc29c5b0bf7e4b844f8b663d",
+    "tools/theme-lab/gtk2_session.py": "ef6e355c44a74fdc2a47706cebbd0baf557e154ef160cc4c802616b586d2db72",
+    "tools/theme-lab/native_scene_gtk2.py": "bb44219fadd877678b6ad510edd18f58f554c2e840331f8e60983aeee6ea3acf",
+    "tools/theme-lab/backend.py": "180e36c09e66c771e35d92e1b93ceded4a3294338887bab9f55d181dfea750cb",
+    "tools/theme-lab/src/controller/generated_preview.c": "aae1ce4bab494aa18467ed707002e6530563ef92a70e64307200b542b22aea4e",
+    "tools/theme-lab/tests/generated_preview_test.c": "b9cf1e5ca565c493dbec80897bfcdaa8c521c272830157d0a05355db8f15cf06",
+    "tools/theme-lab/tests/probe_gtk2_progress.py": "22ff23de303874a33f46ab8acd868ae15f557d2ede3c126d10b3848cd61b6c66",
+    "tools/theme-lab/tests/controller_gtk2_progress.py": "d7a389fb5b62acaede14dd391656698d1639df4ff01722bd9fb9f792c4e1ed30",
+    "tools/theme-lab/tests/test_gtk2_progress.py": "0b08e0ab5bc04969ee4791babccc16e9e70d8d50017c9069fea73ed8ea0fbee4",
+    "tools/theme-lab/build/theme-lab": "9e16cfe680a3f786e37749fff8b757697d632e5677fa7777d9b6bce1963077e0",
+    "tools/theme-lab/build/controller-spin-probe": "5e11e986368c565ceee465f57d94b28cf85f9f96bc58ab2103044aa817637b3d"
+  }
+}

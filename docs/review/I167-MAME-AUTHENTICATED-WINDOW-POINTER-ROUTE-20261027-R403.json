@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "R403",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Authenticate the project MAME host window and test a bounded pointer path for the GTK2 horizontal held-state comparison, then restore the host and MAME input state.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "window_xid": "0x2e00006",
+    "window_pid_verified": true,
+    "window_size_px": [1024, 844],
+    "other_mame_pid": 3971019,
+    "other_mame_contacted": false
+  },
+  "initial_host_state": {
+    "mame_window": "hidden/iconic on EWMH desktop index 2",
+    "active_window": "none in the X11 _NET_ACTIVE_WINDOW property",
+    "host_pointer_px": [600, 100],
+    "guest_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "pending_bridge_request": false
+    }
+  },
+  "host_window_intervention": {
+    "method": "X11 window was authenticated by _NET_WM_PID, then briefly activated to capture only that MAME window.",
+    "mame_host_window_capture": "~/tempia/ia-tema/evidence/I167/r403-mame-host-window.png",
+    "mame_host_window_capture_sha256": "e58de2d09099901fa43c9d05a1a618b6dccec354b2ca9adbea4fbf39f4becc44",
+    "restoration": "A KWin script's scheduled restoration did not occur as expected. I detected the active window state and explicitly minimized the authenticated MAME XID; final WM_STATE was Iconic, _NET_WM_STATE was HIDDEN, and _NET_ACTIVE_WINDOW returned to 0. The script was no longer loaded."
+  },
+  "pointer_route": {
+    "capture_off_test": {
+      "movement": "One host-pixel move from (600,100) to (601,100), no button.",
+      "before": "~/tempia/ia-tema/evidence/I167/r404-vue-before-1px.png",
+      "after": "~/tempia/ia-tema/evidence/I167/r404-vue-after-1px.png",
+      "before_sha256": "1c39002b4fba0c70272fe5cbcfff8f5f57ee038b9a60935c05cd32aca068c8f3",
+      "after_sha256": "1c39002b4fba0c70272fe5cbcfff8f5f57ee038b9a60935c05cd32aca068c8f3",
+      "pixel_differences": 0,
+      "result": "With the existing hook released, direct host motion produced no guest-frame difference."
+    },
+    "hook_recapture_test": {
+      "method": "One left click at local MAME-client coordinate (900,200), a blank blue desktop area away from controls. The existing hook had capture=false and had disabled guest mouse sequences; its own transition consumed the click and re-enabled input after button-up.",
+      "state_after_click": {
+        "captured": true,
+        "wait_button_up": false,
+        "mouse_option": true,
+        "mouse_device": "mouse"
+      },
+      "movement": "One host-pixel move from (1460,260) to (1461,260), no button.",
+      "after_recapture_capture": "~/tempia/ia-tema/evidence/I167/r405-vue-after-recapture.png",
+      "after_1px_capture": "~/tempia/ia-tema/evidence/I167/r405-vue-after-1px-captured.png",
+      "pixel_diff_bbox": [235, 739, 259, 740],
+      "pixel_diff_count": 4,
+      "interpretation": "No pointer was visible in either capture and no arrow target could be confirmed. The four changed pixels fall in the bottom-panel clock area; they do not identify pointer motion. This is inconclusive, not proof that guest input did not move the pointer."
+    }
+  },
+  "cleanup": {
+    "existing_hook_release_called": true,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "host_pointer_restored_px": [600, 100],
+    "mame_window_restored_hidden_iconic": true,
+    "active_window_restored_to_x11_none": true,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "bridge_pending": false,
+    "other_vm_touched": false,
+    "guest_settings_changed": false,
+    "guest_files_changed": false,
+    "mame_restarted": false,
+    "theme_changed": false
+  },
+  "result": "The project window is now authenticated and can be captured independently. Direct host motion while released is ignored; after the existing hook recaptures, a one-pixel motion did not expose a cursor in the guest capture. The cursor was therefore not safely locatable over a scrollbar arrow, and no arrow was pressed.",
+  "next": "Continue I167/GTK2 only. Preserve this corrected host-window identity and the explicit cleanup sequence. Do not repeat counter deltas or infer a guest cursor from host coordinates; inspect a cursor-visible MAME/guest capture path before any held-arrow input."
+}

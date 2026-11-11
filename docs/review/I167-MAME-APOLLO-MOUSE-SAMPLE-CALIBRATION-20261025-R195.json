@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-APOLLO-MOUSE-SAMPLE-CALIBRATION-20261025-R195",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "mechanism_reference": "https://raw.githubusercontent.com/mamedev/mame/mame0276/src/mame/apollo/apollo_kbd.cpp",
+  "initial_state": {
+    "mame_pid": 274368,
+    "host_active_window": "XChat",
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "apollo_mouse_ports": {"x": 3, "y": 106},
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "actions": [
+    {
+      "id": "x_positive",
+      "input": "Mouse X field 3 -> 19 (delta +16); no buttons; screenshot during the override.",
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/apollo-x-sample-r191.png",
+      "sha256": "edb4797e1d50b5925c57799e008e458f74c9c44ce6116420d06b55098f68bd9a",
+      "clear_capture": "/home/lsi/tempia/ia-tema/evidence/I167/apollo-x-sample-cleared-r191.png",
+      "clear_sha256": "35c7c8475eb6caa4769701996041dc5ec65cf874e2b450135865707260e5847b",
+      "observation": "The ROI around the cursor changed during the X override and matched the baseline exactly after clear. This is a reversible one-axis visual response, not a hover or selection comparison."
+    },
+    {
+      "id": "y_positive_screen",
+      "input": "Mouse Y field 106 -> 90 (the MAME Apollo driver negates Y, giving a positive sample delta); no buttons.",
+      "before": "/home/lsi/tempia/ia-tema/evidence/I167/apollo-before-y-r194.png",
+      "during": "/home/lsi/tempia/ia-tema/evidence/I167/apollo-y-sample-r194.png",
+      "during_sha256": "32b9dffefc68b7038bfa5cded5a43eae2a89d7b5bbe516d6687533ec0ee70a4b",
+      "after_clear": "/home/lsi/tempia/ia-tema/evidence/I167/apollo-after-y-clear-r194.png",
+      "after_sha256": "251bcf39b9c66372b8de354caa7e4f2a3d8c0d688e574a767fc61fcb48158626",
+      "observation": "A 94-pixel cursor-shaped change appeared in the panel ROI only during the Y override; that ROI matched the before image exactly after clear. This confirms a transient native guest-pointer rendering response, not the target XmpIcon state."
+    },
+    {
+      "id": "combined_and_negative",
+      "observation": "The combined X/Y and signed negative-X captures did not provide a measurable cursor destination. They are inconclusive and are not treated as successful motion."
+    }
+  ],
+  "final_state": {
+    "apollo_mouse_ports": {"x": 3, "y": 106},
+    "guest_screen": "VUE desktop visible; Terminal and File Manager present",
+    "capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/final-current-r195.png",
+      "sha256": "96d91bb77dbdcc8f0743e4e3816d86f42823b2f25db7cd61a826f5c17b49d77c"
+    },
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_active_window": "XChat",
+    "mame_window_focused": false
+  },
+  "limits": "The MAME source explains the input representation and polling/packet delay only; it is not Domain/OS SR10.4 historical evidence. The X/Y calibration did not yet place the pointer over a known XmpIcon or reproduce host SDL recapture after AltGr. MAME Lua captured=false is not a direct SDL grab query.",
+  "next": "Use the calibrated one-axis path to obtain a known XmpIcon hover location, with cleanup and before/during/after captures; separately observe the user's actual wake sequence after AltGr before changing the hook.",
+  "status": "mouse_input_calibrated_partially;_iconview_target_and_host_recapture_unresolved"
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R512",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only GTK2 application context check; identify whether the live XChat windows provide a horizontal scrollbar target for the reported arrow-size discrepancy.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "process": {
+      "pid": 8775,
+      "executable": "/home/lsi/.cache/codex-xchat/prd/xchat",
+      "gtk_library": "libgtk-x11-2.0.so.0.2400.33",
+      "theme_selected": "DomainOS-SR10-4-KDE"
+    },
+    "windows": [
+      {
+        "xid": "0x1800003",
+        "geometry_px": [
+          870,
+          930
+        ],
+        "map_state": "IsViewable",
+        "capture": "rightmost 20-px strip"
+      },
+      {
+        "xid": "0x183b200",
+        "geometry_px": [
+          998,
+          930
+        ],
+        "map_state": "IsViewable",
+        "capture": "rightmost 20-px strip"
+      }
+    ],
+    "result": "The visible right edges show vertical scrollbar regions. These strips do not expose a horizontal scrollbar or its arrow cells, so the observation does not reproduce the reported horizontal-arrow mismatch."
+  },
+  "captures": {
+    "directory": "~/tempia/domainos-theme-work/i167-r512-live-xchat-strips",
+    "sha256": {
+      "xchat-left-right-edge.png": "abf9a65815a63c05f9d583d05628729856009ae0c9cb287e1c3e958a9a42c643",
+      "xchat-right-right-edge.png": "378d07a636318693bf3733719b832f8e78065d7b90b6095350b7934c7dd47a1e"
+    }
+  },
+  "method": "Read /proc mappings for the GTK2 library; read ~/.gtkrc-2.0 theme name; identify XChat X11 windows by PID/class and geometry; capture only 20-px right-edge strips. No window content, keyboard, pointer, application state, theme, or VM was changed.",
+  "limits": [
+    "Confirms current XChat runtime is GTK2 2.24.33 and the selected GTK2 theme name, but does not establish that XChat is the application/state where the user saw a smaller horizontal arrow.",
+    "The captured strips concern vertical scrollbar edges; they cannot prove horizontal stepper geometry or historical VUE fidelity.",
+    "Q501 remains unanswered; V03 remains partial and unreviewed."
+  ]
+}

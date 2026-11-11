@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-11T18:58:30.829557+00:00",
+  "stage": "T04 GTK2 anchor placement and gestures",
+  "status": "private_native_proof_passed",
+  "sources_sha256": {
+    "tools/theme-lab/gtk2_placement.py": "a5ad86f7eab05ccca717851e8f402fdcbb28c7a69e3225e9e0e0598b1f079ce2",
+    "tools/theme-lab/native_scene_gtk2.py": "9f63c7f65bb2ffde9d3b4f9b8836ebecc1f2587b486fcffdbe4bd6e1d6aab12b",
+    "tools/theme-lab/gestures_gtk2.py": "22ff1ca7600a24be8454989448d224cf87c71372a4a2539ebef73ba679608e0e",
+    "tools/theme-lab/gtk2_session.py": "6e33b6f0591b17183e1cf98fe5a283a362fd6543e0abe8f807606414d9a0d87b",
+    "tools/theme-lab/tests/probe_gtk2_anchor_lifecycle.py": "deb9786024a6bb8a6a8929c7ba6570931ffe3feb0f9652e4d14d7115d0b06a84"
+  },
+  "proofs": {
+    ".qa-t04-anchor-foundation/lifecycle-r9/RESULTADO.json": {
+      "sha256": "d86b343358ab16a28b7535adf8e05ac51763cdefb49a91b2010024074b32cfba",
+      "status": "passed"
+    },
+    ".qa-t04-anchor-foundation/runtime-regression/RESULTADO.json": {
+      "sha256": "607ca5dc9857bb4281073adcbd5a74c7e7f91093bd849322d87919d7f67e19ba",
+      "status": "passed"
+    },
+    ".qa-t04-anchor-foundation/unanchored-regression/results.json": {
+      "sha256": "1ced075cb311ae76b7ab4d5f13b370ee4fd1bb91d14cedcaf8293c4fc660234c",
+      "status": "passed"
+    }
+  },
+  "native_geometry_cases": 12,
+  "native_ctrl_gesture_origins": 2,
+  "verified": [
+    "Automatic allocation reconciliation keeps trailing coordinates in natural/1px/custom H/V controls",
+    "Resize during Ctrl drag preserves last delivered provisional coordinate; release commits its own root coordinates",
+    "Failed move checkpoint restores authoritative position and releases grab",
+    "Invalid trailing placement rejected before event publication",
+    "Destroy cancels pending idle sources and disconnects handlers",
+    "Runtime persistence and hidden/rebuild states pass in four distinct processes",
+    "Unanchored gestures and C event parsing pass in both origins"
+  ],
+  "defect_fixed": "NativeSession.replace retained staged gesture handlers before rebinding. Close candidate.gestures before transfer to avoid duplicated consuming handlers and inaccessible grab.",
+  "test_limits": [
+    "X motion compression/hints mean intermediate delivered position need not equal last requested pointer coordinate; final release coordinate separately asserted",
+    "Only private record injection enabled anchors in this probe; generator/backend/scene/C guards still reject feature",
+    "Historical appearance and all other toolkit families not certified",
+    "Changes not yet delivered to personal lab"
+  ],
+  "tests": {
+    "geometry": 6,
+    "gtk2_guards": 4,
+    "gtk3_scene_regression": 15,
+    "native_persistence_processes": 4,
+    "unanchored_origins": 2,
+    "unanchored_C_parsed_events": 11
+  },
+  "progress_percent": 50,
+  "basis": "Four milestones: geometry; allocation/gestures; capability/controller end-to-end; coordinated delivery. First two proven.",
+  "remaining": [
+    "Connect all feature guards and C capability handling",
+    "Prove full controller generation/update/SaveLoad and both native origins",
+    "Deliver after specific coordination"
+  ],
+  "goal_complete": false,
+  "user_approval_filled": false
+}

@@ -86,6 +86,9 @@ Controls.ScrollView {
                     && x < view.viewportLeft + view.availableWidth && x + width > view.viewportLeft
                     && y < view.viewportTop + view.availableHeight && y + height > view.viewportTop
                 readonly property bool liveAvailable: !!nativeImage.item && nativeImage.item.available
+                readonly property string cacheIdentity: JSON.stringify([
+                    modelData.key || "", modelData.pid || 0, windowId || 0])
+                readonly property bool cachedFrameAvailable: frameCache.hasFrame
                 function closeCaptionHint() { caption.hintRequested = false; captionHint.close() }
                 readonly property string unavailableReason: {
                     if (preview.backend === "unavailable") return qsTr("Miniatura indisponível nesta sessão.")
@@ -105,6 +108,40 @@ Controls.ScrollView {
                 Rectangle {
                     x: 4; y: 4; width: parent.width - 8; height: 132
                     color: preview.colorPalette ? preview.colorPalette.background : view.Kirigami.Theme.backgroundColor
+                }
+                DomainOSThumbnailFrameCache {
+                    id: frameCache
+                    sourceItem: nativeImage.item
+                    identity: card.cacheIdentity
+                }
+                Image {
+                    objectName: "domainosThumbnailCachedFrame"
+                    x: 6; y: 6; width: parent.width - 12; height: 130
+                    visible: view.visible && frameCache.hasFrame && !card.liveAvailable
+                    source: frameCache.frameUrl
+                    fillMode: Image.PreserveAspectFit
+                    asynchronous: false
+                    smooth: true
+                }
+                Timer {
+                    id: cacheRefreshTimer
+                    interval: 180
+                    repeat: false
+                    onTriggered: if (card.liveAvailable) frameCache.capture()
+                }
+                Connections {
+                    target: preview
+                    function onTooltipVisibleChanged() {
+                        if (preview.tooltipVisible) cacheRefreshTimer.restart()
+                        else cacheRefreshTimer.stop()
+                    }
+                }
+                Connections {
+                    target: nativeImage.item
+                    function onAvailableChanged() {
+                        if (card.liveAvailable && !frameCache.hasFrame)
+                            frameCache.capture()
+                    }
                 }
                 Loader {
                     id: nativeImage

@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-11T07:48:04.460607+00:00",
+  "item": "I179",
+  "revision": 1,
+  "phase": "delivered_lsi",
+  "previous_goal_turn_classification": "progress: font sizing guard, native tests and coordinated request",
+  "pid": 1947021,
+  "display": ":61",
+  "window": "48234657",
+  "manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+  "source_pid_preserved": 1864866,
+  "source_host_process_confirmed_alive": true,
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-10a9e43e110d4cfe8e2b2d0bc29b05d6/MANIFESTO.json",
+    "source_manifest_sha256": "d262b69ad02a12e52f1fb81a703ac76b4c7d793698604f06af6b31eddb3788f8",
+    "saved_files_sha256": {
+      "working.json": "563f7b67a7a6ff8da92572e0ffb7fa8170bfbf1cfec081b9eb0ee5d9ea554f14",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd",
+      "project-history.json": "545078925972a4731bda5deb08f26feffa9ba21b22ceb9fe693ec5b86f92c6be"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "saved_project_equal_except_exported_at": true,
+  "editor_journal_undo_byte_identical": true,
+  "project_history_byte_identical": true,
+  "release": {
+    "theme": {
+      "schema": 1,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "pid": 1609066,
+      "active": true,
+      "request": {
+        "id": "218fac717046437b8cf44881d7e510a2b146292f25a2d6c7a4121090a8d6ce93",
+        "item_id": "I179",
+        "user_revision": 1,
+        "definition_sha256": "d96d1fd6346542bbe8a598c222d423f227f290830934afddda1d3379d3b7dd21",
+        "application": "Laboratório Motif I179 — Xephyr :61, origem PID1864866",
+        "reason": "Build e provas privadas concluídos: fallback do mesmo XLFD, diagnósticos de cobertura, estados e tamanhos. Abrir versão atualizada copiando projeto salvo, journal e histórico; manter a origem PID1864866 aberta. Pausa para cópia consistente; texto bruto não salvo não será importado. Nenhuma outra janela será fechada.",
+        "requested_at": "2026-10-11T07:46:26.201Z"
+      },
+      "answer": {
+        "approved": true,
+        "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+        "request_id": "218fac717046437b8cf44881d7e510a2b146292f25a2d6c7a4121090a8d6ce93",
+        "responded_at": "2026-10-11T07:46:44.874Z"
+      },
+      "available": true,
+      "permitted": true,
+      "scope_current": true
+    },
+    "schema": 2,
+    "session": "5b3250cff47a5b5ddd3fd141d42b90e25f453edb15772adba19f29827920a81c",
+    "pid": 1897183,
+    "active": true,
+    "available": true,
+    "permitted": false
+  },
+  "release_consumed": true,
+  "capture": "docs/referencias/domainos-sr104/i179-sizing/delivered.png",
+  "capture_sha256": "3db402db69b46ec1fc0f95bfafdcb410e0c28d987cc6230e8784d37b7db4e053",
+  "capture_inspected": "Motif real widgets, three panels, dynamic palette and preserved recipe visible; no pointer/keyboard input sent",
+  "technical_proofs": "I179-ESTADOS-TAMANHOS-20261011.json",
+  "scope_progress_percent": 100,
+  "human_approval_filled": false,
+  "remaining": "Human evaluation; documented glyph/size limits are not universal language support",
+  "goal_complete": false
+}

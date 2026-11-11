@@ -16,6 +16,10 @@ PlasmaCore.ToolTipArea {
     property var controller: null
     property var record: null
     property QtObject colorPalette: null
+    // Keep the preview content object (and its in-memory frame snapshots) after
+    // the first open. Live native providers still exist only in the visible
+    // tooltip; disabling previews or changing identity releases this cache.
+    property bool previewWasOpened: false
     // ToolTipArea shares one native dialog between all cells. Its visibility
     // signal is broadcast to former owners too; only this content's actual
     // window and mainItem identify a visible preview belonging to this cell.
@@ -52,9 +56,13 @@ PlasmaCore.ToolTipArea {
     subText: record && record.group
         ? windowRecords.map((window, index) => (index + 1) + ". " + window.title).join("\n") : ""
     onAboutToShow: preparingContents = true
-    onTooltipVisibleChanged: preparingContents = false
+    onTooltipVisibleChanged: {
+        if (tooltipVisible && previewsEnabled) previewWasOpened = true
+        preparingContents = false
+    }
     function releaseOwnedContents() {
         preparingContents = false
+        previewWasOpened = false
         // An unowned cell must never hide the new owner's shared dialog.
         if (tooltipVisible) hideImmediately()
     }
@@ -101,7 +109,8 @@ PlasmaCore.ToolTipArea {
             visible: previewArea.tooltipVisible && previewArea.previewsEnabled
             // Build labels before Plasma measures the native tooltip; live image
             // providers below still wait for its visibility signal.
-            active: previewArea.previewsEnabled && (previewArea.tooltipVisible || previewArea.preparingContents)
+            active: previewArea.previewsEnabled && (previewArea.tooltipVisible
+                || previewArea.preparingContents || previewArea.previewWasOpened)
             anchors.fill: parent
             sourceComponent: DomainOSWindowPreviewContents { preview: previewArea }
         }

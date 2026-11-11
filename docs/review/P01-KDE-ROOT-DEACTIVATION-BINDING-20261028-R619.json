@@ -1,0 +1,51 @@
+{
+  "id": "R619",
+  "date_utc": "2026-10-28T21:00:19Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 menu behavior only"
+  },
+  "source_basis": {
+    "kicker_item_list_view": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListView.qml sets kicker.hideOnWindowDeactivate=false before creating/focusing a category submenu.",
+    "kicker_item_list_dialog": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDialog.qml binds its hideOnWindowDeactivate to the same Kicker property.",
+    "theme_root_before": "DomainOSKdeApplicationMenu.qml hard-coded the root PlasmaCore.Dialog property to true, so it did not follow the Kicker property during submenu creation."
+  },
+  "change": {
+    "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "details": "Bind the root PlasmaCore.Dialog.hideOnWindowDeactivate to kicker.hideOnWindowDeactivate.",
+    "before_sha256": "28b91031931ff402acd8a3b2207a7a2e66df8326116ef840a388f9523a7edc06",
+    "source_sha256": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "installed_sha256": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "backup": "records/ia-tema/P01/R619-before-install/DomainOSKdeApplicationMenu.qml"
+  },
+  "validation": {
+    "qmlformat_parse": "passed; output stored in ~/tempia/domainos-theme-work/P01/R619-kde-root-deactivation-wayland-20261028/DomainOSKdeApplicationMenu.formatted.qml",
+    "git_diff_check": "passed for the changed QML file",
+    "source_matches_installed": true,
+    "user_lsi_plasmashell": {
+      "service": "plasma-plasmashell.service",
+      "old_pid": 752206,
+      "new_pid": 925745,
+      "active": true,
+      "automatic_restarts": 0
+    },
+    "other_plasmashell_pid_preserved": 332937,
+    "kwin_restarted": false,
+    "journal": "No load error for DomainOSKdeApplicationMenu.qml or DomainOSApplications.qml. Existing DomainOSTray binding warnings remain.",
+    "interactive_submenu_test": "not demonstrated; private R619 fixture did not create the submenu. No claim that live hover closure is fixed."
+  },
+  "durable_prior_evidence": {
+    "R617": "records/ia-tema/P01/R617-own-menu-wayland-20261028/RESULTADO.json",
+    "private_test_passed": true,
+    "scope": "own menu search focus and synthetic typing under isolated private Wayland; does not validate the KDE submenu."
+  },
+  "remaining": [
+    "User validation after this reload: open KDE menu, hover a category/submenu without clicking, and type immediately in search.",
+    "P01 remains open; no status change in the AI Work Board because its GUI edit lock is held."
+  ]
+}

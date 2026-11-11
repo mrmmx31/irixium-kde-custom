@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-10-16T23:10:00Z",
+  "stage": "T04 isolated rebuild and Xephyr startup smoke",
+  "status": "build_and_tests_passed_candidate_running_manual_review_pending",
+  "workspace": "/home/lsi/irixium-kde-custom",
+  "build": {
+    "target": "tools/theme-lab/build/theme-lab",
+    "make_q_exit": 0,
+    "compiler_flags": "C99 -Wall -Wextra -Werror",
+    "sha256": "7d6c2cc7d1ccc6244459f95ab4d17b24a107df1829aeba955d36960adccf8a7b",
+    "tests": {
+      "model": "1007 checks passed",
+      "preview_event": "passed",
+      "utf8_code_search": "passed",
+      "backend": "39/39",
+      "preview_scene": "16/16",
+      "qt5_recipe": "4/4",
+      "qt6_recipe": "21/21",
+      "native_metrics_view": "passed; T07 selectors, numeric fields and nine action tips"
+    }
+  },
+  "isolated_candidate": {
+    "display": ":70",
+    "pid": 3328388,
+    "work_dir": "~/tempia/theme-lab-t04-launch/work",
+    "screenshot": "~/tempia/theme-lab-t04-launch/theme-lab-startup.png",
+    "screenshot_sha256": "d66e5b13f4bb844bf36e03e7b844b780cdf8cd3e8c91e7a0ced59f0d8e27c25b",
+    "result": "Window opened and initial Motif layout is visible; manual adapter validation remains pending.",
+    "limitation": "The private environment logs font/charset warnings; screenshot text is readable, but local font coverage is not fully validated."
+  },
+  "preserved_sessions": {
+    "old_theme_lab_display_61_pid": 3926933,
+    "board_pid": 1647579,
+    "xephyr_displays": [":61", ":68", ":70"],
+    "mame_vm": "preserved",
+    "personal_profiles": "unchanged",
+    "notes": "The existing :61 process was not replaced or terminated. :70 is an isolated candidate, not a production handoff."
+  },
+  "next": "User may review the isolated :70 candidate. Coordinate replacement only after the relevant old instance is confirmed closed; do not infer that the earlier statement that the board app could close means it has closed."
+}

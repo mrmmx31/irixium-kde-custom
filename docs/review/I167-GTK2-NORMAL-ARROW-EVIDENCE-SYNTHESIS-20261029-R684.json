@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R684",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile existing normal-state horizontal GTK2 arrow comparisons with the SR10.4/VUE reference, without repeating captures or sending input to the VM.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "evidence": [
+    {
+      "id": "R305",
+      "path": "docs/review/I167-GTK2-HORIZONTAL-ARROW-ASSETS-20261026-R305.json",
+      "scope": "Normal GTK2 theme assets, four directions across three variants.",
+      "result": "12 cells matched the retained Domain/OS SR10.4 HP VUE 2.01 cells at 0/225 differing pixels each; the DomainOS-SR10-4-KDE left/right assets were 15x15."
+    },
+    {
+      "id": "R394",
+      "path": "docs/review/I167-GTK2-INSTALLED-THEME-STEPPERS-20261027-R394.json",
+      "scope": "Fresh GTK2 2.24.33 rendering using the selected installed DomainOS theme.",
+      "capture_sha256": "97b6b30de2bd25153b260d8503fae9460a542ab4e04f229b45734b376677d3bf",
+      "result": "All four normal 15x15 cells, including left and right, matched the retained SR10.4/VUE sample at 0/225 differing pixels. The report did not reproduce a narrower horizontal arrow."
+    },
+    {
+      "id": "R469",
+      "path": "docs/review/I167-GTK2-VUE-CURRENT-HORIZONTAL-NORMAL-20261027-R469.json",
+      "scope": "Current normal horizontal cells in the live VUE screenshot against the retained VUE crop.",
+      "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "result": "Both 15x15 cells matched at 0/225 differing pixels."
+    },
+    {
+      "id": "R683",
+      "path": "docs/review/I167-GTK2-PUBLIC-PREVIEW-END-TO-END-20261029-R683.json",
+      "scope": "Real public GTK2 preview route in private Xvfb/bwrap.",
+      "result": "Each normal arrow ROI matched its generated asset at 0 differing pixels; each direction changed 53 pixels while held and returned to hover exactly on release. The preview recipe remained partial and was not installed."
+    }
+  ],
+  "conclusion": "The reported normal-state horizontal arrow width reduction is not reproduced by the retained GTK2 assets or the recorded fresh GTK2 rendering. Existing 15x15 geometry is supported; these results do not justify a geometry change.",
+  "limits": [
+    "R305/R394 cover normal GTK2 cells; R683's held/released state is GTK2 behavior, not a held-state comparison against the historical VM.",
+    "The current VM horizontal held-state comparison still requires the separately authorized I517 pointer-input task; I517 remains unauthorized at revision 0.",
+    "R683 validates the private public-preview route and does not mean its partial recipe was installed in the lsi profile.",
+    "No desktop profile, application, VM, source asset, or theme family was changed in this synthesis."
+  ],
+  "next": "Continue I167 within GTK2: use existing evidence for independent comparisons and leave VM pointer interaction gated on I517. Keep user-visible acceptance separate from technical evidence."
+}

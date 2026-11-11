@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "R280",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "screen-visible-pointer-still-not-visible-no-arrow-press",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "revalidation": {
+    "process_pid": 1313710,
+    "canonical_disk_verified": true,
+    "frameskip": 4,
+    "throttled": false,
+    "paused": false,
+    "mouse_captured": false,
+    "wait_button_up": false,
+    "pending_request": null
+  },
+  "method": {
+    "prior_visible_guest_state": "VUE Terminal and File Manager at /node_12345, vertical scrollbar arrows visible in R276/R277.",
+    "movement": "One bounded five-step X-counter sequence, +3 per step, no mouse button. R277 was a separate one-step operation; because cleanup clears the override and restores the physical accumulator, the two sequences are not treated as a cumulative displacement.",
+    "request_id": "7c3a8fd1d585429dbe5355d377c6c90d",
+    "operation": "done=true, steps=5, error=nil, cleanup_error=nil; input counters released.",
+    "result_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-pointer-step-r279.png",
+      "sha256": "6af4c81ed303bd8d2c500c7eff399f6cd3e0e6e3d32b5333039fc9e10ca110d3",
+      "result": "VUE is visible and scrollbar arrows are present, but the cursor still is not visible over a target."
+    }
+  },
+  "result": "The bounded relative movement did not produce an auditable pointer target. No scrollbar arrow was pressed. The comparison of GTK2 left/right/up held pixels against SR10.4 remains open; no theme or guest files changed.",
+  "correction": "R281 clarifies that the earlier +3 and this +15 were separate operations and must not be added as a cumulative displacement.",
+  "next": "Stop counter calibration. Resume only after a physical host mouse movement makes the pointer visible inside the MAME guest, then confirm a specific scrollbar arrow before sending a short press/release."
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "R386",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Keep the role-derived vertical down-stepper edge correction identical in GTK2 NORMAL and PRELIGHT generation.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "effect": "The KDE-role-derived trough face is now copied to x=2..12 on row 0 of down-normal, down-focused and down-pressed. The relief glyph remains different in ACTIVE; the non-pressed variants retain their identical source artwork.",
+    "fixed_rgb_added": false
+  },
+  "validation": {
+    "command": "PYTHONPATH=tests PYTHONPYCACHEPREFIX=/home/lsi/tempia/pycache-i167-r386 TMPDIR=/home/lsi/tempia python3 -m unittest -v test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "result": "8 tests passed",
+    "palettes": "The generated NORMAL/PRELIGHT cells are asserted pixel-identical after initial generation and role refresh to a second palette.",
+    "canonical_source_preserved": true,
+    "py_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "This proves palette-generation consistency, not the actual hover appearance of HP VUE 2.01.",
+    "The R383 GTK2 runtime hover capture predates this generator correction; no new GTK2 runtime hover capture was made here.",
+    "No GTK theme was installed or reloaded; XChat, user profile, VM input and VM files were untouched.",
+    "Historical pressed horizontal arrows and visual review remain open."
+  ],
+  "next": "Validate the corrected generated PRELIGHT asset in a fresh isolated GTK2 runtime before drawing conclusions about the interactive preview."
+}

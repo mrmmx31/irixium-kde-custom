@@ -1,0 +1,26 @@
+{
+  "item": "T07",
+  "revision": "R3",
+  "checked_at_utc": "2026-10-18T17:52:53Z",
+  "family": "Qt6 Widgets menu hints",
+  "runtime": {
+    "qt": "6.8.2",
+    "display": ":91",
+    "xephyr": "800x600, existing process preserved",
+    "platform": "xcb",
+    "environment": "env -i with a disposable HOME/XDG_CONFIG_HOME; no product or user theme configuration was changed"
+  },
+  "probe": {
+    "file": "~/tempia/t07-qt6-submenu-xephyr-20261018/menu-probe.py",
+    "sha256": "bb90825b8868b586d83d6e76bda424b8281a294da781131a50d5884f1bd2fb03",
+    "native_menu_setToolTipsVisible": true,
+    "normal_action": "QToolTip appeared with the QAction tooltip",
+    "submenu_parent_action": "No QToolTip appeared after the child QMenu opened; the parent QMenu received Leave while the parent action remained active",
+    "nested_child_action": "QToolTip appeared with the QAction tooltip",
+    "statusTip_fallback": "Setting QAction.statusTip did not populate the test QStatusBar"
+  },
+  "prior_attempt": "Two earlier production-gallery attempts of a delayed QTimer/QToolTip fallback failed on menu action 5; the fallback was removed. This R3 probe did not alter or repeat that implementation.",
+  "interpretation": "The limitation is specific to the QAction that opens a submenu. Native Qt hints work for normal actions and nested actions; the parent action loses its menu surface when the child opens. The Qt property is populated, but its visible hover hint is not proven for this navigation row.",
+  "changes": "No product source changed. The temporary Qt6 window exited cleanly; Xephyr :91 remains open with no child windows.",
+  "next": "T07 remains partial for the submenu opener. A new design pattern or explicitly accepted exception is needed before changing the production gallery; continue to another independent authorized item."
+}

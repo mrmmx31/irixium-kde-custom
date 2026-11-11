@@ -1,0 +1,36 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "date": "2026-10-14",
+  "status": "partial_waiting_user",
+  "scope": "Isolated Xephyr :61, private HOME/DBus/XDG, real KWin and plasmashell, DomainOS look-and-feel; no personal Plasma or VM input.",
+  "package": {
+    "path": "/home/lsi/tempia/board/p08-full-panel-20261014/package/irixclassic-domainos-0.2.12-beta.1.zip",
+    "sha256": "6594c402881044e44baa1713e453673d23fc7d554ba7ee2840132a19e1f97484",
+    "verification": "290-file archive verified. The standard builder lacked Qt6Qml SDK metadata; the preview reused the read-only installed Qt 6.8.2 x86_64 native menu module whose payload hash matched the active package source. No install into the personal profile."
+  },
+  "session": {
+    "theme": "org.magpie.irixclassic.domainos.desktop",
+    "color_scheme": "DomainOS-SR10-4",
+    "decoration": "domainos_sr104",
+    "display": ":61",
+    "screen": "1600x1000",
+    "result": "/home/lsi/tempia/board/p08-full-panel-20261014/session-domainos/RESULTADO.json",
+    "panel_window": {"x": 298, "y": 875, "width": 1003, "height": 125},
+    "applet_window": {"x": 314, "y": 883, "width": 971, "height": 109},
+    "scaling": "1:1 screen capture; QML canvas drawingScale 0.5",
+    "checks": {"real_plasmashell_panel": true, "all_preview_isolation_gates": true, "private_session_closed_by_owned_xephyr": true, "personal_kde_configuration_unchanged": true}
+  },
+  "interactions": [
+    {"control": "Applications pinned drawer", "object_name": "domainosApplicationsDrawer", "action": "pins", "image_size_logical": "54x40", "inner_bevel_logical": "44x44", "click_global": [625, 967], "result": "Pinned applications drawer opened as a real plasmashell popup and remained inside the isolated session.", "crop": "/home/lsi/tempia/board/p08-full-panel-20261014/session-domainos/APPLICATIONS-POPUP-CROP.png", "sha256": "6e8dd42f4abd8556eb598791970d559cf54f2509b92720add94b36605801d254"},
+    {"control": "Main Applications launcher", "action": "applications", "click_global": [365, 967], "result": "Native Applications launcher opened in plasmashell.", "crop": "/home/lsi/tempia/board/p08-full-panel-20261014/session-domainos/MAIN-APPLICATIONS-POPUP-CROP.png", "sha256": "4b614169bad8344e0d6562b01c296b25d3b7a9475cff997dbdd80455483533d4"}
+  ],
+  "captures": {
+    "full_session": {"path": "/home/lsi/tempia/board/p08-full-panel-20261014/session-domainos/TEMA-COMPLETO.png", "sha256": "34bc560c905febd4d4d260244d371f5efdb42a6aa086c67989ce3f331d0d0877", "dimensions": "1600x1000"},
+    "panel_1x": {"path": "/home/lsi/tempia/board/p08-full-panel-20261014/session-domainos/PANEL-CROP-1X.png", "sha256": "4c780ca3cd7bacff230f29bd1417854e00e4a576036ad324f59dcfa30efde521", "dimensions": "1003x125"}
+  },
+  "prior_tests_reused": ["Activity startup Xephyr 37/37", "Activity regression 49/49", "command helper 25/25 in Xvfb and 25/25 in Xephyr"],
+  "limits": ["No historical VM reference or comparison was made in this isolated session.", "Human review and Q334 remain pending.", "The pinned drawer is empty apart from its native preferences entry in the private profile; this verifies opening, not pin persistence or launch of a personal application.", "The updated package remains a private preview and was not installed into production."],
+  "progress_estimate": {"percent": 97, "basis": "P08 technical milestones; full-panel integration now opens both real plasmashell paths. Manual review and Q334 remain. This is not a visual-fidelity percentage."}
+}

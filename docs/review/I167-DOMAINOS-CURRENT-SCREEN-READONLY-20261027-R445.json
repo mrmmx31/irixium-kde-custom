@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "R445",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate the project VM screen and profile after R444, without sending guest input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "second_mame_pid": 3971019,
+    "second_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "second_vm_contacted": false,
+    "verify_script_blocks_graphical_input": true
+  },
+  "method": {
+    "capture": "Read-only manager.machine.screens[':apollo_screen:screen']:snapshot(path) through the correlated project MAME bridge.",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_bridge_request": false
+    },
+    "guest_input_sent": false,
+    "host_focus_changed": false
+  },
+  "observation": {
+    "image": "~/tempia/ia-tema/evidence/I167/r445-current-screen-20261027.png",
+    "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "dimensions": [1024, 844],
+    "screen_state": "The 1024x800 guest desktop region is uniformly black (RGB 0,0,0); the Apollo command strip remains visible at the bottom.",
+    "comparison_to_R444": "Pixel-identical SHA-256 and dimensions: the guest remains black since R444. No VUE window, horizontal scrollbar, pointer target or GTK2 comparison target is visible."
+  },
+  "result": {
+    "classification": "Fresh read-only revalidation; no usable target for the held horizontal-arrow comparison.",
+    "historical_appearance_proven": false,
+    "interpretation": "The project guest is still in the black-screen state. verify.sh still refuses graphical input while the distinct Prancheta MAME process is active. This recheck does not authorize or address that VM."
+  },
+  "cleanup": {
+    "bridge_pending": false,
+    "project_vm_paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "second_vm_changed": false,
+    "guest_disk_modified_by_test": false
+  },
+  "next": "After the separate MAME releases the guarded input path, revalidate the project PID/disk and bridge; if the project screen is still black, use the documented one-frame Shift attempt once, confirm the VUE target is visible, and only then perform the pending horizontal held-arrow comparison."
+}

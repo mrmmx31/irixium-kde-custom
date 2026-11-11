@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "id": "R509",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile the original GTK2 horizontal-arrow compression diagnosis with the current user-selected and installed GTK2 RCs plus the post-R495 native GTK2 pixel capture.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "historical_cause": {
+    "receipt": "docs/review/I167-GTK2-STEPPER-RENDER-SOURCE-CAUSE-20261026-R331.json",
+    "gtk": "2.24.33",
+    "geometry": {
+      "slider_width_px": 11,
+      "stepper_size_px": 15,
+      "trough_border_px": 2,
+      "horizontal_stepper_destination_px": [
+        15,
+        11
+      ]
+    },
+    "finding": "With the former file= path and stretch enabled, GTK2 scaled the complete 15x15 pixmap into a 15x11 horizontal destination. Widening slider-width breaks the 15px scrollbar; reducing trough-border breaks the 2px inset, so both workarounds were rejected."
+  },
+  "correction_history": {
+    "overlay_receipt": "docs/review/I167-GTK2-STEPPER-OVERLAY-INSTALL-20261027-R332.json",
+    "correction": "Use overlay_file with overlay_stretch=FALSE to preserve the square 15x15 source artwork without changing GtkRange geometry. R470/R496 later close the remaining normal horizontal cell differences."
+  },
+  "current_user_profile": {
+    "config_path": "/home/lsi/.gtkrc-2.0",
+    "config_sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "installed_rc_files": [
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+        "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+      }
+    ],
+    "all_four_rcs_identical": true,
+    "relevant_rc_lines": {
+      "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc": [
+        "GtkRange::slider-width = 11",
+        "GtkRange::stepper-size = 15",
+        "GtkRange::trough-border = 2",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-pressed.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-pressed.png\"  overlay_stretch = FALSE }"
+      ],
+      "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc": [
+        "GtkRange::slider-width = 11",
+        "GtkRange::stepper-size = 15",
+        "GtkRange::trough-border = 2",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-pressed.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-pressed.png\"  overlay_stretch = FALSE }"
+      ],
+      "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc": [
+        "GtkRange::slider-width = 11",
+        "GtkRange::stepper-size = 15",
+        "GtkRange::trough-border = 2",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-pressed.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-pressed.png\"  overlay_stretch = FALSE }"
+      ],
+      "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc": [
+        "GtkRange::slider-width = 11",
+        "GtkRange::stepper-size = 15",
+        "GtkRange::trough-border = 2",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = NORMAL  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-normal.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = LEFT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-left-pressed.png\"  overlay_stretch = FALSE }",
+        "image { function = STEPPER  state = ACTIVE  arrow_direction = RIGHT  orientation = HORIZONTAL  overlay_file = \"../common/assets/scrollbar-stepper-right-pressed.png\"  overlay_stretch = FALSE }"
+      ]
+    },
+    "current_geometry_contract": {
+      "slider_width_px": 11,
+      "stepper_size_px": 15,
+      "trough_border_px": 2
+    },
+    "palette_policy": "Installed RCs are palette-generated; no RGB final color added."
+  },
+  "runtime_evidence": {
+    "receipt": "docs/review/I167-GTK2-POST-R495-INSTALLED-HORIZONTAL-RENDER-20261027-R496.json",
+    "gtk": "2.24.33",
+    "scale": 1,
+    "horizontal_bar_allocation_px": [
+      360,
+      15
+    ],
+    "left_composited_cell_px": [
+      15,
+      15
+    ],
+    "right_composited_cell_px": [
+      15,
+      15
+    ],
+    "both_cells_match_vue_rgb_exactly": true,
+    "different_pixels_per_cell": 0
+  },
+  "result": "The earlier horizontal arrow compression was real in the pre-overlay GTK2 path. The currently selected and installed user profile uses the non-stretching overlay mapping, retains the 15px bar/11px slider-width/2px trough inset, and its R496 normal GTK2 composite arrow cells match the VUE 15x15 reference exactly. The requested size discrepancy is therefore not reproduced in the current normal-state fixture.",
+  "limits": [
+    "Readback proves current RC files and selected theme, not that already-open GTK2 application windows have reloaded them.",
+    "No live personal GTK2 app or historical horizontal held state is proven by this receipt.",
+    "The user-reported app/state/scheme remains unspecified in Q501.",
+    "No VM, desktop, personal app, profile, or theme file was changed."
+  ],
+  "next": "Use the already prepared R508 comparison sheet for human review; if the perceived difference remains, use Q501 target details to reproduce in the relevant app/state before changing geometry. Live horizontal held-state verification still requires the canonical VM gate."
+}

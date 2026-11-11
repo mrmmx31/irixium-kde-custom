@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "id": "R413",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Resume the authorized GTK2 live scrollbar-arrow check by validating a visible guest pointer path; stop before pressing any arrow when the mapping is not reliable.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "window_xid": "0x2e00006",
+    "window_pid_verified": true,
+    "other_mame_pid": 3971019,
+    "other_vm_contacted": false
+  },
+  "initial_state": {
+    "screen": "VUE visible; Trash Can horizontal scrollbar visible",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": true,
+    "wait_button_up": false,
+    "channel_pending": false,
+    "source_image": {
+      "path": "~/tempia/ia-tema/evidence/I167/r410-current-before-resume.png",
+      "sha256": "8bde5d7c7202d0a54bf5b65dd1089688c8225dca6a85f5c60737d5de526117b3"
+    }
+  },
+  "counter_trials": {
+    "R411": {
+      "method": "bounded guest relative-counter overrides with visual checkpoints",
+      "start_counts": [
+        70,
+        74
+      ],
+      "sequence": [
+        [
+          10,
+          10
+        ],
+        [
+          5,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          -1,
+          26
+        ]
+      ],
+      "result": "Cursor became visible and moved, but the 26-count step produced no visible displacement in the inspected crop. The callback reached its 2400-frame safety deadline and cleared only its counter overrides; no button was pressed.",
+      "images": [
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r411-pointer-step-1.png",
+          "sha256": "bbbdfe71132cbc9f17459959a3d91095d7478dcc22b17fc880d516724521ede1"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r411-pointer-step-2.png",
+          "sha256": "04fb60180c345934a71f51d6477fa2ef1cbc4e83db2c7d0846db95fcd74de950"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r411-pointer-step-3.png",
+          "sha256": "8de4d1b49374071e6692786c02486a70bfa12cca1d8f0029c0bd1235d8ecdbe5"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r411-pointer-step-4.png",
+          "sha256": "c197711a6b0d610f7830a47f2ee87f42f7c6874f2786bf7089ff3b1043154903"
+        }
+      ]
+    },
+    "R412": {
+      "method": "repeat with 18000-frame safety deadline and bounded checkpoints",
+      "start_counts": [
+        70,
+        74
+      ],
+      "sequence": [
+        [
+          10,
+          10
+        ],
+        [
+          5,
+          40
+        ],
+        [
+          8,
+          40
+        ],
+        [
+          0,
+          30
+        ]
+      ],
+      "result": "Cursor became visible and moved across the guest image. After the final Y-count change from 164 to 194, the cursor visibly moved upward rather than continuing downward. This does not establish an absolute pixel mapping or safe target alignment. The operation was explicitly aborted at a checkpoint; its counter overrides and callback were cleared with no cleanup error. No button was pressed.",
+      "images": [
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r412-pointer-step-1.png",
+          "sha256": "cd00e6af682bc8523d56b58262d13a37e7827adc5752d7e902e6d837e5b3ca4c"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r412-pointer-step-2.png",
+          "sha256": "8e6e30624a06ffd536381b8deb5ae6df8ee34913f224375b7597bca4059799ab"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r412-pointer-step-3.png",
+          "sha256": "138e5809a1a336bd1e3ce3ca2426890d2b04068ca4d4abb8e8ea158c552b575a"
+        },
+        {
+          "path": "~/tempia/ia-tema/evidence/I167/r412-pointer-step-4.png",
+          "sha256": "261994faed3468827d314b5b294ad624be2c8f62dd8516f9fb62b391f4252d15"
+        }
+      ],
+      "script_note": "The loaded script copy was named r412-pointer-step.lua and exported the global i167_arrow_position_r412, but its status banner still said R411. This label typo did not affect the input sequence or captures."
+    }
+  },
+  "host_motion_recheck": {
+    "mame_window": "Activated only after XID/PID authentication; client area 1024x844 at +560+60.",
+    "action": "XTest click at host (1460,260), corresponding to a visually blank guest desktop area; then checked the existing hook and mouse button port.",
+    "result": "Hook remained captured=false, wait_button_up=false, transition count 11; :kbd:mouse1 button bits were 0. No guest pointer route was established by this click.",
+    "source_image": {
+      "path": "~/tempia/ia-tema/evidence/I167/r413-before-host-motion.png",
+      "sha256": "1b2bd868be30c81abed80a0cd129f5a5563c7d63a9493ad3cdb23ef5e2ec6f62"
+    }
+  },
+  "cleanup": {
+    "owned_counter_callback": "done; explicitly aborted for R412",
+    "counter_cleanup_error": null,
+    "host_hook_release_called": true,
+    "captured": false,
+    "wait_button_up": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "channel_pending": false,
+    "host_pointer_px": [
+      600,
+      100
+    ],
+    "mame_window": "Iconic/HIDDEN",
+    "active_window": "0x0",
+    "other_vm_touched": false,
+    "mame_restarted": false,
+    "theme_changed": false,
+    "gtk_application_restarted": false
+  },
+  "result": "A guest pointer can appear during relative-counter overrides, but the trial values and movement are not a dependable pixel mapping; the later Y step reversed the visible direction. The host XTest click did not recapture the hook in this pass. No scrollbar arrow was pressed, so this produced no pressed-state comparison and no theme change.",
+  "next": "Do not click an arrow using the present counter calibration. Continue GTK2-only work with an input method that exposes and verifies the guest pointer at the target, or request one physical placement/capture assist if needed. Preserve the normal-state comparisons already proven by R394/R401."
+}

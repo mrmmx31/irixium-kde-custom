@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-11T08:44:44.962744+00:00",
+  "item": "I167",
+  "revision": 1,
+  "status": "passed_scoped",
+  "stage_estimate_percent": 73,
+  "estimate_basis": "Native GTK2 launch and dimensional Apply wired through Motif controller; remaining controls/states/canvas/snippet and backend CLI pending. Not overall-project or fidelity percentage.",
+  "proof": {
+    "gtk2_actual_bwrap_guards": true,
+    "gtk2_origins": [
+      "coupled",
+      "separate"
+    ],
+    "gtk2_horizontal_apply": [
+      220,
+      280
+    ],
+    "gtk2_vertical_allocation": [
+      15,
+      180
+    ],
+    "gtk2_metric_labels_correct": true,
+    "gtk3_recipe_preserved": true,
+    "gtk3_native_regression": [
+      "manual spin",
+      "automatic spin",
+      "minimum request",
+      "automatic native size",
+      "reference unchanged"
+    ],
+    "offline_model_checks": 947,
+    "backend_regressions": 33,
+    "scene_regressions": 15,
+    "event_parser_checks": "passed",
+    "receipt_gates": "passed; stale hash/family/status/control/path/type rejected; GTK3 applied directory accepted",
+    "strict_build": true
+  },
+  "limits": [
+    "GTK2 only scrollbar scenes implemented; no full recipe applied claim.",
+    "GTK2 canvas defaults remain to be mapped to KDE roles.",
+    "Main C controller restarts previews on Apply; same-window/adjustment preservation proven only for standalone watcher core.",
+    "Backend --preview GTK2 legacy gallery route and selected snippet still pending.",
+    "No new historical fidelity proof or human approval."
+  ],
+  "failures_preserved": [
+    "GTK2 first harness toggle occluded by detached window; fixed fixture placement.",
+    "GTK3 first harness automatic toggle off-screen; fixed visible scrolling.",
+    "GTK3 second harness expected obsolete metrics text suffix; updated parser to current measured output."
+  ],
+  "host_changed": false,
+  "test_folders": {
+    "gtk2": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7y5_57l3",
+    "gtk3": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-j8flg_7i"
+  },
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "363edbe9895fb968e635c3de0ec2d9bc33338391953c374affa8d8fce1f483c0",
+    "tools/theme-lab/src/controller/generated_preview.c": "26fe1c3d104198d51069877e7c188169641a7761a27b24cbfcc8400e26b84a7d",
+    "tools/theme-lab/include/generated_preview.h": "7f6ad905d9f7088416bc1e21243c5bd79baa5fda3044f5de7c3d7324c33b4620",
+    "tools/theme-lab/src/view.c": "3180a8b2e47c9100676e79c6506477acfa8e7e1a2640011478b24a03acd38cbe",
+    "tools/theme-lab/Makefile": "d89e2b43deb693c296f6b5ec2259dee4b874361dafee18126ddff60bbdda9f1a",
+    "tools/theme-lab/gtk2_generation.py": "4934acb00462ea1a327c530b68f3c631fc5cafc1719e39349dd6524291115732",
+    "tools/theme-lab/tests/controller_spin_probe.c": "2668bf605649e5c59a60c7d13ea538eb8bd0c44a22a87b7177bf3656bbec124a",
+    "tools/theme-lab/tests/controller_gtk2_launch.py": "10a81768f0f88309f8bf2b5bf8651e1094a2409a8c783b456193957d9a9787bf",
+    "tools/theme-lab/tests/test_controller_spin.py": "297373cbba4f0214d00a541413a22e789c544e237317431109b78f6bacc8b930",
+    "tools/theme-lab/tests/generated_preview_test.c": "30f8568c2ae29a2eb160de486e3a0458db92e8fb42d300084b2306fa69dc09f2",
+    "docs/referencias/domainos-sr104/i167-controller/gtk2-RESULTADO.json": "24f1ebb8463d5de82b99c45f6652aff6eb001eca0fb386f79d88e7d117b3a75c",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-native-r3.log": "911591283b4d6f733e59a190b7753f566198eb6b27f1092ccdde5f55f3562604",
+    "docs/referencias/domainos-sr104/i167-controller/gtk3-RESULTADO.json": "b6bbc9da3f5787a471edc420e670c40fb02eda76568479fbeec851bfa408377d",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-gtk3-regression-r2.log": "5a8b40de8a81577551b8bca8f7572b1560aa36fcc368a1d0cc01e0d5189bc7ad",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-native-r2.log": "3325497f9f7c49c65756b40fce673250445df33076ce0f73abefb81eea1c5aeb",
+    "docs/referencias/domainos-sr104/i167-controller/receipt-gates.log": "e74f8e3ce030d082658f8a4e87cf2a1504c8b64ade8df92f0ac8916e7cac7013",
+    "docs/referencias/domainos-sr104/i167-controller/gtk3-PROBE.json": "6c113d30a986709ace8fc94f6723d43d02aa410acf0e6fc44dedb011d56ae4d2",
+    "docs/referencias/domainos-sr104/i167-controller/gtk2-PROBE.json": "471b93e57128f4d28b19fb9c83c03e4db080170f53b738db8d1a01d7dfd74bd6",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-native.log": "6b23a9d0f7516d611118be050da5fcd7102b5cf93d8502f0e8c614efe9dd92d7",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-final-build.log": "5be70543cf2129e1e28487812d52f1492384a81902d7f59bea1ceb051e375878",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-gtk3-regression-r3.log": "83a48c6b1844bc3ede72016a467ff207243e3116a9d0f2d056fb185445338d24",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-gtk3-regression.log": "ac0f1d3de1a27b5cd509c2c7b18ca153237b7b63e939c5857bc2ac7c4d8f645f",
+    "docs/referencias/domainos-sr104/i167-controller/controller-launch-regressions.log": "a0e514b24e44ce9462cf9836caabad23ca012dcadb306d196eb358c912a93ed4",
+    "docs/referencias/domainos-sr104/i167-controller/gtk2-last.png": "ef333ad80311c095e45c830fa2c7b5fee0a670df6082cc2a6102439ce9858905",
+    "docs/referencias/domainos-sr104/i167-controller/gtk3-last.png": "b376369b522aee585ae7d3d75d48cb5c85ab50dec8604394c34c1509c5eef566"
+  }
+}

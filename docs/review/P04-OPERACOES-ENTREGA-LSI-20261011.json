@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-11T01:17:47.920761+00:00",
+  "authority": "P04 user revision 1 authorized current scope",
+  "phase": "delivered_lsi_waiting_real_click",
+  "stage_percent": 90,
+  "install": {
+    "backup": "/home/lsi/.local/state/irixium/p04-operations-20261011T011705Z",
+    "files": {
+      "DomainOSIconbox.qml": {
+        "before": "e6f50df0cdc8eff865cfd414235e9afa50a14fda85d056a894603e21941f1c57",
+        "after": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed"
+      },
+      "DomainOSOperationsPanel.qml": {
+        "before": null,
+        "after": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc"
+      }
+    },
+    "configs": {
+      "kdeglobals": "37deec3ecb1f8720c6b2b86c7b21ba075ff1741c3f3e26dc614527c96394fd1a",
+      "kwinrc": "147ffd659ed4b30e580c5f463c8dea25f77e411efb8f2382aacc34d7a0843901",
+      "plasmarc": "8941bc1e6562aa63fce805612ec1dda964ae7cf6a9a37ffeb0e0a30c4c77bf28",
+      "plasmashellrc": "0f62bc31bfd0dc2c94a90baeaeb9b87d66a5137432635f617d1c49c1fbcd6dcc",
+      "plasma-org.kde.plasma.desktop-appletsrc": "d06b86e26950f2ab04214d5639c08022d1a3fe040e9e135e9b635a69c4513e37"
+    }
+  },
+  "verification": {
+    "pid": 1503276,
+    "files_match": {
+      "DomainOSIconbox.qml": true,
+      "DomainOSOperationsPanel.qml": true
+    },
+    "config_hash_unchanged": {
+      "kdeglobals": true,
+      "kwinrc": true,
+      "plasmarc": true,
+      "plasmashellrc": true,
+      "plasma-org.kde.plasma.desktop-appletsrc": false
+    },
+    "changed_config_sections": {
+      "plasma-org.kde.plasma.desktop-appletsrc": [
+        {
+          "group": "[ScreenMapping]",
+          "key": "screenMapping"
+        }
+      ]
+    },
+    "operations_diagnostics": [],
+    "tray_not_notify_warning_present": true
+  },
+  "panel_id": 2268,
+  "applet_id": 2269,
+  "previous_pid": 1232809,
+  "current_pid": 1503276,
+  "reload": "systemctl --user restart plasma-plasmashell.service",
+  "limits": [
+    "Actual user click/Operations visibility and batch execution not yet observed",
+    "Wayland seat injection unavailable in prior audit; no permission bypass",
+    "No claim that tray non-NOTIFYable diagnostics are resolved"
+  ],
+  "next": "User opens grouped task, checks two windows, clicks Operations and verifies panel; related native context unchanged"
+}

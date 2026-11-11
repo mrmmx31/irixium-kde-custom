@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "R687",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Validate private GTK2 pixbuf-engine endpoint painting with isolated GType names, default per-user module discovery, endpoint input blocking, and whole-widget insensitive rendering.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "kind": "private Xvfb GTK2 2.24 probe",
+    "home": "~/tempia/domainos-theme-work/I167/R687-engine-type-isolation/home",
+    "module_path": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "GTK_PATH": "unset",
+    "GTK_EXE_PREFIX": "unset",
+    "test_rc": "private RC loaded domainos-pixbuf and stock pixmap engines in one process",
+    "module_sha256": "54d803a5791639391f4a4df797a8e3124149049099e520cc4bd185e76e2246e2",
+    "rc_sha256": "ab9a1a506d436d70f2f73e36df25ddaa8f8f9d91ed13d98bd5d051560c78cdf2"
+  },
+  "results": {
+    "endpoint_normal_palette": {
+      "horizontal_left": "0/225 pixels differ from interior normal stepper",
+      "horizontal_right": "0/225 pixels differ from interior normal stepper",
+      "vertical_up": "0/225 pixels differ from interior normal stepper",
+      "vertical_down": "0/225 pixels differ from interior normal stepper"
+    },
+    "whole_widget_insensitive": "all four direction cells remain distinct from normal (225/225 pixels)",
+    "endpoint_input": "all four endpoint clicks left the adjustment unchanged before, during, and after; blocked=true",
+    "engine_coexistence": "private plugin compiled and loaded from default per-user GTK2 engine path alongside stock pixmap style; GTK_PATH and GTK_EXE_PREFIX were unset; no GType collision warning observed",
+    "diagnostic": "GTK emitted an atk-bridge/libgail symbol warning in the private test environment; endpoint probe completed."
+  },
+  "limits": [
+    "Prototype only; no project GTK2 source, package, user profile, running application, or VM was changed.",
+    "Does not establish SR10.4/VUE endpoint disabled-state appearance; the historical visual basis remains open.",
+    "Does not verify shipping/install/rollback of this custom engine or regression of every GTK2 control.",
+    "Existing lsi theme remains selected separately under R682; this is not a new user-profile application."
+  ],
+  "next": "Continue I167 only: assess self-contained, license-compliant packaging and full GTK2 regression for the endpoint engine before integrating it into the user theme. Keep the lsi profile untouched until that adapter is integrated and verified. Historical endpoint comparison and human visual review remain open.",
+  "artifacts": [
+    {
+      "path": "records/ia-tema/I167/R687/README.md",
+      "sha256": "b85099be55c6716de3017be4d47cfb74487519604b3ddaf7e5d76d82cc467778",
+      "bytes": 744
+    },
+    {
+      "path": "records/ia-tema/I167/R687/captures/endpoint-end.png",
+      "sha256": "f2c405149a276879b7d5aeeac08325db47c6ca7681e6f23f3ed4131e5d3facff",
+      "bytes": 795
+    },
+    {
+      "path": "records/ia-tema/I167/R687/captures/endpoint-start.png",
+      "sha256": "47f25a0b899dd9decafb1e4b0d75bdbe67eaa299d8436e06cc5085516de0cbff",
+      "bytes": 805
+    },
+    {
+      "path": "records/ia-tema/I167/R687/captures/globally-disabled.png",
+      "sha256": "24ca220227789ff1593b14cf4b97356bf2afaea84ec952946904eb10f3694a0a",
+      "bytes": 808
+    },
+    {
+      "path": "records/ia-tema/I167/R687/captures/initial.png",
+      "sha256": "d7b4c84ffa7e1c615388b6df0d0adf02f6a1c18393740feb49b98309ce9b1945",
+      "bytes": 815
+    },
+    {
+      "path": "records/ia-tema/I167/R687/patch/endpoint-palette.patch",
+      "sha256": "7afc939c34fb778ea48a2b1fc84d112eb738fd662f986f407e4e7474152824da",
+      "bytes": 4074
+    },
+    {
+      "path": "records/ia-tema/I167/R687/patch/gtype-isolation.patch",
+      "sha256": "beff836a9fb0016c535e7491135e44bc1996b36f990cda5c7f3dfdfc5f9842dd",
+      "bytes": 8923
+    },
+    {
+      "path": "records/ia-tema/I167/R687/stderr.log",
+      "sha256": "2dd5b293185d326e538fc48f8330003105476feb869ac617e02f9d0a19224e21",
+      "bytes": 677
+    }
+  ],
+  "coverage_estimate": {
+    "percent": 90,
+    "basis": "R687 verifies the private endpoint rendering/input behavior and engine-type isolation only. It adds no product integration; the R685 I167 technical-coverage estimate therefore remains unchanged, not a visual-fidelity percentage."
+  }
+}

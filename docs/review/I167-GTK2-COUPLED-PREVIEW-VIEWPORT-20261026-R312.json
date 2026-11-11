@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "R312",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "r298-screenshot-clipping-explained-by-nested-preview-viewports",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only audit of the existing GTK2 coupled and Motif reference screenshot; do not install or alter user sessions."
+  },
+  "method": "Compared both retained R298 screenshots with the exact source hashes and the current Motif view construction; no process was launched and no user or VM input was sent.",
+  "findings": {
+    "source_layout": [
+      "previewStack is a vertical RowColumn inside the central automatic previewScroll.",
+      "The actual motifReferenceFrame is managed after the native GTK preview in that stack.",
+      "motifReferenceFrame contains motifReferenceScroll at 510x240 px and a real XmForm at 740x410 px. The inner scroll area intentionally exposes the larger Motif scene through scrolling."
+    ],
+    "screenshots": {
+      "coupled_and_separate": {
+        "path": "~/tempia/ia-tema/evidence/I167/r298-controller-coupled-preview/recheck/coupled-and-separate.png",
+        "sha256": "cab6ae8b07e6626cc58b0cf3fd273210bcac17a9f9acedaaa2ec775671fed182",
+        "dimensions": [2200, 1200],
+        "observed": "The test application occupies about 1190x745 px. The lower Motif reference frame begins near the bottom of the central viewport; its scrollbars and clipped viewport are visible."
+      },
+      "applied_after_detached_close": {
+        "path": "~/tempia/ia-tema/evidence/I167/r298-controller-coupled-preview/recheck/applied-coupled-after-separate-close.png",
+        "sha256": "8d1a79dd7bada7aa43304490ec9a4dae107da0277b95174a1ebba1e7cd448f21",
+        "dimensions": [2200, 1200],
+        "observed": "The embedded preview remains mounted after the detached preview closes; the same lower-page clipping is visible."
+      }
+    },
+    "current_source_sha256": {
+      "tools/theme-lab/src/view.c": "e731ffbd65f608dcc3b8ba0d5091272fef5e4dc09a4a9955597ad58caae1db2a",
+      "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f"
+    },
+    "interpretation": "R298 does not show a missing or unmounted Motif scene. It shows only part of the scene because the test window and nested viewports are smaller than the content. The retained image alone does not justify a layout or product-code change."
+  },
+  "limits": [
+    "No maximize/resize/scroll interaction was performed in this audit.",
+    "The screenshots do not prove visual acceptance or complete interaction coverage for all GTK2 controls.",
+    "Historical left/right/up pressed-arrow comparison and human GTK2 review remain open."
+  ],
+  "isolation": {
+    "theme_installed": false,
+    "production_application_touched": false,
+    "vm_input_sent": false,
+    "scripts_or_sessions_stopped": false,
+    "product_source_changed": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "No implementation criterion was closed by this viewport clarification; retain the prior technical coverage estimate, not a visual-fidelity score."
+  }
+}

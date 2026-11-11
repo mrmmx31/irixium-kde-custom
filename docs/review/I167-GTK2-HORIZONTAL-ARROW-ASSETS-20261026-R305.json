@@ -1,0 +1,301 @@
+{
+  "schema_version": 1,
+  "id": "R305",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "normal-stepper-assets-match-retained-sr104-cells; held-vm-state-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 scrollbar normal-state stepper assets and read-only canonical VM display check; no install or product edits."
+  },
+  "comparison": {
+    "reference_system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "reference": "Retained native Trash Can scrollbar crops",
+    "method": "Compare current GTK2 package 15x15 RGBA stepper cells directly to retained native crop at 1:1, no scaling or filtering.",
+    "variants_compared": [
+      "DomainOS-SR10-4",
+      "DomainOS-SR10-4-KDE",
+      "DomainOS-SR10-4-KDE-Reload"
+    ],
+    "cells_compared": 12,
+    "result": "All 12 cells (four directions across three GTK2 theme variants) have exactly 0/225 different pixels. The existing 15px horizontal stepper geometry and 11x11 glyph raster do not show the reported normal-state width reduction in these package assets. No geometry change is supported by this comparison.",
+    "details": [
+      {
+        "theme": "DomainOS-SR10-4",
+        "direction": "left",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          2,
+          4,
+          17,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-left-normal.png",
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE",
+        "direction": "left",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          2,
+          4,
+          17,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png",
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE-Reload",
+        "direction": "left",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          2,
+          4,
+          17,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets/scrollbar-stepper-left-normal.png",
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4",
+        "direction": "right",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          526,
+          4,
+          541,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-right-normal.png",
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE",
+        "direction": "right",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          526,
+          4,
+          541,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png",
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE-Reload",
+        "direction": "right",
+        "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "reference_crop_half_open": [
+          526,
+          4,
+          541,
+          19
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets/scrollbar-stepper-right-normal.png",
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4",
+        "direction": "up",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          2,
+          19,
+          17
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-up-normal.png",
+        "asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE",
+        "direction": "up",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          2,
+          19,
+          17
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+        "asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE-Reload",
+        "direction": "up",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          2,
+          19,
+          17
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets/scrollbar-stepper-up-normal.png",
+        "asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4",
+        "direction": "down",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          242,
+          19,
+          257
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-down-normal.png",
+        "asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE",
+        "direction": "down",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          242,
+          19,
+          257
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-normal.png",
+        "asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      },
+      {
+        "theme": "DomainOS-SR10-4-KDE-Reload",
+        "direction": "down",
+        "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "reference_crop_half_open": [
+          4,
+          242,
+          19,
+          257
+        ],
+        "asset": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets/scrollbar-stepper-down-normal.png",
+        "asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "asset_size_px": [
+          15,
+          15
+        ],
+        "different_pixels": 0,
+        "pixels_compared": 225
+      }
+    ]
+  },
+  "dynamic_palette_test": {
+    "command": "TMPDIR=/home/lsi/tempia PYTHONDONTWRITEBYTECODE=1 python3 tests/test_gtk2_palette_runtime.py",
+    "tests": 20,
+    "result": "passed",
+    "scope": "GTK2 role export, palette regeneration and asset validation; not historical visual acceptance."
+  },
+  "canonical_vm": {
+    "mame_pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "version": "0.276",
+    "probe": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending": null
+    },
+    "snapshot": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-current-r305-20261026.png",
+    "snapshot_sha256": "4a9f740c610fd7c1d94e5c25506a3eb7a849cfea5b1d9a43def49be220d64a14",
+    "result": "Guest image black; only read-only snapshot sent; no guest input or focus change."
+  },
+  "product_changes": false,
+  "limits": [
+    "Historical held-state comparisons for GTK2 left/right/up remain pending until the VM screen is awake and target is visible.",
+    "This exact match covers normal 15x15 stepper assets in the three repository GTK2 variants; it does not prove the resolved runtime theme in a user application.",
+    "Human visual review and full GTK2 family review remain open.",
+    "Do not install partial GTK2 recipe to XChat."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Same technical coverage as R303: native GTK2 interaction checks complete for seven actionable control classes; remaining historical pressed-state and visual review are open. This is not a fidelity score."
+  }
+}

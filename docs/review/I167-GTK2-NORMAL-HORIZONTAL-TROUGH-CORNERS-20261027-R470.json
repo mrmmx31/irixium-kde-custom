@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "R470",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile the four outer-corner differences in the normal GTK2 horizontal stepper cells against the current SR10.4/VUE capture, then verify the final native GTK2 rendering.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "prior_evidence": {
+    "registration_and_four_corner_mismatches": "docs/review/I167-GTK2-STEPPER-REGISTRATION-ERRATUM-20261027-R344.json",
+    "live_vue_normal_cells": "docs/review/I167-GTK2-VUE-CURRENT-HORIZONTAL-NORMAL-20261027-R469.json"
+  },
+  "implementation": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "behavior": "Compose the four horizontal NORMAL trough corner pixels from the corresponding KDE-role-rendered stepper cells, then bind that trough only to horizontal NORMAL GtkRange with 4/4/2/2 nine-slice borders. Keep the 15x15 stepper cells, 11x11 glyphs, vertical trough and dynamic KDE role inputs unchanged.",
+    "test_file": "tests/test_gtk2_palette_runtime.py",
+    "test": "test_normal_horizontal_stepper_corners_follow_kde_roles",
+    "user_profile_or_xchat_changed": false
+  },
+  "verification": {
+    "palette_tests": "test_gtk2_palette.py: 10/10 passed",
+    "managed_runtime_tests": "test_gtk2_palette_runtime.py: 23/23 passed",
+    "native_runtime": "GTK 2.24.33 rendered the generated DomainOS bundle in a private Xvfb display at scale 1.",
+    "palette_source": "/home/lsi/.config/gtk-3.0/colors.css (read-only)",
+    "native_capture": "~/tempia/ia-tema/evidence/I167/r470-native-gtk2-normal/native-both-steppers-enabled.png",
+    "comparison_record": "~/tempia/ia-tema/evidence/I167/r470-native-gtk2-normal/comparison.json",
+    "results": {
+      "left": {
+        "vue_vs_gtk2_different_pixels": 0,
+        "gtk2_vs_generated_asset_different_pixels": 0,
+        "pixels": 225
+      },
+      "right": {
+        "vue_vs_gtk2_different_pixels": 0,
+        "gtk2_vs_generated_asset_different_pixels": 0,
+        "pixels": 225
+      }
+    }
+  },
+  "result": "The four horizontal outer-corner pixels now resolve into the intended trough underlay; both enabled GTK2 normal horizontal cells render as exact 15x15 matches to the current SR10.4/VUE capture and generated KDE-role artwork. No glyph resizing or final static RGB was introduced.",
+  "limits": [
+    "This closes only the enabled normal horizontal GTK2 stepper cells and their four trough corners.",
+    "GTK2 pressed horizontal comparison in VUE, disabled/hover states, the full GTK2 family review and user visual acceptance remain open.",
+    "The code remains in the checkout; no user profile, running XChat, or installed GTK2 theme was changed."
+  ],
+  "next": "Continue the I167 GTK2 state audit under the existing VM/input boundary; keep the user profile and open applications untouched until the approved GTK2 stage is ready for a separate activation check.",
+  "visual_contact_sheet": {
+    "path": "~/tempia/ia-tema/evidence/I167/r470-horizontal-normal-comparison.png",
+    "sha256": "d7cdfe0083742225bcbf561cd318b669df5e68dd7a8770186905351b80d0a055",
+    "presentation": "Both native 15x15 cells shown at 12x nearest-neighbor scale; original captures remain unchanged."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "I458-THEMELAB-MOTIF-SCROLLBAR-CAPTURE-20261029",
+  "recorded_at": "2026-10-29T20:19:15-04:00",
+  "scope": "Corrigir a referencia Motif do editor de pintura, que mostrava apenas um retangulo liso em vez da barra de rolagem canonica do formulario principal.",
+  "authorization": {
+    "item": "I458",
+    "user_revision": 1,
+    "assistant_ack_revision": 1,
+    "authorized": true,
+    "definition_sha256": "2722126ca0b2b6e38564e4f23d204bfa52c7a6d8bd20bf363cf5a96693401b7c"
+  },
+  "reported_failure": {
+    "screenshot": "/home/lsi/.xchat2/codex-files/11d7e3ed0dff-capture-xchat-codex-VZDEY3.png",
+    "sha256": "063fd4f12f7f1c3f6cbd975133aedb6f789cc7b8bb94060ea425e45aaf079781",
+    "observed": "A referencia Motif de Rolagem vertical continha somente uma faixa uniforme; setas, trilho e cursor nao estavam visiveis.",
+    "invalid_previous_gate": "A prova anterior aceitava dimensoes maiores que zero e, por isso, confundia uma janela de fundo com um controle renderizado."
+  },
+  "cause": [
+    "O widget canonico podia estar temporariamente oculto ou sobreposto no XmScrolledWindow quando a captura era solicitada.",
+    "O pixmap XComposite era nomeado depois da pintura; a primeira leitura podia receber o backing pixmap anterior ao Expose.",
+    "Uma reabertura enquanto o editor continuava visivel recapturava a janela principal coberta e substituia amostras validas pelo fundo do editor."
+  ],
+  "correction": [
+    "A captura continua usando motif_reference_widgets, construido por motif_controls_create e indexado pelos mesmos 16 tl_control_ids do formulario principal.",
+    "O controle e tornado visivel no motifReferenceScroll, elevado apenas durante a leitura e devolvido ao estado managed, rolagem e empilhamento anteriores.",
+    "XComposite e preparado antes do repaint nativo; nenhum bitmap de barra e desenhado pelo Theme Lab.",
+    "Uma janela de pintura ja visivel preserva as amostras canonicas existentes; o catalogo so e recapturado depois de um popdown real, quando o formulario principal esta desobstruido."
+  ],
+  "implementation": [
+    "tools/theme-lab/include/manual_paint_view.h",
+    "tools/theme-lab/src/view/manual_paint_view.c",
+    "tools/theme-lab/src/view.c",
+    "tools/theme-lab/tests/native_metrics_view.c"
+  ],
+  "verification": {
+    "build": "C99 estrito com -Wall -Wextra -Werror",
+    "tests": [
+      "check-paint-control-catalog: 16/16 controles canonicos; scroll_h e scroll_v exigem orientacao correta, pelo menos tres cores no controle e pelo menos duas cores dentro da celula da seta",
+      "check-paint-reference-copy: copia separada de referencia e nativa com Undo/Redo",
+      "check-paint-selection: seletores Control, Peca e Variante persistem",
+      "check-paint-r584: asset certificado continua selecionavel e copiavel sem fallback",
+      "check-paint-sample-role: 4/4 rotas de alvo e referencia isoladas",
+      "check-manual-paint-model: persistencia, migracao, Undo/Redo e recovery",
+      "test_gtk4_worker.py: 17/17"
+    ],
+    "runtime": {
+      "service": "domainos-theme-lab-reference-source-r26-20261029.service",
+      "pid": 3689215,
+      "main_window_xid": "0x2800248",
+      "paint_window_xid": "0x28007ad",
+      "paint_geometry": "1500x850+11+30",
+      "binary_sha256": "b78c322593f75f4202d92d778f203aedeaf525494368fc197457554a36a6f81c"
+    },
+    "live_evidence": {
+      "selection": "GTK2 / Fonte Motif do form principal / Rolagem horizontal / Controle inteiro / Automatica / Normal",
+      "result": "A esquerda mostra a barra Motif completa em 135 x 15 px e zoom 4:1, com duas setas, trilho e cursor; o centro conserva a amostra GTK2 separada em 120 x 15 px.",
+      "screenshot": "~/tempia/domainos-theme-work/reopen-evidence/theme-lab-motif-scrollbar-horizontal-live-fix.png",
+      "sha256": "aecd93ce359eb49364d8b49eb125dec24dd79900a11d1024d66a768754c96b75"
+    },
+    "preserved_state": {
+      "scene_json_sha256": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+      "project_history_json_sha256": "53baf100625fb6d958b410405d3ad0cf9d26b94bf54d6ec198db6f424a3ee3c8",
+      "manual_paint_json_sha256": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87",
+      "working_json_sha256_after_restart": "64465d1c7eff6c1771f59b6a3a352003d51f32d6cf1d50396ca8b7bbbcc05b73",
+      "working_semantic_diff": "Somente exported_at foi regravado no reinicio; scene.json e o restante do modelo coincidem."
+    }
+  },
+  "limits": [
+    "A amostra Motif e a renderizacao local do toolkit instalado, nao uma captura historica do Domain/OS.",
+    "A prova confirma conteudo nativo e correspondencia tecnica; fidelidade historica continua dependendo da VM SR10.4 e do aceite visual do usuario.",
+    "A verificacao ao vivo registrada cobre a barra horizontal; a suite automatizada cobre horizontal e vertical."
+  ],
+  "status": "waiting_user_visual_acceptance"
+}

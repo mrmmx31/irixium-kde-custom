@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "capture_count": 9,
+  "native_source": "native_gtk4_x11_surface",
+  "controls": [
+    0,
+    1,
+    2,
+    10,
+    11
+  ],
+  "push_states": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "unsupported_control_rejected": true,
+  "project_unchanged": true,
+  "private_png_mode": "0600",
+  "captures": [
+    {
+      "control": 0,
+      "state": 0,
+      "width": 180,
+      "height": 60,
+      "scale_factor": 1,
+      "sha256": "f4626e9eff9b5117c342dad5549ef07ee9f8a78387a26edbdc6a012ad2bb4cca"
+    },
+    {
+      "control": 1,
+      "state": 0,
+      "width": 62,
+      "height": 30,
+      "scale_factor": 1,
+      "sha256": "fc5cd90f545a96953fe2108109790884dd5ef747a36c920631febde14782d548"
+    },
+    {
+      "control": 2,
+      "state": 0,
+      "width": 76,
+      "height": 18,
+      "scale_factor": 1,
+      "sha256": "c0badd437c1b154d1c9bda3c75cf31d5290cff7a66d8364667b0cf50b416aa7e"
+    },
+    {
+      "control": 10,
+      "state": 0,
+      "width": 15,
+      "height": 15,
+      "scale_factor": 1,
+      "sha256": "16e0ce41ea69bc1addb21e2dbd9f21c8310a5c835a10b303379349706bd5e8cf"
+    },
+    {
+      "control": 11,
+      "state": 0,
+      "width": 15,
+      "height": 15,
+      "scale_factor": 1,
+      "sha256": "3bbc9c2390283547d99a74d757f9f9c901f4aa8c6948191f20cfa27f9d02f231"
+    },
+    {
+      "control": 0,
+      "state": 1,
+      "width": 180,
+      "height": 60,
+      "scale_factor": 1,
+      "sha256": "f4626e9eff9b5117c342dad5549ef07ee9f8a78387a26edbdc6a012ad2bb4cca"
+    },
+    {
+      "control": 0,
+      "state": 2,
+      "width": 180,
+      "height": 60,
+      "scale_factor": 1,
+      "sha256": "e81e20f19532588a970a41dc5de4e81afa8ca7156e1bd23a8ca6517b9bc2de91"
+    },
+    {
+      "control": 0,
+      "state": 3,
+      "width": 180,
+      "height": 60,
+      "scale_factor": 1,
+      "sha256": "a71c96d70fe4c1054d32d5439c63e252a48d0f50b5e8de32a76980cdfd77b756"
+    },
+    {
+      "control": 0,
+      "state": 4,
+      "width": 180,
+      "height": 60,
+      "scale_factor": 1,
+      "sha256": "f4626e9eff9b5117c342dad5549ef07ee9f8a78387a26edbdc6a012ad2bb4cca"
+    }
+  ],
+  "historical_fidelity_claimed": false,
+  "evidence_id": "T04-PAINT-GTK4-X11-CAPTURE-20261021",
+  "date": "2026-10-21",
+  "command": "TMPDIR=$HOME/tempia python3 -B tools/theme-lab/tests/test_gtk4_worker_native.py --paint-capture",
+  "capture_method": "GTK4 worker mapped native X11 surface captured with xwd, decoded by xwdtopnm, cropped by Pillow at GTK scale factor 1.",
+  "scope": "Five native controls (push, toggle, check, horizontal scrollbar, vertical scrollbar) and five push states including normal, prelight, active, insensitive and backdrop; unsupported radio rejected.",
+  "safety": "The fixture project JSON remained byte-identical. PNGs were written mode 0600 in private event directory; temporary XWD files were deleted.",
+  "limitations": "Proves native GTK4 pixels and controller integration only. Does not claim Domain/OS historical fidelity, other GTK/Qt/Plasma adapters, or human visual approval. Runtime capture requires xwd, xwdtopnm and Pillow."
+}

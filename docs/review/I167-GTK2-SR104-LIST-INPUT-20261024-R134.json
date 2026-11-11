@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SR104-LIST-INPUT-20261024-R134",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "mame_pid": 3759847,
+    "clone": "dedicated assistant clone; original user MAME and other sessions untouched"
+  },
+  "observations": {
+    "initial_state": {
+      "screen": "visible; no wake input needed during this turn",
+      "find_files": "still open over the File Manager; File Name shows aaa with one character selected",
+      "file_manager": "list partly visible at the left edge",
+      "capture": "~/tempia/i167-r134-current.png",
+      "sha256": "e9a60c5a66dd5112a0a6fe5f50d9a852028cac444c9eff78a23158354d324c44"
+    },
+    "mouse_probe": {
+      "inputs": "small relative counter steps on :kbd:mouse2/:kbd:mouse3, observed wrapped counters; no button press",
+      "result": "single steps changed the pointer only slightly; short diagonal batches caused large/unpredictable pointer displacement; clearing the override restored the physical accumulator and made the visible path unreliable",
+      "result_captures": [
+        {"path": "~/tempia/i167-r135-pointer-step.png", "sha256": "c822688bda01e6520571930b852f1066a5feb671eaef94a73bc2b7aa8827f948"},
+        {"path": "~/tempia/i167-r136-pointer-step.png", "sha256": "e00eaa5590671e7bd13050f4b882692d511561e6f8ea36765adcac9bdb5d761f"},
+        {"path": "~/tempia/i167-r137-pointer-20steps.png", "sha256": "a7f1367999fcb415cf785b97e0a69e64a4ee182812bc5d49f8b0143cbc2d5479"},
+        {"path": "~/tempia/i167-r139-pointer-step.png", "sha256": "7fc0045e36d354946e40ef2f08f792c60570ee002e51439b0fe007c088f6a19c"},
+        {"path": "~/tempia/i167-r141-pointer-y-final.png", "sha256": "d4d28d2503956b50f8fb0296314fafd0e5f9fac060e7b904afb7159f803e6570"}
+      ],
+      "click_sent": false
+    },
+    "keyboard_close_attempt": {
+      "input": "one-frame Alt+F4 on :kbd:keyboard4/ALT_R and :kbd:keyboard3/F4; both released on frame 2",
+      "callback": "done=true, frame=2, held=false, released=true, error=nil",
+      "result": "Find Files remained open; no text or file operation was triggered",
+      "capture": "~/tempia/i167-r138-after-alt-f4.png",
+      "sha256": "45248f29d2c692c8b52960019a635723d3afd2b2118a61d41470fb16deec0f79"
+    },
+    "final_state": {
+      "capture": "~/tempia/i167-r142-final-vue.png",
+      "sha256": "29087d401681c77189ef11d618da3155f19ed04a2ac9232bc563838727e1f6ae",
+      "find_files": "still open; File Name still aaa; list still partly obscured"
+    },
+    "wake_capability": "This turn began with the screen already visible. Earlier R131/R133 provide direct evidence that one-frame Shift, automatically released on frame 2, wakes this same assistant clone; no unnecessary second wake pulse was sent."
+  },
+  "profile_after_probe": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "ui_active": false,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_operation_done": true,
+    "mouse_cleanup_error": null,
+    "keyboard_held": false,
+    "channel_pending": null
+  },
+  "preservation": {
+    "guest_files_or_configuration_changed": false,
+    "text_entered": false,
+    "mouse_button_pressed": false,
+    "keyboard_inputs_released": true,
+    "original_vm_touched": false,
+    "profile_changed": false,
+    "other_mame_session_touched": false
+  },
+  "next": "Stop using guessed relative mouse trajectories. The list comparison remains open because Find Files obscures most of the VUE File Manager. Continue only with a target confirmed by a fresh image or another bounded guest interaction; then compare the real GTK2 list control with SR10.4. R42 remains a local Motif fixture comparison only.",
+  "status": "observed_input_limitation",
+  "user_acceptance": "pending"
+}

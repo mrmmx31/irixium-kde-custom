@@ -1,0 +1,74 @@
+{
+  "id": "I167",
+  "receipt": "R43",
+  "date": "2026-10-23",
+  "family": "GTK2 frame",
+  "status": "passed_for_bevel_direction_and_role_mapping",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 recipe/native preview only; no user profile, XChat or VM changes"
+  },
+  "reference": {
+    "kind": "native Motif sample in Theme Lab; not a VM SR10.4 measurement",
+    "source_file": "tools/theme-lab/src/view.c",
+    "source_function": "motif_controls_create",
+    "widget": "xmFrameWidgetClass",
+    "shadow_type": "XmSHADOW_IN",
+    "shadow_thickness_px": 2,
+    "content": "frameCaption label; no frame title"
+  },
+  "change": {
+    "files": [
+      "tools/theme-lab/gtk2_frames.py",
+      "tools/theme-lab/frame_control_gtk2.py",
+      "tools/theme-lab/tests/probe_gtk2_frame.py"
+    ],
+    "summary": "Changed GTK2 frame instance from OUT to IN and generated the bevel mask in the inward direction. Retained a 2 px bevel and dynamic KDE Window/WindowText roles.",
+    "source_sha256": {
+      "tools/theme-lab/gtk2_frames.py": "55b67986b910658bb26c22ed1d517496d6b32d6794ca0b679f4ec4a74598385c",
+      "tools/theme-lab/frame_control_gtk2.py": "26acab76c499c59b1f2456df61ff9d761a261e439aedff0b346c6f99b1e34826",
+      "tools/theme-lab/tests/probe_gtk2_frame.py": "3ffcd27275919a37e7c46bec18795b4e249af51aa4f8102d25dd524b51ed55a0",
+      "tools/theme-lab/tests/probe_gtk2_frame_scene.py": "678e7a1ed56b129c79d52556423af265c08f8e2583107b18a1826b5503618e3b"
+    }
+  },
+  "validation": {
+    "gtk2_version": "2.24.33",
+    "standalone_scenes": 24,
+    "integrated_native_session_scenes": 24,
+    "matrix": "four KDE schemes × normal/backdrop/disabled × coupled/separate",
+    "checks": [
+      "Gtk.Frame shadow type is IN",
+      "two bevel layers verified on top and bottom edges",
+      "Window face role verified for all palettes/states",
+      "native scene/session replacement retained sizing, padding and font changes",
+      "three paint tests and three integration tests",
+      "python bytecode compilation",
+      "git diff --check"
+    ],
+    "standalone_result": "~/tempia/i167-gtk2-frame-r43/standalone/RESULTADO.json",
+    "integrated_result": "~/tempia/i167-gtk2-frame-r43/integrated/RESULTADO.json",
+    "visual_capture_reviewed": "~/tempia/i167-gtk2-frame-r43/integrated/DomainOS/separate-normal.png",
+    "paired_native_motif_gtk2": {
+      "capture": "~/tempia/i167-gtk2-frame-r43/paired-local.png",
+      "capture_sha256": "f6aea905ffdcbb5df372103347c1752efd1156382c27f2d19a97f8e4cfcd0979",
+      "size_px": [240, 120],
+      "compared_region": "two-pixel frame perimeter",
+      "pixels": 1424,
+      "exact_equal": 0,
+      "within_one_channel_level": 1424,
+      "maximum_channel_delta": 1,
+      "interpretation": "same face and inward two-layer bevel; one-level channel rounding difference"
+    },
+    "motif_fixture_source": "~/tempia/i167-gtk2-frame-r43/motif_frame_pair.c",
+    "motif_fixture_source_sha256": "1b7dcffb21a2dcc67c2e243e8ddf7531a49126ceb261f6e4280a19ae226e519b",
+    "warning": "Xvfb reported the existing atk-bridge ABI warning; GTK assertions passed."
+  },
+  "not_claimed": [
+    "Domain/OS SR10.4 VM pixel equivalence",
+    "complete GTK2 adaptation",
+    "main Theme Lab canvas renderer integration",
+    "human acceptance"
+  ],
+  "next": "GTK2 entry focus/border state; preserve the normal face mapping proven by R34."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "R630",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "closed": false,
+    "board_generation": 9116,
+    "item_generation": 9100
+  },
+  "method": {
+    "kind": "private Plasma/KWin fixture with the installed Kicker representation, a known-coordinate probe target, and a real launcher MouseArea",
+    "compositor": "private kwin_wayland --virtual, scale 1",
+    "input": "authorized org_kde_kwin_fake_input v5 client",
+    "production_sources_changed": false,
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "own_private_daemons_exited": true,
+    "private_runtime_removed": true,
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R630-kicker-input-discriminant-20261028/",
+    "durable_evidence": "records/ia-tema/P01/R630-private-input-activation-20261028/"
+  },
+  "observations": {
+    "setup_run1": "No application was launched: copied helper binary was missing beside the new harness; retained as a setup failure.",
+    "setup_run2": "The fixture reached R630_READY. It reported window origin (0,0), client size 1022x731, visibility value 5 (Qt FullScreen), active=false, probe center (340,220), and launcher center (170,40).",
+    "fake_input_requests_sent": true,
+    "probe_mousearea_events": 0,
+    "host_pointer_enter_or_motion_events": 0,
+    "launcher_mousearea_enter_press_or_click_events": 0,
+    "kicker_popup_opened": false,
+    "search_input_tested": false,
+    "fixture_captures_written": false,
+    "cleanup_confirmed": true,
+    "broad_RESULTADO_acceptance": false,
+    "broad_RESULTADO_note": "The broad catalog workflow had no native state report after the probe exited before R624_LAYOUT; its failed checks are not treated as Kicker behavior acceptance."
+  },
+  "interpretation": {
+    "status": "inconclusive_private_fixture_activation",
+    "conclusion": "The fake-input client authenticated and sent requests, but the full-screen host reported active=false and no QML pointer handler observed either the known-coordinate probe click or the launcher click. This indicates the fixture did not establish a verified active input target. It neither reproduces nor refutes the reported Kicker hover-close or search-focus symptoms.",
+    "production_fix_indicated": false,
+    "double_click_crash_is_separate": true,
+    "human_acceptance": false
+  },
+  "evidence_files": {
+    "testar-r630-input-discriminant.py": "192450f5047dfca3a1c914b50773e23922ad1e26556fa21ed259c3560a528487",
+    "host.log": "964f532733a567d8d82c627549b2fbb34cd9af92bd0c7f476f507605836d8e29",
+    "fake-input-probe.log": "96cad83116f2221ba33b829274393ffaf36c35ccd9ed1631e2708ebcc8099c0e",
+    "fake-input-open.log": "7329c4a0e00aac8d72232d2785afd28c439ca98edabaa1c220eb4320711aa35e",
+    "kwin.log": "c3f275f215336b322a3dd0a43821933f71996169b598f03b8cf69fb45af7a685",
+    "cleanup.json": "7a60ee9f9c86f5a02b26ee35df5a696bd4826a79690175519bc69292764aa764",
+    "RESULTADO.json": "512b2c149a8b3abd59e6568fa61227da4562901739a7e2d679f958bd1fe9ff66"
+  },
+  "next": [
+    "Repair the private fixture's activation proof by correlating KWin's active window and actual output/surface before injecting input.",
+    "Once the fixture observes a known-control click, open Kicker from the launcher and inspect search focus, typing, hover and dismissal in the same session.",
+    "Keep the double-click and plasmashell restart report as a separate diagnosis; do not change production based on this run."
+  ]
+}

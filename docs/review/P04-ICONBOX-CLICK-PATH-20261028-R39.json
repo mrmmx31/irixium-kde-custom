@@ -1,0 +1,25 @@
+{
+  "item": "P04",
+  "revision": "R39",
+  "recorded_at": "2026-10-28T20:34:00Z",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 3,
+    "definition_sha256": "da73bf29ee8b311998f00d4d99d9c3d644d776cc605a46478ad669a139581f41"
+  },
+  "scope": "Source-level review of the exact Iconbox single/double-click route after R38; no product code, tests, installed files, or live windows changed.",
+  "files_reviewed": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18"
+  },
+  "finding": {
+    "path": "DomainOSIconbox.doubleClickRecord -> checkTarget -> controller.resolveWindow; a singleton is then resolved again immediately before checking active/minimized state.",
+    "potential_issue": "The second resolveWindow(...).record access has no explicit null guard.",
+    "event_order": "Both resolutions happen synchronously in one JavaScript handler. The handler does not call processEvents, await, or Qt.callLater between them; Qt model refresh signals are processed on the owning event loop. A queued target removal therefore cannot ordinarily interleave between these reads.",
+    "assessment": "This unchecked read is a narrow defensive-hardening candidate, but current control flow does not make it a supported explanation for the reported intermittent freeze or plasmashell restart. A speculative edit would not be evidence-based."
+  },
+  "result": "No source defect tied to the reported restart was established. Keep current R37 native click evidence and R38 runtime audit scoped as documented; no code change is justified until a reproducible sequence or correlated crash evidence appears.",
+  "next": "If the behavior recurs, correlate the exact lsi plasmashell PID/time and journal/coredump; then reproduce only with test-owned clients. P04 remains open and authorized."
+}

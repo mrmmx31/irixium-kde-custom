@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "R655",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "status": "public-gtk2-native-preview-and-pointer-pressure-passed-partial-recipe",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "test": {
+    "command": "I167_PUBLIC_OUTPUT_ROOT=~/tempia/domainos-theme-work/I167-R655 /usr/bin/python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+    "script_sha256": "f844bfa1ff8fb3f6846d8f14e2e62654e37b270105a3863ff85a37c53978d52c",
+    "runtime": "GTK2 2.24.33",
+    "private_guard_verified": true,
+    "personal_home_exposed": false,
+    "system_bus_socket_exposed": false,
+    "user_profile_or_desktop_changed": false
+  },
+  "results": {
+    "domainos_scrollbar_scene": {
+      "status": "passed",
+      "scheme": "DomainOS-SR10.4",
+      "directions": ["left", "right", "up", "down"],
+      "cell_px": "15x15",
+      "held_pixel_differences_each": 53,
+      "release_pixel_differences_each": 0,
+      "native_events": 17,
+      "normal_close": true
+    },
+    "breeze_dark_scrollbar_scene": {
+      "status": "passed",
+      "scheme": "BreezeDark",
+      "directions": ["left", "right", "up", "down"],
+      "cell_px": "15x15",
+      "held_pixel_differences_each": 53,
+      "release_pixel_differences_each": 0,
+      "native_events": 17,
+      "normal_close": true
+    },
+    "all_control_scene": {
+      "status": "passed",
+      "scheme": "DomainOS-SR10.4",
+      "control_count": 16,
+      "native_events": 68,
+      "normal_close": true,
+      "native_interactions": ["push", "toggle", "check", "radio"]
+    }
+  },
+  "recipe_scope": {
+    "recipe_applied": false,
+    "theme_mode": "private_partial_recipe",
+    "controls": ["push", "toggle", "check", "radio", "scroll_h", "scroll_v", "progress", "entry", "text", "combo", "spin", "scale_h", "scale_v", "arrow", "list", "frame"],
+    "meaning": "Real GTK2 controls and pointer-driven state changes rendered in the private preview; this was not the full installed GTK2 theme and is not historical fidelity evidence."
+  },
+  "artifacts": "records/ia-tema/I167/R655/ARTIFACTS.json",
+  "remaining": [
+    "The private GTK2 renderer's normal scene was exercised; matching the GTK2 controller's coupled/separate apply/rebuild path for an edited pressed state remains open under T04.",
+    "Canonical SR10.4 held-state comparisons for the upper and horizontal arrows still require the unanswered Q515 input-method decision.",
+    "Manual visual acceptance remains separate."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "This proves native GTK2 controls and pointer-driven pressure/release in two schemes, but the recipe is partial and controller pressed-state integration plus canonical VM held states remain open. Not a fidelity score."
+  }
+}

@@ -480,7 +480,10 @@ def prepare_native(root, dry=False, headers_root=None):
                'report': {'status': 'build_required', 'qtVersion': spec['qtVersion'],
                           'machine': 'x86_64', 'compiled': False}}
         return
-    with tempfile.TemporaryDirectory(prefix='irix-domainos-native-build-', dir='/tmp') as temporary:
+    # Respect the caller's TMPDIR so local builds can keep all generated
+    # artifacts in the user-approved private workspace. tempfile chooses the
+    # platform default when TMPDIR is unset; no personal path is baked in.
+    with tempfile.TemporaryDirectory(prefix='irix-domainos-native-build-') as temporary:
         panel = Path(temporary) / 'applet'
         original = root / PANEL_SOURCE
         for item in original.rglob('*'):

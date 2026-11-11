@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-TOOLTIP-ROLES-20261018-R88",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_with_scope_limits",
+  "issue": "org.kde.desktop/Breeze gives an app-owned QQC2.ToolTip a Tooltip role at its root while its shared background can resolve as Window. R80's original root-pixel capture also showed two test hints at the same coordinates; its background-object colorSet observation remains valid, but that pixel comparison was ambiguous.",
+  "change": {
+    "application": "plasma/applets/org.irixclassic.applications/contents/ui/ConfigGeneral.qml replaces its shared attached tooltip with an app-owned QQC2.ToolTip and explicitly binds its content/background to Kirigami.Theme.Tooltip",
+    "gallery": "plasma/tests/galerias-nativas/plasma_style_demo.py gives its two local scrollbar tips explicit Tooltip-role content/background",
+    "color_policy": "Uses current KDE Tooltip text/background roles; border is derived from the role background with Qt.darker; no final static RGB colors added",
+    "KDE_source_modified": false
+  },
+  "gallery_matrix": {
+    "runtime": "Qt 6.8.2, org.kde.desktop, private XDG palette profile, actual project plasma_style_demo QML, Xephyr :84",
+    "palettes": ["Irixium", "DomainOS-SR10-4", "TestYellow", "BreezeLight", "BreezeDark"],
+    "each_case": {
+      "tooltip_theme_color_set": 4,
+      "tooltip_background_color_set": 4,
+      "screen_background_pixel_matches_tooltip_role": true,
+      "exact_foreground_pixels_in_captured_tooltip": 11,
+      "pointer_over_control": true,
+      "not_open_at_250ms": true,
+      "open_after_delay": true,
+      "closed_after_pointer_leave": true,
+      "qml_warnings": 0
+    },
+    "results": [
+      {"scheme":"Irixium","window":"#c1c1c1","tooltip_bg":"#c1c1c1","tooltip_text":"#000000","sample":"#c1c1c1"},
+      {"scheme":"DomainOS-SR10-4","window":"#78a0d5","tooltip_bg":"#78a0d5","tooltip_text":"#ffffff","sample":"#78a0d5"},
+      {"scheme":"TestYellow","window":"#36485c","tooltip_bg":"#e7d26e","tooltip_text":"#25200a","sample":"#e7d26e"},
+      {"scheme":"BreezeLight","window":"#eff0f1","tooltip_bg":"#f7f7f7","tooltip_text":"#232629","sample":"#f7f7f7"},
+      {"scheme":"BreezeDark","window":"#202326","tooltip_bg":"#292c30","tooltip_text":"#fcfcfc","sample":"#292c30"}
+    ],
+    "status": "5/5 passed"
+  },
+  "application_component_probe": {
+    "source_component": "The QQC2.ToolTip block extracted from ConfigGeneral.qml; translation call substituted with a sample string in the isolated wrapper",
+    "palettes": ["BreezeLight", "TestYellow"],
+    "results": [
+      {"scheme":"BreezeLight","observed_delay_ms":720,"not_open_at_250ms":true,"opened":true,"tooltip_geometry_px":[210,146,181,30],"button_geometry_px":[240,180,120,44],"gap_to_button_px":4,"background_pixel":"#f7f7f7","tooltip_color_set":4,"background_color_set":4,"exact_text_pixels":21,"closed_after_leave":true,"qml_warnings":0},
+      {"scheme":"TestYellow","observed_delay_ms":708,"not_open_at_250ms":true,"opened":true,"tooltip_geometry_px":[210,146,181,30],"button_geometry_px":[240,180,120,44],"gap_to_button_px":4,"background_pixel":"#e7d26e","tooltip_color_set":4,"background_color_set":4,"exact_text_pixels":21,"closed_after_leave":true,"qml_warnings":0}
+    ],
+    "status": "2/2 passed"
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.applications/contents/ui/ConfigGeneral.qml": "f316a03ad6d7b833c9133c5520ce3c35bc3e5293f6362e028c71f439026f8ee5",
+    "plasma/tests/galerias-nativas/plasma_style_demo.py": "706323bb1a220cf52235406988d9d7b243dba58f10f2a9938e0acaaea076596d"
+  },
+  "artifacts": "~/tempia/t07-qtquick-tooltip-role-20261018-r88/r6/ and ~/tempia/t07-qtquick-tooltip-role-20261018-r88/r7/",
+  "limits": [
+    "The applet KCM was not launched as a full Plasma configuration module; its exact Tooltip QML block was exercised inside an isolated Qt Quick wrapper, with only the translated text expression substituted.",
+    "The gallery tests one vertical scrollbar hint per run; the horizontal tooltip uses the same QML role composition but was not separately hovered in R88.",
+    "The workaround applies to Qt Quick tooltips owned by this project. Other applications using the upstream shared attached tooltip may still use Window for the background; changing KDE source or providing a Qt Quick Controls style is outside this item.",
+    "This is toolkit/palette behavior evidence, not a historical DomainOS pixel match or human approval."
+  ],
+  "conclusion": "Project-owned Qt Quick tooltips now use the current KDE Tooltip background and text roles without modifying installed KDE sources. Rendered pixels followed DomainOS, Irixium, BreezeLight, BreezeDark and a contrasting yellow fixture; the ConfigGeneral component retained a delayed tooltip above its button and closed on leave.",
+  "next": "Continue to the next distinct open gap in T07; leave system-wide upstream attached tooltip behavior documented as an external limit unless a separate authorized style integration can be shown."
+}

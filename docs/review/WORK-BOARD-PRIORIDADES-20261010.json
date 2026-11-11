@@ -1,0 +1,274 @@
+{
+  "item": "I094",
+  "user_revision": 3,
+  "definition_sha256": "34e78deb97acc56aa708988994f2b995799377f3ec897c86332ed48eed307e04",
+  "stage": "delivered_native_lsi",
+  "scope": "Prioridade salva por item em Motif; fila comum GUI/CLI; compatibilidade e preservação de edição",
+  "human_approval": "not_filled_by_assistant",
+  "build": "C99 MVC warnings as errors",
+  "tests": {
+    "priority_model": 8,
+    "priority_native": {
+      "tests": {
+        "legacy_default_normal_creates_no_user_change_or_phantom_draft": true,
+        "unsaved_priority_does_not_reorder_and_reverting_normal_removes_only_its_draft": true,
+        "native_save_reorders_same_as_cli_preserves_selection_and_does_not_authorize": true,
+        "sorted_insertion_interval_keeps_anchor_id": true,
+        "reload_preserves_text_undo_and_unsaved_priority_without_reordering": true,
+        "native_undo_redo_and_save_keep_priority_text_and_independent_consent": true,
+        "chat_metadata_only_save_preserves_previous_note_and_updates_priority": true,
+        "chat_draft_survives_item_switch_with_priority": true,
+        "stale_save_refused_with_draft_text_and_priority_intact": true,
+        "empty_filter_disables_priority_and_return_restores_it": true,
+        "four_kde_schemes_native_priority_button_roles": {
+          "DomainOS": {
+            "native_combo_matches_button_roles": true
+          },
+          "neutral": {
+            "native_combo_matches_button_roles": true
+          },
+          "dark": {
+            "native_combo_matches_button_roles": true
+          },
+          "yellow": {
+            "native_combo_matches_button_roles": true
+          }
+        },
+        "reopen_preserves_both_draft_histories_priorities_and_saved_users": true,
+        "reopen_keeps_chat_undo_redo": true
+      },
+      "screen_resolution": [
+        1920,
+        1080
+      ],
+      "native_board_geometry": [
+        0,
+        0,
+        1650,
+        950
+      ],
+      "scope": "Motif priority selector, saved queue and editing preservation"
+    },
+    "store": 17,
+    "import": 7,
+    "model_api_without_gui": true,
+    "editing": 10,
+    "navigation_at_1920": 7,
+    "filters": 10,
+    "priority_native_r2": {
+      "tests": {
+        "legacy_default_normal_creates_no_user_change_or_phantom_draft": true,
+        "unsaved_priority_does_not_reorder_and_reverting_normal_removes_only_its_draft": true,
+        "native_save_reorders_same_as_cli_preserves_selection_and_does_not_authorize": true,
+        "sorted_insertion_interval_keeps_anchor_id": true,
+        "reload_preserves_text_undo_and_unsaved_priority_without_reordering": true,
+        "native_undo_redo_and_save_keep_priority_text_and_independent_consent": true,
+        "chat_metadata_only_save_preserves_previous_note_and_updates_priority": true,
+        "chat_draft_survives_item_switch_with_priority": true,
+        "stale_save_refused_with_draft_text_and_priority_intact": true,
+        "empty_filter_disables_priority_and_return_restores_it": true,
+        "four_kde_schemes_native_priority_button_roles": {
+          "DomainOS": {
+            "native_combo_matches_button_roles": true
+          },
+          "neutral": {
+            "native_combo_matches_button_roles": true
+          },
+          "dark": {
+            "native_combo_matches_button_roles": true
+          },
+          "yellow": {
+            "native_combo_matches_button_roles": true
+          }
+        },
+        "reopen_preserves_both_draft_histories_priorities_and_saved_users": true,
+        "reopen_keeps_chat_undo_redo": true
+      },
+      "screen_resolution": [
+        1920,
+        1080
+      ],
+      "native_board_geometry": [
+        0,
+        0,
+        1650,
+        950
+      ],
+      "scope": "Motif priority selector, saved queue and editing preservation"
+    }
+  },
+  "limitations": [
+    "I095: menu de seções recortado a 1650 px continua pendente, reproduzido no teste sem width 1920.",
+    "Dica longa de item fica em uma linha e ultrapassa a tela na captura amarela; registrar para revisão de hints própria, sem ampliar I094.",
+    "Mudanças externas de prioridade entram na ordenação ao Recarregar. Prioridade em rascunho não move a fila.",
+    "Fechamento manual I096 é a próxima etapa urgente, separado desta entrega."
+  ],
+  "artifacts": {
+    "build/work-board": "08ceaae806bd2c1d99e5b5f10a31ff7be8b8af9982c2136fe366f9a0ec1de74b",
+    "build/libwork-board-model.a": "5870a7b59fce2d4e916975829d2223927caeed3d1bbebd87cc03b3e686186a6a",
+    "docs/review/work-board-native/priority/priority-DomainOS.png": "f68722f94887a537d5b3fdbf5827c54210907d0815f7fd83d75df2030d8d182d",
+    "docs/review/work-board-native/priority/priority-dark.png": "c29bec300b7cf24757ab2b90ab0f2f61160e77fe7c0983388f566f6f8d7527eb",
+    "docs/review/work-board-native/priority/priority-native.json": "21c32fddd7f6fd205fabc8d3ae098dc35306d876df5e78414bfb85a092476ddb",
+    "docs/review/work-board-native/priority/priority-neutral.png": "b80d6b7dba1651928bec09d76178435a71a5f6b051ef4caaa56a5eaf15367853",
+    "docs/review/work-board-native/priority/priority-yellow.png": "d551a66946489d720c146ed569bbd16c14c83bca9a917f5e713cbd31dc61f81e",
+    "docs/review/work-board-native/priority/layout-before/empty-maximized-1920.json": "330a6f8db4a2471d8f0a6769b7c12245b7b470dfec9cff419ba5017070b491f8",
+    "docs/review/work-board-native/priority/layout-before/empty-maximized-1920.png": "5e87ea57c974bf844fa5f5d5bc0bb9b1660c54284bec2828eeccc261ebe3f486",
+    "docs/review/work-board-native/priority/layout-before/empty-start-1650.json": "45cc67127ceaf0b2f0e907c2a2ba6523ef88e2cb1ee0349743a6c44cbc583477",
+    "docs/review/work-board-native/priority/layout-before/empty-start-1650.png": "b7e9c61ceace6aff8924296c53960313f84ea4fe9030576b2e70ea0bfa6575e9",
+    "docs/review/work-board-native/priority/layout-after/empty-again-1920.json": "8eeaa9724db678f9c89f060350bf6d88e37e2d5df59c0b250aab191422054fcd",
+    "docs/review/work-board-native/priority/layout-after/empty-again-1920.png": "45a86be83ae3a47f71343abba7c7c34e5692d4f2a7f714700f75ea1a8cc0b41a",
+    "docs/review/work-board-native/priority/layout-after/empty-maximized-1920.json": "1d87a5e25e9f6a41b981ea08af93fc4b2d25e3ada1d5d1897d41acff06e18907",
+    "docs/review/work-board-native/priority/layout-after/empty-maximized-1920.png": "5aa152fb7835e170e06268c4726ef8ab05c77701d968572b60b5b520acc0c4f3",
+    "docs/review/work-board-native/priority/layout-after/empty-start-1650.json": "77ea02c8793d1142ffaa9c232e3b2a48ad05d8824db401e9afbe4bf1925979bc",
+    "docs/review/work-board-native/priority/layout-after/empty-start-1650.png": "c3a4251ff6ce5ef69be3dfe5c44874b4020d39a6a4dce0164b4c24483b4923e3",
+    "docs/review/work-board-native/priority/layout-after/layout-result.json": "0b1163f85cafa2ddaf75586a3246c769c1bbc69e52caf97a70568bf2b82aabeb",
+    "docs/review/work-board-native/priority/layout-after/visible-1650.json": "6a4567e252463d99a705838777aa0cf492bcd1322d07869e0679330fd7ff02eb",
+    "docs/review/work-board-native/priority/layout-after/visible-1650.png": "893d10ed467873ecab753ae9c8ef990626d9938cae55949be990d72655180f5d",
+    "docs/review/work-board-native/priority/layout-after/visible-maximized-1920.json": "3eda6710c81be50661dc4491e4037230083a395e5ce04d451492efeafde40935",
+    "docs/review/work-board-native/priority/layout-after/visible-maximized-1920.png": "4ddbfb036e11d6aad27d0be78cb4e6f0a2e6f44491bfc7a36605907a7ce0dfae",
+    "docs/review/work-board-native/priority/r2/priority-DomainOS.png": "05a8fc5adb649da73679f236c6a5e2d179b09adca0fa74f9397cdae3636d796a",
+    "docs/review/work-board-native/priority/r2/priority-dark.png": "f6e1d84a03929d1f9817cc6baf10a1ec97cbf31977f0c3697825560faf7f3091",
+    "docs/review/work-board-native/priority/r2/priority-native.json": "21c32fddd7f6fd205fabc8d3ae098dc35306d876df5e78414bfb85a092476ddb",
+    "docs/review/work-board-native/priority/r2/priority-neutral.png": "b50093e357de7b9f13d8a3281ccbf32314dca73f9daff13d46c108f246b1003b",
+    "docs/review/work-board-native/priority/r2/priority-yellow.png": "74d627a9b112a85f7fcace052f5a9adace7798ba5140a888c428ed953871875a"
+  },
+  "installation": {
+    "installed_at": "2026-10-10T22:16:09.655414+00:00",
+    "files": 29,
+    "source_guards_passed": true,
+    "installed_hashes_match": true,
+    "personal_windows_restarted": false
+  },
+  "handoff": {
+    "date": "2026-10-10T22:23:14.476381+00:00",
+    "item": "I094",
+    "revision": 3,
+    "pid": 1348719,
+    "display": ":1",
+    "binary_sha256": "08ceaae806bd2c1d99e5b5f10a31ff7be8b8af9982c2136fe366f9a0ec1de74b",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "Native temporary button for exact I094 request/session, revalidated before SIGTERM",
+    "ephemeral_request_hidden_on_start": true
+  },
+  "technical_progress_percent": 100,
+  "progress_basis": "Implementação, provas, instalação e handoff final conferidos; avaliação humana permanece separada.",
+  "first_handoff": {
+    "date": "2026-10-10T22:18:16.813567+00:00",
+    "item": "I094",
+    "revision": 2,
+    "pid": 1345528,
+    "display": ":1",
+    "binary_sha256": "f24e251b29450ec97899f82c1cb5e56117961d59cc6de02c9500bc7990d1dba4",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "Native temporary button for exact I094 request/session, revalidated before SIGTERM",
+    "ephemeral_request_hidden_on_start": true
+  },
+  "layout_correction": {
+    "original_failure": "priority widget height 16px and moved to next column when starting empty and maximizing to 1920px",
+    "basis": "Local XmRowColumn(3), PACK_TIGHT wraps; explicit PACK_COLUMN/numColumns=1/adjustLast=False",
+    "native_cases": {
+      "empty-start-1650": {
+        "priority_geometry": [
+          765,
+          203,
+          161,
+          35
+        ],
+        "checks_geometry": [
+          665,
+          156,
+          453,
+          41
+        ],
+        "readable": true
+      },
+      "empty-maximized-1920": {
+        "priority_geometry": [
+          873,
+          209,
+          361,
+          38
+        ],
+        "checks_geometry": [
+          773,
+          159,
+          731,
+          44
+        ],
+        "readable": true
+      },
+      "visible-maximized-1920": {
+        "priority_geometry": [
+          873,
+          209,
+          361,
+          38
+        ],
+        "checks_geometry": [
+          773,
+          159,
+          731,
+          44
+        ],
+        "readable": true
+      },
+      "visible-1650": {
+        "priority_geometry": [
+          765,
+          209,
+          361,
+          38
+        ],
+        "checks_geometry": [
+          665,
+          159,
+          731,
+          44
+        ],
+        "readable": true
+      },
+      "empty-again-1920": {
+        "priority_geometry": [
+          873,
+          209,
+          361,
+          38
+        ],
+        "checks_geometry": [
+          773,
+          159,
+          731,
+          44
+        ],
+        "readable": true
+      }
+    },
+    "current_lsi_window_has_previous_binary": false,
+    "editing_regression": 10,
+    "native_lsi_capture_reviewed": true
+  },
+  "correction_installation": {
+    "installed_at": "2026-10-10T22:22:05.206362+00:00",
+    "files": 6,
+    "source_guards_passed": true,
+    "installed_hashes_match": true,
+    "personal_windows_restarted": false
+  },
+  "reused_evidence": "Modelo/persistência, filtros e navegação têm provas R1; a correção altera somente empacotamento do bloco de decisões. Fluxos de prioridade, quatro paletas e edição foram repetidos na versão final; cinco casos novos cobrem geometria."
+}

@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-11T13:31:18.119014+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "private_native_io_verified_not_delivered",
+  "changes": [
+    "Carregar separa proposta de cena, preserva receitas pendentes e captura ajustes antes da troca.",
+    "Importação CLI de delta valida base, operações e projeto; saída nova e recibo, sem instalação."
+  ],
+  "checks": {
+    "strict_build": "passed; io-build.log",
+    "controller_native": "passed; load/save/cancel/invalid/Undo/Redo/Export/report/explicit Apply; controller-io.log",
+    "delta_import": "4 passed",
+    "proposal_export": "12 passed",
+    "backend": "33 passed",
+    "project_session": "passed",
+    "runtime": "2 passed"
+  },
+  "test_corrections": [
+    "Faixa de display ampliada após faixa reservada ocupada; nenhum display existente encerrado.",
+    "Amostra por peça exige schema2; validação do produto mantida.",
+    "Amostra schema2 explicita defaults; comparação ignora somente exported_at e compara todos os demais dados."
+  ],
+  "native_result": {
+    "status": "passed",
+    "scope": "Native controller file load/save/cancel/invalid input, pending inactive recipes, positions, Unicode, project Undo/Redo, explicit Apply, real backend Export and comparison; private Motif and selected-scheme generators, not historical painting",
+    "imported_recipes_preserved": true,
+    "scene_changed_only_on_apply": true,
+    "export_package": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-jhvbw1s8/home/lab/generated/exports/revisions/20261011T133036-aa2879c9f98c/PACKAGE",
+    "export_families": [
+      "gtk1",
+      "gtk2",
+      "gtk3",
+      "gtk4",
+      "gtk5",
+      "kvantum",
+      "motif",
+      "plasma",
+      "qt5",
+      "qt6"
+    ]
+  },
+  "remaining": [
+    "Entrega pessoal coordenada e avaliação.",
+    "Reabertura do aplicativo com projeto pendente e histórico persistido: fluxo nativo específico ainda não ensaiado.",
+    "Interface de importação de delta: hoje CLI produz PROJECT carregável.",
+    "Interface de reconstrução de arquivos de tema e instalação revisável: não implementadas nesta etapa."
+  ],
+  "estimated_stage_progress_percent": 75,
+  "percentage_basis": "Abrir/salvar/importar e exportação completos verificados privadamente; entrega, reabertura e fluxos finais ainda pendentes. Não é percentual de fidelidade nem do goal inteiro.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "a88ab7b309740caec5e91660a49c4a7ae80e6c0c990c995779f2c841385148dd",
+    "tools/theme-lab/backend.py": "b0e3d96a342a35142c5e21d0f42ff5345a14bd7cc86f10004ddaab4d7883f296",
+    "tools/theme-lab/proposal_export.py": "331ff6cd2498dd1cd1cc334d9d0ac55373852168a0a65b826c771b41309d7579",
+    "tools/theme-lab/tests/controller_project_io.py": "ba7f88e095a5055f180b65616de89350dc62e0a0df0e8498890446f24e694a63",
+    "tools/theme-lab/tests/test_controller_spin.py": "6372721eece8af80539fdc2063efc3e10fa3439f3fd4996ad7f2e0cc68075594",
+    "tools/theme-lab/tests/controller_spin_probe.c": "249b2cbea6ea6488df7ef6a5d46c87801c2fc64c5881917cbb3ab181051a1632",
+    "tools/theme-lab/tests/test_project_import.py": "1b087df590289f43f2d0e78e3461b64dd1b1610407a01aae48f6804663aad7b9"
+  }
+}

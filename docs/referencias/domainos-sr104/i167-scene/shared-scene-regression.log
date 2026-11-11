@@ -1,0 +1,232 @@
+E.E...EEEEEEEEEEEE.EEEEEE.E
+======================================================================
+ERROR: test_all_native_control_ids_and_positions_are_preserved (test_preview_scene.SceneTests.test_all_native_control_ids_and_positions_are_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 40, in test_all_native_control_ids_and_positions_are_preserved
+    records = preview.scene(data)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_categories_and_controls_intersect_without_renumbering (test_preview_scene.SceneTests.test_categories_and_controls_intersect_without_renumbering)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 52, in test_categories_and_controls_intersect_without_renumbering
+    records = preview.scene(data)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_forced_state_applies_only_to_selected_visible_control (test_preview_scene.SceneTests.test_forced_state_applies_only_to_selected_visible_control)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 61, in test_forced_state_applies_only_to_selected_visible_control
+    records = preview.scene(data)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_hidden_positions_are_still_validated (test_preview_scene.SceneTests.test_hidden_positions_are_still_validated) (value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 90, in test_hidden_positions_are_still_validated
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_hidden_positions_are_still_validated (test_preview_scene.SceneTests.test_hidden_positions_are_still_validated) (value=2049)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 90, in test_hidden_positions_are_still_validated
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_hidden_positions_are_still_validated (test_preview_scene.SceneTests.test_hidden_positions_are_still_validated) (value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 90, in test_hidden_positions_are_still_validated
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_hidden_positions_are_still_validated (test_preview_scene.SceneTests.test_hidden_positions_are_still_validated) (value=1.5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 90, in test_hidden_positions_are_still_validated
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_hidden_positions_are_still_validated (test_preview_scene.SceneTests.test_hidden_positions_are_still_validated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 92, in test_hidden_positions_are_still_validated
+    self.assertEqual(preview.scene(data), [])
+                     ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='visible_categories', value=32)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='visible_controls', value=65536)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='selected_control', value=16)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='edit_state', value=-1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='visible_controls', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_invalid_masks_states_and_boolean_values_are_rejected (test_preview_scene.SceneTests.test_invalid_masks_states_and_boolean_values_are_rejected) (key='edit_state', value=1.0)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 80, in test_invalid_masks_states_and_boolean_values_are_rejected
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_old_recipe_receives_layout_defaults (test_preview_scene.SceneTests.test_old_recipe_receives_layout_defaults)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 68, in test_old_recipe_receives_layout_defaults
+    records = preview.scene({'recipes': {'gtk3': {}}})
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_other_toolkit_is_not_simulated (test_preview_scene.SceneTests.test_other_toolkit_is_not_simulated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 204, in test_other_toolkit_is_not_simulated
+    preview.scene(project(), 'gtk4')
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_positions_require_sixteen_exact_pairs (test_preview_scene.SceneTests.test_positions_require_sixteen_exact_pairs) (replacement=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 99, in test_positions_require_sixteen_exact_pairs
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_positions_require_sixteen_exact_pairs (test_preview_scene.SceneTests.test_positions_require_sixteen_exact_pairs) (replacement=[[1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 99, in test_positions_require_sixteen_exact_pairs
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_positions_require_sixteen_exact_pairs (test_preview_scene.SceneTests.test_positions_require_sixteen_exact_pairs) (replacement=[[1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3], [1, 2, 3]])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 99, in test_positions_require_sixteen_exact_pairs
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_positions_require_sixteen_exact_pairs (test_preview_scene.SceneTests.test_positions_require_sixteen_exact_pairs) (replacement='not positions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 99, in test_positions_require_sixteen_exact_pairs
+    preview.scene(data)
+    ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+======================================================================
+ERROR: test_trailing_control_edge_uses_native_extent_and_cell_offset (test_preview_scene.SceneTests.test_trailing_control_edge_uses_native_extent_and_cell_offset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 35, in test_trailing_control_edge_uses_native_extent_and_cell_offset
+    with self.assertRaisesRegex(ValueError,'length_anchor'):preview.scene(data)
+                                                            ~~~~~~~~~~~~~^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 48, in scene
+    from scene_contract import scene as layout_scene
+ModuleNotFoundError: No module named 'scene_contract'
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.019s
+
+FAILED (errors=21)

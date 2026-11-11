@@ -1,0 +1,32 @@
+{
+  "id": "T07-MOTIF-TOOLTIP-BOUNDARY-OWNER-OVERLAP-20261019-R158",
+  "work_item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-19T18:01:08Z",
+  "status": "automated-fix-verified-manual-preview-pending",
+  "scope": "Generic native Motif tooltip boundary probe; no user project, desktop theme, or Xephyr session changed.",
+  "evidence": {
+    "test": "tools/theme-lab/tests/ui_hints_native.c",
+    "failure": "Long hint for action 3 overlaps its owner by one vertical pixel near the screen bottom.",
+    "observed_tooltip": [906, 933, 329, 46],
+    "screen": [1280, 1024],
+    "owner_fixture": "The test places a 150x40 Motif button at x=1080, y=894; its translated bounds meet the tooltip at the lower edge.",
+    "source_reference": "~/tempia/motif-tooltip-src/motif-2.3.8/lib/Xm/ToolTip.c positions below the owner and flips above only when the popup would exceed the screen; no sibling-overlap test is present.",
+    "failure_line": 58,
+    "pre_fix": "The 329x46 popup at y=933 intersects the owner's lower edge by 1 px.",
+    "after_fix": "The popup is moved to y=934, touching but not covering the owner's lower edge; it stays within the screen.",
+    "checks": {
+      "command": "TMPDIR=~/tempia/t07-paint-hint-r157/tmp make -C tools/theme-lab BUILD=~/tempia/t07-paint-hint-r157/build all check-ui-hints check-ui-help",
+      "result": "passed",
+      "ui_hints": "All nine action cases, extended UTF-8 hint geometry, screen bounds, owner separation, stable display and dismissal passed.",
+      "ui_palettes": "GTK/Motif tooltip policy and UI role isolation passed in DomainOS, BreezeLight, BreezeDark and TestYellow.",
+      "ui_help": "Native Help menu, three explanation levels, topic selection, read-only copy, close/reopen and project preservation passed.",
+      "warnings": "Xvfb still reports missing font/charset mappings; tests do not claim glyph or rendered-pixel fidelity."
+    },
+    "build_sha256": "52cfaf5b7d892c035b12af73478228c4e75242fd7fbda413f74beb27c8f562c2",
+    "test_scope": "Automated native Motif probes only; no new client was launched in Xephyr :86 because multiple Theme Lab windows are already active there."
+  },
+  "implementation": "Added leave-cancelled per-primitive hover tracking in tools/theme-lab/src/view/ui_hints.c. After Motif's native post delay, it repositions a mapped hint only if it intersects its owner, with a one-pixel gap and screen clamping. No static color or Motif library change.",
+  "impact": "The tested boundary collision is corrected for Motif Primitive owners. Manual Paint's 15-widget composition still needs a visual check in the existing Xephyr session. This is application behavior, not an SR10.4 appearance claim.",
+  "next": "When the existing :86 Paint window is available for inspection, use the stable build to recheck the 15 tooltips and dimensions label. Preserve the open project and other clients."
+}

@@ -1,0 +1,53 @@
+{
+  "item": "I167",
+  "revision": "R16",
+  "checked_at_utc": "2026-10-19T14:05:00Z",
+  "family": "GTK2 public preview: scrollbar arrow/trough junction",
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "source_images": [
+      "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "docs/referencias/domainos-sr104/barra-horizontal-normal.png"
+    ],
+    "comparison": "1:1 pixels, same 15x15 arrow regions as R14/R15"
+  },
+  "scope": "Private GTK2 snapshots and assistant-owned Xephyr :82/:83 only. No product theme, user palette, MAME guest, or other Xephyr was changed.",
+  "correction_to_R15": {
+    "status": "R15 geometric premise disproved",
+    "finding": "The generated R14 GTK2 arrow assets were already 11x12 vertical and 12x11 horizontal; they were not 11x11 bitmaps. GTK2 recipe geometry explicitly includes the one-pixel axial allowance. Therefore R15's claim that a centered 11x11 overlay left this pixel unpainted was based on an incorrect description of the generated source asset.",
+    "preserve_history": "R15 remains unchanged as historical record; this revision supersedes its proposed asset-overlay cause and test plan."
+  },
+  "isolated_geometry_probe": {
+    "change": "Private snapshot only: GtkRange stepper-size 12 to 13; directional overlay canvas 13px, preserving the 11x11 glyph and deriving bevel colors from semantic DomainOS/KDE roles.",
+    "result": "Public crop equality against the SR10.4 15x15 ROIs: up 181/225, down 180/225, left 171/225, right 162/225. Vertical axial outer edge pixels match, but horizontal junction differences remain; alignment and glyph differences are also present.",
+    "runtime_geometry": "Observed minimum-width event changed 49 to 51, confirming the size-13 RC applied.",
+    "decision": "Reject as a product fix. The changed geometry did not establish a consistent four-direction match and does not isolate the GTK2 drawing-order cause."
+  },
+  "public_interaction_diagnostic": {
+    "result": "The public arrow press harness returned zero held-state pixel delta in multiple runs, including the unmodified baseline. On Xephyr :82 the first failure was horizontal-left; on :83 it was horizontal-right. XQueryPointer confirmed the pointer was inside the GTK2 toplevel, so the varying failure is not evidence of a missed top-level target.",
+    "interpretation": "The harness/input outcome is intermittent relative to R14, which passed all four arrows. Do not attribute this to the size-13 candidate or use these failed runs as a behavioral regression conclusion.",
+    "next_diagnostic": "Inspect delivered GTK/GDK button and range state for the held interval, then repeat once with an event/state receipt that proves the press reached the target before comparing pixels."
+  },
+  "retained_artifacts": {
+    "r14_public_baseline": "~/tempia/.qa-gtk2-public-18qf4gg8",
+    "r16_overlay_first_run": "~/tempia/.qa-gtk2-public-i6efg7t5",
+    "r16_baseline_runs": [
+      "~/tempia/.qa-gtk2-public-0wybzf5z",
+      "~/tempia/.qa-gtk2-public-1nbznled"
+    ],
+    "r17_candidate": "~/tempia/i167-r17-stepper13",
+    "r17_public_run": "~/tempia/.qa-gtk2-public-3snj86qq",
+    "assistant_xephyr_authority": "~/tempia/i167-xephyr-r16-20261019/Xauthority"
+  },
+  "cleanup": {
+    "removed_discarded": [
+      "~/tempia/i167-r16-overlay",
+      "~/tempia/.qa-gtk2-public-rm27ysvo"
+    ],
+    "reason": "The generated size-14 overlay was rejected, and the second identical run was redundant. The first candidate run remains for evidence. Xephyr :83 and its Xauthority remain in place."
+  },
+  "product_changes": "None.",
+  "status": "partial; no user visual approval",
+  "next": "Retain GTK2 as the active family. First make the public input receipt deterministic by proving GDK button delivery and range state during the hold; then compare R14's passing native interaction again only if that receipt identifies a meaningful changed input condition. For visual work, trace parent trough/stepper draw and clipping with the corrected 11x12/12x11 asset dimensions; do not increase stepper-size or replace assets without a four-direction discriminating result.",
+  "human_visual_approval": "pending"
+}

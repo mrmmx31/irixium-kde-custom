@@ -1,0 +1,34 @@
+{
+  "id": "T07-MOTIF-PAINT-TOOLROW-HINT-COLLISION-20261019-R157",
+  "work_item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-19T18:10:00Z",
+  "status": "defect-confirmed-before-fix",
+  "scope": "Actual Motif Manual Paint tool-row hints in the existing Xephyr :86; no click, raster edit, color, or project change.",
+  "evidence": {
+    "display": ":86",
+    "xephyr_pid": 113337,
+    "application_pid": 266101,
+    "window": "Theme Lab - Editor de pintura manual, 1500x850 at +0+0",
+    "method": "Moved the pointer over the live widgets, waited for each native hint, and read the mapped tooltip X geometry with xwininfo.",
+    "target_dimension_label": [11, 128, 1478, 17],
+    "tooltips_overlapping_dimension_label": {
+      "line": [142, 105, 394, 30],
+      "picker": [331, 105, 394, 30],
+      "text-role": [380, 105, 376, 30],
+      "face-role": [423, 105, 370, 30],
+      "content-role": [475, 105, 394, 30],
+      "selection-role": [536, 105, 388, 30],
+      "light-role": [582, 105, 364, 30],
+      "shadow-role": [625, 105, 382, 30],
+      "grid": [674, 105, 418, 30],
+      "zoom-out": [708, 105, 406, 30],
+      "zoom-in": [730, 105, 418, 30]
+    },
+    "non_overlapping_controls": ["pencil", "eraser", "rectangle", "fill"],
+    "dismiss_after_pointer_leave": true,
+    "input_actions": "Pointer movement only; no mouse buttons or keyboard events."
+  },
+  "impact": "The R156 gap protects selector hints from the tool row and dimension hints from row tips, but its tests did not include the longer tool/color/grid/zoom hints. Eleven actual tooltips obscure the dimension label.",
+  "next": "Reserve enough vertical space between the tool row and dimension group for the measured 30 px popup, then retest all 15 widgets and preserve the current project/session."
+}

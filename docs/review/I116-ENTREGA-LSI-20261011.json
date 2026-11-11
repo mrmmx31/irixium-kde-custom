@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-11T04:03:02.144066+00:00",
+  "item": "I116",
+  "revision": 1,
+  "delivery": {
+    "status": "open",
+    "checks": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "namespace": {
+      "mnt": 4026538605,
+      "net": 4026538608,
+      "pid": 4026531836,
+      "user": 4026538667
+    },
+    "worker": {
+      "pid": 1651343,
+      "starttime": 33964118,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/out/lab-addon/run-4c098b1a8a2e428d82aa9f5595a6e6e7/abrir-laboratorio-temas.py",
+        "--worker",
+        "/out/lab-addon/run-4c098b1a8a2e428d82aa9f5595a6e6e7/MANIFESTO.json"
+      ],
+      "namespace": {
+        "mnt": 4026538605,
+        "net": 4026538608,
+        "pid": 4026531836,
+        "user": 4026538667
+      }
+    },
+    "new_instance": true,
+    "work_directory": "/home/domainos-test/theme-lab-4c098b1a8a2e",
+    "work_directory_relative": "theme-lab-4c098b1a8a2e",
+    "gui_started": true,
+    "app": {
+      "pid": 1651344,
+      "starttime": 33964131,
+      "argv": [
+        "/fixture/theme-lab-root/tools/theme-lab/build/theme-lab",
+        "--root",
+        "/fixture/theme-lab-root",
+        "--work-dir",
+        "/home/domainos-test/theme-lab-4c098b1a8a2e"
+      ],
+      "namespace": {
+        "mnt": 4026538605,
+        "net": 4026538608,
+        "pid": 4026531836,
+        "user": 4026538667
+      }
+    },
+    "argv": [
+      "/fixture/theme-lab-root/tools/theme-lab/build/theme-lab",
+      "--root",
+      "/fixture/theme-lab-root",
+      "--work-dir",
+      "/home/domainos-test/theme-lab-4c098b1a8a2e"
+    ],
+    "windows": [
+      "39846040"
+    ],
+    "window_map_observed": true,
+    "window_input_sent": false
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-727b4d17ae624473aabe5fcd919ed865/MANIFESTO.json",
+    "source_manifest_sha256": "ebff5fceafc930ed6d990e66355b2f77dcce4ee57aef076ec66625db00758b44",
+    "saved_files_sha256": {
+      "working.json": "01c3af0aaeb0c0364e8e0272388e73a572f7a16532308229a56f00e85852ebab",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "saved_project_semantically_equal": true,
+  "saved_journal_identical": true,
+  "source_histories_preserved": 57,
+  "source_window_preserved": true,
+  "raw_unsaved_widget_text_imported": false,
+  "capture_sha256": "0d3d1dd4feea68ff4806713c95ac3fa63fdb41a55c6744a367aac56ebe79113a",
+  "visual_inspection": "Nova janela examinada; três painéis, controles Motif reais e seletor Extremidade fixa da barra presentes. Sem interação sobre dados pessoais.",
+  "estimated_stage_progress_percent": 100,
+  "percentage_basis": "Implementação, fluxo nativo e entrega da atualização concluídos; avaliação humana separada",
+  "human_approval_filled": false,
+  "project_only_difference": "exported_at atualizado ao inicializar; todos os demais campos idênticos"
+}

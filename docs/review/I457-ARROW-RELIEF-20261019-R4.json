@@ -1,0 +1,34 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T16:43:54Z",
+  "status": "qt6-generated-preview-pass; gtk3-and-historical-comparison-open",
+  "scope": "Qt6 only: resting/hover/pressed/released relief of QSpinBox down and QComboBox arrows in the current generated Theme Lab preview.",
+  "authorization": "Fila Atual section work; I457 revision 1 is authorized. No production installation or user theme changed.",
+  "environment": {
+    "qt": "6.8.2",
+    "platform": "offscreen",
+    "palette_source": "Theme Lab DomainOS role fixture; existing recipe test also confirms a changed KDE-role input changes generated QSS.",
+    "stylesheet_sha256": "5ee4248359d7ed0bbca1284ca0f9987a67da9c595de6482196c4324d5c788473",
+    "artifacts": "~/tempia/i457-qt6-relief-r1/"
+  },
+  "result": {
+    "spin_down": {
+      "region_px": [19, 17],
+      "pointer_outside_normal_equals_hover": true,
+      "pressed_pixel_changes": 181,
+      "released_equals_normal": true,
+      "after_leave_equals_normal": true
+    },
+    "combo_arrow": {
+      "region_px": [19, 27],
+      "pointer_outside_normal_equals_hover": true,
+      "popup_open_pixel_changes": 53,
+      "popup_dismissed_equals_normal": true
+    },
+    "baseline_gui_regressions": "Qt6 ComboBox and SpinBox generated-recipe tests passed, including normal input and editing shortcuts."
+  },
+  "limitation": "This isolates current Qt6 widget/QSS state handling; it is not a live KDE/Xephyr comparison or proof of SR10.4 relief. The existing MAME R3 capture is black except for the Apollo strip. Disabled arrow imagery is not discriminating in this DomainOS fixture, so no disabled-state visual conclusion is claimed. A QTest Escape dismissal attempt was inconclusive under the offscreen platform; direct popup dismissal restored the exact normal pixels.",
+  "product_change": "None; the current generated Qt6 preview already shows raised relief at rest and restores the spin arrow after release.",
+  "next": "Continue I457 with GTK3 ComboBox only. Preserve the MAME profile and wait for the existing guest to show VUE before claiming historical equivalence."
+}

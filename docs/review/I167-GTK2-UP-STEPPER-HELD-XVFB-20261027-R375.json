@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "R375",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate the GTK2 vertical up-stepper after the ACTIVE vertical trough corner correction, including held runtime and retained SR10.4 transition pixels.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "input": "xdotool press/hold/release only inside the private Xvfb",
+    "theme_bundle": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/bundles/41e63f50494e5c95229d803105e0bdf2309013898b5cb53ccf1d52d0ac9a8e5c",
+    "source": "~/tempia/ia-tema/evidence/I167/r375-held-up-private-xvfb/held-probe.c",
+    "source_sha256": "338f7cf3e0c35ad41bdc97f5931317f36dbebe78b7197e3000f59fdac39960e9"
+  },
+  "gtk_captures": {
+    "baseline_before_pointer": {
+      "file": "hover-normal.png",
+      "sha256": "8b2819244994ac9e5875e7172cf68b1da31c95e5721a5c966013538aad9d1473"
+    },
+    "pressed": {
+      "file": "pressed.png",
+      "sha256": "dbef1981c3b1a2e6ca9fb1d9a9f2d77000e2296e3f1477078ec91258a2d1b3e1"
+    },
+    "released_outside": {
+      "file": "released-outside.png",
+      "sha256": "7db333cb6113be16fd0b13bab92bacf36e3c97f7801d042f5b8d7086427488d4"
+    }
+  },
+  "assets": {
+    "normal_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+    "pressed_sha256": "e2429295276378aa365069db0854c28eef2d657f4325eb9bf8e8220628b75db5"
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 / HP VUE 2.01",
+    "source_study": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/sources",
+    "released_sha256": "f284b60af1061cfd915c0af6fd2e4d838f27cb013160f4659b43a1d4a645f90e",
+    "held_sha256": "b8697e88af20945b7ba2d5368cbb51c421b6647cf41ce8b9e2cba6a7870efa4b",
+    "registered_crop_xyxy": [
+      962,
+      100,
+      977,
+      115
+    ],
+    "provenance_limit": "Retained approved SR10.4/VUE capture, not a fresh capture of the canonical project VM."
+  },
+  "comparison": {
+    "gtk_cell_origin_xy": [
+      0,
+      2
+    ],
+    "cell_size_px": [
+      15,
+      15
+    ],
+    "normal_vs_generated_up_normal": {
+      "different_pixels": 0,
+      "compared": 225
+    },
+    "held_vs_generated_up_pressed": {
+      "different_pixels": 0,
+      "compared": 225
+    },
+    "released_vs_generated_up_normal": {
+      "different_pixels": 0,
+      "compared": 225
+    },
+    "gtk_normal_to_held_changed_pixels": 53,
+    "gtk_release_cell_diff_vs_baseline": 0,
+    "vue_visible_transition_pixels": 46,
+    "same_position_exact_rgb_pairs_vs_vue": 46,
+    "vue_transition_pixels_missing_from_gtk": 0,
+    "gtk_transition_pixels_not_visible_in_vue_capture": 7,
+    "current_vertical_trough_effect": "The active trough's three upper-right relief pixels are included in the exact 15x15 runtime cell match in all three states."
+  },
+  "interpretation": "The current real GTK2 held up-stepper preserves the recent active-trough correction. Its complete cell matches generated normal/pressed assets at 0/225; all 46 unoccluded retained VUE transition pixels match the GTK runtime normal-to-held RGB pairs exactly. Seven additional GTK pixels remain outside the VUE-observed transition mask at the historically recorded cursor position; this is consistent with occlusion but does not prove its cause.",
+  "limits": [
+    "Retained historical upper-arrow image pair is not a fresh VM capture.",
+    "This proves only the up and down directions in GTK2; horizontal held states, hover/disabled states, full app comparison and human visual evaluation remain open.",
+    "No user profile, live application or VM was modified or sent input."
+  ]
+}

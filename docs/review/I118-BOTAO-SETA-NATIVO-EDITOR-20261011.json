@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-11T05:48:58.993693+00:00",
+  "item": "I118",
+  "revision": 1,
+  "stage": "GTK3 isolated arrow button native proof and piece-aware editor",
+  "proof": {
+    "native_result": ".qa-theme-lab-arrow-button-states-eiwbw90g/home/results/RESULTADO.json",
+    "cases": 72,
+    "checks": 2376,
+    "native_scope": "Actual GtkButton XTest hover/press, native focus routing, sensitivity and controlled BACKDROP; four KDE palettes; outer edge midpoint pixels and allocation",
+    "border_continuity": {
+      "passed": true,
+      "scope": "Continuity of both straight border strips; CSS joins/corners and glyph excluded",
+      "phases": 792,
+      "pixels": 69696,
+      "failures": []
+    },
+    "integrated_result": ".qa-theme-lab-spin-5d7idcxg/RESULTADO.json",
+    "integrated_scope": "Real Motif pointer selections -> controller -> six independent GtkButton border states -> manual Apply and private close/reload",
+    "integrated_passed": true,
+    "first_integrated_failure": ".qa-theme-lab-spin-tqapng6b/RESULTADO.json",
+    "diagnosis": "Selected state caused asynchronous snippet relayout after two stable reports. Test now waits for corresponding snippet and ten stable reports for this longer fragment; application events not bypassed.",
+    "compile": "C99 -Wall -Wextra -Werror passed",
+    "unit": "make check-part-relief-editor passed: isolated focus editable, stepper focus guarded, invalid capability guarded and preserved recipes"
+  },
+  "editor": {
+    "arrow": "five states; default range cannot focus",
+    "arrow_button": "six states of standalone border; glyph separate",
+    "other_pieces": "unavailable; saved proposals preserved"
+  },
+  "remaining": [
+    "Other GTK3 pieces: trough, thumb, fitting",
+    "Native preview startup and post-reopen readiness",
+    "Personal delivery and human evaluation"
+  ],
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "limits": [
+    "CSS corner joins and standalone glyph not covered by border test",
+    "Controlled BACKDROP is not WM focus policy",
+    "Integrated reload proved recipe preservation, not post-reopen native painting readiness"
+  ],
+  "scope_progress_percent": 68,
+  "percentage_basis": "Arrow glyph five supported states and isolated button six states now translated and editor verified. Other pieces/startup/delivery pending; not overall goal or visual fidelity.",
+  "hashes": {
+    "tools/theme-lab/src/view/part_relief_editor.c": "803d0f7e22ff440148cef018b9125d13244bb676ec119fa2cdfcbfd47feb755e",
+    "tools/theme-lab/include/part_relief_editor.h": "0a7c97b9b09a20ae34512a3756fd1a2275b437acf2bc6e7b2336f11779d4b603",
+    "tools/theme-lab/src/view.c": "ff8a42819a5f043df9f3f27247cc1858dbe52732922429321e25b095a620d192",
+    "tools/theme-lab/tests/part_relief_editor_test.c": "3b00a474ee0319876571bfdeba6d75137a2a2a8e644cefbb2add8db03711b0ae",
+    "tools/theme-lab/tests/test_arrow_button_states_native.py": "47e2d2ee3b9f5ee5662dfa44bd6851dd5e87bef0c7c38d663e71485d3e853d45",
+    "tools/theme-lab/tests/verify_arrow_button_borders.py": "d5fe2e54e8576eae17259696d1271f41f934c48f6529106d2f44a632c15cc5d5",
+    "tools/theme-lab/tests/test_controller_spin.py": "6899d3b50a4d9a8d98b766c92caed82f4a4f5334ea4b50978b2aa22df6336645",
+    "tools/theme-lab/arrow_button_states.py": "7d65441b71d741f1d76184cbbc6217cdeaca241f90a013d43383bf5c9025e3cd"
+  }
+}

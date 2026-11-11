@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-11T03:50:43.137011+00:00",
+  "item": "I116",
+  "revision": 1,
+  "phase": "controller_flow_audit_and_metric_ordering",
+  "controller_flow_passed": false,
+  "failures": [
+    {
+      "fixture": ".qa-theme-lab-spin-g3kjjb5_",
+      "result": "Timeout no seletor após navegação por teclado"
+    },
+    {
+      "fixture": ".qa-theme-lab-spin-00escvsx",
+      "result": "Processo terminou com 143 sem resultado final; não tratado como prova"
+    },
+    {
+      "fixture": ".qa-theme-lab-spin-cjklu90j",
+      "result": "Clique real não manteve Fim fixo; fluxo não aprovado"
+    },
+    {
+      "fixture": ".qa-theme-lab-spin-rxgznlu5",
+      "result": "Uma prévia separada terminou com medida sem posição válida; teste não chegou ao clique"
+    }
+  ],
+  "changes": [
+    "Posição nativa opcional validada no IPC, distinta de coordenada proposta",
+    "Atualização limitada de medidas após mapeamento/reconstrução GTK",
+    "Invalidação da cena antes da destruição de controles antigos",
+    "Eventos selecionados em ordem, até 32 por tick com memória fixa; produtor usa relógio monotônico nos nomes",
+    "Fixture registra argumento da ação e mensagem do controlador sem alterar sua lógica"
+  ],
+  "checks": {
+    "model": 935,
+    "backend": 24,
+    "scene": 15,
+    "IPC_ordering_oldest_32_invalid_duplicate": "passed",
+    "IPC_position_pair_bounds_transactional": "passed",
+    "GTK_native_tests_including_destroy_callback": 2,
+    "strict_C99": "passed"
+  },
+  "estimated_stage_progress_percent": 90,
+  "percentage_basis": "Estimativa de implementação mantida; fluxo completo ainda falha e não está pronto para entrega.",
+  "remaining": [
+    "Repetir fluxo do controlador com ordenação e descarte de callbacks corrigidos",
+    "Resolver causa restante do seletor se persistir",
+    "Entrega pessoal coordenada"
+  ],
+  "personal_windows_changed": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "e578a91a3c9f7e4e0de886b5216d28b9267da5e73ca4aae7e8c69d53306b2b37",
+    "tools/theme-lab/src/preview_event.c": "4ca5afdafb11a888470e04028791976ec7483a60cfeef985fb269083a587197d",
+    "tools/theme-lab/preview_gtk.py": "0a7deadc08054ff3ea475356acf9e8269b1a0681a4bb617721f3499fd8b99c2f",
+    "tools/theme-lab/tests/controller_spin_probe.c": "09363d9043a0088942f57dbf0e96d4c4bd8d507fee9368d0d23af7f5d89f4e71",
+    "tools/theme-lab/tests/test_controller_spin.py": "1a115a0a321f02fdd68ddfe3198b437e74526df84d019c8520485bfe1b7c6082",
+    "tools/theme-lab/tests/test_native_metrics.py": "c3650fd21cd0a0711fcaceeb137be5d44269519cec0a494e1c518f89dc9503cd",
+    ".qa-i116-selector/native-stale.log": "5394036b18795342e57c793764639cd0ceb9b7fe2400de150b7a19aab3b83f7b"
+  }
+}

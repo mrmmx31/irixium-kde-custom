@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R640",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-current-scrollbar-recipe-unit-contract-passed-native-review-open",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "test": {
+    "command": "TMPDIR=/home/lsi/tempia/domainos-theme-work/I167/R640/tmp python3 -B tools/theme-lab/tests/test_gtk2_recipe.py -v",
+    "exit_code": 0,
+    "passed": 7,
+    "failed": 0,
+    "scope": [
+      "native GTK2 range geometry 15/2/11",
+      "recipe inputs remain unchanged",
+      "invalid geometry rejected without clamping",
+      "native stepper/trough junction caps follow shared rule and selected palette",
+      "effective palette changes deterministic GTK style identity",
+      "piece-only relief preserves geometry, alpha and unrelated assets",
+      "unsupported state fails without erasing proposal"
+    ],
+    "temporary_root": "~/tempia/domainos-theme-work/I167/R640/tmp"
+  },
+  "sources": {
+    "tools/theme-lab/gtk2_recipe.py": "8a1b641e14328827e429535a2e0feff56d3e2de0a5486564b4400b8a169d9d66",
+    "tools/theme-lab/tests/test_gtk2_recipe.py": "9bbb5eaf093836f8f4c3a536359616a66338115ac9ffd085af289e818d43fb20"
+  },
+  "isolation": {
+    "user_profile_changed": false,
+    "theme_installed": false,
+    "production_app_touched": false,
+    "mame_input_sent": false,
+    "host_focus_changed": false,
+    "new_x_server_started": false
+  },
+  "limits": [
+    "Pure recipe and asset-contract tests only; no GTK2 process was rendered in this run.",
+    "Does not prove the current output against Domain/OS SR10.4 pixels or pressed VUE state.",
+    "Does not close the historical pointer-alignment gap recorded by R639."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "No visual criterion closed; retain the current I167 estimate. This is not a visual-fidelity score."
+  }
+}

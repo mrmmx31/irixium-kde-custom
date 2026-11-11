@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R755",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Continue the GTK2 scrollbar comparison after R752, verify all native arrow directions in two role palettes, and correct the isolated preview harness close request.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "attachment_comparison": {
+    "reference": "The 102x655 narrow user attachment is the Motif sample recorded with R752.",
+    "motif_sample": {
+      "image": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "origin_xy": [47, 100],
+      "width_px": 15,
+      "profile": "DDLLFFFFFFFDDLL"
+    },
+    "gtk2_samples": [
+      {"origin_xy": [228, 200], "width_px": 15, "profile": "DDLLFFFFFFFDDLL"},
+      {"origin_xy": [760, 200], "width_px": 15, "profile": "DDLLFFFFFFFDDLL"}
+    ],
+    "result": "The 15 RGB pixels in each straight-track sample are identical: dark x2, light x2, face x7, dark x2, light x2. No outward extra separator or missing inner rail appears in these rows.",
+    "limits": "The large XChat attachment is gray-occluded below y=338, so it does not show the full bars or lower arrow cells. Thumb lengths differ because the viewports/content ranges differ; they are not a style target. The screenshots show normal state only."
+  },
+  "isolated_native_preview": {
+    "test_script": "tools/theme-lab/tests/test_gtk2_public_native.py",
+    "test_script_sha256": "23d85904ffce7de0caca8ed8096689a7f6768a962a410963f1549c299f475002",
+    "command": "I167_PUBLIC_OUTPUT_ROOT=~/tempia/domainos-theme-work/I167/R755 TMPDIR=~/tempia PYTHONPATH=tools/theme-lab:tools/theme-lab/tests /usr/bin/python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+    "runtime": "Private bwrap/Xvfb fixture; personal home and system bus not exposed; no VM or user session changed.",
+    "schemes": {
+      "DomainOS-SR10.4": {
+        "status": "passed",
+        "four_stepper_cells": "Each 15x15 cell changed 53/225 pixels while held; release restored 0/225 pixels from hover.",
+        "rendered_arrow_vs_generated_asset": "0 differences in left/right/up/down",
+        "bar_roles_match_palette": true,
+        "native_scroll_action": "Horizontal step changed the GTK2 adjustment value to 34.0.",
+        "native_events": 17,
+        "normal_close": true
+      },
+      "BreezeDark": {
+        "status": "passed",
+        "four_stepper_cells": "Each 15x15 cell changed 53/225 pixels while held; release restored 0/225 pixels from hover.",
+        "rendered_arrow_vs_generated_asset": "0 differences in left/right/up/down",
+        "bar_roles_match_palette": true,
+        "native_scroll_action": "Horizontal step changed the GTK2 adjustment value to 33.0.",
+        "native_events": 20,
+        "normal_close": true
+      },
+      "all_controls_domainos": {
+        "status": "passed",
+        "metrics": "All 16 declared GTK2 preview controls reported native metrics.",
+        "native_interactions": "Push, toggle, check and radio emitted their expected events.",
+        "native_events": 68,
+        "normal_close": true
+      }
+    },
+    "close_harness_correction": "xdotool windowclose destroys the drawable directly in this WM-free fixture. The harness now sends WM_PROTOCOLS/WM_DELETE_WINDOW with the fixture DISPLAY and XAUTHORITY; both schemes exit normally without GDK BadDrawable.",
+    "artifacts": [
+      {"path": "records/ia-tema/I167/R755/domainos-scrollbar-result.json", "sha256": "d0bb8a8da70dc3d61a5a2d39ad82e8b86ebf749a231dd26acb37939428accb94"},
+      {"path": "records/ia-tema/I167/R755/domainos-native-preview.png", "sha256": "d0b143b4ec0c49b70c2ad9ffbed1f6706b1410cdb73de187035f44ba431c9cc7"},
+      {"path": "records/ia-tema/I167/R755/breezedark-scrollbar-result.json", "sha256": "2a44489fda208e7b8ec024dee9f63984fb48c3212a163b3d21bde360d31e1188"},
+      {"path": "records/ia-tema/I167/R755/breezedark-native-preview.png", "sha256": "0091b366b0647b43def649e5abe9378a174709b81799e085f815bd376eec1e17"},
+      {"path": "records/ia-tema/I167/R755/domainos-all-controls-result.json", "sha256": "88d9882d909f3008cf63b47226ad6c4f50678d340ce7201137c86b1ba5629f17"}
+    ]
+  },
+  "result": "Current GTK2 native scrollbar pressure and release work in all four directions in both tested role palettes. The earlier R727 zero-difference press result is not reproducible against the current source revisions; the intermediate R754 failure was the fixture close method, not a stepper-paint failure.",
+  "not_proven": [
+    "The isolated GTK2 preview is not the VM and does not replace a direct pressed-state comparison in Domain/OS.",
+    "This does not establish whole-theme GTK2 fidelity or user acceptance.",
+    "The user's current Theme Lab window was not focused or changed. Its saved project selects GTK3 with the separate-preview checkbox off."
+  ],
+  "next": "Keep I167 open for the user's visual verdict on the live GTK2 bar. Continue checking the GTK2 preview integration only within the current Theme Lab/GTK2 scope; do not infer an acceptance or alter I517 authorization."
+}

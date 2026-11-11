@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R119",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Private GTK2 palette change through the companion synchronizer",
+  "method": {
+    "display": "Private Xvfb",
+    "gtk2": "2.24.33 native mapped GtkWindow",
+    "path": "theme_companion_bridge.synchronize -> gtk2_palette_runtime.refresh -> gtk2_reload_notify.reload_open_windows -> GTK2 repaint",
+    "private_profile": "~/tempia/i167-r118/bridge-synchronize/home",
+    "external_calls": "KDE GTKConfig and GSettings calls were replaced by a private fixture callback that updates only the isolated profile files. kreadconfig6 read the isolated kdeglobals file.",
+    "personal_session_touched": false
+  },
+  "result": {
+    "status": "passed",
+    "initial_bridge_sync": "synchronized",
+    "initial_gtk2_palette": "updated",
+    "initial_native_events_sent": 2,
+    "changed_bridge_sync": "synchronized",
+    "changed_gtk2_palette": "updated",
+    "changed_native_reload_required": true,
+    "changed_native_events_sent": 3,
+    "racing_x_errors": 0,
+    "gtk4_runtime_status": "reloaded",
+    "face_rgb_before": [82, 103, 124],
+    "face_rgb_after": [180, 55, 82],
+    "changed_pixels": 46272,
+    "before_capture_sha256": "894e6a7cf65ade14175e781b5aee444443858f03698307204b44d122f6213e5a",
+    "after_capture_sha256": "d5da7550ce1c128fb463fdd2677f33f5bf57fed432da752e417fbc087fa564cd",
+    "gtk2_restore_status": "restored"
+  },
+  "failed_attempts_preserved": [
+    "Primeira execução: fixture sem a árvore GTK2 original DomainOS-SR10-4; o runtime recusou a preparação antes de capturar a janela.",
+    "Segunda execução: callback privado de GTKConfig atualizou settings GTK3/4, mas não o gtkrc-2.0; a validação detectou a seleção não confirmada e restaurou os arquivos privados. A callback foi corrigida para espelhar a seleção GTK2 antes do ensaio final."
+  ],
+  "limits": [
+    "O teste executou synchronize e os runtimes reais, mas substituiu os métodos de notificação KDE GTKConfig e GSettings por callbacks privados; não exercitou D-Bus, kded6, o observador QFileSystemWatcher nem a exportação efetiva do serviço GTKConfig.",
+    "A mudança de cor é uma fixture sintética para comprovar propagação e repaint, não uma medição de fidelidade SR10.4.",
+    "Nenhum aplicativo GTK2 pessoal, XChat, perfil real, serviço instalado ou VM foi alterado ou reiniciado."
+  ],
+  "evidence": {
+    "result_json": {
+      "path": "~/tempia/i167-r118/bridge-synchronize/result.json",
+      "sha256": "7da688b3087198fae4c9c57f07d8f1b3383e46b458fd6ff4f3645ea3e72f2cd0"
+    },
+    "probe_script": {
+      "path": "~/tempia/i167-r118/probe_bridge_synchronize.py",
+      "sha256": "a78b431d13bb4e7c421f8f016728bd8553c05d45a59359568870acfbb591352f"
+    },
+    "script_catalog_count": 42,
+    "code_diff": "The R118 cumulative 11-file diff remains the verified code change; R119 adds no project source changes."
+  },
+  "next": "Validate the actual isolated KDE/XSettings and GTKConfig service notification path, or document its precise environmental limit; then continue the remaining authorized GTK2 historical and delivery audit.",
+  "progress_estimate": "About 98% technical coverage for I167; this is not a historical visual-fidelity score or human approval."
+}

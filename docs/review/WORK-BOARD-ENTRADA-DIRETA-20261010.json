@@ -1,0 +1,328 @@
+{
+  "at": "2026-10-10T22:59:49.992279+00:00",
+  "item": "I086",
+  "authorized_revision": 2,
+  "phase": "delivered in lsi; requested title applied; manual evaluation pending",
+  "model_cases": 16,
+  "store_regression_cases": 17,
+  "import_regression_cases": 7,
+  "model_api_without_gui": true,
+  "source_hashes": {
+    "src/model/items.c": "9daa316339c03aa1e26ed8f03e0d445501d8211608a6e7d6e3a33c03a899497a",
+    "include/work_board/model.h": "d0e231e29a432b6f779449f9c3c42748342b543b0ab467c6900e55839adfe347",
+    "tests/test_message_model.py": "8de6ba6fee0c15ab27e20d1f192ce776e52c6947a5104a4b06ee5a1ea9b9d682",
+    "docs/ENTRADA-DIRETA.md": "4883b12b005df28bbe929b599b0a008a21ac72292ab461aa0211183e4293e8cc",
+    "src/view/message_entry.c": "a95fb45b5c7830647e2d2d6765e010b94312e8cd6819f7fb6c3e2cc6e6524aa4",
+    "src/view/insertion_layout.c": "43ff67b7ea54f8fa43c7befa93e5dc7a1a91009533e6389ea44c3965250e3fe1",
+    "src/controller/commands.c": "483bf02dba48d2f284546d81237b20d4c9752128fb441408cf5256789859269a",
+    "src/controller/actions.c": "d64d13ff0c8dfb8685f6604a4bf951cc2afd142b1d1ea8d69317e5e1d06f9a59",
+    "src/controller/session.c": "12fe0963d024cc846838619e872b60ce2a228653631635621efe3c051b802efe",
+    "src/controller/lifecycle.c": "d01fac81a238c372fc5c2d182dca1d2c03dbdc3205f4f15b504dc5011eb1afb2",
+    "tests/test_message_native.py": "3efa6c4110c2918edbd848fa7bfa198f9e9b7d7485caa4c304bea3945b94564a",
+    "tests/native_message_probe.c": "4c324162de68b1a3b8017ba074f35543fc4bbf66621cce5db56e4a53773d18f1",
+    "src/model/rename.c": "30a9b6ab37a2735cd04ef6b116c11d2f8da063fc7183c49d571cf02e890ba539",
+    "src/model/internal.h": "25b7a0f09d0af99911186c9557c1574e8a7d9e1aa670a7e62ede264083ed04df",
+    "src/app/main.c": "4f4d04d931fdca75fc06fded9986184354a3fc3e09c3aee0b78983523bb5be45",
+    "tests/test_rename_model.py": "0ff40635e69b2fea08c119acc6937b528176d664cd989690803df9b17bace49b",
+    "src/model/user_response.c": "eda157e840fe0be68a6c7c9995e8483a210d0dbd8be2fb126c2a104b7bec1b45"
+  },
+  "installed": true,
+  "human_approval_filled": false,
+  "native_fidelity_claimed": false,
+  "native_cases": 13,
+  "title_regression_cases": 13,
+  "editing_regression_cases": 10,
+  "estimated_stage_progress_percent": 100,
+  "native_results": {
+    "tests": {
+      "legacy_no_phantom_body": true,
+      "native_utf8_multiline_undo_redo": true,
+      "native_select_copy_cut_paste": true,
+      "mode_and_reload_preserve_independent_inputs": true,
+      "body_native_menu_undo": true,
+      "empty_insert_rejected_clear_reversible": true,
+      "body_four_dynamic_kde_palettes": {
+        "DomainOS": true,
+        "neutral": true,
+        "dark": true,
+        "yellow": true
+      },
+      "body_geometry_two_widths": true,
+      "reopen_preserves_full_journal_and_undo_redo": true,
+      "generic_insertion_exact_body_preserved_users_reversible_clear": true,
+      "model_lock_failure_preserves_body": true,
+      "checkpoint_failure_blocks_clear_and_mode_change": true,
+      "question_body_uses_generic_title_without_authorization": true
+    },
+    "scope": "I086 Motif message entry",
+    "installed": false
+  },
+  "regressions": {
+    "title": {
+      "expanded_native_field_has_visible_actions_and_placeholder_outside_buffer": true,
+      "focus_hides_only_empty_hint_and_keeps_typed_utf8_title": true,
+      "manual_clear_and_toolbar_or_keyboard_undo_redo_are_reversible": true,
+      "undo_target_follows_response_focus_without_touching_title": true,
+      "placeholder_right_click_posts_real_text_editor_menu_and_undo": true,
+      "reload_and_item_switch_preserve_title_and_history": true,
+      "failed_checkpoint_blocks_clear_without_losing_title": true,
+      "native_character_limit_and_full_utf8_transport_insert_and_clear_reversibly": true,
+      "question_insertion_keeps_default_consent_and_empty_body": true,
+      "failed_insert_keeps_title_and_audit_mode_still_allows_title_undo": true,
+      "four_kde_palettes_match_title_and_placeholder": {
+        "DomainOS": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "neutral": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "dark": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "yellow": {
+          "native_title_and_visual_hint_match_view_roles": true
+        }
+      },
+      "reopen_recovers_title_and_multistep_undo_redo": true,
+      "placeholder_text_is_actually_visible_after_focus_returns": true
+    },
+    "editing": {
+      "unicode_multiline_undo_redo_shortcuts": true,
+      "multi_step_history": true,
+      "copy_cut_paste_select_all_and_reversible_replacement": true,
+      "history_survives_reload_and_item_switch": true,
+      "save_retains_history_and_return_to_saved_is_reversible": true,
+      "context_menu_undo": true,
+      "private_autosave_is_separate_from_answers_and_authorizations": true,
+      "second_editor_cannot_overwrite_journal": true,
+      "crash_restores_multiple_drafts_title_and_undo_redo": true,
+      "failed_checkpoint_prevents_destructive_action": true
+    }
+  },
+  "remaining": [],
+  "rename_model_cases": 14,
+  "installation": {
+    "date": "2026-10-10T22:54:22.486255+00:00",
+    "item": "I086",
+    "revision": 2,
+    "phase": "installed; live handoff pending",
+    "files": [
+      {
+        "path": "Makefile",
+        "before_sha256": "1473000c25812614b0b9e97a19197cb8f4ec1e52caf63d6829942d86ac58b0db",
+        "after_sha256": "c524feff2d299a14e8b391f5f51b5fe9e15d071192a3f6a7c6df6518e2c777f1"
+      },
+      {
+        "path": "build/libwork-board-model.a",
+        "before_sha256": "c594012fce07728be89b828b743ce03441bacc01d5981a5f4cc8a9588dca8f16",
+        "after_sha256": "a3f4f91cb0c854c43028b6778dcfa00e96f4f3a74589dc69cae45bfd1414d671"
+      },
+      {
+        "path": "build/work-board",
+        "before_sha256": "7595549d85b55b58d1ce666b8f39f98e1d4e1d7e0f66f0e7448c9f7d835035ba",
+        "after_sha256": "5edf10defed9cdbccf407112a3786c9af9d8cd48fda45ef68e094a9f653966f2"
+      },
+      {
+        "path": "docs/ENTRADA-DIRETA.md",
+        "before_sha256": null,
+        "after_sha256": "658dc43b57e7cf58ad7fe3819c795e31be8992bbb5b52bc378fe5cf40bbc3e32"
+      },
+      {
+        "path": "docs/MANUTENCAO.md",
+        "before_sha256": "2785edf9ad6ad025d8f62f39abbd6624b93e739f2ed84b738ef2cc5c0b541f43",
+        "after_sha256": "2aa9f3e0e206dd86b2c3eb9f5f077781490ec805cf875daf5de2b894312cf881"
+      },
+      {
+        "path": "include/work_board/model.h",
+        "before_sha256": "6dea35e0bbb8169cdc920abe5be48d19c1bf1ebb7ab4e2609576bc0cdd93f8ef",
+        "after_sha256": "d0e231e29a432b6f779449f9c3c42748342b543b0ab467c6900e55839adfe347"
+      },
+      {
+        "path": "include/work_board/view.h",
+        "before_sha256": "5292e522955eb752d4fd2d629ff84e925750e4ee360e0ab835916a2f11fd5a6c",
+        "after_sha256": "3f6da65aeca5586d85f8213140e060a3a01b308257a8c72231e942cafae6a1ae"
+      },
+      {
+        "path": "src/app/main.c",
+        "before_sha256": "3944a756e00d4aa61ca85cae2e5632182c82364ac95e5eb7ff80001031e0adbb",
+        "after_sha256": "4f4d04d931fdca75fc06fded9986184354a3fc3e09c3aee0b78983523bb5be45"
+      },
+      {
+        "path": "src/controller/actions.c",
+        "before_sha256": "4b53a4cf256cb875873657e9129e6080c39e9df879ec27ef2ecb47defeb92f92",
+        "after_sha256": "d64d13ff0c8dfb8685f6604a4bf951cc2afd142b1d1ea8d69317e5e1d06f9a59"
+      },
+      {
+        "path": "src/controller/commands.c",
+        "before_sha256": "13172373637d3d4e65e2169f9a37ce6e26ae187a33d36159a9dae6479236d935",
+        "after_sha256": "483bf02dba48d2f284546d81237b20d4c9752128fb441408cf5256789859269a"
+      },
+      {
+        "path": "src/controller/lifecycle.c",
+        "before_sha256": "10494fb4e32be917c66cdcb5d2aa96172396d3d7d302a9ddcfd334dafc9197d1",
+        "after_sha256": "d01fac81a238c372fc5c2d182dca1d2c03dbdc3205f4f15b504dc5011eb1afb2"
+      },
+      {
+        "path": "src/controller/session.c",
+        "before_sha256": "43d2e9a9f98be5b5f2b61f728d701aaaeb93498d3743b783400a46f9af6f1a63",
+        "after_sha256": "12fe0963d024cc846838619e872b60ce2a228653631635621efe3c051b802efe"
+      },
+      {
+        "path": "src/model/internal.h",
+        "before_sha256": "25c61f3087e4d70a738735fdc6c01e11017510b837ecd62af27585cf7359560a",
+        "after_sha256": "25b7a0f09d0af99911186c9557c1574e8a7d9e1aa670a7e62ede264083ed04df"
+      },
+      {
+        "path": "src/model/items.c",
+        "before_sha256": "9ca7ad0e55f5eb8be65c019204b5b37bcd1e7284ed8f352d7492574bb48704eb",
+        "after_sha256": "9daa316339c03aa1e26ed8f03e0d445501d8211608a6e7d6e3a33c03a899497a"
+      },
+      {
+        "path": "src/model/rename.c",
+        "before_sha256": null,
+        "after_sha256": "30a9b6ab37a2735cd04ef6b116c11d2f8da063fc7183c49d571cf02e890ba539"
+      },
+      {
+        "path": "src/view/edit_bindings.c",
+        "before_sha256": "f35ee8a068fc861a622beebc56ad2033941160a1e60289bf77d07a8e874ba344",
+        "after_sha256": "c7a9e71c134932d05054b08fd7494c667006fd408de0e198ccc3df671de8cd65"
+      },
+      {
+        "path": "src/view/insertion.c",
+        "before_sha256": "345287681c617066a30fb6c92685f179b1640940bd29f68ac91285ecfd5e698b",
+        "after_sha256": "60170bb290b61996e2b070eff9251c6647739d74e9015fdf33e31e8a33dbf172"
+      },
+      {
+        "path": "src/view/insertion_layout.c",
+        "before_sha256": "4c4aef0d8209e9c469a7431a2ca6437eee6e6790a5392768f0bfe50d0c551393",
+        "after_sha256": "43ff67b7ea54f8fa43c7befa93e5dc7a1a91009533e6389ea44c3965250e3fe1"
+      },
+      {
+        "path": "src/view/internal.h",
+        "before_sha256": "476e76e7b926ecd7324826c9891cc86b2b0a77c62bedbc32e6914f3689cd4025",
+        "after_sha256": "e0c578fe96c0da458b6005e589a869de00b5ca50c01fc54e0da814505f14d7bb"
+      },
+      {
+        "path": "src/view/message_entry.c",
+        "before_sha256": null,
+        "after_sha256": "a95fb45b5c7830647e2d2d6765e010b94312e8cd6819f7fb6c3e2cc6e6524aa4"
+      },
+      {
+        "path": "tests/native_message_probe.c",
+        "before_sha256": null,
+        "after_sha256": "4c324162de68b1a3b8017ba074f35543fc4bbf66621cce5db56e4a53773d18f1"
+      },
+      {
+        "path": "tests/test_message_model.py",
+        "before_sha256": null,
+        "after_sha256": "8de6ba6fee0c15ab27e20d1f192ce776e52c6947a5104a4b06ee5a1ea9b9d682"
+      },
+      {
+        "path": "tests/test_message_native.py",
+        "before_sha256": null,
+        "after_sha256": "3efa6c4110c2918edbd848fa7bfa198f9e9b7d7485caa4c304bea3945b94564a"
+      },
+      {
+        "path": "tests/test_rename_model.py",
+        "before_sha256": null,
+        "after_sha256": "a047d83f680efd01288b43e88674f6e731a7838b6fabb8515e7cf28f4c485241"
+      }
+    ],
+    "checks": {
+      "native_flows": 13,
+      "message_model_cases": 16,
+      "rename_model_cases": 12,
+      "store_tests": 17,
+      "editing_native_flows": 10,
+      "title_native_flows": 13,
+      "kde_schemes": 4
+    },
+    "user_approval_filled": false,
+    "private_backup": "/home/lsi/.local/state/ai-work-board/entry-recovery-20261010T225422Z"
+  },
+  "rename_rebind_regression": {
+    "before_failed": true,
+    "after_passed": true,
+    "note_save_does_not_rebind_expired_consent": true,
+    "explicit_off_save_on_save_grants_current_scope": true
+  },
+  "patch_installation": {
+    "date": "2026-10-10T22:56:29.820638+00:00",
+    "item": "I086",
+    "revision": 2,
+    "phase": "installed; live handoff pending",
+    "files": [
+      {
+        "path": "src/model/user_response.c",
+        "before_sha256": "a03b8bf0a7d28f895a10ae438ecbbf59f4af79ee176ef05a4b1d1e367793d452",
+        "after_sha256": "eda157e840fe0be68a6c7c9995e8483a210d0dbd8be2fb126c2a104b7bec1b45"
+      },
+      {
+        "path": "tests/test_rename_model.py",
+        "before_sha256": "a047d83f680efd01288b43e88674f6e731a7838b6fabb8515e7cf28f4c485241",
+        "after_sha256": "0ff40635e69b2fea08c119acc6937b528176d664cd989690803df9b17bace49b"
+      },
+      {
+        "path": "docs/ENTRADA-DIRETA.md",
+        "before_sha256": "658dc43b57e7cf58ad7fe3819c795e31be8992bbb5b52bc378fe5cf40bbc3e32",
+        "after_sha256": "9eb243fe17f2c6ab166b68b8a4b10f1dee7f7fd474e83e3a6ebb7981a29f41a0"
+      },
+      {
+        "path": "build/work-board",
+        "before_sha256": "5edf10defed9cdbccf407112a3786c9af9d8cd48fda45ef68e094a9f653966f2",
+        "after_sha256": "c5a05415c796b10bdeef983d420ef9fb994cc82ac41565a703ecdda979fb2beb"
+      },
+      {
+        "path": "build/libwork-board-model.a",
+        "before_sha256": "a3f4f91cb0c854c43028b6778dcfa00e96f4f3a74589dc69cae45bfd1414d671",
+        "after_sha256": "7c86599e171411fef2206b2ca50efe667f01acdb42809804439a853420d54ca6"
+      }
+    ],
+    "checks": {
+      "native_flows": 13,
+      "message_model_cases": 16,
+      "rename_model_cases": 14,
+      "store_tests": 17,
+      "editing_native_flows": 10,
+      "title_native_flows": 13,
+      "kde_schemes": 4
+    },
+    "user_approval_filled": false,
+    "private_backup": "/home/lsi/.local/state/ai-work-board/entry-recovery-20261010T225629Z"
+  },
+  "handoff_preparation": {
+    "prepared_at": "2026-10-10T22:57:35.842913+00:00",
+    "script_sha256": "32500157e6451a2faa1842f79ac816578052b16f219c2b114a3ffc878f3622b2",
+    "syntax_verified": true,
+    "executed": false,
+    "sequence": [
+      "validate same released request and exact live old executable",
+      "check journal stability and back up private state",
+      "close only identified old instance",
+      "rename transaction before new GUI loads; keep all human records",
+      "start current installed executable and verify entire journal and records"
+    ],
+    "installed_binary_guard": "c5a05415c796b10bdeef983d420ef9fb994cc82ac41565a703ecdda979fb2beb",
+    "waiting_for_same_native_request": true
+  },
+  "handoff": {
+    "date": "2026-10-10T22:58:50.181944+00:00",
+    "item": "I086",
+    "revision": 2,
+    "pid": 1373938,
+    "display": ":1",
+    "binary_sha256": "c5a05415c796b10bdeef983d420ef9fb994cc82ac41565a703ecdda979fb2beb",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "requested_title_applied": true,
+    "pause_authorization": "Native temporary button for exact I086 request/session, revalidated before SIGTERM",
+    "ephemeral_request_hidden_on_start": true
+  }
+}

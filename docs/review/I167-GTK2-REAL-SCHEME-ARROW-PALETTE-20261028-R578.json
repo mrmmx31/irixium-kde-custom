@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "R578",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Render the GTK2 scrollbar arrow assets from real KDE color-scheme files through the native KColorScheme reader, without applying a scheme or changing the desktop.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "schemes": [
+      {"name": "DomainOS-SR10-4.colors", "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5"},
+      {"name": "BreezeClassic.colors", "sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca"},
+      {"name": "Dracula.colors", "sha256": "ef626478d65885ad06005de1f1a08483b9b1245719b571501459bec0aa7e429a"}
+    ],
+    "native_reader_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+    "native_reader_source_sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6",
+    "art_source_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+    "gtk2_palette_source_sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb",
+    "theme_manifest_sha256": "02e599b47812dfe762931131068cb700377551cf7ce5ab10ec69532d0396b656"
+  },
+  "method": {
+    "reader": "tools/theme-lab/build/theme-lab-colors --config <absolute .colors path>",
+    "reader_metadata": "All reads returned status=ok, GUI/host/config writes false, and matching path/SHA provenance. GUI, display, Wayland and D-Bus variables were removed from the child environment.",
+    "render": "Render only the scrollbar-arrow PNG plans with gtk2.png from native role output; do not fill unrelated missing GTK error/link roles or generate/write a palette bundle.",
+    "scope": "20 assets: four directions × five GTK2 states; compare decoded RGBA pixels."
+  },
+  "result": {
+    "native_roles_per_scheme": 50,
+    "arrow_assets_checked": 20,
+    "assets_with_distinct_rgba_for_all_three_schemes": 20,
+    "schema_inputs_unchanged": true,
+    "theme_or_scheme_applied": false,
+    "desktop_or_application_changed": false,
+    "vm_changed": false
+  },
+  "limits": [
+    "This proves native KColorScheme-derived GTK2 arrow pixels change across these three local scheme files; it does not prove live GTK2 reload after changing the selected desktop scheme.",
+    "It is a raster generation check, not a GTK2 window capture or a visual comparison to HP VUE.",
+    "The native reader returns no GTK-specific error/link roles; they are irrelevant to the 20 scrollbar arrow assets and were not fabricated for this focused comparison."
+  ],
+  "reconciliation": {
+    "R576": "Generated-RC geometry guard covers four directions and five states.",
+    "R577": "Synthetic palette pixel-reactivity guard covers the same 20 arrow assets.",
+    "board_state": "I167 remains authorized. I500 remains unauthorized and Q501 has no saved response."
+  },
+  "next": "If the desktop scheme-reload path is authorized and a user GTK2 target is available, compare the loaded GTK2 runtime after a real scheme change. Keep the horizontal held-state VUE comparison pending saved I500 authorization and a safe target-confirmed input route."
+}

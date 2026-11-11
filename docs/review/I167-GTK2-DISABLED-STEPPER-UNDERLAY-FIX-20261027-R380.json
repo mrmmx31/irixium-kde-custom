@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "R380",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct GTK2 INSENSITIVE scrollbar underlays so disabled stepper corners are composed from directional, palette-derived disabled assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "implementation": {
+    "source": "tools/gtk2_domainos_palette.py",
+    "source_sha256": "1bc4d81f54e889a11c72f253a93f0e7421bc15aaaaac72f579235e5a53e0ae73",
+    "test_source": "tests/test_gtk2_palette_runtime.py",
+    "test_sha256": "03952b0b3c28f58942f12bc1b34a0fafefe3c6cae1cb004180460912dd174fb1",
+    "behavior": "Creates separate horizontal and vertical disabled trough pixmaps; copies only the eight clipped relief-corner pixels from the matching disabled directional assets; GTK2 INSENSITIVE RC rules select each asset by orientation.",
+    "palette": "All pixels derive from the selected KDE insensitive roles and generated directional assets; no final RGB constants."
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "capture_method": "GdkPixbuf from GTK2 widget window; no cursor overlay",
+    "probe": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/probe.c",
+    "probe_sha256": "35c7cc13c15801bf09d94fe43bd223627cd5414a97d414cc247cc1d1e2c454b3",
+    "binary": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/probe",
+    "binary_sha256": "dd8d765ff4320c0cb4f7783cb4a8b3789db0b5789f96b856449999341aae58db",
+    "capture": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/disabled.png",
+    "capture_sha256": "3471ade34b97c5d73a85121e7005181e0b6cf151ed7ec66bed5d0d1e259891c9",
+    "metrics": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/metrics.txt",
+    "metrics_sha256": "3f9d8bad706344a0dc7d48e05115b2ee703f805745ebdca249629192fa3ea735",
+    "allocation_px": {
+      "horizontal": [
+        543,
+        15
+      ],
+      "vertical": [
+        15,
+        543
+      ]
+    },
+    "state": "GTK_STATE_INSENSITIVE (4)",
+    "cell_size_px": [
+      15,
+      15
+    ],
+    "origins": {
+      "left": [
+        2,
+        0
+      ],
+      "right": [
+        526,
+        0
+      ],
+      "up": [
+        550,
+        22
+      ],
+      "down": [
+        550,
+        546
+      ]
+    },
+    "runtime_vs_generated_asset_pixel_differences": {
+      "left": 0,
+      "right": 0,
+      "up": 0,
+      "down": 0,
+      "per_cell_total": 225
+    },
+    "generated_bundle": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/bundles/e290e42babe1a13f34b00e1024397075739e28ce5d83a5814f27fdfca3a920dd",
+    "bundle_sha256": "e290e42babe1a13f34b00e1024397075739e28ce5d83a5814f27fdfca3a920dd",
+    "rendered_asset_sha256": {
+      "left_disabled": "3fe69584f9e9cdc203b8d6fcf51d9c5b9aad43360c576fc78062bc1eec70a26c",
+      "right_disabled": "6e617a459cf00e13b5295d17d0886a218c279dcb5cd48518722b1419ecb87135",
+      "up_disabled": "ad7ed7606640b256f9833c610012571839b84bb9cad863b69c78c1440afc96ec",
+      "down_disabled": "2e5b0ef7763774d6d36b2cddf5234b06c082dfcc232275e12c5e32f3ad028ec7",
+      "horizontal_disabled_trough": "555489fc1cccafa71377cca48c2fb6c0c38428265dad6326a69e2be82015488a",
+      "vertical_disabled_trough": "8339dd6c5810156f7d5e133218057b3a49c3834c894ffb37cbaf275c66ab1db7",
+      "gtkrc": "e31bc69d350e35818fa1a0898ec961f330a13f1abce8c47c8bee82b91d856ca6"
+    }
+  },
+  "tests": {
+    "targeted": "PYTHONPATH=tests TMPDIR=~/tempia/ia-tema/test-tmp PYTHONPYCACHEPREFIX=~/tempia/ia-tema/pycache python3 -B -m unittest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "targeted_result": "8/8 passed",
+    "compile": "python3 -B -m py_compile tools/gtk2_domainos_palette.py tests/test_gtk2_palette_runtime.py",
+    "compile_result": "passed",
+    "diff_check": "git diff --check",
+    "diff_check_result": "passed"
+  },
+  "limits": [
+    "This proves GTK2 runtime/asset composition only; it does not prove the historical SR10.4 disabled appearance.",
+    "The DomainOS scrollbar contract marks XtSensitive=False appearance unverified.",
+    "No user theme was installed, no user application was restarted, and no VM input was sent.",
+    "Human visual acceptance and remaining GTK2 family coverage are still open."
+  ]
+}

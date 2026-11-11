@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-11T17:34:56.019301+00:00",
+  "status": "native_foundation_verified",
+  "family": "gtk2",
+  "controls": [
+    "scale_h",
+    "scale_v"
+  ],
+  "native_result": ".qa-t04-scale-foundation/native/RESULTADO.json",
+  "native_cases": 48,
+  "palettes": 4,
+  "origins": 2,
+  "variants": [
+    "normal",
+    "backdrop",
+    "disabled"
+  ],
+  "unit_tests": 4,
+  "source_sha256": {
+    "tools/theme-lab/gtk2_scales.py": "97583b0826377872c7e936924db59358dd61ca2260d5c390559a07dd6ff6c3a9",
+    "tools/theme-lab/tests/test_gtk2_scale_paint.py": "1087006b8c42a580468b1a5f05d1b0c27be663ff4816f89fc1707c2fc64c5814",
+    "tools/theme-lab/tests/probe_gtk2_scale_paint.py": "e4d3eb18959a966faa0a5a9fea7f043e01de92a25eb224f7b21f57ef04ebedd7"
+  },
+  "coverage": {
+    "integrated": 11,
+    "catalog": 16,
+    "percentage": 68.75
+  },
+  "limits": [
+    "Foundation only: generation receipt, snippets, scene/session and C controller integration pending.",
+    "No complete slider/pressed/focus pixel proof or VM fidelity certification.",
+    "Native GTK2 vertical Up decreases the sample; no inversion added.",
+    "Project and installed theme unchanged."
+  ],
+  "failed_attempts": [
+    "Fixture initially used GTK3 style_get_property signature; corrected to GTK2 GObject.Value.",
+    "Fixture assumed vertical Up increments; actual GTK2 default decreases."
+  ]
+}

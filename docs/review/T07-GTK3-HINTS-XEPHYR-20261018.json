@@ -1,0 +1,327 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK3",
+  "display": ":74",
+  "resolution": "1600x1000",
+  "command": "T07_PRIVATE_PROBE=1 DISPLAY=:74 XAUTHORITY=~/tempia/theme-lab-t04-20261017/native-xephyr/Xauthority python3 tools/theme-lab/tests/probe_gtk_hint_hover.py --family gtk3 --control <control>",
+  "result": {
+    "status": "passed",
+    "native_types": 16,
+    "controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "passed": 16,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "stable_hover_ms": 400,
+    "within_screen": true,
+    "non_overlapping": true,
+    "dismissed_on_pointer_leave": true,
+    "scope": "NativeScene.factory single-control cold hover, native delay 500ms, screen bounds, non-overlap, 400ms stability, dismissal on leave; one Xephyr geometry/layout; current profile colors, no palette fixture",
+    "cases": [
+      {
+        "control": "arrow",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          302,
+          382,
+          636,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "check",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          318,
+          382,
+          604,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "combo",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          39
+        ],
+        "tooltip_rect_px": [
+          308,
+          383,
+          625,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "entry",
+        "control_rect_px": [
+          540,
+          320,
+          162,
+          36
+        ],
+        "tooltip_rect_px": [
+          340,
+          382,
+          603,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "frame",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          317,
+          382,
+          607,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "list",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          48
+        ],
+        "tooltip_rect_px": [
+          281,
+          382,
+          639,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "progress",
+        "control_rect_px": [
+          540,
+          320,
+          154,
+          41
+        ],
+        "tooltip_rect_px": [
+          321,
+          384,
+          632,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "push",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          301,
+          366,
+          599,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "radio",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          300,
+          382,
+          641,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "scale_h",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          51
+        ],
+        "tooltip_rect_px": [
+          301,
+          389,
+          638,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "scale_v",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          43
+        ],
+        "tooltip_rect_px": [
+          310,
+          385,
+          620,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "scroll_h",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          304,
+          382,
+          633,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "scroll_v",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          48
+        ],
+        "tooltip_rect_px": [
+          315,
+          388,
+          610,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "spin",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          39
+        ],
+        "tooltip_rect_px": [
+          315,
+          383,
+          610,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "text",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          48
+        ],
+        "tooltip_rect_px": [
+          314,
+          388,
+          613,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      },
+      {
+        "control": "toggle",
+        "control_rect_px": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect_px": [
+          309,
+          366,
+          582,
+          81
+        ],
+        "native_delay_ms": 500,
+        "result": "passed"
+      }
+    ]
+  },
+  "harness": {
+    "path": "tools/theme-lab/tests/probe_gtk_hint_hover.py",
+    "sha256": "5180f51b96a712d662878b30e48ece49e4ba1ff9edca2b523db79d38bbc57c28",
+    "fixture_adjustment": "GTK3 factory harness now supplies a no-op text-edit adapter for Entry/Spin/Text; production NativeScene.factory remains the source of widgets and tooltip assignment."
+  },
+  "artifacts": "~/tempia/t07-gtk3-hover-matrix-20261018-final/",
+  "limits": [
+    "One scene geometry and centered hover position per control.",
+    "The run proves native tooltip window timing, bounds, non-overlap, stability and dismissal, not rendered text glyph/pixel accuracy.",
+    "No alternate palette matrix was run for GTK3; the screen used its active Xephyr profile.",
+    "Other GTK3 layouts/states and other toolkits remain outside this receipt."
+  ],
+  "runtime_notice": "GTK emitted non-fatal accessibility-bus connection and deprecated Gdk.Screen size accessor warnings; all probes exited 0.",
+  "matrix_sha256": "8644d1f11b38d68cf6f7ad28ad4d702135197e1336954314104255969dfc6c50",
+  "conclusion": "Cold hover passed on all 16 GTK3 native control types from NativeScene.factory. Existing T07 resource-assignment probe covers tooltip text assignment. This receipt does not complete T07; alternate layouts/states, GTK3 palette-specific rendering, other toolkit families and manual user review remain."
+}

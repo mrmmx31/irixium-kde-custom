@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R591",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck the live canonical guest after internet/session interruption; wake its idle framebuffer with one guest Shift pulse, verify release and unchanged profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_project_vms_touched": false
+  },
+  "authorization_check": {
+    "I167": "revision 2, authorized=true, unchanged definition hash",
+    "P10": "revision 1, authorized=true, unchanged definition hash",
+    "Q505": "revision 0, no user response; route-specific choice remains unanswered"
+  },
+  "before": {
+    "capture": "~/tempia/domainos-theme-work/I167/vuer-current-r590.png",
+    "state": "Black guest framebuffer with Apollo command legend; this is the idle-screen wake condition."
+  },
+  "wake": {
+    "method": "One-frame guest Shift pulse on :kbd:keyboard4/Shift; automatic release at frame 3; guest snapshot at frame 65.",
+    "script": "~/tempia/domainos-theme-work/I167/r591-wake.lua",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "error": null,
+    "capture": "~/tempia/domainos-theme-work/I167/vuer-awake-r591.png",
+    "sha256": "de1f5126aaefb7ffab203a1ecb6d8a0a53ec380b0bad0c1ceff3b9e6153fe5ac",
+    "visible": "HP VUE awake; Terminal and Trash Can visible with vertical and horizontal scrollbars."
+  },
+  "profile_after": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "mouse_hook": "table",
+    "channel_pending": false
+  },
+  "limits": [
+    "No mouse input, host focus change, emulator restart, guest file edit, other VM, or performance-profile change.",
+    "This repeats only the required idle-screen wake. It does not measure a held scrollbar arrow or complete the GTK2 visual review."
+  ],
+  "next": "Continue GTK2-only work. Do not press a guest scrollbar arrow until a current guest image visibly establishes the pointer over that target."
+}

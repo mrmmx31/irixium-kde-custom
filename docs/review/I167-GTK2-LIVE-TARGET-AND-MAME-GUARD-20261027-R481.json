@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R481",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Refresh the GTK2 live-target inventory and the canonical MAME guard state before deciding whether an SR10.4 held-arrow comparison can proceed.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "mame_guard": {
+    "command": "vm/domainos-sr10.4-assistant/verify.sh",
+    "exit_code": 4,
+    "assistant_vm": {
+      "pid": 3971377,
+      "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+      "device": 66310,
+      "inode": 11186631
+    },
+    "prancheta_vm": {
+      "pid": 3971019,
+      "disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+      "device": 66310,
+      "inode": 16829683
+    },
+    "interpretation": "Both MAME processes remain active and use distinct disk inodes. The canonical guard fails closed while the second MAME is active. Q499 remains unauthorized; no guest input was sent."
+  },
+  "gtk2_target_inventory": {
+    "method": "Read current-user process executable links and /proc/PID/maps for libgtk-x11-2.0.so; no window content was read and no input was sent.",
+    "identified_processes": [
+      {"pid": 3951437, "comm": "xchat", "classification": "Codex HOM client"},
+      {"pid": 3951675, "comm": "xchat", "classification": "Codex PRD client"},
+      {"pid": 4094547, "comm": "gvim", "classification": "Codex XChat editor"},
+      {"pid": 3996239, "comm": "python3", "classification": "Theme Lab installed-theme GTK2 preview"},
+      {"pid": 4008706, "comm": "python3", "classification": "Theme Lab frozen R330 preview"}
+    ],
+    "unreadable_or_raced_proc_entries": 7,
+    "personal_gtk2_application_found": false,
+    "limitation": "The inventory is bounded to process mappings readable during this scan; seven entries were inaccessible or disappeared. Do not interpret this as evidence that no personal GTK2 application can ever be opened."
+  },
+  "changes": {
+    "vm_input_sent": false,
+    "vm_state_changed": false,
+    "gtk2_app_restarted": false,
+    "desktop_changed": false
+  },
+  "next": "Continue I167 only with independent GTK2 work. For a direct held-arrow VUE comparison, wait until the separate MAME releases the guard or Q499 is explicitly authorized and revalidate the VM/session before input."
+}

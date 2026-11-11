@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "id": "R669",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the GTK2 selected palette focused stepper assets with its normal assets in all four directions.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "user_profile": "/home/lsi/.gtkrc-2.0",
+    "user_profile_sha256": "1b8701d8dcd6a671feeaa0c86a9596875b270ba61e3b7a470c2ff1a16e38dc4d",
+    "theme_gtkrc": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "theme_gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "selected_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "bundle_gtkrc_sha256": "eea7c619144c25eb2701d455b9eb0449c65b97a30992f893ffd6de8ac772d838",
+    "bundle_manifest_sha256": "108edac7c8fad57d74eb464c59ef5544255b6bc9eab7cde39aaeeafcbc949017",
+    "assets": {
+      "up_normal": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-up-normal.png",
+        "sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "up_focused": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-up-focused.png",
+        "sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "down_normal": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-down-normal.png",
+        "sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "down_focused": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-down-focused.png",
+        "sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "left_normal": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-left-normal.png",
+        "sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "left_focused": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-left-focused.png",
+        "sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "right_normal": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-right-normal.png",
+        "sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "size_px": [
+          15,
+          15
+        ]
+      },
+      "right_focused": {
+        "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/assets/scrollbar-stepper-right-focused.png",
+        "sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "size_px": [
+          15,
+          15
+        ]
+      }
+    }
+  },
+  "method": {
+    "comparison": "RGBA per-pixel equality, native 1:1 dimensions",
+    "directions": [
+      "up",
+      "down",
+      "left",
+      "right"
+    ],
+    "states": [
+      "normal",
+      "focused"
+    ]
+  },
+  "result": {
+    "different_pixels": {
+      "up": 0,
+      "down": 0,
+      "left": 0,
+      "right": 0
+    },
+    "interpretation": "All four focused assets are byte-image identical to their normal counterparts in the selected bundle."
+  },
+  "limits": [
+    "Asset comparison only; does not demonstrate hover rendering in a running GTK2 application.",
+    "No hover state from the Domain/OS SR10.4 VM was captured in this step.",
+    "No theme files, user settings, applications, or VM state were changed."
+  ],
+  "next": "Keep the package unchanged. Continue the GTK2 state review using available authorized evidence; live pressed/released VM input remains gated by I517.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Selected focused-state assets are consistent with normal assets in all four directions. Live historical interaction capture and visual acceptance remain open. This is not a fidelity score."
+  }
+}

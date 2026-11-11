@@ -24,4 +24,21 @@ __pycache__/
 /.vscode/
 
 # Roteiro local do emulador, a migrar para outro projeto.
-/docs/domainos-mame-local/
+/docs/domainos-mame-local
+
+# Imagem local do convidado SR10.4; os metadados e regras ficam versionados.
+/vm/domainos-sr10.4-assistant/private/
+
+# Runtime local da VM (sessao MAME, configuracoes e capturas); nao publicar.
+/vm/domainos-sr10.4-assistant/runtime/
+
+# Registros brutos locais do contexto Tema; resumos verificados ficam em docs/.
+/records/ia-tema/
+
+# Workspaces e saídas transitórias de QA; recibos duráveis ficam em docs/review/.
+/.qa-*/
+/.work-board-staging/
+
+# Bundles GTK2 gerados na raiz pelo hash de conteúdo e artefato vazio acidental.
+/????????????????????????????????????????????????????????????????/
+/-

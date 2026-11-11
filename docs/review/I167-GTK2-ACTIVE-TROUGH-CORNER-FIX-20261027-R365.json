@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R365",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Implement the proven GTK2 normal horizontal stepper corner correction using the active trough underlay and current KDE semantic colors",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "basis": {
+    "gtk_source": "GTK+ 2.24.33 GtkRange allocates horizontal stepper paint cells at 15x11; draw_stepper clips to that allocation.",
+    "r360": "The active trough is painted beneath the steppers and owns the four outer 15px bands.",
+    "r362": "The 9-slice preserves source columns 0..3 and 20..23 at native size.",
+    "r363": "Editing the stretched center produces repeated bands and was rejected.",
+    "r364": "An isolated normal-state probe using a 4px horizontal trough border and four role-derived corner samples matched both reference cells."
+  },
+  "implementation": {
+    "generator": "tools/gtk2_domainos_palette.py",
+    "theme_rc": "gtk/DomainOS-SR10-4/gtk-2.0/gtkrc",
+    "active_trough_border": [4, 4, 2, 2],
+    "derived_pixels": [
+      {"trough_xy": [2, 22], "stepper": "left-normal", "stepper_xy": [0, 13]},
+      {"trough_xy": [3, 22], "stepper": "left-normal", "stepper_xy": [1, 13]},
+      {"trough_xy": [2, 23], "stepper": "left-normal", "stepper_xy": [0, 14]},
+      {"trough_xy": [21, 1], "stepper": "right-normal", "stepper_xy": [14, 1]}
+    ],
+    "color_policy": "Pixels are copied after rendering from stepper assets adapted to the current KDE palette; no fixed final RGB values are introduced.",
+    "manifest_sha256_for_gtkrc": "8a2f719f8d2e3c0ece4154cc7c31e10eb28e7b0c77fa7c5b81cc5b86614f51e5"
+  },
+  "visual_evidence": {
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "candidate": "~/tempia/ia-tema/evidence/I167/r364-active-trough-corner-proof/sentinel-both.png",
+    "candidate_sha256": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba",
+    "method": "Direct RGB comparison at native size. Reference cells at x=2 and x=526, y=4; probe cells at x=2 and x=526, y=0. No scaling or displacement search.",
+    "probe_bar_px": [543, 15],
+    "left_cell_differences": 0,
+    "right_cell_differences": 0,
+    "pixels_per_cell": 225
+  },
+  "validation": {
+    "command": "PYTHONPATH=tests TMPDIR=/home/lsi/tempia python3 -m unittest -v test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "result": "7 tests passed",
+    "specific_regression": "The derived pixels track changed KDE button-background roles after palette refresh.",
+    "py_compile": "passed for tools/gtk2_domainos_palette.py",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "This proves only normal horizontal stepper corner pixels in the isolated GTK2 probe; it does not close pressed, hover, disabled, or vertical states.",
+    "The change was not installed into the user's profile and no application was restarted.",
+    "No input was sent to the Domain/OS VM in this step; the reference crop is the already verified live SR10.4 capture from R352.",
+    "No human visual acceptance is inferred."
+  ],
+  "next": "Continue I167 GTK2 with remaining scrollbar states and orientations, then request the user's visual review in the already authorized environment before considering profile installation."
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R162",
+  "date": "2026-10-29",
+  "item": "T07",
+  "scope": "Static audit of interactive controls and their hint bindings in the Theme Lab main view and current modular Motif views.",
+  "authority": {
+    "board_item": "T07",
+    "section": "work",
+    "user_revision": 4,
+    "authorized": true,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee"
+  },
+  "inputs": {
+    "source_files": {
+      "tools/theme-lab/src/view.c": "ab91eea40daca837be9877f6dc3b225a8591157a8ce7f09de01b8259da1b071c",
+      "tools/theme-lab/src/view/manual_paint_view.c": "a391ba7961a240b4b748bc0661a0b0040f896e0b83319fea7f976cb0d7568b84",
+      "tools/theme-lab/src/view/part_relief_editor.c": "e5901b626552a7d2adf23dd7d04f8731c570527fe7042d7a4c3c30211b3b60f7",
+      "tools/theme-lab/src/view/control_catalog.c": "4eeff588182227cea05e59e1b2c932107f68a125bf61acb71fe20e78628c5d52",
+      "tools/theme-lab/src/view/project_history_controls.c": "46244e33646f904e2b4859ede1986062ac4f13006dd8f567cb12b572150d69d2",
+      "tools/theme-lab/src/view/ui_help.c": "6557bf4162d7f3fc2f52d001e9b1c99637685151f024a7625850f0f2204fab81",
+      "tools/theme-lab/src/view/ui_export_review.c": "2ee0900414f11a7a01df8386759c2faebb14f4645fdb2acd98c4bb0b9a9313c7",
+      "tools/theme-lab/src/view/ui_hints.c": "24885ae67728962e3c4e6bd8b3f638ca5fd16ff502ce342d1f883ef84ee2468a",
+      "tools/theme-lab/src/view/manual_paint_recovery.c": "9c0e3fd7240c0cc32d0215e9522d4381dcb67f234d9025ede7c6c081406d45a1"
+    },
+    "captured_at_utc": "2026-10-29T09:49:45Z"
+  },
+  "observations": {
+    "main_view": "Interactive controls found in the main view receive contextual or numeric hints, including family/scheme/state selectors, numeric geometry and palette fields, project actions, search controls, and file-dialog children.",
+    "manual_paint": "Tool, color role, grid, zoom, dimensions, undo/redo, save/close, selectors, canvases, and recipe output have hint bindings.",
+    "other_views": "Catalog actions, part/state/relevo selectors, project-history controls, help menu/dialog, export review, and recovery-dialog buttons have hint bindings in the inspected source.",
+    "uncovered_controls": "No missing hint binding was found among the inspected interactive controls."
+  },
+  "provenance_note": "The current manual_paint_recovery.c differs from the R161 recorded after-hash because it also contains text-editor journal wiring. That local content was preserved; no attempt was made to restore or overwrite the R161 snapshot.",
+  "validation": {
+    "performed": [
+      "Read-only source inspection of widget constructors, hint assignment sites, and file-dialog hint helper.",
+      "SHA-256 recorded for all inspected source files."
+    ],
+    "not_performed": [
+      "Build or automated tests.",
+      "Runtime hover or rendered-tooltip inspection."
+    ]
+  },
+  "result": "The current source provides contextual hint bindings for the inspected interactive controls. This is not proof that every hint appears, remains legible, or fits in the live UI.",
+  "next": "Keep T07 running. The remaining manual hover/layout inspection requires a user-selected isolated GUI session; do not launch Xephyr without the user's direction."
+}

@@ -1,0 +1,27 @@
+{
+  "at": "2026-10-11T02:48:29.628321+00:00",
+  "item": "I115",
+  "revision": 2,
+  "authority_definition": "76b806eb6771448504c6f97ec838d1f6c2a95712ce349632181f34415744784a",
+  "stage": "GTK3 trough backend; GUI and native validation pending",
+  "model_checks": 751,
+  "backend_checks": 20,
+  "scene_checks": 14,
+  "IPC": "passed",
+  "build": "C99 -Wall -Wextra -Werror",
+  "scope": "Independent trough mask and CSS, preserved shared viewport frame, arrow masks, thumb masks and standalone button rules",
+  "historical_fidelity_claimed": false,
+  "native_validation": "pending; no completed-stage claim",
+  "personal_delivery": "not installed or reloaded",
+  "limitations": [
+    "GUI trough fields remain disabled until connected and natively verified",
+    "GtkRange may enlarge stepper allocation with trough; effective dimensions not measured yet",
+    "All palettes and state cycles still need native proof for the trough override"
+  ],
+  "hashes": {
+    "tools/theme-lab/backend.py": "770e03a9ef04a1f151137b0a3c189b94135e411cf835d476f2a761ec4070be42",
+    "tools/theme-lab/src/model.c": "2913ee83ea771b7bcf44abb39afbe6a90d4af9825beaf4e5e25e7bb2d3c2afcf",
+    "tools/theme-lab/tests/model_test.c": "27a7852d395703b049135ce006df29c68cc200bbac65c63d9e457188b9c91e09",
+    "tools/theme-lab/tests/test_backend.py": "cf037b801413f621b8bb731ec75f0a1cfe3a897b92c57bd134b8fccdf2b9fc52"
+  }
+}

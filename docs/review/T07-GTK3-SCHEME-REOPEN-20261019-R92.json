@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-SCHEME-REOPEN-20261019-R92",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped_restart_required",
+  "purpose": "Verify that a newly launched GTK3 application displays tooltip roles emitted by the real KDE GtkConfig after a color-scheme change, and record the running-app restart boundary.",
+  "runtime": {
+    "gtk": "3.24.49",
+    "display": ":83",
+    "xephyr_geometry": "1280x800",
+    "session": "private dbus-run-session with private xsettingsd and org.kde.GtkConfig"
+  },
+  "gtkconfig_service": "org.kde.GtkConfig in private D-Bus session",
+  "method": "Private KDE color-scheme groups for DomainOS-SR10-4 and BreezeDark were applied to kdeglobals. The native ConfigChanged notification caused GtkConfig to regenerate GTK3/GTK4 colors.css. The private GTK3 fixture then called GtkConfig.setGtkTheme and gtkTheme, compared the old process before/after with a new GTK3 process, and captured a native tooltip in the owned Xephyr.",
+  "exports": {
+    "initial": {
+      "sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "roles": {
+        "tooltip_background_breeze": "#78a0d5",
+        "tooltip_text_breeze": "#ffffff"
+      }
+    },
+    "after_scheme_change": {
+      "sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+      "roles": {
+        "tooltip_background_breeze": "#292c30",
+        "tooltip_text_breeze": "#fcfcfc"
+      }
+    }
+  },
+  "running_application": {
+    "gtk_modules_setting": "colorreload-gtk-module:window-decorations-gtk-module",
+    "colorreload_module_mapped": true
+  },
+  "samples": {
+    "domainos_initial": {
+      "label": "domainos-live",
+      "gtk_theme": "DomainOS-SR10-4-KDE-Reload",
+      "style_background": "rgb(120,160,213)",
+      "style_foreground": "rgb(255,255,255)",
+      "tooltip_size": [
+        254,
+        31
+      ],
+      "matching_pixels": {
+        "background": 5499,
+        "text": 57
+      },
+      "expected": {
+        "background": "#78a0d5",
+        "text": "#ffffff"
+      },
+      "capture": "captures/domainos-live.png"
+    },
+    "breeze_dark_after_file_write_before_notify": {
+      "label": "breeze-dark-file-only",
+      "gtk_theme": "DomainOS-SR10-4-KDE-Reload",
+      "style_background": "rgb(120,160,213)",
+      "style_foreground": "rgb(255,255,255)",
+      "tooltip_size": [
+        254,
+        31
+      ],
+      "matching_pixels": {
+        "background": 0,
+        "text": 0
+      },
+      "expected": {
+        "background": "#292c30",
+        "text": "#fcfcfc"
+      },
+      "capture": "captures/breeze-dark-file-only.png"
+    },
+    "breeze_dark_after_native_notify_same_app": {
+      "label": "breeze-dark-after-native-notify",
+      "gtk_theme": "DomainOS-SR10-4-KDE-Reload",
+      "style_background": "rgb(120,160,213)",
+      "style_foreground": "rgb(255,255,255)",
+      "tooltip_size": [
+        254,
+        31
+      ],
+      "matching_pixels": {
+        "background": 0,
+        "text": 0
+      },
+      "expected": {
+        "background": "#292c30",
+        "text": "#fcfcfc"
+      },
+      "capture": "captures/breeze-dark-after-native-notify.png"
+    }
+  },
+  "fresh_application": {
+    "status": "passed",
+    "native_delay_ms": 500,
+    "closed_after_pointer_leave": true,
+    "overlap_pixels": 0,
+    "active_theme_line": "T07_ACTIVE_THEME DomainOS-SR10-4-KDE-Reload",
+    "style_background": "rgb(41,44,48)",
+    "style_foreground": "rgb(252,252,252)",
+    "matching_pixels": {
+      "background": 29966,
+      "text": 238
+    },
+    "capture": "captures/breeze-dark-fresh-app.png"
+  },
+  "checks": {
+    "private_kded_gtkconfig_ready": true,
+    "gtk3_selected_domainos_theme": true,
+    "gtkconfig_gtk3_user_css_imports_colors": true,
+    "domainos_export_exact": true,
+    "breeze_export_exact": true,
+    "live_tooltip_domainos_pixels": true,
+    "export_hash_changed": true,
+    "native_gtkconfig_theme_reconfirmed": true,
+    "fresh_app_tooltip_background": true,
+    "fresh_app_tooltip_text": true,
+    "fresh_app_delayed_stable_and_closed": true
+  },
+  "source_sha256": {
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-3.0/gtk.css": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+    "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css": "b638e00c58fc33cb53abd8221f405e885d84ca2187370420bf35b91cac540136",
+    "tools/select_gtk.py": "4968eff8c450bf95720e58935efbfdefa727a54a001166d2a2b68074da85cc1e"
+  },
+  "artifacts": {
+    "native_test_result": "~/tempia/t07-gtk3-live-reexport-r92-20261019/logs/gtk3-live-result.json",
+    "captures": "~/tempia/t07-gtk3-live-reexport-r92-20261019/captures/",
+    "diagnostic_setup": "~/tempia/t07-gtk3-live-reexport-r92-20261019/logs/diagnostic-no-native-notify.json"
+  },
+  "limits": [
+    "One GtkButton tooltip and one Xephyr geometry (1280x800).",
+    "Two KDE color schemes were tested; this does not replace the separate five-palette R85 matrix.",
+    "The existing app did not restyle after the file change or GtkConfig.setGtkTheme. The existing product workflow explicitly tells users to reopen GTK apps; a fresh process did consume the new roles.",
+    "The private fixture selected the DomainOS GTK theme and did not modify the personal KDE/GTK profile.",
+    "No historical VM pixel equivalence or human approval is claimed."
+  ],
+  "conclusion": "The native exporter and new GTK3 process agree on the current KDE Tooltip roles. Existing GTK3 processes retain their already-loaded CSS; the supported selection workflow instructs users to reopen those applications."
+}

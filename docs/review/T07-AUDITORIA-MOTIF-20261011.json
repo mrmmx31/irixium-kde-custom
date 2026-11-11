@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-11T11:48:06.339738+00:00",
+  "item": "T07",
+  "status": "partial",
+  "changes": [
+    "Missing internal scrollbar navigation hints filled without overriding existing resources",
+    "History buttons reuse wrapped multibyte helper",
+    "Native resource checks cover five history actions and four scrolled regions"
+  ],
+  "build": "passed -Wall -Wextra -Werror",
+  "hint_palettes": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0
+    }
+  ],
+  "broader_regression": {
+    "exit_code": 1,
+    "failure": "native_metrics_view.c line296 cursor top pixel did not match shadow role",
+    "scope": "Not hint resource assertion; underlying cause not established; retained for separate review"
+  },
+  "source_hashes": {
+    "tools/theme-lab/include/ui_hints.h": "35d126bf20d45de938ac2af44fbe07e3d5d4edd24208e88b0618b23181419ee3",
+    "tools/theme-lab/src/view/ui_hints.c": "8757d943ad7fb77a01f669ba93d4b9c31d7328054a5f975419e4e5b8e8c4aaf7",
+    "tools/theme-lab/src/view/project_history_controls.c": "46244e33646f904e2b4859ede1986062ac4f13006dd8f567cb12b572150d69d2",
+    "tools/theme-lab/src/view.c": "af9a24c6b074b9f27d4a47959525632f788f5286054041a3af7c8f23dc56a46c",
+    "tools/theme-lab/tests/native_metrics_view.c": "6ab0ed03491f6dfb0966bd6aef851c8ee127b4da810dfbb9d0e55bca9d92f16d"
+  },
+  "estimated_stage_progress_percent": 85,
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

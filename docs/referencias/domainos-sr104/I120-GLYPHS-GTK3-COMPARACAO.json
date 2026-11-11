@@ -1,0 +1,313 @@
+{
+  "scope": "Pixel analysis at native1x, thresholded strong foreground; not a visual fidelity percentage or selection decision",
+  "palette_roles": [
+    "Colors:Window/BackgroundNormal",
+    "Colors:Window/ForegroundNormal"
+  ],
+  "proof": [
+    {
+      "requested": "Nimbus Sans Bold",
+      "size_px": 12,
+      "text": "OK",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        16,
+        9
+      ],
+      "gtk_ink_size": [
+        17,
+        9
+      ],
+      "vm_strong_pixels": 71,
+      "gtk_strong_pixels": 74,
+      "mask_intersection_over_union": 0.46464646464646464,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Sans Bold",
+      "size_px": 12,
+      "text": "Cancel",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        39,
+        9
+      ],
+      "gtk_ink_size": [
+        38,
+        9
+      ],
+      "vm_strong_pixels": 141,
+      "gtk_strong_pixels": 144,
+      "mask_intersection_over_union": 0.532258064516129,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Sans Bold",
+      "size_px": 12,
+      "text": "Help",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        24,
+        12
+      ],
+      "gtk_ink_size": [
+        25,
+        11
+      ],
+      "vm_strong_pixels": 113,
+      "gtk_strong_pixels": 104,
+      "mask_intersection_over_union": 0.6692307692307692,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Sans Bold",
+      "size_px": 12,
+      "text": "Terminal",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        49,
+        9
+      ],
+      "gtk_ink_size": [
+        48,
+        9
+      ],
+      "vm_strong_pixels": 181,
+      "gtk_strong_pixels": 174,
+      "mask_intersection_over_union": 0.4669421487603306,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Sans Bold",
+      "size_px": 12,
+      "text": "OK",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        16,
+        9
+      ],
+      "gtk_ink_size": [
+        17,
+        9
+      ],
+      "vm_strong_pixels": 71,
+      "gtk_strong_pixels": 63,
+      "mask_intersection_over_union": 0.5952380952380952,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Sans Bold",
+      "size_px": 12,
+      "text": "Cancel",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        39,
+        9
+      ],
+      "gtk_ink_size": [
+        39,
+        9
+      ],
+      "vm_strong_pixels": 141,
+      "gtk_strong_pixels": 117,
+      "mask_intersection_over_union": 0.5636363636363636,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Sans Bold",
+      "size_px": 12,
+      "text": "Help",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        24,
+        12
+      ],
+      "gtk_ink_size": [
+        25,
+        11
+      ],
+      "vm_strong_pixels": 113,
+      "gtk_strong_pixels": 78,
+      "mask_intersection_over_union": 0.5039370078740157,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Sans Bold",
+      "size_px": 12,
+      "text": "Terminal",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        49,
+        9
+      ],
+      "gtk_ink_size": [
+        48,
+        9
+      ],
+      "vm_strong_pixels": 181,
+      "gtk_strong_pixels": 146,
+      "mask_intersection_over_union": 0.5424528301886793,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Mono PS",
+      "size_px": 13,
+      "text": "OK",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        16,
+        9
+      ],
+      "gtk_ink_size": [
+        14,
+        8
+      ],
+      "vm_strong_pixels": 71,
+      "gtk_strong_pixels": 40,
+      "mask_intersection_over_union": 0.18085106382978725,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Mono PS",
+      "size_px": 13,
+      "text": "Cancel",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        39,
+        9
+      ],
+      "gtk_ink_size": [
+        46,
+        8
+      ],
+      "vm_strong_pixels": 141,
+      "gtk_strong_pixels": 100,
+      "mask_intersection_over_union": 0.21717171717171718,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Mono PS",
+      "size_px": 13,
+      "text": "Help",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        24,
+        12
+      ],
+      "gtk_ink_size": [
+        30,
+        11
+      ],
+      "vm_strong_pixels": 113,
+      "gtk_strong_pixels": 80,
+      "mask_intersection_over_union": 0.17682926829268292,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Nimbus Mono PS",
+      "size_px": 13,
+      "text": "Terminal",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        49,
+        9
+      ],
+      "gtk_ink_size": [
+        62,
+        8
+      ],
+      "vm_strong_pixels": 181,
+      "gtk_strong_pixels": 136,
+      "mask_intersection_over_union": 0.19622641509433963,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Mono",
+      "size_px": 13,
+      "text": "OK",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        16,
+        9
+      ],
+      "gtk_ink_size": [
+        15,
+        9
+      ],
+      "vm_strong_pixels": 71,
+      "gtk_strong_pixels": 47,
+      "mask_intersection_over_union": 0.1919191919191919,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Mono",
+      "size_px": 13,
+      "text": "Cancel",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        39,
+        9
+      ],
+      "gtk_ink_size": [
+        46,
+        9
+      ],
+      "vm_strong_pixels": 141,
+      "gtk_strong_pixels": 116,
+      "mask_intersection_over_union": 0.3112244897959184,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Mono",
+      "size_px": 13,
+      "text": "Help",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        24,
+        12
+      ],
+      "gtk_ink_size": [
+        30,
+        12
+      ],
+      "vm_strong_pixels": 113,
+      "gtk_strong_pixels": 84,
+      "mask_intersection_over_union": 0.3221476510067114,
+      "glyph_identical_under_this_threshold": false
+    },
+    {
+      "requested": "Liberation Mono",
+      "size_px": 13,
+      "text": "Terminal",
+      "threshold": 0.5,
+      "origin": "strong foreground pixels, align bounding top-left, no resampling",
+      "vm_ink_size": [
+        49,
+        9
+      ],
+      "gtk_ink_size": [
+        62,
+        10
+      ],
+      "vm_strong_pixels": 181,
+      "gtk_strong_pixels": 157,
+      "mask_intersection_over_union": 0.20284697508896798,
+      "glyph_identical_under_this_threshold": false
+    }
+  ]
+}

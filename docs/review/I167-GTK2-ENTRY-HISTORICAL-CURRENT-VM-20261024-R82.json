@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-HISTORICAL-CURRENT-VM-20261024-R82",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "clone_pid": 2745483,
+    "screen_resolution_px": [1024, 844],
+    "capture": "~/tempia/i167-live-r82.png",
+    "capture_sha256": "15d6b210eace8fb49ffeb8ca0b1ac47ac20158777e7afa972d95d45c1a98669e",
+    "previous_capture": "~/tempia/i167-live-r81.png",
+    "changed_pixels_since_previous_capture": 976,
+    "total_pixels": 864256
+  },
+  "live_state": {
+    "profile": {"paused": false, "frameskip": 4, "throttled": false},
+    "mouse_hook": {"captured": false, "mouse_option": false},
+    "bridge": {"pending": false, "reply": false},
+    "screen_dialog": {
+      "xid": "0x14000fd",
+      "map_state": "IsViewable",
+      "geometry_px": [431, 22, 295, 254],
+      "screen_saver_checkbox_visual": "unchecked",
+      "timeout_visual": 10
+    },
+    "read_only_x_queries": [
+      {"xid": "0x28000ff", "title": "File Manager", "map_state": "IsUnMapped", "geometry_px": [109, 90, 300, 365]},
+      {"xid": "0x28000c3", "title": "Find Files", "map_state": "IsUnMapped", "geometry_px": [0, 0, 5, 5]},
+      {"xid": "0x2c00047", "title": "Color", "map_state": "IsUnMapped", "geometry_px": [0, 0, 5, 5]},
+      {"xid": "0x2c00015", "title": null, "map_state": "IsUnMapped", "geometry_px": [0, 0, 176, 148]}
+    ],
+    "interpretation": "The screenshot shows residual pixels from unmapped background windows. The Find Files text-entry target is not currently mapped, so those pixels cannot support a new caret or selection measurement."
+  },
+  "historical_comparison": {
+    "focus_outline": "R68 remains the measured 2 px outline parity result for the focused VUE field and GTK2 GtkEntry, using the dynamic KDE focus role.",
+    "caret": "R76 remains the same-size 338x34 pair: GTK2 draws a straight 1x18 px caret; the SR10.4 VUE field draws a 14 px stem with 5x1 px terminals, 16 px overall.",
+    "selection": "No unambiguous SR10.4 selected-text appearance is available. R70 validates only GTK2's current KDE selection roles.",
+    "blink": "The SR10.4 blink interval remains unmeasured; the screenshot does not capture a timed transition."
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "clone_restarted": false,
+    "guest_input_sent": false,
+    "guest_settings_changed": false,
+    "desktop_profile_changed": false,
+    "other_mame_session_touched": false,
+    "other_toolkit_family_touched": false
+  },
+  "next": "Continue only GTK2 GtkEntry. A fresh paired selection/blink observation requires a live, mapped SR10.4 VUE text field; do not treat the visible unmapped-window residue as a control. Preserve the known caret-engine limitation in R63."
+}

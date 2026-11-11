@@ -604,26 +604,27 @@ Item {
     }
     function requestTargets(action,windows) {
         if (windows.length < 2) return unavailable(action,"","Select at least two windows")
-        if (["columns","rows","mosaic","collect","maximize","minimize"].indexOf(action)<0)
+        if (["columns","rows","mosaic","collect","maximize","restore","minimize"].indexOf(action)<0)
             return unavailable(action,"","Unknown organization command")
-        if (!geometryBackend || typeof geometryBackend.requestLayout!=="function")
+        const backendMethod=action==="restore" ? "requestRestore" : "requestLayout"
+        if (!geometryBackend || typeof geometryBackend[backendMethod]!=="function")
             return unavailable(action,"","Window geometry backend is not available in this session")
-        if (currentDesktopId===null || currentAvailableGeometry.width<=0 || currentAvailableGeometry.height<=0)
+        if (action!=="restore" && (currentDesktopId===null || currentAvailableGeometry.width<=0 || currentAvailableGeometry.height<=0))
             return unavailable(action,"","The current desktop/monitor is not known")
         const freshWindows=[]
         for (const window of windows) {
             const target=resolveWindow(window.key)
             if (!target || target.record.pid!==window.pid)
                 return unavailable(action,window.key,"The selected window identity changed")
-            const capability=action==="maximize" ? "maximizable" : action==="minimize" ? "minimizable" : "movable"
-            if (!target.record[capability] || (["columns","rows","mosaic"].indexOf(action)>=0 && !target.record.resizable))
+            const capability=action==="restore" ? "" : action==="maximize" ? "maximizable" : action==="minimize" ? "minimizable" : "movable"
+            if ((capability && !target.record[capability]) || (["columns","rows","mosaic"].indexOf(action)>=0 && !target.record.resizable))
                 return unavailable(action,window.key,"A selected window cannot be moved/resized")
             freshWindows.push(target.record)
         }
         const payload={mode:action,windows:freshWindows,desktopId:currentDesktopId,
             screenName:currentScreenName,screenGeometry:currentScreenGeometry,
             availableGeometry:currentAvailableGeometry}
-        const reply=geometryBackend.requestLayout(payload)
+        const reply=geometryBackend[backendMethod](payload)
         if (reply===false || (reply && ["unavailable","failed","rejected"].indexOf(reply.state)>=0))
             return unavailable(action,"",reply && reply.reason ? reply.reason : "Window geometry provider rejected the request")
         const result={state:"requested",action:action,targets:windows.map(window=>window.key)}

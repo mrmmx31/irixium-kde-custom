@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "R281",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct the interpretation of the two counter operations recorded in R275 and R280.",
+  "correction": {
+    "prior_wording": "R280 described the R277 +3 step and the separate R279 five-step +3 sequence as 18 accumulated X counts.",
+    "reason": "mame_live_mouse clears each operation's counter overrides on completion and restores the live physical accumulator. The count values across these separate operations therefore cannot be summed into a proven cursor displacement.",
+    "corrected_reading": "R277 completed one +3 X counter step. R279 later completed a separate five-step sequence at +3 per step. Both finished with cleanups and no errors; the final R279 screenshot still did not show the pointer over a target. No arrow was pressed."
+  },
+  "impact": "Only the cumulative-count interpretation is withdrawn. VM identity/profile, screen visibility, no-arrow-press result, GTK2 state comparisons and 79% technical coverage estimate are unchanged.",
+  "changes": {
+    "theme_or_guest_changed": false,
+    "additional_input_after_R279": false
+  }
+}

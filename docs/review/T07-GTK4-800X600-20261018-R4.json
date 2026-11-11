@@ -1,0 +1,164 @@
+{
+  "id": "T07-GTK4-800X600-20261018-R4",
+  "task": "T07",
+  "date_utc": "2026-10-18T16:18:00Z",
+  "scope": "Retest at 800x600 after shortening GtkNotebook and GtkScrolledWindow hint strings; current fixed gallery size remains 850x620.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "geometry": [
+      800,
+      600
+    ],
+    "theme": "Default",
+    "font": "Sans 10",
+    "xephyr_restored_to": [
+      1280,
+      800
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "95904ec19bb4520909fcc8b0e3806a8849ef0fb3e06724995fe47b7b75197382",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79"
+  },
+  "matrix": {
+    "status": "partial",
+    "mapped": 31,
+    "passed": 22,
+    "failed": 9,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen_for_passed": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": false,
+    "scrollbar_clicks": 1,
+    "cleanup": {
+      "hints": [
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        },
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        }
+      ],
+      "overlay_anchors_before": 2,
+      "overlay_anchors_after": 0,
+      "anchors_removed": true
+    }
+  },
+  "failures": [
+    {
+      "page": 0,
+      "control": "GtkNotebook",
+      "tooltip": "Abas: selecione Controles ou Texto.",
+      "rect_px": [
+        400,
+        347,
+        421,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(400, 347, 421, 51)"
+    },
+    {
+      "page": 0,
+      "control": "GtkMenuButton",
+      "tooltip": "Abre o menu nativo desta amostra; nenhuma ação inicia aplicações pessoais.",
+      "rect_px": [
+        529,
+        166,
+        375,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(529, 166, 375, 51)"
+    },
+    {
+      "page": 0,
+      "control": "GtkEntry",
+      "tooltip": "Campo não editável.",
+      "rect_px": [
+        659,
+        208,
+        151,
+        33
+      ],
+      "reason": "tooltip exceeds screen: tip=(659, 208, 151, 33)"
+    },
+    {
+      "page": 0,
+      "control": "GtkScale",
+      "tooltip": "Escala, sem unidade: 0–100; passo 1. Progresso independente.",
+      "rect_px": [
+        521,
+        319,
+        413,
+        33
+      ],
+      "reason": "tooltip exceeds screen: tip=(521, 319, 413, 33)"
+    },
+    {
+      "page": 0,
+      "control": "GtkScrollbar",
+      "tooltip": "Barra horizontal: arraste o cursor ou acione o trilho para percorrer o conteúdo nativo.",
+      "rect_px": [
+        392,
+        559,
+        375,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(392, 559, 375, 51)"
+    },
+    {
+      "page": 0,
+      "control": "GtkScrollbar",
+      "tooltip": "Barra vertical: arraste o cursor ou acione o trilho para percorrer o conteúdo nativo.",
+      "rect_px": null,
+      "reason": "scrollbar did not respond to click while its hint was open"
+    },
+    {
+      "page": 1,
+      "control": "GtkNotebook",
+      "tooltip": "Abas: selecione Controles ou Texto.",
+      "rect_px": [
+        404,
+        335,
+        411,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(404, 335, 411, 51)"
+    },
+    {
+      "page": 1,
+      "control": "GtkScrolledWindow",
+      "tooltip": "Editor: percorra o texto pelas barras nativas.",
+      "rect_px": [
+        404,
+        353,
+        411,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(404, 353, 411, 51)"
+    },
+    {
+      "page": 1,
+      "control": "GtkTextView",
+      "tooltip": "Editor nativo de várias linhas: selecione, copie ou edite o texto de amostra; não altera o projeto.",
+      "rect_px": [
+        396,
+        353,
+        411,
+        51
+      ],
+      "reason": "tooltip exceeds screen: tip=(396, 353, 411, 51)"
+    }
+  ],
+  "analysis": "The demo requests a fixed 850x620 client window, larger than this 800x600 Xephyr. Targets and popovers are clipped beyond the screen; this probe does not establish a 800x600-sized gallery layout.",
+  "limits": [
+    "A viewport-fit regression of the GTK4 demo is needed before interpreting 800x600 as a supported geometry.",
+    "No historical pixel fidelity or palette comparison.",
+    "No production theme or KDE schema was changed."
+  ],
+  "raw_output": "~/tempia/t07-gtk4-current-r31-20261018/800x600-fixed.stdout"
+}

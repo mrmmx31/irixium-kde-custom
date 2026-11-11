@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "R271",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "scope": "Measure the active DomainOS decoration face on the actual Wayland session after the repeated lighter-color report.",
+  "user_observation": "Active coral/orange and inactive green/teal title bars still appear slightly lighter than the DomainOS VM.",
+  "session": {
+    "type": "Wayland",
+    "color_scheme": "DomainOS-SR10-4",
+    "configured_decoration_plugin": "org.kde.kwin.aurorae",
+    "configured_decoration_theme": "domainos_sr104"
+  },
+  "capture": {
+    "tool": "Spectacle --activewindow --background --nonotify",
+    "resolution_px": [
+      892,
+      642
+    ],
+    "full_window_capture_sha256": "91d1d2337bf92ac8beea8aa52a92b74860fc68534d152468343933054029c4be",
+    "privacy": "Full active-window capture contained private XChat text. It was reduced to a 146x20 blank titlebar patch and the full image was removed immediately.",
+    "retained_patch": "~/tempia/ia-tema/evidence/I167/wayland-active-titlebar-patch-r271.png",
+    "patch_sha256": "ac8f32fa05a199316dde74562ac87631dcd5d3d712f2f91c2b1343ffc252f108",
+    "patch_roi_half_open": [
+      42,
+      4,
+      188,
+      24
+    ]
+  },
+  "comparison": {
+    "reference": "Fresh native MAME screen snapshot of the project-owned Domain/OS SR10.4 + HP VUE 2.01 VM",
+    "path": "~/tempia/ia-tema/evidence/I167/i167-current-vue-r269.png",
+    "sha256": "cb7d6f7101fbd21d1796ff934bf5d88314436cd5b09bdc96f28078c5164175ad",
+    "vm_active_face": "#fe8282",
+    "vm_inactive_face": "#7acac5"
+  },
+  "measurements": {
+    "wayland_active_face": "#fe8282",
+    "wayland_active_bevel_light": "#ffc8c8",
+    "wayland_active_bevel_dark": "#864545",
+    "wayland_active_face_matches_vm": true,
+    "wayland_inactive_face": "not measured in this active-window capture",
+    "xephyr_inactive_face_from_R262": "#7acac5"
+  },
+  "result": "The active coral face on the actual Wayland window is pixel-identical to the VM sample. The repeated brightness difference is not reproduced for that face. The inactive teal face in the main Wayland session remains unmeasured; R262 covers it only in the private Xephyr. No decoration code, color scheme, or semantic KDE role changed.",
+  "limits": [
+    "This is a sampled active titlebar patch, not a full rendering or human color-vision assessment.",
+    "No inactive application window was captured in the main Wayland session.",
+    "The retained patch excludes private title text and application content."
+  ],
+  "progress": "I167 remains 78% technical coverage; this decoration measurement does not complete a GTK2 control family."
+}

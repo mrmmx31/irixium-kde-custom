@@ -1,0 +1,73 @@
+{
+  "id": "R593",
+  "date_utc": "2026-10-28T17:41:01Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "authorization": {
+    "authorized": true,
+    "authorized_definition": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+    "matches_current_definition": true
+  },
+  "observed_configuration": {
+    "desktop": "Plasma Wayland user lsi",
+    "panel_applet": "org.irixclassic.domainos.panel",
+    "applicationsMenuStyle": "kde",
+    "plasmashell_processes": [
+      {
+        "pid": 332937,
+        "uid": 1003,
+        "owner": "p001532",
+        "scope": "other user; untouched"
+      },
+      {
+        "pid": 505510,
+        "uid": 1000,
+        "owner": "lsi",
+        "scope": "current user"
+      }
+    ]
+  },
+  "installed_before_change": {
+    "DomainOSApplications.qml": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+    "DomainOSKdeApplicationMenu.qml": "1a61a20c2cc95327efb04c2fb2218fe22640658aba39e98a3306e0661cbc4d80"
+  },
+  "source_and_installed_after_change": {
+    "DomainOSApplications.qml": "0a835ad0216a73765fb5deea2464616e444ce1c71633aa5da488fc80e8404c15",
+    "DomainOSKdeApplicationMenu.qml": "72c43d77534bbb8c307799aef2b1f94e52fc8ea6d6a89cfd7f2cd18a9f037889"
+  },
+  "findings": [
+    "O menu KDE usa Controls.Popup com popupType Window, sem focus=true. A documentação oficial Qt registra que Popup.focus assume false por padrão e que o Popup só recebe activeFocus quando recebe foco.",
+    "A representação original do Kicker marca a busca como focus=true ao reset; no wrapper do painel o reset ocorria imediatamente após open(), antes da janela Popup completar a ativação. Agora focus=true e forceActiveFocus/reset são aplicados no próximo ciclo de eventos, se o menu continuar visível.",
+    "O menu próprio integrado em DomainOSApplications abria PlasmaCore.Dialog sem pedir foco ativo à busca; agora força foco na SearchField depois que o popup fica visível.",
+    "A terceira falha não foi reproduzida. Não há coredump de plasmashell desde 2026-10-27 nem entradas de erro do PID 505510 no journal consultado. O launcher KDE ainda usa o delegate upstream que dispara model.trigger no release e fecha o menu; evidência disponível não aponta causa de crash ou travamento."
+  ],
+  "changes": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+      "change": "Popup KDE recebe foco de janela; depois da abertura, restaura o foco de teclado da busca Kicker."
+    },
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "change": "Menu integrado força foco na busca após abrir."
+    }
+  ],
+  "backup_dir": "records/ia-tema/P01/R593-before-install/",
+  "deployment": {
+    "copied_to_user_plasmoid": true,
+    "plasmashell_restarted": false,
+    "active_runtime_loaded_new_qml": false
+  },
+  "validation": {
+    "git_diff_check": "passed",
+    "tests_run": false,
+    "live_menu_reproduction": false,
+    "visual_or_keyboard_acceptance": "pending"
+  },
+  "remaining": [
+    "Abrir/recarregar o applet no momento seguro e conferir no desktop que o menu KDE permanece aberto ao mover o ponteiro e aceita digitação sem clique adicional.",
+    "Abrir variante integrada e confirmar busca imediata por teclado.",
+    "Aguardar Q510 com aplicativos/horário e sintoma exato para investigar o aparente travamento/reinício; não inserir debounce às cegas."
+  ],
+  "source": "Qt Quick Controls Popup documentation: https://doc.qt.io/qt-6/qml-qtquick-controls-popup.html; local Kicker MenuRepresentation.qml and ItemListDelegate.qml from plasma-workspace 6.3.6-2."
+}

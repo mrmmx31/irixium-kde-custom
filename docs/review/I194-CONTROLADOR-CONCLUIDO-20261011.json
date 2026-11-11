@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-11T10:15:55.979690+00:00",
+  "item": "I194",
+  "revision": 1,
+  "technical_status": "complete",
+  "user_evaluation": "not_inferred",
+  "evidence": "docs/referencias/domainos-sr104/i194-checkbox-controller",
+  "proof": {
+    "DomainOS": {
+      "workspace": ".qa-theme-lab-spin-aqaephjo",
+      "result_sha256": "1cd5f00a0e1f4904d7b08e2daeda7e575953d789df2c77f25e63aafd1204cec3"
+    },
+    "BreezeLight": {
+      "workspace": ".qa-theme-lab-spin-yqys5402",
+      "result_sha256": "1cd5f00a0e1f4904d7b08e2daeda7e575953d789df2c77f25e63aafd1204cec3"
+    },
+    "BreezeDark": {
+      "workspace": ".qa-theme-lab-spin-3zeemxum",
+      "result_sha256": "1cd5f00a0e1f4904d7b08e2daeda7e575953d789df2c77f25e63aafd1204cec3"
+    },
+    "TestYellow": {
+      "workspace": ".qa-theme-lab-spin-qn8bvy7v",
+      "result_sha256": "1cd5f00a0e1f4904d7b08e2daeda7e575953d789df2c77f25e63aafd1204cec3"
+    },
+    "toggle-regression": {
+      "workspace": ".qa-theme-lab-spin-o7_kslcz",
+      "result_sha256": "135379f877c0bb7249e01adee5c552bc7e599babfd92885a0301e83d076aefa8"
+    },
+    "GTK3-regression": {
+      "workspace": ".qa-theme-lab-spin-uh7m03ek",
+      "result_sha256": "7911a72a546c14978a1e0a4638e28426c8552e1418f8640d7b8a0e42b615b740"
+    }
+  },
+  "verified": [
+    "Four palettes in real controller",
+    "Coupled checked / detached unchecked preserved after Apply restart",
+    "Custom size 180x50 to 280x60 in both origins; natural 69x23",
+    "Real clicks after restart",
+    "112 native scene events accepted by current strict C parser",
+    "53 pure tests",
+    "Native toggle and GTK3 regressions passed"
+  ],
+  "previous_receipt": "I194-INTEGRACAO-PARCIAL-20261011.json",
+  "limits": [
+    "Indicator center pixel proves selected/unselected direction, not full fidelity.",
+    "Focus/inconsistent/RTL/automatic-backdrop pending.",
+    "Cache is ephemeral by preview origin; not a project setting."
+  ],
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "stage_estimate_percent": 100,
+  "parent_I167_estimate_percent": 90,
+  "estimate_basis": "Checkbox integration gates verified. Other GTK2 controls/states and historical comparison remain incomplete.",
+  "sha256": {
+    "src/controller.c": "7f3a29d21587e0d3a6de6a4b36d587f1402f037e4825a690739e2be56285355f",
+    "src/preview_event.c": "085a9b44450dbc25b4179d02eeaf3f792421b754bf5d52b6148c4448548f5f84",
+    "preview_gtk2.py": "c2b8fc78fbf466a989235b8e15986b603b47e797d0f601ba208838de1711a262",
+    "tests/controller_gtk2_toggle.py": "8f605c858d8d7d18756e252a9a9c29c7fb1fad88c3df6a87a504f779076c01f7",
+    "tests/controller_spin_probe.c": "617647cac119117b783ff4205139c8999bf19e89290935f76d639dac68945eac",
+    "tests/test_controller_spin.py": "fd1755a6c64cf83e8fd509489f616ddc758f843456f36baa83247b80831286ec",
+    "tests/preview_event_test.c": "001a41d100507ddb98f23dd8eecb16188d2794690889fe79d282ecb74072f010",
+    "README.md": "e48c2a95236f746cd056246cfb4692b3e2cf659de0976bea15526ee53d32f1d4"
+  }
+}

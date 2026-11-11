@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R368",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Isolate the horizontal ACTIVE trough correction from the shared GTK2 vertical trough and validate the actual generated RC in native GTK2 probes",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "correction": {
+    "supersedes": "R365 implementation detail that described one shared ACTIVE trough rule with a 4px left/right border.",
+    "cause": "The pixbuf engine inferred orientation inside draw_simple_image, but the shared source asset and rule allowed the horizontal corner pixels to alter four pixels in the vertical bar.",
+    "current_design": "Keep the base gtkrc trough border at 2px. The generated GTK2 RC now has explicit ACTIVE HORIZONTAL and VERTICAL rules: horizontal uses a separately generated 4px-border trough asset; vertical retains the original palette-rendered asset and 2px border.",
+    "historical_note": "R365's manual candidate PNG and the screenshot from the actual current generator are byte-identical (SHA-256 1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba), so its horizontal pixel counts remain valid; this receipt establishes their generator provenance."
+  },
+  "source_basis": {
+    "gtk": "GTK+ 2.24.33 pixbuf engine draw_box infers orientation from the rendered rectangle width/height before matching image rules.",
+    "source_path": "~/tempia/ia-tema/source-audit/I167-gtk2-pixmap-20261027/gtk+2.0-2.24.33/modules/engines/pixbuf/pixbuf-draw.c"
+  },
+  "generated_preview": {
+    "generator": "tools/gtk2_domainos_palette.py prepare_domainos using the current ~/.config/gtk-3.0/colors.css; this is a private probe, not an install.",
+    "bundle": "~/tempia/ia-tema/evidence/I167/r368-orientation-isolation/bundles/6b3b7ecd592ee9cd0fe03616ee8384f05861389f340d2ba9c7cf386441ebe8af",
+    "colors_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "horizontal_capture": "~/tempia/ia-tema/evidence/I167/r368-orientation-isolation/horizontal-loaded.png",
+    "horizontal_sha256": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba",
+    "vertical_capture": "~/tempia/ia-tema/evidence/I167/r368-orientation-isolation/vertical-loaded.png",
+    "vertical_sha256": "4b4b478c064a70377fb302a44ba56e6b525fcf54a3e9876b0989df49d4d225ea",
+    "vertical_no_corner_patch_control": "~/tempia/ia-tema/evidence/I167/r368-orientation-isolation/vertical-control-loaded.png",
+    "vertical_control_sha256": "4b4b478c064a70377fb302a44ba56e6b525fcf54a3e9876b0989df49d4d225ea"
+  },
+  "comparison": {
+    "gtk": "2.24.33 with the project's native pixmap engine under private Xvfb; generated gtkrc explicitly loaded with Gtk.rc_parse.",
+    "horizontal_widget_px": [543, 15],
+    "horizontal_left_cell_vs_live_sr104": {"different_pixels": 0, "pixels_compared": 225},
+    "horizontal_right_cell_vs_live_sr104": {"different_pixels": 0, "pixels_compared": 225},
+    "vertical_widget_px": [15, 543],
+    "vertical_candidate_vs_same_bundle_without_corner_derivation": {"different_pixels": 0, "pixels_compared": 8145},
+    "vertical_upper_cell_vs_retained_vue_crop": {"different_pixels": 3, "pixels_compared": 225, "interpretation": "The three pixels are present in both generated/control vertical captures, so the horizontal correction does not cause them. The vertical normal cell remains under review."},
+    "reference_method": "Native-size RGB crops; no scaling or displacement search. Horizontal reference is the live-verified SR10.4 Trash Can crop from R352. Vertical reference is the retained File Manager crop from R325."
+  },
+  "validation": {
+    "command": "PYTHONPATH=tests TMPDIR=/home/lsi/tempia python3 -m unittest -v test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "result": "7 tests passed",
+    "specific_regression": "Checks generated orientation-specific GTK2 rules, horizontal corner pixels following KDE palette refresh, and the vertical asset remaining equal to the unmodified role-rendered trough.",
+    "py_compile": "passed",
+    "git_diff_check": "passed",
+    "manifest_gtkrc_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7"
+  },
+  "limits": [
+    "The three-pixel residual in the normal vertical upper cell remains unexplained and unresolved.",
+    "Pressed, hover and disabled scrollbar states remain outside this proof.",
+    "The change is not installed into the user's profile; no application was restarted and no VM input was sent.",
+    "No human visual acceptance is inferred."
+  ],
+  "next": "Continue I167 GTK2 by resolving the three normal vertical upper-cell pixels or collecting a current live VUE pair, then review the remaining interactive states in this family."
+}

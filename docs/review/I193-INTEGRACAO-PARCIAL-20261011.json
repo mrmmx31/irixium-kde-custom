@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-11T09:53:32.245118+00:00",
+  "item": "I193",
+  "revision": 1,
+  "status": "in_progress",
+  "evidence": "docs/referencias/domainos-sr104/i193-toggle-integration",
+  "native_scenes": 8,
+  "native_scope": "GtkWindow/GtkPlug, four KDE palettes, real click, size 180x50 to 200x60, native session replacement preserves toggle selection; existing push/ranges exercised.",
+  "pure_tests": 47,
+  "receipt_gate": "canonical two/three/four controls accepted; wrong/duplicate controls rejected; existing path/hash/status guards pass",
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "remaining": [
+    "Controller Apply restarts children; preserve native toggle selection per origin.",
+    "Actual Motif controller size/input validation for toggle on both origins."
+  ],
+  "stage_estimate_percent": 65,
+  "parent_I167_estimate_percent": 84,
+  "estimate_basis": "scene/generation/snippet/receipt complete and checked; controller delivery not yet complete. No historical fidelity percentage.",
+  "sha256": {
+    "gtk2_generation.py": "8e139a0d93923dbc2a93aaca3cb0c76e75421bf61c6638af004c11afb5a8ac63",
+    "native_scene_gtk2.py": "19924b1a1decd2e405beae9acf348f0104c90ee42a7137c3c75e28d02b1bab58",
+    "gtk2_session.py": "d3b0056f88180182a55e3599c1abc5761db5e452b36abe5ab4ac2a7147d02592",
+    "gtk2_toggles.py": "a150b35c45fd23a71f30160e41998fca6c581eb1561568a19d0c7082c8c1eb97",
+    "backend.py": "fceb3089f9274ea1b664ccf3180febc90e08fd0c1c72d1cfd3a01e961c8f5ccd",
+    "preview_gtk2.py": "3679843254bb9944be0fa14d1f1b8ce86a6121e47b434c558ea6a70f88b0d3a9",
+    "tests/test_gtk2_snippet.py": "d4ad52c0e285783c9f765df9a0cb2bab8595904e74c801d6462b26887ab99fb4",
+    "tests/test_gtk2_preview_route.py": "63e06bd3c5b0450a3e8b930f94d2848c0ff56b36daa2ec6d253c9a39e7a4ca82",
+    "tests/generated_preview_test.c": "a3f86827542c34e831286032540da74c83bf9e13055953f89d77fbb80df593c7",
+    "src/controller/generated_preview.c": "a6a47c8716e55f9c41f35831bd045772ca0e83fa10d719649457447ed3a148c6"
+  }
+}

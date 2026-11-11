@@ -1,0 +1,255 @@
+{
+  "item": "P10 / V09",
+  "date": "2026-10-14",
+  "scope": "Current DomainOS panel applet in a real Plasma containment with a connected KWin Pager; isolated palette-role response only.",
+  "host": {
+    "xephyr_display": ":69",
+    "kwin": "6.3.6",
+    "plasmashell_containment": true,
+    "effective_screen_px": [
+      1600,
+      1200
+    ],
+    "panel_crop_xyxy_half_open": [
+      314,
+      1091,
+      1285,
+      1200
+    ],
+    "panel_dimensions_px": [
+      971,
+      109
+    ],
+    "scale": "1:1"
+  },
+  "source": {
+    "applet": "org.irixclassic.domainos.panel",
+    "metadata_sha256": "ac47c7d5647fa8d17d7273cc9cb771bd1e7122a28e0e3a5eb1e206d39b0cb952",
+    "main_qml_sha256": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+    "pager_qml_sha256": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4",
+    "palette_mapping": {
+      "DomainOSPalette.qml": {
+        "path": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml",
+        "sha256": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a"
+      },
+      "DomainOSKDEPalette.qml": {
+        "path": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKDEPalette.qml",
+        "sha256": "6045f28d021ce456a6aaa4094648e2db8ac8f0e081bcbdc84b27916c849d41c5"
+      },
+      "contract": "window/base/windowText/buttonText/highlight/highlightedText are read from Plasma theme roles; bevel tones are derived from current roles by DomainOSPalette.tone. Historical RGB values are transform references, not direct final fills."
+    },
+    "copy_matches_project_applet_tree": true
+  },
+  "matrix": {
+    "baseline": "DomainOS-SR10-4",
+    "neutral": "BreezeClassic",
+    "dark": "BreezeDark",
+    "yellow_fixture": "Yellow-QA-Fixture",
+    "restored": "DomainOS-SR10-4",
+    "screenshots": [
+      {
+        "key": "domainos_baseline",
+        "scheme": "DomainOS-SR10-4",
+        "description": "baseline from the integrated KWin/Plasma containment",
+        "scheme_file": "/home/lsi/tempia/domainos-v09-kde-session-20261014/data/color-schemes/DomainOS-SR10-4.colors",
+        "scheme_file_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+        "capture_sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+        "dimensions_px": [
+          971,
+          109
+        ],
+        "scale": "1:1, no resampling",
+        "changed_pixels_vs_domainos_baseline": 0,
+        "changed_bbox_xyxy_half_open": null,
+        "sample_rgb": {
+          "chassis_face_xy_10_100": [
+            122,
+            202,
+            197
+          ],
+          "pager_cell_xy_810_50": [
+            25,
+            75,
+            99
+          ],
+          "bottom_strip_xy_947_100": [
+            62,
+            83,
+            110
+          ]
+        }
+      },
+      {
+        "key": "neutral",
+        "scheme": "BreezeClassic",
+        "description": "neutral/light scheme; cold-started shell",
+        "scheme_file": "/home/lsi/tempia/domainos-v09-kde-session-20261014/data/color-schemes/BreezeClassic.colors",
+        "scheme_file_sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca",
+        "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-BreezeClassic-restarted.png",
+        "capture_sha256": "6acf1d58ed9b198e8213be3a0b2d826fe8a60d3c92f9580d0f05a708a437bfff",
+        "dimensions_px": [
+          971,
+          109
+        ],
+        "scale": "1:1, no resampling",
+        "changed_pixels_vs_domainos_baseline": 104568,
+        "changed_bbox_xyxy_half_open": [
+          8,
+          0,
+          971,
+          109
+        ],
+        "sample_rgb": {
+          "chassis_face_xy_10_100": [
+            232,
+            235,
+            234
+          ],
+          "pager_cell_xy_810_50": [
+            83,
+            93,
+            96
+          ],
+          "bottom_strip_xy_947_100": [
+            120,
+            124,
+            128
+          ]
+        }
+      },
+      {
+        "key": "dark",
+        "scheme": "BreezeDark",
+        "description": "dark scheme; cold-started shell",
+        "scheme_file": "/home/lsi/tempia/domainos-v09-kde-session-20261014/data/color-schemes/BreezeDark.colors",
+        "scheme_file_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+        "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-BreezeDark.png",
+        "capture_sha256": "d327aded2f1bf7bc9a16373cf2768dad95686003935210558039dbc33bff431a",
+        "dimensions_px": [
+          971,
+          109
+        ],
+        "scale": "1:1, no resampling",
+        "changed_pixels_vs_domainos_baseline": 104568,
+        "changed_bbox_xyxy_half_open": [
+          8,
+          0,
+          971,
+          109
+        ],
+        "sample_rgb": {
+          "chassis_face_xy_10_100": [
+            32,
+            36,
+            36
+          ],
+          "pager_cell_xy_810_50": [
+            12,
+            14,
+            14
+          ],
+          "bottom_strip_xy_947_100": [
+            17,
+            18,
+            19
+          ]
+        }
+      },
+      {
+        "key": "yellow",
+        "scheme": "Yellow-QA-Fixture",
+        "description": "private artificial yellow scheme; captured after panel layout stabilized",
+        "scheme_file": "/home/lsi/tempia/domainos-v09-kde-session-20261014/data/color-schemes/Yellow-QA-Fixture.colors",
+        "scheme_file_sha256": "0a56eacd6858dda8eb2b91fbbbff1e97febfcf116053b7a87f8c1b4d89443cde",
+        "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-Yellow-QA-Fixture-stable.png",
+        "capture_sha256": "e2d154f6dfc2bfbb29524a224fe140146443505de3ba778414191d517c4b707f",
+        "dimensions_px": [
+          971,
+          109
+        ],
+        "scale": "1:1, no resampling",
+        "changed_pixels_vs_domainos_baseline": 104967,
+        "changed_bbox_xyxy_half_open": [
+          8,
+          0,
+          971,
+          109
+        ],
+        "sample_rgb": {
+          "chassis_face_xy_10_100": [
+            226,
+            69,
+            23
+          ],
+          "pager_cell_xy_810_50": [
+            95,
+            58,
+            0
+          ],
+          "bottom_strip_xy_947_100": [
+            101,
+            90,
+            31
+          ]
+        }
+      },
+      {
+        "key": "domainos_restored",
+        "scheme": "DomainOS-SR10-4",
+        "description": "restored private XDG scheme; shell and panel live",
+        "scheme_file": "/home/lsi/tempia/domainos-v09-kde-session-20261014/data/color-schemes/DomainOS-SR10-4.colors",
+        "scheme_file_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-DomainOS-restored.png",
+        "capture_sha256": "5a3aabebab491c2cc7c68c8f77cd49308d8aa2f13fa0749301868b765eea21ce",
+        "dimensions_px": [
+          971,
+          109
+        ],
+        "scale": "1:1, no resampling",
+        "changed_pixels_vs_domainos_baseline": 535,
+        "changed_bbox_xyxy_half_open": [
+          47,
+          20,
+          900,
+          100
+        ],
+        "sample_rgb": {
+          "chassis_face_xy_10_100": [
+            122,
+            202,
+            197
+          ],
+          "pager_cell_xy_810_50": [
+            25,
+            75,
+            99
+          ],
+          "bottom_strip_xy_947_100": [
+            62,
+            83,
+            110
+          ]
+        }
+      }
+    ]
+  },
+  "result": "The real integrated panel changed across neutral, dark and yellow schemes while retaining the same panel geometry and applet tree. DomainOS-SR10-4 was restored in the private XDG config; the final capture has the baseline palette colors. The final full crop differs by 535 pixels from the initial crop, consistent with changing live panel contents; this is not used as evidence of a palette failure or exact frame identity.",
+  "capture_caveat": "The first Yellow-QA-Fixture crop was uniformly black during containment reconstruction and is excluded. The stable capture listed above was taken after the real panel settled. Palette switches were cold-started in the private session because the live QML refresh was not reliable in this harness.",
+  "limits": [
+    "This proves only the current integrated panel applet responds to these four selected schemes.",
+    "No assertion about all visual states, other toolkits, historical equivalence, transient Apollo LED/Pager behavior, or user visual approval.",
+    "Pager remains two visible cards with navigation; Q355 is still awaiting the user preference."
+  ],
+  "isolation": {
+    "private_xdg_root": "/home/lsi/tempia/domainos-v09-kde-session-20261014",
+    "personal_kdeglobals_sha256_after": "a782395a440fd67f3d10022dc1b1ba64ec874516cdfad460b397f089e138de17",
+    "personal_kdeglobals_sha256_before": "a782395a440fd67f3d10022dc1b1ba64ec874516cdfad460b397f089e138de17",
+    "personal_kde_config_changed": false,
+    "vm_input_sent": false,
+    "other_ai_T04_touched": false,
+    "product_source_changed": false,
+    "private_xdg_scheme_restored": true
+  },
+  "next": "Keep DomainOS-SR10-4 selected in private XDG. Await Q355 before changing Pager composition; Apollo LED transition still needs a responsive existing VM bridge."
+}

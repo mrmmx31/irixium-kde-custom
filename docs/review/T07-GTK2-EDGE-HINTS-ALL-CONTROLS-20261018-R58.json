@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-EDGE-HINTS-ALL-CONTROLS-20261018-R58",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "partial_failure",
+  "purpose": "Exercise GTK2 native delayed hints for all 16 catalogued control types at four screen positions and expose edge-specific failures.",
+  "environment": {
+    "xephyr": ":81",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "gtk2": "2.24.33",
+    "theme": "Default, Sans 10, isolated HOME/XDG",
+    "isolated_home": "~/tempia/t07-gtk2-all-controls-edges-20261018/",
+    "host_settings_changed": false
+  },
+  "criteria": {
+    "cold_native_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen": true,
+    "no_control_overlap": true,
+    "closed_after_leave": true
+  },
+  "matrix": {
+    "control_types": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "positions": [
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ],
+    "total": 64,
+    "passed": 63,
+    "failed": 1,
+    "failure": {
+      "corner": "tl",
+      "control": "progress",
+      "attempts": 4,
+      "passed": 0,
+      "failed": 4,
+      "diagnostic": "probe reports control rect (440,240,120,36), pointer (500,258), visible gtk-tooltip window remains unmapped; query callback fired in behavior-neutral instrumentation. Cause not isolated."
+    }
+  },
+  "direct_diagnostic": {
+    "progressbar_plain_native_tooltip": "passed",
+    "progressbar_with_shared_hint_binder_in_fixed": "passed",
+    "progressbar_with_generated_RC_and_binder": "passed",
+    "interpretation": "GTK2 ProgressBar can show a hint; the unresolved failure is limited to the generated NativeSession/probe path at the top-left position. No product fix is justified until that path is isolated."
+  },
+  "recheck": {
+    "case": "GTK2 progress, top-left",
+    "attempts": 3,
+    "passed": 0,
+    "failed": 3
+  },
+  "source_sha256": {
+    "probe_gtk_hint_hover.py": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "control_hints.py": "1f35d9adcbe661f35687f43b730ca909341bebae5cd5189f6572c22d9b79b07c",
+    "gtk2_hint_position.py": "bf248ce96571ebed887a23c7ee5869e431a464766b30ba699490aa182b736e17"
+  },
+  "results_sha256": {
+    "full_matrix": "431a9a0ba3fe8d81b6898521bb643a894209fb5820b56d069f3a70e762a576ef",
+    "progress_recheck": "ef9988b0700276de9d36030f4ccfedae4da16392bb326f798e296aa3fbc68584"
+  },
+  "limitations": [
+    "One GTK2 generated-scene control/position remains reproducibly failing.",
+    "No source or theme code changed during this round.",
+    "Does not prove GTK2 historical visual fidelity, alternate palettes, or human acceptance."
+  ],
+  "artifacts": "~/tempia/t07-gtk2-all-controls-edges-20261018/"
+}

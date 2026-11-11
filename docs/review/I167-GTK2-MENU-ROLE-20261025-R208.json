@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-MENU-ROLE-20261025-R208",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "mame_pid": 274368,
+    "application_state": "Help Viewer File menu open; captured earlier in R163",
+    "capture": "~/tempia/ia-tema/evidence/I167/i167-after-alt-f-seq-r163.png",
+    "capture_sha256": "a0680788766cd93b43540d250e9b622c9e96f01f84a7b7d38a4f4107ea5a4c62",
+    "menu": {
+      "strip_face": "#e29c83",
+      "popup_face": "#e29c83",
+      "menu_strip_height_px": 30,
+      "popup_height_px_approx": 55,
+      "labels": ["File", "Print", "Exit"]
+    }
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "preview": "native GtkMenuBar and GtkMenu, isolated Xvfb, same File/Print/Exit labels",
+    "preview_capture": "~/tempia/ia-tema/evidence/I167/r208/gtk-menu.png",
+    "preview_sha256": "668d55448618310dcad2aa8d275bf7ceb8c48e24e0c0a4d089dee9a4e274ab35",
+    "private_script": "~/tempia/ia-tema/evidence/I167/r208/gtk-menu.py",
+    "rc_source": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "rc_source_sha256": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+    "current_class_mapping": "GtkMenuBar, GtkMenu, and GtkMenuItem inherit domainos-header",
+    "menu_face": "#3297c7",
+    "menu_foreground": "#ffffff",
+    "menu_strip_height_px": 30,
+    "popup_height_px_approx": 54
+  },
+  "palette": {
+    "source": "Native KColorScheme reader using the user's selected ~/.config/kdeglobals; read-only",
+    "source_capture": "~/tempia/ia-tema/evidence/I167/r208/colors.json",
+    "source_sha256": "1ab4087820db4862aa890932db63d3af772472bed978202d9032b9374bfd7e57",
+    "kdeglobals_sha256": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+    "roles": {
+      "Header/BackgroundNormal": "#3297c7",
+      "Header/ForegroundNormal": "#ffffff",
+      "Button/BackgroundNormal": "#78a0d5",
+      "Window/BackgroundNormal": "#78a0d5",
+      "View/BackgroundNormal": "#6688b5",
+      "Button/DecorationFocus": "#fe8282"
+    },
+    "dynamic_update_verified_in_this_step": false
+  },
+  "comparison": {
+    "geometry": "Menu strip heights were both 30 px; popup totals were approximately 55 px in VUE and 54 px in GTK2. These allocations are close for this sample, not a universal toolkit metric.",
+    "appearance": "The VUE menu uses a warm peach face (#e29c83); the current GTK2 menu uses the dynamic Header role value (#3297c7). This is a substantial hue difference despite similar geometry.",
+    "candidate_decision": "Do not add a fixed peach RGB or choose another semantic role by nearest-pixel alone. Investigate VUE menu color-set/resource mapping and compare supported KDE role candidates before changing the GTK2 menu recipe.",
+    "font_scope": "VUE and GTK2 label fonts differ; no font mapping was changed or claimed."
+  },
+  "limits": [
+    "The GTK2 capture loads the repository RC source, whose menu roles are Header; the native KColorScheme snapshot confirms the current Header values but this step does not exercise the installed palette-reload lifecycle.",
+    "The VUE screenshot shows one Help Viewer menu state and does not prove all application menus or disabled/hovered rows.",
+    "No product theme, user profile, XChat window, guest configuration, VM original, performance setting, or non-work board section changed.",
+    "The black guest screen was awakened by the existing one-frame virtual Shift pulse; this does not prove physical SDL mouse capture behavior."
+  ],
+  "next": "Read the VUE menu resource/color-set evidence and compare supported dynamic KDE roles for this menu class. Keep the issue open if no semantically supported role can represent the CoralReef menu face; no static final RGB.",
+  "product_source_changed": false,
+  "user_profile_changed": false,
+  "xchat_changed": false,
+  "vm_guest_changed": false,
+  "vm_profile_changed": false,
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

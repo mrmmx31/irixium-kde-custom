@@ -1,0 +1,118 @@
+{
+  "item": "T07",
+  "revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "round": "R52",
+  "scope": "Dicas nativas das barras horizontal e vertical do ScrollView nas galerias de teste QtQuick5/QtQuick6; nenhuma alteração na pintura ou paleta do produto.",
+  "implementation": {
+    "file": "plasma/tests/galerias-nativas/qtquick_demo.py",
+    "sha256": "502af6357763b9aa601490984fd31dc76b68b69f5dd1a665a83ae7bb91094121",
+    "behavior": "Cada ScrollBar recebe hoverEnabled, ToolTip nativa com atraso 750 ms, timeout 6000 ms, texto por orientação e objectName exclusivo por versão."
+  },
+  "environment": {
+    "display": ":86",
+    "resolution": "1280x800",
+    "isolation": "Xephyr própria e execução bwrap com HOME/XDG/DBus privados; sem acesso ao perfil pessoal",
+    "platform": "xcb",
+    "style": "org.kde.desktop QML observado",
+    "palette_override": false,
+    "palette_observed": {
+      "Window": "#efefef",
+      "Base": "#ffffff",
+      "Button": "#efefef",
+      "Highlight": "#308cc6"
+    },
+    "palette_limit": "O runtime reportou a paleta Qt padrão/Fusion, não a paleta KDE DomainOS. Esta execução verifica interação e posição das dicas, não cores nem fidelidade visual."
+  },
+  "results": {
+    "qtquick5": {
+      "qt_version": "5.15.15",
+      "matrix_status": "passed",
+      "hovered_targets": 23,
+      "disabled_targets_excluded": 7,
+      "failures": [],
+      "targets": [
+        {
+          "name": "qtquick5_scrollViewVertical",
+          "tooltip": "Barra vertical nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 700,
+          "stable_ms": 400,
+          "closed_ms": 150,
+          "owner_rect": [318, 215, 14, 200],
+          "tooltip_rect": [316, 166, 250, 46]
+        },
+        {
+          "name": "qtquick5_scrollViewHorizontal",
+          "tooltip": "Barra horizontal nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 550,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [318, 215, 200, 14],
+          "tooltip_rect": [316, 166, 250, 46]
+        }
+      ],
+      "output": "~/tempia/t07-qtquick-scrollview-20261018/qt5-diag/home/qtquick5-proof/FULL-HOVER-MATRIX.json",
+      "output_sha256": "363a235dde5c17c98fd677209fdbd5c4efd50b3c4615ba58bf85c7b4e8a9a346",
+      "generated_qml_sha256": "b497fc226529d5f084a8dc8e0095e09fc7d1b5aee0bf61098d09bf0a3e803ce7"
+    },
+    "qtquick6": {
+      "qt_version": "6.8.2",
+      "matrix_status": "targeted_scrollview_pass; overall runner rejected partial matrix coverage",
+      "hovered_targets": 7,
+      "failures_in_matrix": [],
+      "runner_limit": "O runner exige pelo menos 8 alvos para declarar a matriz completa; somente 7 foram atingidos. Por isso não se declara a matriz QtQuick6 completa nesta rodada.",
+      "targets": [
+        {
+          "name": "qtquick6_scrollViewVertical",
+          "tooltip": "Barra vertical nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 650,
+          "stable_ms": 400,
+          "closed_ms": 150,
+          "owner_rect": [318, 216, 14, 54],
+          "tooltip_rect": [316, 167, 249, 46]
+        },
+        {
+          "name": "qtquick6_scrollViewHorizontal",
+          "tooltip": "Barra horizontal nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 650,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [318, 216, 54, 14],
+          "tooltip_rect": [316, 167, 237, 46]
+        }
+      ],
+      "output": "~/tempia/t07-qtquick-scrollview-20261018/qt6-scroll/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+      "output_sha256": "fe7487077951b65855fdb08c592b2e8897b295b29fcccf7609e6a59de012a203",
+      "generated_qml_sha256": "cd213ad6c4ce5d03c30e4e8a050fbc95c99d1c9271136ecd530c78519e9417cf",
+      "qml_warnings": [
+        "KDE TabButton.qml:22 reports a null y property in the gallery; this warning was not traced to R52 and does not invalidate the two target observations."
+      ]
+    }
+  },
+  "method": {
+    "checks": [
+      "No tooltip at 300 ms after pointer movement.",
+      "Native tooltip appears after delay, with expected text.",
+      "Tooltip position and owner geometry are recorded; stability observed for 400 ms.",
+      "Tooltip closes after pointer leaves."
+    ],
+    "not_checked": [
+      "Manual visual approval.",
+      "KDE color-scheme propagation or historical Domain/OS visual fidelity.",
+      "Full QtQuick6 matrix coverage, all controls/layouts, or other palettes.",
+      "Scrolling action while the tooltip is open."
+    ],
+    "scripts": [
+      {
+        "path": "~/tempia/t07-qtquick-scrollview-20261018/probe_diagnostics.py",
+        "sha256": "0aa31635b7c04898e9e75b4be951105c58d9112ffd42b22be191d36bd9b2d405"
+      },
+      {
+        "path": "~/tempia/t07-qtquick-scrollview-20261018/run_custom_qtquick_probe.py",
+        "sha256": "76beb07f8ca1ec8145dfcefbb7f651b7cbb97f238975134a832497182ddf76d3"
+      }
+    ],
+    "code_change_record": "Work Board T07 revision 4: one-file Before/After content verified; changes-diff matched the recorded patch. scripts-record preserved the previous 20 scripts and verified both new script texts (22 total)."
+  },
+  "status": "partial; T07 remains running"
+}

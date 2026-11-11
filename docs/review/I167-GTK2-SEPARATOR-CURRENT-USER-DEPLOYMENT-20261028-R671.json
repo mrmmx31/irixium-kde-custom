@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "R671",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Deploy the current GTK2 palette renderer for the user lsi, regenerate only through the existing companion synchronization, and verify the active GTK2 profile and RC reload dispatch.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "actions": {
+    "preflight": "Current companion installation fingerprint verified; journaled user-only installer dry-run returned ready.",
+    "install": "python3 tools/theme_companion_bridge.py --instalar; backup /home/lsi/.local/state/irixium-theme-companions/installation/backups/601d20adfbef427ab37f7f8a2d73995c",
+    "service": "Restarted only irix-theme-companions.service; active afterward with PID 1275437.",
+    "sync": "Observer regenerated GTK2 DomainOS palette from the current KDE export, wrote the active GTK2 theme RC includes, then dispatched GTK2 _GTK_READ_RCFILES."
+  },
+  "inputs": {
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "user_profile": {
+      "path": "/home/lsi/.gtkrc-2.0",
+      "sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192"
+    },
+    "selected_theme_rc": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "sha256": "32a4add9af1f73570c293f33c2339e205e14d4ac888c4f0bb85a114e7fcdc821"
+    },
+    "xdg_selected_theme_rc": {
+      "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "sha256": "32a4add9af1f73570c293f33c2339e205e14d4ac888c4f0bb85a114e7fcdc821"
+    },
+    "source_renderer": {
+      "path": "/home/lsi/irixium-kde-custom/tools/gtk2_domainos_palette.py",
+      "sha256": "ff39a0849a59cd7d09e3b0a66736e9d9a5a33b4ae01ca74e250689840694755a"
+    },
+    "installed_renderer": {
+      "path": "/home/lsi/.local/share/irixium/theme-companions/tools/gtk2_domainos_palette.py",
+      "sha256": "ff39a0849a59cd7d09e3b0a66736e9d9a5a33b4ae01ca74e250689840694755a",
+      "matches_source": true
+    },
+    "active_palette_state": {
+      "path": "/home/lsi/.local/state/irixium-gtk2-palette/active.json",
+      "sha256": "c8130043582211406936839dc90c21414963d3ccfe10cc2db7cb84f2dbf612f1"
+    },
+    "palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+    "palette_gtkrc": {
+      "path": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755/gtkrc",
+      "sha256": "ae6248addb5d3bd3770bb5020ffbe0e2aa114836fea4b03b881b4d95b10d81ae"
+    },
+    "palette_manifest": {
+      "path": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755/manifest.json",
+      "sha256": "565e5c9095e5ae86df516b819c55a502dcc74af8b5412e42af9e6c4a49d4b0ee"
+    },
+    "active_colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70"
+  },
+  "result": {
+    "normal_horizontal_trough_rule": "function = BOX  state = NORMAL  detail = \"trough\"  orientation = HORIZONTAL  file = \"assets/scroll-trough-normal-horizontal.png\"  border = { 5, 5, 2, 2 }  stretch = TRUE }",
+    "normal_vertical_trough_rule": "function = BOX  state = NORMAL  detail = \"trough\"  orientation = VERTICAL  file = \"assets/scroll-trough-normal-vertical.png\"  border = { 2, 2, 5, 5 }  stretch = TRUE }",
+    "pressed_horizontal_trough_rule": "function = BOX  state = ACTIVE  detail = \"trough\"  orientation = HORIZONTAL  file = \"assets/scroll-trough-pressed-horizontal.png\"  border = { 4, 4, 2, 2 }  stretch = TRUE }",
+    "gtk2_reload_dispatch": {
+      "status": "sent",
+      "windows_considered": 131,
+      "events_sent": 131,
+      "racing_x_errors": 0
+    },
+    "gtk2_palette_status": "updated",
+    "theme_selection_preserved": true,
+    "applications_restarted": false,
+    "service_active": true,
+    "renderer_installed_matches_current_source": true
+  },
+  "related_service_behavior": {
+    "gtk4_palette": "The existing observer also reported gtk4_palette status reloaded with receipt null on startup; a subsequent reconciliation reported unchanged. This was the companion service startup behavior, not a GTK4 design edit."
+  },
+  "limits": [
+    "The reload dispatch result proves XSendEvent delivery, not that every live window visibly repainted.",
+    "No fresh personal-app screenshot or human acceptance is claimed.",
+    "No VM input was sent; I517 remains the separate gate for held/released historical interaction."
+  ],
+  "next": "The user can inspect the now-regenerated GTK2 separator in an open GTK2 application. Continue the GTK2 historical held-state review only after I517 authorization; preserve current geometry.",
+  "technical_coverage_estimate": {
+    "percent": 95,
+    "basis": "The R582 separator renderer is now installed for user lsi, the selected profile includes the regenerated 5px NORMAL caps in both orientations, and a GTK2 reload event was dispatched to 131 top-level windows. Visible repaint and remaining historical state acceptance are not established. This is not a fidelity score."
+  }
+}

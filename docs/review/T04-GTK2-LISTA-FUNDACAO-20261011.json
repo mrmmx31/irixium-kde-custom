@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-11T17:59:29.995757+00:00",
+  "status": "foundation_verified",
+  "control": "list",
+  "family": "gtk2",
+  "native_result": ".qa-t04-list-foundation/native-verified/RESULTADO.json",
+  "native_controls": 24,
+  "pure_tests": 3,
+  "source_sha256": {
+    "tools/theme-lab/gtk2_lists.py": "5190109b0b25a2412299ea456a607f1353b4bbe9915edc8ae75e45ae6acdc6f6",
+    "tools/theme-lab/tests/test_gtk2_list_paint.py": "b08161ffca597965c0c7214275640f76e03646a54d7a3deb578b159a5e77755b",
+    "tools/theme-lab/tests/probe_gtk2_list.py": "2969a8a0a7024af139023a1ee79124ff728d8bc6ad46eec78c6fad89647c4301"
+  },
+  "scope": "Real GtkTreeView/GtkScrolledWindow, four palettes, normal/disabled/explicit backdrop, coupled/separate; actual view/selection pixels, allocation, selection by keyboard and two-axis scrolling. Cell separators/font are proposals. Shadow scoped to enclosure only. ACTIVE selected rows without focus use KDE selection roles.",
+  "limits": [
+    "Not integrated generation/scene/session/controller; coverage stays14/16.",
+    "Scrollbar masks are not loaded in this standalone foundation; native fallback arrows visible in capture, awaiting existing range pipeline integration.",
+    "No historical fidelity certification or forced-focus proof.",
+    "Disabled selected row uses native insensitive view background."
+  ],
+  "visual_inspection": ".qa-t04-list-foundation/native-verified/DomainOS/separate-normal.png inspected: flat cells, selection, sunken enclosure; fallback scrollbar excluded from foundation claim.",
+  "failed_attempts": [
+    "GI size_request requires GtkRequisition output; fixture corrected.",
+    "GI GtkStyle arrays cannot be safely introspected; replaced with actual pixel comparison.",
+    "Gdk.get_origin requires output arguments; fixture uses widget translation.",
+    "Actual selection without focus uses ACTIVE; renderer role mapping corrected, affected matrix repeated."
+  ]
+}

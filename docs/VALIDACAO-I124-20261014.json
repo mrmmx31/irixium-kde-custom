@@ -1,0 +1,54 @@
+{
+  "item": "I124",
+  "user_revision": 2,
+  "scope_sha256": "3da33e9eb1c91753b3f22e4836ef574d5d60c059a3e99db91489e3e2dbe7180d",
+  "checked_at": "2026-10-14T04:22:10Z",
+  "scope": "Recoverable Theme Lab project progress, separate from Work Board answers/SQLite/locale/interface data",
+  "build": {
+    "directory": "/home/lsi/tempia/board/i124-private-build-20261014",
+    "controller_probe_sha256": "7db7f7829f7334baee17537573b172e46720f09d03a1d614e2a2a0d4d0a564e0",
+    "flags": "-O2 -g -std=c99 -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700"
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/model/project_history.c": "5c4d18528e02d5651ca338e10908a2e9d88869e9e902e95d68a3165a0ea90f61",
+    "tools/theme-lab/src/persistence/project_history_store.c": "7729a7ba472779968996a1cf8af714dbda6f1bff5b1d0a90ea1103a5fbb23ef7",
+    "tools/theme-lab/src/controller/project_session.c": "ddb24d5cde4d2ec92de063e58f6c8d3baf5e0a9414d9251332e125a9321b31e8",
+    "tools/theme-lab/src/controller.c": "5af778f88a5b5d93b86b574b163f157ffb338c9afed57a819698b7b837491ed7",
+    "tools/theme-lab/tests/project_history_test.c": "5622127f88492e4a719f3664f8fd036183c1b60c3af8d3c8e551fd392a0c5477",
+    "tools/theme-lab/tests/project_history_store_test.c": "dcf2eb3c653b77dc85cdc48418410008f0fccdedb14e91f9220cc22255f33f84",
+    "tools/theme-lab/tests/project_session_test.c": "2ebb3cb7875ec170cc0c0f6b99dfd42e1f27c22a8db4bd22cfd92ab82c02f758",
+    "tools/theme-lab/tests/test_controller_spin.py": "6e7504efb6ec069bd121724bf3896bbf815ed19ae6998fe53a539087f826d088",
+    "tools/theme-lab/Makefile": "0a3865a5629a8573a8a2cd80bbd09b04a7db4026bafed26e0384078b88631ae3"
+  },
+  "tests": {
+    "check-project-history": "passed",
+    "check-project-history-store": "passed",
+    "check-project-session": "passed",
+    "check-project-history-controller": {
+      "status": "passed",
+      "isolated_environment": "Xvfb + user/network namespaces + bwrap; synthetic project fixture",
+      "result_sha256": "e5559d29bc924db6c4ebe8b167ca9cc979d555bdcca13eb85cdb196049a1dae4",
+      "screenshot_sha256": "db4a1d3e8a843443e40f50bde37e5227b38bc5b54d0d9078c9f0130199c5036f"
+    }
+  },
+  "verified_behaviors": [
+    "UTF-8 history and project recovery",
+    "multistep Undo/Redo and independent comparison checkpoint",
+    "atomic store, CAS conflict and busy lock",
+    "write failure and corruption preserve existing state",
+    "controller actions are transactional and do not change the scene before Apply",
+    "project keyboard shortcuts remain separate from text-editor Undo/Redo"
+  ],
+  "separation_and_limits": [
+    "project-history.json remains separate from editor-journal.json and Work Board responses/SQLite/locale/interface data",
+    "tests use a synthetic project and private display; no personal draft, response or authorization was read or changed",
+    "no VM or Xephyr :61 interaction occurred",
+    "this confirms technical behavior, not human acceptance or historical visual fidelity"
+  ],
+  "coordination": {
+    "Q165": "closed at user revision 2; the joint inventory/migration/transfer calculation remains a separate future proposal",
+    "I166": "not modified"
+  },
+  "technical_progress_percent": 100,
+  "basis": "All four I124-specific model/store/session/controller test targets passed against the current source hashes; human evaluation remains separate."
+}

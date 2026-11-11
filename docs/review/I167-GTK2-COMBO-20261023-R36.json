@@ -1,0 +1,50 @@
+{
+  "item": "I167",
+  "revision": "R36",
+  "checked_at_utc": "2026-10-23T00:32:00Z",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true
+  },
+  "family": "GTK2 ComboBox popup and option-menu indicator",
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "popup_capture": "~/tempia/domainos-vue-study/captures/2026-10-14/mame-vue-filemanager-view-open-20261014.png",
+    "popup_capture_sha256": "68471382253454fd5da61f853807e4c43ef0a3096a9053c88c0ec9f3ddd5b602",
+    "indicator_receipt": "docs/review/I167-GTK2-COMBO-20261022-R35.json",
+    "interpretation": "The VUE popup uses the Header/menubar surface for normal rows and the active row. Its active New row has a raised two-pixel outline. Window and Selection were incorrect assumptions in R35."
+  },
+  "change": {
+    "summary": "Corrected the native probe to evaluate the popup shell against the selected GTK2 recipe's adjustable light factor and the current backdrop Header role. It had compared generated output against the factory Motif factor, although the active recipe intentionally uses a different factor. No final RGB values were added.",
+    "files": {
+      "tools/theme-lab/gtk2_combos.py": "aa3e297943f058f91e9b15c248a0c161fe38971733702baffd8280654cfc768d",
+      "tools/theme-lab/tests/probe_gtk2_combo_scene.py": "9919bb65bbf9174bf8389c0d2ffee44f893aa33e296c9af5f43ea9d15ea4d2fc"
+    }
+  },
+  "validation": {
+    "focused_tests": "7 GTK2 ComboBox integration tests passed.",
+    "native_matrix": "24 scenes passed: four palettes (DomainOS, BreezeLight, BreezeDark, TestYellow), normal/disabled/backdrop states, coupled and separate native GTK2 previews. Geometry stayed 260x44; sample text, font, sensitivity, track role, popup row role and effective shell relief were checked.",
+    "popup_roles": "Normal and highlighted row samples followed Header for each active palette/state; the backdrop followed the effective backdrop Header role. The shell check used the selected recipe factor, not the factory default.",
+    "interactions": "Two gesture scenes passed (coupled and separate): Ctrl selection/drag, opening and selecting a popup row, native wheel, repeated keyboard/button path checks, and model preservation.",
+    "indicator": "R35 direct comparison remains valid for the unchanged 14x8 marker: 0 differences in 112 pixels against the SR10.4 option-menu crop.",
+    "py_compile": "passed for gtk2_combos.py and probe_gtk2_combo_scene.py.",
+    "git_diff_check": "passed for the scoped source/test paths."
+  },
+  "artifacts": {
+    "matrix_directory": "~/tempia/i167-combo-r53/",
+    "matrix_result_sha256": "d8e184ea6b61a14ac24338aedc0d0652fdf087ee065761eeec31382a76a512f5",
+    "domainos_popup_sha256": "26d67171dbfb1ef36a17d38b30a1f16698f633d2a1a4e7e804daa0750b024309",
+    "gesture_directory": "~/tempia/i167-combo-r51/",
+    "gesture_result": "~/tempia/i167-combo-r51/DomainOS/RESULTADO.json",
+    "gesture_result_sha256": "0cbde3d09de0338ee947e628e0a4662758ab105cf96cb710c72dca8dfb0e9cab"
+  },
+  "limits": [
+    "This closes only the GTK2 ComboBox comparison step, not I167 or the GTK2 family.",
+    "The preview uses the selected adjustable recipe factor; exact historical relief therefore depends on the chosen factor. The tests do not declare user approval.",
+    "The public Theme Lab route and personal XChat session were not changed. No profile or VM state was changed.",
+    "Other GTK2 controls and the observed pressed/released comparisons remain in the active I167 queue.",
+    "The probe fixture uses adjustable recipe light=0.56, producing #a5d1e6 for the normal Header bevel; the archived VUE light token is #a3d0e6 (the base Header plan is 0.55). This small visible-rule difference is reported rather than hidden by changing a shared factor or baking in RGB."
+  ],
+  "next": "Continue the same authorized I167 in the next GTK2 control family from the visual queue. Preserve this ComboBox result and do not apply the partial theme to XChat."
+}

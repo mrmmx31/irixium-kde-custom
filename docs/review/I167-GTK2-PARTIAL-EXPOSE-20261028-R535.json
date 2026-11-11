@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "R535",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-engine-partial-repaint-proven-normal-state;interaction-state-and-vm-review-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 private engine partial-expose and resize investigation. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "initial_capture_px": [200, 100],
+    "resized_window_px": [260, 140],
+    "resized_capture_px": [280, 160],
+    "engine": "private R535 GtkStyle engine prototype",
+    "palette_fixture": "The archived RC contains fixed fixture colors solely to isolate repaint mechanics; palette-role behavior was not tested.",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "vm_input_sent": false,
+    "other_mame_instance_touched": false
+  },
+  "findings": {
+    "partial_repaint": "For each of the four normal-state 15x15 stepper cells, a deliberate one-pixel change in its outer area was observed in the GTK2 expose event. The after-expose handler restored the affected pixel; each cell moved from 1/225 changed pixels to 0/225 against its baseline.",
+    "initial_geometry": {
+      "horizontal_left": [2, 0],
+      "horizontal_right": [183, 0],
+      "vertical_up": [92, 22],
+      "vertical_down": [92, 57]
+    },
+    "resize": "A full expose after resizing updated cached cell positions to H-left (2,0), H-right (243,0), V-up (122,22), V-down (122,57). All four normal cells exactly matched their existing 15x15 assets before and after the partial-damage checks; each post-resize one-pixel damage returned to 0/225 in its cell.",
+    "input": "The R521 input probe was run with R535 loaded. Its eight cases passed: interior movement, blocked endpoints, and globally insensitive horizontal/vertical ranges. The GTK2 debug trace includes R535 style and after-expose callbacks.",
+    "r534_relation": "R534 remains an accurate record of the separate harness experiment and its then-pending engine integration. R535 supersedes only that engine-integration limitation; it does not prove interaction-state rendering or historical/visual acceptance."
+  },
+  "limits": [
+    "Only normal-state appearance and partial repaint were pixel-verified. The input probe does not validate hover, pressed, release, endpoint appearance, or globally insensitive appearance.",
+    "Independent source review found that GTK2 computes PRELIGHT/ACTIVE per stepper; R535 caches state from draw callbacks and can redraw a stale normal asset over a hovered or pressed stepper.",
+    "The cache is not explicitly invalidated when stepper configuration removes a direction. Repeated PNG loads during expose also remain a performance concern.",
+    "The RC's fixed fixture colors are not a product palette and provide no evidence that the theme follows current KDE color roles.",
+    "No fresh Domain/OS SR10.4/HP VUE 2.01 comparison, live user-application comparison, package integration, installation, or human visual acceptance was performed."
+  ],
+  "artifacts": {
+    "record": "records/ia-tema/experiments/i167-r535-engine-expose/",
+    "pixel_verifier": "records/ia-tema/experiments/i167-r535-engine-expose/verify_pixels.py",
+    "previous_engine_baseline": "records/ia-tema/experiments/i167-r525-endpoint-clip/r525-engine.c",
+    "previous_repaint_diagnostic": "docs/review/I167-GTK2-PARTIAL-EXPOSE-20261028-R534.json"
+  },
+  "next": "In a separate private prototype, make repaint state-specific for each stepper, invalidate absent/stale cells, cache assets instead of reopening PNGs on each draw, then test hover/pressed/release/disabled transitions and repeat endpoint input blocking. Keep the installed theme unchanged; obtain SR10.4 visual comparison only from this project's VM under its coordination rules."
+}

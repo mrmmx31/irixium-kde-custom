@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-16T09:16:34+00:00",
+  "item": "T01",
+  "user_revision": 9,
+  "definition_sha256": "652e5e5cba17c3b4fd773a6da8c0a0a226441840045a5d2fcca6be546764b0f3",
+  "phase": "technical_revalidation_passed_waiting_manual_review",
+  "scope": "Concluir métricas e tamanho por controle em Motif/GTK3; diferenciar automático, mínimo e personalizado, mantendo escala 1:1.",
+  "checks": {
+    "build_c11_wall_wextra_werror": "passed",
+    "native_motif_metrics_view": "passed; real widgets, allocation and hint coverage",
+    "gtk3_native_metrics": "2 tests passed; coupled and detached native previews",
+    "controller_spin_probe": "passed; requested dimensions, manual/automatic, selection/undo/redo and scene restart",
+    "below_native_minimum": "requested 1x1; Motif+GTK allocated 70x30",
+    "automatic_size": "requested 0x0; Motif+GTK allocated 70x30",
+    "native_scale": "1:1"
+  },
+  "warnings": [
+    "Motif private Xvfb reports missing font/charset warnings; typography fidelity is not proved.",
+    "This is technical evidence only; no human visual approval is recorded."
+  ],
+  "remaining": [
+    "Manual review of current T01 preview and any requested adjustments.",
+    "T01 stays open; do not infer fidelity approval from test results."
+  ],
+  "human_approval_filled": false,
+  "technical_validation_percent": 100,
+  "estimated_item_progress_percent": 95,
+  "percentage_basis": "Automated/native metrics and controller checks pass; final user visual review remains.",
+  "test_log": "/home/lsi/tempia/t01-revalidation/test-rerun.log",
+  "private_session_modified": false,
+  "mame_modified": false,
+  "hashes": {
+    "tools/theme-lab/Makefile": "f234eddd27fcbce99d175c3cb87d427e778135eb9e31e44d28d3f301ddce3008",
+    "tools/theme-lab/tests/native_metrics_view.c": "a731014a2d75cc463c9e3591bb0e6361c30bfe986e0b3647dc4a2f674017e536",
+    "tools/theme-lab/src/model/code_search.c": "4e9fe2abf97fd07b8c3360fde8238c455267f6347767895aa8899a7484fd1f4d",
+    "tools/theme-lab/src/view.c": "2f8441ea2f871266fa87b55ac6522cf591bffa494ad1eddf0299edae4457b725",
+    "tools/theme-lab/src/native_metrics.c": "2f15d89244675a3d91dd0df1341c40e28ab3e9b929cf930add0eb6f6ab1bb6cc",
+    "tools/theme-lab/preview_gtk.py": "28bf208b4d8dd87d59800ec9b426536b7bfa551bd4fd2d56afef3a3d47021a36",
+    "tools/theme-lab/tests/test_native_metrics.py": "9f6c0578c496ba2a54bbf0a3f7298eb68a3a9a02648259eecc18db823ef521b7",
+    "tools/theme-lab/tests/controller_spin_probe.c": "6d0a8b7507df6f85da33335b1c29237b9187fcbea33ba55f5393e3ebdc4ff8d8",
+    "tools/theme-lab/tests/test_controller_spin.py": "6e7504efb6ec069bd121724bf3896bbf815ed19ae6998fe53a539087f826d088",
+    "/home/lsi/tempia/t01-revalidation/build/native-metrics-view": "c7bb262c8552546e589472afc1ddfee9984812eb01c2d9e252c096205b07e989",
+    "/home/lsi/tempia/t01-revalidation/build/controller-spin-probe": "d1059307cdb686b9f23dd8f41c02056b8ea5380c527ac11b956d4c0ddb178eb7"
+  }
+}

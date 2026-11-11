@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "item": "T08",
+  "title": "Projetos, propostas e exportação verificável",
+  "section": "work",
+  "user_revision": 4,
+  "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+  "technical_status": "passed",
+  "scope": [
+    "Reabrir projeto preservando ajustes, posições, receitas inativas, cena e histórico.",
+    "Separar proposta de aplicação explícita e permitir cancelar importação sem alterar o modelo.",
+    "Importar delta com conferência de base, edição concorrente e Undo.",
+    "Exportar snapshot GTK3 real, comparar proposta e reconstruir arquivos exatos com relatório e origem."
+  ],
+  "evidence": {
+    "integration_result": "/home/lsi/tempia/t08-recheck-20261016/theme-lab-spin-op3k7xhj/RESULTADO.json",
+    "integration_status": "passed",
+    "unit_tests": "34 passed in 2.56s",
+    "test_command": "PYTHONPATH=tools/theme-lab/tests:tools/theme-lab TMPDIR=~/tempia/t08-recheck-20261016/tmp python3 -B -m pytest -q tools/theme-lab/tests/test_proposal_export.py tools/theme-lab/tests/test_project_import.py tools/theme-lab/tests/test_artifact_delta.py tools/theme-lab/tests/test_artifact_reconstruction.py tools/theme-lab/tests/test_preview_runtime_journal.py tools/theme-lab/tests/test_preview_text_history.py",
+    "native_controller": "compiled with -Wall -Wextra -Werror; native project-IO exercise passed in Xephyr :68 using isolated fixture data",
+    "native_reconstruction": "GTK3 snapshot; delta import, cancellation, wrong-base refusal, exact output bytes/report, and base/project/scene preservation passed"
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "e3b128f3d43dc990d6db88d4831c18bf1f667c152d489acb006449a31509c877",
+    "tools/theme-lab/qt6_scrollbar_route.py": "afdd4c380fddef1c8cc4f14596632a288af3c62ae28d68c0dddfa869311039b3",
+    "tools/theme-lab/tests/test_proposal_export.py": "dc2706c39ceedf9b68f25d123557a8491afabd046fc9ad1c50ab66012ce5b0f3",
+    "tools/theme-lab/tests/test_project_import.py": "1b087df590289f43f2d0e78e3461b64dd1b1610407a01aae48f6804663aad7b9",
+    "tools/theme-lab/tests/test_artifact_delta.py": "b0ccf9b661a19961434cff10e7cba83c70a09a7a6534650566c124c9ff3c2e9d",
+    "tools/theme-lab/tests/test_artifact_reconstruction.py": "cde4625b9bf05424cb5e0e20b94d0f8e8343504242193b0cde2d4fea1a91cfb4",
+    "tools/theme-lab/tests/test_preview_runtime_journal.py": "a48d83fb185281a50e574bc7b6cbcc12d43ac9f12dbbe40dee80b4be57336bc1",
+    "tools/theme-lab/tests/test_preview_text_history.py": "b57efc76f19602aa8e71f92be37f84ce5346e1bc97661a6de7554fc08c70861",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "fa18d5fcacde899ad6ff9e4054520ee6b3c27f54e0128c86f0d9c9afaa6e74d1"
+  },
+  "limitations": [
+    "Technical coverage only; no human visual approval is claimed.",
+    "The running Work Board window was not restarted or replaced because PID 1647579 remains active.",
+    "Final personal handoff and review remain pending."
+  ],
+  "next": "Await the user's review of the project reopen/export result; keep T08 open until review and handoff are complete."
+}

@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "T07-MOTIF-UI-HINTS-20261019-R99",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "authorization": "Saved AI Work Board state: section=work, user.authorized=true for T07.",
+  "status": "partial",
+  "scope": "Motif Help content/levels and native hover hints; GTK2/GTK3 hint assignment coverage; four UI color schemes.",
+  "checks": [
+    {
+      "name": "help_topics_test",
+      "status": "passed",
+      "evidence": "10 help topics × 3 distinct UTF-8 levels; invalid indexes rejected."
+    },
+    {
+      "name": "ui_hints_native",
+      "status": "passed",
+      "evidence": "Nine action hints; native delay, bounds, no owner overlap, stability, leave dismissal, cancelled delay."
+    },
+    {
+      "name": "ui_hint_palettes",
+      "status": "passed",
+      "schemes": [
+        "DomainOS",
+        "BreezeLight",
+        "BreezeDark",
+        "TestYellow"
+      ],
+      "evidence": "Hint and help text follow KDE UI roles; preview palette remains isolated; UTF-8 FontSet path exercised."
+    },
+    {
+      "name": "gtk2_factory_hint_assignment",
+      "status": "passed",
+      "native_types": 6,
+      "widgets_with_hint": 13,
+      "limitation": "Assignment and descendants only; no hover timing or pixel claim."
+    },
+    {
+      "name": "gtk3_factory_hint_assignment",
+      "status": "passed",
+      "native_types": 16,
+      "widgets_with_hint": 30,
+      "limitation": "Assignment and descendants only; no hover timing or pixel claim."
+    },
+    {
+      "name": "motif_help_menu_interaction",
+      "status": "failed_unresolved",
+      "evidence": "check-ui-help stops at ui_help_flow.c line 161: the synthetic click on helpCascade does not map helpTopics or the help dialog. Reproduced under Xvfb and on owned Xephyr :83 with Openbox. Diagnostic pointer reached the cascade target; a second synthetic click did not post the menu. Because the automated input route may still differ from user input, this is recorded as an unresolved UI/test issue, not yet a user-observed product failure."
+    }
+  ],
+  "test_harness_change": {
+    "file": "tools/theme-lab/tests/probe_control_hints.py",
+    "change": "Added a no-op bind_text_editor callback to the GTK3 factory owner fixture, matching the current NativeScene.factory contract.",
+    "product_behavior_changed": false
+  },
+  "environment": {
+    "main_desktop": "untouched",
+    "temporary_paths": "~/tempia",
+    "xephyr_used": "owned :83 with Openbox for help-menu diagnosis; existing :74 and other AI sessions preserved"
+  },
+  "limitations": [
+    "Full native help dialog level selection was not reached because the menu did not post in the automation test.",
+    "T07 remains running; this is not a visual fidelity or human acceptance claim."
+  ],
+  "artifacts": [
+    "~/tempia/t07-help-menu-debug-r99/",
+    "~/tempia/t07-help-menu-debug-r100/",
+    "~/tempia/t07-help-menu-debug-r101/"
+  ]
+}

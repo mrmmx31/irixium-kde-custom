@@ -1,0 +1,61 @@
+{
+  "status": "passed_scoped_store_and_private_recovery",
+  "cause_confirmed": {
+    "source_pid": 3153047,
+    "dirty": true,
+    "live_history_count": 258,
+    "old_count_limit": 256
+  },
+  "snapshots": [
+    {
+      "source_pid": 3040123,
+      "histories": 258,
+      "private_snapshot": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/editor-journal-rescue-3040123-20261011.json",
+      "sha256": "b96c084d4d2fb908c078c6796aeaebf06b1af42d9035c5e981bea7ef2375b672",
+      "corrected_reader_accepts": true,
+      "snapshot_unchanged": true
+    },
+    {
+      "source_pid": 3153047,
+      "histories": 258,
+      "private_snapshot": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/editor-journal-rescue-3153047-20261011.json",
+      "sha256": "b96c084d4d2fb908c078c6796aeaebf06b1af42d9035c5e981bea7ef2375b672",
+      "corrected_reader_accepts": true,
+      "snapshot_unchanged": true
+    },
+    {
+      "source_pid": 3175566,
+      "histories": 258,
+      "private_snapshot": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/editor-journal-rescue-3175566-20261011.json",
+      "sha256": "b96c084d4d2fb908c078c6796aeaebf06b1af42d9035c5e981bea7ef2375b672",
+      "corrected_reader_accepts": true,
+      "snapshot_unchanged": true
+    }
+  ],
+  "input_text_not_truncated": true,
+  "source_windows_preserved": true,
+  "personal_runtime_updated": true,
+  "byte_limit_preserved": 8388608,
+  "scope": "Store, prova gráfica e entrega de258 históricos completos ao runtime atual; processos legados preservados.",
+  "native_proof": {
+    "seed_histories_preserved": 310,
+    "status": "passed",
+    "invalid_close_refused": true,
+    "invalid_text_preserved": true,
+    "autosave_after_refusal": true,
+    "second_signal_closed": true,
+    "personal_profile_exposed": false,
+    "historical_fidelity_claimed": false
+  },
+  "native_result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ogv09q6o/RESULTADO.json",
+  "native_result_sha256": "40362e1b3e9be788049f2e32cb1cca31bb4b458c6e27ebea0691c777eb1f9d7a",
+  "resume_tests_passed": 27,
+  "reader_and_checkpoint_checks_passed": 21,
+  "source_sha256": {
+    "tools/theme-lab/src/editor/store.c": "5aeb595ff36f6211a4c5d1136445590544c36e114d7b7723d1e6574e7a096373",
+    "plasma/tools/abrir-laboratorio-temas.py": "024a3d80fd5952bafae1b426370dd01e7d04c9601464e8adf3c4966467e54022",
+    "plasma/tests/test_lab_resume.py": "dca2a5006128f68d681371e5b275764aca9091c6f2a8ec46910def88f1311729",
+    "tools/theme-lab/tests/test_editor_store.py": "66d777f672cab521f71a62e4ae25a98ef514e335cf298d6a7bdce4e2ce9dfb74"
+  },
+  "delivery_receipt": "docs/review/T04-JOURNAL-ENTREGA-20261011.json"
+}

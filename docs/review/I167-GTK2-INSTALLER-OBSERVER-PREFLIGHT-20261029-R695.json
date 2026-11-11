@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "R695",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify the GTK2-only installer preflight and the private observer dispatch boundary without writing to the user profile or KDE session.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "results": {
+    "gtk2_installer_preflight": "passed; unchanged; one user-local engine destination verified",
+    "observer_dispatch_test": "passed; private fake worker received palette-only flag for a color change and full-sync flag for explicit Global Theme transition",
+    "profile_written": false,
+    "other_toolkits_written": false
+  },
+  "limits": [
+    "observer test uses a fake worker; it does not prove GTK2 palette regeneration through the live service",
+    "no real color-scheme change was emitted",
+    "no applications were restarted",
+    "this does not substitute for historical comparison or user visual acceptance"
+  ],
+  "conclusion": "The GTK2 engine installation plan is valid and already matches the installed state; observer event routing is covered in a private fixture. Actual production palette refresh after a scheme change remains unobserved because the shared worker also updates GTK4.",
+  "evidence_receipt": "~/tempia/domainos-theme-work/I167/R695-installer-observer/verification.json",
+  "artifacts": "records/ia-tema/I167/R695/ARTIFACTS.json",
+  "next": "Continue I167/GTK2. Find an isolated way to exercise the real GTK2 palette worker without writing GTK4 or changing the live KDE scheme; continue comparisons against the existing SR10.4 evidence."
+}

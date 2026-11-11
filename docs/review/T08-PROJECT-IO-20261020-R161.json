@@ -1,0 +1,50 @@
+{
+  "id": "T08-PROJECT-IO-20261020-R161",
+  "work_item": "T08",
+  "user_revision": 4,
+  "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+  "status": "passed-current-native-project-io-user-review-pending",
+  "scope": "Retest current Theme Lab project import, export and publication paths after source changes, using private build and synthetic project only.",
+  "environment": {
+    "build_dir": "~/tempia/t08-recheck-20261020-r1/build",
+    "tmp": "~/tempia/t08-recheck-20261020-r1",
+    "native_test_display": "private Xvfb launched and cleaned by tests/test_controller_spin.py",
+    "shared_xephyr_touched": false,
+    "personal_profile_or_projects_touched": false
+  },
+  "source_sha256": {
+    "tools/theme-lab/backend.py": "0f21fc93180106b554c28a4fd78bf27a7153d24b12ee59553031d7a504be1cc5",
+    "tools/theme-lab/proposal_export.py": "331ff6cd2498dd1cd1cc334d9d0ac55373852168a0a65b826c771b41309d7579",
+    "tools/theme-lab/tests/test_project_import.py": "1b087df590289f43f2d0e78e3461b64dd1b1610407a01aae48f6804663aad7b9",
+    "tools/theme-lab/tests/test_proposal_export.py": "dc2706c39ceedf9b68f25d123557a8491afabd046fc9ad1c50ab66012ce5b0f3",
+    "tools/theme-lab/tests/test_private_publication.py": "be7f027bc15d4b40dcc6fdc651a18470b45ec43afe358755f1ba7dbb66191c95",
+    "tools/theme-lab/tests/controller_project_io.py": "a4907727764836ddd680ebdc4e90525274429311f827443b9731e72b5651e91d",
+    "tools/theme-lab/tests/test_controller_spin.py": "f339139215616fc7c84ec05a3485ad1e78a5fb5b58d4ca5edff1df786546b6d3",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "d7fa328630381751677ac1a9a26b91ffef10c7e4203e025b1b919d461ee8aea1"
+  },
+  "builds": {
+    "controller_spin_probe_sha256": "ac86720a83d998870646cdf839f4d568d404732628707d1edfd1e42b1c767f0c",
+    "native_metrics_view_sha256": "b3135dceb7621acdec050a5cdf366fe7963ebeae23ae1535fb994b9a3af7a820",
+    "flags": "C99, -Wall -Wextra -Werror"
+  },
+  "tests": {
+    "test_project_import": {"result": "passed", "cases": 4},
+    "test_proposal_export": {"result": "passed", "cases": 12},
+    "test_private_publication": {"result": "passed", "cases": 4},
+    "check_export_review": {
+      "result": "passed",
+      "palettes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+      "scope": "Read-only Motif report, UTF-8 select/copy, blocked edit actions, dynamic UI roles, close/reopen, project field preserved.",
+      "limits": "Xvfb reported missing fonts and FontSet charsets; no glyph or historical visual fidelity claim."
+    },
+    "native_project_io": {
+      "result": "passed",
+      "scope": "Motif file dialogs load/save/cancel/invalid input, pending recipes and positions, UTF-8, project Undo/Redo, explicit Apply, export/comparison, delta import, concurrent edit during import, GTK3 reconstruction.",
+      "result_file": "~/tempia/theme-lab-spin-ip97yag6/RESULTADO.json",
+      "export_package": "~/tempia/theme-lab-spin-ip97yag6/home/lab/generated/exports/revisions/20261020T215702-1443d76c8102/PACKAGE",
+      "exported_families": ["gtk1", "gtk2", "gtk3", "gtk4", "gtk5", "kvantum", "motif", "plasma", "qt5", "qt6"]
+    }
+  },
+  "conclusion": "Current T08 project/import/export paths passed the targeted native and model tests. The applied scene stayed unchanged until explicit Apply; restart and Undo/Redo preserved the pending project. This is not historical-painting proof or user visual acceptance.",
+  "next": "Keep T08 open for user review; continue the next authorized Fila Atual item without changing I342/I374/I375/I376."
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "step": "arrow",
+  "date": "2026-10-16",
+  "status": "passed",
+  "scope": "One real Qt6 QToolButton with a recipe-owned downward arrow glyph; native Qt6 click, focus and pressed/released interaction retained.",
+  "recipe": {
+    "geometry": "11×11 px glyph inside a 15×15 px total button (11 px glyph + 2 px relief on each side), from the shared DomainOS scrollbar contract.",
+    "palette": "Glyph, face, light and shadow use KDE roles in normal, backdrop, pressed and disabled states; Qt6 backdrop follows the top-level activation property."
+  },
+  "validation": {
+    "qt6_recipe_tests": "22/22 passed, including actual QToolButton screenshots in DomainOS, neutral, dark and yellow KDE-role palettes; verifies pressed only while held, release, disabled and click. Visible glyph pixels exactly match generated state assets.",
+    "qt5_regression_tests": "4/4 passed.",
+    "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; isolated namespace checks passed; preview exited 0 and Xephyr remained open.",
+    "widget": {
+      "applied": true,
+      "scope": "one real QToolButton with recipe-owned KDE-role arrow pixels; Qt6 retains native click/focus semantics",
+      "objectName": "domainosRecipeArrow",
+      "widgetClass": "RecipeArrowButton",
+      "glyphSize": 11,
+      "size": [
+        15,
+        15
+      ],
+      "states": [
+        "normal",
+        "pressed while held",
+        "backdrop",
+        "disabled",
+        "focused"
+      ],
+      "backdropSelector": "[domainosBackdrop=\"true\"]",
+      "backdropTracksTopLevelActivation": true,
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "limitations": [
+        "This native-widget recipe is not a claim of historical SR10.4 fidelity."
+      ]
+    },
+    "compilation": "python3 -m py_compile passed for Qt6 gallery, recipe, route, arrow widget, probes and tests."
+  },
+  "evidence": {
+    "public_report": "/home/lsi/tempia/i170-qt6-public-7r2ms9e9/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "public_report_sha256": "782a19a2da4282bd72ca8653e5adbdbd20c6c401d1c65f89adabcb6da18f450a",
+    "native_result": "/home/lsi/tempia/i170-qt6-public-7r2ms9e9/home/qtwidgets-proof/RESULTADO.json",
+    "native_result_sha256": "58cd3834cd03eb2119a5341cecb36eac4d22dd2f6771f47e3eddead6c2edd13c",
+    "preview_receipt": "/home/lsi/tempia/i170-qt6-public-7r2ms9e9/home/out/revisions/20261016T134614-9cfb960e79b7/qt6-PREVIEW.json",
+    "preview_receipt_sha256": "7b5531401cc937651582828d52b144053f89189eb7d078a5e26613ec3de1a7e0",
+    "qt6_test_log": "/home/lsi/tempia/i170-qt6-arrow-20261016/qt6-tests.log",
+    "qt6_test_log_sha256": "3bd6008646b75aa3e6150fc4077338e5bdc6780fe17ccfc8f86d9bc6b2307615",
+    "qt5_test_log": "/home/lsi/tempia/i170-qt6-arrow-20261016/qt5-regression.log",
+    "qt5_test_log_sha256": "8093904642a91bac02d718e75be100c172217017c97d333cc655a8988eb26e31",
+    "screenshot": "docs/review/I170-QT6-ARROW-20261016.png",
+    "screenshot_sha256": "4c7b50ba57a5e6083c1821b6082e671446cceebe0c34f797a0712dbc87c9c0e3",
+    "display": ":68"
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "c5b27b616845a7e34243638e4b07ee8ddb785d95121ec3f4dbf0a5d2d79e446c",
+    "tools/theme-lab/qt6_scrollbar_route.py": "338428c78a452fe889ae9b5dc37323058fbec7d326c2c5cfde184bff83d54b59",
+    "tools/theme-lab/qt6_arrow_widget.py": "6714df315d21a25953632dbf1d91695f6a28c333a53685a7dbc97e852ffbb366",
+    "tools/theme-lab/qt6_scale_widget.py": "be5027d2731b3b42a7797d7e4b9a5eb5322e60a4e9be046676f352143534e5f5",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "12454ae45a41928212dee1e8695668a2df6f7611e621b3fcdd39161ca84c2c80",
+    "tools/theme-lab/tests/probe_qt6_arrow_widget.py": "4d231327d3e3d9c96d4106861d77553397d1434a70adb409d1a2a7eb6b1e49ca",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "3ebe65698cd1cfa98473feafdb8c185e7a195f3440cd9eadf99bdcaea6175ec2",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "eced2cde9b3f142e49a562964d4a149d88478434dfdc4a25b2e5068acd490b67"
+  },
+  "limits": [
+    "No direct comparison of a standalone QToolButton was made in the Domain/OS SR10.4 VM.",
+    "Automated palette/state checks do not establish historical visual fidelity or human approval."
+  ]
+}

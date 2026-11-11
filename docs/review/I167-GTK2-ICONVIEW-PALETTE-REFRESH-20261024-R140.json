@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-PALETTE-REFRESH-20261024-R140",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2 GtkIconView end-to-end palette bridge refresh; private fixture only",
+  "change": {
+    "test": "test_iconview_uses_view_and_selection_roles_after_live_palette_refresh in tests/test_gtk2_palette_runtime.py",
+    "path": "runtime setup -> private GTK2 bundle -> refresh with changed palette -> new immutable bundle and deterministic style namespace",
+    "assertions": [
+      "View NORMAL roles",
+      "Selection SELECTED roles",
+      "View-insensitive roles",
+      "new style namespace on refresh",
+      "layout geometry stays outside theme declarations",
+      "canonical theme source stays byte-identical"
+    ]
+  },
+  "verification": {
+    "command": "TMPDIR=/home/lsi/tempia PYTHONPATH=tests python3 -m unittest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests -v",
+    "result": "6/6 passed",
+    "gtk2_runtime_class": true,
+    "personal_profile_changed": false,
+    "xchat_touched": false,
+    "guest_files_changed": false
+  },
+  "files_sha256": {
+    "tests/test_gtk2_palette_runtime.py": "94ebf3e876896d4cad7567976b558596fb4eb2ad1558bc63a605bac2f03c80ac",
+    "gtk/tools/build_kde_domainos.py": "2bd743c8a6805641eded6c223059b6299dadf887a582da3e2dc43c9003294baa",
+    "tools/gtk2_domainos_palette.py": "72ace2edbaec2770ae0d25b0157b72741499fedd3ae75fa4b6345459ad33000b"
+  },
+  "limitations": [
+    "This proves palette bridge generation and refresh, not live user-session delivery or historical pixel parity.",
+    "GTK2 has no separate Backdrop state.",
+    "Direct focus/hover/rubberband comparison to the Domain/OS SR10.4 XmpIcon still requires the MAME clone."
+  ],
+  "status": "gtk2_palette_refresh_integration_passed_historical_visual_pair_pending",
+  "user_acceptance": "pending",
+  "next": "Resume the same authorized SR10.4 clone when available and compare IconView focus, hover and rubberband states; do not restart it automatically."
+}

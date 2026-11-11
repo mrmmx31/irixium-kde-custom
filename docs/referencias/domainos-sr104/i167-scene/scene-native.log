@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_scene_native.py", line 70, in <module>
+    run(args.fixtures.resolve(), args.output.resolve())
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_scene_native.py", line 53, in run
+    if child.returncode or child.stderr: raise RuntimeError(child.stderr or child.stdout)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_scene.py", line 42, in <module>
+    assert [x, y] == [record['x'], record['y']], item
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'id': 'scroll_h', 'index': 10, 'allocation': [-1, -1, 1, 1], 'requested_size': [240, 15], 'native_request_before_custom_size': [51, 16], 'slider_range': [-1, -4], 'sensitive': True, 'widget_name': 'GtkHScrollbar', 'value': 35.0, 'scale_factor': 1, 'origin': 'coupled', 'coordinate_space': 'gtk_logical_px', 'font_not_applicable': True}
+

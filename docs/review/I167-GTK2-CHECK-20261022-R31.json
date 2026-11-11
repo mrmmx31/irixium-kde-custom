@@ -1,0 +1,53 @@
+{
+  "item": "I167",
+  "revision": "R31",
+  "checked_at_utc": "2026-10-22T23:14:43Z",
+  "family": "GTK2 checkbox indicator",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "source": "tools/theme-lab/gtk2_indicators.py",
+    "source_sha256": "fbcbf4a341f2e893905ca554e41131d128c88902905eeff2ace76d00f1128c9d",
+    "summary": "Added checkbox-specific painted geometry (10 px indicator, 3 px spacing), separated from scrollbar-arrow and radio dimensions. The recipe uses KDE semantic color roles and keeps the user's model unchanged.",
+    "related_files": {
+      "tools/theme-lab/gtk2_checks.py": "d87bf9f4d4a62d5d64fc53bae36716879174de2d87c35cd88bd23b9486b672ab",
+      "tools/theme-lab/gtk2_radios.py": "bc39b7da40a7615b4326317f974e6f461ddc567964e09640e0a6b662dacaa68e",
+      "tools/theme-lab/tests/test_gtk2_checks.py": "77e93c2a547e61eb35dfdaa820811a6a5e877a20a21e8996139b599ba9cf2110",
+      "tools/theme-lab/tests/test_gtk2_check_native.py": "9db09097891b2ed7e7fa8a245dc66784095992cf2dfb3953d2697a1badb3d72c"
+    },
+    "tests": "17 focused tests passed for push, toggle, check, radio, combo and spin; py_compile and scoped git diff --check passed. The native public-preview launcher did not start its private Xvfb within 10 seconds, so no public-scene result is claimed."
+  },
+  "results": {
+    "status": "passed_scoped_native_pixels_and_generation",
+    "gtk2": "2.24.33",
+    "palettes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "captures": "44 native captures: 11 states per palette; click/release worked and disabled input was blocked in all four palettes.",
+    "geometry_px": {
+      "gtk2_natural_request": [81, 22],
+      "gtk2_indicator_size": 10,
+      "gtk2_indicator_spacing": 3,
+      "motif_local_natural_request": [79, 25],
+      "motif_reported_indicator_size": 13,
+      "motif_visible_painted_indicator": [10, 10]
+    },
+    "pixel_check": "44/44 state checks passed, 0 differences. Normal and selected GTK2 indicator relief masks each match the local XmToggleButton mask after role-color normalization. The GTK indicator starts 1 px left and its text starts 2 px right versus this local sample.",
+    "generation_integration": "GTK2 generation path translated the check control in four palettes; all 36 generated indicator assets matched the native foundation, with current palette provenance.",
+    "native_results_sha256": "2cc040a2da1cab093691c3499905ff86ab2960544aa097ff2a0c80e18d555ba5",
+    "pixel_results_sha256": "5c4fd48287076545f386a281add9a30bfe85bb937a9968905f3674ef50f8e76b",
+    "generation_results_sha256": "478009e69452b3754c4ff6c028dc3a3b6296c3917477b9a9f9a6221e0a84b2bf",
+    "artifacts": [
+      "~/tempia/i167-gtk2-check-r35/",
+      "~/tempia/i167-gtk2-check-r36-generation/"
+    ]
+  },
+  "limits": [
+    "The Motif measurement is from the local Theme Lab sample, not the SR10.4 VM; no historical default metric or visual approval is inferred.",
+    "The pixel masks match, but local GTK2 and Motif natural widget dimensions and indicator/text offsets still differ.",
+    "The GTK2 indicator settings are code-level recipe defaults; dedicated GUI spins for these two check-specific metrics are not exposed yet.",
+    "The public preview launch timed out before opening because its private Xvfb did not become ready.",
+    "GTK2 is incomplete; no GTK2 theme or XChat/session process was changed."
+  ],
+  "next": "Continue with the GTK2 radio indicator as a separate family. Apply GTK2 to the user's session and XChat only after all GTK2 control families are complete."
+}

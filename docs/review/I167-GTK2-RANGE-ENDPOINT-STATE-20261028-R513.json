@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "R513",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare installed GTK2 scrollbar stepper painting at adjustment limits with the normal and whole-widget-insensitive states, without changing the theme or user session.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb :108",
+    "theme": "DomainOS-SR10-4-KDE",
+    "gtkrc": "~/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "palette_bundle": "01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "geometry": {
+      "bar_px": 15,
+      "stepper_size": 15,
+      "trough_border": 2,
+      "slider_width": 11,
+      "stepper_spacing": 0,
+      "trough_under_steppers": false
+    }
+  },
+  "method": {
+    "fixture": "Native GtkHScrollbar and GtkVScrollbar loaded with the user's installed DomainOS GTK2 RC in a private Xvfb; no application window, desktop, or MAME instance was touched.",
+    "normal": "Capture at an interior adjustment value; crop each 15x15 stepper cell.",
+    "range_endpoint": "Press and release each direction at its blocked lower/upper boundary; verify adjustment remains unchanged; crop the corresponding 15x15 cell.",
+    "whole_widget_insensitive": "Capture the same two GTK2 scrollbar widgets after setting the entire widgets insensitive.",
+    "comparison": "Exact RGBA pixel comparison against the current generated KDE-role normal and disabled cell assets."
+  },
+  "observed": {
+    "geometry": {
+      "horizontal_allocation": [0, 0, 54, 15],
+      "vertical_allocation": [0, 19, 15, 54]
+    },
+    "range_endpoint_input": {
+      "left": {"start": 0, "held": 0, "released": 0, "blocked": true},
+      "right": {"start": 80, "held": 80, "released": 80, "blocked": true},
+      "up": {"start": 0, "held": 0, "released": 0, "blocked": true},
+      "down": {"start": 80, "held": 80, "released": 80, "blocked": true}
+    },
+    "pixel_differences_per_15x15_cell": {
+      "interior_value_vs_normal": {"left": 0, "right": 0, "up": 0, "down": 0},
+      "range_endpoint_vs_disabled": {"left": 0, "right": 0, "up": 0, "down": 0},
+      "range_endpoint_vs_normal": {"left": 225, "right": 225, "up": 225, "down": 225},
+      "whole_widget_insensitive_vs_disabled": {"left": 0, "right": 0, "up": 0, "down": 0},
+      "whole_widget_insensitive_vs_normal": {"left": 225, "right": 225, "up": 225, "down": 225}
+    },
+    "result": "At range boundaries GTK2 paints the stepper cell with the disabled-role appearance while keeping the scrollbar interactive overall and correctly blocking movement in the unavailable direction. The whole-widget-insensitive fixture produces the same cell appearance. This conflicts with the shared scrollbar contract, which requires a range-boundary arrow to preserve the enclosing scrollbar palette while retaining the blocked input state."
+  },
+  "source_analysis": {
+    "source": "GTK+ 2.24.33 gtkrange.c",
+    "url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkrange.c/#L5813",
+    "lines": "5813-5847",
+    "style_hook_url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkstyle.h/",
+    "range_api_url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkrange.h/",
+    "finding": "draw_stepper chooses GTK_STATE_INSENSITIVE for either a parent GtkRange that is insensitive or a stepper whose lower/upper range is unavailable. It then passes that state, the widget, and the stepper detail to gtk_paint_box. The GtkStyle draw_box interface receives widget/detail, and public GtkRange APIs expose the adjustment, inversion and lower/upper sensitivity policy. This gives a concrete custom-renderer experiment: determine whether a boundary-disabled stepper can be distinguished from a whole insensitive widget while preserving input blocking. Direction/inversion handling and renderer integration are not yet prototyped or proven. A pixmap RC state mapping alone cannot distinguish the two causes."
+  },
+  "capture_files": {
+    "directory": "~/tempia/domainos-theme-work/i167-r513-endpoint-installed/",
+    "normal": "initial.png",
+    "cycles": "cycles.json/{left,right,up,down}-{held,released}.png",
+    "whole_widget_insensitive": "whole-insensitive/capture.png",
+    "runtime": "runtime.json",
+    "recipe": "recipe.json",
+    "sha256": {
+      "initial.png": "cb980eea0ed2d6a9d8a2b765dfb0dfeb373d89ddf63d4992a88c57cef24992b2",
+      "cycles.json/left-held.png": "52688244d4c2ed9196f75b080357bde7e75fdde98c2d8326270c134b853921db",
+      "cycles.json/left-released.png": "52688244d4c2ed9196f75b080357bde7e75fdde98c2d8326270c134b853921db",
+      "cycles.json/right-held.png": "90586881aee8b617f50d2d729c9a2f77aed1ee71ddf67da430e4bc706751565d",
+      "cycles.json/right-released.png": "90586881aee8b617f50d2d729c9a2f77aed1ee71ddf67da430e4bc706751565d",
+      "cycles.json/up-held.png": "52688244d4c2ed9196f75b080357bde7e75fdde98c2d8326270c134b853921db",
+      "cycles.json/up-released.png": "52688244d4c2ed9196f75b080357bde7e75fdde98c2d8326270c134b853921db",
+      "cycles.json/down-held.png": "90586881aee8b617f50d2d729c9a2f77aed1ee71ddf67da430e4bc706751565d",
+      "cycles.json/down-released.png": "90586881aee8b617f50d2d729c9a2f77aed1ee71ddf67da430e4bc706751565d",
+      "whole-insensitive/capture.png": "ca44285e94917cd865719236aac84186475bb7d65259a400af80700c15c24abe"
+    }
+  },
+  "comparison_asset_sha256": {
+    "scrollbar-stepper-left-normal.png": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+    "scrollbar-stepper-left-disabled.png": "3fe69584f9e9cdc203b8d6fcf51d9c5b9aad43360c576fc78062bc1eec70a26c",
+    "scrollbar-stepper-right-normal.png": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+    "scrollbar-stepper-right-disabled.png": "6e617a459cf00e13b5295d17d0886a218c279dcb5cd48518722b1419ecb87135",
+    "scrollbar-stepper-up-normal.png": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+    "scrollbar-stepper-up-disabled.png": "ad7ed7606640b256f9833c610012571839b84bb9cad863b69c78c1440afc96ec",
+    "scrollbar-stepper-down-normal.png": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+    "scrollbar-stepper-down-disabled.png": "2e5b0ef7763774d6d36b2cddf5234b06c082dfcc232275e12c5e32f3ad028ec7"
+  },
+  "limits": [
+    "The generated GTK2 preview establishes current runtime behavior, not the appearance of XtSensitive=False in the Domain/OS SR10.4 VM.",
+    "No VM capture or input was used; no VUE disabled-state evidence is claimed.",
+    "The result does not identify the application and state behind the user's original report; Q501 remains unanswered.",
+    "A GTK RC state-to-image remap alone cannot be assumed safe because the boundary and whole-widget-insensitive fixtures currently produce the same GTK state appearance.",
+    "V03 remains partial and unreviewed; no user acceptance is inferred."
+  ],
+  "status": "GTK2 range-endpoint state mismatch confirmed in isolated native preview; implementation investigation remains open"
+}

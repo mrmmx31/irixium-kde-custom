@@ -1,0 +1,40 @@
+{
+  "item": "I167",
+  "revision": "R294",
+  "checked_at_utc": "2026-10-26T10:15:00Z",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "scope": "Read-only recheck of the authorized SR10.4 clone before GTK2 held-state comparison",
+  "identity": {
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "mame_pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false
+    },
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "pending_before": false,
+    "pending_after": false
+  },
+  "capture": {
+    "method": "Existing authorized bridge screen:snapshot; read-only",
+    "image": "~/tempia/ia-tema/evidence/I167/i167-vue-readonly-R294.png",
+    "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "observation": "Guest display is black; no pointer or scrollbar target is visible."
+  },
+  "input_sent": false,
+  "guest_changed": false,
+  "result": "The physical wake gate remains unchanged from R290. No synthetic wake or arrow press was attempted. Continue independent GTK2 verification; historical held-state comparisons require the user to wake the guest physically and leave the target visible.",
+  "technical_coverage_estimate": {
+    "percent": 80,
+    "changed": false,
+    "basis": "Read-only VM recapture adds no adapter or state coverage. This is not a fidelity score."
+  },
+  "artifact_sha256": {
+    "lua": "4277032df70d25d87263e89f99f2801fd270d33a56d574862652d42983532a28"
+  }
+}

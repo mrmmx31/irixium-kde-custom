@@ -346,7 +346,10 @@ def worker(args):
             check(name+"_native_popup_layout_settled",settle(lambda:abs(popup_window.width()-popup.property("width"))<1 and abs(popup_window.height()-popup.property("height"))<1))
             evidence[name+"_native_window"]={"x":popup_window.x(),"y":popup_window.y(),"width":popup_window.width(),"height":popup_window.height(),"host_height":window.height(),"popup_height":popup.property("height"),"popup_implicit_height":popup.property("implicitHeight"),"content_height":popup_content.height()}
             check(name+"_uses_separate_native_window",popup_window is not None and popup_window!=window and popup_window.isVisible())
-            check(name+"_full_popup_height_unclipped_by_109px_host",window.height()==109 and popup_window.height()>=popup.property("implicitHeight")-.5)
+            # Popup.Window maps fractional QML dimensions to integer native
+            # pixels under X11. Allow that unavoidable subpixel quantization,
+            # while still rejecting any loss of a whole pixel or more.
+            check(name+"_native_popup_height_within_pixel_rounding",window.height()==109 and popup_window.height()+1.0>=popup.property("implicitHeight"))
             if name=="ContextMenu":
                 check("ContextMenu_extends_outside_109px_host",not window.geometry().contains(popup_window.geometry()))
             check(name+"_native_popup_capture",popup_window.grabWindow().save(str(output/("SHORT-HOST-"+name+".png"))))

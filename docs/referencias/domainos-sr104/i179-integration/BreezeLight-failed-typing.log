@@ -1,0 +1,46 @@
+/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-isxu7alf
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: abc
+command: key
+command: key
+command: key
+command: key
+command: key
+command: type
+Exec arg[0]: ação — café
+Dúvida: seleção e revisão.
+Terceiro parágrafo.
+Mapping sym 231 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 16785428 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 233 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 250 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 231 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Mapping sym 225 to 8
+Reverting scratch keycode (sym 5513779992520709888 to 8)
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1141, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 975, in main
+    key('ctrl+a');text(value);expect(value)
+                              ~~~~~~^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 966, in expect
+    return wait(lambda: observation().get('notes_text')==value,5)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 32, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

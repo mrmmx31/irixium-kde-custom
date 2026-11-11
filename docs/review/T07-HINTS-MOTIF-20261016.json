@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "item": "T07",
+  "user_revision": 4,
+  "checked_at": "2026-10-16",
+  "scope": "Hints da interface Motif do laboratório: ações, parâmetros, campos dinâmicos, atraso, posição, estabilidade, estados desabilitados e paleta.",
+  "environment": {
+    "display": ":68",
+    "xephyr_pid": 1442542,
+    "xephyr_preserved": true,
+    "reason_not_xvfb": "xvfb-run não conseguiu iniciar Xvfb: /tmp está sem espaço; Xvfb -nolock exige root. Os testes foram executados no Xephyr privado já aberto.",
+    "desktop_palette_or_config_changed": false
+  },
+  "checks": {
+    "native_action_hints": "passed: delayed display, screen bounds, no control overlap, stable display, leave dismissal, canceled delay, nine action hints",
+    "dynamic_adjustment_hints": "passed: five scrollbar pieces and two size axes across ten recipe families; visibility, sensitivity and inheritance preserved",
+    "four_palette_matrix": "passed: DomainOS, BreezeLight, BreezeDark and TestYellow for dynamic and spin hover tests",
+    "spin_hover": "passed: delay, position, no overlap, stability, live semantic roles, dismissal, increment/decrement/repeat; disabled field/arrow blocks clicks and retains value",
+    "file_dialog": "passed: 11 native child hints, six editing-menu hints, runtime palette, Undo/Redo and clipboard actions",
+    "history_hover": "passed: five history actions; delayed, bounded, non-overlapping, stable hints; disabled Undo remains blocked",
+    "editor_menu_hover": "passed: Copy hint delayed, positioned outside owner, stable, and updates semantic palette without losing selection",
+    "previous_help_receipt": "docs/review/T07-HELP-XEPHYR-20261016.json: ten topics × three explanation levels, UTF-8 text and clipboard, close/reopen and project-field preservation"
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/view.c": "2f8441ea2f871266fa87b55ac6522cf591bffa494ad1eddf0299edae4457b725",
+    "tools/theme-lab/src/view/ui_hints.c": "1f6b7cedb4e8f8b362eae6f93570949fbbfb515dbebc8e2429a9f74aa9b4cbfa",
+    "tools/theme-lab/src/view/ui_spin_hints.c": "dfdafde891b6cb368bec3e28981d0255cd96c699987f722e18ffc8deb892e2a1",
+    "tools/theme-lab/tests/ui_hints_native.c": "78b74792127018fb04413949882be5cf88d07b986b592fa5052787cf17d92978",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "d7fa328630381751677ac1a9a26b91ffef10c7e4203e025b1b919d461ee8aea1",
+    "tools/theme-lab/tests/dynamic_hints.c": "cedd9299d8f60e58816d58f8ddf12a8d09b964a3ede3f56242f168a792486776",
+    "tools/theme-lab/tests/native_metrics_view.c": "a731014a2d75cc463c9e3591bb0e6361c30bfe986e0b3647dc4a2f674017e536",
+    "tools/theme-lab/build/ui-hints-native": "f5f748a233ba82b55801b10f47e771f4aeeda5a543f0d8026aefe9f45351814a",
+    "tools/theme-lab/build/spin-hint-hover": "b8acf5e8b4733e3e49a58b68d0cfeb70f760e678d42c3c4ec97a7e4ef240e1ca",
+    "tools/theme-lab/build/native-metrics-view": "03aa6f637990aa45d55b0530affef24fcbd89cfb79e378c4eafb066ffad9128e"
+  },
+  "limitations": [
+    "Motif emitted missing-font/missing-charset warnings; this does not validate glyph fidelity.",
+    "The history hover test emitted XmScrollVisible parameter warnings although its assertions passed.",
+    "This receipt covers the Motif laboratory interface, not every foreign GTK/Qt sample layout or human visual approval."
+  ],
+  "result": "Technical hint behavior for the tested Motif interface passed. T07 remains open for broader coverage and the user's visual review; no acceptance was inferred."
+}

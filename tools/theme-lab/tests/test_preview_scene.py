@@ -3,10 +3,13 @@
 """Pure layout checks; GI is never imported and no native preview is opened."""
 import copy
 import importlib.util
+import os
 from pathlib import Path
 import sys
+import tempfile
 from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 SOURCE = Path(__file__).resolve().parents[1] / 'preview_gtk.py'
 spec = importlib.util.spec_from_file_location('theme_lab_preview_scene_test', SOURCE)
@@ -21,6 +24,45 @@ def project():
 
 
 class SceneTests(unittest.TestCase):
+    def test_gtk3_theme_environment_accepts_tempia_and_rejects_tmp(self):
+        tempia = Path.home() / 'tempia'
+        tempia.mkdir(mode=0o700, parents=True, exist_ok=True)
+        themes = tempia / 'themes'
+        themes.mkdir(mode=0o700, exist_ok=True)
+        previous = {key: os.environ.get(key) for key in ('GTK_THEME', 'GTK_OVERLAY_SCROLLING', 'XDG_DATA_DIRS')}
+        try:
+            with tempfile.TemporaryDirectory(prefix='t05-theme-', dir=themes) as name:
+                theme = Path(name)
+                (theme / 'gtk-3.0').mkdir()
+                (theme / 'gtk-3.0/gtk.css').write_text('button { color: @theme_fg_color; }', encoding='utf-8')
+                with patch.object(preview.backend, 'read_file', side_effect=lambda path: Path(path).read_text(encoding='utf-8')):
+                    preview.theme_environment(theme)
+                self.assertEqual(os.environ['GTK_THEME'], theme.name)
+                self.assertEqual(os.environ['GTK_OVERLAY_SCROLLING'], '0')
+                self.assertIn(str(tempia), os.environ['XDG_DATA_DIRS'])
+                rejected = Path('/tmp/theme-lab-refused-theme')
+                with self.assertRaisesRegex(ValueError, 'pasta de tema privada'):
+                    preview.theme_environment(rejected)
+        finally:
+            for key, value in previous.items():
+                if value is None:
+                    os.environ.pop(key, None)
+                else:
+                    os.environ[key] = value
+
+    def test_trailing_control_edge_uses_native_extent_and_cell_offset(self):
+        horizontal={'id':'scroll_h','x':400,'y':20,'length_anchor':1}
+        vertical={'id':'scroll_v','x':20,'y':400,'length_anchor':1}
+        self.assertEqual(preview.anchor_origin(horizontal,320,15,(0,18)),(80,20))
+        self.assertEqual(preview.anchor_origin(horizontal,48,15,(0,18)),(352,20))
+        self.assertEqual(preview.anchor_origin(vertical,15,260,(0,18)),(20,122))
+        self.assertEqual(preview.anchor_origin(vertical,15,48,(0,18)),(20,334))
+        with self.assertRaisesRegex(ValueError,'fora do canvas'):
+            preview.anchor_origin(vertical,15,500,(0,18))
+        data=project();data['recipes']['gtk3']['length_anchor']=[0]*16
+        data['recipes']['gtk3']['length_anchor'][0]=1
+        with self.assertRaisesRegex(ValueError,'length_anchor'):preview.scene(data)
+
     def test_all_native_control_ids_and_positions_are_preserved(self):
         data = project()
         original = copy.deepcopy(data)
@@ -149,6 +191,7 @@ class SceneTests(unittest.TestCase):
                                      EventSequenceState=SimpleNamespace(CLAIMED='claimed', DENIED='denied'))
         native.Gdk = SimpleNamespace(ModifierType=SimpleNamespace(CONTROL_MASK=4))
         native.gestures, native.dragging = [], {}
+        native.gesture_handlers = []
         movements, events = [], []
         native.fixed = SimpleNamespace(move=lambda _box, x, y: movements.append((x, y)))
         native.emit = lambda action, index, **fields: events.append((action, index, fields))
@@ -206,6 +249,9 @@ class SceneTests(unittest.TestCase):
             def connect(self, signal, callback):
                 self.handlers[signal] = callback
 
+            def set_tooltip_text(self, text):
+                self.tooltip = text
+
         native = preview.NativeScene.__new__(preview.NativeScene)
         # A display-only Gtk.Arrow is intentionally unavailable here: only a
         # button can expose the ordinary native click contract under review.
@@ -215,6 +261,7 @@ class SceneTests(unittest.TestCase):
         widget = native.factory('arrow', 12)
         self.assertIsInstance(widget, Button)
         self.assertEqual(widget.classes, ['theme-lab-arrow'])
+        self.assertIn('Botão de seta isolado', widget.tooltip)
         widget.handlers['clicked'](widget)
         self.assertEqual(events, [(12, {'clicked': True})])
         self.assertNotIn('gi', sys.modules)

@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-FINDFILES-TREEVIEW-20261025-R204",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "guest": "Existing authorized assistant MAME clone, PID 274368",
+    "application": "VUE File Manager > File > Find... > Files Found",
+    "input": "Keyboard-only menu navigation; read-only search with the dialog defaults (* in .); no mouse input",
+    "guest_files_or_settings_changed": false,
+    "profile_changed": false,
+    "live_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "mouse_option": false,
+      "mouse_device": "none"
+    }
+  },
+  "vue_observation": {
+    "capture": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-after-wait-r217.png",
+    "sha256": "48fe3593fbb96e4a8fa24209920f6806a7be75e9e0eb08c5fa169039d00dd427",
+    "crop_xyxy": [110, 592, 432, 731],
+    "allocation_px": [322, 139],
+    "visible_rows": [
+      "//node_12345/bsd4.3/bin/mail",
+      "//node_12345/bsd4.3/bin/mdrin",
+      "//node_12345/bsd4.3/bin/sed",
+      "//node_12345/bsd4.3/bin/sh",
+      "//node_12345/bsd4.3/bin/shell",
+      "//node_12345/bsd4.3/bin/size"
+    ],
+    "row_text_y_spans_in_crop": [[7, 19], [26, 38], [45, 57], [64, 76], [83, 95], [102, 114]],
+    "row_stride_px": 19,
+    "surface_rgb": [42, 128, 169],
+    "text_rgb": [255, 255, 255],
+    "scrollbars": ["vertical visible", "horizontal visible"]
+  },
+  "gtk2_observation": {
+    "version": "2.24.33",
+    "runtime": "Private Xvfb; native GtkTreeView in GtkScrolledWindow; no user profile or application changed",
+    "capture": "~/tempia/ia-tema/evidence/I167/gtk2-treeview-vue-find-r204/gtk2-treeview.png",
+    "sha256": "37bda135908ac5e5eb23ed710dcafe07ae9979eec3725643c39659c874555254",
+    "allocation_px": [322, 139],
+    "tree_allocation_px": [299, 135],
+    "rows": [
+      "//node_12345/bsd4.3/bin/mail",
+      "//node_12345/bsd4.3/bin/mdrin",
+      "//node_12345/bsd4.3/bin/sed",
+      "//node_12345/bsd4.3/bin/sh",
+      "//node_12345/bsd4.3/bin/shell",
+      "//node_12345/bsd4.3/bin/size"
+    ],
+    "selection": [],
+    "policy": ["AUTOMATIC", "AUTOMATIC"],
+    "vertical_adjustment": {"upper_px": 144, "page_px": 135},
+    "horizontal_adjustment": {"upper_px": 299, "page_px": 299},
+    "visible_rows": "Five complete rows and the sixth clipped at the bottom",
+    "row_stride_px": 24,
+    "palette_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "surface_role": "KDE View/BackgroundNormal",
+    "surface_rgb_sample": [102, 136, 181],
+    "text_role": "KDE View/ForegroundNormal"
+  },
+  "comparison": {
+    "method": "1:1 native crops; no resampling",
+    "side_by_side": "~/tempia/ia-tema/evidence/I167/gtk2-treeview-vue-find-r204/vue-gtk2-side-by-side.png",
+    "side_by_side_sha256": "99ec367d2b8f8fe769728e0bcf35efdeb7d27914996088189c79a86ea46b768d",
+    "result": "The VUE list fits six rows and displays both scrollbars. The current GTK2 TreeView policy displays only the vertical scrollbar and fits five complete rows; the sixth is clipped. The GTK2 surface follows the KDE View role, while this VUE Find Files list uses a distinct darker surface. R129 measured the Find Files entry face as a dynamic shade of the KDE Header role, but the exact VUE list resource mapping remains unproven.",
+    "decision": "Do not change global GTK2 list roles, font metrics, or scrollbar policy from this pair alone. Keep KDE roles dynamic. Determine whether the VUE list's Header-like surface and always-visible horizontal scrollbar are application/resource behavior before proposing a contextual GTK2 variant."
+  },
+  "artifacts": {
+    "metrics": "~/tempia/ia-tema/evidence/I167/gtk2-treeview-vue-find-r204/metrics.json",
+    "metrics_sha256": "75cf54596801ea2ab93eeef9b1883215ca1850c96774b0efae9b93cf2f92b8e0",
+    "vue_crop": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-list-full-crop-r220.png",
+    "vue_crop_sha256": "de838fffaf9c3fb2e047987de1a1ef8cd447400d241b992cf9c60e94be9c1ed6"
+  },
+  "limits": [
+    "This is one native list state, not a complete GTK2 adapter audit or human approval.",
+    "The visible rows were transcribed from the live VUE result list; no hidden rows were fabricated for the GTK2 fixture.",
+    "The GTK2 preview uses automatic scroll policies and the current 13 px recipe font; application-specific policy and cell-renderer sizing may affect the comparison.",
+    "The VUE screenshot records its current CoralReef palette; GTK2 remains driven by current KDE semantic roles, so the RGB difference is evidence rather than a proposed static correction."
+  ],
+  "next": "Inspect only SR10.4 resources that govern the VUE Find Files XmpList/XmList and its scrolled-window policies. Establish whether color set, always-visible horizontal scrolling, and row metrics are application resources. Then update the GTK2 list context only if the evidence supports a dynamic KDE role translation; otherwise record the application-level limit and proceed to the next GTK2 state.",
+  "product_source_changed": false,
+  "user_profile_changed": false,
+  "xchat_changed": false,
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

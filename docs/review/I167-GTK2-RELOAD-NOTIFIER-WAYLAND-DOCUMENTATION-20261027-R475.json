@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "id": "R475",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Clarify the GTK2 reload notifier documentation for Wayland sessions that expose an XWayland DISPLAY; no runtime behavior changed.",
+  "change": {
+    "file": "tools/gtk2_reload_notify.py",
+    "before": "The docstring said the companion bridge invokes the X11 reload notifier only in an X11 session.",
+    "after": "The docstring now states that the notifier uses DISPLAY, which may address XWayland in a Wayland session, and that live application receipt/application still requires separate validation.",
+    "sha256": "31732d4744c53c0ba9e870a0ba8d888da2be319274fe6b2b5f22f6a99453044a",
+    "runtime_behavior_changed": false
+  },
+  "validation": {
+    "command": "python3 tests/test_gtk2_reload_notify.py -v",
+    "result": "1 test passed; native GTK2 broadcast integration test skipped because IRIX_GTK2_RELOAD_TEST=1 and private Xvfb were not requested for this documentation-only edit.",
+    "py_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "No live GTK2 application was open for end-to-end Wayland/XWayland palette-change validation.",
+    "No color scheme changed and no reload event was broadcast.",
+    "The separate VM interaction question Q499 remains pending; no MAME input was sent."
+  ],
+  "next": "Continue I167 with an actual GTK2 application palette refresh under XWayland when a suitable target is open, and resume SR10.4 held-state comparisons only after Q499 is answered or the guard no longer blocks them."
+}

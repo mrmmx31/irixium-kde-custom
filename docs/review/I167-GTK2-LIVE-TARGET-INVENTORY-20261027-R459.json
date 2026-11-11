@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R459",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Determine whether a user-owned GTK2 XChat process is currently available for the authorized scrollbar comparison, without inspecting any window content.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": "Read /proc process names, executable links, and memory maps only; match libgtk-x11-2.0.so or libgtk-2.0.so. No window discovery or screenshot.",
+  "gtk2_processes": [
+    {
+      "pid": 3951437,
+      "comm": "xchat",
+      "executable": "/home/lsi/.cache/codex-xchat/hom/xchat",
+      "classification": "Codex HOM client"
+    },
+    {
+      "pid": 3951675,
+      "comm": "xchat",
+      "executable": "/home/lsi/.cache/codex-xchat/prd/xchat",
+      "classification": "Codex PRD client"
+    },
+    {
+      "pid": 3996239,
+      "comm": "python3",
+      "executable": "/usr/bin/python3.13",
+      "script": "/home/lsi/tempia/ia-tema/gtk2-live-preview-r326.py",
+      "classification": "project GTK2 live-preview process"
+    },
+    {
+      "pid": 4008706,
+      "comm": "python3",
+      "executable": "/usr/bin/python3.13",
+      "script": "/home/lsi/tempia/ia-tema/gtk2-source-tree-preview-r330.py",
+      "classification": "project GTK2 source-tree preview process"
+    }
+  ],
+  "result": "No user-owned XChat executable was present in the GTK2 process inventory. The two XChat processes are Codex clients, and the two Python GTK2 processes are project previews; neither establishes what the user's personal XChat displays. R458's target correction is confirmed.",
+  "limits": [
+    "No chat content, window title, screenshot, focus, input, or application state was read or changed.",
+    "The GTK2 preview processes were left running and untouched.",
+    "The two MAME processes remain active on distinct theme and Prancheta disks; verify.sh returns 4, so no guest input was sent."
+  ],
+  "next": "Use the authorized SR10.4 VM comparison after the Prancheta MAME releases the guard. For the user's live-app comparison, wait until the user-owned GTK2 application is available; then inspect only its scrollbar surface."
+}

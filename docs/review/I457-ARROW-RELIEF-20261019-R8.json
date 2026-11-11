@@ -1,0 +1,21 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T17:36:40Z",
+  "status": "applied-and-live; preview-available",
+  "scope": "Confirmação da instalação da correção GTK3 ComboBox já aplicada; sem tocar em Qt6 ou outras setas.",
+  "evidence": {
+    "selected_gtk_theme": "DomainOS-SR10-4-KDE",
+    "gtk3_settings_file": "~/.config/gtk-3.0/settings.ini",
+    "gtk3_css_sha256_local_share": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+    "gtk3_css_sha256_legacy_themes": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+    "native_preview_pid": 209878,
+    "native_preview_alive": true
+  },
+  "result": "Ambas as cópias instaladas têm o hash esperado de R6; o tema selecionado corresponde à configuração GTK3 atual e o preview real permanece em execução. Nenhuma gravação, reinício, troca de esquema ou alteração de perfil foi necessária.",
+  "limits": [
+    "A confirmação da instalação e da prévia não substitui comparação direta com a ComboBox HP VUE 2.01 na VM SR10.4.",
+    "A janela prévia é GTK 3.24.49 e demonstra o tema selecionado nesta sessão."
+  ],
+  "next": "Avaliação funcional e visual do usuário na prévia aberta; manter I457 parcial até comparação histórica ou decisão registrada."
+}

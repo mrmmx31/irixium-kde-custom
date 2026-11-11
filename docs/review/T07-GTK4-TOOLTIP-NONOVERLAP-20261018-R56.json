@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-TOOLTIP-NONOVERLAP-20261018-R56",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "passed_in_scope",
+  "cause": {
+    "prior_run": "R3 GTK4 matrix: 30 passed, 3 failed. A generic GtkNotebook tooltip appeared over the large notebook in both pages; GtkTextView used GTK's centered tooltip and covered the editor.",
+    "evidence": "~/tempia/t07-gtk4-hint-position-20261018/r3/result.json"
+  },
+  "changes": [
+    {
+      "file": "plasma/tests/galerias-nativas/gtk4_demo.py",
+      "sha256": "f60d0e9bf3a02e714ff72d06b577645dd829b1887d1d293fe9721ebd1774ba61",
+      "behavior": "Removed the generic hint on the full GtkNotebook; the visible tab labels keep their own hints. Delayed popovers now attach to GtkListBox and GtkTextView when mapped, including the initially hidden second page, suppressing only their centered native tooltip while retaining its text and restoring it on cleanup."
+    },
+    {
+      "file": "tools/theme-lab/tests/gtk4_hint_matrix_worker.py",
+      "sha256": "25666e11cc1fc26d66266910fec099c385a856cfc8863aae13db55b0f0408ac5",
+      "behavior": "The stable-layout assertion now rejects overlap with the entire owning control for large and small widgets alike."
+    },
+    {
+      "file": "tools/theme-lab/gtk4_hint_popover.py",
+      "sha256": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+      "behavior": "Existing delayed, non-modal native GTK4 popover helper; unchanged in R56."
+    }
+  ],
+  "environment": {
+    "xephyr": ":81",
+    "resolution": "1280x800",
+    "gtk": "4.18.6",
+    "gtk_theme": "Default",
+    "font": "Sans 10",
+    "window_px": [850, 620],
+    "palette_or_historical_claim": false,
+    "temporary_root": "~/tempia/t07-gtk4-hint-position-20261018/r4/"
+  },
+  "result": {
+    "status": "passed",
+    "mapped_targets": 31,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "inside_screen": true,
+    "never_covers_hover_point": true,
+    "never_overlaps_owner_region": true,
+    "closed_after_leave": true,
+    "vertical_scrollbar_clicks_with_hint_open": "2/2 responded",
+    "cleanup": "All four popover controllers closed idempotently, native tooltip state restored, and all four overlay anchors removed.",
+    "native_resources": {
+      "utf8_round_trip": true,
+      "logical_hint_resources": 52,
+      "scrollbars_discovered": 12,
+      "menu_rows_discovered": 15,
+      "late_mapped_text_view_hint": "positioned above the editor with no overlap"
+    }
+  },
+  "runtime_output": {
+    "path": "~/tempia/t07-gtk4-hint-position-20261018/r4/result.json",
+    "sha256": "b5f4f632131b990e338676b0fc21b8c331b54c21593e0a3b34616a6c95792902",
+    "stderr_path": "~/tempia/t07-gtk4-hint-position-20261018/r4/stderr.log"
+  },
+  "validation": {
+    "py_compile": "passed",
+    "git_diff_check": "passed",
+    "repeat_matrix": "passed 31/31; both vertical scrollbar clicks changed adjustment; all hints remained stable and dismissed on leave"
+  },
+  "limitations": [
+    "One private Xephyr geometry and the GTK Default palette only; no palette comparison, rendered-pixel or historical Domain/OS fidelity claim.",
+    "This covers the mapped native GTK4 gallery, not every GTK4 application/layout, other toolkit families, or human visual approval.",
+    "The session D-Bus reported that inotify could not initialize because the user limit is exceeded; required GTK services activated and the matrix completed."
+  ],
+  "next": "Continue the still-authorized T07 audit for remaining layouts/families, reusing valid evidence; keep T07 running until its stated scope and review are addressed."
+}

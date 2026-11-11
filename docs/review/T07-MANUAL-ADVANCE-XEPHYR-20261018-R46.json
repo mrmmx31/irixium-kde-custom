@@ -1,0 +1,25 @@
+{
+  "id": "T07-MANUAL-ADVANCE-XEPHYR-20261018-R46",
+  "date": "2026-10-18",
+  "purpose": "Abrir uma prévia separada para avaliação manual do avanço atual sem interromper as sessões existentes.",
+  "display": ":70",
+  "session": "~/tempia/domainos-user-advance-test-20261018/session",
+  "package": ".qa-domainos-release-1.1.0-beta.1/irixclassic-domainos-0.2.12-beta.1.zip",
+  "package_sha256": "3976fe6c8ad77633817a49541f8def14d09192641034f84777aefad40acfe6d2",
+  "global_theme": "org.magpie.irixclassic.domainos.desktop",
+  "color_scheme": "DomainOS-SR10-4",
+  "decoration": "domainos_sr104",
+  "result": {
+    "status": "open",
+    "automated_checks": "22/22 true",
+    "native_galleries": ["GTK2", "GTK3", "GTK4", "Qt5", "Qt6", "QtQuick5", "QtQuick6"],
+    "capture": {
+      "path": "~/tempia/domainos-user-advance-test-20261018/session/TEMA-COMPLETO.png",
+      "sha256": "fd96b58217b788932594cb6d3f0d8eadb84cf1f20bc9226c7294db2c6fa873ad"
+    },
+    "protected_user_profiles_unchanged": true,
+    "manual_visual_acceptance": "pending"
+  },
+  "preserved_sessions": [":69", ":76"],
+  "notes": "Xephyr :70 permanece aberto para o usuário testar e fechar quando terminar. Abrir a sessão não valida fidelidade visual nem autoriza mudanças nas demandas pendentes."
+}

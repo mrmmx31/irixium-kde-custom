@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "R274",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "scope": "Preserve the user's renewed visual assessment of active and inactive DomainOS window-decoration colors after the Wayland sample.",
+  "user_observation": "The active orange/coral and inactive green title-bar colors still look slightly lighter than the original VM.",
+  "evidence_reviewed": {
+    "R262": "The VM and private Xephyr samples matched at the sampled active/inactive faces and bevel pixels.",
+    "R271": "The active face and bevel in the real Wayland session matched the VM sample exactly; the inactive face in the main Wayland session was not measured.",
+    "VM_active_face": "#fe8282",
+    "VM_inactive_face": "#7acac5"
+  },
+  "result": "The user's renewed visual assessment is recorded. Existing active-face measurement does not reproduce the difference; the inactive Wayland face remains unmeasured, so the report is not fully resolved.",
+  "changes": {
+    "decoration_code_changed": false,
+    "KDE_color_scheme_changed": false,
+    "static_final_colors_added": false
+  },
+  "next": "Keep this as a pending visual-review point. When the authorized work sequence returns to decorations, compare an inactive title bar in the real Wayland session against the VM without changing focus or private window content unnecessarily."
+}

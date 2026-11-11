@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-HINTS-800X600-20261019-R106",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "authorization": "AI Work Board saved state: section=work, user.authorized=true; GTK hint orientation/layout coverage.",
+  "status": "passed",
+  "scope": "GTK2 native tooltip geometry and lifecycle for 16 control types in four screen corners on the owned 800x600 Xephyr :84.",
+  "environment": {
+    "xephyr": ":84",
+    "screen_px": [800, 600],
+    "window_manager": "Openbox, existing owned Xephyr",
+    "gtk2_runtime_package": "libgtk2.0-0 2.24.33-2+deb12u1",
+    "theme": "Private generated GTK2 RC using the DomainOS recipe; not a palette matrix"
+  },
+  "matrix": {
+    "controls": ["arrow", "check", "combo", "entry", "frame", "list", "progress", "push", "radio", "scale_h", "scale_v", "scroll_h", "scroll_v", "spin", "text", "toggle"],
+    "positions": ["top-left", "top-right", "bottom-left", "bottom-right"],
+    "cases": 64,
+    "passed": 64,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "stable_ms": 400,
+    "all_tooltips_within_screen": true,
+    "all_tooltips_without_owner_overlap": true,
+    "all_tooltips_closed_after_pointer_leave": true,
+    "right_edge_control_positions_px": [679, 680],
+    "right_edge_control_width_px": 120,
+    "right_edge_control_end_px": [799, 800]
+  },
+  "diagnosis": {
+    "superseded_history": "R74 had two progress cases fail in 800x600; R98 subsequently passed focused progress/text baselines.",
+    "invalid_attempt": "R105 was stopped after 31 cases when result coordinates revealed that the GTK2 composite fixture ignored --button-x and remained at x=440. Its partial output is preserved under ~/tempia/t07-gtk2-800x600-r105-20261019/ and is excluded.",
+    "correction": "GTK2 generated scene now applies args.button_x. A right-edge combo smoke case passed at x=680 on :84 before the full matrix. R106 uses x=0 for left controls and x=600 at window x=79 for right controls."
+  },
+  "changes": {
+    "test_source": "tools/theme-lab/tests/probe_gtk_hint_hover.py now applies --button-x to GTK2 generated scene positions as intended.",
+    "product_source": "none",
+    "personal_settings": "unchanged",
+    "reference_vm": "untouched"
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "9692eef594a7d774613de5e7f746c46afa4798006d6c3617a98d7fcaa9c82070",
+    "matrix_runner": "af00407c5a23487c602faef5cdd495c5124b353f05e0cbd65e620d40a9040bc9",
+    "matrix_result": "0981615d876bc027e71830327099e42c72d004e2211a01c9c51d1e1cbbdea1cb",
+    "matrix_log": "86e12f8b26641fe86cd358c2d68671dbf7e625515f07544908627f83957b8959"
+  },
+  "artifacts": [
+    "~/tempia/t07-gtk2-800x600-r106-20261019/RESULTADO.json",
+    "~/tempia/t07-gtk2-800x600-r106-20261019/run.log",
+    "~/tempia/t07-gtk2-800x600-r106-20261019/run_matrix.py"
+  ],
+  "limitations": [
+    "This is GTK2 hint geometry/lifecycle on one generated scene, not a multi-palette pixel comparison or historical fidelity proof.",
+    "GTK2 at 1280x800 remains covered separately by R97; results are not merged across display sizes.",
+    "T07 remains open for other authorized scopes and user review."
+  ]
+}

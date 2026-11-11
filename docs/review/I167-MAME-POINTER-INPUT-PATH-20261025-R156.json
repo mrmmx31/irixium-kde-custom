@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-POINTER-INPUT-PATH-20261025-R156",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "host_pointer": "x=200,y=950, outside MAME",
+    "focus_pid": 274368,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "guest_screen": "File Manager foreground; bin icon visibly unselected"
+  },
+  "procedure": [
+    "A 50 ms left click on a verified empty wallpaper point inside the guest window triggered the existing hook: captured=true, mouse=true, mouse_device=mouse; click was consumed for capture.",
+    "Synthetic absolute host motion to the bin's corresponding host coordinate and a 50 px relative XTest motion did not change the Apollo mouse counter readback (x=3,y=106) or produce a visible cursor movement over the bin.",
+    "A physical AltGr keycode pulse released the hook; mouse=false and mouse_device=none. The host pointer was moved back outside to x=200,y=950.",
+    "One Tab key sent while MAME had focus produced no visible change; guest key reception/focus target is not proven."
+  ],
+  "capture_after_host_motion": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-bin-hover-r157.png",
+    "sha256": "558f0a0aa1900349a2a23ddac669bf20d732752737dc58c6a1f3e1fbb071fb21"
+  },
+  "cleanup": {
+    "host_pointer_outside_mame": true,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "vm_paused": false,
+    "guest_item_selected_or_opened": false,
+    "guest_file_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "conclusion": "The click capture and AltGr release path works, but XTest-generated host movement did not operate the VUE cursor. No XmpIcon state comparison was obtained. This does not establish what happens with physical mouse movement or the user's exact screen-activation sequence.",
+  "next": "Use an input path that reaches Apollo's mouse counters without relying on XTest motion, or a keyboard route that visibly focuses the grid; resolve the user's exact reported activation trigger before calling capture behavior fixed.",
+  "status": "capture_toggle_verified_xmpicon_pointer_delivery_unresolved"
+}

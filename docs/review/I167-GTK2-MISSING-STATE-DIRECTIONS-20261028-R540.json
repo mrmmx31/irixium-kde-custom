@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "R540",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-missing-pressed-assets-pass-right-up-down",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Private GTK2 stepper cache invalidation regression. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb :220, scale 1",
+    "engines": ["R538 control", "R539 candidate scratch copy"],
+    "palette_fixture": "Synthetic private RC/assets; KDE semantic roles and color changes were not tested.",
+    "vm_input_sent": false,
+    "system_theme_changed": false,
+    "user_apps_touched": false
+  },
+  "results": [
+    {
+      "direction": "right",
+      "cell_15x15": [183, 0],
+      "callback": "hscrollbar_end / GTK_ARROW_RIGHT",
+      "active_state": 1,
+      "adjustment_value": 31,
+      "r538_stale_vs_normal_rgb_pixels": 0,
+      "r539_fallback_vs_normal_rgb_pixels": 207,
+      "r539_partial_and_full_crops_byte_identical": true,
+      "partial_damage_repaired_rgb_pixels": 1,
+      "residual_rgb_pixels_after_repaint": 0
+    },
+    {
+      "direction": "up",
+      "cell_15x15": [92, 22],
+      "callback": "vscrollbar_start / GTK_ARROW_UP",
+      "active_state": 1,
+      "adjustment_value": 29,
+      "r538_stale_vs_normal_rgb_pixels": 0,
+      "r539_fallback_vs_normal_rgb_pixels": 207,
+      "r539_partial_and_full_crops_byte_identical": true,
+      "partial_damage_repaired_rgb_pixels": 1,
+      "residual_rgb_pixels_after_repaint": 0
+    },
+    {
+      "direction": "down",
+      "cell_15x15": [92, 57],
+      "callback": "vscrollbar_end / GTK_ARROW_DOWN",
+      "active_state": 1,
+      "adjustment_value": 31,
+      "r538_stale_vs_normal_rgb_pixels": 0,
+      "r539_fallback_vs_normal_rgb_pixels": 207,
+      "r539_partial_and_full_crops_byte_identical": true,
+      "partial_damage_repaired_rgb_pixels": 1,
+      "residual_rgb_pixels_after_repaint": 0
+    }
+  ],
+  "summary": "For each direction, only that direction's pressed stepper PNG was removed from private control/candidate asset copies; normal remained present. R538 replayed its cached normal cell on transition and partial/full repaint. R539 invalidated the target direction slot before GTK fallback. The verifier explicitly asserts 0/225 versus 207/225, byte equality across candidate crops, ACTIVE state/value traces, missing pressed assets, and 1-pixel repair.",
+  "limits": [
+    "R540 covers right/up/down; the same left-horizontal missing-pressed case is separately covered by R539.",
+    "This synthetic fallback result does not show that GTK fallback matches Domain/OS SR10.4/HP VUE 2.01.",
+    "No VM comparison, semantic KDE palette validation, live application test, installation, or human visual acceptance.",
+    "Duplicate-direction steppers, other missing state assets, theme reload, teardown, PNG/GC cost, and isolated style-set versus size-allocate invalidation remain open."
+  ],
+  "artifacts": {
+    "durable_record": "records/ia-tema/experiments/i167-r540-missing-asset-directions-20261028/",
+    "scratch": "~/tempia/domainos-theme-work/i167-r540-missing-asset-directions-20261028-v1/",
+    "verifier": "records/ia-tema/experiments/i167-r540-missing-asset-directions-20261028/verify_r540.py",
+    "verifier_sha256": "4cdecd76e274048198653896ae717f09b2979234f87eed2390120d51f8c92d0e",
+    "sha256_manifest_entries": 1229
+  },
+  "next": "Continue I167 with the project-owned SR10.4/HP VUE reference comparison, using only the Theme VM after the required #coordenacao-vm-mame start notice. Do not install R539 based on synthetic tests alone."
+}

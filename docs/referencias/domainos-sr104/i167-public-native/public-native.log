@@ -1,0 +1,11 @@
+/home/lsi/irixium-kde-custom/.qa-gtk2-public-wrdwnxmh
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_public_native.py", line 139, in <module>
+    print(json.dumps([run(scheme) for scheme in ('DomainOS-SR10.4', 'BreezeDark')]), flush=True)
+                      ~~~^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_public_native.py", line 103, in run
+    path, proof = wait(launched, child)
+                  ~~~~^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_public_native.py", line 30, in wait
+    raise AssertionError(f'Owned process exited: {process.returncode}')
+AssertionError: Owned process exited: 1

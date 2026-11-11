@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R643",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "vm-awake-but-mouse-route-not-confirmed-no-arrow-press",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "method_question": "Q505 revision 1; user selected existing MAME-window capture, no hook/map/profile changes, release with AltGr"
+  },
+  "vm": {
+    "service": "domainos-tema-mame.service",
+    "service_main_pid": 379334,
+    "mame_pid": 379349,
+    "canonical_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_project_mame_pid": 117186,
+    "other_project_vm_touched": false
+  },
+  "before": {
+    "capture": "~/tempia/domainos-theme-work/I167/R643/vm-before-input.png",
+    "sha256": "5fff64eb0ebcc6414ab0cbed24a524251b897bf8379ded8dd1fd265ed5896b2a",
+    "state": "Black guest framebuffer; project MAME was active, unpaused, and the control channel had no pending request."
+  },
+  "wake": {
+    "script": "~/tempia/domainos-theme-work/I167/R643/wake-and-capture.lua",
+    "method": "One-frame guest Shift pulse on :kbd:keyboard4/Shift, automatically cleared at frame 2; native snapshot at frame 65.",
+    "request_id": "d87c6fe5062c4e1c9d28b8798040b76b",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "error": null,
+    "capture": "~/tempia/domainos-theme-work/I167/R643/vm-after-shift.png",
+    "sha256": "cb3bd7bccd9a16bcaf3fc589a2570dcb7aad066e1b7de178d7b7cdb7595e4674",
+    "visible": "HP VUE awake with File Manager, empty Trash Can, and visible vertical/horizontal scrollbar arrows."
+  },
+  "input_route": {
+    "method": "Q505-authorized existing MAME window route; no hook, map, or profile edits.",
+    "result": "No scrollbar arrow was pressed. A short XTest click on blank guest desktop did not change the existing capture hook; hook remained captured=false. XTest AltGr also did not produce a hook transition.",
+    "host_window": "0x3800008",
+    "host_window_pid": 379349,
+    "issue": "Screen-filling XChat windows overlap the right-side MAME target. Pointer warps followed the XChat surface and changed focus before a cursor-on-arrow condition could be verified. The route is inconclusive, not a GTK2 rendering regression.",
+    "guest_arrow_roi": null,
+    "arrow_press_attempted": false
+  },
+  "host_ui_recovery": {
+    "custom_goals_window": "0x191f420 restored normal and active; pointer restored to (978,416).",
+    "mame_window": "returned to Iconic; MAME process and guest remain running.",
+    "source_live_readme_window": "0x1828654 was minimized while isolating the MAME window and no longer appears in the X11 client list; it was not edited. A separate Source live window for RELEASE.md remains present. This UI side effect is recorded for transparent follow-up.",
+    "user_session_restarted": false
+  },
+  "profile_after": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "wait_button_up": false,
+    "channel_pending": false
+  },
+  "limits": [
+    "The only guest input was the documented Shift wake pulse; the blank-area XTest attempt did not press a scrollbar arrow.",
+    "No VM restart, guest file edit, input-map change, mouse-hook change, performance-profile change, or other-project VM control occurred.",
+    "The historical GTK2 pressed-state comparison remains open. Do not repeat blind pointer warps; the next attempt needs a route that can verify the MAME surface owns the pointer before pressing."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "No GTK2 visual criterion closed. This is technical coverage, not a fidelity score."
+  }
+}

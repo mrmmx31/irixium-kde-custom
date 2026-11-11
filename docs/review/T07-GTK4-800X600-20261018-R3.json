@@ -1,0 +1,99 @@
+{
+  "id": "T07-GTK4-800X600-20261018-R3",
+  "task": "T07",
+  "date_utc": "2026-10-18T16:16:00Z",
+  "scope": "Full native GTK4 gallery hint matrix at 800x600 in existing Xephyr :76, before adjusting long owner hints.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "geometry": [
+      800,
+      600
+    ],
+    "theme": "Default",
+    "font": "Sans 10",
+    "restored_to": [
+      1280,
+      800
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "c354adde9b342e97b2d806a129dfe62d9598e4e3cd27024aadb9526645654807",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79"
+  },
+  "matrix": {
+    "status": "partial",
+    "mapped": 31,
+    "passed": 28,
+    "failed": 3,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen_for_passed": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": true,
+    "scrollbar_clicks": 2,
+    "cleanup": {
+      "hints": [
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        },
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        }
+      ],
+      "overlay_anchors_before": 2,
+      "overlay_anchors_after": 0,
+      "anchors_removed": true
+    }
+  },
+  "failures": [
+    {
+      "page": 0,
+      "control": "GtkNotebook",
+      "tooltip": "Abas de controles nativos: escolha controles ou texto; os valores das páginas são preservados.",
+      "tooltip_rect_px": [
+        400,
+        347,
+        421,
+        51
+      ],
+      "overflow_right_px": 21,
+      "reason": "tooltip exceeds screen: tip=(400, 347, 421, 51)"
+    },
+    {
+      "page": 1,
+      "control": "GtkNotebook",
+      "tooltip": "Abas de controles nativos: escolha controles ou texto; os valores das páginas são preservados.",
+      "tooltip_rect_px": [
+        404,
+        335,
+        411,
+        51
+      ],
+      "overflow_right_px": 15,
+      "reason": "tooltip exceeds screen: tip=(404, 335, 411, 51)"
+    },
+    {
+      "page": 1,
+      "control": "GtkScrolledWindow",
+      "tooltip": "Área rolável do editor: percorra os parágrafos com as barras nativas.",
+      "tooltip_rect_px": [
+        404,
+        353,
+        411,
+        51
+      ],
+      "overflow_right_px": 15,
+      "reason": "tooltip exceeds screen: tip=(404, 353, 411, 51)"
+    }
+  ],
+  "limits": [
+    "All failures are popovers that extend past the right edge; other tested hints passed.",
+    "This is placement/layout evidence, not historical pixel fidelity or a palette comparison.",
+    "Xephyr was restored to 1280x800 and no production theme/palette was changed."
+  ],
+  "raw_output": "~/tempia/t07-gtk4-current-r31-20261018/800x600.stdout"
+}

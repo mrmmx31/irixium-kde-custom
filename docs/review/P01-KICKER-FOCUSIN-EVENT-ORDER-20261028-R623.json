@@ -1,0 +1,43 @@
+{
+  "id": "R623",
+  "date_utc": "2026-10-28T21:13:50Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 menu behavior only"
+  },
+  "method": {
+    "kind": "read-only source and installation audit",
+    "sources": [
+      "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListView.qml",
+      "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDialog.qml",
+      "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/MenuRepresentation.qml",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml"
+    ],
+    "production_state_changed": false,
+    "board_state_changed": false
+  },
+  "observations": {
+    "r619_source_and_installed_hash_match": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "kicker_before_submenu_create": "ItemListView sets kicker.hideOnWindowDeactivate=false before creating the child dialog.",
+    "kicker_child_dialog": "ItemListDialog binds hideOnWindowDeactivate to kicker.hideOnWindowDeactivate; onWindowDeactivated sets kicker.expanded=false.",
+    "kicker_root_representation": "MenuRepresentation.reset sets hideOnWindowDeactivate=true and clears the root list selection; windowSystem.hidden is connected to reset.",
+    "domainos_focus_in_handler": "DomainOSKdeApplicationMenu unconditionally sets kicker.hideOnWindowDeactivate=true on every windowSystem.focusIn.",
+    "root_dialog_binding": "The DomainOS root PlasmaCore.Dialog follows kicker.hideOnWindowDeactivate, matching the child dialog contract."
+  },
+  "interpretation": {
+    "status": "event_order_unverified",
+    "hypothesis": "If the submenu focus-in arrives before the parent deactivation is processed, the unconditional DomainOS focus-in handler may restore hide-on-deactivate too early. The child dialog's own deactivation handler can also close the shared menu. Neither path has been shown to cause the user's hover symptom.",
+    "required_evidence": "Record the order of pointer-enter, child creation, focus-in, root/child deactivation, hidden, shared hideOnWindowDeactivate changes, and expanded changes under a real pointer event in an isolated Wayland session.",
+    "do_not_change_production_until_reproduced": true,
+    "no_visual_or_human_acceptance_claim": true
+  },
+  "next": [
+    "Use an isolated Wayland test with genuine compositor-delivered pointer events, or inspect the user's post-R619 result if already available.",
+    "Only change the focus-in gate after the event order identifies it as causal; then verify immediate search input, hover persistence, repeated open/close, and app launch without restarting KWin."
+  ]
+}

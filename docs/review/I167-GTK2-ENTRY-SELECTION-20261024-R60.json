@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-SELECTION-20261024-R60",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "family": "GTK2 GtkEntry selected text role rendering",
+  "renderer": {
+    "toolkit": "GTK 2.24.33",
+    "control": "real GtkEntry rendered by GtkOffscreenWindow",
+    "focus_activation": "synthetic GDK_FOCUS_CHANGE sent to GtkEntry",
+    "selection": "full UTF-8 text range; verified bounds [0,25]",
+    "host_window_mapped": false
+  },
+  "validation": {
+    "status": "passed",
+    "source": "tools/theme-lab/tests/probe_gtk2_entry_selection_offscreen.py",
+    "source_sha256": "1c54dc3c6e025c93f1ae77af3ef62b2d6adbdfe7fc0b20639bb0ef1e14520ece",
+    "result_path": "~/tempia/i167-entry-selection-r60/RESULTADO.json",
+    "result_sha256": "95cd2a7315e13e1b0c45f3add2d4d6f0974bc6ba9cd1c6eb2fc24ad1d92a23c4",
+    "rows": [
+      {"scheme": "DomainOS", "selection_background_role": [50, 151, 199], "baseline_role_pixels": 0, "selected_role_pixels": 1886, "changed_pixels_including_focus_frame": 4511},
+      {"scheme": "BreezeLight", "selection_background_role": [61, 174, 233], "baseline_role_pixels": 0, "selected_role_pixels": 3506, "changed_pixels_including_focus_frame": 4516},
+      {"scheme": "BreezeDark", "selection_background_role": [61, 174, 233], "baseline_role_pixels": 0, "selected_role_pixels": 3506, "changed_pixels_including_focus_frame": 4515},
+      {"scheme": "TestYellow", "selection_background_role": [88, 72, 24], "baseline_role_pixels": 0, "selected_role_pixels": 1875, "changed_pixels_including_focus_frame": 4516}
+    ],
+    "finding": "The selected Entry added pixels from the selected-text background role in all four palettes; the baseline had none. The output follows each current KDE palette and contains no fixed product color."
+  },
+  "limits": [
+    "The focus-in event was synthetic because GtkOffscreenWindow does not receive native X focus delivery.",
+    "This verifies GTK2 palette-role rendering only; SR10.4 selection color and shape remain unmeasured.",
+    "Caret blink/shape and a real mapped focus-in/focus-out cycle remain open.",
+    "The MAME clone video is currently blank per R59; no user GTK session or XChat was changed."
+  ],
+  "next": "Preserve the GTK2 scope. Obtain a visible SR10.4 reference and an isolated real X focus cycle before claiming historical selection/caret fidelity."
+}

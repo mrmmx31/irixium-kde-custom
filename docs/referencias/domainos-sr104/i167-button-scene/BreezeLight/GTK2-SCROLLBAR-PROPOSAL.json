@@ -1,0 +1,315 @@
+{
+  "rc": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/button-scene-r2/BreezeLight/gtk2-scrollbars/gtkrc",
+  "geometry_properties": {
+    "slider-width": 11,
+    "stepper-size": 12,
+    "trough-border": 2,
+    "stepper-spacing": 0,
+    "trough-under-steppers": true,
+    "has-backward-stepper": true,
+    "has-forward-stepper": true,
+    "has-secondary-backward-stepper": false,
+    "has-secondary-forward-stepper": false
+  },
+  "assets": [
+    "arrow-up-normal.png",
+    "arrow-down-normal.png",
+    "arrow-left-normal.png",
+    "arrow-right-normal.png",
+    "trough-normal.png",
+    "thumb-normal.png",
+    "arrow-up-pressed.png",
+    "arrow-down-pressed.png",
+    "arrow-left-pressed.png",
+    "arrow-right-pressed.png",
+    "trough-pressed.png",
+    "thumb-pressed.png",
+    "arrow-up-disabled.png",
+    "arrow-down-disabled.png",
+    "arrow-left-disabled.png",
+    "arrow-right-disabled.png",
+    "trough-disabled.png",
+    "thumb-disabled.png",
+    "arrow-up-backdrop.png",
+    "arrow-down-backdrop.png",
+    "arrow-left-backdrop.png",
+    "arrow-right-backdrop.png",
+    "trough-backdrop.png",
+    "thumb-backdrop.png",
+    "push-normal.png",
+    "push-pressed.png",
+    "push-disabled.png",
+    "push-backdrop.png"
+  ],
+  "scope": "Private GTK2 scrollbar paint only; no scene integration or visual approval",
+  "whole_insensitive_requires_widget_name": "themeLabInsensitiveScroll",
+  "backdrop_requires_widget_name": "themeLabBackdropScroll",
+  "status": "partially_generated",
+  "family": "gtk2",
+  "recipe": {
+    "geometry": {
+      "bar_px": 15,
+      "shadow_px": 2,
+      "arrow_px": 11,
+      "thumb_cross_px": 11,
+      "arrow_thumb_gap_px": 1,
+      "view_bar_gap_px": 4,
+      "view_inset_px": 2,
+      "control_padding_px": 4,
+      "font_px": 13
+    },
+    "palette": {
+      "face_role": "Colors:Button/BackgroundNormal",
+      "text_role": "Colors:Button/ForegroundNormal",
+      "view_role": "Colors:View/BackgroundNormal",
+      "selection_role": "Colors:Selection/BackgroundNormal",
+      "light": 0.56,
+      "shade": 0.482,
+      "trough": 0.15
+    },
+    "notes": "",
+    "visible_controls": 3073,
+    "selected_control": 0,
+    "positions": [
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        150
+      ],
+      [
+        300,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ],
+      [
+        20,
+        20
+      ]
+    ],
+    "sizes": [
+      [
+        180,
+        50
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        220,
+        15
+      ],
+      [
+        15,
+        180
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "rc_sha256": "e0d8f4e255a377dbcb3c4bac9bc8a7a831ffcab8e220a4248714f8f5152ce906",
+  "asset_sha256": {
+    "arrow-up-normal.png": "65fd1f86b0d4103c571b33758a2c387b2f2fc3525e8d8add2875d6fdc4af556e",
+    "arrow-down-normal.png": "74bce0b78cf9caf3a0a462dcc272a43e2c4a23534d4a638febb3af19ba197e0b",
+    "arrow-left-normal.png": "16f9b36af6bdcc43cd51adc0228435ed1f573c2295e9cf60c15f24e22199077d",
+    "arrow-right-normal.png": "6a8eeb91a312be9c51dcf1ca608010e1fc0d6af53755249213412392a5c369a9",
+    "trough-normal.png": "c71ff8c31b1dfb5d1e1e84ff7e461536a95fb72a4545df7a18a90362f962ba46",
+    "thumb-normal.png": "ec4dcd89bdd9d1954d2dbce0509de66e7da1abe2b42fe1dd7c897846113effb6",
+    "arrow-up-pressed.png": "fb52a10900807687f7b622e3272d4fc39487d9267b3c9b8c486218e1dfa88a95",
+    "arrow-down-pressed.png": "7558fd39316a5fc95ea3846c86682423a084e9827b997b2d5c074a179f367f80",
+    "arrow-left-pressed.png": "30bdc85e0ad303247efb759d4a2f53038ff452f5ef70cc7edbd176f63e0e73f4",
+    "arrow-right-pressed.png": "fba6b3c9e5e51be62ccc52e954715e525091af4b28456a4cf9dd2274a76377ba",
+    "trough-pressed.png": "c71ff8c31b1dfb5d1e1e84ff7e461536a95fb72a4545df7a18a90362f962ba46",
+    "thumb-pressed.png": "ec4dcd89bdd9d1954d2dbce0509de66e7da1abe2b42fe1dd7c897846113effb6",
+    "arrow-up-disabled.png": "7245e72ca5f0a2ade376f42ee7e90ce5961e7bb4b0e6649fb465d49ebf381a65",
+    "arrow-down-disabled.png": "93d31c1aefd822bfcc7d4fad91909cb648bbebe096afde62ba0f7536c5de0da9",
+    "arrow-left-disabled.png": "dfc9c38962643b1510ab3c1f2208c42a8162669ef429e385a1cca1816ca63fc1",
+    "arrow-right-disabled.png": "c6afc5a5b756daf8e885356ec1b2acfbd1b6fd58737913cd618afb97172eff07",
+    "trough-disabled.png": "8b8f54852cac2b41632cb37474f4f0a39130ef8cb8c3a588c787d808cd4712fd",
+    "thumb-disabled.png": "ef466a30c6c2eabc900c979f4d2064a2d9495901f5a1de3c875b83474a59d7df",
+    "arrow-up-backdrop.png": "65fd1f86b0d4103c571b33758a2c387b2f2fc3525e8d8add2875d6fdc4af556e",
+    "arrow-down-backdrop.png": "74bce0b78cf9caf3a0a462dcc272a43e2c4a23534d4a638febb3af19ba197e0b",
+    "arrow-left-backdrop.png": "16f9b36af6bdcc43cd51adc0228435ed1f573c2295e9cf60c15f24e22199077d",
+    "arrow-right-backdrop.png": "6a8eeb91a312be9c51dcf1ca608010e1fc0d6af53755249213412392a5c369a9",
+    "trough-backdrop.png": "c71ff8c31b1dfb5d1e1e84ff7e461536a95fb72a4545df7a18a90362f962ba46",
+    "thumb-backdrop.png": "ec4dcd89bdd9d1954d2dbce0509de66e7da1abe2b42fe1dd7c897846113effb6",
+    "push-normal.png": "8610962da23dd2c8fb42e998f29471275f9b634e28dc78a6b78044d1b67ee69d",
+    "push-pressed.png": "7f10f560f6c5ecb94690fed8e0b82187e2bfc5dc29523edfd9b0612764817722",
+    "push-disabled.png": "8368dfa6e2b18237ae5f9a3be8e4116cb4624c91a46cb4d8629ef68ae5d439a6",
+    "push-backdrop.png": "8610962da23dd2c8fb42e998f29471275f9b634e28dc78a6b78044d1b67ee69d"
+  },
+  "recipe_applied": false,
+  "translated_controls": [
+    "push",
+    "scroll_h",
+    "scroll_v"
+  ],
+  "scene_integrated": false,
+  "historical_fidelity_claimed": false,
+  "selected_scheme": {
+    "path": "/usr/share/color-schemes/BreezeLight.colors",
+    "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+    "kind": "current_kdeglobals_roles",
+    "scheme_id": ""
+  },
+  "palette": {
+    "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+    "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+    "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+    "gtkconfig_policy_version": "6.3.4",
+    "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+    "kf_colorscheme_version": "6.13.0",
+    "kind": "native_kcolorscheme_selected_file",
+    "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+    "path": "/usr/share/color-schemes/BreezeLight.colors",
+    "qt_version": "6.8.2",
+    "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+    "titlebar": "Header active/inactive",
+    "tooltip": "Active Tooltip in every state",
+    "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+    "helper": {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/build/theme-lab-colors",
+      "sha256": "f6562702f82d5963aaab0f2883ff9e0551a43da97bae3fe7a9cc9418381d765f"
+    },
+    "helper_source": {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/src/native_colors.cpp",
+      "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+    },
+    "snapshot_sha256": "47746c098577dbe3800b1d219773210b37adf31e643f94639271fbf4de554d2f",
+    "role_fallbacks": {},
+    "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+  },
+  "palette_inputs": [
+    {
+      "path": "/usr/share/color-schemes/BreezeLight.colors",
+      "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "kind": "current_kdeglobals_roles",
+      "scheme_id": ""
+    },
+    {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/build/theme-lab-colors",
+      "sha256": "f6562702f82d5963aaab0f2883ff9e0551a43da97bae3fe7a9cc9418381d765f"
+    },
+    {
+      "path": "/home/lsi/irixium-kde-custom/tools/theme-lab/src/native_colors.cpp",
+      "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+    }
+  ],
+  "engine": {
+    "path": "/usr/lib/i386-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so",
+    "sha256": "f0b9aa12900834178cb246b4f3e68e7c3594f29f59baabadfbe206c493e3ffc1"
+  },
+  "sources": {
+    "tools/theme-lab/gtk2_recipe.py": "fd825bdc0b35f8b023234278f1c252e000289969b29c62fcf3029b9c999c4a1c",
+    "tools/theme-lab/gtk2_rc_fragments.py": "3a6146f0ff839ceeda569a7f4d67b44214db85f1aebc2ddcfe6456a69558194f",
+    "tools/theme-lab/gtk2_canvas.py": "0aec69758d09d638e27efbfad7b562cd9abb885545bbc7b3913cf0061620f5f3",
+    "tools/theme-lab/gtk2_buttons.py": "ffa5dafa2628ea94087b239f2ce1121a537e23fe8af8a438f4077913788c3a5f",
+    "tools/theme-lab/gtk2_generation.py": "e576794e4f878f5261fe5334f6b542be082642c610827b7858305ffb4eda05c4",
+    "tools/domainos_motif_art.py": "8566413452b205dcbea4537f179be2eb69441909cb3214bcb6d657b67b35096f",
+    "gtk/tools/build_kde_domainos.py": "5370dbaf7cd64b0dd9162707e1c078f9f7659071955b7b06baa71e043951f933",
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3"
+  },
+  "limitations": [
+    "Botão e barras de rolagem traduzidos; outros controles pendentes.",
+    "Aplicação nas prévias é verificada separadamente.",
+    "Cores são snapshot dos papéis KDE; gerar novamente após trocar esquema."
+  ],
+  "host_changed": false,
+  "picked_used": false
+}

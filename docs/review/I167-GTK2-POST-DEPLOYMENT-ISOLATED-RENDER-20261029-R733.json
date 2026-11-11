@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "R733",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Reconcile the GTK2 R731 isolated capture made after user-profile deployment with its pre-deployment candidate and SR10.4 reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "post_deployment_fixture_capture": {
+      "source_path": "/home/lsi/tempia/domainos-theme-work/I167/R731-relief-candidate/installed-short.png",
+      "recorded_path": "records/ia-tema/I167/R733/installed-short.png",
+      "sha256": "6c467f9da3f35c52a44010e4f593e60db1698ec85c89d3b7096138cf631377e8",
+      "mtime_local": "2026-10-29T05:14:15-04:00",
+      "format": "PNG, 640x330, indexed 4-bit",
+      "capture_method": "Existing capture-short.sh launches bars-short, captures its isolated X root with xwd, then converts to PNG.",
+      "limit": "The shell invocation's GTK2_RC_FILES value was not preserved with this artifact. This is an isolated GTK2 fixture capture, not an open user application capture."
+    },
+    "pre_deployment_candidate": {
+      "path": "records/ia-tema/I167/R732/candidate-short.png",
+      "sha256": "dac60e295e85420796e70bb521adfc2bfaa657e141f6d16c076e948ff874b8c6",
+      "profile": "DDFFFFFFFFFFFLL"
+    },
+    "installed_theme_readback": {
+      "gtk2_rc": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "palette_bundle": "dc0aa8ec162b5a516008a29e95d9cc28329906a507fbe46a49566a59f074e15d",
+      "gtk2_rc_files_in_current_shell": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+      "limit": "Current readback is corroborating context; it does not establish the environment of the historical capture process."
+    }
+  },
+  "measurements": {
+    "installed_capture_vs_candidate": {
+      "dimensions_px": [640, 330],
+      "comparison": "RGB pixel comparison after conversion from indexed PNG",
+      "different_pixels": 0,
+      "total_pixels": 211200,
+      "interpretation": "The post-deployment fixture capture has the same rendered pixels as the isolated R731 candidate."
+    },
+    "scrollbar_profile": {
+      "r731_adaptation": "DDFFFFFFFFFFFLL",
+      "literal_vm_measurement": "DDLLFFFFFFFDDLL",
+      "difference": "Four inner cross-section pixels per straight row are face-colored in the adaptation: the inner light pair at offsets 2-3 and dark pair at offsets 11-12. The 15 px width and outer two-pixel dark/light edges remain."
+    },
+    "arrows": {
+      "vertical_up": "225/225 RGB pixels match the native SR10.4 cell in the candidate comparison already recorded in R732; identical fixture raster carries that result.",
+      "vertical_down": "225/225 RGB pixels match the native SR10.4 cell in the candidate comparison already recorded in R732; identical fixture raster carries that result.",
+      "horizontal_left_right": "225/225 RGB pixels each match the native SR10.4 cells in the candidate comparison already recorded in R732; identical fixture raster carries that result."
+    }
+  },
+  "changes": [
+    "Preserved the existing post-deployment fixture image in records/ia-tema/I167/R733/installed-short.png; the Tempia source was left intact.",
+    "No GTK2 source, palette, installed theme, application, or VM was modified or restarted."
+  ],
+  "result": "The saved post-deployment isolated fixture raster is pixel-identical to the R731 candidate and visibly uses the adapted flat body profile. This supports the native GTK2 fixture rendering after deployment. Because the capture invocation did not preserve its exact RC environment and it is not a live user application, it cannot establish that an already-open application repainted or supply human visual acceptance.",
+  "next": "Keep R731 in place and do not reinstall. I167 remains open for a fresh view of an already-open GTK2 application after the reload and the user's visual assessment. If it still reads outward, capture that exact whole control and isolate the remaining edge before changing the profile.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing I167 technical coverage estimate; not a visual-fidelity percentage."
+  }
+}

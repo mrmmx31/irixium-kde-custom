@@ -1,0 +1,34 @@
+{
+  "stage": "T04 sample text journal storage foundation",
+  "recorded_at": "2026-10-11T18:21:52.498807+00:00",
+  "authorization": {
+    "item": "T04",
+    "revision": 2,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "source_sha256": {
+    "tools/theme-lab/preview_text_history.py": "92003042efd981c729efd03972128554d5e1a7212780caf5fbc6e680d67f1fc6",
+    "tools/theme-lab/preview_sample_journal.py": "1e7e035cab2b59eec5c21aad1b8b65ffe721c7fc0af8fc0cc78caa01195731d4",
+    "tools/theme-lab/tests/test_preview_sample_journal.py": "ecf7aea17b24a33b86e4ad83fa44b54b12c6fdd7bac50b717d32c487b96a86ea",
+    "tools/theme-lab/SAMPLE-HISTORY.md": "6e0e4c4588f716460188265d6d633775cf481e69be139e4233190075560f15f7"
+  },
+  "verified": {
+    "journal_tests": 11,
+    "text_history_regression_tests": 3,
+    "distinct_process_recovery": true,
+    "native_restart_verified": false,
+    "user_approval": false
+  },
+  "failures_retained_in_report": [
+    "Initial symlink fixture attempted to replace an existing lock; fixture corrected, all tests repeated.",
+    "Full-worktree diff check exposed preexisting unrelated trailing spaces in qtquick_demo.py; scope diff check passes, unrelated file untouched."
+  ],
+  "remaining": [
+    "GTK2 native lifecycle integration",
+    "native restart and editing shortcuts for both origins",
+    "launcher resume transfer",
+    "non-text runtime states",
+    "GTK3 consumer integration"
+  ],
+  "installed_in_personal_session": false
+}

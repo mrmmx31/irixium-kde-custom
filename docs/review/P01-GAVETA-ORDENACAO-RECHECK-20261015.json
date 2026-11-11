@@ -1,0 +1,50 @@
+{
+  "checked_at_utc": "2026-10-15T03:22:30Z",
+  "stage": "P01 current drawer follow-up: ordering controls and KDE Favorites synchronization",
+  "request_revision": 4,
+  "definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "status": "technical_behavior_reused_visual_population_unavailable",
+  "source_comparison": {
+    "matches_previous_71_check_receipt": true,
+    "current_sha256": {
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteOrdering.qml": "b3370148f1f8e79a6e534d7792e9bb9b4c5fbb4e44b091a4d9215da36f78ec78",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteMoveButton.qml": "bfd59436a3641258dc09432e1e8dd48978462700d2b5129ffc2b51c24f61399c",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSButton.qml": "1f850382928fa535c83f7d7168d7cbcba088d97afc582933804a58663fec59de",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "1a61a20c2cc95327efb04c2fb2218fe22640658aba39e98a3306e0661cbc4d80",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSControlPalette.qml": "f6f7cd9cd8cc8d364d5e775cfcaf4a94211dda439fd7bc6c4444e9097e58da19",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/ApplicationActions.js": "0fdfd7dfc79192e1cd632bef5171b403ba5b021ea79a33e7d2d773927db9757d",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/favorite_order.py": "7ac6ab462cbc6adbbb99a3a8c9c1b500c8f18c330e0546a82f134451255986c9",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/pin_import.py": "05da1ad1323ab7215646e951d8554fa745e5c8963db6544dd4a147aa0c6051b1"
+    },
+    "previous_receipt": "docs/review/P01-GAVETA-ORDENACAO-20261010.json",
+    "previous_receipt_sha256": "776400ceeb288493e7b20c6fdb699e66ab6913bb08305ca6bb164d43b865b1bf"
+  },
+  "xephyr": {
+    "display": ":61",
+    "profile": "isolated domainos-test; XDG config/data/state under /home/domainos-test",
+    "action": "clicked Applications drawer at 625,967; it opened and remained mapped",
+    "result": "drawer contained permanent Preferences entry and empty-state text; no pinned or KDE-favorite rows existed, so move controls were not visually rendered",
+    "capture": "~/tempia/goal-resume-20261015/current-xephyr/xephyr61-applications-drawer.png",
+    "sha256": "6ee30e6397527434f15ffe2296d21de575fcf2d37ad596dcdbdd5b3dce2675c0"
+  },
+  "verified_behavior_from_matching_receipt": [
+    "custom taskbar pins have local move-up/move-down controls and retain their separate order",
+    "KDE menu favorites have move-up/move-down controls and use KAStats ordering by favorite identity",
+    "the persisted order was read through a second native provider after moving in both directions",
+    "no personal favorite or user profile was reordered"
+  ],
+  "answer": {
+    "taskbar_pins": "ordered locally within the pinned drawer section",
+    "kde_favorites": "ordered through the native KDE Favorites source; the drawer reads the same order used by KDE Applications menus",
+    "already_open_external_menu": "may need its provider/menu reopened because KAStats does not broadcast the reordering live",
+    "manual_approval": "not inferred"
+  },
+  "limitations": [
+    "Current Xephyr profile has no rows, so this capture cannot confirm the visible size/placement of move buttons in populated entries.",
+    "The matching automated/native receipt proves ordering behavior, not current visual approval."
+  ]
+}

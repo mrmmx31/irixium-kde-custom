@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-PAIR-20261024-R136",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "vm": "Apollo DN3500, Domain/OS SR10.4, HP VUE 2.01",
+    "mame_pid": 3759847,
+    "native_capture": "~/tempia/i167-r153-list-clean-pointer.png",
+    "native_capture_sha256": "2e87017da0815b348866cf71ff8292ed9d155bff2417fb2c251301fba72d030b",
+    "file_manager": "~/node_12345; 28 Files 2 Filtered; XmpIcon grid; four columns and vertical scrollbar"
+  },
+  "gtk2_probe": {
+    "version": "2.24.33",
+    "display": "private Xvfb 1024x844, native scale 1:1",
+    "theme_name": "DomainOS-SR10-4-KDE",
+    "palette_source": "DomainOS-SR10.4.colors resolved through Theme Lab backend role mapping; no fixed final widget colors",
+    "widget": "GtkIconView in GtkScrolledWindow; 28 entries; four columns",
+    "folder_glyph": "28x24 PNG cropped from the SR10.4 capture so layout compares identical content pixels",
+    "renderer_font": "Monospace 9 in this diagnostic only",
+    "allocation": {
+      "outer_scroll_area": [555, 247],
+      "icon_view": [532, 243],
+      "columns": 4,
+      "item_width": 130,
+      "item_padding": 4,
+      "column_spacing": 0,
+      "row_spacing": 0,
+      "margin": 0,
+      "spacing": 0,
+      "vertical_upper": 371,
+      "vertical_page_size": 243
+    },
+    "capture": "~/tempia/i167-r135-gtk2-iconview/refined/gtk2-iconview-domainos.png",
+    "capture_sha256": "7a2cb1093fb1a38c9bf42b2f4504810c804ac6f065d30e3c5fb44fa690722f84",
+    "result": "~/tempia/i167-r135-gtk2-iconview/refined/RESULTADO.json",
+    "result_sha256": "34486ff62566166418f43b49dba9e3892f74e1657bcc3e0c91fcd731966fae09"
+  },
+  "paired_measurements": {
+    "vue_icon_top_lefts_px": [[62,482],[191,482],[320,482],[449,482],[62,537],[191,537],[320,537],[449,537],[62,592],[191,592],[320,592],[449,592],[62,647],[191,647],[320,647],[449,647]],
+    "vue_column_pitch": 129,
+    "vue_row_pitch": 55,
+    "gtk_icon_top_lefts_px": [[27,27],[159,27],[291,27],[423,27],[27,80],[159,80],[291,80],[423,80],[27,133],[159,133],[291,133],[423,133],[27,186],[159,186],[291,186],[423,186],[27,239],[159,239],[291,239],[423,239]],
+    "gtk_column_pitch": 132,
+    "gtk_row_pitch": 53,
+    "long_label_domain_examples": {
+      "vue_pixel_bbox": [320,566,438,578],
+      "gtk_pixel_bbox": [293,107,412,121],
+      "vue_size": [118,12],
+      "gtk_size": [119,14]
+    },
+    "limitations": "Icon origins are in each image's screen coordinates; viewport origins are not identical and are recorded in the captures. Label dimensions were extracted from visible foreground pixels. No item selection, focus or hover state was paired."
+  },
+  "api_boundary": {
+    "gtk_icon_view_style_properties": "GTK2 runtime inspection lists focus/cursor/link/selection-box/separator/tooltip colors and focus metrics; it does not list item-width, item-padding, column-spacing, row-spacing, margin or spacing as style properties.",
+    "gtk_icon_view_object_properties": "The layout fields above are GtkIconView object properties normally supplied by the application.",
+    "consequence": "Theme colors and focus/selection appearance can be translated through KDE roles. Exact grid pitch and padding need application-level values or remain a documented gap; a theme-only change cannot claim to align them."
+  },
+  "preservation": {
+    "theme_source_changed": false,
+    "guest_files_changed": false,
+    "xchat_or_personal_profile_changed": false,
+    "mouse_click_target": "Find Files Close button only",
+    "text_entered": false,
+    "mouse_and_keyboard_released": true,
+    "profile_after_probe": {"paused": false, "frameskip": 4, "throttled": false, "captured": false, "wait_button_up": false, "channel_pending": null}
+  },
+  "next": "Add a distinct GTK2 GtkIconView color/state adapter using current KDE roles and native tests for normal, backdrop, insensitive, selected and focus states. Keep application-owned layout metrics separate from theme recipes; measure/adjust them only through an explicitly scoped preview property set.",
+  "status": "paired_native_geometry_partial",
+  "user_acceptance": "pending"
+}

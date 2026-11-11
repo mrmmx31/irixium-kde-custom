@@ -1,0 +1,91 @@
+{
+  "item": "P02",
+  "user_revision": 1,
+  "definition_sha256": "f5058c72ae0bf74515fe9ebfd06530d7fb773e6b4600840013052fb50fa5acfd",
+  "checked_at": "2026-10-14T04:26:37Z",
+  "scope": "Hora/fusos, data/localidade, calendário e feriados Manaus/Amazonas/Brasil em 2026; sem repetir famílias não alteradas",
+  "tests": {
+    "private_time_and_instrument_session": {
+      "command": "python3 -B plasma/tools/testar-domainos-instrumentos.py --saida /tmp/domainos-p02-instruments-20261014",
+      "status": "passed",
+      "checks": 23,
+      "failures": [],
+      "source_hashes": {
+        "DomainOSInstruments.qml": "046c6b7d889715e0925b93f2fa9ffb25375aebf83c3324421e6cc1cc71bdd75e",
+        "DomainOSGraph.qml": "5e4c029d9489dfe0266d3c82795f89884066b15854fc74277ca24200f6d2149a"
+      },
+      "harness_sha256": {
+        "plasma/tools/testar-domainos-instrumentos.py": "752374afcc0b70bd9627951e5963d13e0cc65ece038c85ec64736612423e01b1",
+        "plasma/tests/domainos-instruments-host.cpp": "7f79b34c8a6780a228af3ff571d1cd397b4ed549aa8c4a12d3ab87330b26fa59"
+      },
+      "verified": [
+        "real clock value and local date/timezone",
+        "UTC query identifies UTC rather than the local zone",
+        "regional date formats include Portuguese",
+        "clock popup is separate from calendar popup",
+        "calendar with no selected source reports that honestly; no sample agenda is inserted",
+        "no personal profiles or real settings were modified"
+      ],
+      "artifacts": {
+        "directory": "/home/lsi/tempia/board/domainos-p02-20261014/instruments",
+        "result_sha256": "bb7118b9de02154f8f508c0ccc06e5060a2984606b3b16104cbda4fec135c68b",
+        "clock_capture_sha256": "f51a8f37e9960f0d469e9408665f5c3322b4e8d6ab0ac3a0499dfb2dddd2ab89",
+        "calendar_capture_sha256": "2674257eff9cab4d882a1f9c7f924923b3865368d83dbe409cb6ed96429572b7"
+      }
+    },
+    "native_manaus_2026_holidays": {
+      "command": "python3 -B plasma/tools/testar-domainos-agenda.py --manaus-2026 --validar-unicidade --saida /tmp/domainos-p02-holidays-20261014",
+      "status": "passed",
+      "checks": 138,
+      "failures": [],
+      "selected_region": "br-am-manaus-2026_pt-br",
+      "events_unique": 15,
+      "optional_days_excluded": 9,
+      "dates_outside_2026_excluded": true,
+      "native_region_discovery": "163 installed rows enumerated; exact region appears once and names 2026",
+      "source_hashes": {
+        "main.qml": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+        "DomainOSFunctionalPanel.qml": "bd364a853f31e12bc27fbeea9fa6cbbf7163ffa38e7d09679fe69995bb2726e3",
+        "DomainOSRuntime.qml": "6e9c1ec149554547cfa880e0220d2461c67ce03cec81dc45562a9a330ec875d6",
+        "DomainOSInstruments.qml": "046c6b7d889715e0925b93f2fa9ffb25375aebf83c3324421e6cc1cc71bdd75e",
+        "contents/config/main.xml": "4e4ca661b7d7678302e0233180eb3cb8a2da003f55fc675fe21e256066c65495",
+        "holiday_br-am-manaus-2026_pt-br": "55c90c957161b81411f2a37e1469477c2b2a0be3264e88ef4a19b413cde4fde2"
+      },
+      "harness_sha256": {
+        "plasma/tools/testar-domainos-agenda.py": "e2d4654eeadcaed05aaa9647209998260444ce3637e040f773b2b127697b0559",
+        "plasma/tests/domainos-agenda-host.cpp": "3ab6355426860d02ab9595a13ea864886238e0449d5a078d937e267d1e614964",
+        "plasma/tests/domainos-holiday-region-metadata.py": "023dff8efd56264465cb405b718e1dcc7d1559518210ed7265ffc106b202d706",
+        "tests/test_domainos_holidays.py": "b640b4d6cb560901651ded799ad9dc378dd43f045e1db7f12e49afc3d7e597c5"
+      },
+      "guards": {
+        "five_personal_preferences_unchanged": true,
+        "production_calendar_sources_unchanged": true,
+        "only_public_region_written_in_private_profile": true,
+        "no_personal_calendar_account_or_event_source": true,
+        "private_daemons_exited": true,
+        "test_host_exited": true
+      },
+      "artifacts": {
+        "directory": "/home/lsi/tempia/board/domainos-p02-20261014/holidays",
+        "result_sha256": "00841213eb1efde1b6a64fad4254aaf6159416854fbb6582f509ef93b80d571d",
+        "native_report_sha256": "08519539f83217947245c9fe373677c90fa2c34a72c52d9d6a95cc861e4cb94c",
+        "manaus_calendar_capture_sha256": "ceed8445362bb2cfbbcc542d70a7723ae0b893d81c7353ddcb3ec98e789e7c51"
+      }
+    }
+  },
+  "visual_review": {
+    "private_native_clock_capture_reviewed": true,
+    "private_native_calendar_without_source_reviewed": true,
+    "private_native_manaus_2026_calendar_reviewed": true,
+    "observed": "Clock showed America/Manaus (-04) and an explicit UTC row; an empty source selection reported no agenda; the regional native calendar displayed the Manaus anniversary event.",
+    "limits": "These private captures show current runtime behavior, not human acceptance or historical VUE fidelity. No color/geometry correction was made."
+  },
+  "human_review": "pending; no user verdict or approval was inferred",
+  "technical_progress_percent": 100,
+  "basis": "Both P02 criteria groups are covered by current-hash native/private tests (23 and 138 checks); this percentage is technical scope completion, not visual fidelity.",
+  "excluded_scope": [
+    "Panel height and icon redesign remain separate planned work; not changed under clock/calendar P02.",
+    "No personal panel was opened or reconfigured.",
+    "No VM or Xephyr :61 interaction occurred."
+  ]
+}

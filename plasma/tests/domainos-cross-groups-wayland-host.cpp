@@ -240,7 +240,8 @@ static void tick() {
     } else if(phase==8) {
         if(!current["operationsPopup"].toBool()){QTimer::singleShot(100,tick);return;}
         checks["group_unmapped_before_operations_are_visible"]=!current["groupPopup"].toBool();
-        checks["first_operations_menu_all_items_fit_native_window"]=fullyInside("domainosBatchColumns") && fullyInside("domainosBatchMinimize");
+        checks["first_operations_menu_all_items_fit_native_window"]=fullyInside("domainosBatchColumns")
+            && fullyInside("domainosBatchRestore") && fullyInside("domainosBatchMinimize");
         checks["columns_menu_clicked_by_pointer"]=click("domainosBatchColumns");phase=9;
     } else if(phase==9) {
         if(!reportReady(current,1,"columns") || target(current,0)["geometry"]==target(snapshots["initial"].toObject(),0)["geometry"] || target(current,3)["geometry"]==target(snapshots["initial"].toObject(),3)["geometry"]){QTimer::singleShot(100,tick);return;}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "R642",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "breezedark-four-stepper-press-release-recheck-passed",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "question_resolved": "R641 reported the BreezeDark lower vertical stepper as visually unchanged under hold. Its event stream contains the prior vertical-up value change to 34, but no native value-change event from the subsequent down press; therefore R641 did not establish a rendering regression.",
+  "rechecks": [
+    {
+      "scope": "BreezeDark vertical down only",
+      "status": "passed",
+      "result_sha256": "798f00edeb55fb2535047d692c190fb59ca67c992e9a0fcdfc329bdb17ab7007",
+      "input_trace": [
+        {"stage": "gtk-range-change-value", "scroll_type": "step-forward", "requested_value": 36.0},
+        {"stage": "gtk-adjustment-value", "value": 36.0}
+      ],
+      "arrow_roi": [260, 181, 275, 196],
+      "held_pixel_differences": 53,
+      "released_pixel_differences": 0,
+      "temporary_root": "~/tempia/domainos-theme-work/I167/R642/output/.qa-gtk2-public-t4i6eiii"
+    },
+    {
+      "scope": "BreezeDark left, right, up, down in the public preview sequence",
+      "status": "passed",
+      "result_sha256": "5d67c12fbe254a8c604c74f095265ac47f4da4e79f0c80eba394c200aac64855",
+      "trace_sha256": "bcb05a4bf0754d3fc8e1acd33d87d840690098e2746b213cf07f2765b299d3bd",
+      "native_events": [
+        {"control_id": "scroll_h", "direction": "left", "scroll_type": "step-backward", "value": 34.0},
+        {"control_id": "scroll_h", "direction": "right", "scroll_type": "step-forward", "value": 35.0},
+        {"control_id": "scroll_v", "direction": "up", "scroll_type": "step-backward", "value": 34.0},
+        {"control_id": "scroll_v", "direction": "down", "scroll_type": "step-forward", "value": 35.0}
+      ],
+      "each_arrow_roi": "15x15 pixels",
+      "each_held_pixel_differences": 53,
+      "each_released_pixel_differences": 0,
+      "preview_closed_normally": true,
+      "temporary_root": "~/tempia/domainos-theme-work/I167/R642/output/.qa-gtk2-public-qh0p3y7r"
+    }
+  ],
+  "environment": {
+    "private_xvfb": true,
+    "bwrap_user_home": "domainos-test",
+    "personal_home_exposed": false,
+    "system_bus_socket_exposed": false,
+    "recipe_applied_to_preview": false,
+    "user_profile_changed": false,
+    "production_app_touched": false,
+    "mame_input_sent": false,
+    "host_focus_changed": false,
+    "source_code_changed": false
+  },
+  "source_hashes": {
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "f844bfa1ff8fb3f6846d8f14e2e62654e37b270105a3863ff85a37c53978d52c",
+    "tools/theme-lab/gtk2_recipe.py": "8a1b641e14328827e429535a2e0feff56d3e2de0a5486564b4400b8a169d9d66",
+    "tools/theme-lab/gtk2_rc_fragments.py": "19c226cc93bee9da32ccf06ab79c5ad109b7c762434e0cad12239e3186342f3d",
+    "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "tools/theme-lab/native_scene_gtk2.py": "c245c4797937ff8743ec9a7cde4f1f8b95c14723a53ec0eafd70f1c3df0ff6fe",
+    "tools/theme-lab/gtk2_input_trace.py": "32339694366776e9b685486d109dc15d4c478540ffa1a4c585350b61544ef45f"
+  },
+  "limits": [
+    "R641 remains recorded as a non-reproduced input/render classification failure; the failed run did not prove the expected button press reached GTK2.",
+    "This recheck covers the current isolated GTK2 recipe preview under BreezeDark, not historical VUE pressed-state pixels.",
+    "No change was installed in the lsi profile and no application was restarted."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Coverage estimate unchanged; the isolated pressed/released state check is now reproduced in BreezeDark. This is not a visual-fidelity score."
+  }
+}

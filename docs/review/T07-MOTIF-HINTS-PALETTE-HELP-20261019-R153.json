@@ -1,0 +1,37 @@
+{
+  "id": "T07-MOTIF-HINTS-PALETTE-HELP-20261019-R153",
+  "work_item": "T07",
+  "checked_at_utc": "2026-10-19T17:25:32Z",
+  "scope": "Motif Theme Lab native hints, help dialog flow, dynamic control hints, SpinBox hover, file-dialog hints, and tooltip role mapping in four private palette fixtures; no source changes.",
+  "authorization": {
+    "source": "AI Work Board read-only snapshot, section work",
+    "item": "T07",
+    "user_revision": 4,
+    "assistant_ack_revision": 4,
+    "authorized": true
+  },
+  "commands": [
+    "TMPDIR=~/tempia make check-ui-hints check-ui-help",
+    "TMPDIR=~/tempia make check-dynamic-hints check-spin-hint-hover check-file-dialog-hints"
+  ],
+  "results": {
+    "check-ui-hints": "passed",
+    "native_hover": "passed delayed posting, screen-bound placement, no owner overlap, stable display, leave cleanup, and cancelled-delay checks",
+    "action_hints": "12 action hints and tooltip policy verified",
+    "roles_and_preview_isolation": "passed in DomainOS, BreezeLight, BreezeDark, and TestYellow fixtures; UI hint roles remained separate from preview palette",
+    "help": "passed native menu, novice/intermediate/expert selection, topic selection, read-only select/copy, close/reopen, WM close/reopen, and project-field preservation",
+    "dynamic_hints": "passed for five scrollbar pieces, two size axes, ten recipe families, and four initial UI schemes; this was a regression recheck against the existing R7 evidence after the view integration changed",
+    "spin_hover": "passed delay, bounds, no-overlap, stability, role refresh, dismissal, increment/decrement/repeat, and disabled input blocking in four schemes",
+    "file_dialog": "passed eleven native child hints, six editing-menu hints, runtime palette, Undo/Redo, clipboard, cancel, and confirm callbacks in four schemes",
+    "source_changes": false,
+    "user_desktop_or_xephyr_changed": false
+  },
+  "limitations": [
+    "Xvfb emitted 'No font found' and 'Missing charsets in String to FontSet conversion' warnings; assertions passed, but this run does not prove rendered font or glyph fidelity.",
+    "File-dialog probe emitted 'XtRemoveGrab asked to remove a widget not on the list' while its assertions and callbacks passed; cause remains uninvestigated.",
+    "The dynamic-hints regression check overlaps the previously recorded T07-HINTS-MOTIF-20261016.json evidence; source test logic was unchanged, so it is not counted as new feature progress.",
+    "This covers the Motif Theme Lab hint/help slice only. It does not complete T07's GTK/Qt/Plasma and manual review coverage.",
+    "No human visual approval is inferred."
+  ],
+  "next": "Continue T07 with the next genuinely uncovered interface-hint scope; avoid repeating GTK4 hover matrix R152 or the established dynamic-hint matrix without changed inputs."
+}

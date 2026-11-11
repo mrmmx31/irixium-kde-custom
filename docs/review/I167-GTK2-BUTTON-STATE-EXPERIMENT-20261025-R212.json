@@ -1,0 +1,47 @@
+{
+  "id": "R212",
+  "item": "I167",
+  "title": "Experimento para separar foco e botão padrão GTK2",
+  "status": "diagnostic complete; first geometry superseded by R214",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "toolkit": "GTK 2.24.33",
+    "control": "GtkButton focus-only, default-only, both, and temporary default-border override",
+    "environment": "private Xvfb; synthetic Start button only"
+  },
+  "evidence": {
+    "directory": "~/tempia/ia-tema/evidence/I167/r212-focus-states/",
+    "probe": "probe.py",
+    "focus_only": {
+      "has_focus": true,
+      "has_default": false,
+      "allocation_px": [84, 42],
+      "coral_pixels": 488,
+      "coral_bbox_px": [20, 20, 103, 61],
+      "image_sha256": "b8e94a74e3ee23f2aa4e870cd165e7d491962a5b5698fe0fe012a5f021a2d2a2"
+    },
+    "default_only": {
+      "has_focus": false,
+      "has_default": true,
+      "coral_pixels": 0,
+      "image_sha256": "80088e100ef2ca8b56fef20358b44bf292d6722f6f9a824cf436bc08ba65fffd"
+    },
+    "both": {
+      "has_focus": true,
+      "has_default": true,
+      "allocation_px": [84, 42],
+      "coral_pixels": 472,
+      "coral_bbox_px": [21, 21, 102, 60],
+      "image_sha256": "87be95fcade64a36c3e5b28a75649dc7b51dd9a871df2cd6b2e7fa77924055de"
+    },
+    "zero_default_border_experiment": {
+      "both_image_sha256": "b8e94a74e3ee23f2aa4e870cd165e7d491962a5b5698fe0fe012a5f021a2d2a2",
+      "default_only_image_sha256": "03ee1fad4710b927d69f6ae7ec806c352e8f9c792e9faeda160ea046d052b1a6",
+      "default_only_pixels_changed": 480,
+      "decision": "rejected; it altered the default-only face and was unnecessary when allocation included GTK's native default border"
+    }
+  },
+  "conclusion": "The coral outline follows keyboard focus. Default-button status alone does not produce that outline. The default-border override is not part of the retained recipe. R214 repeats the comparison with native GTK allocation and confirms the final 84x44 focus geometry.",
+  "product_effect": "none; no source or user theme changed",
+  "next": "See R214 for the native-allocation comparison; continue I167/GTK2 only."
+}

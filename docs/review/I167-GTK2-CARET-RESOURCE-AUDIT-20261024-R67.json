@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-CARET-RESOURCE-AUDIT-20261024-R67",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "question": "Do the verified Domain/OS SR10.4 VUE/X resource files establish an XmTextField caret blink period that can be translated into GTK2?",
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01 only",
+    "manifest": "docs/referencias/domainos-sr104/CONFIGURACOES-VERIFICADAS.json",
+    "files_read_from_guest_and_hash_matched": {
+      "Vue": "49b55fdd1511e466b20e9c1da3cd925e9908144c0ba4ee0f891626508c3103c4",
+      "Vuewm": "c07f1bbd1a5929c81f76109e2fe5881cf89669ca9ef07bc94aed1e616d6a2f17",
+      "Vuefile": "052b89bee515c80096011eeb1744173dc42979fddabcbeccec71cc9adf4e66e0",
+      "Vuestyle": "dbab0289f624170008f4a637d243b1e17fb94e05932d3e958b46a0192b3e1322",
+      "Vuehelp": "b3c7bf7be7b2cc35e025e2ec97944da821bf3c9ee1fe6d243f4ebf31f9bdf691",
+      "XTerm": "49137ca28f3bf63fb09d7381eafa8da9cc5fd4dc1ad8e434cadb57d92ec4b883",
+      "Mwm": "acdf9d0fed20564524371c1a83bee02acd3203a4885ba2b7d45c4477e919bb86"
+    },
+    "other_resource_record": {
+      "path": "/usr/X11/lib/sys.Xdefaults",
+      "sha256_in_manifest": "ca3ee4336b01d035be083de81ef7c568a03e8c6dd5bea8385f3b4d1a564c4bd5",
+      "content_available_for_this_read": false
+    }
+  },
+  "findings": {
+    "caret_blink_resource": "No caret/XmTextField blink period or caret shape resource appears in the seven hash-matched application-default files inspected.",
+    "similarly_named_settings": [
+      "Vuewm*useBlinkingIndicator is a commented-out workspace indicator option, not an XmTextField caret setting.",
+      "XTerm*SimpleMenu*Cursor chooses a menu pointer cursor, not text caret behavior."
+    ],
+    "conclusion": "The archived application defaults do not establish VUE caret blink timing. Since sys.Xdefaults content and full toolkit defaults are not available in this evidence set, this is not proof that no lower-level resource can affect the period. Do not copy GTK's 1200ms setting into the theme as a historical match without a native SR10.4 blink-cycle observation."
+  },
+  "current_guest_recheck": {
+    "mame_pid": 2745483,
+    "channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "probe_request": "e1fa0aa9123347de93672109889562eb",
+    "profile": {"paused": false, "frameskip": 4, "throttled": false},
+    "capture_request": "7b5c0f14444a410b9f5f9279b294aa6d",
+    "capture_command_result": "Lua reported an error in its final return-string concatenation, after screen:snapshot had written the PNG. The output was independently verified as a valid 1024x844 image; no second capture was sent.",
+    "capture_path": "~/tempia/i167-live-clone-r67/domainos-screen.png",
+    "capture_sha256": "ff1f7f368b304298b95f8030c0d3be4008dbf816bf6cd39ef03c8b953bcd4035",
+    "pure_black_percent": 94.84,
+    "visible_content": "Only the Apollo command strip is visible; VUE remains unavailable in the live image.",
+    "channel_status_after": {"pending": null, "reply": null, "pending_files": []}
+  },
+  "limits": [
+    "The guest was not given input and was not paused, reset, edited, or restarted.",
+    "No GTK recipe or user setting changed.",
+    "No caret blink interval can be translated from this configuration evidence."
+  ],
+  "next": "Keep the current GTK2 caret role dynamic and its 18px-vs-14px/caps difference explicit. Continue only independently verifiable GTK2 work; compare blink and caret appearance with SR10.4 when VUE is visible and sys.Xdefaults/runtime evidence is available."
+}

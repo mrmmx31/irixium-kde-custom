@@ -1,0 +1,36 @@
+{
+  "item": "I458",
+  "revision": "R7",
+  "checked_at_utc": "2026-10-19T15:17:20Z",
+  "scope": "Manual Paint view integration, Motif UI in existing Xephyr :84, private test projects only",
+  "evidence": {
+    "candidate_binary": {
+      "path": "~/tempia/i458-stability-20261019/build/theme-lab",
+      "sha256": "13c3f9b3e7072d8eabc71cee3295c3a5fec38cf775dd878f93dd446a9c3aa89f"
+    },
+    "live_xephyr": ":84, 1600x1000, real Motif window; no changes to Xephyr server or other sessions",
+    "manual_paint_ui": "opened through the Theme Lab button in an empty private project; showed Motif family/control/state, drawing canvas, dynamic KDE-role brush selectors, dimensions, separate reference/native sample panes, and explicit raster-only notice",
+    "native_interaction": [
+      "drew one pixel through the actual canvas pointer handler",
+      "confirmed the saved companion JSON contained one nontransparent pixel",
+      "Ctrl+Z returned the saved layer to zero nontransparent pixels",
+      "Ctrl+Y restored the one pixel",
+      "closed and relaunched the application, then reopened Paint from disk with the pixel present"
+    ],
+    "saved_test_layer_sha256": "003c4984857eedb93ba5a163ee1c5023d645c2405fac425204a1cc961a8fa12a",
+    "reopened_capture": {
+      "path": "~/tempia/i458-stability-20261019/i458-paint-disk-reopened.png",
+      "sha256": "99e9ae52644e17af6b2491daf9a9d51ebaf114df9cb7234ce7a1a9bf24079381"
+    },
+    "preexisting_private_fixture": {
+      "path": "~/tempia/i458-resume-20261019/work/manual-paint.json",
+      "sha256_before_and_after": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431",
+      "result": "loader safely rejected one zero-width/zero-height empty document and preserved the complete source file; two other documents were structurally valid. No repair or overwrite was attempted."
+    }
+  },
+  "finding": "Fresh-project Motif UI drawing, Undo/Redo, save, process restart, and disk recovery pass. Existing malformed file input is protected from overwrite, but the UI reports only a generic failure and cannot offer valid-document salvage.",
+  "manual_visual_approval": "pending",
+  "family_coverage": "Motif editor only; no GTK, Qt, Kvantum, or Plasma native rendering claim",
+  "theme_modified": false,
+  "next": "Continue the next authorized Fila Atual work item. Preserve the malformed source fixture and the private live test project."
+}

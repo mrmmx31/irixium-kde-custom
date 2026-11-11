@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-FOCUS-20261023-R58",
+  "date": "2026-10-23",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "family": "GTK2 GtkEntry focused frame",
+  "reference": {
+    "historical": "Domain/OS SR10.4, HP VUE 2.01; receipt R57",
+    "gtk": "GTK 2.24.33",
+    "gtk_source": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkentry.c/#L13474",
+    "gtk_source_behavior": "GtkEntry state-hint selects GTK_STATE_ACTIVE while focused; gtk_entry_draw_frame uses that state for SHADOW detail entry."
+  },
+  "implementation": {
+    "source": "tools/theme-lab/gtk2_entries.py",
+    "source_sha256": "5425c902d664c69d87c04ab144e4888c6ed1034115896a7c4b389caa06af9e25",
+    "changes": [
+      "Generated GtkEntry styles set GtkEntry::state-hint = 1.",
+      "Only the ACTIVE SHADOW detail=entry image uses the two-pixel focus frame mask.",
+      "Focus frame pixels resolve through the current KDE focus role, including backdrop/disabled variants; no captured RGB was added to product code.",
+      "Normal, text, selection, padding, and bevel behavior retain their separate roles and recipe values."
+    ],
+    "other_changed_files": {
+      "tools/theme-lab/tests/test_gtk2_entry_paint.py": "977c6c0d6f4e3e29e9f187a52dc7d07ab8c0289b86202c1a73a5bb9956e387be",
+      "tools/theme-lab/tests/test_gtk2_entry_integration.py": "f972ea07f9cbdbdbcbd8bf18951acc5ca1dcc9c6242107b745aec3dd3fb0e3cf",
+      "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "96d92d95f69432293f7f062a5b82ee8cdd74ee23216618ce2760290faab826df",
+      "tools/theme-lab/tests/test_gtk2_entry_focus_offscreen.py": "abb34fec6af912d0b65799d714fe554d53f84b8f8ccd9186b2da70280aaa171b"
+    }
+  },
+  "native_offscreen_render": {
+    "status": "passed",
+    "renderer": "real GtkEntry with GTK pixmap engine in GtkOffscreenWindow; no host window mapped",
+    "display": "existing host X display used only for the offscreen surface; no visible widget or desktop settings changed",
+    "focus_transition_limit": "OffscreenWindow does not receive a GDK toplevel focus event; the test verifies GTK_STATE_ACTIVE rendering, not delivery of a real keyboard-focus event.",
+    "allocation_px": [260, 44],
+    "rows": [
+      {"scheme": "DomainOS", "focus_rgb": [254, 130, 130], "unfocused_role_pixels": 0, "active_role_pixels": 1360, "changed_pixels": 1360, "active_png_sha256": "7e865108ec7faadb9308215882fb1549dd654c722fd403fb58b79af3c8bf5236"},
+      {"scheme": "BreezeLight", "focus_rgb": [61, 174, 233], "unfocused_role_pixels": 0, "active_role_pixels": 1360, "changed_pixels": 1360, "active_png_sha256": "016423fd9c973f59467655de86839b151df4e156e52460de776a962b2df42129"},
+      {"scheme": "BreezeDark", "focus_rgb": [61, 174, 233], "unfocused_role_pixels": 0, "active_role_pixels": 1360, "changed_pixels": 1360, "active_png_sha256": "82c0f68080e34da62602434822e364acf4cb9bd22307e5dc7f2b769e99dbe68a"},
+      {"scheme": "TestYellow", "focus_rgb": [64, 96, 32], "unfocused_role_pixels": 0, "active_role_pixels": 1360, "changed_pixels": 1360, "active_png_sha256": "8a4f241564d5d980f3a515d7185e94b55695f03341674e5224924add0bfefd7e"}
+    ],
+    "result_json_sha256": "d64141e4f61572bb9ba78ac3dc60f4605d23687ea6b8f7fba479c469c6497a46",
+    "artifacts": "~/tempia/i167-entry-focus-r58/final/"
+  },
+  "validation": {
+    "test_gtk2_entry_focus_offscreen.py": "passed; 4 palettes",
+    "test_gtk2_entry_paint.py": "passed; 3 tests",
+    "test_gtk2_entry_integration.py": "passed; 2 tests",
+    "test_gtk2_entry_guard.py": "passed; 1 test",
+    "py_compile": "passed for changed GTK2 Entry generator and probes",
+    "git_diff_check": "passed for scoped changed files"
+  },
+  "limits": [
+    "The real Xvfb keyboard-focus capture was not completed because an Xvfb display could not be started in this session; /tmp is at 100% capacity. The existing Xephyr :74 has the Theme Lab client open and was preserved.",
+    "R57's native VM capture measures the focus frame color/extent but does not prove GTK event delivery.",
+    "Caret blink/shape and selected-text color remain unverified historically.",
+    "No recipe was installed in the user's GTK session; XChat and user settings were left unchanged.",
+    "This closes only the active-frame paint mapping in the isolated GTK2 adapter, not I167 or user acceptance."
+  ],
+  "next": "When a private X server can be started without disrupting the active Theme Lab, verify a real GtkEntry focus-in/focus-out cycle, caret and selection. Then continue only within the authorized GTK2 I167 scope; do not apply the partial GTK2 recipe to XChat."
+}

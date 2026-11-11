@@ -97,6 +97,13 @@ não uma nova decisão do usuário.
   Depois de iniciar a seleção por checkbox, clicar no título marca/desmarca;
   ao desmarcar todos, o título volta a restaurar. **Continuar seleção** preserva o que foi
   escolhido; **Operações** abre os comandos do conjunto.
+- **Quadro de Operações:** usa janela nativa `PlasmaCore.Dialog` com relevo e
+  papéis da paleta atual. A área do botão é capturada antes de fechar o seletor
+  e mantida numa âncora estável para o posicionamento Wayland. O quadro conserva
+  a seleção e fecha antes de enviar o comando. Setas, Home/End, Enter e Escape
+  permitem navegar/acionar/fechar. Perder o foco fecha o quadro. O menu nativo
+  de tarefas continua separado. Provas X11 e Wayland privadas estão registradas;
+  a avaliação do percurso na barra pessoal permanece própria do usuário.
 - **Pin temporário:** com uma janela marcada, **Operações** oferece fixá-la à
   esquerda, fora do grupo. As próximas seguem a ordem de fixação. O pin identifica
   essa janela, respeita os filtros e desaparece quando ela fecha ou o painel
@@ -115,7 +122,10 @@ não uma nova decisão do usuário.
   nas pontas e, sobre um grupo, percorre seus membros.
 - **Miniaturas:** desligadas por padrão; habilite na página Iconbox para mostrar
   prévias ao passar o mouse sobre uma janela ou grupo. Usa WindowThumbnail em X11
-  e KWin/PipeWire em Wayland, somente enquanto a prévia está visível. Falta de
+  e KWin/PipeWire em Wayland. Depois que um quadro real é obtido, ele permanece
+  em memória após ocultar a dica e descarregar o provedor vivo, sendo reutilizado
+  ao reabrir. O cache é removido ao desativar as miniaturas, remover a identidade
+  da janela ou fechar o applet; capturas não são gravadas em disco. Falta de
   composição/provedor ou janela minimizada em X11 é indicada no próprio quadro.
 - **Dicas do Iconbox:** títulos e lista numerada do grupo são o padrão ao passar
   o mouse. Títulos individuais completos não repetem uma dica; um grupo conserva
@@ -242,6 +252,15 @@ e o botão compacto de remoção para retirar. A gaveta organiza três seções:
 preferências permanentes no topo, fixados pela barra de tarefas e favoritos do
 KDE, com separadores. Os botões de operação medem 28 × 28 px para deixar espaço
 aos nomes. Retirar um pin não altera nem fecha a tarefa aberta na Iconbox.
+Os favoritos também têm setas de subir/descer. Elas usam `KAStats.moveRow`
+na fonte de ordem identificada ao abrir a gaveta (menu existente ou ordem
+preservada do último menu compatível). Isso altera somente a ordem de favoritos,
+sem lançar o aplicativo, alterar membros ou misturá-los aos pins. A interface KDE
+opcional do painel compartilha o mesmo provedor. Um menu externo já carregado
+pode conservar sua ordem em memória até recarregar seu provedor; a gravação
+compartilhada não é uma promessa de atualização instantânea dessa outra janela.
+Ordens externas conflitantes ou falha na leitura deixam as setas indisponíveis
+e mostram o motivo. Preferências permanece fixo e não removível no topo.
 Ativar um pin solicita o lançamento do aplicativo, que pode reutilizar uma
 instância existente. Um pin ausente permanece removível e não anuncia lançamento.
 

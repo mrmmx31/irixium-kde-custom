@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R688",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Aplicar no usuário lsi o adaptador GTK2 de cores de endpoint DomainOS e verificar seleção, módulo local, carregamento GTK2, recarga e reversão sem alterar outras famílias.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "installed_and_native_module_load_verified",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "dynamic_palette": "GTK2 resources regenerated from the current KDE GTK color export; no final RGB palette added",
+    "engine": {
+      "name": "domainos-pixbuf",
+      "gtk2_abi": "2.24.33",
+      "path": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+      "sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+      "user_scope": true
+    },
+    "generated_rc": {
+      "engine_declaration": "engine \"domainos-pixbuf\"",
+      "colors_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "current_theme_wrappers": 12,
+      "gtk2_transaction_changes": 119
+    },
+    "reload": {
+      "events_sent": 116,
+      "racing_x_errors": 0,
+      "restarted_applications": false
+    },
+    "private_native_probe": {
+      "runtime": "GTK2 2.24.33 in isolated Xvfb; user HOME and GTK2 theme/palette; GTK_PATH and GTK_EXE_PREFIX unset",
+      "custom_module_mapped": true,
+      "scrollbar_scene_opened": true,
+      "process_exit": 0,
+      "diagnostic": "Existing private-environment atk-bridge/libgail symbol warning only"
+    },
+    "rollback_preflight": {
+      "command": "python3 tools/install_domainos_gtk2_engine.py --restaurar --verificar",
+      "status": "passed_without_writing",
+      "engine_removal_order": "The dynamic GTK2 recipe returns to stock pixmap before the per-user module is removed"
+    }
+  },
+  "limits": [
+    "The user has not yet confirmed the visible result in their GTK2 applications.",
+    "The probe used Xvfb, not the historical HP VUE window; it verifies module discovery/loading and a real GTK2 scrollbar scene only.",
+    "The already-running irix-theme-companions.service was preserved. Its in-memory GTK2 renderer predates this change and may regenerate the DomainOS recipe with the previous pixmap engine after the next color-scheme event; updating/restarting that bridge remains pending.",
+    "Direct VUE endpoint interaction remains unauthorized under I517.",
+    "Horizontal/upper pressed states and historical thumb-drag measurements remain open.",
+    "No GTK3, GTK4, Qt, Kvantum, Plasma, panel, window decoration, VM, or theme selection setting was modified."
+  ],
+  "recovery": {
+    "command": "python3 tools/install_domainos_gtk2_engine.py --restaurar",
+    "backup": "~/.local/state/irixium-domainos-gtk2-engine/backups/353412fec1644c46bd4669b4a4880bf6/receipt.json",
+    "palette_backup": "~/.local/state/irixium-gtk2-palette/backups/20261029T033047-0dc01c863e16/receipt.json"
+  },
+  "coverage_estimate": {
+    "percent": 92,
+    "basis": "Technical I167 coverage after user-local engine integration, palette-preserving RC generation, live module load, and rollback preflight; not a visual-fidelity score or human acceptance."
+  }
+}

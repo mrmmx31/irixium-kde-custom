@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-11T07:13:27.682579+00:00",
+  "item": "I120",
+  "revision": 1,
+  "scope": "Native Motif FontSet and GTK3 Label font research; current project and theme fonts unchanged",
+  "motif": {
+    "native_library": "installed Motif, not historical SR10.4 library",
+    "fontsets": [
+      "fixed",
+      "Helvetica12 + fixed",
+      "Helvetica14 + fixed"
+    ],
+    "utf8_label_roundtrip": "15 label strings passed or process would exit4",
+    "terminal_status": 0,
+    "known_limit": "fixed FontSet lacks ISO10646; native screenshot shows a different glyph for em dash; Helvetica sample with ISO10646 covers this particular sample, not all scripts"
+  },
+  "gtk3": {
+    "version": [
+      3,
+      24,
+      49
+    ],
+    "native_labels": 20,
+    "unknown_glyphs_in_sample": 0,
+    "stored_text_identical": true,
+    "terminal_status": 0,
+    "strong_pixel_comparisons": 16,
+    "identical_to_reference": false
+  },
+  "failure_preserved": {
+    "first_gtk": "Inherited Wayland instead of private Xvfb; get_xid failed. Only own probe window opened and was terminated; no input events delivered, no user application closed.",
+    "raw_log": ".qa-i120-native-fonts/result/gtk-first-attempt-wayland/gtk.log",
+    "recovery": "GDK_BACKEND=x11; WAYLAND_DISPLAY/DBUS address removed from child environment; repeated only failed GTK first, then final measurements with UTF8 readback/positions"
+  },
+  "source_files": {
+    "docs/referencias/domainos-sr104/i120-native-fonts/gtk.log": "aac35765d5cb6b5bee013342833e4aed9ed043015d800bf69735099c966a8cc3",
+    "docs/referencias/domainos-sr104/i120-native-fonts/run-private.py": "c53561cbbde521a4ab27641f4651216ef04d0c131dc09e33ab372afb88880817",
+    "docs/referencias/domainos-sr104/i120-native-fonts/gtk.png": "3a04ad1b68d8dad835ba673ef2450429d50d1b2118d1e5dbf9e7fafd55ff5f4d",
+    "docs/referencias/domainos-sr104/i120-native-fonts/gtk-native.json": "2c32e571d16be9f60c4a4b22c3cbef2a5142231b2948469fef0de3ebaa1bbec9",
+    "docs/referencias/domainos-sr104/i120-native-fonts/motif.png": "4d06bc29b8817fb21182ebd22340914882e12b6d7e2c99cafb5aa6030e555d7e",
+    "docs/referencias/domainos-sr104/i120-native-fonts/motif.log": "a3d748065080dd40238249fc3c9eac86e44d7a2f722457884a1b3ddc06f78814",
+    "docs/referencias/domainos-sr104/i120-native-fonts/palette.json": "1e522bb53bc24239ab9b974693972df5a765fe86922925911d8922afbe6839c7",
+    "docs/referencias/domainos-sr104/i120-native-fonts/gtk-font-probe.py": "63dbc6f3278c79dd433de076eb24cc81e824c5dc56505a63e178eaf55725a7c1",
+    "docs/referencias/domainos-sr104/i120-native-fonts/motif-font-probe.c": "8c19d9cae9d85f734b369271056745c9e443cf226fb1f91955e4a68765bdb3a0"
+  },
+  "colors": "Every probe color read from current KDE Window face/text; no static theme override",
+  "new_defect_proposal": "I179",
+  "scope_progress_percent": 80,
+  "basis": "Historical identities/metrics and native Motif/GTK3 samples completed; candidate glyph differences/Unicode fallback explicit. Equivalence selection and remaining toolkit coverage still incomplete.",
+  "remaining": [
+    "Document font support for remaining native toolkits, without claiming Pango alone proves them",
+    "Present the visual differences and candidate alternatives for user choice",
+    "Production Unicode fallback is a separate unauthorized proposal, not silently implemented"
+  ],
+  "theme_modified": false,
+  "personal_application_reopened": false,
+  "human_approval_filled": false,
+  "full_goal_complete": false
+}

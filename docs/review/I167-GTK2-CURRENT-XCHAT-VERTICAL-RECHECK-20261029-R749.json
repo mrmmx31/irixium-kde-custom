@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "id": "R749",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck the currently mapped GTK2 XChat's two vertical scrollbar strips against the SR10.4 Motif normal cells and current installed GTK2 assets, saving no conversation content.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "live_target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "client_px": [870, 601],
+    "gtk": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE-Reload",
+    "engine": "/home/lsi/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "capture_effect": "Read-only XWD capture in memory; no focus change, pointer move, click or key input. Only the two 15px scrollbar strips were saved."
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4, HP VUE 2.01",
+    "motif_vertical_strip": "records/ia-tema/I167/R747/motif-sr104-vertical-bar.png",
+    "motif_strip_sha256": "6ddc3424693ad0a565a2d40c8c3e8611295b3ec6477d0d85fc551848d21ea9b0",
+    "shared_rule": "tools/domainos_scrollbar_rules.json"
+  },
+  "capture": {
+    "left_bar": {
+      "path": "records/ia-tema/I167/R749/left-scrollbar.png",
+      "client_xy": [217, 64],
+      "size_px": [15, 535],
+      "sha256": "fd11fc30dd57dae2345bc09f678feffed1e96def767868dbfe055f8ddaa80c75"
+    },
+    "right_bar": {
+      "path": "records/ia-tema/I167/R749/right-scrollbar.png",
+      "client_xy": [749, 98],
+      "size_px": [15, 465],
+      "sha256": "54a35f0691df334d344dd345652344979534022d7bcc4c52ca0324bdb5272f08"
+    },
+    "privacy": "No full-window image or text from the XChat panes was written to disk."
+  },
+  "comparison": {
+    "normal_stepper_cells": {
+      "left_panel_up": {
+        "client_xy": [217, 64],
+        "motif_equal": "225/225",
+        "installed_up_asset_equal": "225/225"
+      },
+      "left_panel_down": {
+        "client_xy": [217, 584],
+        "motif_equal": "225/225",
+        "installed_down_asset_equal": "225/225"
+      },
+      "right_panel_up": {
+        "client_xy": [749, 98],
+        "motif_equal": "225/225",
+        "installed_up_asset_equal": "225/225"
+      },
+      "right_panel_down": {
+        "client_xy": [749, 548],
+        "motif_equal": "225/225",
+        "installed_down_asset_equal": "225/225"
+      },
+      "result": "All four currently visible normal-state cells match the complete canonical SR10.4 cells at their measured positions. Their 15x15 allocation and arrow glyph are not reduced."
+    },
+    "cross_axis_profiles": {
+      "motif_and_raised_thumb": "DDLLFFFFFFFDDLL",
+      "active_gtk2_long_trough": "DDFFFFFFFFFFFLL",
+      "left_bar_rows": {
+        "raised_thumb_profile": 322,
+        "flatter_trough_profile": 181
+      },
+      "right_bar_rows": {
+        "raised_thumb_profile": 25,
+        "flatter_trough_profile": 408
+      },
+      "meaning": "Thumb and trough remain distinct. The long trough omits the four inner light/dark rail pixels per cross-section that the literal Motif raster contains; it is flatter, not a reversed pixel profile. This is the R731 adaptation retained after the user's earlier convex-relief report."
+    },
+    "geometry": "Both live bars and the VM use 15px thickness. Their total lengths and thumb positions differ because the XChat panes have different content and viewport state; those lengths are not directly comparable to the empty Trash Can reference."
+  },
+  "result": "The normal vertical arrows in the actual mapped XChat window now have direct 225/225 comparisons against both canonical Motif cells and the installed GTK2 assets. No arrow-size defect is present in these four cells. The remaining observed appearance difference in the normal state is the flatter long trough profile. The screenshot attachment from the user was an older and vertically clipped capture; these are fresh strips from the live window.",
+  "limits": [
+    "This is a normal-state capture only; it does not prove hover, held, limit-disabled or thumb-drag behavior.",
+    "The normal horizontal arrow is covered by R748's VM/asset comparison; a fresh horizontal cell inside a live user GTK2 widget was not captured here.",
+    "No human visual acceptance is inferred. I167 and V03 remain open for the user's evaluation of the long-trough relief."
+  ],
+  "changes": [
+    "No GTK source, asset, palette, user setting, application state or VM state was changed. Only scrollbar-only crops and this report were added."
+  ],
+  "next": "Keep GTK2 as the current family. Await the user's visual assessment of the R731 flatter trough while preserving the measured Motif profile as the historical reference; continue any independent GTK2 checks covered by the authorized I167 scope."
+}

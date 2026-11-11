@@ -1,0 +1,113 @@
+{
+  "item": "I167",
+  "revision": "R33",
+  "checked_at_utc": "2026-10-22T23:35:43Z",
+  "family": "GTK2 GtkEntry face, text and relief comparison",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "source": "tools/theme-lab/gtk2_entries.py",
+    "source_sha256": "7cca1ec12c118553716f3a0f33e52e370cff2b5a8ee60e5561d539734651f96e",
+    "summary": "Maps GtkEntry base/text and its generated inset relief to KDE Window/WindowText roles, retaining KDE Selection/SelectionText for selected text. No final RGB values are embedded.",
+    "related_files": {
+      "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "d778da23b790a5638bda816c655e91d666092a2b26aca4cdfbed46a764f70b3b",
+      "tools/theme-lab/tests/test_gtk2_entry_paint.py": "1a7db86e59a019b6c0307cc7978594ef83d2b721ab58ea6dc8a2093f4cff189b"
+    }
+  },
+  "results": {
+    "status": "partial_native_role_alignment_highlight_geometry_open",
+    "gtk2": "2.24.33",
+    "scenes": 24,
+    "palettes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "states": [
+      "normal",
+      "backdrop",
+      "disabled"
+    ],
+    "origins": [
+      "separate",
+      "coupled"
+    ],
+    "allocation_px": [
+      260,
+      44
+    ],
+    "native_role_pixel_check": "passed: interior sample matched the effective KDE Window role in all scenes",
+    "keyboard_editing": {
+      "utf8_text": true,
+      "select_all": true,
+      "selection_replacement": true,
+      "copy_paste_cut": true,
+      "undo_ctrl_z": true,
+      "redo_ctrl_y": true,
+      "redo_ctrl_shift_z": true,
+      "replacement_undo_steps": 4,
+      "edit_menu_actions": [
+        "gtk-copy",
+        "gtk-cut",
+        "gtk-paste",
+        "gtk-select-all",
+        "redo",
+        "undo"
+      ],
+      "native_popup_actions": [
+        "",
+        "_insert unicode control character",
+        "gtk-copy",
+        "gtk-cut",
+        "gtk-delete",
+        "gtk-paste",
+        "gtk-select-all",
+        "input _methods",
+        "redo",
+        "undo"
+      ]
+    },
+    "focused_comparison": {
+      "local_motif_widget": "XmTextField",
+      "dimensions_px": [
+        260,
+        44
+      ],
+      "resources_px": {
+        "margin_width": 5,
+        "margin_height": 5,
+        "highlight_thickness": 2,
+        "shadow_thickness": 2,
+        "columns": 14
+      },
+      "difference": "Motif reserves a 2px outer highlight before the 2px inset bevel. GTK2 currently starts its bevel at the allocation edge. The bevel tones differ by one RGB channel level from color quantization; font rendering was not compared because the local Xvfb Motif sample rendered the accented test string with the wrong charset."
+    },
+    "public_preview": "not run; native isolated fixture only",
+    "actual_vm": "read-only snapshot was black except the Apollo command strip; no usable VUE text-field image. Launch args include frameskip 4 while live probe reports frameskip 0. No input or profile setting changed."
+  },
+  "tests": {
+    "native_scenes": "24 passed across 4 palettes x 3 states x 2 origins",
+    "keyboard_clipboard": "passed UTF-8, select/replace, Ctrl+C/V/X, Ctrl+Z, Ctrl+Y, Ctrl+Shift+Z, multi-step undo and native Edit popup actions",
+    "focused_unit_integration": "5 passed",
+    "py_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "artifacts": {
+    "directory": "~/tempia/i167-gtk2-entry-r39/",
+    "motif_source_sha256": "a29385c1a1644afdd2992f3fbae2020793784b5aff07e4a9f1114eb80ac34688",
+    "motif_normal_png_sha256": "908cd4496cf05bf45f61373adb01ecb263181d64efd7d13fa73bc38a8b53b600",
+    "motif_normal_metrics_sha256": "41a4c23d3d545c765957b998742a768cd0c2ed627c456baa5ae95fd67c51e9c0",
+    "gtk_native_result_sha256": "2f12ffa1415fd2fb33e65d405351d7f70a3cbb75ef51b9a149ef3247373b76be",
+    "domainos_vm_snapshot_sha256": "7cccf1bcb84df23678e2b90f52be82045164b11eda0360ea9a517fd52b7bfebb"
+  },
+  "limits": [
+    "The local Motif fixture and its library defaults do not establish HP VUE 2.01 / Domain/OS SR10.4 defaults.",
+    "The focus/highlight gutter is not yet reproduced in GtkEntry; the attempted 9px/11px pixmap with border4 suppressed the entire border in GTK2 and was discarded.",
+    "No public Theme Lab preview/controller route or personal XChat session was changed.",
+    "No human acceptance was recorded."
+  ],
+  "next": "Continue the same GtkEntry family to resolve or bound the outer focus/highlight gutter; obtain a valid live SR10.4 VUE field capture before moving to another family."
+}

@@ -1,0 +1,64 @@
+{
+  "id": "I167",
+  "receipt": "R47",
+  "date": "2026-10-23",
+  "family": "GTK2 GtkTextView native theme preview",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "reference": {
+    "theme_lab_motif_sample": "tools/theme-lab/src/view.c creates XmText with wordWrap, rows=3, columns=14 and leaves margins at local Motif defaults",
+    "local_motif_runtime_measurement": "102x57 widget; marginWidth=5, marginHeight=5; local fixture only, not an SR10.4 measurement",
+    "domainos_vm": "No new guest command; existing MAME request remains pending without correlated reply"
+  },
+  "change": {
+    "summary": "Removed the GTK2 Theme Lab preview's artificial 8px left/right GtkTextView margins. GTK2 RC does not set those GtkTextView instance properties, so the native preview now keeps GTK2's own defaults. Removed the false margin value from the generated fragment comment and the text style identity. Moved this test's temporary directories into ~/tempia. Also changed the public scrollbar test to compare a click with the preceding native value after its own press/release gestures, instead of assuming every run starts at 35.",
+    "files": {
+      "tools/theme-lab/native_scene_gtk2.py": "c245c4797937ff8743ec9a7cde4f1f8b95c14723a53ec0eafd70f1c3df0ff6fe",
+      "tools/theme-lab/gtk2_text.py": "ab80cb06722543c961ce6b10ff79453d9bcd5fb035dcfaf083d0b46bdb5dc88f",
+      "tools/theme-lab/tests/probe_gtk2_text_scene.py": "044df4027e4a9856ffb0f53bd75747c5ebe762ac17d27d3f154b99c4797b8da4",
+      "tools/theme-lab/tests/test_gtk2_text_integration.py": "abbec9ae2bed125b1dd5f31f7247b8482c56d5d6c5e72b2fa734d4b7543e93d5",
+      "tools/theme-lab/tests/test_gtk2_public_native.py": "f844bfa1ff8fb3f6846d8f14e2e62654e37b270105a3863ff85a37c53978d52c"
+    },
+    "board_diff_record": "~/tempia/board/diff-records/record-cjtg5aqm/verified.json",
+    "board_diff_content_verified": true
+  },
+  "validation": {
+    "focused_tests": "3 passed",
+    "python_compile": "passed for all five changed Python files",
+    "gtk2_native_matrix": {
+      "gtk2_version": "2.24.33",
+      "scenes": 24,
+      "matrix": "four KDE schemes x normal/disabled/backdrop x coupled/separate",
+      "short_sample_scrollbars": "no horizontal or vertical scrollbar in all scenes",
+      "long_sample": "vertical scrolling remains available; no horizontal scrolling",
+      "model_unchanged": true,
+      "result": "~/tempia/i167-gtk2-text-r47/native-confirm/RESULTADO.json",
+      "result_sha256": "42d8f233aea0b28550dd5c2e9f1f1c752e239eb037487507a32d8759cfb68a88"
+    },
+    "public_preview": {
+      "domainos": "passed; ~/tempia/.qa-gtk2-public-bmnv0khi/results.json; scrollbar pixels 0 differences in all four cells, 53 changed on hold and 0 after release, click value 34",
+      "breeze_dark": "passed; ~/tempia/.qa-gtk2-public-rkpnotkb/results.json; click compared to actual preceding native value",
+      "all_controls": "passed; ~/tempia/.qa-gtk2-public-all-gt09iibc/results.json; 16 controls mapped and push/toggle/check/radio interaction passed",
+      "runtime": "isolated Xvfb :2222; fixture closed normally; no user display was exposed"
+    },
+    "visual_inspection": "At native scale, the short GTK2 text sample is fully visible with no scrollbars. The local Motif fixture wraps it across three lines; GTK2 uses two lines because its font metrics and native instance margins differ. This remains a toolkit/font difference, not a theme RC padding value."
+  },
+  "visual_artifact": {
+    "comparison_crop": "~/tempia/i167-gtk2-text-r47/gtk2-text-97x54-confirm.png",
+    "sha256": "0991bb3f09eb93f4e7acec12e79dfcdfdd8d4bad4959240086988965776b2b31",
+    "crop_px": [97, 54],
+    "coordinate_space": "1:1 GTK2 NativeSession capture crop"
+  },
+  "limits": [
+    "The local Motif 5x5 margin measurement is not a Domain/OS SR10.4 measurement.",
+    "GTK2 theme RC cannot set GtkTextView instance margins. Matching an application's chosen margin would require application-specific behavior and must not be presented as a theme effect.",
+    "The local Motif-vs-GTK2 text line count still differs; no arbitrary font shrink was introduced.",
+    "This does not resolve the other GTK2 family gaps, prove all controls pixel-identical to the VM, or complete the GTK2 theme.",
+    "No user profile, XChat setting, product installation, or MAME guest changed."
+  ],
+  "next": "Continue the authorized I167 audit with the GTK2 list row-height limitation, preserving the distinction between theme-controlled cell separators and application-owned GtkCellRendererText ypad."
+}

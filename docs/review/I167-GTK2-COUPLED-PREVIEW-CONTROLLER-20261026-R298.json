@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "R298",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-coupled-scrollbar-controller-and-detached-route-passed-controls-remain-partial",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Validate the authorized GTK2 Theme Lab coupled and detached preview controller route; do not install to the user session."
+  },
+  "test": {
+    "command": "TMPDIR=/home/lsi/tempia python3 tools/theme-lab/tests/test_controller_spin.py tools/theme-lab/build/controller-spin-probe --gtk2-launch --scheme DomainOS-SR10.4",
+    "exit_code": 0,
+    "runs": 2,
+    "implementation": "Current Motif controller probe with native GTK2 2.24.33 GtkPlug/GtkWindow under bwrap and private Xvfb; binary rebuilt from current controller/view/model sources before both runs.",
+    "initial_metrics": "Coupled horizontal scrollbar 220x15 and vertical scrollbar 15x180; detached route exposes matching dimensions.",
+    "apply_metrics": "After changing horizontal width to 280 and applying, both GTK2 origins report 280x15; vertical remains 15x180.",
+    "persistence": "GTK2 width persists as 280 while GTK3 width remains 220. Closing the detached preview leaves the coupled GTK2 child mounted and reports the closed state.",
+    "recipe": "Theme Lab recipe remains partial; this test does not claim all 16 translated controls are embedded or fully styled."
+  },
+  "isolation": {
+    "personal_home_exposed": false,
+    "system_bus_socket_exposed": false,
+    "theme_installed": false,
+    "production_application_touched": false,
+    "vm_input_sent": false,
+    "theme_or_product_source_changed": false,
+    "normal_close": true,
+    "temporary_outputs_curated_under": "~/tempia/ia-tema/evidence/I167/r298-controller-coupled-preview/"
+  },
+  "evidence": {
+    "result_sha256": "1e28c4826bcc655173442b51bfecb4b43ebadf027ec11a0c200a46c3e61fb2a3",
+    "mapped_coupled_and_detached_screenshot": {
+      "path": "~/tempia/ia-tema/evidence/I167/r298-controller-coupled-preview/recheck/coupled-and-separate.png",
+      "sha256": "cab6ae8b07e6626cc58b0cf3fd273210bcac17a9f9acedaaa2ec775671fed182"
+    },
+    "after_apply_detached_closed_screenshot": {
+      "path": "~/tempia/ia-tema/evidence/I167/r298-controller-coupled-preview/recheck/applied-coupled-after-separate-close.png",
+      "sha256": "8d1a79dd7bada7aa43304490ec9a4dae107da0277b95174a1ebba1e7cd448f21"
+    },
+    "namespace_log_sha256": "e538a102c3a0cd566aadfe40cb749df55d5f3d5f22a56bf91dc588333fab95e4"
+  },
+  "sources": {
+    "tools/theme-lab/build/controller-spin-probe": "1ab00b39bd5c8338773708b1dce84cafb1d7550838a6e1c64b30e8e55dbc8289",
+    "tools/theme-lab/tests/test_controller_spin.py": "06d8039fa5181164ffbacbd8f5bfaf5a8a16ba45c4f79191e596d19846f2e564",
+    "tools/theme-lab/tests/controller_gtk2_launch.py": "e181f287b708fe479462d9c1f3ea3c252fbda86a7ecf7ac0c2bce9daa23c0b0d",
+    "tools/theme-lab/tests/controller_gtk2_windows.py": "7021eb1a76bc982dd9967ffbddbc1e9cdadf97f0ba468a8ae68cae689fc62abc",
+    "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f",
+    "tools/theme-lab/src/view.c": "e731ffbd65f608dcc3b8ba0d5091272fef5e4dc09a4a9955597ad58caae1db2a"
+  },
+  "limits": [
+    "This verifies the coupled GTK2 scrollbar pair and controller Apply/persistence/lifecycle, not full coupled rendering and interactions for every translated control.",
+    "The historical held-state comparison for left, right and up remains pending until the project VM visibly shows the guest pointer on each target.",
+    "The final GTK2 control audit and user visual review remain open."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 84,
+    "basis": "Adds two successful runs of the current controller's GTK2 coupled scrollbar route, detached route, Apply propagation and persistence while retaining R297 public-native interaction evidence. Remaining embedded-control coverage, historical held-state comparisons, final audit and human review are open. This is not a visual-fidelity score."
+  }
+}

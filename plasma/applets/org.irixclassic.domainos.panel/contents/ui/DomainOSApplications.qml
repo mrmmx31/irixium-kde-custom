@@ -22,6 +22,7 @@ Item {
     readonly property var pins: settings.pinnedApplications || []
     readonly property alias catalogModel: catalog
     readonly property alias sharedFavoritesModel: catalog.favoritesModel
+    readonly property alias favoriteOrderingController:favoriteOrdering
     readonly property alias pinnedMetadataModel: pinMetadata
     readonly property alias filteredModel: filtered
     readonly property bool usesKdeMenu: settings.applicationsMenuStyle === "kde"
@@ -32,6 +33,7 @@ Item {
     property var navigation: []
     property var currentModel: catalog
     property bool drawer: false
+    property bool menuSearchFocusPending:false
     property var externalFavoriteOrder: []
     property string favoriteOrderMessage: ""
     property var favoriteOrderOrigin: ({})
@@ -42,15 +44,24 @@ Item {
     property string pendingFavoriteOrderActivity: ""
     property bool favoriteOrderReadAgain: false
     property int favoriteOrderSequence: 0
+    property bool favoriteOrderReady:false
+    property int favoriteProviderRevision:0
     readonly property bool favoriteOrderBusy: favoriteOrderCommand.length > 0
-    readonly property var orderedFavorites: {
+    readonly property var providerFavorites: {
+        // A Repeater move keeps count and delegate IDs unchanged. Explicitly
+        // invalidate positions when the native model reports a reorder.
+        const revision=favoriteProviderRevision
+        return collectFavoriteRows()
+    }
+    function collectFavoriteRows() {
         let rows = []
         for (let row=0;row<favoriteProviderRows.count;++row) {
             const item=favoriteProviderRows.itemAt(row)
             if (item) rows.push({favoriteId:item.favoriteId,title:item.title,icon:item.icon,available:item.available,providerRow:row})
         }
-        return orderFavoriteRows(rows,externalFavoriteOrder)
+        return rows
     }
+    readonly property var orderedFavorites:orderFavoriteRows(providerFavorites.slice(),externalFavoriteOrder)
     function orderFavoriteRows(rows,order) {
         if (order.length) rows.sort((a,b)=> {
             const ai=order.indexOf(favoriteKey(a.favoriteId)),bi=order.indexOf(favoriteKey(b.favoriteId))
@@ -61,6 +72,30 @@ Item {
     signal configureRequested()
     signal pinListRequested(var pins)
 
+    Connections {
+        target:catalog.favoritesModel
+        function onRowsMoved() { ++applications.favoriteProviderRevision }
+        function onModelReset() { ++applications.favoriteProviderRevision }
+        function onLayoutChanged() { ++applications.favoriteProviderRevision }
+        function onDataChanged() { ++applications.favoriteProviderRevision }
+    }
+
+    DomainOSFavoriteOrdering {
+        id:favoriteOrdering
+        objectName:"domainosFavoriteOrdering"
+        model:catalog.favoritesModel;readRows:applications.collectFavoriteRows
+        visibleRows:applications.orderedFavorites
+        client:applications.favoritesClient
+        activity:favoriteActivity.currentActivity;generation:applications.favoriteOrderGeneration
+        ready:applications.favoriteOrderReady && !applications.favoriteOrderBusy && popup.visible && applications.drawer
+        onFailed:explanation=> { applications.favoriteOrderMessage=explanation;applications.favoriteOrderReady=false }
+        onMoved:order=> {
+            applications.externalFavoriteOrder=order.map(applications.favoriteKey)
+            // Verify persistence through the existing read-only observer.
+            applications.readFavoriteOrder()
+        }
+    }
+
     TaskManager.ActivityInfo { id:favoriteActivity }
     Connections {
         target:favoriteActivity
@@ -69,6 +104,7 @@ Item {
             applications.externalFavoriteOrder=[]
             applications.favoriteOrderMessage=""
             applications.favoriteOrderOrigin=({})
+            applications.favoriteOrderReady=false
             if (popup.visible && applications.drawer) applications.readFavoriteOrder()
         }
     }
@@ -93,6 +129,7 @@ Item {
     function readFavoriteOrder() {
         if (favoriteOrderBusy) { favoriteOrderReadAgain=true;return false }
         favoriteOrderReadAgain=false
+        favoriteOrderReady=false
         const token=String(++favoriteOrderSequence)+"-"+String(Math.random())
         // Opaque identity digests keep file/URL favorites out of process argv;
         // they only rank members, never authorize an application action.
@@ -114,17 +151,23 @@ Item {
         if (!favoriteOrderCommand || source!==favoriteOrderCommand) return
         const token=favoriteOrderToken,generation=pendingFavoriteOrderGeneration,activity=pendingFavoriteOrderActivity
         favoriteOrderCommand="";favoriteOrderToken=""
+        favoriteOrderReady=false
         try { favoriteOrderSource.disconnectSource(source) } catch (error) { console.warn("DomainOS: favorite-order source disconnect failed") }
         if (generation===favoriteOrderGeneration && activity===favoriteActivity.currentActivity && popup.visible && drawer) {
             try {
                 const result=JSON.parse(String(data.stdout || ""))
                 if (!result || result.token!==token || typeof result.ok!=="boolean") throw new Error("Unexpected favorite order result")
                 if (result.ok && Array.isArray(result.order) && result.order.every(item=>typeof item==="string")) {
+                    if (!["existing","legacy","provider"].includes(result.kind)
+                            || (result.kind!=="provider" && (typeof result.client!=="string"
+                                || !/^org\.kde\.plasma\.(kickoff|kicker)\.favorites\.instance-\d+$/.test(result.client))))
+                        throw new Error("Unexpected favorite order client")
                     externalFavoriteOrder=result.order.slice()
                     favoriteOrderOrigin={kind:result.kind,client:result.client || "",location:result.location || ""}
                     favoriteOrderMessage=result.kind==="existing" ? qsTr("Ordem do menu Applications do KDE")
                         : result.kind==="legacy" ? qsTr("Ordem preservada do último menu KDE compatível")
                         : qsTr("Nenhuma ordem de menu KDE encontrada; ordem atual dos favoritos.")
+                    favoriteOrderReady=favoriteOrdering.selectClient(result.client || favoritesClient)
                 } else {
                     favoriteOrderMessage=result.outcome==="ambiguous"
                         ? qsTr("Os menus KDE existentes têm ordens diferentes. A última ordem lida foi mantida.")
@@ -265,7 +308,21 @@ Item {
             else kdeMenu.item.closeMenu()
             return
         }
-        popup.visualParent = anchor; popup.visible = show
+        popup.visualParent = anchor
+        menuSearchFocusPending=show
+        popup.visible = show
+        if (show) {
+            // The launcher button is handling a real pointer event here. Ask
+            // Wayland to activate the popup during that event, then focus the
+            // field only after the dialog becomes the active window.
+            popup.requestActivate()
+            Qt.callLater(focusMenuSearch)
+        }
+    }
+    function focusMenuSearch() {
+        if (!menuSearchFocusPending || !popup.visible || drawer || usesKdeMenu) return
+        menuSearchFocusPending=false
+        search.forceActiveFocus(Qt.PopupFocusReason)
     }
     function showDrawer(anchor) {
         const show = drawerToggle.shouldOpen(anchor)
@@ -354,7 +411,16 @@ Item {
     }
     PlasmaCore.Dialog {
         id: popup
-        onVisibleChanged:if (!visible) { ++applications.favoriteOrderGeneration;applications.favoriteOrderReadAgain=false }
+        onVisibleChanged: {
+            if (!visible) {
+                applications.menuSearchFocusPending=false
+                ++applications.favoriteOrderGeneration
+                applications.favoriteOrderReadAgain=false
+            } else if (!applications.drawer && !applications.usesKdeMenu) {
+                applications.menuSearchFocusPending=true
+                Qt.callLater(applications.focusMenuSearch)
+            }
+        }
         objectName: "domainosApplicationsPopup"
         type: PlasmaCore.Dialog.PopupMenu
         flags: Qt.WindowStaysOnTopHint
@@ -382,7 +448,8 @@ Item {
                 }
                 DomainOSTextField {
                     id: search; objectName:"domainosApplicationsSearch"
-                    Layout.fillWidth: true; placeholderText: qsTr("Search applications…")
+                    Layout.fillWidth: true; focus: !applications.drawer
+                    placeholderText: qsTr("Search applications…")
                 }
                 DomainOSButton {
                     id: favoritesButton
@@ -486,8 +553,8 @@ Item {
                     }
                     Repeater {
                         id:favoriteDrawerRows
-                        // Membership/actions stay native. The read-only overlay
-                        // follows the external menu's persisted identity order.
+                        // Membership/actions stay native. Moving changes the
+                        // observed client's KDE order through KAStats.moveRow.
                         model:applications.orderedFavorites
                         delegate:Controls.ItemDelegate {
                             id:favoriteEntry
@@ -507,6 +574,18 @@ Item {
                                 spacing:4
                                 Kirigami.Icon { source:favoriteEntry.modelData.icon;implicitWidth:20;implicitHeight:20;animated:false }
                                 Controls.Label { text:favoriteEntry.text;textFormat:Text.PlainText;Layout.fillWidth:true;elide:Text.ElideRight }
+                                DomainOSFavoriteMoveButton {
+                                    objectName:"domainosFavoriteUp_"+favoriteEntry.index
+                                    ordering:favoriteOrdering;favoriteId:favoriteEntry.favoriteId
+                                    favoriteTitle:favoriteEntry.text;direction:-1
+                                    enabled:favoriteOrdering.ready && !favoriteOrdering.busy && favoriteEntry.index>0
+                                }
+                                DomainOSFavoriteMoveButton {
+                                    objectName:"domainosFavoriteDown_"+favoriteEntry.index
+                                    ordering:favoriteOrdering;favoriteId:favoriteEntry.favoriteId
+                                    favoriteTitle:favoriteEntry.text;direction:1
+                                    enabled:favoriteOrdering.ready && !favoriteOrdering.busy && favoriteEntry.index+1<favoriteDrawerRows.count
+                                }
                             }
                         }
                     }
@@ -600,6 +679,13 @@ Item {
                 text: qsTr("Configure panel…");visible:!applications.drawer;onClicked:applications.openPreferences()
             }
             }
+        }
+    }
+    Connections {
+        target:popup
+        ignoreUnknownSignals:true
+        function onActiveChanged() {
+            if (popup.active) Qt.callLater(applications.focusMenuSearch)
         }
     }
 }

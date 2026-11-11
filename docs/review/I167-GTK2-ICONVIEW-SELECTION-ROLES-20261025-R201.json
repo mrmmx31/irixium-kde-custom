@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-SELECTION-ROLES-20261025-R201",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "supersedes": {
+    "receipt": "I167-GTK2-ICONVIEW-REVERSE-VIDEO-20261025-R200",
+    "scope": "Selection color mapping only. R200 remains valid evidence for the SR10.4 label-selection geometry and the standard GtkIconView full-cell fill."
+  },
+  "reference": "Domain/OS SR10.4 / HP VUE 2.01; GTK 2.24.33",
+  "rule": "Every adapted state uses the active KDE semantic roles. Historical RGB is comparison evidence, not permission to hard-code or synthesize a final color.",
+  "implementation": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "sha256": "7bbf3b1d47570cee43bdc034d3c4d1b298cd71fd5428f4e301982315fa21ba4c",
+    "function": "iconview_selected_colors",
+    "mapping": {
+      "base/bg[SELECTED]": "theme_selected_bg_color_breeze",
+      "text/fg[SELECTED]": "theme_selected_fg_color_breeze"
+    },
+    "refresh": "Values are re-read from the active exported KDE palette whenever the GTK2 palette bridge rebuilds the RC."
+  },
+  "native_previews": {
+    "runtime": "Native GtkIconView in private Xvfb, one focused selected item, GTK 2.24.33, 1:1 pixels.",
+    "domainos": {
+      "source": "Active KDE DomainOS-SR10-4 colors.css",
+      "view_roles": ["#6688b5", "#ffffff"],
+      "selection_roles": ["#3297c7", "#ffffff"],
+      "image": "~/tempia/i167-r201-gtk2-role-colors/domainos/preview/gtk2-iconview-selected-focused.png",
+      "sha256": "4a65df3e4d53d6bbe021289cb72855936918ebd832f6bec676a5d9059313c7fd"
+    },
+    "neutral_light": {
+      "source": "/usr/share/color-schemes/BreezeLight.colors",
+      "view_roles": ["#ffffff", "#232629"],
+      "selection_roles": ["#3daee9", "#ffffff"],
+      "image": "~/tempia/i167-r201-gtk2-role-colors/neutral_breezelight/preview/gtk2-iconview-selected-focused.png",
+      "sha256": "273a5bd6acccf9dd9bc7e9a1ead8b5dd577f2b650c9f228b35819156a7688dfc"
+    },
+    "dark": {
+      "source": "/home/lsi/.local/share/color-schemes/151983-Cybermil.colors",
+      "view_roles": ["#0b0b0b", "#bcbcbc"],
+      "selection_roles": ["#375b3c", "#d6d6d6"],
+      "image": "~/tempia/i167-r201-gtk2-role-colors/dark_cybermil/preview/gtk2-iconview-selected-focused.png",
+      "sha256": "b2c744ca593fecbc205e9639751bdf3960e1c4b359241d2b2692d092c0b75ff5"
+    },
+    "yellow_accent": {
+      "source": "/home/lsi/.local/share/color-schemes/Steamed.colors",
+      "view_roles": ["#3e4637", "#d8ded3"],
+      "selection_roles": ["#958831", "#f1f2f0"],
+      "image": "~/tempia/i167-r201-gtk2-role-colors/yellow_accent_steamed/preview/gtk2-iconview-selected-focused.png",
+      "sha256": "c56bac382497441abc24ac03327b03ae6813604e07f14c8650253773dec719b8"
+    }
+  },
+  "scope_limit": "Each preview substitutes that scheme's actual View and Selection role pairs into the private GTK2 fixture. Other role families remain at the DomainOS baseline; these are selection-color consumer checks, not whole-theme previews. No global KDE scheme was changed.",
+  "automated_validation": {
+    "command": "TMPDIR=/home/lsi/tempia PYTHONPATH=tests python3 -m unittest test_domainos_motif.GtkDomainOSTest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests -v",
+    "result": "17 tests passed",
+    "test_file_sha256": "3110c478872dd18db69bb7246c9cde024e8fdb131f2853642b90e3eb7d65486e",
+    "coverage": "GTK2 role mapping and live palette refresh; related Motif geometry/asset regression checks."
+  },
+  "result": "The GTK2 selection now follows KDE Selection face and text roles across DomainOS, Breeze Light, Cybermil dark, and Steamed yellow-accent palettes. This restores schema consistency and supersedes R200's contrast-derived black/white pair. It intentionally no longer claims the VUE historical selection hue. The full-cell selection geometry remains different from VUE's label-only reverse video, as established in R200.",
+  "limits": [
+    "No live GTK2 application or XChat process was changed or restarted.",
+    "The screenshots validate the selected-color consumer using actual View/Selection roles; they do not represent full palette exports for all non-selection controls.",
+    "Hover, rubberband and selection-fill geometry remain open; the GtkIconView fill is painted over the complete item rectangle by GTK2 upstream code.",
+    "Human visual acceptance remains pending."
+  ],
+  "next": "Keep I167 open and GTK2 as the sole active family. Continue with the next GTK2 state/control that can be compared without changing another work-board section or applying the incomplete theme to XChat."
+}

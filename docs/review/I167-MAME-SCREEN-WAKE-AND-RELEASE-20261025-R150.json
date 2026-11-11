@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-SCREEN-WAKE-AND-RELEASE-20261025-R150",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "authorization": "Prior explicit user instruction to send physical keyboard or mouse input when the guest display is black, to wake it.",
+  "test": {
+    "precondition": "A fresh native guest snapshot was black; MAME remained running and unpaused.",
+    "input": "One-frame Shift pulse from existing I167 wake helper; released on the next frame.",
+    "result": "The guest display woke and HP VUE/File Manager became visible.",
+    "post_input": {
+      "wake_done": true,
+      "wake_error": null,
+      "key_held": false,
+      "paused": false,
+      "mouse_hook_version": 3,
+      "mouse_hook_captured": false,
+      "mouse": false,
+      "mouse_device": "none"
+    },
+    "host_pointer": {
+      "window_pid": 263503,
+      "window_process": "xchat",
+      "mame_pid": 274368,
+      "outside_mame": true
+    },
+    "native_capture": "~/tempia/ia-tema/evidence/I167/i167-screen-wake-r150.png",
+    "native_capture_sha256": "4090a1a6f955a52616f90989eb63654af9662fce5e35f5760e1b7e8d4f878083"
+  },
+  "additional_bounded_checks": [
+    {
+      "input": "One-frame Cursor Right pulse",
+      "result": "released without error; visible File Manager state unchanged",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-after-right-r150.png",
+      "sha256": "93a6ecbe06d1b9ccb2e47bf431c20981118f2411507c5af9770af135f7c53a4e"
+    },
+    {
+      "input": "One-frame Home pulse",
+      "result": "released without error; visible File Manager state unchanged",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-after-home-r150.png",
+      "sha256": "428fcc6feadb10e373b6e963c92558c61d028c7b3df7f8454ee894c384f23979"
+    }
+  ],
+  "conclusion": "After disabling both mouse and the automatic mouse_device option, waking the guest display did not recapture the host pointer. X11 still reports the pointer over XChat, not the MAME window. This directly verifies the reported screen-wake trigger once. The deliberate-click recapture path and the historical XmpIcon selected/focus/hover/rubberband comparisons remain pending.",
+  "status": "screen_wake_did_not_recapture_mouse_historical_icon_states_pending"
+}

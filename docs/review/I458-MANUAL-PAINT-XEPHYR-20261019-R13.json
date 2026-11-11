@@ -1,0 +1,76 @@
+{
+  "item": "I458",
+  "user_revision": 1,
+  "recorded_at_utc": "2026-10-19T17:21:27Z",
+  "status": "recovery-action-integrated-and-native-flow-passed; user-visual-review-pending",
+  "scope": "Manual Paint invalid project load path: offer explicit salvage to a new user-selected destination; preserve source and reject overwrite.",
+  "implementation": {
+    "files": [
+      "tools/theme-lab/include/manual_paint_recovery.h",
+      "tools/theme-lab/src/view/manual_paint_recovery.c",
+      "tools/theme-lab/src/view/manual_paint_view.c",
+      "tools/theme-lab/src/paint/model.c",
+      "tools/theme-lab/tests/manual_paint_model_test.c",
+      "tools/theme-lab/Makefile"
+    ],
+    "behavior": "The invalid-layer error dialog offers recovery. The file chooser opens in the source directory with a .recovered.json name; only valid unique layers are copied. The original remains unchanged. Existing destinations are refused.",
+    "encoding": "Changed the dimension diagnostic from unsupported multiplication glyph to UTF-8 text with ASCII x separator; current Motif environment displays it without mojibake."
+  },
+  "validation": {
+    "build": "make -C tools/theme-lab build/theme-lab; C99 -Wall -Wextra -Werror passed.",
+    "model": "make -C tools/theme-lab check-manual-paint-model passed.",
+    "editor_regression": "make -C tools/theme-lab check-editor passed; native edit/Undo/Redo/clipboard/UTF-8/persistence checks passed.",
+    "native_display": ":86, dedicated Xephyr I458; updated Theme Lab remains open.",
+    "source_fixture_sha256": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431",
+    "source_layer_count": 3,
+    "recovered_layer_count": 2,
+    "recovered_sha256": "2f7a0d57e54b274c977f59b16468b4297367fabf97a50e0e925e64eb6cf698e5",
+    "destination_mode": "0o600",
+    "existing_destination_attempt": "refused; both source and first recovered destination hashes remained unchanged.",
+    "captures": {
+      "destination-chooser-r2.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/destination-chooser-r2.png",
+        "sha256": "943c9a913063f9ca5f2de9134899b869ad4fd911e421db77003a0ea913e11632"
+      },
+      "destination-chooser.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/destination-chooser.png",
+        "sha256": "b68539b1b92fe6ab8554b8276c77cc33c535d05caf4a8679716c091cd0d93a6d"
+      },
+      "existing-destination-refused.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/existing-destination-refused.png",
+        "sha256": "3e541f8016e74ece9082e0efd9fee1e9df6d235b096cedad8ed46557d5e19d33"
+      },
+      "load-failure.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/load-failure.png",
+        "sha256": "3931a0e3db1c98aafcab6b6026cae44c7556ccdd302b9c99c813259ec549833a"
+      },
+      "main-before.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/main-before.png",
+        "sha256": "a9d3506fb95481ac4a63e0f58930dc1e6d7ec779758c5a2c2cb4a2f3908be1dd"
+      },
+      "recovery-result-r2.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/recovery-result-r2.png",
+        "sha256": "bab58671082c5ae332ce7cba0cae41f174a3c10acfd57fb08006b6f0b1cb4f6e"
+      },
+      "recovery-result.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/recovery-result.png",
+        "sha256": "add7609b326aba33b0eee08020da63bf577968cd384ccbf5d1359ca3852cdd06"
+      },
+      "theme-lab-final.png": {
+        "path": "~/tempia/i458-recovery-ui-r1/theme-lab-final.png",
+        "sha256": "204687d64b385a0d769e20fd530549fa1eb211bb888a110579b48077d19c5660"
+      }
+    }
+  },
+  "preservation": {
+    "personal_desktop_changed": false,
+    "MAME_changed": false,
+    "other_Xephyr_closed": false,
+    "source_fixture_modified": false
+  },
+  "limits": [
+    "This completes the recovery UI substep, not all I458 acceptance criteria. Manual visual review remains pending.",
+    "GTK/Qt/Plasma raster comparison/export mapping remain bounded by the existing pilot scope; raster is not presented as native rendering."
+  ],
+  "next": "Leave updated Theme Lab open in :86 for visual review. Continue to the next authorized Fila Atual item without closing this Xephyr."
+}

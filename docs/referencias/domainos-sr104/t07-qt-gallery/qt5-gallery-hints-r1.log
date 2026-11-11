@@ -1,0 +1,8 @@
+QSettings::value: Empty key passed
+Could not find color scheme "Irixium" falling back to BreezeLight
+QSettings::value: Empty key passed
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_qt_gallery_hints.py", line 55, in <module>
+    assert all(widget.toolTip() for widget in controls)
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

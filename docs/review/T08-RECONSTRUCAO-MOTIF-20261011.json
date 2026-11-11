@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-11T13:52:36.907920+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "native_reconstruction_ui_verified_private",
+  "changes": [
+    "Botão Reconstruir arquivos/dica; inspeção assíncrona de FILES antes de pedir base.",
+    "Seletor nativo de diretório quando há dependência de base; snapshot não pede pasta.",
+    "Relatório próprio de reconstrução em janela readonly existente: origem/hash, contagens, revisão/recibo e limites de paleta.",
+    "Projeto e cena não participam da reconstrução; saída privada/publicação transacional."
+  ],
+  "checks": {
+    "strict_build": "passed; all/controller-spin-probe",
+    "native_full_flow": {
+      "status": "passed",
+      "scope": "Native controller file load/save/cancel/invalid input, pending inactive recipes, positions, Unicode, project Undo/Redo, explicit Apply, real backend Export and comparison; private Motif and selected-scheme generators, not historical painting",
+      "imported_recipes_preserved": true,
+      "scene_changed_only_on_apply": true,
+      "native_restart_preserved_pending_project_scene_and_undo": true,
+      "invalid_persisted_scene_rejected_without_overwrite": true,
+      "native_delta_import_cancel_wrong_base_success_and_undo": true,
+      "native_edit_during_real_import_preserved_model_widget_scene_and_undo": true,
+      "native_reconstruction": "passed: real GTK3 snapshot, delta directory selection, two cancellations, wrong base refusal, exact bytes/report, base/project/scene preserved",
+      "export_package": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-p2swnn2z/home/lab/generated/exports/revisions/20261011T135120-309b1ba96706/PACKAGE",
+      "export_families": [
+        "gtk1",
+        "gtk2",
+        "gtk3",
+        "gtk4",
+        "gtk5",
+        "kvantum",
+        "motif",
+        "plasma",
+        "qt5",
+        "qt6"
+      ]
+    },
+    "cli": "3 passed",
+    "publication_failure_injection": "4 passed",
+    "runtime_dependencies": "2 passed",
+    "diff_check": "passed"
+  },
+  "scope": "Real Motif file/directory dialogs and actual backend. Real generated GTK3 snapshot verified by hashes; synthetic delta exact bytes, cancellations and wrong base. No visual fidelity/installation claim.",
+  "remaining": [
+    "Entrega pessoal coordenada e avaliação.",
+    "Startup GTK com seleção/proposta diferente da cena exige ensaio específico antes de entrega.",
+    "Papéis atuais precisam ser regenerados/conferidos antes da instalação dos arquivos reconstruídos."
+  ],
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "Fluxos T08 privados implementados e verificados; reabertura GTK divergente e entrega/avaliação permanecem. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "639bf7cdd1f9313c7a07108402a8927bbfc1dde83df778999146c8eee3b37baa",
+    "tools/theme-lab/src/view.c": "f0b3df49d09dd06a5ca4577acdee1d9199dde7806fc35cf23d251ed394b93d56",
+    "tools/theme-lab/src/view/ui_hints.c": "eee25c42163455ee164a7d1e19f44bdeaa8e45972dcf685f6909ce76bae64cb1",
+    "tools/theme-lab/include/theme_lab.h": "46f4813f9883cd51e1827e06d2d1c5808e79e7c1dc4a60cc9feb941246330aee",
+    "tools/theme-lab/artifact_reconstruction.py": "bb75179182168da5d302eac366903f8e17a666a1d5ee95c47c52a83c94dc75ae",
+    "tools/theme-lab/backend.py": "51a39d50fe03f777aad6b5cd96bc5de6520f072ff5bb087c1521076aa012f795",
+    "tools/theme-lab/tests/controller_reconstruction.py": "a26ca66300a9be5936f16b971737691677da27173d763fa0e91aa4625273a4fe",
+    "tools/theme-lab/tests/controller_project_io.py": "a4907727764836ddd680ebdc4e90525274429311f827443b9731e72b5651e91d"
+  }
+}

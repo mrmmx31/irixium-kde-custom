@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "R514",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Test whether GTK2's public range API can classify the endpoint direction independently from whole-widget sensitivity, and inspect the style callbacks available to a renderer.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb :109",
+    "workspace_changes": false,
+    "user_theme_changed": false,
+    "user_apps_touched": false,
+    "mame_touched": false,
+    "temporary_directory": "~/tempia/domainos-theme-work/i167-r514-prototype/"
+  },
+  "findings": {
+    "gtk_style_callbacks": "GtkStyle draw_box receives widget, detail and state. The GTK2 range callback currently reports hscrollbar/vscrollbar as detail; draw_arrow additionally receives GtkArrowType. Logs confirmed the lower/upper disabled stepper tracks the adjustment endpoints and GTK's inverted flag.",
+    "public_classifier": "A classifier using GtkRange inversion, lower/upper stepper sensitivity policy and GtkAdjustment bounds distinguishes an AUTO endpoint from a whole insensitive widget. GTK_SENSITIVITY_OFF/ON are not reclassified.",
+    "position_details": "GTK 2.24.33 defines GtkRange:stepper-position-details, but the isolated GTK RC attempt did not activate it (gtk_widget_style_get remained false). Therefore positional detail delivery to a real theme engine remains unproven.",
+    "rendering_limit": "The classifier test does not install or implement a GTK theme engine and does not prove pixel output. draw_box lacks arrow direction in the current default details; a real engine must prove per-stepper box identification before changing the disabled endpoint cell."
+  },
+  "tests": {
+    "compiled_with": "cc -Wall -Wextra -Werror -Wno-deprecated-declarations $(pkg-config --cflags --libs gtk+-2.0)",
+    "result": "PASS 19 endpoint direction/policy/sensitivity classifications; no drawing or input mutation.",
+    "source_sha256": "a3d72b8e87e51723202187900611d1fb3bb75840b442fed9aa779a305be37a6e",
+    "binary_sha256": "7064f2daf6de8255aa1ef76fdd851f213ad589f5c31b2ceda544a875deeb7fe4",
+    "callback_probe_source_sha256": "d3ac18347e386fbd5095e2a1d0a7784a3486e79c315c7def2723ca332fd32d8a",
+    "callback_probe_binary_sha256": "ac6242814764e45add8c39b261a1344793299bf320941b87e1747ba8743c1d7d"
+  },
+  "source_analysis": {
+    "gtk_range_source": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkrange.c/",
+    "gtk_style_api": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-2%2Bdeb12u1/gtk/gtkstyle.h/",
+    "details": "gtkrange.c lines 5813-5874 select GTK_STATE_INSENSITIVE for either whole-widget sensitivity or disabled lower/upper stepper. GtkStyle draw_box exposes widget/detail; draw_arrow also exposes direction. The GtkRange position-detail style property is documented in gtkrange.c lines 4648-4663."
+  },
+  "limits": [
+    "No pixel comparison against the generated GTK2 role assets was run in this step.",
+    "No real custom theme engine was compiled or loaded.",
+    "No input was sent; R513 already records that clicks at the blocked endpoints leave the adjustment unchanged.",
+    "No Domain/OS VM screenshot or user visual acceptance was added."
+  ],
+  "next": "Prototype the actual GTK2 theme-engine integration privately, first proving per-stepper position details or a safe geometry discriminator for both box and arrow drawing. Compare endpoint paint to normal role assets while asserting whole-widget-insensitive paint remains disabled and endpoint input stays blocked."
+}

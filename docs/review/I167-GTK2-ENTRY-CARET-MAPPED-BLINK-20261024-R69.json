@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-CARET-MAPPED-BLINK-20261024-R69",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 GtkEntry mapped X11 caret blink",
+  "implementation_change": {
+    "file": "tools/theme-lab/tests/probe_gtk2_entry_caret_blink_mapped.py",
+    "sha256": "05a836fb294f4a48333a4c665920638fc8e023ead5350b47a5edbe27b595ec26",
+    "change": "Added reproducible isolated probe for real GTK2 caret blink with X focus verified by xdotool and GtkWindow.has-toplevel-focus; no product palette or user setting changed."
+  },
+  "method": {
+    "toolkit": "GTK 2.24.33 real GtkEntry",
+    "palette": "DomainOS-SR10.4 via current KDE color roles",
+    "palette_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "display": "private Xvfb :700, 1280x1024x24, no window manager",
+    "temporary_storage": "private mount namespace binds ~/tempia/i167-xvfb-private-r69 over /tmp inside that namespace only",
+    "entry": {
+      "requested_window_px": [
+        338,
+        34
+      ],
+      "allocation_px": [
+        338,
+        34
+      ],
+      "font": "Nimbus Sans [urw] 13px",
+      "text": ".a",
+      "caret_stem_px": [
+        1,
+        18
+      ]
+    },
+    "focus": {
+      "xid": 2097155,
+      "xdotool_focused_xid": 2097155,
+      "gtk_entry_is_focus": true,
+      "gtk_toplevel_has_focus": true
+    },
+    "sampling": "50ms interval plus per-frame ImageMagick X11 capture; observed transition times include capture/scheduling latency"
+  },
+  "gtk_settings": {
+    "before_probe": {
+      "gtk-cursor-blink": true,
+      "gtk-cursor-blink-time": 1200,
+      "gtk-cursor-blink-timeout": 2147483647
+    },
+    "effective_in_probe_process": {
+      "gtk-cursor-blink": true,
+      "gtk-cursor-blink-time": 1200,
+      "gtk-cursor-blink-timeout": 30
+    },
+    "source_cycle_ms": 1200,
+    "source_phase_split": "visible 2/3 (800ms), hidden 1/3 (400ms)"
+  },
+  "observed": {
+    "transition_intervals_ms": [
+      472,
+      840,
+      409,
+      822,
+      459
+    ],
+    "order_after_first_change": [
+      "hidden",
+      "visible",
+      "hidden",
+      "visible",
+      "hidden"
+    ],
+    "caret_stem_px": [
+      1,
+      18
+    ],
+    "phase_geometry_constant": true,
+    "tolerance_note": "Observed 409-472ms hidden and 822-840ms visible; sampling overhead is visible, so this validates phases/order, not precise scheduler latency."
+  },
+  "captures": [
+    {
+      "t_ms": 845,
+      "since_previous_change_ms": null,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-01-845ms.png",
+      "sha256": "4f211a71dfdaead0ea848d1479ab5ab13c539ad82446e6a2a7e4429062dfeec5"
+    },
+    {
+      "t_ms": 1315,
+      "since_previous_change_ms": 472,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-02-1315ms.png",
+      "sha256": "f797f789ce9fdf7cc1170ee7541c5fc32fe79a113206239876748a31d8d8bd0e"
+    },
+    {
+      "t_ms": 2157,
+      "since_previous_change_ms": 840,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-03-2157ms.png",
+      "sha256": "4f211a71dfdaead0ea848d1479ab5ab13c539ad82446e6a2a7e4429062dfeec5"
+    },
+    {
+      "t_ms": 2566,
+      "since_previous_change_ms": 409,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-04-2566ms.png",
+      "sha256": "f797f789ce9fdf7cc1170ee7541c5fc32fe79a113206239876748a31d8d8bd0e"
+    },
+    {
+      "t_ms": 3389,
+      "since_previous_change_ms": 822,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-05-3389ms.png",
+      "sha256": "4f211a71dfdaead0ea848d1479ab5ab13c539ad82446e6a2a7e4429062dfeec5"
+    },
+    {
+      "t_ms": 3846,
+      "since_previous_change_ms": 459,
+      "changed_pixels": 18,
+      "bbox_xyxy": [
+        16,
+        8,
+        17,
+        26
+      ],
+      "capture": "/home/lsi/tempia/i167-entry-caret-blink-r69-verified/transition-06-3846ms.png",
+      "sha256": "f797f789ce9fdf7cc1170ee7541c5fc32fe79a113206239876748a31d8d8bd0e"
+    }
+  ],
+  "result": {
+    "status": "passed",
+    "conclusion": "Six visibility transitions were observed with actual mapped X11 focus. The GTK2 caret is 1x18px and matches the R61 offscreen geometry. Alternating periods align with the 400ms hidden / 800ms visible split implemented for a 1200ms GTK cursor cycle. This is GTK runtime evidence, not a measurement of the historical VUE blink period."
+  },
+  "artifacts": {
+    "result": "~/tempia/i167-entry-caret-blink-r69-verified/RESULTADO.json",
+    "result_sha256": "5c9c01ab1104108ac09c7462194d6c7488cb40bac5554813a00512190fbc599b",
+    "probe": "tools/theme-lab/tests/probe_gtk2_entry_caret_blink_mapped.py",
+    "probe_sha256": "05a836fb294f4a48333a4c665920638fc8e023ead5350b47a5edbe27b595ec26"
+  },
+  "limits": [
+    "Available SR10.4/VUE defaults did not disclose its caret blink period.",
+    "The current clone capture is almost entirely black; no paired live VUE blink comparison was possible.",
+    "Xvfb has no window manager; this does not prove KWin integration.",
+    "No GTK2 selection rendering or human visual approval is claimed.",
+    "The probe ran in isolation and did not alter user profile, XChat, guest state, or other X sessions."
+  ],
+  "next": "Continue unresolved GTK2 Entry states only; historical blink/selection comparison remains open until the SR10.4 VUE is visibly available."
+}

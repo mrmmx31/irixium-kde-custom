@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -26,8 +27,104 @@ INNER_ROOT = Path('/fixture/theme-lab-root')
 SCRIPT = Path(__file__).resolve()
 REPO = SCRIPT.parents[2]
 ESSENTIAL = ('dbus', 'kwin', 'plasma')
-GALLERIES = ('demo_env.py', 'gtk2_demo.py', 'gtk3_demo.py', 'gtk4_demo.py',
-             'qt5_demo.py', 'qt6_demo.py', 'qtquick_demo.py')
+SAMPLE_FILES = {f'preview-events/{kind}-gtk2-{origin}.json': ('gtk2', origin)
+                for kind in ('sample', 'runtime') for origin in ('coupled', 'separate')}
+RESUME_LIMITS = {'working.json': 4 * 1024 * 1024,
+                'scene.json': 4 * 1024 * 1024,
+                'editor-journal.json': 8 * 1024 * 1024,
+                'project-history.json': 32 * 1024 * 1024,
+                **{name: 32 * 1024 * 1024 for name in SAMPLE_FILES}}
+
+
+def mapped_lab_windows(pid, timeout=2):
+    """Read managed top-level windows, without traversing every widget window.
+
+    Motif creates many child windows. Recursive xdotool search can exhaust the
+    observer deadline even when X and the actual application are responsive.
+    This launcher requires KWin, so EWMH client membership is authoritative.
+    Every subprocess shares one bounded observation deadline.
+    """
+    deadline = time.monotonic() + timeout
+    environment = dict(os.environ, LC_ALL='C')
+
+    def query(argv):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise subprocess.TimeoutExpired(argv, timeout)
+        result = subprocess.run(argv, capture_output=True, text=True,
+                                env=environment, timeout=remaining)
+        return result.stdout if result.returncode == 0 else ''
+
+    clients = query(['xprop', '-root', '_NET_CLIENT_LIST'])
+    if not clients.startswith('_NET_CLIENT_LIST(WINDOW):'):
+        return []
+    ids = re.findall(r'0x[0-9a-fA-F]+', clients)
+    # Prefer recently managed clients, while never accepting a foreign PID.
+    for window in reversed(ids):
+        properties = query(['xprop', '-id', window, '_NET_WM_PID', 'WM_CLASS'])
+        actual_pid = re.search(r'^_NET_WM_PID\(CARDINAL\) = (\d+)\s*$',
+                               properties, re.MULTILINE)
+        actual_class = re.search(r'^WM_CLASS\(STRING\) = "[^"\n]*", "ThemeLab"\s*$',
+                                 properties, re.MULTILINE)
+        if not actual_pid or int(actual_pid.group(1)) != pid or not actual_class:
+            continue
+        attributes = query(['xwininfo', '-id', window])
+        if re.search(r'^\s*Map State: IsViewable\s*$', attributes, re.MULTILINE):
+            return [window]
+    return []
+
+
+def validate_sample(name, data, root=REPO):
+    if name not in SAMPLE_FILES:
+        return
+    source = ('preview_runtime_journal.py' if name.startswith('preview-events/runtime-')
+              else 'preview_sample_journal.py')
+    spec = importlib.util.spec_from_file_location('launcher_sample_journal',
+        root / 'tools/theme-lab' / source)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    module.decode(data, *SAMPLE_FILES[name])
+
+def runtime_python_files(root):
+    """Freeze runtime modules beside their entry points, excluding tests.
+
+    Scene and gallery helpers are imported both normally and by filename.
+    Copying only the entry point silently leaves a broken private fixture.
+    These two flat directories contain shipped runtime modules; development
+    tests live in separate subdirectories and are deliberately not collected.
+    """
+    return [*sorted((root / 'tools/theme-lab').glob('*.py')),
+            *sorted((root / 'plasma/tests/galerias-nativas').glob('*.py'))]
+
+
+def gtk2_press_files(root):
+    """Freeze the optional GTK2 bridge with the sources defining its ABI."""
+    helper = root / 'tools/theme-lab/build/libtheme-lab-gtk2-press.so'
+    if not helper.exists() and not helper.is_symlink():
+        return []
+    sources = [root / 'tools/theme-lab/native-gtk2' / name
+               for name in ('press.c', 'press.h')]
+    if not read_bytes(helper, 16 * 1024 * 1024).startswith(b'\x7fELF'):
+        raise RuntimeError('Ponte GTK2 presente não é um ELF próprio regular.')
+    if any(not source.is_file() or source.is_symlink() for source in sources):
+        raise RuntimeError('Fontes da ponte GTK2 ausentes ou inválidas.')
+    if any(source.stat().st_mtime_ns > helper.stat().st_mtime_ns for source in sources):
+        raise RuntimeError('Ponte GTK2 anterior aos fontes; compile gtk2-pressure.')
+    return [helper, *sources]
+
+
+def gtk4_host_files(root):
+    """Freeze the X11 host bridge and its exact C ABI source pair."""
+    helper=root/'tools/theme-lab/build/libtheme-lab-gtk4-host.so'
+    if not helper.exists() and not helper.is_symlink():return []
+    sources=[root/'tools/theme-lab/native-gtk4'/name for name in ('host.c','host.h')]
+    if not read_bytes(helper,16*1024*1024).startswith(b'\x7fELF'):
+        raise RuntimeError('Ponte GTK4 presente não é um ELF próprio regular.')
+    if any(not source.is_file() or source.is_symlink() for source in sources):
+        raise RuntimeError('Fontes da ponte GTK4 ausentes ou inválidas.')
+    if any(source.stat().st_mtime_ns>helper.stat().st_mtime_ns for source in sources):
+        raise RuntimeError('Ponte GTK4 anterior aos fontes; compile gtk4-host.')
+    return [helper,*sources]
 
 
 def write_json(path, data):
@@ -104,6 +201,21 @@ def identity_alive(identity, token=None, lab_id=None):
                 current['namespace'] == identity['namespace'])
     except (OSError, RuntimeError, ValueError):
         return False
+
+
+def started_process_identity(process, token, lab_id, timeout=2):
+    """Observe this exact child until its exec environment is readable."""
+    deadline = time.monotonic() + timeout
+    last_error = None
+    while time.monotonic() < deadline:
+        if process.poll() is not None:
+            raise RuntimeError('A aplicação encerrou antes da identificação: ' + str(process.returncode))
+        try:
+            return process_identity(process.pid, token, lab_id)
+        except (OSError, RuntimeError, ValueError) as error:
+            last_error = error
+            time.sleep(.02)
+    raise RuntimeError('Identidade privada da aplicação não confirmada: ' + str(last_error))
 
 
 def own_signal(identity, token, lab_id, number):
@@ -221,6 +333,129 @@ def instance_work(manifest):
     return INNER_HOME / relative
 
 
+def recovered_editor_snapshot(session, path):
+    """Accept an explicit, owned rescue snapshot, never a foreign profile."""
+    path = path.absolute()
+    if path.parent != session / 'home' or path.is_symlink():
+        raise RuntimeError('Journal recuperado exige arquivo direto no HOME privado desta sessão')
+    private_directory(path.parent)
+    if path.stat().st_mode & 0o077:
+        raise RuntimeError('Journal recuperado exige permissões privadas')
+    data = read_bytes(path, 8 * 1024 * 1024)
+    root = json.loads(data)
+    if not isinstance(root, dict) or root.get('schema_version') != 1:
+        raise RuntimeError('Schema do journal recuperado inválido')
+    histories = root.get('histories')
+    if not isinstance(histories, dict):
+        raise RuntimeError('Históricos recuperados inválidos')
+    for key, row in histories.items():
+        if (not isinstance(key, str) or not key or '\0' in key or
+                len(key.encode('utf-8')) >= 1024 or not isinstance(row, dict)):
+            raise RuntimeError('Contexto recuperado inválido')
+        entries, position = row.get('entries'), row.get('position')
+        if (not isinstance(entries, list) or not 1 <= len(entries) <= 128 or
+                type(position) is not int or not 0 <= position < len(entries)):
+            raise RuntimeError('Undo/Redo recuperado inválido')
+        if any(not isinstance(s, str) or '\0' in s or len(s.encode('utf-8')) > 65536
+               for s in entries) or sum(len(s.encode('utf-8')) for s in entries) > 1024 * 1024:
+            raise RuntimeError('Texto recuperado inválido ou fora do limite')
+    return data, {'source_snapshot': str(path), 'sha256': hashlib.sha256(data).hexdigest(),
+                  'histories': len(histories), 'source_snapshot_untouched': True}
+
+
+def resume_files_to_verify(resume):
+    saved = resume['saved_files_sha256']
+    delivered = resume.get('delivered_files_sha256', saved)
+    recovery = resume.get('editor_recovery')
+    if not isinstance(saved, dict) or not isinstance(delivered, dict):
+        raise RuntimeError('Hashes da retomada inválidos')
+    if recovery:
+        if delivered.get('editor-journal.json') != recovery.get('sha256'):
+            raise RuntimeError('Hash do journal recuperado divergente')
+        if {k:v for k,v in saved.items() if k != 'editor-journal.json'} != {
+                k:v for k,v in delivered.items() if k != 'editor-journal.json'}:
+            raise RuntimeError('Recuperação não pode substituir outros arquivos')
+    elif delivered != saved:
+        raise RuntimeError('Retomada sem recuperação deve conservar os hashes salvos')
+    return delivered
+
+
+def resume_snapshot(session, source_manifest, destination, editor_recovery=None):
+    """Copy saved proposal, applied scene and histories; never reuse generated outputs."""
+    source_manifest = source_manifest.absolute()
+    base = session / 'lab-addon'
+    if (source_manifest.name != 'MANIFESTO.json' or source_manifest.is_symlink() or
+            source_manifest.parent.parent != base or source_manifest.parent.is_symlink()):
+        raise RuntimeError('Retomada exige manifesto de addon desta mesma sessão')
+    private_directory(source_manifest.parent)
+    old = read_json(source_manifest)
+    original = read_json(session / 'MANIFESTO.json')
+    if (old.get('uid') != os.getuid() or old.get('session') != str(session) or
+            old.get('preview_id') != original['environment']['IRIX_DOMAINOS_PREVIEW_ID']):
+        raise RuntimeError('A origem da retomada não pertence à sessão')
+    source = session / 'home' / instance_work(old).name
+    private_directory(source)
+    if destination.exists() or destination.is_symlink():
+        raise RuntimeError('Retomada nunca sobrescreve um diretório existente')
+    payloads = {}
+    limits = RESUME_LIMITS
+    for name, limit in limits.items():
+        path = source / name
+        if name in SAMPLE_FILES and path.parent.exists():
+            private_directory(path.parent)
+        if name in SAMPLE_FILES and path.parent.is_symlink():
+            raise RuntimeError('Journal de amostras não pode atravessar link')
+        if name != 'working.json' and not path.exists() and not path.is_symlink():
+            continue
+        before = path.lstat()
+        data = read_bytes(path, limit)
+        after = path.lstat()
+        if ((before.st_ino, before.st_size, before.st_mtime_ns) !=
+                (after.st_ino, after.st_size, after.st_mtime_ns)):
+            raise RuntimeError('A origem mudou durante a retomada: ' + name)
+        if stat.S_IMODE(after.st_mode) & 0o077 or not isinstance(json.loads(data), dict):
+            raise RuntimeError('Retomada exige JSON privado com objeto raiz: ' + name)
+        validate_sample(name, data)
+        payloads[name] = data
+    # Recheck the whole set, so a concurrent checkpoint cannot mix generations.
+    for name, data in payloads.items():
+        if read_bytes(source / name, limits[name]) != data:
+            raise RuntimeError('Edição concorrente na origem; repetir após pausa')
+    delivered = dict(payloads)
+    recovery = None
+    if editor_recovery:
+        recovered, recovery = recovered_editor_snapshot(session, editor_recovery)
+        baseline = json.loads(payloads.get('editor-journal.json', b'{"histories":{}}'))
+        if not set(baseline.get('histories', {})).issubset(json.loads(recovered)['histories']):
+            raise RuntimeError('Recuperação não pode remover contextos já salvos')
+        delivered['editor-journal.json'] = recovered
+        if read_bytes(editor_recovery, 8 * 1024 * 1024) != recovered:
+            raise RuntimeError('Snapshot de recuperação mudou durante a retomada')
+        for name, data in payloads.items():
+            if read_bytes(source / name, limits[name]) != data:
+                raise RuntimeError('Edição concorrente durante recuperação; repetir após pausa')
+    destination.mkdir(mode=0o700)
+    for name, data in delivered.items():
+        (destination / name).parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+        descriptor = os.open(destination / name,
+                             os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+        with os.fdopen(descriptor, 'wb') as stream:
+            stream.write(data)
+            stream.flush()
+            os.fsync(stream.fileno())
+    return {'source_manifest': str(source_manifest),
+            'source_manifest_sha256': digest(source_manifest),
+            'saved_files_sha256': {name: hashlib.sha256(data).hexdigest()
+                                   for name, data in payloads.items()},
+            'delivered_files_sha256': {name: hashlib.sha256(data).hexdigest()
+                                       for name, data in delivered.items()},
+            'editor_recovery': recovery,
+            'source_untouched': True, 'unsaved_widget_text_imported': False,
+            'runtime_outputs_imported': False,
+            'sample_histories_imported': [name for name in payloads if name in SAMPLE_FILES],
+            'applied_scene_imported': 'scene.json' in payloads}
+
+
 def prepare(args):
     if os.getuid() == 0 or os.geteuid() != os.getuid():
         raise RuntimeError('Execute como usuário da prévia, sem sudo')
@@ -229,18 +464,26 @@ def prepare(args):
         raise RuntimeError('A sessão não pode ser um link')
     session = session.resolve()
     manifest, processes = verify_session(session)
+    if args.retomar_manifesto and not args.nova_instancia:
+        raise RuntimeError('--retomar-manifesto exige --nova-instancia')
+    if args.recuperar_journal and not args.retomar_manifesto:
+        raise RuntimeError('--recuperar-journal exige --retomar-manifesto')
     root = args.raiz.resolve()
     binary = root / 'tools/theme-lab/build/theme-lab'
     if not binary.is_file() or not os.access(binary, os.X_OK) or not read_bytes(binary, 64 * 1024 * 1024).startswith(b'\x7fELF'):
         raise RuntimeError('Compile primeiro tools/theme-lab/build/theme-lab (make -C tools/theme-lab)')
-    sources = [*sorted((root / 'tools/theme-lab/src').glob('*.c')),
-               *sorted((root / 'tools/theme-lab/include').glob('*.h')), root / 'tools/theme-lab/Makefile']
+    sources = [*sorted((root / 'tools/theme-lab/src').rglob('*.c')),
+               *sorted((root / 'tools/theme-lab/src').rglob('*.h')),
+               *sorted((root / 'tools/theme-lab/include').glob('*.h')), root / 'tools/theme-lab/Makefile',
+               root / 'tools/theme-lab/sample_controls.json', root / 'tools/theme-lab/sample_contract.py']
+    sources += [*sorted((root/'tools/theme-lab/native-gtk4').glob('*.c')),
+                *sorted((root/'tools/theme-lab/native-gtk4').glob('*.h'))]
     if any(source.stat().st_mtime_ns > binary.stat().st_mtime_ns for source in sources):
         raise RuntimeError('O binário é anterior às fontes: execute make -C tools/theme-lab antes de abrir')
     native_sources = [*sorted((root / 'tools/theme-lab/src').glob('*.cpp')),
                       root / 'tools/theme-lab/native-build/CMakeLists.txt']
     native_helper = root / 'tools/theme-lab/build/theme-lab-colors'
-    helper_files = []
+    helper_files = gtk2_press_files(root)+gtk4_host_files(root)
     if native_helper.exists() or native_helper.is_symlink():
         if (not os.access(native_helper, os.X_OK) or
                 not read_bytes(native_helper, 64 * 1024 * 1024).startswith(b'\x7fELF')):
@@ -265,13 +508,13 @@ def prepare(args):
     output.mkdir(mode=0o700)
     fixture = output / 'root'
     fixture.mkdir(mode=0o700)
-    files = [binary, root / 'tools/theme-lab/backend.py', root / 'tools/theme-lab/preview_gtk.py',
+    files = [binary, *runtime_python_files(root), root / 'tools/theme-lab/sample_controls.json',
              *helper_files, *native_sources, root / 'tools/domainos_scrollbar_rules.json',
              root / 'gtk/tools/build_kde_domainos.py', root / 'gtk/tools/adaptive_assets.py',
              root / 'colors/DomainOS-SR10.4.colors', root / 'decorations/domainos/LICENSE',
              root / 'docs/referencias/domainos-sr104/trash-can-normal.png',
              *sorted((root / 'tools').glob('*.py')),
-             *(root / 'plasma/tests/galerias-nativas' / name for name in GALLERIES), *sources]
+             *sources]
     hashes = {}
     for source in dict.fromkeys(files):
         target = fixture / ('reference.png' if source.name == 'trash-can-normal.png' else source.relative_to(root))
@@ -292,6 +535,10 @@ def prepare(args):
                'environment': dict(manifest['environment'], IRIX_DOMAINOS_LAB_ID=lab_id),
                'scope': 'Addon namespace only; original fixture/export unchanged; shares disposable HOME/bus/Xephyr.'}
     payload['work_directory'] = str(instance_work(payload))
+    if args.retomar_manifesto:
+        payload['resume'] = resume_snapshot(session, args.retomar_manifesto,
+                                           session / 'home' / instance_work(payload).name,
+                                           args.recuperar_journal)
     path = output / 'MANIFESTO.json'
     write_json(path, payload)
     write_json(output / 'RESULTADO.json', {'status': 'starting', 'gui_started': False,
@@ -330,9 +577,19 @@ def frozen_verify(output, manifest):
 
 
 def container_command(session, output, original, manifest):
-    display = original['display']
-    socket = '/tmp/.X11-unix/X' + display.lstrip(':')
-    command = ['unshare', '--user', '--map-root-user', '--net', 'bwrap', '--unshare-user',
+    worker_identity = manifest['original_processes']['worker']
+    if not identity_alive(worker_identity, manifest['preview_id']):
+        raise RuntimeError('O worker original mudou antes da montagem X')
+    directory = Path(f"/proc/{worker_identity['pid']}/root/tmp/.X11-unix")
+    socket = directory / ('X' + original['display'].lstrip(':'))
+    info = socket.stat()
+    if (not stat.S_ISSOCK(info.st_mode) or info.st_uid != os.getuid() or
+            list(directory.iterdir()) != [socket]):
+        raise RuntimeError('Diretório X privado não contém somente o socket próprio esperado')
+    # Enter the proved private mount first, then create an independent addon
+    # namespace. Recursive directory bind retains an unlinked socket mount.
+    command = ['nsenter', '--target', str(worker_identity['pid']), '--user', '--mount', '--net',
+        '--preserve-credentials', 'bwrap', '--unshare-user', '--unshare-net',
         '--unshare-ipc', '--unshare-uts', '--uid', '1000', '--gid', '1000', '--clearenv',
         '--ro-bind', '/usr', '/usr', '--symlink', 'usr/bin', '/bin', '--symlink', 'usr/lib', '/lib',
         '--symlink', 'usr/lib64', '/lib64', '--ro-bind', str(session / 'etc'), '/etc',
@@ -346,18 +603,20 @@ def container_command(session, output, original, manifest):
             raise RuntimeError('A fixture original já usa o nome reservado do laboratório')
         command.extend(['--ro-bind', str(entry), '/fixture/' + entry.name])
     command.extend(['--ro-bind', str(output / 'root'), str(INNER_ROOT),
-        '--remount-ro', '/fixture', '--ro-bind', socket, socket,
+        '--remount-ro', '/fixture', '--ro-bind', '/tmp/.X11-unix', '/tmp/.X11-unix',
         '--ro-bind', str(session / 'Xauthority'), str(INNER_HOME / '.Xauthority'),
         '--ro-bind', str(session / 'applications'), '/usr/share/applications'])
     for resource in original['resources']:
-        command.extend(['--ro-bind', resource['source'], resource['mount']])
+        command.extend(['--ro-bind', resource['mount'], resource['mount']])
     for key, value in manifest['environment'].items():
         command.extend(['--setenv', key, value])
     inner_output = Path('/out') / output.relative_to(session)
     command.extend(['--die-with-parent', '--new-session', '--chdir', str(INNER_HOME),
         '/usr/bin/python3', '-B', str(inner_output / SCRIPT.name), '--worker',
         str(inner_output / 'MANIFESTO.json')])
-    return command
+    prefix = str(session)
+    return ['/out' + value[len(prefix):] if value == prefix or
+            value.startswith(prefix + '/') else value for value in command]
 
 
 def stop_child(process):
@@ -405,21 +664,35 @@ def worker(path):
     try:
         work.mkdir(mode=0o700, exist_ok=True)
         private_directory(work)
+        if manifest.get('resume'):
+            expected = resume_files_to_verify(manifest['resume'])
+            if (not isinstance(expected, dict) or 'working.json' not in expected or
+                    any(name not in RESUME_LIMITS or
+                        digest(work / name) != value for name, value in expected.items())):
+                raise RuntimeError('Os dados de retomada mudaram antes da abertura')
+            for name in expected:
+                validate_sample(name, read_bytes(work / name, RESUME_LIMITS[name]), INNER_ROOT)
         argv = [str(INNER_ROOT / 'tools/theme-lab/build/theme-lab'), '--root', str(INNER_ROOT),
-                '--work-dir', str(work), '--reference', str(INNER_ROOT / 'reference.png')]
-        if manifest.get('new_instance'):
+                '--work-dir', str(work)]
+        if not manifest.get('resume'):
+            argv.extend(['--reference', str(INNER_ROOT / 'reference.png')])
+        if manifest.get('new_instance') and not manifest.get('resume'):
             argv.extend(['--family', 'gtk3'])
         with (output / 'motif.log').open('w') as log:
             process = subprocess.Popen(argv, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
-            report['app'] = process_identity(process.pid, manifest['preview_id'], manifest['lab_id'])
+            report['app'] = started_process_identity(process, manifest['preview_id'], manifest['lab_id'])
             report['argv'] = argv; report['gui_started'] = True
             write_json(output / 'RESULTADO.json', report)
             deadline = time.monotonic() + 15
             while process.poll() is None and time.monotonic() < deadline:
-                result = subprocess.run(['xdotool', 'search', '--all', '--onlyvisible', '--pid', str(process.pid),
-                                         '--class', '^ThemeLab$'],
-                                        capture_output=True, text=True, timeout=2)
-                windows = result.stdout.split() if result.returncode == 0 else []
+                try:
+                    windows = mapped_lab_windows(process.pid)
+                except subprocess.TimeoutExpired:
+                    # An observer timeout says nothing about the app's state.
+                    # Keep observing this exact child until the startup deadline.
+                    report['window_observation_timeouts'] = report.get('window_observation_timeouts', 0) + 1
+                    write_json(output / 'RESULTADO.json', report)
+                    continue
                 if windows:
                     # The controller publishes _NET_WM_PID. Matching both PID
                     # and native class prevents V1 from satisfying V2 readiness.
@@ -470,7 +743,8 @@ def supervisor(path):
                    'shared_pid_namespace_for_xres': True, 'no_new_xephyr': True})
         with (output / 'namespace.log').open('w') as log:
             container = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT,
-                        start_new_session=True, env={'PATH': '/usr/bin:/bin', 'LC_ALL': 'C.UTF-8'})
+                        start_new_session=True,
+                        env={'PATH': '/usr/bin:/bin', 'LC_ALL': 'C.UTF-8'})
             while container.poll() is None:
                 if not all(identity_alive(identity, manifest['preview_id'] if name != 'xephyr' else None)
                            for name, identity in manifest['original_processes'].items()):
@@ -517,6 +791,10 @@ def main(argv=None):
     parser.add_argument('--raiz', type=Path, default=REPO, help='Repositório com laboratório compilado')
     parser.add_argument('--nova-instancia', action='store_true',
                         help='Abrir outra instância na mesma Xephyr com diretório de trabalho próprio')
+    parser.add_argument('--retomar-manifesto', type=Path,
+                        help='Copiar projeto salvo e journal do addon indicado, sem alterar a origem')
+    parser.add_argument('--recuperar-journal', type=Path,
+                        help='Retomar cópia privada resgatada do journal; preservar o arquivo original')
     parser.add_argument('--supervisor', type=Path, help=argparse.SUPPRESS)
     parser.add_argument('--worker', type=Path, help=argparse.SUPPRESS)
     args = parser.parse_args(argv)

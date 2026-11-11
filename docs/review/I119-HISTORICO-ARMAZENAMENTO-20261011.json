@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-11T06:31:03.588470+00:00",
+  "item": "I119",
+  "revision": 1,
+  "phase": "model_and_storage_private",
+  "previous_turn": "progress: authoritative channel configuration verified and queue recorded",
+  "model_validation": "decode_model ends validate_model; complete snapshots share project codec",
+  "tests": {
+    "command": "make -C tools/theme-lab check-project-history-store",
+    "result": "passed",
+    "log": "/tmp/i119-history-store-short-write.log",
+    "scope": [
+      "UTF-8 roundtrip",
+      "checkpoint and multistep Undo/Redo recovery",
+      "stale revision conflict",
+      "busy lock",
+      "missing parent error",
+      "real short write via child RLIMIT_FSIZE preserves previous JSON",
+      "corruption rejects load/commit without replacing caller outputs",
+      "symlink and FIFO rejected"
+    ],
+    "first_attempt": "test compile failed due incorrect field names; corrected fixture to existing recipe.notes and sizes[10][0]"
+  },
+  "hashes": {
+    "tools/theme-lab/src/model/project_history.c": "5c4d18528e02d5651ca338e10908a2e9d88869e9e902e95d68a3165a0ea90f61",
+    "tools/theme-lab/src/persistence/project_history_store.c": "7729a7ba472779968996a1cf8af714dbda6f1bff5b1d0a90ea1103a5fbb23ef7",
+    "tools/theme-lab/include/project_history_store.h": "71e696fd1eab3517b43bf9af6f14f4d1a754483fd1ec226a0a40641d140723d5",
+    "tools/theme-lab/tests/project_history_store_test.c": "dcf2eb3c653b77dc85cdc48418410008f0fccdedb14e91f9220cc22255f33f84",
+    "tools/theme-lab/PROJECT-HISTORY.md": "812e91565cfec9f866b4c956c72d5c702e08a90726fb62011de7c9620fae92b3"
+  },
+  "limits": [
+    "No GUI/controller integration yet",
+    "No directory fsync failure injection or physical power-loss proof",
+    "Lock coordinates only cooperative writers",
+    "128 entries and 32 MiB; synchronous API requires bounded controller integration"
+  ],
+  "personal_windows_changed": false,
+  "scope_progress_percent": 35,
+  "remaining": [
+    "controller commit before live-state mutation",
+    "GUI and shortcuts preserve text Undo",
+    "native workflow proof",
+    "coordinated delivery"
+  ]
+}

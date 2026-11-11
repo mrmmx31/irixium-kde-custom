@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XMPICON-CAPTURE-GATE-20261026-R238",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "authority": {
+    "ai_context": "theme",
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "vm": "Project-owned Apollo DN3500, Domain/OS SR10.4, HP VUE 2.01, MAME 0.276",
+    "mame_pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "result": "canonical disk and sole MAME instance verified",
+    "profile": {"paused": false, "frameskip": 4, "throttled": false}
+  },
+  "initial_screen": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-after-wake-r237.png",
+    "sha256": "d76ebb9d3bd0871b1beb0c73f90e2548855678d64c515f9154cb0ada9ab40051",
+    "visible": "File Manager at /node_12345, 28 files and 2 filtered; four-column XmpIcon grid unobstructed; Terminal open"
+  },
+  "bounded_probe": {
+    "script": "~/tempia/ia-tema/evidence/I167/i167-xmpicon-x-step-r237.lua",
+    "intent": "one relative X counter step, no button, before/during/after snapshots",
+    "result": "refused by script guard before any pointer input because hook.captured was true or wait_button_up was true",
+    "error": "captura/soltura não está em repouso",
+    "input_sent": false,
+    "held_fields": false
+  },
+  "fresh_read_only_state": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r238.png",
+    "sha256": "6fb9148985d603d1f1eba52fb0bd5905ca0c310284c879d748509b15a36a5ab8",
+    "visible": "File Manager grid remains unobstructed; insertion cursor visible in Terminal",
+    "hook_captured": true,
+    "wait_button_up": false,
+    "mouse_counters": {"x": 40, "y": 168},
+    "channel_pending": null,
+    "channel_reply": null
+  },
+  "limits": [
+    "The hook captured flag is not a direct query of the host SDL grab.",
+    "No click, file operation, theme/profile change or guest configuration change occurred.",
+    "The state changed after the earlier read-only probe; do not clear or recapture it without the user's physical AltGr release."
+  ],
+  "status": "pointer_probe_safely_refused_capture_active",
+  "next": "After the user physically releases capture with AltGr, reverify the same VM, hook state, target image and empty channel before a single measured pointer step."
+}

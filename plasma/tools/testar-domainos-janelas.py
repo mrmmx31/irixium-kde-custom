@@ -133,11 +133,40 @@ const result = {desktopId:otherDesktop.id,output:remote.name,outputCount:workspa
         gathered_ids = {ids[window.windowTitle()] for window in windows[:2]}
         check("gather_destination_observed_again", all(value["desktopIds"] == [desktop_id] and value["output"] == gathered_state["output"]
             for value in gathered_state["windows"] if value["id"] in gathered_ids))
+        partial_maximize = fixture('''
+const id = '''+json.dumps(ids[windows[0].windowTitle()])+''';
+const target = workspace.windowList().find(window => String(window.internalId).replace(/[{}]/g,"") === id);
+target.setMaximize(true, false);
+const result = {id:id};
+''')
+        for _ in range(30):
+            QTest.qWait(50)
+            partial_before = operation({"action":"inspect"})
+            partial_state = next((value for value in partial_before["windows"] if value["id"] == partial_maximize["id"]), {})
+            if partial_state.get("maximizeMode") == 1: break
+        check("partial_maximize_observed_before_layout", partial_state.get("maximizeMode") == 1)
+        partial_preflight_before = operation({"action":"inspect"})
+        partial_preflight = operation({"action":"preflight", "windows":records[:2]})
+        partial_preflight_after = operation({"action":"inspect"})
+        check("partial_maximize_reported_during_read_only_preflight", partial_preflight.get("ok")
+            and partial_preflight.get("outcome") == "preflight"
+            and next(value for value in partial_preflight["windows"]
+                if value["id"] == partial_maximize["id"])["maximizeMode"] == 1)
+        check("partial_maximize_preflight_does_not_mutate_windows",
+            partial_preflight_before["windows"] == partial_preflight_after["windows"])
+        partial_result = operation({"action":"layout", "mode":"columns", "windows":records[:2], "desktopId":desktop_id})
+        check("partial_maximize_restored_before_geometry", partial_result.get("ok")
+            and partial_result.get("outcome") == "confirmed"
+            and next(value for value in partial_result["windows"] if value["id"] == partial_maximize["id"])["maximizeMode"] == 0)
         for count in (2, 3, 6):
             for mode in ("columns", "rows", "mosaic"):
                 for window in windows[:count]: window.showNormal()
                 QTest.qWait(30)
                 result = operation({"action": "layout", "mode": mode, "windows": records[:count], "desktopId": desktop_id})
+                if not result.get("ok") and "nenhuma geometria foi solicitada" in result.get("detail", ""):
+                    check(mode + "_" + str(count) + "_infeasible_minimum_refused",
+                        result.get("outcome") == "unavailable")
+                    continue
                 check(mode + "_" + str(count) + "_confirmed", result.get("ok") and result.get("outcome") == "confirmed" and len(result.get("windows", [])) == count)
                 actual = operation({"action": "inspect"})
                 expected = {value["id"]: value for value in result["windows"]}
@@ -150,6 +179,45 @@ const result = {desktopId:otherDesktop.id,output:remote.name,outputCount:workspa
             check(mode+"_batch_observed_again", all(value["desktopIds"]==[desktop_id] and
                 (mode!="minimize" or value["minimized"]) and (mode!="maximize" or not value["minimized"])
                 for value in actual["windows"] if value["id"] in selected))
+        restore_anchor = fixture('''
+const own = workspace.windowList().filter(window => window.pid === '''+str(os.getpid())+''');
+const id = '''+json.dumps(ids[windows[5].windowTitle()])+''';
+const anchor = own.find(window => String(window.internalId).replace(/[{}]/g,"") === id);
+workspace.raiseWindow(anchor);
+workspace.activeWindow = anchor;
+const result = {id:id};
+''')
+        QTest.qWait(100)
+        before_restore = operation({"action":"inspect"})
+        before_restore_rows = {value["id"]: value for value in before_restore["windows"]}
+        check("restore_unselected_anchor_starts_active",
+            before_restore_rows[restore_anchor["id"]]["active"])
+        restored = operation({"action":"restore", "windows":records[:3]})
+        check("restore_batch_confirmed", restored.get("ok") and restored.get("outcome")=="confirmed")
+        restored_ids = {value["id"] for value in restored.get("windows", [])}
+        check("restore_helper_reports_only_selected_windows", restored_ids == {
+            ids[window.windowTitle()] for window in windows[:3]})
+        after_restore = operation({"action":"inspect"})
+        restored_rows = {value["id"]: value for value in after_restore["windows"]
+            if value["id"] in restored_ids}
+        check("restore_normal_state_observed_again", all(not value["minimized"]
+            and value["maximizeMode"] == 0 for value in restored_rows.values()))
+        check("restore_last_selected_window_active",
+            after_restore.get("windows")
+            and restored.get("activeWindow") == ids[windows[2].windowTitle()]
+            and restored_rows[ids[windows[2].windowTitle()]]["active"])
+        unselected_rows = [value for value in after_restore["windows"]
+            if value["pid"] == os.getpid() and value["id"] not in restored_ids
+            and not value.get("transient")]
+        check("restore_selected_set_brought_in_front_of_unselected_windows",
+            min(value["stackingOrder"] for value in restored_rows.values())
+            > max(value["stackingOrder"] for value in unselected_rows))
+        check("restore_reports_each_selected_window_raised_once",
+            all(value.get("raised") for value in restored.get("windows", [])))
+        check("restore_preserves_desktop_and_output", all(
+            value["desktopIds"] == before_restore_rows[identifier]["desktopIds"]
+            and value["output"] == before_restore_rows[identifier]["output"]
+            for identifier, value in restored_rows.items()))
         before = operation({"action": "inspect"})
         bad = dict(records[0], pid=os.getpid()+10000)
         rejected = operation({"action": "layout", "mode": "columns", "windows": [bad, records[1]], "desktopId": desktop_id})
@@ -170,12 +238,22 @@ const result = {desktopId:otherDesktop.id,output:remote.name,outputCount:workspa
             and related.get("transientFor")==ids[windows[0].windowTitle()])
         dialog_id = int(dialog.winId()) if args.backend=="x11" else related["id"]
         dialog_record = {"key":"window:"+str(dialog_id),"windowIds":[dialog_id],"pid":os.getpid()}
+        relation_preflight = operation({"action":"preflight","windows":records[:2]})
+        check("unselected_dialog_relation_reported_during_preflight", relation_preflight.get("ok")
+            and relation_preflight.get("outcome") == "preflight"
+            and not relation_preflight.get("available")
+            and "janela relacionada" in relation_preflight.get("detail",""))
         for mode in ("collect","columns","maximize","minimize"):
             before_related = operation({"action":"inspect"})
             refusal = operation({"action":"layout","mode":mode,"windows":records[:2],"desktopId":desktop_id})
             after_related = operation({"action":"inspect"})
             check("unselected_dialog_"+mode+"_rejected_without_mutation", not refusal.get("ok")
-                and "related dialogs" in refusal.get("detail","") and before_related["windows"]==after_related["windows"])
+                and "janela relacionada" in refusal.get("detail","") and before_related["windows"]==after_related["windows"])
+        before_related = operation({"action":"inspect"})
+        restore_refusal = operation({"action":"restore","windows":records[:2]})
+        check("unselected_dialog_restore_rejected_without_mutation", not restore_refusal.get("ok")
+            and "janela relacionada" in restore_refusal.get("detail","")
+            and before_related["windows"]==operation({"action":"inspect"})["windows"])
         before_related = operation({"action":"inspect"})
         refusal = operation({"action":"layout","mode":"collect","windows":[dialog_record],"desktopId":desktop_id})
         check("selected_transient_cannot_move_unselected_parent", not refusal.get("ok")
@@ -212,6 +290,28 @@ const result = {desktopId:otherDesktop.id,output:remote.name,outputCount:workspa
         check("nonresizable_client_rejected_before_mutation", not fixed_rejected.get("ok")
             and fixed_before["windows"] == fixed_after["windows"])
         fixed_window.close()
+        QTest.qWait(100)
+        minimum_window = QWidget()
+        minimum_window.setWindowTitle("DomainOS owned minimum-size test")
+        minimum_window.setMinimumSize(700, 100)
+        minimum_window.resize(720, 180)
+        minimum_window.show()
+        for _ in range(30):
+            QTest.qWait(50)
+            minimum_before = operation({"action":"inspect"})
+            minimum_native = next((value for value in minimum_before["windows"]
+                if value["title"] == minimum_window.windowTitle()), {})
+            if minimum_native.get("resizable") and minimum_native.get("minSize", {}).get("width", 0) >= 700: break
+        check("minimum_size_hint_observed", minimum_native.get("resizable")
+            and minimum_native.get("minSize", {}).get("width", 0) >= 700)
+        minimum_id = int(minimum_window.winId()) if args.backend == "x11" else minimum_native["id"]
+        minimum_record = {"key":"window:"+str(minimum_id), "windowIds":[minimum_id], "pid":os.getpid()}
+        minimum_refusal = operation({"action":"layout", "mode":"columns",
+            "windows":[minimum_record, records[1]], "desktopId":desktop_id})
+        check("infeasible_minimum_rejected_before_mutation", not minimum_refusal.get("ok")
+            and "nenhuma geometria foi solicitada" in minimum_refusal.get("detail", "")
+            and minimum_before["windows"] == operation({"action":"inspect"})["windows"])
+        minimum_window.close()
         QTest.qWait(100)
         sibling = operation({"action": "terminate-check", "windows": records[:1], "selectedKeys": [records[0]["key"]]})
         check("unselected_process_siblings_rejected", not sibling.get("ok") and "unselected" in sibling.get("detail", ""))
@@ -284,7 +384,9 @@ def main():
         return app.exec()
     if args.worker: return worker(args)
     output = args.saida.resolve()
-    if output.exists() or not output.is_relative_to(Path("/tmp")): parser.error("Use a new output directory under /tmp")
+    temp_root = Path.home()/"tempia/domainos-theme-work"
+    if output.exists() or not output.is_relative_to(temp_root):
+        parser.error("Use a new output directory under ~/tempia/domainos-theme-work")
     output.mkdir(mode=0o700)
     config = Path(os.environ.get("XDG_CONFIG_HOME", Path.home()/".config"))
     def hashes():
@@ -294,12 +396,12 @@ def main():
     env = dict(os.environ)
     for key in ("DISPLAY", "WAYLAND_DISPLAY", "DBUS_SESSION_BUS_ADDRESS", "DBUS_STARTER_ADDRESS", "DBUS_STARTER_BUS_TYPE", "SESSION_MANAGER", "XAUTHORITY", "LD_PRELOAD", "QT_STYLE_OVERRIDE", "QT_QUICK_CONTROLS_STYLE", "QML_IMPORT_PATH", "QML2_IMPORT_PATH", "KDE_FULL_SESSION", "KDE_SESSION_VERSION", "XDG_SESSION_ID"):
         env.pop(key, None)
-    for key, name in (("HOME", "home"), ("XDG_CONFIG_HOME", "config"), ("XDG_DATA_HOME", "data"), ("XDG_CACHE_HOME", "cache"), ("XDG_STATE_HOME", "state"), ("XDG_RUNTIME_DIR", "runtime")):
+    for key, name in (("HOME", "home"), ("XDG_CONFIG_HOME", "config"), ("XDG_DATA_HOME", "data"), ("XDG_CACHE_HOME", "cache"), ("XDG_STATE_HOME", "state"), ("XDG_RUNTIME_DIR", "runtime"), ("TMPDIR", "tmp")):
         folder = output / name; folder.mkdir(mode=0o700); env[key] = str(folder)
     (output/"config/kwinrc").write_text("[Desktops]\nNumber=1\nName_1=Test\n[Compositing]\nEnabled=" + ("false" if args.backend=="x11" else "true") + "\n[org.kde.kdecoration2]\nlibrary=org.kde.breeze\n")
     env.update(QT_QPA_PLATFORM="xcb", QT_QPA_PLATFORMTHEME="generic", QT_QUICK_BACKEND="software", KWIN_COMPOSE="N", LIBGL_ALWAYS_SOFTWARE="1", QT_ACCESSIBILITY="0", XDG_CURRENT_DESKTOP="NONE", XDG_SESSION_TYPE=args.backend, XDG_DATA_DIRS="/usr/local/share:/usr/share", XDG_CONFIG_DIRS="/etc/xdg", DBUS_SYSTEM_BUS_ADDRESS="unix:path="+str(output/"no-system-bus"))
     bus = output/"bus.conf"
-    bus.write_text('<busconfig><type>session</type><listen>unix:tmpdir=/tmp</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
+    bus.write_text('<busconfig><type>session</type><listen>unix:tmpdir='+str(output/"runtime")+'</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
     command = ["dbus-run-session", "--config-file", str(bus), "--", sys.executable, str(Path(__file__).resolve()), "--worker", "--backend", args.backend, "--saida", str(output)]
     if args.backend == "x11": command = ["xvfb-run", "--auto-servernum", "--server-args=-screen 0 1200x700x24", *command]
     result = subprocess.run(command, env=env, capture_output=True, text=True, timeout=90)

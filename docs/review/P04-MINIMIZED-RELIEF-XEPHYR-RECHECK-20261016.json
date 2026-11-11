@@ -1,0 +1,136 @@
+{
+  "id": "P04",
+  "date": "2026-10-16",
+  "status": "passed_native_minimize_restore_relief_transition; physical_wm_minimize_button_unverified",
+  "scope": "Owned Xephyr :70, private session D-Bus and private KWin; actual installed plasmawindowed host loading current production QML. No user profile, installed theme, or user Xephyr session changed.",
+  "authorization": {
+    "revision": 3,
+    "authorized": true,
+    "definition_sha256": "da73bf29ee8b311998f00d4d99d9c3d644d776cc605a46478ad669a139581f41"
+  },
+  "sequence": [
+    "Physical xdotool click selects the exact test-owned native window tile; selected relief is sunken while restored.",
+    "The native QWidget client invokes showMinimized(); KWin/TasksModel report the same window identity minimized while its selection checkbox/identity remains selected; tile body and label relief rise.",
+    "The same QWidget invokes showNormal(); TasksModel reports it restored and the selected tile returns to sunken relief without selection loss."
+  ],
+  "checks": {
+    "MINIMIZED-SELECTED_capture_saved": true,
+    "RESTORED-AGAIN_capture_saved": true,
+    "RESTORED-SELECTED_capture_saved": true,
+    "minimized_selected_identity_and_pid_preserved": true,
+    "minimized_selected_tile_and_label_are_raised": true,
+    "native_minimize_state_reaches_tasks_model": true,
+    "native_restore_state_reaches_tasks_model": true,
+    "native_scenario_completed": true,
+    "owned_native_client_pid_winid_exact": true,
+    "physical_single_click_selected_owned_tile": true,
+    "restored_selected_relief_returns_without_selection_loss": true,
+    "restored_selected_tile_and_label_initially_sunken": true,
+    "native_host_exited_cleanly": true,
+    "qml_runtime_errors_zero": true,
+    "real_profiles_unchanged": true,
+    "production_sources_unchanged": true,
+    "real_installed_native_host": true
+  },
+  "observations": [
+    {
+      "phase": "RESTORED-SELECTED",
+      "clientMinimized": false,
+      "clientActive": false,
+      "key": "window:4194319",
+      "selected": [
+        "window:4194319"
+      ],
+      "visual": {
+        "bodySunken": true,
+        "fullyMinimized": false,
+        "labelSunken": true,
+        "pressed": false,
+        "selected": true
+      }
+    },
+    {
+      "phase": "MINIMIZED-SELECTED",
+      "clientMinimized": true,
+      "clientActive": false,
+      "key": "window:4194319",
+      "selected": [
+        "window:4194319"
+      ],
+      "visual": {
+        "bodySunken": false,
+        "fullyMinimized": true,
+        "labelSunken": false,
+        "pressed": false,
+        "selected": true
+      }
+    },
+    {
+      "phase": "RESTORED-AGAIN",
+      "clientMinimized": false,
+      "clientActive": false,
+      "key": "window:4194319",
+      "selected": [
+        "window:4194319"
+      ],
+      "visual": {
+        "bodySunken": true,
+        "fullyMinimized": false,
+        "labelSunken": true,
+        "pressed": false,
+        "selected": true
+      }
+    }
+  ],
+  "image_diff": {
+    "restored_to_minimized_changed_pixels": 980,
+    "minimized_to_restored_changed_pixels": 980,
+    "restore_roundtrip_changed_pixels": 0,
+    "comparison": "same-size PNGs, pixel comparison; no rescaling"
+  },
+  "limitation": "The activation/focus-gated physical minimize-button click still could not be observed in this harness. The verified sequence uses the real QWidget minimize/restore state API after a physical Iconbox click, then observes the native KWin TasksModel and rendered production tile. This proves the relief reaction to actual minimized state, not the physical decoration-button path.",
+  "native_host_checks": {
+    "status": "passed",
+    "check_count": 17,
+    "all_true": true,
+    "qml_runtime_errors": [],
+    "profiles_unchanged": true,
+    "host_exited": true
+  },
+  "resource_fixture": {
+    "path": "/home/lsi/tempia/domainos-p08-startup-20261014/run7",
+    "result_sha256": "848be6f73d4d32f4ac06c09571d3320f3e03115e329e7ba0592cdeaf61e1c2da",
+    "native_host_exited": true,
+    "reused_read_only": true
+  },
+  "artifacts": {
+    "result_private_path": "/home/lsi/tempia/p04-minimized-relief-xephyr-20261016/run-xephyr-retry3/RESULTADO.json",
+    "result_sha256": "c6fa15337d6dec9ff216c53a07d8f851d6432f1acdae4d3c778d5f5a41da4ce3",
+    "runner_log_private_path": "/home/lsi/tempia/p04-minimized-relief-xephyr-20261016/run-xephyr-retry3/runner.log",
+    "host_log_private_path": "/home/lsi/tempia/p04-minimized-relief-xephyr-20261016/run-xephyr-retry3/host.log",
+    "captures": {
+      "RESTORED-SELECTED.png": {
+        "path": "docs/review/images/P04-RESTORED-SELECTED-20261016.png",
+        "sha256": "aab6772d84debd9b2d93ec1185687ff15c4a7ff09735bd5df4f9ecb9711d4c3c"
+      },
+      "MINIMIZED-SELECTED.png": {
+        "path": "docs/review/images/P04-MINIMIZED-SELECTED-20261016.png",
+        "sha256": "5b2e7c2646a3b849c71fbe8c8a02e2f7e901bec165ae9240df0666f7a0d99293"
+      },
+      "RESTORED-AGAIN.png": {
+        "path": "docs/review/images/P04-RESTORED-AGAIN-20261016.png",
+        "sha256": "aab6772d84debd9b2d93ec1185687ff15c4a7ff09735bd5df4f9ecb9711d4c3c"
+      }
+    }
+  },
+  "source_sha256": {
+    "plasma/tools/testar-domainos-relevo-minimizado.py": "783bd2747663347f2bcedc3dd1cbd4833d46b33173cf3f4ecae857ec8f78d7d2",
+    "plasma/tools/testar-domainos-recursos-tarefas.py": "7a40aa0d975aa530074bdf0ef0880c558ec8bfef15a98e019be2ef351319d0d3",
+    "plasma/tests/domainos-minimized-relief-host.cpp": "e4824a1343cea37c2553a53660b934c358bc4229a54249fd730167225ebb9711",
+    "DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01",
+    "DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+    "DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed"
+  },
+  "test_harness_change": "The test runner now supports an already-owned Xephyr display and stores compiler temporaries under the selected ~/tempia output. It no longer requires creating test output in /tmp.",
+  "user_visual_review": "pending; technical evidence does not fill user approval."
+}

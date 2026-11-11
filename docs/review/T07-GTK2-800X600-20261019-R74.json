@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-800X600-20261019-R74",
+  "date": "2026-10-19",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "Saved AI Work Board state: section=work; user.authorized=true; authorized_definition matches current definition_sha256 a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee.",
+  "status": "partial_failure",
+  "scope": "Run the GTK2 native hint matrix at the previously uncovered 800x600 viewport, with 16 controls at four in-screen quadrants; do not repeat R58/R60 diagnosis.",
+  "environment": {
+    "xephyr": ":81",
+    "screen_px": [
+      800,
+      600
+    ],
+    "restored_screen_px": [
+      1280,
+      800
+    ],
+    "gtk2": "2.24.33",
+    "theme": "GTK2 Default/Sans 10 in per-case private HOME/XDG; generated native RC",
+    "native_scene": "tools/theme-lab/tests/probe_gtk_hint_hover.py with GTK2 NativeSession/generated controls",
+    "isolation": "64 fresh test homes and output folders below ~/tempia; no theme or personal settings changed",
+    "personal_profile_changed": false
+  },
+  "matrix": {
+    "control_types": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "quadrants": [
+      "tl",
+      "tr",
+      "bl",
+      "br"
+    ],
+    "owner_rects_px": {
+      "tl": [
+        440,
+        240,
+        120,
+        36
+      ],
+      "tr": [
+        600,
+        240,
+        120,
+        36
+      ],
+      "bl": [
+        440,
+        440,
+        120,
+        36
+      ],
+      "br": [
+        600,
+        440,
+        120,
+        36
+      ]
+    },
+    "total": 64,
+    "passed": 62,
+    "failed": 2,
+    "native_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen": true,
+    "control_overlap_pixels": 0,
+    "closed_after_pointer_leave": true,
+    "failure_cases": [
+      {
+        "corner": "tl",
+        "control": "progress",
+        "control_rect_px": [
+          440,
+          240
+        ],
+        "tooltip_mapped": false,
+        "stderr_tail": "=500\nY=258\nSCREEN=0\nWINDOW=0\n [('T07OtherTip', '<enum GDK_WINDOW_TYPE_HINT_TOOLTIP of type Gdk.WindowTypeHint>', False, False, (root_x=0, root_y=0), (width=200, height=200)), ('themeLabCanvasWindow', '<enum GDK_WINDOW_TYPE_HINT_NORMAL of type Gdk.WindowTypeHint>', True, True, (root_x=0, root_y=0), (width=640, height=420)), ('gtk-tooltip', '<enum GDK_WINDOW_TYPE_HINT_TOOLTIP of type Gdk.WindowTypeHint>', False, False, (root_x=0, root_y=0), (width=239, height=52))]\nTraceback (most recent call last):\n  File \"/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py\", line 201, in <module>\n    assert len(visible) == 1, len(visible)\n           ^^^^^^^^^^^^^^^^^\nAssertionError: 0\n"
+      },
+      {
+        "corner": "bl",
+        "control": "progress",
+        "control_rect_px": [
+          440,
+          440
+        ],
+        "tooltip_mapped": false,
+        "stderr_tail": "=500\nY=458\nSCREEN=0\nWINDOW=0\n [('T07OtherTip', '<enum GDK_WINDOW_TYPE_HINT_TOOLTIP of type Gdk.WindowTypeHint>', False, False, (root_x=0, root_y=0), (width=200, height=200)), ('themeLabCanvasWindow', '<enum GDK_WINDOW_TYPE_HINT_NORMAL of type Gdk.WindowTypeHint>', True, True, (root_x=0, root_y=0), (width=640, height=476)), ('gtk-tooltip', '<enum GDK_WINDOW_TYPE_HINT_TOOLTIP of type Gdk.WindowTypeHint>', False, False, (root_x=0, root_y=0), (width=239, height=52))]\nTraceback (most recent call last):\n  File \"/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py\", line 201, in <module>\n    assert len(visible) == 1, len(visible)\n           ^^^^^^^^^^^^^^^^^\nAssertionError: 0\n"
+      }
+    ]
+  },
+  "observations": {
+    "progress_by_quadrant": {
+      "tl": "failed: tooltip window was created and sized but remained unmapped",
+      "tr": "passed",
+      "bl": "failed: tooltip window was created and sized but remained unmapped",
+      "br": "passed"
+    },
+    "comparison_to_R58": "R58 had the same GTK2 progress failure at owner x=440,y=240; at 1280x800 its bottom-left owner x=440,y=640 passed. R74 therefore does not identify a single screen coordinate or cause.",
+    "targeted_x320": "One extra probe at owner x=320,y=240 also left gtk-tooltip unmapped, but its fixture window origin was -120 (partly outside the screen), so this is diagnostic only and not a clean position comparison.",
+    "diagnostic_decision": "R60 already excluded a general ProgressBar/helper failure. This new matrix does not isolate the NativeSession/probe difference; do not repeat without another discriminating hypothesis."
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "temporary_runner.py": "4f28e74270c65343d67ea8286c6a1a5769b87d40a17ff9b7d9d7ef23a14c0ab3",
+    "raw_matrix_result.json": "f97ab16240c97125111ae177ba0138392cd2685e7082a38cf0a9f67dee2f9fa2",
+    "targeted_x320_result.json": "eb60e876fcdadb4dfbd8f214e6c8005ca0fcfadb88bd6cb69f2ffb5ff6445fa3"
+  },
+  "artifacts": {
+    "matrix": "~/tempia/t07-gtk2-800x600-20261019/result.json",
+    "cases": "~/tempia/t07-gtk2-800x600-20261019/{tl,tr,bl,br}-{control}/result.json",
+    "targeted_diagnostic": "~/tempia/t07-gtk2-800x600-20261019/targeted-x320/result.json"
+  },
+  "limitations": [
+    "One fixture/layout and GTK2 Default/Sans 10 only; no alternate palette, rendered-text fidelity, other apps, or human review.",
+    "Two GTK2 ProgressBar cases failed to map a tooltip; no product fix or causal claim is made.",
+    "The x=320 diagnostic moved the fixture window partly beyond the display and is not part of the 64-case matrix."
+  ],
+  "next": "Skip further GTK2 isolation under the current evidence; continue with the next independently authorized work item."
+}

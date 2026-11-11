@@ -1,0 +1,682 @@
+{
+  "at": "2026-10-12T01:56:44.254280+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 ToggleButton standalone foundation; four palettes; not session/controller integration",
+  "cases": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "reused": true,
+      "result": {
+        "status": "passed_toggle_foundation",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "captures": [
+          {
+            "label": "normal",
+            "selected": false,
+            "native_flags": 128,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/normal.png"
+          },
+          {
+            "label": "hover",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/hover.png"
+          },
+          {
+            "label": "pressed",
+            "selected": false,
+            "native_flags": 131,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/pressed.png"
+          },
+          {
+            "label": "selected-hover",
+            "selected": true,
+            "native_flags": 2178,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-hover.png"
+          },
+          {
+            "label": "selected",
+            "selected": true,
+            "native_flags": 2176,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected.png"
+          },
+          {
+            "label": "selected-pressed",
+            "selected": true,
+            "native_flags": 2179,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-pressed.png"
+          },
+          {
+            "label": "released-unselected",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/released-unselected.png"
+          },
+          {
+            "label": "disabled-selected",
+            "selected": true,
+            "native_flags": 2184,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-selected.png"
+          },
+          {
+            "label": "disabled-unselected",
+            "selected": false,
+            "native_flags": 136,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-unselected.png"
+          },
+          {
+            "label": "backdrop-unselected",
+            "selected": false,
+            "native_flags": 192,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-unselected.png"
+          },
+          {
+            "label": "backdrop-selected",
+            "selected": true,
+            "native_flags": 2240,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-selected.png"
+          }
+        ],
+        "physical_clicks": 2,
+        "toggle_changes": [
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "source_palette": {
+          "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+          "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+          "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+          "gtkconfig_policy_version": "6.3.4",
+          "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+          "kf_colorscheme_version": "6.13.0",
+          "kind": "native_kcolorscheme_selected_file",
+          "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+          "path": "/home/domainos-test/.config/kdeglobals",
+          "qt_version": "6.8.2",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "titlebar": "Header active/inactive",
+          "tooltip": "Active Tooltip in every state",
+          "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+          "helper": {
+            "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+            "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+          },
+          "helper_source": {
+            "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+            "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+          },
+          "snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd",
+          "role_fallbacks": {},
+          "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+        },
+        "selected_disabled_retained": true,
+        "disabled_click_ignored": true,
+        "prospective_selected_press": true,
+        "public_support_announced": false,
+        "historical_fidelity_claimed": false
+      },
+      "exit_code": 0,
+      "session": 96966
+    },
+    {
+      "scheme": "BreezeLight",
+      "reused": false,
+      "result": {
+        "status": "passed_toggle_foundation",
+        "toolkit": "GTK4",
+        "fixture_scheme": "BreezeLight",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "captures": [
+          {
+            "label": "normal",
+            "selected": false,
+            "native_flags": 128,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/normal.png"
+          },
+          {
+            "label": "hover",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/hover.png"
+          },
+          {
+            "label": "pressed",
+            "selected": false,
+            "native_flags": 131,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/pressed.png"
+          },
+          {
+            "label": "selected-hover",
+            "selected": true,
+            "native_flags": 2178,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-hover.png"
+          },
+          {
+            "label": "selected",
+            "selected": true,
+            "native_flags": 2176,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected.png"
+          },
+          {
+            "label": "selected-pressed",
+            "selected": true,
+            "native_flags": 2179,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-pressed.png"
+          },
+          {
+            "label": "released-unselected",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/released-unselected.png"
+          },
+          {
+            "label": "disabled-selected",
+            "selected": true,
+            "native_flags": 2184,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-selected.png"
+          },
+          {
+            "label": "disabled-unselected",
+            "selected": false,
+            "native_flags": 136,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-unselected.png"
+          },
+          {
+            "label": "backdrop-unselected",
+            "selected": false,
+            "native_flags": 192,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-unselected.png"
+          },
+          {
+            "label": "backdrop-selected",
+            "selected": true,
+            "native_flags": 2240,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-selected.png"
+          }
+        ],
+        "physical_clicks": 2,
+        "toggle_changes": [
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "source_palette": {
+          "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+          "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+          "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+          "gtkconfig_policy_version": "6.3.4",
+          "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+          "kf_colorscheme_version": "6.13.0",
+          "kind": "native_kcolorscheme_selected_file",
+          "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+          "path": "/home/domainos-test/.config/kdeglobals",
+          "qt_version": "6.8.2",
+          "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+          "titlebar": "Header active/inactive",
+          "tooltip": "Active Tooltip in every state",
+          "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+          "helper": {
+            "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+            "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+          },
+          "helper_source": {
+            "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+            "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+          },
+          "snapshot_sha256": "47746c098577dbe3800b1d219773210b37adf31e643f94639271fbf4de554d2f",
+          "role_fallbacks": {},
+          "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+        },
+        "selected_disabled_retained": true,
+        "disabled_click_ignored": true,
+        "prospective_selected_press": true,
+        "public_support_announced": false,
+        "historical_fidelity_claimed": false
+      },
+      "exit_code": 0,
+      "session": 93114,
+      "result_file": ".qa-gtk4-worker-s5akwwli/home/WORKER-RESULTADO.json"
+    },
+    {
+      "scheme": "BreezeDark",
+      "reused": false,
+      "result": {
+        "status": "passed_toggle_foundation",
+        "toolkit": "GTK4",
+        "fixture_scheme": "BreezeDark",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "captures": [
+          {
+            "label": "normal",
+            "selected": false,
+            "native_flags": 128,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/normal.png"
+          },
+          {
+            "label": "hover",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/hover.png"
+          },
+          {
+            "label": "pressed",
+            "selected": false,
+            "native_flags": 131,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/pressed.png"
+          },
+          {
+            "label": "selected-hover",
+            "selected": true,
+            "native_flags": 2178,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-hover.png"
+          },
+          {
+            "label": "selected",
+            "selected": true,
+            "native_flags": 2176,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected.png"
+          },
+          {
+            "label": "selected-pressed",
+            "selected": true,
+            "native_flags": 2179,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-pressed.png"
+          },
+          {
+            "label": "released-unselected",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/released-unselected.png"
+          },
+          {
+            "label": "disabled-selected",
+            "selected": true,
+            "native_flags": 2184,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-selected.png"
+          },
+          {
+            "label": "disabled-unselected",
+            "selected": false,
+            "native_flags": 136,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-unselected.png"
+          },
+          {
+            "label": "backdrop-unselected",
+            "selected": false,
+            "native_flags": 192,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-unselected.png"
+          },
+          {
+            "label": "backdrop-selected",
+            "selected": true,
+            "native_flags": 2240,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-selected.png"
+          }
+        ],
+        "physical_clicks": 2,
+        "toggle_changes": [
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "source_palette": {
+          "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+          "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+          "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+          "gtkconfig_policy_version": "6.3.4",
+          "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+          "kf_colorscheme_version": "6.13.0",
+          "kind": "native_kcolorscheme_selected_file",
+          "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+          "path": "/home/domainos-test/.config/kdeglobals",
+          "qt_version": "6.8.2",
+          "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+          "titlebar": "Header active/inactive",
+          "tooltip": "Active Tooltip in every state",
+          "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+          "helper": {
+            "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+            "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+          },
+          "helper_source": {
+            "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+            "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+          },
+          "snapshot_sha256": "95c8e2c035f3d4c329edfdbc6c6af926f82a28f19341f2df273498c8c1d0df25",
+          "role_fallbacks": {},
+          "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+        },
+        "selected_disabled_retained": true,
+        "disabled_click_ignored": true,
+        "prospective_selected_press": true,
+        "public_support_announced": false,
+        "historical_fidelity_claimed": false
+      },
+      "exit_code": 0,
+      "session": 14128,
+      "result_file": ".qa-gtk4-worker-xjbots_j/home/WORKER-RESULTADO.json"
+    },
+    {
+      "scheme": "TestYellow",
+      "reused": false,
+      "result": {
+        "status": "passed_toggle_foundation",
+        "toolkit": "GTK4",
+        "fixture_scheme": "TestYellow",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "captures": [
+          {
+            "label": "normal",
+            "selected": false,
+            "native_flags": 128,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/normal.png"
+          },
+          {
+            "label": "hover",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/hover.png"
+          },
+          {
+            "label": "pressed",
+            "selected": false,
+            "native_flags": 131,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/pressed.png"
+          },
+          {
+            "label": "selected-hover",
+            "selected": true,
+            "native_flags": 2178,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-hover.png"
+          },
+          {
+            "label": "selected",
+            "selected": true,
+            "native_flags": 2176,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected.png"
+          },
+          {
+            "label": "selected-pressed",
+            "selected": true,
+            "native_flags": 2179,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/selected-pressed.png"
+          },
+          {
+            "label": "released-unselected",
+            "selected": false,
+            "native_flags": 130,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/released-unselected.png"
+          },
+          {
+            "label": "disabled-selected",
+            "selected": true,
+            "native_flags": 2184,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-selected.png"
+          },
+          {
+            "label": "disabled-unselected",
+            "selected": false,
+            "native_flags": 136,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/disabled-unselected.png"
+          },
+          {
+            "label": "backdrop-unselected",
+            "selected": false,
+            "native_flags": 192,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-unselected.png"
+          },
+          {
+            "label": "backdrop-selected",
+            "selected": true,
+            "native_flags": 2240,
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/domainos-test/backdrop-selected.png"
+          }
+        ],
+        "physical_clicks": 2,
+        "toggle_changes": [
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "source_palette": {
+          "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+          "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+          "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+          "gtkconfig_policy_version": "6.3.4",
+          "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+          "kf_colorscheme_version": "6.13.0",
+          "kind": "native_kcolorscheme_selected_file",
+          "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+          "path": "/home/domainos-test/.config/kdeglobals",
+          "qt_version": "6.8.2",
+          "sha256": "23c0f6ac27b757dcf0080f625b73a0cb1532412eb332143030b133c91765bc8c",
+          "titlebar": "Header active/inactive",
+          "tooltip": "Active Tooltip in every state",
+          "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+          "helper": {
+            "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+            "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+          },
+          "helper_source": {
+            "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+            "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+          },
+          "snapshot_sha256": "18bebab0c7852a718b8c9cdde3a25de18566c0faade6357db5920c3fb76b1fba",
+          "role_fallbacks": {},
+          "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+        },
+        "selected_disabled_retained": true,
+        "disabled_click_ignored": true,
+        "prospective_selected_press": true,
+        "public_support_announced": false,
+        "historical_fidelity_claimed": false
+      },
+      "exit_code": 0,
+      "session": 44215,
+      "result_file": ".qa-gtk4-worker-naxebinj/home/WORKER-RESULTADO.json"
+    }
+  ],
+  "captures": 44,
+  "edge_pixels": 39776,
+  "edge_differences": 0,
+  "pure_tests_passed": 10,
+  "domainos_reuse": "Painter/contract unchanged; harness adds allowlisted scheme and probe adds result metadata only.",
+  "limits": [
+    "Border masks and native selection cycle only; canvas color and typography not certified.",
+    "Shared palette provenance has legacy GTK3 selection_scope label, not used as toolkit evidence.",
+    "Historical toggle appearance, focus, combined disabled/backdrop, grouping not certified.",
+    "Session reload/rollback, two origins, IPC/controller and delivery pending."
+  ],
+  "visually_inspected": [
+    "BreezeDark selected-pressed",
+    "TestYellow disabled-selected"
+  ],
+  "personal_instance_changed": false,
+  "public_support_announced": false,
+  "estimated_toggle_unit_progress_percent": 25,
+  "percentage_basis": "Contract, generator and four-palette foundation passed; integration and delivery remain.",
+  "sha256": {
+    "tools/theme-lab/gtk4_toggles.py": "dba54830ea76002f9c8b6d980b0b58f76387460527bfa7fbe1090b166e895345",
+    "tools/theme-lab/gtk4_buttons.py": "f5ace62d02dc37887776516b125e0abd49edf0a6f3ef2665745fad8161135d16",
+    "tools/theme-lab/gtk4_css.py": "8f7fd4d50cf078abee766d731ec7a88fc4280c488404487053828ec9d43e4740",
+    "tools/theme-lab/tests/probe_gtk4_toggle.py": "956602af95dba5e5cd63ccdbd7d6cd19db91ffbf0727be8227f9f719ddf0acf9",
+    "tools/theme-lab/tests/test_gtk4_worker_native.py": "991243caabd607a793183d6109cef52c121690917b0420ebf5b8578d267c1fcf",
+    ".qa-t04-anchor-foundation/gtk4-toggle-light.log": "de91f7eeefbafeae5476cd4fc260929c97d017db87f164f8b5f907da88c53e73",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/WORKER-RESULTADO.json": "65707658464c38660931448fad4963f1f3da13a5a9270ef800a75c671e71af43",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/normal.png": "421db7baca289bad9561693e2ab9007d773d39f89acf7b9618846fc4ab90ff41",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/hover.png": "421db7baca289bad9561693e2ab9007d773d39f89acf7b9618846fc4ab90ff41",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/pressed.png": "870d5e4ecc49b38907418b669e526ea4485c26d6705505c62aff4ea6f91e4f47",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/selected-hover.png": "870d5e4ecc49b38907418b669e526ea4485c26d6705505c62aff4ea6f91e4f47",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/selected.png": "870d5e4ecc49b38907418b669e526ea4485c26d6705505c62aff4ea6f91e4f47",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/selected-pressed.png": "421db7baca289bad9561693e2ab9007d773d39f89acf7b9618846fc4ab90ff41",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/released-unselected.png": "421db7baca289bad9561693e2ab9007d773d39f89acf7b9618846fc4ab90ff41",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/disabled-selected.png": "ccedfc46bd6080a6f6bc0489bf6264759c3c250245f6c864b31f949976f7bdc1",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/disabled-unselected.png": "a9874b60da959f70d06b3a6d9bcac79a7500161a56d3d30b102ca2afb623c78c",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/backdrop-unselected.png": "421db7baca289bad9561693e2ab9007d773d39f89acf7b9618846fc4ab90ff41",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-s5akwwli/home/backdrop-selected.png": "870d5e4ecc49b38907418b669e526ea4485c26d6705505c62aff4ea6f91e4f47",
+    ".qa-t04-anchor-foundation/gtk4-toggle-dark.log": "08d6c32dd7c51e7b05863b845a7ea3265f2bebd8b861e84ab5b45ffb419b2fdc",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/WORKER-RESULTADO.json": "65709b535b85fe215d10146cc4b198b309ef8783c8e27e9177a5c3ebfe7f6b63",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/normal.png": "21cc358758e9203be96289ff4c0bef0fd31d4979b967e011117001443d3871fd",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/hover.png": "21cc358758e9203be96289ff4c0bef0fd31d4979b967e011117001443d3871fd",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/pressed.png": "63f1045928b9235ca204d3a0b6fc63df9419b46c2143a652f1741408aa014c8c",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/selected-hover.png": "63f1045928b9235ca204d3a0b6fc63df9419b46c2143a652f1741408aa014c8c",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/selected.png": "63f1045928b9235ca204d3a0b6fc63df9419b46c2143a652f1741408aa014c8c",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/selected-pressed.png": "21cc358758e9203be96289ff4c0bef0fd31d4979b967e011117001443d3871fd",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/released-unselected.png": "21cc358758e9203be96289ff4c0bef0fd31d4979b967e011117001443d3871fd",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/disabled-selected.png": "360973ada711e2466ec9c41b4c7a31d80c61d631f2afac518de315fe5c6ea01f",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/disabled-unselected.png": "b6c9ca831c1c6242c869f72b7caa0435e5f049f5ca7feed26360c8aa70aef38d",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/backdrop-unselected.png": "21cc358758e9203be96289ff4c0bef0fd31d4979b967e011117001443d3871fd",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-xjbots_j/home/backdrop-selected.png": "63f1045928b9235ca204d3a0b6fc63df9419b46c2143a652f1741408aa014c8c",
+    ".qa-t04-anchor-foundation/gtk4-toggle-yellow.log": "d711e033df3c2a2461b43b64dea058a919119b8753dabdf8230840d052326df7",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/WORKER-RESULTADO.json": "098f940ced7e7b1f0308963f10616f657fe4b0a17a3bd2b6c2cce1053d97a5e5",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/normal.png": "6b24019c820b55fdc0a76c94b063a475cc99a9070c8a2bae938db692813d15a9",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/hover.png": "6b24019c820b55fdc0a76c94b063a475cc99a9070c8a2bae938db692813d15a9",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/pressed.png": "7527c59b93d084dbe55f8cb48a06148c855edaa7a2651a117525ba17e4c6244e",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/selected-hover.png": "7527c59b93d084dbe55f8cb48a06148c855edaa7a2651a117525ba17e4c6244e",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/selected.png": "7527c59b93d084dbe55f8cb48a06148c855edaa7a2651a117525ba17e4c6244e",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/selected-pressed.png": "6b24019c820b55fdc0a76c94b063a475cc99a9070c8a2bae938db692813d15a9",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/released-unselected.png": "6b24019c820b55fdc0a76c94b063a475cc99a9070c8a2bae938db692813d15a9",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/disabled-selected.png": "3f6c0e8813af52b08a5f0e2fbf5fd712cf4b74b816cd77920c7e24c463edab50",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/disabled-unselected.png": "4e3953835670aad147dc49c561f90f24ce14d319ba0cb6f6513f7179d45d3e9f",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/backdrop-unselected.png": "6b24019c820b55fdc0a76c94b063a475cc99a9070c8a2bae938db692813d15a9",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-naxebinj/home/backdrop-selected.png": "7527c59b93d084dbe55f8cb48a06148c855edaa7a2651a117525ba17e4c6244e"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "at": "2026-10-11T11:55:25.088535+00:00",
+  "item": "T07",
+  "previous_goal_turn": "progress: fixed native pixel capture synchronization and completed full isolated regression",
+  "status": "partial",
+  "build_exit_code": 0,
+  "native_test_exit_code": 0,
+  "command": "make -C tools/theme-lab check-file-dialog-hover",
+  "scope": "Real production Motif file selector; four native owners: filter text, path text, Cancel and Apply filter. Observed cold absence400ms, visible950ms, screen bounds, no owner overlap, stable400ms, closes160ms after leave. Then existing editing/palette/cancel/confirm regression passes.",
+  "rectangles": [
+    {
+      "child": 6,
+      "owner": [
+        544,
+        242,
+        192,
+        31
+      ],
+      "tip": [
+        640,
+        273,
+        405,
+        30
+      ]
+    },
+    {
+      "child": 13,
+      "owner": [
+        544,
+        481,
+        192,
+        31
+      ],
+      "tip": [
+        640,
+        512,
+        391,
+        30
+      ]
+    },
+    {
+      "child": 2,
+      "owner": [
+        672,
+        534,
+        64,
+        41
+      ],
+      "tip": [
+        704,
+        575,
+        376,
+        30
+      ]
+    },
+    {
+      "child": 1,
+      "owner": [
+        608,
+        534,
+        64,
+        41
+      ],
+      "tip": [
+        640,
+        575,
+        411,
+        30
+      ]
+    }
+  ],
+  "product_changes": false,
+  "source_hashes": {
+    "tools/theme-lab/tests/ui_help_flow.c": "3c3c7b39bc4a29b145fac1c8553bf597566cbc11428cd0686652cae9097a4be0",
+    "tools/theme-lab/Makefile": "92edd7cf5b5cce1f669ed96fa1d15d84753ed8fe477b3bfb006b3e870d72c4f0"
+  },
+  "evidence_hashes": {
+    "file-hover-build.log": "b2b95e63c69617a18df3bbcf1ad2e60ef98430c25139ff07e3d57f99e550329d",
+    "file-hover-r1.log": "be63af490305802127007ca401922bea9728ffc1551accb517830123f9d99786",
+    "file-hover-r1.err": "698f43814f9dc61e0663036e1e2e4763d4f066bc496bedb8976308dbcc55d008"
+  },
+  "limitations": [
+    "One actual file-dialog layout, not all screen sizes or every child hover",
+    "Editor popup hover not yet verified",
+    "Existing XtRemoveGrab warning retained; cause not investigated in this proof",
+    "No historical font or visual fidelity certification"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "personal_session_modified": false,
+  "user_approval_filled": false
+}

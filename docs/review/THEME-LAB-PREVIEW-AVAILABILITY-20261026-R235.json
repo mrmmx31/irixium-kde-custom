@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "THEME-LAB-PREVIEW-AVAILABILITY-20261026-R235",
+  "date": "2026-10-26",
+  "item": "T04",
+  "section": "work",
+  "status": "gtk2-private-preview-available-other-family-coverage-partial",
+  "authority": {
+    "board_item": "T04",
+    "user_revision": 9,
+    "authorized": true,
+    "scope": "Diagnose native preview availability; no theme-family changes"
+  },
+  "session": {
+    "xephyr_display": ":60",
+    "xephyr_title": "PARA LSI - PREVIA PESSOAL - DomainOS",
+    "theme_lab_pid": 1424025,
+    "embedded_gtk2_pid": 1426869,
+    "separate_gtk2_pid": 1426870,
+    "project_sha256": "db52d03bef3e4cebbfefb86282925f535a580a1384dae3f839eaa8837b9125d9",
+    "gtk2_rc_sha256": "3568760454f6d3ca86e99fef560c01975627e9975ad20bdc1240561db60dbed9",
+    "capture": {
+      "path": "~/tempia/ia-tema/qa/theme-lab-status-20261026.png",
+      "sha256": "ef0836a1a4a2a58fb0b9455e891b62c45771113fae277e6e0f5e5f6ca6f32983",
+      "scope": "Read-only root capture of the already-open private Xephyr desktop."
+    }
+  },
+  "findings": {
+    "gtk2": {
+      "status": "available-in-private-xephyr",
+      "evidence": "Embedded GTK2 canvas and separate native GTK2 window are visible; their workers use the same project and GTKRC. UI notice says the recipe is partial, not that the renderer is unavailable."
+    },
+    "normal_session": {
+      "status": "intentionally-blocked-by-private-namespace-guard",
+      "reason": "preview_gtk2.py calls backend.private_namespace(), which requires IRIX_DOMAINOS_PRIVATE_NAMESPACE=bwrap and the coordinated display/profile guards. No additional package is needed."
+    },
+    "family_coverage": {
+      "editable_attached_scene": ["gtk2", "gtk3", "gtk4"],
+      "separate_gallery_route": ["gtk2", "gtk3", "gtk4", "qt5", "qt6", "kvantum", "plasma"],
+      "current_generated_revision": {
+        "gtk2": "partially_generated",
+        "gtk3": "generated",
+        "gtk4": "unavailable-for-current-recipe",
+        "qt5": "partially_generated",
+        "qt6": "partially_generated",
+        "kvantum": "unavailable-for-current-recipe",
+        "plasma": "unavailable-for-current-recipe",
+        "gtk1": "runtime-not-installed",
+        "gtk5": "runtime-not-available"
+      }
+    }
+  },
+  "limitations": [
+    "This capture proves availability in the existing private Xephyr session, not in the normal Wayland desktop session.",
+    "The GTK2 recipe remains partial; only its translated controls render in the canvas.",
+    "Opening a native gallery is distinct from applying the current Theme Lab recipe to that gallery.",
+    "No GTK3/4/Qt/Kvantum/Plasma code or theme was changed in this diagnosis."
+  ],
+  "next": "Continue only the active GTK2/I167 comparison. Keep the current Xephyr session available for inspection; implement other toolkit preview adapters later under their authorized T04 steps.",
+  "technical_coverage_estimate": {
+    "percent": 78,
+    "basis": "No new I167 visual control state was measured; R235 clarifies preview availability only.",
+    "not_a_visual_fidelity_score": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "item": "I167",
+  "revision": "R32",
+  "checked_at_utc": "2026-10-22T23:25:22Z",
+  "family": "GTK2 exclusive radio indicator",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "source": "tools/theme-lab/gtk2_indicators.py",
+    "source_sha256": "12b7f96579278aa21b0ad549a3b6a24e8b8374c2bf294e2df2e036e63627c94a",
+    "summary": "Replaced the generic diamond proposal with a symbolic 13x13 mask measured from the local Motif XmONE_OF_MANY sample. The 15px GTK2 allocation includes one transparent pixel around the artwork; spacing 2 aligns the painted contour. Colors remain KDE semantic roles.",
+    "related_files": {
+      "tools/theme-lab/tests/test_gtk2_radios.py": "745da287561ac457a46b6c7d29d157e2de0b4dda3c46a15f434a9d6493461926",
+      "tools/theme-lab/tests/test_gtk2_radio_native.py": "8e138765919221330a77c61b29dd0a3f01d06bc660092fe3dc25300cc54f8319",
+      "tools/theme-lab/tests/test_gtk2_radio_generation.py": "436f04ebcbe54e280190cc6946c5edc8469e53f74403b853aa9401bf9b015687",
+      "tools/theme-lab/README.md": "8952c6db3a1de6e8dc7e61d84231de1d12480ff40885aa353b0c578e245dd8b8"
+    },
+    "tests": "44 native GTK2 captures across four palettes; exclusive group switching, repeated selected click, release, and insensitive blocking passed. 44 generated-image pixel checks passed; 36 generated assets matched the native foundation. The 26-test focused regression suite, py_compile, and git diff --check passed."
+  },
+  "results": {
+    "status": "passed_scoped_native_mask_and_generation",
+    "gtk2": "2.24.33",
+    "palettes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "local_motif_reference": {
+      "widget": "XmToggleButton / XmONE_OF_MANY",
+      "reported_metrics": "radio=79x25 indicator=13 spacing=4 shadow=0 set=0 type=2",
+      "visible_indicator_px": [13, 13],
+      "capture_sha256": "e1c556823476a05ec3c97f615d86b65ee7d374f3ef615e90ee8dcc427ff7e7f9",
+      "metrics_sha256": "91bc261cb5cc3983a27ca02b95590cdae35e891cb35d24476dd62769a9f3ede1"
+    },
+    "gtk2_geometry_px": {
+      "natural_request": [83, 23],
+      "indicator_size": 15,
+      "indicator_spacing": 2,
+      "visible_indicator_px": [13, 13],
+      "text_ink_offset_vs_motif": "+4 px"
+    },
+    "mask_comparison": "Normal and selected role masks each match the captured Motif indicator in 169/169 pixels after color-role normalization. The indicator contour origin is aligned.",
+    "native_results_sha256": "76f443083132e950f984b46181564d2e12926b89cb2e295bb16cb7902d3258a8",
+    "pixel_results_sha256": "a88f8c234e7648f21cfd1133e26cc0f7016902c3ef72328e11f19e37aece255a",
+    "generation_results_sha256": "b85cb6db600df3d697eeeff7ad271f5a0c7f0b8758658f6d03df76f36e5b0b8f",
+    "mask_comparison_sha256": "cb71e453e487a0f058d7b4c70aee8c9dfc723fa961bb5023868cc2dc12682bf6",
+    "artifacts": "~/tempia/i167-gtk2-radio-r38/"
+  },
+  "limits": [
+    "The comparison is against the local Theme Lab Motif sample, not a live or captured Domain/OS SR10.4 control; it does not establish historical defaults or approval.",
+    "The normal GTK2 and local Motif request dimensions still differ: 83x23 versus 79x25; label ink begins 4 px farther right in GTK2.",
+    "The public GTK2 preview was not rerun after this mask change; generator integration and standalone native input were verified separately.",
+    "Dedicated GUI spins for radio indicator size and spacing are not exposed yet.",
+    "GTK2 remains incomplete and no session or XChat theme was applied."
+  ],
+  "next": "Continue GTK2 family-by-family with the entry control. After all GTK2 families and the current public preview route pass, apply the completed GTK2 theme in the user's session for XChat."
+}

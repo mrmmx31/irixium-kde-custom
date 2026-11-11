@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "R324",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "project-vm-vue-visible; current-file-manager-shows-vertical-only; horizontal-target-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Continue GTK2 scrollbar comparison using only the project-owned Domain/OS SR10.4 + HP VUE 2.01 clone."
+  },
+  "runtime": {
+    "process_id": 3971377,
+    "service": "domainos-tema-mame.service",
+    "service_invocation_id": "e7689b266610478cabada6767ab468af",
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "disk_inode": 11186631,
+    "disk_bytes": 398458880,
+    "canonical_verifier": "bash vm/domainos-sr10.4-assistant/verify.sh",
+    "verifier_result": "Canonical runtime and disk verified; the two repository paths resolve to the same inode.",
+    "network_alias": "10.253.104.20",
+    "ports": {
+      "ftp": 21,
+      "telnet": 23
+    },
+    "other_active_vm": "AI Work Board PID 3971019 uses its own distinct disk; not controlled in this task.",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "ui_active": false,
+      "pending_command": false
+    }
+  },
+  "guest_state": {
+    "result": "HP VUE desktop visible after the existing saved login sequence; Terminal and File Manager are open.",
+    "input": "The existing local saved scripts supplied the guest login sequence. No new mouse movement, click, key, or scrollbar activation was sent for this receipt.",
+    "visible_control": "File Manager vertical scrollbar and its end arrows are visible.",
+    "horizontal_target": "Not visible in the current File Manager view; the saved horizontal crop contains the bottom icon row, not a scrollbar.",
+    "historical_comparison": "R305 remains the valid 1:1 comparison: all 12 normal GTK2 stepper cells (four directions in three variants) match retained SR10.4 crops at 0/225 differing pixels per cell. It does not cover held states or the currently reported live GTK2 rendering."
+  },
+  "evidence": [
+    {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/guest-vue-last.png",
+      "sha256": "eb1aa4f6041f2b2e65cc02b0bd9b5fccaf169946c9ce8a8086f72eff19ffb979",
+      "dimensions_px": [
+        1024,
+        844
+      ]
+    },
+    {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/guest-after-user-login.png",
+      "sha256": "927cedc16081b4b0ff49fc78545092bd6a89cb3b06720c6222c42d9682c4b41c",
+      "dimensions_px": [
+        1024,
+        844
+      ]
+    },
+    {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/guest-after-empty-password.png",
+      "sha256": "802acd5f262ea12a08879489e3d32265267791859c4ddc07c549126be7438bbd",
+      "dimensions_px": [
+        1024,
+        844
+      ]
+    },
+    {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/filemanager-vertical.png",
+      "dimensions_px": [
+        40,
+        280
+      ]
+    },
+    {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/filemanager-horizontal.png",
+      "dimensions_px": [
+        595,
+        40
+      ]
+    }
+  ],
+  "isolation": {
+    "other_project_disks_touched": false,
+    "host_focus_changed": false,
+    "mouse_capture_changed": false,
+    "performance_profile_changed": false,
+    "user_apps_or_xchat_touched": false,
+    "processes_or_sessions_stopped": false,
+    "disk_moved_or_replaced": false
+  },
+  "next_step": "Keep I167 open. To inspect the interactive native GTK2 preview in Theme Lab, the private namespace/Xephyr route is still unavailable in the current normal-session window; await the user’s choice before opening a Xephyr. Then capture an actual GTK2 scrollbar alongside the historical horizontal Trash Can crop and compare geometry, normal/held/released states at 1:1 before any asset change.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "The new receipt restores a visible live reference environment but adds no paired horizontal GTK2 rendering and no held-state comparison. This is technical work coverage, not visual-fidelity percentage."
+  }
+}

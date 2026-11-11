@@ -25,6 +25,14 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[2]
 STYLE = ROOT / "plasma/IrixClassicDomainOS"
 FIXTURE = ROOT / "plasma/tests/DomainOSNativeStylePalettePreview.qml"
+INTENTIONAL_GEOMETRY_BOUNDS = {
+    "widgets/scrollbar.svg": {
+        "layer1", "hint-scrollbar-size",
+        "slider-hint-left-inset", "slider-hint-right-inset",
+        "mouseover-slider-hint-left-inset", "mouseover-slider-hint-right-inset",
+        "background-vertical-hint-left-inset", "background-vertical-hint-right-inset",
+    }
+}
 SCHEMES = {
     "current_roles": dict(Window="#c1c1c1", View="#9ebfbf", Button="#999999", Header="#c1c1c1",
         Tooltip="#c1c1c1", Selection="#78a0a0", Text="#000000", HighlightedText="#000000"),
@@ -143,6 +151,7 @@ def worker(case):
         reference['svg_sha256'] = {str(p.relative_to(old_style)):hashlib.sha256(p.read_bytes()).hexdigest()
                                    for p in sorted(old_style.rglob('*.svg')) if p.is_file()}
     compared = 0
+    intentional_geometry_bounds = set()
     for path in sorted(STYLE.rglob("*.svg")):
         renderer = QSvgRenderer(str(path))
         assert renderer.isValid(), str(path)
@@ -158,13 +167,23 @@ def worker(case):
                 identifier = element.get("id", "")
                 if identifier and identifier != "current-color-scheme" and old.elementExists(identifier):
                     assert renderer.elementExists(identifier), "Lost native ID: "+identifier
+                    if identifier in INTENTIONAL_GEOMETRY_BOUNDS.get(str(path.relative_to(STYLE)), set()):
+                        intentional_geometry_bounds.add(str(path.relative_to(STYLE))+"#"+identifier)
+                        continue
                     assert renderer.boundsOnElement(identifier) == old.boundsOnElement(identifier), "Changed native bounds: "+identifier
                     compared += 1
     checks["all_generated_svgs_native_valid"] = True
     checks["all_current_native_id_bounds_finite"] = True
     if reference_available:
         checks["installed_artwork_native_ids_bounds_preserved"] = compared > 500
+        expected_geometry_bounds = {
+            "widgets/scrollbar.svg#"+identifier
+            for identifier in INTENTIONAL_GEOMETRY_BOUNDS["widgets/scrollbar.svg"]
+            if identifier != "current-color-scheme"
+        }
+        checks["intentional_scrollbar_geometry_changes_are_scoped"] = intentional_geometry_bounds == expected_geometry_bounds
     reference['compared_native_bounds'] = compared
+    reference['intentional_geometry_bounds_changes'] = sorted(intentional_geometry_bounds)
     output = Path(os.environ["DOMAINOS_PRIVATE_STYLE_OUTPUT"])
     image.save(str(output / (case+".png")))
     # Standard ApplicationPaletteChange causes KSvg to reparse its selected

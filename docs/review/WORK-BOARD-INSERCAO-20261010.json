@@ -1,0 +1,221 @@
+{
+  "item": "I090",
+  "revision": 2,
+  "definition_sha256": "af6440edb58cc6e9fb919f23f97f175b5652aaafe0f96bed7ee7467da792b706",
+  "date": "2026-10-10T21:08:05.462245+00:00",
+  "binary_sha256": "f911a4589d55fef42db4732ee0d0ea907057b6644f93ebeffb1cfa40fc19d3a0",
+  "library_sha256": "84c7447b46c272965fdb9c63fa50f000c2da56136c0da266ec51a231fcb27061",
+  "tests": {
+    "title_native": {
+      "expanded_native_field_has_visible_actions_and_placeholder_outside_buffer": true,
+      "focus_hides_only_empty_hint_and_keeps_typed_utf8_title": true,
+      "manual_clear_and_toolbar_or_keyboard_undo_redo_are_reversible": true,
+      "undo_target_follows_response_focus_without_touching_title": true,
+      "placeholder_right_click_posts_real_text_editor_menu_and_undo": true,
+      "reload_and_item_switch_preserve_title_and_history": true,
+      "failed_checkpoint_blocks_clear_without_losing_title": true,
+      "native_character_limit_and_full_utf8_transport_insert_and_clear_reversibly": true,
+      "question_insertion_keeps_default_consent_and_empty_body": true,
+      "failed_insert_keeps_title_and_audit_mode_still_allows_title_undo": true,
+      "four_kde_palettes_match_title_and_placeholder": {
+        "DomainOS": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "neutral": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "dark": {
+          "native_title_and_visual_hint_match_view_roles": true
+        },
+        "yellow": {
+          "native_title_and_visual_hint_match_view_roles": true
+        }
+      },
+      "reopen_recovers_title_and_multistep_undo_redo": true,
+      "placeholder_text_is_actually_visible_after_focus_returns": true
+    },
+    "editing_regression": {
+      "unicode_multiline_undo_redo_shortcuts": true,
+      "multi_step_history": true,
+      "copy_cut_paste_select_all_and_reversible_replacement": true,
+      "history_survives_reload_and_item_switch": true,
+      "save_retains_history_and_return_to_saved_is_reversible": true,
+      "context_menu_undo": true,
+      "private_autosave_is_separate_from_answers_and_authorizations": true,
+      "second_editor_cannot_overwrite_journal": true,
+      "crash_restores_multiple_drafts_title_and_undo_redo": true,
+      "failed_checkpoint_prevents_destructive_action": true
+    },
+    "chat_regression": {
+      "wide_selectors_above_checks_and_history_control_visible": true,
+      "empty_composer_shows_copyable_reference_without_inserting_saved_text": true,
+      "typing_hides_reference_and_expands_only_independent_composition": true,
+      "utf8_multistep_undo_redo_clipboard_replacement_and_native_menu": true,
+      "native_context_menu_opens_by_menu_key_and_shift_f10": true,
+      "switching_audit_chat_and_items_keeps_two_drafts_and_scope": true,
+      "draft_filter_includes_independent_composition_without_sending_or_authorizing": true,
+      "incoming_message_updates_conversation_without_touching_editor": true,
+      "explicit_reload_preserves_composition_history_and_unsent_base": true,
+      "save_sends_only_new_composition_and_reset_is_reversible": true,
+      "metadata_only_save_does_not_erase_saved_orientation": true,
+      "revision_conflict_keeps_composition_and_external_response": true,
+      "return_to_saved_recovers_latest_reference_and_remains_reversible": true,
+      "invalid_response_file_preserves_composition_and_recovers": true,
+      "checkpoint_failure_blocks_mode_change_without_losing_composition": true,
+      "four_native_kde_palettes_match_dynamic_compose_and_reference_roles": {
+        "DomainOS": {
+          "native_compose_and_reference_match_view_roles": true
+        },
+        "neutral": {
+          "native_compose_and_reference_match_view_roles": true
+        },
+        "dark": {
+          "native_compose_and_reference_match_view_roles": true
+        },
+        "yellow": {
+          "native_compose_and_reference_match_view_roles": true
+        }
+      },
+      "reopen_restores_chat_choice_independent_drafts_and_undo": true
+    }
+  },
+  "pure_model_checks": {
+    "store": 17,
+    "import": 7,
+    "independent_model_client": true
+  },
+  "native_visual_check": {
+    "placeholder_pixels_observed": true,
+    "artificial_capture_inspected": true,
+    "four_color_roles": true
+  },
+  "source_sha256": {
+    "src/app/main.c": "0fa94ecb4b917652615c91c5a9292b418317c8ec6f28ba92675d558c9b3a2256",
+    "src/common/json.c": "fe03c7c9caf95fb647d65896b9e7160a3194845a6f77ae5fc258ce9e315fbc6d",
+    "src/controller/actions.c": "18c8ee4111147ae57811633e3e12004254b04c4a1f91acc68d9f1d69ebeb30e6",
+    "src/controller/chat.c": "72916961f50910e96660377e1161870f2f74092bfa4588d755f539693286c52a",
+    "src/controller/commands.c": "13172373637d3d4e65e2169f9a37ce6e26ae187a33d36159a9dae6479236d935",
+    "src/controller/history_actions.c": "c841b87fa40607a26e1cdd98efd5a8b3ac6c639700e606ffb15734f424681fdc",
+    "src/controller/history_job.c": "f02c3213325a30144f4b604eba4652dd376003e61c5566554455f8657b124613",
+    "src/controller/history_process.c": "88a3b5d375cf9e2812008f8576c7bc165ad551cf9952c990e662599f40a834c5",
+    "src/controller/internal.h": "cb6d59449dacb329ed80f76aa0990f2adf183ae2ffb4bc396e13ba51f3b0c9b9",
+    "src/controller/lifecycle.c": "4bbe16a3c88413745d99707c469eb887466fa4dd5ccd636fe88fc77344e2cfd2",
+    "src/controller/navigation.c": "f973c04bfad533ea5cbd448bb8f2d73a269d75bac8b0944ccf099d9d9d980614",
+    "src/controller/notifications_action.c": "91196853215828a1d78c8a771c2b0ef2f2fe731761768931be6d47c59d91d25f",
+    "src/controller/notifications_read.c": "4677b68f3627d91c30bf171c5305401f6c61f09e9a7cdbe95ea666cadb6ffe32",
+    "src/controller/palette_bridge.c": "6b176b95b9e0960384c97c6455efb9c6a32f7678058c2086d68ee3df01f7d6d1",
+    "src/controller/progress_watch.c": "23e97dc6232c314198aeffb2d7f0eccffd3ee9516276887150f9e722de4b688d",
+    "src/controller/session.c": "e49ff3515985c0fe1d64b0042da7b8d0bca1e9e08e88f62de97169d4bba08253",
+    "src/controller/state_filter.c": "c8404fe4b1ae3e90a5dfeb1ede71ea68a719c99ce6c7833ac278c005d301e7b2",
+    "src/editor/bindings.c": "a411aad6b68f7c851b6e9d089855f2c682adb799bbaae64df98ebc7e84366e35",
+    "src/editor/context_menu.c": "bc649e3e952b47424b37bb24693e1cbbef57a830a2ef2365cd4ba6e6724970d1",
+    "src/editor/history.c": "baeb3174a4472c1502f543718229f114a9185fea8c5c564d60ca704e0ee07621",
+    "src/editor/input.c": "6e18b372d47391f7a3321993030cb83ab42beed4b3a926525423c82d3a8da6c0",
+    "src/editor/internal.h": "faac0965ccbe838afb4b728f478de7c1dbece4576768bf2c36531ac556f2a6e5",
+    "src/editor/text_adapter.c": "5063c9fe87efbdb822c9b0b1477f0e55830e7e95f32fb5be1f4b9699c3839f22",
+    "src/model/assistant_response.c": "fa1d1ed4abe394d6f63f5d456a3e586ce4d38d9afebb62a1df1daba537c408bb",
+    "src/model/authorization.c": "1ffb86dec2aea60e5d4ccebadc316ebd4b18464e92e05cefffb5afdf8ace03ed",
+    "src/model/composer.c": "64b23a07de73aea8dfae759864909eb4928859e2007f2f0bd0437a6a448b6800",
+    "src/model/definitions.c": "43548cc4b1212f2063139398d07022db67be97173285314cd6c44a939066bbdc",
+    "src/model/filter.c": "4ac20d42bdec008cf2c02cb34b78786fafdc8896dc94af6b4b07d6e830e2859e",
+    "src/model/history.c": "710436cbc37daebeee07d70ce227d6252fde6681c0337fe01db90ec2960595a1",
+    "src/model/history_internal.h": "696c66641116284e159554918cffa31abe12f3e7fafd366a60def484c67c72e2",
+    "src/model/history_page.c": "cf47d89d6d8ab8e29054e2d9f81ca0c2daae417b491634faac042c572611a971",
+    "src/model/history_time.c": "63b9667aacaabe8c81fcd7a785f37671eec0f9780d6866b5cbf17fc226f074ca",
+    "src/model/internal.h": "25c61f3087e4d70a738735fdc6c01e11017510b837ecd62af27585cf7359560a",
+    "src/model/items.c": "9ca7ad0e55f5eb8be65c019204b5b37bcd1e7284ed8f352d7492574bb48704eb",
+    "src/model/notifications.c": "756161b0f9817fd6344d70135ad786bbf61b44b4097bda9186d53460f442d2d7",
+    "src/model/progress.c": "f98f6cbe1cbe860003dde21037baa0a97177868022f2ca2868d9bdf3afb70a55",
+    "src/model/records.c": "6439d23bc0fa2918d7976176b7ab00c1de060c1e4a707d579ad1b654ba5b0fc7",
+    "src/model/user_response.c": "08fb066f0813b3003cb17b59afb9449cb35606f5426795e4bc809b55f5d7dbaf",
+    "src/model/validation.c": "a572eff82a5d9c28c56ddd5162e05663ce6b652209fa8a1ccc189e3217748593",
+    "src/model/validation.h": "30e63066e496d752e50609b686aa4fff9a0ca48282abd5bfa26e1cbe0d101b2d",
+    "src/persistence/atomic_file.c": "4766284da2bc7bbc8ec6fcc92a74657c837228b8070490d38c0bf5a0d6506b77",
+    "src/persistence/history_files.c": "9a694eca76328889aedbd67c17bb610f96e7c61541541a8b4b3e22251011c89a",
+    "src/persistence/history_internal.h": "ccc2bd0f479748a13c6e88a6f5298d89238d9cd2072093df8686e5f10f5e41f0",
+    "src/persistence/history_read.c": "14471b1413e51c343f3687288d52161378692f4aed3e4caba8773231ab79cd8c",
+    "src/persistence/internal.h": "bae603b743efcfe06cb543b5c075c365babe8d63e913b142dbc6948806778671",
+    "src/persistence/journal.c": "6fdcfc9a6123f3cbcab25f7e92c89a57a221a775146cd844d0e246a1173f60fc",
+    "src/persistence/json_file.c": "d77cc1ddf8bebbd0932496867ebf3159c25658bb1d75c615b9b2faabd43dcd74",
+    "src/persistence/store.c": "4946277bd77f4256f2c61e960eb84aaf71ca2af15c98c91a44934baed4d729c8",
+    "src/platform/x11_window.c": "fa8885cfdce78d5d91f18687fbba620d2c8ade21615d27b51a0f9f897136ee4b",
+    "src/platform/x11_window.h": "7402dbf65d601a164566b783b38ce8b11534d3acd8c2a824489ae2ebd62bf916",
+    "src/view/chat.c": "5438b4f62881b13f5419acfc18b1ffc232280fdeaea62cf30807a5ca5332a4c7",
+    "src/view/chat_layout.c": "9beda1a882566ac142e7caa69c3066afe5a3b50015b15999d460f457542866d5",
+    "src/view/details_layout.c": "f70657582a09fc2944a07c38d63eec98c2e8dba6003fcdcf0bf58a093a5a77b4",
+    "src/view/edit_bindings.c": "f35ee8a068fc861a622beebc56ad2033941160a1e60289bf77d07a8e874ba344",
+    "src/view/fonts.c": "73894df90c268eccdda70a3c9824256bd7acedfd98dec3d745a7fc432709eeb3",
+    "src/view/footer.c": "e6ba67b3a85d032eed58cd3c26a86e635770d293c79951ec76704c467f6a8776",
+    "src/view/history.c": "ffc249110c8cf2b4cbde96fb5b335b01a2da645e37b92c04f7f812cf9cda2a03",
+    "src/view/history_layout.c": "4043e76f72a6c568204374f65afd49d49b4d7a626266831f9c22a215a9dbf1bb",
+    "src/view/insertion.c": "345287681c617066a30fb6c92685f179b1640940bd29f68ac91285ecfd5e698b",
+    "src/view/insertion_layout.c": "4c4aef0d8209e9c469a7431a2ca6437eee6e6790a5392768f0bfe50d0c551393",
+    "src/view/internal.h": "4446d4f3f59ca8dd8a8590da61efafbabf1fbb60df01540937562b659522864d",
+    "src/view/item_details.c": "024cccd847060910f3324cc184af0f47a2d0655be1c59764903ad92d206f4978",
+    "src/view/navigation.c": "c0a1503fb1b705b80d11ce021fa819c7a598e2774d8e0438e4bc2a96f8a0c55d",
+    "src/view/notification_palette.c": "dcb86b05daa7236717f68558a7d150a2dde1d33d5913013e349a85da5a827072",
+    "src/view/notifications.c": "b02139cd48420e52aaf699c9974f5c09f5b2beb78090ffb53eee48835b042f72",
+    "src/view/palette.c": "675743953bbb1ddb0537497c9570c8f1af497e40aee515eb8a919231993f936c",
+    "src/view/panels.c": "3429667f3df1706875bbc70254c3015a2b6e1422561c549f63be995ed5fd4303",
+    "src/view/progress.c": "56b122ee396c20f59f2e5ffec70832b8669de7d994437084e0f43be7628da874",
+    "src/view/state_filter.c": "1a86e4377bbc65cea6f1b46177e2c67fe5f3b235246f8bb35d2add0e524069c5",
+    "src/view/task_list.c": "91bbf51d65f81d217f1ee67c182e4bd27dfed21bbf379d88cabad0dcdbe56ef6",
+    "src/view/toolbar.c": "da79acbc6ccfbf1afab1cf9104ed452e08198dc5abbf0482194716ce31a49e2a",
+    "src/view/view.c": "d7c416ee3a32227668572e6efd5102c85818b600b26f7203ab6ae00df882c424",
+    "src/view/widgets.c": "d4d6dada4ec793c38696aaec09e9b6c245162504fa5cfb70bcd3e87fdf9c98d2",
+    "include/board.h": "dcab5926b877bbcc9e985d7082fc284c9e0b9fc6e050c962e38094ac6145acda",
+    "include/editor.h": "f8a1f2628c23805cf287eb3191027c770fb5085c702373bcaa31aa592e87689a",
+    "include/view.h": "056e40327793bdfca950f5982dd0468c46f7e7f7f5950dc96b4a9a9cbf28192c",
+    "include/work_board/application.h": "29ee763288bc1f803994100490c465eb777bac0b41ef16e35205c6ebc56ea6e6",
+    "include/work_board/authorization.h": "9f19cd67b00b5af2d66c2c2a8ec3d7c3acf114965296859f9bb64899c221e636",
+    "include/work_board/composer.h": "f5b6f316247d688dc7e26510e58c5dfb0c0fb5242bb4126819168072516bce15",
+    "include/work_board/editor.h": "5897014785e2a740a7659d5cadc03c0cc0e16cd82212846cd61c4874a591a9b4",
+    "include/work_board/filter.h": "3538b5ace52c05440ec9b1cfd0ab56e51290979d960c361c02b09be7e61ad1ec",
+    "include/work_board/history.h": "e2ff034dd2b6a9190511257641452ebc2317dad42790212a08e8ed480a9e8555",
+    "include/work_board/json.h": "782432c4b130e13d56c1a04387d81aef9c8f7c9566292c58e6e5fe736c974c38",
+    "include/work_board/limits.h": "54d0cb1707f79ab201c38b26520f95d1109d9ad8c168d4d62ea675f6d73c6e1b",
+    "include/work_board/model.h": "6dea35e0bbb8169cdc920abe5be48d19c1bf1ebb7ab4e2609576bc0cdd93f8ef",
+    "include/work_board/notifications.h": "391959735396f08ef3cbe44784889a86e3a78a423c83a98e5a2a55e5ec0bfd99",
+    "include/work_board/progress.h": "c150aab50d6c3503c3f67da0c8fd74b0c25640301682be1a081dc052b52aceb5",
+    "include/work_board/store.h": "f7d432e7fe7bfb8fa8723ab1e5989f12a4f258a5b47dfb2d3fa39570dc28a06c",
+    "include/work_board/view.h": "ac18cd3ccbd44ecd385806990ca4bf252e166fc781e7e524c543485541f83a0d"
+  },
+  "limitations": [
+    "Motif missing-charsets warning persists; byte preservation is tested, not availability of every Unicode glyph.",
+    "New I084 scrolling and review-reset request recorded separately; not implemented in I090.",
+    "Native Motif proofs do not validate GTK/Qt/theme fidelity."
+  ],
+  "user_approval_filled": false,
+  "install": {
+    "item": "I090",
+    "revision": 2,
+    "installed_paths": 29,
+    "binary_sha256": "f911a4589d55fef42db4732ee0d0ea907057b6644f93ebeffb1cfa40fc19d3a0",
+    "library_sha256": "84c7447b46c272965fdb9c63fa50f000c2da56136c0da266ec51a231fcb27061",
+    "gui_reopened": false,
+    "responses_and_journal_not_rewritten": true
+  },
+  "handoff": {
+    "date": "2026-10-10T21:09:02.066502+00:00",
+    "item": "I090",
+    "revision": 2,
+    "pid": 1301523,
+    "display": ":1",
+    "binary_sha256": "f911a4589d55fef42db4732ee0d0ea907057b6644f93ebeffb1cfa40fc19d3a0",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "explicit current user reply Pode reabrir agora"
+  },
+  "native_lsi_capture_inspected": true,
+  "technical_stage_percent": 100,
+  "percent_basis": "Implementation, native tests, installation and lsi handoff completed; not a historical-fidelity or whole-project percentage.",
+  "human_approval": "pending; no user verdict filled by assistant",
+  "next_item": "I084 reopened: latest conversation first, then safe explicit review transition; current user verdict preserved."
+}

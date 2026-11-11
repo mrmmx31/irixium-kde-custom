@@ -1,0 +1,254 @@
+{
+  "schema_version": 1,
+  "id": "T07-QT6-HINT-SEMANTIC-AUDIT-20261019-R117",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:48:22Z",
+  "scope": "Revisão semântica dos hints Qt6 da galeria de controles, menus e diálogos; execução guardada em perfil isolado.",
+  "findings": "Submenu usa faixa de estado atrasada no Qt6; texto agora corresponde à rota desta versão. Seis ações explicam finalidade/efeito; File, Help, Submenu, Submenu item, Close e About não repetem somente o rótulo. Os outros quatro itens descrevem operação/limite.",
+  "runtime": {
+    "qt": "6.8.2",
+    "style": {
+      "objectName": "fusion",
+      "className": "QFusionStyle"
+    },
+    "display": "Xvfb privada via xvfb-run; nenhuma sessão Xephyr do usuário tocada",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "namespace": "bwrap privado, HOME/passwd/D-Bus/XDG descartáveis",
+    "private_gallery_guard": true,
+    "submenu_help_strip": true
+  },
+  "menu_actions": [
+    {
+      "text": "&File",
+      "hint": "Abre ações da galeria: seletor de arquivos, controles de estado da amostra e fechamento."
+    },
+    {
+      "text": "Submenu",
+      "hint": "Abre as opções adicionais desta amostra. A explicação aparece na linha de estado após 500 ms; não altera o tema."
+    },
+    {
+      "text": "Submenu item",
+      "hint": "Executa a ação demonstrativa do submenu e informa o resultado na linha de estado; não altera o tema."
+    },
+    {
+      "text": "Close",
+      "hint": "Fecha somente esta galeria privada; não altera arquivos nem configurações do perfil pessoal."
+    },
+    {
+      "text": "&Help",
+      "hint": "Abre o menu de ajuda com informações sobre esta demonstração privada."
+    },
+    {
+      "text": "About this private demo",
+      "hint": "Abre as informações desta demonstração; fechar o diálogo retorna à galeria sem alterar o tema ou o projeto."
+    },
+    {
+      "text": "Open file dialog...",
+      "hint": "Abre o seletor de arquivos no perfil privado; a galeria registra apenas seleção ou cancelamento."
+    },
+    {
+      "text": "Private System Settings...",
+      "hint": "Abre as Configurações do Sistema dentro do ambiente privado; não modifica o perfil pessoal."
+    },
+    {
+      "text": "Checkable native QAction",
+      "hint": "Opção alternável do menu nativo: marque ou desmarque para observar a seleção."
+    },
+    {
+      "text": "Disabled native QAction",
+      "hint": "Ação desabilitada da amostra: apresenta o estado sem executar uma operação."
+    }
+  ],
+  "validation": {
+    "widgets_with_hints": 36,
+    "typed_widget_counts": {
+      "combos": 1,
+      "integer_spins": 1,
+      "decimal_spins": 1,
+      "sliders": 2,
+      "line_edits": 3,
+      "text_edits": 1
+    },
+    "menu_actions_with_hints": 10,
+    "visible_menu_rows_tested": 8,
+    "all_menu_rows_passed": true,
+    "submenu_row": {
+      "text": "Submenu",
+      "hint": "Abre as opções adicionais desta amostra. A explicação aparece na linha de estado após 500 ms; não altera o tema.",
+      "route": "delayed status label",
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "submenu_open": true,
+      "no_overlap": true,
+      "native_parent_tooltip_suppressed": true,
+      "child_hint_replaces_parent": true,
+      "closed_after_leave": true,
+      "action": [
+        29,
+        244,
+        195,
+        25
+      ],
+      "status": [
+        30,
+        549,
+        482,
+        34
+      ]
+    },
+    "hover_push": {
+      "cold_delay_checked_ms": 100,
+      "stable_ms": 400,
+      "closed_after_leave": true,
+      "control": [
+        53,
+        203,
+        94,
+        25
+      ],
+      "tooltip": [
+        102,
+        239,
+        528,
+        23
+      ],
+      "no_overlap": true,
+      "inside_screen": true
+    },
+    "representative_hovers": {
+      "combo": {
+        "text": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+        "no_overlap": true,
+        "inside_screen": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          111,
+          246,
+          390,
+          25
+        ],
+        "tooltip": [
+          308,
+          282,
+          456,
+          23
+        ]
+      },
+      "integer_spin": {
+        "text": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "no_overlap": true,
+        "inside_screen": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          111,
+          277,
+          192,
+          26
+        ],
+        "tooltip": [
+          209,
+          314,
+          802,
+          23
+        ]
+      },
+      "decimal_spin": {
+        "text": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "no_overlap": true,
+        "inside_screen": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          309,
+          277,
+          192,
+          26
+        ],
+        "tooltip": [
+          407,
+          314,
+          821,
+          23
+        ]
+      },
+      "horizontal_slider": {
+        "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+        "no_overlap": true,
+        "inside_screen": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          111,
+          372,
+          369,
+          15
+        ],
+        "tooltip": [
+          297,
+          403,
+          675,
+          23
+        ]
+      },
+      "vertical_slider": {
+        "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+        "no_overlap": true,
+        "inside_screen": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          486,
+          340,
+          15,
+          80
+        ],
+        "tooltip": [
+          156,
+          426,
+          675,
+          23
+        ]
+      }
+    },
+    "dynamic_dialogs": [
+      {
+        "type": "QFileDialog",
+        "buttons": 8,
+        "line_editors": 1,
+        "hints_present": true
+      },
+      {
+        "type": "QMessageBox",
+        "buttons": 1,
+        "line_editors": 0,
+        "hints_present": true
+      }
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qt6_demo.py": "b54d4884b8d8fed5368bf5e9aeab57e3023da319d830483b98d0b210d87e640d",
+    "plasma/tests/galerias-nativas/qt_widget_hints.py": "302b41f88e474d2a737e34e65ac7810d2b965b9ce6592941c6829e8e0083321b",
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "27b1e38939976f8823725e6cff89ec3b500a1bbeeb739761e7b89ac79d03fd6c",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "b3179f410aaca6d70b0a1cf524ac455d7b01041a0ea4ce0341e6d6144dfa45d5"
+  },
+  "artifacts": [
+    "~/tempia/t07-qt6-menu-semantic-r117-r3-20261019/run/"
+  ],
+  "diagnostics": [
+    "R117-r1/r2 preservados; a execução r2 identificou que o texto de submenu devia ser condicional por versão. A prova final r3 confirma a frase e o status strip Qt6; a execução Qt5 correspondente é R118."
+  ],
+  "limits": [
+    "Uma galeria/layout, QFusionStyle; não prova cores Kvantum nem aparência histórica.",
+    "Hover de todas as oito linhas visíveis, não de todas as aplicações/layouts.",
+    "Sem aprovação humana."
+  ],
+  "conclusion": "Os 10 hints de ações e oito linhas de menu passaram em Qt6; textos distinguem a rota específica do submenu. Hovers representativos de combo/spin/sliders passaram com estabilidade, sem sobreposição e fechando ao sair."
+}

@@ -1,0 +1,70 @@
+{
+  "id": "R606",
+  "date_local": "2026-10-28T14:28:43-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "user_report": {
+    "kde_menu": "Still closes on pointer hover; search does not accept typing despite the visible cursor.",
+    "panel_menu": "Still opens without initial search focus.",
+    "double_click": "Some application launches hang; retry may restart Plasma; application/time still not identified."
+  },
+  "analysis": {
+    "R605": "Loaded the prior fix but did not establish live behavioral success.",
+    "focus_path": "Both menu implementations gated search focus on a window active-state path; the panel menu also requested activation in both showMenu and onVisibleChanged. On Wayland this could leave focus pending or compete with transient-popup activation.",
+    "hover_path": "Still not attributed. No app launch or hover reproduction was performed in this change."
+  },
+  "changes": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+      "change": "Focus the representation when the transient popup opens without requiring QWindow.activeChanged; remove explicit QWindow.requestActivate on the root popup."
+    },
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "change": "Focus the panel menu search without waiting for Dialog.active; declare the search field as the initial focus target; keep a single requestActivate in the launcher event path."
+    }
+  ],
+  "deployment": {
+    "backup": "/home/lsi/irixium-kde-custom/records/ia-tema/P01/R606-before-install/",
+    "installer_backup": "/home/lsi/.local/state/irixium-domainos/backups/ea207158bba8493791cb9004c971b23a",
+    "plasmashell_pid": 739384,
+    "restart_count": 0,
+    "installed_matches_source": true,
+    "source_and_installed_sha256": {
+      "DomainOSApplications.qml": "44b8602342c8ab849a554497dae3d2e15f58617b9a3e1671278480a21ffdb3b4",
+      "DomainOSKdeApplicationMenu.qml": "f3277a73436106864b7127388f1a37faedee8e0ecac63cdbe14c191e2c51aa23"
+    }
+  },
+  "validation": {
+    "qmlformat_parse": "passed for both files; formatted output discarded",
+    "qml_runtime_load": "no changed-file error appeared in the new process startup journal",
+    "human_behavioral_acceptance": "pending",
+    "double_click_reproduced": false,
+    "other_user_shell_or_kwin_touched": false
+  },
+  "remaining": [
+    "User observation of KDE search typing and pointer hover after R606 reload.",
+    "User observation that panel Applications search accepts typing immediately.",
+    "Identify app and approximate time for the separate double-click stall/restart before reproducing."
+  ],
+  "launch_diagnostic_audit": {
+    "check": "Current plasmashell journal and coredump index, read-only",
+    "since_R606_reload": "No service stop/start after the intentional 14:28:27 reload; no SIGSEGV/SIGABRT coredump for plasmashell after 2026-10-26.",
+    "older_plasmashell_coredumps": [
+      "2026-10-24 PID 2713616 SIGSEGV",
+      {
+        "timestamp": "2026-10-26T08:40:43-04:00",
+        "pid": 1423570,
+        "signal": "SIGABRT",
+        "trace": "libdbus _dbus_warn_check_failed from QtDBus while processing QDBusServiceWatcher::serviceUnregistered; no Kicker or DomainOS menu frame in the crashing thread.",
+        "conclusion": "Does not establish a double-click/menu cause."
+      }
+    ],
+    "interpretation": "The indexed crashes predate this menu correction and cannot be attributed to this hover or launch report without application/time correlation. No test launch was made."
+  }
+}

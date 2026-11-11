@@ -703,6 +703,17 @@ perfis pessoais. Recibo:
 A primeira tentativa, impedida pela restrição do socket D-Bus no sandbox,
 permanece registrada separadamente; não foi convertida em resultado positivo.
 
+Atualização P01 (2026-10-10): o verificador passou 71/71 após acrescentar setas
+nos favoritos. A gaveta carrega o client KDE observado; a operação explícita
+`moveRow` modifica essa ordem nativa. Outro provedor real, recarregado no ensaio,
+comprovou persistência; pins e membros não mudaram, e mover não lançou aplicativo.
+Reabertura/leitura continuaram sem escrita de configuração. Pedidos com atividade,
+geração, client ou vizinho obsoletos foram recusados. Não prometer atualização
+instantânea de um menu externo já carregado: KAStats não emite esse sinal de ordem.
+Instalação e recarga na sessão normal lsi conferidas, avaliação manual pendente.
+[Recibo e alcance](review/P01-GAVETA-ORDENACAO-20261010.json). O ensaio antigo acima
+continua evidência histórica de sua implementação; não prova as setas novas.
+
 ### Agenda Manaus e flutuação nativa — F03 e X10
 
 O comando público `plasma/tools/testar-domainos-agenda.py --manaus-2026

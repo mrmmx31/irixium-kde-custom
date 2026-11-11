@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "revision": 1,
+  "substep": "scale_h",
+  "date": "2026-10-16",
+  "status": "technical_pass_partial_item_open",
+  "scope": "One real horizontal Qt6 QSlider, generated QSS and selected KDE palette roles; no Motif guest comparison.",
+  "implementation": {
+    "source": "tools/theme-lab/qt6_scrollbar_recipe.py",
+    "activation_bridge": "tools/theme-lab/qt6_scale_widget.py",
+    "backdrop": "A dynamic domainosBackdrop property follows top-level WindowActivate/WindowDeactivate. QSS :!active was removed from this QSlider because it matched the idle control and masked its normal role color.",
+    "geometry": "The handle includes the two relief borders in its cross-axis size; QSS reserves that full space to avoid clipping.",
+    "native_input": "QSlider continues to own range/value and pointer/keyboard input."
+  },
+  "verification": {
+    "qt6_recipe_tests": "15/15 passed, including normal/backdrop KDE role pixel changes and actual pointer/keyboard/press/release behavior.",
+    "qt5_generator_regression": "4/4 passed; Qt5 selector order preserved.",
+    "public_route": {
+      "display": ":68",
+      "result": "passed",
+      "qt": "6.8.2",
+      "pyqt": "6.9.0",
+      "style": "QFusionStyle",
+      "platform": "xcb",
+      "preview_exit_code": 0,
+      "personal_home_exposed": false,
+      "system_bus_socket_exposed": false,
+      "result_json": "/home/lsi/tempia/i170-qt6-public-5eo6nw8x/home/qtwidgets-proof/RESULTADO.json",
+      "result_sha256": "eab59187281daf21bbaa127cf9c1b89bcebf5f0c82f783a53d55d5ccd5d9584b",
+      "screenshot": "I170-QT6-SCALE-H-20261016.png",
+      "screenshot_sha256": "f06d49dfb5cced1d39b763e084c2044ff5c95a55e8f3206b83dee47ed379896e"
+    }
+  },
+  "limitations": [
+    "No corresponding QSlider measurement/capture was taken in the Domain/OS SR10.4 VM.",
+    "Technical pass is not user visual approval."
+  ],
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "afe55137eac5cda366f91e9ebb432ac34b7beef5ce62823abdcc4562b6114a19",
+    "tools/theme-lab/qt6_scrollbar_route.py": "aae50da4f6266f22f107f1bad325e75f82892e803fc2cb2f346a7986f297a9ae",
+    "tools/theme-lab/qt6_scale_widget.py": "81c1cd6a23c545aa64585d5d4d4e0f9360cf16ae408b7e7b4bbb4745013d3cbd",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "42dbdfbbf9762b85b864a712bfba0cd7122126776037240c95b7a765a56d05bd",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "6cf147f67e05d9e5ee323787c8f704c7189e86266f9495a5254a06f6ad2a8e69",
+    "tools/theme-lab/tests/probe_qt6_scale_h_widget.py": "db4a6589d07129fb7afb2c29e43d10d53df55a1f156c88d2ff3d8a5f99757471",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "27b4f08d9589ad6c52fab32758d2817517b7d6c3a55008d20963ddcc4da36f64",
+    "tools/theme-lab/README.md": "3cb394c904ac916be51b93aefad570f1f68bc467877b3c46d3e1b02b9a60e96b"
+  }
+}

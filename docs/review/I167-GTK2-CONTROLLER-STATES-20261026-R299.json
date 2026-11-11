@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R299",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "partial-native-controls-pass-separate-preview-reopen-fails-after-undo-redo",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Validate GTK2 controls and the Theme Lab controller in isolated private Xvfb/bwrap fixtures; no user-session installation."
+  },
+  "tests": [
+    {
+      "fixture": "~/tempia/theme-lab-spin-l1r8u1aw",
+      "status": "passed",
+      "scope": "Real Motif controller with generated native GTK2 push control; Apply propagated to coupled and detached previews; detached close retained coupled preview; stale detached IPC rejected; reopen passed."
+    },
+    {
+      "fixture": "~/tempia/theme-lab-spin-ab1gn1mo",
+      "status": "passed",
+      "scope": "Native GTK2 toggle click and selection pixels; both origins remained clickable after Apply and controller restart."
+    },
+    {
+      "fixture": "~/tempia/theme-lab-spin-s01sdkm4",
+      "status": "passed",
+      "scope": "Native GTK2 check click and indicator pixel; selection and both origins persisted through Apply/restart."
+    },
+    {
+      "fixture": "~/tempia/theme-lab-spin-hmlkz2d1",
+      "status": "passed",
+      "scope": "Native grouped GTK2 radio selection and indicator pixels; member state persisted through Apply/restart in both origins."
+    },
+    {
+      "fixture": "~/tempia/theme-lab-spin-uwys20sf",
+      "status": "failed",
+      "scope": "Broad controller workflow for GTK2 combo: initial coupled/detached previews, Apply, close, Undo reopen and Redo close passed; a subsequent reopen launched preview_gtk2.py, which terminated with an X Window System error before native separate metrics returned."
+    }
+  ],
+  "regression": {
+    "reproduced": true,
+    "second_attempt_fixture": "~/tempia/theme-lab-spin-sngsx9o3",
+    "failure_point": "Reopening the detached native GTK2 preview after the close -> project Undo -> reopen -> project Redo -> close sequence.",
+    "diagnosis": "Not yet isolated between controller child-process lifecycle and native GTK2 preview teardown/reopen. The failing attempt does not invalidate successful initial open/Apply/close evidence, but prevents declaring repeated lifecycle verified.",
+    "product_code_changed": false,
+    "user_session_or_xephyr_touched": false,
+    "vm_input_sent": false
+  },
+  "source_hashes": {
+    "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f",
+    "tools/theme-lab/tests/controller_gtk2_progress.py": "839bcba2863788f2fd33c9b3e734a84f9733c51252ceaf286efb5a8577252e6f",
+    "tools/theme-lab/tests/controller_gtk2_toggle.py": "ccfc33d0f4103c0199dd03330633cc8a3763a78c7ac6c0b7aa2958b1e75faaea",
+    "tools/theme-lab/tests/controller_gtk2_radio.py": "31d494bca29a8ed735933cf60a5d7900d821ee4f7d89dd97ae4bbf0c40ff5d0f",
+    "tools/theme-lab/build/controller-spin-probe": "1ab00b39bd5c8338773708b1dce84cafb1d7550838a6e1c64b30e8e55dbc8289"
+  },
+  "limits": [
+    "Generated control pixel checks prove the current recipe's expected rendering, not historical equivalence to Domain/OS.",
+    "The GTK2 recipe and full embedded-control coverage remain partial.",
+    "Historical held-state comparison for left, right and up still awaits the guest pointer visibly positioned on each target in the canonical VM.",
+    "User visual review remains open; no user-session theme was installed."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 84,
+    "basis": "Adds native-controller verification for GTK2 push/toggle/check/radio controls in coupled and detached origins. The repeated detached GTK2 reopen failure is recorded as unresolved, so no estimate increase is assigned. This is not a visual-fidelity score."
+  }
+}

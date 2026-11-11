@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-11T05:42:09.937282+00:00",
+  "item": "I118",
+  "revision": 1,
+  "stage": "Standalone GTK3 arrow-button state translation base",
+  "contract": {
+    "piece": "arrow_button",
+    "scope": "Outer border only; glyph, allocation, geometry and GtkRange rules retained",
+    "states": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop",
+      "hover",
+      "focus"
+    ],
+    "precedence": "disabled > pressed > hover > focus > backdrop idle > normal idle",
+    "colours": "Relative Button face/light/shade from existing shared KDE palette state; no final sampled RGB",
+    "inherit": "Missing override leaves native border"
+  },
+  "implementation": {
+    "module": "tools/theme-lab/arrow_button_states.py",
+    "editor_unlocked": false,
+    "snippet": "Selected arrow_button piece on bar/arrow inspects standalone arrow code; focus accepted only for this scope; no model/native-state mutation",
+    "snapshot": "Launcher includes new module for future frozen runs; personal run unchanged"
+  },
+  "proof": {
+    "backend_tests": 30,
+    "backend_log": "/tmp/i118-button-state-backend-final.log",
+    "native_css_log": "/tmp/i118-button-state-css.log",
+    "native_css_combinations": 33,
+    "new_button_combinations": 18,
+    "native_css_passed": true,
+    "syntax": "Python files compiled in memory, no bytecode",
+    "scope_limits": "CSS parser and source invariants do not prove painted relief, native focus interaction, GUI editing or historical appearance"
+  },
+  "remaining": [
+    "Real GtkButton state interactions and border pixels in four palettes including focus/backdrop and restoration",
+    "Enable piece-aware state editor only after native proof",
+    "Other pieces",
+    "Preview startup/reopen readiness",
+    "Personal delivery"
+  ],
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "scope_progress_percent": 62,
+  "hashes": {
+    "tools/theme-lab/arrow_button_states.py": "7d65441b71d741f1d76184cbbc6217cdeaca241f90a013d43383bf5c9025e3cd",
+    "tools/theme-lab/backend.py": "a0c6447be3de848157956d8ee14b0a4863021239130bc2ec72ebdbc81d9ae129",
+    "tools/theme-lab/tests/test_backend.py": "1f32a57d38f7170707c2ff7aaf4b22bfaf171015f07829362041249e465d7e6c",
+    "tools/theme-lab/tests/test_state_relief_css.py": "6f9984110be44a6caebcbf938004e5467ddbee55635c12a1ffbc5ca0baa66ead",
+    "plasma/tools/abrir-laboratorio-temas.py": "0ffa9fd0905b4b8861028b7befb92201bead826eed69aa9df636cc17a3a85415"
+  }
+}

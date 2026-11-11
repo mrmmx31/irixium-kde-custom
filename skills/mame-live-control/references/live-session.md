@@ -64,6 +64,19 @@ than unverified `xdotool` focus in this KDE session. Keep focus intervention
 separate from guest input; never deliver clicks/keys to the previous host window.
 The portable helper does not choose a host window or change focus automatically.
 
+On a Wayland desktop, an `xdotool`/XTest warp can report the intended XWayland
+window under its synthetic pointer without proving that the compositor's real
+pointer or the SDL client received the following click. R644 reproduced this:
+the XWayland query named the verified MAME XID, but the click returned focus and
+pointer to XChat and the existing MAME capture hook did not transition. Treat
+that combination as an input-route failure; do not repeat the click or claim a
+guest press. Before another attempt, use a compositor-mediated pointer route and
+verify its grant, or ask the user to select a method. KDE's RemoteDesktop portal
+can provide such input but may display a permission/selection dialog; do not
+start a portal session until that route is explicitly authorized. Restore only
+the MAME window and desktop state you changed; do not minimize unrelated XChat
+windows to clear an overlay.
+
 `scripts/mame_mouse_control.lua` can be loaded by `dofile()` through the existing
 bridge when graphical input is authorized. Loading it only creates functions.
 Call `mame_live_mouse.hold()` after an image confirms the actual pointer target:

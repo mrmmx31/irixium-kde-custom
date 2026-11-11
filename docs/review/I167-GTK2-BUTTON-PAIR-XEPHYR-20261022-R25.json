@@ -1,0 +1,46 @@
+{
+  "item": "I167",
+  "revision": "R25",
+  "checked_at_utc": "2026-10-22T22:11:02Z",
+  "family": "GTK2 push button",
+  "reference": {
+    "authority": "Domain/OS SR10.4 with HP VUE 2.01 remains the historical authority.",
+    "comparison_widget": "The Theme Lab's native Motif reference is a local toolkit comparison, not a measurement of the SR10.4 guest.",
+    "motif_reference_request_px": [66, 25],
+    "source": "docs/review/I167-BOTAO-CONTROLADOR-20261011.json"
+  },
+  "method": "Real GTK2 2.24.33 GtkButton fixture, natural requisition, four KDE schemes, native click/disabled-input and press/release captures; Xvfb outputs kept under ~/tempia.",
+  "source_sha256": {
+    "tools/theme-lab/tests/test_gtk2_button_native.py": "19ad01824efeece563779cf9be9b5f051ded106d8ae0081736c84162aa43536e",
+    "tools/theme-lab/tests/probe_gtk2_button.py": "a639544429788a96d7d30532590f31b278272710dce59738a5fba7794ffe0143",
+    "tools/theme-lab/gtk2_buttons.py": "ffa5dafa2628ea94087b239f2ce1121a537e23fe8af8a438f4077913788c3a5f",
+    "docs/review/I167-BOTAO-CONTROLADOR-20261011.json": "4082d1a1eb69e72c78a2a04df9558353a7aba292b1282fa508c5587b1bbf1ce3"
+  },
+  "results": {
+    "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "inner_border_4_px": {"gtk2_natural_request_px": [74, 34]},
+    "inner_border_2_px": {"gtk2_natural_request_px": [70, 30]},
+    "inner_border_0_px": {
+      "gtk2_natural_request_px": [66, 26],
+      "matches_motif_reference_width": true,
+      "height_delta_px": 1
+    },
+    "press_capture_changed_pixels": 904,
+    "released_vs_normal_changed_pixels": 0,
+    "native_click_each_scheme": true,
+    "disabled_input_blocked_each_scheme": true,
+    "palette_roles_follow_scheme": true
+  },
+  "artifacts": {
+    "baseline_inner_border_4": "~/tempia/i167-gtk2-push-padding4-r25/",
+    "candidate_inner_border_2": "~/tempia/i167-gtk2-push-padding2-r25/",
+    "candidate_inner_border_0": "~/tempia/i167-gtk2-push-padding0-r25/",
+    "isolated_session_pair": "~/tempia/i167-theme-lab-domainos-xephyr-20261022/session-r3/gtk2-motif-pair.png"
+  },
+  "limits": [
+    "The local Motif 66x25 value is the Theme Lab sample's requested/reference size; it is not established here as an SR10.4 default.",
+    "The candidate changes only the test recipe. No GTK2 theme, user profile, or XChat process was modified.",
+    "No visual approval is inferred. This proves size proximity and interaction, not complete historical fidelity or all GTK2 button states."
+  ],
+  "next": "Validate the zero-inner-border candidate in the public GTK2/Motif paired preview without saving over the user's project. Then finish the remaining GTK2 control families one at a time before applying the completed GTK2 theme to the normal session and XChat."
+}

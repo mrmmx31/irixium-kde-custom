@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "id": "R308",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "supplemental-historical-upper-stepper-transition-mask-aligned;cursor-overlap-limits-color-proof",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Supplement existing GTK2 arrow-state evidence using already-recorded Domain/OS SR10.4/VUE 2.01 captures; no theme, profile, or VM changes."
+  },
+  "source_reference": {
+    "system": "Domain/OS SR10.4 / HP VUE 2.01 / Apollo DN3500 / MAME 0.276",
+    "source_study": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs (read-only study documents; this pixel pair comes from its existing approved I295/I350 study evidence archived under Tempia)",
+    "capture_bundle": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018",
+    "receipt": "receipt.json",
+    "receipt_sha256": "ee00237a6f926cfc8d1512c437c027153bf5e40006a6bb2cddd86b70e9c56d91",
+    "manifest": "manifest.json",
+    "manifest_sha256": "02d0ac379ba292cc4d78450a2d54bc5dbab5723de2fd6c6f99a94558eaa65fc2",
+    "source_files": {
+      "held": {
+        "path": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/sources/upper-arrow-held.png",
+        "sha256": "b8697e88af20945b7ba2d5368cbb51c421b6647cf41ce8b9e2cba6a7870efa4b"
+      },
+      "released": {
+        "path": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/sources/upper-arrow-released.png",
+        "sha256": "f284b60af1061cfd915c0af6fd2e4d838f27cb013160f4659b43a1d4a645f90e"
+      }
+    },
+    "limitations": "Manifest records the approved study source and exact Domain/OS/VUE version, but says package versions were not re-queried for this capture. This is retained recorded evidence, not a fresh capture of the project canonical VM.",
+    "study_documents": [
+      {
+        "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/CONTROLE-MAME.md",
+        "sha256": "0bf97a62176d791078d16e3ae48394ecec78aaf0ac2c548cdd8d56563795ed01",
+        "use": "VM session/control and source provenance handling",
+        "read_only": true
+      },
+      {
+        "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/ACERVO-DESIGN-VUE.md",
+        "sha256": "f7f7a90ef009c5ef7e64d1e0d67ce7d59ba0d8fc79bc8f6a2cc88f3ac397aba9",
+        "use": "historical VUE evidence provenance and limits",
+        "read_only": true
+      },
+      {
+        "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/manual/roteiro-sessao.md",
+        "sha256": "e84af6d8e16a5cc8e2ac75b7eadedc21a8180c5a1eda133213a69613fdd6a632",
+        "use": "session use and recovery guidance",
+        "read_only": true
+      },
+      {
+        "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/I240-MAME-OBSERVATION-20261012.json",
+        "sha256": "85c3111bc6d32ca972948d43e0dccd73a6335f66d2599827360e2c988cb1c5ce",
+        "use": "recorded MAME observation context",
+        "read_only": true
+      },
+      {
+        "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/manual/DomainOS-SR10.4-MAME-Manual.pdf",
+        "sha256": "255a793feadf72b43801c01d59c4995dea0adebb49489bfd2a3d266880e9f26b",
+        "use": "primary guest operation manual",
+        "read_only": true
+      }
+    ]
+  },
+  "method": {
+    "crop_half_open_global": [
+      962,
+      100,
+      977,
+      116
+    ],
+    "native_roi_px": [
+      15,
+      16
+    ],
+    "compared_region": "top 15 rows of the 15x16 documented crop, aligned to the current 15x15 GTK2 stepper cell",
+    "scale": "1:1 RGB, no resizing, interpolation, color normalization or masking",
+    "cursor": "The study records pointer approximately at global (971,112), inside the arrow ROI; no cursor mask was subtracted.",
+    "reproducible_script": {
+      "path": "~/tempia/ia-tema/evidence/I167/r308-vue-up-arrow-pressed/compare-held-pair.py",
+      "sha256": "aaa8b05461edd54fd7162adae92135a141e32711470c29dc30063062ba95c8fd"
+    }
+  },
+  "inputs": {
+    "gtk2_normal": {
+      "path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+      "sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+      "size_px": [
+        15,
+        15
+      ]
+    },
+    "gtk2_pressed": {
+      "path": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-pressed.png",
+      "sha256": "e2429295276378aa365069db0854c28eef2d657f4325eb9bf8e8220628b75db5",
+      "size_px": [
+        15,
+        15
+      ]
+    }
+  },
+  "results": {
+    "vue_before_vs_held_changed_pixels": 46,
+    "vue_held_vs_released_changed_pixels": 46,
+    "vue_released_vs_source_settled_pixels": 0,
+    "gtk2_normal_vs_pressed_mask_pixels": 53,
+    "vue_and_gtk2_transition_mask_intersection": 46,
+    "transition_pixels_shared": [
+      [
+        2,
+        7
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        3,
+        7
+      ],
+      [
+        3,
+        8
+      ],
+      [
+        4,
+        6
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        5,
+        8
+      ],
+      [
+        5,
+        9
+      ],
+      [
+        6,
+        5
+      ],
+      [
+        6,
+        6
+      ],
+      [
+        6,
+        8
+      ],
+      [
+        6,
+        9
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        7,
+        10
+      ],
+      [
+        8,
+        4
+      ],
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        9
+      ],
+      [
+        8,
+        10
+      ],
+      [
+        9,
+        3
+      ],
+      [
+        9,
+        4
+      ],
+      [
+        9,
+        10
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        10,
+        3
+      ],
+      [
+        10,
+        4
+      ],
+      [
+        10,
+        10
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        11,
+        2
+      ],
+      [
+        11,
+        3
+      ],
+      [
+        11,
+        4
+      ],
+      [
+        11,
+        5
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        11,
+        10
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        12,
+        2
+      ],
+      [
+        12,
+        3
+      ],
+      [
+        12,
+        4
+      ],
+      [
+        12,
+        5
+      ],
+      [
+        12,
+        6
+      ],
+      [
+        12,
+        11
+      ],
+      [
+        12,
+        12
+      ]
+    ],
+    "gtk2_transition_pixels_not_visible_in_vue_capture": [
+      [
+        11,
+        7
+      ],
+      [
+        11,
+        8
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        12,
+        7
+      ],
+      [
+        12,
+        8
+      ],
+      [
+        12,
+        9
+      ],
+      [
+        12,
+        10
+      ]
+    ],
+    "vue_transition_pixels_absent_in_gtk2_mask": [],
+    "mask_relationship": "All 46 VUE pixels observed changing between released and held exactly match the same-position GTK2 normal-to-pressed RGB transitions. The GTK2 transition has 53 pixels total; its seven additional pixels sit around the documented pointer position and are not visible in the VUE capture. This proves the observed relief shape and both RGB transition directions for all 46 unoccluded pixels; cursor occlusion is plausible but not proven without an independent cursor mask. It does not establish the seven covered pixels or the full palette/widget colors.",
+    "vue_gtk2_exact_rgb_pairs": {
+      "pixels_exact": 46,
+      "pixels_compared": 46,
+      "before_shadow_to_held_light": 26,
+      "before_light_to_held_shadow": 20,
+      "mismatches": 0,
+      "rgb_values": {
+        "light": [
+          196,
+          213,
+          237
+        ],
+        "shadow": [
+          62,
+          83,
+          110
+        ]
+      }
+    }
+  },
+  "evidence_files": {
+    "I167-R308-reply-r2.json": {
+      "sha256": "231e3199e63d593a6b62a9fbb573ec8142be89f526a659b30fc529a4e095c5c8",
+      "size_bytes": 1545
+    },
+    "I167-R308-reply.json": {
+      "sha256": "e3f803f24b2914243bff6041d290ed9bd1219f15ad55abb838c365ed788e4ef4",
+      "size_bytes": 1406
+    },
+    "canonical-vm-current.png": {
+      "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+      "size_bytes": 10018
+    },
+    "capture-current.lua": {
+      "sha256": "512b938162f5adfd8206a141a5f625685de52d02bdfeb963303dc8a0537b2f12",
+      "size_bytes": 455
+    },
+    "compare-held-pair.py": {
+      "sha256": "aaa8b05461edd54fd7162adae92135a141e32711470c29dc30063062ba95c8fd",
+      "size_bytes": 1867
+    },
+    "gtk2-up-normal.png": {
+      "sha256": "e4133a84f840a498b5debf3eba00cadc8d9e49db67f1e9fe2987324ea7ea3f05",
+      "size_bytes": 166
+    },
+    "gtk2-up-pressed.png": {
+      "sha256": "efce55d857e4619b58635d1726830f000c6f639c1b51e58ada6c9855be02638a",
+      "size_bytes": 165
+    },
+    "transition-mask-16x.png": {
+      "sha256": "8ec484be9519581386cf987fc8cb9669e84d43f06f3e2328f671ed6824a3e1e7",
+      "size_bytes": 681
+    },
+    "transition-mask-1x.png": {
+      "sha256": "be135eb4bf61c2283f14c2b092e8005288dc13a91b808dc51f3352cf4b1a1a2a",
+      "size_bytes": 124
+    },
+    "vue-upper-held-crop.png": {
+      "sha256": "1de3bd555a5aa1a806709f125e97760d100ee26c7298b2537a72bc998b45b37f",
+      "size_bytes": 213
+    },
+    "vue-upper-released-crop.png": {
+      "sha256": "b8d49bf785e2686a37dd04fa551e338d5b3b8cea4f694b2894bd65a525a4a137",
+      "size_bytes": 217
+    }
+  },
+  "changes": {
+    "theme_assets_modified": false,
+    "user_profile_modified": false,
+    "canonical_vm_touched": false,
+    "personal_vm_operated": false,
+    "application_restarted": false,
+    "canonical_vm_read_only_snapshot_taken": true,
+    "canonical_vm_guest_input_sent": false,
+    "canonical_vm_state_changed": false
+  },
+  "remaining": [
+    "Historical left/right/up held-state comparison on the project canonical VM awaits a visible guest display; the current read-only snapshot is black. The saved I295/I350 source-VM evidence supplements upper-up only.",
+    "GTK2 full-family comparison and human visual acceptance remain open.",
+    "The runtime app still resolves an older installed GTK2 theme; no production change in this receipt."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Adds a bounded supplemental state-mask comparison for the upper vertical arrow. Existing coverage count unchanged; this is not visual-fidelity score."
+  },
+  "canonical_vm_check": {
+    "method": "read-only MAME probe plus screen:snapshot; no guest mouse/keyboard event, focus change, profile change, or restart",
+    "process": "PID 1313710, exactly one MAME process, -disk1 points to project canonical assistant disk; verify.sh confirmed canonical inode/hardlinks/symlink",
+    "profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false,
+      "captured": false,
+      "ui_active": false
+    },
+    "snapshot": {
+      "path": "~/tempia/ia-tema/evidence/I167/r308-vue-up-arrow-pressed/canonical-vm-current.png",
+      "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+      "dimensions_px": [
+        1024,
+        844
+      ],
+      "visual_result": "black guest display"
+    },
+    "command_note": "MAME wrote the snapshot successfully, then the Lua command returned ERR because this build has no machine.ui field for the optional ui_active return. The image is valid and black; the correlated command completed and channel status is clear."
+  },
+  "evidence_saved_to": "~/tempia/ia-tema/evidence/I167/r308-vue-up-arrow-pressed/"
+}

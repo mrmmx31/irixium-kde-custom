@@ -3,6 +3,7 @@
 // Runs inside the genuine installed plasmawindowed with an entirely private
 // package/session. Every rendered source window is owned by this test process.
 #include <QApplication>
+#include <QCursor>
 #include <QFile>
 #include <QImage>
 #include <QJsonArray>
@@ -46,6 +47,13 @@ static QImage capture(const QString &name) {
     }
     return {};
 }
+static void moveNativeCursor(const QPoint &localPosition) {
+    // ToolTipArea and its shared native dialog use the platform cursor for
+    // enter/leave hit testing. QTest::mouseMove(window, ...) only posts a Qt
+    // event and does not move that cursor, so it cannot open a real tooltip.
+    QCursor::setPos(fixtureWindow->mapToGlobal(localPosition));
+    QCoreApplication::processEvents();
+}
 static int colorPixels(const QImage &image,const QColor &target) {
     int found=0;for(int y=0;y<image.height();++y)for(int x=0;x<image.width();++x){
         const auto pixel=image.pixelColor(x,y);
@@ -81,7 +89,7 @@ static void tick() {
         checks[qEnvironmentVariable("IRIX_DOMAINOS_THUMBNAIL_CURRENT_DISPLAY")=="1" ? "only_explicit_owned_window_ids_supplied" : "native_owned_windows_from_tasksmodel"]=true;
         checks["default_disabled_without_native_providers"]=!latest["enabled"].toBool() && !latest["contentLoaded"].toBool() && latest["providerCount"].toInt()==0;
         fixtureWindow->requestActivate();
-        QTest::mouseMove(fixtureWindow,QPoint(90,60));
+        moveNativeCursor(QPoint(90,60));
         invoke("showHints");stage=10;
     }else if(stage==10){
         if(!latest["tooltipVisible"].toBool()){QTimer::singleShot(100,tick);return;}
@@ -95,6 +103,9 @@ static void tick() {
     }else if(stage==1){
         if(latest["availableCount"].toInt()!=2){QTimer::singleShot(100,tick);return;}
         checks["two_real_native_window_thumbnails_available"]=true;
+        if(latest["cachedFrameCount"].toInt()!=2 || latest["cachedImageReadyCount"].toInt()!=2){QTimer::singleShot(100,tick);return;}
+        checks["two_real_thumbnail_frames_cached_in_memory"]=latest["frameCacheCount"].toInt()==2
+            && latest["cachedFrameCount"].toInt()==2 && latest["cachedImageReadyCount"].toInt()==2;
         const auto image=capture("NATIVE-THUMBNAILS.png");
         checks["native_tooltip_capture_saved"]=!image.isNull();
         checks["native_pixels_match_both_owned_source_windows"]=colorPixels(image,QColor("#c83246"))>100 && colorPixels(image,QColor("#329650"))>100;
@@ -117,7 +128,7 @@ static void tick() {
         // of interpreting an absent dialog as an unchanged source image.
         if(!latest["tooltipVisible"].toBool()){
             fixtureWindow->requestActivate();
-            QTest::mouseMove(fixtureWindow,QPoint(90,60));
+            moveNativeCursor(QPoint(90,60));
             invoke("enablePreview");QTimer::singleShot(300,tick);return;
         }
         if(latest["availableCount"].toInt()!=2){QTimer::singleShot(100,tick);return;}
@@ -127,15 +138,23 @@ static void tick() {
     }else if(stage==3){
         // Keeping title/card layout prepared under the hovered task is fine;
         // no native WindowThumbnail or PipeWire source may survive hiding.
-        checks["hiding_unloads_every_native_provider"]=!latest["tooltipVisible"].toBool() && latest["loadedProviderCount"].toInt()==0;
+        checks["hiding_unloads_providers_but_retains_cached_frames"]=
+            !latest["tooltipVisible"].toBool() && latest["contentLoaded"].toBool()
+            && latest["loadedProviderCount"].toInt()==0
+            && latest["cachedFrameCount"].toInt()==2
+            && latest["cachedImageReadyCount"].toInt()==2;
         invoke("enablePreview");stage=4;
     }else if(stage==4){
         if(latest["availableCount"].toInt()!=2){QTimer::singleShot(100,tick);return;}
+        checks["reopening_reuses_the_two_cached_frames"]=latest["cachedFrameCount"].toInt()==2
+            && latest["cachedImageReadyCount"].toInt()==2;
         invoke("disablePreview");stage=5;
     }else if(stage==5){
-        checks["disabling_unloads_every_native_provider"]=!latest["enabled"].toBool() && !latest["tooltipVisible"].toBool() && !latest["contentLoaded"].toBool() && latest["providerCount"].toInt()==0;
+        checks["disabling_clears_native_providers_and_cached_frames"]=!latest["enabled"].toBool()
+            && !latest["tooltipVisible"].toBool() && !latest["contentLoaded"].toBool()
+            && latest["providerCount"].toInt()==0 && latest["frameCacheCount"].toInt()==0;
         invoke("disableHints");
-        QTest::mouseMove(fixtureWindow,QPoint(300,180));QTest::mouseMove(fixtureWindow,QPoint(90,60));
+        moveNativeCursor(QPoint(300,180));moveNativeCursor(QPoint(90,60));
         stage=11;QTimer::singleShot(1200,tick);return;
     }else if(stage==11){
         checks["none_mode_has_no_tooltip_or_capture_on_hover"]=!latest["hintsEnabled"].toBool() && !latest["enabled"].toBool()

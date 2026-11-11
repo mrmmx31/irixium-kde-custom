@@ -1,0 +1,175 @@
+{
+  "item": "I167",
+  "revision": "R17",
+  "checked_at_utc": "2026-10-19T14:17:02Z",
+  "family": "GTK2 scrollbar stepper cells and arrow/trough junction",
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "source_images": [
+      "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "docs/referencias/domainos-sr104/barra-horizontal-normal.png"
+    ],
+    "comparison": "1:1, complete 15x15 directional cells"
+  },
+  "scope": "GTK2 only. Uses assistant-owned Xephyr :83 and generated temporary fixtures under ~/tempia. No host color profile, user theme, MAME guest or other Xephyr was modified.",
+  "implementation": {
+    "stepper_properties": {
+      "slider-width": 11,
+      "stepper-size": 15,
+      "stepper-spacing": 0,
+      "trough-under-steppers": false,
+      "trough-border": 2
+    },
+    "artwork": "Full 15x15 SCROLLBAR_STEPPERS semantic cell, rendered through the current KDE-derived button palette. Held state swaps light/dark only in the 11x11 triangle.",
+    "custom_geometry": "Non-historical sizes use the same full-cell allocation with role-derived bevel and nearest-neighbour directional glyph.",
+    "files": {
+      "tools/theme-lab/gtk2_recipe.py": "906562776f00db7f9f2e2092d2141369cad16f7630a0196362bb384d09fc30f5",
+      "tools/theme-lab/tests/test_gtk2_recipe.py": "8a0169984105cbac34609a79da3c5022efdf03c7f9d7283f298ede6d97439ab8",
+      "tools/theme-lab/tests/test_gtk2_paint_native.py": "e4219ffcd68d97542ed98c49f574e2b6d98e4b0843fd754dae1d12a46f0a1152",
+      "tools/theme-lab/tests/test_gtk2_scene_native.py": "d219227703a6e265e2b103b98f9f9e0f0349200315d723610c4f8ea874ef6004"
+    }
+  },
+  "results": {
+    "pure_recipe_tests": "5 passed",
+    "native_palette_cases": {
+      "status": "passed",
+      "count": 16,
+      "schemes": [
+        "BreezeDark",
+        "BreezeLight",
+        "DomainOS",
+        "TestYellow"
+      ],
+      "states": [
+        "backdrop",
+        "disabled",
+        "endpoint",
+        "normal"
+      ]
+    },
+    "scene": {
+      "status": "passed",
+      "native_scenes": 24,
+      "native_widgets": 48,
+      "origins": [
+        "separate",
+        "coupled"
+      ],
+      "schemes": [
+        "BreezeDark",
+        "BreezeLight",
+        "DomainOS",
+        "TestYellow"
+      ],
+      "states": [
+        0,
+        2,
+        3
+      ]
+    },
+    "mask_verification": {
+      "status": "passed",
+      "directional_masks": 192,
+      "nonzero_pixel_differences": 0
+    },
+    "native_input": {
+      "status": "passed",
+      "display": ":83",
+      "cycles": [
+        {
+          "direction": "left",
+          "held_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "released_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "adjustment_held": 24.0,
+          "adjustment_after_release": 24.0
+        },
+        {
+          "direction": "right",
+          "held_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "released_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "adjustment_held": 26.0,
+          "adjustment_after_release": 26.0
+        },
+        {
+          "direction": "up",
+          "held_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "released_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "adjustment_held": 24.0,
+          "adjustment_after_release": 24.0
+        },
+        {
+          "direction": "down",
+          "held_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "released_cell_pixel_differences": {
+            "left": 0,
+            "right": 0,
+            "up": 0,
+            "down": 0
+          },
+          "adjustment_held": 26.0,
+          "adjustment_after_release": 26.0
+        }
+      ],
+      "per_direction_adjustment_changes_by_one": true,
+      "release_changes_no_additional_value": true,
+      "held_and_released_expected_cell_differences": 0
+    }
+  },
+  "public_backend_test": {
+    "status": "failed_in_press_state_assertion",
+    "display": ":83",
+    "failure": "The public bwrap preview passed pointer/window guards and began the real input loop, but scroll_h/right had 0 held-state pixel changes; the test stopped before its final receipt. Public preview screenshots remain in ~/tempia/.qa-gtk2-public-041ghash.",
+    "interpretation": "This matches the previously observed intermittent public input path; it does not negate the direct native GtkRange cycles, but public input interaction remains unverified for this revision."
+  },
+  "mame_live_vm": {
+    "status": "not_requeried",
+    "reason": "The existing control bridge reports unresolved request f2127393cf7642a4896dceae1977ea71 with command.lua pending and no correlated reply. Per the MAME control protocol, no new request was sent, no pending file was cleared, and no VM/profile state was changed. Historical 1:1 crops already stored in docs/referencias/domainos-sr104 were used for this candidate comparison."
+  },
+  "limitations": [
+    "No fresh capture from the live MAME guest in this revision because its existing command is still unresolved.",
+    "Public bwrap-preview input delivery is intermittent and must be diagnosed separately.",
+    "No human visual approval is inferred.",
+    "The GTK2 family/adaptor remains partial outside this scrollbar stepper correction."
+  ],
+  "product_changed": true,
+  "user_profile_changed": false,
+  "mame_changed": false,
+  "human_visual_approval": "pending",
+  "status": "partial; GTK2 full-cell stepper correction technically verified in direct native fixtures; public route input and live VM comparison remain open",
+  "next": "Retain R17 GTK2 stepper result. Resolve the already-pending MAME request through its owning context before any new VM command; independently diagnose the public preview press path without repeating the unchanged click matrix. Continue one GTK2 control family at a time."
+}

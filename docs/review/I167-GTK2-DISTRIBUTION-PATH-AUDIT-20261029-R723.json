@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "R723",
+  "date": "2026-10-29",
+  "observed_at_utc": "2026-10-29T07:02:10Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the GTK2 theme packages and engine install path for author-specific absolute paths or temporary paths that would break publication.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "files": {
+    "tools/package_suite.py": "69db5f5b31bc258d4d2bd6912c56691864ccff7b6bdbc9b357d9cd3e8f46f398",
+    "tools/build_domainos_gtk2_engine.py": "d0eb4bf37a5025352758e7ca53cb61893cd96030705cdb993a442486ed1a5b9c",
+    "tools/install_domainos_gtk2_engine.py": "f134b347a8ab42b29f39d5c4a3c5af4143d1452d6802145741827e15f2bd09f1",
+    "gtk/DomainOS-SR10-4/gtk-2.0/gtkrc": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af",
+    "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc": "762a014b941d9329fa787d53aec570491cd8765bdf9a86d757a1301d339ce2af"
+  },
+  "findings": {
+    "author_specific_absolute_paths": "No matches for /home/lsi, /tmp, /run/user/1000, the developer workspace, XChat cache paths, or records paths in the three GTK2 packages, engine build/install tools, package manifest source, and distribution instructions.",
+    "runtime_staging": "The engine updater derives the current user home with Path.home() and stages under ~/tempia/domainos-theme-work/I167/gtk2-engine-stage. It creates the directory with mode 0700 and uses a UUID filename, then unlinks the staged .so in finally. No author username is embedded.",
+    "package_contents": "The public suite manifest includes the portable GTK2 engine source, builder, and user-profile installer; package names are relative paths validated against absolute paths and .. traversal.",
+    "variant_consistency": "The base, KDE, and Reload GTK2 gtkrc recipes have the same current source hash."
+  },
+  "result": "No author-specific or machine-specific absolute path was found in the audited publishable GTK2 files. The only temp path is intentionally user-relative and follows this project’s ~/tempia rule; it is created for the invoking user and removed after the engine build stage.",
+  "limits": [
+    "This was a source-path audit, not a clean-room installation on another computer.",
+    "No package was built or installed, and no source/theme file was changed.",
+    "The separate V03 visual review remains unreviewed."
+  ],
+  "next": "Keep T04 running and I167 waiting_user for visual review; no packaging-path correction was indicated by this audit.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Additional distribution-source evidence only; not a fidelity or human-acceptance score."
+  }
+}

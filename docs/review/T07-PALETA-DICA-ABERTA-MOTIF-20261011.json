@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-11T12:08:25.864216+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: menu hint bridge implemented with four-palette hover and full Motif regression",
+  "changes": [
+    "Palette flow now refreshes existing editor menus from their current field roles",
+    "Visible hint appearance updates without resetting delay/duration, replacing content or acquiring focus"
+  ],
+  "build_exit_code": 0,
+  "full_native_metrics_exit_code": 0,
+  "palette_runs": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0,
+      "visible_updates": 2
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0,
+      "visible_updates": 2
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0,
+      "visible_updates": 2
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0,
+      "visible_updates": 2
+    }
+  ],
+  "scope": "Real Copy popup: visible menu/tip role changes, stable position, selection bounds preserved, real copy and clipboard, plus existing editor and cancel/confirm regression. Four initial schemes, two role updates per scheme.",
+  "retained_failure": "r1 cold crossing assertion failed once before palette update; mapped states were not logged in that run. r2 has diagnostic on failure and passed all four schemes. Cause not established; do not call it resolved by a passing rerun.",
+  "remaining": [
+    "Investigate intermittent initial cold-crossing failure if it recurs; diagnostics now retained",
+    "Other action/layout hover and final delivery audit",
+    "Personal handoff: reopen-status reports available=false for both channels; no old grant used"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/src/view/ui_menu_hints.c": "c42ea380d2741c40cb828184f2c9679e72a0f547125c03bc3d9ac76230740d96",
+    "tools/theme-lab/src/editor/view.c": "a360562d54695f5041f06834dd27450b51afca6ecd9c320206cffaaa12e93805",
+    "tools/theme-lab/src/view.c": "130cbf0c54ee1cd09a8c07df50dbdffcf6e2953f3d2e681547dc4c1ceaa49a88",
+    "tools/theme-lab/include/ui_hints.h": "104d63886469a510a8686756e81a1b46c2cf6f5e68ce019d43bfeff1e292bba7",
+    "tools/theme-lab/include/text_editor.h": "8dd0e4eafeda148c65bfb072cc0b8929123c41ea305be5629890b19bf5e1dff6",
+    "tools/theme-lab/tests/ui_help_flow.c": "b917f204412137cf9e47c85182c37bcf9eae85faba3b959c33613b7bafa74b54",
+    "tools/theme-lab/Makefile": "7155eb03407cf9522a7685e19e372ce3ce5dce367e6909590783e3601d40c766"
+  },
+  "evidence_sha256": {
+    "editor-live-palette-build.log": "9cc6621f696f1770faa28dfaea2aa28c34d216ffa6f376eaa09ef3d0feb7de1f",
+    "editor-live-palette-r2-build.log": "10110ad7e5f17a52a4fa2facf8585d38fe13a7235d5cae00ab44eb9ede61854b",
+    "editor-live-palette-r1.json": "a14d686a2d6062f939348f2d7067339f0b444b3f5080d30ac23bc4c443d44889",
+    "editor-live-palette-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-live-palette-r2.json": "db7c5505ed67d15f8cb19dba50b7f0308f81c0b9e09cfd4c38bb16422f105437",
+    "editor-live-palette-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-live-full-regression-r1.log": "22f207e80729f69b123d73025496974537dc6b70d5f5c4a4fabd019e633b2de5",
+    "editor-live-full-regression-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191"
+  },
+  "estimated_stage_progress_percent": 90,
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

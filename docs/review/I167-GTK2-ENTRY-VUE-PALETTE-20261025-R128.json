@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-PALETTE-20261025-R128",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "family": "GTK2 GtkEntry: identify active SR10.4 VUE palette",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "guest": "Dedicated assistant MAME clone PID 3759847",
+    "transport": "Synchronized, read-only Telnet through the existing clone network",
+    "files_read": [
+      "~/.vue/node_12345:0/palette.vue",
+      "/usr/X11/lib/vue/palettes/CoralReef.vp",
+      "/usr/X11/lib/vue/palettes/palette.vue",
+      "/usr/X11/lib/app-defaults/Vuefile",
+      "/usr/X11/lib/app-defaults/Vuestyle"
+    ]
+  },
+  "findings": {
+    "active_palette": {
+      "user_file": "~/.vue/node_12345:0/palette.vue",
+      "palette_name": "CoralReef",
+      "installed_match": "/usr/X11/lib/vue/palettes/CoralReef.vp",
+      "user_palette_values_match_installed_file": true,
+      "palette_entries_in_order": [
+        "#fe00827c827c",
+        "#7a98caffc5a3",
+        "#7848a075d500",
+        "#9fd79b0cbf00",
+        "#32009700c700",
+        "#e2009c6d835a",
+        "#76008c00a100",
+        "#4fdf5e4e8600"
+      ],
+      "format_prefix": "!0"
+    },
+    "vuefile_resource": {
+      "resource": "*secondaryColorSetId: 5",
+      "file": "/usr/X11/lib/app-defaults/Vuefile"
+    },
+    "entry_face_relation": {
+      "vue_file_name_face_rgb_from_R126": [42, 128, 169],
+      "fifth_palette_line_rgb_8bit": [50, 151, 199],
+      "channel_ratios_face_to_palette_line": [0.84, 0.848, 0.849],
+      "interpretation": "The measured field face closely resembles a uniformly darkened version of the fifth palette line. This is a plausible relationship, not a proven VUE shading rule or proof that secondaryColorSetId 5 indexes that line. The resource files read do not document the field's role-to-palette mapping."
+    },
+    "previous_palette_directory": "~/.vue/palettes is empty; the active profile instead records palette.vue under ~/.vue/node_12345:0, and the matching system palette is installed under /usr/X11/lib/vue/palettes."
+  },
+  "artifacts": {
+    "query_script": {
+      "path": "~/tempia/i167-vue-colorset-inventory-r128.py",
+      "sha256": "b8d6cd45e21bab3ba3b7577f7851ce9dd483050bebc9bc052d3a4df0016407ba"
+    },
+    "synchronized_readback": {
+      "path": "~/tempia/i167-vue-colorset-mapping-r128.txt",
+      "sha256": "3bc39d0b8dcf35adcc50f38a879ba20d4d902d3ec2b6898f00829257e761e480"
+    },
+    "prior_profile_inventory": {
+      "path": "~/tempia/i167-vue-colorset-targeted-r128.txt",
+      "sha256": "cac088b00583eea67e942d346d829921810a59ed359837aab7f4811223ca46a0"
+    }
+  },
+  "preservation": {
+    "guest_configuration_changed": false,
+    "guest_files_written": false,
+    "product_theme_changed": false,
+    "xchat_changed": false,
+    "other_toolkit_family_touched": false
+  },
+  "limits": [
+    "The palette file confirms the active historical palette and values, but the installed resources read here do not define which palette entry supplies the File Name field or how VUE derives its face shade.",
+    "No static palette RGB is authorized for GTK2; the KDE color-role rule remains in force.",
+    "This receipt is evidence for the VUE/GTK2 comparison only; it is not a visual acceptance or complete I167 result."
+  ],
+  "next": "Continue GTK2 GtkEntry only: use the now-identified CoralReef palette as historical context, seek an explicit VUE resource/source mapping for secondaryColorSetId 5 or record the relationship as unresolved, then verify the native selection state with the field visibly focused. Preserve the current dynamic KDE role mapping unless a supported role translation is established.",
+  "status": "running",
+  "user_acceptance": "pending",
+  "files_changed": false,
+  "guest_configuration_changed": false
+}

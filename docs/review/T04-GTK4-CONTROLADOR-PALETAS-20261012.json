@@ -1,0 +1,662 @@
+{
+  "at": "2026-10-12T01:20:48.731000+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 push through real controller, four schemes/four single states/two origins",
+  "matrix": {
+    "schemes": [
+      {
+        "scheme": "DomainOS-SR10.4",
+        "source_result": ".qa-theme-lab-spin-gwydt2fg/RESULTADO.json",
+        "colors_source": ".qa-theme-lab-spin-gwydt2fg/home/lab/generated/revisions/20261012T010613-035e61f2cc6b/gtk4-snapshot/GTK4-NATIVE-COLORS.json",
+        "colors_sha256": "aede0dcf6b2f0e72fb540a3f6ff956892c5b9796c343c70866902b5ae651f59b",
+        "captures": [
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-0-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "c0130eceb0c7429da912edac2873d3418d6cb6aad8ee3213c660be83759ec29f",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-0-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "7fe6a2494caded9c07a56a14579e8b8b42bbc166769eaf450a86569df642b843",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-1-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "64f5c9b59bea940bf0026cb2f6d6abb827c0ff5df1b6a08c4b55c3d6052d0cd1",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-1-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "4069dec4a2e195c892a48657537d4169c139a6069ed2f6f2d521bb2f2921a0d0",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-2-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "ff2633379ea165c9c6e7442ec2b27e9593deb3991d2583892490559c5e975e24",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-2-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "fb3c9d41ec7931530acc14edeba42a19946eb400cc969c2fc0735b8b9623b2bc",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-3-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "c0130eceb0c7429da912edac2873d3418d6cb6aad8ee3213c660be83759ec29f",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-gwydt2fg/DomainOS-SR10.4-3-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "7fe6a2494caded9c07a56a14579e8b8b42bbc166769eaf450a86569df642b843",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              120,
+              160,
+              213
+            ]
+          }
+        ],
+        "other_recipes_preserved": true
+      },
+      {
+        "scheme": "BreezeLight",
+        "source_result": ".qa-theme-lab-spin-csw2ig3x/RESULTADO.json",
+        "colors_source": ".qa-theme-lab-spin-csw2ig3x/home/lab/generated/revisions/20261012T010728-a2ef83610ee0/gtk4-snapshot/GTK4-NATIVE-COLORS.json",
+        "colors_sha256": "b5ca32f8c3fa81578d3caa8dfecc3467fc897874b32d25c0d3a55b08bbb42460",
+        "captures": [
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-0-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "96bf84b4757a0df5bb8037d641f8b6bc6bd1dbd118248b21558677e7a1321afe",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-0-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "bfb726b2fe2c779fdb6d15618465f63808e1ce72a2e7979b40ed8ada68d61b83",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-1-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "79b301de8f35ab835b3431f8e86df5addb03d2405281a360ab1291a2f1764f87",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-1-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "6161fe797401e2f9ef557fc4d7fca68900c0c04b1f3e5f901ff68858cea163ab",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-2-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "1ea5606e72d67ef07d491ea98b886a9cf5323531b4395487483da8780b9d3a0c",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-2-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "7df0de6816208ca688a210ce5d9395e09bb3017c5f53f6f33421f95ed31855ee",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-3-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "96bf84b4757a0df5bb8037d641f8b6bc6bd1dbd118248b21558677e7a1321afe",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-csw2ig3x/BreezeLight-3-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "bfb726b2fe2c779fdb6d15618465f63808e1ce72a2e7979b40ed8ada68d61b83",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              239,
+              240,
+              241
+            ]
+          }
+        ],
+        "other_recipes_preserved": true
+      },
+      {
+        "scheme": "BreezeDark",
+        "source_result": ".qa-theme-lab-spin-l603_ixq/RESULTADO.json",
+        "colors_source": ".qa-theme-lab-spin-l603_ixq/home/lab/generated/revisions/20261012T011511-6833b478919d/gtk4-snapshot/GTK4-NATIVE-COLORS.json",
+        "colors_sha256": "23c5807f9a308a0dde58d46e8b29ac1b0fb055884cbe2c2aff12b4f4920275b8",
+        "captures": [
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-0-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "f95c9516ac67cc6a5a71caac1d91ed241ce4f9ceae15e98f5066d167e9c551c0",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-0-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "df62a9501e9dd758f36e0da7b90a5bd9e17e915fc3f2fdc6bf380c9063f66b33",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-1-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "85aab0bfca6a2d2a485dc4bc349001e4e38794fa005cdd149755bc0066039447",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-1-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "a054051fc9204aff13cb1e0988d240712cbcc6f447df91fcf2985cf53170608f",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-2-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "492021ee9980ceb61fee7d614bf0c6b9cd0dbbb7b6d648f06efc1a7104310664",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-2-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "55e2488f6f0ac24073d167204cb77e80dcabe75d6fbfac89518baa31bb6970ea",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-3-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "f95c9516ac67cc6a5a71caac1d91ed241ce4f9ceae15e98f5066d167e9c551c0",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-l603_ixq/BreezeDark-3-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "df62a9501e9dd758f36e0da7b90a5bd9e17e915fc3f2fdc6bf380c9063f66b33",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              32,
+              35,
+              38
+            ]
+          }
+        ],
+        "other_recipes_preserved": true
+      },
+      {
+        "scheme": "TestYellow",
+        "source_result": ".qa-theme-lab-spin-8w7oe1g7/RESULTADO.json",
+        "colors_source": ".qa-theme-lab-spin-8w7oe1g7/home/lab/generated/revisions/20261012T011547-c1078626d88c/gtk4-snapshot/GTK4-NATIVE-COLORS.json",
+        "colors_sha256": "1233c2e54fe17dbabe47f8e7fca71bd690271eedcc4bd3fc74aa6503033cb1bb",
+        "captures": [
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-0-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "f83322870926154188e14d9813772c1cc0831d66bdfd59b5442046b915b44a70",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-0-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "8fd56586d04299548db38aa493fe74092743464416d91a4ce8b98a2c9fc3e888",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-1-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "0a809515607f220eb483eb7867a21c622803bdf331f45ff30c1ef54726bbd37d",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-1-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_normal_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "1f3aade8fbc82fb0ebe5c82369831fb864cf1d13ce507a7819eb17399eb9578e",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-2-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "640e9815ae94a567aecd464940c5777037cd81ecb34cd2d7ceab4422a1c2d482",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-2-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_insensitive_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "d9f2be1bbb14725a195c26c845ec33813ef5f250caa7e3ffe38cbd827a60448f",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "origin": "separate",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-3-separate.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "f83322870926154188e14d9813772c1cc0831d66bdfd59b5442046b915b44a70",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "origin": "coupled",
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-8w7oe1g7/TestYellow-3-coupled.png",
+            "edge_pixels": 904,
+            "differences": 0,
+            "foreground_role": "theme_button_foreground_backdrop_breeze",
+            "foreground_core_pixels": 14,
+            "capture_sha256": "8fd56586d04299548db38aa493fe74092743464416d91a4ce8b98a2c9fc3e888",
+            "canvas_role": "theme_unfocused_bg_color_breeze",
+            "canvas_pixel": [
+              236,
+              216,
+              112
+            ]
+          }
+        ],
+        "other_recipes_preserved": true
+      }
+    ],
+    "final_captures": 32,
+    "edge_pixels": 28928,
+    "edge_differences": 0,
+    "foreground_core_pixels_checked": 448,
+    "text_scope": "Opaque glyph pixels match effective role; not typography/historical fidelity certification",
+    "combined_states_certified": false,
+    "personal_profile_changed": false,
+    "canvas_pixels_checked": 32
+  },
+  "native_sessions": [
+    {
+      "id": 27483,
+      "exit_code": 0,
+      "schemes": [
+        "DomainOS-SR10.4"
+      ]
+    },
+    {
+      "id": 89281,
+      "exit_code": 1,
+      "positive_scheme": "BreezeLight",
+      "negative_scheme": "BreezeDark native checkbox setup did not enable; not paint proof"
+    },
+    {
+      "id": 60113,
+      "exit_code": 0,
+      "schemes": [
+        "BreezeDark",
+        "TestYellow"
+      ]
+    }
+  ],
+  "negative_evidence": [
+    {
+      "session": 32789,
+      "exit_code": 1,
+      "reason": "Standalone automatic renderer captured entirely black;904 edge differences. Coupled Cairo zero differences."
+    },
+    {
+      "session": 55670,
+      "exit_code": 1,
+      "reason": "Pressed dark generation published but replacement metrics absent within shorter10s observation; test ended before normal harness deadline."
+    }
+  ],
+  "fix": "Default Cairo in both GTK4 preview processes; preserve explicit renderer and personal profiles",
+  "harness_changes": "Measure all four native menu entries; checkbox retry only when saved choice remains false; poll same live controller with general45s observation deadline",
+  "pure_tests_passed": 25,
+  "captures_inspected": [
+    "BreezeDark disabled coupled",
+    "TestYellow pressed separate"
+  ],
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false,
+  "combined_states_certified": false,
+  "estimated_unit_progress_percent": 75,
+  "percentage_basis": "Push foundation, session and controller milestones established; personal delivery milestone remains. Not whole goal or historical fidelity.",
+  "remaining": [
+    "Prepare staged delivery and coordinate actual reopen",
+    "Other GTK4 controls",
+    "Other native families and full goal"
+  ],
+  "sha256": {
+    "tools/theme-lab/gtk4_worker.py": "7ae5ff94c2cd1a65f5fad10a9c080934b396964b10ed0af6a6a98a12faa91688",
+    "tools/theme-lab/tests/controller_gtk4_states.py": "45cf6048055399ca7929fbd46949a603c1217d2329462b9d737c03885977063b",
+    "tools/theme-lab/tests/controller_spin_probe.c": "620b6bc438b77e7d8942592671f3619a745993c30e0212d64375bb698260ce37",
+    "tools/theme-lab/tests/test_controller_spin.py": "4ada1e01409e2aaef60c4207149c5ae19b40939442385f825d30b1a857503e3f",
+    "tools/theme-lab/README.md": "52add3aeae5c1f049dae9f2bdab6fe534043a3b0c8a96952b043ee23a6a8c16e",
+    ".qa-t04-anchor-foundation/gtk4-controller-palette-pixels.json": "58e30df4a363962746c4c4b60cfdd4b2d16da271f71a607a58db767298f5fca4",
+    ".qa-t04-anchor-foundation/gtk4-controller-states-domainos-r2.log": "23c9ce76235dcee367808c2cbdd0985aa6a6f81cb7c3e94c6b4a08e033be516d",
+    ".qa-t04-anchor-foundation/gtk4-controller-states-other-palettes.log": "bd4c9a724f10bffa7f81c0d05ca143481717e54ffa6bcd29c693fa0c433e6fcd",
+    ".qa-t04-anchor-foundation/gtk4-controller-states-dark-yellow-r3.log": "461ab0047f38da83019fae07be1556221ae1edbf466a041402855cf945414eab",
+    ".qa-t04-anchor-foundation/gtk4-controller-states-pure.log": "bfc0db12dec7fd09846417f1000ce2bff2a3cc7ee5811e1c52695963be72e8f7"
+  }
+}

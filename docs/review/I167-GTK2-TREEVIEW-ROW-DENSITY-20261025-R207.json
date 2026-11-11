@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-TREEVIEW-ROW-DENSITY-20261025-R207",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "live_clone_pid": 274368,
+    "application": "VUE File Manager > Find Files > Files Found",
+    "capture": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-after-wait-r217.png",
+    "list_stride_px": 19,
+    "six_result_rows_visible": true
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "baseline": "R204 native GtkTreeView, same 322x139 allocation and same six VUE paths",
+    "palette_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "baseline_renderer_ypad": 2,
+    "baseline_row_stride_px": 24,
+    "baseline_vertical_adjustment": {"upper_px": 144, "page_px": 135},
+    "private_renderer_matrix": [
+      {"GtkCellRendererText.ypad": 2, "row_stride_px": 24},
+      {"GtkCellRendererText.ypad": 1, "row_stride_px": 22},
+      {"GtkCellRendererText.ypad": 0, "row_stride_px": 20}
+    ],
+    "rc_property_attempt": {
+      "syntax": "GtkCellRendererText::ypad = 0",
+      "observed_renderer_property_after_creation": 2,
+      "observed_row_stride_px": 31,
+      "interpretation": "In GTK 2.24.33 this RC style declaration did not assign the GtkCellRendererText GObject ypad property. This probe used the system default widget style, so its 31 px stride is not a product-theme measurement."
+    }
+  },
+  "theme_candidate": {
+    "change": "Private generated style set GtkTreeView ythickness=0 and kept the sunken ScrolledWindow enclosure at 2 px.",
+    "candidate_row_stride_px": 24,
+    "candidate_adjustment_upper_px": 144,
+    "baseline_crop": "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/baseline-crop.png",
+    "candidate_crop": "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/thickness-zero-crop.png",
+    "baseline_crop_sha256": "c3632b5a17e58900df10102acef90d0912b12589fbe1bde0fee432115abc2db0",
+    "candidate_crop_sha256": "c3632b5a17e58900df10102acef90d0912b12589fbe1bde0fee432115abc2db0",
+    "pixel_difference_count": 0,
+    "decision": "Do not change product ythickness: the candidate had no effect on rendered pixels or row density. The ypad property affects row geometry when set by the application, but did not respond to GTK RC style rules in this runtime. The theme-only adapter therefore cannot reach the 19 px VUE stride through these properties while preserving the current 13 px font."
+  },
+  "artifacts": {
+    "renderer_matrix": "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/metrics.json",
+    "renderer_matrix_sha256": "6fb5d926d5c656f2aae0eb8c78e611e07ba5f2ecb98401ccd5cdce7c15ad1fbc",
+    "rc_readback": "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/rc-result.json",
+    "rc_readback_sha256": "2f378410abeb6de8817720a8573646f0e70cae1fef512c39fe97dddc3113d1ef",
+    "theme_candidate_metrics": "~/tempia/ia-tema/evidence/I167/r208-treeview-thickness/metrics.json",
+    "theme_candidate_metrics_sha256": "cfacbd6e3032c4316339a52d090d21af381e40547d390e0ccde10204973beb49",
+    "private_probe_scripts": [
+      "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/check.py",
+      "~/tempia/ia-tema/evidence/I167/r207-treeview-padding/check-rc-ypad.py"
+    ]
+  },
+  "limits": [
+    "The ypad matrix changes an application-owned renderer property in a private fixture; it does not demonstrate a supported GTK theme control.",
+    "The 19 px reference stride is one Find Files list state, not a universal row-height contract for all GTK2 applications.",
+    "No product source, user GTK profile, XChat, guest file, MAME setting or VM profile changed."
+  ],
+  "next": "Continue I167/GTK2 with a different state/control that has a direct SR10.4 comparison. Retain the Find Files row-density mismatch as an application-level limit unless a supported theme-only property is found; do not lower the font or change product ythickness based on ineffective private variants.",
+  "product_source_changed": false,
+  "user_profile_changed": false,
+  "xchat_changed": false,
+  "vm_guest_changed": false,
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

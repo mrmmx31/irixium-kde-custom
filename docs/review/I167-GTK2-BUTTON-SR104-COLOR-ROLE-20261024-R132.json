@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-BUTTON-SR104-COLOR-ROLE-20261024-R132",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "family": "GTK2 push button: live SR10.4 color-role comparison",
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "mame_pid": 3759847,
+    "capture": "~/tempia/i167-current-sr104-r132.png",
+    "capture_sha256": "8fa6d572c075d1dace41d66d825fefaed0828348e8795484b26fd0f0aa340dba",
+    "region": "Find Files Start push button; crop ~/tempia/i167-r132-vue-start.png",
+    "button_pixels": {
+      "face": "#3297c7",
+      "upper_left_relief": "#a3d0e6",
+      "lower_right_relief": "#194b63"
+    },
+    "active_kde_role_match": "Colors:Header/BackgroundNormal; the native face and relief also match the shared Header shade factors"
+  },
+  "comparison": {
+    "gtk2": "2.24.33; prior native capture ~/tempia/i167-gtk2-push-font12-y0-r26/actual/normal.png",
+    "gtk2_capture_sha256": "a068a69fd6dbecf89376ae8f720a1b9392321c8b5410a2904c02fdfe4da691df",
+    "palette_capture": "~/tempia/i167-gtk2-push-font12-y0-r26/colors.json",
+    "palette_sha256": "9f209930d38b497cfc605ad71dc24779506d16902262bdfd7bb14c8b99f034b5",
+    "gtk2_button_pixels": {
+      "face": "#78a0d5",
+      "upper_left_relief": "#c4d5ed",
+      "lower_right_relief": "#3e536e"
+    },
+    "current_mapping": "Colors:Button roles",
+    "result": "normal VUE button maps to the dynamic KDE Header roles, while the GTK2 push candidate maps to Button roles; the active face and both relief tones differ"
+  },
+  "implementation": {
+    "theme_lab_adapter_changed": true,
+    "product_changed": false,
+    "user_session_changed": false,
+    "xchat_changed": false,
+    "vm_guest_changed": false,
+    "mapping": {
+      "enabled_normal_hover_pressed": "KDE Header active roles",
+      "enabled_backdrop": "KDE Header inactive roles",
+      "disabled": "KDE Button disabled roles",
+      "rgb_static_values_added": false
+    },
+    "validation": {
+      "unit_tests": "3 passed",
+      "native_gtk2": {
+        "status": "passed_native",
+        "gtk_version": "2.24.33",
+        "palettes": [
+          "DomainOS",
+          "BreezeLight",
+          "BreezeDark",
+          "TestYellow"
+        ],
+        "captures": 24,
+        "natural_request_px": [
+          74,
+          30
+        ],
+        "normal_clicks": 4,
+        "disabled_inputs_blocked": 4
+      },
+      "pixel_verifier": {
+        "status": "passed_scoped_pixels",
+        "captures": 24,
+        "edge_pixels": 21696,
+        "edge_differences": 0,
+        "face_pixels_exact": 864
+      },
+      "public_gtk2_route": {
+        "status": "passed",
+        "transitions": 8,
+        "palettes": [
+          "BreezeDark",
+          "BreezeLight",
+          "DomainOS",
+          "TestYellow"
+        ],
+        "origins": [
+          "coupled",
+          "separate"
+        ],
+        "all_native_clicks": true,
+        "all_replacements_kept_window": true
+      },
+      "recipe_unchanged": true,
+      "historical_fidelity_claimed": false
+    },
+    "artifacts": {
+      "native_results": {
+        "path": "~/tempia/i167-gtk2-push-r132-final/results.json",
+        "sha256": "1754c15eeb2b26c85f27bb6900b89af9d7e929daeb5f2b1aec46def80876366f"
+      },
+      "pixel_verification": {
+        "path": "~/tempia/i167-gtk2-push-r132-final/verified-pixels.json",
+        "sha256": "1c7fddf6a31bd6d8477a63238aa9d23db6abfb52b79e61a2c5fef12f325e33c6"
+      },
+      "public_results": {
+        "path": "~/tempia/i167-gtk2-push-r132-public/results.json",
+        "sha256": "6dd9782940db5e5f976717f09e6cb3c2198087f309780e3dd535f6bd1f5fa367"
+      },
+      "scoped_source_sha256": {
+        "tools/theme-lab/gtk2_buttons.py": "235ef8841120736b994bae80ca2beccb553931ab32df121c4adbf21832c97510",
+        "tools/theme-lab/tests/test_gtk2_buttons.py": "8f8ef31c9a0e90582fb0a244ca5bd7aa5ef884ee228b853c91d1c18db2221e06",
+        "tools/theme-lab/tests/verify_gtk2_button_pixels.py": "f373060f713691ac56786d3ef389a33b64e3d298e516d850b84e247c30f8d0f6",
+        "tools/theme-lab/tests/probe_gtk2_button.py": "40fd8802942b857cf57b77349e1195289c8e5f7cc602aa516d3ac555091b5317"
+      }
+    },
+    "next": "Choose the next GTK2 control with an SR10.4 counterpart and missing paired evidence; do not repeat the already-covered GtkEntry, scrollbar or arrow measurements."
+  },
+  "limits": [
+    "The VM comparison is one enabled normal Find Files push button; it supports the active Header role mapping but does not prove all VUE button states or every application.",
+    "Pressed, hover, backdrop and disabled VUE pixels were not captured, so their GTK2 translations remain technically tested but not historically paired.",
+    "GTK2 natural request is 74x30; the VUE button is application-sized and is not a natural-size equivalence measurement.",
+    "Pixel verification proves consistency with the generated GTK2 recipe for 24 captures (zero differences in the measured edge and face samples), not whole-control pixel identity with VUE.",
+    "Public-route evidence covers the GTK2 preview replacement and input path in synthetic isolated scenes, not installation into XChat or user acceptance."
+  ],
+  "status": "passed_scoped_step",
+  "user_acceptance": "pending"
+}

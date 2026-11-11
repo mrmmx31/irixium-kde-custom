@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R333",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "status": "historical-live-capture-pending-physical-wake",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "Continue GTK2 scrollbar stepper comparison only; preserve the assistant VM and all other project VMs."
+  },
+  "vm": {
+    "pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "version": "MAME 0.276, Domain/OS SR10.4 + HP VUE 2.01",
+    "other_vm_pid": 3971019,
+    "other_vm_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "other_vm_touched": false,
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false
+    }
+  },
+  "bridge": {
+    "path": "vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "status_before_capture": "no pending request or command files",
+    "status_after_capture": "no pending request or command files"
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/r333-domainos-live-20261027.png",
+    "sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+    "source": "native guest screen:snapshot, not host window capture",
+    "observation": "Black guest video area with lower Apollo command panel visible; no scrollbar or VUE application visible."
+  },
+  "host_focus": {
+    "session": "Wayland with XWayland",
+    "mame_window_id": 48234502,
+    "pid_confirmed_by_net_wm_pid": 3971377,
+    "current_xwayland_active_window": "0x0",
+    "pointer_hit_window": "0x400 (KWin/Wayland proxy; not MAME client)",
+    "input_sent": false,
+    "reason": "Could not authenticate and preserve the currently active Wayland surface while focusing the MAME window. No key/mouse event was sent, no focus or capture changes made."
+  },
+  "next": "Wait for the guest display to be physically awakened or for a safe authenticated host focus/restore path, then capture SR10.4 scrollbar state and compare GTK2 at 1:1. Do not restart MAME or alter guest state.",
+  "user_profile": {
+    "gtk2_theme": "DomainOS-SR10-4-KDE",
+    "kde_color_scheme": "DomainOS-SR10-4",
+    "selected_bundle": "14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467",
+    "active_wrappers_reference_selected_bundle": true,
+    "open_gtk2_applications_restarted": false
+  }
+}

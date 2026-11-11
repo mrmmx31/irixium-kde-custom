@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-ALTGR-CLICK-RECAPTURE-20261025-R152",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "verified_behavior": {
+    "release_default": "mouse=false and mouse_device=none keep the host pointer outside MAME; the R149/R150 display wake left them off.",
+    "click_capture": {
+      "click_duration": "50 ms bounded left-button press on a PID-verified MAME client coordinate",
+      "press_state": "hook captured=true, wait_button_up=true, mouse=true, mouse_device=mouse; click_pressed=true",
+      "release_state": "after button release, hook stayed captured, wait_button_up=false, mouse=true, mouse_device=mouse",
+      "visible_effect": "The click was consumed for capture; File Manager stayed open and the bin icon was not selected or opened."
+    },
+    "physical_altgr_release": {
+      "host_key": "X11 keycode 108 (ISO_Level3_Shift / right Alt), sent to focused MAME window",
+      "result": "hook captured=false, AltGr up, mouse=false, mouse_device=none; pointer then moved outside MAME"
+    },
+    "short_click_limit": "An xdotool default short click (~12 ms) did not trigger the hook. A frame-notifier experiment did not demonstrate improvement and was reverted. The current active hook remains the tested periodic version 3; clicks shorter than the observed 50 ms remain unverified."
+  },
+  "current_state": {
+    "hook_version": 3,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "vm_paused": false,
+    "mame_pid": 274368,
+    "mame_window": "minimized again after testing",
+    "xchat_focus_restored": true,
+    "guest_files_or_config_changed": false,
+    "original_vm_changed": false
+  },
+  "evidence": {
+    "native_capture_after_click": "~/tempia/ia-tema/evidence/I167/i167-after-50ms-capture-r152.png",
+    "native_capture_sha256": "58493c2565cff4c4c5ef4574b471c09cc4743e2d10611875ee92c5b679bbb76c",
+    "active_hook": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/sessao/mouse-altgr.lua",
+    "active_hook_sha256": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a"
+  },
+  "remaining": "Validate ordinary human click duration at the intended setting, then continue the GTK2/XmpIcon visual comparison of selected, keyboard-focus, hover and rubberband states. Do not apply the adapter to XChat before that visual work is complete.",
+  "status": "50ms_capture_and_altgr_release_verified_short_click_and_visual_pairs_pending"
+}

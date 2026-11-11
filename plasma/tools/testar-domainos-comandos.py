@@ -319,6 +319,11 @@ Window {
             if predicate(): return True
             QTest.qWait(20)
         return False
+    def terminal_windows():
+        tree = subprocess.run(["xwininfo", "-root", "-tree"], capture_output=True,
+                              text=True, check=True).stdout
+        return {line.split()[0] for line in tree.splitlines()
+                if "DomainOS-command-native-test" in line and literal_title in line}
     checks = {}
     checks["no_command_at_startup"] = state()["pending"] == 0 and not state()["lit"] and service.calls == 0
     checks["concurrent_operations_no_false_extinction"] = call("concurrent", bool)
@@ -326,13 +331,20 @@ Window {
     checks["new_operation_cancels_tail"] = call("newDuringTail", bool)
     call("terminal")
     checks["launch_lights_immediately"] = state()["pending"] == 1 and state()["lit"]
-    checks["real_helper_launch_result"] = wait(lambda: state()["report"].get("outcome") == "process-started")
+    checks["real_helper_launch_result"] = wait(lambda:
+        state()["report"].get("outcome") == "request-accepted"
+        and state()["report"].get("program") == "xterm"
+        and state()["report"].get("startupNotificationRequested") is True)
     checks["actual_terminal_on_private_display"] = wait(lambda: "DomainOS-command-native-test" in subprocess.run(
         ["xwininfo", "-root", "-tree"], capture_output=True, text=True).stdout)
+    checks["terminal_has_observed_native_window"] = len(terminal_windows()) == 1
     checks["posix_quote_preserves_literal_apostrophe_and_substitution"] = literal_title in subprocess.run(
         ["xwininfo", "-root", "-tree"], capture_output=True, text=True).stdout and not sentinel.exists()
-    terminal_pid = state()["report"].get("pid")
-    checks["launch_does_not_claim_application_finished"] = state()["report"].get("outcome") == "process-started"
+    terminal_result = state()["report"]
+    checks["launch_does_not_claim_application_finished"] = (
+        terminal_result.get("outcome") == "request-accepted"
+        and terminal_result.get("detail") ==
+            "Launcher accepted the startup request; window availability and application completion are not observed")
     call("lock")
     checks["lock_uses_native_dbus_reply"] = wait(lambda: state()["report"].get("action") == "lock")
     checks["lock_reaches_only_fixture_service"] = service.calls == 1 and service.active
@@ -343,30 +355,30 @@ Window {
     checks["missing_app_is_failure"] = wait(lambda: state()["report"].get("ok") is False)
     checks["missing_application_error_is_reported"] = "Application is not installed" in state()["report"].get("detail", "")
     checks["failure_extinguishes_indicator"] = state()["pending"] == 0 and not state()["lit"]
+    windows_before_parallel = terminal_windows()
     duplicate_request = json.loads(call("parallel", str))
     checks["same_action_same_token_has_distinct_instance_nonce"] = duplicate_request["a"] == duplicate_request["b"] == 1 and duplicate_request["nonceA"] != duplicate_request["nonceB"]
     checks["queued_requests_all_light_immediately"] = state()["parallelA"]["pending"] == 2 and state()["parallelB"]["pending"] == 1 and state()["parallelA"]["lit"] and state()["parallelB"]["lit"]
     checks["queued_native_results_all_arrive"] = wait(lambda: len(state()["parallelA"]["reports"]) == 2 and len(state()["parallelB"]["reports"]) == 1)
     parallel_state = state()
     parallel_results = parallel_state["parallelA"]["reports"] + parallel_state["parallelB"]["reports"]
-    parallel_pids = [report.get("pid") for report in parallel_results]
+    checks["identical_requests_open_three_distinct_windows"] = wait(
+        lambda: len(terminal_windows() - windows_before_parallel) == 3)
+    parallel_startups = [report for report in parallel_results
+        if report.get("outcome") == "request-accepted"
+        and report.get("program") == "xterm"
+        and report.get("startupNotificationRequested") is True]
     checks["queued_results_keep_each_instance_tokens"] = sorted(report.get("token") for report in parallel_state["parallelA"]["reports"]) == [1, 2] and [report.get("token") for report in parallel_state["parallelB"]["reports"]] == [1]
-    checks["identical_requests_spawn_three_distinct_processes"] = len(parallel_pids) == 3 and len(set(parallel_pids)) == 3 and all(report.get("outcome") == "process-started" for report in parallel_results)
+    checks["identical_requests_each_have_accepted_startup_request"] = len(parallel_results) == 3 and len(parallel_startups) == 3
     checks["all_queued_completions_extinguish_indicators"] = all(parallel_state[name]["pending"] == 0 and not parallel_state[name]["lit"] for name in ("parallelA", "parallelB"))
     checks["qml_diagnostics_zero"] = not warnings
     from PyQt6 import sip
     sip.cast(root, QQuickWindow).grabWindow().save(str(output / "commands-native.png"))
     report = {"status": "passed" if all(checks.values()) else "failed", "checks": checks,
               "qml_diagnostics": warnings, "last_state": state(), "private_display": os.environ.get("DISPLAY"),
-              "real_lock_or_power_action": False, "terminal_pid": terminal_pid,
-              "parallel_terminal_pids": parallel_pids}
+              "real_lock_or_power_action": False, "terminal_result": terminal_result,
+              "parallel_window_ids": sorted(terminal_windows() - windows_before_parallel)}
     (output / "RESULTADO.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n")
-    for pid in [terminal_pid, *parallel_pids]:
-        if not pid:
-            continue
-        # Only the exact process created by this fixture, never a process search.
-        try: os.kill(pid, 15)
-        except ProcessLookupError: pass
     print(json.dumps({"status": report["status"], "checks": len(checks), "result": str(output / "RESULTADO.json")}))
     return 0 if all(checks.values()) else 1
 

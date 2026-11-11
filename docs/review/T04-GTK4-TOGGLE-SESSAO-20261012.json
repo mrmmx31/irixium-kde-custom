@@ -1,0 +1,252 @@
+{
+  "at": "2026-10-12T02:01:05.886137+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "Private GTK4 toggle session, two independent standalone windows; not coupled/controller",
+  "native_session": 90922,
+  "native_exit_code": 0,
+  "native_result": {
+    "status": "passed_toggle_session",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "toolkit": "GTK4",
+    "fixture_scheme": "DomainOS-SR10.4",
+    "physical_clicks": [
+      [
+        1,
+        1
+      ],
+      [
+        1
+      ]
+    ],
+    "independent_sessions": true,
+    "reload_preserved": true,
+    "hidden_selection_retained": true,
+    "rollback_preserved_live_scene": true,
+    "unsupported_rejected": true,
+    "inspection_did_not_emit_clicks": true,
+    "project_unchanged": true,
+    "source_palette": {
+      "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+      "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+      "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+      "gtkconfig_policy_version": "6.3.4",
+      "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+      "kf_colorscheme_version": "6.13.0",
+      "kind": "native_kcolorscheme_selected_file",
+      "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+      "path": "/home/domainos-test/.config/kdeglobals",
+      "qt_version": "6.8.2",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "titlebar": "Header active/inactive",
+      "tooltip": "Active Tooltip in every state",
+      "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+      "helper": {
+        "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+        "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+      },
+      "helper_source": {
+        "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+        "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+      },
+      "snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd",
+      "role_fallbacks": {},
+      "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+    },
+    "scope": "Two standalone sessions; not coupled host or controller",
+    "public_support_announced": false,
+    "historical_fidelity_claimed": false
+  },
+  "push_regression_session": 9695,
+  "push_regression_exit_code": 0,
+  "push_regression": {
+    "status": "passed_scoped_worker",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "native_clicks": 3,
+    "backend_generation_and_preview_command": true,
+    "selected_fragments_parsed_by_native_gtk4": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop",
+      "hover"
+    ],
+    "actual_worker_events_consumed_by_c": 13,
+    "ctrl_click_select_only": true,
+    "ctrl_drag_move_without_native_activation": true,
+    "drag_allocation": [
+      52,
+      52,
+      180,
+      60
+    ],
+    "origin": "separate",
+    "initial_metrics": {
+      "index": 0,
+      "allocation": [
+        32,
+        32,
+        180,
+        60
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "custom_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        200,
+        70
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "automatic_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        112,
+        48
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        112,
+        48
+      ],
+      "native_natural_before_custom_size": [
+        112,
+        48
+      ],
+      "native_request_before_custom_size": [
+        112,
+        48
+      ],
+      "font_description": "Sans 20px",
+      "font_not_applicable": false
+    },
+    "natural_measurements_independent_of_custom_request": true,
+    "below_minimum_request_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        72,
+        30
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "close_during_live_generation": true,
+    "generation_child_reaped": true,
+    "host_loss_exit_code": null,
+    "responsive_while_owned_generation_child_live": true,
+    "artificial_clicks": 0,
+    "identity_preserved": true,
+    "metrics_after_update": [
+      50,
+      65,
+      200,
+      70
+    ],
+    "unsupported_scene_preserved": true,
+    "valid_recovery": true,
+    "closed_exit_code": 0,
+    "instance_preserved": true,
+    "public_controller_connected": false,
+    "historical_fidelity_claimed": false
+  },
+  "pure_tests": 19,
+  "negative_evidence": {
+    "session": 21540,
+    "exit_code": 1,
+    "cause": "Fixture model did not define positions/sizes; KeyError before any candidate construction. Fixed fixture initialization; no product failure inferred."
+  },
+  "changes": [
+    "Shared scene hooks preserve push default contract.",
+    "Private ToggleSession retains checked value by control index and session origin.",
+    "Native set_active precedes callbacks; restoration emits no clicked events.",
+    "Selection commit only after transfer; hidden selection retained."
+  ],
+  "limits": [
+    "DomainOS functional session proof; painter four palettes separately certified.",
+    "Two standalone sessions do not prove embedded origin, Ctrl gesture toggle behavior, worker IPC or controller.",
+    "Prepared snapshots still require route integration and identity validation.",
+    "No new public capability or personal handoff.",
+    "No historical fidelity or human approval claim."
+  ],
+  "estimated_toggle_unit_progress_percent": 35,
+  "percentage_basis": "Foundation and independent session/rollback verified; worker, coupled origin, controller and delivery pending.",
+  "sha256": {
+    "tools/theme-lab/gtk4_toggle_session.py": "3f629e96971cd873d65cfe12db0fcfd135b85f4b66dc86fdcd50d362a5eeb3e1",
+    "tools/theme-lab/gtk4_push_session.py": "a40d1474ef773a90129f3f9b2e800caa52b003c59a1f44fbb32bbf27e22b4519",
+    "tools/theme-lab/gtk4_push_api.py": "cc161ee8a96ae8dd49b7fe4e0c45afcab6271e7a419cc03366ede6c1887bdf5e",
+    "tools/theme-lab/tests/probe_gtk4_toggle_session.py": "a60e46457f8e6b18963730cbec1cf8174f2cf5acc641807dd8e9355f4b8f491c",
+    "tools/theme-lab/tests/test_gtk4_toggles.py": "48c266acf33c75ed29d96d7db8fdf3e461e799101cc660f1aaf45021014ff4d2",
+    "tools/theme-lab/tests/test_gtk4_worker_native.py": "e6824bbc941e84baeb70571ed1e3929c01f36ed1dbcf3e34722b0966eedbc216",
+    ".qa-t04-anchor-foundation/gtk4-toggle-session-pure.log": "fc4a83fe27860e0d7d3240af6ed5e6484ba5ce293ab03bad9da3333c6b3928e3",
+    ".qa-gtk4-worker-qzb1fc1l/home/WORKER-RESULTADO.json": "f0e6704d7676322a652a774736c84ff24252810f54f88b10afdd4ee16f515c83",
+    ".qa-gtk4-worker-909v2xa9/home/WORKER-RESULTADO.json": "1ec7585ccf7d34b6c11aaf9e4d0fb5a76d0f282c8518f5ceb4f39dea7fc26418"
+  }
+}

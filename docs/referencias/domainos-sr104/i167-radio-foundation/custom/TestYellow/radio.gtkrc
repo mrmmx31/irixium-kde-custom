@@ -1,0 +1,98 @@
+# Private GTK2 OPTION proposal; effective KDE roles only.
+style "theme-lab-gtk2-radio" {
+  GtkCheckButton::indicator-size = 17
+  GtkCheckButton::indicator-spacing = 7
+  font_name = "18px"
+  bg[NORMAL] = "#ecd870"
+  fg[NORMAL] = "#201c0c"
+  bg[PRELIGHT] = "#ecd870"
+  fg[PRELIGHT] = "#201c0c"
+  bg[ACTIVE] = "#ecd870"
+  fg[ACTIVE] = "#201c0c"
+  bg[SELECTED] = "#ecd870"
+  fg[SELECTED] = "#201c0c"
+  bg[INSENSITIVE] = "#e1ce6b"
+  fg[INSENSITIVE] = "#9d8f49"
+  engine "pixmap" {
+    image { function = FLAT_BOX detail = "checkbutton" state = NORMAL file = "radio-canvas-normal.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = NORMAL shadow = OUT overlay_file = "radio-normal.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = NORMAL shadow = IN overlay_file = "radio-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = PRELIGHT file = "radio-canvas-normal.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = PRELIGHT shadow = OUT overlay_file = "radio-normal.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = PRELIGHT shadow = IN overlay_file = "radio-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = ACTIVE file = "radio-canvas-normal.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = ACTIVE shadow = OUT overlay_file = "radio-normal.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = ACTIVE shadow = IN overlay_file = "radio-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = SELECTED file = "radio-canvas-normal.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = SELECTED shadow = OUT overlay_file = "radio-normal.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = SELECTED shadow = IN overlay_file = "radio-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = INSENSITIVE file = "radio-canvas-disabled.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = INSENSITIVE shadow = OUT overlay_file = "radio-disabled.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = INSENSITIVE shadow = IN overlay_file = "radio-disabled-selected.png" overlay_stretch = FALSE }
+  }
+}
+style "theme-lab-gtk2-radio-backdrop" {
+  GtkCheckButton::indicator-size = 17
+  GtkCheckButton::indicator-spacing = 7
+  font_name = "18px"
+  bg[NORMAL] = "#ecd870"
+  fg[NORMAL] = "#201c0c"
+  bg[PRELIGHT] = "#ecd870"
+  fg[PRELIGHT] = "#201c0c"
+  bg[ACTIVE] = "#ecd870"
+  fg[ACTIVE] = "#201c0c"
+  bg[SELECTED] = "#ecd870"
+  fg[SELECTED] = "#201c0c"
+  bg[INSENSITIVE] = "#e1ce6b"
+  fg[INSENSITIVE] = "#9d8f49"
+  engine "pixmap" {
+    image { function = FLAT_BOX detail = "checkbutton" state = NORMAL file = "radio-canvas-backdrop.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = NORMAL shadow = OUT overlay_file = "radio-backdrop.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = NORMAL shadow = IN overlay_file = "radio-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = PRELIGHT file = "radio-canvas-backdrop.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = PRELIGHT shadow = OUT overlay_file = "radio-backdrop.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = PRELIGHT shadow = IN overlay_file = "radio-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = ACTIVE file = "radio-canvas-backdrop.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = ACTIVE shadow = OUT overlay_file = "radio-backdrop.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = ACTIVE shadow = IN overlay_file = "radio-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = SELECTED file = "radio-canvas-backdrop.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = SELECTED shadow = OUT overlay_file = "radio-backdrop.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = SELECTED shadow = IN overlay_file = "radio-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = INSENSITIVE file = "radio-canvas-disabled.png" stretch = TRUE }
+    image { function = OPTION detail = "radiobutton" state = INSENSITIVE shadow = OUT overlay_file = "radio-disabled.png" overlay_stretch = FALSE }
+    image { function = OPTION detail = "radiobutton" state = INSENSITIVE shadow = IN overlay_file = "radio-disabled-selected.png" overlay_stretch = FALSE }
+  }
+}
+widget "*themeLabRadio" style : highest "theme-lab-gtk2-radio"
+widget "*themeLabRadio.*" style : highest "theme-lab-gtk2-radio"
+widget "*themeLabBackdropRadio" style : highest "theme-lab-gtk2-radio-backdrop"
+widget "*themeLabBackdropRadio.*" style : highest "theme-lab-gtk2-radio-backdrop"
+# Canvas uses effective KDE window roles; no reference RGB fallback.
+style "theme-lab-gtk2-canvas" {
+  bg[NORMAL] = "#ecd870"
+  fg[NORMAL] = "#201c0c"
+  bg[PRELIGHT] = "#ecd870"
+  fg[PRELIGHT] = "#201c0c"
+  bg[ACTIVE] = "#ecd870"
+  fg[ACTIVE] = "#201c0c"
+  bg[SELECTED] = "#ecd870"
+  fg[SELECTED] = "#201c0c"
+  bg[INSENSITIVE] = "#e1ce6b"
+  fg[INSENSITIVE] = "#9d8f49"
+}
+style "theme-lab-gtk2-canvas-insensitive" {
+  bg[NORMAL] = "#e1ce6b"
+  fg[NORMAL] = "#9d8f49"
+  bg[PRELIGHT] = "#e1ce6b"
+  fg[PRELIGHT] = "#9d8f49"
+  bg[ACTIVE] = "#e1ce6b"
+  fg[ACTIVE] = "#9d8f49"
+  bg[SELECTED] = "#e1ce6b"
+  fg[SELECTED] = "#9d8f49"
+  bg[INSENSITIVE] = "#e1ce6b"
+  fg[INSENSITIVE] = "#9d8f49"
+}
+widget "*themeLabCanvasWindow" style : highest "theme-lab-gtk2-canvas"
+widget "*themeLabCanvas" style : highest "theme-lab-gtk2-canvas"
+widget "*themeLabCanvasInsensitiveWindow" style : highest "theme-lab-gtk2-canvas-insensitive"
+widget "*themeLabCanvasInsensitive" style : highest "theme-lab-gtk2-canvas-insensitive"

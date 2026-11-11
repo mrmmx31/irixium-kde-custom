@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-11T04:48:11.913056+00:00",
+  "item": "I117",
+  "authority_revision": 1,
+  "phase": "full_native_comparison_verified_delivery_requested",
+  "integrated_proof": ".qa-theme-lab-spin-ezkga4__/RESULTADO.json",
+  "pixel_proof": ".qa-theme-lab-trough-m61adtv2/home/results/RESULTADO.json",
+  "verification": [
+    "16 actual GTK3 controls font/scale through production IPC, both origins (32 records)",
+    "Horizontal/vertical controls selected in real controller; actual Apply action",
+    "Native rectangles received and displayed with distinct Motif/GTK provenance",
+    "Resizing axis260 reflected in both origins; corresponding internal boxes equal across GTK origins",
+    "Other toolkit recipes preserved",
+    "Complete Motif summary includes final limitations; original fixed1KB wrap truncation corrected",
+    "140 pixel/geometry/state checks for each of4 palettes, including native margin boxes and painted cursor9px"
+  ],
+  "palette_cases": [
+    "DomainOS-SR10.4",
+    "BreezeLight",
+    "BreezeDark",
+    "TestYellow"
+  ],
+  "failures_preserved": [
+    "Initial pixel extension mistook9px painting for margin box:126/140, corrected category; original proof retained",
+    "First summary cut after~1KB; original full-flow proof retained; dynamic wrap fixed and native end-text proof passed",
+    "Harness used previous anchor-sensitive state while asynchronous control command pending; explicit observed TL_SELECT_CONTROL synchronization fixed",
+    "Harness mousemove --sync waited at already-current position; removed sync and bounded own click; failed one-pixel assist did not reach display"
+  ],
+  "limits": [
+    "Margin box includes spacing and does not equal painted border/glyph box",
+    "No historical fidelity approval inferred",
+    "Personal updated instance not opened yet; native temporary release required",
+    "Original source stays open; only saved project/journal imported, raw unsaved widgets not promised"
+  ],
+  "handoff_request": {
+    "id": "d59391788d7bca04532b05969523615156041fe375f9c2bd63671c2c6178a2e0",
+    "item_id": "I117",
+    "user_revision": 1,
+    "definition_sha256": "8dec1e5f9a4608bd02e7328711b9c0ec4a1a38862872624414202ce3ce19b773",
+    "application": "Theme Lab no Xephyr :61 — nova instância a partir do PID 1651344",
+    "reason": "I117 testado: abrir versão atualizada com medidas pareadas Motif/GTK3, entradas comuns e resumo completo. Copiar projeto salvo e journal/Undo com verificação; manter a origem aberta, pois texto bruto ainda não persistido não é importado. A liberação coordena uma entrega, não fecha outras janelas.",
+    "requested_at": "2026-10-11T04:47:29.405Z"
+  },
+  "estimated_stage_progress_percent": 85,
+  "percentage_basis": "I117 implementation and native proof ready; personal handoff and final delivered inspection remain",
+  "next": "Use same theme request after native release; preserve source and verify migrated saved project/journal, inspect delivered instance",
+  "hashes": {
+    "tools/theme-lab/src/view.c": "ab7d44e621368b3e49e1fc49a865a19eddc08fb2ea36a5294086fa26ae552fff",
+    "tools/theme-lab/tests/controller_spin_probe.c": "f025a5d2a1f54994520b3d77d8c6481ec3f83385e6764d128204b8e05cbc06d1",
+    "tools/theme-lab/tests/test_controller_spin.py": "cfe5e40ac34a0854a6bfda1e63c44f14ddbd61a930f7528f218d81bb99c0cf02",
+    "tools/theme-lab/tests/test_trough_native.py": "f49212890d30ca34afa8d22046740271f7f43a843591bca1c7057399a79cf930",
+    "tools/theme-lab/Makefile": "8a67577f678846355667f98456b07c71b46761e59fac1df727f5a3d541d02c9b",
+    ".qa-theme-lab-spin-ezkga4__/RESULTADO.json": "1b6f0f18bf55bfbcf07345c9202d64fb484889bb2af33d3c528e2ea5ecc6e678",
+    ".qa-theme-lab-trough-m61adtv2/home/results/RESULTADO.json": "a9f2abe7ed3b156494ccea803cb77e42254edef82a807fb52ca12aba26dde6d4",
+    ".qa-i117-fullflow/motif-summary-final.log": "5540c29a3fec6030fa43c4b02981b06561e98ed53c1fde15b97d35ef72bf39b8",
+    ".qa-i117-fullflow/controller-synchronized.log": "be29d3ccf72eec768c42e07de7962e1d0c90b994da19d313c380b5c0c591849d",
+    ".qa-i117-fullflow/pixels-final.log": "2b33ef037fbaed5955b3d61c81408eee6e4165e7206f2de582d79cd65ec4b255"
+  }
+}

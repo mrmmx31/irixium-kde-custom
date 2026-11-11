@@ -1,0 +1,30 @@
+{
+  "id": "T07-XEPHYR-USER-ADVANCE-20261018-R49",
+  "date": "2026-10-18",
+  "purpose": "Abrir uma nova prévia completa para avaliação manual sem interromper as sessões Xephyr existentes.",
+  "display": ":71",
+  "session": "~/tempia/domainos-user-progress-20261018/session",
+  "package": ".qa-domainos-release-1.1.0-beta.1/irixclassic-domainos-0.2.12-beta.1.zip",
+  "package_sha256": "3976fe6c8ad77633817a49541f8def14d09192641034f84777aefad40acfe6d2",
+  "global_theme": "org.magpie.irixclassic.domainos.desktop",
+  "color_scheme": "DomainOS-SR10-4",
+  "decoration": "domainos_sr104",
+  "result": {
+    "status": "open_for_user_review",
+    "automated_startup_checks": "22/22 true",
+    "native_galleries_alive": ["GTK2", "GTK3", "GTK4", "Qt5", "Qt6", "QtQuick5", "QtQuick6"],
+    "capture": {
+      "path": "~/tempia/domainos-user-progress-20261018/session/TEMA-COMPLETO.png",
+      "sha256": "71a2987d5f7ada031bbaca149bd949ed93dc682b431d6704c95f169531f06877"
+    },
+    "protected_user_profiles_unchanged": true,
+    "manual_visual_acceptance": "pending"
+  },
+  "sessions": {
+    "preserved_for_current_work": [":76"],
+    "new_user_preview": ":71",
+    "closed_owned_stale_probe": ":95",
+    "other_sessions": "Preserved; ownership or active scope was not certain."
+  },
+  "notes": "This is the 0.2.12-beta.1 package used by the prior user preview. It provides a complete isolated panel and native GTK/Qt galleries. Startup checks prove loading and isolation only; they do not prove visual fidelity or user acceptance."
+}

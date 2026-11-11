@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R437",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only verification of the current project-owned Domain/OS guest frame and MAME ownership before any further GTK2 horizontal-arrow interaction.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "second_mame_pid": 3971019,
+    "second_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "second_vm_contacted": false,
+    "verify_script_exit": 4,
+    "verify_script_reason": "A second distinct MAME instance is active; project VM script prohibits graphical input while any other MAME instance is present. Both disk identities matched their own workspaces."
+  },
+  "method": {
+    "capture": "Read-only manager.machine.screens[':apollo_screen:screen']:snapshot(path) through the correlated project bridge.",
+    "profile_probe": "paused=false, frameskip=4, throttled=false, captured=false, wait_button_up=false.",
+    "bridge_status": "pending=null, reply=null, pending_files=[]",
+    "guest_input_sent": false,
+    "host_focus_changed": false
+  },
+  "observation": {
+    "image": "~/tempia/ia-tema/evidence/I167/r437-current-readonly-20261027.png",
+    "sha256": "8f90074502a5873dbae55451814b2b178dd6f86e97ef1209e31a4010fb7e36fd",
+    "dimensions": [1024, 844],
+    "visible": ["VUE desktop", "File Manager", "Terminal", "underlying window with horizontal scrollbar"],
+    "target": "A horizontal scrollbar segment is visible at the lower edge of the underlying window; the pointer is elsewhere. No arrow was pressed.",
+    "screen_black": false
+  },
+  "result": {
+    "classification": "current guest frame and separate disk ownership verified; no graphical input permitted by the local VM guard",
+    "historical_horizontal_held_state_proven": false,
+    "interpretation": "This captures the current visible target and prevents repeating the obsolete assumption that the guest is black. It does not prove input delivery, pointer mapping, or pressed-state appearance."
+  },
+  "cleanup": {
+    "bridge_pending": false,
+    "project_vm_paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "capture": false,
+    "second_vm_changed": false,
+    "guest_disk_modified_by_test": false
+  },
+  "next": "Continue independent GTK2 work; resume the horizontal held comparison only after the second MAME is no longer active and the target is still verified in a fresh frame. Do not stop or alter the other VM."
+}

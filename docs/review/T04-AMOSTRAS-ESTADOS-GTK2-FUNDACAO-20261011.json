@@ -1,0 +1,42 @@
+{
+  "stage": "T04 GTK2 nontext sample state contract and native bridge",
+  "recorded_at": "2026-10-11T18:34:22.032480+00:00",
+  "authorization": {
+    "item": "T04",
+    "revision": 2,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "sources_sha256": {
+    "tools/theme-lab/gtk2_runtime_state.py": "0203f2038077a01618e37a51b7cf2eaac0b82ba62ea2713671f95fc9d8fc94ca",
+    "tools/theme-lab/tests/test_gtk2_runtime_state.py": "abd84bdf1adaa89a067b43f1f02d10bad0791a2116315d251ee9a4cecacf7e02",
+    "tools/theme-lab/tests/probe_gtk2_runtime_state.py": "6a4b27c9bbc5bda802d188e6a70d1d97dead5f3c9006a5bd6e1d221e82e163b8"
+  },
+  "evidence": {
+    "path": ".qa-t04-runtime-state/native-r2/RESULTADO.json",
+    "sha256": "0e4fd5226580308c7304f56acb0710855fb9798520cff34b109f79ffae1a63f3",
+    "native_origins": 2,
+    "native_control_types": 10,
+    "list_rows": 60,
+    "list_offsets": [
+      70,
+      260
+    ],
+    "hidden_values_preserved": true,
+    "bounds_preflight_before_any_mutation": true,
+    "pure_tests": 6
+  },
+  "failures": [
+    "First native fixture created generation parent with mode755; private directory guard refused before widgets. Fixture now creates0700; r2 passed."
+  ],
+  "remaining": [
+    "journal storage for nontext state",
+    "integration into native lifecycle and rebuild",
+    "distinct-process restart proof",
+    "launcher transfer and personal coordinated delivery"
+  ],
+  "storage_verified": false,
+  "cross_process_verified": false,
+  "historical_fidelity_claimed": false,
+  "user_approval": false,
+  "personal_session_changed": false
+}

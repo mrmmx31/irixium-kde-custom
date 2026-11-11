@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-11T14:02:29.286515+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "gtk3_resume_verified_private",
+  "changes": [
+    "Cena semanticamente idêntica não é reserializada: preserva bytes/horário/hash.",
+    "Geração e medidas seguem a família da cena aplicada, separada da proposta selecionada.",
+    "Edição de montagem bloqueada quando a família da proposta difere da cena; selecionar a família correspondente antes de editar."
+  ],
+  "checks": {
+    "gtk-resume-after": {
+      "status": "passed",
+      "scope": "Native GTK3 startup, two resumes with different pending dimensions and then Qt6 editor selection; original GTK3 scene bytes/hash and actual allocation preserved; proposal fields/history independent; no Qt6 painting claim",
+      "applied_allocation": [
+        220,
+        80
+      ],
+      "gtk3_pending": [
+        330,
+        110
+      ],
+      "qt6_pending": [
+        410,
+        140
+      ],
+      "scene_bytes_preserved": true
+    },
+    "gtk-resume-io-regression": {
+      "status": "passed",
+      "scope": "Native controller file load/save/cancel/invalid input, pending inactive recipes, positions, Unicode, project Undo/Redo, explicit Apply, real backend Export and comparison; private Motif and selected-scheme generators, not historical painting",
+      "imported_recipes_preserved": true,
+      "scene_changed_only_on_apply": true,
+      "native_restart_preserved_pending_project_scene_and_undo": true,
+      "invalid_persisted_scene_rejected_without_overwrite": true,
+      "native_delta_import_cancel_wrong_base_success_and_undo": true,
+      "native_edit_during_real_import_preserved_model_widget_scene_and_undo": true,
+      "native_reconstruction": "passed: real GTK3 snapshot, delta directory selection, two cancellations, wrong base refusal, exact bytes/report, base/project/scene preserved",
+      "export_package": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-cczjktdr/home/lab/generated/exports/revisions/20261011T135754-04d8bb48c27b/PACKAGE",
+      "export_families": [
+        "gtk1",
+        "gtk2",
+        "gtk3",
+        "gtk4",
+        "gtk5",
+        "kvantum",
+        "motif",
+        "plasma",
+        "qt5",
+        "qt6"
+      ]
+    },
+    "gtk-resume-spin-regression": {
+      "initial_coupled": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: aguardando medida nativaGTK3 - Motif: +154 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "initial_both": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local não medidaFonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +154 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "manual_spin_both": "Pedido em edição: 221 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 221 x 80; escala 1Mínimo 221 x 80; preferido 221 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 221 x 80; escala 1Mínimo 221 x 80; preferido 221 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +155 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "automatic_spin_both": "Pedido em edição: 221 x 81 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 221 x 81; escala 1Mínimo 221 x 81; preferido 221 x 81Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 221 x 81; escala 1Mínimo 221 x 81; preferido 221 x 81Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +155 x +56 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "request_below_native_minimum": {
+        "requested": [
+          1,
+          1
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "automatic_native_size": {
+        "requested": [
+          0,
+          0
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "status": "passed",
+      "motif_reference": [
+        66,
+        25
+      ],
+      "spin_input": "X11 pointer",
+      "limit_input": "XmTextFieldSetString / real valueChanged callback",
+      "personal_profile_exposed": false,
+      "historical_fidelity_claimed": false
+    }
+  },
+  "strict_build": "passed; archived gtk-resume-fixed-build.log",
+  "diff_check": "passed",
+  "before_failure": "GTK restart rewrote the unchanged applied scene; evidence archived",
+  "limitations": [
+    "Não comprova pintura Qt6 nem fidelidade histórica.",
+    "Guarda de edição de montagem entre famílias compilada; interação dessa guarda ainda sem ensaio nativo dedicado.",
+    "Entrega pessoal coordenada e avaliação ainda pendentes.",
+    "Arquivos reconstruídos exigem conferência/regeneração dos papéis atuais antes de instalar."
+  ],
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "Fluxos privados T08 verificados, incluindo reabertura GTK3 divergente; falta entrega/avaliação. Não percentual do goal ou fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "40de9177d301a866f639f4516824a0ae9bf0c5d72b283aa506172bab3056ed58",
+    "tools/theme-lab/tests/controller_gtk_resume.py": "222acd129be04083c7086ad5c5f8147c9ab2ef6627940c1bfce117203fb0595a",
+    "tools/theme-lab/tests/test_controller_spin.py": "d3a128c75c71600747790231631834f80c4a1c303510e420d9e3f6cd2e16281b",
+    "tools/theme-lab/tests/controller_spin_probe.c": "d3b8a36db643520414359ca16594207f11a53251b2109103168d0cc812c76735"
+  },
+  "evidence_hashes": {
+    "gtk-resume-before.log": "ad4b3a60cc72be5d95acb964da9bb86e469f7ef13c040fd5cd98dc5e023f4f6d",
+    "gtk-resume-before.err": "3ccc79bc4b57383d420e10a63060386630755a388b8290ba84dbc9d7e55ab173",
+    "gtk-resume-after.log": "ae30a38e484fc2caad470ca774220c3f33ac74886a93bce27fd4f041494d0c0e",
+    "gtk-resume-after.err": "ca0dacf4b76b7addb057b87790ed016b7dce61a2c291b7cb9b1c6c60b3d7624a",
+    "gtk-resume-fixed-build.log": "98a6f3684e16e0d4141697ea0af594b2adf9044f6d63f312dd99b105aa8fe8ca",
+    "gtk-resume-probe-build.log": "78075cd26c74da4e4e2ecdc658c9f2a7027d581e5abfc2b788324ad028ecb3e3",
+    "gtk-resume-io-regression.log": "d27865f3eb0bba2d0d54a8a8b1e8aa8862f714666b534aeffe3c811b9280a9e0",
+    "gtk-resume-io-regression.err": "5623d1f8d2346fde6033ecc95ba38ce15cba0b67290eddf1f47a5870e5646f0e",
+    "gtk-resume-spin-regression.log": "7316d8b0667541ba58ff2886045c875162dbe20e913c51133fb9fb44335178f9",
+    "gtk-resume-spin-regression.err": "5d2f485c6d648af5148cffeabe7e677316c33cf1cb35e4125dd48209a0c7d15c"
+  }
+}

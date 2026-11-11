@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R428",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only snapshot of the authorized project Domain/OS VM while continuing GTK2 horizontal-stepper analysis.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_board_mame_pid": 3971019,
+    "separate_board_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "method": {
+    "capture": "Read-only manager.machine.screens[':apollo_screen:screen']:snapshot(path) through the existing correlated MAME bridge.",
+    "host_focus_changed": false,
+    "guest_input_sent": false,
+    "window_restarted": false
+  },
+  "observation": {
+    "image": "~/tempia/ia-tema/evidence/I167/r428-current-readonly-20261027.png",
+    "sha256": "dd7bba1dc4cfc2df02d24166179a906c8a6e5fa97e9631aeba32e0c2b863f960",
+    "dimensions": [1024, 844],
+    "guest_ui_visible": ["VUE desktop", "Terminal", "File Manager", "Trash Can"],
+    "scrollbars": ["File Manager vertical scrollbar", "empty Trash Can horizontal scrollbar"],
+    "pointer": "At the top edge of the guest image, away from all scrollbar arrows.",
+    "historical_horizontal_hold_proven": false
+  },
+  "profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_captured": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "channel_pending": false
+  },
+  "result": "The current guest framebuffer is visible; it is not black. This confirms the present display state only. The pointer is not on a target arrow, and the Trash Can horizontal bar is empty, so this does not add pressed-state evidence or resolve R417's event ambiguity. GTK2 assets and user configuration were not changed.",
+  "next": "Continue I167 GTK2 by finding a reproducible, visible input path on an enabled VUE scrollbar arrow; retain the R394 normal-state comparison and do not alter the GTK2 recipe without a demonstrated mismatch."
+}

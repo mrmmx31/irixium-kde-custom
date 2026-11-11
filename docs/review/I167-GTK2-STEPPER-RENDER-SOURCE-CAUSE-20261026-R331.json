@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "R331",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "upstream-render-cause-isolated; simple-style-fix-rejected-pending-geometry-preserving-translation",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "project_item": "P10",
+    "project_revision": 1,
+    "project_authorized": true,
+    "scope": "Private GTK2 source/runtime diagnosis of the horizontal stepper size mismatch; no product or user theme change."
+  },
+  "question": "Why does the GTK2 pixmap engine render the correct 15x15 SR10.4 stepper asset differently at runtime, and can a one-property change fix it without changing the scrollbar geometry?",
+  "sources": {
+    "gtk_range": {
+      "package": "gtk+2.0 2.24.33-7",
+      "path": "gtk/gtkrange.c",
+      "url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-7/gtk/gtkrange.c/",
+      "sha256": "ff0173bf6884704a8172033a5a570c46130635cb6435b0419bcd6d84bb6bb6f6",
+      "lines": "draw_stepper computes arrow geometry from the stepper rectangle and arrow-scaling, then calls gtk_paint_box followed by gtk_paint_arrow."
+    },
+    "pixbuf_engine": {
+      "package": "gtk+2.0 2.24.33-7",
+      "path": "modules/engines/pixbuf/pixbuf-draw.c",
+      "url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-7/modules/engines/pixbuf/pixbuf-draw.c/",
+      "sha256": "02c130d63be06ba72f2d22500f2a9ac43003882f4a61ca4d96a97d42613c5878",
+      "lines": "reverse_engineer_stepper_box reconstructs horizontal stepper width from stepper-size and height from slider-width; a matching STEPPER image returns before the separate ARROW lookup."
+    },
+    "pixbuf_render": {
+      "package": "gtk+2.0 2.24.33-7",
+      "path": "modules/engines/pixbuf/pixbuf-render.c",
+      "url": "https://sources.debian.org/src/gtk%2B2.0/2.24.33-7/modules/engines/pixbuf/pixbuf-render.c/",
+      "sha256": "2ee298ee19e58d8ce7dd2372ea7a568d0ec52da99406aa51f863546c036c99f8",
+      "lines": "stretch=true scales to the reconstructed destination rectangle; stretch=false centers the natural-sized pixbuf."
+    }
+  },
+  "method": {
+    "runtime": "GTK 2.24.33-7, actual GtkHScrollbar/GtkVScrollbar, private Xvfb, 1:1 pixel capture; current installed generated GTK2 palette copied into ~/tempia.",
+    "reference": "Domain/OS SR10.4 HP VUE 2.01 horizontal Trash Can bar; docs/referencias/domainos-sr104/barra-horizontal-normal.png; canonical left/right cells [2,4,17,19) and [526,4,541,19).",
+    "current_metrics": {"slider_width": 11, "stepper_size": 15, "trough_border": 2, "natural_request_h": [54, 15], "natural_request_v": [15, 54]},
+    "private_candidates": [
+      "Removing only the 20 scrollbar ARROW overlays changed 0 rendered pixels: a matching STEPPER asset returns before ARROW painting.",
+      "Setting slider-width=15 while preserving trough-border=2 changed the horizontal arrow-cell differences from 85/117 to 3/57 at fixed registration; the right cell was 1/225 at local offset [-1,0]. But natural scrollbar requests grew from 54x15 / 15x54 to 54x19 / 19x54, violating the 15px total-width contract.",
+      "Setting slider-width=15 and trough-border=0 retained 15px cross-axis request but moved the stepper cells (best-match offsets -2 and +1 px), removed the 2px trough inset, and shortened the natural request along the bar from 54 to 50 px. Rejected as a direct fix.",
+      "Changing only STEPPER stretch=true to false worsened the registered horizontal cell comparisons (129/108 differing pixels; best nearby 106/108). Rejected."
+    ],
+    "artifacts": "~/tempia/ia-tema/evidence/I167/r330-gtk2-runtime-ocldyrn7/"
+  },
+  "conclusion": "The runtime discrepancy is explained by an upstream pixmap-engine geometry quirk: with slider-width=11 and stepper-size=15, its reconstructed horizontal STEPPER destination is 15x11, so stretch=true squeezes the complete 15x15 asset. Widening slider-width to 15 restores the arrow cell almost exactly but grows the GTK2 scrollbar to 19px; compensating with trough-border=0 breaks the reference inset and cell registration. The cause is now isolated, but a safe GTK2-only translation preserving the 15px overall bar, 2px recess, thumb geometry, arrow cell, and interaction hit regions remains unresolved. No product file, installed theme, XChat window, VM, or Xephyr was changed.",
+  "next": "Design a private GTK2-specific drawing adaptation that separates stepper artwork from GtkRange slider-width geometry, then compare all four normal directions and verify thumb/trough/hit geometry before applying. Keep GTK2 active; do not apply slider-width=15 or trough-border=0 directly.",
+  "technical_coverage_estimate": {"percent": 93, "basis": "Source/runtime cause isolated; no geometry-preserving fix accepted, and the remaining GTK2 states/audit and user visual review remain open.", "not_a_visual_fidelity_score": true}
+}

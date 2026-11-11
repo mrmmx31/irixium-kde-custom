@@ -1,0 +1,46 @@
+{
+  "id": "R608",
+  "date_local": "2026-10-28T14:39:24-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "change": {
+    "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "details": [
+      "Retry focusSearchAfterActivation from Loader.onLoaded if the Kicker representation did not exist during the opening callback.",
+      "The existing searchFocusPending and popup-visible guards ensure the retry is limited to the current opening.",
+      "No launcher/dispatch behavior changed."
+    ],
+    "diff_record": "P01 revision 4 changes-record; content_verified=true"
+  },
+  "source_basis": {
+    "kicker_reset": "Installed MenuRepresentation.reset() clears searchField.text and sets searchField.focus=true.",
+    "race": "focusSearchAfterActivation returns if representation.item is null while retaining searchFocusPending; the original open callback can run before Loader creation."
+  },
+  "validation": {
+    "qmlformat_parse": "passed",
+    "user_local_install": "updated only org.irixclassic.domainos.panel",
+    "plasmashell_restart": {
+      "service": "plasma-plasmashell.service for lsi only",
+      "previous_pid": 745055,
+      "current_pid": 752206,
+      "automatic_restarts": 0
+    },
+    "source_installed_sha256": "28b91031931ff402acd8a3b2207a7a2e66df8326116ef840a388f9523a7edc06",
+    "journal": "No QML load error referencing DomainOSKdeApplicationMenu.qml or DomainOSApplications.qml after the deliberate reload.",
+    "kwin_restarted": false,
+    "other_sessions_restarted": false,
+    "manual_keyboard_and_hover_acceptance": "pending"
+  },
+  "remaining": [
+    "User validation of typing immediately in the KDE menu search.",
+    "User validation that category/submenu hover no longer closes the KDE menu.",
+    "User validation of immediate search focus in the DomainOS applications menu.",
+    "Q510: identify affected application and approximate time before correlating the double-click stall/restart; no launch was repeated."
+  ]
+}

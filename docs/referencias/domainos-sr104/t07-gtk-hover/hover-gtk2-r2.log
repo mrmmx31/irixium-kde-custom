@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py", line 99, in <module>
+    assert tx + tw <= bx or bx + bw <= tx or ty + th <= by or by + bh <= ty, (rect, tip_rect)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ((540, 340, 120, 36), (586, 370, 354, 84))

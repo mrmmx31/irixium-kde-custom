@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "R689",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Confirmar que o engine GTK2 aplicado em R688 está carregado nos XChat do usuário lsi e verificar o estado atual da VM histórica, sem interação com controles VUE.",
+  "basis": {
+    "prior_receipt": "docs/review/I167-GTK2-USER-ENGINE-DEPLOYMENT-20261029-R688.json",
+    "vm": {
+      "pid": 379349,
+      "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+      "service": "domainos-tema-mame.service",
+      "address": "10.253.104.20",
+      "ftp": 21,
+      "telnet": 23
+    }
+  },
+  "result": {
+    "gtk2_user_profile": {
+      "selected_theme": "DomainOS-SR10-4-KDE",
+      "module": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+      "sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+      "mapped_by_running_xchat_processes": [1321694, 1327599],
+      "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0"
+    },
+    "vm_observation": {
+      "guest_capture": "~/tempia/domainos-theme-work/I167/review-current/vue-after-wake-r689.png",
+      "sha256": "fe420184320ecce52a6b2958b13052f012d985ced501024ac2b02a86432c8f43",
+      "dimensions": "1024x844",
+      "visible": "HP VUE File Manager with vertical scrollbar and both endpoint arrow regions visible",
+      "wake": "One documented Shift pulse; released on frame 2; operation done without error",
+      "profile": "paused=false; frameskip=4; throttled=false"
+    }
+  },
+  "limits": [
+    "This confirms user-profile selection and native GTK2 module loading in the open XChat processes; the user has not yet given visual acceptance.",
+    "The VM image is a native SR10.4 observation, not a pixel comparison of the GTK2 arrows.",
+    "No arrow was pressed and no GTK2/VM control state was changed beyond the single documented wake key.",
+    "Horizontal and pressed arrow comparisons, GTK2 renderer behavior after a future KDE color-schema switch, and the companion service refresh remain open."
+  ],
+  "next": "User can inspect the already-open GTK2 XChat windows. Continue I167 with a direct visual GTK2-to-SR10.4 scrollbar comparison; do not test VUE pressed states without I517."
+}

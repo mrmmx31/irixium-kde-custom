@@ -1,0 +1,44 @@
+{
+  "checked_at_utc": "2026-10-18T18:08:40Z",
+  "task": "P10 assistant Domain/OS clone endpoint isolation",
+  "revision": "R39",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1925360,
+  "network_namespace": "net:[4026533751]",
+  "endpoint": {
+    "address": "10.253.104.10",
+    "ftp": 21,
+    "telnet": 23
+  },
+  "retired_endpoint": {
+    "address": "10.104.253.10",
+    "ftp_listener_removed": true,
+    "telnet_listener_removed": true,
+    "address_removed": true
+  },
+  "checks": {
+    "ftp": {
+      "connect": true,
+      "banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+      "authentication_repeated": false
+    },
+    "telnet": {
+      "connect": true,
+      "crlf_response_hex": "fffd18"
+    },
+    "new_listeners": [
+      "10.253.104.10:21",
+      "10.253.104.10:23"
+    ],
+    "collision_review": "Host IPv4 and inspected MAME namespaces had no 10.253.104.10; other observed clones use 192.168.241.1 or 192.168.240.1/192.168.243.10, or an isolated configuration."
+  },
+  "preserved": {
+    "mame_process_restarted": false,
+    "mame_profile_changed": false,
+    "guest_network_config_changed": false,
+    "guest_disk_written": false,
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false
+  },
+  "scope_limit": "R39 validates connection through the new alias. Root FTP active listing of 26 entries remains R37 evidence on the same guest backend and was not repeated."
+}

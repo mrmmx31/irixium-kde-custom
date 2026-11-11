@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-KEYBOARD-WAKE-RECHECK-20261025-R187",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "native_guest_image": "black",
+    "host_active_window": "[HOM] XChat: lsi @ Codex VS Code / Xchat Projeto",
+    "host_pointer": {"x": 200, "y": 950},
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "action": {
+    "kind": "guest keyboard only",
+    "input": "One-frame Apollo Shift pulse; automatically released at frame 3.",
+    "request_id": "c4153b75083f4ae5b44ea7c52ff4bd84",
+    "completion_request_id": "3ee8b60fd9d544f383d27d4b18186a0c",
+    "script": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/sessao/i167-wake-shift-r182.lua",
+    "script_sha256": "996239b554c6123af9211037f1d8902835f1b24da648d5455dd9d994380e1b3a"
+  },
+  "result": {
+    "operation_done": true,
+    "key_released": true,
+    "guest_screen": "VUE desktop visible; Terminal and File Manager present; XmpIcon grid unselected",
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-current-vue-after-shift-r182.png",
+      "sha256": "4cd6c7844db1101868a82e25b0a6f91c50d0f0f6e2793790d55ce5e853421f0e"
+    }
+  },
+  "limits": "Confirms that this keyboard-only wake does not capture the host pointer in the current clone. It does not identify or reproduce the user's reported physical activation event, and it does not provide a hover/selection state for comparison with GTK2.",
+  "next": "Observe the user's exact screen activation event with the host pointer outside MAME and correlate host focus/capture with hook state. Leave the original hook unchanged until the event is identified.",
+  "status": "keyboard_wake_passed_reported_activation_trigger_unresolved"
+}

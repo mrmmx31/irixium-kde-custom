@@ -1,0 +1,62 @@
+{
+  "id": "T07-R126",
+  "date": "2026-10-19",
+  "work_item": {
+    "id": "T07",
+    "user_revision": 4,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+    "status": "running"
+  },
+  "change_record": {
+    "registered": true,
+    "comparison_verified": true,
+    "basis": "snapshot captured immediately before this scoped patch",
+    "result_ref": "docs/review/T07-MANUAL-PAINT-HINTS-20261019-R126.json"
+  },
+  "changes": [
+    "Numeric dimension hints now fit one line and include the allowed range, unit, and resize effect.",
+    "The dimension group reserves 20 px around its rows so Motif's 17 px tooltip does not cover the next scale or the preview captions.",
+    "The native hint checks now expect all 12 current action buttons and test adjacent horizontal scales plus the following preview."
+  ],
+  "runtime": {
+    "xephyr": ":82",
+    "resolution": "1600x1000",
+    "application_pid": 3721359,
+    "application": "Theme Lab - Editor de pintura manual",
+    "observation": "Width hint was 412x17 at y=174; height scale begins below it. Height hint was 406x17 at y=231 and ends above the preview captions. A 300 ms hover on width followed by hover on height produced only the height hint after its delay. After leaving the controls the tooltip window was IsUnMapped.",
+    "artifacts": [
+      {
+        "path": "~/tempia/t07-xephyr-r126/width-hint.png",
+        "sha256": "8fc3e3ffad991bf0977fb7dbb1c2f8b6c82a06fd93cdef1c9de2c4c2af74c874"
+      },
+      {
+        "path": "~/tempia/t07-xephyr-r126/height-hint.png",
+        "sha256": "4bd72fc7aad159bd93cb40c79b0f0cd085ca3091b1821a33293c0b02b0d4a616"
+      },
+      {
+        "path": "~/tempia/t07-xephyr-r126/alternating-hover.png",
+        "sha256": "397f5409d2e38c0577bcafe61abb2edabc2fb081c0fa0004544681ee8e0dcf2e"
+      },
+      {
+        "path": "~/tempia/t07-xephyr-r126/after-exit.png",
+        "sha256": "650156e31fe63d8f2d9d25fe2778f3f45b516bfc5a801e385c163233ca2eaa54"
+      }
+    ]
+  },
+  "automated_validation": {
+    "command": "make -C tools/theme-lab BUILD=~/tempia/t07-build-r126 check-ui-hints",
+    "result": "passed",
+    "coverage": [
+      "delayed Motif hover, screen bounds, non-overlap, stability, leaving, and cancelled pending tooltip",
+      "width and height tooltip non-overlap against adjacent scale and preview",
+      "all 12 action hints match their text",
+      "DomainOS, BreezeLight, BreezeDark, and TestYellow hint palette roles"
+    ],
+    "limitation": "Xvfb emitted font and missing-charset warnings; rendered glyph fidelity is not proved by this suite."
+  },
+  "remaining": [
+    "This is a focused proof for the manual editor's dimension controls, not a full T07 audit of every family and layout.",
+    "The existing Help menu and novice/intermediate/expert topics remain covered by T07-HELP-XEPHYR-20261016.json."
+  ],
+  "next": "Continue the remaining T07 hint/layout coverage, then process the next valid authorized item in work."
+}

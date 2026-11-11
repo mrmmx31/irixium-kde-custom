@@ -1,0 +1,106 @@
+{
+  "id": "P04-ICONBOX-RESTORE-FRONT-20261103",
+  "recorded_at": "2026-11-03T04:06:47Z",
+  "authority": {
+    "source": "pedido direto do usuário para que Restaurar selecionadas também traga as janelas da ação para a frente",
+    "goal_changed": false,
+    "visual_acceptance_inferred": false
+  },
+  "change": {
+    "label": "Restaurar selecionadas",
+    "sequence": [
+      "resolver identidades e relações antes da primeira mutação",
+      "remover minimização e maximização total ou parcial",
+      "aguardar todas as mesmas identidades confirmarem estado normal",
+      "elevar cada janela selecionada exatamente uma vez na ordem da seleção",
+      "ativar a última janela selecionada",
+      "confirmar pelo KWin o estado normal, a pilha e a janela ativa"
+    ],
+    "preserved": [
+      "desktop de cada janela",
+      "monitor de cada janela",
+      "frameGeometry de cada janela",
+      "relações de janela e configurações do usuário"
+    ],
+    "native_api": [
+      "workspace.raiseWindow(window)",
+      "workspace.stackingOrder",
+      "workspace.activeWindow"
+    ],
+    "failure_contract": "timeout ou desaparecimento relata partial-request e não repete restauração nem elevação"
+  },
+  "ui": {
+    "object_name": "domainosBatchRestore",
+    "tooltip": "Remove minimização e maximização, traz todo o conjunto selecionado à frente e deixa a última janela selecionada ativa, sem alterar manualmente sua posição."
+  },
+  "verification": {
+    "focused_suites": {
+      "result": "passed",
+      "tests": 39,
+      "parts": {
+        "window_restore_and_geometry": 7,
+        "relation_guard": 6,
+        "panel_measurement": 1,
+        "operations_handoff": 19,
+        "middle_click_regression": 6
+      },
+      "execution_note": "as suítes Qt foram executadas separadamente após o carregamento agregado provocar falha do processo de teste; todas passaram isoladamente"
+    },
+    "native_x11": {
+      "result": "passed",
+      "checks": 71,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-restore-front-x11-20261103/RESULTADO.json"
+    },
+    "native_wayland": {
+      "result": "passed",
+      "checks": 71,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-restore-front-wayland-20261103/RESULTADO.json"
+    },
+    "covered_cases": [
+      "uma janela não selecionada começa ativa e acima do conjunto",
+      "as selecionadas terminam acima das janelas comuns não selecionadas",
+      "a última selecionada termina ativa",
+      "cada identidade selecionada recebe uma única elevação",
+      "desktop, monitor e geometria permanecem preservados",
+      "X11 e Wayland observam novamente o resultado após o recibo"
+    ],
+    "source_sha256": {
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/window_ops.js": "10f713be263d71d25fe6e68bf2a6e1797068142f9faf62746d575ecab8a0946d",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "657033ce31eeb29ea2cadb4826c4f685f1ce1e0060d62ca8f5fb974ed4f3bdee",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsMenu.qml": "957b4a7a0c486242593f40a8918445c63d41822aa15438e19c619e2346064c6c",
+      "plasma/tests/test_domainos_window_ops_geometry.py": "7b97aaf6cb96c5d45da9212b610e5d07a12de1ef5a1ec528952db3d0e857dbd9",
+      "plasma/tools/testar-domainos-janelas.py": "bbf7081679bddfdba40f4c71cef47ced81c7a7dfe8f8a5af03e823f3b21caa2a"
+    },
+    "git_diff_check": "passed"
+  },
+  "deployment": {
+    "tool": "tools/update_domainos_qml.py",
+    "backup": "/home/lsi/.local/state/irixium-domainos/backups/b1841bc907b54a099a687a77f2d6bdb3",
+    "source_and_installed_match": true,
+    "plasmashell": {
+      "previous_pid": 2599406,
+      "current_pid": 2628259,
+      "active": true,
+      "other_user_pid_preserved": 332937
+    },
+    "configuration": {
+      "unchanged_hashes": {
+        "kdeglobals": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+        "plasmarc": "ae86c7cebd4ffd3d2a378d8b0763426215de530c89bbc0ea6d9bb0e19ec5e0b3",
+        "kwinrc": "131f276c31272897f2eb4e5429c3dfcddc3363143cc089707bd882e958598a26"
+      },
+      "plasma_appletsrc_before_restart": "1e5577f1cc6f77acc853de878f465afe856ebcffc9b8fda02052ef31ebd63b8c",
+      "plasma_appletsrc_after_restart": "a36a27b26fccdacba6dab8d5e8bcb3ef2ebd6485ad621ad76529c4a414eb645e",
+      "assessment": "o atualizador não escreve perfis; o plasmashell reserializou appletsrc durante a recarga e a gravação foi preservada"
+    }
+  },
+  "limits": [
+    "A verificação nativa usou compositores e janelas privadas; nenhuma janela pessoal foi restaurada ou elevada.",
+    "A operação já está instalada no usuário lsi, mas a aceitação da interação na sessão real continua pertencendo ao usuário."
+  ],
+  "progress": {
+    "subscope_percent": 95,
+    "basis": "implementação, confirmação nativa X11/Wayland, publicação e recarga concluídas; resta a avaliação do usuário em janelas reais",
+    "not_visual_fidelity_percent": true
+  }
+}

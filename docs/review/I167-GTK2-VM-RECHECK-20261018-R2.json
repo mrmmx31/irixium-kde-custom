@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "scope": "Refresh live state of the isolated SR10.4 clone; determine whether GTK2 historical scrollbar comparison can resume.",
+  "vm": {
+    "mame_pid": 1155640,
+    "disk": "~/tempia/domainos-assistant-vm-20261017/discos/dn3500_sr10.4.assistant.awd",
+    "network_namespace": "net:[4026533751]",
+    "ftp_telnet_alias": "192.168.247.10",
+    "other_clone_alias": "192.168.242.10",
+    "original_vm_touched": false,
+    "source_disk_touched": false
+  },
+  "mame_profile": {
+    "frameskip": 4,
+    "throttled": false,
+    "paused": false,
+    "pending_command": false,
+    "capture_hook": "captured=true, wait_button_up=false"
+  },
+  "ftp_read_only": {
+    "endpoint": "192.168.247.10:21 forwarded inside namespace to guest 192.168.240.2:21",
+    "active_mode": true,
+    "login_succeeded": true,
+    "files": {
+      "/etc/inetd.conf": {
+        "sha256": "be9fc99823ade37d4e7acd44c596ad178b6e5c7143c518c40fc304e89f4d14e4",
+        "contents": "# Domain/OS host-only FTP for Debian\nftp stream tcp nowait root /etc/ftpd ftpd\nspc stream tcp nowait root /usr/softbench/bin/softspcd /usr/softbench/bin/softspcd\n"
+      },
+      "/etc/rc.local": {
+        "sha256": "7c0813c02c516b72dfa06f27500185ab62b36d47188c01a1fb148610cd48dcf7"
+      }
+    },
+    "guest_edited": false
+  },
+  "telnet": {
+    "endpoint": "192.168.247.10:23",
+    "tcp_listener_accepts": true,
+    "guest_prompt": false,
+    "inetd_conf_has_telnet_entry": false
+  },
+  "screen": {
+    "current_snapshot": "~/tempia/i167-gtk2-vm-recheck-20261018/vm-screen-current.png",
+    "sha256": "691083851ca24920941d3b818513cce6146d62c0f3ad6ba2430627df9bd771f5",
+    "visible_state": "black guest screen; no current VUE or scrollbar",
+    "previous_snapshot": "~/tempia/domainos-assistant-vm-20261017/sessao/captura-current-20261018.png",
+    "previous_snapshot_sha256": "a8475aa80bc2a0a4bb6a3029725607b088163ab4c58e8027fd901468546974d5",
+    "previous_snapshot_mtime": "2026-10-18 02:49 local; showed VUE File Manager, stale for current live state"
+  },
+  "input": {
+    "sent": false,
+    "reason": "current guest screen offers no safe graphical target; no restart or guest config change"
+  },
+  "result": "I167 remains partial. Authorized GTK2 recipe and public preview tests remain valid, but this live frame cannot compare the SR10.4 scrollbar. Resume only after a safe, visible VUE session is available."
+}

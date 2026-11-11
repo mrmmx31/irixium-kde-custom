@@ -1,0 +1,2 @@
+{"status": "started", "family": "gtk2", "pid": 2011086, "embedded": true, "controls": ["scroll_h", "scroll_v"], "project_sha256": "6057a2226bbc9d869e31b2e67c28454f85b83827290b92b28aebe0597a5be73e", "guards": {"fixture_only": true}, "recipe_scope": "scrollbars_only", "widget_source": "native_gtk2", "historical_fidelity_claimed": false, "host_changed": false}
+{"status": "passed", "stages": ["valid_change_applied", "invalid_change_preserves_scene", "subsequent_valid_change_recovers"], "embedded": true, "event_count": 7, "namespace_guard_mocked_for_fixture": true}

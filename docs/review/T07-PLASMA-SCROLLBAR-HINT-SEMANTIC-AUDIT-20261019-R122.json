@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "T07-PLASMA-SCROLLBAR-HINT-SEMANTIC-AUDIT-20261019-R122",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T06:03:26Z",
+  "scope": "Revisar semanticamente e provar em Xephyr os hints das duas amostras Plasma Components.ScrollBar, incluindo unidade, efeito, limite, atraso, estabilidade, geometria e interação de arraste.",
+  "authorization": {
+    "section": "work",
+    "user_revision": 4,
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "findings": {
+    "vertical": "15 px de largura. Arraste o indicador; a amostra não rola conteúdo real.",
+    "horizontal": "15 px de altura. Arraste o indicador; a amostra não rola conteúdo real.",
+    "reason": "Os textos antigos diziam apenas para rolar pela amostra, sem identificar a medida, a ação observável nem o limite de que nenhuma área de conteúdo está associada."
+  },
+  "runtime": {
+    "xephyr": ":85",
+    "resolution_px": [1280, 800],
+    "qt": "6.8.2",
+    "platform": "xcb",
+    "controls_style": "org.kde.desktop",
+    "native_renderer": "org.kde.plasma.components.ScrollBar + QtQuick.Controls.ToolTip",
+    "palette": "isolated default; color roles and historical fidelity not measured",
+    "isolation": "Private HOME/XDG and copied local theme assets under ~/tempia; personal profile unchanged; theme not installed."
+  },
+  "validation": {
+    "controls": 2,
+    "passed": 2,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "cold_check_ms": 300,
+    "visible_by_ms": 600,
+    "stable_ms": 400,
+    "closed_after_leave": true,
+    "hint_geometry_px": [300, 48],
+    "disjoint_from_scrollbar": true,
+    "disjoint_from_footer_label": true,
+    "inside_window": true,
+    "real_drag": {
+      "vertical_position": [0.28, 0.66],
+      "horizontal_position": [0.28, 0.66],
+      "both_changed": true
+    },
+    "qml_warnings": 0,
+    "source_and_text_assertions": "passed"
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/plasma_style_demo.py": "a72816feb83c7c7d2e823cbdc5104612a972a1420f38daed8df3e64b2d98aebe",
+    "probe-r3.py": "5d6dcec6edd6da180ed44978ab7240f6298963542ffe6d675e1dc03cff6d469b",
+    "result": "df69bd4f1c553f14c0294a18af3589422096cf30ab53dba496feb95f019e6e80"
+  },
+  "change_record": {
+    "verified": true,
+    "recorded_files": 1,
+    "before_sha256": "706323bb1a220cf52235406988d9d7b243dba58f10f2a9938e0acaaea076596d",
+    "after_sha256": "a72816feb83c7c7d2e823cbdc5104612a972a1420f38daed8df3e64b2d98aebe",
+    "evidence": "~/tempia/board/diff-records/record-ao2w1i4t"
+  },
+  "script_record": {
+    "verified": true,
+    "name": "probe-r3.py",
+    "sha256": "5d6dcec6edd6da180ed44978ab7240f6298963542ffe6d675e1dc03cff6d469b",
+    "files_changed": true
+  },
+  "artifacts": {
+    "result": "~/tempia/t07-plasma-hints-semantic-r122-20261019/RESULTADO.json",
+    "vertical_capture": "~/tempia/t07-plasma-hints-semantic-r122-20261019/plasma-vertical-hint.png",
+    "vertical_capture_sha256": "23f0862807ed483286572017a75d56681b5b209935e7d928646f43a0465dd0bb",
+    "horizontal_capture": "~/tempia/t07-plasma-hints-semantic-r122-20261019/plasma-horizontal-hint.png",
+    "horizontal_capture_sha256": "dfbcabcee9ef0d9dc6607ed133289cfc83eab0bca3895b6fd9b761950e6aa1ea",
+    "failed_attempt_reports": [
+      "~/tempia/t07-plasma-hints-semantic-r122-20261019/RESULTADO-R1-FALHA.json",
+      "~/tempia/t07-plasma-hints-semantic-r122-20261019/RESULTADO-R2-HARNESS-FALHA.json"
+    ],
+    "r2_captures": [
+      "~/tempia/t07-plasma-hints-semantic-r122-20261019/plasma-vertical-hint-r2.png",
+      "~/tempia/t07-plasma-hints-semantic-r122-20261019/plasma-horizontal-hint-r2.png"
+    ]
+  },
+  "diagnostics": [
+    "R1 exposed a real placement problem: the long text made the tooltip 84 px tall and it overlapped the footer. The initial horizontal observation was also recorded as missing; subsequent instrumented tests confirmed the pointer coordinates and both hover states.",
+    "R1 report was retained, but its two screenshot paths were overwritten by R2 before separate copies were made. R2 captures were preserved under suffixed filenames and their hashes match its report.",
+    "R2 passed runtime hover, drag, timing and geometry, but the probe still asserted the old wording and returned a false negative. R3 corrected only the assertion and retested the final text; both bars passed."
+  ],
+  "limits": [
+    "One Qt 6.8.2 gallery layout and one Xephyr resolution; this is not a full Plasma Style color or historical-fidelity audit.",
+    "The sample has no scrolling content attached; the test verifies only that dragging changes the displayed synthetic position.",
+    "No human approval is inferred. T07 remains in progress."
+  ],
+  "conclusion": "Both Plasma scrollbar hints now state their 15 px cross-axis dimension, the actual drag effect, and the absence of real content scrolling. The final native hover and drag probe passed for both orientations."
+}

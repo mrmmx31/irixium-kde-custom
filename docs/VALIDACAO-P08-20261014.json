@@ -1,0 +1,119 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "status": "partial_waiting_user",
+  "date": "2026-10-14",
+  "changes": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml": "Applications drawer image box corrected from 64x48 to 36x36 logical units; actual 4:3 SVG is preserved with PreserveAspectFit and at least 4 logical units of margin inside the bevel on all four sides; palette roles unchanged",
+    "plasma/tests/test_domainos_activity_light.py": "geometry regression gate now checks left/right/top/bottom bounds against bevel thickness"
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+    "plasma/tests/test_domainos_activity_light.py": "2d21e160d77d1e0d0fde69c42f17936fa5a4e7d85f942b537c26b7a8ee305f48",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/images/applications.svg": "5345042401b65a04ea0ee20d74780b0c736f9e1cac8ed00824839b405dba0d2e"
+  },
+  "tests": [
+    {
+      "command": "python3 -B plasma/tests/test_domainos_activity_light.py --output /tmp/domainos-p08-20261014-after",
+      "passed": 46,
+      "total": 46,
+      "scope": "isolated software Xvfb QML/activity panel"
+    },
+    {
+      "command": "Xephyr :69 private session; dbus-run-session -- python3 -B plasma/tests/test_domainos_activity_light.py --worker --output /tmp/domainos-p08-20261014-xephyr",
+      "passed": 46,
+      "total": 46,
+      "scope": "same isolated QML scene in private Xephyr, not full Plasma"
+    },
+    {
+      "command": "python3 -B plasma/tools/testar-domainos-comandos.py --saida /tmp/domainos-p08-20261014-commands",
+      "passed": 20,
+      "total": 23,
+      "failed": [
+        "real_helper_launch_result",
+        "launch_does_not_claim_application_finished",
+        "identical_requests_spawn_three_distinct_processes"
+      ],
+      "scope": "private command/menu fixture; Help and Session menu-only gates passed",
+      "historical": true,
+      "superseded_by": "docs/review/P08-COMANDOS-XEPHYR-20261014.json",
+      "diagnosis": "The three failures expected process-started/PID for the KIO request-accepted contract; corrected test now observes accepted startup requests and actual windows."
+    },
+    {
+      "command": "python3 -B plasma/tools/testar-domainos-comandos.py --saida /home/lsi/tempia/domainos-p08-startup-20261014/commands-run8",
+      "passed": 25,
+      "total": 25,
+      "scope": "private Xvfb and private DBus; updated assertions observe launcher acceptance and native windows"
+    },
+    {
+      "command": "Xephyr :71 1000x600, private DBus/XDG; testar-domainos-comandos.py --inside",
+      "passed": 25,
+      "total": 25,
+      "scope": "same command fixture rendered in private Xephyr; no personal desktop or guest input"
+    }
+  ],
+  "baseline_regression": {
+    "before": 45,
+    "total": 46,
+    "failed": [
+      "applications_drawer_icon_stays_inside_beveled_face"
+    ]
+  },
+  "limits": [
+    "Q334 unresolved: no MAME guest input sent",
+    "Q334 and manual review remain pending; full-panel integration is covered by its separate receipt.",
+    "The full Plasma-session receipt predates the updated icon size 36x36; production/beta visual review must be repeated after a valid package build.",
+    "Qt6Qml SDK metadata (Qt6Qml.pc) is absent, so the official installer dry-run rejected preparation; no installation or personal session change was performed.",
+    "Xephyr :74 geometry worker timed out at 60 seconds; only software and threaded OpenGL Xvfb passes are claimed.",
+    "Q334 and manual review remain pending."
+  ],
+  "privacy": "Personal configuration unchanged by command assay; no session action, energy action, personal app, or VM input was performed.",
+  "next": "After a valid native build is available, package and install the beta only through the reversible official flow, reopen the production panel in its authorized scope, and collect a full-panel 1:1 capture; continue guest work only when Q334/current bridge state permits.",
+  "startup_xephyr_receipt": "docs/review/P08-STARTUP-XEPHYR-20261014.json",
+  "startup_xephyr_checks": "37/37; actual KDE startup model, LED blink off/on during delay, wait cursor, both return to normal after window maps",
+  "activity_light_regression": "49/49; coalesces redundant frame acknowledgement when command light is already visible",
+  "activity_install_receipt": "docs/review/P08-ACTIVITY-INSTALL-20261014.json",
+  "command_bridge_receipt": "docs/review/P08-COMANDOS-XEPHYR-20261014.json",
+  "progress_estimate": {
+    "percent": 97,
+    "basis": "P08 related technical evidence remains complete for LED/startup/command behavior; this focused geometry correction now passes a four-side gate in 49/49 software and 49/49 threaded OpenGL Xvfb runs. The beta panel still has not been rebuilt/installed and visual review plus Q334 remain. Not a visual-fidelity percentage."
+  },
+  "icon_geometry_recheck": {
+    "based_on_user_authorization": "P08 revision 1, authorized_definition_sha256 231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+    "old_gate_gap": "The prior gate checked vertical limits only, so it missed the lateral overhang described in the authorized note.",
+    "new_box_logical": "36x36",
+    "button_logical": "118x52",
+    "bevel_logical": 4,
+    "inner_face_logical": "110x44",
+    "rendered_svg_aspect": "4:3 via PreserveAspectFit",
+    "checks": {
+      "applications_drawer_icon_stays_inside_beveled_face": true,
+      "software_xvfb": {
+        "passed": 49,
+        "total": 49,
+        "result": "/tmp/domainos-p08-20261014-margin/RESULTADO.json"
+      },
+      "threaded_opengl_xvfb": {
+        "passed": 49,
+        "total": 49,
+        "result": "/tmp/domainos-p08-20261014-threaded-margin/RESULTADO.json"
+      }
+    },
+    "capture": {
+      "path": "/tmp/domainos-p08-20261014-threaded-margin/LENS-OFF.png",
+      "sha256": "85406c7b8f07e1695dc06c98dc00a2f645b9b9acc3bc490fdeddcf00da485f7d",
+      "dimensions": "971x109",
+      "scope": "isolated QML drawing, 1:1 output, drawingScale 0.5"
+    },
+    "xephyr_attempt": {
+      "display": ":74",
+      "status": "timed_out_after_60s",
+      "result_written": false,
+      "claim": "no Xephyr pass claimed"
+    },
+    "installer_check": "python3 tools/install_domainos.py --verificar stopped because Qt6Qml.pc is absent. No package was installed, no profile component was changed and no plasmashell restart occurred.",
+    "full_panel_receipt": "docs/review/P08-PAINEL-COMPLETO-XEPHYR-20261014.json predates this geometry and cannot visually validate the updated icon.",
+    "status": "source_geometry_corrected_tested_privately_beta_not_installed_manual_visual_review_pending"
+  }
+}

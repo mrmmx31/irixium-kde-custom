@@ -1,0 +1,27 @@
+{
+  "id": "R230",
+  "date": "2026-10-26",
+  "scope": "Ampliar a leitura analítica de BSD/System V no Domain/OS SR10.4 e entregar versão PDF.",
+  "artifacts": {
+    "pdf": "~/tempia/ia-tema/analise-domainos/domainos-arquitetura-bsd-systemv-analise-tecnica.pdf",
+    "markdown": "~/tempia/ia-tema/analise-domainos/domainos-arquitetura-bsd-systemv-analise-tecnica.md",
+    "source_builder": "~/tempia/ia-tema/analise-domainos/build_report.py",
+    "pdf_sha256": "f1dcb41c55353a557ef3b289124e1bc3ae8a3f818d86c986a19ce4d5f4784213",
+    "markdown_sha256": "2991db3257b8ca600dacc279c42a204f18a8b5c8ca04530a51ca240a8cb49361"
+  },
+  "findings": [
+    "A documentação Apollo descreve kernel Domain/OS comum e ambientes Aegis, BSD 4.3 e System V compatível com SVR3, identificado como sys5.3.",
+    "ENVIRONMENT é contexto por processo; SYSTYPE seleciona resolução Unix e links variantes. cc documenta seleção independente de SYSTYPE e RUNTYPE, e systype expõe OBJTYPE/SYSTYPE/RUNTYPE.",
+    "SR10.1 declara compatibilidade SVID Base OS, Base Libraries e Library Extensions e suporte SysV STREAMS; isso não demonstra que o kernel ou seu código sejam iguais aos da AT&T.",
+    "A lista de instalação/configuração consultada mostra bsd4.3, não um ambiente BSD 4.4 separado.",
+    "A implementação interna do kernel, despacho syscall e integração de STREAMS permanecem indeterminados pelas fontes consultadas."
+  ],
+  "validation": {
+    "pdf_pages": 6,
+    "pdf_text_extraction": "passed; section markers, cited source list, and SVID/STREAMS detail present",
+    "historical_vm_live_inspection": "not performed; MAME inactive",
+    "visual_theme_changes": "none",
+    "theme_visual_acceptance": "not applicable"
+  },
+  "next": "Retomar a etapa visual autorizada I167/GTK2 quando a referência Domain/OS estiver disponível; esta análise documental não substitui comparação na VM."
+}

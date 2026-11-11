@@ -1,0 +1,86 @@
+{
+  "id": "R629",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "board_generation": 9116,
+    "item_generation": 9100,
+    "closed": false,
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "real installed Kicker MenuRepresentation QML inside a private Plasma/KWin fixture",
+    "compositor": "private kwin_wayland --virtual, 1024x768 at origin (0,0), scale 1",
+    "client": "authorized org_kde_kwin_fake_input v5 client from a private XDG desktop entry",
+    "test_only_fixture_changes": [
+      "Exposed read-only aliases for the existing Kicker menu, root ListView, search field, and popup so the observer could inspect them.",
+      "Called requestActivate on the private full-screen host before opening the Kicker popup in the final attempt."
+    ],
+    "production_sources_changed": false,
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "private_compositor_exited": true,
+    "private_runtime_removed": true,
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R629-kicker-global-geometry-20261028/"
+  },
+  "observations": {
+    "setup_run1": "Fixture stopped before input because its observer referenced aliases that were never exposed; no input was sent.",
+    "kicker_loaded": true,
+    "root_category_count": 11,
+    "popup_visible_before_input": true,
+    "popup_geometry_global": {
+      "x": 36,
+      "y": 59,
+      "width": 268,
+      "height": 362
+    },
+    "search_center_global": {
+      "x": 168,
+      "y": 402
+    },
+    "category_center_global": {
+      "x": 164,
+      "y": 77
+    },
+    "search_active_focus_before_input": true,
+    "fake_input_client_requests_sent": true,
+    "attempts_with_search_text_change": 0,
+    "attempts_with_root_pointer_enter_or_motion_log": 0,
+    "attempts_with_category_contains_mouse": 0,
+    "attempts_with_category_selection_or_child_dialog": 0,
+    "popup_remained_visible_in_observed_samples": true,
+    "request_activate_called_in_final_attempt": true,
+    "native_host_report_created": false,
+    "full_suite_result": "failed because native.json was absent; its application behavior checks are not valid acceptance evidence"
+  },
+  "interpretation": {
+    "status": "popup_geometry_measured; fake-input requests did not produce observable Kicker search or hover state; cause unresolved",
+    "conclusion": "The observer can now inspect the real Kicker representation and its global geometry. The QML search has activeFocus before input, but the typed text, pointer enter/motion, current row, and submenu state did not change in 24 observed samples after the helper sent its requests. Calling requestActivate alone did not make this probe conclusive. This neither reproduces nor refutes the user's live symptom; the private fixture still needs an input path that starts from an actual launcher click and direct evidence of the root/popup window activation and delivered events.",
+    "production_fix_indicated": false,
+    "double_click_crash_is_separate": true,
+    "human_acceptance": false
+  },
+  "evidence_files": {
+    "testar-r629.py": "5f0f2c34c980318e2b1aff394caa2968f6988222f7566a50ecbccea9ce1ba1cd",
+    "testar-r629-fixed.py": "5790e968996df20168b9d7135484d046beb3a86ed730eb5bcaa3e0422cba1d3e",
+    "testar-r629-probe.py": "00b11d61971786c5ebc9311ca09a1960715cb2f21a402269262b8cd4ebeee702",
+    "testar-r629-probe2.py": "49b77416815ce85ed2ea927eeb92ec46c463cf62c121f4f2ec4b36a172fb13b5",
+    "testar-r629-probe3.py": "dd8b079ec1dea3cdf52dc3f2238766bd66bd09eeb88a72d3fee49c845e487a9f",
+    "run4/fake-input.log": "6ceb3319c3be3965d1cb0c4ec9383c20ef3291a83f590f97e1407af348cfcb2a",
+    "run4/host.log": "3eb5b0970ebdbc04f0757a7aff529c46c18964041ab71fc9a1dc77264593e785",
+    "run5/fake-input.log": "6ceb3319c3be3965d1cb0c4ec9383c20ef3291a83f590f97e1407af348cfcb2a",
+    "run5/host.log": "1bd889b17d3316a4bc7f514ce806d9afb104a40c45a6985c3aee974741904953",
+    "run5/kwin.log": "20e2b51b1a13979e0c61ba7f1bf06e2c1dacb95eba96020565ce24aa3c08c15f",
+    "run5/cleanup.json": "6120d9c837630b5d3db99632582caeed581c56254cf615d96627207585113b04"
+  },
+  "next": [
+    "Build a private fixture that opens the menu from a real fake-input click on its launcher, rather than calling openMenu from Component.onCompleted.",
+    "Log root-window and popup active state and capture the private output before and after input; then correlate the search text, pointer enter, category hover, and child-dialog state.",
+    "Keep the double-click/restarted-plasmashell report as a separate diagnosis requiring a correlated isolated reproduction."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R387",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Load the corrected DomainOS GTK2 role-derived bundle and verify hover cells in GTK2 2.24.33 after the PRELIGHT edge-consistency fix.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "Xvfb :191 inside a user network namespace; /tmp bind-mounted to ~/tempia/ia-tema/evidence/I167/r387-prelight-current/sandbox-tmp",
+    "bundle_id": "610009a2b75ff487bc6c2b529ad54c935b05d801081dd43af91750379b4da797",
+    "bundle_manifest_sha256": "bdf8c96b66e7c5681e8f51d36658f303d59ed409efe07e3840285912ad49f7f8",
+    "kde_color_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "probe_source_sha256": "881871ff0d3c1873799ba9d39392e51b7a579a3e4c0d35494ec60ba43b9273b9",
+    "probe_binary_sha256": "8226db0c184b54d54ae678bbc2e597179ecc2e7302ef3bb9f74edab1f1c46501",
+    "metrics_path": "~/tempia/ia-tema/evidence/I167/r387-prelight-current/metrics-r387.json",
+    "metrics_sha256": "f5b0d3fd291f31c2d5a376c19a9a22c2c6f96e42bc4f5195a2a930ee75a8f5c1",
+    "runtime_log_sha256": "661661c200f4bc0680951b8945661bb0344537b9404d7ecc7f7636bb749aef11",
+    "input": "Private Xvfb XWarpPointer to four measured stepper centers; GDK enter/motion each observed; button1 clear. No host desktop, guest VM or user application input."
+  },
+  "cells": {
+    "left": {"capture_sha256": "3ae7d70e26501a35672ca33a0372fc0c9487b9ad3b37550d2a926e61f344700e", "vs_normal": 0, "vs_focused": 0},
+    "right": {"capture_sha256": "407b06a6a71ca98ab05bb530a5e9b1f98225f122ca046d619e510db6dfcf3d9f", "vs_normal": 0, "vs_focused": 0},
+    "up": {"capture_sha256": "b4c3f9c847e06dabcc3aba9db095f712a4da674dc961291cce676445d2b4e644", "vs_normal": 0, "vs_focused": 0},
+    "down": {"capture_sha256": "fdbb086408b4a2f3d5e60431c58c8e1728cbcad6748a032d3c302cd0b12a02aa", "vs_normal": 0, "vs_focused": 0}
+  },
+  "result": "Each captured hover cell rendered 0/225 different pixels from both its generated normal and PRELIGHT asset. The lower-arrow-only state jump observed in R383 is absent after R386.",
+  "limits": [
+    "This is isolated GTK2 runtime evidence, not a native VUE hover comparison.",
+    "No theme installation, profile update, XChat restart, MAME input or VM file change occurred.",
+    "The build emitted a nonfatal GTK atk-bridge warning; all four GDK callbacks and captures completed."
+  ],
+  "artifact_note": "The first Xvfb launch rejected -nolock for non-root and failed to create /tmp/.X191-lock; no file was created there. The failure output was captured in the tool result, then the successful isolated run reused the same temporary Xvfb.log path. Future attempts should allocate a unique log per launch.",
+  "next": "Continue I167 GTK2 with historical held horizontal arrows only when a current native image visibly places the pointer over the target; preserve remaining preview and human review work."
+}

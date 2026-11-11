@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-11T17:27:53.033335+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "spin",
+  "coverage": {
+    "integrated": 11,
+    "total": 16,
+    "percentage": 68.75,
+    "scope": "Tipos do catálogo GTK2; não fidelidade histórica nem porcentagem do goal"
+  },
+  "native": {
+    "foundation": ".qa-t04-spin-foundation/native-history/RESULTADO.json",
+    "scenes": ".qa-t04-spin-foundation/scenes-mapped/RESULTADO.json",
+    "editing": ".qa-t04-spin-foundation/editing-final/RESULTADO.json",
+    "gestures": ".qa-t04-spin-foundation/gestures-final/RESULTADO.json",
+    "controller": ".qa-theme-lab-spin-y7ou7gdx/RESULTADO.json",
+    "gtk3_regression": ".qa-t04-spin-foundation/gtk3-restored-spin.log",
+    "scene_count": 24,
+    "rebuild_count": 8,
+    "editing_origins": 2,
+    "gesture_origins": 2,
+    "native_request_fixture": {
+      "width": 58,
+      "height": 30,
+      "font": "Sans 13px",
+      "scope": "GTK2 do host, receita desta fixture; não medida/default do Motif histórico"
+    }
+  },
+  "tests": {
+    "paint": 3,
+    "integration": 4,
+    "gtk2_contract": 4,
+    "history": 3,
+    "entry_regression": 2,
+    "text_regression": 3,
+    "combo_regression": 4,
+    "scene_contract": 15,
+    "runtime_files": 2,
+    "c_receipt": "passed",
+    "strict_build": "passed",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "gtk2_spins.py": "c8d9124a5a719d87fbe1b4db9cd274f4e884e7829773b1253aaa93122e66b4f2",
+    "gtk2_generation.py": "17ecf6ef3640ad16e7ad45ca7dd429f0d07e136388d404cb3ea85b5ccc8e5e65",
+    "gtk2_session.py": "a0b764807a240d5ba1abfaf0afe1bd83464ca46ff18a0eb030a875e917e59267",
+    "native_scene_gtk2.py": "f5782dc378500e7bdcd1cda60985c03685892e95913814581f3bb903969cf1f8",
+    "backend.py": "e02072f05a8a9ace26e560cbb0b58534adaa9c0bdb87af053875dcd4c38d2759",
+    "preview_text_editing.py": "0b0e251dc2c55bde8c3ad38c72592fcfe3e87340d7c5e31b37b5a531424b6c8e",
+    "preview_gtk.py": "38f6a46259caabf5260ed235f5774305090868b2974c35a88669ebdcd93c6611",
+    "src/controller/generated_preview.c": "ea4c11ad304d96013c38243d8802b0941af42cc47b3ae527db666c8c878263f1",
+    "tests/probe_gtk2_spin_scene.py": "9b66b2b72ced42854a8bac33691622966dc08d1dfcd5a6490b9c9d7b85e165dc",
+    "tests/probe_gtk2_spin_paint.py": "7ede7dfa86a0cb2766bd55e3f41f3dff90eb46a4fce8f5664936c0728f206e24",
+    "tests/test_gtk2_spin_integration.py": "64b867cd087e334837eff6bac4d47280a973d909f3ef6b7f2e6b4cc33b5367ca",
+    "tests/generated_preview_test.c": "1b0a5d335f0c74edc737f34c113429bfcdf4a02dcacdc7b95f842d744591dcbd"
+  },
+  "scope": "GtkSpinButton real, campo/setas/painéis derivados dos papéis KDE. Editável com Undo/Redo/clipboard; valor confirmado e texto parcial são preservados separadamente. Reconstrução restaura o campo após o mapeamento GTK, sem converter a restauração em Enter. Cores normais/desabilitadas/backdrop explícito, fonte e tamanho em quatro paletas e duas origens. Controlador real com Save/Load/toggle/histórico/reinício.",
+  "limitations": [
+    "Painéis/setas têm alocação nativa GTK2; arrow_px propõe extensão da máscara e não equivale a um recurso de largura do painel.",
+    "Foco/pressionado forçados sem implementação; usar interação nativa.",
+    "Histórico da amostra não persiste entre processos nem no journal Motif do projeto.",
+    "Sem certificação histórica da VM ou matriz de pixels completa de setas/seleção."
+  ],
+  "failed_attempts": [
+    "Expectativa inicial de Undo em um lote numérico inteiro: digitação gera estados por caractere; fixture agora percorre o histórico real.",
+    "Spin ausente em uma condição de fonte da cena: corrigida.",
+    "Restauração executava update(), confirmando texto parcial; removida confirmação implícita.",
+    "Mapeamento formatava novamente o valor sobre o campo parcial: restauração após map implementada para GTK2 e GTK3.",
+    "Fixture C apontava fora de revisions; caminho artificial corrigido.",
+    "Comando GTK3 inicial usou --scene sem contrato, e teste bare Entry falhou em CtrlX; não usado como prova. Fixture correta --scene-fixture com positions explícitas mostrou defeito real de reconstrução Spin; correção passou Entry/TextView/Spin com atalhos/menu/rebuild."
+  ],
+  "delivery": {
+    "phase": "delivered_lsi",
+    "pid": 2794163,
+    "source_pid": 2758380,
+    "display": ":61",
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-dbdc849e7e3d46ecbd11e56326be7f53/MANIFESTO.json",
+    "preservation": ".qa-t04-spin-foundation/delivery-preservation.json"
+  }
+}

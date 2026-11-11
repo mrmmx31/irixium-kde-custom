@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-VUE-VISIBLE-20261024-R74",
+  "date": "2026-10-24",
+  "item": "I167",
+  "family": "GTK2 GtkEntry against live Domain/OS SR10.4 VUE reference",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "session": "assistant-owned clone from the approved backup",
+    "pid": 2745483,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "endpoint": "10.253.104.20",
+    "native_resolution": [1024, 844]
+  },
+  "evidence": {
+    "mame_snapshot": {
+      "path": "~/tempia/i167-live-r74/domainos-screen.png",
+      "sha256": "e6a0d8a21d2b07620b506e1a41dd9203e1990d4fb91f513c741f0d0488607ba4",
+      "format": "PNG",
+      "dimensions": [1024, 844],
+      "visible_content": ["HP VUE Find Files dialog", "Terminal Window", "File Manager", "DomainOS panel"]
+    },
+    "mame_probe": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "ui_active": false,
+      "bridge_pending": false
+    }
+  },
+  "observations": {
+    "result": "The live VUE interface is now legible in the authorized clone, so the SR10.4 visual comparison can resume.",
+    "scope": "GtkEntry only; no GTK scrollbar, Qt, or other family was inspected or changed.",
+    "visible_native_fields": "File Name and Search Directories entries are visible in the Find Files dialog.",
+    "focus_and_selection": "This read-only snapshot does not establish which entry owns keyboard focus or prove selection color. Earlier R57 paired captures remain valid only for their own state and hash."
+  },
+  "preservation": {
+    "mame_restarted": false,
+    "mame_profile_changed": false,
+    "guest_input_sent": false,
+    "guest_files_changed": false,
+    "other_vm_sessions_touched": false
+  },
+  "next": "With the VUE reference visible, resume only the GTK2 GtkEntry comparison. Obtain a fresh focused/unfocused pair only after authenticating target/pointer state according to the MAME live-session procedure; keep caret and selection distinct from focus-frame evidence."
+}

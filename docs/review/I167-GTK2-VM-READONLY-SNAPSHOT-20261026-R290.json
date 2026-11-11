@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R290",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-vm-active-but-guest-screen-black-awaiting-physical-wake",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only MAME preflight and guest screenshot before continuing GTK2 arrow-state comparison."
+  },
+  "identity": {
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "result": "canonical project disk verified; MAME PID 1313710 is the only instance and uses the canonical disk"
+  },
+  "read_only_probe": {
+    "request_id": "43c12a7ef1d84db584d2b93a4c82c1cf",
+    "captured": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "ui_active": false,
+    "mouse_hook": "present",
+    "pending_request_after_capture": null
+  },
+  "guest_image": {
+    "method": "screen:snapshot from the existing authorized bridge; no key, pointer, or button input",
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-readonly-R290.png",
+    "sha256": "7cccf1bcb84df23678e2b90f52be82045164b11eda0360ea9a517fd52b7bfebb",
+    "observed": "Apollo shell keys are visible at the bottom, but the guest display area is black; no cursor or scrollbar target is visible."
+  },
+  "result": "The VM process, disk and profile are intact, but the guest screen is in its black/idle state. The existing rules require a physical mouse movement or key to wake it. No synthetic wake was attempted and no arrow was pressed.",
+  "artifacts": {
+    "lua_read_only_snapshot": "~/tempia/ia-tema/evidence/I167/i167-readonly-snapshot-R290.lua",
+    "lua_sha256": "710da1973602b108c86918025d1aeaf6d8ab13ff142e5e5c248a61620af0bc83"
+  },
+  "restoration": {
+    "MAME_profile_changed": false,
+    "guest_input_sent": false,
+    "pending_control_request": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "changed": false,
+    "basis": "This confirms the current wake gate but does not add GTK2 control/state evidence. Not a visual-fidelity score."
+  },
+  "next": "Wait for the user to wake the guest through physical mouse/keyboard input; then capture a fresh image and proceed only if the intended arrow is visible."
+}

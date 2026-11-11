@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-11T09:58:40.500045+00:00",
+  "item": "I193",
+  "revision": 1,
+  "technical_status": "complete",
+  "user_evaluation": "not_inferred",
+  "evidence": "docs/referencias/domainos-sr104/i193-toggle-controller",
+  "proof": {
+    "DomainOS": {
+      "workspace": ".qa-theme-lab-spin-eva450jn",
+      "result_sha256": "75ee63653f9d0f74a4dcbf536571123bfa527cc3d1d49052d2296a9d80231f6e"
+    },
+    "BreezeDark": {
+      "workspace": ".qa-theme-lab-spin-jxn_noir",
+      "result_sha256": "75ee63653f9d0f74a4dcbf536571123bfa527cc3d1d49052d2296a9d80231f6e"
+    },
+    "BreezeLight": {
+      "workspace": ".qa-theme-lab-spin-qq8wa8yw",
+      "result_sha256": "75ee63653f9d0f74a4dcbf536571123bfa527cc3d1d49052d2296a9d80231f6e"
+    },
+    "TestYellow": {
+      "workspace": ".qa-theme-lab-spin-1rztw93_",
+      "result_sha256": "75ee63653f9d0f74a4dcbf536571123bfa527cc3d1d49052d2296a9d80231f6e"
+    },
+    "GTK3-regression": {
+      "workspace": ".qa-theme-lab-spin-d2k9mhsy",
+      "result_sha256": "b6bbc9da3f5787a471edc420e670c40fb02eda76568479fbeec851bfa408377d"
+    }
+  },
+  "previous_evidence": [
+    "I193-INTEGRACAO-PARCIAL-20261011.json",
+    "I193-ESTADO-EXECUCAO-20261011.json"
+  ],
+  "verified": [
+    "Real pointer toggle clicks on GtkPlug and GtkWindow",
+    "Controller Apply: 180x50 to 280x60 measured in both origins",
+    "Coupled selected / detached unselected preserved after restart",
+    "Both origins respond to real clicks after restart",
+    "Independent GTK3 recipe preserved and native GTK3 controller regression passed",
+    "Four KDE schemes; two border pixels compared to role-derived generated assets per assertion"
+  ],
+  "limits": [
+    "Two corner pixels prove state direction, not full visual or historical fidelity",
+    "Focus/inconsistent/default-indicator/automatic-backdrop pending",
+    "Checkbox and radio scene integrations are separate demands",
+    "Runtime selection not persisted as project configuration"
+  ],
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "stage_estimate_percent": 100,
+  "parent_I167_estimate_percent": 86,
+  "estimate_basis": "I193 integration gates complete; remaining GTK2 controls/states and historical comparison keep parent incomplete.",
+  "sha256": {
+    "src/controller.c": "a8b3f4b53ff51956452f73615f40df50f945557a03123c8628096d1cdd8cdf2e",
+    "tests/controller_gtk2_toggle.py": "d43064843a95acf6393f77a55ad7e743f5932d25efb738d2ec1a1f7ca53c3892",
+    "tests/controller_spin_probe.c": "280683ebfb3222d24247e508c6e052065c9f8f9399c7bac583a3a9cfa1621fe4",
+    "tests/test_controller_spin.py": "fe84eb011bf349ff85e02b9524a37fdb45593155d84c089b797dc65f6c140816",
+    "README.md": "2b75649c259b5d5161b6a48174ca0d606c2ad88d43f5e57d3e13483967041a27"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "item": "T05",
+  "scope": "GTK3 export selectors for per-control KDE semantic palettes",
+  "status": "technical_scoping_verified_waiting_visual_review",
+  "date": "2026-10-16",
+  "authorization": {
+    "source": "AI Work Board Fila Atual SQLite, read-only",
+    "item_revision": 4,
+    "authorized": true,
+    "responded_at": "2026-10-16T06:46:54.966Z"
+  },
+  "change": {
+    "controls": ["push", "toggle", "combo", "spin", "arrow"],
+    "result": "GTK3 per-control CSS palettes now target distinct native CSS nodes; push selectors exclude toggle, combo, spin and standalone arrow nodes.",
+    "color_source": "selected KDE semantic roles plus illumination factors; no final sampled RGB added",
+    "host_or_user_theme_changed": false
+  },
+  "verification": {
+    "backend": {
+      "command": "TMPDIR=$HOME/tempia pytest -q tools/theme-lab/tests/test_backend.py",
+      "result": "39 passed"
+    },
+    "generated_private_theme": {
+      "test": "test_private_gtk3_generation_isolates_five_control_palettes",
+      "result": "five distinct control palettes exported with native-node-scoped selectors and KDE role aliases"
+    },
+    "gtk3_native_selector_pixels": {
+      "command": "DISPLAY=:68 XAUTHORITY=$HOME/tempia/board/i295-live-20261014T0150Z/Xauthority68 LC_ALL=C.UTF-8 NO_AT_BRIDGE=1 /usr/bin/python3 -B tools/theme-lab/tests/test_gtk3_control_palette_native.py",
+      "result": "passed; synthetic pixel signals appeared only on their matching GtkButton, GtkToggleButton, GtkComboBoxText, GtkSpinButton or standalone arrow sample",
+      "display": ":68",
+      "limitation": "selector isolation probe only; synthetic colors do not assess theme appearance or historical fidelity"
+    },
+    "four_scheme_context": {
+      "report": "~/tempia/t05-gtk3-four-scheme-native/RESULTADO.json",
+      "sha256": "e235c2e091be2f073d3929eb2e881172d15fde8aff3e607fea1988b23c13987a",
+      "schemes": ["DomainOS SR10.4", "Breeze Light", "Breeze Dark", "TestYellow"],
+      "scope": "prior GTK3 generated-preview role-resolution matrix; complements but does not replace the new selector isolation checks"
+    },
+    "five_control_overrides_across_four_schemes": {
+      "report": "~/tempia/t05-control-palettes-four-schemes-run2/RESULTADO.json",
+      "sha256": "1030ae5ea64a1bd9895ad1e910a669603f4f333997352f359c263e4db7507b7e",
+      "schemes": ["DomainOS-SR10.4", "BreezeLight", "BreezeDark", "TestYellow"],
+      "controls_per_scheme": ["push", "toggle", "combo", "spin", "arrow"],
+      "native_role_aliases_checked_per_scheme": 10,
+      "gtk_css_parse_errors": 0,
+      "host_or_user_theme_changed": false,
+      "scope": "private generated exports and GTK CSS parser for 4 schemes × 5 controls; does not claim a 4x5 pixel rendering or human visual approval"
+    },
+    "python_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "source_sha256": {
+    "tools/theme-lab/backend.py": "1b48bb05b982a5141c6f0f8eda8a7c746544dc43cb9230c7747d706411cf59da",
+    "tools/theme-lab/tests/test_backend.py": "77cc3f78bed379f16052a49af2e6d231d8b6a7809d977fcca979cbf97407f6d0",
+    "tools/theme-lab/tests/test_gtk3_control_palette_native.py": "0979368a91b625bdadcf52e00a797be5353f98a1218f4e80d38c6898a7a9a73d",
+    "tools/theme-lab/Makefile": "dbb0c4f75a68d9350390ef3e189a35b5848e156366c8fba740d51aae418c346f"
+  },
+  "remaining": [
+    "visual review of per-control palettes remains with the user",
+    "no visual or historical-fidelity approval inferred"
+  ]
+}

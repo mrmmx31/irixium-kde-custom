@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "id": "R110",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "GTK2 GtkEntry selection foreground pixel audit and live SR10.4 visibility",
+  "method": {
+    "palette_evidence": "Offline pixel re-analysis of the exact mapped GTK2 captures referenced by R72; no recapture or theme change.",
+    "selection_band": "Bounding box of exact selection-background role pixels within the text-line interior ROI x=20..189, y=27..49.",
+    "vm_evidence": "Read-only snapshot from the existing authorized assistant clone through its current MAME Lua bridge; no guest input."
+  },
+  "palette_results": [
+    {
+      "scheme": "DomainOS",
+      "capture": "~/tempia/i167-entry-selection-palettes-mapped-r72/DomainOS/selected-mapped.png",
+      "capture_sha256": "3a3d2e321d985861f5e1f248d8f64460404f497b6a6109852108a707029df917",
+      "image_size": [
+        360,
+        90
+      ],
+      "selection_band_xyxy": [
+        22,
+        29,
+        184,
+        47
+      ],
+      "selection_background_role_rgb": [
+        50,
+        151,
+        199
+      ],
+      "selection_background_exact_pixels": 2108,
+      "selection_foreground_role_rgb": [
+        255,
+        255,
+        255
+      ],
+      "selection_foreground_exact_pixels_in_band": 11
+    },
+    {
+      "scheme": "BreezeLight",
+      "capture": "~/tempia/i167-entry-selection-palettes-mapped-r72/BreezeLight/selected-mapped.png",
+      "capture_sha256": "0e25d13fb32c242052ca4f9c5a59ff25bd7637005d403973b57b9cc7d3142ad0",
+      "image_size": [
+        360,
+        90
+      ],
+      "selection_band_xyxy": [
+        22,
+        29,
+        184,
+        47
+      ],
+      "selection_background_role_rgb": [
+        61,
+        174,
+        233
+      ],
+      "selection_background_exact_pixels": 2108,
+      "selection_foreground_role_rgb": [
+        255,
+        255,
+        255
+      ],
+      "selection_foreground_exact_pixels_in_band": 11
+    },
+    {
+      "scheme": "BreezeDark",
+      "capture": "~/tempia/i167-entry-selection-palettes-mapped-r72/BreezeDark/selected-mapped.png",
+      "capture_sha256": "e5d617d52dc679b510c8110a716bd3477303eb231c6eb595aca2c5d763c709bc",
+      "image_size": [
+        360,
+        90
+      ],
+      "selection_band_xyxy": [
+        22,
+        29,
+        184,
+        47
+      ],
+      "selection_background_role_rgb": [
+        61,
+        174,
+        233
+      ],
+      "selection_background_exact_pixels": 2108,
+      "selection_foreground_role_rgb": [
+        252,
+        252,
+        252
+      ],
+      "selection_foreground_exact_pixels_in_band": 11
+    }
+  ],
+  "vm_snapshot": {
+    "path": "~/tempia/i167-vue-current-r110/domainos-screen.png",
+    "sha256": "3bd1513da0e5fc2f678da31bc85f8e252a70ab8141387b25fca7695c3b2699a1",
+    "size": [
+      1024,
+      844
+    ],
+    "appearance": "Apollo status strip visible at the bottom; 819640 of 864256 pixels are black. No VUE field is visible for a native selection comparison.",
+    "mame_pid": 3759847,
+    "probe_request_id": "50f360623e7741e985212508ba2c8c5f",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "ui_active": false,
+      "wait_button_up": false,
+      "pending_input": false,
+      "shift_released": true
+    },
+    "post_wake_capture": {
+      "path": "~/tempia/i167-vue-current-r110/domainos-after-wake.png",
+      "sha256": "3bd1513da0e5fc2f678da31bc85f8e252a70ab8141387b25fca7695c3b2699a1",
+      "same_pixels_as_initial_snapshot": true
+    },
+    "wake_attempt": {
+      "input": "single Shift modifier pulse using keyboard4 field 32 for two machine frames",
+      "request_id": "513aa983edfb49608432db4e9bbd41c3",
+      "callback_done": true,
+      "key_released": true,
+      "error": null,
+      "result": "screen remained unchanged; no further guest input sent"
+    },
+    "final_state_request_id": "8f04b6e157d34a6cbfa81b851db1605b"
+  },
+  "result": {
+    "gtk2_foreground_role": "confirmed present in selected GtkEntry text-band raster pixels for all three role palettes",
+    "selection_background_role": "2108 exact role pixels in each matched band",
+    "historical_sr104_selection_fidelity": "unverified; current guest screen has no VUE content and the previous pointer/input path is not precise enough",
+    "gtk2_xchat_or_user_profile_changed": false
+  },
+  "limits": [
+    "Exact-color foreground pixel presence proves the expected role reaches rendered selected text; antialiasing means this count is not a measure of every glyph pixel.",
+    "This does not compare GTK2 selected text to SR10.4 and does not establish historical selection color or shape.",
+    "No GTK2 product code changed and no XChat or user theme was touched."
+  ],
+  "next": "Continue only I167/GTK2. Keep palette-role behavior as implemented; wait for an accessible native VUE field before making historical selection claims. Do not send guest input through the imprecise pointer route.",
+  "preservation": {
+    "main_vm_touched": false,
+    "assistant_clone_only": true,
+    "mouse_used": false,
+    "guest_text_or_files_changed": false,
+    "gtk2_xchat_or_user_profile_changed": false,
+    "input_cleanup_verified": true
+  },
+  "registered_gtk2_patch_integrity": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "file_count": 3,
+    "all_content_verified": true,
+    "changes_diff_sha256": "6edb2a67db953954a0edea39c9bf28256b634b99b05b2110cf81414ec2afb4d5",
+    "matches_registered_result_ref": true,
+    "installation_state": "not installed; XChat and user theme were not changed"
+  }
+}

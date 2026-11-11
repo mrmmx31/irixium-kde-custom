@@ -1,0 +1,116 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T06:48:00Z",
+  "status": "technical_partial",
+  "scope": "Qt6 SpinBox down and ComboBox down arrows; GTK3 ComboBox down arrow only.",
+  "implementation": {
+    "qt6": "ComboBox dropdown compartment uses dynamic KDE button roles for raised normal relief and reverses the bevel while open/pressed. SpinBox normal bevel stays raised; no SpinBox source change was needed.",
+    "gtk3": "ComboBox uses a direction-aware 11px mask rather than the generic rotated triangle; the native internal button active state selects the pressed mask. Color channels remain generated from current KDE Button roles."
+  },
+  "gtk3_native_probe": {
+    "runtime": "GTK 3.24.49",
+    "display": "private Xvfb :519, 800x600, isolated HOME under ~/tempia",
+    "pointer_global": [
+      400,
+      300
+    ],
+    "window_size": [
+      360,
+      120
+    ],
+    "pointer_over_control": false,
+    "states": [
+      "normal",
+      "hover",
+      "pressed",
+      "released",
+      "disabled"
+    ],
+    "arrow_region_normal_vs_hover_pixels_changed": 0,
+    "arrow_region_normal_vs_pressed_pixels_changed": 51,
+    "arrow_region_normal_vs_released_pixels_changed": 0,
+    "normal_vs_released_full_capture_identical": true,
+    "disabled_capture_identical_to_normal_for_domainos_fallback_roles": true,
+    "captures": {
+      "normal": {
+        "path": "~/tempia/i457-gtk3-arrow-20261019/normal.png",
+        "sha256": "a0d244bb654631956508d8ab48bb4651bfd1b16cb099b8a6fbe94b4f6f008579"
+      },
+      "hover": {
+        "path": "~/tempia/i457-gtk3-arrow-20261019/hover.png",
+        "sha256": "a0d244bb654631956508d8ab48bb4651bfd1b16cb099b8a6fbe94b4f6f008579"
+      },
+      "pressed": {
+        "path": "~/tempia/i457-gtk3-arrow-20261019/pressed.png",
+        "sha256": "3958da9c5b9874efc0e731efdab0c56dac32eee8f63cb10af5158d698e0224fe"
+      },
+      "released": {
+        "path": "~/tempia/i457-gtk3-arrow-20261019/released.png",
+        "sha256": "a0d244bb654631956508d8ab48bb4651bfd1b16cb099b8a6fbe94b4f6f008579"
+      },
+      "disabled": {
+        "path": "~/tempia/i457-gtk3-arrow-20261019/disabled.png",
+        "sha256": "a0d244bb654631956508d8ab48bb4651bfd1b16cb099b8a6fbe94b4f6f008579"
+      }
+    },
+    "probe_script": {
+      "path": "~/tempia/i457-gtk3-arrow-20261019/probe.py",
+      "sha256": "50fcade3e67c71e8946f6fcc3393af6c804293259b4b0c9b349644bc59dd7385"
+    },
+    "limitation": "The native GTK probe used the DomainOS fallback palette. Role-change isolation is covered by GTK backend tests, not by screenshots across live KDE schemes."
+  },
+  "qt6_native_probe": {
+    "qt": "6.8.2",
+    "schemes": [
+      "DomainOS-SR10-4",
+      "BreezeDark",
+      "BreezeLight"
+    ],
+    "results_directory": "~/tempia/i457-qt6-arrows-20261019/states/",
+    "observed": "ComboBox: normal/hover 0 difference; popup press/open 53 changed pixels; release after popup close 0; disabled 513. SpinBox and DoubleSpinBox: hover 0, press 181, release 0, disabled 323. Cursor positions were recorded; normal cursor was outside each subcontrol."
+  },
+  "automated_checks": [
+    {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest tools.theme-lab.tests.test_backend -v",
+      "result": "40 passed"
+    },
+    {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest tools.theme-lab.tests.test_qt6_scrollbar_recipe -v",
+      "result": "21 passed"
+    },
+    {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest gtk.tests.test_kde_modern -v",
+      "result": "6 passed"
+    },
+    {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest discover -s tools/theme-lab/tests -p test_backend.py -k gtk3_combo_arrow",
+      "result": "1 focused test passed on 2026-10-19"
+    },
+    {
+      "command": "TMPDIR=~/tempia python3 -B -m unittest discover -s tools/theme-lab/tests -p test_qt6_scrollbar_recipe.py -k qt6_combo_recipe",
+      "result": "1 focused test passed on 2026-10-19"
+    }
+  ],
+  "source_hashes": {
+    "gtk/tools/build_kde_domainos.py": "1ebf223e1501e260c5b7f5afb98489a5c8e9c1e748f966b9b14016b0952bbe41",
+    "tools/theme-lab/tests/test_backend.py": "a1e8a3246dc4aa771e929548fd39f9539c1dcd8197972e14857698831de89648",
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "b5f0c8d8b7b056655834c78b9ac35b436b1db019497859002f370a41a3a673cb"
+  },
+  "remaining": [
+    "No approval or visual review by the user yet.",
+    "No native SpinBox/ComboBox screenshot from the SR10.4 VM was available; measured VM rules in this run cover scrollbar arrows, not these controls.",
+    "Generated package output and current personal theme were left untouched; the repository Reload bundle already has separate uncommitted tooltip changes.",
+    "The two implementation files now have a partial verified changes-record. Mixed changes in tools/theme-lab/tests/test_backend.py remain excluded from that record.",
+    "A current native SR10.4 screenshot of SpinBox/ComboBox is still missing. The MAME channel has no pending command, but its current guest snapshot is black; do not infer historical relief or mark I457 done."
+  ],
+  "changes_record": {
+    "path": "~/tempia/board/diff-records/record-9px0n8gi",
+    "files": [
+      "gtk/tools/build_kde_domainos.py",
+      "tools/theme-lab/qt6_scrollbar_recipe.py"
+    ],
+    "content_verified": true,
+    "diff_sha256": "ea914f058c9db2f6aa87f6b7e25ef399a673e2f147befaa8ac9b11ca9539d76f"
+  }
+}

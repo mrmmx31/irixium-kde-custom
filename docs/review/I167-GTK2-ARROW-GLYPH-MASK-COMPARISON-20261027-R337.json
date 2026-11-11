@@ -1,0 +1,35 @@
+{
+  "id": "R337",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "separate the four GTK2 arrow glyphs from the surrounding 15x15 stepper cell",
+  "status": "glyphs_verified_in_pipeline_cell_relief_differences_remain",
+  "method": {
+    "description": "Compare registered RGB pixels in each 15x15 historical/reference cell. Classify glyph pixels only where the corresponding generated 11x11 GTK2 arrow asset has nonzero alpha, centered at offset (2,2). No per-pixel registration optimization is used.",
+    "script": "~/tempia/ia-tema/evidence/I167/r337-stepper-glyph-mask-analysis.py",
+    "script_sha256": "95a3d58547e02f054f2fee8a8dfa10bf1689355657424a612faa597bb2ba0166",
+    "machine_result": "~/tempia/ia-tema/evidence/I167/r337-stepper-glyph-mask-analysis.json",
+    "machine_result_sha256": "51db0d12878909e2e27eb0be82b5ef890d332b616e49c47d8eec07373cfba861"
+  },
+  "sources": {
+    "historical_reference": "Domain/OS SR10.4 + HP VUE 2.01",
+    "gtk2": "2.24.33 native pipeline capture",
+    "gtk2_capture": "~/tempia/ia-tema/evidence/I167/r332-pipeline-live/normal-wide.png",
+    "gtk2_capture_sha256": "5ad20897a595865a466e5f04a5cf25fdc8ebebe6cb9c220d173897cc080f1087",
+    "reference_horizontal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "reference_vertical_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+  },
+  "results": {
+    "left": {"opaque_glyph_pixels": 71, "glyph_differences": 0, "full_cell_differences": 0},
+    "right": {"opaque_glyph_pixels": 71, "glyph_differences": 0, "full_cell_differences": 1, "cell_difference_xy": [14, 3]},
+    "up": {"opaque_glyph_pixels": 71, "glyph_differences": 0, "full_cell_differences": 3, "cell_difference_xy": [[13, 0], [14, 0], [13, 1]]},
+    "down": {"opaque_glyph_pixels": 71, "glyph_differences": 0, "full_cell_differences": 11, "cell_difference_rows": [0]}
+  },
+  "conclusion": "For all four directions in this GTK2 pipeline capture, every opaque arrow glyph pixel matches the corresponding SR10.4 reference pixel. The visible cell-level differences in R334/R335 are outside the arrow alpha masks and belong to the stepper relief/edge region. The measured arrow silhouette is 11x11 in all directions; the original concern about a horizontally shortened glyph is not reproduced by the current pipeline output.",
+  "limits": [
+    "This confirms the current generated GTK2 pipeline, not pixels in an already-open production GTK2 application.",
+    "It does not prove native live VM appearance, pressed/disabled states, or manual acceptance.",
+    "It does not resolve the remaining cell-relief edge differences; do not change arrow assets to address them."
+  ],
+  "next": "Keep I167 on GTK2. Compare the remaining cell-edge pixels against a fresh VM image once physically awake; separately validate a GTK2 application after it reloads the installed recipe."
+}

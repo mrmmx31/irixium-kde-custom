@@ -54,9 +54,36 @@ KCM.SimpleKCM {
             Accessible.description: i18nc("@info:whatsthis", "Current icon is %1. Click to open menu to change the current icon or reset to the default icon.", root.cfg_icon)
             Accessible.role: Accessible.ButtonMenu
 
-            QQC2.ToolTip.delay: Kirigami.Units.toolTipDelay
-            QQC2.ToolTip.text: i18nc("@info:tooltip", "Icon name is \"%1\"", root.cfg_icon)
-            QQC2.ToolTip.visible: iconButton.hovered && root.cfg_icon.length > 0
+            QQC2.ToolTip {
+                id: iconTooltip
+                parent: iconButton
+                visible: iconButton.hovered && root.cfg_icon.length > 0
+                delay: Kirigami.Units.toolTipDelay
+                timeout: -1
+                text: i18nc("@info:tooltip", "Icon name is \"%1\"", root.cfg_icon)
+
+                // The shared org.kde.desktop tooltip background uses Window
+                // colors in some releases. Keep this app-owned hint on Tooltip.
+                Kirigami.Theme.colorSet: Kirigami.Theme.Tooltip
+                Kirigami.Theme.inherit: false
+
+                contentItem: Text {
+                    text: iconTooltip.text
+                    font: iconTooltip.font
+                    color: iconTooltip.Kirigami.Theme.textColor
+                    wrapMode: Text.WordWrap
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Tooltip
+                    Kirigami.Theme.inherit: false
+                }
+
+                background: Rectangle {
+                    Kirigami.Theme.colorSet: Kirigami.Theme.Tooltip
+                    Kirigami.Theme.inherit: false
+                    color: Kirigami.Theme.backgroundColor
+                    border.color: Qt.darker(Kirigami.Theme.backgroundColor, 1.08)
+                    border.width: 1
+                }
+            }
 
             KIconThemes.IconDialog {
                 id: iconDialog

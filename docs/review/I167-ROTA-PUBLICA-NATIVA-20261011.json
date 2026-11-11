@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-11T09:02:13.930279+00:00",
+  "item": "I167",
+  "revision": 1,
+  "status": "passed_scoped",
+  "stage_estimate_percent": 77,
+  "estimate_basis": "Public backend graphical route gate completed; other GTK2 controls remain pending. Not full project or fidelity percentage.",
+  "proof": {
+    "schemes": [
+      "DomainOS-SR10.4",
+      "BreezeDark"
+    ],
+    "real_bwrap_guards": true,
+    "personal_home_exposed": false,
+    "system_bus_exposed": false,
+    "route": "backend CLI --preview -> generation -> preview_gtk2.py -> real GTK2 Window",
+    "native_controls": [
+      "GtkHScrollbar",
+      "GtkVScrollbar"
+    ],
+    "native_allocations": [
+      [
+        16,
+        16,
+        220,
+        15
+      ],
+      [
+        260,
+        16,
+        15,
+        180
+      ]
+    ],
+    "click_changes_value": [
+      35,
+      34
+    ],
+    "normal_close_exit_codes": [
+      0,
+      0
+    ],
+    "arrow_masks": 8,
+    "arrow_pixel_differences": 0,
+    "canvas_pixels_matching_kde_window_role": 128,
+    "full_bar_role_color_sets_match": true
+  },
+  "limits": [
+    "Normal state in two schemes only; previous four-palette/state evidence remains scoped to its original inputs.",
+    "No new historical VM comparison or human approval.",
+    "Public route exposes separate Window; coupled Plug has independent controller evidence.",
+    "Other native GTK2 controls, pieces and states remain pending."
+  ],
+  "failures_preserved": [
+    "Fixture lacked placeholder bind targets in read-only /etc; setup fixed.",
+    "Pixel verifier assumed only one metrics event per control; latest per-control event now used."
+  ],
+  "sha256": {
+    "docs/referencias/domainos-sr104/i167-public-native/public-native-r4.log": "7766b7474ffdc42219bcbad072e27586fc0c49d2f61d4b9ea03d5424831af957",
+    "docs/referencias/domainos-sr104/i167-public-native/public-native-r3.log": "02af85e0ddae877ebdfb31ec978e052c70628beb6c85360ad89a1b981b4e47fe",
+    "docs/referencias/domainos-sr104/i167-public-native/public-native-r2.log": "31fa76a8ca3212ee8661f9b680b828925026acb3fa457c3faf6e8a3e3758dc12",
+    "docs/referencias/domainos-sr104/i167-public-native/public-native.log": "4c66ef259422f72972589b6caa73a71bd6d20a8ffc9d3ded6142dce7ea82a64e",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/gtk2-RECEIPT.json": "8f972e757731ed248d47dcdfa713f068799774fbc2d2599b5a2795cd2496d066",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/PROJECT.json": "59a31a749b84b1f22bd53dfa2e7fa9075703fe61d0915fa373d76b1e8e2201dd",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/preview.png": "52ad0bea95fdd93ad638f592517e7506cd756ccb77900a48bacd4f4f80161262",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/verified-pixels.json": "41f2b5e66e66a71e72f265eab4fe75e91f3caba8e80267960b1c8fd18f91b0a7",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/gtk2-PREVIEW.json": "9dd2bf7cffc6a6d41f3c28d309cfb10b4bfbde1d4daedc7fb69d30c5290b942e",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/results.json": "9a5e8637ddd3b8d38afac8e2eee60a8eb13370ad711be071beb504f9ab115cb8",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/namespace.log": "2b22f691c550bd571e5e911de2e2f0aa67106ce93a51d01e62114b030657b3bc",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/GTK2-NATIVE-COLORS.json": "8dc9d56e88f99f0a34c6bd073473334e61076697673bf2b6d428beb9f05169c6",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/gtk2-RECEIPT.json": "4f522f5957c3a9423a11cf0a2bcf9516c597eca767e68debb83be971556fc97f",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/PROJECT.json": "a0ff64bf40a0ef62a07045bfd29fec9a4eea3fbcd84967fe513b93c7cf41cc9f",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/preview.png": "c38a2fdaa08e0fc6aff6a6837af57d40c2ffae4e1fd498eba47881d2185899da",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/verified-pixels.json": "fa96c3e8f7d150f4004d39cc078e983aff202319c83d0b675f19d57312234f16",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/gtk2-PREVIEW.json": "b2ab86a6a229f2243a64cdf432b022864166229f5abc531c3016738e960cc7aa",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/results.json": "9fee8866203bba861ea3a6ee53f434cb2e9b40a2848ba13037afc9dd6f5f21b2",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/namespace.log": "bb179339b4f3712612227c300108a65db320fb4bde7bce73acaef59ade4d5787",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/GTK2-NATIVE-COLORS.json": "2c78dbc38f55c460801b6d7992f8cc6d1f5952e8ac8a28623c21079ad33e0bf1",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/events/event-00000349075793739449-aaeb525a70b04734bbe7261731af341a.json": "348ad10fd0d90414f639d26f62da5d84c6212f94efa29c7e08853e184c5d9f0e",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/events/event-00000349075744663075-ac6e7c10963149c7af43124b5d622caa.json": "592b3128c50d1909fa444cbc2dce139b3401f6400b3ff898b937261e2d179542",
+    "docs/referencias/domainos-sr104/i167-public-native/BreezeDark/events/event-00000349075750686396-825795841c2a4430b9fcda86e8e3d776.json": "7d0f0798828cdf863a47e844061f0a027ec130698e9c9303ae887c5c8a859154",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/events/event-00000349073067620038-6f3d445fb67246f69782aaad5a38ac74.json": "6825fb4f2437fe5901dd3a7bf1baded6b549cc05df1eb5de35832d46694666f4",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/events/event-00000349073173162553-ff0bb4680bb84c56ba1eb54f5c173c18.json": "ae868e3e8524c01d20936b3ce9671a6067810335190d23d3b90e5e3ab57b1df2",
+    "docs/referencias/domainos-sr104/i167-public-native/DomainOS-SR10.4/events/event-00000349073069223563-0596601822074d3584645ef4330bdc30.json": "1c118147af041faeb81736255f56dc7e55469b399f9d3bab4b0bb74675ac4577",
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "5b0dc3ed807c29f1dfb30e00b51c5d1d7456b2b681162afc47a8452c22f57a01",
+    "tools/theme-lab/tests/verify_gtk2_public_capture.py": "eb147fe45fe4baa3a1fa910fe35eb823aa23058b3721462ebca8803268e4ba3f"
+  }
+}

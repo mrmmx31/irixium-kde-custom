@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-SHIFT-WAKE-20261025-R178",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "guest_snapshot": "black",
+    "paused": false,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "frameskip": 4,
+    "throttled": false
+  },
+  "action": "A one-frame Shift pulse was applied through the Apollo keyboard field and automatically released on frame 3. The screen was captured on frame 65.",
+  "result": "The VUE desktop and File Manager returned visibly. The hook remained uncaptured and mouse_device remained none. No guest file or configuration was changed.",
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-current-vue-after-shift-r178.png",
+    "sha256": "cb7e48abfd8558a41915d5ad933051fce98cab19857ed95d7874fb09579f7535"
+  },
+  "limits": "Confirms keyboard wake on this clone, not the user's physical screen-activation sequence. The visible XmpIcon grid has no selected item, keyboard focus outline, hover or rubberband state.",
+  "final_state": {
+    "key_released": true,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "status": "keyboard_wake_visible_no_icon_state"
+}

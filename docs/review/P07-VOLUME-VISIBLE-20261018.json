@@ -1,0 +1,61 @@
+{
+  "recorded_at": "2026-10-18",
+  "item": "P07",
+  "user_answer": "Q335 revision 1: Volume is necessary and should be visible.",
+  "scope": "Only the visibility preference for the native Plasma volume provider; no order-editor or Q373 changes.",
+  "isolated_validation": {
+    "display": ":78",
+    "test": "Production DomainOSTray.qml applyVisibility() with an owned fake native configuration object",
+    "result": "passed",
+    "visible_ids": [
+      "org.kde.plasma.battery",
+      "org.kde.plasma.volume"
+    ],
+    "native_configuration_shownItems": [
+      "org.kde.plasma.battery",
+      "org.kde.plasma.volume"
+    ],
+    "write_attempts": 1,
+    "write_commits": 1,
+    "qml_errors": 0,
+    "limitations": "This fixture verifies the production QML adapter and config write; it does not render the actual Plasma volume icon or prove a physical mixer action."
+  },
+  "config_round_trip": {
+    "test_profile": "Copied the current appletsrc into ~/tempia and used kwriteconfig6/kreadconfig6 before touching the live profile.",
+    "result": "passed",
+    "extraItems_preserved": true
+  },
+  "active_profile_change": {
+    "file": "~/.config/plasma-org.kde.plasma.desktop-appletsrc",
+    "backup": "~/tempia/p07-volume-xephyr-20261018/plasma-org.kde.plasma.desktop-appletsrc.before",
+    "backup_sha256": "a2ed7ef228287d78f234fee063c005291947e735fcca46ddbcf5093823740886",
+    "active_sha256_after": "c8c8b01a0d417dd03849cdc0059404f4c94ec80d644cb0c743174d695443f600",
+    "before": {
+      "trayVisibleItems": "org.kde.plasma.battery",
+      "shownItems": "org.kde.plasma.battery"
+    },
+    "after": {
+      "trayVisibleItems": "org.kde.plasma.battery,org.kde.plasma.volume",
+      "shownItems": "org.kde.plasma.battery,org.kde.plasma.volume"
+    },
+    "extraItems_unchanged": true,
+    "notification": "kwriteconfig6 --notify sent for both updated keys."
+  },
+  "post_plasmashell_reload_observation": {
+    "time": "2026-10-18",
+    "trigger": "Plasma was restarted for the separately authorized P04 applet reload; no P07 configuration was written during this turn.",
+    "live_applet_configuration": {
+      "trayVisibleItems": "org.kde.plasma.battery,org.kde.plasma.volume",
+      "trayOrder_contains_volume": true,
+      "extraItems_preserved": true
+    },
+    "readback": "After restart, read-only Plasma scripting and the live appletsrc file both reported battery and volume as visible. The readback script returned the same two-item value.",
+    "limitation": "Configuration is loaded in the main shell; no pixel capture or physical mixer interaction was performed. User-visible appearance still awaits confirmation."
+  },
+  "source_hashes": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTray.qml": "50c6ed63a4917db69640fd0904587813d4c99e36b3ef9d0b2ced09ddfc525fa0",
+    "plasma/tests/test_domainos_tray_refresh_failure.py": "ca32801af8e53551abd7baca8a5f51e54f600cb04df04a770fce824ed0fbbfcb"
+  },
+  "full_p07_status": "partial_waiting_user",
+  "remaining": "Actual panel appearance awaits visual review. Q373 remains unanswered; do not alter the dynamic tray-order editor or its ConfigView bridge."
+}

@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "id": "R483",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Validate actual GTK2 2.24.33 horizontal scrollbar rendering of R470 corner assets across four KDE schemes in private Xvfb sessions.",
+  "runtime": "/usr/bin/python3 GTK2 OffscreenWindow / GtkScrollbar renderer, GTK 2.24.33, 220x15 at scale 1; each test used an owned Xvfb and throwaway HOME under ~/tempia; Xvfb was terminated after capture.",
+  "palette_method": "The native KDE role helper read each real .colors file. The product GTK2 generator rendered the scrollbar pixmaps. Three unrelated required error/link roles absent from the helper were supplied from that same scheme foreground solely so the full bundle could be constructed; no non-scroll control is part of this claim.",
+  "comparison_method": "Compare each actual GTK2 screenshot at (2,13), (3,13), (2,14), (217,1) to the four source pixels copied by R470 from its normal horizontal stepper assets. All four match exactly for each scheme. Whole 15x15 cells are intentionally not claimed as identical because GTK2 paints the arrow glyph as a separate overlay.",
+  "schemes": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "scheme_path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "native_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r483-gtk2-native-schema-corners-20261027/DomainOS-SR10.4/native-horizontal.png",
+      "capture_sha256": "2223aa5b265ae5b244436092f64838ee9bbeb6458864bd4cd6b3a15240a66969",
+      "native_capture_dimensions": [
+        220,
+        15
+      ],
+      "gtkrc_sha256": "2b6d55f66d3f431601bc46abbf6187343be72e4939f3844696d5f417f090f773",
+      "generated_manifest_sha256": "1adcccdffc473eaac950ac33f1adc2f2972c2cf9d81a6c6771508defb0618cdf",
+      "corner_checks": [
+        {
+          "screen_xy": [
+            2,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            13
+          ],
+          "actual_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "expected_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            3,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            1,
+            13
+          ],
+          "actual_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "expected_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            2,
+            14
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            14
+          ],
+          "actual_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "expected_rgba": [
+            62,
+            83,
+            110,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            217,
+            1
+          ],
+          "stepper_asset": "scrollbar-stepper-right-normal.png",
+          "asset_xy": [
+            14,
+            1
+          ],
+          "actual_rgba": [
+            196,
+            213,
+            237,
+            255
+          ],
+          "expected_rgba": [
+            196,
+            213,
+            237,
+            255
+          ],
+          "match": true
+        }
+      ],
+      "all_four_corners_match": true
+    },
+    {
+      "scheme": "BreezeClassic",
+      "scheme_path": "/usr/share/color-schemes/BreezeClassic.colors",
+      "scheme_sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca",
+      "native_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r483-gtk2-native-schema-corners-20261027/BreezeClassic/native-horizontal.png",
+      "capture_sha256": "5a8339c28cd9bf4894330f15178fd49359ebcd6372d0d121724f836650de4f39",
+      "native_capture_dimensions": [
+        220,
+        15
+      ],
+      "gtkrc_sha256": "d4d6b296ed886d1467f0b7a31ef5620789aa8f6b5a9d94cc6d1e5397a65835f2",
+      "generated_manifest_sha256": "7916e30a8f48583ad6d6e456a3ed749297325720721786cbe858984fc7b5afee",
+      "corner_checks": [
+        {
+          "screen_xy": [
+            2,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            13
+          ],
+          "actual_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            3,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            1,
+            13
+          ],
+          "actual_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            2,
+            14
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            14
+          ],
+          "actual_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            124,
+            125,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            217,
+            1
+          ],
+          "stepper_asset": "scrollbar-stepper-right-normal.png",
+          "asset_xy": [
+            14,
+            1
+          ],
+          "actual_rgba": [
+            248,
+            248,
+            249,
+            255
+          ],
+          "expected_rgba": [
+            248,
+            248,
+            249,
+            255
+          ],
+          "match": true
+        }
+      ],
+      "all_four_corners_match": true
+    },
+    {
+      "scheme": "BreezeDark",
+      "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "native_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r483-gtk2-native-schema-corners-20261027/BreezeDark/native-horizontal.png",
+      "capture_sha256": "dbbcc5a608eed808d4a9f8f291089ae7da7c3e44be683e9a037af6cffecd4596",
+      "native_capture_dimensions": [
+        220,
+        15
+      ],
+      "gtkrc_sha256": "8387ab22275fb2e53832208bf78fefc16bf5b5daa7be09e3f9e3270d4e04e34e",
+      "generated_manifest_sha256": "46a43c59a2280fba171069b03eee8b143fc08a638260002a7c9d02dbaebe0b8e",
+      "corner_checks": [
+        {
+          "screen_xy": [
+            2,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            13
+          ],
+          "actual_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "expected_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            3,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            1,
+            13
+          ],
+          "actual_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "expected_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            2,
+            14
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            14
+          ],
+          "actual_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "expected_rgba": [
+            21,
+            23,
+            25,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            217,
+            1
+          ],
+          "stepper_asset": "scrollbar-stepper-right-normal.png",
+          "asset_xy": [
+            14,
+            1
+          ],
+          "actual_rgba": [
+            161,
+            162,
+            164,
+            255
+          ],
+          "expected_rgba": [
+            161,
+            162,
+            164,
+            255
+          ],
+          "match": true
+        }
+      ],
+      "all_four_corners_match": true
+    },
+    {
+      "scheme": "KvBeige",
+      "scheme_path": "/usr/share/color-schemes/KvBeige.colors",
+      "scheme_sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3",
+      "native_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r483-gtk2-native-schema-corners-20261027/KvBeige/native-horizontal.png",
+      "capture_sha256": "32fd5a8c2b6fa577fdb4a3ea4b9ddcc7047b023bbc8db03df4ad882b4802b8bc",
+      "native_capture_dimensions": [
+        220,
+        15
+      ],
+      "gtkrc_sha256": "17c52ef88724fde6d230db6b00344a8795e8c4e0344a84d6e15c1831e70ba5d2",
+      "generated_manifest_sha256": "7fce04c74bf1cc7d4c2d20f325bd88482a494853a91332b9d8588006637f6d56",
+      "corner_checks": [
+        {
+          "screen_xy": [
+            2,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            13
+          ],
+          "actual_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            3,
+            13
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            1,
+            13
+          ],
+          "actual_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            2,
+            14
+          ],
+          "stepper_asset": "scrollbar-stepper-left-normal.png",
+          "asset_xy": [
+            0,
+            14
+          ],
+          "actual_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "expected_rgba": [
+            124,
+            122,
+            120,
+            255
+          ],
+          "match": true
+        },
+        {
+          "screen_xy": [
+            217,
+            1
+          ],
+          "stepper_asset": "scrollbar-stepper-right-normal.png",
+          "asset_xy": [
+            14,
+            1
+          ],
+          "actual_rgba": [
+            248,
+            246,
+            244,
+            255
+          ],
+          "expected_rgba": [
+            248,
+            246,
+            244,
+            255
+          ],
+          "match": true
+        }
+      ],
+      "all_four_corners_match": true
+    }
+  ],
+  "result": {
+    "gtk2": "2.24.33",
+    "scheme_count": 4,
+    "native_captures": 4,
+    "corner_pixel_checks": 16,
+    "exact_matches": true,
+    "geometry": [
+      220,
+      15
+    ],
+    "host_profile_changed": false,
+    "personal_application_restarted": false,
+    "vm_input_sent": false,
+    "static_product_rgb_added": false,
+    "scope_limits": "Proves normal horizontal GTK2 corner painting only. It does not verify whole stepper cells, vertical bars, hover/held/disabled VUE states or human visual approval."
+  }
+}

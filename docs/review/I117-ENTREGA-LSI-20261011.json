@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-11T04:50:36.942374+00:00",
+  "item": "I117",
+  "authority_revision": 1,
+  "phase": "delivered_lsi",
+  "pid": 1707007,
+  "window": "41943192",
+  "display": ":61",
+  "run": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480",
+  "release_used": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "d59391788d7bca04532b05969523615156041fe375f9c2bd63671c2c6178a2e0",
+      "item_id": "I117",
+      "user_revision": 1,
+      "definition_sha256": "8dec1e5f9a4608bd02e7328711b9c0ec4a1a38862872624414202ce3ce19b773",
+      "application": "Theme Lab no Xephyr :61 — nova instância a partir do PID 1651344",
+      "reason": "I117 testado: abrir versão atualizada com medidas pareadas Motif/GTK3, entradas comuns e resumo completo. Copiar projeto salvo e journal/Undo com verificação; manter a origem aberta, pois texto bruto ainda não persistido não é importado. A liberação coordena uma entrega, não fecha outras janelas.",
+      "requested_at": "2026-10-11T04:47:29.405Z"
+    },
+    "answer": {
+      "approved": true,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "request_id": "d59391788d7bca04532b05969523615156041fe375f9c2bd63671c2c6178a2e0",
+      "responded_at": "2026-10-11T04:47:55.177Z"
+    },
+    "available": true,
+    "permitted": true,
+    "scope_current": true
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-4c098b1a8a2e428d82aa9f5595a6e6e7/MANIFESTO.json",
+    "source_manifest_sha256": "a54802acda418c65c476a70711496275af355b744b0bcdc875739f695e60b110",
+    "saved_files_sha256": {
+      "working.json": "e3aff25cadc1cbeef7c33a2471ff00599cf8f2604f10f99b1ee97ddb48f5b1c6",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "preservation": {
+    "source_pid1651344_confirmed_live": true,
+    "journal_and_histories_byte_identical": true,
+    "all_working_fields_except_exported_at_semantically_identical": true,
+    "current_Motif_selection_preserved": true,
+    "personal_gui_input_sent": false,
+    "raw_unsaved_widget_text_imported": false,
+    "source_remains_open": true
+  },
+  "visual_inspection": "Delivered client capture inspected; native Motif samples and shared labels visible, three-column layout, current imported selection retained. GTK3 integrated comparison proven in private namespace; user can select GTK3 here without modifying desktop schema.",
+  "implementation_test_receipt": "docs/review/I117-FLUXO-COMPARACAO-20261011.json",
+  "warnings": [
+    "Missing charsets in Motif FontSet warning retained; font investigation I120 separate"
+  ],
+  "estimated_stage_progress_percent": 100,
+  "percentage_basis": "I117 scoped implementation, native tests, frozen source handoff and delivered-window inspection complete; human historical/visual approval remains separate",
+  "remaining": [
+    "Human review",
+    "Broader goal and later authorized items remain incomplete"
+  ],
+  "hashes": {
+    ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480/MANIFESTO.json": "5fd33ccaf83a43b7b1b2e2ccd233575dc98edbb09f5fcca2d1693b6b91e08855",
+    ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480/RESULTADO.json": "1ec8fe3b3219846a7eda42b91f99bc5f8fa9dbc3b2ece89f8d937fdd30c53302",
+    ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480/entrega.png": "3692f9051e55df6f00ee954153b94dfcfc8e17f9b95a3957e0d17dd5002c5fbc",
+    "tools/theme-lab/build/theme-lab": "278f3851296746fb7ce2e6e37326c49231791cca4623e72cc0d5230594956495"
+  }
+}

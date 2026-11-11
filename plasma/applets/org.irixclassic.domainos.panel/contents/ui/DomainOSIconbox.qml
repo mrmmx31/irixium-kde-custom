@@ -44,12 +44,17 @@ Item {
     property var menuTarget:null
     property var menuSelection:[]
     property var pendingOperations:[]
+    property var pendingOperationsRect:null
+    property var organizationInvocationRect:null
     property int operationsGeneration:0
     property int openingOperationsGeneration:0
     property var waitingOperationsPopups:[]
     property bool closingOperationsPopups:false
     property bool presentingOperations:false
     property bool modifierSelectionArmed:false
+    property int selectionPreflightToken:-1
+    property string selectionPreflightSignature:""
+    property var selectionPreflight:null
     property string lastError:""
     property int operationsOpened:0
     readonly property var nativeMenuBridge:nativeLayer.item
@@ -58,6 +63,11 @@ Item {
     DomainOSPalette { id:fallbackPalette }
     DomainOSModifierKeys {
         onReleased: (remainingModifiers,key) => taskbox.selectionModifiersReleased(remainingModifiers,key)
+    }
+    Timer {
+        id:selectionPreflightTimer
+        interval:80;repeat:false
+        onTriggered:taskbox.runSelectionPreflight()
     }
     // Plasma's panel focus frame reads logical bounds without our drawing
     // scale. Keep keyboard event propagation to taskbox using a receiver
@@ -194,12 +204,104 @@ Item {
         return handleResult(controller.requestAction(record.key,action,argument,record.pid))
     }
     function selectedSnapshot() { return controller ? controller.selectedWindows().slice() : [] }
+    function selectionSignature(windows) {
+        return windows.map(window=>String(window.key)+"#"+String(window.pid)).sort().join("|")
+    }
+    function cancelSelectionPreflight() {
+        selectionPreflightTimer.stop()
+        selectionPreflightToken=-1
+        selectionPreflightSignature=""
+        selectionPreflight=null
+    }
+    function scheduleSelectionPreflight() {
+        selectionPreflightTimer.stop()
+        selectionPreflightToken=-1
+        const selected=controller ? controller.selectedWindows() : []
+        selectionPreflightSignature=selectionSignature(selected)
+        selectionPreflight=null
+        const backend=controller ? controller.geometryBackend : null
+        if (!groupPicker.visible || !selected.length) return
+        if (!backend || backend.available===false || typeof backend.requestPreflight!=="function") {
+            selectionPreflight={state:"unavailable",signature:selectionPreflightSignature,
+                detail:qsTr("A pré-checagem nativa está indisponível; as operações geométricas permanecem desabilitadas.")}
+            return
+        }
+        selectionPreflight={state:"pending",signature:selectionPreflightSignature}
+        selectionPreflightTimer.restart()
+    }
+    function runSelectionPreflight() {
+        const selected=controller ? controller.selectedWindows().slice() : []
+        const signature=selectionSignature(selected)
+        const backend=controller ? controller.geometryBackend : null
+        if (!groupPicker.visible || !selected.length || signature!==selectionPreflightSignature
+                || !backend || backend.available===false || typeof backend.requestPreflight!=="function") return
+        const reply=backend.requestPreflight({windows:selected})
+        if (!reply || reply.state!=="requested" || !Number.isFinite(Number(reply.token))) {
+            selectionPreflight={state:"unavailable",signature:signature,
+                detail:reply && reply.reason ? reply.reason
+                    : qsTr("A pré-checagem nativa não pôde ser iniciada; nenhuma janela foi movida.")}
+            return
+        }
+        selectionPreflightToken=Number(reply.token)
+    }
+    function selectionCompatibilityText() {
+        if (!controller) return ""
+        const selected=controller.selectedWindows()
+        if (!selected.length)
+            return qsTr("Nenhuma janela selecionada. Marque ao menos duas para organizar.")
+        const immovable=selected.filter(window=>!window.movable)
+        const fixed=selected.filter(window=>!window.resizable)
+        if (immovable.length)
+            return qsTr("%1 não aceita movimento; operações de organização ficarão indisponíveis.")
+                .arg(immovable[0].title)
+        if (fixed.length)
+            return qsTr("%1 não aceita redimensionamento; colunas, linhas e mosaico ficarão indisponíveis.")
+                .arg(fixed[0].title)
+        let detail=selected.length===1 ? qsTr("1 janela selecionada; selecione outra para organizar.")
+            : qsTr("%1 janelas selecionadas; todas aceitam movimento e redimensionamento.").arg(selected.length)
+        const signature=selectionSignature(selected)
+        const inspection=selectionPreflight && selectionPreflight.signature===signature ? selectionPreflight : null
+        if (inspection && inspection.state==="pending")
+            return detail+" "+qsTr("Verificando estado nativo, relações e limites sem mover as janelas…")
+        if (inspection && inspection.state==="unavailable")
+            return detail+" "+(inspection.detail || qsTr("A pré-checagem nativa está indisponível; nenhuma janela foi movida."))
+        if (inspection && inspection.state==="reported") {
+            if (inspection.available===false || inspection.geometryAvailable===false)
+                return detail+" "+(inspection.detail || qsTr("A organização geométrica está indisponível para esta seleção."))
+            const nativeWindows=Array.isArray(inspection.windows) ? inspection.windows : []
+            const maximized=nativeWindows.find(window=>Number(window.maximizeMode)!==0)
+            if (maximized) {
+                const mode=Number(maximized.maximizeMode)
+                const direction=mode===1 ? qsTr("verticalmente") : mode===2 ? qsTr("horizontalmente") : qsTr("por completo")
+                detail += " "+qsTr("%1 está maximizada %2 e será restaurada antes de receber a geometria.")
+                    .arg(maximized.title).arg(direction)
+            }
+            const limited=nativeWindows.filter(window=>window.minSize
+                && (Number(window.minSize.width)>0 || Number(window.minSize.height)>0))
+            if (limited.length) {
+                const first=limited[0]
+                detail += " "+qsTr("Limite nativo observado: %1 requer no mínimo %2×%3 px.")
+                    .arg(first.title).arg(first.minSize.width).arg(first.minSize.height)
+            } else if (selected.length>=2) detail += " "+qsTr("Os limites nativos foram lidos antes de mover.")
+        } else if (selected.some(window=>window.maximized))
+            detail += " "+qsTr("A janela maximizada será restaurada antes de receber a geometria.")
+        else if (selected.length>=2)
+            detail += " "+qsTr("Os limites nativos de tamanho serão conferidos antes de mover.")
+        return detail
+    }
     function geometryReady(windows,action) {
         const mode=action || "columns"
+        const method=mode==="restore" ? "requestRestore" : "requestLayout"
+        const inspection=selectionPreflight
+            && selectionPreflight.signature===selectionSignature(windows)
+            && selectionPreflight.state==="reported" ? selectionPreflight : null
+        const nativeGeometryAllowed=["columns","rows","mosaic"].indexOf(mode)<0
+            || !inspection || inspection.geometryAvailable!==false
         return !!controller && !!controller.geometryBackend && controller.geometryBackend.available!==false
-            && typeof controller.geometryBackend.requestLayout==="function" && windows.length>=2
+            && typeof controller.geometryBackend[method]==="function" && windows.length>=2
+            && nativeGeometryAllowed
             && windows.every(window=>checkTarget(window)
-                && (mode==="maximize" ? window.maximizable : mode==="minimize" ? window.minimizable : window.movable)
+                && (mode==="restore" ? true : mode==="maximize" ? window.maximizable : mode==="minimize" ? window.minimizable : window.movable)
                 && (["columns","rows","mosaic"].indexOf(mode)<0 || window.resizable))
     }
     function processReady(record) {
@@ -217,6 +319,7 @@ Item {
     function cancelPendingOperations() {
         ++operationsGeneration
         pendingOperations=[]
+        pendingOperationsRect=null
         waitingOperationsPopups=[]
         openingOperationsGeneration=0
     }
@@ -224,7 +327,12 @@ Item {
         waitingOperationsPopups=waitingOperationsPopups.filter(candidate=>candidate!==popup)
         showPendingOperations(operationsGeneration)
     }
-    function openOperations(windows) {
+    function invocationRectangle(item) {
+        const origin=item.mapToGlobal(0,0)
+        const extent=item.mapToGlobal(item.width,item.height)
+        return Qt.rect(origin.x,origin.y,extent.x-origin.x,extent.y-origin.y)
+    }
+    function openOperations(windows, invocationRect) {
         modifierSelectionArmed=false
         hideThumbnails()
         const snapshot=windows.slice()
@@ -233,6 +341,7 @@ Item {
         }
         const generation=++operationsGeneration
         pendingOperations=snapshot
+        pendingOperationsRect=invocationRect || invocationRectangle(taskbox)
         // Capture waiters BEFORE close(): closed can be emitted synchronously.
         // An asynchronous close retains the snapshot until its actual signal.
         waitingOperationsPopups=[groupPicker,basicMenu,operationsMenu]
@@ -268,9 +377,13 @@ Item {
             openingOperationsGeneration=generation
             // The stable owner and all natural row sizes are checked BEFORE
             // open; there is no cursor placement or deferred layout callback.
-            if (!operationsMenu.openAt(taskbox)) {
+            if (!operationsMenu.openAt(taskbox,pendingOperationsRect)) {
+                const message=operationsMenu.lastError || qsTr("Não foi possível dimensionar o menu de operações para esta tela.")
                 pendingOperations=[]
                 openingOperationsGeneration=0
+                // openAt() can reject a zero-sized native panel without
+                // emitting its failure signal. Never leave that path silent.
+                if (!operationsMenu.lastError) fail(message)
                 return false
             }
             if (generation===operationsGeneration) pendingOperations=[]
@@ -425,12 +538,25 @@ Item {
             groupPlacement.positionPopup()
             groupPicker.open()
         }
-        function onOrganizationRequested(windows) { taskbox.openOperations(windows) }
+        function onSelectedKeysChanged() { taskbox.scheduleSelectionPreflight() }
+        function onOrganizationRequested(windows) { taskbox.openOperations(windows,taskbox.organizationInvocationRect) }
         function onGroupSelectorOpenChanged() { if (!taskbox.controller.groupSelectorOpen) groupPicker.close() }
         function onGroupMembersChanged() {
             taskbox.syncGroupMembers()
             if (groupPicker.visible && Math.abs(groupPicker.height-groupPicker.preferredHeight)>.5)
                 groupPicker.prepareNaturalHeight()
+        }
+    }
+    Connections {
+        target:taskbox.controller ? taskbox.controller.geometryBackend : null
+        ignoreUnknownSignals:true
+        function onReported(report) {
+            if (!report || Number(report.token)!==taskbox.selectionPreflightToken)
+                return
+            const signature=taskbox.selectionSignature(taskbox.controller.selectedWindows())
+            if (!groupPicker.visible || signature!==taskbox.selectionPreflightSignature) return
+            taskbox.selectionPreflight=Object.assign({},report,{
+                state:report.outcome==="preflight" ? "reported" : "unavailable",signature:signature})
         }
     }
     DomainOSWindowHighlight {
@@ -575,7 +701,7 @@ Item {
         readonly property real maximumHeight:Math.max(1,(taskbox.groupAnchor || taskbox).Screen.height-8
             -Math.max(0,-topInset)-Math.max(0,-bottomInset))
         readonly property real chromeHeight:topPadding+bottomPadding+groupHeader.implicitHeight
-            +groupFooter.implicitHeight+groupContent.spacing*2
+            +groupCompatibility.implicitHeight+groupFooter.implicitHeight+groupContent.spacing*3
         readonly property real listHeight:Math.max(0,Math.min(memberCount*rowHeight,15*rowHeight,
             maximumHeight-chromeHeight))
         readonly property real preferredHeight:Math.min(maximumHeight,chromeHeight+listHeight)
@@ -605,10 +731,12 @@ Item {
                 : Controls.Popup.CloseOnPressOutsideParent)
         onAboutToHide:{
             hintOwner=null
+            taskbox.cancelSelectionPreflight()
             // Dismissing the selector ends its modifier gesture. Preserve the
             // chosen windows, but a later release must not reopen Operations.
             taskbox.modifierSelectionArmed=false
         }
+        onOpened:taskbox.scheduleSelectionPreflight()
         onClosed:{
             hintOwner=null;windowHighlight.clear()
             if (taskbox.controller && taskbox.controller.groupSelectorOpen)
@@ -641,6 +769,18 @@ Item {
                 text:taskbox.controller ? qsTr("%1 — %2 de %3 selecionadas").arg(taskbox.controller.taskFor(taskbox.controller.groupSelectorKey)?.title || "")
                     .arg(taskbox.controller.pickerSelectionCount).arg(taskbox.controller.groupMembers.length) : ""
                 elide:Text.ElideRight;renderType:Text.NativeRendering
+            }
+            Text {
+                id:groupCompatibility
+                objectName:"domainosGroupCompatibility"
+                width:parent.width
+                text:taskbox.selectionCompatibilityText()
+                color:taskbox.domainosPalette.text
+                wrapMode:Text.Wrap
+                renderType:Text.NativeRendering
+                Accessible.role:Accessible.StaticText
+                Accessible.name:text
+                onTextChanged:if (groupPicker.visible) Qt.callLater(groupPicker.prepareNaturalHeight)
             }
             Controls.ScrollView {
                 id:groupList;objectName:"domainosGroupScrollView"
@@ -739,20 +879,36 @@ Item {
                 spacing:8
                 DomainOSButton { objectName:"domainosGroupContinue";text:qsTr("Continuar seleção");onClicked:groupPicker.close() }
                 DomainOSButton {
+                    id:groupClearSelection
+                    objectName:"domainosGroupClearSelection"
+                    text:qsTr("Desselecionar tudo")
+                    enabled:taskbox.controller && taskbox.controller.selectionCount>0
+                    Accessible.name:text
+                    Accessible.description:qsTr("Limpa todas as janelas selecionadas e mantém esta lista aberta")
+                    Controls.ToolTip.visible:hovered && enabled
+                    Controls.ToolTip.text:Accessible.description
+                    onClicked:taskbox.controller.clearSelection()
+                }
+                DomainOSButton {
+                    id:groupOrganize
                     objectName:"domainosGroupOrganize";text:qsTr("Operações…")
                     enabled:taskbox.controller && taskbox.controller.selectionCount>=1
-                    onClicked:{ taskbox.controller.finishGroupSelection(true);groupPicker.close() }
+                    onClicked:{
+                        taskbox.organizationInvocationRect=taskbox.invocationRectangle(groupOrganize)
+                        try { taskbox.controller.finishGroupSelection(true);groupPicker.close() }
+                        finally { taskbox.organizationInvocationRect=null }
+                    }
                 }
             }
         }
     }
-    DomainOSOperationsMenu {
+    DomainOSOperationsPanel {
         id:operationsMenu
         iconbox:taskbox
         onFailure:message=>taskbox.fail(message)
         onPinRequested:taskbox.pinSelectedWindows()
         onCommandRequested:command=>taskbox.batch(command)
-        onOpened:{
+        onOpenedPanel:{
             if (taskbox.openingOperationsGeneration!==taskbox.operationsGeneration) {
                 close();return
             }

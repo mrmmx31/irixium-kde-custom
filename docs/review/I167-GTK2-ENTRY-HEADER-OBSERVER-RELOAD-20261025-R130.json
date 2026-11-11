@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-HEADER-OBSERVER-RELOAD-20261025-R130",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "family": "GTK2 GtkEntry: KDE Header role notification, production observer and live-window repaint",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2-only private integration validation; no XChat, personal session, GTK4, guest content or guest configuration changes.",
+  "verification": {
+    "environment": "GTK 2.24.33, private KDED with KDE GTKConfig plugin 4:6.3.4-1, theme_companion_bridge.watch(), GTK2-only production worker, private D-Bus/XDG profile, Xvfb :97; isolated under ~/tempia.",
+    "input": "Only private KDE Colors:Header.BackgroundNormal changed from the active DomainOS role to 209,67,91; emitted org.kde.kconfig.notify.ConfigChanged.",
+    "result": "passed",
+    "header_role_before": "#3297c7",
+    "header_role_after": "#d1435b",
+    "gtkentry_face_before": "#2a80a9",
+    "gtkentry_face_after": "#b1394d",
+    "matching_face_pixels_before": 15573,
+    "matching_face_pixels_after": 15573,
+    "native_window": "480x260; 15696 pixels changed after GTK2-only refresh.",
+    "generated_rc_matches_role": true,
+    "reload": {
+      "status": "sent",
+      "windows_considered": 18,
+      "events_sent": 18,
+      "racing_x_errors": 0
+    },
+    "cleanup_errors": [],
+    "private_profile": true,
+    "no_personal_windows_or_bus": true
+  },
+  "artifacts": {
+    "script": {
+      "path": "~/tempia/i167-r134-entry-observer-20261025.py",
+      "sha256": "a1f1acb04d74f42476e88c91ad6e74aae962b8bf055bfd5f44300e7fd1647d42"
+    },
+    "result": {
+      "path": "~/tempia/i167-r134-entry-reload-20261025/result.json",
+      "sha256": "4f4874b5da3ef9cbff5f84afa207e66db2200d6d798cf967b4ea46234d639061"
+    },
+    "before": {
+      "path": "~/tempia/i167-r134-entry-reload-20261025/gtk2-before.png",
+      "sha256": "0810b729fc519cbec39b2bc1dee155627d48ec78cabbf9ceea838988e9e900d5"
+    },
+    "after": {
+      "path": "~/tempia/i167-r134-entry-reload-20261025/gtk2-after.png",
+      "sha256": "e34b6e561eb602c8623229180483c2625731e7dcebb56029b1175c38c4d09def"
+    },
+    "console": {
+      "path": "~/tempia/i167-r134-entry-observer-console-20261025.log",
+      "sha256": "7292a0efbda1e9f46477e4ab40d701ea1546a038dc3a2f73cfab10ea053022db"
+    }
+  },
+  "limitations": [
+    "This proves the GTK2 production observer refreshes a real open GtkEntry when the effective KDE Header role changes; it does not prove historical visual fidelity beyond the measured DomainOS face already recorded in R129.",
+    "No personal application was reloaded.",
+    "The MAME VM was not changed in this test; the prior R129 one-frame Shift input already demonstrated waking its black display and released the key."
+  ],
+  "reused_evidence": [
+    "R113 proves a stable inverse-video selection in the visible VUE field (8x16 px, 124 changed pixels); the 24-pixel caret delta was separate.",
+    "R115 compares GTK2 selected text against that VUE state; R116/R117 retain text and cell measurements."
+  ],
+  "next": "Correct the R129 summary to cite R113/R115 selection evidence and use this R130 GTK2-only integration pass. Continue GTK2 remaining scope from existing receipts; do not repeat VUE selection/metric checks, touch other families, or apply to XChat without the established completion/acceptance path.",
+  "status": "running",
+  "user_acceptance": "pending",
+  "files_changed": false,
+  "guest_configuration_changed": false,
+  "xchat_changed": false,
+  "other_toolkit_family_touched": false
+}

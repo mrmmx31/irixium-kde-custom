@@ -1,0 +1,128 @@
+{
+  "at": "2026-10-11T02:53:39.058988+00:00",
+  "item": "I115",
+  "authority_revision": 3,
+  "authority_definition": "76b806eb6771448504c6f97ec838d1f6c2a95712ce349632181f34415744784a",
+  "stage": "GTK3 trough editor and native dimensions; remaining palettes/states pending",
+  "estimated_stage_progress_percent": 65,
+  "basis": "Three editors/translations implemented, first native trough dimension proof; remaining palette proof, two pieces and personal delivery pending",
+  "native_proof": ".qa-theme-lab-spin-xb_w1vgf/RESULTADO.json",
+  "native_proof_sha256": "8c8800e4835d12799f403df063999e7332b895f6557b2efb9d598018e2cd60b6",
+  "native_results": {
+    "new_numeric_editor_native_undo_redo": true,
+    "new_numeric_editor_native_copy_cut_paste": true,
+    "only_arrow_generated_assets_changed": [
+      "gtk3-stepper-up-normal-0-symbolic.svg",
+      "gtk3-stepper-down-normal-0-symbolic.svg",
+      "gtk3-stepper-left-normal-0-symbolic.svg",
+      "gtk3-stepper-right-normal-0-symbolic.svg",
+      "gtk3-stepper-up-focused-0-symbolic.svg",
+      "gtk3-stepper-down-focused-0-symbolic.svg",
+      "gtk3-stepper-left-focused-0-symbolic.svg",
+      "gtk3-stepper-right-focused-0-symbolic.svg",
+      "gtk3-stepper-up-pressed-0-symbolic.svg",
+      "gtk3-stepper-down-pressed-0-symbolic.svg",
+      "gtk3-stepper-left-pressed-0-symbolic.svg",
+      "gtk3-stepper-right-pressed-0-symbolic.svg",
+      "gtk3-stepper-up-toggled-0-symbolic.svg",
+      "gtk3-stepper-down-toggled-0-symbolic.svg",
+      "gtk3-stepper-left-toggled-0-symbolic.svg",
+      "gtk3-stepper-right-toggled-0-symbolic.svg",
+      "gtk3-stepper-up-disabled-0-symbolic.svg",
+      "gtk3-stepper-down-disabled-0-symbolic.svg",
+      "gtk3-stepper-left-disabled-0-symbolic.svg",
+      "gtk3-stepper-right-disabled-0-symbolic.svg"
+    ],
+    "actual_gtk3_arrow_metrics": "Pedido em edição: 0 x 0 (0 = automático)Motif referência: 15 x 15 px; preferido 15x 15Mínimo: toolkit não forneceGTK3 acoplado: 15 x 15 px lógicos; escala1Mínimo 15 x 15; preferido 15 x 15GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM.",
+    "code_matches_selected_arrow_recipe": true,
+    "unchanged_family_geometry_and_motif_reference": true,
+    "schema_transition_empty_piece_objects": "Normalized absent to empty; no effective Motif parameters changed",
+    "manual_apply_real_controller_generation": true,
+    "button_adjustment_preserves_glyph_masks_family_geometry_and_15x15_allocation": true,
+    "button_scope": "Standalone GtkButton; GtkRange rules unchanged by offline test",
+    "selected_palette_native_face": {
+      "scheme": "DomainOS-SR10.4",
+      "rgb": [
+        120,
+        160,
+        213
+      ],
+      "pixels_in_native_canvas": 42465
+    },
+    "trough_native_dimensions": {
+      "baseline": {
+        "10": [
+          220,
+          15,
+          "Pedido em edição: 220 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 220 x 15 px lógicos; escala1Mínimo 220 x 15; preferido 220 x 15GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM."
+        ],
+        "11": [
+          15,
+          180,
+          "Pedido em edição: 0 x 180 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 15 x 180 px lógicos; escala1Mínimo 15 x 180; preferido 15 x 180GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM."
+        ]
+      },
+      "actual": {
+        "10": [
+          220,
+          17,
+          "Pedido em edição: 220 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 220 x 17 px lógicos; escala1Mínimo 220 x 17; preferido 220 x 17GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM."
+        ],
+        "11": [
+          17,
+          180,
+          "Pedido em edição: 0 x 180 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 17 x 180 px lógicos; escala1Mínimo 17 x 180; preferido 17 x 180GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM."
+        ]
+      }
+    },
+    "trough_preserves_previous_masks_and_independent_recipes": true,
+    "trough_added_masks": [
+      "gtk3-lab-trough-frame-bottom-0-symbolic.svg",
+      "gtk3-lab-trough-frame-bottom-left-0-symbolic.svg",
+      "gtk3-lab-trough-frame-bottom-right-0-symbolic.svg",
+      "gtk3-lab-trough-frame-left-0-symbolic.svg",
+      "gtk3-lab-trough-frame-right-0-symbolic.svg",
+      "gtk3-lab-trough-frame-top-0-symbolic.svg",
+      "gtk3-lab-trough-frame-top-left-0-symbolic.svg",
+      "gtk3-lab-trough-frame-top-right-0-symbolic.svg"
+    ],
+    "trough_state_palette_and_internal_node_allocation": "not yet verified; whole bar allocation only",
+    "pending_piece_disabled_and_existing_override_preserved": true,
+    "status": "passed",
+    "personal_profile_exposed": false,
+    "historical_fidelity_claimed": false,
+    "text_input": "X11 keyboard with native Undo/Redo",
+    "piece_selection": "Motif callback API fixture"
+  },
+  "offline_checks": {
+    "model": 751,
+    "backend": 20,
+    "scene": 14,
+    "IPC": "passed",
+    "build": "C99 warnings as errors"
+  },
+  "initial_test_failure": {
+    "path": ".qa-theme-lab-spin-t9r3kiwt/RESULTADO.json",
+    "cause": "Test selected new visible control but did not Apply manual scene before waiting for its metrics",
+    "fix": "Apply scene after each catalog change; preserved failure record"
+  },
+  "native_capture_reviewed": ".qa-theme-lab-spin-xb_w1vgf/trough-10-native.png",
+  "historical_fidelity_claimed": false,
+  "personal_delivery": "not reloaded; existing windows preserved",
+  "remaining": [
+    "Breeze light/dark/yellow native trough scope",
+    "Trough pressed/disabled/backdrop proof",
+    "GtkRange internal allocation measurement",
+    "Visible Motif comparison framing I117",
+    "Thumb and fitting adapters",
+    "Project-wide numeric Undo I119"
+  ],
+  "hashes": {
+    "tools/theme-lab/src/view.c": "1773316a225823853b3c6c6dc8806102c776d40d1823bf628e646b300dc16dc6",
+    "tools/theme-lab/src/controller.c": "cb3d2bff255b06c1b82fd208f53dedbe4c02ea625f20308e02792f0f7109fc24",
+    "tools/theme-lab/Makefile": "11ab27f7c9ca28e3302a5ec10da736023d4dca021694cfa09bb02ad4ca31f0b1",
+    "tools/theme-lab/tests/controller_spin_probe.c": "41c79d376799e37c0c1953fd1f446d6b4ee4b75a5621a60daf625dc3f7b2e72c",
+    "tools/theme-lab/tests/test_controller_spin.py": "4886f2cf1afee16bd6f4cf114be6a32de796129b113a109db8f5138b7c44a6ca",
+    "tools/theme-lab/backend.py": "770e03a9ef04a1f151137b0a3c189b94135e411cf835d476f2a761ec4070be42"
+  }
+}

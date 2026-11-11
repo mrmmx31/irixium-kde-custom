@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R648",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "prior-live-down-held-capture-reverified-do-not-repeat",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source_receipt": "docs/review/I167-MAME-LIVE-DOWN-ARROW-HELD-20261027-R434.json",
+  "source_capture": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "route": "Authenticated MAME host-window XTest, with the native guest cursor visible over File Manager's vertical down stepper before the hold; no direct port override.",
+    "held_path": "records/ia-tema/evidence/I167/r442-filemanager-down-held-20261027.png",
+    "held_sha256": "224063ed70ce0ada8adcaa2566a1353822d3f0684ebc8247445f050b1bc465f1",
+    "released_path": "records/ia-tema/evidence/I167/r442-filemanager-down-released-20261027.png",
+    "released_sha256": "fe5e8a01a9d377ae978df32107c60045f007159cd6beef0c49c0740231c93300",
+    "dimensions": [1024, 844],
+    "held_button_raw": 16,
+    "released_button_raw": 0
+  },
+  "revalidation": {
+    "both_sha256_match_R434": true,
+    "full_image_changed_pixels": 37,
+    "full_image_bbox_xyxy": [846, 555, 857, 563],
+    "cell_origin_xy": [844, 553],
+    "cell_size_px": [15, 15],
+    "cell_changed_pixels": 37,
+    "cell_changed_bbox_xyxy_relative": [2, 2, 13, 10]
+  },
+  "interpretation": {
+    "historical_state": "The live down-stepper shows a held/released relief transition at the recorded native coordinates; the 37 visible changed pixels are consistent with the stored SR10.4 transition and installed GTK2 down-pressed asset.",
+    "cursor_occlusion": "16 of 53 expected relief changes were occluded by the cursor; the asset-map comparison is separately covered by R493/R494/R557.",
+    "endpoint": "The thumb was at the track endpoint, so arrow enabled/insensitive behavior remains unproven.",
+    "do_not_repeat": "Do not repeat the down-arrow hold; its useful visible transition and asset checks are already recorded."
+  },
+  "remaining_scope": [
+    "Historical full-cell pressed/released comparison for horizontal and up directions, where applicable.",
+    "Manual review of the applied GTK2 theme remains distinct from pixel evidence."
+  ],
+  "limits": [
+    "This revalidation reads existing records; it sends no VM or desktop input.",
+    "It confirms only the down-arrow held transition and does not establish horizontal/up held rendering, endpoint sensitivity, or human acceptance."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Reconciles existing valid down-held evidence and narrows the remaining press-state gap; no new criterion is closed. Not a fidelity score."
+  }
+}

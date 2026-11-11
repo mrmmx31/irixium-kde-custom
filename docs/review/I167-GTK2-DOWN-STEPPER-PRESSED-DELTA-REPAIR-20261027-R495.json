@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "R495",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Restore the installed GTK2 down-stepper pressed transition to the measured Domain/OS SR10.4 glyph-only change, then refresh the user-local GTK2 palette.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "parent_theme_item": "P10",
+    "parent_authorized": true,
+    "changes_recorded": true,
+    "execution_script_recorded": true
+  },
+  "native_reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "receipt": "docs/review/I167-MAME-LIVE-DOWN-ARROW-HELD-20261027-R434.json",
+    "held_capture_sha256": "224063ed70ce0ada8adcaa2566a1353822d3f0684ebc8247445f050b1bc465f1",
+    "released_capture_sha256": "fe5e8a01a9d377ae978df32107c60045f007159cd6beef0c49c0740231c93300",
+    "visible_changed_pixels": 37,
+    "visible_pixels_matching_native_transition": 37,
+    "expected_transition_pixels_occluded_by_cursor": 16,
+    "unexpected_transitions": 0,
+    "native_transition_pixels_total": 53
+  },
+  "finding": {
+    "installed_before": {
+      "bundle": "b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa",
+      "down_normal_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+      "down_pressed_sha256": "07ca3901c24dc819c8469ef581fa3b7610ca71ec7d437e1f6d500fb95bb0eb04",
+      "pressed_delta_pixels": 64,
+      "extra_outer_row_transitions": 11
+    },
+    "cause": "The prior generated down-pressed asset changed an additional 11 pixels in the top row of the 15x15 cell. The live SR10.4 hold changes only the 53 light/shadow pixels inside the centered 11x11 arrow glyph."
+  },
+  "change": {
+    "source": "tools/gtk2_domainos_palette.py",
+    "test": "tests/test_gtk2_palette_runtime.py",
+    "effect": "The active vertical trough corner repair now changes only the four exposed trough-context pixels; the down-stepper normal and pressed assets are not modified by that repair. Regression asserts a 53-pixel pressed delta, wholly within the glyph, with a symmetric swap of KDE-derived light and shadow roles.",
+    "colors": "All colors remain dynamically derived from the current KDE color roles; no final static RGB values were introduced."
+  },
+  "validation": {
+    "gtk2_runtime_suite": "24 tests passed",
+    "py_compile": "passed before runtime suite",
+    "git_diff_check": "passed",
+    "registered_code_diff": {
+      "item": "I167",
+      "revision": 2,
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+      "base": "Last exact verified I167 changes-comparison snapshot; cumulative update since R470",
+      "files": ["tools/gtk2_domainos_palette.py", "tests/test_gtk2_palette_runtime.py"],
+      "content_verified": true,
+      "diff_bytes_match": true,
+      "diff_sha256": "fa009839bdcaf3149fe3bc1ba4ea73c643cfb7757741a80dd0a4a2bd33978940"
+    },
+    "user_local_deployment": {
+      "renderer_path": "/home/lsi/.local/share/irixium/theme-companions/tools/gtk2_domainos_palette.py",
+      "renderer_sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb",
+      "renderer_backup_receipt": "/home/lsi/.local/state/irix-theme-companions/gtk2-domainos-generator-r495/backups/20261027T171149-d95287d256f0/receipt.json",
+      "palette_backup_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261027T171152-9183360fc510/receipt.json",
+      "selected_gtk_theme_before_refresh": "DomainOS-SR10-4-KDE",
+      "palette_colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "installed_bundle": "01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+      "down_normal_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+      "down_pressed_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+      "pressed_delta_pixels": 53,
+      "delta_inside_centered_glyph": true,
+      "native_reload": {
+        "status": "sent",
+        "windows_considered": 130,
+        "events_sent": 130,
+        "x_errors": 0
+      },
+      "applications_restarted": false
+    },
+    "execution_script": {
+      "path": "~/tempia/ia-tema/evidence/I167/r495-user-gtk2-refresh/apply-r495.py",
+      "sha256": "88c92d75f70367a6d5440ccc7b1f72a592b381262b8a9fdb11b50c9fdfd6b2de",
+      "recorded_in_board": true
+    }
+  },
+  "limits": [
+    "The current rendered asset and profile readback were verified; this does not replace a fresh visual inspection by the user in an open GTK2 application.",
+    "The live SR10.4 comparison is reused from R434; no new input was sent to either running MAME VM in this step.",
+    "Other GTK2 historical states and directions remain pending under I167. The VM coexistence guard in Q499 was not modified."
+  ],
+  "next": "Continue only I167/GTK2 with the next uncovered SR10.4-comparable state, reusing R434 and R495 for the down-arrow held transition. Keep the application-level visual review pending."
+}

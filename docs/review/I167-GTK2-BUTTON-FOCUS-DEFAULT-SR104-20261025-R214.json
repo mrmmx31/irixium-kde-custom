@@ -1,0 +1,75 @@
+{
+  "id": "R214",
+  "item": "I167",
+  "title": "Estados separados de foco e botão padrão GTK2",
+  "status": "technical comparison complete; human review pending",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "toolkit": "GTK 2.24.33",
+    "control": "GtkButton focus-only, default-only, and both",
+    "environment": "private Xvfb; no user profile or XChat changes"
+  },
+  "historical_reference": {
+    "capture": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-results-r215.png",
+    "sha256": "8d91379e93d4fa8881bfd4c0286ef43d65cbf77f8a215b4f609c40f7cca7475c",
+    "start_button_focus_outline_px": [84, 44],
+    "note": "The VUE capture visibly marks Start but does not reveal whether keyboard focus and default status are both set."
+  },
+  "native_gtk2_evidence": {
+    "probe": "~/tempia/ia-tema/evidence/I167/r214-focus-state-matched/probe.py",
+    "probe_sha256": "76292c1b7c4d85774bb7f2b2443280b69ff1b1e6bcdb66dc4c224a4446aa5586",
+    "palette_source": "same private GTK2 RC and dynamic KDE DecorationFocus role as R211",
+    "states": [
+      {
+        "state": "focus-only",
+        "has_focus": true,
+        "has_default": false,
+        "allocation_px": [84, 44],
+        "focus_outline_pixels": 496,
+        "focus_outline_bbox_px": [20, 20, 103, 63],
+        "image": "~/tempia/ia-tema/evidence/I167/r214-focus-state-matched/focus-only.png",
+        "sha256": "fccf07cab78ca4c473399bfc08a26dfd03a47bf918696a0de35102917a629fa2"
+      },
+      {
+        "state": "default-only",
+        "has_focus": false,
+        "has_default": true,
+        "allocation_px": [86, 46],
+        "focus_outline_pixels": 0,
+        "focus_outline_bbox_px": null,
+        "image": "~/tempia/ia-tema/evidence/I167/r214-focus-state-matched/default-only.png",
+        "sha256": "8f7a397c380773aabcf07082b244f5564203c7c910058aabbf4da587f46b86a1"
+      },
+      {
+        "state": "both",
+        "has_focus": true,
+        "has_default": true,
+        "allocation_px": [86, 46],
+        "focus_outline_pixels": 496,
+        "focus_outline_bbox_px": [21, 21, 104, 64],
+        "image": "~/tempia/ia-tema/evidence/I167/r214-focus-state-matched/both.png",
+        "sha256": "1a79b0399f511ac809f32fc8707c001f108d95bd37536261379d7b69049046b3"
+      }
+    ],
+    "style_readback": {
+      "focus-line-pattern": "",
+      "focus-line-width": 2,
+      "focus-padding": 2,
+      "interior-focus": false,
+      "default-border": "native GTK default; not overridden"
+    }
+  },
+  "conclusion": "The solid dynamic focus outline is produced by keyboard focus, not merely by the default-button state. With the native GTK default border retained, focus-only and both produce the same 84x44 outline size as the VUE reference; both shifts its origin by one pixel because its allocation is 86x46. Default-only has no focus outline. The temporary default-border=0 experiment was rejected because it changed default-only rendering and was unnecessary.",
+  "validation": {
+    "command": "python3 -B tools/theme-lab/tests/test_gtk2_buttons.py",
+    "result": "3 tests passed",
+    "palette_policy": "DecorationFocus remains a live KDE role; no historical RGB is written to product source.",
+    "not_claimed": [
+      "human visual acceptance",
+      "installed theme or XChat validation",
+      "hover, pressed, disabled, or inactive-window states",
+      "focus/default semantics inside VUE beyond what the screenshot shows"
+    ]
+  },
+  "next": "Continue I167/GTK2 only with the next SR10.4-comparable control/state."
+}

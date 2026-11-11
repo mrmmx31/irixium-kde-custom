@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-VUE-ICONVIEW-KEYBOARD-NAV-20261025-R174",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "guest_view_before": "File Manager on /node_12345 with four-column XmpIcon grid; Help Viewer closed via documented Ctrl+X accelerator",
+    "mame_mapping": "The Apollo port field named Unnamed Key has the configured host input token KEYCODE_ENTER (display name Return). No KEYCODE_TAB token was found in keyboard1-4 standard sequences.",
+    "input": "One-frame Cursor Right pulse via the Apollo keyboard2 field; automatic release on frame 2.",
+    "result": "Pulse completed without error, but the native capture showed no visible focus outline or icon selection change."
+  },
+  "final_state": {
+    "paused": false,
+    "keyboard_field_released": true,
+    "hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "frameskip": 4,
+    "throttled": false,
+    "guest_files_or_configuration_changed": false,
+    "original_vm_changed": false,
+    "host_pointer": {"x": 200, "y": 950},
+    "host_focus_restored_to": "XChat window 0x01800003"
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-iconview-after-right-r174.png",
+    "sha256": "aeaff048c46802c122127a3050edaba43802f17ba464fb75ae6f0f42ecc0ec95"
+  },
+  "scope_limit": "The token is MAME's configured host binding for this guest input field; it does not independently document HP VUE keyboard traversal behavior. The arrow-key attempt produced no visual comparison state.",
+  "next": "Use the visible XmpIcon grid to choose a bounded interaction route, then compare one GTK2 state at 1:1. Keep focus, hover and selection distinct; do not treat keyboard mapping alone as a VUE focus result.",
+  "status": "host_binding_identified; iconview_cursor_right_no_visual_change; GTK2_pair_pending"
+}

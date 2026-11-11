@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-11T09:20:37.597069+00:00",
+  "item": "I167",
+  "revision": 1,
+  "status": "passed_native_controller_scope",
+  "stage_estimate_percent": 81,
+  "estimate_basis": "Actual Motif controller generation/apply/toggle gates completed for button and bars; other GTK2 controls and states remain incomplete. Not total-project progress or historical fidelity.",
+  "proof": {
+    "palettes": [
+      "DomainOS-SR10.4",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "button_initial": [
+      180,
+      50
+    ],
+    "button_after_apply": [
+      280,
+      60
+    ],
+    "origins": [
+      "coupled GtkPlug",
+      "detached GtkWindow"
+    ],
+    "gtk3_recipe_preserved": true,
+    "closed_detached_metrics_removed": true,
+    "coupled_metrics_preserved": true,
+    "canvas_family_label_inspected": "GTK2",
+    "strict_build": true,
+    "human_approval_filled": false,
+    "personal_windows_reopened": false,
+    "VM_changed": false,
+    "gtk3_controller_regression": {
+      "initial_coupled": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: aguardando medida nativaGTK3 - Motif: +154 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "initial_both": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 220 x 80; escala 1Mínimo 220 x 80; preferido 220 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +154 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "manual_spin_both": "Pedido em edição: 221 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 221 x 80; escala 1Mínimo 221 x 80; preferido 221 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 221 x 80; escala 1Mínimo 221 x 80; preferido 221 x 80Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +155 x +55 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "automatic_spin_both": "Pedido em edição: 221 x 81 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Amostra 9 caracteres: nenhum ausente natabela; 0 fora do alcance X11Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: 221 x 81; escala 1Mínimo 221 x 81; preferido 221 x 81Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 separado: 221 x 81; escala 1Mínimo 221 x 81; preferido 221 x 81Posição local 16, 36Fonte: Pango contexto de Label carregado:Noto Sans 9.75Sensibilidade: habilitadoPeças internas: não medidasGTK3 - Motif: +155 x +56 px físicos(dimensão).Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+      "request_below_native_minimum": {
+        "requested": [
+          1,
+          1
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "automatic_native_size": {
+        "requested": [
+          0,
+          0
+        ],
+        "both_allocated": [
+          70,
+          30
+        ]
+      },
+      "status": "passed",
+      "motif_reference": [
+        66,
+        25
+      ],
+      "spin_input": "X11 pointer",
+      "limit_input": "XmTextFieldSetString / real valueChanged callback",
+      "personal_profile_exposed": false,
+      "historical_fidelity_claimed": false
+    }
+  },
+  "remaining": [
+    "Other GTK2 controls/states and individual scrollbar parts",
+    "Native focus/backdrop automatic transitions",
+    "Historical comparison and human review within their own scope"
+  ],
+  "sources": {
+    "tools/theme-lab/src/view.c": "6fbbe04eed62f11bf1e2d9357922ec78126464eee59cadc128b45275a9c6be4b",
+    "tools/theme-lab/src/controller.c": "2791a355032b206818f0d6bb446f00aa2bd6d715bec9556524d1f1fbdbf613ab",
+    "tools/theme-lab/include/theme_lab.h": "8b419fe89ac6bc25747ef877fc233ef83259d69e079209dd4e99d37cc461de84",
+    "tools/theme-lab/tests/controller_spin_probe.c": "0449d61d3c48da027815ec25495e4ddd6c678fcd175c161827b612b95b14c480",
+    "tools/theme-lab/tests/test_controller_spin.py": "1815d8e6de0641424469cde603d98c7a6c1b1175393687c60d66f778f543e57d",
+    "tools/theme-lab/tests/controller_gtk2_push.py": "e240115b5a1c5eb35dd415835535b7c935398141c0944fe7a10145374ba0b5c6"
+  },
+  "evidence": {
+    "docs/referencias/domainos-sr104/i167-button-controller/DomainOS-SR10.4/last.png": "1cf9a7314be1f6e9d856992c54b7ad5d4260f884b41f69878c157697095134d3",
+    "docs/referencias/domainos-sr104/i167-button-controller/DomainOS-SR10.4/controller.log": "46b9ee09fc7b5f6675c78fcebe4ecb43023fbdb00ff6d5da5e1a85d5ffcc52a2",
+    "docs/referencias/domainos-sr104/i167-button-controller/DomainOS-SR10.4/native-observation.json": "e3cefd8dd5616a0fab596d44d14bf8888acd74355e6194545d3da4b5c12a7abf",
+    "docs/referencias/domainos-sr104/i167-button-controller/DomainOS-SR10.4/RESULTADO.json": "cc8a4044492cfe41cef9bc7d547c3b182ecf855be6d4a07c1c902f9b6bcc7f7b",
+    "docs/referencias/domainos-sr104/i167-button-controller/TestYellow/last.png": "396a283ce22b3acab3af22afd8be6dc626052d21ab7eacf6bf3117729e6b6a06",
+    "docs/referencias/domainos-sr104/i167-button-controller/TestYellow/controller.log": "8364ac799db7a1ed65a2f2427c4a318e00626f4005875e8074480a59afe9f6a5",
+    "docs/referencias/domainos-sr104/i167-button-controller/TestYellow/native-observation.json": "e3cefd8dd5616a0fab596d44d14bf8888acd74355e6194545d3da4b5c12a7abf",
+    "docs/referencias/domainos-sr104/i167-button-controller/TestYellow/RESULTADO.json": "cc8a4044492cfe41cef9bc7d547c3b182ecf855be6d4a07c1c902f9b6bcc7f7b",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeDark/last.png": "7e57f50b9c7ae74d846ae955592a348b1b791f5bb1773310edee22f7c11a428e",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeDark/controller.log": "19e084cbd75dbba97db50be8891c565e330d0dadcd38bd4cf3beb64bfe5f34cb",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeDark/native-observation.json": "e3cefd8dd5616a0fab596d44d14bf8888acd74355e6194545d3da4b5c12a7abf",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeDark/RESULTADO.json": "cc8a4044492cfe41cef9bc7d547c3b182ecf855be6d4a07c1c902f9b6bcc7f7b",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeLight/last.png": "9d46e62aa967511a360b57b9d76d66ebb742d83496178f66224bc73431f1167f",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeLight/controller.log": "d44cccebe7aec812d39f6c1ffb7a1aaeb9cd1a06618eefe3da67cf6691ea9111",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeLight/native-observation.json": "e3cefd8dd5616a0fab596d44d14bf8888acd74355e6194545d3da4b5c12a7abf",
+    "docs/referencias/domainos-sr104/i167-button-controller/BreezeLight/RESULTADO.json": "cc8a4044492cfe41cef9bc7d547c3b182ecf855be6d4a07c1c902f9b6bcc7f7b"
+  }
+}

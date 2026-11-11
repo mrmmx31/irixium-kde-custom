@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-10-11T17:06:37.833689+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "combo",
+  "coverage": {
+    "integrated": 10,
+    "total": 16,
+    "percentage": 62.5,
+    "scope": "Tipos de catálogo; não fidelidade histórica nem conclusão do goal"
+  },
+  "native": {
+    "scenes": ".qa-t04-combo-integration/scenes-final/RESULTADO.json",
+    "gesture_proof": ".qa-t04-combo-integration/gestures-lifetime/RESULTADO.json",
+    "controller": ".qa-theme-lab-spin-p40q72rj/RESULTADO.json",
+    "scene_count": 24,
+    "gesture_origins": 2,
+    "rebuild_count": 8,
+    "repeated_scroll_events": 128
+  },
+  "tests": {
+    "integration": 4,
+    "entry_guards": 2,
+    "text_guards": 3,
+    "gtk2_contract": 4,
+    "scene_contract": 15,
+    "runtime_files": 2,
+    "c_receipt": "passed (unchanged C gate, earlier proof reused)",
+    "strict_build": "passed (unchanged C implementation, earlier proof reused)",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "gtk2_combos.py": "02bf2a6ce1460645e0b8f3584d2f6763c6bdba26eecac2b7ebea255d608d3111",
+    "combo_popup_gtk2.py": "d822c8704f0d5b150cb7025c259b86f0efbcba5f101a2a064052710f657220b8",
+    "combo_input_gtk2.py": "94af287f8fa8ce9112f1b4239d960e997e0993ff435d2aa0e80856cf7f7124ad",
+    "gtk2_generation.py": "b5b11f93fe8eea58befb78c15204a9ed34178aa537ae3cf5d803b4dcbeb7b72f",
+    "gtk2_session.py": "6207ed9977d86989cc9505f59eb850a2abb8272133e3b7fcec222bda44a58590",
+    "native_scene_gtk2.py": "948561a6d891e1c50ea16cd3394ce61dccfad058f2466a5d7f0601c766114643",
+    "backend.py": "02810394f3e32c68cf194dc5473e7d509c28352089a9954537578dc15d6bc993",
+    "src/controller/generated_preview.c": "76cbf4cd8df4b8088afb5937d62080dc100aa3399f597c73cac2037dbbb9d419",
+    "tests/probe_gtk2_combo_scene.py": "97cb9a910bb679bc2ddad7be60e1af48c8b520fa36ff20a0774c231cc3c0e0e0",
+    "tests/test_gtk2_combo_integration.py": "c931e30a47e8f390cfccdd1c5270a200bd52a59a7c75b89f4b2c52cce0d0973a",
+    "tests/test_gtk2_scene_contract.py": "6bd1c9c63211d63f4a9877a4c0fcc6aa127c7d7451ff106397036975e55388f6"
+  },
+  "scope": "ComboBoxText GTK2 real, menu nativo, botão/seta simbólicos, papéis KDE, estilo qualificado por paleta/geometria; quatro paletas, estados normal/desabilitado/backdrop explícito, duas origens. Ctrl seleciona/move sem alterar item; clique/menu/roda reais e tecla End funcionam. Receita/projeto não alterados pelo teste.",
+  "limitations": [
+    "Foco/pressionado forçados não disponíveis; usar interação nativa.",
+    "Sem certificação histórica da VM ou matriz completa de pixels/estados.",
+    "Item ativo da amostra preservado em reconstrução do processo, não persistido no projeto."
+  ],
+  "failed_attempts": [
+    "Construtor GI genérico deixou text_column=-1; substituído por ComboBoxText.new().",
+    "Fixture de coordenadas usava saída não anotada de Gdk2 get_origin; usa posição pública da janela e alocação do menu.",
+    "Ctrl+clique abria menu; acesso público ao botão de foco não consegue preceder handlers GTK2 já conectados.",
+    "EventBox com popup() fechava ao soltar; agora encaminha Gdk.Event copiado ao handler nativo.",
+    "Registros EventButton/EventScroll exigem união Gdk.Event; direction GIR inteiro normalizado para evitar aviso.",
+    "Teste GTK2 antigo ainda exigia Entry não suportado; atualizada a guarda para Spin, realmente pendente.",
+    "Observação inicial no /proc restrito não via processos pessoais; identidades comprovadas fora do sandbox."
+  ],
+  "delivery": {
+    "phase": "delivered",
+    "display": ":61",
+    "source_pid": 2713950,
+    "destination_pid": 2758380,
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-84fa43ad85124cbdb0f5d64364422f2a/MANIFESTO.json",
+    "preservation": ".qa-t04-combo-integration/delivery-preservation.json",
+    "first_attempt": "failed, own_app_stopped=true, source alive",
+    "observer_fix": "TimeoutExpired from window observation retries the same live child within the existing startup deadline",
+    "launcher_sha256": "03d43c09375a50e65428560c675d7fc25cad5f4070eee95935678aa1a31ec061"
+  }
+}

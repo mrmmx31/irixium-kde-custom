@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-KEYBOARD-WAKE-REPEAT-20261025-R188",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "guest_screen": "black",
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 200, "y": 950},
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "action": {
+    "kind": "guest keyboard only",
+    "input": "One-frame Apollo Shift pulse; automatically released at frame 3.",
+    "queue_request_id": "d66236e67497451f8d7541a7d074190e",
+    "completion_request_id": "0961db6814e749b08dba86d89b73f53d",
+    "completion": {"done": true, "frame": 65, "held": false, "error": null}
+  },
+  "result": {
+    "guest_screen": "VUE desktop visible; Terminal and File Manager present",
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 200, "y": 950},
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/wake-shift-r188.png",
+      "sha256": "e47099b7f3891ddcc1ac64b4e3b4faf1cdaa81c9b7540c71b0e1630474358d60"
+    },
+    "hook_sha256": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a"
+  },
+  "limits": "This is another controlled keyboard wake, not the user's reported wake sequence after AltGr. captured=false is the Lua hook state; it does not alone prove SDL grab state. The host pointer remained outside the MAME window and the active host window remained XChat. The physical recapture report remains unresolved.",
+  "next": "Correlate the user's actual screen-wake event after AltGr with host focus/pointer and MAME hook/options; do not change the hook by hypothesis.",
+  "status": "keyboard_wake_passed_reported_activation_unresolved"
+}

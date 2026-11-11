@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-11T14:08:45.173075+00:00",
+  "item": "T08",
+  "revision": 1,
+  "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+  "phase": "prepared_not_launched",
+  "source_pid_verified": 1947021,
+  "source_lab_id": "37d5b41b3a424f0dad5ae750b465a4d3",
+  "display": ":61",
+  "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+  "source_manifest_sha256": "cf7cb75bfbba07e0a1bfcac7dc2c8d9e7e368d5d5a9186154541536e13061dca",
+  "delivery": "Nova instância privada na Xephyr61 existente. Copiar working, scene aplicada, journal e histórico; manter origem1947021 aberta. Não importar saídas geradas nem texto sem checkpoint.",
+  "fix": "Freeze all shipped flat runtime Python modules in theme-lab and native galleries; includes new hints plus preexisting scene/event/GTK2 modules. Tests excluded. No home paths used to resolve runtime imports.",
+  "tests": {
+    "resume_preservation": "14 passed",
+    "runtime_import_closure": "2 passed",
+    "private_mount_contract": "4 passed",
+    "native_project_and_applied_scene": "T08-REABERTURA-GTK3-20261011.json and T08-SELECAO-ENTRE-FAMILIAS-20261011.json"
+  },
+  "required_gate": "Host namespace reopen-status: theme.available and theme.permitted, exact session/request/item/revision/hash. Original process marker/starttime still current.",
+  "remaining": [
+    "Liberação temporária do pedido atual T08 owner theme",
+    "Abertura e conferência da fixture congelada, projetos/cena/históricos e prévia real"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "basis": "Implementation and scoped native tests ready; package dependency closure fixed, delivery not performed.",
+  "launcher_sha256": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d",
+  "coordination": {
+    "gui_pid": 2043954,
+    "session": "9ac5fd3ea2e0bc71c895d8c6120e57ddf8edc7b687342320190bfc97f11e3550",
+    "theme": {
+      "schema": 1,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "pid": 1609066,
+      "active": true,
+      "request": {
+        "id": "b88b20d815a4759f1760e7399579abd3f5060dd623d56b077d8b1c64244b50f8",
+        "item_id": "T08",
+        "user_revision": 1,
+        "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+        "application": "Laboratório T08 — projetos/exportação no Xephyr :61 (origem PID1947021)",
+        "reason": "Versão compilada/testada, incluindo T07 dicas/Ajuda e T08 abrir/salvar/importar/reconstruir. Abrir nova instância preservando projeto salvo, cena aplicada, journal e Undo/Redo; origem permanece aberta. Salve ajustes antes de liberar a pausa: texto sem checkpoint não será importado. Não altera o tema pessoal.",
+        "requested_at": "2026-10-11T14:08:59.487Z"
+      },
+      "available": true,
+      "permitted": false,
+      "scope_current": true
+    }
+  }
+}

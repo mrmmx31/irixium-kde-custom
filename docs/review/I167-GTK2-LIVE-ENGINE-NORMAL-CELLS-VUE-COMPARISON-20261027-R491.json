@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R491",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the current real GTK2 engine normal stepper cells directly to the measured Domain/OS SR10.4 HP VUE Trash Can cells at 1:1.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4, HP VUE 2.01, Trash Can",
+    "horizontal_crop": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "horizontal_crop_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "vertical_crop": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "vertical_crop_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "registration_basis_sha256": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07"
+  },
+  "method": "Reused the DomainOS-scheme normal capture from the successful private Xvfb GTK2 2.24.33 R490 run. Cropped the four 15x15 cells using native allocations and the canonical VUE coordinates. The right horizontal cell uses x=526 per R329. Compared unscaled RGB pixels directly.",
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/r490b-gtk2-real-engine-states-20261027/DomainOS/normal.png",
+    "sha256": "9da9d3f3cfd8d6e1a55f3c628c0a3b946cc77b7eaa1224bc159af7acd4a35d5d",
+    "runtime": "GTK2 2.24.33",
+    "scheme": "DomainOS-SR10.4",
+    "native_allocations": {
+      "horizontal": [0, 0, 55, 15],
+      "vertical": [0, 19, 15, 55]
+    },
+    "scale": 1
+  },
+  "cells": {
+    "left": {"gtk_crop_xywh": [0, 0, 15, 15], "vue_crop_xywh": [2, 4, 15, 15], "different_rgb_pixels": 0, "pixels": 225},
+    "right": {"gtk_crop_xywh": [40, 0, 15, 15], "vue_crop_xywh": [526, 4, 15, 15], "different_rgb_pixels": 0, "pixels": 225},
+    "up": {"gtk_crop_xywh": [0, 19, 15, 15], "vue_crop_xywh": [4, 2, 15, 15], "different_rgb_pixels": 0, "pixels": 225},
+    "down": {"gtk_crop_xywh": [0, 59, 15, 15], "vue_crop_xywh": [4, 242, 15, 15], "different_rgb_pixels": 0, "pixels": 225}
+  },
+  "result": {
+    "status": "passed",
+    "cells_compared": 4,
+    "total_rgb_pixels": 900,
+    "different_rgb_pixels": 0,
+    "normal_stepper_cell_geometry_matches_vue": true
+  },
+  "limits": [
+    "The comparison covers only the normal state. It does not verify held, hover or disabled appearance against VUE.",
+    "The capture is a native GTK2 test fixture using the current scheme; it is not a personal application or the live VM.",
+    "Color equality is for the DomainOS scheme. Other KDE schemes remain role-derived and were checked against their own generated assets in R488/R490."
+  ],
+  "changes": {
+    "source_changed": false,
+    "user_profile_changed": false,
+    "personal_application_changed": false,
+    "mame_input_sent": false,
+    "vm_changed": false
+  },
+  "next": "Keep the normal-state GTK2 stepper geometry; continue only with historical interaction states and the remaining GTK2 review criteria."
+}

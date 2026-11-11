@@ -1,0 +1,61 @@
+# Private GTK2 toggle proposal; effective KDE palette, native shadow selector.
+style "theme-lab-gtk2-toggle" {
+  xthickness = 3
+  ythickness = 3
+  GtkButton::inner-border = { 7, 7, 7, 7 }
+  font_name = "18px"
+  bg[NORMAL] = "#fcfcfc"
+  fg[NORMAL] = "#232629"
+  bg[PRELIGHT] = "#fcfcfc"
+  fg[PRELIGHT] = "#232629"
+  bg[ACTIVE] = "#fcfcfc"
+  fg[ACTIVE] = "#232629"
+  bg[SELECTED] = "#fcfcfc"
+  fg[SELECTED] = "#232629"
+  bg[INSENSITIVE] = "#f0f0f0"
+  fg[INSENSITIVE] = "#a8a9aa"
+  engine "pixmap" {
+    image { function = BOX detail = "button" state = NORMAL shadow = OUT file = "toggle-normal.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = NORMAL shadow = IN file = "toggle-normal-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT shadow = OUT file = "toggle-normal.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT shadow = IN file = "toggle-normal-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE shadow = OUT file = "toggle-normal.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE shadow = IN file = "toggle-normal-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED shadow = OUT file = "toggle-normal.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED shadow = IN file = "toggle-normal-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE shadow = OUT file = "toggle-disabled.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE shadow = IN file = "toggle-disabled-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+  }
+}
+style "theme-lab-gtk2-toggle-backdrop" {
+  xthickness = 3
+  ythickness = 3
+  GtkButton::inner-border = { 7, 7, 7, 7 }
+  font_name = "18px"
+  bg[NORMAL] = "#fcfcfc"
+  fg[NORMAL] = "#232629"
+  bg[PRELIGHT] = "#fcfcfc"
+  fg[PRELIGHT] = "#232629"
+  bg[ACTIVE] = "#fcfcfc"
+  fg[ACTIVE] = "#232629"
+  bg[SELECTED] = "#fcfcfc"
+  fg[SELECTED] = "#232629"
+  bg[INSENSITIVE] = "#f0f0f0"
+  fg[INSENSITIVE] = "#a8a9aa"
+  engine "pixmap" {
+    image { function = BOX detail = "button" state = NORMAL shadow = OUT file = "toggle-backdrop.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = NORMAL shadow = IN file = "toggle-backdrop-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT shadow = OUT file = "toggle-backdrop.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT shadow = IN file = "toggle-backdrop-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE shadow = OUT file = "toggle-backdrop.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE shadow = IN file = "toggle-backdrop-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED shadow = OUT file = "toggle-backdrop.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED shadow = IN file = "toggle-backdrop-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE shadow = OUT file = "toggle-disabled.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE shadow = IN file = "toggle-disabled-selected.png" border = { 3, 3, 3, 3 } stretch = TRUE }
+  }
+}
+widget "*themeLabToggle" style : highest "theme-lab-gtk2-toggle"
+widget "*themeLabToggle.*" style : highest "theme-lab-gtk2-toggle"
+widget "*themeLabBackdropToggle" style : highest "theme-lab-gtk2-toggle-backdrop"
+widget "*themeLabBackdropToggle.*" style : highest "theme-lab-gtk2-toggle-backdrop"

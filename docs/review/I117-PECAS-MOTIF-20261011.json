@@ -1,0 +1,89 @@
+{
+  "at": "2026-10-11T04:26:07.404456+00:00",
+  "item": "I117",
+  "revision": 1,
+  "phase": "motif238_internal_rectangles",
+  "implementation": [
+    "Diagnóstico somente leitura em módulo separado; compilação condicionada a Motif 2.3.8",
+    "Runtime version via dlsym, classe exata e tamanho da instância verificados antes de ler estrutura",
+    "Cada caixa validada contra alocação real; dados incompatíveis ficam desconhecidos",
+    "Cursor, área de movimento e campos das duas setas em coordenadas locais; não apresentados como silhueta",
+    "Nenhuma receita/cor modificada; cabeçalho instalado não redefine defaults SR10.4"
+  ],
+  "observed": {
+    "horizontal": {
+      "slider": [
+        51,
+        2,
+        21,
+        11
+      ],
+      "slider_area": [
+        14,
+        2,
+        107,
+        11
+      ],
+      "arrow_box": [
+        11,
+        11
+      ]
+    },
+    "vertical": {
+      "slider": [
+        2,
+        27,
+        11,
+        7
+      ],
+      "slider_area": [
+        2,
+        14,
+        11,
+        37
+      ],
+      "arrow_box": [
+        11,
+        11
+      ]
+    },
+    "meaning": "Alocações desta amostra Motif 2.3.8 instalada; comprimentos dependem do conteúdo/intervalo, não defaults históricos"
+  },
+  "tests": {
+    "strict_compile": "passed",
+    "formatter": "passed; ausência não vira caixa zero medida",
+    "native_pixels": "passed after native ScrollVisible; top/bottom cursor pixels match native light/shadow resources in both orientations",
+    "initial_failure": "All sampled pixels zero before making clipped sample visible; original/probe retained. Same geometry passes after native scrolling, no palette correction.",
+    "unsupported_version": "passed; private LD_PRELOAD fixture overrides only version string; no rectangles read/reported",
+    "wrong_class_and_null": "passed unknown",
+    "syntax_diff": "passed"
+  },
+  "hashes": {
+    "tools/theme-lab/include/native_parts_motif.h": "57012f752198e26095729073fb3c545b06089f85a275167995f9b9a9286f4721",
+    "tools/theme-lab/src/native_parts_motif.c": "b3d70ac9bc4a3c374dfb4992c00acf2faa7bb5bdafe84b68cf727edbd329cb67",
+    "tools/theme-lab/include/native_metrics.h": "a6d15620fb40e59efeb99056f9e3f7ee7a000312d3777f172c76b2f97117f5b1",
+    "tools/theme-lab/src/native_metrics.c": "b1f085c82007fe6eb986630302552f5cd36e59058253b2f394617aa4d3c2ba2b",
+    "tools/theme-lab/src/view.c": "dca960427dffcc8cb1b71320dea9b64e1395488573057d19d0c1c75fc4df03dd",
+    "tools/theme-lab/tests/native_metrics_view.c": "901269526b943c668671483ec47e4fb42b2c57e96c07d847c44bc564f898e5d3",
+    "tools/theme-lab/tests/motif_version_mismatch.c": "379875299325a035038793d8ad58c570a759776e53ef8fa5d91b497ed7ccbf2a",
+    "tools/theme-lab/Makefile": "c328c28cb672cb36ad4b0ba32bb318fafd50a56b3e61cf5c308474d4d23748a7",
+    ".qa-i117-motif-parts/native.log": "9e508a2dcf4336893e931dd3980af86b3eabcd9b5b22b5fd36fd12f0ee55e069",
+    ".qa-i117-motif-parts/pixel-probe.log": "d5ee2650d657260c595b1749979cc4b3869deaaf7baef281630a8c11b5b40d09",
+    ".qa-i117-motif-parts/visible.log": "90235bad143c622cd853c20f08a86c53342c8a7ed69b297164bae429320e040a",
+    ".qa-i117-motif-parts/unsupported-final.log": "ebcd1ae831f0af0df975bd9fc48ab633bd10e744055495038f00c13a6ae4f73a",
+    "/usr/include/Xm/ScrollBarP.h": "833078ee8fce92469b694c9ac4a335cb7580e12aac6805ca42966a8e3caa4ee7",
+    "/usr/lib/x86_64-linux-gnu/libXm.so.4": "6fae67f27e565590c21526f39d89f547c2214b777bb428493736274f6b908caa"
+  },
+  "limitations": [
+    "Suporte privado limitado ao build/runtime 2.3.8 verificado e classe exata; outra versão não ganha offsets presumidos",
+    "Caixas internas não equivalem à silhueta pintada ou espessura de relevo",
+    "GTK3 ainda não expõe caixas separadas de todas as peças por APIs públicas",
+    "Demais controles/conteúdo, fluxo completo e entrega faltam",
+    "Fonte principal histórica continua I120 por último"
+  ],
+  "estimated_stage_progress_percent": 60,
+  "percentage_basis": "Leitura pareada ampliada com caixas Motif e pixels de cursor provados; restantes explícitos",
+  "personal_window_changed": false,
+  "vm_input_sent": false,
+  "human_approval_filled": false
+}

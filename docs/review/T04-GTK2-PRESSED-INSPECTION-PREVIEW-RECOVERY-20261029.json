@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "T04-GTK2-PRESSED-INSPECTION-PREVIEW-RECOVERY-20261029",
+  "date": "2026-10-29",
+  "item": "T04",
+  "phase": "gtk2_state_inspection_keeps_live_preview",
+  "authority": {
+    "section": "work",
+    "user_revision": 9,
+    "authorized": true,
+    "basis": "Continued recovery inside the already authorized T04 preview work; no family/theme visual edits."
+  },
+  "cause": {
+    "saved_selection": "GTK2 control scroll_v, edit_state pressed",
+    "behavior": "The saved inspection state was passed to the live GTK2 scene builder. native_scene_gtk2.scene_records rejects forced pressed state for scroll_v, so the GTK2 helper exited and the canvas returned to its unmapped-backend placeholder.",
+    "evidence": "Launching the exact embedded helper against the saved project returned: GTK2: demonstração forçada de pressão pendente; use interação nativa."
+  },
+  "change": {
+    "files": [
+      {
+        "path": "tools/theme-lab/preview_gtk2.py",
+        "summary": "For ordinary live preview only, deep-copy the loaded project and set the copy's GTK2 edit_state to normal before building native controls. The project, selected control, selected inspection state, snippet, and exported recipe remain unchanged. Actual pressed visuals remain available through native pointer input. Capture mode is unchanged."
+      }
+    ]
+  },
+  "validation": {
+    "diff_check": "git diff --check -- tools/theme-lab/preview_gtk2.py passed.",
+    "live_user_session": {
+      "theme_lab_pid": 2623474,
+      "gtk2_preview_pid": 2753321,
+      "display": ":1",
+      "canvas_xid": "0x540028e",
+      "gtk2_window_xid": "0x4400003",
+      "embedded_parent_xid": "0x540028e",
+      "project_selection_preserved": {
+        "family": "gtk2",
+        "control": "scroll_v",
+        "inspection_state": "pressed"
+      },
+      "screenshot": {
+        "path": "~/tempia/domainos-theme-work/theme-lab-5Ex05E/themelab-live-after-fix-final-20261029.png",
+        "sha256": "abe41135ff7ea837f966d4cd8346bf5f5272313e841bd1c1c5a1875ecf67eb7e"
+      },
+      "evidence": "xwininfo shows a mapped GTK2 window inside the ThemeLab canvas; the capture shows the live native preview and the pressed GTK2 inspection snippet. The saved working.json and scene.json both retain control 11/edit_state 1."
+    }
+  },
+  "limits": [
+    "No installed GTK2 theme, KDE color scheme, or personal setting was changed.",
+    "The GTK2 inspection selector describes the snippet state; it does not synthesize a physical button press. Press the native arrow in the live preview to inspect its actual pressed rendering.",
+    "The separate-preview preference remains checked. Its detached child is still refused outside the coordinated bwrap launcher; the embedded GTK2 preview works independently.",
+    "No test suite was run and no visual fidelity acceptance is claimed."
+  ],
+  "result": "The embedded GTK2 preview is open again in the normal user session without restarting ThemeLab; the selected vertical-scroll/pressed inspection state remains saved.",
+  "next": "User visually reviews the restored preview; keep T04 open for any remaining authorized preview adapters."
+}

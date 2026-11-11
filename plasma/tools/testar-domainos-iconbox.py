@@ -209,12 +209,17 @@ def main():
             QTest.keyPress(window,Qt.Key.Key_Control);QTest.keyRelease(window,Qt.Key.Key_Control);settle()
             require("released_modifiers_open_one_batch_menu",state()["operations"] and state()["operationsOpened"]==1)
             require("batch_geometry_actions_disabled_without_backend",not find("domainosBatchColumns").property("enabled")
+                    and not find("domainosBatchRestore").property("enabled")
                     and not find("domainosBatchMinimize").property("enabled"))
             require("operations_capture_saved",window.grabWindow().save(str(output/"ICONBOX-OPERATIONS.png")))
-            QTest.keyClick(window,Qt.Key.Key_Escape);settle()
+            QTest.keyClick(find("domainosBatchColumns").window(),Qt.Key.Key_Escape);settle()
             require("escape_closes_operations_without_actions",not state()["operations"] and len(state()["requests"])==1)
+            call("addGeometryBackend")
             click(task("group:terminal"));require("group_popup_has_individual_members",state()["group"] and find("domainosGroupMember_window:1") is not None)
             click("domainosGroupMember_window:1");click("domainosGroupMember_window:3")
+            QTest.qWait(100);settle()
+            require("selection_preflight_explains_vertical_partial_maximize",
+                "Window 3 está maximizada verticalmente" in find("domainosGroupCompatibility").property("text"))
             require("group_checkboxes_do_not_select_other_members",set(state()["selected"])=={"window:6","window:7","window:1","window:3"})
             require("checkbox_menu_remains_open_without_organization",state()["group"] and not state()["operations"])
             click(member("window:2"));group_selection_before=state()["selected"]
@@ -229,7 +234,7 @@ def main():
             require("mixed_restored_group_returns_relief_without_losing_checkbox_selection",not find(task("group:terminal")).property("fullyMinimized")
                     and find(task("group:terminal")+"Relief").property("sunken") and find(task("group:terminal")+"Label").property("sunken")
                     and state()["selected"]==group_selection_before and all(find(member("window:"+str(index))).property("checked") for index in (1,2,3)))
-            call("mutate",3,"minimized",False);click(member("window:2"))
+            call("mutate",3,"minimized",False);click(member("window:2"));QTest.qWait(100);settle()
             require("group_capture_saved",find("domainosGroupMember_window:1").window().grabWindow().save(str(output/"ICONBOX-GROUP.png")))
             click("domainosGroupContinue");require("group_continue_preserves_selection",not state()["group"] and len(state()["selected"])==4)
             click(task("group:browser"));click("domainosGroupMember_window:4")
@@ -256,8 +261,11 @@ def main():
             require("short_panel_group_continue_closes_without_window_action",not state()["group"]
                     and set(state()["selected"])==selected_before and state()["requests"]==requests_before)
             window.requestActivate();settle()
-            QTest.keyPress(window,Qt.Key.Key_Control);QTest.keyRelease(window,Qt.Key.Key_Control);settle()
+            click(task("group:terminal"));click("domainosGroupOrganize")
             operations_window=find("domainosBatchColumns").window()
+            report["short_panel_operations"]={"state":state(),"host_height":window.height(),
+                "window_height":operations_window.height(),"visible":operations_window.isVisible(),
+                "separate":operations_window is not window}
             require("short_panel_operations_use_separate_quick_window",state()["operations"]
                     and operations_window is not window and operations_window.isVisible() and operations_window.height()>window.height())
             require("short_panel_operations_capture_saved",operations_window.grabWindow().save(str(output/"ICONBOX-OPERATIONS-SHORT-PANEL.png")))
@@ -288,7 +296,8 @@ def main():
             call("resetUi");call("addGeometryBackend")
             click(task("window:6"));click(task("window:7"),Qt.KeyboardModifier.ControlModifier)
             QTest.keyPress(window,Qt.Key.Key_Control);QTest.keyRelease(window,Qt.Key.Key_Control);settle()
-            require("organization_enabled_with_real_provider_contract",find("domainosBatchColumns").property("enabled") and find("domainosBatchMinimize").property("enabled"))
+            require("organization_enabled_with_real_provider_contract",find("domainosBatchColumns").property("enabled")
+                    and find("domainosBatchRestore").property("enabled") and find("domainosBatchMinimize").property("enabled"))
             click("domainosBatchColumns")
             require("batch_menu_requests_current_destination_and_only_chosen",state()["layouts"][-1]["mode"]=="columns"
                     and {row["key"] for row in state()["layouts"][-1]["windows"]}=={"window:6","window:7"})

@@ -1,0 +1,26 @@
+{
+  "id": "R336",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "fresh read-only check of the project-owned DomainOS reference VM",
+  "vm_identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_vm": "PID 3971019 remains a separate AI Work Board VM and was not touched",
+    "profile": {"mame": "0.276", "frameskip": 4, "throttled": false, "paused": false, "captured": false}
+  },
+  "capture": {
+    "type": "native DomainOS guest screen snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/r336-domainos-live-20261027.png",
+    "sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+    "result": "video area is black/in standby; Apollo command bar remains visible; no VUE window or scrollbar is currently visible"
+  },
+  "control": {
+    "bridge_pointer": "~/tempia/ia-tema/domainos-mame-control-path",
+    "probe_request_id": "3aba3ea878614b0eae40c8a9a87092cd",
+    "snapshot_request_id": "8021779f5a7e4b6198c834239afb60df",
+    "bridge_status_after": "no pending command and no unacknowledged reply",
+    "input_sent": false
+  },
+  "next": "The documented wake rule requires a physical mouse/key event. No host synthetic key was substituted. Once the display is awake, take a new native capture and compare the DomainOS scrollbar to the GTK2 pipeline cells; until then, the historical live comparison remains open."
+}

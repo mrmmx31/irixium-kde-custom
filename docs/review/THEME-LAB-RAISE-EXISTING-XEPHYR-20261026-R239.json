@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "THEME-LAB-RAISE-EXISTING-XEPHYR-20261026-R239",
+  "date": "2026-10-26",
+  "item": "T04",
+  "section": "work",
+  "authority": {
+    "ai_context": "theme",
+    "board_item": "T04",
+    "user_revision": 9,
+    "authorized": true,
+    "scope": "Reopen the Theme Lab for GTK2 comparison using the already authorized private Xephyr session"
+  },
+  "action": {
+    "host_session_type": "Wayland",
+    "xwayland_display": ":1",
+    "existing_xephyr_window": "0x2a00001",
+    "title": "PARA LSI - PREVIA PESSOAL - DomainOS SR10.4 [T07 :60]",
+    "before": {"map_state": "IsViewable", "active": false},
+    "operation": "Activated the existing Xephyr top-level window with xdotool windowactivate --sync.",
+    "after": {"map_state": "IsViewable", "active_window_id": "0x2a00001"},
+    "new_xephyr_started": false,
+    "theme_lab_process_restarted": false
+  },
+  "inside_session": {
+    "display": ":60",
+    "visible": ["GTK2 attached Theme Lab canvas", "native GTK2 separate preview", "native GTK3 gallery", "native GTK4 gallery"],
+    "capture": "~/tempia/ia-tema/evidence/T04/theme-lab-before-reopen-r237.png",
+    "capture_sha256": "145e5f8ad3304a1d0b2e2431fcc37fe97d6a5536deedb49315506bf29d4eabea"
+  },
+  "result": "The existing personal preview session is now raised and active for the user to compare. The normal Wayland session remains isolated from native preview workers.",
+  "limits": ["This exposes the existing preview session; it does not certify visual acceptance or complete T04.", "The separate MAME VM window and its captured mouse state were not changed."],
+  "status": "existing_private_preview_raised"
+}

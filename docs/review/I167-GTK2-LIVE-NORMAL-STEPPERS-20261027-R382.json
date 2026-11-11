@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "R382",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare all four normal GTK2 stepper cells against a new canonical live Domain/OS SR10.4 Trash Can capture.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "application": "Trash Can",
+    "capture": "~/tempia/ia-tema/evidence/I167/r381-user-reported-awake/vm-after-shift.png",
+    "sha256": "ecf3aa117e4c2e0c1b99b4d45e4d78957208fc8024f08da196f54f273a3e157c",
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "capture_kind": "current native guest framebuffer after R381 wake pulse; no pointer overlay shown"
+  },
+  "method": "At 1:1, directly compare native screenshot RGBA cells to the canonical DomainOS normal stepper assets; no scaling or interpolation.",
+  "cells": {
+    "size_px": [
+      15,
+      15
+    ],
+    "matches": {
+      "left": {
+        "origin": [
+          52,
+          699
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-left-normal.png",
+        "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "different_pixels": 0,
+        "compared_pixels": 225
+      },
+      "right": {
+        "origin": [
+          576,
+          699
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-right-normal.png",
+        "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "different_pixels": 0,
+        "compared_pixels": 225
+      },
+      "up": {
+        "origin": [
+          595,
+          440
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-up-normal.png",
+        "asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+        "different_pixels": 0,
+        "compared_pixels": 225
+      },
+      "down": {
+        "origin": [
+          595,
+          680
+        ],
+        "asset": "gtk/DomainOS-SR10-4/common/assets/scrollbar-stepper-down-normal.png",
+        "asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+        "different_pixels": 0,
+        "compared_pixels": 225
+      }
+    }
+  },
+  "detail_capture": "~/tempia/ia-tema/evidence/I167/r381-user-reported-awake/trash-horizontal-detail.png",
+  "detail_capture_sha256": "91abe50261cfdb9361901148c2d6827773ed9f1930b606751dac22245b8fb291",
+  "result": "All four live normal cells match their canonical DomainOS assets exactly. This revalidates native normal state in a new running guest capture and does not cover held or disabled historical appearance.",
+  "limits": [
+    "No pointer-visible target was established, so no arrow was pressed.",
+    "R305 retained comparisons remain valid; this is an additional live screenshot check, not a replacement for a controlled held-state pair.",
+    "No GTK2 package installation or user application restart occurred."
+  ]
+}

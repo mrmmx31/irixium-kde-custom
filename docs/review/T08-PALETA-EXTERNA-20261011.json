@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T13:07:12.651113+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "partial_not_delivered",
+  "changes": [
+    "Comparação usa latest da geração da cena; exports/latest não participa.",
+    "Identidade verificada por hashes declarados e modelo normalizado; formato JSON reserializado não causa falsa divergência.",
+    "Hashes de origens/leitores GTK2 e GTK3 detectam mudança/remoção externa mesmo com ID de esquema constante.",
+    "Proveniência ausente/divergente é unknown e força regeneração; caminhos fora das revisões privadas recusados.",
+    "Mudança tardia de paleta em família omitida impede concluir DELTA.json."
+  ],
+  "checks": {
+    "proposal_export": "11 passed",
+    "backend_regression": "33 passed",
+    "runtime_dependencies": "2 passed"
+  },
+  "remaining": [
+    "Delta dos arquivos gerados e pacote mínimo com dependências verificáveis.",
+    "Comparação na interface e importação/salvamento nativos.",
+    "Entrega pessoal e avaliação manual coordenadas."
+  ],
+  "estimated_stage_progress_percent": 40,
+  "percentage_basis": "Isolamento, delta do modelo e mudança externa de paleta verificados; pacote por arquivo e fluxos na UI continuam pendentes.",
+  "personal_gui_changed": false
+}

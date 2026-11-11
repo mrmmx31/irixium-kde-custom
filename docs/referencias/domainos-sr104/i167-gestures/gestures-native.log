@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_ipc_native.py", line 61, in <module>
+    run(args.fixtures.resolve(), args.output.resolve(), args.gestures)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_ipc_native.py", line 29, in run
+    if child.returncode or child.stderr: raise RuntimeError(child.stderr or child.stdout)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_scene.py", line 68, in <module>
+    origin = native.window.get_window().get_origin()
+TypeError: Gdk.Window.get_origin() takes exactly 3 arguments (1 given)
+

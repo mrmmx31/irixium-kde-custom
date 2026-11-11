@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-HINTS-800X600-20261019-R103",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "authorization": "AI Work Board saved state: section=work, user.authorized=true; GTK hint orientation/layout coverage.",
+  "status": "passed",
+  "scope": "GTK3 native tooltip bounds and lifecycle for 16 control types in four screen corners on the owned 800x600 Xephyr :84.",
+  "environment": {
+    "xephyr": ":84",
+    "screen_px": [800, 600],
+    "window_manager": "Openbox, existing owned test display",
+    "gtk_runtime_package": "libgtk-3-0 3.24.38-2~deb12u3",
+    "theme": "isolated GTK3 defaults per case; not a palette comparison"
+  },
+  "matrix": {
+    "controls": ["arrow", "check", "combo", "entry", "frame", "list", "progress", "push", "radio", "scale_h", "scale_v", "scroll_h", "scroll_v", "spin", "text", "toggle"],
+    "positions": ["top-left", "top-right", "bottom-left", "bottom-right"],
+    "cases": 64,
+    "passed": 64,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "stable_ms": 400,
+    "all_within_screen": true,
+    "all_without_control_overlap": true,
+    "all_closed_after_pointer_leave": true
+  },
+  "changes": {
+    "test_source": "tools/theme-lab/tests/probe_gtk_hint_hover.py now accepts --button-x for placing the tested native control against either horizontal window edge; no product source changed.",
+    "personal_settings": "unchanged",
+    "reference_vm": "untouched"
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "02df92bec907c721bcd13cac6f84ca541e221cce90b5afb6c65ba09f1a25c350",
+    "matrix_runner": "5a4dc057eba0945f519b755edee197141e3743733e83ea2512499607babf4807",
+    "matrix_result": "13d0464311e1bbd94534ad40a8022485e4cb121f5ac6ca8cd6984eb4d561c402",
+    "matrix_log": "2124348c565e28458c4b233c96e356c3eb18a9aacf45f8740a3f9192e9a13bfc"
+  },
+  "artifacts": [
+    "~/tempia/t07-gtk3-800x600-r103-20261019/RESULTADO.json",
+    "~/tempia/t07-gtk3-800x600-r103-20261019/run.log",
+    "~/tempia/t07-gtk3-800x600-r103-20261019/run_matrix.py"
+  ],
+  "limitations": [
+    "One GTK3 native scene and default isolated theme; this is not a multi-palette pixel comparison or proof of visual fidelity to Domain/OS.",
+    "One display resolution and one test theme; applications and human review remain outside this receipt.",
+    "Deprecation warnings from Gdk.Screen.get_width/get_height are non-fatal and were present in the probe output.",
+    "T07 remains running pending other authorized hint coverage and review."
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "family": "GTK2",
+  "scope": "Compare the recipe-driven native GTK2 scrollbar arrows with the exact Domain/OS SR10.4 Trash Can reference and recheck the isolated VM endpoint.",
+  "vm": {
+    "mame_pid": 1354178,
+    "endpoint": "192.168.249.10",
+    "ftp": "220 banner, root login and active-mode directory listing verified through the namespace helper",
+    "telnet": "TCP and Telnet negotiation respond; login prompt not verified",
+    "old_alias_retired": "192.168.248.10",
+    "other_clone_alias": "192.168.242.10",
+    "original_vm_or_backup_modified": false,
+    "guest_modified": false,
+    "profile": {"frameskip": 4, "throttled": false, "paused": false},
+    "current_vuestate_capture": {
+      "path": "~/tempia/domainos-assistant-vm-20261018/sessao/captura-now.png",
+      "sha256": "5f292c37f1bf7c298bf91d0d31ebe886cf9aaeb9b5622dc42c755b8df1c93c32",
+      "observation": "HP VUE 2.01 File Manager with a visible vertical scrollbar, upper and lower arrows, and scrollable directory list"
+    }
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "client": "Trash Can",
+    "path": "docs/referencias/domainos-sr104/trash-can-normal.png",
+    "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+    "native_capture_pixels": [1024, 844]
+  },
+  "gtk2_native": {
+    "runtime": "GTK 2.24.33",
+    "harness": "tools/theme-lab/tests/test_gtk2_paint_native.py",
+    "display": ":739 (private Xvfb)",
+    "capture": "~/tempia/i167-gtk2-r6-native-xvfb739-20261018/DomainOS/normal.png",
+    "capture_sha256": "a290d9a8ca0105b599906c8cc375c57c4d5ffb873da7fa13012eba2f0b1a8abe",
+    "recipe_applied": true,
+    "geometry_recipe_applied": true,
+    "scrollbar_paint_loaded": true,
+    "geometry": {"bar_cross_px": 15, "arrow_glyph_px": 11, "thumb_cross_px": 11, "stepper_size_px": 12, "trough_border_px": 2, "stepper_spacing_px": 0},
+    "colors": "Derived from selected KDE DomainOS-SR10.4 color roles through the native KColorScheme helper; no final RGB constants were added."
+  },
+  "arrow_comparison": {
+    "method": "Four paired 15x15 pixel ROIs, native scale, no interpolation. Compare the normal GTK2 widget screenshot against the recorded Trash Can screenshot.",
+    "details": {
+      "left": {"reference_xy_in_crop": [17, 329], "gtk2_xy": [0, 0], "different_pixels": 0, "total_pixels": 225},
+      "right": {"reference_xy_in_crop": [540, 329], "gtk2_xy": [33, 0], "different_pixels": 0, "total_pixels": 225},
+      "up": {"reference_xy_in_crop": [560, 70], "gtk2_xy": [0, 19], "different_pixels": 0, "total_pixels": 225},
+      "down": {"reference_xy_in_crop": [560, 309], "gtk2_xy": [0, 52], "different_pixels": 0, "total_pixels": 225}
+    },
+    "result": "All four direction-specific normal arrow allocations match the SR10.4 reference exactly: 0/900 differing pixels.",
+    "correction_to_R3": "The retained zoomed crops used for the interim 11-pixel report were not registered to the full GTK2 widget allocations. Direct comparison of the recipe-driven native GTK2 widget at the measured origins above supersedes that report; do not apply the proposed seam patch."
+  },
+  "native_matrix": {
+    "result_file": "~/tempia/i167-gtk2-r6-native-xvfb739-20261018/results.json",
+    "sha256": "adba230bb48d804d97c1da6ae9d50008bb3311994ac6d5af1e46054c96af9874",
+    "passed_cases": 16,
+    "matrix": "DomainOS, BreezeLight, BreezeDark, TestYellow × normal, endpoint, disabled, backdrop",
+    "scope": "Native GTK2 allocation, paint asset and KDE role application. Endpoint arrow appearance preserves parent scrollbar palette. Not a historical comparison for pressed/disabled states or user approval."
+  },
+  "test_environment": {
+    "first_xvfb_run": "Timed out during the first runtime probe under xvfb-run.",
+    "isolated_xvfb_recheck": "The same 16-case test passed on manually managed private Xvfb :739. The Xvfb process was stopped afterward.",
+    "user_xephyr_or_desktop_touched": false
+  },
+  "source_hashes": {
+    "tools/theme-lab/gtk2_recipe.py": "6b2ee6694944190509e52de15e8ccdc9c500c3f3e8ec275daabaa183f6ff6d58",
+    "tools/theme-lab/tests/test_gtk2_paint_native.py": "615324136836653ea3e8664037f490bdfd7c046dce796df2f11eb9f1a6b9fd7d"
+  },
+  "result": "Normal GTK2 arrow pixels and geometry match the exact SR10.4 reference in all four directions; the four-palette/four-state native matrix passes. No seam patch or other source edit was made.",
+  "remaining": "I167 remains partial: verify the recipe through the public acoplada/separada preview route and capture a genuine GTK2 pressed/released interaction. The historical Trash Can has no matching pressed/disabled states, so limit claims to normal state unless a measured VM state is obtained."
+}

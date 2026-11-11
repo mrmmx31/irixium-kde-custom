@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R487",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Dispatch one GTK2 native RC reload notification to the current lsi XWayland session so long-running GTK2 windows can read the installed DomainOS-SR10-4-KDE theme.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "preconditions": {
+    "uid": 1000,
+    "display": ":1",
+    "wayland_display": "wayland-0",
+    "xauthority_session": "current lsi session",
+    "gtkrc": "/home/lsi/.gtkrc-2.0 selects DomainOS-SR10-4-KDE",
+    "gtkrc_mtime": "2026-10-27T11:26:36-04:00",
+    "display_clients_checked": true,
+    "visible_client_uids": {
+      "foreign_or_unknown": 0
+    }
+  },
+  "method": "Called tools.gtk2_reload_notify.reload_open_windows once with DISPLAY=:1. The notifier follows GTK2 gdk_screen_broadcast_client_message semantics and does not restart clients or change palette/configuration.",
+  "result": {
+    "status": "sent",
+    "windows_considered": 181,
+    "events_sent": 181,
+    "racing_x_errors": 0,
+    "xchat_processes_before_and_after": [
+      3951437,
+      3951675
+    ]
+  },
+  "limits": [
+    "Successful XSendEvent dispatch does not prove that each GTK2 process reloaded or that its visible pixels now match the intended theme.",
+    "No screenshot of chat content was captured.",
+    "No visual acceptance was inferred; the user can inspect the existing XChat windows."
+  ],
+  "changes": {
+    "gtkrc_written": false,
+    "color_scheme_changed": false,
+    "gtk2_theme_changed": false,
+    "application_restarted": false,
+    "focus_changed": false,
+    "keyboard_or_mouse_input": false,
+    "mame_input_sent": false,
+    "vm_changed": false
+  },
+  "next": "Manual visual review of the already-open GTK2 window remains pending. If the horizontal cell still appears smaller, capture only the scrollbar region with user approval or compare a non-sensitive GTK2 test window; do not alter measured 15x15 geometry absent a pixel mismatch."
+}

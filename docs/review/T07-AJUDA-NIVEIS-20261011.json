@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T10:48:38.198549+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "implemented": [
+    "Menu Ajuda Motif à direita, com dez assuntos; janela modeless somente leitura.",
+    "Três níveis escolhidos no combobox: novice, intermediate e expert; textos em módulo de modelo, widgets em módulo de visão.",
+    "Nível intermediate inicial; escolha mantida apenas durante o processo, sem mudar o projeto.",
+    "Seleção/cópia usa editor existente; cortar/colar não altera texto readonly. Fonte/papéis KDE chegam a menu, janela e tooltip auxiliar."
+  ],
+  "proof": {
+    "model": "30 textos UTF-8 distintos; índices inválidos recusados; novice desenvolve mais contexto que expert.",
+    "native": "Clques reais nos menus/listas, três níveis e troca de assunto; Ctrl+A seleciona texto inteiro, Ctrl+C tem payload UTF-8 integral recuperado por xclip no display privado; Ctrl+X/V não alteram o texto; fechamento pelo botão/WM_DELETE e reabertura funcionam; campo de projeto preservado.",
+    "palette": "Quatro esquemas: face do menu, área de conteúdo e texto da ajuda seguem papéis da interface. Paleta exclusiva da prévia não os altera. Recursos/cores X11, não todas as imagens/glyphs.",
+    "regression": "Métricas/âncoras Motif e controlador real GTK3 passaram: ajustes, prévias acoplada/separada e mínimos/automático. Última mudança só alinha a entrada Ajuda à direita; controlador reaproveitado no escopo de aplicação/métricas.",
+    "strict_build": "passed"
+  },
+  "failed_attempts_preserved": [
+    "help-native-r1.log",
+    "help-native-r2.log"
+  ],
+  "failure_explanation": "Sequência Home/Down no harness não escolhia a opção esperada no popup Motif; seleção passou por cliques em linhas com limites obtidos de XmListPosToBounds. Não foi apresentada como defeito corrigido da aplicação.",
+  "remaining": [
+    "Inventário de dicas das ações dinâmicas/diálogos e controles estrangeiros; validar nas famílias efetivas.",
+    "Validação de outros layouts/fontes/cantos além do escopo de hover já declarado.",
+    "Entrega/handoff coordenado da ferramenta, preservando edição e históricos."
+  ],
+  "estimated_progress_percent": 75,
+  "percentage_basis": "Estimativa T07: dicas principais, primeira validação de hover e ajuda por níveis implementadas (três etapas). Cobertura restante e entrega ainda faltam; não representa progresso do goal nem fidelidade histórica.",
+  "personal_window_reopened": false,
+  "human_approval_filled": false,
+  "archive": "docs/referencias/domainos-sr104/t07-help",
+  "hashes": {
+    "tools/theme-lab/include/help_topics.h": "f0e935f670d9dd49b424ece71dac69e275b9994c6971689a5558632ec65a6ac6",
+    "tools/theme-lab/include/ui_help.h": "555a2bfb5f2dbcac3faf9c04af2d390d0ad931a306e7d371926333803d91de67",
+    "tools/theme-lab/src/model/help_topics.c": "9fab1142f1a8e6f729b454ec71cea2e92ee1d28c61209b0a2db9770f91784027",
+    "tools/theme-lab/src/view/ui_help.c": "6557bf4162d7f3fc2f52d001e9b1c99637685151f024a7625850f0f2204fab81",
+    "tools/theme-lab/src/view.c": "4931f359820dcfd251d7fb7e0b1fe9d3a65afae98c91852b04169e188784bd4c",
+    "tools/theme-lab/tests/help_topics_test.c": "0dacb0d2f7c56af480c6da04eec92136c27f4d6f0820deed6b714f95cd4a2964",
+    "tools/theme-lab/tests/ui_help_flow.c": "2cfa3460fd6839d003074f9dbb8d5148ce3870a08b39c54a3360e4a88d8f0ef6",
+    "tools/theme-lab/tests/native_metrics_view.c": "5648ac5f858b51e6f0b729dad1820f06b86aa2511817b12c0864a71d7fec0b90",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "6f640fe56358b289eef23a68e2ffe9aee7ca0dba4b506f23a26565cf927557cd",
+    "tools/theme-lab/Makefile": "ce561e5404f4cab80c3c74ecf443a35a76a5bbc3457d8d9c6ccabf9cf264cf35",
+    "tools/theme-lab/README.md": "047b4afacdf5c74ea26959765d23c91922e4b62fbcddcb78d72db1d25d9b264c",
+    ".qa-t07-hints/help-topics-r1.log": "a44bd43f6aed7a3193c146d60e067097e0764d980790ac24262b88c37907a854",
+    ".qa-t07-hints/help-native-final-r5.log": "10252b505ca1c4d3b1b6b305fec77951a90f0fc23d2d2243868968c16cb76058",
+    ".qa-t07-hints/help-palettes-final-r3.json": "0cfed3ff7b3420d7b40f872fd5e405950e4f5ae3ea90a644a66a6442121df18d",
+    ".qa-t07-hints/help-metrics-regression-r1.log": "a67a8c8855585e6f06ed46e3919c41f28fea5b58dd914098c21540c4c90b9286",
+    ".qa-theme-lab-spin-flpilx7s/RESULTADO.json": "b6bbc9da3f5787a471edc420e670c40fb02eda76568479fbeec851bfa408377d",
+    ".qa-t07-hints/help-final-build.log": "6c1a52133f8e1e69411823aa29ada580f7e94adbf67fce85952c1c936763f5f0"
+  }
+}

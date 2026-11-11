@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "R490",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify real GTK2 scrollbar engine geometry and KDE-role-derived normal, endpoint, insensitive and backdrop artwork in four color schemes.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": "Ran the repository's real GTK2 pixmap-engine probe in an Xvfb private display at scale 1. The suite rendered horizontal and vertical GtkScrollbar controls for four schemes in four states, checked native allocations/properties, role-derived pixels, and every directional stepper mask against its generated asset.",
+  "runtime": {
+    "gtk2": "2.24.33",
+    "scale": 1,
+    "private_display": true,
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "states": [
+      "normal",
+      "endpoint",
+      "disabled",
+      "backdrop"
+    ],
+    "cases": 16,
+    "native_widgets_per_case": [
+      "GtkHScrollbar",
+      "GtkVScrollbar"
+    ],
+    "stepper_cell_px": 15,
+    "stepper_glyph_px": 11,
+    "trough_border_px": 2
+  },
+  "result": {
+    "status": "passed",
+    "directional_masks_compared": 64,
+    "different_pixels": 0,
+    "native_geometry_matches_recipe": true,
+    "colors_match_only_current_scheme_roles": true,
+    "host_profile_changed": false,
+    "historical_fidelity_claimed": false
+  },
+  "execution_note": "The first wrapper invocation inherited the user's DISPLAY and ImageMagick could not capture a private root window. It terminated without a result image or input. The preserved failed attempt is /home/lsi/tempia/ia-tema/evidence/I167/r490-gtk2-real-engine-states-20261027. The suite was rerun with DISPLAY and WAYLAND_DISPLAY unset and TMPDIR=/home/lsi/tempia; all 16 cases passed under Xvfb at /home/lsi/tempia/ia-tema/evidence/I167/r490b-gtk2-real-engine-states-20261027/results.json (SHA-256 ea09a0e7b507d490fdbd231259d37905caafdc35b01f99130827a9cc9cc3c98f).",
+  "source_hashes": {
+    "tools/theme-lab/tests/test_gtk2_paint_native.py": "e4219ffcd68d97542ed98c49f574e2b6d98e4b0843fd754dae1d12a46f0a1152",
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "04195003b87b0705c39b71cef6a1f10f348caffff61d713e5bf6e86c89f4bca1",
+    "tools/gtk2_domainos_palette.py": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+    "tools/theme-lab/gtk2_recipe.py": "7dec8c3fc1302c9e7f71ce59cc2810803a8460c5a9f80ae70b5be048d564d0ee"
+  },
+  "limits": [
+    "The endpoint row sets the scrollbar value to its lower bound; it is not a hover or held-arrow capture.",
+    "The suite confirms GTK2 renderer-to-generated-asset parity, not Domain/OS SR10.4 historical fidelity.",
+    "The R489 guest snapshot was black and Q499 remains unanswered, so no VM input or historical visual comparison was performed."
+  ],
+  "changes": {
+    "source_changed": false,
+    "user_profile_changed": false,
+    "personal_gtk2_app_restarted": false,
+    "mame_input_sent": false,
+    "vm_changed": false
+  },
+  "next": "Complete the direct VUE comparison after the recorded VM input guard clears; keep hover, pressed and disabled historical states distinct."
+}

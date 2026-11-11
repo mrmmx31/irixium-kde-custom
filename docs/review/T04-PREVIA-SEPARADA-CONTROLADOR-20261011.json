@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-11T15:56:27.669513+00:00",
+  "item": "T04",
+  "revision": 2,
+  "phase": "separate_preview_controller_and_handoff",
+  "tests": {
+    "native": "passed; GTK2 coupled/separate resizing, toggle persisted, Save/Load, project Undo/Redo, two actual restarts; pending410x50 kept with applied300x50 scene bytes unchanged",
+    "fixture": ".qa-theme-lab-spin-uexvyxgh",
+    "model": 1002,
+    "backend_focused": 1,
+    "history": "passed",
+    "strict_build": "product/probe passed",
+    "diff": "tools/theme-lab passed"
+  },
+  "failures_preserved": [
+    {
+      "fixture": ".qa-theme-lab-spin-lkhsiyhc",
+      "cause": "View snapshot stale after preference commit; following edits reverted choice. Product fixed by synchronizing view after commit."
+    },
+    {
+      "fixture": ".qa-theme-lab-spin-2h0rjvv1",
+      "cause": "Test signaled namespace but expected clean native exit; fixture corrected to click Quit."
+    }
+  ],
+  "delivery": {
+    "status": "open",
+    "display": ":61",
+    "pid": 2658139,
+    "windows": [
+      "50332207"
+    ],
+    "report": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-758fc84ef3d04234a7d0e8e8d866cead/RESULTADO.json",
+    "manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-758fc84ef3d04234a7d0e8e8d866cead/MANIFESTO.json",
+    "work_directory": "/home/domainos-test/theme-lab-758fc84ef3d0",
+    "work_directory_relative": "theme-lab-758fc84ef3d0"
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+    "source_manifest_sha256": "cf7cb75bfbba07e0a1bfcac7dc2c8d9e7e368d5d5a9186154541536e13061dca",
+    "saved_files_sha256": {
+      "working.json": "c9c2cef48998bfc6c54a033b79bdb2fa2d21771d8cb3f0a3efd5b85404d9af47",
+      "scene.json": "36c9e470de2f2e481f19f20eb75fd14b4aecbba1e618f928677de5254ee17437",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd",
+      "project-history.json": "545078925972a4731bda5deb08f26feffa9ba21b22ceb9fe693ec5b86f92c6be"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false,
+    "applied_scene_imported": true
+  },
+  "preservation": {
+    "origin_all_four_files_unchanged": true,
+    "applied_scene_exact": true,
+    "project_history_exact": true,
+    "old_text_histories": 57,
+    "all_old_text_histories_unchanged": true,
+    "new_text_histories": 7,
+    "working": "same semantic project plus optional separate_preview=false and serialization stamp",
+    "origin_kept_open": true
+  },
+  "limits": [
+    "Native persistence tested GTK2; GTK3 uses shared controller but a new persistence matrix is not claimed.",
+    "Delivered saved scene is Motif; detached Motif preview remains unavailable, explicitly reported.",
+    "GTK2 remains7/16 types; no historical fidelity or complete adapter claim.",
+    "No release/installation/personal-theme or VM changes."
+  ],
+  "sources": {
+    "tools/theme-lab/src/controller.c": "16a7299f53d0fe17456a56462a495dd5c37505874d93fe82872d222b503107a4",
+    "tools/theme-lab/src/view.c": "cbc1121309997c2b2a9a32b9157ce1b585f10b4eedcb65a59a1593b741c74982",
+    "tools/theme-lab/build/theme-lab": "da3e0c55d88bf300cd6f6745280bb407c502f8715974dee1088825b96b90b194",
+    "tools/theme-lab/tests/controller_gtk2_progress.py": "893fdc53898c0de55ecf4eccc30deaa125d36869db3b0b259dd02364942d6c65",
+    "tools/theme-lab/tests/test_controller_spin.py": "e62a96454b056400ab078facfa47748f7b32ed7a5117256c703ab20b7b3d7ff5"
+  }
+}

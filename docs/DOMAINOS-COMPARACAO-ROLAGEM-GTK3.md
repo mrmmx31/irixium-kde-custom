@@ -41,3 +41,5 @@ Próxima pendência GTK3: confirmar a regra de cores desabilitadas e resolver ou
 delimitar a moldura principal da tabela,
 comparando uma solução que preserve também as células, a seleção e a rolagem.
 Depois verificar os estados históricos restantes antes de encerrar a família.
+
+I178, 2026-10-14: uma prova em Xephyr com GtkTreeView preenchida confirmou a limitação do CSS genérico. `border: 2px solid transparent` não altera pixels; borda opaca e `box-shadow: inset` repetem os contornos em cada linha/célula. Não há moldura principal sem interferência pela rota do tema. Nenhuma alteração de produto foi aplicada. Uma composição em nível de aplicação é escopo distinto e aguarda Q359. Recibo: [I178](review/I178-GTK3-TREEVIEW-FRAME-20261014.json).

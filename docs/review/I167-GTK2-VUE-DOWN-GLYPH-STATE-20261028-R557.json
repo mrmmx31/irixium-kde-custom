@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "R557",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the installed GTK2 down-stepper glyph in normal, pressed and released states against the stored native SR10.4/VUE measured rows and palette.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": {
+    "reference_record": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "reference_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "reference_scope": "Measured 11x11 native down-arrow glyph rows and role colors from Domain/OS SR10.4 + HP VUE 2.01; comparison uses the stored pixel-row encoding, not a retained full held screenshot.",
+    "theme_assets": [
+      "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-normal.png",
+      "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-pressed.png"
+    ],
+    "comparison": "RGB/RGBA equality for 71 glyph pixels at asset offset (2,2), ignoring the outer widget cell and cursor-overlap/context symbols. No scale or interpolation."
+  },
+  "historical_roles": {
+    "light": "#c4d5ed",
+    "shadow": "#3e536e",
+    "face": "#78a0d5",
+    "trough": "#6688b5",
+    "normal_to_held_bevel_pixels_swapped": 53,
+    "glyph_face_pixels": 18,
+    "glyph_bevel_pixels": 53
+  },
+  "asset_integrity": {
+    "repository_pressed_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+    "repository_normal_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+    "installed_pressed_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+    "installed_reload_pressed_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+    "installed_local_share_pressed_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+    "all_pressed_assets_identical": true,
+    "palette_provenance": "R509 documents palette-generated GTK2 assets and semantic KDE roles; no source RGB was changed."
+  },
+  "pixel_result": {
+    "normal_match": {
+      "pixels": 71,
+      "different": 0,
+      "asset": "down-normal"
+    },
+    "held_match": {
+      "pixels": 71,
+      "different": 0,
+      "asset": "down-pressed"
+    },
+    "released_match": {
+      "pixels": 71,
+      "different": 0,
+      "asset": "down-normal"
+    },
+    "pressed_vs_normal_swapped_bevel_pixels": 53
+  },
+  "live_vm_session": {
+    "mame_pid": 379349,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile": "paused=false, frameskip=4, throttled=false, mouse button released",
+    "after_counter_probe": "A one-count (+1,+1) relative probe completed and auto-cleared its axes. The immediately captured guest screen was black; one documented one-frame Shift pulse restored VUE. The follow-up capture shows the same windows and cursor location. No click or scrollbar hold was sent.",
+    "wake_capture": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/domainos-screen-r556-after-shift.png",
+    "final_probe": {
+      "path": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/r558-final-probe.json",
+      "sha256": "b2dd534350f68d6f11a1e1b0943146ffe37ed3a83153189794c520dfcaa2120f",
+      "request_id": "36a2947c1c4a481ea6b56095496d4e89",
+      "status": "OK",
+      "profile": "captured=false; paused=false; frameskip=4; throttled=false"
+    }
+  },
+  "result": "The existing installed GTK2 down-arrow artwork matches all 71 encoded native glyph pixels in normal, held and released states at 1:1. The held asset exchanges the same 53 light/shadow bevel pixels as the measured VUE state; release uses the exact normal asset. No asset or GTK2 configuration change is indicated for this down glyph.",
+  "limits": [
+    "This compares the glyph only, not the full 15x15 GTK2 widget cell or a live GTK2 hold capture.",
+    "The reference was retained as measured rows and colors, not a raw held-state screenshot in this evidence set.",
+    "The VM input attempt did not produce a held scrollbar state; no claim is made about horizontal/up arrow historical held rendering, content scrolling, hover or disabled states.",
+    "This is the DomainOS color scheme only; semantic roles and palette regeneration remain required for other schemes."
+  ],
+  "next": "Keep GTK2/I167 active. Preserve the verified down-arrow asset. Continue only if a remaining mismatch is reproduced; keep unmeasured states as explicit limits and do not infer their historical appearance from the down-arrow glyph."
+}

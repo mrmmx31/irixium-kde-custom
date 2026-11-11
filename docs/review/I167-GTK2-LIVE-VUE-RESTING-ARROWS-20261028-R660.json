@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "R660",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "native-vue-resting-arrows-match-reference",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "release": "Domain/OS SR10.4 + HP VUE 2.01",
+    "pid": 379349,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile": "frameskip 4; throttle off; not paused; pointer capture off",
+    "other_instance_preserved": "Prancheta MAME PID 117186, separate disk and namespace"
+  },
+  "observation": {
+    "before": "Guest display idle/black after the previously verified session had entered display sleep.",
+    "action": "One Shift key pulse to the verified guest; released before screenshot. No pointer motion or click.",
+    "after": "HP VUE visible with File Manager and a second window exposing vertical and horizontal scrollbars.",
+    "cursor": "At the top edge of the screenshot, outside all compared arrow cells.",
+    "capture": "records/ia-tema/I167/R660/domainos-sr104-after-wake-r660.png",
+    "capture_sha256": "e19e032319afc07f9dd737f709318205480564e731c613df99f89c001457fdb6",
+    "wake_script_sha256": "66a4a59d30897e0c61e085fac5643b0fcc7274f8f626c2bfefb453137fcf9b6b"
+  },
+  "comparison": {
+    "method": "Four visible VUE resting-state cells compared at 1:1 RGB with the retained SR10.4 normal-cell references; no interpolation.",
+    "script": "records/ia-tema/I167/R660/compare-resting-vue-arrows.py",
+    "script_sha256": "351cfb74a5ccd500c79487942687900c22e1ec71d1b3fd88ed21058473f78de6",
+    "result": "records/ia-tema/I167/R660/R660-pixel-comparison.json",
+    "result_sha256": "4c8ae9cd0207ee727ca00ed44911ea6ddb2404e355e8aae7d86062c1a82aa48a",
+    "results": [
+      {"name": "lower-window-vertical-up", "capture_origin_xy": [595, 440], "reference_crop_origin_xy": [4, 2], "cell_px": [15, 15], "different_pixels": 0},
+      {"name": "lower-window-vertical-down", "capture_origin_xy": [595, 680], "reference_crop_origin_xy": [4, 242], "cell_px": [15, 15], "different_pixels": 0},
+      {"name": "lower-window-horizontal-left", "capture_origin_xy": [52, 699], "reference_crop_origin_xy": [2, 4], "cell_px": [15, 15], "different_pixels": 0},
+      {"name": "lower-window-horizontal-right", "capture_origin_xy": [576, 699], "reference_crop_origin_xy": [526, 4], "cell_px": [15, 15], "different_pixels": 0}
+    ],
+    "pixels_compared": 900,
+    "all_exact": true,
+    "reference_hashes": {
+      "vertical": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "horizontal": "3f2bf37c2dafc49266c2951e353b9c8256e22c8688a1d3ba9abffecacb069e1"
+    }
+  },
+  "read_only_input_route_probe": {
+    "channel_pending": false,
+    "captured": false,
+    "mouse_hook": "table present",
+    "wait_button_up": false,
+    "portable_mouse_operation_done": true,
+    "relative_fields": {
+      "x": ":kbd:mouse2/Mouse X; mask 255",
+      "y": ":kbd:mouse3/Mouse Y; mask 255",
+      "left_button": ":kbd:mouse1/Left mouse button; mask 16"
+    },
+    "interpretation": "A direct MAME Lua relative-counter route exists as an alternative to KDE RemoteDesktop. It is incremental and affected by VUE acceleration; no input was sent. The pending board choice still governs which input route may be used."
+  },
+  "cross_evidence": {
+    "gtk2_installed_renderer": "R500 compared the four installed GTK2 normal stepper cells with the same retained SR10.4 references: 0/225 differences per direction.",
+    "interpretation": "The current visible VUE resting cells and the installed GTK2 renderer each match the retained normal reference independently. This does not demonstrate a held-state match or a screenshot of a personal GTK2 application."
+  },
+  "side_effects": {
+    "user_theme_or_profile_changed": false,
+    "application_restarted": false,
+    "pointer_input_sent": false,
+    "vm_configuration_changed": false,
+    "other_vm_touched": false
+  },
+  "limits": [
+    "Normal/resting arrows only; no direct pressed or disabled comparison in this observation.",
+    "The cursor was outside the four compared cells. Follow-up R661 isolates the excluded File Manager down cell's 11-pixel top-row delta; its cause remains undetermined.",
+    "Manual review of the applied GTK2 theme remains distinct from pixel comparison."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Reconfirms visible normal VUE cells against retained references; no new pressed-state criterion is closed. Not a visual-fidelity score."
+  },
+  "artifacts": "records/ia-tema/I167/R660/ARTIFACTS.json"
+}

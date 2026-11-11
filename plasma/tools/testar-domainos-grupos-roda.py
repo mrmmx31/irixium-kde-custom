@@ -13,7 +13,7 @@ harness.IDENTIFIER='org.irixclassic.qa.group.wheel.fixture'
 harness.NATIVE_SOURCE=harness.REPO/'plasma/tests/domainos-group-wheel-host.cpp'
 harness.CONTROLS_STYLE='org.kde.desktop'
 harness.NATIVE_LIBRARIES=('Qt6Widgets','Qt6Test','x11')
-harness.HOST_TIMEOUT=30;harness.RUN_TIMEOUT=45
+harness.HOST_TIMEOUT=70;harness.RUN_TIMEOUT=90
 harness.EXTRA_APPLICATIONS={f'org.irixclassic.qa.wheel{index}.desktop':
  f'[Desktop Entry]\nType=Application\nName=DomainOS wheel group {index}\nExec=/bin/true\nIcon=utilities-terminal\nStartupWMClass=DomainOSWheel{index}\n' for index in range(9)}
 harness.QML='''import QtQuick
@@ -31,6 +31,12 @@ PlasmoidItem {
   function state(){return JSON.stringify({rows:tasks.taskRows,windows:tasks.windowRows.filter(row=>ownedPids.indexOf(row.pid)>=0),
    open:box.groupPopupVisible,members:tasks.groupMembers,key:tasks.groupSelectorKey,requests:requests,
    firstVisible:box.firstVisible,wheelActivation:box.iconboxWheelActivates})}
+  function findItem(root,name){if(!root)return null;if(root.objectName===name)return root
+   for(const child of root.children || []){const found=findItem(child,name);if(found)return found}return null}
+  function controlCoordinates(name){const item=findItem(box,name);if(!item)return "{}"
+   const p=item.mapToGlobal(item.width/2,item.height/2);return JSON.stringify({x:p.x,y:p.y})}
+  function nextCoordinates(){return controlCoordinates("domainosIconboxNext")}
+  function previousCoordinates(){return controlCoordinates("domainosIconboxPrevious")}
   function coordinates(){const record=tasks.taskRows[box.firstVisible];const button=record ? box.buttonForKey(record.key) : null
    if(!button)return "{}";const p=button.mapToGlobal(button.width/2,button.height/2);return JSON.stringify({x:p.x,y:p.y,key:record.key})}
   Panel.DomainOSPalette {id:colors;followSystem:false}

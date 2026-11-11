@@ -1,0 +1,41 @@
+{
+  "id": "T07-QTQUICK6-SCROLLBAR-TOOLTIP-ROLE-20261019-R148",
+  "board_item": "T07",
+  "status": "passed_scoped; T07 remains running",
+  "date": "2026-10-19",
+  "scope": "QtQuick6 production gallery: attached tooltip role on one real TableView delegate and four real scrollbars.",
+  "environment": {
+    "xephyr": ":82 (owned T07 session)",
+    "runtime": "Qt 6.8.2, PyQt 6.9.0, KDE org.kde.desktop QML controls, xcb",
+    "palette": "DomainOS-SR10.4 from isolated kdeglobals",
+    "active_tooltip_role": {
+      "background": "#78a0d5",
+      "foreground": "#ffffff",
+      "colorSet": "4"
+    },
+    "private_home": true,
+    "personal_configuration_changed": false
+  },
+  "implementation": {
+    "file": "plasma/tests/galerias-nativas/qtquick_demo.py",
+    "sha256": "0ef415e727607301182c2e2146f9f49c965b1437c21a40788fe098abe17fb075",
+    "change": "Scrollbar hoverChanged events prepare the attached tooltip's dynamic KDE Tooltip role before the native 750 ms display delay; the popup visibleChanged hook remains for when it opens. No timer scan or static final color was added."
+  },
+  "checks": [
+    {"control": "TableView cell", "colorSet": "4", "background": "#78a0d5", "foreground": "#ffffff", "role_match": true},
+    {"control": "TableView vertical scrollbar", "colorSet": "4", "background": "#78a0d5", "foreground": "#ffffff", "role_match": true},
+    {"control": "TableView horizontal scrollbar", "colorSet": "4", "background": "#78a0d5", "foreground": "#ffffff", "role_match": true},
+    {"control": "ScrollView vertical scrollbar", "colorSet": "4", "background": "#78a0d5", "foreground": "#ffffff", "role_match": true},
+    {"control": "ScrollView horizontal scrollbar", "colorSet": "4", "background": "#78a0d5", "foreground": "#ffffff", "role_match": true}
+  ],
+  "verification": {
+    "result": "5/5 live hover targets reported the active KDE Tooltip colorSet and matching background/text roles.",
+    "static": "py_compile and git diff --check passed.",
+    "menu_regression": "The probe continued to its independent menu-row sample and then failed to show that menu hint. The menu code was not changed here; R141 covers its prior pass. This run is not a complete gallery pass.",
+    "full_hover_matrix": "R149 attempt timed out after 90 seconds while the isolated bus logged host inotify exhaustion and portal startup delays; no result is counted.",
+    "existing_warning": "KDE TabButton.qml still emits the prior null-y warning at startup; not attributed to this patch."
+  },
+  "artifacts": "~/tempia/t07-qtquick-attached-role-r139-20261019/final-qt6-domainos-r148-hover-role/",
+  "user_visual_approval": false,
+  "next": "Retain R54/R141 evidence for delay/menu behavior, continue T07 on another authorized uncovered scope, and revisit the full QtQuick matrix only when a new discriminating test can run within the available private session."
+}

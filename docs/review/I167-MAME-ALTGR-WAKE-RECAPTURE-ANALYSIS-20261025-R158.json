@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-ALTGR-WAKE-RECAPTURE-ANALYSIS-20261025-R158",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "user_report": "After releasing the mouse with AltGr, reactivating the black VM screen still captures the host pointer while the pointer is outside the guest capture.",
+  "live_state": {
+    "mame_pid": 274368,
+    "paused": false,
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "host_pointer": {"x": 200, "y": 950},
+    "probe_request_id": "c792bff976604b7daea1619812d76547"
+  },
+  "source_inspection": {
+    "path": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/sessao/mouse-altgr.lua",
+    "sha256": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a",
+    "behavior": "AltGr rising edge releases host mouse and disables Apollo mouse fields. While released, any left-button rising edge seen by MAME, unless AltGr is currently down, enables mouse capture. The hook does not distinguish a wake click from an intentional recapture click."
+  },
+  "prior_evidence": {
+    "R150": "A one-frame Shift wake from guest black screen did not recapture the host pointer.",
+    "R154": "Programmatic focus activation with the host pointer outside MAME did not recapture it.",
+    "R152": "A left click intentionally recaptures; AltGr releases again."
+  },
+  "conclusion": "The current live probe does not reproduce capture. The hook explains recapture on a left click that reaches MAME, including a click used to wake the guest. It does not explain a capture caused only by keyboard wake, mouse movement, or window/monitor activation. The exact wake action remains unresolved; do not change the hook until the trigger is identified.",
+  "next": "Determine whether wake uses mouse movement, a click inside MAME, a keyboard event, or window/monitor activation; then observe host capture state across that exact event before changing the hook.",
+  "status": "reported_again_not_reproduced_in_current_probe_trigger_pending"
+}

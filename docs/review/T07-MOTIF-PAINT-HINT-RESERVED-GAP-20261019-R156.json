@@ -1,0 +1,36 @@
+{
+  "item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-19T17:52:00Z",
+  "status": "implemented-built-and-visually-verified-in-xephyr; scoped",
+  "scope": "Reserve tooltip space between the Manual Paint selectors, tool row and dimension label. Other application layouts are not covered by this change.",
+  "source_analysis": {
+    "reference_source": "Debian Motif 2.3.8-4 source, fetched to ~/tempia/motif-tooltip-src/motif-2.3.8",
+    "finding": "ToolTipPost positions the tip below its owner and clamps it to screen bounds; it does not test sibling-widget collisions. This is current OpenMotif implementation evidence, not a Domain/OS SR10.4 default."
+  },
+  "implementation": {
+    "file": "tools/theme-lab/src/view/manual_paint_view.c",
+    "change": "Set the Manual Paint tool row XmNtopOffset to 28 px, reserving room for the native hint below the selector row; downstream dimensions and previews follow the form attachments.",
+    "colors_changed": false
+  },
+  "validation": {
+    "build": "TMPDIR=~/tempia make -C tools/theme-lab build/theme-lab check-ui-hints check-ui-help",
+    "result": "passed; strict C99 build with -Wall -Wextra -Werror; native delayed/stable/dismiss/screen-bound tests; four UI-role palettes; Help flow",
+    "warnings": "Xvfb still reports missing FontSet fonts/charsets; no font pixel-fidelity claim.",
+    "xephyr": ":86 at 1600x900; new build process PID 266101, workdir ~/tempia/t07-manual-paint-hint-r2/work",
+    "family_hint_geometry": "X server: 394x30 at +151,+40; tool row starts y=77 and ends y=108, leaving 7 px after the popup bottom. No overlap.",
+    "pencil_hint_geometry": "X server: 422x17 at +32,+105; dimension label starts y=128, leaving 6 px. No overlap.",
+    "captures": [
+      "~/tempia/goal-continue-20261019-r2/after-build-hover-family.png",
+      "~/tempia/goal-continue-20261019-r2/after-build-hover-pencil.png"
+    ],
+    "binary_sha256": "e82d3d19c8a136dc3174f447f8df63251117cf06fd6a0448c8b6e71ff588299a",
+    "source_sha256": "9c527d07e8303d8b5eb98bdf4f405481dc6b885debd069a97496c5dc2583df6a"
+  },
+  "limits": [
+    "Measured with the currently resolved font set and one 1600x900 Xephyr layout; other resolutions/fonts can change tip dimensions.",
+    "This local gap is not a general sibling-aware placement algorithm for all Motif hints.",
+    "T07 remains running; remaining toolkit coverage and human visual review are open."
+  ],
+  "next": "Continue the authorized T07 hint coverage; use the new Xephyr instance for the user's review without closing the older sessions."
+}

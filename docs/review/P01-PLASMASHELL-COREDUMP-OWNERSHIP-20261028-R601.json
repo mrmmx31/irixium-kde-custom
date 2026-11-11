@@ -1,0 +1,44 @@
+{
+  "id": "R601",
+  "date_local": "2026-10-28T14:20:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "scope": "Read-only inspection of retained plasmashell core metadata and the active lsi service; no app was launched.",
+  "cores": [
+    {
+      "pid": 2713616,
+      "time": "2026-10-24T08:39:45-04:00",
+      "signal": "SIGSEGV",
+      "cgroup": "app.slice/codex-xchat-bridge-16668.service",
+      "stack": "wl_proxy_get_version -> KF6WindowSystemKWaylandPlugin -> KWindowShadow::destroy -> PlasmaQuick object teardown",
+      "interpretation": "A Wayland shadow/proxy teardown crash is visible, but there is no evidence tying it to the reported application click or current panel instance."
+    },
+    {
+      "pid": 1423570,
+      "time": "2026-10-26T08:40:43-04:00",
+      "signal": "SIGABRT",
+      "cgroup": "app.slice/codex-xchat-bridge-16667.service",
+      "stack": "libdbus _dbus_warn_check_failed -> QtDBus event delivery",
+      "interpretation": "A D-Bus assertion abort is visible, but the stored stack does not establish a relation to the user's application launch sequence."
+    }
+  ],
+  "current_lsi_service": {
+    "unit": "plasma-plasmashell.service",
+    "pid": 711522,
+    "result": "success",
+    "restart_count": 0,
+    "started": "2026-10-28T14:05:49-04:00"
+  },
+  "validation": {
+    "coredump_entries_reviewed": 2,
+    "recent_crash_correlation_proven": false,
+    "launch_reproduced": false,
+    "user_session_changed": false
+  },
+  "next": [
+    "Q510: identify the affected application and whether the application, menu, or panel stops responding, plus approximate time.",
+    "Do not attribute either retained bridge-launched core to the current normal panel without matching timestamp, PID, and interaction evidence."
+  ]
+}

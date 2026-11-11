@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "R694",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare GTK2 down-stepper normal and held relief pattern against the captured Domain/OS SR10.4 / HP VUE 2.01 reference, using dynamic semantic-role classification.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": "light=L, dark=D, face=F, trough=.; GTK2 colors are loaded from the generated palette manifest, not hard-coded.",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "evidence": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "measured_roi": "11x11 arrow/relief pattern; pointer overlay C normalized to underlying trough because GTK2 capture has no cursor"
+  },
+  "runtime": {
+    "gtk2": "2.24.33",
+    "style_engine": "DomainOSPixmapStyle",
+    "source_capture": "R693 private GTK2 fixture with same binary hash as installed engine",
+    "colors_derived_from": "active generated GTK2 palette manifest; no hardcoded RGB in painter"
+  },
+  "results": [
+    {
+      "capture": "initial.png",
+      "sha256": "d7b4c84ffa7e1c615388b6df0d0adf02f6a1c18393740feb49b98309ce9b1945",
+      "historical_key": "TRASH-DOWN-NORMAL.png",
+      "rows": [
+        "LLLLLLLLLLL",
+        "LLLLLLLLLDD",
+        ".LLFFFFFDD.",
+        ".LLFFFFFDD.",
+        "..LLFFFDD..",
+        "..LLFFFDD..",
+        "...LLFDD...",
+        "...LLFDD...",
+        "....LDD....",
+        "....LDD....",
+        ".....D....."
+      ],
+      "expected_rows": [
+        "LLLLLLLLLLL",
+        "LLLLLLLLLDD",
+        ".LLFFFFFDD.",
+        ".LLFFFFFDD.",
+        "..LLFFFDD..",
+        "..LLFFFDD..",
+        "...LLFDD...",
+        "...LLFDD...",
+        "....LDD....",
+        "....LDD....",
+        ".....D....."
+      ],
+      "different_role_pixels": 0,
+      "pixels_compared": 121
+    },
+    {
+      "capture": "v-down-pressed.png",
+      "sha256": "4b6de006c32b2e0c6de75cfdd34adde6213441daf0758c87c6baaf5a47196703",
+      "historical_key": "TRASH-DOWN-HELD.png",
+      "rows": [
+        "DDDDDDDDDDD",
+        "DDDDDDDDDLL",
+        ".DDFFFFFLL.",
+        ".DDFFFFFLL.",
+        "..DDFFFLL..",
+        "..DDFFFLL..",
+        "...DDFLL...",
+        "...DDFLL...",
+        "....DLL....",
+        "....DLL....",
+        ".....L....."
+      ],
+      "expected_rows": [
+        "DDDDDDDDDDD",
+        "DDDDDDDDDLL",
+        ".DDFFFFFLL.",
+        ".DDFFFFFLL.",
+        "..DDFFFLL..",
+        "..DDFFFLL..",
+        "...DDFLL...",
+        "...DDFLL...",
+        "....DLL....",
+        "....DLL....",
+        ".....L....."
+      ],
+      "different_role_pixels": 0,
+      "pixels_compared": 121
+    }
+  ],
+  "conclusion": "The GTK2 down-stepper normal and held 11x11 role patterns match the native SR10.4/VUE recorded patterns exactly after excluding only the historical pointer overlay: 0 differing role pixels across 242 comparisons. The held state reverses light/shadow as expected.",
+  "limits": [
+    "one direction only",
+    "compares glyph/relief role pattern, not full scrollbar or full GTK2 window",
+    "no direct input sent to VUE",
+    "does not prove human acceptance"
+  ],
+  "changes": {
+    "user_profile_written": false,
+    "desktop_scheme_changed": false,
+    "applications_restarted": false,
+    "other_toolkit_families_changed": false,
+    "vm_changed": false
+  },
+  "artifacts": "records/ia-tema/I167/R694/ARTIFACTS.json",
+  "next": "Continue I167/GTK2 only. Compare the remaining historical directions/states with available source rows and native captures; then pursue isolated observer behavior without changing GTK4 or the live KDE scheme."
+}

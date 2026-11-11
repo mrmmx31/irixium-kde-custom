@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R503",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Pixel-level verification that current GTK2 scrollbar-stepper color recipes resolve through the semantic KDE role palette in the preserved R501 captures.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "runtime": "GTK2 2.24.33 capture set reused from R501; no new UI or MAME input",
+    "schemes": [
+      "DomainOS-SR10.4",
+      "BreezeClassic",
+      "BreezeDark",
+      "KvBeige"
+    ],
+    "origins": [
+      "separate",
+      "coupled"
+    ],
+    "directions": [
+      "left",
+      "right",
+      "up",
+      "down"
+    ],
+    "states": [
+      "hover",
+      "held",
+      "released"
+    ],
+    "capture_cells": 96,
+    "pixels_per_cell": 225,
+    "pixel_comparisons": 21600,
+    "differences": 0,
+    "semantic_role_resolution": "Each named stepper token matched the renderer output produced from the current semantic KColorScheme role palette; RGB values differ by scheme as expected."
+  },
+  "verification": {
+    "source_receipt": "docs/review/I167-GTK2-POST-R495-ARROW-PALETTE-INTERACTION-20261027-R501.json",
+    "source_captures": "records/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/",
+    "source_capture_sha256_recorded_per_cell": true,
+    "audit_script": "records/ia-tema/evidence/I167/r503-gtk2-arrow-semantic-role-audit-20261028/audit.py",
+    "audit_script_sha256": "76c7945d6519b955cbe278e44604e35af01215482679bc333e14e247084f3a71",
+    "report": "records/ia-tema/evidence/I167/r503-gtk2-arrow-semantic-role-audit-20261028/report.json",
+    "report_sha256": "cbcd81bca742103605b94c06e3dc63ba8c21d424cad071fa69909b2be705b977",
+    "replay": "PYTHONDONTWRITEBYTECODE=1 R503_OUTPUT=~/tempia/domainos-theme-work/R503-semantic-role-audit-replay python3 records/ia-tema/evidence/I167/r503-gtk2-arrow-semantic-role-audit-20261028/audit.py"
+  },
+  "limits": [
+    "Uses existing private Xvfb captures; not a fresh MAME/HP VUE comparison, not live application acceptance, and not human approval.",
+    "Does not prove historical hover, disabled, or pressed appearance for every direction.",
+    "No theme/user configuration, application window, or VM was modified."
+  ],
+  "next": "Continue only the authorized GTK2 I167 scope; obtain the remaining historical/native and application-level evidence when the VM gate is clear."
+}

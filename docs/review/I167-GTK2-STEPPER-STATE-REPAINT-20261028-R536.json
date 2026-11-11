@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R536",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-state-aware-engine-prototype-passes-focused-tests;cache-lifecycle-and-vm-acceptance-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 private stepper state-aware repaint prototype only. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "capture_px": [200, 100],
+    "engine": "private R536 GtkStyle engine prototype",
+    "palette_fixture": "RC uses fixed colors to isolate state/repaint mechanics; KDE color-role behavior was not tested.",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "vm_input_sent": false
+  },
+  "findings": {
+    "r535_failure_confirmed": "An instrumented R535 run shows GtkStyle draw_arrow receives GTK_STATE_ACTIVE (2) and GTK_STATE_PRELIGHT (1) for the individual stepper while the range-level cached state remains normal. R535 does not save active/prelight in its cell cache, so its later partial repaint can use stale state.",
+    "per_stepper_states": "R536's four hover and release captures match each focused asset; the four pressed captures match their pressed asset exactly. For this artwork focused and normal assets coincide. Pressed and normal differ in 53/225 pixels per direction.",
+    "active_partial_repaint": "One pixel was deliberately damaged at the outer edge of each pressed cell. After R536 repaint, every 15x15 cell matches its pressed asset at 0/225 differences.",
+    "endpoint_and_disabled": "Both endpoint captures use the normal asset for all directions; a globally insensitive range uses the disabled asset for all four.",
+    "input": "The R521 input probe under the loaded R536 module passes 8/8: internal movement, blocked endpoints and globally insensitive ranges.",
+    "independent_review": "A second review confirmed all pixel comparisons and input cases. Endpoint evidence is indirect: screenshots establish normal artwork and input tests establish blocking, but the trace does not pair raw GTK callback state with endpoint_stepper() results per arrow. Normal/focused/disabled PNGs are byte-identical, so semantic roles rely on the cache-state trace, not pixels alone.",
+    "cache_edge_cases": "The prototype has one cache cell per arrow enum, so multiple same-direction steppers can overwrite one another. A missing asset does not refresh cached state and may replay a previous state."
+  },
+  "limits": [
+    "The prototype still has no explicit invalidation when a stepper disappears or style geometry changes without a full redraw.",
+    "Only the common one-back/one-forward layout was tested; secondary steppers, resize while active, endpoint or disabled, and cache invalidation on style/palette change remain unverified.",
+    "A missing-asset fallback can leave an older cached state eligible for repaint.",
+    "PNG files are reopened during drawing; no performance or asset-cache work was tested.",
+    "The fixture does not test KDE color roles, palette reload, contrast, or other schemes.",
+    "There was no fresh VM comparison, personal application comparison, installation or user visual acceptance."
+  ],
+  "artifacts": {
+    "record": "records/ia-tema/experiments/i167-r536-state-aware/",
+    "pixel_verifier": "records/ia-tema/experiments/i167-r536-state-aware/verify_pixels.py",
+    "previous_state_and_repaint_prototype": "docs/review/I167-GTK2-PARTIAL-EXPOSE-20261028-R535.json",
+    "gtk2_source_evidence": "~/tempia/domainos-theme-work/gtk+2.0-2.24.33/gtk/gtkrange.c:1770-1810"
+  },
+  "next": "Review and fix cell-cache invalidation and per-style asset lifetime in a private GTK2 engine. Then validate role-derived palette outputs and real application/VM rendering without changing installed files until the focused implementation and SR10.4 comparison are sound."
+}

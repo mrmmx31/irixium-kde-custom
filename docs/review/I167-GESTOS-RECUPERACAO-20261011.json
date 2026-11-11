@@ -1,0 +1,53 @@
+{
+  "item": "I167",
+  "revision": 1,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "at": "2026-10-11T08:26:51.527663+00:00",
+  "scope": "GTK2 scrollbar Ctrl gestures and failed commit recovery in private native Window/Plug scenes",
+  "origins": 2,
+  "real_ctrl_drag_delta": [
+    36,
+    24
+  ],
+  "ctrl_preserves_native_adjustment": true,
+  "plain_click_operates_native_scrollbar": true,
+  "failed_commit_rolls_back_and_releases_grab": true,
+  "plain_click_works_after_failure": true,
+  "events_accepted_by_c_parser": 12,
+  "cross_family_and_stale_hash_rejected": 24,
+  "pure_regression_tests": 6,
+  "failure_records": [
+    "get_origin output parameters differ in GTK2 GIR",
+    "callback receives EventButton/EventMotion records rather than Event union",
+    "xdotool mousemove --sync fixture waited on unchanged pointer coordinates"
+  ],
+  "toolkit_coordinate_source": "Installed Gdk-2.0.gir: typed button/motion x_root/y_root fields; no local/root coordinate reinterpretation",
+  "human_approval_or_full_historical_fidelity_claimed": false,
+  "personal_input_sent": false,
+  "stage_estimate_percent": 64,
+  "estimate_basis": "Real native layout gestures and recovery verified; preview lifecycle and other controls still pending",
+  "remaining": [
+    "Product GTK2 preview launch/reload/lifecycle",
+    "Other controls and palette-derived painting",
+    "Hover/focus/isolated arrow-button/content fitting",
+    "Personal coordinated delivery"
+  ],
+  "hashes": {
+    "tools/theme-lab/gestures_gtk2.py": "7193d1ddfe99064da1981e55f6b0cf2d8febdaff8b20ff94213e972edae75258",
+    "tools/theme-lab/native_scene_gtk2.py": "f586f4c110044bdca714cc5255d52038edc5625c222c68f7e7b946a59b359769",
+    "tools/theme-lab/tests/probe_gtk2_scene.py": "887a5864a305f347c598be258e6920d93e0f4b5977958d6c87985fe10b408f02",
+    "tools/theme-lab/tests/test_gtk2_ipc_native.py": "af258733697f505bd5e8f358a5788ee1326fbf4e82b5854b2d4c6ab7e5ab888b",
+    "docs/referencias/domainos-sr104/i167-gestures/separate-native.png": "b21da8b40ab6ff4ec346b222965a1ddb0194abedc4e1a4189251378ec1212f49",
+    "docs/referencias/domainos-sr104/i167-gestures/separate-native.json": "024e85fac2c73c9a99c3db3097fb31d10de6ce49343bb3e16d85577689e20089",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-writer-regression.log": "869ea8047d0ae89dddb808470175fa3bdce5d6007a92e195f2d7e7e762e1f49f",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-native-r3.log": "25ef1039d5ceb3bb21004652c55d540a7a8362f58c0ddefdc70327d21a727e34",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-native.log": "ad1a71b391a0ea79e86c7009c8df1a13f5c95cd548d490004cfbfe8750fc7715",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-native-r5.log": "0fdd549293941474764e53ac6f1c529c733fb7892cc4c5c484ffe9f64f361d69",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-model-regression.log": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-native-r2.log": "073457f3dd505f4cd9a7260bd659e0ea02c068f029dc346340d626ac51dc299a",
+    "docs/referencias/domainos-sr104/i167-gestures/results.json": "f403ab89e41ecc9e325796af0324c0becc5adc6ba4906ea50b57cdfa3ea052ed",
+    "docs/referencias/domainos-sr104/i167-gestures/coupled-native.png": "22c26100ef5ecb4fcb99cb834da873d5fdaec47f044ff9d53bec1e6bcd907f75",
+    "docs/referencias/domainos-sr104/i167-gestures/gestures-native-r4.log": "c6df77fc521efba38371e8f51a97ad9c7551a811bde95c1b5598d1795bfafdb5",
+    "docs/referencias/domainos-sr104/i167-gestures/coupled-native.json": "aa6e76c0df2f00ec2ab97a3d92a1f563bd591046dfb7f2c3f777bcb2ae85c2fc"
+  }
+}

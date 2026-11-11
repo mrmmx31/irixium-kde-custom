@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "R668",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify that the GTK2 profile selected by user lsi routes normal and pressed scrollbar states to the currently audited directional palette assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "user_profile": "/home/lsi/.gtkrc-2.0",
+    "user_profile_sha256": "1b8701d8dcd6a671feeaa0c86a9596875b270ba61e3b7a470c2ff1a16e38dc4d",
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "theme_gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "selected_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "bundle_gtkrc_sha256": "eea7c619144c25eb2701d455b9eb0449c65b97a30992f893ffd6de8ac772d838",
+    "bundle_manifest_sha256": "108edac7c8fad57d74eb464c59ef5544255b6bc9eab7cde39aaeeafcbc949017"
+  },
+  "mappings": {
+    "NORMAL": {
+      "up": "assets/scrollbar-stepper-up-normal.png",
+      "down": "assets/scrollbar-stepper-down-normal.png",
+      "left": "assets/scrollbar-stepper-left-normal.png",
+      "right": "assets/scrollbar-stepper-right-normal.png"
+    },
+    "ACTIVE": {
+      "up": "assets/scrollbar-stepper-up-pressed.png",
+      "down": "assets/scrollbar-stepper-down-pressed.png",
+      "left": "assets/scrollbar-stepper-left-pressed.png",
+      "right": "assets/scrollbar-stepper-right-pressed.png"
+    }
+  },
+  "result": "The selected profile includes the generated palette RC. For every direction, NORMAL resolves to that direction's normal PNG and GTK2 ACTIVE resolves to that direction's pressed PNG. This confirms that the exact down-pressed asset compared in R667 is the asset selected by the current GTK2 profile for ACTIVE.",
+  "limits": [
+    "This is configuration wiring inspection; it does not prove the rendering or event state of an already-open application.",
+    "It does not replace live SR10.4 pressed/released capture or human review.",
+    "No profile, application, or VM configuration changed; no VM input was sent."
+  ],
+  "next": "Keep the state mapping unchanged. Continue live state capture only after I517 is authorized.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Profile-to-asset mapping is confirmed for all normal and pressed directions, but actual live interaction evidence and visual acceptance remain open. This is not a visual-fidelity score."
+  }
+}

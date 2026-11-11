@@ -1,0 +1,149 @@
+{
+  "item": "I092",
+  "revision": 1,
+  "definition_sha256": "32b9ee38a05020b96457a88ab0f7bace6f4da2b360614fa331186aa8d25566ec",
+  "date": "2026-10-10T21:32:09.975557+00:00",
+  "binary_sha256": "9a96e68e338ed54ba19489260ac6caf9ab6615f14c2dcd564790e6801fb3e563",
+  "tests": {
+    "labels_native": {
+      "saved_execution_status_is_distinct_from_human_approval_authorization_and_failure": true,
+      "long_utf8_title_and_execution_tag_remain_complete_and_wrapped": true,
+      "live_label_update_retains_widgets_editor_selection_cursor_and_navigation": true,
+      "multistep_edit_history_survives_background_label_update": true,
+      "state_transitions_remove_previous_tag_without_rebuilding_rows": true,
+      "invalid_snapshot_keeps_last_valid_labels_and_editor_and_recovers": true,
+      "filters_and_reload_keep_correct_tags_without_sending_draft": true,
+      "reopen_restores_labels_draft_and_undo_without_rewriting_human_records": true,
+      "global_unread_reopen_retains_return_section_and_per_section_selections": true,
+      "editing_global_unread_item_does_not_overwrite_section_navigation": true,
+      "leaving_global_filter_restores_original_section_drafts_and_edit_history": true
+    },
+    "editing": {
+      "unicode_multiline_undo_redo_shortcuts": true,
+      "multi_step_history": true,
+      "copy_cut_paste_select_all_and_reversible_replacement": true,
+      "history_survives_reload_and_item_switch": true,
+      "save_retains_history_and_return_to_saved_is_reversible": true,
+      "context_menu_undo": true,
+      "private_autosave_is_separate_from_answers_and_authorizations": true,
+      "second_editor_cannot_overwrite_journal": true,
+      "crash_restores_multiple_drafts_title_and_undo_redo": true,
+      "failed_checkpoint_prevents_destructive_action": true
+    },
+    "notifications": {
+      "upper_right_notice_pulses_and_filter_tab_is_available": true,
+      "new_saved_replies_notify_without_focus_cursor_draft_or_undo_changes": true,
+      "notice_opens_latest_replies_and_global_unread_filter": true,
+      "leaving_displayed_reply_marks_only_private_read_ledger": true,
+      "watch_while_typing_in_global_unread_filter_preserves_editor": true,
+      "newer_reply_is_not_acknowledged_by_leaving_an_older_displayed_one": true,
+      "filter_exit_restores_navigation_and_multistep_editor_history": true,
+      "assistant_ack_does_not_create_a_new_message_notice": true,
+      "empty_unread_filter_is_valid_and_reversible": true,
+      "menu_layout_has_the_same_reversible_unread_filter": true,
+      "invalid_saved_file_preserves_notice_editor_and_recovers": true,
+      "four_native_kde_palettes_and_low_contrast_attention_fallback": {
+        "DomainOS": {
+          "attention_contrast": 3.518,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "neutral": {
+          "attention_contrast": 3.731,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "dark": {
+          "attention_contrast": 3.295,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "yellow": {
+          "attention_contrast": 1.139,
+          "fallback_to_button_text": true,
+          "native_pixels_match": true
+        }
+      },
+      "older_helper_without_attention_role_keeps_dynamic_text_and_outline_pulse": true,
+      "failed_checkpoint_prevents_read_ack_and_navigation": true,
+      "reopen_preserves_read_ledger_filter_drafts_and_undo": true
+    },
+    "navigation_1920": {
+      "show_menu_checkbox_enables_tabs": true,
+      "switch_tabs_preserves_both_drafts": true,
+      "checkbox_returns_to_menu": true,
+      "sections_menu_selects_same_content": true,
+      "undo_after_navigation_restores_text": true,
+      "mode_section_and_drafts_survive_restart": true,
+      "navigation_never_commits_or_authorizes": true
+    }
+  },
+  "native_capture_inspected": true,
+  "color_roles": {
+    "mapping_unchanged": [
+      {
+        "path": "src/view/palette.c",
+        "sha256": "675743953bbb1ddb0537497c9570c8f1af497e40aee515eb8a919231993f936c"
+      },
+      {
+        "path": "src/view/fonts.c",
+        "sha256": "73894df90c268eccdda70a3c9824256bd7acedfd98dec3d745a7fc432709eeb3"
+      },
+      {
+        "path": "src/view/widgets.c",
+        "sha256": "d4d6dada4ec793c38696aaec09e9b6c245162504fa5cfb70bcd3e87fdf9c98d2"
+      },
+      {
+        "path": "src/view/notification_palette.c",
+        "sha256": "dcb86b05daa7236717f68558a7d150a2dde1d33d5913013e349a85da5a827072"
+      }
+    ],
+    "reused_evidence": "I084 native compositor and notifications proofs in four KDE palettes; no new color assignments"
+  },
+  "limits": [
+    "Execution labels reflect recorded assistant status, not live process monitoring or human approval.",
+    "Automatic observation refreshes execution tags only; the editor still uses explicit Reload.",
+    "Motif FontSet limitations remain; tests prove UTF-8 text and these rendered glyphs.",
+    "Separate I095: Pranchetas menu clips at 1650 px with tabs hidden; 1920 px navigation passes. Full resolution coverage remains incomplete."
+  ],
+  "human_approval_filled": false,
+  "technical_stage_percent": 100,
+  "first_handoff": {
+    "texts_drafts_undo_preserved": true,
+    "journal_navigation_changed": true,
+    "cause": "Global unread selection normalized its remembered section and per-section selection.",
+    "regression_addressed": true,
+    "stale_personal_journal_restored": false
+  },
+  "delivery_revision": 2,
+  "install": {
+    "item": "I092",
+    "revision": 2,
+    "installed_paths": 11,
+    "binary_sha256": "9a96e68e338ed54ba19489260ac6caf9ab6615f14c2dcd564790e6801fb3e563",
+    "library_sha256": "c483b7490416d4f9ec519b682c964bfe3048fb15af29f70d9a783f5883978f36",
+    "gui_reopened": false,
+    "responses_and_journal_not_rewritten": true
+  },
+  "handoff": {
+    "date": "2026-10-10T21:42:51.761900+00:00",
+    "item": "I092",
+    "revision": 2,
+    "pid": 1322353,
+    "display": ":1",
+    "binary_sha256": "9a96e68e338ed54ba19489260ac6caf9ab6615f14c2dcd564790e6801fb3e563",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "persistent explicit permission from saved I083 revision 6; current revision has no revocation"
+  },
+  "percent_basis": "Implementation, scoped native proofs, regressions, installation and current-state lsi handoff",
+  "native_lsi_capture_inspected": true,
+  "next_item": "I093 temporary reopening coordination; subject to latest saved order"
+}

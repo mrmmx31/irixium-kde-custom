@@ -20,6 +20,7 @@ static QObject *fixture=nullptr;
 static QJsonObject checks,snapshots;
 static int phase=0,attempts=0,peerWait=0;
 static QString expectedLaunch;
+static QJsonArray favoriteBeforeMoves,favoriteMoved;
 static QByteArray statsBeforeRead,appletsBeforeRead;
 static int sequenceBeforeRead=0;
 static QByteArray fileHash(const QString &name) {
@@ -131,7 +132,7 @@ static void tick() {
         checks["peer_readdition_updates_drawer_while_open"]=current["popup"].toBool() && current["pins"].toArray()==pins();
         invoke("action","ownMove");phase=4;
     } else if(phase==4) {
-        if(ids(current["native"].toArray()).first()!=current["ownRequestedFirst"] || !drawerMembersMatch(current)){QTimer::singleShot(100,tick);return;}
+        if(ids(current["independent"].toArray()).first()!=current["ownRequestedFirst"] || !drawerMembersMatch(current)){QTimer::singleShot(100,tick);return;}
         checks["own_provider_reorder_does_not_override_external_rank"]=ids(current["drawer"].toArray())==ids(snapshots["initial"].toObject()["drawer"].toArray());
         checks["native_provider_reorder_preserves_pins"]=current["pins"].toArray()==pins();snapshots["own_reordered"]=current;
         invoke("action","peerMove");phase=5;
@@ -153,6 +154,38 @@ static void tick() {
         snapshots["peer_reordered_after_reopen"]=current;
         const auto protocol=QJsonDocument::fromJson(invoke("action","protocolFailures").toString().toUtf8()).object();
         for(auto iterator=protocol.begin();iterator!=protocol.end();++iterator)checks[iterator.key()]=iterator.value();
+        invoke("action","drawer");phase=21;
+    } else if(phase==21) {
+        if(current["orderBusy"].toBool() || !current["orderReady"].toBool() || !drawerMatches(current)){QTimer::singleShot(100,tick);return;}
+        favoriteBeforeMoves=ids(current["drawer"].toArray());favoriteMoved=favoriteBeforeMoves;
+        const QJsonValue first=favoriteMoved[0];favoriteMoved[0]=favoriteMoved[1];favoriteMoved[1]=first;
+        bool compact=true;
+        for(int row=0;row<3;++row)for(const auto &action:QStringList{"Up","Down"}) {
+            auto button=item(QString("domainosFavorite%1_%2").arg(action).arg(row));
+            compact=compact && button && button->property("width").toDouble()<=28.01 && button->property("height").toDouble()<=28.01;
+        }
+        checks["six_favorite_move_buttons_at_most_28px"]=compact;
+        auto firstUp=item("domainosFavoriteUp_0"),lastDown=item("domainosFavoriteDown_2");
+        checks["favorite_boundary_buttons_disabled"]=firstUp && lastDown && !firstUp->property("enabled").toBool() && !lastDown->property("enabled").toBool();
+        const auto guards=QJsonDocument::fromJson(invoke("action","moveGuards").toString().toUtf8()).object();
+        for(auto iterator=guards.begin();iterator!=guards.end();++iterator)checks[iterator.key()]=iterator.value();
+        checks["favorite_up_clicked_by_real_pointer"]=click("domainosFavoriteUp_1");phase=22;
+    } else if(phase==22) {
+        if(current["orderBusy"].toBool() || !current["orderReady"].toBool() || ids(current["drawer"].toArray())!=favoriteMoved){QTimer::singleShot(100,tick);return;}
+        checks["favorite_up_changes_native_drawer_order"]=ids(current["native"].toArray())==favoriteMoved;
+        checks["favorite_move_does_not_launch_or_change_pins"]=current["dispatchBegins"].toInt()==0 && current["pinLaunchRequests"].toInt()==0 && current["pins"].toArray()==pins();
+        invoke("action","peerReload");phase=23;
+    } else if(phase==23) {
+        if(!drawerMatches(current)){QTimer::singleShot(100,tick);return;}
+        checks["favorite_move_persisted_in_external_kde_client"]=true;
+        checks["favorite_down_clicked_by_real_pointer"]=click("domainosFavoriteDown_0");phase=24;
+    } else if(phase==24) {
+        if(current["orderBusy"].toBool() || !current["orderReady"].toBool() || ids(current["drawer"].toArray())!=favoriteBeforeMoves){QTimer::singleShot(100,tick);return;}
+        checks["favorite_down_restores_native_order"]=ids(current["native"].toArray())==favoriteBeforeMoves;
+        invoke("action","peerReload");phase=25;
+    } else if(phase==25) {
+        if(!drawerMatches(current)){QTimer::singleShot(100,tick);return;}
+        checks["favorite_down_persisted_without_membership_change"]=current["native"].toArray().size()==3;
         checks["pin_up_clicked_by_real_pointer"]=click("domainosPinnedUp_1");phase=7;
     } else if(phase==7) {
         if(current["pins"].toArray()==pins()){QTimer::singleShot(100,tick);return;}
@@ -176,7 +209,7 @@ static void tick() {
         checks["optional_native_kde_menu_and_drawer_share_exact_provider_object"]=true;
         checks["drawer_final_native_frame_saved"]=capture("DRAWER-AFTER-REORDER.png");snapshots["before_launch"]=current;
         expectedLaunch=current["drawer"].toArray().first().toObject()["favoriteId"].toString();
-        checks["favorite_overlay_index_differs_from_native_index"]=current["drawer"].toArray().first().toObject()["favoriteId"]!=current["native"].toArray().first().toObject()["favoriteId"];
+        checks["favorite_drawer_and_internal_menu_use_same_native_order"]=ids(current["drawer"].toArray())==ids(current["native"].toArray());
         checks["native_shared_favorite_clicked_by_real_pointer"]=click("domainosSharedFavorite_0");phase=12;
     } else if(phase==12) {
         QFile marker(qEnvironmentVariable("IRIX_DOMAINOS_APPLICATIONS_DIR")+"/dispatch.txt");const auto dispatched=marker.open(QIODevice::ReadOnly) ? QString::fromUtf8(marker.readAll()).trimmed() : QString();

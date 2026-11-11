@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-11T06:17:21.806491+00:00",
+  "item": "I118",
+  "revision": 2,
+  "previous_goal_turn_classification": "progress: fitting translation and parser verified; native proof live",
+  "stage": "GTK3 fitting painting complete, editor enabled",
+  "native_result": ".qa-theme-lab-fitting-states-xhoxqfum/home/results/RESULTADO.json",
+  "native_terminal_exit": 0,
+  "native_cases": 36,
+  "checks": 2592,
+  "pixels": 1592064,
+  "exact_cartesian_coverage": true,
+  "scope": "Full GtkViewport border pixels and unchanged scrollbar enclosing borders in both orientations, native content pointer hold/release, sensitivity and controlled BACKDROP; four palettes",
+  "capability": "Viewport remains noninteractive under pointer hover/hold/release; no native focus. Three inherited states translated.",
+  "build": "C99 Wall Wextra Werror passed",
+  "editor_unit_log": "/tmp/i118-fitting-editor-unit.log",
+  "editor_unit": "passed",
+  "visual_inspection": "TestYellow Normal/Flat captured and inspected; viewport flat, enclosing scrollbar relief preserved. No historical equivalence claim.",
+  "integrated_editor": {
+    "handle": 69808,
+    "log": "/tmp/i118-fitting-integrated.log",
+    "terminal": false
+  },
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "scope_progress_percent": 85,
+  "remaining": [
+    "Integrated fitting editor",
+    "Initial/post-reopen preview readiness",
+    "Personal delivery/human evaluation"
+  ],
+  "hashes": {
+    "tools/theme-lab/backend.py": "44b355abf7f19e89415176b1190f60900802fbf87f294f3167347f850f2b65bc",
+    "tools/theme-lab/fitting_states.py": "23cd46c3ec400db5113da2713250a582d48f8862c71db4e0152c65bc976fb995",
+    "tools/theme-lab/tests/test_fitting_states_native.py": "18b8a6229510ebf7edb2a830bc7e9241a1ee09955387dea09ea4e9175ecc20ef",
+    "tools/theme-lab/src/view/part_relief_editor.c": "793e4059efd01bf8e5a399d5e9f96f303f50f2bcecba5d650de9ba7433d7e2f6",
+    "tools/theme-lab/include/part_relief_editor.h": "d24e5bfca8049b53c8a76e6ac24ccd8374006412825b987c256725ac144cf097",
+    "tools/theme-lab/src/view.c": "e871e217d6d8cafcd84ce50799927d0260443e1ccfb3a71810c0f340a925fb55"
+  }
+}

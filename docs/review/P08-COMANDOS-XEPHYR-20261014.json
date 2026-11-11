@@ -1,0 +1,57 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "status": "partial_waiting_user",
+  "recorded_at_utc": "2026-10-14T11:55:32Z",
+  "diagnosis": "Three earlier command-fixture failures asserted process-started and PID for a KDE KIO startup-notified request. The production helper contract correctly returns request-accepted plus startupNotificationRequested; this reports launcher acceptance, not process completion or a PID. The previous assertions were stale and did not establish a product launch failure.",
+  "test_only_change": {
+    "path": "plasma/tools/testar-domainos-comandos.py",
+    "sha256": "3ac812d413a88b380d2694e3b118b14ff657a152d6eb83115195e4ef0e10e3d2",
+    "change": "Corrected result assertions to KIO request-accepted contract; require native window observation for one terminal launch and three distinct windows for three parallel requests; retain token, nonce, lock mock, missing-app, and indicator gates. Product commands.py and QML were unchanged."
+  },
+  "xvfb": {
+    "command": "python3 -B plasma/tools/testar-domainos-comandos.py --saida /home/lsi/tempia/domainos-p08-startup-20261014/commands-run8",
+    "status": "passed",
+    "passed": 25,
+    "total": 25,
+    "failed": [],
+    "report": "/home/lsi/tempia/domainos-p08-startup-20261014/commands-run8/RESULTADO.json",
+    "report_sha256": "0a70e93b00a14ae358437dac8857f233e6aa82c6558939c6016e11b972922c38"
+  },
+  "xephyr": {
+    "display": ":71",
+    "screen": "1000x600x24",
+    "isolated": "private DBus, HOME, XDG config/data/cache/state/runtime, and private test-owned XTerm windows; no full Plasma shell, personal state, or VM input",
+    "status": "passed",
+    "passed": 25,
+    "total": 25,
+    "failed": [],
+    "report": "/home/lsi/tempia/domainos-p08-startup-20261014/commands-xephyr/RESULTADO.json",
+    "report_sha256": "9288dec2d6164025465b43af96fac1d51e88c533c97b76b8f4fa3400769d544f",
+    "screenshot": "/home/lsi/tempia/domainos-p08-startup-20261014/commands-xephyr/commands-native.png",
+    "screenshot_sha256": "6d0acf3bedfee36f95ec98201345a743a6c083b1dcc2735da35a0a69e149c083",
+    "qml_diagnostics": []
+  },
+  "validated_behavior": [
+    "KIO startup requests accepted without claiming application completion",
+    "one test terminal window observed",
+    "three identical parallel requests mapped three distinct test windows",
+    "separate tokens and instance nonces retained",
+    "lock path reached only fixture D-Bus service",
+    "missing application reports failure and clears activity"
+  ],
+  "environment_warnings": [
+    "Private XDG data omitted the IrixClassicDomainOS Plasma theme; fixture logged KSvg theme-not-found warnings.",
+    "No private session backend or Kirigami Fusion plugin was available; this fixture verifies command behavior, not panel appearance."
+  ],
+  "limits": [
+    "No full Plasma-shell pointer-click path in this command harness; the separate startup Xephyr harness covers Activity, genuine KDE startup model, KIO helper and delayed window mapping.",
+    "Manual visual review and Q334 guest input remain pending."
+  ],
+  "progress_estimate": {
+    "percent": 95,
+    "basis": "P08 technical milestones: correction installed/reloaded, actual delayed KDE startup and recovery verified in Xephyr, and corrected real-helper command fixture passed 25/25 in both Xvfb and Xephyr. Remaining work is manual review, Q334, and broader full-panel integration checks; this is not a fidelity percentage."
+  },
+  "next": "P08 remains partial while awaiting manual review and Q334; proceed to other independently authorized work."
+}

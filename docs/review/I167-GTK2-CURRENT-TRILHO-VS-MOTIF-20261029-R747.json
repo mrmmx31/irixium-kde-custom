@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "id": "R747",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Minutely compare the live GTK2 scrollbar after the helper correction with the attached Motif reference and the measured SR10.4 scrollbar, isolating only scrollbar pixels.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "gtk2_attachment": {
+      "filename": "capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [
+        892,
+        642
+      ],
+      "status": "pre-R740 attachment; same bytes as R739; its initial thumb transition is stale"
+    },
+    "motif_attachment": {
+      "filename": "capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [
+        102,
+        655
+      ],
+      "status": "Motif attachment; use canonical SR10.4 pixels for the lower cell where the screenshot meets the horizontal scrollbar"
+    },
+    "canonical_reference": {
+      "system": "Domain/OS SR10.4, HP VUE 2.01",
+      "source": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "source_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "metrics_source": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json"
+    }
+  },
+  "live_target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "gtk": "2.24.33",
+    "engine": "domainos-pixbuf",
+    "profile": "DomainOS-SR10-4-KDE",
+    "window_state": "viewable, 870x601",
+    "companion_service": {
+      "state": "active",
+      "pid": 2388073,
+      "n_restarts": 0,
+      "installed_helper_sha256": "97ae9dddbd82d7088ff0a086064331929000b132d1bd3aa8f4f80f9f83e81310",
+      "source_helper_sha256": "97ae9dddbd82d7088ff0a086064331929000b132d1bd3aa8f4f80f9f83e81310"
+    }
+  },
+  "capture": {
+    "method": "Read the existing visible XChat client with XWD and crop in memory before writing. Saved only 15px scrollbar strips. No window text, focus, pointer motion, keyboard input, click, or VM input was captured or sent.",
+    "gtk2_left": {
+      "relative_client_xy": [
+        217,
+        64
+      ],
+      "path": "records/ia-tema/I167/R747/gtk2-live-left-bar.png",
+      "sha256": "74b0eef738e282e154d4ba16791e32115411576b98f7cffd35de8490a67ea669",
+      "dimensions_px": [
+        15,
+        537
+      ],
+      "non_palette_pixels": 0
+    },
+    "gtk2_right": {
+      "relative_client_xy": [
+        749,
+        97
+      ],
+      "path": "records/ia-tema/I167/R747/gtk2-live-right-bar.png",
+      "sha256": "2b394c3766ab5e7eb7d6674180c2b242468345cf5ef25e5df6188866fa8453cf",
+      "dimensions_px": [
+        15,
+        476
+      ],
+      "non_palette_pixels": 0,
+      "crop_ends_before_adjacent_widget_pixels": true
+    },
+    "motif_canonical_crop": {
+      "path": "records/ia-tema/I167/R747/motif-sr104-vertical-bar.png",
+      "sha256": "6ddc3424693ad0a565a2d40c8c3e8611295b3ec6477d0d85fc551848d21ea9b0",
+      "dimensions_px": [
+        15,
+        255
+      ]
+    }
+  },
+  "comparison": {
+    "geometry": {
+      "gtk2_width_px": 15,
+      "motif_width_px": 15,
+      "result": "Same measured width. The screenshot lengths are controlled by different viewport/content ranges and are not a valid thumb-length comparison."
+    },
+    "arrows_and_cells": {
+      "live_lower_stepper_left": "225/225 pixels equal to the canonical SR10.4 lower cell",
+      "live_lower_stepper_right": "225/225 pixels equal to the canonical SR10.4 lower cell",
+      "other_cells": "R746 compared upper and lower normal cells after the R742 reload: 225/225 each. R747 changed the helper that selects the trough profile, not the stepper art.",
+      "glyph_and_surround": "The 11px direction glyph and the 15px allocation remain aligned; there is no added separate raised rectangle around the arrow. The attached Motif lower cell is partly intersected by the horizontal bar, so its canonical VM crop is authoritative."
+    },
+    "thumb": {
+      "motif_cross_axis_profile": "DDLLFFFFFFFDDLL",
+      "gtk2_live_profile": "DDLLFFFFFFFDDLL",
+      "result": "The visible raised thumb keeps the same two-pixel dark/light rails and face width as Motif. Its length differs between the two applications because their scroll ranges and viewports differ."
+    },
+    "long_trough": {
+      "motif_measured_profile": "DDLLFFFFFFFDDLL",
+      "gtk2_live_profile": "DDFFFFFFFFFFFLL",
+      "different_columns_zero_based": [
+        2,
+        3,
+        11,
+        12
+      ],
+      "difference": "Four of fifteen cross-axis pixels per straight row: GTK2 omits the Motif's two inner light columns and two inner dark columns. The live track is visibly flatter than the measured VUE track; the thumb remains raised. This is the separately recorded GTK2 human-feedback adaptation, not a fresh measurement of Motif. The corrected installed helper now actually selects this intended profile rather than falling back to the literal Motif profile."
+    },
+    "palette": {
+      "observed_live_roles": {
+        "face": "#78a0d5",
+        "light": "#c4d5ed",
+        "shadow": "#3e536e",
+        "trough": "#6688b5"
+      },
+      "result": "Current GTK2 pixels resolve to the same RGB samples as the canonical VM, while the generator obtains them from the selected KDE semantic roles. These values are observations, not product constants."
+    },
+    "transition_and_spacing": {
+      "thumb_start": "The supplied large GTK2 attachment predates R740 and retains the two-row bright transition. R740 removed it; R746 measured the live 15x30 start against SR10.4 at 450/450 pixels.",
+      "content_gap": "The 4px content-to-bar gap and 2px inset are part of the common measured contract. These scrollbar-only crops exclude adjacent content, so they do not independently remeasure the gap. R737 contains the earlier left-pane measurement."
+    }
+  },
+  "limits": [
+    "The live strips show normal state only. This capture does not compare held, hover, disabled, or thumb-drag behavior.",
+    "The Motif attachment's lower arrow is partly intersected by the horizontal scrollbar; canonical VM art is used for the lower-cell comparison.",
+    "A flatter GTK2 trough is the explicit adaptation from earlier visual feedback. No new geometry/profile change is made in R747; any decision to restore the four rails needs an updated visual direction from the user."
+  ],
+  "result": "GTK2 and Motif share 15px width, the visible normal thumb relief, and the arrow-cell geometry. The current, confirmed difference is the long trough: GTK2 is four internal columns flatter than the measured Motif profile. The attached GTK2 screenshot is stale for the thumb-start transition; the live crops show the post-R740/R742 state. Human visual verdict remains pending.",
+  "changes": [
+    "Captured two scrollbar-only live strips and a 1:1 crop of the canonical VM bar; unrelated temporary crops containing adjacent UI pixels were sanitized in Tempia.",
+    "No GTK source, palette rule, asset, user setting, application, or VM state was changed in this comparison."
+  ],
+  "next": "Keep I167/GTK2 visual review open. Present the four-column trough difference and ask the user to assess it; do not infer approval or alter the profile before direction is recorded.",
+  "progress_estimate": {
+    "i167_technical_coverage_percent": 95,
+    "basis": "Last documented estimate before R747; this comparison adds live GTK2/Motif evidence but does not close V03 visual review or interaction states.",
+    "not_a_visual_fidelity_score": true
+  }
+}

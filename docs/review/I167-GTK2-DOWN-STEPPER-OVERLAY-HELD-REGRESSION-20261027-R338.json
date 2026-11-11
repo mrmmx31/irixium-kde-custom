@@ -1,0 +1,41 @@
+{
+  "id": "R338",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "verify that the R332 stepper overlay preserves the previously paired GTK2 down-arrow normal/held cycle",
+  "status": "current_overlay_preserves_historical_down_transition",
+  "method": {
+    "toolkit": "GTK 2.24.33",
+    "current_capture": "~/tempia/ia-tema/evidence/I167/r332-stepper-overlay-20261027T063502Z/states/",
+    "current_crops": "15x15 at x=10,y=203; registered by the full 53-pixel transition mask",
+    "comparison": "R236 retained GTK2 scrollbar capture, crop x=0,y=39, 15x15, RGB 1:1",
+    "script": "~/tempia/ia-tema/evidence/I167/r338-down-held-glyph-compare.py",
+    "script_sha256": "e51ede68d8f4570a6f2e177f925960f60f912a830f93d6b34c8b704d35107ef6",
+    "result": "~/tempia/ia-tema/evidence/I167/r338-down-held-glyph-compare.json",
+    "result_sha256": "81933df6e05c23fa6b114e3102666f23f60927e452edb3b807b694aff5e3e13c"
+  },
+  "inputs": {
+    "historical_pair_receipt": "I167-GTK2-THEMELAB-PRESSED-CAPTURE-20261026-R236.json",
+    "historical_normal_sha256": "bec6026d20a5037c7f60d400e3b75391cb5b2333f280eb6ab2b802f8a1df7dd0",
+    "historical_held_sha256": "23160c194d6594fb979fc828686ec5ebd32ad51c675a8a2aa4826bbe0c571b6a",
+    "current_normal_sha256": "ad71febe63dc5bdaa89eba074b633e5f7e2a26287be53495bfa90c974d4f695a",
+    "current_held_sha256": "247b5975b27b9bdd35bbf0667bbb5a40ab751e794e462dcf428dc9b102f08902",
+    "current_released_sha256": "1b80c4158c748e1036371f1631577b077bca62f1c6d286adeb2643cae1cccfa1"
+  },
+  "results": {
+    "normal_vs_R236_normal": {"different_pixels": 1, "different_xy": [1, 14], "inside_11x11_arrow_mask": false},
+    "held_vs_R236_held": {"different_pixels": 1, "different_xy": [1, 14], "inside_11x11_arrow_mask": false},
+    "released_vs_R236_normal": {"different_pixels": 1, "different_xy": [1, 14], "inside_11x11_arrow_mask": false},
+    "current_normal_to_held_changed_pixels": 53,
+    "R236_normal_to_held_changed_pixels": 53,
+    "transition_masks_identical": true,
+    "current_release_transition": "R332 confirms the held-to-released full capture is identical to the normal capture."
+  },
+  "conclusion": "The current R332 pipeline preserves all 71 opaque down-arrow glyph pixels and all 53 historical pressed-transition pixels from the retained R236 GTK2 sample. The one remaining RGB difference is the same outer cell corner in normal, held, and released states, outside the arrow mask. R236 had already paired its GTK2 normal and held samples exactly to retained SR10.4 evidence; this result verifies preservation through the new overlay path, not a new live VM capture.",
+  "limits": [
+    "Only the vertical down stepper has a retained historical held-state pair; do not generalize to the other directions.",
+    "The remaining single cell-edge pixel and live user-application reload still require review.",
+    "No source, desktop color scheme, user application, or VM input was changed."
+  ],
+  "next": "Keep I167 on GTK2; after the VM is awake, use a fresh native capture for the remaining cell-edge comparison and then request/record GTK2 app review when convenient."
+}

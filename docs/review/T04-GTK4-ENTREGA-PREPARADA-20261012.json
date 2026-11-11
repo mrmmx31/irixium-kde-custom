@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-12T01:30:31.709342+00:00",
+  "item": "T04",
+  "revision": 6,
+  "scope": "Prepared GTK4 push delivery, no personal handoff yet",
+  "build_session": 31896,
+  "build_exit_code": 0,
+  "freeze_tests_passed": 10,
+  "launcher_regressions_passed": 45,
+  "candidate_manifest": ".qa-t04-gtk4-delivery-20261012/MANIFESTO.json",
+  "candidate_files": 203,
+  "candidate_native_color_roles_read": 50,
+  "source_instance_pid": 3259590,
+  "source_instance_identity_verified": true,
+  "reopen_owner": "theme",
+  "reopen_request_id": "ca7975cf7cda3f7e4f3c1010ddfecfeecf878ae765c7d640133cff0476ca481e",
+  "reopen_current_status": {
+    "available": true,
+    "permitted": true,
+    "scope_current": true
+  },
+  "user_data_copied": false,
+  "source_instance_closed": false,
+  "personal_window_changed": false,
+  "approval_filled_by_assistant": false,
+  "estimated_unit_progress_percent": 81,
+  "percentage_basis": "3 of4 unit milestones established; delivery build/package/protocol preparation complete, handoff and post-open check pending. Not full goal or fidelity.",
+  "remaining": [
+    "Current user release for actual handoff",
+    "Transfer latest user data under stable checkpoint, not this preliminary snapshot",
+    "Post-open verification and exact request cancellation",
+    "Other GTK4 controls and full goal"
+  ],
+  "sha256": {
+    "plasma/tools/abrir-laboratorio-temas.py": "08caea42375cbe809a37e0115c7dc3d888f5e7acdc5a3a745e66d0501c1ebab6",
+    "plasma/tests/test_lab_gtk4_host_files.py": "5966a65ec0ecbdc00fb08191dcc1af2f42bd0be7ec13b36358867666cec95e7b",
+    ".qa-t04-anchor-foundation/gtk4-delivery-build.log": "62423d02018f9f425d4afa22118924cb8ddf33524410060bba8e3cefa41914e8",
+    ".qa-t04-anchor-foundation/gtk4-delivery-freeze-tests.log": "cb9f6bd8f43af615144eb5c939dda7c3c743b166f78efed7ce4c63bc8bb8de1e",
+    ".qa-t04-anchor-foundation/gtk4-delivery-launcher-regressions.log": "9cb58897eb759133271fea7be572522c73dfcf360d6fca959b86d31db0946cd2",
+    ".qa-t04-gtk4-delivery-20261012/MANIFESTO.json": "688ab476cf29e2f4c0e74950faede90c28a124c1bd1954995b8538629c13754f"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "R721",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read the existing canonical SR10.4 guest after idle wake and compare visible normal VUE arrow cells against the saved Trash Can reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "identity": "Project-owned Domain/OS SR10.4 + HP VUE 2.01 assistant clone, Apollo DN3500",
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "coexistence_check": "verify.sh confirmed the separate Prancheta PID 117186 uses its own disk/network/channel; the Theme PID 379349 uses the canonical assistant disk/network/channel.",
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "channel_status_after_capture": "no pending request or input callback",
+    "profile_after_capture": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "ui_active": false,
+      "host_pointer_captured": false,
+      "wait_button_up": false
+    }
+  },
+  "wake": {
+    "reason": "Initial native guest snapshot was black from idle and showed the Display Manager command strip.",
+    "action": "One guest Shift pulse on :kbd:keyboard4/Shift; key set on frame 1 and cleared automatically on frame 2; no mouse input.",
+    "callback": {
+      "done": true,
+      "held": false,
+      "frame": 65,
+      "error": null,
+      "reason": "one-frame Shift released; native screen captured"
+    },
+    "result": "VUE returned visibly before any other input. The VM remained unpaused, frameskip 4 and no throttle were observed; no clock-scale query was made in this receipt, so the 100%/10% CPU values are not reasserted here.",
+    "clock_scale_verification": "Not queried in this observation. The documented profile is a preservation rule, not fresh evidence of CPU percentages."
+  },
+  "observation": {
+    "capture": "records/ia-tema/I167/R721/captures/vue-after-wake.png",
+    "capture_sha256": "f2ec945daa4b11b9ca612abb621cbe0ec4a3cac7e3af46e205da431ac5abf974",
+    "capture_dimensions_px": [1024, 844],
+    "visible_widgets": "VUE File Manager vertical scrollbar and an underlying empty VUE window with horizontal and vertical scrollbars; pointer was not over the bars.",
+    "vm_input_after_wake": false
+  },
+  "normal_cell_comparison": {
+    "reference": "docs/referencias/domainos-sr104/trash-can-normal.png",
+    "reference_sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+    "method": "Direct RGB equality for four 15x15 cells at native scale; no resize or interpolation.",
+    "results": [
+      {"direction": "horizontal_left", "reference_xy": [17, 329], "live_xy": [52, 699], "equal_pixels": 225, "total_pixels": 225},
+      {"direction": "horizontal_right", "reference_xy": [541, 329], "live_xy": [576, 699], "equal_pixels": 225, "total_pixels": 225},
+      {"direction": "vertical_up", "reference_xy": [560, 70], "live_xy": [595, 440], "equal_pixels": 225, "total_pixels": 225},
+      {"direction": "vertical_down", "reference_xy": [560, 310], "live_xy": [595, 680], "equal_pixels": 225, "total_pixels": 225}
+    ],
+    "result": "All four normal VUE stepper cells in the current guest exactly match the saved Trash Can cells."
+  },
+  "limits": [
+    "This is a current VUE guest observation, not a capture of GTK2 running on the host.",
+    "Only normal arrow cells were compared; pressed, hover, disabled, range-endpoint, and thumb-drag states remain outside this capture.",
+    "This does not replace the user's visual evaluation of the installed GTK2 theme in XChat.",
+    "No VM control beyond the single idle-wake Shift pulse was sent; no arrow or thumb was manipulated."
+  ],
+  "next": "Keep I167 waiting for the user's visual assessment of the installed GTK2 theme. I517 arrow press/release and I518 thumb drag remain separately unauthorized; do not send those inputs unless their current board authorization becomes valid.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "This strengthens the live SR10.4 normal-state reference but does not close GTK2 host-app visual review or historical interaction gaps; not a fidelity score."
+  },
+  "artifacts": "records/ia-tema/I167/R721/ARTIFACTS.json"
+}

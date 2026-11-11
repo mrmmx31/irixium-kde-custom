@@ -1,0 +1,61 @@
+{
+  "id": "I168",
+  "date": "2026-10-14",
+  "status": "gtk4_native_stepper_absence_verified_contract_only",
+  "runtime": {
+    "toolkit": "GTK4 C ABI",
+    "version": "4.18.6",
+    "pygobject_gir_available": false
+  },
+  "native_probe": {
+    "command": "xvfb-run -a env T07_PRIVATE_PROBE=1 GTK_MODULES= NO_AT_BRIDGE=1 GSETTINGS_BACKEND=memory /usr/bin/python3 -B tools/theme-lab/tests/probe_gtk4_gallery_hints.py",
+    "result": "passed",
+    "real_gtk_scrollbar_count": 12,
+    "demo_native_control_count": 53,
+    "gtk_scrollbar_css_name": "scrollbar",
+    "observed_object_type": "GtkScrollbar",
+    "stepper_properties": {
+      "has-backward-stepper": false,
+      "has-forward-stepper": false,
+      "has-secondary-backward-stepper": false,
+      "has-secondary-forward-stepper": false
+    },
+    "theme": "Default",
+    "custom_css": false,
+    "limits": [
+      "No screenshot/pixel comparison was performed.",
+      "No allocations, pressed/dragged, disabled or backdrop states were measured.",
+      "No KDE role colors or DomainOS appearance were exercised."
+    ]
+  },
+  "adapter_contract": {
+    "controls": [
+      "scroll_h",
+      "scroll_v"
+    ],
+    "status": "capability_contract_only",
+    "generated_arrow_buttons": false,
+    "substitute_arrow_interaction": false,
+    "geometry_applied": false,
+    "palette_roles_applied": false,
+    "policy": "Retain native GTK4 scrollbar input; do not synthesize arrows without a separate design decision."
+  },
+  "unit_tests": {
+    "command": "PYTHONPATH=. python3 -B tests/test_gtk4_snippet.py",
+    "result": "passed",
+    "tests": 5
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk4_scrollbar_contract.py": "da10811d7caffb40615b180b3b7a0c1b3340318a73a7051a79ef08eeaa0f96c3",
+    "tools/theme-lab/backend.py": "04f9beca431716d4bdd2f3a3ae9c6ffb448983671699ed8affe62fd6eb41ec3c",
+    "tools/theme-lab/tests/test_gtk4_snippet.py": "c96f6d15f62e372d5ba93efabb22ceee2bbc5c6ea059dbe6a3ce7af545297cd6",
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "6889a3ce4a5e8a1db08a375ac9f581a33d76cbf7671497ba9cd253c9626734ed",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "fc49bb1b866bf5f47209c144abb799825fdbd5409fb6cd21ec1a4ffbecc8b3e3"
+  },
+  "references": [
+    "https://docs.gtk.org/gtk4/class.Scrollbar.html",
+    "https://docs.gtk.org/gtk3/class.Range.html",
+    "tools/domainos_scrollbar_rules.json"
+  ],
+  "next": "Implement only GTK4 trough/thumb recipe from the shared KDE-role/releif contract; preserve absent arrows; measure native geometry, states/colors and both preview origins before closing I168."
+}

@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "id": "R394",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the four normal GTK2 stepper cells rendered from the currently selected installed DomainOS theme with the retained Domain/OS SR10.4 HP VUE 2.01 cells.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "installed_theme": "DomainOS-SR10-4-KDE",
+    "user_selection": "/home/lsi/.gtkrc-2.0",
+    "installed_gtkrc": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "gtk_runtime": "2.24.33",
+    "geometry_receipt": "docs/review/I167-GTK2-USER-PROFILE-GEOMETRY-20261027-R388.json",
+    "isolated_capture": "~/tempia/ia-tema/evidence/I167/r392-installed-gtk2-runtime/user-theme-root.png",
+    "capture_sha256": "97b6b30de2bd25153b260d8503fae9460a542ab4e04f229b45734b376677d3bf",
+    "capture_size_px": [
+      800,
+      600
+    ]
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "horizontal": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "horizontal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "vertical": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "vertical_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+  },
+  "method": "Exact RGB comparison of each 15x15 cell at the expected 1:1 coordinate; no scaling, filtering, color normalization, or displacement used to claim a match.",
+  "cells": [
+    {
+      "direction": "left",
+      "source_xy": [
+        2,
+        4
+      ],
+      "installed_expected_xy": [
+        0,
+        0
+      ],
+      "diff_at_expected": 0,
+      "best_nearby": {
+        "diff": 0,
+        "xy": [
+          0,
+          0
+        ]
+      },
+      "pixels": 225
+    },
+    {
+      "direction": "right",
+      "source_xy": [
+        526,
+        4
+      ],
+      "installed_expected_xy": [
+        185,
+        0
+      ],
+      "diff_at_expected": 0,
+      "best_nearby": {
+        "diff": 0,
+        "xy": [
+          185,
+          0
+        ]
+      },
+      "pixels": 225
+    },
+    {
+      "direction": "up",
+      "source_xy": [
+        4,
+        2
+      ],
+      "installed_expected_xy": [
+        0,
+        19
+      ],
+      "diff_at_expected": 0,
+      "best_nearby": {
+        "diff": 0,
+        "xy": [
+          0,
+          19
+        ]
+      },
+      "pixels": 225
+    },
+    {
+      "direction": "down",
+      "source_xy": [
+        4,
+        242
+      ],
+      "installed_expected_xy": [
+        0,
+        204
+      ],
+      "diff_at_expected": 0,
+      "best_nearby": {
+        "diff": 0,
+        "xy": [
+          0,
+          204
+        ]
+      },
+      "pixels": 225
+    }
+  ],
+  "result": "All four normal-state 15x15 cells, including both horizontal arrows, match the corresponding SR10.4/VUE sample at 0/225 differing pixels. The current fresh GTK2 rendering does not reproduce a smaller horizontal arrow. No geometry or color change is supported by this comparison.",
+  "limits": [
+    "Normal state only; historical held, hover and insensitive states are separate.",
+    "This is a new isolated GTK2 process using the selected installed theme RC, not proof of what an already-open XChat has loaded.",
+    "User visual acceptance remains pending."
+  ],
+  "artifacts": {
+    "measurement": "~/tempia/ia-tema/evidence/I167/r394-installed-theme-stepper-comparison/result.json",
+    "runtime_capture": "~/tempia/ia-tema/evidence/I167/r392-installed-gtk2-runtime/user-theme-root.png"
+  },
+  "changes": {
+    "theme_changed": false,
+    "profile_written": false,
+    "application_restarted": false,
+    "desktop_theme_changed": false,
+    "vm_settings_changed": false
+  }
+}

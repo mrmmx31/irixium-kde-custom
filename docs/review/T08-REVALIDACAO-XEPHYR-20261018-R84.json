@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "T08-REVALIDACAO-XEPHYR-20261018-R84",
+  "date": "2026-10-18",
+  "work_item": "T08",
+  "user_revision": 4,
+  "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+  "authorization": "Saved AI Work Board state: section=work; user.authorized=true; authorized_definition matches current definition_sha256.",
+  "status": "passed_with_nonreproducible_first_timeout",
+  "scope": "Revalidate project/import/export behavior after source changes; isolated current C build and targeted tests, without replacing the shared executable or changing personal profile.",
+  "environment": {
+    "display": ":81",
+    "xephyr": "1280x800, owned test server; no other users sessions touched",
+    "build": "~/tempia/t08-recheck-20261018-r84/build/controller-spin-probe",
+    "build_flags": "-Wall -Wextra -Werror",
+    "test_output": "~/tempia/t08-recheck-20261018-r84/runtime-xephyr/theme-lab-spin-cl47958j/",
+    "tmp": "~/tempia/t08-recheck-20261018-r84/tmp"
+  },
+  "results": {
+    "targeted_tests": "34 passed in 4.90s",
+    "isolated_native_build": "passed",
+    "native_project_io": "advanced through native project load/save/cancel/invalid JSON/export/apply/reopen; failed to exit within 15s after test clicked Quit for restart",
+    "native_timeout": "subprocess.TimeoutExpired waiting for isolated namespace/controller process; final probe still reported status Montagem Motif atualizada, quit rect [561,678,132,25]",
+    "first_xvfb_attempt": "inconclusive before app launch: private Xvfb harness timed out and emitted import: unable to open X server :199",
+    "cleanup": "outer test cleanup left no matching fixture controller processes",
+    "instrumented_native_project_io": "passed on second full run; included load/save/cancel/invalid JSON/import/export/Apply/reopen/project Undo+Redo, concurrent edit preservation and GTK3 artifact reconstruction",
+    "close_observation": "the test runner recorded xdotool pointer at (627,690), X11 window-under-pointer 2097726, and focused helper process window 1136 while clicking quit rect [561,678,132,25]; the controller and namespace then exited and the complete test printed status passed",
+    "exported_families": [
+      "gtk1",
+      "gtk2",
+      "gtk3",
+      "gtk4",
+      "gtk5",
+      "kvantum",
+      "motif",
+      "plasma",
+      "qt5",
+      "qt6"
+    ]
+  },
+  "interpretation": {
+    "successful_full_native_run": true,
+    "first_timeout_root_cause": "unknown; the complete instrumented rerun passed and the timeout did not recur",
+    "product_failure_proven": false,
+    "harness_failure_proven": false,
+    "decision": "Keep the first timeout in the record. No product fix is justified by this evidence. Do not repeat unless a relevant source/test input changes or another failure occurs."
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/test_controller_spin.py": "9660e5035c0b5db87e1e464e23ad8b49eefe9683696010fc52c4a7c34deccdf3",
+    "tools/theme-lab/tests/test_preview_text_history.py": "b57efc76f196c02aa8e71f92be37f84ce5346e1bc97661a6de7554fc08c70861",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "7575886e387647abff0cb135041365190a87000b3e2f1b6be8b4f5912bcfd3e5"
+  },
+  "personal_profile_changed": false,
+  "shared_product_binary_replaced": false,
+  "next": "T08 technical revalidation is complete for this test scope; await user review/handoff. Do not replace the shared application binary while a personal Theme Lab process is open.",
+  "changed_since_previous_receipt": {
+    "tools/theme-lab/tests/test_preview_text_history.py": {
+      "previous": "b57efc76f19602aa8e71f92be37f84ce5346e1bc97661a6de7554fc08c70861",
+      "current": "b57efc76f196c02aa8e71f92be37f84ce5346e1bc97661a6de7554fc08c70861",
+      "changed": false
+    },
+    "plasma/tests/galerias-nativas/qt6_demo.py": {
+      "previous": "fa18d5fcacde899ad6ff9e4054520ee6b3c27f54e0128c86f0d9c9afaa6e74d1",
+      "current": "7575886e387647abff0cb135041365190a87000b3e2f1b6be8b4f5912bcfd3e5",
+      "changed": true
+    }
+  }
+}

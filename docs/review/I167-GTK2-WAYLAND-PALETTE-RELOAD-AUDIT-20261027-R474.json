@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "R474",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the installed GTK2 palette update/reload path in the current Wayland session.",
+  "session": {
+    "type": "wayland",
+    "display": ":1",
+    "wayland_display": "wayland-0"
+  },
+  "service": {
+    "unit": "irix-theme-companions.service",
+    "active": true,
+    "main_pid": 4447,
+    "exec": "/home/lsi/.local/share/irixium/theme-companions/tools/theme_companion_bridge.py --observar",
+    "installed_bridge_sha256": "74f34ac0d24b91fdec284c5f4b94884002be9b0fe8ddb6e26d692416b0ba6c83"
+  },
+  "source": {
+    "bridge": "tools/theme_companion_bridge.py",
+    "reload_notifier": "tools/gtk2_reload_notify.py",
+    "reload_notifier_sha256": "a4e4df2e9972d6000c4765ab57cde8a61ced3eae7ab98532f39d63373a89a0c5",
+    "behavior": "When the selected GTK theme is accepted and GTK2 setup/refresh reports native_reload_required, synchronize calls reload_open_windows(). The notifier uses DISPLAY and sends _GTK_READ_RCFILES to X11 top-level clients; it does not gate on XDG_SESSION_TYPE."
+  },
+  "result": "The companion service is active in this Wayland session and has both DISPLAY and WAYLAND_DISPLAY. The code path can address the XWayland server through DISPLAY, but this read-only audit does not prove that an actual GTK2 XWayland application received and applied a palette change.",
+  "limits": [
+    "No personal GTK2 application was open; observed GTK2 processes were Codex-owned clients, previews or the internal editor.",
+    "No color scheme was changed and no reload event was broadcast.",
+    "No window, application content, focus or VM input was touched.",
+    "R130 and R451 cover the GTK2 reload/generation paths in their recorded test contexts, not this live Wayland session end to end."
+  ],
+  "next": "Keep I167 focused on GTK2. When a suitable GTK2 application is available, verify scheme-change delivery on this Wayland/XWayland session without reading its content or restarting it. Do not claim live refresh until the application visibly confirms it."
+}

@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "R124",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Ensaio integrado GTKConfig real, observador e recarga GTK2",
+  "method": {
+    "runtime": "GTK 2.24.33; kde-config-gtk-style 4:6.3.4-1; Xvfb :97 900x640; HOME/XDG em ~/tempia.",
+    "isolation": "Bubblewrap com raiz de sistema somente leitura, namespaces privados de PID/rede, ambiente limpo, barramento de sessão próprio e indisponibilidade do barramento de sistema. Diretório de plugins KDED montado com somente gtkconfig.so; plugin SHA-256 45ed5ab79fe42cce6ced85d35f3cc266c7347e28fc9751338bbdab851bd519c9.",
+    "production_path": "theme_companion_bridge.watch() e QProcess worker de produção; runtimes GTK2 e GTK4 de produção. A guarda da sessão hospedeira foi substituída somente no worker isolado, com as raízes HOME/XDG/D-Bus/DISPLAY verificadas.",
+    "trigger": "Alteração do papel Colors:Window/BackgroundNormal no kdeglobals privado e emissão do sinal nativo org.kde.kconfig.notify.ConfigChanged. O módulo GTKConfig real exportou a paleta e o observador acionou os runtimes.",
+    "source_review": {
+      "package_source": "Debian kde-gtk-config 4:6.3.4-1, sob ~/tempia/kde-gtk-config-6.3.4-source.",
+      "gtkconfig.cpp_sha256": "1eff11b2bd5cc2946e9ea56e32a9997455e2b42bc199ae0ee1b62c0fda93336a",
+      "gtk2_config_editor_sha256": "99775fcce94f0ed2d8fbd37d3914ce9c09de6781b7e7de2e531f78125242ca67",
+      "finding": "GtkConfig::setGtkTheme writes GTK3/4 SettingsIniEditor; the GTK2 ~/.gtkrc-2.0 path is handled by Gtk2ConfigEditor separately."
+    }
+  },
+  "result": {
+    "status": "partial",
+    "gtk2_palette_runtime_completed_before_following_failure": true,
+    "gtk2_native_window_changed": true,
+    "window_capture_size": [
+      480,
+      260
+    ],
+    "changed_pixels": 101038,
+    "background_rgb_before": [
+      120,
+      160,
+      213
+    ],
+    "background_rgb_after": [
+      209,
+      67,
+      91
+    ],
+    "gtk3_css_contains_new_role": "#d1435b",
+    "gtk2_before_sha256": "f61c356d49893484525f2743eb08cc03caa7adff57c5eff193be6bd27600539b",
+    "gtk2_after_sha256": "fa9a00ace0b33a7406acd75fdfd44a32181f2d018aa0f06d904cd7ac58980c8f",
+    "cleanup": "GTK2/GTK4 palette state and private companion bundle were restored in the isolated profile; all namespace processes were terminated.",
+    "host_theme_or_xchat_changed": false
+  },
+  "limitation": {
+    "full_observer_worker": "The worker exits nonzero after the GTK2 update, in the subsequent GTK4 refresh. GTK4 refresh temporarily requests the -Reload theme and verifies every GTK selection file, including ~/.gtkrc-2.0. The installed GTKConfig setGtkTheme updates GTK3/4 settings.ini but does not rewrite the GTK2 rc file for that temporary GTK4 suffix. The observer therefore logs a failed synchronization even though GTK2 rendered the new palette.",
+    "scope": "Recorded as an adjacent integration defect only; no GTK4 production code was changed because the active authorized family is GTK2.",
+    "historical_visual": "Synthetic GTK2 fixture verifies dynamic palette propagation, not SR10.4 Motif fidelity. The native VM comparison remains pending."
+  },
+  "attempts": [
+    {
+      "run": "R124a",
+      "outcome": "harness failed because the private worker did not bypass the host-session guard; no product changes."
+    },
+    {
+      "run": "R124b",
+      "outcome": "harness environment inherited host session variables and failed its isolation assertion; corrected with a cleared Bubblewrap environment."
+    },
+    {
+      "run": "R124c",
+      "outcome": "real GTKConfig and GTK2 palette rendered; the subsequent out-of-scope GTK4 refresh failed as described."
+    }
+  ],
+  "evidence": {
+    "probe": {
+      "path": "~/tempia/i167-r124-integrated.py",
+      "sha256": "4271e305879efbe80c3790e336340855afca70e4ddeba6b55a0279baa166115c"
+    },
+    "result": {
+      "path": "~/tempia/i167-r124c-private-integrated/result.json",
+      "sha256": "d4d90ab68ed771a0add5d6007aa51f9bc36c9c472191714315ace3c39a914f96"
+    },
+    "log": {
+      "path": "~/tempia/i167-r124c-private-integrated/outer.log",
+      "sha256": "274b353e3671d6dd5c1b12b629615fdeff7156b6b919ea911c7f2b9c9adefd9e"
+    },
+    "gtk2_before": {
+      "path": "~/tempia/i167-r124c-private-integrated/gtk2-before.png",
+      "sha256": "f61c356d49893484525f2743eb08cc03caa7adff57c5eff193be6bd27600539b"
+    },
+    "gtk2_after": {
+      "path": "~/tempia/i167-r124c-private-integrated/gtk2-after.png",
+      "sha256": "fa9a00ace0b33a7406acd75fdfd44a32181f2d018e782aa696700d406371f673"
+    },
+    "kded_log": {
+      "path": "~/tempia/i167-r124c-private-integrated/kded6.log",
+      "sha256": "0ab9d8ef03da138311618350e858473a1dafc495b6f87ed558bf326570de39aa"
+    }
+  },
+  "vm_status": "Read-only MAME channel status still has an unresolved, unacknowledged request f2127393cf7642a4896dceae1977ea71. No new Lua input was sent or pending request modified.",
+  "next": "Continue I167 GTK2-only audit using existing GtkEntry measures and valid captures. Do not fix GTK4 in this step. Revisit the VM after the current MAME channel receives a correlated reply; compare focused Entry selection/caret/blink at native scale before claiming historical fidelity."
+}

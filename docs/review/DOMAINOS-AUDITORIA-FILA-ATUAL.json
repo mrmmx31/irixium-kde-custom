@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-11T01:27:02.575945+00:00",
+  "goal_complete": false,
+  "no_progress_audit_turns": 3,
+  "blocker": "Current authorized theme/lab corrections delivered; personal evaluations remain pending; next fine-adjustment stages have no item authorization. Colleague Prancheta tasks are outside this context responsibility.",
+  "state_sha256": "4c238a7ebc8d00311311e72577800cf9665b6e140028e4177887f59c7afde14c",
+  "items": {
+    "T01": {
+      "user_revision": 4,
+      "authorized": true,
+      "status": "waiting_user"
+    },
+    "T03": {
+      "user_revision": 1,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "P01": {
+      "user_revision": 4,
+      "authorized": true,
+      "status": "waiting_user"
+    },
+    "P04": {
+      "user_revision": 1,
+      "authorized": true,
+      "status": "waiting_user"
+    },
+    "I115": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "I116": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "I117": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "I118": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "I119": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    },
+    "I120": {
+      "user_revision": 0,
+      "authorized": false,
+      "status": "waiting_user"
+    }
+  },
+  "no_new_tests": true,
+  "no_new_implementation": true,
+  "goal_status_unchanged": "blocked requested after three consecutive equivalent queue audits",
+  "next": "Read partial response or current authorization for a specific theme/lab item; do not infer authorization from Q091 Ok.",
+  "other_context_open_items": [
+    {
+      "id": "I095",
+      "section": "board",
+      "title": "Menu Pranchetas recortado em janela estreita",
+      "status": "running",
+      "responsibility": "RESPONSÁVEL: IA da Prancheta/Q102. Assumi esta etapa após sua reautorização: reproduzir e "
+    }
+  ]
+}

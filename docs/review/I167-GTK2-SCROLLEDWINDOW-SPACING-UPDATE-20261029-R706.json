@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R706",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Translate the measured SR10.4 content-to-scrollbar gap into the GTK2 DomainOS recipe by consuming the shared view_bar_gap_px contract, and validate generated packages and dynamic palette rendering.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "changes": {
+    "generator": "gtk/tools/build_kde_domainos.py now reads geometry.view_bar_gap_px for GtkScrolledWindow::scrollbar-spacing and records the GTK2 mapping in ORIGEM.json.",
+    "theme_variants": [
+      "DomainOS-SR10-4",
+      "DomainOS-SR10-4-KDE",
+      "DomainOS-SR10-4-KDE-Reload"
+    ],
+    "gtkrc": "All three generated GTK2 RCs set GtkScrolledWindow::scrollbar-spacing to the shared contract value 4. Their manifests include updated generator, RC and provenance hashes."
+  },
+  "validation": {
+    "builder": "Built all three variants into ~/tempia; each emitted 300 files and generated GTK2 RC/provenance exactly match the checked-in package. Every listed source manifest file hash verified.",
+    "palette_renderer": {
+      "source_scheme": "/home/lsi/.config/gtk-3.0/colors.css",
+      "roles": 84,
+      "assets": 112,
+      "rendered_rc_sha256": "9bb99b1bd464efe21d3f89e4c1593c308d3b090c13ad4076e15bb773a8455ec7",
+      "preserves_spacing4": true,
+      "wrote_user_profile": false
+    },
+    "private_visual_probe": "GTK2 2.24.33 reads the style property as 4; the measured frame gap is 4 px. The arrow-cell placement remains 2 px inset and requires separate work."
+  },
+  "profile": {
+    "user_lsi_changed": false,
+    "currently_installed_profile": "Still the previously installed GTK2 theme; this source correction has not been deployed into the user profile."
+  },
+  "limits": [
+    "No change to GTK3/GTK4/Qt/Plasma or any other active family.",
+    "No direct VM input or scheme switch.",
+    "No user visual acceptance.",
+    "Endpoint artwork remains exact only after independent alignment; endpoint placement is unresolved."
+  ],
+  "result": "The shared rule now drives the GTK2 GtkScrolledWindow gap in the source theme, without static color changes. Source package is validated; the user installation remains unchanged pending a GTK2-only deployment path.",
+  "artifacts": "records/ia-tema/I167/R706/ARTIFACTS.json"
+}

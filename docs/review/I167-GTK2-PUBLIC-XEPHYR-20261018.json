@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "family": "GTK2",
+  "scope": "Revalidate public preview routes in existing Xephyr and preserve evidence for remaining GTK2 comparison",
+  "display": ":74",
+  "test": {
+    "path": "tools/theme-lab/tests/test_gtk2_public_native.py",
+    "sha256": "df663d39e9c7f605322e8b981bed976441e5a4fbc9830f5eb32855e3f14a3a00",
+    "exit_code": 0,
+    "cases": [
+      {
+        "scheme": "DomainOS-SR10.4",
+        "scope": "GTK2 scrollbars",
+        "result": "passed",
+        "horizontal": "220x15",
+        "vertical": "15x180",
+        "arrow_pixel_differences": {"left": 0, "right": 0, "up": 0, "down": 0},
+        "bar_role_colors_match": true,
+        "native_click_value": 34.0
+      },
+      {
+        "scheme": "BreezeDark",
+        "scope": "GTK2 scrollbars",
+        "result": "passed",
+        "horizontal": "220x15",
+        "vertical": "15x180",
+        "arrow_pixel_differences": {"left": 0, "right": 0, "up": 0, "down": 0},
+        "bar_role_colors_match": true,
+        "native_click_value": 34.0
+      },
+      {
+        "scheme": "DomainOS-SR10.4",
+        "scope": "all 16 GTK2 control types mounted; 52 native events; push/toggle/check/radio clicks verified",
+        "result": "passed",
+        "recipe_applied": false,
+        "normal_close": true
+      }
+    ],
+    "guarded_private_preview": true,
+    "personal_home_exposed": false,
+    "system_bus_exposed": false
+  },
+  "sources": {
+    "backend.py": "7bc96f34fbe4f0e6c6a5b6ec18e14292f0dd390618caa34dae61b0b886589bd9",
+    "gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe"
+  },
+  "artifacts": {
+    "root": "~/tempia/i167-gtk2-public-xephyr-20261018/",
+    "domainos_scrollbar": "~/tempia/i167-gtk2-public-xephyr-20261018/.qa-gtk2-public-zi9xii4u/preview.png",
+    "breeze_dark_scrollbar": "~/tempia/i167-gtk2-public-xephyr-20261018/.qa-gtk2-public-_dzjr7fp/preview.png",
+    "all_controls": "~/tempia/i167-gtk2-public-xephyr-20261018/.qa-gtk2-public-all-osz39nuc/preview.png"
+  },
+  "historical_reference": {
+    "vm": "Domain/OS SR10.4 with HP VUE 2.01",
+    "read_only_snapshot": "~/tempia/domainos-assistant-vm-20261017/sessao/captura-current-20261018.png",
+    "observation": "File Manager showed one visible item and no scrollbar, so this frame cannot compare scrollbar geometry or arrows.",
+    "interaction_blocker": "Counter-based mouse helper completed and cleaned up, but pointer pixels did not move and capture returned captured=false. No further input was attempted.",
+    "clone_endpoint": "192.168.245.11; FTP greeting verified, Telnet TCP accepted but no prompt returned.",
+    "original_vm_or_backup_changed": false
+  },
+  "interaction_recheck_2026_10_18": {
+    "hook_recaptured_via_existing_mechanism": true,
+    "mouse_hook_state": "captured=true, wait_button_up=false",
+    "relative_field_during_step": "x=1, y=0; helper advanced one step",
+    "relative_step_capture_sha256": "608e73b88e7ed59cefd817b7f519be8e2e1c85ba6eb538ea57f0a7dbe5cb3014",
+    "relative_step_visual_change": "0 pixels in the cursor and File Manager regions compared with the preceding screen capture",
+    "keyboard_navigation": "Cursor Down held 12 guest frames and released; no visible File Manager selection change",
+    "safe_blank_click": "left button held 0.25 emulated seconds on the blank desktop; no visible scene change",
+    "cleanup": "button and counters returned to zero; helper done=true, cleanup_error=nil; no bridge requests pending",
+    "input_channel_status": "MAME process and Lua bridge are live, but injected input still has no guest-visible effect; no further input attempted"
+  },
+  "conclusion": "Public GTK2 route and existing scrollbar recipe checks passed in two schemas; all-control mount smoke test passed. I167 remains partial: recipe_applied=false in public cases and the current VM frame does not expose scrollbars. These tests do not establish historical visual fidelity or human approval."
+}

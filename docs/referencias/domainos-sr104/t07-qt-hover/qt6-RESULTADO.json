@@ -1,0 +1,106 @@
+{
+  "scope": "Owned bwrap/Xephyr preview only; no Qt style or palette override",
+  "guards": {
+    "verified": true,
+    "uid": 1000,
+    "passwdName": "domainos-test",
+    "passwdHome": "/home/domainos-test",
+    "namespaceMarker": "/etc/domainos-preview",
+    "personalHomeExposed": false,
+    "systemBusSocketExposed": false,
+    "procStatusPresent": true,
+    "cwd": "/home/domainos-test"
+  },
+  "actions": [],
+  "hintCoverage": {
+    "widgets": 63,
+    "actions": 10,
+    "scope": "native Qt hints assigned; timing/geometry and theme translation need separate proof"
+  },
+  "qtVersion": "6.8.2",
+  "pyqtVersion": "6.9.0",
+  "qtMajor": 6,
+  "qtRuntimeVersion": "6.8.2",
+  "platform": "xcb",
+  "platformTheme": null,
+  "style": {
+    "objectName": "fusion",
+    "className": "QFusionStyle"
+  },
+  "font": "Sans Serif,9,-1,5,400,0,0,0,0,0,0,0,0,0,0,1",
+  "selections": {
+    "kdeglobals": {
+      "KDE": {
+        "widgetStyle": null,
+        "LookAndFeelPackage": "org.magpie.irixclassic.domainos.desktop"
+      },
+      "General": {
+        "ColorScheme": "DomainOS-SR10.4",
+        "font": null
+      },
+      "Icons": {
+        "Theme": null
+      }
+    },
+    "Kvantum/kvantum.kvconfig": {
+      "General": {
+        "theme": null
+      }
+    },
+    "plasmarc": {
+      "Theme": {
+        "name": null
+      }
+    },
+    "kcminputrc": {
+      "Mouse": {
+        "cursorTheme": null,
+        "cursorSize": null
+      }
+    }
+  },
+  "loadedKvantum": [],
+  "palette": {
+    "active": {
+      "Window": "#efefef",
+      "WindowText": "#000000",
+      "Base": "#ffffff",
+      "Text": "#000000",
+      "Button": "#efefef",
+      "ButtonText": "#000000",
+      "Highlight": "#308cc6",
+      "HighlightedText": "#ffffff"
+    },
+    "inactive": {
+      "Window": "#efefef",
+      "WindowText": "#000000",
+      "Base": "#ffffff",
+      "Text": "#000000",
+      "Button": "#efefef",
+      "ButtonText": "#000000",
+      "Highlight": "#308cc6",
+      "HighlightedText": "#ffffff"
+    },
+    "disabled": {
+      "Window": "#efefef",
+      "WindowText": "#bebebe",
+      "Base": "#efefef",
+      "Text": "#bebebe",
+      "Button": "#efefef",
+      "ButtonText": "#bebebe",
+      "Highlight": "#919191",
+      "HighlightedText": "#ffffff"
+    }
+  },
+  "window": {
+    "width": 500,
+    "height": 490,
+    "x": 20,
+    "y": 80
+  },
+  "apiLimits": [
+    "Qt Widgets has no native switch control; QCheckBox is the standard boolean widget."
+  ],
+  "screenshotSaved": true,
+  "screenshot": "/home/domainos-test/qtwidgets-proof/qtwidgets.png"
+}

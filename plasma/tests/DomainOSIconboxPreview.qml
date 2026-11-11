@@ -17,7 +17,7 @@ DomainOSTasksPreview {
     function resetUi() {
         box.basicContextMenu.close();box.batchContextMenu.close()
         controller.finishGroupSelection(false);controller.clearSelection()
-        requests=[];layouts=[];box.lastError=""
+        requests=[];layouts=[];restores=[];preflightBlocked=false;preflightTransportFailure=false;preflightCount=0;box.lastError=""
         seed()
     }
     function seedMany() {

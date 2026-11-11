@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "R496",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Post-R495 real GTK2 2.24.33 private-Xvfb render of the currently selected and installed DomainOS GTK2 theme; horizontal stepper dimensions and pixels against retained SR10.4/VUE reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "theme_setting": "DomainOS-SR10-4-KDE",
+    "rc_files": "current user GTK2 settings plus selected installed DomainOS theme and palette include",
+    "scrollbar_allocation_px": {
+      "x": 0,
+      "y": 55,
+      "width": 360,
+      "height": 15
+    },
+    "private_xvfb": true,
+    "scale": 1
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/r496-installed-gtk2-post-r495-20261027/installed-theme-horizontal.png",
+    "sha256": "e92be6cd4a6fd037e33570694bb8308695f275efa557a385d38ec24674a8d0cd",
+    "dimensions_px": [
+      360,
+      70
+    ]
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "scale": "1:1, no resampling"
+  },
+  "comparison": [
+    {
+      "direction": "left",
+      "render_origin_px": [
+        2,
+        55
+      ],
+      "cell_px": [
+        15,
+        15
+      ],
+      "whole_cell_different_pixels_vs_vue": 0,
+      "rgb_absolute_error": 0,
+      "glyph_11x11_different_pixels_vs_vue": 0
+    },
+    {
+      "direction": "right",
+      "render_origin_px": [
+        343,
+        55
+      ],
+      "cell_px": [
+        15,
+        15
+      ],
+      "whole_cell_different_pixels_vs_vue": 0,
+      "rgb_absolute_error": 0,
+      "glyph_11x11_different_pixels_vs_vue": 0
+    }
+  ],
+  "limits": [
+    "This validates a private GTK2 fixture and currently installed user theme resources, not a personal application already running.",
+    "Only the normal horizontal state is covered; held/hover/insensitive and live VM horizontal interaction remain open.",
+    "No personal application, desktop selection, VM, or guest state was changed."
+  ],
+  "changes": {
+    "source_changed": false,
+    "theme_files_changed": false,
+    "applications_restarted": false,
+    "vm_input_sent": false,
+    "vm_changed": false
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R355",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the installed GTK2 pixbuf engine's horizontal stepper reconstruction and overlay placement",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "engine": {
+    "binary_package": "gtk2-engines-pixbuf:amd64",
+    "installed_version": "2.24.33-7",
+    "source_package": "gtk+2.0 2.24.33-7 (Debian trixie)",
+    "source_workspace": "~/tempia/ia-tema/source-audit/I167-gtk2-pixmap-20261027/gtk+2.0-2.24.33/",
+    "source_files": {
+      "modules/engines/pixbuf/pixbuf-draw.c": {
+        "reverse_engineer_stepper_box": [445, 480],
+        "draw_arrow_stepper_path": [502, 539]
+      },
+      "modules/engines/pixbuf/pixbuf-render.c": {
+        "non_stretched_centered_image": [858, 870]
+      }
+    }
+  },
+  "findings": [
+    "reverse_engineer_stepper_box reads slider-width and stepper-size from the GTK range. For horizontal arrows it reconstructs a stepper box with width=stepper-size and height=slider-width; the installed values are 15 and 11.",
+    "draw_arrow invokes the STEPPER image rule with that reconstructed box. When a matching stepper image exists, the pixbuf engine returns without drawing its fallback arrow.",
+    "draw_simple_image passes overlay images through theme_pixbuf_render with center=true. For overlay_stretch=FALSE the renderer centers the original image dimensions; it does not rescale or recolor the pixbuf.",
+    "The pixbuf engine source comments that reverse_engineer_stepper_box can fail when the scrollbar is too squished to fit full-size steppers. This is a GTK2 engine constraint, not a DomainOS metric."
+  ],
+  "pixel_recheck": {
+    "basis": "R344 correctly registered the 15x15 GTK2 cells and SR10.4 horizontal reference crop.",
+    "left_differences": [
+      {"xy": [0, 13], "gtk2_rgb": [196, 213, 237], "vue_rgb": [62, 83, 110]},
+      {"xy": [1, 13], "gtk2_rgb": [196, 213, 237], "vue_rgb": [62, 83, 110]},
+      {"xy": [0, 14], "gtk2_rgb": [196, 213, 237], "vue_rgb": [62, 83, 110]}
+    ],
+    "right_differences": [
+      {"xy": [14, 1], "gtk2_rgb": [62, 83, 110], "vue_rgb": [196, 213, 237]}
+    ],
+    "glyph_difference": 0,
+    "interpretation": "The remaining four pixels exchange light/shadow at outer relief corners; the measured arrow glyph and 15x15 source assets remain aligned. The source audit explains the GTK2 stepper geometry and overlay path but does not yet explain why these four corner pixels render with exchanged roles."
+  },
+  "changes": {
+    "repository_theme_code": false,
+    "installed_theme": false,
+    "user_applications_restarted": false,
+    "vm_input_or_state": false,
+    "colors_or_schemes": false
+  },
+  "limitations": [
+    "The temporary R353/R354 gtkrc experiments did not establish that their candidate styles were loaded; their images are inconclusive and are not used as evidence.",
+    "This source inspection alone does not prove visual fidelity, clip-region behavior, or the four-pixel cause.",
+    "No live XChat pixels are claimed; its GTK2 style has not been reloaded."
+  ],
+  "next": "Continue GTK2/I167 only. Build a clean isolated GTK2 probe that proves which gtkrc style and pixbuf image rule are active, then trace the four corner pixels before deciding whether any source recipe change is warranted. Keep the user XChat and live VM state untouched."
+}

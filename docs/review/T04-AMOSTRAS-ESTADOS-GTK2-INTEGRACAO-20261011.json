@@ -1,0 +1,78 @@
+{
+  "stage": "T04 GTK2 nontext runtime state persistence integration",
+  "recorded_at": "2026-10-11T18:43:10.639849+00:00",
+  "authorization": {
+    "item": "T04",
+    "revision": 2,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "sources_sha256": {
+    "tools/theme-lab/private_json_store.py": "69bc7e09ac89ff44cb2435f6c0468e3c84b83cb4aac177ea825ae7a4c19590a4",
+    "tools/theme-lab/preview_sample_journal.py": "975c29821eba664062c49066d56e3a245249d34fe2fcbba08832de1212802559",
+    "tools/theme-lab/preview_runtime_journal.py": "a254cbf4681a2c2c973010573ca0e444acb4c75eb57a9fa6f9344004602a71e1",
+    "tools/theme-lab/gtk2_sample_state.py": "a25cbc8a145dd6daadab994f028764790faae75fb2f83029b8bdda0ef0ecb6cd",
+    "tools/theme-lab/gtk2_runtime_state.py": "0203f2038077a01618e37a51b7cf2eaac0b82ba62ea2713671f95fc9d8fc94ca",
+    "tools/theme-lab/gtk2_session.py": "156a3633c3e7b919914416bdc781637f41a2eab7bbbf1013fdcdc51f72d19540",
+    "tools/theme-lab/preview_gtk2.py": "8ba05167289248e973b33c275218babcbec0772b5b9c105fa5d573e456176c30",
+    "tools/theme-lab/tests/probe_gtk2_runtime_restart.py": "daa8bf872ca54f344b022896ce529289a62689f2afbf7fdcf19c4106e144b25f",
+    "tools/theme-lab/tests/test_preview_runtime_journal.py": "a48d83fb185281a50e574bc7b6cbcc12d43ac9f12dbbe40dee80b4be57336bc1",
+    "plasma/tools/abrir-laboratorio-temas.py": "02157e4facfeac1aece87c935da98b39820c2d0eb209af56ef3f5135da81405d",
+    "plasma/tests/test_lab_resume.py": "6f49e6873837888409b36607c08ee5020a4f2c7a59d00d419979f8a234a3f7e3",
+    "tools/theme-lab/SAMPLE-HISTORY.md": "cda3b31a88a80f2f4a6cce413ecf15952f776cf53bd5cdf52f92d1c61ecde6d0"
+  },
+  "proofs": {
+    ".qa-t04-runtime-restart/native-r2/RESULTADO.json": {
+      "sha256": "3129d408161e460b592f1350745180daee10581e558caadb2138d7c767c76baa",
+      "status": "passed"
+    },
+    ".qa-t04-sample-native/runtime-regression-r2/RESULTADO.json": {
+      "sha256": "c3adf958abedaca7b0e30c9313d78cac017d2ce7b621d56622950edf87672b21",
+      "status": "passed"
+    },
+    ".qa-theme-lab-spin-mm5utvyr/RESULTADO.json": {
+      "sha256": "7543a09ab46210f578f8a268b86e1b287961a488c5d778120f8fe8ab2f791564",
+      "status": "passed"
+    }
+  },
+  "tests": {
+    "runtime_storage": 6,
+    "runtime_contract": 6,
+    "text_storage_regression": 11,
+    "launcher_resume": 19,
+    "runtime_native_processes": 4,
+    "text_regression_native_processes": 4
+  },
+  "verified": [
+    "distinct-process restoration of ten native control types and two independent origins",
+    "60 UTF8 list rows, selection and both offsets",
+    "hide/checkpoint/show retains control state",
+    "saved values take precedence over stale controller flags",
+    "failed runtime checkpoint blocks close/rebuild and preserves widgets/bytes",
+    "Motif controller SaveLoad/project UndoRedo/process restarts",
+    "launcher exact transfer and typed rejection before destination creation"
+  ],
+  "limits": [
+    "text/runtime documents are independent atomic checkpoints, not a joint transaction",
+    "external kill/crash can lose edits since the last completed250ms checkpoint",
+    "GTK3 not covered",
+    "historical fidelity not claimed"
+  ],
+  "delivery": {
+    "status": "delivered",
+    "source_pid": 2901877,
+    "display": ":61",
+    "request_id": "dbcf3aae3478cf0f52a3676a302c75e8329fe0949bb2e641999ef99d4ef6f86a",
+    "target_pid": 2925274,
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-59b047d201934ed9a9465225f2466763/MANIFESTO.json",
+    "proof": ".qa-t04-runtime-restart/delivery-preservation.json",
+    "at": "2026-10-11T18:52:26.904591+00:00",
+    "request_consumed": true,
+    "sample_histories_imported": [],
+    "source_has_sample_journals": false,
+    "editor_histories_preserved": 64
+  },
+  "user_approval": false,
+  "goal_complete": false,
+  "stage_progress_percent": 100,
+  "percentage_basis": "Contrato, armazenamento/lifecycle, provas nativas e entrega coordenada; não conclui T04 ou fidelidade histórica."
+}

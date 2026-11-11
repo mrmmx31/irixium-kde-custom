@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-11T04:32:33.593883+00:00",
+  "item": "I117",
+  "authority_revision": 1,
+  "phase": "paired_radio_list_frame_sample_structure",
+  "changes": [
+    "Single selected radio in both native families",
+    "Three equal list labels, second initially selected; GTK3 ListBox replaces unrelated two-column 15-row TreeView stress sample",
+    "Frame content label without extra GTK3 frame title",
+    "GTK3 font measurement uses actual first row label and frame content label"
+  ],
+  "verification": [
+    "Strict C99 compile",
+    "Motif real label/list count and text/radio set/frame caption checks",
+    "GTK3 real selected radio, list labels and selection/frame label checks in coupled and separate origins",
+    "Existing native geometry/font/anchor checks passed with changed structures",
+    "Generated header and contract check",
+    "git diff --check"
+  ],
+  "limits": [
+    "GtkListBox/ScrolledWindow and XmList retain different native layout/painting, not historical identity",
+    "Motif level Scale remains substitute for ProgressBar",
+    "No interactive cross-toolkit input synchronization",
+    "GTK3 isolated scrollbar pieces/full integrated flow/personal delivery remain incomplete"
+  ],
+  "personal_state": "No personal window reopened or source buffer/journal changed; no VM modification",
+  "estimated_stage_progress_percent": 70,
+  "percentage_basis": "I117 scoped implementation only; initial sample content/structures now comparable, pieces and full-flow delivery still pending",
+  "hashes": {
+    "tools/theme-lab/sample_controls.json": "6676e1d5d2028903addadb47a6dcc72693f8e2dd5ed955d3ca7496d1adad089f",
+    "tools/theme-lab/sample_contract.py": "535c5417df9dd2bbaaba5237c47e1e616c90851f904ad5ebe50dcc4ddcb24778",
+    "tools/theme-lab/include/sample_controls.h": "7148e55dda905887e3cb69db8b7a60f6f5781f4bb516cdad6028a5acf6e71fc1",
+    "tools/theme-lab/src/view.c": "9b1fa90a0dc785fe10cdf129a67616505dca0dd7c99a5e8367882d7411eecea3",
+    "tools/theme-lab/preview_gtk.py": "76b2674db359eb2f45a22ea413179a1aaa360b1e3f7a189206eb48f607c35be5",
+    "tools/theme-lab/tests/native_metrics_view.c": "11cec3ed08dfebe44a3c9c439b3f4d4124a8c0a4fa69b0a6bf5abc9c61cc2711",
+    "tools/theme-lab/tests/test_native_metrics.py": "a1f14a0ce13bbbafc2a037093dd4e7b843fabaec096d850576e589680de4d480",
+    ".qa-i117-structures/motif.log": "5dde737d50508b9ee96d12afe31931b6a20887029f1e4f58bfe466ba47ac10b0",
+    ".qa-i117-structures/gtk.log": "3b2b5af92f42367e36b2ea87bf2e743a08ce938db35441d0efe0064cceb43b13"
+  }
+}

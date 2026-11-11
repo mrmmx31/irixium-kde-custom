@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R494",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Extend R493 from semantic arrow pixels to every comparable pixel in the complete 11x11 held-arrow bounding box.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "state_map": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "state_map_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "source_held_capture_sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568"
+  },
+  "candidate": {
+    "path": "/home/lsi/.local/share/irixium/gtk2-palette/b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa/assets/scrollbar-stepper-down-pressed.png",
+    "sha256": "07ca3901c24dc819c8469ef581fa3b7610ca71ec7d437e1f6d500fb95bb0eb04",
+    "dimensions_px": [15, 15],
+    "compared_roi_xyxy": [2, 2, 13, 13]
+  },
+  "method": {
+    "description": "Parse all 11 rows of the recorded held-arrow glyph map. Compare the installed asset RGB against the mapped native topShadow, bottomShadow, face, and trough/context colors. Mask only C symbols, which identify cursor-overlay pixels outside the triangle in the reference capture.",
+    "class_counts": {
+      "topShadow_L": 19,
+      "bottomShadow_D": 34,
+      "face_F": 18,
+      "trough_context_dot": 41,
+      "cursor_overlay_masked_C": 9
+    },
+    "compared_pixels": 112,
+    "masked_cursor_pixels": 9,
+    "mismatches": 0,
+    "script": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r494-down-held-full-roi/compare_glyph.py",
+      "sha256": "541c1361023905fc41fef5a32864125bdfb5ec1c8c0cae3f87cb7a37876b56d3"
+    }
+  },
+  "result": "All 112 non-cursor pixels in the complete held-arrow bounding box match the recorded SR10.4 map exactly, including all 41 visible trough/context positions. This strengthens R493's 71/71 semantic-pixel comparison and confirms the installed 15x15 asset places the 11x11 glyph correctly for this down-pressed state.",
+  "limits": [
+    "The 9 cursor-overlay pixels were excluded because their underlying VUE pixels cannot be recovered from the captured image.",
+    "This compares a saved native SR10.4 capture/map with the installed asset; it is not a new live VM interaction.",
+    "It covers only the down-stepper held state. Other directions/states, an open GTK2 application, and human visual acceptance remain separate.",
+    "No VM input, theme/profile change, MAME setting change, or application restart occurred."
+  ],
+  "next": "Retain the current down-pressed GTK2 asset. Continue I167 only with uncovered historical states and the outstanding GTK2 application review; do not alter arrow dimensions without a measured mismatch."
+}

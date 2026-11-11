@@ -1,0 +1,1711 @@
+{
+  "status": "passed",
+  "scenes": [
+    {
+      "scheme": "DomainOS",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 0,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "GtkHScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 2,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": false,
+            "widget_name": "themeLabInsensitiveScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": false,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "editor_state": 3,
+      "native": {
+        "status": "passed",
+        "metrics": [
+          {
+            "id": "scroll_h",
+            "index": 10,
+            "allocation": [
+              41,
+              57,
+              240,
+              15
+            ],
+            "requested_size": [
+              240,
+              15
+            ],
+            "native_request_before_custom_size": [
+              49,
+              15
+            ],
+            "slider_range": [
+              88,
+              130
+            ],
+            "sensitive": true,
+            "widget_name": "themeLabBackdropScroll",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          },
+          {
+            "id": "scroll_v",
+            "index": 11,
+            "allocation": [
+              311,
+              103,
+              15,
+              270
+            ],
+            "requested_size": [
+              15,
+              270
+            ],
+            "native_request_before_custom_size": [
+              15,
+              49
+            ],
+            "slider_range": [
+              98,
+              146
+            ],
+            "sensitive": true,
+            "widget_name": "GtkVScrollbar",
+            "value": 35.0,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "font_not_applicable": true
+          }
+        ],
+        "embedded": true,
+        "native_toolkit": "GTK2",
+        "scene_scope": "Scrollbar foundation only",
+        "personal_display_input_sent": false
+      }
+    }
+  ],
+  "model_unchanged": true,
+  "full_lab_scene_integration_claimed": false
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-CHANNEL-ERRATUM-20261024-R65",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "observed_at_utc": "2026-10-24T04:05:36Z",
+  "corrections": {
+    "R62_channel_attribution": "The pending request f2127393cf7642a4896dceae1977ea71 came from the generic legacy pointer under /tmp. It was not submitted to the assistant clone.",
+    "clone_channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "clone_channel_status": {
+      "pending": null,
+      "reply": null,
+      "pending_files": [],
+      "acknowledged": false
+    },
+    "basis": "Explicit channel-dir status query using the mame-live-control helper; process environment and the clone's existing bridge previously identified this channel. No MAME request was sent in this check.",
+    "R64_sha256": {
+      "current_guest_capture": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+      "earlier_guest_capture": "3dc253e8e46a62f1aedf80f00e6f32d8460f7563f09581e052bff9799a8ba236"
+    }
+  },
+  "GTK2_mapped_focus_test": {
+    "command": "TMPDIR=/home/lsi/tempia /usr/bin/python3 tools/theme-lab/tests/test_gtk2_entry_keyboard_native.py",
+    "result": "Did not reach the GTK2 application. xvfb-run repeatedly failed to create its authorization and X server lock files under /tmp; the host /tmp tmpfs is 100% full (16 GiB). No focus or pixel result was produced.",
+    "impact": "No new mapped-window focus evidence. R61's synthetic-focus limitation remains open.",
+    "cleanup": "Removed only the private temporary authorization directory created by this failed attempt. Did not touch unrelated /tmp content, X servers, MAME processes, guest, user desktop or XChat."
+  },
+  "current_clone_state": "The most recent live capture remains 94.84% pure black with only the Apollo command strip visible. An earlier same-clone capture shows VUE on 2026-10-23 but cannot establish current responsiveness.",
+  "next": "Continue I167 GTK2 only. Repeat mapped focus in a private X server when it can run without deleting other processes' temporary data; resume native comparison against the correct Domain/OS SR10.4 guest only when its VUE image is accessible.",
+  "progress_estimate": "About 93% technical coverage for I167; this is not a visual-fidelity score or human approval."
+}

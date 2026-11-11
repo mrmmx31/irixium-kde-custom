@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "R579",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Register the exact pre-R576/R577 and current versions of the GTK2 regression-test file without attributing unrelated pre-existing checkout edits.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change_record": {
+    "board_cli": "changes-record",
+    "recorded": true,
+    "files": [
+      "tests/test_domainos_motif.py"
+    ],
+    "before_sha256": "3294b1b0decbb04cd26384157b70f626347be93a1923f07cf275007d4e2a6a92",
+    "after_sha256": "0924d62120b6b9bfbbe11b724594820505b71d759ccc6ae325f55a0c988585b0",
+    "content_verified": true,
+    "exported_diff_sha256": "48eea0ea2d048f05a93ce17655380145a0c67eb5a71bc026701cb48754958e61",
+    "before_snapshot": "/home/lsi/tempia/domainos-theme-work/i167-r576-r577-before/tests/test_domainos_motif.py",
+    "before_snapshot_sha256": "3294b1b0decbb04cd26384157b70f626347be93a1923f07cf275007d4e2a6a92"
+  },
+  "verification": {
+    "result": "Board exported the exact comparison for I167 revision 2; diff bytes match, embedded complete file versions are content-verified, and git diff --check passed.",
+    "previous_tests": "R576/R577 record the two focused tests passing before this receipt; not rerun in this turn.",
+    "scope_limit": "This records regression tests only. It is not a GTK2 live rendering comparison, historical held-arrow evidence, visual acceptance, or product-theme installation."
+  },
+  "reconciliation": {
+    "saved_board_state": "I167 revision 2 remains authorized. The latest read still shows I500 unauthorized and Q501 unanswered; the user's statement that blockers are resolved is not yet reflected in those saved item records.",
+    "vm": "No MAME input was sent. Horizontal held-state comparison remains pending."
+  },
+  "next": "Continue GTK2-only work that does not need VM graphical input; do not repeat the inconclusive R573 hold. Resume the live horizontal held-state comparison when the required saved route and target are established."
+}

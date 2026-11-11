@@ -1,0 +1,72 @@
+{
+  "item": "T07",
+  "authorization_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-17T04:51:58Z",
+  "status": "partial_pass",
+  "scope": "Native QtQuick KDE Controls 5 and 6: delayed hover on one push button and two actual KDE MenuItem delegates, including text, placement, stability and leave behavior. Not the full laboratory hint inventory, every layout, Plasma SVG, or historical fidelity.",
+  "environment": {
+    "xephyr": ":71",
+    "screen": "1024x768",
+    "display_backend": "xcb",
+    "namespace": "bwrap; private HOME and D-Bus session; host personal home and system bus not exposed",
+    "qtquick_style_requested": "org.kde.desktop",
+    "qt5": "5.15.15",
+    "qt6": "6.8.2"
+  },
+  "checks": {
+    "qt5": {
+      "status": "passed",
+      "native_hints": 31,
+      "push_delay_ms": 750,
+      "menu_delay_ms": 750,
+      "hidden_at_300ms": true,
+      "stable_at_400ms": true,
+      "first_row_text": "Registra a ativação da ação de exemplo; não inicia aplicações.",
+      "second_row_text": "Marca ou desmarca esta opção do menu nativo.",
+      "tooltip_right_of_menu_row": true,
+      "inside_screen": true,
+      "hidden_after_pointer_leave": true,
+      "menu_stays_open_until_action": true,
+      "real_menu_action_click": true,
+      "kde_menu_implicit_width_warnings": 2
+    },
+    "qt6": {
+      "status": "passed",
+      "native_hints": 27,
+      "push_delay_ms": 750,
+      "menu_delay_ms": 750,
+      "hidden_at_300ms": true,
+      "stable_at_400ms": true,
+      "first_row_text": "Registra a ativação da ação de exemplo; não inicia aplicações.",
+      "second_row_text": "Marca ou desmarca esta opção do menu nativo.",
+      "tooltip_right_of_menu_row": true,
+      "inside_screen": true,
+      "hidden_after_pointer_leave": true,
+      "menu_stays_open_until_action": true,
+      "real_menu_action_click": true,
+      "kde_tab_button_warnings": 3
+    }
+  },
+  "diagnosis": "The earlier Qt5 probe queried Menu.itemAt(), which refers to menu action data rather than the rendered KDE MenuItem delegate. The native row tooltip is now tested on the actual delegate. The Qt5 implicitWidth warnings were present in the no-hint baseline receipt T07-BASELINE-QTQUICK-20261011.json; they remain unpatched in system QML.",
+  "artifacts": {
+    "qt5_directory": "~/tempia/t07-qtquick-menu-row-20261017-r43-qt5/",
+    "qt5_screenshot": "~/tempia/t07-qtquick-menu-row-20261017-r43-qt5/home/qtquick5-proof/menu-row-tooltip.png",
+    "qt5_screenshot_sha256": "a58970e877747dc0aeb80a243cadb1c9357ddbf49a480b0337fd3f2f45557d66",
+    "qt5_result_sha256": "59362f25abb87e5b4772136523b6690be11127c65c35f09f1824956344cf53ab",
+    "qt5_hints_sha256": "4c2464df41aa22f2647fb6401f63b24414652a5a02aec75d9ffb812c45b94e5e",
+    "qt5_stderr_sha256": "fae5e1b929b461bce05ec8a78c8d9ed8426a85b4417cbefaf4c7d5a929d06aeb",
+    "qt6_directory": "~/tempia/t07-qtquick-menu-row-20261017-r44-qt6/",
+    "qt6_screenshot": "~/tempia/t07-qtquick-menu-row-20261017-r44-qt6/home/qtquick6-proof/menu-row-tooltip.png",
+    "qt6_screenshot_sha256": "6d1dd0a4d76e079ebda1e26f5a13faf7100dd35d239b0dc5a0267fee4cf1ca71",
+    "qt6_result_sha256": "ea7aae73abe56a1eafe47f093e7401401c8039f45fb5b7c3ec0bf10d2764f362",
+    "qt6_hints_sha256": "9252d3b5141395e9f448049f27dd988c09828303e21063b0a2d6483b14a55ae2",
+    "qt6_stderr_sha256": "d2636390c432acaba94c53234de6aa687cf4b7914e079fd6e51920ec682d7ca8"
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "3804b9e75457b5bd57d15b7b4d8c2783aba13511818ec9128fb0605a5ce108fa",
+    "tools/theme-lab/tests/probe_qtquick_gallery_hints.py": "a5f52c1e9847fcd1ffaa918f3791cbd3a4945cd3bd5c067d0640aa886b158d89"
+  },
+  "personal_session_modified": false,
+  "human_approval": "pending"
+}

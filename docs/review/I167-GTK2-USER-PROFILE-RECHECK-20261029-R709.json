@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "R709",
+  "date": "2026-10-29",
+  "observed_at_utc": "2026-10-29T05:57:54Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck that the GTK2 DomainOS theme remains selected and its per-user companion service is active, without restarting existing clients.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observation": {
+    "user": "lsi",
+    "gtk2_settings_file": "~/.gtkrc-2.0",
+    "gtk_theme_name": "DomainOS-SR10-4-KDE-Reload",
+    "gtk2_settings_sha256": "1b8701d8dcd6a671feeaa0c86a9596875b270ba61e3b7a470c2ff1a16e38dc4d",
+    "companion_service": {
+      "name": "irix-theme-companions.service",
+      "status": "active",
+      "exec_main_status": 0,
+      "active_enter_timestamp": "2026-10-29 01:34:44 -04"
+    },
+    "open_gtk2_clients": [
+      {
+        "pid": 1321694,
+        "command": "/home/lsi/.cache/codex-xchat/hom/xchat",
+        "started_local": "2026-10-28 21:50:37 -04"
+      },
+      {
+        "pid": 1327599,
+        "command": "/home/lsi/.cache/codex-xchat/prd/xchat",
+        "started_local": "2026-10-28 21:58:37 -04"
+      }
+    ],
+    "client_restart_performed": false
+  },
+  "prior_installation_evidence": "docs/review/I167-GTK2-USER-ARROW-ALIGNMENT-DEPLOYMENT-20261029-R708.json",
+  "conclusion": "The per-user GTK2 profile still selects the DomainOS Reload variant and the companion service is active. This confirms configuration state only; it does not prove that every existing client visibly repainted. R708 records the earlier native reload broadcast to 147 X11 windows and its limits.",
+  "pending": [
+    "Human visual review of the open GTK2 clients.",
+    "I517 direct held/released arrow comparison is not authorized.",
+    "I518 thumb-drag comparison is not authorized."
+  ],
+  "verification_commands": [
+    "read ~/.gtkrc-2.0; sha256sum ~/.gtkrc-2.0",
+    "systemctl --user is-active irix-theme-companions.service",
+    "systemctl --user show irix-theme-companions.service -p ActiveEnterTimestamp -p ExecMainStatus",
+    "ps -eo pid,lstart,comm,args | awk '$2 == \"xchat\" {print}'"
+  ],
+  "coverage_estimate": {
+    "percent": 94,
+    "basis": "Technical I167 coverage recorded by R708. R709 only rechecks current per-user state; this is not a visual-fidelity score or human acceptance."
+  }
+}

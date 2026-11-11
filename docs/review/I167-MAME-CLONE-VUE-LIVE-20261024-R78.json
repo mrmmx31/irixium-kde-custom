@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-VUE-LIVE-20261024-R78",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "session": "assistant-owned clone from approved backup",
+    "pid": 2745483,
+    "native_resolution": [1024, 844]
+  },
+  "observation": {
+    "capture": "~/tempia/i167-live-r78/domainos-screen.png",
+    "sha256": "ba2ba90ca42d423fb3fd7a396aa73d64017e98ac72db9e62ab2b7b14d8b3e3b",
+    "changed_since_r77": true,
+    "visible": ["HP VUE Screen dialog", "Find Files", "File Manager", "Terminal Window", "DomainOS panel"],
+    "screen_dialog": {
+      "timeout_displayed": 10,
+      "screen_saver_checkbox": "visually unchecked; persisted value and timeout behavior not verified"
+    }
+  },
+  "runtime_x_evidence": {
+    "display": ":0",
+    "xrdb_query": {
+      "background": "#7848A075D500",
+      "foreground": "#FFFFFFFFFFFF",
+      "fonts": ["Prestige 120", "Swiss 742 bold 120"],
+      "xterm_scrollbar": true,
+      "caret_or_text_selection_resource": "none in the returned runtime resource list"
+    },
+    "xwininfo_root_tree": "Read-only query lists Find Files, File Manager, and vuewm windows; no input sent."
+  },
+  "gtk2_entry_comparison": {
+    "carried_forward": "R76 is still the measured, same-size pair: GTK2 caret straight 1x18 px; VUE caret 14 px stem plus 5x1 px end caps, overall 16 px. No new GtkEntry focus/selection/blink pair was obtained in this turn.",
+    "historical_selection": "Still unmeasured in SR10.4; GTK2 mapped selection palette-role tests R70/R72 do not prove historical selection parity.",
+    "blink": "Still unmeasured in the VM; current X resources do not state a blink interval."
+  },
+  "preservation": {
+    "mame_restarted": false,
+    "profile_changed": false,
+    "guest_input_sent": false,
+    "guest_configuration_changed": false,
+    "other_mame_session_touched": false,
+    "bridge_pending_after": false
+  },
+  "limits": [
+    "The new live screenshot confirms VUE is visible but does not identify the focused text widget or show a selected text range.",
+    "Runtime xrdb output is limited to active X resources; it does not establish compiled Motif defaults or all widget behavior.",
+    "A read-only Telnet utility-discovery attempt did not complete; its local Telnet process was stopped and no MAME request remained pending."
+  ],
+  "next": "Continue only the authorized GTK2 GtkEntry historical comparison. To measure SR10.4 selection and blink, establish a safe guest-side focus/input route for the visible Find Files field; do not infer values from GTK defaults."
+}

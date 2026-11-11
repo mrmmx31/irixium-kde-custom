@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R122",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Private kded6 smoke test proved GTKConfig availability but loaded extra modules",
+  "method": {
+    "private_home": "/home/lsi/tempia/i167-r118/private-kded-smoke4/home",
+    "private_session_bus": "/home/lsi/tempia/i167-r118/private-kded-smoke4/session-bus.sock",
+    "system_bus": "DBUS_SYSTEM_BUS_ADDRESS pointed to a nonexistent socket under the fixture; no host session bus was used.",
+    "kded6rc": "Explicit autoload=false entries for all 36 installed KDED plugins except gtkconfig=true.",
+    "display": "Fresh xvfb-run server; XDG config/data/state/cache and HOME were private."
+  },
+  "result": {
+    "status": "partial",
+    "real_kded6_started": true,
+    "gtkconfig_dbus_method_returncode": 0,
+    "gtkconfig_theme_reply": "('Breeze',)",
+    "isolated_module_only": false,
+    "extra_modules": true,
+    "evidence": "KDED log shows unrelated modules (timezone, touchpad, hardware, print manager, etc.) started despite explicit autoload=false config. Those modules could not reach a host session bus; the test did not use the real system bus.",
+    "host_timezone_readback": "America/Manaus",
+    "current_timezone_file_target": "/usr/share/zoneinfo/America/Manaus",
+    "private_session_processes_remaining": false
+  },
+  "limits": [
+    "This proves that the installed gtkconfig plugin can answer org.kde.GtkConfig.gtkTheme on a private KDED bus, but it does not prove palette export or observer integration.",
+    "The KDED configuration did not isolate autoloading as intended; do not repeat this broad launch until the module-loader behavior is understood or constrained.",
+    "No kded6rc or GTK settings were written outside the private profile by the probe. The observed timezone readback matches the configured host timezone; no GTK theme or user session was changed."
+  ],
+  "evidence": {
+    "probe": {
+      "path": "~/tempia/i167-r118/probe_kded6_private_smoke.py",
+      "sha256": "c4e475f01d54229f2d1b382c44e691ad30adcf7cecdbfe6921b7c34d1ca6a27f"
+    },
+    "result": {
+      "path": "~/tempia/i167-r118/private-kded-smoke4/result.json",
+      "sha256": "471bd8c9d2818e950a2f71849802ce5eae5289551d4b9ecae4b2bab9ae45cac5"
+    },
+    "kded_log": "~/tempia/i167-r118/private-kded-smoke4/kded6.log",
+    "run_log": "~/tempia/i167-r118/private-kded-smoke4-run.log"
+  },
+  "next": "Do not rerun kded6 with broad plugin discovery. Continue the authorized GTK2 gap audit using existing visual/native evidence and isolate any needed GTKConfig experiment at the module/process boundary."
+}

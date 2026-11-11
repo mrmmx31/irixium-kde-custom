@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R398",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct R397's X11-window discovery after checking the per-process display and fixing its window-tree parser; read-only only.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "correction": {
+    "reason": "R397 queried the default X display, then parsed only lines containing the word child instead of all window-ID rows. Its claim that no MAME window was found is invalid.",
+    "mame_pid": 3971377,
+    "mame_display": ":1",
+    "mame_window": {
+      "id": "0x2e00006",
+      "net_wm_pid": 3971377,
+      "wm_class": ["mame", "mame"],
+      "geometry": {"x": 560, "y": 60, "width": 1024, "height": 844},
+      "map_state": "IsUnMapped",
+      "hidden_state": true
+    },
+    "host_pointer_query_on_display": {"display": ":1", "x": 600, "y": 100, "window_id": "31457283"},
+    "separate_vm": {
+      "pid": 3971019,
+      "window_id": "0x2400008",
+      "map_state": "IsViewable",
+      "touched": false
+    }
+  },
+  "result": "The project MAME window is identifiable on DISPLAY=:1 by PID, but it is unmapped/hidden. The pointer is not in that window; the separate AI Work Board VM is visible and must remain untouched. Therefore the cursor still cannot be confirmed over the project guest arrow.",
+  "changes": {
+    "host_pointer_moved": false,
+    "window_mapped_or_focused": false,
+    "guest_input": false,
+    "window_pixels_captured": false,
+    "chat_content_read": false,
+    "vm_profile_changed": false,
+    "other_vm_touched": false
+  },
+  "resulting_action": "Supersedes R397's claim that no MAME window exists in the queried window tree. R397 remains valid only as a record that its initial X11 query could not establish pointer mapping. Do not unminimize/raise this VM over the visible separate VM without coordinating placement; request the user to restore/position it or use an approved non-overlapping view."
+}

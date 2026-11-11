@@ -1,0 +1,50 @@
+{
+  "id": "R600",
+  "date_local": "2026-10-28T14:12:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "runtime": {
+    "qt6_core": "6.8.2+dfsg-9+deb13u2",
+    "qt6_wayland": "6.8.2-4",
+    "wayland_protocol_global": "xdg_activation_v1 version 1 (present in the lsi session)"
+  },
+  "matching_upstream_source": {
+    "repository": "https://github.com/qt/qtwayland",
+    "tag": "v6.8.2",
+    "files": [
+      {
+        "path": "src/client/qwaylandwindow.cpp",
+        "sha256": "1e9930ba57d9b6a9d9693b2142d91769e5d46ca16fecf551e9d6248d05592e80",
+        "fact": "QWaylandWindow::requestActivateWindow forwards to the shell surface when one exists."
+      },
+      {
+        "path": "src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp",
+        "sha256": "943f7bbd94053c444ba724247da2b692cfb791d5b652e8f362752812dd7d0632",
+        "facts": [
+          "QWaylandXdgSurface::requestActivate uses an existing or XDG_ACTIVATION_TOKEN when present.",
+          "Otherwise it requests an xdg activation token using the last input device serial and activates the target surface when the token arrives.",
+          "The compositor session exposes xdg_activation_v1, so this route is available in principle."
+        ]
+      },
+      {
+        "path": "src/plugins/shellintegration/xdg-shell/qwaylandxdgactivationv1.cpp",
+        "sha256": "dcc677ee1154a227b5a155bae3b4feaef6b3a16a14892e4b29efb99357a830cb"
+      }
+    ],
+    "local_source_copy": "~/tempia/domainos-theme-work/P01/qt-wayland-source/"
+  },
+  "interpretation": "In installed Qt 6.8.2, QWindow::requestActivate is not an unconditional Wayland no-op: QtWayland can request an xdg activation token from the last input serial when the compositor advertises xdg_activation_v1. This supports keeping the R596 candidate for user evaluation, but does not prove that activating Kicker's popup fixes keyboard focus or prevents hover deactivation.",
+  "validation": {
+    "source_matches_installed_qt_minor": true,
+    "xdg_activation_global_observed": true,
+    "interactive_menu_focus_observed": false,
+    "hover_sequence_reproduced": false,
+    "code_changed": false
+  },
+  "next": [
+    "Use the user's post-reload observation to confirm whether search typing and category hover now work.",
+    "If either symptom remains, instrument the popup active/focus windows and the Kicker submenu deactivation path before revising R596."
+  ]
+}

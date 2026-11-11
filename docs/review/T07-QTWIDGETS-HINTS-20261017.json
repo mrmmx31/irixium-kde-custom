@@ -1,0 +1,537 @@
+{
+  "item": "T07",
+  "authorization_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "date": "2026-10-17",
+  "status": "partial_pass",
+  "scope": "Qt Widgets Qt5/Qt6 production galleries: 36 buttons; 10 menu actions with hints; all combos, spin boxes, sliders, line/text editors and scrollbars checked for hints. Native delayed hover cycles cover push, combo, integer/decimal spins, horizontal/vertical sliders and one checkable menu action. Dialogs checked. Not every possible layout, full KDE/Kvantum appearance, or historical fidelity.",
+  "command": "T07_PRIVATE_PROBE=1 LC_ALL=C.UTF-8 xvfb-run -a /usr/bin/python3 -B tools/theme-lab/tests/run_qt_gallery_namespace.py --output ~/tempia/<unique-run-dir> --major {5,6}",
+  "environment": "Two private Xvfb runs and bwrap namespaces, private HOME/D-Bus/Xauthority, no personal home or system bus exposed; no global config, packages, or theme installation.",
+  "checks": {
+    "qt5": {
+      "status": "passed",
+      "Qt": "5.15.15",
+      "PyQt": "5.15.11",
+      "platform": "xcb",
+      "style": "fusion",
+      "production_main_guarded": true,
+      "personal_home_exposed": false,
+      "system_bus_exposed": false,
+      "hint_coverage": {
+        "combo": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+        "integer_spin": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "decimal_spin": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "sliders": [
+          "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor."
+        ],
+        "counts": {
+          "combos": 1,
+          "integer_spins": 1,
+          "decimal_spins": 1,
+          "sliders": 2,
+          "line_edits": 3,
+          "text_edits": 1
+        },
+        "menu_actions": [
+          {
+            "text": "&File",
+            "hint": "Ação do menu nativo da amostra: File."
+          },
+          {
+            "text": "Submenu",
+            "hint": "Ação do menu nativo da amostra: Submenu."
+          },
+          {
+            "text": "Submenu item",
+            "hint": "Ação do menu nativo da amostra: Submenu item."
+          },
+          {
+            "text": "Close",
+            "hint": "Ação do menu nativo da amostra: Close."
+          },
+          {
+            "text": "&Help",
+            "hint": "Ação do menu nativo da amostra: Help."
+          },
+          {
+            "text": "About this private demo",
+            "hint": "Ação do menu nativo da amostra: About this private demo."
+          },
+          {
+            "text": "Open file dialog...",
+            "hint": "Abre o seletor de arquivos no perfil privado; a galeria registra apenas seleção ou cancelamento."
+          },
+          {
+            "text": "Private System Settings...",
+            "hint": "Abre as Configurações do Sistema dentro do ambiente privado; não modifica o perfil pessoal."
+          },
+          {
+            "text": "Checkable native QAction",
+            "hint": "Opção alternável do menu nativo: marque ou desmarque para observar a seleção."
+          },
+          {
+            "text": "Disabled native QAction",
+            "hint": "Ação desabilitada da amostra: apresenta o estado sem executar uma operação."
+          }
+        ],
+        "line_edit": "Entrada de uma linha: selecione ou edite o texto da amostra; Undo/Redo e clipboard são nativos.",
+        "text_edit": "Editor de várias linhas: selecione, edite e role o texto; Undo/Redo e clipboard são nativos.",
+        "scrollbars": [
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra."
+        ]
+      },
+      "dialog_hint_coverage": {
+        "widgets": 23,
+        "actions": 9,
+        "scope": "native Qt hints assigned; timing/geometry and theme translation need separate proof"
+      },
+      "buttons_with_hints": 36,
+      "dialog_results": [
+        {
+          "type": "QFileDialog",
+          "buttons": 8,
+          "line_editors": 1,
+          "hints_present": true
+        },
+        {
+          "type": "QMessageBox",
+          "buttons": 1,
+          "line_editors": 0,
+          "hints_present": true
+        }
+      ],
+      "single_native_hover": {
+        "cold_delay_checked_ms": 100,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          52,
+          181,
+          94,
+          25
+        ],
+        "tooltip": [
+          101,
+          209,
+          528,
+          23
+        ],
+        "no_overlap": true,
+        "inside_screen": true
+      },
+      "result_sha256": "6bfd043f0881de2f15ee56bee715aac46bae7ac6540e0949bfed5eda47d03d5f",
+      "qa_sha256": "f1419f5accca35fc19571eb51570ffd9ba068318e16a694355584cbd603c6388",
+      "stderr_sha256": "17afb885498736a18274d216e4975a1413ff368a5867ee8d539d08c08b91c943",
+      "additional_native_hovers": {
+        "combo": {
+          "text": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            224,
+            390,
+            25
+          ],
+          "tooltip": [
+            307,
+            252,
+            456,
+            23
+          ]
+        },
+        "integer_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            208,
+            284,
+            802,
+            23
+          ]
+        },
+        "decimal_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            308,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            406,
+            284,
+            821,
+            23
+          ]
+        },
+        "horizontal_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            350,
+            369,
+            15
+          ],
+          "tooltip": [
+            296,
+            373,
+            675,
+            23
+          ]
+        },
+        "vertical_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            485,
+            318,
+            15,
+            80
+          ],
+          "tooltip": [
+            155,
+            404,
+            675,
+            23
+          ]
+        }
+      },
+      "additional_hovers_status": "passed",
+      "run_dir": "~/tempia/t07-full-qt5-menu-hover-20261017/",
+      "menu_actions_with_hints": 10,
+      "stderr_bytes": 96,
+      "wrapper_exit": 0,
+      "private_namespace_pid_isolated": false,
+      "namespace_pid_isolated": true,
+      "guard_verified": true,
+      "widgets_with_hints": 62,
+      "actions_with_hints": 10,
+      "menu_action_hover": {
+        "text": "Opção alternável do menu nativo: marque ou desmarque para observar a seleção.",
+        "stable_ms": 400,
+        "no_overlap": true,
+        "inside_screen": true,
+        "closed_after_leave": true,
+        "action": [
+          28,
+          172,
+          227,
+          25
+        ],
+        "tooltip": [
+          143,
+          200,
+          471,
+          23
+        ]
+      }
+    },
+    "qt6": {
+      "status": "passed",
+      "Qt": "6.8.2",
+      "PyQt": "6.9.0",
+      "platform": "xcb",
+      "style": "fusion",
+      "production_main_guarded": true,
+      "personal_home_exposed": false,
+      "system_bus_exposed": false,
+      "hint_coverage": {
+        "combo": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+        "integer_spin": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "decimal_spin": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+        "sliders": [
+          "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor."
+        ],
+        "counts": {
+          "combos": 1,
+          "integer_spins": 1,
+          "decimal_spins": 1,
+          "sliders": 2,
+          "line_edits": 3,
+          "text_edits": 1
+        },
+        "menu_actions": [
+          {
+            "text": "&File",
+            "hint": "Ação do menu nativo da amostra: File."
+          },
+          {
+            "text": "Submenu",
+            "hint": "Ação do menu nativo da amostra: Submenu."
+          },
+          {
+            "text": "Submenu item",
+            "hint": "Ação do menu nativo da amostra: Submenu item."
+          },
+          {
+            "text": "Close",
+            "hint": "Ação do menu nativo da amostra: Close."
+          },
+          {
+            "text": "&Help",
+            "hint": "Ação do menu nativo da amostra: Help."
+          },
+          {
+            "text": "About this private demo",
+            "hint": "Ação do menu nativo da amostra: About this private demo."
+          },
+          {
+            "text": "Open file dialog...",
+            "hint": "Abre o seletor de arquivos no perfil privado; a galeria registra apenas seleção ou cancelamento."
+          },
+          {
+            "text": "Private System Settings...",
+            "hint": "Abre as Configurações do Sistema dentro do ambiente privado; não modifica o perfil pessoal."
+          },
+          {
+            "text": "Checkable native QAction",
+            "hint": "Opção alternável do menu nativo: marque ou desmarque para observar a seleção."
+          },
+          {
+            "text": "Disabled native QAction",
+            "hint": "Ação desabilitada da amostra: apresenta o estado sem executar uma operação."
+          }
+        ],
+        "line_edit": "Entrada de uma linha: selecione ou edite o texto da amostra; Undo/Redo e clipboard são nativos.",
+        "text_edit": "Editor de várias linhas: selecione, edite e role o texto; Undo/Redo e clipboard são nativos.",
+        "scrollbars": [
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra horizontal: setas, trilho e cursor deslocam o conteúdo nativo da amostra.",
+          "Barra vertical: setas, trilho e cursor deslocam o conteúdo nativo da amostra."
+        ]
+      },
+      "dialog_hint_coverage": {
+        "widgets": 29,
+        "actions": 9,
+        "scope": "native Qt hints assigned; timing/geometry and theme translation need separate proof"
+      },
+      "buttons_with_hints": 36,
+      "dialog_results": [
+        {
+          "type": "QFileDialog",
+          "buttons": 8,
+          "line_editors": 1,
+          "hints_present": true
+        },
+        {
+          "type": "QMessageBox",
+          "buttons": 1,
+          "line_editors": 0,
+          "hints_present": true
+        }
+      ],
+      "single_native_hover": {
+        "cold_delay_checked_ms": 100,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          52,
+          181,
+          94,
+          25
+        ],
+        "tooltip": [
+          101,
+          217,
+          528,
+          23
+        ],
+        "no_overlap": true,
+        "inside_screen": true
+      },
+      "result_sha256": "f5d2109d7257aba38bcea333c11365aec7cc620cc0f26d8c2d0d560c09673cf9",
+      "qa_sha256": "4b30a01680bad28880fc86c59b506e06ca95862fcd72872c8e3d22868a8d361e",
+      "stderr_sha256": "05b31ac7658e01f8b5547c98c5dd0db5308c6ca26a5d7b16463922553d9591d9",
+      "additional_native_hovers": {
+        "combo": {
+          "text": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            224,
+            390,
+            25
+          ],
+          "tooltip": [
+            307,
+            260,
+            456,
+            23
+          ]
+        },
+        "integer_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            208,
+            292,
+            802,
+            23
+          ]
+        },
+        "decimal_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            308,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            406,
+            292,
+            821,
+            23
+          ]
+        },
+        "horizontal_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            350,
+            369,
+            15
+          ],
+          "tooltip": [
+            296,
+            381,
+            675,
+            23
+          ]
+        },
+        "vertical_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            485,
+            318,
+            15,
+            80
+          ],
+          "tooltip": [
+            155,
+            404,
+            675,
+            23
+          ]
+        }
+      },
+      "additional_hovers_status": "passed",
+      "run_dir": "~/tempia/t07-full-qt6-menu-hover-20261017/",
+      "menu_actions_with_hints": 10,
+      "stderr_bytes": 4229,
+      "wrapper_exit": 0,
+      "private_namespace_pid_isolated": true,
+      "namespace_pid_isolated": true,
+      "guard_verified": true,
+      "widgets_with_hints": 65,
+      "actions_with_hints": 10,
+      "menu_action_hover": {
+        "text": "Opção alternável do menu nativo: marque ou desmarque para observar a seleção.",
+        "stable_ms": 400,
+        "no_overlap": true,
+        "inside_screen": true,
+        "closed_after_leave": true,
+        "action": [
+          28,
+          172,
+          195,
+          25
+        ],
+        "tooltip": [
+          127,
+          208,
+          471,
+          23
+        ]
+      }
+    }
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qt5_demo.py": "c370b10ed3fc522abe1830e0dc6d23b1834e48bbb8ea4087100e481b4eee409a",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "fc327c8e27543902f13749bc8a38e754b9fce3ed1c164617a82034e138a5f4db",
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "7f3e915d9c60c486386fe4ceea50f5427e8661c75a32518003f5f444afc185dc",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "0688873cf46612259c9de8155eee98c77221ff7d2f419100724f102ac59ab4ba",
+    "plasma/tests/galerias-nativas/qt_widget_hints.py": "75facd38b74253e836340da366f50f32d6ba7654fcbe26f1159ac298cb850dd1"
+  },
+  "limits": [
+    "Both versions use QFusionStyle in this probe; it validates hint behavior, not KDE visual integration.",
+    "The run emitted D-Bus portal/inotify resource warnings in isolated namespaces; the guarded probe exited successfully in both versions.",
+    "T07 remains partial; other layouts/control-specific timing and manual review are open.",
+    "Cold tooltip delay is timed on the push button; subsequent control-specific hovers verify the exact target, geometry, stability, and dismissal during Qt’s active tooltip session.",
+    "The Qt gallery now repositions only a native tooltip that intersects its owning widget; if no exterior screen position exists, it hides the tip instead of covering the control. Qt-native palette/style painting remains in use.",
+    "Qt5 and Qt6 use QFusionStyle in these private galleries. These checks establish hint behavior and geometry, not KDE/Kvantum appearance or historical DomainOS fidelity.",
+    "Cold tooltip delay is timed on the push button; subsequent control-specific hovers verify exact target, geometry, stability and dismissal during Qt’s active tooltip session.",
+    "The Qt gallery moves a native tooltip only if it overlaps its owning widget or menu action row; if no exterior screen position exists, it hides the tip rather than obscuring the target. Native Qt palette/style painting is retained.",
+    "All 10 QAction entries have hints; timed menu-row hover is proved for one checkable QAction in each major, not every menu action or submenu.",
+    "Qt5 and Qt6 use QFusionStyle in these isolated galleries. Evidence covers hint behavior/position only, not KDE/Kvantum fidelity or historical DomainOS appearance.",
+    "Only representative hovers were timed across the classes; other layouts and hint-bearing widget types remain open for T07 review."
+  ],
+  "human_review": "pending"
+}

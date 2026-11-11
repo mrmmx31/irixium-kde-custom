@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-BLANK-DESKTOP-CLICK-CAPTURE-20261025-R176",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "initial_guest": "File Manager on /node_12345, 28 files and 2 filtered, four-column XmpIcon grid",
+    "action": "A single held host click on blank desktop area was used to arm the existing mouse hook; the click did not target an icon or menu.",
+    "result": "Hook reported captured=true, mouse=true, device=mouse, wait_button_up=false, transitions=9. The native screenshot shows the same File Manager grid without a selected icon."
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-iconview-after-held-click-r176.png",
+    "sha256": "ec5499fd34664e8adca62c95c6abb15a2aa09d5b87f7e0080035bbd8598ece36"
+  },
+  "limits": "This verifies hook capture on the blank-area click only. It produces no XmpIcon selection, focus, hover or rubberband pair for GTK2.",
+  "cleanup": "The hook was later explicitly released; the current live check confirms captured=false, mouse=false, mouse_device=none, paused=false, frameskip=4, throttled=false.",
+  "status": "capture_observed_no_icon_state"
+}

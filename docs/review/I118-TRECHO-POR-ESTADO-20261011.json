@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T05:31:38.413268+00:00",
+  "item": "I118",
+  "revision": 1,
+  "phase": "snippet_native_flow_passed",
+  "changes": [
+    "Snippet-only --recipe-state argument does not mutate model edit_state",
+    "Separate state-browsing action reads pending draft and requests new snippet without applying preview",
+    "Relief edit requests snippet and schedules optional automatic preview",
+    "Explicit unsupported hover/focus snippet reason",
+    "Exclude :not(:active) and :not(:backdrop) when incompatible with inspected state"
+  ],
+  "tests": {
+    "strict_build": "/tmp/i118-snippet-final-build.log",
+    "backend": "/tmp/i118-snippet-backend-final2.log",
+    "backend_count": 27,
+    "motif_callbacks": "/tmp/i118-snippet-unit.log",
+    "current_session": 74848,
+    "current_log": "/tmp/i118-controller-snippet-reason.log",
+    "terminal_exit": 0,
+    "native_result": ".qa-theme-lab-spin-pbzkxm7q/RESULTADO.json",
+    "native_result_sha256": "f4b844d6483316480270dad501a42ec8be8b794219dd2fcb689ec3e190ed65b7",
+    "native_snippet_assertions": [
+      "pressed header and left pressed mask",
+      "normal header and left normal mask",
+      "explicit hover unsupported explanation",
+      "manual scene unchanged during browsing",
+      "save/inherit/reload preserved"
+    ]
+  },
+  "diagnostics": [
+    "Initial test expected down glyph for horizontal bar; corrected to left",
+    "New test found pressed snippet included explicitly non-active override; fixed state filtering",
+    "First integrated attempt reached pressed snippet, then failed popup bounds after dynamic code relayout; corrected harness to await fresh stable geometry and recorded pointer targets",
+    "Snippet failure explanation discarded because JSON parsed only for exit0; now parse structured snippet failures for explanation, requiring success for source"
+  ],
+  "personal_window_changed": false,
+  "historical_visual_claim": false,
+  "scope_progress_percent": 50,
+  "remaining": [
+    "Remaining GTK3 arrow states and pieces",
+    "Preview startup/reopen readiness",
+    "Personal delivery"
+  ],
+  "hashes": {
+    "tools/theme-lab/backend.py": "754562a9a84cf92dd03d6e5c7a33350ecab4b17df0694af908c7d6c6bc25fdae",
+    "tools/theme-lab/src/controller.c": "2bff321a9158df610eba895345d6f8246820fad19e04aeb5982954e7fd38f268",
+    "tools/theme-lab/src/view/part_relief_editor.c": "bdb23f5c14624f49fec7180c787b9a4da1d78c875a034cf01990e50388c90020",
+    "tools/theme-lab/src/view.c": "64820a18f16659e44c924e683b170d73d73f8b735857dffdc5bc87b945cb66aa",
+    "tools/theme-lab/tests/test_backend.py": "3b6c5a09fd00abc0a83d41c6ce5eee51996e17f2bec3a87aed6f9d3b34b6805d",
+    "tools/theme-lab/tests/test_controller_spin.py": "488725bf5628806686382574293b6f6766ee43c75afaa2ac62038ada5400a7d3"
+  }
+}

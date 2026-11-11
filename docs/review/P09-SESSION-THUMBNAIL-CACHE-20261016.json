@@ -1,0 +1,57 @@
+{
+  "recorded_at_utc": "2026-10-16T23:35:56Z",
+  "item": "P09",
+  "user_revision": 1,
+  "definition_sha256": "4a79ca59d4628dc4c929aa33e4a29fabfd1419e6c27d2d3a43630aeef64a6ba2",
+  "status": "partial; real native frame capture inconclusive due host inotify exhaustion",
+  "implementation": [
+    "Retains the last real QQuickItemGrabResult URL in a JavaScript closure and in memory while the tooltip is hidden.",
+    "Keeps the preview-content object after first open while unloading live native thumbnail providers.",
+    "Preserves the cached frame when the provider Loader item becomes null; clears on window identity change, preview disable, or destruction of the applet subtree.",
+    "No screenshot is written to disk by the production cache."
+  ],
+  "verification": {
+    "isolated_xephyr_capture_test": "passed: real QQuickItem grab, image remains after sourceItem becomes null, identity change clears and a new frame is captured",
+    "thumbnail_lifecycle_suite": "16 passed; 1 skipped because the capture case requires an exposed X11/Xephyr scene graph",
+    "iconbox_thumbnail_suite": "1 passed",
+    "preview_budget_suite": "4 passed",
+    "git_diff_check": "passed",
+    "private_native_plasma_xephyr": {
+      "status": "inconclusive_environment_block",
+      "private_compositor_ready": true,
+      "providers_loaded": 2,
+      "available_frames": 0,
+      "dbus_log": "dbus-daemon[3387552]: [session uid=1000 pid=3387552 pidfd=5] Cannot initialize inotify: Too many open files",
+      "qml_runtime_errors": 0,
+      "user_preferences_unchanged": true,
+      "result": "The real providers loaded, but the private D-Bus process could not initialize its inotify watcher (EMFILE); providers never became available, so the native frame/cache path was not observed."
+    }
+  },
+  "evidence": {
+    "native_result": "~/tempia/domainos-p09-native-20261016/RESULTADO.json",
+    "native_runner_log": "~/tempia/domainos-p09-native-20261016/RUNNER.log",
+    "xephyr_capture_unit": "plasma/tests/test_domainos_thumbnails.py::ThumbnailLifecycle.test_frame_snapshot_is_memory_only_and_identity_scoped"
+  },
+  "source_sha256_at_record": {
+    "cache_qml": "f529b93cb2f14d905f6cf3ec978ab1ea69350e955ce4e87767abf413c24b10c5",
+    "thumbnail_owner_qml": "6ffa59a36d12619177063d61ccca638b53113ac3cb2b1b1cb5cb55bd389c018a",
+    "preview_contents_qml": "36cc3b81ca197fe6fb0bb294b475fc65286cfcd65ceacd2d06d36e593900268e",
+    "functional_doc": "e0a4160c9954b02ee8374e7dd232ffdb1d123e949d54727ad0de5e2bbeda7232",
+    "lifecycle_test": "941c2d7c8e65cf3b7c53531acb5ea2cd755dda68f5bf4ac01277ad4e29fb437a",
+    "native_host": "e4afd380137205791b0ba46cab35c8225828b7e33103fae7b2ceea74309f2036",
+    "native_runner": "a531e650389dc526deb6bf14c4cbade39f4b27377462aabb695b3c5e9506f125",
+    "lifecycle_host": "8af409341462e1f2bd3b499744b5e0e7a00566b12c0b3eb8e427c2ecc1c07530"
+  },
+  "source_sha256_at_native_attempt": {
+    "thumbnail_owner_qml": "6ffa59a36d12619177063d61ccca638b53113ac3cb2b1b1cb5cb55bd389c018a",
+    "preview_contents_qml": "36cc3b81ca197fe6fb0bb294b475fc65286cfcd65ceacd2d06d36e593900268e",
+    "lifecycle_test": null,
+    "native_host": null,
+    "native_runner": null
+  },
+  "limitations": [
+    "Unit capture uses a genuine exposed Qt Quick scene graph under isolated Xephyr but not the Plasma WindowThumbnail provider.",
+    "The private native-provider run preceded the final sourceItem-null lifecycle adjustment; that final adjustment is covered by the Xephyr unit capture test, not by a successful native provider capture.",
+    "No manual approval or full native capture is claimed."
+  ]
+}

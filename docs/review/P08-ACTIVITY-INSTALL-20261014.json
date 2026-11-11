@@ -1,0 +1,49 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "status": "installed_partial_waiting_user",
+  "recorded_at_utc": "2026-10-14T11:55:00Z",
+  "installation": {
+    "source": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml",
+    "destination": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml",
+    "before_sha256": "66308e4b0b146e2e05f683c7bb76d5123d8484a74535ff289792574c2e3d5ddb",
+    "after_sha256": "27c7c1927bfecade5b745aad639714496b383f22ba00032bdd82acaa4032b30c",
+    "transaction_receipt": "/home/lsi/.local/state/irixium/p08-startup-20261014/backups/79514968cc824bdaa6c453d22e4c7e2e/receipt.json",
+    "backup_dry_restore": "passed",
+    "installed_source_matches": true
+  },
+  "reload_verification": {
+    "service": "plasma-plasmashell.service",
+    "active": true,
+    "main_pid": 2659000,
+    "panel_id": 2268,
+    "applet_id": 2269,
+    "read_only_inspection": "tools/classic_panel.py diagnose() saw one panel and org.irixclassic.domainos.panel applet",
+    "qml_errors_for_DomainOSActivity_or_DomainOSPanel": 0,
+    "other_diagnostics": "32 warning lines from DomainOSTray.qml:372 (QQmlBind::target non-NOTIFYable), plus one transient TypeError from an initial incorrect read-only Plasma JS probe using Panel.all(); corrected read-only diagnosis succeeded, no panel/app data operation occurred."
+  },
+  "configuration_preservation": {
+    "unchanged_hashes": {
+      "kdeglobals": "a782395a440fd67f3d10022dc1b1ba64ec874516cdfad460b397f089e138de17",
+      "kwinrc": "147ffd659ed4b30e580c5f463c8dea25f77e411efb8f2382aacc34d7a0843901",
+      "plasmarc": "8941bc1e6562aa63fce805612ec1dda964ae7cf6a9a37ffeb0e0a30c4c77bf28",
+      "plasmashellrc": "0f62bc31bfd0dc2c94a90baeaeb9b87d66a5137432635f617d1c49c1fbcd6dcc"
+    },
+    "applets_config_before_sha256": "c272d24b99f8596a3abee6a8cd53fb7b5da419251dc5f4cde833b6d033adb8cb",
+    "applets_config_final_sha256": "c272d24b99f8596a3abee6a8cd53fb7b5da419251dc5f4cde833b6d033adb8cb",
+    "transient_restart_write": "Only the ordering of the same 10 screenMapping tuples changed; exact pre-restart bytes restored from session-preservation backup after verifying no other line changed."
+  },
+  "linked_startup_evidence": "docs/review/P08-STARTUP-XEPHYR-20261014.json",
+  "limitations": [
+    "Q334 still blocks MAME guest input.",
+    "Manual review is pending.",
+    "The delayed startup behavior was exercised in the isolated Xephyr harness; no actual personal application was launched during verification.",
+    "Manual visual review remains pending.",
+    "Q334 still blocks MAME guest input.",
+    "The command fixture runs its bridge/QML harness with direct method invocation, not a full-panel pointer click."
+  ],
+  "next": "Keep P08 partial; continue only with other independently authorized work while awaiting manual answers and Q334.",
+  "command_bridge_receipt": "docs/review/P08-COMANDOS-XEPHYR-20261014.json",
+  "command_bridge_status": "25/25 Xvfb and 25/25 Xephyr after correcting stale KIO result expectations."
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "id": "R343",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "read-only current-state revalidation of the project-owned Domain/OS SR10.4 guest and GTK2 horizontal-stepper follow-up",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_process": {
+      "pid": 3971019,
+      "disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+      "ownership": "separate AI Work Board workspace and disk; not contacted"
+    },
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "mouse_captured": false,
+      "bridge_pending": null
+    },
+    "pre_input_verification": {
+      "command": "vm/domainos-sr10.4-assistant/verify.sh",
+      "exit_code": 4,
+      "reason": "The helper is conservative and rejects any other MAME process. Read-only command-line inspection identifies PID 3971019 as the separate AI Work Board clone on a different disk/runtime. The two process/network namespaces still require explicit comparison before more guest input."
+    }
+  },
+  "capture": {
+    "type": "native guest snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/r343-current-guest.png",
+    "sha256": "4f2397ce71a1a5e8039509058d18982e3f0f65ba6fbfcccea45294d9e9705ebe",
+    "size_px": [
+      1024,
+      844
+    ],
+    "visible": "HP VUE 2.01 desktop, Terminal and File Manager at /node_12345; vertical scrollbar visible; no horizontal scrollbar in this frame"
+  },
+  "input_sent": false,
+  "gtk2_state": {
+    "user_selected_theme": "DomainOS-SR10-4-KDE",
+    "gtkrc": "~/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "gtkrc_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "stepper_size": 15,
+    "slider_width": 11,
+    "overlay_stretch": false,
+    "normal_horizontal_assets_match_retained_vue": true,
+    "reference": "R305/R334/R337",
+    "live_gtk2_process_reload_proven": false,
+    "open_xchat": {
+      "pid": 3951437,
+      "started": "2026-10-26T19:38:49-04:00",
+      "selected_theme_at_session": "DomainOS-SR10-4-KDE",
+      "recipe_files_updated_after_start": true,
+      "native_reload_required_per_R332": true,
+      "interpretation": "A stale GTK2 process is a plausible explanation for the user seeing pre-overlay arrows; this does not prove the exact pixels in that process. No restart was performed."
+    },
+    "installed_native_render": {
+      "gtk": "2.24.33",
+      "test": "actual GtkHScrollbar under Xvfb; GTK_MODULES empty to avoid an unrelated broken atk-bridge module",
+      "loaded_theme": "DomainOS-SR10-4-KDE",
+      "allocation_px": [
+        543,
+        15
+      ],
+      "capture": "~/tempia/ia-tema/evidence/I167/r343-installed-gtk2/gtk2-installed-horizontal-no-atk.png",
+      "capture_sha256": "913456498bc68e3617305824ed651f5082035a5a68212837479d42c4ed3f3c2d",
+      "registered_comparison": "DomainOS SR10.4 retained horizontal Trash Can crop, direct 1:1 RGB compare",
+      "left_cell": {
+        "origin": [
+          2,
+          0
+        ],
+        "size": [
+          15,
+          15
+        ],
+        "different_pixels": 3,
+        "differences": "outer lower-left relief corner only"
+      },
+      "right_cell": {
+        "origin": [
+          526,
+          0
+        ],
+        "size": [
+          15,
+          15
+        ],
+        "different_pixels": 1,
+        "differences": "outer upper-right relief corner only"
+      },
+      "arrow_glyph_conclusion": "The horizontal glyph geometry is not reduced; differences are confined to the outer cell relief corners, consistent with R334/R337.",
+      "limitation": "Isolated native GTK2 render validates the installed RC/assets, not pixels already held in memory by an open XChat process or human visual acceptance."
+    }
+  },
+  "conclusion": "The VM was visibly awake in the new R343 snapshot, so no Shift wake pulse was necessary. R258 documents the previously successful one-frame Shift wake method; R341 was a separate earlier capture with no input. Current normal GTK2 horizontal arrow glyphs/assets remain measured 11x11 and match the retained SR10.4 pixels at 1:1; this screenshot does not show a horizontal bar and cannot independently test it. The installed GTK2 theme has the non-stretching 15x15 overlay recipe, but a live GTK2 process using this revision and manual visual acceptance are still unverified. The open user XChat process (PID 3951437) predates the R332 GTK2 file update, and R332 explicitly requires a native reload; it may still render the previous steppers. This is a plausible explanation, not a pixel-level proof of its in-memory renderer. A fresh native GTK2 GtkHScrollbar under Xvfb loaded the installed user theme and compared directly to the retained SR10.4 horizontal bar: the left cell differs by 3/225 pixels and the right by 1/225, all at outer relief corners. The horizontal arrow glyph is not reduced in the installed recipe. A second clean run with GTK_MODULES unset produced the same capture hash.",
+  "next": "Keep I167 on GTK2. The installed recipe and fresh native GTK2 preview both rule out a shortened normal horizontal arrow; remaining discrepancies are the documented outer cell corners and the stale XChat process. Do not restart XChat during active use. Preserve native VM horizontal-frame comparison and manual acceptance as open.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Carry-forward estimate; R343 reconciles VM visibility and installed GTK2 configuration but does not close the live horizontal comparison or manual review.",
+    "not_a_visual_fidelity_score": true
+  }
+}

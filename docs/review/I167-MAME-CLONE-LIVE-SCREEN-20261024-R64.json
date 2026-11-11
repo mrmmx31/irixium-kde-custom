@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-LIVE-SCREEN-20261024-R64",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "observed_at_utc": "2026-10-24T04:25:00Z",
+  "correction_to_R62": {
+    "finding": "The default mame_control status queried a legacy /tmp channel; it was not bound to assistant-owned PID 2745483. Its request f2127393cf7642a4896dceae1977ea71 was submitted on 2026-10-13 and must not be attributed to this clone.",
+    "clone_control_dir": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "binding_evidence": "MAME_CONTROL_DIR read from /proc/2745483/environ and the clone's existing sessao/bridge.lua.",
+    "actual_channel_status": "No pending command before probe; probe and snapshots returned correlated replies and consumed their requests."
+  },
+  "clone": {
+    "pid": 2745483,
+    "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "ui_active": false,
+    "other_MAME_instances_used": false
+  },
+  "guest_capture": {
+    "screen_tag": ":apollo_screen:screen",
+    "path": "~/tempia/i167-live-clone-r64/domainos-screen.png",
+    "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "resolution_px": [1024, 844],
+    "pure_black_pixels": 819640,
+    "total_pixels": 864256,
+    "pure_black_percent": 94.84,
+    "visible_content": "Apollo command strip at the bottom; VUE desktop and test windows are not visible.",
+    "request_id": "c7617aeb7eeb47b6beb2bf61123dc502"
+  },
+  "earlier_same_clone_image": {
+    "path": "sessao/capturas/guest-current-20261023.png",
+    "captured_at_local": "2026-10-23 23:22",
+    "sha256": "3dc253e8e46a62f1aedf80f00e6f32d8460f7563f09581e052bff9799a8ba236",
+    "observation": "The saved image shows the SR10.4 VUE desktop, Terminal, File Manager and Find Files dialog; it proves the clone displayed VUE earlier, not that the current guest is responsive."
+  },
+  "network_namespace_read_only": {
+    "method": "Bounded Lua bridge command read /proc/self/net/dev, route and arp from the MAME process namespace; a fixed Python probe ran via io.popen with 1.5s connection limits. No credentials or guest commands were sent.",
+    "tap_interface": "tap-mess-0-0",
+    "guest_route": "192.168.240.0/24 via the TAP interface",
+    "guest_arp": "192.168.240.2 resolved to 08:00:1e:01:23:45",
+    "tcp": [
+      {"target": "192.168.240.2:21", "result": "connect timeout"},
+      {"target": "192.168.240.2:23", "result": "connect timeout"},
+      {"target": "10.253.104.20:21", "result": "accepted locally; no greeting within 1.5s"},
+      {"target": "10.253.104.20:23", "result": "accepted locally; no greeting within 1.5s"}
+    ],
+    "interpretation": "The clone's private network has an ARP entry for the guest and the local alias accepts TCP, but the forwarded FTP/Telnet greeting was not obtained. The earlier TCP tests from the host namespace are excluded because they do not share this clone's network namespace."
+  },
+  "requests": {
+    "probe": "14d3227ec269465e970402fb58ab8ab0",
+    "netns_read": "512972aad08d4ac88545be15af92fa05",
+    "tcp_probe": "86ac346f40bf47aabfdfd3aab1293a67",
+    "all_correlated_and_consumed": true
+  },
+  "limits": [
+    "No input, focus change, pause, reset, guest edit, host-network change, or MAME restart was performed.",
+    "The live guest is currently not visually usable for a new GTK2 historical comparison.",
+    "This does not establish why the VUE display went black after the earlier 2026-10-23 capture."
+  ],
+  "next": "Keep I167 open. Continue GTK2 work supported by existing valid captures and probes; repeat the historical focus/caret/selection comparison only when the current clone displays the VUE session again."
+}

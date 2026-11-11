@@ -1,0 +1,162 @@
+{
+  "at": "2026-10-12T02:40:50.617195+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 toggle real Motif Save/Load dialogs and controller restart in two preview origins",
+  "native_session": 47730,
+  "native_exit_code": 0,
+  "native_result": {
+    "status": "passed",
+    "scope": "Real Motif Save/Load dialogs and GTK4 toggle controller restart",
+    "initial": [
+      {
+        "control": 1,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 1,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "restarted": [
+      {
+        "control": 1,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 1,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "changed_before_load": [
+      {
+        "control": 1,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 220,
+        "height": 55,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 1,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 220,
+        "height": 55,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "loaded": [
+      {
+        "control": 1,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 1,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 62,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "scene_bytes_preserved_after_restart": true,
+    "all_recipes_preserved": true,
+    "saved_detached_preference_preserved": true,
+    "gtk4_toggle_css_visible": true,
+    "load_preserved_previous_scene_until_apply": true,
+    "runtime_selection_persisted_as_project_property": false,
+    "historical_fidelity_claimed": false
+  },
+  "negative_evidence": {
+    "session": 72584,
+    "exit_code": 1,
+    "cause": "New test incorrectly expected Load to apply immediately. Product correctly restored working proposal while preserving applied scene; test corrected to assert that preservation before explicit Apply."
+  },
+  "proof": [
+    "Native Save wrote 280×60 and detached preference.",
+    "Controller restarted normally and preserved scene bytes exactly.",
+    "All recipes identical after restart and Load.",
+    "Scene changed to220×55 through native setters before loading saved project.",
+    "Load restored proposal280×60 without changing220×55 scene; explicit Apply restored both previews.",
+    "Actual CSS visible in code panel; root composition inspected."
+  ],
+  "limits": [
+    "Runtime checked selection is ephemeral, not serialized as a project setting.",
+    "No historical fidelity, keyboard/focus appearance or palette matrix claim.",
+    "Current native push regression and coordinated personal delivery pending."
+  ],
+  "estimated_toggle_unit_progress_percent": 75,
+  "percentage_basis": "Integrated behavior, selected CSS and project persistence proved; palette/state matrix, regression and delivery remain.",
+  "personal_instance_changed": false,
+  "sha256": {
+    "tools/theme-lab/tests/controller_gtk4_toggle_persistence.py": "e143e74924c0390306f773657bcfa6127f116313b7c0a74cd6be071399431d2e",
+    "tools/theme-lab/tests/test_controller_spin.py": "08887d03d029bf09d130eca70bae87ed864a1470011862139dc402f8698c34b6",
+    ".qa-t04-anchor-foundation/gtk4-toggle-persistence-native-r2.log": "85bf6199aad87fc95376b93b1ccba58dcad67b011c702f4c9e766c7e6bf87492",
+    ".qa-theme-lab-spin-_hd5jwj6/RESULTADO.json": "78d792baf82ab3d2c5f1eefee3ccf16939dc0db7c9fff756f7a2ee31af2f0c6b",
+    ".qa-theme-lab-spin-_hd5jwj6/gtk4-toggle-persistence-root.png": "f87aa052d4337f860fc86fef2b02d3ee85287a7c99fbf65d3c1b1fb66a46654a",
+    ".qa-theme-lab-spin-_hd5jwj6/home/toggle-projeto.json": "8f517b252560c9e101813e08b05ec8f985703a13d94d7a1473af2bf6f877172f",
+    ".qa-theme-lab-spin-_hd5jwj6/home/lab/working.json": "093058ad20a9a9b0f46c50e8a581dc054f291bc721554621a143480e1b7c576b",
+    ".qa-theme-lab-spin-_hd5jwj6/home/lab/scene.json": "0e7c4a36396100214298399dc900839cdc5dd3ac0f66e2fd9d039cb4cfb17888"
+  }
+}

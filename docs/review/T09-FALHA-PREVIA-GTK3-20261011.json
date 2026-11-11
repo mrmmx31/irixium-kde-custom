@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-11T14:17:56.995566+00:00",
+  "item": "T09",
+  "revision": 1,
+  "phase": "gtk3_child_crash_recovery_verified_private",
+  "defect": "Prévia acoplada encerrada mantinha métricas nativas apresentadas como disponíveis.",
+  "changes": [
+    "Remover métricas da origem acoplada quando não há outro filho acoplado ativo.",
+    "Aceitar métricas/estados nativos apenas enquanto a origem correspondente tem job não cancelado para a família aplicada."
+  ],
+  "checks": {
+    "status": "passed",
+    "scope": "Owned native GTK3 coupled and separate child crashes; model/scene preserved; editor native input and explicit Apply recover; dead preview metrics removed. No timeout or historical fidelity claim.",
+    "crashed_owned_pids": [
+      2535731,
+      2536110
+    ],
+    "editor_recovered": true
+  },
+  "strict_build": "all/build-controller-spin-probe passed; probe rebuild passed",
+  "diff_check": "passed",
+  "test_failures_preserved": [
+    "Before: dead coupled metrics retained.",
+    "After: separate checkbox was outside scroll viewport; test-only reveal added.",
+    "After-visible: separate opened before coupled regeneration settled; wait for both origins added."
+  ],
+  "scope": "Falhas SIGKILL de duas prévias GTK3 reais identificadas por UID, argv, ambiente e pidfd; arquivos working/scene intactos, entrada de texto real, Aplicar recria220→222×80, medidas da origem morta removidas. Não prova timeout/eventos antigos/Qt/GTK2/fidelidade histórica.",
+  "remaining": [
+    "Ensaio de timeout/backend lento mantendo edição.",
+    "Eventos atrasados de cena/origem antiga e recuperação.",
+    "Encerramento/cancelamento limita-se a processos próprios, com comprovação de descendentes.",
+    "Entrega pessoal coordenada e avaliação."
+  ],
+  "estimated_stage_progress_percent": 20,
+  "percentage_basis": "Primeiro percurso GTK3 de falha e recuperação concluído; timeout/eventos antigos/encerramento e entrega permanecem. Não goal ou fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "b43903f94c76136a0612d7339dad818d481ef74476ab3acf2e4fd75d7f835be0",
+    "tools/theme-lab/tests/controller_preview_recovery.py": "34f10f15ff7342781cd071da1ad2e380987fcfacc051b3b15c506f05a93e0670",
+    "tools/theme-lab/tests/controller_spin_probe.c": "580908010944c38ebd635f3104a22aea2777e7d23a3ba7fc6046bd54e0ded8e9",
+    "tools/theme-lab/tests/test_controller_spin.py": "da338be1ca58d6fd26417246cd394339eeed6b69428d6d9003edbdaaa92c3f31"
+  },
+  "evidence_hashes": {
+    "t09-crash-before.log": "60d80be4ed929a15c11441b7c8d658e868184a601360ae3298f32581ed16828c",
+    "t09-crash-before.err": "173f7b70308fa204dbb47487d678ea3dac8f7b4f9df4ee7c816393b92daab5cd",
+    "t09-crash-build.log": "98a6f3684e16e0d4141697ea0af594b2adf9044f6d63f312dd99b105aa8fe8ca",
+    "t09-crash-probe-build.log": "78075cd26c74da4e4e2ecdc658c9f2a7027d581e5abfc2b788324ad028ecb3e3",
+    "t09-crash-after.log": "b4080a505e000b5f87283244eb8f98ab714e747cce7761440c2d02b841dd0d45",
+    "t09-crash-after.err": "d8b10cbb66b1e73812ba3e81418c8903ebf9e26d24690694cc7cbc03e21ffdc2",
+    "t09-crash-after-visible.log": "aaec95af525ffefd66845cf5e8a399a09a4598fca31d8513a2fd9f5dcf131209",
+    "t09-crash-after-visible.err": "7f14e7212d16d0cbcd10e8f5a8a6a4ee2c63760179e359ee2eece6cb2d08fc48",
+    "t09-crash-after-settled.log": "f7bc2edfd2c0b54e1435f1cc72b1061b5301d77b495d21ffe70d5ee3dfbb9be7",
+    "t09-crash-after-settled.err": "d31b4c70281720d5824af075dda9a6f068d339144008b8801b5d6251916ec916"
+  }
+}

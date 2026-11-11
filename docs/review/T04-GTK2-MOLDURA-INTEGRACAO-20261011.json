@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-11T18:14:37.969978+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "frame",
+  "coverage": {
+    "integrated": 16,
+    "total": 16,
+    "percentage": 100,
+    "scope": "GTK2 catalog type integration only; not complete adapter, historical fidelity or full goal"
+  },
+  "native": {
+    "scenes": ".qa-t04-frame-integration/native-face/RESULTADO.json",
+    "scene_count": 24,
+    "font_padding_size_rebuilds": 8,
+    "gestures": ".qa-t04-frame-integration/gestures/RESULTADO.json",
+    "gesture_origins": 2,
+    "controller": ".qa-theme-lab-spin-1ry9jcih/RESULTADO.json",
+    "natural_minimum_fixture": [
+      72,
+      30
+    ],
+    "font_fixture": "Sans13px; not historical Motif metric"
+  },
+  "tests": {
+    "pure_and_integration": 6,
+    "list_regression": 3,
+    "gtk2_contract": 4,
+    "shared_scene": 15,
+    "strict_build": "passed",
+    "c_receipt": "passed",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "src/controller/generated_preview.c": "642b8be95069039b4f9b7d66724f2505f598381109faeecf5e7288aabc623804",
+    "gtk2_frames.py": "089df08860fc4acbcb8b1eec1f74fb97aa4fa0b7796ec36d0357c04c8c168834",
+    "frame_control_gtk2.py": "6d243814fa4cc66311c049abac36a6d2d0cb9fdc1423de39863a473727069a4c",
+    "gtk2_generation.py": "c3f8a503178fe6c41b4f8d7727b8c61c75180f5adc016c250454520b286b6f55",
+    "gtk2_session.py": "e3dd9477274746516d4dafd4f115726c26cd84b43bd4041afcf3ec36bb095cd5",
+    "native_scene_gtk2.py": "72d44af3eb36edd65c4cf15354094b43f95af7909bb95052b786bfaec4fd9d50",
+    "backend.py": "4b62257c9a77408bbbd1cc916e3305c556f78cb487978e08710035d1419751df"
+  },
+  "scope": "Generation/Python+C receipts/bindings/snippet/scene/session/controller connected. Ctrl select/move36x24 passed both origins without native action. Actual controller size/toggle/SaveLoad/UndoRedo/two restarts preserves pending410x50 proposal and applied300x50 scene.",
+  "limits": [
+    "Frame is separate from scrollbar_parts.fitting (still unsupported GTK2)",
+    "Forced press/focus, length anchors and complete state/pixel matrix pending",
+    "Runtime sample state/history persistence across processes pending",
+    "Historical/manual approval not supplied"
+  ],
+  "python_scene": "docs/review/T04-GTK2-MOLDURA-CENA-20261011.json",
+  "delivery": {
+    "status": "open",
+    "pid": 2871342,
+    "display": ":61",
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-58b615fc5ce44b2eb59db088a1918a88/MANIFESTO.json",
+    "preservation": ".qa-t04-frame-integration/delivery-preservation.json"
+  }
+}

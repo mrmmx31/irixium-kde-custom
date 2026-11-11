@@ -1,0 +1,110 @@
+{
+  "at": "2026-10-10T23:34:32.780548+00:00",
+  "item": "I097",
+  "authority_revision": 1,
+  "phase": "delivered_lsi",
+  "explicit_request": "Canais fixos fora de qualquer filtro, renomear Q091 e criar canal próprio do outro contexto",
+  "install": {
+    "backup": "/home/lsi/.local/state/ai-work-board/channels-recovery-20261010T233342Z",
+    "paths": [
+      "docs/CANAIS-FIXOS.md",
+      "tests/test_channels_native.py",
+      "tests/native_filter_probe.c",
+      "src/app/main.c",
+      "src/model/channels.c",
+      "src/model/filter.c",
+      "src/model/validation.c",
+      "src/model/definitions.c",
+      "src/view/channels.c",
+      "src/view/toolbar.c",
+      "src/view/internal.h",
+      "src/view/task_list.c",
+      "src/view/reopen.c",
+      "src/controller/navigation.c",
+      "src/controller/state_filter.c",
+      "src/controller/session.c",
+      "include/work_board/channels.h",
+      "include/work_board/view.h",
+      "Makefile",
+      "README.md",
+      "PROTOCOLO.md",
+      "build/work-board",
+      "build/libwork-board-model.a"
+    ],
+    "binary_sha256": "a85a6099b1da8be639e21491845a9fcbd8c6cb9caebc82674ba4a0ef3211af0e"
+  },
+  "channels": {
+    "main": "Q091",
+    "colleague": "Q102",
+    "all_human_records_preserved": true,
+    "request_session": "88f798b5d6adee95ac54a313b07c33cd696c1955a3c67a0102e651b2442c3534"
+  },
+  "native_results": {
+    "configuration_CAS_preserves_all_human_and_assistant_records_and_stale_seed": true,
+    "channels_removed_from_task_rows": true,
+    "fixed_channels_accessible_under_empty_filter_and_independent_drafts": true,
+    "all_14_state_filters_leave_channels_accessible": true,
+    "tabs_menu_and_other_section_leave_channels_accessible": true,
+    "reload_preserves_channel_name_selection_and_draft": true,
+    "native_channel_undo_redo": true,
+    "reopen_preserves_both_channel_drafts_and_histories": true
+  },
+  "store_tests": 17,
+  "filter_model": "passed",
+  "personal_window_reopened": true,
+  "human_approval_filled": false,
+  "estimated_stage_progress_percent": 100,
+  "percentage_basis": "Implementação, ensaios, configuração e entrega pessoal concluídos; aprovação humana separada.",
+  "hashes": {
+    "docs/CANAIS-FIXOS.md": "3e38f0ee7c378ae2043cd413b20deb4f8316a8c33925483745cca049c36a30d4",
+    "tests/test_channels_native.py": "e82170bc4bbf9cd01e482f52d541f54c872b9449877484e6650ee7487e2f78b0",
+    "tests/native_filter_probe.c": "4fbaec27e8626ea719563015855d29db537ee8d733e6e7d72bab1781cd11141c",
+    "src/app/main.c": "1c663fab3bfcbbb1b3281b8e5f18c2c66358b724495a55528f58b3cd80465685",
+    "src/model/channels.c": "35ca7c76a70e26f1c9adf0d4e09d2545c71f7a19bca65fe2a7d23b72364b4764",
+    "src/model/filter.c": "73ddce323cb5584e09286ba37690b3542b39fd4ff789c968aa98692e48576811",
+    "src/model/validation.c": "04adedb260c5617d537a1857c847796641ed8e5821ac7c260b886a7c65348169",
+    "src/model/definitions.c": "d4882f76c5bcd13660b3e7df65e92d78e98d51e0a6ef7f52827980f5b34bdb0b",
+    "src/view/channels.c": "441a5cf2e094eeaf11f58e5aa2ac27fd6ec881874d469bc6be8185fdf95145af",
+    "src/view/toolbar.c": "954712c2eabdd9c3349eb5274bd930601079318d1de6a8b6bb0d7c939bb3f34e",
+    "src/view/internal.h": "2cac72fbac0f900b8c885b40d5ffe7d4007c73f1ad7f3cde88dd0c6f2bfef05a",
+    "src/view/task_list.c": "62bb052ab3c4c1faae45e382d122d209069382affe7a44d14348ce0cb0cbf86b",
+    "src/view/reopen.c": "d22ad8047c695534d939dd59eebcff05c60eaf67ea816797dd6a45f62ef84270",
+    "src/controller/navigation.c": "1bb0302915ea8d722a2e30f4f1f9c3129a5aa97d452165fc48fa076d061f9017",
+    "src/controller/state_filter.c": "aa693d293c54a9eb89e6bbd7d6616755ab011a955fd80e62de231381fc968bcc",
+    "src/controller/session.c": "595a0dbe1459eae1da7aa1c44a2564b75518d66ca2ca2ee262d1ffdf9c8292d9",
+    "include/work_board/channels.h": "15d36baab6e020e5db382a4aea2902298d12f9d365fc817545eac54e1d47ce4d",
+    "include/work_board/view.h": "76dfa4f37d7b9b25647c9e393856d5f094a524dba20353e72f9d2f6df7b65330",
+    "Makefile": "03487bc2fec045cad2a9b55e76498d3f62d0502c03bea1ae0f9ec530dbe57121",
+    "README.md": "703eaba50fb5ffd21eac889b941ebcf10f79d3daf488fc86dbd9421bbde09f89",
+    "PROTOCOLO.md": "f2858301617a92071ee57178f6ed32023a67b6fb50d497f094502c413833f183",
+    "build/work-board": "a85a6099b1da8be639e21491845a9fcbd8c6cb9caebc82674ba4a0ef3211af0e",
+    "build/libwork-board-model.a": "be9c96c7f7442aa53860a672007f31af221cb7a96482580bda577ed0edb23179"
+  },
+  "remaining": [
+    "Human evaluation"
+  ],
+  "T01": "continua running; percurso do spin será retomado depois desta prioridade direta",
+  "handoff": {
+    "date": "2026-10-10T23:36:06.322382+00:00",
+    "previous_pid": 1387195,
+    "pid": 1401586,
+    "binary_sha256": "a85a6099b1da8be639e21491845a9fcbd8c6cb9caebc82674ba4a0ef3211af0e",
+    "backup": "/home/lsi/.local/state/ai-work-board/reopen-channels-20261010T233516Z",
+    "visible_windows": 1,
+    "preservation": {
+      "drafts_identical": true,
+      "chat_drafts_identical": true,
+      "histories_identical": true,
+      "chat_histories_identical": true
+    },
+    "all_user_records_identical": true,
+    "journal_metadata_changes": [
+      "assistant_seen",
+      "selected",
+      "show_history"
+    ],
+    "limitation": "show_history changed from true to false during reopening observation; no text/history difference. Cause not established; no preference overwritten to conceal it.",
+    "native_grant_backup": "/home/lsi/.local/state/ai-work-board/reopen-channels-20261010T233516Z/respostas.json.reopen.json"
+  },
+  "visual_inspection": "Captura pessoal examinada: ambos os botões de canal na faixa fixa acima das abas, esquema KDE atual, única janela. Os canais não aparecem na fila."
+}

@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-11T04:37:30.135165+00:00",
+  "item": "I117",
+  "authority_revision": 1,
+  "phase": "verified_gtk3_piece_margin_allocations",
+  "sources": [
+    "https://raw.githubusercontent.com/GNOME/gtk/3.24.49/gtk/gtkrange.c",
+    "https://raw.githubusercontent.com/GNOME/gtk/3.24.49/gtk/gtkcssgadget.c"
+  ],
+  "runtime_sha256": "a56aed9f46dc47d054555880c6dc543f41846b0732520c7d2e5ef45c5c7f2ddf",
+  "gates": [
+    "Linux x86_64 pointer64 and exact GTK3.24.49 binary hash",
+    "Main thread, exact GtkScrollbar, mapped/realized",
+    "Registered gadget classes, bounded private offsets, owner matches current widget",
+    "Read-only bounded /proc/self/mem reads; invalid addresses/short reads return unknown",
+    "Public GtkRange area and slider endpoints cross-check",
+    "All returned local rectangles positive and within actual widget allocation",
+    "Additional secondary steppers do not falsely map to two Motif arrows"
+  ],
+  "native_verification": [
+    "Horizontal and vertical GtkScrollbar in separate and coupled origins",
+    "Actual slider box updates after value change35to70 with long measured allocation",
+    "Unsupported runtime fallback does not read internals",
+    "Wrong widget class rejected",
+    "Motif regression tests passed",
+    "IPC partial rectangles accepted; overflow and unsupported source rejected transactionally",
+    "Formatter distinguishes Motif rectangles from GTK3 margin boxes"
+  ],
+  "sample_probe_boxes": "See .qa-i117-gtk-pieces/reader.log; h slider38x11, v11x38 with220px requested axis in current GTK theme; not historic defaults",
+  "failures": [
+    "Initial experiment failed converting GdkRectangle to list and remained live; own process terminated, corrected bounded probe passed. Original log retained."
+  ],
+  "preservation": "No personal preview reopened, no GTK/desktop schema changed, no VM touched",
+  "limitations": [
+    "Only exact tested GTK binary internal layout supported; other builds retain public measurements",
+    "Margin allocation boxes are not borders, painted glyphs, or historical Motif metric identity",
+    "No fidelity approval inferred; isolated GTK paint/pixel comparison and full integrated handoff still pending"
+  ],
+  "estimated_stage_progress_percent": 75,
+  "percentage_basis": "I117 scoped implementation: both native piece allocations measured; complete comparison flow, visual paint scope and delivery still pending",
+  "hashes": {
+    "tools/theme-lab/native_parts_gtk.py": "444bb63a85bcec944be42185ef4ca0dfc95050efa7e56ee053b8938916db7b8e",
+    "tools/theme-lab/preview_gtk.py": "9903c01cc250599d8003747af86d9aec6646b086cf5a18d82e2c43779b74e387",
+    "tools/theme-lab/include/native_metrics.h": "8a5eebeb14e83a839fcf99fb6579402f45917410f4c9a30cbb43a3832092650e",
+    "tools/theme-lab/src/native_parts_motif.c": "9ed765bb11ab7d1841ab357b56b6a36764e3e37e20d7e3d830f58057ee10b76d",
+    "tools/theme-lab/src/native_metrics.c": "2f15d89244675a3d91dd0df1341c40e28ab3e9b929cf930add0eb6f6ab1bb6cc",
+    "tools/theme-lab/src/preview_event.c": "38f51c4995dc99ef33b6cd41210d54df718ff66639cb9f6d991d5e83e9dc9afe",
+    "tools/theme-lab/tests/test_native_metrics.py": "9f6c0578c496ba2a54bbf0a3f7298eb68a3a9a02648259eecc18db823ef521b7",
+    "tools/theme-lab/tests/preview_event_test.c": "8e31dbbfa0ab9040c9dbe78954df6ae45b544294cf14ebe3702ddb903e4a39f7",
+    "tools/theme-lab/tests/metrics_comparison_test.c": "f1f9e5c5a55622b99ab9ad3a1a97ff5032738468175f518b2a55dd034f14db89",
+    "plasma/tools/abrir-laboratorio-temas.py": "d6d6b9822d9036afc7cac328c5e6cc6d82b28bd112d1256c888528467023ae2a",
+    ".qa-i117-gtk-pieces/reader.log": "9ebd18b5a7c735b30fba62ad073720f366ab7a4500359f05943afd6cb1cc6a06",
+    ".qa-i117-gtk-pieces/native-gtk.log": "af3f99356c5fd526a2f201b9ccd28fb51bc413b9cbf16aa45d14ea8c25523bf4",
+    ".qa-i117-gtk-pieces/native-motif.log": "5540c29a3fec6030fa43c4b02981b06561e98ed53c1fde15b97d35ef72bf39b8",
+    ".qa-i117-gtk-pieces/source/gtkrange.c": "b17ad82a3b751cc5488910db6a6cdb1d9d00faf015c0833e9b7d3fb7e3db64b7",
+    ".qa-i117-gtk-pieces/source/gtkcssgadget.c": "7273e612752b4b1f9ac34c9913eeca7b95ff8907a6df942675d57e05ef7fe685"
+  }
+}

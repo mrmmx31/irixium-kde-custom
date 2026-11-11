@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-11T03:19:08.442685+00:00",
+  "item": "I115",
+  "delivery": {
+    "status": "open",
+    "checks": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "namespace": {
+      "mnt": 4026536919,
+      "net": 4026536922,
+      "pid": 4026531836,
+      "user": 4026537888
+    },
+    "worker": {
+      "pid": 1597911,
+      "starttime": 33693806,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/out/lab-addon/run-727b4d17ae624473aabe5fcd919ed865/abrir-laboratorio-temas.py",
+        "--worker",
+        "/out/lab-addon/run-727b4d17ae624473aabe5fcd919ed865/MANIFESTO.json"
+      ],
+      "namespace": {
+        "mnt": 4026536919,
+        "net": 4026536922,
+        "pid": 4026531836,
+        "user": 4026537888
+      }
+    },
+    "new_instance": true,
+    "work_directory": "/home/domainos-test/theme-lab-727b4d17ae62",
+    "work_directory_relative": "theme-lab-727b4d17ae62",
+    "gui_started": true,
+    "app": {
+      "pid": 1597912,
+      "starttime": 33693820,
+      "argv": [
+        "/usr/bin/python3",
+        "-B",
+        "/out/lab-addon/run-727b4d17ae624473aabe5fcd919ed865/abrir-laboratorio-temas.py",
+        "--worker",
+        "/out/lab-addon/run-727b4d17ae624473aabe5fcd919ed865/MANIFESTO.json"
+      ],
+      "namespace": {
+        "mnt": 4026536919,
+        "net": 4026536922,
+        "pid": 4026531836,
+        "user": 4026537888
+      }
+    },
+    "argv": [
+      "/fixture/theme-lab-root/tools/theme-lab/build/theme-lab",
+      "--root",
+      "/fixture/theme-lab-root",
+      "--work-dir",
+      "/home/domainos-test/theme-lab-727b4d17ae62"
+    ],
+    "windows": [
+      "35651731"
+    ],
+    "window_map_observed": true,
+    "window_input_sent": false
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-d0857e0ae7af42dcb9d9ad3ddacc88d5/MANIFESTO.json",
+    "source_manifest_sha256": "278f773e0dcb321496931acbf57c53b42768fe85ca46644e8e889ccd78ca02c9",
+    "saved_files_sha256": {
+      "working.json": "e12e11a799c2f4e9641e23f747db81d817c1ba8c49cdd63ac79c5aab1772532d",
+      "editor-journal.json": "88ddbb65e222edc9a13f698af306f94d8bbc1c4500c7e90cc7837c54dd2a4429"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "new_pid": 1597912,
+  "new_window": 35651731,
+  "display": ":61",
+  "source_histories_preserved": 54,
+  "saved_project_semantically_equal": true,
+  "source_window_preserved": true,
+  "auto_review_rejected_old_close": "Journal copy alone does not prove preservation of unsaved widget text/Undo; safe alternative keeps old open.",
+  "capture_sha256": "beda471f4ef3d0bfec837cd2a3ec68ebdf17ab0ecc406113d95d54eeddfa10e3",
+  "estimated_stage_progress_percent": 100,
+  "basis": "Cinco peças GTK3 editáveis/traduzidas, provas nativas e nova instância entregue; aceite humano separado. Instância antiga preservada.",
+  "human_approval_filled": false
+}

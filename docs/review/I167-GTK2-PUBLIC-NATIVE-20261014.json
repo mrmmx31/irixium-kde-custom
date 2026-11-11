@@ -1,0 +1,130 @@
+{
+  "item": "I167",
+  "revision": 2,
+  "status": "passed_scoped",
+  "date": "2026-10-14",
+  "scope": "GTK2 public native preview launch, native scrollbar interaction and pixel verifier compatibility",
+  "command": "python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+  "result": "passed for DomainOS-SR10.4 and BreezeDark; isolated bwrap/Xvfb; 5 events each; click changed value to 34; normal close exit 0",
+  "translation_receipt_scope": [
+    "push",
+    "toggle",
+    "scroll_h",
+    "scroll_v"
+  ],
+  "recipe_applied": false,
+  "scene_integrated": false,
+  "historical_fidelity_claimed": false,
+  "runs": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "status": "passed",
+      "native_click_value": 34.0,
+      "events": 5,
+      "normal_close": true,
+      "arrows_pixel_difference": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "bar_roles_match": true,
+      "canvas_role_pixels_match": 64,
+      "native_metrics": [
+        {
+          "control": "scroll_h",
+          "allocation_px": [
+            220,
+            15
+          ],
+          "scale_factor": 1
+        },
+        {
+          "control": "scroll_v",
+          "allocation_px": [
+            15,
+            180
+          ],
+          "scale_factor": 1
+        }
+      ],
+      "evidence": {
+        "preview.png": "DomainOS-SR10.4/preview.png",
+        "verified-pixels.json": "DomainOS-SR10.4/verified-pixels.json",
+        "results.json": "DomainOS-SR10.4/results.json"
+      },
+      "sha256": {
+        "preview.png": "52ad0bea95fdd93ad638f592517e7506cd756ccb77900a48bacd4f4f80161262",
+        "verified-pixels.json": "a2a3eb1b6493c459b763469427da8a9777fa2c085a1df5579935d0c404c2d67d",
+        "results.json": "8a7dcd6b019412c5013966da8395a1186ec7bb98d2990cbb068d23a0af24d6b2"
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "status": "passed",
+      "native_click_value": 34.0,
+      "events": 5,
+      "normal_close": true,
+      "arrows_pixel_difference": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "bar_roles_match": true,
+      "canvas_role_pixels_match": 64,
+      "native_metrics": [
+        {
+          "control": "scroll_h",
+          "allocation_px": [
+            220,
+            15
+          ],
+          "scale_factor": 1
+        },
+        {
+          "control": "scroll_v",
+          "allocation_px": [
+            15,
+            180
+          ],
+          "scale_factor": 1
+        }
+      ],
+      "evidence": {
+        "preview.png": "BreezeDark/preview.png",
+        "verified-pixels.json": "BreezeDark/verified-pixels.json",
+        "results.json": "BreezeDark/results.json"
+      },
+      "sha256": {
+        "preview.png": "c38a2fdaa08e0fc6aff6a6837af57d40c2ffae4e1fd498eba47881d2185899da",
+        "verified-pixels.json": "02f055513e20fb3bdb4cd4f0ecbd12cdbd9d775d9786de908deee39e3e3f7819",
+        "results.json": "5b75e5bd56693bc7e056e3ed3fe31899e3fd3871eb9c288c1639010a77ddd30a"
+      }
+    }
+  ],
+  "baseline_generation_test": {
+    "command": "python3 -B tools/theme-lab/tests/test_gtk2_generation.py --fixtures /tmp/gtk2-I167-baseline --output /tmp/gtk2-I167-generation-20261014",
+    "status": "passed",
+    "schemes": 4,
+    "verified_png_matches": 96,
+    "fixture_origin": "previously verified synthetic native GTK2 paint captures; not a historical VM oracle"
+  },
+  "corrected_harness_defects": [
+    "Search expected a retired GTK2 window-title suffix; now searches the stable GTK2 gallery title prefix.",
+    "Pixel verifier now reads event-*.json and filters metrics before sorting; sample/runtime state files do not carry emitted_at.",
+    "The translation receipt now checks that required scrollbar controls are present while allowing other translated controls."
+  ],
+  "source_sha256": {
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "07210bc24cda4ba927e68f138be2520d1bc90d622e59ae163c853e4b6d32ca22",
+    "tools/theme-lab/tests/verify_gtk2_public_capture.py": "df7bf49540dbd568feede22cdb89e3b2e5145954b5b81f3988fe0eb636856677",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/backend.py": "4f65c32cc08ef1231117bff7121115e889a9dcdf45ecfb1f4c5d7bccfe6bb576"
+  },
+  "limits": [
+    "Only scrollbar controls are mounted and clicked by this public smoke test.",
+    "Generation reports four supported recipe control types; check/radio are covered by their separate authorized evidence.",
+    "No historical comparison, full 16-control coverage, human approval, or personal installation is claimed.",
+    "Prior six-of-sixteen audited scene/snippet coverage remains the documented whole-catalog baseline until a refreshed coverage audit proves otherwise."
+  ]
+}

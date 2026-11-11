@@ -1,0 +1,101 @@
+{
+  "item": "I167",
+  "revision": "R11",
+  "checked_at_utc": "2026-10-19",
+  "family": "GTK2 public preview scrollbar steppers",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":82",
+    "xephyr": "800x600, assistant-owned session preserved",
+    "private_namespace_guards": true,
+    "recipe_applied": false,
+    "translated_controls": [
+      "push",
+      "toggle",
+      "scroll_h",
+      "scroll_v"
+    ],
+    "project_sha256": "4b24c44d0806415742d2a8bc30f67f95f900a50f4870fec2be444010b64686e2",
+    "recipe_applied_meaning": "false denotes that GTK2 is only partially translated; it does not mean the public preview omitted its selected RC.",
+    "public_preview_rc_path": "The launched preview argv included --rc pointing to the verified private GTK2 RC.",
+    "source_path_verification": "preview_gtk2.py requires --rc; gtk2_session.NativeSession validates that receipt and calls Gtk.rc_parse(rc_file). This proves configured load path, not pixel-level effect for every control."
+  },
+  "runs": [
+    {
+      "id": "public-run-without-test-import-path",
+      "result": "four stepper interactions changed while held and restored on release; harness stopped afterwards",
+      "stepper_states": {
+        "scroll_h-left": {
+          "held_differences": 53,
+          "release_differences": 0,
+          "roi_pixels": 225
+        },
+        "scroll_h-right": {
+          "held_differences": 53,
+          "release_differences": 0,
+          "roi_pixels": 225
+        },
+        "scroll_v-up": {
+          "held_differences": 53,
+          "release_differences": 0,
+          "roi_pixels": 225
+        },
+        "scroll_v-down": {
+          "held_differences": 53,
+          "release_differences": 0,
+          "roi_pixels": 225
+        }
+      },
+      "native_adjustment_events": 12,
+      "event_log_rows": 36,
+      "preview_exit_code": 0,
+      "harness_limit": "The copied probe lacked tools/theme-lab/tests in sys.path and failed importing verify_gtk2_public_capture after the four stepper checks."
+    },
+    {
+      "id": "public-run-with-test-import-path",
+      "result": "failed at first horizontal-left stepper; no pixel or native adjustment event",
+      "stepper_states": {
+        "scroll_h-left": {
+          "held_differences": 0,
+          "release_differences": 0,
+          "roi_pixels": 225
+        }
+      },
+      "native_adjustment_events": 0,
+      "event_log_rows": 4,
+      "preview_exit_code": -15
+    }
+  ],
+  "input_comparison": {
+    "same_x_window_id": 2097155,
+    "same_focus_window_id": 2097155,
+    "same_geometry": [
+      0,
+      0,
+      640,
+      420
+    ],
+    "first_target_pointer": [
+      23,
+      23
+    ],
+    "xquerypointer_child_window": 0,
+    "same_preview_project_sha256": true
+  },
+  "environment_observations": {
+    "gdk_debug": "GDK_DEBUG=events was set for both isolated runs; logs did not capture a stable event path explaining the different outcomes.",
+    "namespace_warning": "Both namespace logs report dbus-daemon: Cannot initialize inotify: Too many open files. This is observed but not proven to cause the input discrepancy.",
+    "guards": "Private preview marker verified; personal home and system bus were not exposed.",
+    "historical_vm_comparison": "Not performed: current SR10.4 guest capture is black apart from the Apollo command strip."
+  },
+  "artifacts": {
+    "directory": "~/tempia/i167-gdk-event-r11-20261019/",
+    "summary_sha256": "41809d7f5a40340f57c2d9cdbf6cb7149d5d9605e9fce1f25269bb304feaeb9a",
+    "first_run_preview_sha256": "a360259e7372a29766fd6f09e97ac67ae57c26883df7119d6579d39e317234af",
+    "first_run_namespace_log_sha256": "2803e5c08d289f9702859e8b2cb0ebf37a8db83bddb2d1a196c950d7a68158c4",
+    "second_run_namespace_log_sha256": "534da6951863bb91aaa7507fd6e2935d0fef748ee5d155e54a04371f35460719"
+  },
+  "changes": "No product source, theme recipe, personal profile, host theme, MAME session, or guest state was changed.",
+  "conclusion": "R11 is inconclusive and does not pass I167. The public preview was launched with the verified partial GTK2 RC: its argv includes --rc and the native session validates the RC and calls Gtk.rc_parse. recipe_applied=false denotes incomplete/full-theme coverage, not omission of that RC. This source-path evidence does not prove the recipe changed the measured pixels. Input remained nondeterministic under the same target geometry: run 1 passed all four steppers; run 2 got no event at the first horizontal-left target and exited -15. Do not repeat the unchanged click matrix. Subsequent R15/R13 hit tests found XQueryPointer child=0 on the target positions; the stored pixel deltas and 12 native adjustment rows are preserved observations but are not reliable evidence that the stepper was pressed. Treat R11 as input-attribution-invalid, not as a four-arrow pass.",
+  "next": "R13 establishes a hit-test guard and reproduces pointer child=0 after warping to a mapped preview. Do not infer pressed-state behavior from R11 or R12. Diagnose nested Xephyr input targeting before another click matrix."
+}

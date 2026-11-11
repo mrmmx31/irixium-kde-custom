@@ -182,6 +182,26 @@ Window {
     graphics_api = window.rendererInterface().graphicsApi().name
     checks["requested_graphics_backend_is_active"] = graphics_api == (
         "Software" if os.environ.get("QT_QUICK_BACKEND") == "software" else "OpenGL")
+    drawer = panel.findChild(QObject, "domainosApplicationsDrawer")
+    assert drawer is not None
+    drawer_image = None
+    for child in drawer.findChildren(QObject):
+        if child.property("assetName") == "applications.svg":
+            drawer_image = child
+            break
+    assert drawer_image is not None, "The Applications drawer icon did not load"
+    drawer_height = float(drawer.property("height"))
+    drawer_width = float(drawer.property("width"))
+    drawer_image_height = float(drawer_image.property("height"))
+    drawer_image_width = float(drawer_image.property("width"))
+    bevel_thickness = float(drawer.property("bevelThickness"))
+    drawer_image_top = (drawer_height - drawer_image_height) / 2
+    drawer_image_left = (drawer_width - drawer_image_width) / 2
+    checks["applications_drawer_icon_stays_inside_beveled_face"] = (
+        drawer_image_left >= bevel_thickness
+        and drawer_image_left + drawer_image_width <= drawer_width - bevel_thickness
+        and drawer_image_top >= bevel_thickness
+        and drawer_image_top + drawer_image_height <= drawer_height - bevel_thickness)
     lamp = panel.findChild(QObject, "domainosActivityLamp")
     assert lamp is not None
     colors = panel.property("colorPalette")
@@ -277,6 +297,31 @@ Window {
     checks["provider_destruction_cannot_strand_wait"] = settle_until(lambda: not activity.property("busy"))
     invoke("restoreStartupModel")
     assert settle_until(lambda: activity.property("startupCount") == 0)
+
+    # A real command may already have presented the lens when TaskManager
+    # publishes its startup record. The second event must not leave a
+    # presentation receipt pending for a frame that has no visual change.
+    invoke("begin", "command-before-kde-startup")
+    overlap_token = activity.property("sequence")
+    assert settle_until(lambda: not activity.property("presentationPending"))
+    activity.setProperty("blinkOn", True)
+    invoke("startupRows", [True])
+    assert settle_until(lambda: activity.property("startupCount") == 1)
+    checks["startup_over_existing_light_does_not_wait_for_redundant_frame"] = \
+        activity.property("pendingCount") == 1 and activity.property("busy") \
+        and not activity.property("presentationPending") and activity.property("displayLit")
+    invoke("finish", overlap_token)
+    checks["command_completion_does_not_strand_overlapping_startup_blink"] = \
+        activity.property("pendingCount") == 0 and activity.property("startupCount") == 1 \
+        and not activity.property("presentationPending") \
+        and settle_until(lambda: not activity.property("displayLit"), .8) \
+        and activity.property("startupCount") == 1 \
+        and settle_until(lambda: activity.property("displayLit"), .8) \
+        and activity.property("startupCount") == 1
+    invoke("startupRows", [])
+    assert settle_until(lambda: activity.property("startupCount") == 0)
+    checks["overlapping_startup_cleanup_returns_light_and_cursor_to_idle"] = \
+        settle_until(lambda: not activity.property("busy") and not activity.property("displayLit"))
 
     # The approved yellow stays stable in ordinary light/dark schemes; only a
     # collision with the lens or metal surround changes its yellow lightness.
@@ -387,6 +432,7 @@ Window {
     checks["no_qml_runtime_errors"] = not errors
     hashes = {name: hashlib.sha256((UI / name).read_bytes()).hexdigest() for name in (
         "DomainOSActivity.qml", "DomainOSRuntime.qml", "DomainOSPanel.qml", "PanelButton.qml", "DomainOSPalette.qml", "DomainOSKDEPalette.qml")}
+    hashes["applications.svg"] = hashlib.sha256((UI / "../images/applications.svg").resolve().read_bytes()).hexdigest()
     result = {"checks": checks, "snapshots": snapshots, "qml_errors": errors, "source_sha256": hashes,
         "render_loop": os.environ.get("QSG_RENDER_LOOP", "default"),
         "scene_graph_backend": os.environ.get("QT_QUICK_BACKEND", "default"),

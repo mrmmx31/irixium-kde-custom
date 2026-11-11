@@ -1,0 +1,24 @@
+{
+  "at": "2026-10-11T13:04:38.798372+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "partial_not_delivered",
+  "changes": [
+    "DELTA.json contém mudanças do modelo com hashes canônicos e proveniência.",
+    "Replay interno exige base exata e resultado com hash correto; modelo original preservado.",
+    "Geração omite famílias não afetadas; troca do ID de esquema inclui todas."
+  ],
+  "checks": {
+    "proposal_export": "6 passed",
+    "backend_regression": "33 passed",
+    "runtime_dependencies": "2 passed"
+  },
+  "remaining": [
+    "Diferenças dos arquivos gerados e pacote mínimo com dependências.",
+    "Detecção de mudanças externas da paleta, mesmo com ID inalterado.",
+    "Comparação na interface e fluxos nativos de importação/salvamento."
+  ],
+  "estimated_stage_progress_percent": 30,
+  "percentage_basis": "Isolamento e delta de modelo verificados; geração mínima, UI, entrega e validação nativa ainda incompletos.",
+  "personal_gui_changed": false
+}

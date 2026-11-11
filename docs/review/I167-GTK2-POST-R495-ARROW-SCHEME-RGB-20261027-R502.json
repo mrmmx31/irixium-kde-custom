@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R502",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Pairwise RGB pixel comparison of the post-R495 GTK2 stepper runtime captures across the four selected KDE schemes, for all directions, interaction states, and preview origins in R501.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "runtime": "GTK2 2.24.33, private Xvfb captures from R501",
+    "schemes": ["DomainOS-SR10.4", "BreezeClassic", "BreezeDark", "KvBeige"],
+    "origins": ["separate", "coupled"],
+    "directions": ["left", "right", "up", "down"],
+    "states": ["hover", "held", "released"],
+    "scene_combinations": 24,
+    "scheme_pairs_per_scene": 6,
+    "pairwise_comparisons": 144,
+    "pixels_per_comparison": 225,
+    "different_pixel_counts": [225],
+    "all_scheme_pairs_have_different_rgb": true
+  },
+  "verification": {
+    "source_captures": "~/tempia/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/",
+    "source_report": "docs/review/I167-GTK2-POST-R495-ARROW-PALETTE-INTERACTION-20261027-R501.json",
+    "comparator": "~/tempia/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/compare-rgb-across-schemes-r502.py",
+    "comparator_sha256": "9b6ba1ece26b4bba1ec9f4c665da509d3ca4a3a43fe9299a4f32b19533eb1de7",
+    "result": "~/tempia/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/scheme-rgb-comparison.json",
+    "result_sha256": "702e4bd96a57aba8863c378473763c9a02f9b5b12c179bcf9b88b8d479dd2a32"
+  },
+  "limits": [
+    "All 225 pixels differ for every scheme pair in each sampled ROI. This proves the captured output responds to the selected scheme, but it does not prove that each individual pixel uses the semantically correct KDE role.",
+    "The result is a GTK2 Theme Lab private Xvfb capture, not a new live VM comparison, Xephyr observation, or human approval.",
+    "No source palette, user profile, application, or VM was changed."
+  ],
+  "next": "Continue the active GTK2 comparison and retain visual-role correctness and historical VUE review as open criteria."
+}

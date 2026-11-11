@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XMPICON-CURSOR-DOWN-20261025-R179",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "initial_state": "File Manager visible and active, /node_12345, four-column XmpIcon grid with no selected icon; mouse hook released",
+    "input": "One-frame Cursor Down pulse through Apollo keyboard2, released on frame 2",
+    "result": "The following native capture shows no visible focus outline or icon selection change. Callback completed without error; hook remained uncaptured."
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-iconview-down-r179.png",
+    "sha256": "65fed5fd6ed6780b47755b04a37720c7e1820e629d655ee3fabdca078c47c1f3"
+  },
+  "limits": "This is a second unsuccessful keyboard-navigation attempt after R174 Cursor Right. It does not prove keyboard traversal is unsupported; no GTK2 state is paired.",
+  "final_state": {
+    "keyboard_released": true,
+    "hook_captured": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "status": "no_visible_navigation_state"
+}

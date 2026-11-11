@@ -49,7 +49,12 @@ QtObject {
         }
         if (count > startupCount) {
             ++sequence
-            presentationPending = true
+            // A startup can be reported while a command has already put the
+            // lens on screen. Do not create a second frame receipt for an
+            // unchanged visible lens: if that state does not repaint, the
+            // receipt would hold the light on and suppress its blink phase.
+            if (!displayLit)
+                presentationPending = true
         }
         startupCount = count
     }
@@ -69,8 +74,10 @@ QtObject {
     function begin(label) {
         extinction.stop()
         tailLit = false
+        const needsPresentation = !displayLit
         const token = ++sequence
-        presentationPending = true
+        if (needsPresentation)
+            presentationPending = true
         const next = Object.assign({}, pending)
         next[token] = label
         pending = next

@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-11T12:03:42.565672+00:00",
+  "item": "T07",
+  "previous_goal_turn": "progress: completed native file-dialog hover proof and registered it",
+  "status": "partial",
+  "changes": [
+    "New scoped Motif/Xt public-API menu hint module; preserves translations, grabs, focus and editor callbacks",
+    "Hint posts outside whole menu with delay750/duration6000; closes on leave, press or unmap; timers removed on destroy",
+    "Current command font/background/foreground/shadows copied at posting; no final static colors"
+  ],
+  "build_exit_code": 0,
+  "full_native_metrics_exit_code": 0,
+  "palettes": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0,
+      "hover_samples": [
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=16777215 bg=6719669 delay400 stable400 passed",
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=15920874 bg=991022 delay400 stable400 passed"
+      ]
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0,
+      "hover_samples": [
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=2303529 bg=16777215 delay400 stable400 passed",
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=15920874 bg=991022 delay400 stable400 passed"
+      ]
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0,
+      "hover_samples": [
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=16579836 bg=1316376 delay400 stable400 passed",
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=15920874 bg=991022 delay400 stable400 passed"
+      ]
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0,
+      "hover_samples": [
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=2104332 bg=15984292 delay400 stable400 passed",
+        "Editor hover Copy: owner=642,540 152x21 tip=802,540 404x34 fg=15920874 bg=991022 delay400 stable400 passed"
+      ]
+    }
+  ],
+  "native_behavior": "Copy command: cold absence400ms, visible1100ms, bounds, no owner overlap, stable400ms, real copy click closes menu/tip, clipboard and source text match. Runs before and after role change. Existing editor/palette/cancel/confirm flow passes.",
+  "failures_preserved": [
+    "r1: ordinary native menu tooltip did not post",
+    "r2: test sent Escape after Copy closed menu, cancelling dialog then accessing destroyed field; gdb confirms expect_field stack",
+    "palette r1: no cold pointer crossing on freshly posted menu; explicit outside/inside crossing resolves fixture issue"
+  ],
+  "limitations": [
+    "Only Copy hover exercised; all six command tip resources verified",
+    "One actual layout; other sizes and menu-item types not certified",
+    "No fit outside menu: bridge omits hint instead of covering menu",
+    "No live-update of already displayed tip under external schema switch proven",
+    "Existing FontSet warnings retained; not historical font fidelity"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/src/view/ui_menu_hints.c": "cb7b159af63e6ef1f78f5cac1a8c8122e152f5d64c7d81bc773e36d9fa33512b",
+    "tools/theme-lab/include/ui_hints.h": "076fa4390ca7cc920d33703fdce6f9fd448017850842a0369d15e54bc8d4002b",
+    "tools/theme-lab/src/editor/view.c": "9c431f0f20ebec4843c3795cb225017af19cc832d1c9f6506675e536b7bc5243",
+    "tools/theme-lab/tests/ui_help_flow.c": "51b8a959e17d72d7aa182369244c70f897bca85528474094f5776a210075150c",
+    "tools/theme-lab/Makefile": "e16726aa325b3372f852a181ac3e020260cfa8ae939a929c0fbc825a61fa9282"
+  },
+  "evidence_sha256": {
+    "editor-hover-r1.log": "a3ab2f30017b34f16de4be7b18eee0dd60eb53248cdc3aef91edffd497a22053",
+    "editor-hover-r1.err": "951ae25f4ad03ac9cf507be48bf18b3a88b834f37d71be61d0350256d37a432d",
+    "editor-hover-r2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-hover-r2.err": "e3abc7113d0faf5d711dfe1aa3e24d6439a9c697adfbe66e76bd40da1f60e95d",
+    "editor-hover-r2-backtrace.log": "0e1ae8a267ac9920bcaeb8e0bc46928e3275463487d989879f9d95613390178e",
+    "editor-hover-r3.log": "22159faefe77fb83b909d52d8427b42ce666a94fdd71cfe916d78ccc340c77bf",
+    "editor-hover-r3.err": "845df4ab9fae7b2f9416b29bc530ec875ea0e5ddd13cc1e5d04593fe3fdd3d5b",
+    "editor-hover-palettes-r1.json": "5f6915f3b3c2b711470276d6f5f6d25ccf6cb6a20d29e0116b8a93fc4a94ecd2",
+    "editor-hover-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-hover-palettes-r2.json": "4839cc1c8e5f1dc40f77fb2322a2c3918e5ef30cf6b5b4bae2f69a6dfdfaa87f",
+    "editor-hover-palettes-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-hover-final-build.log": "9cc6621f696f1770faa28dfaea2aa28c34d216ffa6f376eaa09ef3d0feb7de1f",
+    "editor-hover-r4-build.log": "10110ad7e5f17a52a4fa2facf8585d38fe13a7235d5cae00ab44eb9ede61854b",
+    "editor-menu-full-regression-r1.log": "0d8130568180f0ea881fc4c68920bca8fce194fc70d5445d20e197f97966f620",
+    "editor-menu-full-regression-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191"
+  },
+  "estimated_stage_progress_percent": 90,
+  "progress_basis": "Main actions/help/native galleries have existing scoped proofs; file dialog and editor menu hover now covered. Final layout/dynamic coverage review and personal handoff remain.",
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

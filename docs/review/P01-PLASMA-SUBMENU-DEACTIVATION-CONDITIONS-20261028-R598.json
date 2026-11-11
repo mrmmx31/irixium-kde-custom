@@ -1,0 +1,52 @@
+{
+  "id": "R598",
+  "date_utc": "2026-10-28T18:02:15Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "runtime_versions": {
+    "plasma_workspace": "4:6.3.6-2",
+    "libplasma": "6.3.5-1"
+  },
+  "upstream": {
+    "repository": "https://github.com/KDE/libplasma",
+    "tag": "v6.3.5",
+    "files": [
+      {
+        "path": "src/plasmaquick/dialog.h",
+        "sha256": "c89bf3643384a5817eeff9d468f57134f19b4ac85a5d4c599208cf30b519f51f",
+        "facts": [
+          "The windowDeactivated signal contract requires hideOnWindowDeactivate=true and focus moving to neither a parent nor a child dialog."
+        ]
+      },
+      {
+        "path": "src/plasmaquick/dialog.cpp",
+        "sha256": "da38e1728a0429f4a035de85cd0781883dae881eaa70d6b81e8feb42c7586e1e",
+        "facts": [
+          "Dialog::focusOutEvent checks hideOnWindowDeactivate, then checks active transient ancestors, active descendants or Qt.Popup focus windows before hiding and emitting windowDeactivated."
+        ]
+      }
+    ]
+  },
+  "kicker_qml": {
+    "item_list_view": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListView.qml",
+    "item_list_dialog": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDialog.qml",
+    "facts": [
+      "ItemListView temporarily sets kicker.hideOnWindowDeactivate=false before creating a submenu, then calls windowSystem.forceActive().",
+      "ItemListDialog binds its hideOnWindowDeactivate to the Kicker value, and delayedDestroy sets aboutToBeDestroyed before hiding; its QML close handler ignores deactivation after that guard."
+    ]
+  },
+  "interpretation": "R595 correctly identified the X11-only Kicker forceActive call and a possible QML close path, but windowDeactivated is conditional. These sources do not prove that the user's hover sequence reaches that signal. R596 remains an unvalidated activation candidate; it is not yet confirmed as the fix.",
+  "validation": {
+    "installed_package_versions_checked": true,
+    "matching_libplasma_tag_source_read": true,
+    "runtime_sequence_reproduced": false,
+    "source_modified": false,
+    "plasmashell_restarted": false
+  },
+  "next": [
+    "After user-coordinated safe reload, observe the popup activation/focus path and whether the child dialog receives windowDeactivated during pointer hover.",
+    "Do not infer that the X11-only warning alone caused the menu to close."
+  ]
+}

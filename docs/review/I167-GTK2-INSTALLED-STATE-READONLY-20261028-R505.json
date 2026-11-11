@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "R505",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only validation of the selected GTK2 theme configuration and installed scrollbar-stepper RC before further GTK2 work.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "user_config_sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+    "installed_base_gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "installed_reload_gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "installed_base_and_reload_identical": true,
+    "stepper_size_px": 15,
+    "direction_state_assets_present": 20,
+    "source_rc_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "source_reload_rc_sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203",
+    "source_and_installed_rc_differ": true,
+    "interpretation": "The installed RC is a generated palette variant; the palette generator validates the published source manifest, then emits palette-specific GTK2 data. Do not interpret the runtime hash difference alone as stale installation."
+  },
+  "method": "Read-only inspection of ~/.gtkrc-2.0, installed GTK2 RCs/manifests, current repository sources, and the palette generator contract. No settings, windows, applications, VM, or files outside the new receipt and review queue were changed.",
+  "limits": [
+    "This confirms selected configuration and RC contents only; it does not prove a GTK2 window reloaded them or visually matches SR10.4/VUE.",
+    "It does not resolve the missing cursor-clear horizontal held VUE reference or human review."
+  ],
+  "next": "Continue authorized GTK2 I167 work. For live historical interaction, first satisfy the canonical MAME ownership/input gate; preserve all other MAME instances."
+}

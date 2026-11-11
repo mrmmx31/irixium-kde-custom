@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "item": "T04",
+  "authorization": {
+    "user_authorized": true,
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "scope": "Eliminar a faixa horizontal sem uso dentro da coluna central maximizada, expandindo os dois viewports comparados sem alterar a escala interna.",
+  "user_evidence": "/home/lsi/.xchat2/codex-files/fc0f9f31cb62-capture-xchat-codex-6KO3X3.png",
+  "finding": "A regressao anterior cobria apenas o excedente vertical. O ScrolledWindow central crescia horizontalmente, mas previewStack e os viewports nativo/Motif mantinham suas larguras preferidas.",
+  "correction": {
+    "width_contract": "previewStack acompanha a largura util do clip; quando a janela fica menor, conserva a largura minima rolavel.",
+    "children": "O mesmo excedente horizontal e propagado aos viewports nativo e Motif, preservando os insets ja calculados pelo Motif.",
+    "vertical_contract_preserved": "O excedente vertical continua dividido na razao dos minimos 370:240.",
+    "canvas_scale": "1:1",
+    "independent_scrolling": true,
+    "theme_assets_changed": false
+  },
+  "validation": {
+    "status": "passed",
+    "fixture": "/home/lsi/tempia/theme-lab-spin-df5t7ql1/RESULTADO.json",
+    "initial": {
+      "stack_width_px": 493,
+      "clip_width_px": 491,
+      "native_viewport_width_px": 459,
+      "motif_viewport_width_px": 467,
+      "native_height_px": 370,
+      "motif_height_px": 240
+    },
+    "grown": {
+      "stack_width_px": 905,
+      "clip_width_px": 905,
+      "native_viewport_width_px": 871,
+      "motif_viewport_width_px": 879,
+      "native_height_px": 445,
+      "motif_height_px": 289
+    },
+    "restored": {
+      "stack_width_px": 491,
+      "clip_width_px": 493,
+      "native_viewport_width_px": 457,
+      "motif_viewport_width_px": 465,
+      "native_height_px": 370,
+      "motif_height_px": 240
+    },
+    "horizontal_unused_strip_removed": true,
+    "strict_build": "passed",
+    "diff_check": "passed",
+    "historical_fidelity_claimed": false
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/view.c": "54de9b65611169453e6ad2fb51b14e88c81451e52bf84a8dcdb057e17c3be1fa",
+    "tools/theme-lab/tests/test_controller_spin.py": "1441ac2670931f40f458851b6fef10faf9ed2290e98d0e02c5c6b682ad5df513",
+    "tools/theme-lab/build/theme-lab": "d9a37a3434c5b592d67fd452d95785896a75385b26b435a7eccc1582ba702e6b"
+  },
+  "live_reopen": {
+    "service": "domainos-theme-lab-center-expand-20261029.service",
+    "theme_lab_pid": 3353306,
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "selected_family": "qt5",
+    "window_geometry_px": [
+      1920,
+      951
+    ],
+    "preview_canvas_xid": "0x3c0028e",
+    "qt5_preview_pid": 3353400,
+    "native_child_xid": "0x500000c",
+    "capture": "/home/lsi/tempia/domainos-theme-work/themelab-center-expanded-20261029T1638.png",
+    "horizontal_unused_strip_observed": false
+  },
+  "manual_visual_acceptance": "pending",
+  "next": "Reopen the preserved Qt5 session with this build and leave it maximized for user inspection."
+}

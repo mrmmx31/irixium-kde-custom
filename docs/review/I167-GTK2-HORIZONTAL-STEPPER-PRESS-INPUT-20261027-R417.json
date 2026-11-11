@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "R417",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Diagnose one native horizontal GTK2 reference arrow press in the authorized Domain/OS SR10.4 VM and determine whether the observed relative-counter path can be reproduced safely.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_vm_contacted": false,
+    "window_xid": "0x2e00006",
+    "window_pid_verified": true
+  },
+  "method": {
+    "bridge": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "pointer": "Existing R416 bounded Apollo relative-counter override path; host mouse remained uncaptured and MAME mouse option/device remained false/none.",
+    "press": "One left-button field press for two emulated frame notifications after a fresh image confirmed the pointer over the left horizontal stepper cell.",
+    "observer": "A frame notifier sampled :kbd:mouse1 read mask 16 while the press was held.",
+    "pixel_comparison": "Native guest captures compared at 1:1; no scaling or registration adjustment."
+  },
+  "observations": {
+    "target_before_press": {
+      "path": "~/tempia/ia-tema/evidence/I167/r418-current-before-abort.png",
+      "sha256": "c541d5f57a6e6e933fd2578f7a841063a16e80914ea2f16b1f1904fd1804703f",
+      "visible": "The pointer hotspot was inside the left horizontal stepper cell (the Trash Can is empty)."
+    },
+    "button_delivery": {
+      "raw_button_mask": 16,
+      "high_samples": 2,
+      "post_release_raw": 0,
+      "interpretation": "The MAME input port reflected a short left-button press and returned to zero after release. This does not by itself prove the VUE widget accepted or acted on the event."
+    },
+    "held_vs_released": {
+      "held": "~/tempia/ia-tema/evidence/I167/r416-arrow-held.png",
+      "held_sha256": "72307b83bc30d760a62d68fcef42ea7e03a72fa0249bc214f575a02d2da2bd77",
+      "released": "~/tempia/ia-tema/evidence/I167/r416-arrow-released.png",
+      "released_sha256": "72307b83bc30d760a62d68fcef42ea7e03a72fa0249bc214f575a02d2da2bd77",
+      "changed_pixels_full_screen": 0,
+      "changed_pixels_target_15x15": 0,
+      "interpretation": "No visual transition was captured. The empty scrollbar may be at a disabled/end position; the direct field input route also does not yet prove VUE event handling."
+    },
+    "counter_path_replay": {
+      "initial_counters": [70, 74],
+      "final_counters": [54, 201],
+      "replayed_step_count": 376,
+      "reference_path_image": "~/tempia/ia-tema/evidence/I167/r416-pointer-step-376.png",
+      "replayed_path_image": "~/tempia/ia-tema/evidence/I167/r423-pointer-step-376.png",
+      "replayed_path_sha256": "340fec1402553ccfddb1e6f94b5121d939167e67550d30e5cee4d54ba16eba57",
+      "comparison_image": "~/tempia/ia-tema/evidence/I167/r425-step376-comparison.png",
+      "comparison_sha256": "d3b3f2853b4e8d14af2c4ef5ba61d87048f990a85873ba55ceb6d5ea38266049",
+      "different_screen_pixels": 428,
+      "result": "The same starting counter values and recorded relative deltas did not reproduce the earlier visible pointer placement; the replay ended outside the arrow cell. No button was pressed in the replay."
+    }
+  },
+  "cleanup": {
+    "operation": "Explicitly aborted at the non-target checkpoint; no additional press was sent.",
+    "callback_done": true,
+    "cleanup_error": null,
+    "button_raw": 0,
+    "observer_active": false,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "bridge_pending": false,
+    "host_pointer": [600, 100],
+    "mame_window": "Iconic",
+    "active_window": "0x0",
+    "final_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r426-after-cleanup.png",
+      "sha256": "adfad2b2ed567113aeb334285ede87e17e0a39b4b73b3c044b43d9120f2329e9"
+    },
+    "other_vm_touched": false,
+    "mame_restarted": false,
+    "theme_changed": false,
+    "gtk_application_restarted": false
+  },
+  "result": "The emulated button bit was observed high for two frames, but the VUE capture showed no pixel change between held and released states. The relative-counter route is not reproducible from identical reported starting values, so it is not a safe way to align the pointer after restoring the physical accumulator.",
+  "next": "Keep GTK2 normal-state 15x15 comparisons R394/R401/R382. Do not change the GTK2 arrow recipe from this inconclusive hold test. Continue I167 by finding a verifiable input route on a scrollable VUE arrow or a reliable held-state capture; separate any MAME capture change from the saved profile and restore it immediately."
+}

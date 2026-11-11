@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "R320",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "diagnosis",
+  "status": "selected-theme-files-still-differ-from-current-repository",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only verification of which GTK2 recipe the current profile resolves."
+  },
+  "observation": {
+    "gtkrc_selected": "/home/lsi/.gtkrc-2.0",
+    "gtk_theme_name": "DomainOS-SR10-4-KDE",
+    "installed_search_copies": [
+      {"path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc", "sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3", "stepper_size": 16, "slider_width": 16, "trough_border": 0},
+      {"path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc", "sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3", "stepper_size": 16, "slider_width": 16, "trough_border": 0}
+    ],
+    "repository_recipe": {"path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc", "sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203", "stepper_size": 15, "slider_width": 11, "trough_border": 2}
+  },
+  "interpretation": "The running profile points to the DomainOS GTK2 theme name, but both installed copies still contain the older recipe. This explains why an application loading those files cannot validate the current repository assets; it does not by itself prove the cause of the reported horizontal-arrow appearance.",
+  "safety": {
+    "read_only": true,
+    "theme_installed_or_replaced": false,
+    "application_restarted": false,
+    "vm_input_sent": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Resolved GTK2 recipe discrepancy; native GTK2-to-VUE comparison remains incomplete."
+  },
+  "next_step": "After the duplicate MAME ownership is resolved, finish the authorized native GTK2 comparison and then decide whether the refreshed user-local theme should be installed for live review."
+}

@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "family": "GTK2",
+  "display": ":74",
+  "scope": "Fresh public preview integration and native interaction recheck in existing Xephyr; no source files changed in this round.",
+  "sources": {
+    "backend.py": "a5c5772c68996c384cc9d8b539759dd0d05fa6659752f44444806faa379bb0d9",
+    "native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe",
+    "gtk2_recipe.py": "6b2ee6694944190509e52de15e8ccdc9c500c3f3e8ec275daabaa183f6ff6d58",
+    "test_gtk2_public_native.py": "bd2951e2ca7a9f1ac988c4184489f4f707c1a88d5222d316a6996916ee2a509b",
+    "verify_gtk2_public_capture.py": "9f1520c5107d5f9f3850a0288a8dc281a5b773ab5274f097ae3e5eba6516541a"
+  },
+  "results": {
+    "public_generation": {
+      "guards_verified": true,
+      "recipe_scope": "translated_controls",
+      "families": [
+        "gtk2"
+      ],
+      "recipe_applied": false,
+      "native_widget": "GtkHScrollbar/GtkVScrollbar",
+      "note": "The public preview emits GTK2-native widgets but the partial public recipe is not fully applied."
+    },
+    "actual_public_preview_pixels": {
+      "verification": "passed on captured GTK2 preview from the failing interaction run",
+      "horizontal": "220x15 at x16,y16",
+      "vertical": "15x180 at x260,y16",
+      "native_metrics": true,
+      "arrow_pixel_differences": {
+        "left": 0,
+        "right": 0,
+        "up": 0,
+        "down": 0
+      },
+      "bar_role_colors_match": true,
+      "canvas_role_pixels_match": 64
+    },
+    "interaction": {
+      "result": "not verified",
+      "observed": "Pointer motion entered the preview and a GTK tooltip appeared. XTest click did not produce the expected native event; held capture showed zero changed arrow pixels for the first horizontal direction. A retry with a WM did not resolve it. A diagnostic continuing past held-pixel checks timed out waiting for the native value callback; the all-control click probe likewise timed out on the first click.",
+      "limits": "Do not treat this as GTK2 design failure: native GTK2 pressure simulation in the existing R5 receipt passed. Public-route click/pressed state remains unresolved."
+    },
+    "recovery": {
+      "temporary_openbox": "started only in :74 for the probe and terminated; Xephyr itself and the user Theme Lab window remain open",
+      "owned_preview": "closed by fixture cleanup",
+      "personal_session_or_theme": "not changed"
+    }
+  },
+  "artifacts": {
+    "preview-window-start.png": {
+      "path": "/home/lsi/tempia/.qa-gtk2-public-h04bnh7v/preview-window-start.png",
+      "sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f"
+    },
+    "preview.png": {
+      "path": "/home/lsi/tempia/.qa-gtk2-public-h04bnh7v/preview.png",
+      "sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f"
+    },
+    "verified-pixels.json": {
+      "path": "/home/lsi/tempia/.qa-gtk2-public-h04bnh7v/verified-pixels.json",
+      "sha256": "6660a3498f70132d77f2475fce7919a353c689476521055150ca3198fcffed12"
+    },
+    "window-input-debug.txt": {
+      "path": "/home/lsi/tempia/.qa-gtk2-public-h04bnh7v/window-input-debug.txt",
+      "sha256": "f9b105a8ec85e5e86c1701399778dfa041cf3cae3b607750873298c054179dde"
+    }
+  },
+  "script_evidence": {
+    "record": "~/tempia/board/i167-gtk2-public-input-20261018/scripts-record-I167-r2.json",
+    "files_changed": false,
+    "count": 5
+  },
+  "conclusion": "I167 remains partial. Public pixel/color correctness has fresh proof; interaction/pressed state through the public route does not. Per the current instruction, leave this reason on I167 and continue with the next authorized item T01."
+}

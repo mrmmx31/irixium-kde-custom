@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R439",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the selected GTK2 theme's effective scrollbar stepper mapping, dimensions and installed palette assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "profile": {
+    "selector": "GTK2 gtk-theme-name=DomainOS-SR10-4-KDE",
+    "theme_root": "~/.themes/DomainOS-SR10-4-KDE",
+    "theme_gtkrc_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "generated_palette_include": "$XDG_DATA_HOME/irixium/gtk2-palette/14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467/gtkrc",
+    "generated_palette_gtkrc_sha256": "40df05843705adeb86a721e75bb5a291ab6e32951dc15ad84fa91a7ffea4dcef"
+  },
+  "effective_scrollbar_rules": {
+    "gtk_range_slider_width_px": 11,
+    "gtk_range_stepper_size_px": 15,
+    "gtk_range_trough_border_px": 2,
+    "palette_include_repeats_same_metrics": true,
+    "mapping": "GtkRange STEPPER NORMAL/PRELIGHT/ACTIVE/SELECTED/INSENSITIVE references scrollbar-stepper-{up,down,left,right}-{normal,focused,pressed,toggled,disabled}.png in the generated KDE-role palette include."
+  },
+  "assets": {
+    "directions": [
+      "up",
+      "down",
+      "left",
+      "right"
+    ],
+    "states": [
+      "normal",
+      "focused",
+      "pressed",
+      "toggled",
+      "disabled"
+    ],
+    "files_checked": 20,
+    "effective_palette_dimensions": "All 20 cache assets are 15x15 pixels.",
+    "installed_theme_dimensions": "All 20 corresponding scrollbar-stepper assets in the selected theme are 15x15 pixels.",
+    "pixel_source_relation": "The 16 normal/focused/pressed/toggled cache images equal their repository assets byte-for-byte. Four disabled cache images differ in color data while retaining 15x15 geometry, consistent with adaptive palette output. All selected-theme base scrollbar-stepper files match repository files byte-for-byte.",
+    "legacy_sibling_assets": "Unprefixed stepper-*.png files are 16x16 in the base theme. The generated palette include maps the GtkRange scrollbar steppers to the distinct scrollbar-stepper-* assets; the unprefixed set is not evidence that the mapped scrollbar arrows are 16x16."
+  },
+  "interpretation": {
+    "conclusion": "The selected GTK2 configuration and its adaptive palette include both specify a 15px stepper allocation, with an 11px slider width and 2px trough border. The effective scrollbar arrow assets are 15x15; the selected installed normal cells match the retained SR10.4 cells in R394. R344 supersedes R334’s misregistered cell counts and reports three left and one right outer-relief corner differences; the glyph itself remains exact. This audit does not reproduce the reported smaller appearance.",
+    "limits": [
+      "This is a configuration and asset audit, not a live capture of an already-open GTK2 application.",
+      "The historical horizontal held-state comparison in the VM and human visual review remain open.",
+      "R334 records one outer relief corner difference on the normal right horizontal stepper; its glyph silhouette is exact."
+    ]
+  },
+  "changes": {
+    "theme_code": false,
+    "user_theme_or_profile": false,
+    "application_processes": false,
+    "vm_input": false
+  },
+  "next": "Keep I167 on GTK2. Resolve the separate MAME ownership conflict before any VM input; then capture the historical horizontal held state and retain human visual review."
+}

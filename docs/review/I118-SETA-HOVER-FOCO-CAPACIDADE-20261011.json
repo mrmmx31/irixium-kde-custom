@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-11T05:38:11.058954+00:00",
+  "item": "I118",
+  "revision": 1,
+  "scope": "GTK3 stepper hover and honest focus capability",
+  "source_rule": {
+    "url": "https://raw.githubusercontent.com/GNOME/gtk/3.24.49/gtk/gtkrange.c",
+    "function": "update_stepper_state",
+    "observation": "Prelight and active from mouse/grab gadget; other flags inherited from GtkRange",
+    "scope": "Linux GTK3 algorithm; not SR10.4 historical proof"
+  },
+  "runtime_capability": {
+    "gtk_version": [
+      3,
+      24,
+      49
+    ],
+    "scrollbar_default_can_focus": false,
+    "standalone_button_default_can_focus": true,
+    "scope": "Public runtime capability; not forced focus or historical defaults"
+  },
+  "decision": "Hover translated; Foco explicitly disabled for default scrollbar, isolated-button focus belongs to later piece stage; stored future recipe preserved",
+  "native_hover": {
+    "result": ".qa-theme-lab-arrow-hover-e9rn4kj9/home/results/RESULTADO.json",
+    "sha256": "b78f708e8112988cb7e8756508fe64508d31c3055a1522729590896541af8ee0",
+    "passed": true,
+    "cases": 12,
+    "checks": 1680,
+    "actual_node": "button.up:hover:dir(ltr)",
+    "input": "Real XTest pointer hover/press/release"
+  },
+  "native_css": {
+    "combinations": 15,
+    "log": "/tmp/i118-hover-css.log",
+    "passed": true
+  },
+  "backend": {
+    "tests": 29,
+    "log": "/tmp/i118-hover-backend-final.log",
+    "passed": true
+  },
+  "editor": {
+    "build": "/tmp/i118-hover-build.log",
+    "unit": "/tmp/i118-hover-unit.log",
+    "pointer_result": ".qa-theme-lab-spin-t9wa9ibi/RESULTADO.json",
+    "passed": true,
+    "hover_independent": true,
+    "focus_guard": true,
+    "reload_preserved": true
+  },
+  "backdrop_hover": {
+    "session": 74250,
+    "log": "/tmp/i118-hover-backdrop.log",
+    "status": "passed",
+    "terminal_exit": 0,
+    "result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-arrow-hover-backdrop-qyo5lzv3/home/results/RESULTADO.json",
+    "sha256": "4d167e66079f0df0b2d2588dd3fa274e34b3167c79e38dee125fcc19534bc4bd",
+    "cases": 12,
+    "checks": 1536
+  },
+  "scope_progress_percent": 60,
+  "personal_window_changed": false,
+  "historical_visual_claim": false,
+  "remaining": [
+    "Other pieces including isolated arrow focus",
+    "Preview startup/reopen readiness",
+    "Personal delivery"
+  ],
+  "hashes": {
+    "tools/theme-lab/backend.py": "d30505d0ef9ca5e80a737acb56420d9eb57425b68961557206936e4d427ad1b5",
+    "tools/theme-lab/src/view/part_relief_editor.c": "96225276d96766cba0b70462ddafb65edc8c000622314a6b26afc37d340815c3",
+    "tools/theme-lab/tests/test_backend.py": "dda94525a29e21c9c0233262c36a56eedac2a5024c8cb7bf7977bc8a2cb639bb",
+    "tools/theme-lab/tests/test_arrow_relief_native.py": "306f8a8fa0ad30fe3191bb66a85a5b3e223998c4b80ee44922946770435a96e9",
+    "tools/theme-lab/tests/test_controller_spin.py": "8e8a5a561c2a1d754119426fd7b2c13177a6720f8e8c7b2701e0063687465f91"
+  },
+  "visual_inspection": "DomainOS-SR10.4-hover-flat-0/hover-down.png examined; hovered lower arrow flat, other arrows retain relief"
+}

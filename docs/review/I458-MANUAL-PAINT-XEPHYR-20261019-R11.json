@@ -1,0 +1,40 @@
+{
+  "item": "I458",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T16:29:30Z",
+  "status": "multi-step-undo-redo-and-save-resume-verified; manual-review-and-broader-recovery-pending",
+  "scope": "Continue the authorized isolated Motif Paint editor pilot without changing the source fixture or installed application.",
+  "runtime": {
+    "xephyr": ":86, 1600x900, PID 113337",
+    "title": "PARA LSI — I458 Paint editor | Xephyr :86",
+    "theme_lab_pid": 138936,
+    "binary": "~/tempia/i458-xephyr-r153/build/theme-lab",
+    "test_work_dir": "~/tempia/i458-xephyr-r153/work"
+  },
+  "validation": {
+    "multi_step_undo": {
+      "start_sha256": "0a5c0f8431d4307968e084531cf11d29df9825a788d60f25b3a13d26be26f5e0",
+      "after_pencil_sha256": "a87eba3cae62182875a8248fdfb9edd2e637a9c732328bbcdf82d5cb510a5b00",
+      "after_line_sha256": "219a3da303696c66d2f2cc892d2e63c5528b6aebe45935866f8d60c5006b6e1b",
+      "ctrl_z_once_restored": "a87eba3cae62182875a8248fdfb9edd2e637a9c732328bbcdf82d5cb510a5b00",
+      "ctrl_z_twice_restored": "0a5c0f8431d4307968e084531cf11d29df9825a788d60f25b3a13d26be26f5e0"
+    },
+    "multi_step_redo": {
+      "ctrl_y_once_restored": "a87eba3cae62182875a8248fdfb9edd2e637a9c732328bbcdf82d5cb510a5b00",
+      "ctrl_y_twice_restored": "219a3da303696c66d2f2cc892d2e63c5528b6aebe45935866f8d60c5006b6e1b"
+    },
+    "save_resume": "PASS: explicitly saved the two-action result, closed/reopened the Paint editor, and the test project retained SHA-256 219a3da303696c66d2f2cc892d2e63c5528b6aebe45935866f8d60c5006b6e1b.",
+    "capture": "~/tempia/i458-xephyr-r153/final-visible-editor-r11.png",
+    "capture_sha256": "120e122e4703eb10694416a6aa9713ac4320b3c1cfb6a574567c7bea035ad7d2",
+    "source_fixture": "~/tempia/i458-xephyr-20261019/work/manual-paint.json",
+    "source_fixture_sha256": "b9dd6d950ed9a91aa6900cf0cfcebe2bab054f72143df5cebcadca3439ff8045",
+    "source_fixture_unchanged": true,
+    "xephyr_and_editor_left_open": true
+  },
+  "limits": [
+    "The isolated Xephyr has no KDE color scheme; this is not a color-role validation.",
+    "The screenshot demonstrates legibility and separation of raster paint from the native Motif sample, not historical fidelity or human acceptance.",
+    "Only one Motif/Button/Normal raster layer and two edit actions were exercised; sibling-layer recovery from a malformed project record and other contexts remain pending."
+  ],
+  "next": "Keep :86 available for user inspection. Proceed to a different authorized item from the current board, one item at a time; return to I458 sibling-layer recovery as a separate step."
+}

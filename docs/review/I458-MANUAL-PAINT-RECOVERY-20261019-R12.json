@@ -1,0 +1,39 @@
+{
+  "item": "I458",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T17:20:00Z",
+  "status": "valid-sibling-layer-recovery-model-passed; ui-action-pending",
+  "scope": "Authorized model/API substep. No source fixture or installed application was changed.",
+  "implementation": {
+    "api": "tl_manual_paint_recover(source, destination, error, capacity)",
+    "behavior": [
+      "Reads the source without following symlinks and enforces the 32 MiB input limit.",
+      "Validates each document's context, dimensions and RGBA pixels; duplicate contexts are skipped.",
+      "Writes only valid sibling documents to a separate destination with mode 0600.",
+      "Publishes without replacing an existing destination; leaves source bytes untouched.",
+      "Reports recovered and skipped document counts; refuses an empty recovery."
+    ],
+    "files": [
+      "tools/theme-lab/include/manual_paint.h",
+      "tools/theme-lab/src/paint/model.c",
+      "tools/theme-lab/tests/manual_paint_model_test.c"
+    ]
+  },
+  "validation": {
+    "command": "make -C tools/theme-lab check-manual-paint-model",
+    "result": "PASS; C99 -Wall -Wextra -Werror",
+    "synthetic_fixture": "two valid sibling layers plus one invalid 0x0 layer",
+    "recovered_documents": 2,
+    "destination_collision": "PASS; existing recovery file not overwritten",
+    "source_unchanged": true,
+    "source_fixture": "~/tempia/i458-resume-20261019/work/manual-paint.json",
+    "source_fixture_sha256": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431",
+    "git_diff_check": "PASS"
+  },
+  "limits": [
+    "Recovery is model-level only; no user-facing recovery action or file chooser is wired yet.",
+    "No native UI, visual or historical-fidelity claim is made.",
+    "Xephyr :86 and its running Theme Lab process were left untouched."
+  ],
+  "next": "Add an explicit Motif recovery action that writes valid layers to a user-selected new file, then test no-overwrite and invalid-source behavior through the UI."
+}

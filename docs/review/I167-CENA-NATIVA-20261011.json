@@ -1,0 +1,59 @@
+{
+  "item": "I167",
+  "revision": 1,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "at": "2026-10-11T08:18:22.959563+00:00",
+  "scope": "GTK2 scrollbar-only native scene foundation; product controller not connected",
+  "native_scenes": 24,
+  "native_widgets_measured": 48,
+  "schemes": 4,
+  "states": [
+    "normal",
+    "disabled",
+    "backdrop"
+  ],
+  "origins": [
+    "separate",
+    "coupled XEmbed"
+  ],
+  "requested_positions_and_sizes_verified": true,
+  "native_requests_before_custom_size_verified": true,
+  "arrow_masks_equal": 96,
+  "native_xembed_verified": true,
+  "existing_scene_contract_tests": 15,
+  "gtk2_scene_contract_tests": 3,
+  "model_unchanged": true,
+  "failure_recorded": "First XEmbed probe observed widgets before asynchronous allocation; bounded wait and ensure_style corrected measurement; first extraction import path also corrected",
+  "historical_fidelity_claimed": false,
+  "user_approval_claimed": false,
+  "personal_windows_changed": false,
+  "stage_estimate_percent": 56,
+  "estimate_basis": "Native scene foundation for scrollbar mounting added; controller, events, other controls and painting remain incomplete",
+  "remaining": [
+    "GTK2 scene lifecycle/event integration in Motif controller",
+    "other native controls and translated paint",
+    "isolated arrow-button/content fitting",
+    "hover/focus/backdrop interactions",
+    "coordinated personal delivery"
+  ],
+  "hashes": {
+    "tools/theme-lab/preview_gtk.py": "684f88be26065f625bbe31f43a274828db8c9431abacb3443646cb8c208f1e83",
+    "tools/theme-lab/scene_contract.py": "12d09502e557766d7ba8b466e8bdfb8af52929f0d8d2272361ad050701b27f62",
+    "tools/theme-lab/native_scene_gtk2.py": "f21bddc9da4ec23d5360f6b42f9d519c1f30205d3ddb928af1a5f1a42b85c971",
+    "tools/theme-lab/tests/probe_gtk2_scene.py": "f68df7ee316b9c57d1d7cebf79287fbd3cfe425c1b95147f6c1d10fdb0788bb2",
+    "tools/theme-lab/tests/test_gtk2_scene_native.py": "0bb713a14d3860801c654c4f8bb36fe50e7cc86642e69a9ad5de730ef78e09ff",
+    "tools/theme-lab/tests/test_gtk2_scene_contract.py": "1f264c0b25f9fda128c6541d66c819b8191c6a398e40b828e80dcf46054c1424",
+    "docs/referencias/domainos-sr104/i167-scene/state0-separate.png": "f7e0defa97809591ec6eef8c19e71bad755964423ec16df29dc9c17bd737b557",
+    "docs/referencias/domainos-sr104/i167-scene/state0-coupled.png": "b082c58652d6a2a80dcce31eaf0d6b5141cc354739f140a6c0f3e28e259e9703",
+    "docs/referencias/domainos-sr104/i167-scene/scene-native-r2.log": "31e341eea1df0457f97bb8f78ba12a05ed1a53b222796692ab38092d94b9266a",
+    "docs/referencias/domainos-sr104/i167-scene/masks.json": "53b0233a209193e55e29b21eb8005034c756ec59ba512f15c846b4aa7703d1c3",
+    "docs/referencias/domainos-sr104/i167-scene/results.json": "100ceccf07fba4ac6fa620eb49eda381ccb8c98d76ca99978f366e1ef538a412",
+    "docs/referencias/domainos-sr104/i167-scene/shared-scene-regression-r2.log": "975e0425226508b074cb5b4fb8ecbac30d3972e91ff2267af8c7849169c920bb",
+    "docs/referencias/domainos-sr104/i167-scene/state2-coupled.png": "02d4286aabc8f7708d5e7b2e1ff6b560f60427f1470bad63a38dd33704981603",
+    "docs/referencias/domainos-sr104/i167-scene/scene-native-masks.log": "2d8e249cdf97368db57c6b4e07c79571e0753c1b2d73fa24ea589885e491e0c7",
+    "docs/referencias/domainos-sr104/i167-scene/shared-scene-regression.log": "4f9b032cbf958e412d1bb1667760e77241cc03218e8bacca171eb0cd3c6a9686",
+    "docs/referencias/domainos-sr104/i167-scene/state3-coupled.png": "b082c58652d6a2a80dcce31eaf0d6b5141cc354739f140a6c0f3e28e259e9703",
+    "docs/referencias/domainos-sr104/i167-scene/gtk2-scene-contract.log": "5279d1fc9a1ced44f9c96da1414ef59e4676f963fbad52e7a1a2903538819b0d",
+    "docs/referencias/domainos-sr104/i167-scene/scene-native.log": "554bb4307483305399f0b60b2ab437ff719bfbe555ff99a22698554f3fefd678"
+  }
+}

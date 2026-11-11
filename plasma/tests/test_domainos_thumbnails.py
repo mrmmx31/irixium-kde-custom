@@ -14,7 +14,9 @@ os.environ["QML_DISABLE_DISK_CACHE"] = "1"
 os.environ["QT_QPA_PLATFORMTHEME"] = "generic"
 os.environ["QT_STYLE_OVERRIDE"] = "Fusion"
 os.environ["QT_QUICK_CONTROLS_STYLE"] = "Fusion"
-_private = tempfile.TemporaryDirectory(prefix=".qa-domainos-thumbnail-lifecycle-", dir=Path(__file__).resolve().parents[2])
+_tempia = Path.home() / "tempia"
+_tempia.mkdir(mode=0o700, parents=True, exist_ok=True)
+_private = tempfile.TemporaryDirectory(prefix="domainos-thumbnail-lifecycle-", dir=_tempia)
 for _variable in ("HOME", "TMPDIR", "XDG_CONFIG_HOME", "XDG_DATA_HOME", "XDG_CACHE_HOME", "XDG_STATE_HOME", "XDG_RUNTIME_DIR"):
     _path = Path(_private.name) / _variable.lower()
     _path.mkdir(mode=0o700)
@@ -142,21 +144,114 @@ Item {
         self.assertFalse(self.preview.property("contentsLoader").property("active"))
         self.assertFalse(self.preview.property("providersLoaded"))
 
-    def test_enabled_content_loads_then_unloads_on_hide_and_disable(self):
+    def test_enabled_content_and_frame_cache_survive_hide_but_clear_on_disable(self):
         self.preview.setProperty("previewsEnabled", True)
         QMetaObject.invokeMethod(self.preview, "showToolTip")
         self.settle()
         self.assertTrue(self.preview.property("contentsLoader").property("active"))
-        self.assertIsNotNone(self.preview.property("contentsLoader").property("item"))
+        original = self.preview.property("contentsLoader").property("item")
+        self.assertIsNotNone(original)
         QMetaObject.invokeMethod(self.preview, "hideImmediately")
         self.settle()
-        self.assertIsNone(self.preview.property("contentsLoader").property("item"))
+        self.assertIs(self.preview.property("contentsLoader").property("item"), original)
+        self.assertTrue(self.preview.property("previewWasOpened"))
+        self.assertFalse(self.preview.property("providersLoaded"))
         QMetaObject.invokeMethod(self.preview, "showToolTip")
         self.settle()
+        self.assertIs(self.preview.property("contentsLoader").property("item"), original)
         self.preview.setProperty("previewsEnabled", False)
         self.settle()
         self.assertFalse(self.preview.property("contentsLoader").property("active"))
+        self.assertFalse(self.preview.property("previewWasOpened"))
+        self.assertIsNone(self.preview.property("contentsLoader").property("item"))
         self.assertFalse(self.preview.property("providersLoaded"))
+
+    def test_frame_snapshot_is_memory_only_and_identity_scoped(self):
+        if QGuiApplication.platformName() == "offscreen":
+            self.skipTest("grabToImage snapshot is exercised on the isolated Xephyr/X11 path")
+        component = QQmlComponent(self.engine)
+        source = '''import QtQuick
+import "''' + UI.as_uri() + '''" as Production
+Item {
+    id: fixture
+    width: 200; height: 100
+    property alias cache: frameCache
+    property alias sourceRect: providerRect
+    property alias cachedImage: cachedImage
+    readonly property bool cachedReady: cachedImage.status === Image.Ready
+    Rectangle { id: providerRect; objectName: "providerRect"; width: 80; height: 80; color: "red" }
+    Production.DomainOSThumbnailFrameCache {
+        id: frameCache; sourceItem: providerRect; identity: "window:one"
+    }
+    Image {
+        id: cachedImage; objectName: "cachedFrame"
+        x: 100; width: 80; height: 80
+        visible: frameCache.hasFrame
+        source: frameCache.frameUrl
+        asynchronous: false; smooth: true
+    }
+}'''
+        component.setData(source.encode(), QUrl.fromLocalFile(str(UI / "thumbnail-frame-cache-test.qml")))
+        root = component.create()
+        self.assertIsNotNone(root, "\n".join(error.toString() for error in component.errors()))
+        window = QQuickWindow()
+        window.resize(200, 100)
+        root.setParentItem(window.contentItem())
+        window.show()
+        self.settle()
+        cache = root.property("cache")
+        image = root.findChild(QQuickItem, "cachedFrame")
+        self.assertIsNotNone(image)
+        source_rect = root.findChild(QQuickItem, "providerRect")
+        self.assertIsNotNone(source_rect)
+        # QML's capture() returns a bool, but PySide's void-style invokeMethod
+        # overload reports None. Assert the observable queued state instead.
+        QMetaObject.invokeMethod(cache, "capture")
+        self.assertTrue(cache.property("capturePending") or cache.property("hasFrame"))
+        for _ in range(100):
+            self.settle()
+            if cache.property("hasFrame") and root.property("cachedReady"):
+                break
+        self.assertTrue(cache.property("hasFrame"),
+            "frameReference=%r retainedUrl=%r pending=%r" % (
+                cache.property("frameReference"), cache.property("retainedUrl"),
+                cache.property("capturePending")))
+        frame_url = QUrl(cache.property("frameUrl"))
+        self.assertTrue(frame_url.isValid() and not frame_url.isEmpty())
+        first = window.grabWindow()
+        self.assertFalse(first.isNull())
+        self.assertGreater(first.pixelColor(140, 40).red(), 200)
+
+        # Hiding the native source simulates the provider being released when
+        # the pointer leaves, then set sourceItem=null as Loader destruction
+        # does; the retained grab result must remain renderable.
+        source_rect.setProperty("color", QColor("blue"))
+        source_rect.setVisible(False)
+        cache.setProperty("sourceItem", None)
+        self.settle()
+        retained = window.grabWindow()
+        self.assertGreater(retained.pixelColor(140, 40).red(), 200)
+        self.assertTrue(cache.property("hasFrame"))
+
+        cache.setProperty("identity", "window:two")
+        self.settle()
+        self.assertFalse(cache.property("hasFrame"))
+        self.assertFalse(image.isVisible())
+        source_rect.setVisible(True)
+        cache.setProperty("sourceItem", source_rect)
+        QMetaObject.invokeMethod(cache, "capture")
+        self.assertTrue(cache.property("capturePending") or cache.property("hasFrame"))
+        for _ in range(100):
+            self.settle()
+            current = window.grabWindow()
+            if cache.property("hasFrame") and current.pixelColor(140, 40).blue() > 200:
+                break
+        self.assertTrue(cache.property("hasFrame"))
+        self.assertGreater(current.pixelColor(140, 40).blue(), 200)
+        window.close()
+        root.deleteLater()
+        window.deleteLater()
+        self.settle()
 
     def test_reusing_cell_for_another_identity_releases_the_previous_contents(self):
         self.preview.setProperty("previewsEnabled", True)
@@ -259,7 +354,7 @@ Item {
             # The old fixed cyan/blue shoulder has blue > red. The golden
             # application surface and every derived relief band retain red > blue.
             self.assertGreater(pixel.red(), pixel.blue(),pixel.name())
-            frame.save("/tmp/domainos-native-tooltip-palette-lifecycle.png")
+            frame.save(str(Path(_private.name) / "native-tooltip-palette-lifecycle.png"))
         finally:
             self.app.setPalette(saved)
             self.settle()

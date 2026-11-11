@@ -1,0 +1,133 @@
+/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-zz6yda8a
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: abc
+command: key
+command: key
+command: key
+command: key
+command: key
+command: type
+Exec arg[0]: ação — café
+Dúvida: seleção e revisão.
+Terceiro parágrafo.
+Mapping sym 231 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 16785428 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 233 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 250 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 231 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+Mapping sym 225 to 8
+Reverting scratch keycode (sym 13690718834508345856 to 8)
+command: key
+command: key
+command: key
+command: key
+command: key
+command: key
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: rascunho recuperável
+Mapping sym 225 to 8
+Reverting scratch keycode (sym 6488837381281350656 to 8)
+command: windowfocus
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: key
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: 321
+command: key
+command: key
+command: key
+command: key
+command: key
+command: key
+command: mousemove
+command: click
+command: key
+command: key
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: Árvore — ação Ελληνικά Русский 漢字 😀
+Mapping sym 193 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16785428 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 231 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 227 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778133 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778171 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778171 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778167 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778173 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778169 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778170 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778156 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778272 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778307 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778305 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778305 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778298 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778296 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16778297 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16805666 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16800599 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Mapping sym 16905728 to 8
+Reverting scratch keycode (sym 8105358254749083392 to 8)
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1141, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1045, in main
+    text(multilingual);expect(multilingual)
+                       ~~~~~~^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 966, in expect
+    return wait(lambda: observation().get('notes_text')==value,5)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 32, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

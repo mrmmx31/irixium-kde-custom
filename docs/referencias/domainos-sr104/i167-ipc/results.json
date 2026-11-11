@@ -1,0 +1,504 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "mode": "coupled",
+      "events": [
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "1ceddc59dc4e4cbebdc1839d8ba66c3b",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.859474+00:00",
+            "width": 240,
+            "height": 15,
+            "minimum_width": 49,
+            "minimum_height": 15,
+            "natural_width": 49,
+            "natural_height": 15,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 41,
+            "position_y": 57,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 0,
+              "slider_start": 88,
+              "slider_end": 130,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 240,
+              "area_height": 15,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 10,
+            "width": 240,
+            "height": 15
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "caff957e9d964a24b148f9d8d4faf204",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_v",
+            "control_index": 11,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.865781+00:00",
+            "width": 15,
+            "height": 270,
+            "minimum_width": 15,
+            "minimum_height": 49,
+            "natural_width": 15,
+            "natural_height": 49,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 311,
+            "position_y": 103,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 1,
+              "slider_start": 98,
+              "slider_end": 146,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 15,
+              "area_height": 270,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 11,
+            "width": 15,
+            "height": 270
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "24edbb0deda0430ab207c76ab1bbd36c",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.866876+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "4a5341b2b54843498843750588533967",
+            "family": "gtk2",
+            "action": "move",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.867772+00:00",
+            "x": 83,
+            "y": 91,
+            "coordinate_space": "gtk_logical_px"
+          },
+          "parsed": {
+            "action": 1,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "8540db01cdc543c0919328da591f4adb",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.869587+00:00",
+            "state": {
+              "value": 40.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "0bbd5626a21c463598d0b819c72bc472",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.871094+00:00",
+            "width": 240,
+            "height": 15,
+            "minimum_width": 49,
+            "minimum_height": 15,
+            "natural_width": 49,
+            "natural_height": 15,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 83,
+            "position_y": 91,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 0,
+              "slider_start": 99,
+              "slider_end": 141,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 240,
+              "area_height": 15,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 10,
+            "width": 240,
+            "height": 15
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "92494ef132e04a08b07ace0eaa81a151",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_v",
+            "control_index": 11,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:28.871982+00:00",
+            "width": 15,
+            "height": 270,
+            "minimum_width": 15,
+            "minimum_height": 49,
+            "natural_width": 15,
+            "natural_height": 49,
+            "scale_factor": 1,
+            "origin": "coupled",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 311,
+            "position_y": 103,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 1,
+              "slider_start": 98,
+              "slider_end": 146,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 15,
+              "area_height": 270,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 11,
+            "width": 15,
+            "height": 270
+          }
+        }
+      ],
+      "cross_family_and_stale_rejected": true
+    },
+    {
+      "mode": "separate",
+      "events": [
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "0247f9dcf06d47c3b1a598f8996facf7",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.483515+00:00",
+            "width": 240,
+            "height": 15,
+            "minimum_width": 49,
+            "minimum_height": 15,
+            "natural_width": 49,
+            "natural_height": 15,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 41,
+            "position_y": 57,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 0,
+              "slider_start": 88,
+              "slider_end": 130,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 240,
+              "area_height": 15,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 10,
+            "width": 240,
+            "height": 15
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "dd3fcb66b0b64c59af89e77d6a7623a9",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_v",
+            "control_index": 11,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.484766+00:00",
+            "width": 15,
+            "height": 270,
+            "minimum_width": 15,
+            "minimum_height": 49,
+            "natural_width": 15,
+            "natural_height": 49,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 311,
+            "position_y": 103,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 1,
+              "slider_start": 98,
+              "slider_end": 146,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 15,
+              "area_height": 270,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 11,
+            "width": 15,
+            "height": 270
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "d1061227134f40b181027e86190e1547",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.485633+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "05cf19a212814647a63ea7cf3cc6461a",
+            "family": "gtk2",
+            "action": "move",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.486393+00:00",
+            "x": 83,
+            "y": 91,
+            "coordinate_space": "gtk_logical_px"
+          },
+          "parsed": {
+            "action": 1,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "004ae623080c4372b09987841f59e708",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.488021+00:00",
+            "state": {
+              "value": 40.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "2cce4f87003c457187777f2834dbab07",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.489829+00:00",
+            "width": 240,
+            "height": 15,
+            "minimum_width": 49,
+            "minimum_height": 15,
+            "natural_width": 49,
+            "natural_height": 15,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 83,
+            "position_y": 91,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 0,
+              "slider_start": 99,
+              "slider_end": 141,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 240,
+              "area_height": 15,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 10,
+            "width": 240,
+            "height": 15
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "9ebcc6142e1847fd99267eb28506a7a7",
+            "family": "gtk2",
+            "action": "metrics",
+            "control_id": "scroll_v",
+            "control_index": 11,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:21:29.490875+00:00",
+            "width": 15,
+            "height": 270,
+            "minimum_width": 15,
+            "minimum_height": 49,
+            "natural_width": 15,
+            "natural_height": 49,
+            "scale_factor": 1,
+            "origin": "separate",
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 311,
+            "position_y": 103,
+            "cell_offset_x": 0,
+            "cell_offset_y": 0,
+            "sensitive": true,
+            "font_kind": 2,
+            "font_description": "",
+            "range_geometry": {
+              "axis": 1,
+              "slider_start": 98,
+              "slider_end": 146,
+              "area_x": 0,
+              "area_y": 0,
+              "area_width": 15,
+              "area_height": 270,
+              "coordinate_space": "gtk_widget_window_px"
+            }
+          },
+          "parsed": {
+            "action": 3,
+            "control": 11,
+            "width": 15,
+            "height": 270
+          }
+        }
+      ],
+      "cross_family_and_stale_rejected": true
+    }
+  ],
+  "scope": "Native scene APIs to C parser; main application launch and Ctrl gestures remain pending"
+}

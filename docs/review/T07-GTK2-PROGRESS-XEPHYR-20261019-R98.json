@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-PROGRESS-XEPHYR-20261019-R98",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "authorization": "AI Work Board saved authorization for T07 GTK hint scope.",
+  "status": "passed",
+  "environment": {
+    "xephyr": ":84",
+    "screen_px": [
+      800,
+      600
+    ],
+    "gtk": "2.24.33",
+    "window_manager": "Openbox --sm-disable",
+    "xsettings": "private xsettingsd",
+    "home_xdg": "private per-case paths below ~/tempia"
+  },
+  "cases": [
+    "TL ProgressBar",
+    "TL push baseline",
+    "BL ProgressBar",
+    "BL push baseline",
+    "BL TextView"
+  ],
+  "passed": 5,
+  "failed": 0,
+  "assertions": [
+    "GTK native tooltip appeared after 500 ms",
+    "stable for 400 ms",
+    "inside display bounds",
+    "did not overlap control",
+    "closed after pointer left"
+  ],
+  "purpose": "Recheck the two R74 GTK2 ProgressBar failures in a valid owned Xephyr and include push controls as baselines.",
+  "result": "Both ProgressBar locations and both push baselines passed; the bottom-left TextView also passed. R74 failures were not reproduced.",
+  "product_or_personal_settings_changed": false,
+  "artifacts": "~/tempia/t07-gtk2-progress-r98-20261019/result.json",
+  "result_sha256": "0149d57f9ae94236f3545942cd62206581b38aec25342d50f37515959c851cd2",
+  "limitations": [
+    "Focused five-case check only; no full 800x600 matrix.",
+    "No alternate palette or human visual review."
+  ]
+}

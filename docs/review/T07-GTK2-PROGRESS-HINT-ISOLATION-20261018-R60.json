@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-PROGRESS-HINT-ISOLATION-20261018-R60",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "diagnostic_unresolved",
+  "purpose": "Isolate the repeatable GTK2 NativeSession/probe failure for ProgressBar hover at the upper-left placement.",
+  "environment": {
+    "xephyr": ":81",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "gtk2": "2.24.33",
+    "control_rect_px": [
+      440,
+      240,
+      120,
+      36
+    ],
+    "pointer_px": [
+      500,
+      258
+    ],
+    "theme": "Default/Sans 10 in disposable HOME/XDG",
+    "host_profile_changed": false
+  },
+  "observations": {
+    "scene_probe": "Initial failure plus three repeats; no tooltip became visible.",
+    "extended_wait": "Still absent after 2.5 s.",
+    "without_decoy_tooltip_window": "Still absent.",
+    "without_layout_gestures": "Still absent.",
+    "without_placement_manager": "Still absent.",
+    "direct_native_progressbar": "Tooltip shown using the same shared binder.",
+    "direct_with_generated_progress_rc": "Tooltip shown.",
+    "direct_with_canvas_roles_and_style_name": "Tooltip shown.",
+    "direct_with_scene_like_ensure_style_size_request_and_post_map_configuration": "Tooltip shown at the same geometry.",
+    "conclusion": "Not a general GTK2 ProgressBar or tooltip-helper limitation. The difference remains inside the exact NativeSession/scene execution path or probe setup; cause not proven."
+  },
+  "changes": {
+    "product_source": "none",
+    "test_source": "none; diagnostics used temporary copies under ~/tempia"
+  },
+  "sha256": {
+    "control_hints.py": "1f35d9adcbe661f35687f43b730ca909341bebae5cd5189f6572c22d9b79b07c",
+    "native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe",
+    "gtk2_session.py": "99c1fdbc773649a5e694d8f0ed3f447fd2d6eb5e8b091fd04278cdbea100e998"
+  },
+  "artifacts": "~/tempia/t07-gtk2-all-controls-edges-20261018/",
+  "next": "Continue T07 at the next independent uncovered family/layout while preserving this GTK2 failure in the queue; return to NativeSession probe only with a discriminating hypothesis."
+}

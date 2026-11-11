@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLICK-RECAPTURE-TEST-ERRATUM-20261025-R151",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "purpose": "Record an invalid host-coordinate click attempt while validating the mouse recapture path.",
+  "test": {
+    "target_intended": "MAME clone window PID 274368, single click on File Manager bin icon",
+    "method": "xdotool mousemove --window with client-relative coordinates",
+    "result": "The resulting host pointer coordinates were outside MAME and over XChat; the click did not test MAME mouse recapture.",
+    "host_ui": "A single click may have changed the active XChat view. No text was typed or sent. The XChat window was already active again after restoring the previous MAME minimized state; the exact previous XChat view was not recreated.",
+    "guest": {
+      "mouse_hook_captured": false,
+      "mouse": false,
+      "mouse_device": "none",
+      "paused": false,
+      "files_or_config_changed": false
+    },
+    "mame_window_restored": "Minimized/unmapped, matching its state before the attempted click test."
+  },
+  "limits": "Do not count this as a pass or failure of the capture hook. Calibrate the absolute X11 client coordinates and verify the window PID immediately before any future synthetic click.",
+  "status": "click_test_invalid_coordinate_no_mame_input_claimed"
+}

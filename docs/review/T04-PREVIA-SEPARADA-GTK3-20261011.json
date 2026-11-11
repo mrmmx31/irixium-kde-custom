@@ -1,0 +1,54 @@
+{
+  "at": "2026-10-11T16:01:05.813779+00:00",
+  "item": "T04",
+  "revision": 2,
+  "phase": "gtk3_separate_preview_persistence_native",
+  "result": {
+    "status": "passed",
+    "scope": "Native gtk3 coupled/separate resizing, saved toggle, native Save/Load, project Undo/Redo and process restart with on/off preference; pending410×50 retained while applied300×50 scene bytes preserved.",
+    "native": [
+      {
+        "control": 13,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Pango contexto de ProgressBar carregado: Noto Sans 9.75",
+        "width": 300,
+        "height": 50,
+        "natural_width": 300,
+        "natural_height": 50
+      },
+      {
+        "control": 13,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Pango contexto de ProgressBar carregado: Noto Sans 9.75",
+        "width": 300,
+        "height": 50,
+        "natural_width": 300,
+        "natural_height": 50
+      }
+    ],
+    "gtk2_still_partial": true
+  },
+  "fixture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ojlbwmg2",
+  "scope": "Native GtkProgressBar GTK3 with real Motif controller; checkbox on/off, resized coupled/separate, native Save/Load, project Undo/Redo, two restarts; pending410x50 retained and applied300x50 scene bytes unchanged; all other family recipes unchanged.",
+  "product_unchanged": {
+    "tools/theme-lab/src/controller.c": true,
+    "tools/theme-lab/src/view.c": true,
+    "tools/theme-lab/build/theme-lab": true
+  },
+  "reused_gtk2_evidence": "docs/review/T04-PREVIA-SEPARADA-CONTROLADOR-20261011.json",
+  "tests_changed": {
+    "tools/theme-lab/tests/controller_spin_probe.c": "75632b1924dd6037e676ff0831f8f087522e0954e69dd07f2fdbcc0cf40781e9",
+    "tools/theme-lab/tests/controller_gtk2_progress.py": "b94ee1370cb45065e1d38fc1b0b5eb50c5a3a9171d48c65422f0524bb240c5d5",
+    "tools/theme-lab/tests/test_controller_spin.py": "fd6c893fce9f409fa1ad9200e553c01d2197f25f98cb3027e513d247a6e59d8e"
+  },
+  "limits": [
+    "Single progress control tests controller persistence, not every GTK3 control or historical fidelity.",
+    "GTK2 adapter remains7/16 types; other adapters remain pending.",
+    "No personal window reopened, no theme/profile/VM/backup changes.",
+    "GTK3 Entry/TextView have no explicit undo/redo bindings in inspected code; runtime edit test is required before declaring the defect demonstrated."
+  ]
+}

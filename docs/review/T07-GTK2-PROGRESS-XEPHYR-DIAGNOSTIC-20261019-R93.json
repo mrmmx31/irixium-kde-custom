@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-PROGRESS-XEPHYR-DIAGNOSTIC-20261019-R93",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "authorization": "Saved AI Work Board state: section=work; user.authorized=true; scope GTK hints.",
+  "status": "invalid_environment_no_product_conclusion",
+  "purpose": "Discriminate the GTK2 Progress tooltip corner failure without repeating a full matrix.",
+  "environment": {
+    "xephyr": ":83",
+    "geometry": "800x600",
+    "window_manager": "Openbox started only in the owned Xephyr",
+    "gtk": "2.24.33",
+    "home_xdg": "private under ~/tempia",
+    "product_or_personal_settings_changed": false
+  },
+  "attempts": {
+    "progress_x440": "tooltip did not map",
+    "progress_x600": "tooltip did not map",
+    "push_control_baseline": "tooltip did not map"
+  },
+  "diagnostics": "The same isolated display failed to map a baseline push tooltip as well as ProgressBar. This differs from R74, where other controls in the same GTK2 matrix passed. The owned Xephyr lacked the prior session setup (KDE/XSettings/theme environment), so this result is an environment mismatch and does not identify a product defect or invalidate R58/R74.",
+  "changes": {
+    "product_source": "none",
+    "user_profile": "none",
+    "main_display": "preserved at 1920x1080 scale 1.0"
+  },
+  "artifacts": "~/tempia/t07-gtk2-progress-r93-20261019/",
+  "cleanup": "Closed only owned Xephyr :83 and its Openbox; no other Xephyr session was touched.",
+  "next": "Reuse a T07 Xephyr with matching test-session services when available; add a discriminating instrumentation-only probe that records query-tooltip callback and Gtk.Window map transitions. Do not repeat the 64-case matrix."
+}

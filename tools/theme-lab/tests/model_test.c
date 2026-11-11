@@ -1,3 +1,4 @@
+#include "control_dimensions.h"
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 #define _POSIX_C_SOURCE 200809L
 #include "theme_lab.h"
@@ -85,6 +86,7 @@ static void test_roundtrip(TLModel *model)
 {
     TLModel loaded;
     struct stat state;
+    struct json_object *root, *gtk2_geometry;
     int i;
     tl_model_init(model);
     CHECK(tl_model_validate(model, error, sizeof(error)) == 0);
@@ -97,7 +99,14 @@ static void test_roundtrip(TLModel *model)
     model->recipes[TL_GTK4].geometry.bar_px = 22;
     model->recipes[TL_GTK4].geometry.shadow_px = 3;
     model->recipes[TL_GTK4].geometry.thumb_cross_px = 15;
+    model->recipes[TL_GTK2].scale_slider_width_px = 10;
+    model->recipes[TL_GTK2].scale_slider_length_px = 31;
     model->recipes[TL_GTK4].palette.light = .375;
+    model->recipes[TL_GTK4].control_palette_custom[1] = 1;
+    model->recipes[TL_GTK4].control_palettes[1] = model->recipes[TL_GTK4].palette;
+    strcpy(model->recipes[TL_GTK4].control_palettes[1].face_role,
+           "Colors:Window/BackgroundNormal");
+    model->recipes[TL_GTK4].control_palettes[1].light = .425;
     model->picked.valid = 1;
     model->picked.visual_id = ULONG_MAX;
     model->picked.x = -170;
@@ -111,6 +120,12 @@ static void test_roundtrip(TLModel *model)
     CHECK(tl_model_save(model, project, error, sizeof(error)) == 0);
     CHECK(!stat(project, &state));
     CHECK((state.st_mode & 0777) == 0600);
+    root = root_json();
+    CHECK(json_object_get_int(field(root, "schema_version")) == 4);
+    gtk2_geometry = field(field(field(root, "recipes"), "gtk2"), "geometry");
+    CHECK(json_object_get_int(field(gtk2_geometry, "scale_slider_width_px")) == 10);
+    CHECK(json_object_get_int(field(gtk2_geometry, "scale_slider_length_px")) == 31);
+    json_object_put(root);
     memset(&loaded, 0xa5, sizeof(loaded));
     CHECK(tl_model_load(&loaded, project, error, sizeof(error)) == 0);
     CHECK(!strcmp(model->name, loaded.name));
@@ -121,12 +136,19 @@ static void test_roundtrip(TLModel *model)
     CHECK(model->picked.x == loaded.picked.x);
     CHECK(!strcmp(model->picked.purpose, loaded.picked.purpose));
     CHECK(loaded.native_measured.bar_px == 15);
+    CHECK(loaded.schema_version == 4);
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         CHECK(!memcmp(&model->recipes[i].geometry, &loaded.recipes[i].geometry, sizeof(TLGeometry)));
         CHECK(model->recipes[i].palette.light == loaded.recipes[i].palette.light);
         CHECK(!strcmp(model->recipes[i].palette.face_role, loaded.recipes[i].palette.face_role));
         CHECK(!strcmp(model->recipes[i].notes, loaded.recipes[i].notes));
     }
+    CHECK(loaded.recipes[TL_GTK4].control_palette_custom[1] == 1);
+    CHECK(!strcmp(loaded.recipes[TL_GTK4].control_palettes[1].face_role,
+                  "Colors:Window/BackgroundNormal"));
+    CHECK(loaded.recipes[TL_GTK4].control_palettes[1].light == .425);
+    CHECK(loaded.recipes[TL_GTK2].scale_slider_width_px == 10);
+    CHECK(loaded.recipes[TL_GTK2].scale_slider_length_px == 31);
 }
 
 static void test_rejects(TLModel *model)
@@ -191,6 +213,9 @@ static void test_rejects(TLModel *model)
     CHECK(tl_model_validate(&invalid, error, sizeof(error)) == -1);
     invalid = *model;
     invalid.recipes[TL_GTK3].geometry.view_inset_px = 3;
+    CHECK(tl_model_validate(&invalid, error, sizeof(error)) == -1);
+    invalid = *model;
+    invalid.recipes[TL_GTK2].scale_slider_width_px = 0;
     CHECK(tl_model_validate(&invalid, error, sizeof(error)) == -1);
 }
 
@@ -326,12 +351,15 @@ static void test_layout(void)
                              "selected_control", "edit_state", "positions"};
     tl_model_init(&model);
     defaults = model;
+    CHECK(model.selected == TL_GTK3);
     CHECK(model.automatic_preview == 0);
+    CHECK(model.separate_preview == 0);
     CHECK(model.debounce_ms == 600);
     CHECK(!model.color_scheme[0]);
     strcpy(model.name, "Layout reutilizável");
     strcpy(model.color_scheme, "DomainOS-SR10.4");
     model.automatic_preview = 1;
+    model.separate_preview = 1;
     model.debounce_ms = 1700;
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         TLRecipe *recipe_model = &model.recipes[i];
@@ -350,6 +378,7 @@ static void test_layout(void)
     CHECK(tl_model_load(&loaded, project, error, sizeof(error)) == 0);
     CHECK(!strcmp(loaded.color_scheme, model.color_scheme));
     CHECK(loaded.automatic_preview == 1);
+    CHECK(loaded.separate_preview == 1);
     CHECK(loaded.debounce_ms == 1700);
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         CHECK(loaded.recipes[i].visible_categories == model.recipes[i].visible_categories);
@@ -363,6 +392,7 @@ static void test_layout(void)
     root = root_json();
     json_object_object_del(root, "color_scheme");
     json_object_object_del(root, "automatic_preview");
+    json_object_object_del(root, "separate_preview");
     json_object_object_del(root, "debounce_ms");
     recipes = field(root, "recipes");
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
@@ -376,6 +406,7 @@ static void test_layout(void)
     CHECK(!strcmp(loaded.name, model.name));
     CHECK(!loaded.color_scheme[0]);
     CHECK(loaded.automatic_preview == defaults.automatic_preview);
+    CHECK(loaded.separate_preview == defaults.separate_preview);
     CHECK(loaded.debounce_ms == defaults.debounce_ms);
     for (i = 0; i < TL_FAMILY_COUNT; i++) {
         CHECK(loaded.recipes[i].visible_categories == defaults.recipes[i].visible_categories);
@@ -385,6 +416,24 @@ static void test_layout(void)
         CHECK(!memcmp(loaded.recipes[i].positions, defaults.recipes[i].positions,
                       sizeof(defaults.recipes[i].positions)));
     }
+    /* Both legacy schema versions omit this preference safely. */
+    root = root_json();
+    json_object_object_del(root, "separate_preview");
+    json_object_object_add(root, "schema_version", json_object_new_int(2));
+    write_file(malformed, json_object_to_json_string(root));
+    json_object_put(root);
+    CHECK(tl_model_load(&loaded, malformed, error, sizeof(error)) == 0);
+    CHECK(loaded.separate_preview == 0);
+    CHECK(!memcmp(loaded.recipes, model.recipes, sizeof(model.recipes)));
+    root = root_json();
+    json_object_object_add(root, "separate_preview", json_object_new_int(1));
+    rejected(&loaded, root);
+    root = root_json();
+    json_object_object_add(root, "separate_preview", json_object_new_string("true"));
+    rejected(&loaded, root);
+    root = root_json();
+    json_object_object_add(root, "separate_preview", NULL);
+    rejected(&loaded, root);
     root = root_json();
     json_object_object_add(root, "automatic_preview", json_object_new_int(1));
     rejected(&loaded, root);
@@ -437,12 +486,169 @@ static void test_layout(void)
     CHECK(strstr(error, "gtk5") != NULL);
 }
 
+static void test_scroll_parts(void)
+{
+    TLModel model, loaded, before;
+    tl_model_init(&model);
+    before=model;
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW,0,7));
+    CHECK(!memcmp(&before.recipes[TL_MOTIF],&model.recipes[TL_MOTIF],sizeof(TLRecipe)));
+    CHECK(!memcmp(&before.recipes[TL_GTK3].geometry,&model.recipes[TL_GTK3].geometry,sizeof(TLGeometry)));
+    for(int p=1;p<TL_SCROLL_PART_COUNT;p++)
+        CHECK(!memcmp(&before.recipes[TL_GTK3].scrollbar_parts.parts[p],
+                      &model.recipes[TL_GTK3].scrollbar_parts.parts[p],sizeof(TLPartRecipe)));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(loaded.schema_version==2);
+    CHECK(!memcmp(&model.recipes[TL_GTK3],&loaded.recipes[TL_GTK3],sizeof(TLRecipe)));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_ARROW],0,2));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_ARROW],1,3));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_THUMB],4,1));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(!memcmp(&model.recipes[TL_GTK3],&loaded.recipes[TL_GTK3],sizeof(TLRecipe)));
+    CHECK(!memcmp(&before.recipes[TL_MOTIF],&loaded.recipes[TL_MOTIF],sizeof(TLRecipe)));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_ARROW],0,-1));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_ARROW],1,-1));
+    CHECK(!tl_part_relief_set(&model.recipes[TL_GTK3].scrollbar_parts.parts[TL_SCROLL_THUMB],4,-1));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    struct json_object *root=root_json();
+    struct json_object *recipe=field(field(root,"recipes"),"gtk3");
+    struct json_object *parts=field(recipe,"scrollbar_parts");
+    json_object_object_add(parts,"unknown",json_object_new_object());
+    rejected(&loaded,root);
+    root=root_json();
+    json_object_object_add(root,"schema_version",json_object_new_int(1));
+    rejected(&loaded,root);
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW_BUTTON,0,1));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW_BUTTON,1,1));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(!memcmp(&model.recipes[TL_GTK3],&loaded.recipes[TL_GTK3],sizeof(TLRecipe)));
+    TLModel valid=model;
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_THUMB,0,9));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_THUMB,1,1));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_THUMB,2,3));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(!memcmp(&model.recipes[TL_GTK3],&loaded.recipes[TL_GTK3],sizeof(TLRecipe)));
+    CHECK(!memcmp(&valid.recipes[TL_GTK3].geometry,&model.recipes[TL_GTK3].geometry,sizeof(TLGeometry)));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_THUMB,0,8));
+    CHECK(tl_model_validate(&model,error,sizeof(error))==-1);
+    model=valid;
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_TROUGH,0,17));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_TROUGH,1,1));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(!memcmp(&model.recipes[TL_GTK3],&loaded.recipes[TL_GTK3],sizeof(TLRecipe)));
+    CHECK(!memcmp(&valid.recipes[TL_GTK3].geometry,&model.recipes[TL_GTK3].geometry,sizeof(TLGeometry)));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_TROUGH,0,12));
+    CHECK(tl_model_validate(&model,error,sizeof(error))==-1);
+    model=valid;
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW_BUTTON,0,8));
+    CHECK(tl_model_validate(&model,error,sizeof(error))==-1);
+    model=valid;
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW_BUTTON,0,-1));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW_BUTTON,1,-1));
+    CHECK(!tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW,0,-1));
+    CHECK(!tl_scroll_parts_any(&model.recipes[TL_GTK3].scrollbar_parts));
+    CHECK(!memcmp(&before.recipes[TL_GTK3],&model.recipes[TL_GTK3],sizeof(TLRecipe)));
+    CHECK(tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW,2,8)==-1);
+    CHECK(tl_scroll_parts_set(&model.recipes[TL_GTK3].scrollbar_parts,TL_SCROLL_ARROW,0,129)==-1);
+}
+
+static void test_dimension_axis_lock(void)
+{
+    TLModel model;
+    TLRecipe before;
+    tl_model_init(&model);
+    for(int family=0;family<TL_FAMILY_COUNT;family++) {
+        TLRecipe *recipe=&model.recipes[family];
+        recipe->sizes[TL_CONTROL_SCROLL_HORIZONTAL][0]=220;
+        recipe->sizes[TL_CONTROL_SCROLL_VERTICAL][1]=180;
+        recipe->scrollbar_parts.parts[TL_SCROLL_ARROW].present=1U;
+        recipe->scrollbar_parts.parts[TL_SCROLL_ARROW].values[0]=7;
+        before=*recipe;
+        CHECK(!tl_control_edit_dimensions(recipe,TL_CONTROL_SCROLL_HORIZONTAL,320,0));
+        before.sizes[TL_CONTROL_SCROLL_HORIZONTAL][0]=320;
+        CHECK(!memcmp(recipe,&before,sizeof(before)));
+        CHECK(tl_control_edit_dimensions(recipe,TL_CONTROL_SCROLL_HORIZONTAL,400,30)==-1);
+        CHECK(!memcmp(recipe,&before,sizeof(before)));
+        CHECK(!tl_control_edit_dimensions(recipe,TL_CONTROL_SCROLL_VERTICAL,0,260));
+        before.sizes[TL_CONTROL_SCROLL_VERTICAL][1]=260;
+        CHECK(!memcmp(recipe,&before,sizeof(before)));
+        CHECK(tl_control_edit_dimensions(recipe,TL_CONTROL_SCROLL_VERTICAL,40,300)==-1);
+        CHECK(!memcmp(recipe,&before,sizeof(before)));
+        /* Existing explicit transverse requests survive editing/import. */
+        recipe->sizes[TL_CONTROL_SCROLL_VERTICAL][0]=19;
+        CHECK(!tl_control_edit_dimensions(recipe,TL_CONTROL_SCROLL_VERTICAL,19,0));
+        CHECK(recipe->sizes[TL_CONTROL_SCROLL_VERTICAL][0]==19);
+        CHECK(!tl_control_edit_dimensions(recipe,0,240,90));
+        CHECK(recipe->sizes[0][0]==240 && recipe->sizes[0][1]==90);
+        before=*recipe;
+        CHECK(tl_control_edit_dimensions(recipe,0,2049,90)==-1);
+        CHECK(!memcmp(recipe,&before,sizeof(before)));
+    }
+}
+
+static void test_length_anchor(void)
+{
+    TLModel model, loaded;
+    TLRecipe before;
+    int origin[2];
+    char error[512];
+    tl_model_init(&model);
+    TLRecipe *recipe=&model.recipes[TL_GTK3];
+    recipe->positions[10][0]=100;recipe->positions[10][1]=40;
+    recipe->positions[11][0]=40;recipe->positions[11][1]=100;
+    CHECK(!tl_control_set_anchor(recipe,10,1,220));
+    CHECK(recipe->positions[10][0]==320 && recipe->length_anchor[10]==1);
+    CHECK(!tl_control_anchor_origin(recipe,10,220,15,origin));
+    CHECK(origin[0]==100 && origin[1]==40);
+    CHECK(!tl_control_edit_dimensions(recipe,10,1,0));
+    CHECK(!tl_control_anchor_origin(recipe,10,48,15,origin));
+    CHECK(origin[0]==272 && origin[0]+48==320);
+    CHECK(!tl_control_set_anchor(recipe,11,1,180));
+    CHECK(recipe->positions[11][1]==280);
+    CHECK(!tl_control_anchor_origin(recipe,11,15,260,origin));
+    CHECK(origin[1]==20 && origin[1]+260==280);
+    before=*recipe;
+    CHECK(tl_control_anchor_origin(recipe,11,15,400,origin)==-1);
+    CHECK(!memcmp(recipe,&before,sizeof(before)));
+    CHECK(tl_control_set_anchor(recipe,0,1,20)==-1);
+    CHECK(!memcmp(recipe,&before,sizeof(before)));
+    CHECK(!tl_model_save(&model,project,error,sizeof(error)));
+    CHECK(!tl_model_load(&loaded,project,error,sizeof(error)));
+    CHECK(loaded.schema_version==2);
+    CHECK(!memcmp(&loaded.recipes[TL_GTK3],recipe,sizeof(*recipe)));
+    CHECK(!tl_control_set_anchor(recipe,10,0,48));
+    CHECK(recipe->positions[10][0]==272 && !recipe->length_anchor[10]);
+    before=*recipe;
+    recipe->positions[10][0]=2000;
+    before=*recipe;
+    CHECK(tl_control_set_anchor(recipe,10,1,100)==-1);
+    CHECK(!memcmp(recipe,&before,sizeof(before)));
+    json_object *root=root_json();
+    json_object_object_add(root,"schema_version",json_object_new_int(1));
+    write_file(malformed,json_object_to_json_string(root));
+    CHECK(tl_model_load(&loaded,malformed,error,sizeof(error))==-1);
+    CHECK(strstr(error,"schema_version=2")!=NULL);
+    json_object_put(root);
+}
+
 int main(int argc, char **argv)
 {
     TLModel model;
-    char template[] = "/tmp/theme-lab-model-XXXXXX";
+    const char *temporary_root=getenv("TMPDIR");
+    char template[TL_PATH_MAX];
+    int template_length;
     const char *contract = argc > 1 ? argv[1] : "tools/domainos_scrollbar_rules.json";
-    char *created = mkdtemp(template);
+    char *created;
+    if(!temporary_root || !temporary_root[0]) temporary_root="/tmp";
+    template_length=snprintf(template,sizeof(template),"%s/theme-lab-model-XXXXXX",temporary_root);
+    CHECK(template_length>0 && (size_t)template_length<sizeof(template));
+    created = mkdtemp(template);
     CHECK(created != NULL);
     CHECK(strlen(created) < sizeof(directory));
     strcpy(directory, created);
@@ -456,6 +662,9 @@ int main(int argc, char **argv)
         test_files(&model);
         test_contract(&model, contract);
         test_layout();
+        test_scroll_parts();
+        test_dimension_axis_lock();
+        test_length_anchor();
     }
     CHECK(!unlink(project));
     CHECK(!unlink(malformed));

@@ -1,0 +1,2055 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-DISABLED-PALETTES-20261019-R133",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:55:00Z",
+  "status": "passed_scoped",
+  "scope": "Hover coverage and popup background-pixel responsiveness for every disabled QtQuick hint target in both QtQuick5 and QtQuick6, under four KDE color schemes.",
+  "runtime": {
+    "display": "Owned Xephyr :82, 1600x1000; isolated gallery 660x560",
+    "styles": "org.kde.desktop",
+    "profiles": "Independent disposable HOME, kdeglobals, color-schemes and private D-Bus/network namespace for each scheme/version run",
+    "user_profile_changed": false,
+    "product_code_changed": false
+  },
+  "method": {
+    "targets_per_run": 7,
+    "runs": 8,
+    "total_target_hovers": 56,
+    "stable_ms": 400,
+    "conditions": "Tooltip remained within screen bounds, did not overlap its owning control and closed after pointer leave. No disabled control was activated.",
+    "pixel_sampling": "Mode in interior of each captured popup; separate text-region scan confirmed contrasting glyph pixels were present. Every screenshot has hash in samples.",
+    "probe_readiness": "After initial empty-matrix attempts, the probe waits up to 5 seconds for all seven disabled targets to materialize before traversing pages."
+  },
+  "run_results": [
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "qt_version": "5.15.15",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "45e6b8e5bd54ca508db828a5e2d617b7b546698a80dbf279bf1be9929e1466b7",
+      "artifact_dir": "~/t07-qtquick5-disabled-domainos-r133r2-20261019",
+      "targets_names": [
+        "qtquick5_disabledButton",
+        "qtquick5_disabledCheckBox",
+        "qtquick5_disabledSwitch",
+        "qtquick5_disabledCombo",
+        "qtquick5_disabledSpin",
+        "qtquick5_disabledText",
+        "qtquick5_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "b40f0e786799e0a89db34768caea9505706ed38b716826a198baa55f116cdf1e"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "qt_version": "5.15.15",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "2d6a67964f918a78610753245b62177dde6102910abee548d0002bc023e32edc",
+      "artifact_dir": "~/t07-qtquick5-disabled-breezelight-r133-20261019",
+      "targets_names": [
+        "qtquick5_disabledButton",
+        "qtquick5_disabledCheckBox",
+        "qtquick5_disabledSwitch",
+        "qtquick5_disabledCombo",
+        "qtquick5_disabledSpin",
+        "qtquick5_disabledText",
+        "qtquick5_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "7f65da5cf6a2f52a9c6af7721f0ac4c33bb0924af92436d26abc35a6ee8681e4"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "qt_version": "5.15.15",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "2e5db1935c732f1338ce2b80d89c064f81cb350247c35bfaff27e3e57512f266",
+      "artifact_dir": "~/t07-qtquick5-disabled-breezedark-r133-20261019",
+      "targets_names": [
+        "qtquick5_disabledButton",
+        "qtquick5_disabledCheckBox",
+        "qtquick5_disabledSwitch",
+        "qtquick5_disabledCombo",
+        "qtquick5_disabledSpin",
+        "qtquick5_disabledText",
+        "qtquick5_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "4ad7e41948d7ad5837286ed57efc394ee0790385c061217c722d2c2e67efade2"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "qt_version": "5.15.15",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "ebbffea738acfb15a8d7e56907a516fbc6cbbccf1082947da3a65124df7f1b07",
+      "artifact_dir": "~/t07-qtquick5-disabled-irixium-r133r2-20261019",
+      "targets_names": [
+        "qtquick5_disabledButton",
+        "qtquick5_disabledCheckBox",
+        "qtquick5_disabledSwitch",
+        "qtquick5_disabledCombo",
+        "qtquick5_disabledSpin",
+        "qtquick5_disabledText",
+        "qtquick5_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "56e25978931d772793642cd59e4e734b476317daf6a84edc304a1a516f58629f"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "qt_version": "6.8.2",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "6ce629d378e503d2ec39017ca53e3acd0de78ad86352bfaa6b00f69a2c2fffa1",
+      "artifact_dir": "~/t07-qtquick6-disabled-domainos-r133-20261019",
+      "targets_names": [
+        "qtquick6_disabledButton",
+        "qtquick6_disabledCheckBox",
+        "qtquick6_disabledSwitch",
+        "qtquick6_disabledCombo",
+        "qtquick6_disabledSpin",
+        "qtquick6_disabledText",
+        "qtquick6_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "e1993726a730711b33117d19bd5f6af6f8751a36dbd17b30d12853400ee0090b"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "qt_version": "6.8.2",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "56559eabab4eafad455cdc178e5887fa59c9ba658a8a50b8a0e559e837c9348f",
+      "artifact_dir": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019",
+      "targets_names": [
+        "qtquick6_disabledButton",
+        "qtquick6_disabledCheckBox",
+        "qtquick6_disabledSwitch",
+        "qtquick6_disabledCombo",
+        "qtquick6_disabledSpin",
+        "qtquick6_disabledText",
+        "qtquick6_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "21503804070db4ee337c04258f3e37ea9e31f506f171134930780b6d3178ecf3"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "qt_version": "6.8.2",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "d799333a808868d0f515d885f1a834340348f05fdffdb24fc196d735816631d3",
+      "artifact_dir": "~/t07-qtquick6-disabled-breezedark-r133-20261019",
+      "targets_names": [
+        "qtquick6_disabledButton",
+        "qtquick6_disabledCheckBox",
+        "qtquick6_disabledSwitch",
+        "qtquick6_disabledCombo",
+        "qtquick6_disabledSpin",
+        "qtquick6_disabledText",
+        "qtquick6_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "3e0842da67bb0adeeaab91003acace3bdd219a0f109cdd7696c8fcfafa9214f1"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "qt_version": "6.8.2",
+      "status": "passed",
+      "targets": 7,
+      "matrix_sha256": "0631c0cbaeb0d765fedce75ace82631ae77bfe065afb6fbd1bac5219ef2e97c4",
+      "artifact_dir": "~/t07-qtquick6-disabled-irixium-r133r2-20261019",
+      "targets_names": [
+        "qtquick6_disabledButton",
+        "qtquick6_disabledCheckBox",
+        "qtquick6_disabledSwitch",
+        "qtquick6_disabledCombo",
+        "qtquick6_disabledSpin",
+        "qtquick6_disabledText",
+        "qtquick6_disabledSlider"
+      ],
+      "matrix_path": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+      "result_sha256": "abb7f6e9c5b14004db4f94d1cb7e83abedd87930785c1a4eccf3a9930790c4f2"
+    }
+  ],
+  "scheme_sources": {
+    "domainos": {
+      "path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "window_background_rgb": [
+        120,
+        160,
+        213
+      ]
+    },
+    "breezelight": {
+      "path": "/usr/share/color-schemes/BreezeLight.colors",
+      "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "window_background_rgb": [
+        239,
+        240,
+        241
+      ]
+    },
+    "breezedark": {
+      "path": "/usr/share/color-schemes/BreezeDark.colors",
+      "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "window_background_rgb": [
+        32,
+        35,
+        38
+      ]
+    },
+    "irixium": {
+      "path": "/home/lsi/.local/share/color-schemes/Irixium.colors",
+      "sha256": "3941115cb04949238cdfd249db20071bb2d41ce9b448a58b8f4b02f005c29769",
+      "tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "window_background_rgb": [
+        193,
+        193,
+        193
+      ]
+    }
+  },
+  "role_summary": {
+    "qtquick5:domainos": {
+      "targets": 7,
+      "background_modes": [
+        [
+          120,
+          160,
+          213
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip and Window values coincide"
+      ]
+    },
+    "qtquick5:breezelight": {
+      "targets": 7,
+      "background_modes": [
+        [
+          247,
+          247,
+          247
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip"
+      ]
+    },
+    "qtquick5:breezedark": {
+      "targets": 7,
+      "background_modes": [
+        [
+          41,
+          44,
+          48
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip"
+      ]
+    },
+    "qtquick5:irixium": {
+      "targets": 7,
+      "background_modes": [
+        [
+          193,
+          193,
+          193
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip and Window values coincide"
+      ]
+    },
+    "qtquick6:domainos": {
+      "targets": 7,
+      "background_modes": [
+        [
+          120,
+          160,
+          213
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip and Window values coincide"
+      ]
+    },
+    "qtquick6:breezelight": {
+      "targets": 7,
+      "background_modes": [
+        [
+          239,
+          240,
+          241
+        ]
+      ],
+      "matched_roles": [
+        "Window"
+      ]
+    },
+    "qtquick6:breezedark": {
+      "targets": 7,
+      "background_modes": [
+        [
+          32,
+          35,
+          38
+        ]
+      ],
+      "matched_roles": [
+        "Window"
+      ]
+    },
+    "qtquick6:irixium": {
+      "targets": 7,
+      "background_modes": [
+        [
+          193,
+          193,
+          193
+        ]
+      ],
+      "matched_roles": [
+        "Tooltip and Window values coincide"
+      ]
+    }
+  },
+  "samples": [
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledButton",
+      "tooltip_rect": [
+        126,
+        58,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 925,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledButton.png",
+      "capture_sha256": "a7ca482104dea05df57ce12532e1500637c3301025a0142558b9d3441f338326"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledCheckBox",
+      "tooltip_rect": [
+        95,
+        94,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 899,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCheckBox.png",
+      "capture_sha256": "e75c4e40b178bf74cc779ab49abb1e16c7b9aceb0ee2d55a717b557d89dcb192"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledSwitch",
+      "tooltip_rect": [
+        183,
+        123,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 908,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSwitch.png",
+      "capture_sha256": "951cace8f7db5c7b3c7b22651afc8af8f0e1b1b674d02188188b8238f43f94cf"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledCombo",
+      "tooltip_rect": [
+        253,
+        161,
+        250,
+        63
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1023,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCombo.png",
+      "capture_sha256": "6929389461ee5ab93ba71a89b64982a3c4d7415c108518aed6ed32a33aa72d19"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledSpin",
+      "tooltip_rect": [
+        8,
+        242,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 963,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSpin.png",
+      "capture_sha256": "a498b5e01ffe03e0d1a56b2c70aa3f5827c8c7abaae13191602afe54cf0be665"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledText",
+      "tooltip_rect": [
+        253,
+        310,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 873,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledText.png",
+      "capture_sha256": "b754217ac8114cb917b2b2ee252339895d35cee7a8c0f3b91c33df460e0447bf"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "domainos",
+      "target": "qtquick5_disabledSlider",
+      "tooltip_rect": [
+        402,
+        344,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 835,
+      "capture": "~/t07-qtquick5-disabled-domainos-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSlider.png",
+      "capture_sha256": "514b29224f2c1e899c1a07deb97be88955852e41967fdf8104f1fc919447aea1"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledButton",
+      "tooltip_rect": [
+        126,
+        58,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1360,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledButton.png",
+      "capture_sha256": "e85874d01d0cd3a6bee0f4645de2d562c4a872abc3441c48d1e6598ad8413682"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledCheckBox",
+      "tooltip_rect": [
+        95,
+        94,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1334,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCheckBox.png",
+      "capture_sha256": "f74418452206e6602a0d2d8538dafcafdffff22ad057b00f8dc419c43c6f132c"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledSwitch",
+      "tooltip_rect": [
+        183,
+        123,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1355,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSwitch.png",
+      "capture_sha256": "be4371117106245578595dcc0d7f04f0d0c3757ea8b4179c68f9cb6801e9d5ef"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledCombo",
+      "tooltip_rect": [
+        253,
+        161,
+        250,
+        63
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1530,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCombo.png",
+      "capture_sha256": "8d1f81bfa7e34261cb1dec60f2f43ede926a0b85edd087a019ebd0d068f1044a"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledSpin",
+      "tooltip_rect": [
+        8,
+        242,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1432,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSpin.png",
+      "capture_sha256": "fea4d5bc83362e85c5f3d2f0048a5b814097aaa93985ef930684de37c090b7f9"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledText",
+      "tooltip_rect": [
+        253,
+        310,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1333,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledText.png",
+      "capture_sha256": "e7c90e16d968e3120036b43ba33e132974ad9ad720adee420dfdb8f5545004be"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezelight",
+      "target": "qtquick5_disabledSlider",
+      "tooltip_rect": [
+        402,
+        344,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1235,
+      "capture": "~/t07-qtquick5-disabled-breezelight-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSlider.png",
+      "capture_sha256": "bd72d408eaa0e26f7936b84b8b8f4274273a43712d1ab0845df934977b5a772d"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledButton",
+      "tooltip_rect": [
+        126,
+        58,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1360,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledButton.png",
+      "capture_sha256": "fe511db7bb7591e5eaea476c44c96941fd6413adfa2a037eea05e45ea2704ef6"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledCheckBox",
+      "tooltip_rect": [
+        95,
+        94,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1334,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCheckBox.png",
+      "capture_sha256": "29ac616980d0c934b5427dfe7ca74000f9e007f802651f79d1fe76a3d028093a"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledSwitch",
+      "tooltip_rect": [
+        183,
+        123,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1355,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSwitch.png",
+      "capture_sha256": "e3a881366e6b301c3e5c24ad361a53a64729bbf896328cff5320e3eb2fc2189b"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledCombo",
+      "tooltip_rect": [
+        253,
+        161,
+        250,
+        63
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1530,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCombo.png",
+      "capture_sha256": "a6407e51b786e89673fc2d34eb82352d971628460b819b206687f922a99bd6ad"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledSpin",
+      "tooltip_rect": [
+        8,
+        242,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1432,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSpin.png",
+      "capture_sha256": "13bec8643d0a42a7e0a2f075f2abbc9a1318e2b8bb6d557e1308d5f5644b8dab"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledText",
+      "tooltip_rect": [
+        253,
+        310,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1333,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledText.png",
+      "capture_sha256": "9c526a95044ff1eb2506a3cfa5d128c783df7e6ac82a2d84e37006151717eca8"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "breezedark",
+      "target": "qtquick5_disabledSlider",
+      "tooltip_rect": [
+        402,
+        344,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Tooltip",
+      "contrasting_text_pixels": 1235,
+      "capture": "~/t07-qtquick5-disabled-breezedark-r133-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSlider.png",
+      "capture_sha256": "ec4f3d20807c6d3065a2045ffb25e5e7f463ce249d9fb50f8ab19d56c7c478f5"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledButton",
+      "tooltip_rect": [
+        126,
+        58,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1318,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledButton.png",
+      "capture_sha256": "e281981ab6443a85edf3418ec8e4fb683a7eaf715624923e8f261c14c651ebd5"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledCheckBox",
+      "tooltip_rect": [
+        95,
+        94,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1287,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCheckBox.png",
+      "capture_sha256": "0efba53398e3cff1b60eb857f5fd74458ce847239267dfcbe588a7e91466ba51"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledSwitch",
+      "tooltip_rect": [
+        183,
+        123,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1321,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSwitch.png",
+      "capture_sha256": "f7d4344c62dacfdc244074428f6b5233ee4c5c321434f06837799a229cfdc36f"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledCombo",
+      "tooltip_rect": [
+        253,
+        161,
+        250,
+        63
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1499,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledCombo.png",
+      "capture_sha256": "2f5e0fda46a0d031bb072511b73cfe414566802b2ca03ae35fcb61dc55ae7b52"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledSpin",
+      "tooltip_rect": [
+        8,
+        242,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1388,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSpin.png",
+      "capture_sha256": "c94652c751735b98cba9afb3b1f5a3f40b77fb3b8ed49fff3a22c65011d1b8d7"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledText",
+      "tooltip_rect": [
+        253,
+        310,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1301,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledText.png",
+      "capture_sha256": "e797b154c7454bcda9c75c0d0dea4de57ce6ccc7ef5e46c18506af8f4d323d05"
+    },
+    {
+      "qt_major": 5,
+      "scheme": "irixium",
+      "target": "qtquick5_disabledSlider",
+      "tooltip_rect": [
+        402,
+        344,
+        250,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1183,
+      "capture": "~/t07-qtquick5-disabled-irixium-r133r2-20261019/home/qtquick5-proof/disabled-qtquick5_disabledSlider.png",
+      "capture_sha256": "106a6da8c39c1d0e5b697e4b9fcc27021fc91269dbc106215dc18b289f5067d3"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledButton",
+      "tooltip_rect": [
+        137,
+        64,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 886,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledButton.png",
+      "capture_sha256": "041c28adfcc9c6cf3e02fd85f7898746551bdf0872b49c7c07f5d414578c79ca"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledCheckBox",
+      "tooltip_rect": [
+        112,
+        100,
+        218,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 856,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCheckBox.png",
+      "capture_sha256": "274dfc5ab6a8e6fd49ca8beae1b0d03d1c13afeedf6d79f2e85cf974dd208d5c"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledSwitch",
+      "tooltip_rect": [
+        189,
+        129,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 879,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSwitch.png",
+      "capture_sha256": "698955c46a86fc51eaec23a806d65f5ae197dfd5cd928141545837f7ad66447c"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledCombo",
+      "tooltip_rect": [
+        261,
+        169,
+        235,
+        63
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1003,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCombo.png",
+      "capture_sha256": "4ff875946918615d155ece557ddb1b149367c66e7ad8d3290dda7a182ad14686"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledSpin",
+      "tooltip_rect": [
+        6,
+        250,
+        238,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 958,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSpin.png",
+      "capture_sha256": "eec5ca890aeab0920d1966aae2ecc72ae4f334f9e36475712fb57d0ee204776a"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledText",
+      "tooltip_rect": [
+        263,
+        318,
+        230,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 848,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledText.png",
+      "capture_sha256": "caa23c5733111c99d9bb97c86679ae0015269182af79e947140d185a02153fbe"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "domainos",
+      "target": "qtquick6_disabledSlider",
+      "tooltip_rect": [
+        430,
+        353,
+        224,
+        46
+      ],
+      "background_mode_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_tooltip_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "scheme_window_background_rgb": [
+        120,
+        160,
+        213
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 822,
+      "capture": "~/t07-qtquick6-disabled-domainos-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSlider.png",
+      "capture_sha256": "0857fca02e6b0282bc4c06a51ad065386eb28a3b7ced29ee8ff9fa8e218921ee"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledButton",
+      "tooltip_rect": [
+        137,
+        64,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1340,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledButton.png",
+      "capture_sha256": "0c8348b081f20230a76f6c3a521e545b1505000a7c9fd7ef14cc06682fe1502d"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledCheckBox",
+      "tooltip_rect": [
+        112,
+        100,
+        218,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1301,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCheckBox.png",
+      "capture_sha256": "141d92e76a697f2586efe37a7ed5ec2b0492cfa36ea4e410c9ae1ba532fed63d"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledSwitch",
+      "tooltip_rect": [
+        189,
+        129,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1334,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSwitch.png",
+      "capture_sha256": "470eefcc58ac66b03c4609cb0a85a1c28e27b577714f9c3987087aa6fb8cab86"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledCombo",
+      "tooltip_rect": [
+        261,
+        169,
+        235,
+        63
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1508,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCombo.png",
+      "capture_sha256": "9f988ef13e9e987be62b65216fd96c81689b5d1c5f6f141308243c937f431e4c"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledSpin",
+      "tooltip_rect": [
+        6,
+        250,
+        238,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1408,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSpin.png",
+      "capture_sha256": "e972a286ddb31f7dbc639d6ed9a8fbfef1427b0c3910c22fe91fbf94ace079f5"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledText",
+      "tooltip_rect": [
+        263,
+        318,
+        230,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1319,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledText.png",
+      "capture_sha256": "8dc70825e6e3bb8910a61ff8e988acb6cfd3b0004e94ea7da3bd7b968cd1d7f0"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezelight",
+      "target": "qtquick6_disabledSlider",
+      "tooltip_rect": [
+        430,
+        353,
+        224,
+        46
+      ],
+      "background_mode_rgb": [
+        239,
+        240,
+        241
+      ],
+      "scheme_tooltip_background_rgb": [
+        247,
+        247,
+        247
+      ],
+      "scheme_window_background_rgb": [
+        239,
+        240,
+        241
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1213,
+      "capture": "~/t07-qtquick6-disabled-breezelight-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSlider.png",
+      "capture_sha256": "e442ccb17bc102546cc40ff49790b80f46bb15ba8afdf28a3d1442ae0468692f"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledButton",
+      "tooltip_rect": [
+        137,
+        64,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1368,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledButton.png",
+      "capture_sha256": "9835e404854b75f93244c9a82db09736f46e2018b280f17401b9ecc6da81c47b"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledCheckBox",
+      "tooltip_rect": [
+        112,
+        100,
+        218,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1323,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCheckBox.png",
+      "capture_sha256": "66b0f10657cd6cb1008b10be636dac4edf9c7e4f6601b02724417a21975304b2"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledSwitch",
+      "tooltip_rect": [
+        189,
+        129,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1363,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSwitch.png",
+      "capture_sha256": "861e7a7f29f7c92294ac134fe0e3b92eecfedfd610bfb7a64a9ef412061c0ba1"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledCombo",
+      "tooltip_rect": [
+        261,
+        169,
+        235,
+        63
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1537,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCombo.png",
+      "capture_sha256": "3433f979db705b20a771de612c9988b56caabedd08843e4a672a7e98327275f2"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledSpin",
+      "tooltip_rect": [
+        6,
+        250,
+        238,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1430,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSpin.png",
+      "capture_sha256": "e52e8de4c6009055696b644f118bd5ac9b0efafc1e98c6ba4c56cbb1a3e40fa4"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledText",
+      "tooltip_rect": [
+        263,
+        318,
+        230,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1342,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledText.png",
+      "capture_sha256": "71e12715506786762cd061fcc7e766c72978e2d6fc4112679000a26ece051b83"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "breezedark",
+      "target": "qtquick6_disabledSlider",
+      "tooltip_rect": [
+        430,
+        353,
+        224,
+        46
+      ],
+      "background_mode_rgb": [
+        32,
+        35,
+        38
+      ],
+      "scheme_tooltip_background_rgb": [
+        41,
+        44,
+        48
+      ],
+      "scheme_window_background_rgb": [
+        32,
+        35,
+        38
+      ],
+      "matched_role": "Window",
+      "contrasting_text_pixels": 1237,
+      "capture": "~/t07-qtquick6-disabled-breezedark-r133-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSlider.png",
+      "capture_sha256": "0142b16302bea4acf84d40a18be8900c85fe8d4897bbe1259f5447f26d985123"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledButton",
+      "tooltip_rect": [
+        137,
+        64,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1332,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledButton.png",
+      "capture_sha256": "9bc021c43da75bd753f6826e06694617802cd4a9b45367129b6ec12c71b155c8"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledCheckBox",
+      "tooltip_rect": [
+        112,
+        100,
+        218,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1288,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCheckBox.png",
+      "capture_sha256": "646c8851f84ce5123a37a2e6864e8ae6fe83f7fa17f3a779ce9deee1d859d857"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledSwitch",
+      "tooltip_rect": [
+        189,
+        129,
+        246,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1330,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSwitch.png",
+      "capture_sha256": "3985ba677c098f386279c6abdf02fbc1510e55d4d057992d184f328091c7a8f6"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledCombo",
+      "tooltip_rect": [
+        261,
+        169,
+        235,
+        63
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1496,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledCombo.png",
+      "capture_sha256": "aa0e549f02e833bc2ac52e6b26a878ed4f3a36c42b18e4adb9630e1ad605af13"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledSpin",
+      "tooltip_rect": [
+        6,
+        250,
+        238,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1401,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSpin.png",
+      "capture_sha256": "34e860d750548c436212a46f8c5d99af12aa36e0611fac28cc7bb83db438c8a3"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledText",
+      "tooltip_rect": [
+        263,
+        318,
+        230,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1311,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledText.png",
+      "capture_sha256": "f9c3fe6261c8b82a5834171c699128279a88e3ad55e4148d924a1b5ef6b49915"
+    },
+    {
+      "qt_major": 6,
+      "scheme": "irixium",
+      "target": "qtquick6_disabledSlider",
+      "tooltip_rect": [
+        430,
+        353,
+        224,
+        46
+      ],
+      "background_mode_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_tooltip_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "scheme_window_background_rgb": [
+        193,
+        193,
+        193
+      ],
+      "matched_role": "Tooltip and Window values coincide",
+      "contrasting_text_pixels": 1208,
+      "capture": "~/t07-qtquick6-disabled-irixium-r133r2-20261019/home/qtquick6-proof/disabled-qtquick6_disabledSlider.png",
+      "capture_sha256": "320b809e9a2cb5423fbd9bd189b6345c1adf43426727de13277f21075fb2c967"
+    }
+  ],
+  "palette_role_finding": {
+    "QtQuick5": "Observed background mode matched the scheme Colors:Tooltip background in all four schemes (where Tooltip and Window values differed, the Tooltip role matched).",
+    "QtQuick6": "Observed background mode matched Colors:Window in BreezeLight and BreezeDark; DomainOS and Irixium have identical Tooltip and Window values, so those two runs cannot distinguish the role.",
+    "interpretation": "All four schemes affected rendered pixels, but semantic tooltip role is inconsistent between QtQuick5 and the QtQuick6 attached native path. Keep T07 open and investigate the QtQuick6 style path; do not replace this with fixed RGB values."
+  },
+  "diagnostics": {
+    "initial_probe_issue": "Some first attempts observed no target because QML targets had not materialized; these zero-target runs are not product failures and were excluded from the final 8 matrices. A readiness guard fixed the enumeration race and all seven targets passed. An initial output-directory collision was also preserved under ~/tempia.",
+    "diagnostic_artifacts": "~/tempia/t07-qtquick-disabled-palettes-r133-20261019/"
+  },
+  "limitations": [
+    "These are disabled controls only; enabled controls and other layouts/popup positions are not included in this palette matrix.",
+    "Scheme responsiveness does not prove historical HP VUE fidelity or full contrast compliance.",
+    "QtQuick6 Tooltip semantic role mismatch remains open pending style-path diagnosis."
+  ],
+  "next": "Inspect the effective QtQuick6 attached ToolTip component and its Kirigami color set under a complete KDE platform environment; reconcile the observed Window role with the scheme Tooltip role without static colors.",
+  "change_record": {
+    "product_source_changed": false,
+    "scripts_recorded": true,
+    "script_count": 22,
+    "scripts_readback": "~/tempia/t07-r134-scripts-after.json"
+  }
+}

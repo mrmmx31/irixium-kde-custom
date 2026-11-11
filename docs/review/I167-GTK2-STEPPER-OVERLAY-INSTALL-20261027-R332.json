@@ -1,0 +1,78 @@
+{
+  "id": "R332",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "GTK2 DomainOS scrollbar steppers only",
+  "status": "implemented_and_installed_manual_visual_review_pending",
+  "diagnosis": "GTK2 pixmap engine resized the complete 15x15 stepper pixmap to 15x11 when it used file=, because slider-width remained 11. Increasing slider-width breaks the 15px bar thickness; changing trough-border breaks the 2px recess. overlay_file with overlay_stretch=FALSE draws the original square asset without changing range geometry.",
+  "source": {
+    "gtk2": "2.24.33-7",
+    "rc_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "manifest_updated": true,
+    "rules": 20,
+    "states": ["NORMAL", "PRELIGHT", "ACTIVE", "SELECTED", "INSENSITIVE"],
+    "directions": ["UP", "DOWN", "LEFT", "RIGHT"],
+    "palette": "native KDE role export; no fixed final colors"
+  },
+  "isolated_native_gtk2": {
+    "version": "2.24.33",
+    "runtime_files": "~/tempia/ia-tema/evidence/I167/r332-stepper-overlay-20261027T063502Z/",
+    "pipeline_files": "~/tempia/ia-tema/evidence/I167/r332-pipeline-live/",
+    "geometry": {
+      "horizontal_allocation_and_natural_request": [54, 15],
+      "vertical_allocation_and_natural_request": [15, 54],
+      "properties": {"slider-width": 11, "stepper-size": 15, "trough-border": 2},
+      "scrollbar_paint_loaded": true
+    },
+    "interaction": {
+      "directions": {
+        "left": {"start": 40, "pressed": 39, "released": 39},
+        "right": {"start": 39, "pressed": 40, "released": 40},
+        "up": {"start": 40, "pressed": 39, "released": 39},
+        "down": {"start": 39, "pressed": 40, "released": 40}
+      },
+      "pressed_vs_normal_changed_pixels_per_stepper": 53,
+      "released_vs_normal_changed_pixels": 0
+    },
+    "normal_stepper_difference_vs_SR10_4_15x15_reference": {
+      "left_fixed": 3,
+      "right_fixed": 57,
+      "right_best_local_dx_minus_1": 1,
+      "up_fixed": 83,
+      "up_best_local_dy_plus_2": 3,
+      "down_fixed": 83,
+      "down_best_local_dy_minus_2": 1,
+      "note": "Local offsets are diagnostic only and were not applied. Human visual review on the live application remains open."
+    },
+    "limitations": [
+      "Xvfb native GTK2 evidence is not a live-session or user-acceptance claim.",
+      "Synthetic KDE role fixtures verify palette variance only; no live schema was changed during that matrix.",
+      "No XChat process or other open GTK2 application was closed or restarted."
+    ]
+  },
+  "palette_matrix": {
+    "result": "passed",
+    "fixture_count": 3,
+    "assets_per_fixture": 106,
+    "stepper_overlay_rules_per_fixture": 20,
+    "evidence": "~/tempia/ia-tema/evidence/I167/r332-palette-matrix-20261027/RESULTADO.json"
+  },
+  "user_install": {
+    "theme": "DomainOS-SR10-4-KDE",
+    "bundle": "14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467",
+    "colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "status": "updated",
+    "native_reload_required": true,
+    "receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261027T065245-14f6147c2f1c/receipt.json",
+    "dry_readback": "unchanged; wrappers reference the current bundle",
+    "source_backup": "/home/lsi/tempia/ia-tema/backups/I167-R332-base-source-align-20261027/",
+    "variant_backup": "/home/lsi/tempia/ia-tema/backups/I167-R332-gtk2-stepper-20261027/"
+  },
+  "tests": {
+    "command": "PYTHONPATH=tests python3 -m unittest test_gtk2_palette test_gtk2_palette_runtime",
+    "result": "passed",
+    "tests": 30,
+    "duration_seconds": 91.875
+  },
+  "next": "Keep the scope on GTK2. Ask the user to inspect after opening/reloading a GTK2 app at their convenience; refine any residual directional alignment only if the live visual review confirms it."
+}

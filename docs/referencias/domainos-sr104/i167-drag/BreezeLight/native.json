@@ -1,0 +1,120 @@
+{
+  "runtime": "2.24.33",
+  "private_display": ":215",
+  "gui_native": true,
+  "recipe_applied": false,
+  "historical_fidelity_claimed": false,
+  "widgets": [
+    {
+      "type": "GtkHScrollbar",
+      "allocation": [
+        0,
+        0,
+        200,
+        15
+      ],
+      "natural_request": [
+        200,
+        15
+      ],
+      "properties": {
+        "slider-width": 11,
+        "stepper-size": 12,
+        "trough-border": 2,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 0,
+        "trough-under-steppers": true
+      }
+    },
+    {
+      "type": "GtkVScrollbar",
+      "allocation": [
+        0,
+        19,
+        15,
+        200
+      ],
+      "natural_request": [
+        15,
+        200
+      ],
+      "properties": {
+        "slider-width": 11,
+        "stepper-size": 12,
+        "trough-border": 2,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 0,
+        "trough-under-steppers": true
+      }
+    }
+  ],
+  "geometry_recipe_applied": true,
+  "proposal": {
+    "geometry": {
+      "bar_px": 15,
+      "shadow_px": 2,
+      "arrow_px": 11,
+      "thumb_cross_px": 11,
+      "arrow_thumb_gap_px": 1
+    },
+    "palette": {
+      "face_role": "Colors:Button/BackgroundNormal",
+      "text_role": "Colors:Button/ForegroundNormal",
+      "view_role": "Colors:View/BackgroundNormal",
+      "selection_role": "Colors:Selection/BackgroundNormal",
+      "light": 0.56,
+      "shade": 0.482,
+      "trough": 0.15
+    },
+    "scrollbar_parts": {
+      "thumb": {
+        "state_relief": {
+          "normal": "sunken",
+          "pressed": "flat"
+        }
+      }
+    }
+  },
+  "scrollbar_paint_loaded": true,
+  "whole_insensitive": false,
+  "backdrop_fixture": false,
+  "cycles": [],
+  "drags": [
+    {
+      "orientation": "horizontal",
+      "start": 25,
+      "held_value": 38.84057971014493,
+      "released_value": 38.84057971014493,
+      "held_range": [
+        81,
+        115
+      ],
+      "released_range": [
+        81,
+        115
+      ],
+      "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/drag-four/BreezeLight/captures/horizontal-held.png",
+      "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/drag-four/BreezeLight/captures/horizontal-released.png"
+    },
+    {
+      "orientation": "vertical",
+      "start": 25,
+      "held_value": 38.84057971014493,
+      "released_value": 38.84057971014493,
+      "held_range": [
+        81,
+        115
+      ],
+      "released_range": [
+        81,
+        115
+      ],
+      "held_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/drag-four/BreezeLight/captures/vertical-held.png",
+      "released_capture": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/drag-four/BreezeLight/captures/vertical-released.png"
+    }
+  ]
+}

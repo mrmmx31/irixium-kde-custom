@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "R479",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the open installed-theme GTK2 preview before and after the native GTK2 RC reload on the already-authorized private Xephyr display :187, without restarting either preview.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "display": ":187",
+    "window_manager": "private Xephyr session; existing preview processes retained",
+    "installed_preview_pid": 3996239,
+    "installed_preview_started": "2026-10-26 20:48:54 -0400",
+    "frozen_worktree_preview_pid": 4008706,
+    "frozen_worktree_preview_started": "2026-10-26 21:07:05 -0400",
+    "theme": "DomainOS-SR10-4-KDE",
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01"
+  },
+  "action": {
+    "event": "_GTK_READ_RCFILES",
+    "transport": "GTK2 reload notifier",
+    "result": {
+      "status": "sent",
+      "windows_considered": 4,
+      "events_sent": 4,
+      "racing_x_errors": 0
+    },
+    "scope_limits": [
+      "Sent only on the private Xephyr display :187.",
+      "No preview process was restarted.",
+      "No event was sent to the main desktop, XChat, either MAME instance, or the guest VM.",
+      "The second preview remains a frozen R330 worktree snapshot and was not treated as current output."
+    ]
+  },
+  "comparison": {
+    "before": {
+      "capture": "~/tempia/ia-tema/evidence/I167/r477-gtk2-xephyr187-20261027T153458Z.png",
+      "sha256": "524a08648ff8e014d2619d1ad98cd3abcc00679461dc703e09ef6a910c82a13f"
+    },
+    "after": {
+      "capture": "~/tempia/ia-tema/evidence/I167/r479-gtk2-xephyr187-after-native-rc-reload-20261027T154431Z.png",
+      "sha256": "88b291d79949f137047160f3b5e4b9d97636484de032b1a92189f50087d4c7eb"
+    },
+    "scale": "1:1",
+    "stepper_cell_px": [15, 15],
+    "current_assets": [
+      "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png",
+      "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png"
+    ],
+    "installed_preview_before_reload": {
+      "left_cell_differences_vs_current_asset": 85,
+      "right_cell_differences_vs_current_asset": 85
+    },
+    "installed_preview_after_reload": {
+      "left_cell_differences_vs_current_asset": 0,
+      "right_cell_differences_vs_current_asset": 0
+    }
+  },
+  "result": "The two horizontal normal 15x15 cells in the open installed-theme GTK2 preview match the current installed assets exactly after _GTK_READ_RCFILES. The prior mismatch came from preview windows retaining pre-R473 resources in memory; it was not a demonstrated current asset geometry defect. The frozen lower R330 preview is stale and must not be used as current validation.",
+  "limits": [
+    "This comparison covers the normal horizontal cells in the isolated GTK2 preview only.",
+    "It does not prove the pressed horizontal state, all scrollbar states, the full GTK2 family, or an open personal GTK2 application.",
+    "The direct held-arrow observation in the SR10.4 VM remains pending Q499 coordination authorization; no MAME input was sent."
+  ],
+  "next": "Continue the authorized GTK2 audit using valid current previews. Do not send input to either MAME until the saved coordination gate permits it; preserve R479 as evidence of the reload behavior."
+}

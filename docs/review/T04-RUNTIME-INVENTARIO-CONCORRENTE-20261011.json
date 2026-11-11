@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-11T19:36:42.926140+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "change": "Six independent runtime subprocess queries run concurrently with max_workers6; all families retained, no stale cache or longer deadline.",
+  "tests": {
+    "probe_contract": "5 passed, including barrier proving six overlapping queries",
+    "backend": "34 passed; session3780 exit0",
+    "controller_first": "session4540 exit1 during window recreation; pending generation accepted old natural-size measurements",
+    "controller_second": "session51570 exit1 after eight size cases and Save; checkbox y=-498 outside clip, screenshot examined",
+    "controller_current": "session24979 running; fixture now reveals separate checkbox before native click"
+  },
+  "sources": {
+    "tools/theme-lab/backend.py": "e2b4a8b85027a5570a7e51a70447aa88bc8d57feb1a792699e92def392b6eddd",
+    "tools/theme-lab/tests/test_runtime_probe_failures.py": "98c600ea8fe453cfd58a408448b1bacb409be2cb9d7e5dff39722f7f1b2b2d69",
+    "tools/theme-lab/tests/controller_gtk_anchor.py": "5972cb5599a339de47031faeb9a5fe2a7e3ade4d59d4de03df85a205660bd086",
+    "tools/theme-lab/tests/test_controller_spin.py": "5ae4998f587b13cd7f594245ee02490fce2f3fda946410930aabc3140f6220f2"
+  },
+  "limits": [
+    "No personal installation or handoff",
+    "Load,UndoRedo,restart not yet proven",
+    "No historical-fidelity claim"
+  ],
+  "progress": {
+    "anchor": 50,
+    "basis": "Four milestones: geometry and lifecycle proved; full controller persistence proof and delivery outstanding."
+  },
+  "next": "Poll exact session24979; inspect terminal proof and only then prepare delivery or fix demonstrated failure."
+}

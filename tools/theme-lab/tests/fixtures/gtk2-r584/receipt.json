@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "R584",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "related_parent": "P10",
+  "authority": {
+    "P10": {
+      "user_revision": 1,
+      "authorized": true,
+      "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"
+    },
+    "I167": {
+      "user_revision": 2,
+      "authorized": true,
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+    }
+  },
+  "transaction": {
+    "status": "installed",
+    "entries": 13,
+    "changed_entries": 13,
+    "entry_classes": {
+      "immutable GTK2 palette assets": 6,
+      "GTK2 wrappers": 5,
+      "bundle manifests": 1,
+      "transaction journal": 1
+    },
+    "palette_source_colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "generated_bundle": "~/.local/share/irixium/gtk2-palette/1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "limits": [
+    "Hermetic catalog fixture; no runtime mutation is represented"
+  ]
+}

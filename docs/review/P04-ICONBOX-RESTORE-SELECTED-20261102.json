@@ -1,0 +1,129 @@
+{
+  "id": "P04-ICONBOX-RESTORE-SELECTED-20261102",
+  "recorded_at": "2026-11-03T02:45:28Z",
+  "authority": {
+    "source": "pedido direto do usuário para acrescentar Restaurar selecionadas às operações da Iconbox",
+    "goal_changed": false,
+    "visual_acceptance_inferred": false
+  },
+  "change": {
+    "label": "Restaurar selecionadas",
+    "position": "entre Maximizar selecionadas e Minimizar selecionadas",
+    "semantics": [
+      "remove minimização das janelas selecionadas",
+      "remove maximização total ou parcial das janelas selecionadas",
+      "não reúne, move ou redimensiona manualmente as janelas",
+      "preserva desktop e monitor de cada janela",
+      "janelas já normais permanecem normais"
+    ],
+    "native_confirmation": "o KWin precisa observar minimized=false e maximizeMode=0 para todas as mesmas identidades antes do recibo confirmed",
+    "safety": "identidades e relações pai/transient são resolvidas antes da primeira mutação; timeout ou falha parcial não repetem pedidos"
+  },
+  "ui": {
+    "object_name": "domainosBatchRestore",
+    "rows": 11,
+    "tooltip": "Remove minimização e maximização das janelas selecionadas sem alterar manualmente sua posição.",
+    "keyboard": "setas, Home/End, Tab, Enter/Espaço e Escape usam um manipulador comum; hover não substitui mais o foco de teclado ao abrir a janela nativa"
+  },
+  "verification": {
+    "unit_and_qml": {
+      "result": "passed",
+      "tests": 39,
+      "parts": {
+        "window_restore_and_geometry": 7,
+        "relation_guard": 6,
+        "panel_measurement": 1,
+        "operations_handoff": 19,
+        "middle_click_regression": 6
+      }
+    },
+    "native_panel_x11": {
+      "result": "passed",
+      "tests": 3,
+      "receipt_directory": "/home/lsi/tempia/domainos-theme-work/p04-restore-panel-x11-final-4FpvaZ",
+      "covered": [
+        "posicionamento e navegação de teclado",
+        "fechamento por desativação",
+        "papéis de cor e relevo pressionado"
+      ]
+    },
+    "native_panel_wayland": {
+      "result": "passed",
+      "rows": 11,
+      "visible": true,
+      "above_anchor": true,
+      "bounded": true,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/domainos-p04-wayland-9ubiu8dz/RESULTADO.json"
+    },
+    "iconbox_journey": {
+      "result": "passed",
+      "checks": 86,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-restore-selected-iconbox-GLD3fI/RESULTADO.json"
+    },
+    "native_x11": {
+      "result": "passed",
+      "checks": 67,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-restore-x11-20261102-2597149/RESULTADO.json"
+    },
+    "native_wayland": {
+      "result": "passed",
+      "checks": 67,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-restore-wayland-20261102-2597467/RESULTADO.json"
+    },
+    "covered_cases": [
+      "seleção mista com janela minimizada, maximização parcial e janela normal",
+      "nenhuma atribuição de frameGeometry, desktop ou saída durante Restore",
+      "estado normal observado novamente depois do recibo",
+      "desktop e saída preservados em X11 e Wayland",
+      "relação pai/transient recusada antes da mutação",
+      "janela fechada e timeout relatados sem repetição"
+    ],
+    "git_diff_check": "passed"
+  },
+  "deployment": {
+    "tool": "tools/update_domainos_qml.py",
+    "backups": {
+      "before_restore_feature": "/home/lsi/.local/state/irixium-domainos/backups/055c8dabe5804666a0d5114a9b2e59c8",
+      "before_keyboard_followup": "/home/lsi/.local/state/irixium-domainos/backups/7e07b8b6a55d48e1b26e926102684b5a"
+    },
+    "installed_files": {
+      "contents/code/window_ops.js": "a54ee7ae842fc76f230bc715fd7cc287bb82f1ad26edb05341875192e93e874f",
+      "contents/code/window_ops.py": "8330289974d8650281545d958d9956b8ea5c858b955f054314e4c5bb2e0ba529",
+      "contents/ui/DomainOSOperationsPanel.qml": "ac6c9a4293963e458699e0582357fb09b29ad615697889d5383d909b5a460bd0",
+      "contents/ui/DomainOSOperationsMenu.qml": "aedcd43bb1817fb75511aa4f3cd33da15ec416a2943dc2cc3e7111073dec10d6",
+      "contents/ui/DomainOSNativeTaskMenu.qml": "416192ed8f6f2cf3d76b19e0bdad2d711309517766e3d53973901a6f56a2cd81",
+      "contents/ui/DomainOSIconbox.qml": "ccdd28292b4d4e37580933af8663c76341a34747a408140050a218debb47d448",
+      "contents/ui/DomainOSTasks.qml": "78593772de66b45bfb70160b8a82d857361cbda876c9956b6d2ebb487bf2bc33",
+      "contents/ui/DomainOSWindowOperations.qml": "38bd56d898ba1bb8799e6c9c3c67a458a043fe6a086598b661ec53477c2aeee0"
+    },
+    "source_and_installed_match": true,
+    "plasmashell": {
+      "previous_pid": 2593724,
+      "current_pid": 2599406,
+      "active": true,
+      "other_user_pid_preserved": 332937
+    },
+    "configuration": {
+      "unchanged_hashes": {
+        "kdeglobals": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+        "plasmarc": "ae86c7cebd4ffd3d2a378d8b0763426215de530c89bbc0ea6d9bb0e19ec5e0b3",
+        "kwinrc": "131f276c31272897f2eb4e5429c3dfcddc3363143cc089707bd882e958598a26"
+      },
+      "plasma_appletsrc_before_final_restart": "5a313af99eae65806976ce3a47a421d0ce311c5f5226158c3990a9f67fc8f33f",
+      "plasma_appletsrc_after_final_restart": "0cfea163b223dfb8378555391c3fa29d6245a91517557a28c3def75c5f488cf9",
+      "assessment": "o instalador não escreve perfis; o plasmashell reserializou appletsrc durante a recarga final. A diferença não foi sobrescrita ou restaurada sem autorização."
+    },
+    "new_errors_for_changed_files": false,
+    "preexisting_tray_non_notify_diagnostic": true
+  },
+  "limits": [
+    "Nenhuma janela pessoal foi restaurada, movida ou redimensionada durante a verificação; a ação real cabe ao usuário.",
+    "Os compositores privados comprovam o contrato técnico, não a aceitação visual do usuário na sessão normal.",
+    "A reserialização automática de plasma-org.kde.plasma.desktop-appletsrc foi preservada e registrada, não tratada como configuração imutável."
+  ],
+  "progress": {
+    "subscope_percent": 95,
+    "basis": "opção, fluxo nativo, confirmação, testes X11/Wayland, publicação e recarga concluídos; resta a verificação da interação pelo usuário na sessão normal",
+    "not_visual_fidelity_percent": true
+  }
+}

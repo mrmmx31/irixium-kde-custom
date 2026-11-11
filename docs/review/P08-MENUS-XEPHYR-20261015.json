@@ -1,0 +1,45 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "recorded_at_utc": "2026-10-15T02:42:43Z",
+  "environment": {
+    "display": ":61",
+    "type": "existing private Xephyr session with the real Plasma panel applet",
+    "screen_px": "1600x1000",
+    "personal_desktop_changed": false,
+    "VM_or_guest_input": false
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml": "27c7c1927bfecade5b745aad639714496b383f22ba00032bdd82acaa4032b30c",
+    "plasma/tests/test_domainos_activity_light.py": "2d21e160d77d1e0d0fde69c42f17936fa5a4e7d85f942b537c26b7a8ee305f48",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/images/applications.svg": "5345042401b65a04ea0ee20d74780b0c736f9e1cac8ed00824839b405dba0d2e"
+  },
+  "checks": {
+    "applications_glyph_contained": {
+      "result": true,
+      "method": "Current full-panel 1:1 Xephyr capture; the 36x36 logical image box is centered inside the 118x52 logical button, whose inner face is 110x44; SVG uses PreserveAspectFit.",
+      "capture": "/home/lsi/tempia/goal-resume-20261015/current/p08-panel-zoom.png",
+      "sha256": "28ef3c4b00d3ffb3537ca5351ed3af3c73a3ac89a82ba6432d6bf99bee9dbc2e"
+    },
+    "help_menu": {
+      "result": "opened with all 3 entries visible; no entry activated",
+      "geometry_px": "227x94 at +901+864",
+      "capture": "/home/lsi/tempia/goal-resume-20261015/current/p08-help-menu.png",
+      "sha256": "bcba6f1eab73b487f52c6ed1627420c635966317ebf57402cbcb1a2385fe126c"
+    },
+    "session_menu": {
+      "result": "opened with all 3 entries visible; no entry activated",
+      "geometry_px": "148x94 at +783+864",
+      "capabilities": "Log out, suspend and hibernate were disabled in this isolated Xephyr session; menu presentation and fit were still verified.",
+      "capture": "/home/lsi/tempia/goal-resume-20261015/current/p08-session-menu.png",
+      "sha256": "9f5f20740e1a33c49c6cf3cb1d979d1a30e2b0f0400c3ff5cb984b7bc4b13931"
+    },
+    "led_wait_cursor_startup": {
+      "result": "reused exact-source receipt; 37/37 checks passed, LED blinked and wait cursor appeared during delayed launch, both returned to normal when the window mapped",
+      "receipt": "docs/review/P08-STARTUP-XEPHYR-20261014.json"
+    }
+  },
+  "status": "technical_criteria_complete; visual confirmation of the icon correction remains with the user"
+}

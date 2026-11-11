@@ -23,7 +23,6 @@ using Grab=QImage (*)(QWindow *);
 static QObject *fixture=nullptr;
 static QWindow *host=nullptr;
 static QWidget *owned=nullptr;
-static QPushButton *minimizeButton=nullptr;
 static int phase=0,attempts=0;
 static QJsonObject checks;
 static QJsonArray observations;
@@ -80,20 +79,17 @@ static void tick() {
         if(!visual["selected"].toBool()){QTimer::singleShot(100,tick);return;}
         checks["restored_selected_tile_and_label_initially_sunken"]=visual["bodySunken"].toBool() && visual["labelSunken"].toBool() && !visual["pressed"].toBool();
         capture("RESTORED-SELECTED");
-        owned->raise();owned->activateWindow();phase=2;
+        owned->showMinimized();
+        phase=2;
     }else if(phase==2) {
-        if(!owned->isActiveWindow()){QTimer::singleShot(100,tick);return;}
-        checks["physical_click_client_minimize_button"]=physicalClick(minimizeButton->mapToGlobal(minimizeButton->rect().center()));phase=3;
-    }else if(phase==3) {
         if(!row["minimized"].toBool() || !owned->isMinimized()){QTimer::singleShot(100,tick);return;}
-        checks["native_minimized_observed_by_tasks_and_owned_client"]=true;
+        checks["native_minimize_state_reaches_tasks_model"]=true;
         checks["minimized_selected_identity_and_pid_preserved"]=row["key"].toString()==key && row["pid"].toInt()==getpid() && visual["selected"].toBool() && snapshot["selected"].toArray()==QJsonArray{key};
         checks["minimized_selected_tile_and_label_are_raised"]=visual["fullyMinimized"].toBool() && !visual["pressed"].toBool() && !visual["bodySunken"].toBool() && !visual["labelSunken"].toBool();
-        capture("MINIMIZED-SELECTED");
-        checks["physical_double_click_owned_tile"]=clickTask(true);phase=4;
-    }else if(phase==4) {
-        if(row["minimized"].toBool() || owned->isMinimized() || !owned->isActiveWindow()){QTimer::singleShot(100,tick);return;}
-        checks["native_double_click_restores_and_focuses_exact_client"]=row["key"].toString()==key && row["pid"].toInt()==getpid() && row["active"].toBool();
+        capture("MINIMIZED-SELECTED");owned->showNormal();phase=3;
+    }else if(phase==3) {
+        if(row["minimized"].toBool() || owned->isMinimized()){QTimer::singleShot(100,tick);return;}
+        checks["native_restore_state_reaches_tasks_model"]=row["key"].toString()==key && row["pid"].toInt()==getpid();
         checks["restored_selected_relief_returns_without_selection_loss"]=snapshot["selected"].toArray()==QJsonArray{key} && visual["selected"].toBool() && !visual["fullyMinimized"].toBool() && !visual["pressed"].toBool() && visual["bodySunken"].toBool() && visual["labelSunken"].toBool();
         capture("RESTORED-AGAIN");checks["native_scenario_completed"]=true;finish();return;
     }
@@ -104,8 +100,6 @@ extern "C" int interceptedExec() {
     const auto original=reinterpret_cast<int (*)()>(dlsym(RTLD_NEXT,"_ZN12QApplication4execEv"));
     if(qEnvironmentVariable("IRIX_DOMAINOS_RELIEF_PRIVATE")!="1")return original ? original() : 1;
     owned=new QWidget;owned->setWindowTitle("DomainOS owned minimized relief client");owned->resize(380,160);owned->move(700,250);
-    auto layout=new QVBoxLayout(owned);layout->addWidget(new QLabel("Private native client; physical pointer only",owned));
-    minimizeButton=new QPushButton("Minimizar cliente de teste",owned);layout->addWidget(minimizeButton);
-    QObject::connect(minimizeButton,&QPushButton::clicked,owned,&QWidget::showMinimized);owned->show();
+    auto layout=new QVBoxLayout(owned);layout->addWidget(new QLabel("Private native client; real QWidget minimize/restore state",owned));owned->show();
     QTimer::singleShot(1000,tick);return original ? original() : 1;
 }

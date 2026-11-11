@@ -1,0 +1,42 @@
+{
+  "id": "I167",
+  "receipt": "R46",
+  "date": "2026-10-23",
+  "scope": "Audit of the current authorized GTK2 work section only",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "source_audit": {
+    "receipt_range": "I167 GTK2 R29-R45 receipts with declared source hashes",
+    "stale_receipt": "R38 referenced an earlier native_scene_gtk2.py hash",
+    "current_native_scene_sha256": "d553143769c16702c91a11dc44ae0deefeef5d6914038b7cc81f2a31974ebae3",
+    "revalidation": {
+      "command": "env TMPDIR=$HOME/tempia T04_PRIVATE_SCALE=1 xvfb-run -a /usr/bin/python3 -B tools/theme-lab/tests/probe_gtk2_scale_scene.py $HOME/tempia/i167-gtk2-scale-audit-r46/native",
+      "result": "passed",
+      "scenes": 48,
+      "matrix": "four KDE schemes x three states x coupled/separate x two selected controls",
+      "model_unchanged": true,
+      "gestures_tested": false,
+      "result_sha256": "2d40e348f42cb889508abdbd0f55840da49168b5b6ce2840978be8d97dedebb4",
+      "output": "~/tempia/i167-gtk2-scale-audit-r46/native/RESULTADO.json"
+    }
+  },
+  "remaining_gaps": [
+    "R36 ComboBox popup shell uses the adjustable light factor 0.56 and produces #a5d1e6; the archived SR10.4 VUE light token is #a3d0e6 (base plan 0.55). Keep this visible difference explicit; do not bake in RGB or change a shared factor without a scoped comparison.",
+    "R42 list rows remain 24 px against the local Motif fixture's 19 px. GtkCellRendererText ypad=0 reduces the gap to 1 px only when set on the application renderer; gtkrc did not override it. Do not shrink the KDE-derived font to force a match.",
+    "R40 multiline text has a 13 px font metric difference in the 97x54 comparison crop: GTK2 needs a vertical scrollbar and clips the last word, while the local Motif fixture shows three lines. This is not a Domain/OS VM metric.",
+    "R44 Entry focus ring, caret and selection have no matching historical capture; the existing MAME request f2127393cf7642a4896dceae1977ea71 remains uncorrelated, so no further guest command was sent.",
+    "Scale thumb width/length are not exposed persistently in the C Theme Lab UI. R38 geometry is currently programmatic only.",
+    "The central Theme Lab canvas still lacks a GTK2-native renderer; NativeSession and public preview are separate native routes. The R45 all-controls matrix proves mounting/visibility, not pixel fidelity for all 16 controls.",
+    "R39 ProgressBar and several other controls compare against the local Motif sample, not the SR10.4 VM. Historical fidelity remains unproven wherever no matching guest capture exists.",
+    "No final GTK2 theme was applied to the personal profile or XChat. Keep that gate closed until applicable GTK2 work and the public route are audited and closed."
+  ],
+  "no_changes": [
+    "No other board section was read for action or modified.",
+    "No product recipe, VM, user profile, or XChat setting changed."
+  ],
+  "next": "Continue only within authorized I167. Resolve achievable GTK2 recipe/tool gaps one family at a time; keep historical claims limited to SR10.4 captures and do not apply to XChat while GTK2 remains partial."
+}

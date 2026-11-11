@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "R125",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "VM SR10.4: janela Find Files visível e hierarquia X corrigida",
+  "method": {
+    "reference": "Domain/OS SR10.4 com HP VUE 2.01 no clone MAME dedicado de 2026-10-18.",
+    "capture": "MAME Lua screen:snapshot em 1024x844; xrefresh pediu um redesenho Expose. Telnet executou somente xwininfo/xset; nenhuma tecla ou clique foi enviado.",
+    "mame": {
+      "pid": 3759847,
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_command": false
+    },
+    "screen_saver": "xset q registrou timeout=600 e cycle=600. A repetição dos mesmos valores não mudou a configuração; esses valores, por si só, não provam a causa da captura preta anterior.",
+    "capture_lua_sha256": "a3fb0cdbe70a8accdce5b620acbf73ef42c36c68121eadb939b8412d7a06ae23"
+  },
+  "result": {
+    "screenshot": {
+      "path": "~/tempia/i167-current-sr104-20261025.png",
+      "size_px": [1024, 844],
+      "sha256": "5a5085c9b9655e147cd3b166c3ed75f16371ce29e451bdf8d92e8b253f210dac"
+    },
+    "visible_window": {
+      "frame_xid": "0x14000aa",
+      "frame_xywh_px": [97, 335, 480, 465],
+      "frame_map_state": "IsViewable",
+      "titlebar_xid": "0x14000ab",
+      "titlebar_xywh_px": [102, 340, 470, 20],
+      "client_xid": "0x280008e",
+      "client_name": "Find Files",
+      "client_xywh_px": [103, 360, 468, 434],
+      "client_map_state": "IsViewable",
+      "child_xid": "0x28000a7",
+      "child_xywh_px": [103, 360, 468, 434],
+      "child_map_state": "IsViewable"
+    },
+    "xid_disambiguation": "0x28000c3 também se chama Find Files, mas é uma janela auxiliar 5x5 IsUnMapped. Não é o cliente visível; usar 0x14000aa/0x280008e para esta captura.",
+    "entry_observation": "O campo File Name está visível na captura após o Expose. Não foi enviado input; portanto foco, seleção ativa e fase de blink não foram controlados nem inferidos desta captura.",
+    "expose": "Após xrefresh, uma nova captura continuou mostrando e redesenhando o diálogo. Nenhum arquivo de configuração do convidado foi alterado."
+  },
+  "evidence": [
+    {"path": "~/tempia/i167-current-sr104-20261025.png", "sha256": "5a5085c9b9655e147cd3b166c3ed75f16371ce29e451bdf8d92e8b253f210dac"},
+    {"path": "~/tempia/i167-vue-window-tree-r125.txt", "sha256": "6fa3ea854790dbb9cb901a9fafc54db91d0e3c5b043c66da8aaf1e2ee2811fb2", "scope": "A consulta retornou geometrias/estados dos XIDs-alvo; a sondagem do descendente terminou após obter a saída parcial."},
+    {"path": "~/tempia/i167-vue-find-files-xid-r125.txt", "sha256": "9b290d0adca13d3aff2b5dd241be99193a7ce22b587bfbcbb563a4cc7f7f056a", "scope": "O XID auxiliar 0x28000c3 tem 5x5 e está desmapeado."},
+    {"path": "~/tempia/i167-vue-expose-r125.txt", "sha256": "fad327b9846fe14bed4479c7417773829171926410781000be18c2dda99ad637"},
+    {"path": "~/tempia/i167-telnet-xwininfo-20261025.txt", "sha256": "f0bea682b1d6f179d5ae7e9f064726bb01b488c5ebae1074c87a3ea5f6081133"}
+  ],
+  "comparison": {
+    "reuse": "GTK2 R116/R117 continuam sendo a prova de métricas de linha/célula e extremos da seleção (campo GTK2 320x34; célula VUE e GTK2 8x16; diferença entre extremos GTK2 0 px).",
+    "not_proven": "R125 não é uma comparação visual pareada GTK2/VUE e não confirma fonte histórica, estado focado, blink ou equivalência do campo. A captura nativa torna essa comparação possível sem depender de uma janela presumida como oculta."
+  },
+  "next": "Parear a face/contorno do campo visível na VM com GtkEntry GTK2 em escala 1:1; obter estado focado e solto com observação controlada, depois conferir seleção/caret/blink contra R76/R116/R117 sem repetir medições já cobertas.",
+  "status": "running",
+  "user_acceptance": "pending",
+  "files_changed": false,
+  "guest_configuration_changed": false
+}

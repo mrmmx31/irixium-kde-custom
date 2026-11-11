@@ -1,0 +1,63 @@
+{
+  "item": "P10",
+  "revision": "R40",
+  "checked_at_utc": "2026-10-18T18:25:00Z",
+  "scope": "Read-only identification and capture of the assistant clone MAME window; no visual comparison was possible.",
+  "target": {
+    "mame_pid": 1925360,
+    "user_uid": 1000,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "display": ":1",
+    "control_channel": "~/tempia/domainos-assistant-vm-20261018/sessao/controle"
+  },
+  "probe": {
+    "status": "completed",
+    "request_id": "b18bad7600f34e23bd07dcffe0e182e1",
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false,
+    "pending_command_after": null
+  },
+  "capture_attempts": [
+    {
+      "method": "xwd",
+      "result": "failed",
+      "error": "X_GetImage BadMatch; produced zero-byte XWD",
+      "window_id": "0x3800002",
+      "later_owner_pid": 497923,
+      "association": "The window belonged to the other MAME process identified in the earlier process listing as the excluded I342 session, not PID 1925360.",
+      "side_effects": "No focus, mouse, keyboard, guest command, or emulator setting was changed."
+    },
+    {
+      "method": "authenticated-window helper",
+      "result": "failed before focus",
+      "reason": "wmctrl executable was unavailable to the helper subprocess; script stopped at initial window enumeration.",
+      "target_pid_verified": false,
+      "focus_changed": false
+    },
+    {
+      "method": "exact PID window search on DISPLAY :1",
+      "result": "no matching top-level MAME window found",
+      "windows_checked": 49,
+      "xdotool_class_search_matches": 0
+    }
+  ],
+  "preservation": {
+    "assistant_mame_restarted": false,
+    "mame_profile_changed": false,
+    "guest_files_changed": false,
+    "original_vm_changed": false,
+    "approved_downloads_backup_changed": false,
+    "existing_xephyr_closed": false
+  },
+  "outcome": "Assistant clone graphics remain unavailable for visual work from this host session. Do not repeat the failed XWD ID. Diagnose the clone window/display association before another capture; do not query or capture the I342 window.",
+  "artifacts": {
+    "directory": "~/tempia/domainos-assistant-vm-20261018/p10-host-capture-r40-20261018",
+    "empty_xwd": "mame-window.xwd",
+    "failed_helper": "capture-authenticated-window.py"
+  },
+  "limits": [
+    "This is not a DomainOS visual comparison.",
+    "P10 remains partial; R39 network endpoint remains available and MAME remains responsive through its own bridge."
+  ]
+}

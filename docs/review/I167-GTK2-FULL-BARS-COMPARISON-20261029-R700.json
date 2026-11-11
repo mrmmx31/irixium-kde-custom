@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "R700",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare full normal GTK2 horizontal and vertical scrollbar renders from the current lsi profile against the SR10.4/VUE full bar bounds at 1:1, and diagnose the previously unmeasured end-to-end geometry.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "session": "lsi desktop XWayland DISPLAY=:1; native GTK2 preview window, no Xephyr",
+    "gtk2": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE",
+    "kde_color_scheme": "DomainOS-SR10-4",
+    "style_engine": "DomainOSPixmapStyle",
+    "profile_engine_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "scale": "1:1; screenshot via XWD, no interpolation",
+    "allocations_px": {
+      "horizontal": [539, 15],
+      "vertical": [15, 255]
+    },
+    "natural_allocation_check": "A separate GTK2 2.24.33 probe without a cross-axis size request reported the same 539x15 and 15x255 allocations with the DomainOS style; the forced-size fixture did not create the 2px inset."
+  },
+  "captures": {
+    "window_png": {
+      "path": "~/tempia/domainos-theme-work/I167/R700-full-bars-v3/window.png",
+      "sha256": "9599c4dfd37fff99576bcf43226399cc1b8c73f0f46be3e0aff5755d5b85deb1",
+      "dimensions_px": [567, 313],
+      "method": "XWD capture of the exact GTK2 preview window, then lossless PNG conversion"
+    },
+    "horizontal_crop": {
+      "path": "~/tempia/domainos-theme-work/I167/R700-full-bars-v3/gtk2-horizontal-from-xwd.png",
+      "sha256": "ccc70f3909a0932081e22b82f034a001064422f6d07c836299eb1ebd5568944b",
+      "dimensions_px": [539, 15],
+      "window_origin_px": [14, 14]
+    },
+    "vertical_crop": {
+      "path": "~/tempia/domainos-theme-work/I167/R700-full-bars-v3/gtk2-vertical-from-xwd.png",
+      "sha256": "1ea1b72e5e2ebcafd75cc23364bc7947ee9394f27c84801e9fdaff7765b8cbe3",
+      "dimensions_px": [15, 255],
+      "window_origin_px": [14, 44]
+    }
+  },
+  "references": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "horizontal": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "crop_box_exclusive": [2, 4, 541, 19]
+    },
+    "vertical": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "crop_box_exclusive": [4, 2, 19, 257]
+    }
+  },
+  "comparison": {
+    "method": "Exact RGB pixel comparison of each full GTK2 allocation to the measured full VUE bar bounding box; no global alignment or scaling. Endpoint cells were then independently searched within +/-2px to distinguish cell artwork from end placement.",
+    "full_horizontal": {
+      "pixels": 8085,
+      "different_pixels": 274,
+      "fraction": "3.39%"
+    },
+    "full_vertical": {
+      "pixels": 3825,
+      "different_pixels": 263,
+      "fraction": "6.88%"
+    },
+    "endpoint_cells": {
+      "horizontal_left": {"cell_px": [15, 15], "best_translation_px": [2, 0], "different_pixels": 0},
+      "horizontal_right": {"cell_px": [15, 15], "best_translation_px": [-2, 0], "different_pixels": 0},
+      "vertical_up": {"cell_px": [15, 15], "best_translation_px": [0, 2], "different_pixels": 0},
+      "vertical_down": {"cell_px": [15, 15], "best_translation_px": [0, -2], "different_pixels": 0}
+    },
+    "interpretation": "The four 15x15 endpoint artworks remain pixel-exact when independently aligned, consistent with R690/R692. In the complete bar, the endpoint cells sit 2px inward at each end of the allocated widget; therefore one translation cannot align both ends and full-bar pixels differ. The native theme's GtkRange trough-border is 2."
+  },
+  "diagnostics": {
+    "capture_method": "An initial GdkPixbuf read from the parent drawable produced black crops; those files are retained in R700-full-bars as invalid diagnostics and are excluded from all comparisons. The valid images are the XWD window and its lossless crops.",
+    "private_overrides": [
+      {
+        "path": "~/tempia/domainos-theme-work/I167/R701-thickness-probe/gtkrc.override",
+        "change": "GtkScrollbar x/y thickness set to 0 only for the probe",
+        "result": "GTK2 style reported 0/0 thickness; full bar pixel result did not change. No product or user setting changed."
+      },
+      {
+        "path": "~/tempia/domainos-theme-work/I167/R702-trough-probe/gtkrc.override",
+        "change": "GtkRange trough-border set to 0 only for the probe",
+        "result": "Full comparison worsened to 2213/8085 horizontal and 1066/3825 vertical pixels; endpoint bevel/color structure also diverged. Rejected as a fix."
+      }
+    ],
+    "source_semantics": "GTK2 documents trough-border as spacing between the thumb/steppers and the outer trough bevel; it is not the bevel thickness itself. The VUE visual contract still requires the 2px bevel, so changing this knob alone is not acceptable.",
+    "colors": "The active DomainOS KDE scheme resolves the same four RGB role values present in the historical image. No static RGB values were added to the consumer or profile."
+  },
+  "limits": [
+    "This is a standalone scrollbar fixture, not a GtkScrolledWindow or the user's application layout.",
+    "The capture proves full normal state only; it does not cover hover, pressed, disabled, scrolling, or thumb-drag states.",
+    "No user profile, repository theme source, scheme, application settings, or VM was changed by this comparison.",
+    "No human visual acceptance was recorded. I517 remains unauthorized for direct VUE arrow input."
+  ],
+  "result": "The endpoint cell artwork is validated, but the full GTK2 bar still has an end-placement/length mismatch at the same widget allocation. Do not change the glyph assets based on this result. Continue by measuring the actual GtkScrolledWindow geometry and mapping trough spacing to the shared 2px relief contract before editing the GTK2 theme.",
+  "artifacts": "records/ia-tema/I167/R700/ARTIFACTS.json"
+}

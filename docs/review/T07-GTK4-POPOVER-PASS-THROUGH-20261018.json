@@ -1,0 +1,60 @@
+{
+  "id": "T07-GTK4-POPOVER-PASS-THROUGH-20261018",
+  "task": "T07",
+  "date_utc": "2026-10-18T14:22:24Z",
+  "scope": "GTK4 4.18.6 native gallery hover hints in Xephyr :76 at 1280x800; two visible gallery pages; no theme palette, installed style, or historical pixel comparison",
+  "changes": [
+    "The transparent GtkFixed overlay hosting GtkMenuButton popover anchors no longer accepts pointer input, so native controls beneath it receive events.",
+    "Vertical-scrollbar popovers temporarily suppress ancestor tooltips while hovered and restore them immediately on leave, preventing the GtkScrolledWindow hint from appearing at the same time.",
+    "The read-only/disabled GtkEntry hint was shortened after the rightmost field's native tooltip exceeded the 1280 px screen edge."
+  ],
+  "matrix": {
+    "status": "passed",
+    "mapped_targets_page_0": 26,
+    "mapped_targets_page_1": 5,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "closed_after_pointer_leave": true,
+    "all_tooltips_within_screen": true,
+    "no_tooltip_covers_hover_point": true,
+    "small_controls_remain_uncovered": true,
+    "popover_anchor_cleanup": "2 anchors before close, 0 after; close idempotent; native tooltip state restored"
+  },
+  "vertical_scrollbar_input": [
+    {
+      "page": 0,
+      "scrollbar_rect_px": [1035, 429, 15, 232],
+      "popover_rect_px": [670, 533, 359, 61],
+      "adjustment_before": 0.0,
+      "adjustment_after_click_with_hint_open": 508.76699412447016,
+      "ancestor_tooltip_restored_after_leave": true
+    },
+    {
+      "page": 1,
+      "scrollbar_rect_px": [1043, 198, 15, 486],
+      "popover_rect_px": [678, 429, 359, 61],
+      "adjustment_before": 0.0,
+      "adjustment_after_click_with_hint_open": 508.76699412447016,
+      "ancestor_tooltip_restored_after_leave": true
+    }
+  ],
+  "validation": {
+    "command": "python3 -m py_compile tools/theme-lab/gtk4_hint_popover.py tools/theme-lab/tests/gtk4_hint_matrix_worker.py plasma/tests/galerias-nativas/gtk4_demo.py",
+    "result": "passed",
+    "gtk_version": "4.18.6",
+    "display": ":76",
+    "source_sha256": {
+      "tools/theme-lab/gtk4_hint_popover.py": "9a68f4da1745a609515650393a82ebb9b8361f704374e7e5cce34c8dbc44ff53",
+      "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "3a5dbbb6fcb6ae4b238b20a5a3aafcc2e74d08383311c833eedd81db2879981e",
+      "plasma/tests/galerias-nativas/gtk4_demo.py": "cb65b09c02a2cfa83f5380c2727a3428755aabdb35e00620051a812938e108cc"
+    },
+    "log": "~/tempia/t07-gtk4-popover-debug-20261018/full-matrix-final.stdout"
+  },
+  "limits": [
+    "This is a real GTK4 runtime interaction/geometry test, not a comparison against Domain/OS pixels.",
+    "The test used GTK's active default palette and did not validate theme colors across schemas.",
+    "T07 remains partial: other families, layouts, later-created controls, and manual review are outstanding."
+  ]
+}

@@ -1,0 +1,103 @@
+{
+  "checked_at_utc": "2026-10-15T03:26:08Z",
+  "stage": "P09 current optional-thumbnail probe in existing private Xephyr :61",
+  "request_revision": 1,
+  "status": "inconclusive_thumbnail_capture_provider_unavailable",
+  "method": {
+    "script": "plasma/tools/testar-domainos-miniaturas.py",
+    "mode": "--current-display --backend x11",
+    "display": ":61",
+    "isolated_xdg_home_bus": true,
+    "owned_windows_only": true,
+    "compositor_replaced_or_reconfigured": false,
+    "all_test_artifacts": "~/tempia/p09-thumbnail-current.S3tFoc/result/"
+  },
+  "checks": {
+    "existing_compositor_not_replaced_or_reconfigured": true,
+    "default_disabled_without_native_providers": true,
+    "default_group_hint_lists_all_owned_titles_in_order": true,
+    "default_hint_does_not_create_native_capture_providers": true,
+    "native_group_hint_capture_saved": true,
+    "native_scenario_completed": false,
+    "only_explicit_owned_window_ids_supplied": true,
+    "real_installed_plasma_host": true,
+    "native_host_exited_cleanly": true,
+    "native_provider_backend_matches_session": true,
+    "qml_runtime_errors_zero": true,
+    "all_owned_processes_stopped": true,
+    "private_worker_exited_cleanly": false,
+    "production_sources_unchanged": true,
+    "real_user_preferences_unchanged": true,
+    "privilege_protocol_checks_not_disabled": true
+  },
+  "native_state": {
+    "availableCount": 0,
+    "backend": "x11",
+    "contentLoaded": true,
+    "enabled": true,
+    "hintMainText": "Owned windows",
+    "hintSubText": "1. DomainOS thumbnail owned 0\n2. DomainOS thumbnail owned 1",
+    "hintsEnabled": true,
+    "loadedProviderCount": 2,
+    "providerCount": 2,
+    "providers": [
+      {
+        "active": true,
+        "height": 130,
+        "itemHeight": 130,
+        "itemLoaded": true,
+        "itemVisible": true,
+        "itemWidth": 260,
+        "visible": true,
+        "width": 260,
+        "winId": 41943061,
+        "windowId": 41943061
+      },
+      {
+        "active": true,
+        "height": 130,
+        "itemHeight": 130,
+        "itemLoaded": true,
+        "itemVisible": true,
+        "itemWidth": 260,
+        "visible": true,
+        "width": 260,
+        "winId": 41943067,
+        "windowId": 41943067
+      }
+    ],
+    "tooltipVisible": true,
+    "windowCount": 2,
+    "windows": [
+      {
+        "id": 41943061,
+        "pid": 283103,
+        "title": "DomainOS thumbnail owned 0"
+      },
+      {
+        "id": 41943067,
+        "pid": 283103,
+        "title": "DomainOS thumbnail owned 1"
+      }
+    ]
+  },
+  "qml_diagnostics": [],
+  "evidence": {
+    "result": "~/tempia/p09-thumbnail-current.S3tFoc/result/RESULTADO.json",
+    "fallback_capture": "~/tempia/p09-thumbnail-current.S3tFoc/result/NATIVE-THUMBNAILS-UNAVAILABLE.png",
+    "fallback_sha256": "d963504eeae30f57e1873634affbfbb6f1d0947653361696feaf481147c9166e",
+    "hints_capture": "~/tempia/p09-thumbnail-current.S3tFoc/result/NATIVE-HINTS.png",
+    "hints_sha256": "b6a61e1ddedd3fc735c205f650a6239d00013de1e60359e5f880ea5160da2d90"
+  },
+  "interpretation": [
+    "The two explicitly owned X11 windows and native provider objects loaded; the visible card reports that the compositor has not supplied a thumbnail.",
+    "availableCount=0, so this run does not prove that actual thumbnail pixels render.",
+    "The private runner reported “Cannot initialize inotify: Too many open files” and exited nonzero; this is a test-session resource failure, not evidence of a failure in the user session.",
+    "No personal preferences, tasks, or compositor settings changed."
+  ],
+  "test_harness_change": {
+    "file": "plasma/tools/testar-domainos-miniaturas.py",
+    "change": "output directory guard now requires a fresh, non-symlinked descendant of ~/tempia instead of /tmp",
+    "validation": "the private Xephyr probe accepted the ~/tempia destination and ran"
+  }
+}

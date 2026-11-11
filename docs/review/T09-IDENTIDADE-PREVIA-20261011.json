@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-11T14:28:36.535823+00:00",
+  "item": "T09",
+  "revision": 1,
+  "phase": "obsolete_preview_identity_rejected_verified_private",
+  "before_failure": "Evento de move da instância GTK3 anterior alterou working/scene após Apply sem mudança de hash.",
+  "changes": [
+    "Cada filho GTK2/GTK3 recebe identidade aleatória32hex pelo controlador; emissor inclui campo reservado preview_instance.",
+    "Parser valida formato opcional para compatibilidade com dados isolados; controlador exige identidade de job ativo/família aplicada e origem correspondente.",
+    "IDs mudam mesmo quando a cena não muda; job cancelado/encerrado não autoriza IPC."
+  ],
+  "checks": {
+    "t09-stale-after": {
+      "status": "passed",
+      "scope": "Native GTK3 same-scene regeneration; actual EventWriter replays obsolete instance move, file consumed without changing project/scene. No other action/origin/toolkit or historical fidelity claim.",
+      "old_pid": 2546413,
+      "new_pid": 2546581,
+      "old_instance": "7759f07c2da7c6c713c18eaebec0735b",
+      "new_instance": "f29709af1e28a3379088fb7d6785ebf2",
+      "scene_hash_unchanged": true
+    },
+    "t09-current-gtk3-events": {
+      "status": "passed",
+      "scope": "Native GTK3 startup, two resumes with different pending dimensions and then Qt6 editor selection; original GTK3 scene bytes/hash and actual allocation preserved; proposal fields/history independent; no Qt6 painting claim",
+      "applied_allocation": [
+        220,
+        80
+      ],
+      "gtk3_pending": [
+        330,
+        110
+      ],
+      "qt6_pending": [
+        410,
+        140
+      ],
+      "scene_bytes_preserved": true,
+      "cross_family_native_selection_preserved_recipes": true,
+      "native_drag_changed_only_gtk3_position": true
+    },
+    "t09-current-gtk2-events": {
+      "status": "passed",
+      "scope": "Real Motif controller -> private GTK2 button/range generation and both previews",
+      "initial": [
+        {
+          "control": 0,
+          "separate": 0,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 180,
+          "height": 50,
+          "natural_width": 74,
+          "natural_height": 34
+        }
+      ],
+      "both": [
+        {
+          "control": 0,
+          "separate": 0,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 180,
+          "height": 50,
+          "natural_width": 74,
+          "natural_height": 34
+        },
+        {
+          "control": 0,
+          "separate": 1,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 180,
+          "height": 50,
+          "natural_width": 74,
+          "natural_height": 34
+        }
+      ],
+      "after_apply": [
+        {
+          "control": 0,
+          "separate": 0,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 280,
+          "height": 60,
+          "natural_width": 74,
+          "natural_height": 34
+        },
+        {
+          "control": 0,
+          "separate": 1,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 280,
+          "height": 60,
+          "natural_width": 74,
+          "natural_height": 34
+        }
+      ],
+      "gtk3_recipe_preserved": true,
+      "partial_scope_explicit": true,
+      "toggle_unchecked": true,
+      "separate_window_no_longer_visible": true,
+      "coupled_preview_retained": true,
+      "closed_origin_metrics_cleared": true,
+      "valid_ipc_accepted_before_close": true,
+      "late_detached_metrics_rejected": true,
+      "coupled_ipc_still_accepted": true,
+      "reopened_native_origins": [
+        {
+          "control": 0,
+          "separate": 0,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 280,
+          "height": 60,
+          "natural_width": 74,
+          "natural_height": 34
+        },
+        {
+          "control": 0,
+          "separate": 1,
+          "scale": 1,
+          "font_kind": 1,
+          "font": "Sans 13px",
+          "width": 280,
+          "height": 60,
+          "natural_width": 74,
+          "natural_height": 34
+        }
+      ],
+      "synthetic_IPC_sentinels_not_native_dimensions": [
+        333,
+        77,
+        444,
+        88,
+        281,
+        61
+      ],
+      "process_exit_not_claimed": true
+    }
+  },
+  "strict_build": "passed all/probe/parser",
+  "parser": "passed transactional malformed identity rejection; legacy standalone parsing retained",
+  "writer": "4 passed including reserved/malformed instance identity",
+  "runtime_closure": "2 passed",
+  "diff_check": "passed",
+  "scope": "GTK3 real mesma cena/duas instâncias: replay pelo emissor real com identidade obsoleta consumido sem efeito; seleção/arraste/reabertura GTK3 atuais reais. GTK2 real medidas atuais e sentinelas IPC da origem fechada. Sentinelas são artificiais, não medidas nativas/fidelidade. Identidade de instância organiza ciclo de vida, não autentica contra usuário local adversarial.",
+  "remaining": [
+    "Encerramento/cancelamento: descendentes próprios, filho resistente e processos alheios preservados.",
+    "Entrega pessoal coordenada e avaliação.",
+    "Outras ações/famílias não receberam ensaio específico de replay."
+  ],
+  "estimated_stage_progress_percent": 60,
+  "percentage_basis": "Falha GTK3, prazo e eventos antigos no contrato comum verificados; falta encerramento/descendentes e entrega. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "4dfcdcde3b98accd68567e26a0a2d37dfdc560c526aa610ee3ff82f1babefe17",
+    "tools/theme-lab/src/preview_event.c": "ec85a98cc2cd0bb67588c590103a9bed5fe0e1e2132c82f2e03fffb52ff6e7d7",
+    "tools/theme-lab/include/preview_event.h": "91e97572d716e1928e5ba58a3ea8df397cea09a8d1525010722df2dfe45307c1",
+    "tools/theme-lab/preview_event_writer.py": "0001bf780e3f698b0a39ba52206208b3b3347bcb0d64edd06737554d5ac1344b",
+    "tools/theme-lab/preview_gtk.py": "0bc47d3d58e44862c136912e263d0b7d361cc58e2bca375903d6fc70d17dcbda",
+    "tools/theme-lab/preview_gtk2.py": "1e0e7f459ca18528c9e1067b893e97b846c08e03d1255a533e97e85f96306cdc",
+    "tools/theme-lab/tests/controller_stale_preview.py": "f762e947c0b88ec9df52b67f58db9b24bcc3c54625efdd18c4a956a1a66c1999",
+    "tools/theme-lab/tests/controller_gtk2_push.py": "a3c27416863342aa5cd81125d3f787c91d123b350d91fb540389b56ab2257df7",
+    "tools/theme-lab/tests/test_preview_event_writer.py": "533d339a1c3791e7b91b308358dfccc44e977ccf610688522297879f3ddb19c5",
+    "tools/theme-lab/tests/preview_event_test.c": "7b7816b915f866c77fa40d1916f6234da8bd7004b57686025cbefe9d508ad5a1"
+  },
+  "evidence_hashes": {
+    "t09-stale-before.log": "ad6278e1eb95dd3801a7b1d0ec184954f816090a7b2244545a3d1754574b8590",
+    "t09-stale-before.err": "1fb9396a6a3549b02811fb5ab3507d4c670af202a1932a87c189f339a94fee34",
+    "t09-stale-build.log": "51c295c3802b30ad59a875f91f3fd5b3258fe07919d9fcb48cb433e6f21519fd",
+    "t09-stale-parser-build.log": "cdeeb37ad586a79409c4ee47906cb8b7f95acbe576a898c56fb1097d7db5d68a",
+    "t09-stale-parser.log": "6d0d1eabd897c0c27f3f2b8ea688556eabf7714fc3458870f7d1c2e9eeffbda1",
+    "t09-stale-writer.log": "7a559f5f3b288fe7710f7d08453f712cd2e9ce60025f248acc51ca1c2ff5db00",
+    "t09-stale-runtime.log": "051f3e225aba3353f30f2a0b60753a3986ce6b003359ac55b4b6d22982df859f",
+    "t09-stale-after.log": "c9a286c9bd16cfb10c7f86fb1f567fc13ef9610389ac9ea71326e0700c29be12",
+    "t09-stale-after.err": "459fecc2a4ed2d1b84a7e58e432a72044858a5bab050c5cf86d8279a2b2da8b0",
+    "t09-current-gtk3-events.log": "e11b3d876aa019ed90987b4d9a50bb9d1daedb6fcedb8b048587167db4e732af",
+    "t09-current-gtk3-events.err": "2a2859e9b2572e119a8eee7b8c597da3138e1569c6287933cfe0cb4ce9c38b10",
+    "t09-current-gtk2-events.log": "9dc6ce90fc4ded2bc9410361641ddd1c8b20f7f1b126c6188593a737bff2646e",
+    "t09-current-gtk2-events.err": "6468de3a2965f4c54ff9ce4fd9cf0911265848cd3da3c472cf8c72d2e61413db"
+  }
+}

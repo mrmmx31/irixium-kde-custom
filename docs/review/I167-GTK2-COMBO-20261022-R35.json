@@ -1,0 +1,74 @@
+{
+  "item": "I167",
+  "revision": "R35",
+  "checked_at_utc": "2026-10-22T23:59:51Z",
+  "family": "GTK2 option-menu indicator and popup palette",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "source": "tools/theme-lab/gtk2_combos.py",
+    "source_sha256": "e85768c52a312be4bc924022f0021a2a697b487e1185a3c0830eb383cd48463a",
+    "summary": "Replaced the reused scrollbar triangle with the SR10.4/VUE option-menu's 14x8 two-pixel beveled rectangular marker. Its face/light/shadow are semantic GTK2 button roles, never fixed RGB. The shared scrollbar arrow geometry is untouched.",
+    "related_files": {
+      "tools/theme-lab/tests/test_gtk2_combo_integration.py": "68ce8b17d2df199ab31d9159bf66d42dd9cca0882d015c2aa813e8591b62e46b",
+      "tools/theme-lab/combo_popup_gtk2.py": "d822c8704f0d5b150cb7025c259b86f0efbcba5f101a2a064052710f657220b8"
+    }
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01, MAME capture from 2026-10-14",
+    "source_png": "~/tempia/domainos-vue-study/captures/2026-10-14/mame-vue-help-snapshot-20261014.png",
+    "source_png_sha256": "a3988c00d55d26c383957a8eca220e88928a35a66944b30116ad2c8d84a5fd2d",
+    "component": "Snapshot dialog option menu displaying None",
+    "crop_xyxy_half_open": [843, 552, 857, 560],
+    "shape": [
+      "LLLLLLLLLLLLLL",
+      "LLLLLLLLLLLLLD",
+      "LLFFFFFFFFFFDD",
+      "LLFFFFFFFFFFDD",
+      "LLFFFFFFFFFFDD",
+      "LLFFFFFFFFFFDD",
+      "LLDDDDDDDDDDDD",
+      "LDDDDDDDDDDDDD"
+    ],
+    "token_key": {
+      "L": "semantic button light",
+      "F": "semantic button face",
+      "D": "semantic button shadow"
+    },
+    "reference_limit": "One static normal option-menu indicator; it does not establish pressed/disabled/backdrop states or the popup's menu colors."
+  },
+  "comparison": {
+    "gtk2": "2.24.33",
+    "origin": "separate native GTK2 scene",
+    "state": "normal",
+    "gtk_crop_xyxy_half_open": [256, 34, 270, 42],
+    "dimensions_px": [14, 8],
+    "different_pixels": 0,
+    "total_pixels": 112,
+    "comparison_method": "Direct pixel comparison against the historical SR10.4 crop; the three screenshot colors resolve to the current KDE button face/light/shadow roles.",
+    "artifacts": {
+      "gtk2_scene": "~/tempia/i167-gtk2-combo-r43/native-scenes/DomainOS/separate-0.png",
+      "gtk2_scene_sha256": "cc1df589f363a27bc8ea87712518cdcbdd8a880dcc957fd09bf1189d818eaf32",
+      "historical_indicator_crop": "~/tempia/i167-gtk2-combo-r43/vue-indicator-14x8.png",
+      "historical_indicator_crop_sha256": "1b11994a6e10acd78799c2b7df8cb970794e772f5111791922e445faad7faa94",
+      "gtk2_indicator_crop": "~/tempia/i167-gtk2-combo-r43/gtk2-indicator-14x8.png",
+      "difference_image": "~/tempia/i167-gtk2-combo-r43/indicator-difference.png",
+      "difference_image_sha256": "58680aab4bccccabbded347740fb4732ccf824212a9b4a4b582c6736783f96eb"
+    }
+  },
+  "tests": {
+    "focused_unit_tests": "5 passed, including exact 14x8 token geometry and role-color checks.",
+    "py_compile": "passed.",
+    "native_scene": "FAILED at popup color assertion before completing the matrix. The normal popup row resolved to the selection color instead of the Window color.",
+    "popup_failure_preexistence": "The same assertion failed with the previous triangular marker temporarily restored, so the popup issue predates this indicator change.",
+    "full_native_matrix": "not passed; no claim for all schemes, states, origins, or popup interactions in this revision."
+  },
+  "limits": [
+    "The arrow/marker now matches one static historical normal-state crop exactly; this is not approval of the whole GTK2 ComboBox or its text geometry.",
+    "The GTK2 popup currently paints normal rows with the selection color in the private native scene; this must be corrected and retested.",
+    "No public preview route, personal session, XChat, or VM state was changed."
+  ],
+  "next": "Keep GTK2 ComboBox as the active family. Correct the native popup's role scoping so normal rows use Window and hover/selection uses Selection, then rerun the four-scheme coupled/separate matrix and menu interaction checks before moving to the next family."
+}

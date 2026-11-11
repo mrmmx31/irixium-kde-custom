@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "family": "GTK2",
+  "scope": "Recheck isolated Domain/OS SR10.4 VM at its unique FTP/Telnet alias and resume the native scrollbar comparison.",
+  "vm": {
+    "mame_pid": 1354178,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "endpoint": "192.168.249.10",
+    "ftp": "port 21; banner 220 and root login succeeded; active listing works when source_address is bound to 192.168.240.1",
+    "telnet": "port 23 accepts connection and returns negotiation bytes; shell prompt remains unverified",
+    "previous_alias_retired": "192.168.248.10",
+    "other_clone_alias": "192.168.242.10",
+    "original_vm_and_approved_backup_modified": false,
+    "guest_files_modified": false,
+    "mame_profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false
+    }
+  },
+  "native_reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "capture": "~/tempia/domainos-assistant-vm-20261018/sessao/captura-now.png",
+    "sha256": "5f292c37f1bf7c298bf91d0d31ebe886cf9aaeb9b5622dc42c755b8df1c93c32",
+    "observation": "HP VUE is active. The File Manager at /node_12345 shows a vertical scrollbar with both arrow ends and a scrollable directory list. No horizontal scrollbar is visible in this layout.",
+    "input_sent": false
+  },
+  "gtk2_arrow_comparison": {
+    "method": "Nearest-neighbor normalization of retained 15x15 crops; compare native VM arrow allocations to GTK2 preview crops at pixel scale.",
+    "up": {
+      "different_pixels": 11,
+      "total_pixels": 225,
+      "difference_location": "all 11 pixels in row 14, centered 11-pixel interior span",
+      "vm_rgb": [196, 213, 237],
+      "gtk2_rgb": [120, 160, 213],
+      "vm_crop_sha256": "e5ca69e4b0ba0b213fc8b8a77a735e771720ae1385973375e4e2650589062f6a",
+      "gtk2_crop_sha256": "914abcb51f34fd17c538f0a3cfd416dc4a2c102c90a6e9529ce01b09bbd53b78"
+    },
+    "down": {
+      "different_pixels": 11,
+      "total_pixels": 225,
+      "difference_location": "all 11 pixels in row 0, centered 11-pixel interior span",
+      "vm_rgb": [102, 136, 181],
+      "gtk2_rgb": [120, 160, 213],
+      "vm_crop_sha256": "577410b7d5ebf97ce3b337b34ee6445dffdae7686b46ff503db51326ac4b8d0c",
+      "gtk2_crop_sha256": "1bc62fc5867376c814069d278b360bc5f02997fa66d5aaf156b2bd5fcc61aa1f"
+    },
+    "interpretation": "The triangle and remaining pixels coincide. The remaining line is consistent with the continuous recessed-trough edge at the arrow/trough join, which the opaque GTK2 arrow overlay may cover. This is a source-level hypothesis, not yet a verified correction.",
+    "horizontal": "The exact SR10.4 Trash Can crop exists, but a same-session GTK2 native crop comparison was not completed in this recheck.",
+    "reference_trash_can_sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+  },
+  "verification_attempt": {
+    "command": "tools/theme-lab/tests/test_gtk2_paint_native.py --output ~/tempia/i167-gtk2-r6-native-20261018",
+    "result": "timed_out",
+    "detail": "The first private-Xvfb native probe did not return within its 20-second limit; no new native capture or test result was produced.",
+    "source_sha256": {
+      "tools/theme-lab/gtk2_recipe.py": "6b2ee6694944190509e52de15e8ccdc9c500c3f3e8ec275daabaa183f6ff6d58",
+      "tools/theme-lab/tests/test_gtk2_paint_native.py": "615324136836653ea3e8664037f490bdfd7c046dce796df2f11eb9f1a6b9fd7d"
+    }
+  },
+  "result": "I167 remains partial. The unique VM endpoint and current VUE scrollbar are confirmed. GTK2 has an 11-pixel trough-edge discrepancy at both vertical arrows. No source patch, guest input, theme install, user-data change, or human visual approval was made.",
+  "next": "Diagnose why the private GTK2 runtime probe times out, capture the GTK2 native widget in an isolated display, and compare all four arrow/trough joins against the SR10.4 Trash Can before changing only GTK2 paint code. Then verify normal/pressed/released in the supported states and palettes."
+}

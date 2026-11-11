@@ -1,0 +1,25 @@
+#!/bin/sh
+# SPDX-License-Identifier: GPL-3.0-or-later
+set -eu
+board_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+repo_dir=$(CDPATH= cd -- "$board_dir/../.." && pwd)
+state_base=${XDG_STATE_HOME:-"$HOME/.local/state"}
+board_state="$state_base/irixium/work-board"
+if [ -L "$board_state" ]; then
+    echo 'A pasta de respostas não pode ser um link simbólico.' >&2
+    exit 1
+fi
+mkdir -p -- "$board_state"
+chmod 700 -- "$board_state"
+if [ ! -x "$board_dir/build/work-board" ]; then
+    make -C "$board_dir"
+fi
+config_base=${XDG_CONFIG_HOME:-"$HOME/.config"}
+helper="$repo_dir/tools/theme-lab/build/theme-lab-colors"
+if [ -x "$helper" ] && [ -f "$config_base/kdeglobals" ]; then
+    exec "$board_dir/build/work-board" --seed "$repo_dir/docs/review/work-board-checklist.json" \
+        --state "$board_state/respostas.json" --colors-helper "$helper" \
+        --kde-config "$config_base/kdeglobals" "$@"
+fi
+exec "$board_dir/build/work-board" --seed "$repo_dir/docs/review/work-board-checklist.json" \
+    --state "$board_state/respostas.json" "$@"

@@ -56,14 +56,27 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--saida',type=Path,required=True)
     parser.add_argument('--recursos-encerrados',type=Path,required=True)
+    parser.add_argument('--xephyr-display',default='',help='Use an already-owned private Xephyr display instead of starting Xvfb.')
+    parser.add_argument('--xauthority',type=Path,help='Xauthority file for --xephyr-display; must be inside ~/tempia.')
     parser.add_argument('--worker',action='store_true',help=argparse.SUPPRESS)
     args=parser.parse_args();output=args.saida.resolve();resources=args.recursos_encerrados.resolve()
     if args.worker:return worker(output)
-    if not output.is_relative_to(Path('/tmp')) or output.exists():parser.error('Use a new owned /tmp output')
-    if not resources.is_relative_to(Path('/tmp')) or resources.stat().st_uid!=os.getuid():parser.error('Use completed owned fixture resources')
+    private_root=(Path.home()/'tempia').resolve()
+    if not output.is_relative_to(private_root) or output.exists():parser.error('Use a new output under ~/tempia')
+    if not resources.is_relative_to(private_root) or resources.stat().st_uid!=os.getuid():parser.error('Use completed owned fixture resources under ~/tempia')
+    if args.xephyr_display:
+        if not args.xephyr_display.startswith(':') or not args.xauthority:
+            parser.error('--xephyr-display requires a local display and --xauthority')
+        authority=args.xauthority.resolve()
+        if not authority.is_relative_to(private_root) or not authority.is_file():
+            parser.error('--xauthority must be an existing file under ~/tempia')
+    elif args.xauthority:
+        parser.error('--xauthority requires --xephyr-display')
     previous=json.loads((resources/'RESULTADO.json').read_text())
     if previous.get('checks',{}).get('native_host_exited') is not True:parser.error('Resource fixture host must have exited')
     output.mkdir(mode=0o700)
+    private_tmp=output/'tmp';private_tmp.mkdir(mode=0o700)
+    os.environ['TMPDIR']=str(private_tmp)
     env=os.environ.copy();config=Path(env.get('XDG_CONFIG_HOME',str(Path.home()/'.config')))
     protected=lambda:{name:digest(config/name) for name in ('kdeglobals','kwinrc','plasmarc','plasma-org.kde.plasma.desktop-appletsrc')}
     before=protected()
@@ -102,7 +115,12 @@ PlasmoidItem {
     flags=shlex.split(subprocess.check_output(['pkg-config','--cflags','--libs','Qt6Widgets'],text=True))
     subprocess.run(['c++','-std=c++17','-shared','-fPIC',str(REPO/'plasma/tests/domainos-minimized-relief-host.cpp'),'-o',str(output/'relief-host.so'),*flags,'-ldl'],check=True)
     bus=output/'bus.conf';bus.write_text('<busconfig><type>session</type><listen>unix:tmpdir='+str(output/'runtime')+'</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
-    result=subprocess.run(['xvfb-run','--auto-servernum','--server-args=-screen 0 1200x900x24','dbus-run-session','--config-file',str(bus),'--',sys.executable,str(Path(__file__).resolve()),'--worker','--saida',str(output),'--recursos-encerrados',str(resources)],env=env,capture_output=True,text=True,timeout=35)
+    launch=['dbus-run-session','--config-file',str(bus),'--',sys.executable,str(Path(__file__).resolve()),'--worker','--saida',str(output),'--recursos-encerrados',str(resources)]
+    if args.xephyr_display:
+        env['DISPLAY']=args.xephyr_display;env['XAUTHORITY']=str(authority)
+    else:
+        launch=['xvfb-run','--auto-servernum','--server-args=-screen 0 1200x900x24',*launch]
+    result=subprocess.run(launch,env=env,capture_output=True,text=True,timeout=35)
     (output/'runner.log').write_text(result.stdout+result.stderr)
     native=json.loads((output/'HOST.json').read_text()) if (output/'HOST.json').exists() else {}
     log=(output/'host.log').read_text() if (output/'host.log').exists() else result.stderr
@@ -111,7 +129,7 @@ PlasmoidItem {
     checks.update(native_host_exited_cleanly=result.returncode==0 and not native.get('failure'),qml_runtime_errors_zero=not diagnostics,
         real_profiles_unchanged=before==protected(),production_sources_unchanged=all(digest(REPO/'plasma/applets/org.irixclassic.domainos.panel/contents/ui'/name)==value for name,value in sources.items()),
         real_installed_native_host=native.get('hostExecutable')=='/usr/bin/plasmawindowed')
-    report={'status':'passed' if checks and all(checks.values()) else 'failed','checks':checks,'native':native,'qml_diagnostics':diagnostics,'source_sha256':sources,'protected_config_sha256':{'before':before,'after':protected()},'scope':'Physical xdotool pointer, owned native QWidget minimization and native TasksModel restoration inside a private KWin/Xvfb/D-Bus. No existing preview, real profile, installed host or immutable resources are changed.'}
+    report={'status':'passed' if checks and all(checks.values()) else 'failed','checks':checks,'native':native,'qml_diagnostics':diagnostics,'source_sha256':sources,'protected_config_sha256':{'before':before,'after':protected()},'scope':'Physical xdotool pointer, owned native QWidget minimization and native TasksModel restoration inside a private KWin/D-Bus on owned Xephyr or Xvfb. No existing preview, real profile, installed host or immutable resources are changed.'}
     (output/'RESULTADO.json').write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n')
     print(json.dumps({'status':report['status'],'checks':len(checks),'result':str(output/'RESULTADO.json')}))
     return 0 if report['status']=='passed' else 1

@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "id": "R705",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Measure the installed GTK2 DomainOS scrollbar allocations and GtkScrolledWindow frame gap against the SR10.4 VUE contract, then probe the contract value without changing the user profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "session": "lsi desktop XWayland DISPLAY=:1; isolated native GTK2 preview fixture",
+    "gtk2": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE",
+    "scheme": "DomainOS-SR10-4",
+    "style_engine": "DomainOSPixmapStyle / libdomainos-pixbuf loaded",
+    "scale": "1:1; XWD capture and lossless PNG conversion"
+  },
+  "measurements": {
+    "gtk_scrolledwindow_default": {
+      "outer_px": [
+        539,
+        255
+      ],
+      "hscrollbar_px": [
+        521,
+        15
+      ],
+      "vscrollbar_px": [
+        15,
+        237
+      ],
+      "scrollbar_spacing_style_px": 3,
+      "shadow_type": "IN",
+      "shadow_thickness_px": 2
+    },
+    "allocation_matched_to_vue": {
+      "outer_px": [
+        557,
+        273
+      ],
+      "hscrollbar_px": [
+        539,
+        15
+      ],
+      "vscrollbar_px": [
+        15,
+        255
+      ],
+      "scrollbar_spacing_style_px": 3
+    },
+    "vue_sr104": {
+      "hscrollbar_px": [
+        539,
+        15
+      ],
+      "vscrollbar_px": [
+        15,
+        255
+      ],
+      "frame_relief_px": 2,
+      "frame_to_bar_gap_px": 4
+    },
+    "scanline_gap": {
+      "gtk2_default_px": 3,
+      "vue_px": 4,
+      "gtk2_spacing4_probe_px": 4,
+      "measurement": "Count face pixels between the two-pixel outer scrolled-content bevel and the scrollbar trough bevel; horizontal and vertical scans agree."
+    }
+  },
+  "endpoint_cells": {
+    "gtk2_spacing3": {
+      "horizontal_start": {
+        "direct_diff": 86,
+        "best_diff": 0,
+        "translation_px": [
+          2,
+          0
+        ]
+      },
+      "horizontal_end": {
+        "direct_diff": 84,
+        "best_diff": 0,
+        "translation_px": [
+          -2,
+          0
+        ]
+      },
+      "vertical_start": {
+        "direct_diff": 86,
+        "best_diff": 0,
+        "translation_px": [
+          0,
+          2
+        ]
+      },
+      "vertical_end": {
+        "direct_diff": 84,
+        "best_diff": 0,
+        "translation_px": [
+          0,
+          -2
+        ]
+      }
+    },
+    "gtk2_spacing4_probe": "same direct and best pixel differences as spacing 3; increasing the frame gap did not move the stepper artwork to the allocated scrollbar edges."
+  },
+  "probe": {
+    "gtkrc": "spacing4.override",
+    "property": "GtkScrolledWindow::scrollbar-spacing=4",
+    "result": "The GTK2 style property read back as 4. At fixed outer allocation 557x273, H/V allocations reduce by one pixel to 538x15 and 15x254; the visual face gap becomes 4 px. This probe did not change the GTK2 color roles or stepper assets."
+  },
+  "captures": {
+    "gtk2_default_window": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/window-matchref.png",
+      "sha256": "ca2d82714d6632a66598e2063bc230100c2a4114313f32bb4c80f71353af40aa",
+      "dimensions_px": [
+        581,
+        297
+      ]
+    },
+    "gtk2_spacing4_window": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/window-spacing4.png",
+      "sha256": "fcc559c1f4bf2fe115c30fe8661746157635b6bcb1ff07fb33515027caac273a",
+      "dimensions_px": [
+        581,
+        297
+      ]
+    },
+    "gtk2_spacing4_horizontal": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/horizontal-spacing4.png",
+      "sha256": "e89ffa21bc38cf32fefebd27fd6b615ec5fdc80760f6b249d53d57de684df044",
+      "dimensions_px": [
+        538,
+        15
+      ]
+    },
+    "gtk2_spacing4_vertical": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/vertical-spacing4.png",
+      "sha256": "7e9d4ffcba2adb35ce15db35d2dc8c44237d38252091eae490842075b05f4db1",
+      "dimensions_px": [
+        15,
+        254
+      ]
+    },
+    "fixture_source": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/scrolled-matchref.c",
+      "sha256": "53cbbfa244f0d0e834ac9d6c7643d520493a074f6b8993fd472f34d383066f71"
+    },
+    "runtime_log": {
+      "path": "~/tempia/domainos-theme-work/I167/R705-scrolledwindow/matchref-runtime.txt",
+      "sha256": "f4f70d537128b3fd30a001e7faa4c6bb8babdca49be299e2fbd3c3819d412ed5"
+    }
+  },
+  "limits": [
+    "The GtkTreeView has a real scroll range and therefore a shorter thumb than the empty VUE Trash Can; full-track pixel percentages are not used as an appearance metric.",
+    "Normal state only. No guest input, live profile change, app restart, or scheme switch.",
+    "The spacing probe confirms the four-pixel gap but does not resolve the 2-pixel endpoint placement. I517 remains a separate authorization for direct guest input.",
+    "No human visual acceptance recorded."
+  ],
+  "result": "The actual GTK2 GtkScrolledWindow uses a 3px spacing default, while the SR10.4 contract measures 4px between the content-frame bevel and scrollbar. A private style override to 4px reproduces that gap exactly. The endpoint 15x15 cells still match the VUE artwork only after independent +/-2px translation; therefore spacing and endpoint placement are separate corrections.",
+  "artifacts": "records/ia-tema/I167/R705/ARTIFACTS.json"
+}

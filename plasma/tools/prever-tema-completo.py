@@ -11,6 +11,7 @@ actual installed toolkit styles.
 """
 import argparse
 import configparser
+import errno
 import hashlib
 import importlib.util
 import json
@@ -19,6 +20,7 @@ from pathlib import Path
 import re
 import signal
 import shutil
+import socket
 import stat
 import subprocess
 import sys
@@ -46,6 +48,25 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
 
+def display_in_use(number, runtime_tmp=Path("/tmp")):
+    """Detect path and Linux abstract X11 sockets across isolated /tmp mounts."""
+    socket_path = runtime_tmp / ".X11-unix" / f"X{number}"
+    lock_path = runtime_tmp / f".X{number}-lock"
+    if socket_path.exists() or lock_path.exists():
+        return True
+    probe = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    probe.settimeout(0.1)
+    try:
+        probe.connect("\0" + str(socket_path))
+        return True
+    except OSError as error:
+        # ECONNREFUSED/ENOENT means no listener. Treat other errors as busy,
+        # so permission or namespace issues cannot silently reuse a display.
+        return error.errno not in (errno.ENOENT, errno.ECONNREFUSED)
+    finally:
+        probe.close()
+
+
 def copy_private_tree(source, target):
     """Copy immutable published assets into an editable private runtime tree."""
     shutil.copytree(source, target)
@@ -53,6 +74,14 @@ def copy_private_tree(source, target):
         # copytree resolves source symlinks into owned copies. Retain existing
         # read/execute permissions and add write only for the private owner.
         path.chmod(stat.S_IMODE(path.stat().st_mode) | stat.S_IWUSR)
+
+
+def companion_runtime_files():
+    """All companion source modules and non-code data required in the fixture."""
+    sys.path.insert(0, str(REPO / "tools"))
+    from theme_companion_bridge import RUNTIME_FILES
+    from domainos_style_bridge import MODULES as PANEL_MODULES
+    return tuple(sorted(set(RUNTIME_FILES) | set(PANEL_MODULES)))
 
 
 def initial_color_scheme(requested, package_root, catalog, theme="org.magpie.irixclassic.desktop"):
@@ -443,9 +472,10 @@ def supervisor(output):
         with (output / "Xephyr.log").open("w") as log:
             # Only Xephyr, which embeds the new display, receives the host GUI
             # environment. No host environment is passed into bwrap.
-            title = ("DomainOS SR10.4 — tema completo; teste isolado"
+            display_label = manifest["display"]
+            title = (f"PARA LSI - PREVIA PESSOAL - DomainOS SR10.4 [T07 {display_label}]"
                      if manifest.get("initial_global_theme") == "org.magpie.irixclassic.domainos.desktop"
-                     else "IRIX — GTK, Kvantum e cores; teste isolado")
+                     else f"PARA LSI - PREVIA PESSOAL - IRIX; GTK, Kvantum e cores [T07 {display_label}]")
             xephyr = subprocess.Popen(["Xephyr", manifest["display"], "-screen", "1600x1000", "-auth", str(output / "Xauthority"), "-nolisten", "tcp", "-extension", "MIT-SHM", "-noreset", "-br", "-title", title], stdout=log, stderr=subprocess.STDOUT)
         env = dict(os.environ, DISPLAY=manifest["display"], XAUTHORITY=str(output / "Xauthority"))
         wait_for(lambda: xephyr.poll() is None and run(["xdpyinfo"], env=env).returncode == 0, 10)
@@ -506,7 +536,7 @@ def prepare(args):
         raise RuntimeError("Use um diretório novo em uma pasta do próprio usuário, sem links simbólicos")
     if any(output == path or path in output.parents for path in map(Path, ("/usr", "/etc", "/opt", "/var"))):
         raise RuntimeError("A prévia não pode usar uma pasta compartilhada do sistema")
-    number = next((n for n in range(60, 100) if not Path("/tmp/.X" + str(n) + "-lock").exists() and not Path("/tmp/.X11-unix/X" + str(n)).exists()), None)
+    number = next((n for n in range(60, 1000) if not display_in_use(n)), None)
     if number is None:
         raise RuntimeError("Nenhum display privado disponível")
     output.mkdir(mode=0o700)
@@ -647,13 +677,16 @@ def prepare(args):
     gallery = output / "fixture/gallery"
     copy_private_tree(args.galeria_gtk, gallery)
     shutil.copyfile(args.galeria_qt, gallery / "qt6_demo.py")
+    # These helpers are imported by the native hint galleries. Keep them beside
+    # the scripts because the isolated fixture deliberately has no repository
+    # path in its runtime namespace.
+    for module in ("tooltip_position.py", "gtk4_hint_popover.py"):
+        shutil.copyfile(REPO / "tools/theme-lab" / module, gallery / module)
     shutil.copyfile(Path(__file__), output / "fixture/prever-tema-completo.py")
     sys.path.insert(0, str(REPO/"tools"))
-    from theme_companion_bridge import MODULES
-    from domainos_style_bridge import MODULES as PANEL_MODULES
     integration = output/"fixture/theme-companions"
     (integration/"tools").mkdir(parents=True)
-    for module in sorted(set(MODULES)|set(PANEL_MODULES)):
+    for module in companion_runtime_files():
         shutil.copyfile(REPO/"tools"/module, integration/"tools"/module)
     shutil.copyfile(REPO/"components.json", integration/"components.json")
     if args.observador:

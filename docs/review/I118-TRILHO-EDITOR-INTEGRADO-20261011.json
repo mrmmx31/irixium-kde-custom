@@ -1,0 +1,113 @@
+{
+  "at": "2026-10-11T05:56:55.101364+00:00",
+  "item": "I118",
+  "revision": 1,
+  "stage": "Continuous frame editor integrated proof",
+  "previous_turn_classification": "progress: native translation and capability editor changed authoritative code and evidence",
+  "result": ".qa-theme-lab-spin-qh9tkhtt/RESULTADO.json",
+  "status": "passed",
+  "scope": "Real Motif pointer selections -> controller -> independent enclosing frame states -> manual Apply and private close/reload",
+  "assertions": {
+    "three_states_independent": true,
+    "manual_apply": true,
+    "clear_only_backdrop": true,
+    "unsupported_states_guard": true,
+    "recipes_preserved": true,
+    "reload_preserved": true
+  },
+  "native_bar_origins": [
+    {
+      "control": 10,
+      "separate": 0,
+      "width": 220,
+      "height": 15,
+      "x": 16,
+      "y": 36,
+      "offset_y": 20,
+      "position_valid": true,
+      "pieces_source": 2,
+      "pieces_mask": 15,
+      "slider": [
+        81,
+        2,
+        38,
+        11
+      ],
+      "track": [
+        14,
+        2,
+        192,
+        11
+      ],
+      "arrow_first": [
+        2,
+        2,
+        12,
+        11
+      ],
+      "arrow_last": [
+        206,
+        2,
+        12,
+        11
+      ]
+    },
+    {
+      "control": 10,
+      "separate": 1,
+      "width": 220,
+      "height": 15,
+      "x": 16,
+      "y": 36,
+      "offset_y": 20,
+      "position_valid": true,
+      "pieces_source": 2,
+      "pieces_mask": 15,
+      "slider": [
+        81,
+        2,
+        38,
+        11
+      ],
+      "track": [
+        14,
+        2,
+        192,
+        11
+      ],
+      "arrow_first": [
+        2,
+        2,
+        12,
+        11
+      ],
+      "arrow_last": [
+        206,
+        2,
+        12,
+        11
+      ]
+    }
+  ],
+  "native_reused": {
+    "receipt": "docs/review/I118-TRILHO-ESTADOS-NATIVOS-20261011.json",
+    "sha256": "c0cdf303af419c8869d717c0f22728fd655cffa0508b4dba064334ed816bf3b2",
+    "all_input_hashes_unchanged": true
+  },
+  "limitations": [
+    "Reload proves project persistence; post-reopen native drawing readiness is still pending",
+    "Native GTK tests do not prove historical disabled/hover appearances or human approval"
+  ],
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "scope_progress_percent": 75,
+  "percentage_basis": "Glyph, isolated button and enclosing frame states now translated with integrated editor proof; thumb/fitting, readiness and delivery remain. Not overall goal or historical fidelity.",
+  "next": "Study thumb native states, then translate and prove one piece at a time",
+  "hashes": {
+    "tools/theme-lab/tests/test_controller_spin.py": "a331c4adede9714202da1e373ba9552fff0bb2b6b1f25bd76ec8c6b0590fdabe",
+    "tools/theme-lab/build/controller-spin-probe": "340c35e5edc8f632dc010af74e123509e3941c782b36807b50dfc63cc8a18858",
+    "tools/theme-lab/src/view/part_relief_editor.c": "b1e10f611fe135720cdd0f0270340e015cec7ab41e990c539f77a6415df85f9a",
+    "tools/theme-lab/src/view.c": "86d4734839360a028176bd5bf42773eadd31a0c834eac2771e56089797a3d45d",
+    "tools/theme-lab/backend.py": "a0c948088c0c6d33af67884d684e21c983a8fc2d5489b341d7d98ec782f06c0a"
+  }
+}

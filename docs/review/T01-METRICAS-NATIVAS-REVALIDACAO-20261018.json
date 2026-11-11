@@ -1,0 +1,83 @@
+{
+  "at_local": "2026-10-18T09:14:43-04:00",
+  "item": "T01",
+  "user_revision": 9,
+  "definition_sha256": "652e5e5cba17c3b4fd773a6da8c0a0a226441840045a5d2fcca6be546764b0f3",
+  "phase": "revalidation_passed_user_approval_saved_delivery_record_pending",
+  "scope": "Metrics and dimensions in native Motif/GTK3 previews, spins, and 1:1 scale.",
+  "checks": {
+    "gtk3_native_metrics_tests": {
+      "result": "passed",
+      "tests": 2,
+      "duration_seconds": 31.714,
+      "origins": [
+        "coupled",
+        "detached"
+      ],
+      "notes": [
+        "current preview_gtk.py exercised",
+        "GTK deprecation warnings only"
+      ]
+    },
+    "native_controller_spins": {
+      "result": "passed",
+      "command": "make check-controller-spin",
+      "display": ":92",
+      "result_file": "/home/lsi/tempia/t01-current-check-20261018/theme-lab-spin-3zs8a9ne/RESULTADO.json",
+      "capture": "/home/lsi/tempia/t01-current-check-20261018/theme-lab-spin-3zs8a9ne/native.png",
+      "metrics": {
+        "motif_reference_px": [
+          66,
+          25
+        ],
+        "custom_requested_px": [
+          220,
+          80,
+          221,
+          80,
+          221,
+          81
+        ],
+        "gtk3_coupled_and_detached_px": [
+          221,
+          81
+        ],
+        "automatic_requested_px": [
+          0,
+          0
+        ],
+        "below_minimum_requested_px": [
+          1,
+          1
+        ],
+        "automatic_and_below_minimum_allocated_px": [
+          70,
+          30
+        ],
+        "scale": 1
+      }
+    },
+    "current_motif_metrics_view": "previous R9 receipt remains valid for unchanged native_metrics_view.c/src/native_metrics.c/view.c; current C view was not rerun because its target opens an interactive window.",
+    "first_controller_attempt": "private Xvfb did not open for the fixture and timed out; rerun on isolated Xephyr :92 passed."
+  },
+  "limitations": [
+    "Typography/native font mismatch remains separate from geometry.",
+    "No claim of historical visual fidelity from dimension equality."
+  ],
+  "preservation": {
+    "product_source_files_changed": false,
+    "user_kde_profile_changed": false,
+    "mame_guest_changed": false,
+    "existing_xephyr_sessions_closed": false
+  },
+  "artifacts_root": "/home/lsi/tempia/t01-current-check-20261018",
+  "hashes": {
+    "tools/theme-lab/Makefile": "dbb0c4f75a68d9350390ef3e189a35b5848e156366c8fba740d51aae418c346f",
+    "tools/theme-lab/src/view.c": "2f8441ea2f871266fa87b55ac6522cf591bffa494ad1eddf0299edae4457b725",
+    "tools/theme-lab/src/native_metrics.c": "2f15d89244675a3d91dd0df1341c40e28ab3e9b929cf930add0eb6f6ab1bb6cc",
+    "tools/theme-lab/preview_gtk.py": "e453b7c7e5b36a2141a9beb8b18602e97ea7e9c1a86a3aaa2e00aabff9af852a",
+    "tools/theme-lab/tests/test_native_metrics.py": "9f6c0578c496ba2a54bbf0a3f7298eb68a3a9a02648259eecc18db823ef521b7",
+    "tools/theme-lab/tests/test_controller_spin.py": "9660e5035c0b5db87e1e464e23ad8b49eefe9683696010fc52c4a7c34deccdf3",
+    "tools/theme-lab/tests/controller_spin_probe.c": "6d0a8b7507df6f85da33335b1c29237b9187fcbea33ba55f5393e3ebdc4ff8d8"
+  }
+}

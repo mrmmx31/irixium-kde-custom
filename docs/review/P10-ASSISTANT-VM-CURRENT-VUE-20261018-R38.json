@@ -1,0 +1,32 @@
+{
+  "item": "P10",
+  "revision": "R38",
+  "checked_at_utc": "2026-10-18T18:04:39Z",
+  "instance": "assistant-clone-20261018",
+  "mame": {
+    "pid": 1925360,
+    "same_process": true,
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "observation": {
+    "native_screen_snapshot": "~/tempia/domainos-assistant-vm-20261018/captures/sr104-live-r37.png",
+    "sha256": "87f9fedd9f625adfb8e44e75e27e9d2d427259f95721d63f6fd483b96f295397",
+    "dimensions": [
+      1024,
+      844
+    ],
+    "visible": "guest area black; Apollo command strip visible at the bottom",
+    "guest_telnet_read_only": "Login as user; ps reports dm, vuelogin, hpvue2, xinit, Xdomain :0, vuesession, vuewm, vuefile, xload and xterms. DISPLAY=:0 xdpyinfo reported 1024x800; xwininfo root reports 28 child windows, including vuewm and vuesession.",
+    "interpretation": "VUE and X server processes are active while the MAME native snapshot remains black. This narrows the symptom but does not identify the cause or provide visual reference pixels."
+  },
+  "actions": {
+    "ftp_telnet_endpoint": "10.104.253.10",
+    "guest_files_written": false,
+    "guest_configuration_changed": false,
+    "graphical_input_sent": false,
+    "mame_restarted_or_tuned": false
+  },
+  "next": "Inspect an existing Xephyr/T07 item; the black VUE capture remains a P10 limitation. Do not infer that VUE is stopped or alter guest configuration from this evidence."
+}

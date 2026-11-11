@@ -1,0 +1,48 @@
+{
+  "item": "P04",
+  "user_revision": 3,
+  "definition_sha256": "da73bf29ee8b311998f00d4d99d9c3d644d776cc605a46478ad669a139581f41",
+  "checked_at": "2026-10-15T02:56:00Z",
+  "scope": "Integrated DomainOS Iconbox path in the existing Xephyr :61; two synthetic windows sharing WM_CLASS P04Probe; grouped selector, two checkbox selections, Operations popup, persistence after reopening.",
+  "environment": {
+    "display": ":61",
+    "resolution": "1600x1000",
+    "panel": "live Plasma panel in private Xephyr; no input sent to normal LSI display"
+  },
+  "source_sha256": {
+    "DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+    "DomainOSOperationsMenu.qml": "bf00dbd0ff3129b81274cddbe2bfbbc7ae5afa2bb8b00fba621f7cbf458c9895"
+  },
+  "test": {
+    "synthetic_windows": 2,
+    "group": "xterm / P04Probe",
+    "initial_header": "xterm — 0 de 2 selecionadas",
+    "checkboxes_selected": 2,
+    "operations_popup_title": "2 janelas selecionadas",
+    "popup_geometry": "275x246 at +650+637",
+    "remained_viewable_after_seconds": 3,
+    "closed_by_escape": true,
+    "reopened_group_preserved_both_checks": true,
+    "operations_executed": false,
+    "artificial_windows_closed": true,
+    "code_or_user_config_changed": false
+  },
+  "result": "Operations opened and remained visible in the current integrated Xephyr panel after the grouped selection. Both checkbox states persisted when reopening the selector. No action row was invoked.",
+  "limits": [
+    "This proves the current isolated Xephyr panel route only; the user-reported physical-input failure in the normal LSI session remains unverified.",
+    "The previous :69 probe is separate evidence; this receipt uses current :61 and the active source hashes.",
+    "The normal LSI session is native Wayland (Plasma PID 2659000, WAYLAND_DISPLAY=wayland-0, Xwayland display :1). xdotool on an X11 Xephyr cannot provide a valid physical-seat test of that native Wayland panel; no alternate input injection was used."
+  ],
+  "screenshots": {
+    "directory": "~/tempia/goal-resume-20261015/p04-xephyr",
+    "sha256": {
+      "group_open": "c542560400cca449946f64bb33fe665e46acdb6c2c518b5348ddfea7badc0129",
+      "selection_first": "8e0b9f12e78f1e6c1bbc47ee74cb472bb1735a8847c965f0f4be6cdf1a15c278",
+      "two_selected": "9ec42907dbd2fb5585eaebd4ea7d668ffc399d572ecdff36a33d85ecadb6383b",
+      "operations_open": "4aa183c65c7402d81d34f21f48e22d917bd483fde95907b2093ea892d570c181",
+      "reopened_both_checked": "93c34122130c3209e4b2d901841a47ffc76c3b5e70c47451ec80b62180bbe834"
+    }
+  },
+  "next": "Keep P04 awaiting the user’s normal-LSI result or new evidence; the isolated Xephyr test passes. Normal session is Wayland, so this X11-only method cannot represent native panel input."
+}

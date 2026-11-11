@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-RESUME-GATE-20261024-R144",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2 GtkIconView visual-pair resume gate; current authorized clone only",
+  "verification": {
+    "process_query": "ps -C mame,mame64,MAME -o pid,etime,comm,args",
+    "process_result": "header only; no MAME process",
+    "control_channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "channel_result": "pending=null, reply=null, pending_files=[]",
+    "R140_source_hashes": {
+      "tests/test_gtk2_palette_runtime.py": "94ebf3e876896d4cad7567976b558596fb4eb2ad1558bc63a605bac2f03c80ac",
+      "gtk/tools/build_kde_domainos.py": "2bd743c8a6805641eded6c223059b6299dadf887a582da3e2dc43c9003294baa",
+      "tools/gtk2_domainos_palette.py": "72ace2edbaec2770ae0d25b0157b72741499fedd3ae75fa4b6345459ad33000b"
+    },
+    "source_hashes_match_R140": true,
+    "R140_test_rerun": false
+  },
+  "actions": {
+    "guest_input_sent": false,
+    "mame_restarted": false,
+    "other_sessions_touched": false
+  },
+  "remaining": "Historical comparison of GtkIconView focus, hover and rubberband selection against the SR10.4 XmpIcon; existing R136/R139/R140 evidence does not substitute for this pair.",
+  "resume_condition": "The already authorized assistant MAME clone is running and identifiable as the existing session. Do not start another instance.",
+  "status": "waiting_for_existing_clone"
+}

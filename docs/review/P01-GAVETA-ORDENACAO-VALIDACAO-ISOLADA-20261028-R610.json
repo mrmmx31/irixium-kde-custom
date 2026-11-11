@@ -1,0 +1,75 @@
+{
+  "id": "R610",
+  "date_utc": "2026-10-28T20:33:55+00:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "definition_matches": true
+  },
+  "method": {
+    "environment": "Private Xvfb + D-Bus + KWin + Plasma/Kicker/activity service; disposable HOME/XDG profile; three synthetic desktop entries; two separate taskbar pins; real pointer actions.",
+    "tempia_work": "~/tempia/domainos-theme-work/P01/R610-runner and R610-populated-20261028",
+    "source_and_installed_hashes_match": "See source_sha256; native harness copied current repository applet into private XDG data.",
+    "personal_profile_touched": false,
+    "production_sources_changed": false,
+    "user_favorites_changed": false,
+    "user_window_or_compositor_touched": false
+  },
+  "result": {
+    "status": "passed",
+    "checks_passed": 71,
+    "checks_total": 71,
+    "all_pass": true,
+    "key_checks": [
+      "favorite_up_changes_native_drawer_order",
+      "favorite_down_clicked_by_real_pointer",
+      "favorite_move_persisted_in_external_kde_client",
+      "drawer_titles_and_order_equal_external_menu_provider",
+      "peer_move_then_reopen_matches_external_exact_order",
+      "favorite_drawer_and_internal_menu_use_same_native_order",
+      "favorites_do_not_repopulate_taskbar_pins",
+      "favorite_move_does_not_launch_or_change_pins",
+      "order_reads_preserve_stats_bytes",
+      "order_reads_preserve_applet_metadata_bytes",
+      "real_profiles_unchanged",
+      "production_sources_unchanged",
+      "own_daemons_stopped",
+      "qml_runtime_errors_zero"
+    ]
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "44b8602342c8ab849a554497dae3d2e15f58617b9a3e1671278480a21ffdb3b4",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteOrdering.qml": "b3370148f1f8e79a6e534d7792e9bb9b4c5fbb4e44b091a4d9215da36f78ec78",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteMoveButton.qml": "bfd59436a3641258dc09432e1e8dd48978462700d2b5129ffc2b51c24f61399c",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSButton.qml": "1f850382928fa535c83f7d7168d7cbcba088d97afc582933804a58663fec59de",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "28b91031931ff402acd8a3b2207a7a2e66df8326116ef840a388f9523a7edc06",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSControlPalette.qml": "f6f7cd9cd8cc8d364d5e775cfcaf4a94211dda439fd7bc6c4444e9097e58da19",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/ApplicationActions.js": "0fdfd7dfc79192e1cd632bef5171b403ba5b021ea79a33e7d2d773927db9757d",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/favorite_order.py": "7ac6ab462cbc6adbbb99a3a8c9c1b500c8f18c330e0546a82f134451255986c9",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/pin_import.py": "05da1ad1323ab7215646e951d8554fa745e5c8963db6544dd4a147aa0c6051b1"
+  },
+  "evidence": {
+    "archive": "records/ia-tema/P01/R610-favorites-order-20261028/EVIDENCIAS.tar.gz",
+    "archive_sha256": "2d481b767e969862a3c48108efdf65cb1bb7317eb1bc6d413869e55d88538c23",
+    "adapted_runner_scripts": [
+      "records/ia-tema/P01/R610-favorites-order-20261028/testar-domainos-gaveta-favoritos.py",
+      "records/ia-tema/P01/R610-favorites-order-20261028/testar-domainos-aplicativos.py"
+    ],
+    "original_result_sha256_in_tempia": "3c246ddd526af7c507de0f5e06a880282c98bb8deaa35c2b35d37e4b17b0ce57",
+    "tempia_result": "~/tempia/domainos-theme-work/P01/R610-populated-20261028/RESULTADO.json",
+    "sanitized_full_result": "records/ia-tema/P01/R610-favorites-order-20261028/RESULTADO-VERIFICADO.json",
+    "sanitized_full_result_sha256": "562e7c25d685343f8313da003c2b90ef1f221ed5e744c01a4606a7af589c99b7"
+  },
+  "conclusion": "A gaveta tem controles Mover acima/abaixo para favoritos do KDE. Em teste isolado, os movimentos alteram a ordem nativa KAStats partilhada com o menu Applications; um menu externo já aberto pode precisar ser reaberto para buscar a nova ordem. Pins da barra continuam independentes. Isto cobre apenas ordenação/partilha; não aprova manualmente busca, foco, hover, visual ou a família completa P01.",
+  "remaining": [
+    "Aceitação manual dos controles/ordem na sessão lsi, se o usuário desejar confirmar.",
+    "Busca/foco e hover dos menus P01 permanecem separados; digitação no menu KDE e foco imediato do menu próprio ainda aguardam validação humana.",
+    "P04 aguarda horário/aplicativo correlacionável para o travamento do clique na Iconbox."
+  ]
+}

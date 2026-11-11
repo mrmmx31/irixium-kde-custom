@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "R498",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise the currently installed GTK2 2.24.33 vertical up-stepper normal/held/released in private Xvfb after R495; compare with its installed assets and retained approved SR10.4/VUE upper-arrow hold pair.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "theme": "DomainOS-SR10-4-KDE",
+    "gtk2_rc_files": "current user settings plus installed selected theme"
+  },
+  "input": "xdotool pointer press/release on the top stepper inside private Xvfb only; no host desktop input",
+  "bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+  "captures": {
+    "normal": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/normal.png",
+      "sha256": "48c7c707f51dcc4ee819feb0ec7f64048697dbe54430963e8a3298bfa5f72b0e",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    },
+    "pressed": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/pressed.png",
+      "sha256": "82b8b650f6b9a7b4ea306073d7162c341e0cdd55e7df15dbdd7400f1e80f3f9b",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    },
+    "released-outside": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/released-outside.png",
+      "sha256": "d17d6d0bb360921d3aacf8b4ef3bd406b3a2b0c964fc53504828b4ae0c00243a",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    }
+  },
+  "cell": {
+    "origin_xy": [
+      0,
+      2
+    ],
+    "size_px": [
+      15,
+      15
+    ],
+    "asset_different_pixels": {
+      "normal_vs_asset": 0,
+      "pressed_vs_asset": 0,
+      "release_vs_normal_asset": 0
+    }
+  },
+  "transition": {
+    "gtk2_normal_to_pressed_pixels": 53,
+    "retained_vue_visible_transition_pixels": 46,
+    "same_position_exact_rgb_transition_pixels": 46,
+    "gtk2_transition_pixels_not_visible_in_vue_capture": 7
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "source_study": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/sources",
+    "held_sha256": "b8697e88af20945b7ba2d5368cbb51c421b6647cf41ce8b9e2cba6a7870efa4b",
+    "released_sha256": "f284b60af1061cfd915c0af6fd2e4d838f27cb013160f4659b43a1d4a645f90e",
+    "crop_xyxy": [
+      962,
+      100,
+      977,
+      115
+    ],
+    "provenance_limit": "Retained approved capture, not a new capture from the canonical project VM."
+  },
+  "limits": [
+    "This is a fresh GTK2 render using the R495-installed theme bundle, compared to a retained historical VUE pair; it is not a live MAME capture.",
+    "Other directions/states, full-application visual acceptance, and cursor-clear direct VUE comparison remain open.",
+    "No user application, GTK profile, MAME process, or VM was changed."
+  ],
+  "scripts": {
+    "probe_source": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/probe.c",
+    "probe_source_sha256": "004b94206944db87196ed8309381feecd66fb3dc37e33cc0323572f18385209e",
+    "runner": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/run.sh",
+    "runner_sha256": "2e817caeeb917a58042f963aee32d4f667d9e71720cdf1e85826db85a8bcdfed"
+  }
+}

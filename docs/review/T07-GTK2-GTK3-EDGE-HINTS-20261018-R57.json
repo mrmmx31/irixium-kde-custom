@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-GTK3-EDGE-HINTS-20261018-R57",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "passed_in_scope",
+  "purpose": "Check native delayed tooltip placement at all four screen corners for a long production GTK2/GTK3 push-control hint.",
+  "environment": {
+    "xephyr": ":81",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "gtk2": "2.24.33",
+    "gtk3": "3.24.49",
+    "window_px": [
+      640,
+      600
+    ],
+    "isolated_home": "~/tempia/t07-gtk2-gtk3-edge-hints-20261018/",
+    "host_settings_changed": false
+  },
+  "criteria": {
+    "cold_native_delay_ms": 500,
+    "within_screen": true,
+    "control_overlap_pixels": 0,
+    "stable_ms": 400,
+    "closed_after_pointer_leave": true,
+    "push_action_after_leave": true
+  },
+  "results": {
+    "cases": [
+      {
+        "status": "passed",
+        "family": "gtk2",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          440,
+          240,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          343,
+          282,
+          313,
+          76
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          0,
+          0
+        ],
+        "result_sha256": "eb12254e7be82b0e7adfd239f071b2e9013c1c315366ec88e0a18dd9591e88f0",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runtime": "2.24.33"
+      },
+      {
+        "status": "passed",
+        "family": "gtk2",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          1080,
+          240,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          967,
+          282,
+          313,
+          76
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          640,
+          0
+        ],
+        "result_sha256": "84e9eca1230af521379a83bd12b51973a340efd3c9c39fc030d871eae7efc4af",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runtime": "2.24.33"
+      },
+      {
+        "status": "passed",
+        "family": "gtk2",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          440,
+          440,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          343,
+          482,
+          313,
+          76
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          0,
+          200
+        ],
+        "result_sha256": "df711d4f004c7947518ac7c75c1ee02f317ddeabf7648e87318fadce3df4d7fe",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runtime": "2.24.33"
+      },
+      {
+        "status": "passed",
+        "family": "gtk2",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          1080,
+          440,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          967,
+          482,
+          313,
+          76
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          640,
+          200
+        ],
+        "result_sha256": "3044ae896b96e0b16805f8a1641c64b5ea85eb6292ba7de688988297e082ec38",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runtime": "2.24.33"
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          440,
+          240,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          208,
+          282,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          0,
+          0
+        ],
+        "result_sha256": "0a911c42b2e57d1bc4455c6cb2b39095baad5f2a1f7eb8f50ca032d8710ec9f0",
+        "stderr_sha256": "e1a70c9e0783da0bd8c926763f7b9784aace5832e21c8bd403f77ae5dcdab945",
+        "runtime": "3.24.49"
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          1080,
+          240,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          697,
+          282,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          640,
+          0
+        ],
+        "result_sha256": "e9c61a8a613ed1d02d174247885d7718b1d3de9004af89e97366609c188fe71e",
+        "stderr_sha256": "e1a70c9e0783da0bd8c926763f7b9784aace5832e21c8bd403f77ae5dcdab945",
+        "runtime": "3.24.49"
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          440,
+          440,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          208,
+          482,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          0,
+          200
+        ],
+        "result_sha256": "74f1d780fd6469ec6a44b08545e579eb8100384d7bab8c00564876cfa155cbda",
+        "stderr_sha256": "e1a70c9e0783da0bd8c926763f7b9784aace5832e21c8bd403f77ae5dcdab945",
+        "runtime": "3.24.49"
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          1080,
+          440,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          697,
+          482,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "requested_window_origin_px": [
+          640,
+          200
+        ],
+        "result_sha256": "d6343e344279b832f92c54438cbb6478330647aa0e66b707ec61702d4eb0c6bb",
+        "stderr_sha256": "e1a70c9e0783da0bd8c926763f7b9784aace5832e21c8bd403f77ae5dcdab945",
+        "runtime": "3.24.49"
+      }
+    ],
+    "passed": 8,
+    "failed": 0,
+    "corners": [
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ],
+    "families": [
+      "GTK2",
+      "GTK3"
+    ]
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "tools/theme-lab/control_hints.py": "1f35d9adcbe661f35687f43b730ca909341bebae5cd5189f6572c22d9b79b07c",
+    "tools/theme-lab/gtk2_hint_position.py": "bf248ce96571ebed887a23c7ee5869e431a464766b30ba699490aa182b736e17",
+    "tools/theme-lab/gtk3_hint_position.py": "fbfd551f43d21c13ed30e497030e53070a6a527ca0f8439f0a833986c5ec195f"
+  },
+  "validation": {
+    "py_compile": "passed",
+    "git_diff_check": "passed",
+    "test_changes": "added --window-x/--window-y arguments; default positions unchanged"
+  },
+  "limitations": [
+    "One production hint/control per family (push), four window positions, one display and default toolkit palette; does not certify every control, state, application, or historical color fidelity.",
+    "GTK2 emitted an atk-bridge module load warning from the local GTK module environment; probes passed. GTK3 emitted deprecated Gdk.Screen.get_width/get_height warnings; geometry assertions passed."
+  ],
+  "evidence_root": "~/tempia/t07-gtk2-gtk3-edge-hints-20261018/"
+}

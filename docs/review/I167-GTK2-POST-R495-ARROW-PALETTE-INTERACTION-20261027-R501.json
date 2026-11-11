@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "R501",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "GTK2 2.24.33 post-R495 scrollbar stepper press/release interaction matrix under four selected KDE color schemes, across separate and GtkSocket/GtkPlug-coupled previews.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb :240, 1280x800x24",
+    "scale": "1:1",
+    "scheme_source": "Each scheme was read by the native KColorScheme helper from an explicit file; no desktop scheme or user profile was changed.",
+    "interaction": "For each arrow, captured hover baseline, held left-button state, then released state on the owned GTK2 preview. Compared the 15x15 stepper ROI."
+  },
+  "result": {
+    "schemes": ["DomainOS-SR10.4", "BreezeClassic", "BreezeDark", "KvBeige"],
+    "origins": ["separate", "coupled"],
+    "directions": ["left", "right", "up", "down"],
+    "cases": 32,
+    "roi_pixels_per_capture": 225,
+    "held_state_pixel_delta": 53,
+    "released_state_pixel_delta_from_hover": 0,
+    "all_held_states_distinct": true,
+    "all_releases_restore_baseline": true
+  },
+  "scheme_inputs": [
+    {"name": "DomainOS-SR10.4", "path": "colors/DomainOS-SR10.4.colors", "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5"},
+    {"name": "BreezeClassic", "path": "/usr/share/color-schemes/BreezeClassic.colors", "sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca"},
+    {"name": "BreezeDark", "path": "/usr/share/color-schemes/BreezeDark.colors", "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08"},
+    {"name": "KvBeige", "path": "/usr/share/color-schemes/KvBeige.colors", "sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3"}
+  ],
+  "verification": {
+    "probe": "tools/theme-lab/tests/probe_gtk2_scrollbar_arrow_states.py",
+    "probe_sha256": "ef44f5ae62932854d8a00c3f3286abc9667b96fac0936fa5a58980290e2bd3d3",
+    "runner": "~/tempia/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/run-matrix.py",
+    "runner_sha256": "462910846beaf3e47a44481d64075247faedefd9bccdb36424f387ac8c9422b0",
+    "raw_summary": "~/tempia/ia-tema/evidence/I167/r501-post-r495-arrow-palette-matrix-20261027/summary.json",
+    "raw_summary_sha256": "6a3c5de8e5b43649bc33a6203f3ea126085d9eb0c2ed818b77ba45579c3e5601"
+  },
+  "limits": [
+    "This validates GTK2 interaction and restoration in a private Xvfb; it does not establish historical VUE pixels, actual Xephyr behavior, or human visual acceptance.",
+    "Held-state pixel counts are equal across schemes; this test checks state transition and reset, not whether every rendered color changes correctly with each scheme.",
+    "No input was sent to either running MAME and no GTK application, desktop theme, or user profile was changed."
+  ],
+  "next": "Continue I167 GTK2 comparison using independent historical/application evidence; retain the separate VM-entry authorization gate where applicable."
+}

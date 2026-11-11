@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-WINDOW-ACTIVATION-OUTSIDE-20261025-R154",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "precondition": "Existing clone PID 274368 was running, unpaused, visible, and the existing mouse hook v3 was released.",
+    "window": "MAME X11 window 0x1c00008, bounds x=885..1909 and y=59..902; verified process PID 274368.",
+    "procedure": "Moved the host pointer to x=200,y=950 (outside MAME), switched focus away and reactivated the MAME window without clicking or sending guest input.",
+    "host_pointer_after_activation": "x=200,y=950; X11 window under pointer was not MAME.",
+    "post_state": {
+      "focus_pid": 274368,
+      "mouse": false,
+      "mouse_device": "none",
+      "hook_captured": false,
+      "wait_button_up": false,
+      "vm_paused": false
+    }
+  },
+  "evidence": {
+    "native_guest_capture": "~/tempia/ia-tema/evidence/I167/i167-focus-activation-outside-r154.png",
+    "native_guest_capture_sha256": "5f058e251c24cfbd2781db121aaf395d8e1deac3df241e43140a1a563e77afd5",
+    "active_hook_sha256": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a"
+  },
+  "conclusion": "This controlled focus-activation test did not reproduce host-pointer capture in the assistant clone. It is separate from waking a black guest display; R150 already covered one Shift wake from black. The user's new report remains unresolved because the reported activation path may differ. No click, guest input, guest-file change, MAME restart, or original-VM change occurred.",
+  "next": "Reproduce the user's exact screen-activation path while observing actual X11 pointer location and MAME mouse options; then resume the pending GTK2/XmpIcon state comparison.",
+  "status": "focus_activation_outside_not_reproduced_reported_path_still_unresolved"
+}

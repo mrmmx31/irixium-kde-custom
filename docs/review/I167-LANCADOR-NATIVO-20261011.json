@@ -1,0 +1,38 @@
+{
+  "at": "2026-10-11T08:36:16.946842+00:00",
+  "status": "passed_scoped",
+  "item": "I167",
+  "revision": 1,
+  "stage_estimate_percent": 70,
+  "scope": "GTK2 executable entry point and project watcher; scrollbar-only. Main Motif launcher integration pending.",
+  "proof": {
+    "native_origins": [
+      "Window",
+      "Plug"
+    ],
+    "layout_reload": true,
+    "same_window_and_adjustment_preserved": true,
+    "invalid_json_previous_scene_preserved": true,
+    "subsequent_valid_revision_recovers": true,
+    "events_per_origin": 7,
+    "guard_rejection_before_GI_project_or_output": true
+  },
+  "limits": [
+    "Native fixture mocks private_namespace on its own Xvfb; does not certify a complete bwrap launch.",
+    "Main Motif controller launch and remaining controls/states pending.",
+    "No new historical fidelity comparison or user approval."
+  ],
+  "initial_failure": "Sandbox Xvfb could not open its display. Terminal failure retained; independent host Xvfb fixture completed both origins.",
+  "host_changed": false,
+  "sha256": {
+    "tools/theme-lab/preview_gtk2.py": "c9949bdffe697d0af6a842749b82975e25671e8c6108c9f94ccf4a9669d869bd",
+    "tools/theme-lab/tests/probe_gtk2_entry.py": "7da5b4057577af84a1f93d62ad5ac0efe17458e7f1b6b9789ac584b19a800c32",
+    "tools/theme-lab/tests/test_gtk2_entry_guard.py": "c08de2cc6c9de2e48dec7c5679525a11fa1b0d31de937c39dea2effbc9a7ace7",
+    "docs/referencias/domainos-sr104/i167-entry/guard.log": "c346f1228fe88f4ab3cb336ffa610dc3a34ec7c7bb7d05df7a1c222f2d928881",
+    "docs/referencias/domainos-sr104/i167-entry/separate-host.stderr": "2b79c479d96f04dbca7ee0e1762189a9150f3121bbaadcf70472bb7de638f5b3",
+    "docs/referencias/domainos-sr104/i167-entry/separate-host.log": "1189bf4b30815bc1f15ce1251e8b0d76a679a787c14d27245b5501c49fd88647",
+    "docs/referencias/domainos-sr104/i167-entry/separate.stderr": "f8ba1b97e2201e0cfdc5b9ad71aaaaf793260f9e0dc78e6af178412012e43171",
+    "docs/referencias/domainos-sr104/i167-entry/coupled-host.log": "9a1dc95761aa840cc0c78d1f95e786b3a688a7ea7be30f8f9b160d5da0d35cc3",
+    "docs/referencias/domainos-sr104/i167-entry/coupled-host.stderr": "2b79c479d96f04dbca7ee0e1762189a9150f3121bbaadcf70472bb7de638f5b3"
+  }
+}

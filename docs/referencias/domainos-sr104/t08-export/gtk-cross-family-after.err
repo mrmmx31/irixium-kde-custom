@@ -1,0 +1,39 @@
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/pending.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/pending.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: keydown
+command: click
+command: keyup
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1238, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 261, in main
+    results.update(run(output, observation, click, wait, environment, restart))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_gtk_resume.py", line 67, in run
+    assert observation()['width_text'] == '330'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "R698",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise a real private QFileSystemWatcher event through Observer/QProcess to an actual GTK2 palette synchronization worker.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5c5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "event_path": {
+    "filesystem_event": "Private kdeglobals and GTK colors.css changed; QFileSystemWatcher delivered the event. No manual observer.changed call was used.",
+    "worker": "Custom private QProcess worker called real theme_companion_bridge.synchronize() and gtk2_palette_runtime.refresh()."
+  },
+  "results": {
+    "gtk2": "updated",
+    "semantic_role": "theme_button_background_normal_breeze",
+    "before": "#78a0d5",
+    "synthetic_after": "#2d9bf0",
+    "changed_generated_assets": 69,
+    "engine_preserved": true,
+    "gtk4": "mocked_no_write",
+    "native_kde_export": "mocked; no D-Bus",
+    "open_window_reload": "blocked",
+    "all_profile_roots": "Tempia private fixture"
+  },
+  "conclusion": "The filesystem observer event launched the private worker, which used the real bridge and GTK2 palette runtime to update 69 generated files plus the GTK2 wrapper from the changed semantic role. The engine directive remained present.",
+  "limits": [
+    "KDE native ColorScheme export/notification was simulated by changing files in the private fixture and mocking reload_gtk_palette; no live D-Bus was used",
+    "GTK4 output was intercepted and not validated",
+    "no real desktop scheme change, application reload, VM input, or human visual acceptance"
+  ],
+  "receipt": "~/tempia/domainos-theme-work/I167/R698-observer-filesystem-event/verification.json",
+  "artifacts": "records/ia-tema/I167/R698/ARTIFACTS.json",
+  "next": "Continue I167/GTK2 against remaining historical arrow states and application-level visual review. A real user scheme transition remains untested."
+}

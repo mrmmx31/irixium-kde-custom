@@ -1,0 +1,38 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T16:34:13Z",
+  "status": "current-native-reference-black; no-visual-conclusion",
+  "scope": "Recheck the already running Domain/OS SR10.4 guest before comparing GTK3 and Qt6 ComboBox/SpinBox arrow relief.",
+  "mame": {
+    "pid": 912338,
+    "process": "/usr/games/mame -noreadconfig dn3500",
+    "bridge": "~/tempia/board/i350-resources/control",
+    "probe_request_id": "5bcf0b288bff42509e92219f8157d5e5",
+    "snapshot_request_id": "bba432ff822b43659d71a6cb692f69c5",
+    "screen_tag": ":apollo_screen:screen",
+    "capture": "~/tempia/i457-vm-observe-r3/current.png",
+    "capture_sha256": "5fff64eb0ebcc6414ab0cbed24a524251b897bf8379ded8dd1fd265ed5896b2a",
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "profile": {
+      "paused": false,
+      "frameskip": 0,
+      "throttled": false,
+      "mouse_capture_hook": null
+    },
+    "observed": "Guest image is black except for the Apollo command strip at the bottom; no VUE controls or target arrows are visible."
+  },
+  "preservation": {
+    "pending_command_before_capture": false,
+    "guest_input_sent": false,
+    "mame_profile_changed": false,
+    "guest_files_changed": false,
+    "other_vm_touched": false,
+    "xephyr_sessions_touched": false
+  },
+  "result": "No valid current SR10.4 visual comparison can be made for this arrow task. Existing GTK3/Qt6 native widget probes remain limited to their recorded toolkit behavior; the black capture does not validate relief, color, or historical equivalence.",
+  "next": "Preserve the current guest and continue only after this existing Domain/OS session presents the VUE controls again. Do not restart MAME, alter its profile, or use another VM as historical evidence."
+}

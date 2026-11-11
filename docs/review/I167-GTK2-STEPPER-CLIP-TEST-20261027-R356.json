@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R356",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Prove the effective GTK2 pixmap-engine rule, its clip region, and the origin of the four registered corner differences",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "baseline": {
+    "installed_renderer": "/home/lsi/tempia/ia-tema/evidence/I167/r343-installed-gtk2/gtk2-installed-horizontal-no-atk.png",
+    "sha256": "913456498bc68e3617305824ed651f5082035a5a68212837479d42c4ed3f3c2d",
+    "isolated_copy_capture_sha256": "913456498bc68e3617305824ed651f5082035a5a68212837479d42c4ed3f3c2d",
+    "pixel_diff": 0
+  },
+  "probe": {
+    "path": "~/tempia/ia-tema/evidence/I167/r358-clip-mask-both/",
+    "selected_theme": "I167-ClipBoth",
+    "gtk2_engine_draw_arrow": "/usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so",
+    "gtk_widget_state": "GTK_STATE_NORMAL",
+    "pointer": "moved outside the 543x15 bar before capture",
+    "effective_layer": "A temporary copy of the generated KDE-role palette gtkrc included by the temporary theme; changing only the theme's parent gtkrc did not replace the higher-priority included pixbuf rules.",
+    "sentinel": "Both effective NORMAL horizontal stepper overlays were temporarily replaced by opaque magenta 15x15 images in the isolated copy only."
+  },
+  "clip_measurement": {
+    "left_cell_origin": [2, 0],
+    "right_cell_origin": [526, 0],
+    "for_each_cell": {
+      "magenta_pixels": 165,
+      "painted_region_relative_to_cell": [0, 2, 15, 13],
+      "unpainted_rows": [0, 1, 13, 14]
+    },
+    "R344_residual_pixels": {
+      "left": [[0, 13], [1, 13], [0, 14]],
+      "right": [[14, 1]]
+    },
+    "conclusion": "All four R344 differences are outside the 15x11 vertical paint clip passed to the stepper overlay. The engine's 15x15 overlay cannot repaint them in the current GTK2 allocation; their pixels remain from surrounding GTK drawing. The normal glyph is not short, and the generated semantic-role image itself matches the VUE cell."
+  },
+  "changes": {
+    "repository_theme_code": false,
+    "installed_theme": false,
+    "user_applications_restarted": false,
+    "vm_input_or_state": false,
+    "colors_or_schemes": false
+  },
+  "limitations": [
+    "This establishes the pixbuf overlay clip boundary and the four residual pixels' location outside it; it does not by itself identify which earlier GTK draw operation supplied their underlying colors.",
+    "The GtkRange source describes the pixbuf engine's reconstructed stepper dimensions, but no upstream GTK/Motif default is inferred from this host-side test.",
+    "The XChat process still predates the GTK2 update and was not restarted; no live XChat rendering or human acceptance is claimed."
+  ],
+  "next": "Continue GTK2/I167. Retain slider-width=11 and trough-border=2 unless a candidate can repaint the full stepper without moving its 15x15 cells or changing the 15px bar/recess. The isolated slider-width=15/trough-border=0 tradeoff is recorded separately in R357 and is not an acceptable fix."
+}

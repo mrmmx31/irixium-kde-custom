@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-HINT-SEMANTIC-AUDIT-20261019-R116",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:37:28Z",
+  "scope": "Auditoria semântica dos 16 textos de control_hints.py para GTK3; confirmação de cobertura na fábrica GTK3 e hover frio existente, sem repetir a matriz geométrica/paletas.",
+  "findings": "Um texto foi esclarecido: radio agora fala do grupo mostrado nesta amostra, não da família de toolkit. Os 16 textos declaram finalidade/efeito e limite; controles numéricos informam faixa/unidade ou ausência de unidade; barras informam que a faixa depende da página; posições comuns identificam px.",
+  "controls": [
+    {
+      "control": "push",
+      "hint": "Botão de comando: clique dispara uma ação apenas na amostra.",
+      "purpose_effect": "executa ação de amostra",
+      "unit_or_range_boundary": "não altera projeto",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "toggle",
+      "hint": "Botão alternável: clique liga ou desliga o estado da amostra.",
+      "purpose_effect": "alterna ligado/desligado",
+      "unit_or_range_boundary": "estado local da amostra",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "check",
+      "hint": "Checkbox: clique marca ou desmarca uma escolha independente.",
+      "purpose_effect": "marca/desmarca opção independente",
+      "unit_or_range_boundary": "estado local da amostra",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "radio",
+      "hint": "Opção exclusiva: escolha uma opção do grupo mostrado nesta amostra.",
+      "purpose_effect": "escolhe opção do grupo mostrado",
+      "unit_or_range_boundary": "grupo da amostra",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "entry",
+      "hint": "Entrada de uma linha: edite e selecione o texto da amostra; não é texto do projeto.",
+      "purpose_effect": "edita texto em uma linha",
+      "unit_or_range_boundary": "texto não pertence ao projeto",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "combo",
+      "hint": "Lista de opções: abra e escolha um item da amostra.",
+      "purpose_effect": "abre e escolhe item",
+      "unit_or_range_boundary": "lista local da amostra",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "spin",
+      "hint": "Valor numérico da amostra, de 0 a 100, passo 1, sem unidade; não representa tamanho em px.",
+      "purpose_effect": "edita valor numérico 0–100, passo 1",
+      "unit_or_range_boundary": "sem unidade; não é dimensão px",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "text",
+      "hint": "Entrada de várias linhas: edite, selecione e role o texto da amostra; não altera o projeto.",
+      "purpose_effect": "edita/seleciona/rola várias linhas",
+      "unit_or_range_boundary": "conteúdo não altera projeto",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "scale_h",
+      "hint": "Escala horizontal: arraste para ajustar o valor de 0 a 100, sem unidade.",
+      "purpose_effect": "ajusta valor 0–100 por arraste",
+      "unit_or_range_boundary": "sem unidade",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "scale_v",
+      "hint": "Escala vertical: arraste para ajustar o valor de 0 a 100, sem unidade.",
+      "purpose_effect": "ajusta valor 0–100 por arraste",
+      "unit_or_range_boundary": "sem unidade",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "scroll_h",
+      "hint": "Barra horizontal: setas, trilho e cursor operam o ajuste da amostra; o intervalo depende da página.",
+      "purpose_effect": "setas/trilho/cursor rolam conteúdo",
+      "unit_or_range_boundary": "intervalo depende da página",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "scroll_v",
+      "hint": "Barra vertical: setas, trilho e cursor operam o ajuste da amostra; o intervalo depende da página.",
+      "purpose_effect": "setas/trilho/cursor rolam conteúdo",
+      "unit_or_range_boundary": "intervalo depende da página",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "arrow",
+      "hint": "Botão de seta isolado: pressione para observar o relevo; não navega no desktop.",
+      "purpose_effect": "pressionamento demonstra relevo",
+      "unit_or_range_boundary": "seta isolada, não navega desktop",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "progress",
+      "hint": "Indicador de progresso: exibe o valor da amostra; não é medição de uma tarefa em execução.",
+      "purpose_effect": "exibe nível de amostra",
+      "unit_or_range_boundary": "não mede tarefa real",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "list",
+      "hint": "Lista: clique para selecionar uma linha; a moldura e a rolagem pertencem ao contêiner.",
+      "purpose_effect": "seleciona linha",
+      "unit_or_range_boundary": "moldura/rolagem são do contêiner",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    },
+    {
+      "control": "frame",
+      "hint": "Moldura com conteúdo: compare o encaixe e o relevo; não possui uma ação de clique.",
+      "purpose_effect": "compara encaixe/relevo do conteúdo",
+      "unit_or_range_boundary": "não executa ação de clique",
+      "common_interaction": "Ctrl+clique seleciona; Ctrl+arraste propõe posição em px; aparência acompanha papéis da paleta da prévia."
+    }
+  ],
+  "validation": {
+    "hint_coverage": "16/16 tipos; 30 widgets/descendentes cobertos por tests/probe_control_hints.py --family gtk3",
+    "hover": "push GTK3 passou atraso frio 500 ms, estabilidade 400 ms, zero sobreposição, limite da tela e dismiss ao sair",
+    "command": "xvfb-run privada; sem alterar sessão/xephyr do usuário",
+    "warning": "O probe reporta depreciação de Gdk.Screen.get_width/get_height; resultado passou."
+  },
+  "source_sha256": {
+    "tools/theme-lab/control_hints.py": "10a283252e261d0eaefc0326a67a3a63b7b1bf078f1d96e940b1bb3b4d4aaf33",
+    "tools/theme-lab/scene_contract.py": "bfc26ddc6f0ab4f4b5ed040a0e477b6929f5b714afe13969539f0a468c367155",
+    "tools/theme-lab/preview_gtk.py": "e453b7c7e5b36a2141a9beb8b18602e97ea7e9c1a86a3aaa2e00aabff9af852a"
+  },
+  "limits": [
+    "Auditoria textual e de cobertura, não valida interpretação por usuário nem fidelidade histórica.",
+    "Hover cronometrado repetiu só o controle push; a matriz geométrica por todos os controles permanece em R59/R72/R103/R112.",
+    "A mudança de cópia linguística não altera funcionamento, paleta ou geometria."
+  ],
+  "conclusion": "Os hints GTK3 apresentam finalidade, efeito e limites/unidades quando aplicáveis; o único ajuste necessário era tornar a referência ao grupo de rádio menos ambígua. A amostra nativa cobre 16 tipos/30 widgets e o push manteve a interação de dica esperada."
+}

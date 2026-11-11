@@ -1,0 +1,26 @@
+{
+  "at": "2026-10-11T12:56:22.573548+00:00",
+  "item": "T07",
+  "revision": 1,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "phase": "prepared_not_launched",
+  "source_pid_verified": 1947021,
+  "source_lab_id": "37d5b41b3a424f0dad5ae750b465a4d3",
+  "display": ":61",
+  "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+  "source_manifest_sha256": "cf7cb75bfbba07e0a1bfcac7dc2c8d9e7e368d5d5a9186154541536e13061dca",
+  "delivery": "New private addon in existing Xephyr; resume saved project/editor journal/project history; keep every original window and directory. Widget text not checkpointed is not imported. Coordinate pause and ask user to save first.",
+  "fix": "Freeze all shipped flat runtime Python modules in theme-lab and native galleries; includes new hints plus preexisting scene/event/GTK2 modules. Tests excluded. No home paths used to resolve runtime imports.",
+  "tests": {
+    "runtime_import_closure": "2 tests passed",
+    "private_mount_contract": "4 tests passed",
+    "resume_preservation": "9 tests passed"
+  },
+  "required_gate": "Host namespace reopen-status: theme.available and theme.permitted, exact session/request/item/revision/hash. Original process marker/starttime still current.",
+  "remaining": [
+    "Temporary release for T07 handoff",
+    "Actual frozen fixture/startup/native preview evaluation after launch"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "basis": "Implementation and scoped native tests ready; package dependency closure fixed, delivery not performed."
+}

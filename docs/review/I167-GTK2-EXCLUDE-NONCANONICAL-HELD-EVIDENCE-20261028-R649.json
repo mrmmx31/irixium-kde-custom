@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "R649",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "R308-supplemental-only-not-canonical-project-vm-evidence",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reviewed_record": "docs/review/I167-GTK2-UPPER-ARROW-HELD-MASK-20261026-R308.json",
+  "provenance_facts": {
+    "source_study": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs",
+    "capture_bundle": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018",
+    "canonical_project_vm_touched": false,
+    "recorded_version": "Domain/OS SR10.4 / HP VUE 2.01 / Apollo DN3500 / MAME 0.276"
+  },
+  "project_rule": "AGENTS.md and docs/DOMAINOS-REGRAS-VM.md designate the assistant clone at vm/domainos-sr10.4-assistant/runtime as the only historical VM reference for this project.",
+  "decision": {
+    "use": "R308 may explain an upper-arrow held-state pattern as supplemental study evidence.",
+    "not_use_for": "Do not count R308 or descendants that rely solely on it (including R498) as direct validation from the canonical project VM.",
+    "remaining": "The canonical project's upper-arrow held state and both horizontal held states remain unverified by direct canonical-VM comparison."
+  },
+  "changes": {
+    "vm_input": false,
+    "theme_source": false,
+    "user_profile": false,
+    "other_project_vm": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "This reconciles evidence provenance and prevents overclaiming; it closes no visual criterion. Not a fidelity score."
+  }
+}

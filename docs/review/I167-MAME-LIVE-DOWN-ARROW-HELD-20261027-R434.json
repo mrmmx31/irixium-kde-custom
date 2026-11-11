@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "R434",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Capture the live SR10.4 File Manager down-stepper while the left button is visibly over it and held, then compare the transition with the installed GTK2 assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "method": {
+    "input_route": "Host XTest via xdotool into the authenticated MAME window; no direct port override.",
+    "window_active_before_hold": true,
+    "guest_pointer_target": "Native frame shows pointer hotspot over the File Manager vertical down arrow before the hold.",
+    "hold_duration_host_seconds": 0.5,
+    "button_port": ":kbd:mouse1",
+    "left_mask": 16,
+    "raw_button_during_capture": 16,
+    "raw_button_after_release": 0,
+    "scroll_position": "The thumb was at the lower end of the track. Whether VUE considers the arrow enabled at this endpoint is not established."
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "transition_contract": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "expected_normal_to_held_pixels": 53,
+    "native_colors": {
+      "light": "#c4d5ed",
+      "shadow": "#3e536e"
+    }
+  },
+  "comparison": {
+    "held_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r442-filemanager-down-held-20261027.png",
+      "sha256": "224063ed70ce0ada8adcaa2566a1353822d3f0684ebc8247445f050b1bc465f1"
+    },
+    "released_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r442-filemanager-down-released-20261027.png",
+      "sha256": "fe5e8a01a9d377ae978df32107c60045f007159cd6beef0c49c0740231c93300"
+    },
+    "active_window_pre_hold": {
+      "path": "~/tempia/ia-tema/evidence/I445-after-pageup-20261027.png",
+      "sha256": "48f33998f9843b4cafd50fe9aacc200e76c1eadb87e9c35f23963485a19ecf86"
+    },
+    "vue_to_gtk2": {
+      "native_cell_origin_xy": [844, 553],
+      "glyph_origin_xy": [846, 555],
+      "vue_changed_pixels": 37,
+      "exact_gtk2_coordinate_and_rgb_matches": 37,
+      "expected_pixels_not_observed_under_cursor": 16,
+      "unexpected_coordinate_or_rgb_transitions": 0,
+      "full_frame_changed_pixels": 37,
+      "changed_bbox_xyxy": [846, 555, 857, 563]
+    },
+    "gtk2_assets": {
+      "family": "scrollbar-stepper-down",
+      "size_px": [15, 15],
+      "normal_sha256_repository_and_installed": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+      "pressed_sha256_repository_and_installed": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d",
+      "normal_to_pressed_changed_pixels": 53,
+      "colors_remain_kde_role_derived": true
+    }
+  },
+  "result": "With File Manager already active, the live down-arrow hold produced 37 visible pixel changes. All 37 match the SR10.4 held/released transition at the same glyph coordinates and with the exact #3e536e/#c4d5ed color swaps used by the installed GTK2 15x15 normal/pressed assets. The other 16 expected transition pixels are not visible under the cursor. This validates the observed part of the live down-arrow relief; it does not establish its enabled state at the track endpoint or validate other directions/states.",
+  "cleanup": {
+    "button_raw": 0,
+    "mouse_capture_released": true,
+    "host_pointer_restored": [840, 666],
+    "mame_window": "Iconic, restored to the pre-test state",
+    "post_cleanup_snapshot": {
+      "path": "~/tempia/ia-tema/evidence/I446-after-final-cleanup-20261027.png",
+      "sha256": "c1a6bf3d15fbfab57fb113f9b03fb5d33cba94f5f6db5d9d98ccbba8f996c1c5"
+    },
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "channel_pending": false
+  },
+  "changes": {
+    "gtk2_recipe_changed": false,
+    "user_profile_changed": false,
+    "mame_restarted": false,
+    "other_vm_contacted": false
+  },
+  "next": "Keep the proven down-arrow relief and exact normal horizontal-cell results. Continue I167 only for the still-unverified GTK2 states/directions; do not alter normal geometry or KDE-role colors without a measured mismatch."
+}

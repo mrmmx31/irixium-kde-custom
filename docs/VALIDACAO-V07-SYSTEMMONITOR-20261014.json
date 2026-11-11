@@ -1,0 +1,39 @@
+{
+  "item": "P10",
+  "family": "V07",
+  "date": "2026-10-14",
+  "status": "inconclusive_no_scrollable_content",
+  "application": {
+    "name": "KDE Plasma System Monitor",
+    "binary": "/usr/bin/plasma-systemmonitor",
+    "package": "plasma-systemmonitor (installed)",
+    "qml_component": "System Monitor Process page uses real Qt Quick/Kirigami and Plasma System Monitor Table components"
+  },
+  "environment": {
+    "display": ":69",
+    "server": "existing Xephyr 1024x768",
+    "isolated_xdg": "/home/lsi/tempia/domainos-v07-qtquick-20261014/{xdg-config,xdg-cache,xdg-data,xdg-state}",
+    "qpa": "xcb",
+    "QML_overlay": "disabled for final attempt",
+    "personal_config_modified": false
+  },
+  "observation": {
+    "page": "Processes",
+    "result": "Window opened, but content area remained blank with loading indicator; no visible scrollbar or content frame could be measured.",
+    "capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/plasma-systemmonitor-processes-empty.png",
+    "sha256": "147146e6c5375bcf51ba54ec987cb02d015f5b66c0394dbfc22f262ad03ea3db",
+    "qml_source": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/ksysguard/table/BaseTableView.qml",
+    "qml_source_observation": "ScrollView background is a Rectangle filled with Kirigami.Theme.backgroundColor and declares no border; this app does not provide the requested framed content surface."
+  },
+  "failed_attempt": {
+    "overlay": "Existing diagnostic QML2_IMPORT_PATH produced ScrollablePage.qml TypeError and zero-size transient ScrollViews. This attempt is excluded from product comparison.",
+    "application_processes_closed": true
+  },
+  "changes": {
+    "product_sources_changed": false,
+    "theme_or_personal_settings_changed": false,
+    "VM_touched": false,
+    "packages_installed": false
+  },
+  "conclusion": "This installed real app does not resolve Q345 and supplies no matched-content thumb comparison. Preserve Q345 pending; continue to another independent authorized family/work item per the user’s queue rule."
+}

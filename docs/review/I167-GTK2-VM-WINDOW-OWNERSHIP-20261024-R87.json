@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-VM-WINDOW-OWNERSHIP-20261024-R87",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "processes": [
+    {"pid": 912338, "role": "user main VM", "display_env": ":0", "visible_host_window": false},
+    {"pid": 2745483, "role": "assistant clone", "display_env": ":1", "managed_top_level_window": false},
+    {"pid": 3053638, "role": "other MAME session", "display_env": ":1", "window_id": "0x3200002", "window_state": "Iconic"}
+  ],
+  "x_observation": {
+    "display_0": "No Apollo DN3500/MAME titled window was returned by xwininfo -root -tree.",
+    "display_1": "The only MAME top-level window found was 0x3200002; xprop identified PID 3053638, not the authorized main or assistant clone.",
+    "assistant_clone_window_search": "The _NET_CLIENT_LIST scan found no managed top-level X window with _NET_WM_PID 2745483.",
+    "privacy": "Only MAME window titles and PIDs were inspected; no screenshot or focus change was made on the other session."
+  },
+  "transport": {
+    "assistant_clone_bridge_status": "clean; no pending request or command file",
+    "guest_shell_helper": "nsenter failed with Invalid argument before opening Telnet; no guest command was sent.",
+    "host_route_to_clone_telnet_ftp": "10.253.104.20 routed through the physical gateway; TCP connections to ports 21 and 23 timed out without payload."
+  },
+  "comparison": {
+    "new_historical_entry_measurement": false,
+    "reason": "Both the main and assistant-clone MAME processes lack an authenticated top-level window in the available displays. The only visible MAME window belongs to another session. The clone bridge remains usable for screenshots, but guest input did not change the Screen dialog in R86.",
+    "selection_and_blink": "Still unmeasured on a live, focused Domain/OS SR10.4 text entry."
+  },
+  "preservation": {
+    "other_mame_window_focused_or_captured": false,
+    "assistant_clone_restarted": false,
+    "vm_profiles_changed": false,
+    "theme_changed": false,
+    "guest_files_changed": false
+  },
+  "next": "Keep I167 limited to GTK2 GtkEntry. Continue when the authorized clone has a host window owned by PID 2745483 or its guest input can be delivered through an authenticated supported path. Do not focus, capture or close PID 3053638."
+}

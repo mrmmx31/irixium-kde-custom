@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "id": "R746",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the current live GTK2 XChat vertical scrollbars against the supplied Motif reference after installing the R742 thumb-end candidate; preserve only scrollbar pixels.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "input_attachments": {
+    "gtk2_large": {
+      "filename": "capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [892, 642],
+      "status": "historical pre-R740 capture; it contains the two-row thumb-start transition already corrected by R740 and is not a current-state capture"
+    },
+    "motif_narrow": {
+      "filename": "capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [102, 655],
+      "status": "Motif reference; lower stepper area is clipped/intersected by the horizontal scrollbar and is not a complete lower-cell sample"
+    }
+  },
+  "live_target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "map_state": "IsViewable",
+    "window_geometry_px": [870, 601],
+    "gtk_version": "2.24.33",
+    "theme_engine": "domainos-pixbuf",
+    "gtkrc_profile": "DomainOS-SR10-4-KDE",
+    "gtkrc_files": [
+      "/etc/gtk-2.0/gtkrc",
+      "/home/lsi/.gtkrc-2.0",
+      "/home/lsi/.config/gtkrc-2.0"
+    ],
+    "engine_mapped": "libdomainos-pixbuf.so"
+  },
+  "runtime_update": {
+    "scope": "GTK palette synchronization only; no theme selection change and no service restart",
+    "result": "synchronized",
+    "gtk4_palette_side_effect": {
+      "status": "reloaded",
+      "theme": "DomainOS-SR10-4-KDE",
+      "receipt": null,
+      "note": "The bridge reported a GTK4 palette reload as part of palette synchronization; no separate GTK4 visual asset was edited in R746."
+    },
+    "palette_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261029T110232-7c8c8689541b/receipt.json",
+    "companion_install_backup": "/home/lsi/.local/state/irixium-theme-companions/installation/backups/e821d56edc194c20a40ebc60a0a480ac",
+    "bundle": "/home/lsi/.local/share/irixium/gtk2-palette/b7bca92053e86b273da7d746a04cb93b40e29db570e29e5e95582000d9c9df95",
+    "vertical_thumb_asset_sha256": "04cc095fcfb45049021d3da33dd715b3536f79b6943f6785137383424ea9497b",
+    "horizontal_thumb_asset_sha256": "ef722fd059948d203b77b2c1da0a363c708bb2e8e953c05e09569fac8fb08585",
+    "source_installed_helper_sha256": "8551b7cc3f2fe0697bdb6321e91f24cce44721754688fd543d354277bd6f1035",
+    "source_installed_contract_sha256": "6835372176addbcd3ef8f443412891195243361d72fc4c4bcee060f8b7c047bc",
+    "native_reload": {
+      "status": "sent",
+      "windows_considered": 179,
+      "events_sent": 179,
+      "racing_x_errors": 0
+    },
+    "companion_service": {
+      "active": true,
+      "pid_before_and_after": 1802057
+    }
+  },
+  "capture": {
+    "method": "Streamed XWD from the already-visible client, cropped before writing. Only two scrollbar strips were retained; no chat text, focus, pointer motion, keyboard input, or click was sent.",
+    "left_bar": {
+      "path": "records/ia-tema/I167/R746/gtk2-live-left-bar.png",
+      "sha256": "903e06d0562fc53039cfd44b41d6effa7a2920759323809c781d9fcbc3fd3047",
+      "dimensions_px": [15, 537]
+    },
+    "right_bar": {
+      "path": "records/ia-tema/I167/R746/gtk2-live-right-bar.png",
+      "sha256": "6b8523dd9794eef0b06bca9771b77b9ee4b2f7d134198b523081d026ce462f04",
+      "dimensions_px": [15, 505]
+    }
+  },
+  "comparison": {
+    "scale_and_width": {
+      "scale": "native 1:1 screenshot pixels",
+      "gtk2_bar_width_px": 15,
+      "motif_reference_bar_width_px": 15,
+      "result": "Equal 15 px width; the screenshots do not substantiate a horizontal thickness mismatch."
+    },
+    "upper_stepper_and_thumb_start": {
+      "gtk2_vs_canonical_motif_upper_cell": "0/225 differing pixels",
+      "gtk2_first_15x30_vs_canonical_motif": "0/450 differing pixels",
+      "result": "The live post-reload upper arrow and first transition into the thumb now match exactly. The extra two-row band visible in the supplied large screenshot is stale pre-R740 evidence."
+    },
+    "lower_stepper": {
+      "gtk2_vs_canonical_motif_lower_cell": "0/225 differing pixels",
+      "gtk2_vs_installed_down-normal-asset": "0/225 differing pixels",
+      "motif_attachment_limit": "The supplied narrow screenshot does not expose the entire lower stepper cell; this comparison uses the project’s complete SR10.4 canonical vertical-bar capture."
+    },
+    "thumb_and_trough": {
+      "thumb_cross_axis_profile": "DDLLFFFFFFFDDLL",
+      "long_trough_profile": "DDFFFFFFFFFFFLL",
+      "interpretation": "The thumb keeps the Motif inset relief. The long trough uses the documented GTK2 adaptation with four internal relief bands omitted; this is a deliberate profile difference, not evidence of a new regression. Thumb length is content/viewport dependent and cannot be equated between these screenshots.",
+      "terminal_geometry": "The R742 vertical thumb asset is now in the active generated bundle and the real window has been reloaded. The current right-bar thumb ends near capture row 451; exact whole-bar pixel equality is not claimed because the GTK2 and reference viewports have different scroll ratios."
+    },
+    "color_roles": "The active palette was regenerated from the KDE color export; no static final RGB was introduced. Original SR10.4 RGB is retained only as comparison evidence."
+  },
+  "remaining": [
+    "Human visual assessment of the whole GTK2 scrollbar is still pending.",
+    "Horizontal GTK2 bar and held/hover/disabled states remain outside this capture.",
+    "Do not compare thumb length across different content or viewport ratios."
+  ],
+  "changes": [
+    "Installed the authorized R742 GTK2 generator/contract runtime transactionally with rollback receipts; no service restart.",
+    "Synchronized selected GTK palette bundles and sent native reload events; XChat remained open.",
+    "No source code was changed in R746."
+  ],
+  "next": "Present the current scrollbar-only crops for user review. Keep I167 technical status partial and visual acceptance pending until the user evaluates the live GTK2 result."
+}

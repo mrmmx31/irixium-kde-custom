@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R757",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck the current mapped GTK2 XChat bars and compare the transverse profile of the distinct thumb shown in the user's narrow Motif attachment.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "live_capture": {
+    "window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "window_px": [870, 601],
+    "pointer_screen_xy": [974, 215],
+    "capture": "Read-only XWD kept in memory; only the two 15px scrollbar strips were persisted. No focus or input was sent.",
+    "left": {
+      "path": "records/ia-tema/I167/R757/left-vertical-strip.png",
+      "relative_xy": [217, 64],
+      "size_px": [15, 535],
+      "sha256": "24546dd7842719b8575180a4834a4fcd780905f61ef9dbfee5d2456c49c83a86",
+      "body_rows_profile": "DDLLFFFFFFFDDLL",
+      "body_rows_with_that_profile": 503
+    },
+    "right": {
+      "path": "records/ia-tema/I167/R757/right-vertical-strip.png",
+      "relative_xy": [749, 98],
+      "size_px": [15, 465],
+      "sha256": "6c376928a6d5cfc44e44caee5d11d62da252b98e6baacf32dd08713d8535084f",
+      "body_rows_profile": "DDLLFFFFFFFDDLL",
+      "body_rows_with_that_profile": 433
+    },
+    "reused_capture": "Both new strip hashes exactly match the already-preserved R752 capture, so the visible GTK2 bars have not changed since R752."
+  },
+  "narrow_attachment_thumb": {
+    "filename": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+    "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+    "cross_axis_xy": [47, 451],
+    "size_px": [15, 144],
+    "shaft_profile": "DDEEEEEEEEEEEELL",
+    "colors": {
+      "D": "#3e536e",
+      "E": "#6f95c6",
+      "L": "#c4d5ed",
+      "track_face_F": "#78a0d5",
+      "track_inner_T": "#6688b5"
+    },
+    "profile_vs_track": {
+      "track_profile": "DDLLFFFFFFFDDLL",
+      "matching_cross_axis_pixels_per_row": 4,
+      "different_cross_axis_pixels_per_row": 11,
+      "difference": "The thumb keeps the two dark outer pixels and two light outer pixels, while its 11 interior pixels use one uniform shade. The track has two inner light pixels, seven face pixels, and two inner dark pixels."
+    }
+  },
+  "canonical_vm_limit": {
+    "path": "records/ia-tema/I167/R747/motif-sr104-vertical-bar.png",
+    "sha256": "6ddc3424693ad0a565a2d40c8c3e8611295b3ec6477d0d85fc551848d21ea9b0",
+    "body_rows": "223 rows use DDLLFFFFFFFDDLL between the endpoint cells.",
+    "limit": "The Trash Can reference thumb is nearly full length; this raster does not isolate the cross-axis shading of a short thumb. It cannot settle whether the narrow attachment's distinct thumb profile is the normal SR10.4 thumb state."
+  },
+  "result": "The current live GTK2 strips have no visually separable cross-axis thumb profile in their 503-row and 433-row body segments: each row uses the same DDLLFFFFFFFDDLL profile. In the narrow attachment, a 144-row thumb shaft is visibly distinct from its track and uses DDEEEEEEEEEEEELL. The screenshots therefore show a real thumb/track contrast difference, beyond the arrow-color difference recorded in R756. The current GTK2 thumb may share the track profile or its boundary may be obscured by the screenshot state; the pixels do not distinguish those explanations.",
+  "action": "No theme change made. The small attachment's scroll range and rendering state are not independently identified, and the canonical VM raster has a near-full thumb. Record this as an unresolved visual comparison rather than changing colors or geometry by inference.",
+  "human_review": "Pending. This is a pixel observation, not a user verdict."
+}

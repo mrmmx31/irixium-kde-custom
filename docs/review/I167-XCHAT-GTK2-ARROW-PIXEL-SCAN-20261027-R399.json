@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "R399",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Check whether mapped XChat GTK2 windows expose exact 15x15 matches to the active normal stepper assets, without displaying, OCRing, or retaining conversation pixels.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "display": ":1",
+    "processes": [3951437, 3951675],
+    "gtk2_rc_files_environment": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+    "mapped_xchat_windows_scanned": 7,
+    "method": "XWD pixels streamed through ImageMagick and checked in memory for exact RGB matches to each active DomainOS normal stepper asset; no image file was retained by this scan.",
+    "exact_full_asset_matches": 0
+  },
+  "result": "The pixel scan did not find a full exact 15x15 match in the scanned XChat windows. This is inconclusive: the actual scrollbar cell was not isolated, and the live process may have stale resources, a different state, or a capture/composition difference. It does not prove arrow geometry, color, or which GTK theme is currently rendered.",
+  "privacy_and_changes": {
+    "conversation_text_decoded_or_read": false,
+    "ocr_performed": false,
+    "scan_images_retained": false,
+    "xchat_restarted_or_modified": false,
+    "window_focus_changed": false,
+    "host_pointer_moved": false,
+    "guest_input": false,
+    "other_vm_touched": false,
+    "handling_incident": "A preliminary xwd command used '-out -', which created a 1.6 MB full-window dump named './-' in the repository. It was not opened or analyzed and was immediately removed; no retained copy remains. Subsequent scans streamed through memory without files."
+  },
+  "next": "Do not infer current XChat styling from this scan. A precise scrollbar-only capture is needed, or an explicitly coordinated XChat restart/reopen to load the updated GTK2 resources. Preserve active chat sessions."
+}

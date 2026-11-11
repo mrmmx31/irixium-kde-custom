@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VM-STATE-20261024-R86",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "main_vm": {
+    "pid": 912338,
+    "emulator": "MAME 0.276",
+    "capture": {
+      "path": "~/tempia/i167-live-r86-user-vm.png",
+      "sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5"
+    },
+    "profile": {
+      "paused": false,
+      "frameskip": 0,
+      "throttled": false
+    },
+    "observation": "Guest screen is black except the Apollo command strip; no VUE field is visible. A host-window xwd capture returned X_GetImage BadMatch, so host pixels were not captured.",
+    "input_sent": false,
+    "configuration_changed": false
+  },
+  "assistant_clone": {
+    "pid": 2745483,
+    "profile_last_observed": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false
+    },
+    "active_channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "active_channel_status": "clean after final check; no pending request, reply or command file",
+    "parent_directory_mode": "0775 restored after identifying the correct channel",
+    "owner_only_channel_mode": "0700",
+    "orphan_request": {
+      "channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao",
+      "request_id": "938dc6b2739a40a49fef81a4d6be418f",
+      "state": "The first probe was mistakenly addressed to the parent directory; the launcher and bridge confirm the live channel is sessao/controle. The orphan command was not consumed by MAME. It remains preserved and must not be reused or overwritten."
+    },
+    "read_only_probe_request_id": "e160b049d5ae4f7aa66643f2b43a3c52",
+    "latest_capture": {
+      "path": "~/tempia/i167-live-r88-assistant-clone.png",
+      "sha256": "246eca7e665b0c22ef3edf7a0cb95ae646994057bc076b88ca2659c6f71cd9a5"
+    },
+    "follow_up_captures": [
+      {"path": "~/tempia/i167-live-r90-assistant-clone.png", "sha256": "e74bf1b24296ed77560d98cdc6ca662f8a0d1cb5f614243247219e2c9978348c"},
+      {"path": "~/tempia/i167-live-r91-counter-step.png", "sha256": "fc9da4d6c84316bb84e83db193bad2e2c8b19a57b06bc39e0d862d7baa74f562"},
+      {"path": "~/tempia/i167-live-r92-counter-step-after-capture.png", "sha256": "e47dfe59592a79022aea27a05880513f5297fe507f0ca5ef734a509f263835bb"},
+      {"path": "~/tempia/i167-live-r94-clone-after-captured-escape.png", "sha256": "ae4076ff392994d0c35fceb361353e27154b7358451de5c0b20d4eba6cab239c"}
+    ],
+    "guest_shell_access_attempt": "The existing namespace helper failed at nsenter with Invalid argument before opening Telnet; no guest command was sent.",
+    "observation": "HP VUE is visible. A Screen dialog is foremost; File Manager windows are visible behind it. No live focused GtkEntry is exposed in this view.",
+    "input_attempts": [
+      "One Escape pulse was tried with the original mouse capture disabled; the Screen dialog did not close.",
+      "The existing hook was temporarily captured and restored to captured=false/mouse=false after testing. A single relative counter step did not move the visible pointer.",
+      "One more Escape pulse was tried with the hook captured; the Screen dialog still did not close. Pixel diff inside its bounds was zero; the only overall screenshot changes were in the animated panel area."
+    ],
+    "guest_input_state_after_test": "no held keys or mouse buttons; capture hook returned to its original released state",
+    "guest_configuration_changed": false
+  },
+  "historical_comparison": {
+    "new_entry_measurement": false,
+    "valid_evidence_reused": [
+      "R57: native VUE Find Files field screenshot, but selection was not established.",
+      "R68: focused GtkEntry outline uses the measured two-pixel shape with dynamic KDE roles.",
+      "R76: at 338x34, GTK2 caret is straight 1x18 px; VUE caret uses a 14 px stem, 5x1 px end caps and 16 px total height.",
+      "R63: the standard GTK2 theme engine cannot draw the VUE caret end caps or set caret height independently."
+    ],
+    "selection_and_blink": "Still lack a paired SR10.4 live-field measurement."
+  },
+  "preservation": {
+    "theme_source_changed": false,
+    "desktop_profile_changed": false,
+    "main_vm_profile_changed": false,
+    "assistant_clone_restarted": false,
+    "main_vm_touched_by_clone_probe": false
+  },
+  "next": "Continue only GtkEntry historical comparison. The actual clone channel is clear, but the VUE field is not focused; obtain a mapped editable VUE field through a safe supported path before testing selection/blink. Do not touch the preserved orphan request in the wrong parent directory."
+}

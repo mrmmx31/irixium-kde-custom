@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-17",
+  "authorization": {
+    "item": "T04",
+    "title": "Prévias nativas e demais adaptadores",
+    "board_generation_observed": 7453,
+    "user_authorized": true,
+    "board_modified": false,
+    "scope": "GTK4 checkbox control in the Theme Lab private preview only"
+  },
+  "implementation": {
+    "native_widget": "GtkCheckButton",
+    "translated_control": "check",
+    "palette": "KDE semantic roles; no fixed final RGB colors",
+    "private_capability": "--private-check-session",
+    "event_parser": "GTK4 control index 2 accepts check state; radio and later controls remain rejected",
+    "public_desktop_changed": false
+  },
+  "build": {
+    "path": "/home/lsi/tempia/theme-lab-t04-checkbox-20261017/build/theme-lab",
+    "sha256": "e92b0cd220ec13f2fac4b22c89a618d2115b61e1c16ffbc143ff2841656437f8",
+    "compiled": true
+  },
+  "tests": {
+    "python_check_generation": "4 passed",
+    "c_preview_event_parser": "passed",
+    "gtk4_css_native_parse": "passed in the real GTK4 worker",
+    "worker_separate": {
+      "status": "passed",
+      "native_click_states": [true, false, true],
+      "selection_survives_regeneration": true,
+      "unsupported_scene_preserves_current_scene": true,
+      "recovery_preserves_selection": true,
+      "event_reader_c_accepts_check_events": true
+    },
+    "worker_coupled_to_motif_canvas": {
+      "status": "passed",
+      "native_click_states": [true, false, true],
+      "selection_survives_regeneration": true,
+      "unsupported_scene_preserves_current_scene": true,
+      "recovery_preserves_selection": true,
+      "event_reader_c_accepts_check_events": true
+    }
+  },
+  "limits": [
+    "No manual comparison of the checkbox appearance to Domain/OS SR10.4 / HP VUE 2.01 has been recorded.",
+    "No human approval is inferred from native worker or parser tests.",
+    "The updated application was compiled in ~/tempia; the existing Xephyr Theme Lab session was not replaced or reopened.",
+    "GTK4 radio and other unsupported controls remain pending."
+  ],
+  "next": "Open the updated checkbox preview in the already authorized Xephyr workflow without replacing its current project, then record the visual comparison separately."
+}

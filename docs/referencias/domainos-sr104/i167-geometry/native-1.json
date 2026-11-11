@@ -1,0 +1,65 @@
+{
+  "runtime": "2.24.33",
+  "private_display": ":212",
+  "gui_native": true,
+  "recipe_applied": false,
+  "historical_fidelity_claimed": false,
+  "widgets": [
+    {
+      "type": "GtkHScrollbar",
+      "allocation": [
+        0,
+        0,
+        61,
+        23
+      ],
+      "natural_request": [
+        61,
+        23
+      ],
+      "properties": {
+        "slider-width": 17,
+        "stepper-size": 15,
+        "trough-border": 3,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 2,
+        "trough-under-steppers": true
+      }
+    },
+    {
+      "type": "GtkVScrollbar",
+      "allocation": [
+        0,
+        27,
+        23,
+        61
+      ],
+      "natural_request": [
+        23,
+        61
+      ],
+      "properties": {
+        "slider-width": 17,
+        "stepper-size": 15,
+        "trough-border": 3,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 2,
+        "trough-under-steppers": true
+      }
+    }
+  ],
+  "geometry_recipe_applied": true,
+  "proposal": {
+    "geometry": {
+      "bar_px": 23,
+      "shadow_px": 3,
+      "arrow_px": 15,
+      "thumb_cross_px": 17,
+      "arrow_thumb_gap_px": 2
+    }
+  }
+}

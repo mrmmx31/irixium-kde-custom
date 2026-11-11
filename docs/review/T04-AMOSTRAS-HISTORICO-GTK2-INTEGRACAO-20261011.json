@@ -1,0 +1,78 @@
+{
+  "stage": "T04 GTK2 native sample text persistence integration",
+  "recorded_at": "2026-10-11T18:30:25.241799+00:00",
+  "authorization": {
+    "id": "T04",
+    "revision": 2,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "sources_sha256": {
+    "tools/theme-lab/preview_sample_journal.py": "dc035812a71604b3cc5d1ebec92ec9fec8ff02e87db320626d91219f36d9f2ae",
+    "tools/theme-lab/preview_text_history.py": "92003042efd981c729efd03972128554d5e1a7212780caf5fbc6e680d67f1fc6",
+    "tools/theme-lab/gtk2_sample_state.py": "11690deab7680f6116240aba4752385a924f43c68cd22d9e22e5399bfc2b3269",
+    "tools/theme-lab/gtk2_session.py": "1a47153bfd284a29190fc819900b0f0bb7aeb43f2227fd785b707adf594a9e98",
+    "tools/theme-lab/preview_gtk2.py": "508be26901eb6f0c8a727c2f6674b4a616f5b091229f07bd86edbfada8bc5c07",
+    "tools/theme-lab/tests/probe_gtk2_sample_restart.py": "69536496886a295fce23cfca53d4648713180de67b82bccc3a28ef277a48b35a",
+    "plasma/tools/abrir-laboratorio-temas.py": "3ab0dea62ee0dfe3a37cf7935d4ae13d894dd44e0d9b71a1f8432422269f8ce8",
+    "plasma/tests/test_lab_resume.py": "688f2f8008f6e3b5777311ce11a7b4772016f8e0db7cd6e58259df913ef4e477",
+    "tools/theme-lab/SAMPLE-HISTORY.md": "f6e637e014121a3efee1b46c91f91b0378c97a04f04f7bd23e0491cd5971f633"
+  },
+  "proofs": {
+    ".qa-t04-sample-native/native-r7/RESULTADO.json": {
+      "sha256": "9a164fbfa3a62d2c4a9b4b1fcff6d9643342a8053c560f7824c2fc10cf614e3f",
+      "status": "passed"
+    },
+    ".qa-theme-lab-spin-86lq0paw/RESULTADO.json": {
+      "sha256": "eebe7db18150a6af7754bc41d782fb41462f7b9135f6c267cc406916c8b24e62",
+      "status": "passed"
+    }
+  },
+  "tests": {
+    "journal": 11,
+    "text_history_regression": 3,
+    "resume": 18,
+    "gtk2_spin_integration": 4,
+    "shared_scene": 15
+  },
+  "native_controls": [
+    "entry",
+    "text",
+    "spin"
+  ],
+  "origins": [
+    "coupled",
+    "separate"
+  ],
+  "verified": [
+    "UTF8/selection/partial-spin restoration in distinct native processes",
+    "real X11 Ctrl+Z/Y/Shift+Z after recovery",
+    "checkpoint failure blocks native close and rebuild without text loss",
+    "rebuild keeps native text and histories",
+    "Motif controller Save/Load/project Undo/Redo and process restart",
+    "launcher exact validated sample-history transfer without events/locks"
+  ],
+  "limits": [
+    "250ms checkpoint can lose changes since last completed write under external kill/crash",
+    "Unicode states prepared through native widget API; keyboard proof concerns Undo/Redo",
+    "GTK2 PRIMARY can have only one selection owner",
+    "non-text runtime state and GTK3 consumer not covered",
+    "historical visual fidelity not assessed"
+  ],
+  "failures": [
+    "r1-r4 fixture attempted simultaneous PRIMARY selections; actual native owner loss observed and fixture changed to one active selection",
+    "r5 exposed real separate-window automatic entry focus selecting all; private GTK2 focus selection disabled, r6 and final r7 passed"
+  ],
+  "delivery": {
+    "status": "delivered",
+    "destination_pid": 2901877,
+    "source_pid": 2871342,
+    "display": ":61",
+    "preservation_proof": ".qa-t04-sample-native/delivery-preservation.json",
+    "source_preserved": true,
+    "theme_permission_consumed_and_canceled": true,
+    "prior_editor_histories_preserved": 64,
+    "source_had_no_sample_journals_to_import": true
+  },
+  "user_approval": false,
+  "goal_complete": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "item": "T10",
+  "title": "Caminho temporário padrão da execução direta",
+  "date": "2026-10-16",
+  "scope": "Quando --work-dir não é informado, guardar a sessão privada do Laboratório em $HOME/tempia; preservar --work-dir explícito e os diretórios isolados fornecidos pelo launcher.",
+  "result": "pass",
+  "change": {
+    "file": "tools/theme-lab/src/controller.c",
+    "behavior": "Valida HOME absoluto, cria ou valida ~/tempia como diretório privado do usuário, e cria theme-lab-* com mkdtemp nesse local. Execuções com --work-dir explícito não usam o fallback.",
+    "documentation": "tools/theme-lab/README.md descreve o local padrão e a precedência de --work-dir."
+  },
+  "verification": {
+    "build": "make -C tools/theme-lab TMPDIR=~/tempia build/theme-lab — passou com C99, -Wall -Wextra -Werror.",
+    "xephyr_smoke": "No Xephyr :68, abri a GUI com HOME isolado em ~/tempia/theme-lab-default-path-smoke/home, sem --work-dir. A aplicação permaneceu aberta e criou exatamente uma sessão em HOME/tempia/theme-lab-*/ com working.json, project-history.json, editor-journal.json, scene.json e preview-events. Encerrei somente o processo dessa prova e removi somente sua pasta isolada.",
+    "regression_suite": "make -C tools/theme-lab TMPDIR=~/tempia check — passou: 1007 verificações do modelo, testes IPC/busca, 39 backend, 15 cena, 4 receitas Qt5 e 21 receitas Qt6.",
+    "diff_check": "git diff --check nos arquivos alterados — passou.",
+    "existing_sessions": "Xephyr :68 foi reutilizado e permaneceu aberto; nenhum outro Xephyr ou MAME foi fechado ou reiniciado."
+  },
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "fb02f19e7356de1637a67b26453c314bfe69b74695a6d7470553387a88bd5d5c",
+    "tools/theme-lab/build/theme-lab": "7d6c2cc7d1ccc6244459f95ab4d17b24a107df1829aeba955d36960adccf8a7b",
+    "tools/theme-lab/README.md": "3bab57d12cacfdab74dc8aceb7438e86f34ea05a489b2503d32bab584c22beb2"
+  },
+  "limits": [
+    "Esta prova cobre somente o fallback da pasta de sessão quando --work-dir está ausente; não aprova a release nem revalida a fidelidade visual.",
+    "A validação de perda do Display continua aguardando um ambiente de teste que não dependa do /tmp cheio.",
+    "A revisão visual e a revisão manual de T08/T10 continuam pendentes."
+  ]
+}

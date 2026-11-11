@@ -1,0 +1,182 @@
+{
+  "at": "2026-10-12T01:49:33.531171+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 toggle private foundation, DomainOS palette, standalone origin",
+  "native_session": 96966,
+  "native_exit_code": 0,
+  "native_result": {
+    "status": "passed_toggle_foundation",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "captures": [
+      {
+        "label": "normal",
+        "selected": false,
+        "native_flags": 128,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/normal.png"
+      },
+      {
+        "label": "hover",
+        "selected": false,
+        "native_flags": 130,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/hover.png"
+      },
+      {
+        "label": "pressed",
+        "selected": false,
+        "native_flags": 131,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/pressed.png"
+      },
+      {
+        "label": "selected-hover",
+        "selected": true,
+        "native_flags": 2178,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/selected-hover.png"
+      },
+      {
+        "label": "selected",
+        "selected": true,
+        "native_flags": 2176,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/selected.png"
+      },
+      {
+        "label": "selected-pressed",
+        "selected": true,
+        "native_flags": 2179,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/selected-pressed.png"
+      },
+      {
+        "label": "released-unselected",
+        "selected": false,
+        "native_flags": 130,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/released-unselected.png"
+      },
+      {
+        "label": "disabled-selected",
+        "selected": true,
+        "native_flags": 2184,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/disabled-selected.png"
+      },
+      {
+        "label": "disabled-unselected",
+        "selected": false,
+        "native_flags": 136,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/disabled-unselected.png"
+      },
+      {
+        "label": "backdrop-unselected",
+        "selected": false,
+        "native_flags": 192,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/backdrop-unselected.png"
+      },
+      {
+        "label": "backdrop-selected",
+        "selected": true,
+        "native_flags": 2240,
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/domainos-test/backdrop-selected.png"
+      }
+    ],
+    "physical_clicks": 2,
+    "toggle_changes": [
+      true,
+      false,
+      true,
+      false,
+      true
+    ],
+    "source_palette": {
+      "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+      "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+      "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+      "gtkconfig_policy_version": "6.3.4",
+      "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+      "kf_colorscheme_version": "6.13.0",
+      "kind": "native_kcolorscheme_selected_file",
+      "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+      "path": "/home/domainos-test/.config/kdeglobals",
+      "qt_version": "6.8.2",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "titlebar": "Header active/inactive",
+      "tooltip": "Active Tooltip in every state",
+      "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+      "helper": {
+        "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+        "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+      },
+      "helper_source": {
+        "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+        "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+      },
+      "snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd",
+      "role_fallbacks": {},
+      "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+    },
+    "selected_disabled_retained": true,
+    "disabled_click_ignored": true,
+    "prospective_selected_press": true,
+    "public_support_announced": false,
+    "historical_fidelity_claimed": false
+  },
+  "captures": 11,
+  "edge_pixels": 9944,
+  "edge_differences": 0,
+  "pure_tests_passed": 10,
+  "palette_origin_label_limit": "Shared helper reports child GTK3 recipe scope; actual fixture uses GTK4 ToggleButton and verified private namespace. Label is not family proof.",
+  "native_api_source": "https://raw.githubusercontent.com/GNOME/gtk/4.18.6/gtk/gtktogglebutton.c",
+  "relief_contract": "Proposed GTK2-compatible checked XOR pointer press; not historic SR10.4 toggle certification",
+  "new_color_definition_file_created": false,
+  "colors": "Existing push.css role aliases, generated current-role slices",
+  "public_support_announced": false,
+  "personal_instance_changed": false,
+  "delivered_push_preserved": true,
+  "estimated_toggle_unit_progress_percent": 20,
+  "percentage_basis": "Contract/CSS foundation plus first native case; other palettes, session/controller and delivery pending",
+  "remaining": [
+    "Four palette verification",
+    "Coupled/separate selection ownership and events",
+    "Session reload/rollback and layout gestures",
+    "Controller integration/snippet and delivery"
+  ],
+  "sha256": {
+    "tools/theme-lab/gtk4_toggles.py": "dba54830ea76002f9c8b6d980b0b58f76387460527bfa7fbe1090b166e895345",
+    "tools/theme-lab/tests/test_gtk4_toggles.py": "e9bbb24a0b451a89867f8c31d8d0fdff168dedee569d83e83dd85aca894e3d90",
+    "tools/theme-lab/tests/probe_gtk4_toggle.py": "bbe7055793f4095aa12e11f891cf61001c369a3d9baaab94a654fa96fe6042aa",
+    "tools/theme-lab/tests/test_gtk4_worker_native.py": "f14799e9e91abced06b24cf9d176127f7b68a6cb310fee003953ce0f9a1eda38",
+    "docs/review/T04-GTK4-TOGGLE-CONTRATO.md": "1481a6c4a0a8390017940e3afcc98312300106e2899776796b5714ccfc6d4aeb",
+    ".qa-t04-anchor-foundation/gtk4-toggle-foundation-pure.log": "e3183e268cb6a798cd194124d248febdaf7a43b4a136c8d5b9099e9c482d2baa",
+    ".qa-t04-anchor-foundation/gtk4-toggle-foundation-native-r1.log": "3e7bcfe30218e2e1beacf75f1727cf9f7764e8344a9e56f6a15ea824ed14b4eb",
+    ".qa-gtk4-worker-sd55jlza/home/WORKER-RESULTADO.json": "1412ae13957a25cf9a9d9cc3b81faa02f7708dd8a62996eff32b9a72a9c1cf92"
+  }
+}

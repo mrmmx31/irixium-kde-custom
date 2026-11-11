@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Own operations popup with real Qt close transitions and task model doubles.
 
-Qt input/Popup.Window lifecycle is real, offscreen and isolated. Window jobs
+Qt input and chooser/Plasma Dialog lifecycle are real, offscreen and isolated. Window jobs
 are deliberately recorded by the existing fixture, not native compositor jobs.
 """
 import json
@@ -56,7 +56,7 @@ DomainOSIconboxPreview {
    opened:iconbox.operationsOpened,pending:iconbox.pendingOperations.map(row=>({key:row.key,pid:row.pid})),
    waiting:iconbox.waitingOperationsPopups.length,generation:iconbox.operationsGeneration,
    menuSelection:iconbox.menuSelection.map(row=>({key:row.key,pid:row.pid})),
-   error:iconbox.lastError,requests:requests,layouts:layouts,
+   error:iconbox.lastError,requests:requests,layouts:layouts,restores:restores,
    observations:observations})
  }
  Connections {
@@ -65,7 +65,7 @@ DomainOSIconboxPreview {
    fixture.observations=fixture.observations.concat([{event:"operations-about-to-show",
        group:fixture.iconbox.groupPopupVisible,waiting:fixture.iconbox.waitingOperationsPopups.length}])
   }
-  function onOpened() { fixture.observations=fixture.observations.concat([{event:"operations-opened"}]) }
+  function onOpenedPanel() { fixture.observations=fixture.observations.concat([{event:"operations-opened"}]) }
  }
 }
 '''
@@ -142,7 +142,16 @@ class OperationsHandoff(unittest.TestCase):
         self.click('domainosLiveTask_group:terminal')
         self.click('domainosGroupMember_window:1')
         self.click('domainosGroupMember_window:3')
+        button=self.item('domainosGroupOrganize')
+        origin=button.mapToGlobal(QPointF(0,0))
+        extent=button.mapToGlobal(QPointF(button.width(),button.height()))
         self.click('domainosGroupOrganize')
+        menu=self.window.property('iconbox').property('batchContextMenu')
+        rect=menu.property('invocationRect')
+        self.assertAlmostEqual(rect.x(),origin.x())
+        self.assertAlmostEqual(rect.y(),origin.y())
+        self.assertAlmostEqual(rect.width(),extent.x()-origin.x())
+        self.assertAlmostEqual(rect.height(),extent.y()-origin.y())
         state=self.wait_for_operations()
         self.assertEqual(state['selected'],['window:1','window:3'])
         self.assertEqual(state['opened'],1)
@@ -154,6 +163,20 @@ class OperationsHandoff(unittest.TestCase):
         shown=next(row for row in state['observations'] if row['event']=='operations-about-to-show')
         self.assertFalse(shown['group'])
         self.assertEqual(shown['waiting'],0)
+
+    def test_silent_zero_geometry_rejection_is_reported(self):
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.click('domainosGroupMember_window:3')
+        # Reproduce the native popup's one silent rejection: its content has
+        # zero height, so prepareForAnchor() returns false without a signal.
+        self.evaluate('fixture.iconbox.batchContextMenu.mainItem.height=0')
+        self.click('domainosGroupOrganize')
+        state=self.state()
+        self.assertFalse(state['operations'])
+        self.assertEqual(state['opened'],0)
+        self.assertFalse(state['pending'])
+        self.assertIn('dimensionar',state['error'].lower())
 
     def test_ctrl_release_after_pointer_selection_opens_operations_once(self):
         self.evaluate('fixture.controller.groupingMode=0')
@@ -175,6 +198,20 @@ class OperationsHandoff(unittest.TestCase):
         self.settle()
         self.assertFalse(self.state()['operations'])
         self.assertEqual(self.state()['opened'],1)
+
+    def test_native_fixed_size_preflight_disables_only_geometry_rows(self):
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.click('domainosGroupMember_window:3')
+        self.click('domainosGroupOrganize')
+        self.wait_for_operations()
+        self.evaluate('fixture.iconbox.selectionPreflight={state:"reported",geometryAvailable:false,'
+            'signature:fixture.iconbox.selectionSignature(fixture.iconbox.menuSelection)}')
+        self.settle()
+        for name in ('domainosBatchColumns','domainosBatchRows','domainosBatchMosaic'):
+            self.assertFalse(self.item(name).property('enabled'),name)
+        for name in ('domainosBatchRestore','domainosBatchMinimize'):
+            self.assertTrue(self.item(name).property('enabled'),name)
 
     def test_ctrl_and_shift_wait_for_last_release_and_open_only_once(self):
         self.evaluate('fixture.controller.groupingMode=0')
@@ -212,6 +249,99 @@ class OperationsHandoff(unittest.TestCase):
         self.assertEqual(after['selected'],before['selected'])
         self.assertFalse(after['requests'])
         self.assertFalse(after['layouts'])
+
+    def test_clear_selection_footer_keeps_picker_open_and_allows_new_selection(self):
+        self.click('domainosLiveTask_group:terminal')
+        footer=self.item('domainosGroupFooter')
+        self.assertLessEqual(footer.x()+footer.width(),footer.parentItem().width())
+        self.click('domainosGroupMember_window:1')
+        self.click('domainosGroupMember_window:3')
+        clear=self.item('domainosGroupClearSelection')
+        self.assertTrue(clear.property('enabled'))
+        self.click('domainosGroupClearSelection')
+        cleared=self.state()
+        self.assertTrue(cleared['group'])
+        self.assertFalse(cleared['selected'])
+        self.assertFalse(cleared['operations'])
+        self.assertFalse(cleared['requests'])
+        self.assertFalse(cleared['layouts'])
+        self.assertFalse(self.item('domainosGroupMember_window:1').property('checked'))
+        self.assertFalse(self.item('domainosGroupMember_window:3').property('checked'))
+        self.assertFalse(self.item('domainosGroupClearSelection').property('enabled'))
+
+        self.click('domainosGroupMember_window:2')
+        self.assertEqual(self.state()['selected'],['window:2'])
+        self.click('domainosGroupContinue')
+        continued=self.state()
+        self.assertFalse(continued['group'])
+        self.assertEqual(continued['selected'],['window:2'])
+        self.assertFalse(continued['operations'])
+        self.assertFalse(continued['requests'])
+        self.assertFalse(continued['layouts'])
+
+    def test_selector_explains_compatibility_while_each_window_is_checked(self):
+        self.click('domainosLiveTask_group:terminal')
+        summary=self.item('domainosGroupCompatibility')
+        self.assertIn('Nenhuma janela',summary.property('text'))
+        self.click('domainosGroupMember_window:1')
+        self.assertIn('1 janela selecionada',summary.property('text'))
+        self.click('domainosGroupMember_window:3')
+        self.settle(120)
+        self.assertIn('2 janelas selecionadas',summary.property('text'))
+        self.assertIn('Window 3 está maximizada verticalmente',summary.property('text'))
+        self.assertIn('Limite nativo observado',summary.property('text'))
+        self.evaluate('fixture.mutate(3,"resizable",false)')
+        self.settle(30)
+        summary=self.item('domainosGroupCompatibility')
+        self.assertIn('não aceita redimensionamento',summary.property('text'))
+        self.assertIn('Window 3',summary.property('text'))
+
+    def test_selector_reports_related_dialog_before_operations_are_requested(self):
+        self.evaluate('fixture.preflightBlocked=true')
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.click('domainosGroupMember_window:3')
+        self.settle(120)
+        summary=self.item('domainosGroupCompatibility')
+        self.assertIn('relação de janela pai não resolvida',summary.property('text'))
+        state=self.state()
+        self.assertTrue(state['group'])
+        self.assertFalse(state['operations'])
+        self.assertFalse(state['layouts'])
+
+    def test_selector_does_not_remain_pending_after_preflight_transport_failure(self):
+        self.evaluate('fixture.preflightTransportFailure=true')
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.settle(120)
+        text=self.item('domainosGroupCompatibility').property('text')
+        self.assertNotIn('Verificando estado nativo',text)
+        self.assertIn('Falha simulada da ponte nativa',text)
+
+    def test_selector_explains_when_native_preflight_backend_is_unavailable(self):
+        self.evaluate('fixture.disableGeometry()')
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.settle(30)
+        text=self.item('domainosGroupCompatibility').property('text')
+        self.assertIn('pré-checagem nativa está indisponível',text)
+        self.assertIn('operações geométricas permanecem desabilitadas',text)
+
+    def test_clear_selection_footer_clears_accumulated_groups(self):
+        self.click('domainosLiveTask_group:terminal')
+        self.click('domainosGroupMember_window:1')
+        self.click('domainosGroupContinue')
+        self.click('domainosLiveTask_group:browser')
+        self.click('domainosGroupMember_window:4')
+        self.assertEqual(set(self.state()['selected']),{'window:1','window:4'})
+        self.click('domainosGroupClearSelection')
+        cleared=self.state()
+        self.assertTrue(cleared['group'])
+        self.assertFalse(cleared['selected'])
+        self.assertFalse(cleared['operations'])
+        self.assertFalse(cleared['requests'])
+        self.assertFalse(cleared['layouts'])
+        self.assertFalse(self.item('domainosGroupMember_window:4').property('checked'))
 
     def test_popup_escape_cancels_armed_modifier_without_reopening_operations(self):
         self.click('domainosLiveTask_group:terminal',Qt.KeyboardModifier.ControlModifier)
@@ -300,12 +430,27 @@ class OperationsHandoff(unittest.TestCase):
         self.assertEqual({row['key'] for row in state['layouts'][0]['windows']},{'window:1','window:3'})
         self.assertEqual(state['selected'],['window:1','window:3'])
 
+    def test_restore_row_routes_only_selected_identities_without_layout(self):
+        self.evaluate('fixture.showGroup(false);fixture.selectTwo();fixture.finish()')
+        self.wait_for_operations()
+        self.click('domainosBatchRestore')
+        state=self.state()
+        self.assertFalse(state['operations'])
+        self.assertEqual(state['opened'],1)
+        self.assertFalse(state['layouts'])
+        self.assertEqual(len(state['restores']),1)
+        self.assertEqual({row['key'] for row in state['restores'][0]['windows']},{'window:1','window:3'})
+        self.assertEqual(state['selected'],['window:1','window:3'])
+
     def test_keyboard_focus_navigation_dispatches_only_chosen_layout(self):
         self.evaluate('fixture.showGroup(false);fixture.selectTwo();fixture.finish()')
         self.wait_for_operations()
         menu=self.window.property('iconbox').property('batchContextMenu')
         owner=self.item('domainosBatchColumns').window()
         self.assertEqual(menu.property('currentIndex'),1)
+        owner.requestActivate()
+        self.settle()
+        self.assertIsNotNone(owner.activeFocusItem())
         QTest.keyClick(owner,Qt.Key.Key_Down)
         self.settle()
         self.assertEqual(menu.property('currentIndex'),3)

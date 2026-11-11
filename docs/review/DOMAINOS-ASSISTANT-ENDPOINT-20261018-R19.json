@@ -1,0 +1,49 @@
+{
+  "date_utc": "2026-10-18T16:09:27Z",
+  "revision": "R19",
+  "purpose": "Retire the prior assistant-clone endpoint and use an address distinct from other active VMs and the original.",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1925360,
+  "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "network_namespace": "net:[4026533751]",
+  "endpoint": {
+    "address": "10.104.246.10",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2 (private to this clone namespace)"
+  },
+  "retired_endpoints": [
+    "10.104.10.104 (R17)",
+    "10.104.18.104 (R18)"
+  ],
+  "uniqueness": {
+    "observed_on_assistant_clone_only": true,
+    "other_active_mame_namespaces_checked": [
+      800468,
+      897534,
+      912338,
+      986722
+    ],
+    "host_and_original_namespace_address_checked": true,
+    "host_route_or_address_conflict": false
+  },
+  "validation": {
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "ftp_root_login": true,
+    "ftp_transfer_mode": "active",
+    "ftp_client_source_binding": "192.168.240.1",
+    "ftp_listing_entries": 26,
+    "ftp_note": "Binding the client source to 192.168.240.1 lets the active data connection return through the private guest link; an unbound request to the alias cannot establish that data channel.",
+    "telnet_negotiation_hex": "fffd18",
+    "old_aliases_absent_from_clone_interface_and_listeners": true,
+    "listener_addresses": "10.104.246.10:21 and :23"
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "guest_network_configuration_modified": false,
+    "clone_disk_modified": false
+  },
+  "client_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+  "scope_note": "Only the clone network namespace alias/proxy endpoint was selected for assistant access. Guest services and the VM profile were not changed."
+}

@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-TOOLTIP-PALETTE-20261019-R131",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:38:00Z",
+  "status": "passed_scoped",
+  "scope": "Pixel-level color-role responsiveness of the separate native QtQuick5 ToolTip used for disabled controls, using the same disabled button and hint text under four KDE color schemes.",
+  "runtime": {
+    "display": "Owned Xephyr :82, host 1600x1000; isolated gallery 660x560",
+    "qt": "Qt 5.15.15",
+    "style": "org.kde.desktop",
+    "profiles": "One disposable HOME, kdeglobals, color-schemes directory and private D-Bus/network namespace per scheme",
+    "product_theme_or_user_config_changed": false
+  },
+  "method": {
+    "control": "Native disabled QtQuick Button, unchanged text, same position and 750 ms hint delay",
+    "capture": "QQuickWindow screenshot while the separate ToolTip was visible; pixel regions sampled inside the popup away from its text and rounded edge",
+    "stability_ms": 400,
+    "tooltip_rect": [126, 58, 250, 46],
+    "interpretation": "Values below are measured pixels from isolated previews, not constants added to source code."
+  },
+  "results": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "source": "colors/DomainOS-SR10.4.colors",
+      "source_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "background_mode_rgb": [120, 160, 213],
+      "foreground_cluster_rgb": [226, 235, 246],
+      "capture": "~/tempia/t07-qtquick5-palette-domainos-r131b-20261019/home/qtquick5-proof/disabled-button-tooltip.png",
+      "capture_sha256": "a7ca482104dea05df57ce12532e1500637c3301025a0142558b9d3441f338326"
+    },
+    {
+      "scheme": "BreezeLight",
+      "source": "/usr/share/color-schemes/BreezeLight.colors",
+      "source_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "background_mode_rgb": [247, 247, 247],
+      "foreground_cluster_rgb": [61, 63, 66],
+      "capture": "~/tempia/t07-qtquick5-palette-breezelight-r131-20261019/home/qtquick5-proof/disabled-button-tooltip.png",
+      "capture_sha256": "e85874d01d0cd3a6bee0f4645de2d562c4a872abc3441c48d1e6598ad8413682"
+    },
+    {
+      "scheme": "BreezeDark",
+      "source": "/usr/share/color-schemes/BreezeDark.colors",
+      "source_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "background_mode_rgb": [41, 44, 48],
+      "foreground_cluster_rgb": [226, 226, 227],
+      "capture": "~/tempia/t07-qtquick5-palette-breezedark-r131-20261019/home/qtquick5-proof/disabled-button-tooltip.png",
+      "capture_sha256": "fe511db7bb7591e5eaea476c44c96941fd6413adfa2a037eea05e45ea2704ef6"
+    },
+    {
+      "scheme": "Irixium",
+      "source": "~/.local/share/color-schemes/Irixium.colors (read-only source)",
+      "source_sha256": "3941115cb04949238cdfd249db20071bb2d41ce9b448a58b8f4b02f005c29769",
+      "background_mode_rgb": [193, 193, 193],
+      "foreground_cluster_rgb": [23, 23, 23],
+      "capture": "~/tempia/t07-qtquick5-palette-irixium-r131-20261019/home/qtquick5-proof/disabled-button-tooltip.png",
+      "capture_sha256": "e281981ab6443a85edf3418ec8e4fb683a7eaf715624923e8f261c14c651ebd5"
+    }
+  ],
+  "conclusion": "Popup fill and text pixels changed with the active scheme; the native style supplied contrasting light/dark text and background. No final colors were inserted into the QML, and the source scheme files were only read.",
+  "change_record": {
+    "product_source_changed_in_this_step": false,
+    "code_basis": "T07 QtQuick source from R130",
+    "scripts_recorded": true,
+    "script_count": 15,
+    "scripts_readback": "~/tempia/t07-r131-scripts-after.json"
+  },
+  "limitations": [
+    "One disabled button/layout was sampled; other controls and tooltip positions were not sampled across all four schemes.",
+    "QtQuick6 full matrix passed under DomainOS in R130, but this palette capture was QtQuick5 only.",
+    "Color change demonstrates scheme responsiveness, not full WCAG contrast or pixel fidelity to historical HP VUE."
+  ],
+  "artifacts": [
+    "~/tempia/t07-qtquick5-palette-domainos-r131b-20261019/",
+    "~/tempia/t07-qtquick5-palette-breezelight-r131-20261019/",
+    "~/tempia/t07-qtquick5-palette-breezedark-r131-20261019/",
+    "~/tempia/t07-qtquick5-palette-irixium-r131-20261019/"
+  ],
+  "next": "Repeat the focused popup color check in QtQuick6, then continue T07's remaining controls, layouts and manual review."
+}

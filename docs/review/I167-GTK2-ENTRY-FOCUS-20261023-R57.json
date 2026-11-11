@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-FOCUS-20261023-R57",
+  "date": "2026-10-23",
+  "item": "I167",
+  "family": "GTK2 Entry focus, caret and selection reference",
+  "authority": {
+    "board_item": "I167",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_status": "running"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "session": "assistant-owned clone from the approved backup",
+    "process_id_at_capture": 2745483,
+    "display": "1024x844 native pixels"
+  },
+  "evidence": {
+    "focused_file_name": {
+      "path": "~/tempia/i167-entry-live-r57/entry-focused.png",
+      "sha256": "b5e207752ec77df3e18873687d6791ee598fb508be5fd01d7bd1033ca45cb800",
+      "field": "File Name",
+      "text": "*"
+    },
+    "focus_transferred_to_search_directories": {
+      "path": "~/tempia/i167-entry-live-r57/entry-next-field-focused.png",
+      "sha256": "74e08830867226e7fe940e9adbae0a39001cb2aef652a42c79f253cfb3bebb47",
+      "field": "Search Directories",
+      "text": ".a"
+    },
+    "after_one_frame_shift_left_attempt": {
+      "path": "~/tempia/i167-entry-live-r57/entry-selection-native-r1.png",
+      "sha256": "b08e932a2b3538fac646bc68deedf0ebba95b0d7b3d6bdb105faa247daa8325a",
+      "interpretation": "No distinct selected-text highlight could be established; this image does not prove selection color."
+    },
+    "current_guest_screen": {
+      "path": "~/tempia/i167-entry-live-r57/domainos-sr104-verification-r1.png",
+      "sha256": "dc1491d92382dac5bdd4c51e3174542d629b31eedfa3d884fb992c8a37ca48c4"
+    }
+  },
+  "observations": {
+    "focus": {
+      "result": "proved by paired native captures",
+      "file_name_outline_bbox_xyxy": [176, 365, 514, 399],
+      "native_focus_color_sample": "#fe8282",
+      "pixels_in_focus_color_inside_field_roi": 1455,
+      "same_coordinate_unfocused_color": "#3297c7",
+      "pixels_replaced_at_same_coordinates_after_focus_transfer": 1455,
+      "measurement": "The field focus outline changes color when focus moves from File Name to Search Directories; other focus-dependent pixels are not included in the outline count."
+    },
+    "caret": {
+      "result": "visible in the focused entry field, separate from the mouse arrow in the capture",
+      "historical_shape_or_blink_period_measured": false
+    },
+    "selection": {
+      "result": "unverified",
+      "attempt": "A single-frame Shift+Cursor-Left input was sent to the focused field; no distinct selection highlight was visible in the resulting capture.",
+      "selected_text_or_color": null
+    }
+  },
+  "session_state_after_capture": {
+    "bridge_pending": false,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_button_port_read": 0,
+    "shift_port_read": 0,
+    "cursor_left_port_read": 0,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "changes": {
+    "product_source_changed": false,
+    "user_desktop_changed": false,
+    "guest_search_executed": false,
+    "guest_persistent_files_edited": false,
+    "transient_dialog_note": "The File Finder dialog remains open in the assistant-owned clone with the previously entered Search Directories value .a; no search was run."
+  },
+  "limits_and_next": [
+    "This proves a native focus outline and visible text caret only in the captured VUE dialog.",
+    "Selection color remains unknown; do not infer it from focus or caret pixels.",
+    "Next compare this focus outline against a GTK2 native Entry using a dynamic KDE focus role, then test the generated recipe across the authorized GTK2 states."
+  ]
+}

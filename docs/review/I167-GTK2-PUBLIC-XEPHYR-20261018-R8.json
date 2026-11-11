@@ -1,0 +1,41 @@
+{
+  "date_local": "2026-10-18",
+  "revision": "R8",
+  "item": "I167",
+  "family": "GTK2",
+  "display": ":91",
+  "scope": "Diagnostic-only interaction and pressed-pixel mapping of the public GTK2 preview; no product source or user theme changed.",
+  "environment": {
+    "xephyr_pid": 1594835,
+    "screen": "800x600, scale 1",
+    "public_test_sha256": "bd2951e2ca7a9f1ac988c4184489f4f707c1a88d5222d316a6996916ee2a509b",
+    "artifacts": "~/tempia/i167-public-hitbox-map-r13/ and ~/tempia/i167-public-stepper-r15/"
+  },
+  "observations": [
+    {
+      "run": "R7",
+      "result": "top vertical and both horizontal appeared pressed; bottom vertical did not; bottom click emitted no distinct event during its measured interval."
+    },
+    {
+      "run": "R8 sweep",
+      "result": "press pixels for bottom vertical were seen at tested y=182..193; the direct scripted click at prior y=188 was inconsistent across runs. This was exploratory input mapping, not an acceptance run."
+    },
+    {
+      "run": "R13 sweep",
+      "result": "some points in the left/up/down allocation produced GTK2 value and 53-pixel state changes. The sweep did not establish a stable public test; its right-direction ROI was later found to use stale vertical geometry and is excluded."
+    },
+    {
+      "run": "R14/R15",
+      "result": "corrected right scan at x=221..235 produced no value/state change; a normal run using mapped candidate points x=19/233 and y=20/191 still failed at left before reaching the other directions."
+    }
+  ],
+  "diagnosis": "Public-preview input/state capture is not reproducible with the current xdotool/Xephyr harness. Some misses come from target coordinates outside the active stepper region; other runs with mapped coordinates still miss. No product correction is justified yet. The direct GTK2 scene R6 passed its four-state check, but does not resolve the public route.",
+  "historical_reference": "Clone endpoint R16 provides FTP/Telnet; its MAME capture remains black except Apollo command strip, so live visual comparison to SR10.4 is not available.",
+  "next_action": "Leave I167 partial and skip to the next authorized section=work item while preserving the R6/R8 failures. Revisit the public route with event-correlated widget diagnostics when the test harness path is available.",
+  "preservation": {
+    "product_sources_changed": false,
+    "user_theme_changed": false,
+    "MAME_guest_graphics_input_sent": false,
+    "Xephyr_91_closed": false
+  }
+}

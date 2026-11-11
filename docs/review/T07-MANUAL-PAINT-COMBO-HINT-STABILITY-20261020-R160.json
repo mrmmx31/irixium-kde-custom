@@ -1,0 +1,63 @@
+{
+  "id": "T07-MOTIF-COMBO-HINT-STABILITY-20261020-R160",
+  "work_item": "T07",
+  "revision": 4,
+  "recorded_at_utc": "2026-10-20T21:33:56Z",
+  "status": "implemented-and-verified-user-review-pending",
+  "scope": "Keep the native Motif ComboBox tooltip outside the complete outer control after the native slide animation settles.",
+  "implementation": {
+    "files": [
+      "tools/theme-lab/src/view/ui_hints.c",
+      "tools/theme-lab/tests/ui_hints_native.c"
+    ],
+    "behavior": "For a primitive inside a Motif ComboBox, sample the mapped tooltip X window until its server-side geometry is stable, then move both Xt geometry and the X window below or above the entire outer ComboBox. Retry is bounded to twenty 50 ms intervals and stops on pointer leave or widget destruction. Other primitive tooltip placement keeps the existing path.",
+    "reason": "XmSlideContext continued the native tooltip animation after XtVaSetValues and restored the overlapping destination. The previous test read Xt's cached geometry; the regression now checks XTranslateCoordinates for the server window."
+  },
+  "validation": {
+    "c99_build": {
+      "command": "TMPDIR=~/tempia/t07-combo-hint-r160/tmp make -C tools/theme-lab BUILD=~/tempia/t07-combo-hint-r160/build ~/tempia/t07-combo-hint-r160/build/ui-hints-native",
+      "result": "passed",
+      "binary_sha256": "19132b8031669282b74724bfb83bfaeed1fe3302c3370780c3a9eae5d221542d"
+    },
+    "native_xvfb": {
+      "command": "TMPDIR=~/tempia/t07-combo-hint-r160/tmp LC_ALL=C.UTF-8 xvfb-run -a ~/tempia/t07-combo-hint-r160/build/ui-hints-native",
+      "result": "passed",
+      "combo_server_rect": [130, 548, 436, 30],
+      "combo_outer_rect": [50, 512, 180, 35],
+      "clearance_px": 1,
+      "scope": "Delayed show, server-side position, owner non-overlap, viewport bounds, stable display, pointer leave and cancelled early delay."
+    },
+    "full_hint_and_help_regressions": {
+      "command": "TMPDIR=~/tempia/t07-combo-hint-r160/tmp LC_ALL=C.UTF-8 make -C tools/theme-lab BUILD=~/tempia/t07-combo-hint-r160/build check-ui-hints check-ui-help",
+      "result": "passed",
+      "palettes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+      "limits": "Xvfb emitted missing-font and FontSet charset warnings; these runs do not prove glyph or rendered-pixel fidelity."
+    },
+    "live_xephyr": {
+      "display": "unix/:88",
+      "resolution_px": [1600, 900],
+      "window": "Theme Lab - Editor de pintura manual",
+      "work_dir": "~/tempia/t07-combo-hint-r160/work",
+      "matrix": "~/tempia/t07-combo-hint-r160/xephyr/combo-hint-live-matrix.json",
+      "matrix_sha256": "eb8a73e13a430fed20035da3b4cd914cc29170e7cc0bbf27508cac4eeb4c72f9",
+      "result": "All three Paint ComboBoxes remained mapped at seven successive 100 ms samples, had a one-pixel vertical clearance below the whole control, and dismissed when the pointer left.",
+      "controls": {
+        "platform": {"owner": [80, 11, 161, 35], "tooltip": [151, 47, 394, 30], "screenshot": "~/tempia/t07-combo-hint-r160/xephyr/hint-platform.png", "sha256": "08c3f083dc051046e251eb8dbbaadde333130fed01c46529e01dafce72273feb"},
+        "control": {"owner": [303, 11, 161, 35], "tooltip": [374, 47, 424, 30], "screenshot": "~/tempia/t07-combo-hint-r160/xephyr/hint-control.png", "sha256": "5d13a4ac4ee2f3a100e637e65e3b5215a368519f8c3fd45cea5c48ecee3ee69c"},
+        "state": {"owner": [514, 11, 161, 35], "tooltip": [585, 47, 412, 30], "screenshot": "~/tempia/t07-combo-hint-r160/xephyr/hint-state.png", "sha256": "4b140c59c1e8be86a4254268f6779b3f907dd6308f18c50b1a8bf672dab98bbd"}
+      }
+    },
+    "other_manual_paint_hints": {
+      "matrix": "~/tempia/i458-validation-20261019/xephyr/t07-manual-paint-hover-matrix.json",
+      "sha256": "c3f759fc814e695b0d9306cf4c3ff9743c7648848af4fea44098236b01fe382c",
+      "result": "Prior live Xephyr observation of 15/15 Paint tool/color/grid/zoom hints; all remained clear of their owners and the dimensions label at the recorded geometry. Width/height and action hints were also checked."
+    },
+    "private_application_build": {
+      "path": "~/tempia/t07-combo-hint-r160/build/theme-lab",
+      "sha256": "e52713e666b108521df20479e6416197231470e48372ff5b7ac4fd63b4a8261b",
+      "result": "Strict C99 application build passed; running in private Xephyr :88."
+    }
+  },
+  "impact": "No user project, theme profile, saved authorization, or existing Xephyr was modified. The new :88 session contains a disposable project and is left open for inspection. Human approval remains pending.",
+  "next": "Preserve the user's manual review as separate from these technical results; continue the next authorized open work item without altering I342, I374, I375, or I376."
+}

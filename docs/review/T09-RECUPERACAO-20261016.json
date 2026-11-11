@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-16T09:46:24Z",
+  "item": "T09",
+  "authority_revision": 4,
+  "phase": "journal durability and explicit preview recovery",
+  "changes": [
+    "After atomic journal rename, fsync the containing directory before clearing the dirty flag; a sync failure preserves the in-memory dirty state and reports failure.",
+    "Keep the saved detached-preview preference after an unexpected child crash. Explicit Apply regenerates and reopens the detached preview without automatic crash-loop retries.",
+    "Make the crash-recovery test wait for both coupled scene allocation and detached preview readiness, avoiding an observation race."
+  ],
+  "verification": {
+    "strict_product_build_and_sample_contract": "passed",
+    "editor_store": {
+      "status": "passed",
+      "checks": 22,
+      "covers_directory_fsync_failure_and_preservation": true
+    },
+    "editor_input_and_journal_in_xephyr": {
+      "status": "passed",
+      "covers": [
+        "multistep UTF-8 Undo/Redo and clipboard",
+        "independent history when switching controls",
+        "checkpoint, close/reopen, and recovered draft",
+        "native numeric editor behavior"
+      ]
+    },
+    "coupled_and_detached_preview_crash": {
+      "status": "passed",
+      "editor_remained_responsive": true,
+      "working_project_and_applied_scene_preserved": true,
+      "saved_detached_preview_preference_preserved": true,
+      "explicit_apply_reopened_detached_preview": true
+    },
+    "backend_timeout": {
+      "status": "passed",
+      "deadline_seconds": 30.54,
+      "editor_undo_redo_while_backend_stalled": true,
+      "project_and_scene_preserved": true,
+      "apply_recovered_gtk3_scene": true
+    },
+    "cancel_load_quit_and_owned_processes": {
+      "status": "passed",
+      "resistant_descendants_removed": true,
+      "independent_sentinel_preserved": true,
+      "project_and_scene_preserved": true,
+      "owned_processes_unit_test": "passed"
+    },
+    "display_loss_current_source": {
+      "status": "not_repeated",
+      "reason": "The disposable Xvfb cannot create its lock under the full /tmp filesystem; -nolock is restricted to root. Existing Xephyr :61 and :68 were preserved. Earlier scoped display-loss proof remains in T09-PERDA-DISPLAY-20261011.json, but is not claimed as a fresh run against this source hash."
+    }
+  },
+  "private_logs": "~/tempia/t09/durable-check/",
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "2d88faa745c9909ce97f0a7cecedeef1c10f410bbe5aeafab8ce600f30bba70a",
+    "tools/theme-lab/src/editor/store.c": "6a99fefe23c50ef9184ae4275cb6b0b565d67ba3d98590088b60437e5e1091dc",
+    "tools/theme-lab/tests/controller_preview_recovery.py": "b55ca683d6e817fe95dc07c6e3b9c7874583296ab40bebebd77b6f6a2507366d",
+    "tools/theme-lab/tests/test_controller_spin.py": "9660e5035c0b5db87e1e464e23ad8b49eefe9683696010fc52c4a7c34deccdf3",
+    "private_build/theme-lab": "51db2724b63465da03401c0bf9877f7051585cfb0f4bb8377319628bc1e4a81c",
+    "private_build/controller-spin-probe": "2e8608635419b42d06e7ac8b25fdefc46d5f989053db6aba5a8a4bec08227956"
+  },
+  "limits": [
+    "The journal checkpoint is scheduled every 100 ms while the application is open; this is not a guarantee for a crash or power loss before a successful checkpoint.",
+    "The tests use a disposable project and real GTK3/Motif controls; they do not certify historical visual fidelity or other toolkit adapters.",
+    "No personal profile, user project, VM, or approved Downloads backup was modified."
+  ],
+  "estimated_stage_progress_percent": 96,
+  "basis": "Current-source journal failure, real editor, preview crash/recovery, backend timeout, cancel/quit and owned-process checks passed. A fresh display-loss run was blocked by the full system /tmp; deployment and remaining authorized queue items continue separately. This is stage progress, not a visual-fidelity score."
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-HORIZONTAL-HINT-RUNTIME-20261019-R124",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T06:20:40Z",
+  "scope": "Validar no runtime o caminho horizontal GtkScrollbar → GtkTooltip nativo com o texto exato do R119; não repetir a matriz de hover GTK4 R114.",
+  "authorization": {
+    "section": "work",
+    "user_revision": 4,
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "runtime": {
+    "gtk": "4.18.6",
+    "binding": "GTK C ABI / ctypes",
+    "display": ":85",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "window_px": [
+      640,
+      420
+    ],
+    "backend": "X11",
+    "isolated_home_xdg_tmp": "~/tempia/t07-gtk4-hint-runtime-r123-20261019/horizontal/",
+    "theme_colors_measured": false,
+    "historical_fidelity_claimed": false
+  },
+  "hint": {
+    "source_api": "gtk_widget_set_tooltip_text",
+    "actual_popup": "GTK native GtkTooltip",
+    "expected_text": "Barra GTK4: arraste o cursor para mover o conteúdo. Valor efetivo 0–75, passo 1, página visível 25, avanço de página 10; sem unidade. GTK4 não desenha setas neste controle.",
+    "actual_label_text": "Barra GTK4: arraste o cursor para mover o conteúdo. Valor efetivo 0–75, passo 1, página visível 25, avanço de página 10; sem unidade. GTK4 não desenha setas neste controle.",
+    "exact_text": true,
+    "hidden_at_300ms": true,
+    "visible_by_600ms": true,
+    "stable_for_400ms": true,
+    "closed_after_pointer_leave": true
+  },
+  "geometry_px": {
+    "coordinates": "absolute within Xephyr :85 root; tooltip native placement",
+    "owner_scrollbar": [
+      72,
+      72,
+      280,
+      15
+    ],
+    "tooltip": [
+      11,
+      91,
+      402,
+      69
+    ],
+    "footer": [
+      64,
+      400,
+      360,
+      28
+    ],
+    "inside_screen": true,
+    "disjoint_from_scrollbar": true,
+    "disjoint_from_footer": true,
+    "tooltip_to_bar_gap_px": 4,
+    "tooltip_to_footer_gap_px": 240
+  },
+  "validation": {
+    "checks_passed": 11,
+    "checks_total": 11,
+    "failed_checks": 0,
+    "errors": [],
+    "result_sha256": "3c4c56443f8853134074421d0509a9983861256e1fd28dd58cad38f62e2c7087",
+    "result_path": "~/tempia/t07-gtk4-hint-runtime-r123-20261019/horizontal/RESULTADO-HORIZONTAL.json"
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk4_scrollbar_session.py": "eea5b2796198603e15fb40077eb10e7a5ead84bd30bfc97cf5528768c58721aa",
+    "tools/theme-lab/gtk4_push_api.py": "14db479357bc0324c11426eae3efe2d6e5fef701c566c931b06ee8d90eb8ce75",
+    "probe-horizontal.py": "0dd01d6a1a7b16cad5ccf48a0608d22b92962b0d7c3eae57469144bc78746cd1"
+  },
+  "attempts": [
+    {
+      "run": "R1",
+      "outcome": "excluded_fixture",
+      "diagnosis": "Artificial low placement y=280 made the 402×69 native tooltip overlap an artificial footer; wrong positioning for the real gallery geometry. Raw diagnostic retained at R1-ARTIFICIAL-LOW-LAYOUT.json."
+    },
+    {
+      "run": "R2",
+      "outcome": "excluded_harness_timing",
+      "diagnosis": "In the correct bar placement, the cursor could already rest on the bar when the test window was presented, so the tooltip timer began before the 300 ms baseline. The native popup and text were correct; the failed hidden-at-300 assertion was a probe startup-order issue."
+    },
+    {
+      "run": "R3",
+      "outcome": "passed",
+      "diagnosis": "Moved the pointer outside before presenting the test window, then began the measured hover. All eleven checks passed; no source/product change was required."
+    }
+  ],
+  "limits": [
+    "One GTK4 horizontal GtkScrollbar at one display size and one isolated session palette.",
+    "No color roles or historical Motif fidelity were measured; no human visual approval inferred.",
+    "This validates the native GTK tooltip path; the vertical custom-popover path is separately recorded in R123. T07 remains running."
+  ],
+  "conclusion": "O GtkTooltip nativo mostra exatamente a frase de R119, permanece estável, aparece após a janela de atraso medida, fica integralmente na tela sem cobrir a barra ou o rodapé e fecha ao sair. O defeito restante nas tentativas era o fixture/ordem temporal, não o comportamento GTK."
+}

@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-POST-ALTGR-USER-REPORT-20261025-R199",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "user_report": "After releasing with AltGr and leaving the host pointer outside MAME, activating the guest display still captures the mouse.",
+  "live_read_only_state": {
+    "mame_pid": 274368,
+    "capture_hook": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "pending_channel_command": null
+  },
+  "correlated_existing_evidence": {
+    "R161": "A left click delivered to a focused MAME window while released recaptures and is consumed; AltGr releases it.",
+    "R160_R188": "A bounded keyboard wake restores the guest display while capture remains released.",
+    "R173": "XTest motion, focus activation and an XTest click during black-screen wake did not reproduce capture; this is not a physical-device reproduction.",
+    "R196": "Window activation without click or pointer movement did not change the Lua hook; SDL grab was not directly queried."
+  },
+  "result": "The report is current, but this turn performed no physical wake event. The read-only hook state is released. Existing evidence narrows the known path to click-to-capture but does not prove that it caused the reported post-AltGr activation capture.",
+  "limits": [
+    "The precise physical wake gesture (mouse motion, click, or keyboard) remains unrecorded.",
+    "The Lua capture flag does not directly expose SDL's host pointer grab.",
+    "No hook, MAME setting, VM profile, guest file, or original VM was changed."
+  ],
+  "next": "Keep the hook unchanged. Correlate the actual post-AltGr wake gesture with host focus, pointer position, Lua capture/options and SDL grab before altering capture semantics; continue the independent authorized GTK2 work meanwhile.",
+  "status": "user_report_reaffirmed;_physical_trigger_and_sdl_grab_unresolved"
+}

@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "id": "R400",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Attempt to isolate horizontal scrollbar stepper cells in already-open GTK2/XChat windows without reading conversation content or changing the live session.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "display": ":1",
+    "mapped_windows_scanned": 7,
+    "method": "In-memory grayscale template correlation against the current 15x15 left/right stepper assets, restricted to window edges; inspect only candidate 15x15 tiles.",
+    "result": "No candidate was verified as a horizontal scrollbar arrow. Candidate tiles were flat trough/background regions, a vertical scrollbar arrow, or the visible host pointer. Their temporary 15x15 crops were removed immediately; no full-window image was retained."
+  },
+  "privacy_and_changes": {
+    "conversation_text_decoded_or_read": false,
+    "ocr_performed": false,
+    "full_window_capture_retained": false,
+    "exploratory_crops_retained": false,
+    "xchat_restarted_or_modified": false,
+    "window_focus_changed": false,
+    "host_pointer_moved": false,
+    "guest_input": false,
+    "theme_files_changed": false
+  },
+  "conclusion": "The heuristic crop search is inconclusive and must not be repeated as a visual measurement. It neither confirms nor contradicts the reported horizontal-arrow size. R394 remains the valid fresh GTK2 render comparison (all four normal 15x15 cells 0/225 against SR10.4); R396 remains the live VUE normal-state comparison.",
+  "next": "Only compare the real XChat scrollbar after a safe GTK2 reload/restart is coordinated, or use an isolated GTK2 test application with the selected RC. Preserve active chat sessions."
+}

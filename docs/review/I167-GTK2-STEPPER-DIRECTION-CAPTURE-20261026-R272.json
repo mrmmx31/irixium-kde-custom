@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R272",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "directional-capture-selection-implemented-unit-verified-native-run-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "GTK2 scrollbar native preview only"
+  },
+  "implementation": {
+    "source": "tools/theme-lab/preview_gtk2.py",
+    "sha256": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "new_cli_option": "--capture-stepper {left,right,up,down}",
+    "mapping": "Selects the center of the requested native GTK2 arrow cell; validates orientation and requires a pressed-state sample. Existing defaults remain horizontal-right and vertical-down.",
+    "other_toolkits_changed": false,
+    "theme_assets_changed": false,
+    "static_colors_added": false
+  },
+  "test": {
+    "file": "tools/theme-lab/tests/test_gtk2_stepper_capture.py",
+    "sha256": "e04446f1096305b95528193527422a3b33f0e238f27ade8ac73934e2ca0786a7",
+    "result": "4 tests passed: all four direction coordinates, preserved defaults, and orientation rejection.",
+    "additional_checks": "AST parse, preview --help option visibility, and git diff --check passed."
+  },
+  "vm_preflight": {
+    "snapshot": "~/tempia/ia-tema/evidence/I167/i167-current-vue-r269.png",
+    "snapshot_sha256": "cb7d6f7101fbd21d1796ff934bf5d88314436cd5b09bdc96f28078c5164175ad",
+    "visible_target": "VUE File Manager XmpIcon bsd4.2 is visible; capture=false; wait_button_up=false.",
+    "bounded_input": "One +1 relative Y counter step only; no buttons; completion done=true, steps=1, no error/cleanup error, profile remains frameskip=4, throttled=false.",
+    "capture": "~/tempia/ia-tema/evidence/I167/i167-pointer-nudge-r270.png",
+    "capture_sha256": "efd376d870d91401233287826ab855edafaf8eeba9b50e96441389b8893631f9",
+    "outcome": "The one-step image still did not show the pointer; no target hover was established, so no further mouse movement was sent."
+  },
+  "result": "GTK2 preview tooling can now request each of the four stepper directions safely. The direction mapping is unit-verified, but a native preview press/release run for all four directions has not been performed; no pixel match or historical-fidelity claim is made by this change.",
+  "next": "Run the four directional GTK2 press/release samples in an isolated preview while preserving any Xephyr session the user is actively using. Keep GTK2 active.",
+  "technical_coverage_estimate": {
+    "percent": 78,
+    "basis": "Capture tooling support and unit checks do not complete another GTK2 control/state; percentage remains unchanged.",
+    "not_a_visual_fidelity_score": true
+  }
+}

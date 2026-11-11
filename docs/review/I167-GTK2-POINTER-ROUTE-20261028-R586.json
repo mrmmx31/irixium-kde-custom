@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "R586",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Wake the canonical SR10.4 VM if idle, validate the authorized temporary capture route, attempt bounded pointer movement toward the GTK2 scrollbar arrow, and restore host and MAME state.",
+  "authority": {
+    "P10": {
+      "user_revision": 1,
+      "authorized": true,
+      "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"
+    },
+    "I167": {
+      "user_revision": 2,
+      "authorized": true,
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+    },
+    "direct_message": "User said the execution had already been authorized; the assistant treated it as permission for one bounded temporary-capture attempt. No user-owned Board fields were changed."
+  },
+  "instance": {
+    "mame_pid": 379349,
+    "service_main_pid": 379334,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_directory": "vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "control_status_before": "no pending request",
+    "stale_legacy_marker": {
+      "path": "vm/domainos-sr10.4-assistant/runtime/sessao/.mame-live-pending.json",
+      "submitted_utc": "2026-10-24T05:45:59.704253+00:00",
+      "correlated_reply": false,
+      "handling": "left untouched; legacy parent directory is mode 775 and rejected by the current controller"
+    }
+  },
+  "wake": {
+    "initial_framebuffer": "black",
+    "input": "one Shift pulse: frame 1 down, frame 3 released",
+    "result": "VUE visible at frame 65; Terminal, Trash Can and horizontal/vertical scrollbars present",
+    "held_after": false,
+    "capture": "~/tempia/domainos-theme-work/I167/vuer-awake-r586.png"
+  },
+  "pointer_route": {
+    "initial_capture": false,
+    "synthetic_blank_click": "did not activate the hook; no guest target action",
+    "existing_hook_capture_function": "temporarily set captured=true, mouse=true, mouse_device=mouse, wait_button_up=false",
+    "attempts": [
+      {
+        "method": "mame_live_mouse.move_counters",
+        "dx": 1,
+        "dy": 0,
+        "steps": 1,
+        "result": "no visible cursor displacement"
+      },
+      {
+        "method": "XTest relative host motion",
+        "dx": 20,
+        "dy": -20,
+        "result": "no visible cursor displacement"
+      },
+      {
+        "method": "mame_live_mouse.move_counters",
+        "dx": 3,
+        "dy": 3,
+        "steps": 1,
+        "result": "operation completed and cleaned its counters; no visible cursor displacement"
+      },
+      {
+        "method": "mame_live_mouse.move_counters",
+        "dx": 20,
+        "dy": 20,
+        "result": "rejected by helper bound before counter mutation"
+      }
+    ],
+    "arrow_pressed": false,
+    "left_or_right_arrow_tested": false
+  },
+  "cleanup": {
+    "hook_capture": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_focus_restored_to": {
+      "window": "XChat",
+      "pid": 327563
+    },
+    "host_pointer_restored": true,
+    "other_mame_pid_117186_touched": false
+  },
+  "captures_tempia": [
+    "~/tempia/domainos-theme-work/I167/vuer-now-r586.png",
+    "~/tempia/domainos-theme-work/I167/vuer-awake-r586.png",
+    "~/tempia/domainos-theme-work/I167/vuer-captured-r586.png",
+    "~/tempia/domainos-theme-work/I167/vuer-step1-r586.png",
+    "~/tempia/domainos-theme-work/I167/vuer-hostmove-r586.png",
+    "~/tempia/domainos-theme-work/I167/vuer-counter3-r586.png"
+  ],
+  "result": "Temporary capture can be enabled and fully released, but software counter/XTest movement did not visibly move the Apollo cursor. No scrollbar arrow was pressed, so the historical held-state comparison remains open.",
+  "next": "Find an already available authorized host input path that visibly moves the guest pointer; do not repeat counter or XTest routes without new evidence. Re-read Q505 in the active Board before any further input."
+}

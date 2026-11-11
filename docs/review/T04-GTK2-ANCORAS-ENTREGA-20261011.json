@@ -1,0 +1,56 @@
+{
+  "new_pid": 3040123,
+  "new_windows": [
+    "0x4a0022f"
+  ],
+  "source_pid": 2925274,
+  "source_alive": true,
+  "source_files_unchanged": {
+    "working.json": true,
+    "scene.json": true,
+    "editor-journal.json": true,
+    "project-history.json": true
+  },
+  "destination_exact": {
+    "working.json": false,
+    "scene.json": true,
+    "editor-journal.json": true,
+    "project-history.json": true
+  },
+  "editor_history_preserved": true,
+  "working_semantically_equal": true,
+  "histories_preserved_count": 254,
+  "drafts_preserved_count": 0,
+  "unsaved_widget_text_imported": false,
+  "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-8f58554cc58847c891a3cc4654e37cab/MANIFESTO.json",
+  "at": "2026-10-11T20:08:58.953974+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "delivery_session": 13822,
+  "delivery_exit_code": 0,
+  "first_attempt": {
+    "session": 45038,
+    "exit_code": 2,
+    "report": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-ce577c73d9c3470f96851fb078760c4c/RESULTADO.json",
+    "failure": "Eight recursive xdotool observation timeouts; own candidate stopped, origin alive."
+  },
+  "observer_fix": {
+    "test": "plasma/tests/test_lab_window_observer.py",
+    "tests_passed": 4,
+    "live_source_observed": "0x460022f",
+    "new_window_observed": "0x4a0022f",
+    "deadline_unchanged": true,
+    "identity_checks": [
+      "EWMH managed client",
+      "exact PID",
+      "ThemeLab class",
+      "IsViewable"
+    ]
+  },
+  "screenshot": "ImageMagick observation timed out8s, no visual screenshot proof claimed",
+  "limits": [
+    "Delivery mapping/preservation proved, not human evaluation or historical fidelity.",
+    "Forced pressed state experiment remains outside shipped runtime.",
+    "No unsaved widget text presumed imported."
+  ]
+}

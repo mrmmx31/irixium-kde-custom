@@ -120,7 +120,14 @@ static void tick() {
             {"tooltip_geometry",native ? QJsonArray{native->x(),native->y(),native->width(),native->height()} : QJsonArray{}}});
         checks[QString("owner_transition_%1_never_has_two_owners").arg(transitions)]=int(first["visible"].toBool())+int(second["visible"].toBool())==1;
         checks[QString("owner_transition_%1_has_one_visible_owner").arg(transitions)]=current["visible"].toBool() && !other["visible"].toBool() && !other["bodyVisible"].toBool();
-        checks[QString("owner_transition_%1_previous_content_unloaded").arg(transitions)]=!other["contentsLoaded"].toBool();
+        bool oldProvidersReleased=true;
+        for(const auto value:other["providers"].toArray()){
+            const auto provider=value.toObject();
+            oldProvidersReleased &= !provider["active"].toBool() && !provider["loaded"].toBool();
+        }
+        checks[QString("owner_transition_%1_previous_frame_retained_but_provider_released").arg(transitions)]=
+            other["contentsLoaded"].toBool() && !other["visible"].toBool()
+            && !other["providersLoaded"].toBool() && oldProvidersReleased;
         if(++transitions<12)showCell(transitions%2,transitions%3==0);
         else {transitions=0;showCell(0,true);phase=5;}
     } else if(phase==5) {
@@ -129,7 +136,14 @@ static void tick() {
         if(++transitions<8)showCell(0,transitions%2==0);
         else {capture("RESTORED-TITLES.png");invoke("hide");phase=6;}
     } else {
-        checks["closing_tooltip_releases_all_cards"]=!first["visible"].toBool() && !first["contentsLoaded"].toBool() && !second["visible"].toBool();
+        checks["closing_tooltip_retains_cache_until_preview_mode_is_disabled"]=
+            !first["visible"].toBool() && first["contentsLoaded"].toBool()
+            && !first["providersLoaded"].toBool() && !second["visible"].toBool();
+        invoke("disablePreview");
+        const auto finalState=QJsonDocument::fromJson(invoke("state").toString().toUtf8()).object();
+        checks["disabling_preview_releases_retained_frames"]=
+            !finalState["first"].toObject()["contentsLoaded"].toBool()
+            && !finalState["second"].toObject()["contentsLoaded"].toBool();
         checks["bounded_native_scenario_completed"]=true;finish();return;
     }
     QTimer::singleShot(850,tick);

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-MENU-PALETTE-MATRIX-20261025-R210",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "preview": "GtkMenuBar plus an open GtkMenu; same File/Print/Exit labels; isolated Xvfb; no user desktop profile or color schema changed",
+    "current_palette_generation": {
+      "input": "read-only ~/.config/gtk-3.0/colors.css",
+      "input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "private_bundle_id": "2f317e44cd0e2b250070cd3fef60219d7d049f34c674cee959315aaa03c5da29",
+      "header_background": "#3297c7",
+      "header_foreground": "#ffffff",
+      "capture": "~/tempia/ia-tema/evidence/I167/r208/gtk-menu-generated.png",
+      "capture_sha256": "87bd62975c429f4d8bfb17e73ee5eb8ada6be54a27a8923d83d26f8a75d2a187",
+      "pixel_differences_from_R208_source_RC_preview": 0
+    },
+    "palette_matrix": {
+      "matrix": "~/tempia/ia-tema/evidence/I167/r208/menu-palette-matrix.json",
+      "source_rc_sha256": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+      "current_source_rc_sha256": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+      "schemes": [
+        {"name": "DomainOS", "header_background": "#3297c7", "header_foreground": "#ffffff", "menu_strip_pixels_matching_role": 7280, "popup_pixels_matching_role": 4029},
+        {"name": "BreezeLight", "header_background": "#dee0e2", "header_foreground": "#232629", "menu_strip_pixels_matching_role": 7280, "popup_pixels_matching_role": 4029},
+        {"name": "BreezeDark", "header_background": "#292c30", "header_foreground": "#fcfcfc", "menu_strip_pixels_matching_role": 7280, "popup_pixels_matching_role": 4029},
+        {"name": "YellowFixture", "header_background": "#e8d070", "header_foreground": "#151515", "menu_strip_pixels_matching_role": 7280, "popup_pixels_matching_role": 4029}
+      ],
+      "text_pixels_from_header_foreground": {"File": 7, "Print": 6, "Exit": 12},
+      "capture_hashes": {
+        "DomainOS": "466166c8f7862432778a4690eb5ccda08a3c71df874d0d6f24a795b6f7f36cd7",
+        "BreezeLight": "51fbdad164bd6a1b51e1f4c31d061700c0f8eb3c851300e91846afe73f596075",
+        "BreezeDark": "6007c47b64b5e67ebb81166f0d276ca7aa00737acf98b3148640fb79f7dd72fe",
+        "YellowFixture": "b4b7eb4907b4a6e17651f032c632ea06f590c67d4e1a86ee9c9451c92f8619af"
+      }
+    }
+  },
+  "comparison": {
+    "dynamic_role_result": "For this GTK2 menu family, both the menu strip and open popup rendered from KDE Header background; sampled label pixels matched the corresponding Header foreground in all four generated palette bundles.",
+    "historical_difference": "The VUE File menu remains peach (#e29c83), while the DomainOS KDE Header role is cyan (#3297c7). The four-scheme test verifies dynamic role use; it does not eliminate or authorize overriding that historical color difference.",
+    "reload_limit": "Fresh generation and rendering were verified, not a live KDE schema-switch event or GTK2 observer/reload cycle."
+  },
+  "no_changes": {
+    "product_source": false,
+    "user_profile": false,
+    "xchat": false,
+    "guest_files_or_configuration": false,
+    "mame_settings_or_profile": false,
+    "original_vm": false,
+    "other_board_sections": false
+  },
+  "next": "Keep the dynamic Header mapping; continue the authorized GTK2 review with a different SR10.4 control state. Revisit the menu's historical color mapping only if menu-specific VUE resources become available; never insert the peach RGB as a fixed color.",
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

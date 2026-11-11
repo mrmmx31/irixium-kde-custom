@@ -1,0 +1,41 @@
+{
+  "at": "2026-10-11T11:32:07.044597+00:00",
+  "item": "T07",
+  "status": "partial",
+  "native_result": {
+    "status": "passed",
+    "native_gallery": {
+      "status": "opened",
+      "toolkit": "GTK4 C ABI",
+      "version": "4.18.6",
+      "pid": 2292480,
+      "theme": "Default",
+      "font": "Sans 10",
+      "custom_css": false,
+      "display": ":245",
+      "hintCoverage": {
+        "controls": 53,
+        "utf8_resources_verified": true,
+        "internal": {
+          "scrollbars": 12,
+          "menu_rows": 15
+        },
+        "limits": "Current native child tree; later-created controls and hover not verified"
+      }
+    },
+    "scope": "real GTK4 logical-control tooltip resources, no hover/menu-row/paint proof"
+  },
+  "source_hashes": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "370c25924621d7d742cceaa49b29a99d3568d681e929f0beb2accb39dc906df8",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "8362390919a37ddcc3bb4c771e58646874ac027d857203bf68946a4c80044d4d"
+  },
+  "scope": "26 logical controls + current native child tree:12 scrollbars and15 menu rows. UTF8 getter resources only.",
+  "limits": [
+    "No hover/geometry/timing proof GTK4 yet",
+    "Late-created widgets not certified",
+    "Default palette resource proof is not colour translation or motif fidelity"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

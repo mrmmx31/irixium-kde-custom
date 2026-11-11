@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T01:21:57.235901+00:00",
+  "source_item": "T03",
+  "source_user_revision": 1,
+  "phase": "proposals_only",
+  "ids": [
+    {
+      "id": "I115",
+      "after": "T03",
+      "title": "T03: separar receitas da seta, botão da seta, trilho, cursor e encaixe"
+    },
+    {
+      "id": "I116",
+      "after": "I115",
+      "title": "T03: travar espessura e proporções ao editar o comprimento de cada peça"
+    },
+    {
+      "id": "I117",
+      "after": "I116",
+      "title": "T03: comparação nativa pareada de peça, medidas, escala e fonte com Motif"
+    },
+    {
+      "id": "I118",
+      "after": "I117",
+      "title": "T03: editar estado e relevo por peça preservando papéis de cores KDE"
+    },
+    {
+      "id": "I119",
+      "after": "I118",
+      "title": "T03: Undo/Redo do projeto, ponto salvo e reset recuperável de uma peça"
+    },
+    {
+      "id": "I120",
+      "after": "I119",
+      "title": "T03: investigar a fonte principal SR10.4/VUE2.01 após os ajustes das peças"
+    }
+  ],
+  "new_items_authorized": false,
+  "new_item_user_revision": 0,
+  "creation_actor": "assistant",
+  "implementation_started": false,
+  "planning_percent": 100,
+  "implementation_percent": 0,
+  "basis": "six scoped proposals recorded and explained; user chooses authorization before implementation",
+  "existing_gap": "TLRecipe geometry/relevo/font shared per family; Undo text is not Undo numeric project",
+  "document_sha256": "1f0c194c911f93deb5a9b3061d769afcc6b5b5925c3e856f01bdff2d526194b5"
+}

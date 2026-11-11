@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "item": "T04",
+  "user_revision": 9,
+  "authorized_definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+  "recorded_at": "2026-10-18",
+  "family": "GTK4",
+  "scope": "Private Theme Lab copy; native push preview, separate-preview preference, controller and project recovery.",
+  "build": {
+    "path": "tools/theme-lab/build/theme-lab",
+    "sha256": "e92b0cd220ec13f2fac4b22c89a618d2115b61e1c16ffbc143ff2841656437f8",
+    "same_as_staged_xephyr_build": true
+  },
+  "live_xephyr": {
+    "display": ":74",
+    "xephyr_pid": 1129599,
+    "controller_pid": 1642510,
+    "work_copy": "~/tempia/theme-lab-t04-handoff-20261018/work",
+    "source_work_copy_modified": false,
+    "capture_before_apply": "~/tempia/domainos-goal-resume-20261018/t04-current-xephyr-20261018.png",
+    "capture_after_unsupported_mixed_scene": "~/tempia/domainos-goal-resume-20261018/t04-apply-gtk4-separate-xephyr-20261018.png",
+    "capture_after_sha256": "acd1c528824bbbf2df3328c86b111cea0ce027b12125fc4b4b92ee577055b10a",
+    "observations": [
+      "GTK4 was selected while all catalog categories and controls remained visible.",
+      "The mixed scene was rejected as unavailable because this scrollbar route accepts only visible scroll_h/scroll_v controls; no substitute rendering appeared.",
+      "The separate-preview preference remained true in the private working.json after the unavailable result.",
+      "The UI status includes the backend JSON reason verbatim; this is technically explicit but not a polished explanation."
+    ]
+  },
+  "automated_validation": {
+    "controller_stability_suite": {
+      "receipt": "~/tempia/domainos-goal-resume-20261018/t04-controller-checks-isolated-xvfb.json",
+      "exit_code": 0,
+      "coverage": [
+        "multistep UTF-8 editing, native edit menu and shortcuts",
+        "draft/journal checkpoint, reopen and Undo/Redo",
+        "project history, store, session and controller spin regression"
+      ]
+    },
+    "gtk4_push_controller": {
+      "receipt": "~/tempia/domainos-goal-resume-20261018/t04-gtk4-push-private-xvfb.json",
+      "exit_code": 0,
+      "test": "tools/theme-lab/tests/controller_gtk4_push.py via tests/test_controller_spin.py --gtk4-push",
+      "coverage": [
+        "real GTK4 push in coupled and separate windows",
+        "Ctrl-drag positioning and requested dimensions",
+        "Apply, project Undo/Redo, Save/Load and restart persistence",
+        "closing the separate preview retains the coupled preview",
+        "preview pixels match the selected KDE role snapshot"
+      ]
+    }
+  },
+  "limits": [
+    "A full scene with unsupported GTK4 controls is intentionally unavailable; a successful push subset does not translate other controls.",
+    "Xvfb controller assertions and the current Xephyr capture do not prove historical visual fidelity against the SR10.4 guest.",
+    "T04 remains open for GTK2, Qt5/6, Kvantum, Plasma and remaining delivery work; human visual review is pending."
+  ],
+  "next": "Continue with the next authorized Fila Atual item I167; keep T04 waiting for remaining adapters and user visual review."
+}

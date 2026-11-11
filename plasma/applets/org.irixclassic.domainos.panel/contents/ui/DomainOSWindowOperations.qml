@@ -26,17 +26,20 @@ Item {
             const path=decodeURIComponent(Qt.resolvedUrl("../code/window_ops.py").toString().replace(/^file:\/\//,""))
             // PyQt6 must match the installed KDE libraries (the distribution Python).
             command="/usr/bin/python3 "+quote(path)+" "+quote(JSON.stringify(submitted))
-            pending[command]=token
+            pending[command]={token:token,action:request.action}
             registered=true
             executableSource.connectSource(command)
         } catch (error) {
-            if (!registered || pending[command]===token) {
+            const pendingEntry=pending[command]
+            if (!registered || (pendingEntry && pendingEntry.token===token)) {
                 if (registered) {delete pending[command];releaseSource(command)}
-                finish(token,{ok:false,token:token,action:request.action,
-                    outcome:registered?"unknown":"failed",
-                    code:registered?"window-connection-unconfirmed":"invalid-window-request",
-                    detail:registered?qsTr("Could not confirm the window request. Do not repeat it automatically.")
-                        :qsTr("Could not prepare the window request. No action was submitted.")})
+                const detail=registered?qsTr("Could not confirm the window request. Do not repeat it automatically.")
+                    :qsTr("Could not prepare the window request. No action was submitted.")
+                finish(token,request.action==="preflight"
+                    ? {ok:true,token:token,action:request.action,outcome:"preflight",available:false,
+                        geometryAvailable:false,detail:detail,windows:[]}
+                    : {ok:false,token:token,action:request.action,outcome:registered?"unknown":"failed",
+                        code:registered?"window-connection-unconfirmed":"invalid-window-request",detail:detail})
             }
         }
         // The report channel conveys immediate failure as well as asynchronous
@@ -53,8 +56,9 @@ Item {
         catch (error) {console.warn("DomainOS window source cleanup failed");return false}
     }
     function handleResult(source,data) {
-        const token=pending[source]
-        if (token===undefined) return false
+        const entry=pending[source]
+        if (!entry || entry.token===undefined) return false
+        const token=entry.token, action=entry.action
         delete pending[source]
         const disconnected=releaseSource(source)
         let report
@@ -66,12 +70,22 @@ Item {
             report={ok:false,token:token,outcome:"unknown",code:"invalid-window-result",
                 detail:qsTr("The window result could not be read. Do not repeat the action automatically.")}
         }
+        report=Object.assign({action:action},report)
+        if (action==="preflight" && !report.ok)
+            report={ok:true,token:token,action:action,outcome:"preflight",available:false,
+                geometryAvailable:false,detail:report.detail,windows:[],cleanupFailed:report.cleanupFailed}
         if (!disconnected) report=Object.assign({},report,{cleanupFailed:true})
         finish(token,report)
         return true
     }
     function requestLayout(payload) {
         return launch({action:"layout",mode:payload.mode,windows:payload.windows.map(identity),desktopId:payload.desktopId})
+    }
+    function requestRestore(payload) {
+        return launch({action:"restore",windows:payload.windows.map(identity)})
+    }
+    function requestPreflight(payload) {
+        return launch({action:"preflight",windows:payload.windows.map(identity)})
     }
     function requestTerminate(payload) {
         return launch({action:"terminate",window:identity(payload.window),selectedKeys:payload.selectedKeys.slice()})

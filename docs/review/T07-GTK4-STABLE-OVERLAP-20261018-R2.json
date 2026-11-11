@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "kind": "domainos_review_evidence",
+  "item": "T07",
+  "family": "GTK4",
+  "recorded_at": "2026-10-18",
+  "environment": {
+    "display": ":91",
+    "resolution": "1600x1200",
+    "session": "existing Xephyr, reused user session bus",
+    "gtk": "4.18.6"
+  },
+  "test_change": {
+    "file": "tools/theme-lab/tests/gtk4_hint_matrix_worker.py",
+    "sha256": "d2696c83faee3adc07deda896deb375dc49a8d867374dbef797ea153d0761104",
+    "change": "Check stable tooltip geometry against the hovered control after 400 ms; store overlap on failed cases and count it in the matrix result."
+  },
+  "result": {
+    "runner_exit_code": 0,
+    "matrix_status": "partial",
+    "mapped_targets": 31,
+    "passed_targets": 29,
+    "failed_targets": 2,
+    "stable_ms": 400,
+    "cold_delay_ms": 500,
+    "within_screen": true,
+    "never_covers_hover_point": true,
+    "closed_after_leave": true,
+    "stable_overlap_failures": [
+      {"page": 0, "control": "GtkScrollbar", "control_rect_px": [820,333,15,232], "tooltip_rect_px": [621,461,420,51]},
+      {"page": 1, "control": "GtkScrollbar", "control_rect_px": [828,102,15,486], "tooltip_rect_px": [629,357,420,51]}
+    ]
+  },
+  "artifacts": {
+    "stdout": "~/tempia/t07-gtk4-stable-overlap-20261018/probe.stdout",
+    "stdout_sha256": "8c78e559abe2043943249b7be4ee569c4e1c52b09a0d9b80f5dc562f63cae5d5",
+    "stderr": "~/tempia/t07-gtk4-stable-overlap-20261018/probe.stderr",
+    "stderr_sha256": "3b820ea74a659ef1ec198e078ae0e3fe86c3fc948e1ceafd2567f66c0e2e565d"
+  },
+  "product_changes": false,
+  "conclusion": "The corrected gate confirms that GTK4 tooltips overlap both vertical scrollbar controls after they settle. Other 29 targets pass the timed hover checks. No production or theme code was changed; GTK4 positioning remains unresolved."
+}

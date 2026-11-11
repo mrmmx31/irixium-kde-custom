@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-DYNAMIC-HEADER-20261025-R129",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "family": "GTK2 GtkEntry: dynamic face color and native selection",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "implementation": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "normal_face": "A 0.847 shade of the active KDE Header background role, recalculated from every exported palette.",
+    "selection": "GtkEntry reverse video uses the active KDE View text/background roles; other selected widgets retain KDE Selection roles.",
+    "static_final_colors_added": false
+  },
+  "verification": {
+    "focused_unit": {
+      "command": "PYTHONPATH=tests PYTHONDONTWRITEBYTECODE=1 python3 -m unittest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests.test_entry_selected_state_inverts_active_view_roles_only",
+      "result": "passed"
+    },
+    "runtime_suite": {
+      "command": "PYTHONPATH=tests PYTHONDONTWRITEBYTECODE=1 python3 -m unittest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+      "result": "5 tests passed"
+    },
+    "native_gtk2": {
+      "command": "TMPDIR=$HOME/tempia xvfb-run -a env T04_PRIVATE_ENTRY=1 GTK_MODULES= GDK_BACKEND=x11 I167_RUNTIME_SELECTION_OUTPUT=$HOME/tempia/i167-r129-runtime /usr/bin/python3 -B tools/theme-lab/tests/probe_gtk2_domainos_entry_runtime.py",
+      "result": "passed with GTK 2.24.33 on DomainOS, BreezeLight, and BreezeDark",
+      "per_scheme": [
+        {"scheme": "DomainOS", "entry_face_rgb": [42, 128, 169], "matching_face_pixels": 12422, "selection_bounds": [1, 2], "changed_pixels": 235},
+        {"scheme": "BreezeLight", "entry_face_rgb": [188, 190, 191], "matching_face_pixels": 12422, "selection_bounds": [1, 2], "changed_pixels": 235},
+        {"scheme": "BreezeDark", "entry_face_rgb": [35, 37, 41], "matching_face_pixels": 12422, "selection_bounds": [1, 2], "changed_pixels": 235}
+      ]
+    },
+    "runtime_result": {
+      "path": "~/tempia/i167-r129-runtime/RESULTADO.json",
+      "sha256": "05a3fcdee9f9c13ef753bb2f9b5feaf8110358f70a5da3d8dbd20b187d26c9b6"
+    },
+    "domainos_captures": {
+      "unselected": {"path": "~/tempia/i167-r129-runtime/DomainOS/runtime-capture/unselected.png", "sha256": "72532335d49516e7690142829a3197877528443bc16183029936b0a579430685"},
+      "selected": {"path": "~/tempia/i167-r129-runtime/DomainOS/runtime-capture/selected.png", "sha256": "c12659667b73a89ed31b0d6f1524d89f863108b259b61ad2c8eab0d8602bbd05"}
+    }
+  },
+  "live_guest_observation": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01, dedicated clone PID 3759847",
+    "before": "The native screen snapshot was black. A one-frame Shift pulse woke it; the field and existing text a*a became visible.",
+    "input_cleanup": "Shift and Ctrl+A were each released; MAME callbacks report done=true, held=false, error=nil. VM remains unpaused, frameskip=4, throttled=false.",
+    "selection_attempt": "A one-frame Ctrl+A pulse did not yield an auditable VUE selection highlight in the paired field crop. The small change is consistent with caret phase; do not count this as selection proof.",
+    "field_content_changed": false,
+    "guest_configuration_changed": false,
+    "captures": {
+      "awake": {"path": "~/tempia/i167-r129-vue-awake.png", "sha256": "06a406dbc66b044de1eae8b5f53488a3ba92331acd02ded5ac51d1104fc8a0ae"},
+      "after_ctrl_a": {"path": "~/tempia/i167-r129-vue-selected.png", "sha256": "9820a85b7298f7d8b0f907791a0cce3d5cbbce3ffb1141235450ef813823ddde"},
+      "field_crop_before": {"path": "~/tempia/i167-r129-vue-entry-before.png", "sha256": "6261a3405abcf156e4eda0b619526f8d2f0c6b034f0b5f96b64949776e3ed6f9"},
+      "field_crop_after": {"path": "~/tempia/i167-r129-vue-entry-selected.png", "sha256": "dd5b3830c46082248e3d1cec32fc15431f10f04c63805d221a27290de46860a6"},
+      "field_crop_diff": {"path": "~/tempia/i167-r129-vue-entry-diff.png", "sha256": "ff3128294fd9329a51dd8d46098c8705a04f4940325c2a9555358cff0fbe51b3"}
+    }
+  },
+  "limits": [
+    "The native run proves that GTK2 paints the role-derived face and selection at runtime; it does not establish the historical VUE color-selection algorithm or visually compare a selected VUE field in the SR10.4 guest.",
+    "Xvfb has no window manager; KWin/session integration and human visual acceptance remain open.",
+    "The 0.847 shade is an empirically measured role translation, not a static final RGB; validate its visual behavior against the live DomainOS field before closing this GtkEntry stage."
+  ],
+  "next": "Continue GTK2 GtkEntry only: determine a verified, non-destructive way to focus/select the File Name text in the live SR10.4 VUE Find Files window; compare the actual selected field without changing its contents, then close remaining GtkEntry focus/caret/selection gaps before returning to the GTK2 queue.",
+  "status": "running",
+  "user_acceptance": "pending",
+  "files_changed": true,
+  "guest_configuration_changed": false,
+  "xchat_changed": false,
+  "other_toolkit_family_touched": false
+}

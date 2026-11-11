@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R575",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Resume checkpoint for the authorized GTK2 work; preserve the current VM visual state and identify which next evidence can be collected safely.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "board_read": {
+    "I167": "open, user.authorized=true, revision=2, authorization hash matches",
+    "I500": "open instruction, user.authorized=false; do not integrate its MAME coexistence guard or use it as authorization for host graphical input",
+    "Q501": "open question, no saved user response"
+  },
+  "identity": {
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_active_mame_pid": 117186,
+    "other_mame_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "other_vm_contacted": false
+  },
+  "observations": {
+    "own_window": "MAME X11 window 0x3800008 is Iconic/unmapped; client geometry last queried as 1024x844 at host x=459,y=116",
+    "guest_snapshot": {
+      "source_before_copy": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/domainos-screen-r574-current.png",
+      "preserved_copy": "../records/ia-tema/evidence/I167/r575-current-vue-state-20261028.png",
+      "sha256": "62795f76245340e66d19b946c3d725b4ea3da9c4aa07b21d04215134ec00a88c",
+      "description": "Existing snapshot shows an awake SR10.4 VUE desktop, Terminal, and an empty Trash Can with normal horizontal and vertical scrollbars. It is not a new guest capture."
+    },
+    "control_channel": "Read-only status returned pending=null, no reply and no pending files.",
+    "input_sent": false,
+    "mame_restarted": false,
+    "profile_changed": false,
+    "theme_or_application_changed": false
+  },
+  "decision": "Do not restore/focus the MAME window or send graphical input while the second project-owned MAME is active and I500 remains unauthorized. This checkpoint does not infer that a black screen exists; the preserved snapshot is awake. Continue independent GTK2 work and avoid repeating R573's inconclusive direct-field hold.",
+  "prior_valid_evidence": [
+    "R394/R453/R496: normal horizontal GTK2 15x15 cells match VUE at 0/225 pixels per arrow.",
+    "R509: current GTK2 overlay mapping prevents the former 15x15-to-15x11 stretch.",
+    "R553: normal live VUE horizontal strip matches at 0/10840 pixels.",
+    "R434: authenticated XTest live down-arrow hold; R557: lower-arrow glyph match in three measured states.",
+    "R573: empty-Trash direct-field hold was inconclusive; do not repeat that route."
+  ],
+  "next": "Proceed with authorized GTK2 work that does not require host focus or guest input. For the pending live horizontal held-state comparison, first require the saved authorization for I500 and a safe, target-confirmed path; Q501 remains separate and unanswered. Keep the existing geometry unchanged unless a reproducible mismatch appears."
+}

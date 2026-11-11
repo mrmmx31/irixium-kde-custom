@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R678",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify that the current GTK2 generator emits and validates every catalog control when every scene category and control is visible.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "fixture": {
+    "family": "gtk2",
+    "scheme_source": "colors/DomainOS-SR10.4.colors",
+    "visible_categories_mask": 31,
+    "visible_controls_mask": 65535,
+    "catalog_count": 16
+  },
+  "result": {
+    "status": "passed",
+    "test_cases": 2,
+    "all_visible": {
+      "scene_controls": 16,
+      "translated_controls": 16,
+      "untranslated_controls": 0,
+      "validated_scene_controls": 16,
+      "validated_translated_controls": 16,
+      "generation_sources_current": true
+    },
+    "frame_only_native_case": "passed; retained as R677 evidence"
+  },
+  "verification": {
+    "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_generation_visibility.py",
+    "result": "passed; 2 tests",
+    "log": "records/ia-tema/I167/R678/test-gtk2-generation-visibility.log",
+    "log_sha256": "050271b0b7df4738e32b561b00a4c685f451fa90e35131377dcfa659c5969d76",
+    "git_diff_check": "passed; scoped files",
+    "initial_attempt": "A first run used a nonexistent palette filename; the test fixture was corrected to the existing DomainOS-SR10.4.colors before the passing run.",
+    "desktop_changed": false,
+    "user_profile_changed": false,
+    "applications_restarted": false,
+    "vm_input_sent": false
+  },
+  "sources": {
+    "tools/theme-lab/gtk2_generation.py": "fcec1db035b9c6dfdea59653d5ee6a01f1b1176125a47fbd3b1a50168374cb31",
+    "tools/theme-lab/backend.py": "8c8b2eb5c444cb36656bfcc83b6cacae4a62031709f77b9d875f80b0120740e2",
+    "tools/theme-lab/gtk2_session.py": "4f70140e39b23a728c6fb2dcae0d81640652452b614ee9706091ba0b1fe144c3",
+    "tools/theme-lab/tests/test_gtk2_generation_visibility.py": "004b01b5b5ac31f96c3e85b6ea080540a3ef17ce98e518a007215db2b1709ca2"
+  },
+  "limits": [
+    "The all-visible case validates generated receipts, not a real GTK2 rendering of all 16 controls.",
+    "R677's frame-only offscreen rendering is separate evidence and does not establish all-control rendering.",
+    "The public private-Xephyr preview, historical comparison after generator changes, and human review remain open."
+  ],
+  "next": "Continue independent GTK2 validation of the all-visible generated scene in an owned private display; wait for the user's Xephyr choice before opening the public preview.",
+  "technical_coverage_estimate": {
+    "percent": 95,
+    "basis": "Generation coverage is now checked for all 16 controls, but native all-control rendering after this change, public preview integration, historical interaction states, and human visual review remain open. This is not a visual fidelity score."
+  }
+}

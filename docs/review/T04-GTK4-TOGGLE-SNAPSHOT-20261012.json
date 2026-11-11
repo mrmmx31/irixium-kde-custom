@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-12T02:04:13.859118+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 private push/toggle snapshot generation, integrity and native prepared-session consumption",
+  "native_session": 99379,
+  "native_exit_code": 0,
+  "native_result": {
+    "status": "passed_toggle_session",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "toolkit": "GTK4",
+    "fixture_scheme": "DomainOS-SR10.4",
+    "verified_snapshots_consumed": true,
+    "physical_clicks": [
+      [
+        1,
+        1
+      ],
+      [
+        1
+      ]
+    ],
+    "independent_sessions": true,
+    "reload_preserved": true,
+    "hidden_selection_retained": true,
+    "rollback_preserved_live_scene": true,
+    "unsupported_rejected": true,
+    "inspection_did_not_emit_clicks": true,
+    "project_unchanged": true,
+    "source_palette": {
+      "disabled_backdrop": "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation",
+      "gtkconfig_policy_source_sha256": "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee",
+      "gtkconfig_policy_url": "https://github.com/KDE/kde-gtk-config/blob/v6.3.4/kded/configvalueprovider.cpp",
+      "gtkconfig_policy_version": "6.3.4",
+      "header_insensitive": "Inactive Header, or Inactive Window when no Header set",
+      "kf_colorscheme_version": "6.13.0",
+      "kind": "native_kcolorscheme_selected_file",
+      "open_mode": "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)",
+      "path": "/home/domainos-test/.config/kdeglobals",
+      "qt_version": "6.8.2",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "titlebar": "Header active/inactive",
+      "tooltip": "Active Tooltip in every state",
+      "unspecified_scheme_roles": "Native KColorScheme API defaults, without theme-local RGB fallback",
+      "helper": {
+        "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+        "sha256": "68c5349058f153b5a44909b9b116d3fd97ab92c484f61da763ad913ad65de24f"
+      },
+      "helper_source": {
+        "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+        "sha256": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465"
+      },
+      "snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd",
+      "role_fallbacks": {},
+      "selection_scope": "Child GTK3 recipe only; no host/profile scheme change"
+    },
+    "scope": "Two standalone sessions; not coupled host or controller",
+    "public_support_announced": false,
+    "historical_fidelity_claimed": false
+  },
+  "unit_session": 26241,
+  "unit_exit_code": 0,
+  "unit_tests_passed": 23,
+  "capability": "Explicit allow_toggle/private-toggle-session; public backend and default verifier remain push-only",
+  "integrity_cases": [
+    "Base CSS content corruption",
+    "Mismatched style identity",
+    "External base CSS reference",
+    "Non-boolean receipt capability",
+    "Mismatched translated controls",
+    "Initial snapshot binding to actual working bytes"
+  ],
+  "limits": [
+    "Manifest integrity is not a signed trust boundary.",
+    "No worker IPC or coupled host/controller proof for toggle yet.",
+    "Native session proof is functional DomainOS only; prior four-palette painter evidence remains separate.",
+    "No historical appearance or user approval inferred."
+  ],
+  "estimated_toggle_unit_progress_percent": 40,
+  "percentage_basis": "Foundation, session and prepared snapshots verified; worker, embedding, controller and handoff pending.",
+  "personal_instance_changed": false,
+  "new_final_color_constants": false,
+  "sha256": {
+    "tools/theme-lab/gtk4_generation.py": "87174d58e5e7a7ffda3c69244bcb62e258ddd67c4592ea4588ffc90f25dbe61a",
+    "tools/theme-lab/gtk4_toggle_session.py": "3f629e96971cd873d65cfe12db0fcfd135b85f4b66dc86fdcd50d362a5eeb3e1",
+    "tools/theme-lab/tests/test_gtk4_generation.py": "26607d89bdf496b5fa022d58e06af2a6289e3e506bd992b6ceaf03a3b2b3faa2",
+    "tools/theme-lab/tests/probe_gtk4_toggle_session.py": "ff2fc7f71175145491750f1c0a6037a92749389a12c9230bc3431a5843201f74",
+    "tools/theme-lab/tests/test_gtk4_worker_native.py": "bf7629de74863c764ffa7669a853d1fb95c61ab0c4c22668fc06372d87717a3d",
+    ".qa-t04-anchor-foundation/gtk4-toggle-snapshot-tests.log": "24a8e93058eb1ef68c97f6aa372fd0b43274aa06b02eda12ec1164ab4fd045ec",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-jrr_q4y9/home/WORKER-RESULTADO.json": "824ebb1ea1359917037ba5065ab1d264e99bc6fe7c23dd16c75162e86aeef9b0"
+  }
+}

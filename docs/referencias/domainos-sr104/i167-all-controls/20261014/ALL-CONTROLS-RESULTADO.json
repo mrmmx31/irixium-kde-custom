@@ -1,0 +1,807 @@
+{
+  "status": "passed",
+  "native_toolkit": "GTK2 2.24",
+  "controls": [
+    "push",
+    "toggle",
+    "check",
+    "radio",
+    "entry",
+    "combo",
+    "spin",
+    "text",
+    "scale_h",
+    "scale_v",
+    "scroll_h",
+    "scroll_v",
+    "arrow",
+    "progress",
+    "list",
+    "frame"
+  ],
+  "control_count": 16,
+  "schemes": [
+    "DomainOS",
+    "BreezeLight",
+    "BreezeDark",
+    "TestYellow"
+  ],
+  "origins": [
+    "separate",
+    "coupled"
+  ],
+  "native_scenes": [
+    {
+      "scheme": "DomainOS",
+      "origin": "separate",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "DomainOS/separate-all-controls.png"
+    },
+    {
+      "scheme": "DomainOS",
+      "origin": "coupled",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "DomainOS/coupled-all-controls.png"
+    },
+    {
+      "scheme": "BreezeLight",
+      "origin": "separate",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "BreezeLight/separate-all-controls.png"
+    },
+    {
+      "scheme": "BreezeLight",
+      "origin": "coupled",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "BreezeLight/coupled-all-controls.png"
+    },
+    {
+      "scheme": "BreezeDark",
+      "origin": "separate",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "BreezeDark/separate-all-controls.png"
+    },
+    {
+      "scheme": "BreezeDark",
+      "origin": "coupled",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "BreezeDark/coupled-all-controls.png"
+    },
+    {
+      "scheme": "TestYellow",
+      "origin": "separate",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "TestYellow/separate-all-controls.png"
+    },
+    {
+      "scheme": "TestYellow",
+      "origin": "coupled",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "entry",
+        "combo",
+        "spin",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "arrow",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "sizes": {
+        "push": [
+          74,
+          34
+        ],
+        "toggle": [
+          64,
+          34
+        ],
+        "check": [
+          69,
+          23
+        ],
+        "radio": [
+          77,
+          46
+        ],
+        "entry": [
+          162,
+          30
+        ],
+        "combo": [
+          93,
+          30
+        ],
+        "spin": [
+          58,
+          30
+        ],
+        "text": [
+          53,
+          71
+        ],
+        "scale_h": [
+          23,
+          19
+        ],
+        "scale_v": [
+          19,
+          23
+        ],
+        "scroll_h": [
+          49,
+          15
+        ],
+        "scroll_v": [
+          15,
+          49
+        ],
+        "arrow": [
+          19,
+          19
+        ],
+        "progress": [
+          150,
+          29
+        ],
+        "list": [
+          53,
+          71
+        ],
+        "frame": [
+          72,
+          30
+        ]
+      },
+      "all_mapped": true,
+      "within_viewport": true,
+      "window_size": [
+        1100,
+        1000
+      ],
+      "palette_inputs_current": true,
+      "capture": "TestYellow/coupled-all-controls.png"
+    }
+  ],
+  "scope": "All catalog Gtk2 control types generated and mounted together as real widgets in separate Window and XEmbed Plug scenes; every allocation is mapped, visible within the viewport and coordinate checked. Does not claim per-control visual fidelity, all states, controller-C integration, or historical approval.",
+  "model_unchanged": true,
+  "personal_display_input_sent": false,
+  "theme_installed": false
+}

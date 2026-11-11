@@ -1,0 +1,59 @@
+{
+  "item": "P10",
+  "revision": "R41",
+  "checked_at_utc": "2026-10-18T18:35:26Z",
+  "instance": "assistant-clone-20261018",
+  "change": "Moved only the assistant clone namespace FTP/Telnet alias from 10.253.104.10 to 10.253.104.20.",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_namespace": "net:[4026533751]",
+    "same_process_as_r39": true,
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "network": {
+    "new_endpoint": "10.253.104.20",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2, private to assistant clone namespace",
+    "retired_endpoint": "10.253.104.10",
+    "collision_check": "10.253.104.20 absent from host IPv4 addresses and all inspected active MAME network namespaces before assignment; I342 and source VM were not changed."
+  },
+  "validation": {
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "ftp_root_login": "passed; password entered without echo and not saved",
+    "ftp_mode": "active",
+    "ftp_source_binding": "192.168.240.1 bound before connect",
+    "ftp_listing_entries": 26,
+    "telnet_trigger": "CRLF",
+    "telnet_negotiation_hex": "fffd18",
+    "new_listeners_active": true,
+    "old_alias_absent": true,
+    "old_ftp_listener_absent": true,
+    "old_telnet_listener_absent": true
+  },
+  "diagnostics": {
+    "first_ftp_listing_attempt": "Authenticated but listing failed because source binding was set after connecting. Corrected before retry; active listing then returned 26 entries. No guest changes occurred."
+  },
+  "preservation": {
+    "guest_network_configuration_changed": false,
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "mame_restarted_or_tuned": false,
+    "mame_profile_preserved": true,
+    "mame_disk_written": false,
+    "graphical_input_sent": false
+  },
+  "updated_clone_files": [
+    "~/tempia/domainos-assistant-vm-20261018/MANIFEST.json",
+    "~/tempia/domainos-assistant-vm-20261018/ENDPOINTS-ACTUAL.json",
+    "~/tempia/domainos-assistant-vm-20261018/ENDPOINTS-ACTUAL.md",
+    "~/tempia/domainos-assistant-vm-20261018/README.md",
+    "~/tempia/domainos-assistant-vm-20261018/abrir-domainos-assistant-vm.sh",
+    "~/tempia/domainos-assistant-vm-20261018/sessao/start-endpoint-r41.sh",
+    "~/tempia/domainos-assistant-vm-20261018/sessao/endpoint-supervisor-r41.sh"
+  ],
+  "visual_limit": "The clone native VUE capture remains black; endpoint access does not resolve the recorded visual-capture limitation."
+}

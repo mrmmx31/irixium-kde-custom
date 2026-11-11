@@ -1,0 +1,42 @@
+{
+  "item": "P04",
+  "revision": "R38",
+  "recorded_at": "2026-10-28T20:25:47Z",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 3,
+    "definition_sha256": "da73bf29ee8b311998f00d4d99d9c3d644d776cc605a46478ad669a139581f41"
+  },
+  "scope": "Read-only audit of the newly clarified intermittent Iconbox click/double-click freeze/restart report; no personal window was activated and no process was restarted.",
+  "implementation": {
+    "changed": false,
+    "source_installed_hashes_match": true,
+    "files": {
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18"
+    }
+  },
+  "observations": {
+    "pointer_path": "A left click is frozen to the task record, then selectRecord validates its key/PID and updates selection/open-member-selector state. MouseArea.onDoubleClicked marks the gesture dispatched and emits an immutable current-record snapshot carrying the first click's active state; doubleClickRecord validates it and requests minimize or activate/restore.",
+    "existing_native_evidence": "R37 used the same three source/installed hashes and passed 44 isolated native checks, including active-window minimize and second-double-click restore/focus. This does not cover the reported intermittent production-session restart.",
+    "current_plasmashell": {
+      "pid": 752206,
+      "active": true,
+      "automatic_restarts": 0,
+      "journal_match_for_iconbox_click_or_qml_exception": false
+    },
+    "indexed_coredumps": "The only indexed plasmashell dumps are from 2026-10-24 and 2026-10-26, from separate bridge instances already reviewed in R607/R608; neither correlates to this new report."
+  },
+  "result": "The production code and R37-tested code are identical. The click route has no reproduction or newly evidenced crash in this audit. No code change is justified by the available evidence; this does not establish that the intermittent symptom is fixed.",
+  "remaining": [
+    "Correlate a future occurrence with an approximate timestamp and PID/journal/coredump from the lsi plasmashell instance.",
+    "If a repeatable synthetic sequence or a concrete stale-record race is found, correct only P04 and validate with test-owned clients."
+  ],
+  "limitations": [
+    "No exact time or application identity was supplied for the reported occurrence.",
+    "No click was injected into personal applications or the live panel during this read-only audit.",
+    "Existing Xephyr evidence is isolated native evidence, not proof of the production-only intermittent restart."
+  ]
+}

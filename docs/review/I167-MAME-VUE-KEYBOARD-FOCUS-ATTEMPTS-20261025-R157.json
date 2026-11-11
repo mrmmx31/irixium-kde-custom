@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-VUE-KEYBOARD-FOCUS-ATTEMPTS-20261025-R157",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "starting_view": "File Manager foreground; 28 files, 2 filtered; no icon selected.",
+    "input": "One-frame guest Ctrl+A using the MAME Apollo keyboard fields.",
+    "observed": "Help Viewer opened in front of the File Manager, showing About the File Manager; no icon selection occurred.",
+    "recovery_attempts": [
+      "One-frame guest Escape",
+      "One-frame guest Alt+F4",
+      "One-frame guest Ctrl+Q",
+      "One-frame guest Alt+F",
+      "One-frame guest Menu key",
+      "One-frame guest Alt+F3"
+    ],
+    "recovery_result": "Help Viewer remained open; no claim that any shortcut closed it. File Manager remains behind it."
+  },
+  "current_state": {
+    "mame_pid": 274368,
+    "paused": false,
+    "mouse_hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "keyboard_port_values": [0, 0, 0, 0],
+    "host_pointer": "x=200,y=950, outside MAME",
+    "guest_files_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r157.png",
+    "sha256": "0bb299ae1c8b2ca00c89dd7d990364420931d9f15ed6202536e49e819d5fcadb"
+  },
+  "conclusion": "The directly injected Ctrl+A has a visible application effect but did not select icons; attempted keyboard shortcuts did not close Help Viewer. All guest key fields were released. The cloned VM is left with Help Viewer open, the File Manager behind it, and no file selection or file change.",
+  "next": "Avoid further guessed shortcuts; inspect the VUE Help Viewer/File menu controls or obtain the user's exact activation sequence, then continue the authorized GTK2/XmpIcon comparison.",
+  "status": "keyboard_focus_route_unresolved_vm_key_state_released"
+}

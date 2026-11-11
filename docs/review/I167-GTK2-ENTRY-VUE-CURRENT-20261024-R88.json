@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-CURRENT-20261024-R88",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "assistant_clone": {
+    "pid": 2745483,
+    "emulator": "MAME 0.276",
+    "display_env": ":1",
+    "capture": {
+      "path": "~/tempia/i167-live-r97-assistant-clone.png",
+      "sha256": "d35695a68d39ede73a0904e9f05e863e9ecf3d9262963ba9d42d1abed27a17d6"
+    },
+    "profile": {"paused": false, "frameskip": 4, "throttled": false},
+    "active_channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "active_channel_status": "clear before capture",
+    "observation": "HP VUE remains visible; the Screen dialog is foremost and File Manager windows are behind it. No focused GtkEntry is visible.",
+    "comparison_with_r94": {
+      "dialog_crop_changed_pixels": 0,
+      "image_above_panel_changed_pixels": 0
+    },
+    "x_display": {
+      "clone_process_window": "none managed for PID 2745483",
+      "only_mame_window": {"display": ":1", "xid": "0x3200002", "pid": 3053638, "belongs_to_other_session": true},
+      "main_vm_display": "The user VM PID 912338 uses :0; the current process lacks X authorization for that display."
+    },
+    "guest_input_sent": false,
+    "guest_configuration_changed": false
+  },
+  "historical_comparison": {
+    "new_entry_measurement": false,
+    "selection_and_blink": "Still unmeasured on a live, focused Domain/OS SR10.4 text entry.",
+    "existing_evidence": ["R57", "R63", "R68", "R76"]
+  },
+  "preservation": {
+    "other_session_mame_focused_or_captured": false,
+    "assistant_clone_restarted": false,
+    "user_main_vm_changed": false,
+    "theme_source_changed": false,
+    "desktop_profile_changed": false
+  },
+  "next": "Resume the remaining GTK2 GtkEntry comparison after the existing clone window is exposed or input access is restored for PID 2745483. The pending user choice offers exposing the window or authorizing a relaunch of only the clone."
+}

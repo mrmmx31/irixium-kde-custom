@@ -5,6 +5,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import socket
 import stat
 import sys
 import tempfile
@@ -19,6 +20,29 @@ spec.loader.exec_module(preview)
 
 
 class PrivateCopyTests(unittest.TestCase):
+    def test_display_allocator_detects_abstract_sockets_and_lock_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            socket_dir = root / ".X11-unix"
+            socket_dir.mkdir()
+            number = 58031
+            abstract = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+            abstract.bind("\0" + str(socket_dir / f"X{number}"))
+            abstract.listen(1)
+            try:
+                self.assertTrue(preview.display_in_use(number, root))
+            finally:
+                abstract.close()
+            self.assertFalse(preview.display_in_use(number, root))
+            (root / f".X{number}-lock").touch()
+            self.assertTrue(preview.display_in_use(number, root))
+
+    def test_theme_companion_fixture_includes_runtime_data_resources(self):
+        names = set(preview.companion_runtime_files())
+        self.assertIn('theme_companion_bridge.py', names)
+        self.assertIn('domainos_scrollbar_rules.json', names)
+        self.assertTrue(all((preview.REPO / 'tools' / name).is_file() for name in names))
+
     def test_readonly_export_can_normalize_metadata_and_regenerate_private_css(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

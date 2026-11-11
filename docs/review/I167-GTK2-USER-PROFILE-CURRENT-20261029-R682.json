@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "R682",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Confirm whether the current DomainOS GTK2 source configuration and palette-bound installation are already applied in the lsi user profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "already_applied",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "gtkrc_source_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "palette_transaction_baseline_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "baseline_matches_current_source": true,
+    "effective_geometry_px": {
+      "arrow_glyph": 11,
+      "stepper_cell": 15,
+      "trough_border": 2
+    },
+    "palette_binding": "active; KDE color roles remain dynamically generated",
+    "palette_wrappers_managed": 12
+  },
+  "verification": {
+    "user_setting": "/home/lsi/.gtkrc-2.0",
+    "installed_theme_gtkrc": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "compat_theme_gtkrc": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "installed_and_compat_files_present": true,
+    "palette_journal": "/home/lsi/.local/state/irixium-gtk2-palette/active.json",
+    "palette_journal_status": "active"
+  },
+  "limits": [
+    "This confirms profile selection and installed GTK2 configuration, not a new screenshot or live pixel comparison in an application window.",
+    "No application was restarted or sent a theme reload; existing windows may retain their already-loaded GTK2 settings.",
+    "No GTK2 assets, user configuration, theme selection, desktop session, or MAME state were modified in this check."
+  ],
+  "next": "The GTK2 theme is already applied for new GTK2 clients in the lsi profile. Continue I167 visual evaluation separately; do not claim this profile check as historical visual acceptance."
+}

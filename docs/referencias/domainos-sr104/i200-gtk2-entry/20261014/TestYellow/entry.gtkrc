@@ -1,0 +1,103 @@
+# Native GtkEntry; KDE snapshot. Selection/clipboard stay native.
+style "themeLabEntry-fd818233d718d1ca" {
+  xthickness = 2
+  ythickness = 2
+  GtkEntry::inner-border = { 4, 4, 4, 4 }
+  font_name = "13px"
+  base[NORMAL] = "#ecd870"
+  bg[NORMAL] = "#ecd870"
+  text[NORMAL] = "#201c0c"
+  fg[NORMAL] = "#201c0c"
+  base[PRELIGHT] = "#ecd870"
+  bg[PRELIGHT] = "#ecd870"
+  text[PRELIGHT] = "#201c0c"
+  fg[PRELIGHT] = "#201c0c"
+  base[ACTIVE] = "#ecd870"
+  bg[ACTIVE] = "#ecd870"
+  text[ACTIVE] = "#201c0c"
+  fg[ACTIVE] = "#201c0c"
+  base[SELECTED] = "#584818"
+  bg[SELECTED] = "#584818"
+  text[SELECTED] = "#fff8d8"
+  fg[SELECTED] = "#fff8d8"
+  base[INSENSITIVE] = "#e1ce6b"
+  bg[INSENSITIVE] = "#e1ce6b"
+  text[INSENSITIVE] = "#897d40"
+  fg[INSENSITIVE] = "#897d40"
+  engine "pixmap" {
+    image { function = SHADOW detail = "entry" state = NORMAL file = "entry-normal-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = PRELIGHT file = "entry-normal-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = ACTIVE file = "entry-normal-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = SELECTED file = "entry-normal-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = INSENSITIVE file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+  }
+}
+widget "*themeLabEntry_fd818233d718d1ca" style : highest "themeLabEntry-fd818233d718d1ca"
+style "themeLabBackdropEntry-fd818233d718d1ca" {
+  xthickness = 2
+  ythickness = 2
+  GtkEntry::inner-border = { 4, 4, 4, 4 }
+  font_name = "13px"
+  base[NORMAL] = "#ecd870"
+  bg[NORMAL] = "#ecd870"
+  text[NORMAL] = "#201c0c"
+  fg[NORMAL] = "#201c0c"
+  base[PRELIGHT] = "#ecd870"
+  bg[PRELIGHT] = "#ecd870"
+  text[PRELIGHT] = "#201c0c"
+  fg[PRELIGHT] = "#201c0c"
+  base[ACTIVE] = "#ecd870"
+  bg[ACTIVE] = "#ecd870"
+  text[ACTIVE] = "#201c0c"
+  fg[ACTIVE] = "#201c0c"
+  base[SELECTED] = "#584818"
+  bg[SELECTED] = "#584818"
+  text[SELECTED] = "#fff8d8"
+  fg[SELECTED] = "#fff8d8"
+  base[INSENSITIVE] = "#e1ce6b"
+  bg[INSENSITIVE] = "#e1ce6b"
+  text[INSENSITIVE] = "#897d40"
+  fg[INSENSITIVE] = "#897d40"
+  engine "pixmap" {
+    image { function = SHADOW detail = "entry" state = NORMAL file = "entry-backdrop-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = PRELIGHT file = "entry-backdrop-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = ACTIVE file = "entry-backdrop-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = SELECTED file = "entry-backdrop-683b6706fada458e.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = INSENSITIVE file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+  }
+}
+widget "*themeLabBackdropEntry_fd818233d718d1ca" style : highest "themeLabBackdropEntry-fd818233d718d1ca"
+style "themeLabInsensitiveEntry-fd818233d718d1ca" {
+  xthickness = 2
+  ythickness = 2
+  GtkEntry::inner-border = { 4, 4, 4, 4 }
+  font_name = "13px"
+  base[NORMAL] = "#e1ce6b"
+  bg[NORMAL] = "#e1ce6b"
+  text[NORMAL] = "#897d40"
+  fg[NORMAL] = "#897d40"
+  base[PRELIGHT] = "#e1ce6b"
+  bg[PRELIGHT] = "#e1ce6b"
+  text[PRELIGHT] = "#897d40"
+  fg[PRELIGHT] = "#897d40"
+  base[ACTIVE] = "#e1ce6b"
+  bg[ACTIVE] = "#e1ce6b"
+  text[ACTIVE] = "#897d40"
+  fg[ACTIVE] = "#897d40"
+  base[SELECTED] = "#e1ce6b"
+  bg[SELECTED] = "#e1ce6b"
+  text[SELECTED] = "#897d40"
+  fg[SELECTED] = "#897d40"
+  base[INSENSITIVE] = "#e1ce6b"
+  bg[INSENSITIVE] = "#e1ce6b"
+  text[INSENSITIVE] = "#897d40"
+  fg[INSENSITIVE] = "#897d40"
+  engine "pixmap" {
+    image { function = SHADOW detail = "entry" state = NORMAL file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = PRELIGHT file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = ACTIVE file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = SELECTED file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = SHADOW detail = "entry" state = INSENSITIVE file = "entry-disabled-78fb3c481cc1db66.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+  }
+}
+widget "*themeLabInsensitiveEntry_fd818233d718d1ca" style : highest "themeLabInsensitiveEntry-fd818233d718d1ca"

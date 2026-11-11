@@ -1,0 +1,39 @@
+{
+  "date_local": "2026-10-18T08:27:52-04:00",
+  "revision": "R9",
+  "item": "I167",
+  "family": "GTK2",
+  "display": ":91",
+  "scope": "Repeat the isolated public-preview press test once with complete failure output; diagnostic only, no product code changed.",
+  "environment": {
+    "xephyr_pid": 1594835,
+    "screen": "800x600, scale 1",
+    "test_script": "tools/theme-lab/tests/test_gtk2_public_native.py",
+    "test_script_sha256": "bd2951e2ca7a9f1ac988c4184489f4f707c1a88d5222d316a6996916ee2a509b",
+    "fixture": "~/tempia/.qa-gtk2-public-r2u5xyq8",
+    "preview_window": "2097155, focused",
+    "gtk_version": "2.24.33"
+  },
+  "result": {
+    "exit_code": 1,
+    "first_failed_case": "scroll_h / left",
+    "assertion": "pressed state did not change",
+    "event_log": "metrics only for scroll_h and scroll_v; no native value-change event",
+    "held_roi": "0 of 225 pixels differed from hover baseline; release delta 0",
+    "preview_receipt": "started then terminated by test cleanup after assertion; exit_code -15",
+    "generated_recipe_metadata": "recipe_applied=false; translated_controls includes scroll_h and scroll_v"
+  },
+  "artifacts": {
+    "start_capture_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f",
+    "held_capture_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f",
+    "input_debug_sha256": "921f868c168ed014055b90e37141ffba9f6e050e6ea42f4f03ff027ebc2ba147"
+  },
+  "diagnosis": "The public Xephyr route remains inconsistent. The test window had focus and pointer coordinates were inside the expected stepper, but no pressed pixel or adjustment event was observed. The earlier direct GTK2 scene proof R6 is unchanged and does not validate this public route.",
+  "next_action": "Keep I167 partial and move to another authorized work item as the goal directs; revisit only with a changed public input/diagnostic path.",
+  "preservation": {
+    "product_sources_changed": false,
+    "user_theme_changed": false,
+    "MAME_guest_graphics_input_sent": false,
+    "Xephyr_91_closed": false
+  }
+}

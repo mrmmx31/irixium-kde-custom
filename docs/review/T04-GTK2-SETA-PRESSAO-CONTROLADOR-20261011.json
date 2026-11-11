@@ -1,0 +1,32 @@
+{
+  "status": "passed_scoped_controller",
+  "source_result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-_d8iv3wz/RESULTADO.json",
+  "source_result_sha256": "078716e11e6dea4e6ef0b58314f714df646377800ca0267142902ea3a2689439",
+  "control": 12,
+  "dimensions": [
+    220,
+    40
+  ],
+  "capture_count": 12,
+  "edge_pixels": 12288,
+  "edge_differences": 0,
+  "scope": "Real Motif controller, pointer selection of measured native list item, Apply, Undo/Redo, Save/Load and restart; native GTK2 edge paint in both origins.",
+  "other_recipes_preserved": true,
+  "failed_first_attempt": {
+    "log": ".qa-t04-anchor-foundation/arrow-pressure-controller.log",
+    "error": "Recursive xdotool search observation timeout; harness cleaned its private processes and exited1."
+  },
+  "observer_fix": "Root direct children + known canvas direct children, visible windows only; no recursive Motif traversal.",
+  "observer_tests_passed": 4,
+  "source_sha256": {
+    "tools/theme-lab/tests/controller_gtk2_pressure.py": "dd4178a2aeaf058eeb9ca7180c3b7563828b420ed1949b938d17b1de446cdd19",
+    "tools/theme-lab/tests/controller_gtk2_windows.py": "7021eb1a76bc982dd9967ffbddbc1e9cdadf97f0ba468a8ae68cae689fc62abc",
+    "tools/theme-lab/tests/test_controller_spin.py": "cab8ca2bc36d2d08c3f3669190f37cec4e539e141bb54e64868ba55ec954bf41",
+    "tools/theme-lab/tests/controller_spin_probe.c": "1a76b1db8dd5a9303874e21f9b74a78971a07ae44b3f21e27757228e6b626f8a"
+  },
+  "limits": [
+    "Controller proof measures edges; glyph state/full image scoped by session/foundation receipts.",
+    "No historical fidelity or personal runtime update claimed."
+  ],
+  "next": "Frozen payload and coordinated delivery."
+}

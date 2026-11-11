@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-11T07:22:05.743541+00:00",
+  "authorized_revision": 1,
+  "definition_sha256": "d96d1fd6346542bbe8a598c222d423f227f290830934afddda1d3379d3b7dd21",
+  "scope": "Private native Motif FontSet trial, not integrated",
+  "terminal_status": 0,
+  "ascii_ink_logical_xm_unchanged": true,
+  "utf8_readback_identical": true,
+  "observed": [
+    "Append same-family same-size ISO10646 variant keeps original Latin1 fonts and ASCII metrics",
+    "Árvore — ação logical advance changes84 to78px with Unicode fallback",
+    "Unicode-only FontSet misses required locale charsets and corrupts rendering/metrics: reject this alternative"
+  ],
+  "remaining": [
+    "Implement runtime-derived font policy, no fixed family or size",
+    "Explicit actual glyph coverage and missing-character reporting across scripts",
+    "State/palette/editor history native tests",
+    "Install/reopen only after proven preservation and coordinated authorization"
+  ],
+  "scope_progress_percent": 20,
+  "installed": false,
+  "files": {
+    "docs/referencias/domainos-sr104/i179-fontset-first-probe/motif.png": "59b4b3902bb82d77393e80b74b1f773b78d1a0e0188770b0aa5906d82a3fb733",
+    "docs/referencias/domainos-sr104/i179-fontset-first-probe/motif.log": "f1b67cf4ab8680bcbf8f9f9a36c23c7ff643f9a9995012222ef22b5eee8243b0",
+    "docs/referencias/domainos-sr104/i179-fontset-first-probe/palette.json": "1e522bb53bc24239ab9b974693972df5a765fe86922925911d8922afbe6839c7",
+    "docs/referencias/domainos-sr104/i179-fontset-first-probe/probe.c": "7961522b7dd74696c188993ec29673c57e8b1b4c7258e2915b716154a6673183"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "R379",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Measure disabled GTK2 stepper composition against its generated 15x15 state assets before correction.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "theme_bundle": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/bundles/41e63f50494e5c95229d803105e0bdf2309013898b5cb53ccf1d52d0ac9a8e5c",
+    "widget_state": "GTK_STATE_INSENSITIVE (numeric 4)",
+    "allocation_px": {
+      "horizontal": [
+        543,
+        15
+      ],
+      "vertical": [
+        15,
+        543
+      ]
+    },
+    "palette": "Current generated DomainOS KDE roles; no RGB added."
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/r379-disabled-private-xvfb/disabled.png",
+    "sha256": "eed2a4f20a89764b304b00c9f17912cba130255d048e54d934383d4bda93e54e",
+    "probe": "~/tempia/ia-tema/evidence/I167/r379-disabled-private-xvfb/probe.c",
+    "probe_sha256": "44e843093537672f7672e0928c53021a7731f641061548a0150105afed2c480f"
+  },
+  "asset_comparison": {
+    "cell_size_px": [
+      15,
+      15
+    ],
+    "origins": {
+      "left": [
+        2,
+        0
+      ],
+      "right": [
+        526,
+        0
+      ],
+      "up": [
+        550,
+        22
+      ],
+      "down": [
+        550,
+        546
+      ]
+    },
+    "mismatches": {
+      "left": {
+        "pixels": 3,
+        "coordinates": [
+          [
+            0,
+            13
+          ],
+          [
+            1,
+            13
+          ],
+          [
+            0,
+            14
+          ]
+        ]
+      },
+      "right": {
+        "pixels": 1,
+        "coordinates": [
+          [
+            14,
+            1
+          ]
+        ]
+      },
+      "up": {
+        "pixels": 3,
+        "coordinates": [
+          [
+            13,
+            0
+          ],
+          [
+            14,
+            0
+          ],
+          [
+            13,
+            1
+          ]
+        ]
+      },
+      "down": {
+        "pixels": 1,
+        "coordinates": [
+          [
+            1,
+            14
+          ]
+        ]
+      }
+    },
+    "total_differing_pixels": 8,
+    "stepper_asset_sha256": {
+      "left": "3fe69584f9e9cdc203b8d6fcf51d9c5b9aad43360c576fc78062bc1eec70a26c",
+      "right": "6e617a459cf00e13b5295d17d0886a218c279dcb5cd48518722b1419ecb87135",
+      "up": "ad7ed7606640b256f9833c610012571839b84bb9cad863b69c78c1440afc96ec",
+      "down": "2e5b0ef7763774e1f1a7c2cddf5234b06c082dfcc232275e12c5e32f3ad028ec7"
+    }
+  },
+  "interpretation": "Each difference lies in a clipped outer relief corner currently supplied by the shared INSENSITIVE trough. This proves GTK2 runtime and its state asset do not compose identically; it does not prove the native VUE insensitive appearance.",
+  "rule_boundary": {
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "known": "Disabled GTK2 output must use selected KDE insensitive roles. Native SR10.4 insensitive stepper appearance is explicitly unverified.",
+    "plan": "Derive the four orientation-specific trough corner pixels from the generated disabled stepper assets, then verify the full runtime cells return to 0/225 without fixed RGB."
+  },
+  "limits": [
+    "No GTK2 product change has been made for this defect yet.",
+    "No VM input, installation or user application restart occurred.",
+    "Historical disabled-state fidelity remains unverified."
+  ]
+}

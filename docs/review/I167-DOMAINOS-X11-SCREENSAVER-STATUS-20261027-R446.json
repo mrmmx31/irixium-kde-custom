@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R446",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Diagnose the black guest capture through read-only Telnet and X11 queries in the project-owned DomainOS VM.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "telnet_endpoint": "10.253.104.20:23",
+    "transport_namespace": "Entered through the project helper, which matched the exact canonical disk before running the client.",
+    "separate_mame_pid": 3971019,
+    "separate_vm_contacted": false
+  },
+  "method": {
+    "guest_commands": [
+      "whoami",
+      "ps -ef",
+      "xwininfo -display :0 -root -tree",
+      "xset -display :0 q"
+    ],
+    "classification": "Read-only guest/process and X11 queries; no display, input, saver settings or files were changed.",
+    "gui_input_sent": false,
+    "other_vm_input_or_state_change": false
+  },
+  "results": {
+    "login_user": "user",
+    "domain_os": "Domain/OS SR10.4 (sys5.3), Apollo DN3500",
+    "live_guest_processes": [
+      "/etc/Xdomain :0",
+      "/usr/X11/bin/hpvue2",
+      "/usr/X11/lib/vue/Vuelogin/Xsession",
+      "/usr/lib/X11/vue/etc/vuesession",
+      "vuewm",
+      "vuefile"
+    ],
+    "x_root_children": 31,
+    "screen_saver": {
+      "prefer_blanking": true,
+      "allow_exposures": true,
+      "timeout_seconds": 600,
+      "cycle_seconds": 600
+    },
+    "current_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r446-current-screen-after-telnet-20261027.png",
+      "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+      "dimensions": [1024, 844],
+      "visible_guest_region": "Uniformly black; Apollo command strip remains visible."
+    }
+  },
+  "conclusion": "The guest X server and HP VUE session are alive and retain 31 root-window children. X11 reports blanking enabled with a 600-second timeout, which is consistent with the black capture, but this read-only observation alone does not prove blanking is the cause. No xset mutation or wake input was attempted.",
+  "limits": [
+    "A current screen-wake event has not been tested in this turn.",
+    "The separate Prancheta MAME still blocks the project's graphical-input guard.",
+    "The historical horizontal GTK2 arrow held-state comparison remains pending."
+  ],
+  "next": "After the separate MAME releases the guard, revalidate project PID/disk and bridge; if the guest remains black, perform the documented single-frame Shift wake attempt once, confirm the VUE target visually, then capture the horizontal held-arrow state."
+}

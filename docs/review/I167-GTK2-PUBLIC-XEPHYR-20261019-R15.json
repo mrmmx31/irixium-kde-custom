@@ -1,0 +1,187 @@
+{
+  "item": "I167",
+  "revision": "R15",
+  "checked_at_utc": "2026-10-19T13:45:00Z",
+  "family": "GTK2 public preview, arrows and trough junction",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "source": "docs/referencias/domainos-sr104/barra-vertical-normal.png and barra-horizontal-normal.png",
+    "vertical_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "horizontal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "rule_contract_sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":82, Xephyr 800x600; assistant-owned session",
+    "private_namespace_guards": true,
+    "other_xephyr_sessions_touched": false,
+    "scheme": "DomainOS-SR10.4",
+    "source_sha256": "73d6df241db576791f9fb99e16da42baae50f11227158ef68a6f5bdc6188934b"
+  },
+  "input_attribution_correction": {
+    "method": "Xlib XQueryPointer chain from root through descendants, checking the preview XID; click guard remains enabled",
+    "observed_path": [
+      "0x200003"
+    ],
+    "xdotool_WINDOW_zero_explanation": "xdotool getmouselocation WINDOW reports the deepest child and can be zero when the pointer is on a toplevel with no child beneath it; it does not prove that the GTK2 toplevel was missed.",
+    "impact_on_R11_R12_R13": "R14 independently proves the four public arrow press/release interactions with a valid target path. R11 remains historical evidence with its own attribution limitations; R12's raw press alone is server-level evidence. R13's WINDOW=0 interpretation is superseded; its guarded attempts sent no clicks."
+  },
+  "public_test": {
+    "status": "passed",
+    "guard_real": true,
+    "translated_controls": [
+      "scroll_h",
+      "scroll_v"
+    ],
+    "recipe_applied": false,
+    "recipe_applied_note": "The GTK2 receipt identifies partial translated-control coverage; this flag does not mean the validated RC was omitted.",
+    "native_adjustment_value_after_click": 34,
+    "normal_to_held_changed_pixels_each_arrow": 53,
+    "held_to_released_changed_pixels_each_arrow": 0,
+    "arrows": [
+      "scroll_h-left",
+      "scroll_h-right",
+      "scroll_v-up",
+      "scroll_v-down"
+    ],
+    "normal_capture_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f",
+    "held_release_examples": {
+      "scroll_h_left_held_sha256": "49a4ede6175bdbf9b5e94cf07789fa97a6f9df6bf82edb8f18d4cc88b0eeec75",
+      "scroll_h_left_released_sha256": "9e4201e91723897eb5a180ad96b62faae0de0ae2a28b42dc8309978beef723d2",
+      "scroll_v_down_held_sha256": "0009af295fbb3d801e2f07dd0fe733e0e773d184aed0d425c20f0f00b3f776df",
+      "scroll_v_down_released_sha256": "2064c54914c6710184b77b1168e7707294bd0dbbe625fd47b11d0a387c60709f"
+    },
+    "output_directory": "~/tempia/.qa-gtk2-public-18qf4gg8/"
+  },
+  "pixel_comparison_normal_1_to_1": {
+    "regions": {
+      "up": {
+        "vm_crop": [
+          4,
+          2,
+          19,
+          17
+        ],
+        "gtk_crop": [
+          260,
+          16,
+          275,
+          31
+        ],
+        "equal_pixels": 214,
+        "pixels": 225,
+        "inner_11x11_differences": 0,
+        "remaining_differences": "11-pixel outer axial edge row"
+      },
+      "down": {
+        "vm_crop": [
+          4,
+          242,
+          19,
+          257
+        ],
+        "gtk_crop": [
+          260,
+          181,
+          275,
+          196
+        ],
+        "equal_pixels": 214,
+        "pixels": 225,
+        "inner_11x11_differences": 0,
+        "remaining_differences": "11-pixel outer axial edge row"
+      },
+      "left": {
+        "vm_crop": [
+          2,
+          4,
+          17,
+          19
+        ],
+        "gtk_crop": [
+          16,
+          16,
+          31,
+          31
+        ],
+        "equal_pixels": 214,
+        "pixels": 225,
+        "inner_11x11_differences": 0,
+        "remaining_differences": "11-pixel outer axial edge column"
+      },
+      "right": {
+        "vm_crop": [
+          526,
+          4,
+          541,
+          19
+        ],
+        "gtk_crop": [
+          221,
+          16,
+          236,
+          31
+        ],
+        "equal_pixels": 214,
+        "pixels": 225,
+        "inner_11x11_differences": 0,
+        "remaining_differences": "11-pixel outer axial edge column"
+      }
+    },
+    "interpretation": "All four 11x11 arrow glyphs match the VM reference exactly. The difference is confined to the continuous trough bevel where each arrow end meets the track, not glyph silhouette or press/release relief.",
+    "dynamic_palette": "GTK assets are generated from current KDE button roles; the native RGB values above are reference-only evidence. No static product colors were added."
+  },
+  "geometry_experiment": {
+    "scope": "Private cloned GTK2 snapshot only; no repository theme or user profile changed.",
+    "change": "GtkRange stepper-size 12 -> 15; model gap adjusted only to make the snapshot receipt validate.",
+    "result": "The normal 15x15 arrow ROIs still differed from the reference in exactly the same 11-pixel outer edge row/column. The run then aborted at its first click because no pressed-state pixel change was captured under this nonstandard geometry.",
+    "conclusion": "This is not a viable fix and is inconclusive about the pixmap-engine cause. Do not adopt the geometry change."
+  },
+  "engine_source_review": {
+    "upstream_release": "GTK 2.24.33; same version as the public preview runtime",
+    "gtk_gtkrange_source": {
+      "url": "https://github.com/GNOME/gtk/blob/2.24.33/gtk/gtkrange.c",
+      "sha256": "ff0173bf6884704a8172033a5a570c46130635cb6435b0419bcd6d84bb6bb6f6"
+    },
+    "pixbuf_engine_source": {
+      "url": "https://github.com/GNOME/gtk/blob/2.24.33/modules/engines/pixbuf/pixbuf-draw.c",
+      "sha256": "02c130d63be06ba72f2d22500f2a9ac43003882f4a61ca4d96a97d42613c5878"
+    },
+    "findings": [
+      "GtkRange disables trough-under-steppers when stepper-spacing is greater than zero; current GTK2 geometry uses zero, so the continuous-trough option remains enabled.",
+      "GtkRange sizes vertical stepper cross-axis as range width minus two trough borders and uses stepper-size on its long axis; horizontal layout mirrors this.",
+      "The GTK2 pixbuf engine reconstructs a STEPPER box using slider-width and stepper-size because GtkRange exposes the box and arrow through separate drawing calls. It draws the matched stepper image over that reconstructed allocation.",
+      "Therefore stepper-size=15 changes the interaction/drawing allocation, not just the outer bevel pixel; keep the native 12px allocation (11px glyph plus 1px gap) while investigating the asset/compositing boundary.",
+      "The renderer centers a non-stretched overlay and paints only the bitmap extent. In the measured 11x12/12x11 STEPper allocation, an 11x11 source leaves one row/column unpainted; this matches the mismatch location but remains a hypothesis pending a public composite test."
+    ],
+    "causal_status": "These source facts bound the implementation; they do not yet prove why the 11px edge row/column is face-colored in the measured GTK2 output."
+  },
+  "product_changes": "None. No theme recipe, host palette, guest file/state, MAME profile, or personal configuration changed.",
+  "status": "partial",
+  "next": "Build an isolated role-derived STEPper overlay canvas test that paints only the one-pixel axial junction extent without changing the native 12px stepper allocation. Capture and compare all four 15x15 arrow/trough junctions to SR10.4; then verify all four press/release states and native click response in public GTK2 on :82. If the 11-pixel discrepancy persists, reject this hypothesis and continue tracing GTK2 parent trough/box draw order. No product change until discriminating test passes.",
+  "human_visual_approval": "pending",
+  "renderer_composition_review": {
+    "upstream_release": "GTK 2.24.33; runtime match",
+    "pixbuf_render_source": {
+      "url": "https://github.com/GNOME/gtk/blob/2.24.33/modules/engines/pixbuf/pixbuf-render.c",
+      "sha256": "2ee298ee19e58d8ce7dd2372ea7a568d0ec52da99406aa51f863546c036c99f8",
+      "findings": [
+        "With stretch=FALSE and center=TRUE, the renderer places the bitmap at x+(target_width-bitmap_width)/2 and y+(target_height-bitmap_height)/2, then paints only the bitmap extent.",
+        "The STEPper overlay is rendered with center=TRUE and its image rule returns before generic arrow drawing."
+      ]
+    },
+    "pixbuf_draw_source": {
+      "url": "https://github.com/GNOME/gtk/blob/2.24.33/modules/engines/pixbuf/pixbuf-draw.c",
+      "sha256": "02c130d63be06ba72f2d22500f2a9ac43003882f4a61ca4d96a97d42613c5878",
+      "lines": "143-158, 438-479, 520-539",
+      "findings": [
+        "The generated STEPper image rule currently supplies only overlay_file (no background file); the overlay is centered into the reconstructed 11x12 or 12x11 allocation.",
+        "A source bitmap of 11x11 centered in the 11x12 vertical allocation leaves one axial row outside its painted extent; the horizontal case analogously leaves one column."
+      ]
+    },
+    "causal_status": "Strong geometric hypothesis: the 11-pixel mismatch sits exactly on the unpainted axial row/column left by a centered 11x11 overlay in the 12-pixel long-axis stepper allocation. This is consistent with, but does not by itself prove, the captured face-colored boundary; the actual generated PNG and public GTK2 composite still need a discriminating test.",
+    "candidate_test": "In a disposable public GTK2 preview, provide a role-derived STEPper overlay canvas of 11x12 vertical / 12x11 horizontal, keeping the 11x11 glyph pixels unchanged and filling only the additional axial edge row/column from the corresponding raised/recessed bevel roles. Compare all four 15x15 regions, then repeat normal/held/released and native click tests. Keep stepper-size=12, stepper-spacing=0, and trough-under-steppers unchanged.",
+    "product_changes": "None; no GTK2 recipe, palette, user profile, VM, or other Xephyr changed."
+  }
+}

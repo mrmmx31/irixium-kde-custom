@@ -1,0 +1,114 @@
+{
+  "id": "R307",
+  "date": "2026-10-26",
+  "item": "I167",
+  "scope": "Read-only comparison of the selected installed GTK2 horizontal arrow raster versus the current repository raster and retained normal SR10.4 reference.",
+  "selected_theme": "DomainOS-SR10-4-KDE",
+  "user_profile_changed": false,
+  "application_restarted": false,
+  "directions": {
+    "left": {
+      "installed": {
+        "size_px": [
+          12,
+          12
+        ],
+        "nontransparent_pixels": 78,
+        "mask_rows": [
+          "..........##",
+          "........####",
+          "......######",
+          "....########",
+          "..##########",
+          "############",
+          ".###########",
+          "...#########",
+          ".....#######",
+          ".......#####",
+          ".........###",
+          "...........#"
+        ],
+        "sha256": "d29a872def5d904833f307ba9df393267c2f237940850c7bc76de201d4ad3d98"
+      },
+      "repository": {
+        "size_px": [
+          11,
+          11
+        ],
+        "nontransparent_pixels": 71,
+        "mask_rows": [
+          ".........##",
+          ".......####",
+          ".....######",
+          "...########",
+          ".##########",
+          "###########",
+          ".##########",
+          "...########",
+          ".....######",
+          ".......####",
+          ".........##"
+        ],
+        "sha256": "c97e0ecc88ff4267ffaa612a241dfe22141e73337c75adf1858d69ab9f899771"
+      }
+    },
+    "right": {
+      "installed": {
+        "size_px": [
+          12,
+          12
+        ],
+        "nontransparent_pixels": 78,
+        "mask_rows": [
+          "##..........",
+          "####........",
+          "######......",
+          "########....",
+          "##########..",
+          "############",
+          "###########.",
+          "#########...",
+          "#######.....",
+          "#####.......",
+          "###.........",
+          "#..........."
+        ],
+        "sha256": "86a678dd0c73c2e81a355ada052b8b9be4e800b0d51609de46a95c11ee51db6e"
+      },
+      "repository": {
+        "size_px": [
+          11,
+          11
+        ],
+        "nontransparent_pixels": 71,
+        "mask_rows": [
+          "##.........",
+          "####.......",
+          "######.....",
+          "########...",
+          "##########.",
+          "###########",
+          "##########.",
+          "########...",
+          "######.....",
+          "####.......",
+          "##........."
+        ],
+        "sha256": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15"
+      }
+    }
+  },
+  "reference": "R305 proves that the current repository 15x15 stepper cells match retained SR10.4 horizontal/vertical normal crops exactly (0/225 each).",
+  "vm_recheck": {
+    "snapshot_sha256": "bcdbb8c61edc1ae4c0e16049be18b58f554c4b39bf28b941152b9a40a56c1a79",
+    "identical_to_receipt": "R304",
+    "snapshot_archived_as_redundant": "/home/lsi/tempia/ia-tema/archived/i167-redundant-capture-r307/i167-vue-current-r307-20261026.png",
+    "result": "black; no input sent"
+  },
+  "conclusion": "The currently installed left/right arrow glyph files are 12x12 with 78 opaque pixels; the current repository glyph files are 11x11 with 71 opaque pixels. Thus the installed raster is one pixel larger, not smaller, than the current repo raster. R305 proves the repo normal cells match the historical SR10.4 reference exactly. The reported appearance is not reproduced by static asset geometry alone; an actual application capture or renderer/cache inspection would be needed to localize it.",
+  "limits": [
+    "File-level alpha-mask evidence does not prove the size painted in an already-running GTK2 process.",
+    "Historical held-state comparison for left/right/up remains blocked on the VM being physically awakened.",
+    "No theme/profile/process changes."
+  ]
+}

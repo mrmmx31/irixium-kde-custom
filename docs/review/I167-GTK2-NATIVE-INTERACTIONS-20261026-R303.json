@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "R303",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "passed-private-native-gtk2-interaction-matrix",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 Theme Lab only; native scene interaction checks in private Xvfb; no user-session installation."
+  },
+  "environment": {
+    "gtk2": "2.24.33",
+    "display": "private authenticated Xvfb :250",
+    "input": "xdotool only to the private Xvfb; no desktop or MAME input"
+  },
+  "results": {
+    "six_existing_probes": "passed",
+    "pointer_cases": "6/6 value changes; both scale orientations and spin in coupled and detached origins",
+    "entry_native_editing": "24 scenes passed across four schemes; all required keyboard/clipboard/undo/redo assertions passed",
+    "controls": {
+      "combo": "Popup/item selection, wheel changes active item, End key, selection/drag; coupled and detached.",
+      "scale_h": "Native pointer click changes value 38 to 48; coupled and detached.",
+      "scale_v": "Native pointer click changes value 62 to 52; coupled and detached.",
+      "list": "Keyboard selection plus horizontal/vertical scrolling with 40 long rows; coupled and detached.",
+      "entry": "GTK2 keyboard editing in four schemes; UTF-8, select-all, replacement, copy/paste/cut, Ctrl+Z, Ctrl+Y and Ctrl+Shift+Z.",
+      "text": "GTK2 TextView keyboard and clipboard editing with Undo/Redo in coupled and detached scenes.",
+      "spin": "Native pointer click on increment arrow changes value 42 to 43; coupled and detached."
+    }
+  },
+  "evidence": {
+    "combo--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/combo--RESULTADO.json",
+    "scale--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/scale--RESULTADO.json",
+    "list--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/list--RESULTADO.json",
+    "spin--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/spin--RESULTADO.json",
+    "entry--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/entry--RESULTADO.json",
+    "text--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/text--RESULTADO.json",
+    "SPIN-SCALE-INPUT.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/SPIN-SCALE-INPUT.json",
+    "entry-keyboard--RESULTADO.json": "/home/lsi/tempia/ia-tema/evidence/I167/r303-native-input/entry-keyboard--RESULTADO.json"
+  },
+  "source_hashes": {
+    "tools/theme-lab/tests/probe_gtk2_combo_scene.py": "21b3a007576697f91c5ba96eafacde45142ad89a843db81ddbbd084905164292",
+    "tools/theme-lab/tests/probe_gtk2_scale_scene.py": "0d8bf77bb7e4a8501020ccdc8c41ffda854e6a7c4bd338cc4b654ef233ccd821",
+    "tools/theme-lab/tests/probe_gtk2_list_scene.py": "0d7caa936c145a179e3ac9ab60caee03cabf6e2f497fbae7af7e088ba0d0c1a8",
+    "tools/theme-lab/tests/probe_gtk2_spin_scene.py": "9b66b2b72ced42854a8bac33691622966dc08d1dfcd5a6490b9c9d7b85e165dc",
+    "tools/theme-lab/tests/probe_gtk2_entry_scene.py": "9bb2fbc900b04c6b69cb28ebc9d162a8cccea9f41f51110e244bf333d36b5304",
+    "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "77ca9ee2cf6deb43684e21e37d6ef6b4eea4c5220c424f724fff7879e53f6b49",
+    "tools/theme-lab/tests/probe_gtk2_text_scene.py": "044df4027e4a9856ffb0f53bd75747c5ebe762ac17d27d3f154b99c4797b8da4"
+  },
+  "diagnostic_attempts": {
+    "status": "preserved-in-archive",
+    "note": "Initial private probe failed due to fixture directory permissions and incorrect VScale requested geometry/coordinates; those issues were corrected in the temporary fixture. No product change was made."
+  },
+  "limits": [
+    "The visual appearance of all these controls has not been approved against Domain/OS; native interaction success is not historical fidelity.",
+    "Historical held-state capture for left/right/up scrollbar arrows remains open because the canonical VM display is black.",
+    "No product code, user session, XChat instance, palette or VM state was changed.",
+    "The C controller does not persist transient GTK2 sample values as recipe edits; R303 does not claim end-to-end project persistence for native sample interactions."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "All 16 controls have public metrics and coupled/detached controller mounting; R303 adds directed GTK2 native input behavior for the seven actionable controls. Remaining C-controller event propagation, historical pressed states and human visual review are open. This is technical coverage, not visual fidelity."
+  },
+  "controller_boundary": {
+    "status": "not-a-persistence-requirement-for-sample-input",
+    "basis": "Native preview values/text/selection are temporary widget state, not theme-recipe edits. In controller.c, TL_EVENT_NATIVE is mirrored only for toggle/check and radio state display; generic sample values do not commit project changes. R303 validates native GTK2 scene behavior, not project persistence of sample interaction."
+  }
+}

@@ -1,0 +1,49 @@
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.freedesktop.portal.Desktop' requested by ':1.0' (uid=1000 pid=2274155 comm="/usr/bin/python3 -B /fixture/root/tools/theme-lab/")
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.freedesktop.impl.portal.PermissionStore' requested by ':1.1' (uid=1000 pid=2274188 comm="/usr/libexec/xdg-desktop-portal")
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.PermissionStore'
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.1' (uid=1000 pid=2274188 comm="/usr/libexec/xdg-desktop-portal")
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path /run/user/1000/doc
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.freedesktop.portal.Documents' requested by ':1.1' (uid=1000 pid=2274188 comm="/usr/libexec/xdg-desktop-portal")
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.freedesktop.portal.Documents'
+fuse: device not found, try 'modprobe fuse' first
+error: fuse init failed: Can't mount path /run/user/1000/doc
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:25.276: Document portal fuse mount point unknown: GDBus.Error:org.freedesktop.portal.Error.Failed: Can't mount path /run/user/1000/doc
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:25.276: Choosing gtk.portal for org.freedesktop.impl.portal.Lockdown as a last-resort fallback
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.freedesktop.impl.portal.desktop.gtk' requested by ':1.1' (uid=1000 pid=2274188 comm="/usr/libexec/xdg-desktop-portal")
+
+(xdg-desktop-portal-gtk:2274222): xdg-desktop-portal-gtk-WARNING **: 11:21:25.387: error: Could not connect: No such file or directory
+
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Activating service name='org.gtk.vfs.Daemon' requested by ':1.5' (uid=1000 pid=2274222 comm="/usr/libexec/xdg-desktop-portal-gtk")
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.gtk.vfs.Daemon'
+fuse: device not found, try 'modprobe fuse' first
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.freedesktop.impl.portal.desktop.gtk'
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.917: Failed to create RealtimeKit proxy: Could not connect: No such file or directory
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.918: Choosing gtk.portal for org.freedesktop.impl.portal.Settings as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.920: Choosing gtk.portal for org.freedesktop.impl.portal.FileChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.930: Choosing gtk.portal for org.freedesktop.impl.portal.AppChooser as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.945: Choosing gtk.portal for org.freedesktop.impl.portal.Print as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.958: Choosing gtk.portal for org.freedesktop.impl.portal.Notification as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.967: Choosing gtk.portal for org.freedesktop.impl.portal.Inhibit as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.976: Choosing gtk.portal for org.freedesktop.impl.portal.Access as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.983: Failed connect to PipeWire: Couldn't connect to PipeWire
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.986: Choosing gtk.portal for org.freedesktop.impl.portal.Account as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.989: Choosing gtk.portal for org.freedesktop.impl.portal.Email as a last-resort fallback
+
+(/usr/libexec/xdg-desktop-portal:2274188): xdg-desktop-portal-WARNING **: 11:21:28.990: Choosing gtk.portal for org.freedesktop.impl.portal.DynamicLauncher as a last-resort fallback
+dbus-daemon[2274154]: [session uid=1000 pid=2274154 pidfd=5] Successfully activated service 'org.freedesktop.portal.Desktop'
+A connection to the bus can't be made

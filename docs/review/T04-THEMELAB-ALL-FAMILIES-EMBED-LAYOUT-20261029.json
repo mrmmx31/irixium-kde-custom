@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "item": "T04",
+  "authorization": {
+    "user_authorized": true,
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "scope": "Theme Lab: seleção persistente das dez famílias, prévias nativas acopladas, isolamento de perfis e expansão proporcional dos dois painéis centrais",
+  "result": "technically_validated_manual_visual_acceptance_pending",
+  "layout": {
+    "native_minimum_px": 370,
+    "motif_minimum_px": 240,
+    "initial_heights_px": [
+      370,
+      240
+    ],
+    "maximized_heights_px": [
+      445,
+      289
+    ],
+    "restored_heights_px": [
+      370,
+      240
+    ],
+    "surplus_shared_proportionally": true,
+    "canvases_scale": "1:1",
+    "scrolling": "independent"
+  },
+  "families": {
+    "motif": {
+      "available": true,
+      "version": "2.3.8-4",
+      "preview": "real Motif reference inside the main interface",
+      "limitation": "Installed Motif is not the historical SR10.4 proof; the project VM remains authoritative."
+    },
+    "gtk1": {
+      "available": false,
+      "preview": "unavailable and not simulated",
+      "reason": "GTK1 is not installed and no native gallery is implemented."
+    },
+    "gtk2": {
+      "available": true,
+      "version": "2.24.33",
+      "preview": "real native coupled and detached route"
+    },
+    "gtk3": {
+      "available": true,
+      "version": "3.24.49",
+      "preview": "real native coupled and detached route"
+    },
+    "gtk4": {
+      "available": true,
+      "version": "4.18.6",
+      "preview": "real native coupled and detached route",
+      "translated_controls": [
+        "push",
+        "toggle",
+        "check",
+        "scroll_h",
+        "scroll_v"
+      ]
+    },
+    "gtk5": {
+      "available": false,
+      "preview": "unavailable and not simulated",
+      "reason": "No GTK5 runtime or native gallery is available."
+    },
+    "qt5": {
+      "available": true,
+      "version": "5.15.15",
+      "preview": "real Qt Widgets coupled and detached route",
+      "translated_control_count": 16
+    },
+    "qt6": {
+      "available": true,
+      "version": "6.8.2",
+      "preview": "real Qt Widgets coupled and detached route",
+      "translated_control_count": 16
+    },
+    "kvantum": {
+      "available": true,
+      "preview": "real Qt6 gallery loading the generated Kvantum QStyle",
+      "translated_controls": [
+        "scroll_h",
+        "scroll_v"
+      ]
+    },
+    "plasma": {
+      "available": true,
+      "version": "6.8.2",
+      "preview": "real Plasma Components.ScrollBar and KSvg coupled and detached route",
+      "translated_controls": [
+        "scroll_h",
+        "scroll_v"
+      ],
+      "limitation": "Plasma has no native stepper arrows or separate 4 px viewport gap; no substitute is drawn."
+    }
+  },
+  "selection_contract": {
+    "family_rows_checked": 10,
+    "independent_recipes_preserved": true,
+    "positions_preserved": true,
+    "selecting_family_does_not_apply_pending_recipe": true,
+    "apply_is_the_only_full_recipe_commit": true
+  },
+  "profile_isolation": {
+    "coupled_pattern": "native-preview-profile/<family>/coupled/",
+    "detached_pattern": "native-preview-profile/<family>/detached/",
+    "personal_profile_written": false,
+    "host_changed": false
+  },
+  "integrated_native_proof": {
+    "family": "qt6",
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/themelab-final-qt6-KQfH68",
+    "receipt": "/home/lsi/tempia/domainos-theme-work/themelab-final-qt6-KQfH68/generated/revisions/20261029T200044-b2e8453853e8/qt6-PREVIEW.json",
+    "embedded": true,
+    "guard_mode": "explicit_user_session_x11_reparent",
+    "origin": "coupled",
+    "translated_control_count": 16,
+    "direct_child_observed": true,
+    "controller_and_child_clean_shutdown": true
+  },
+  "live_reopen": {
+    "service": "domainos-theme-lab-20261029.service",
+    "theme_lab_pid": 3296711,
+    "gtk2_preview_pid": 3297103,
+    "main_window_xid": "0x2c00248",
+    "preview_canvas_xid": "0x2c0028e",
+    "native_child_xid": "0x5000003",
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "selected_family": "gtk2",
+    "separate_preview": false,
+    "editor_journal_preserved": true,
+    "project_history_preserved": true,
+    "window_activated": true
+  },
+  "validation": {
+    "model_checks": 1027,
+    "backend_tests": 41,
+    "direct_preview_route_tests": 4,
+    "qt_shutdown_tests": 2,
+    "native_metrics_tests": 2,
+    "layout_regression": "passed",
+    "catalog_family_regression": "passed",
+    "strict_build": "passed",
+    "historical_fidelity_claimed": false
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/view.c": "b28cd9a3a8f29db7cad9154f8a4884dd1fc03812c9048adf6061e6c221f08693",
+    "tools/theme-lab/src/controller.c": "d70584ece0248683533829dfae92a3ace2c27ec65525dd86f9933b69b2d5acc4",
+    "tools/theme-lab/direct_preview_route.py": "68dc52b2c5e9a3061617b980bf72f5ce3a99452415ede31289fbbb616622bf73",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "5a6e5afd2bdcfff00c3c1786feefc03c803452c2b1624d333bbb93c5d978dd00",
+    "plasma/tests/galerias-nativas/plasma_style_demo.py": "1ea2cafd8f8fb89d75a7dc0a81fe74f52a9ad9694bb72ec5d418c5fd612543b2"
+  },
+  "theme_installation_changed": false,
+  "manual_visual_acceptance": "pending",
+  "next": "User inspects each family in the reopened preserved session; do not infer visual approval from technical tests."
+}

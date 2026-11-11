@@ -1,0 +1,82 @@
+{
+  "at": "2026-10-11T08:05:50.600058+00:00",
+  "item": "I167",
+  "revision": 1,
+  "phase": "native_interaction_and_sparse_relief",
+  "previous_goal_turn_classification": "progress: pixmap paint bugs corrected and native masks matched",
+  "canonical_cycles": 48,
+  "canonical_directional_masks": 384,
+  "custom_cycles": 4,
+  "custom_directional_masks": 32,
+  "pure_checks": 5,
+  "terminals": [
+    0,
+    0,
+    0
+  ],
+  "canonical_behaviors": [
+    "Native decreasing/increasing value exactly1 per press",
+    "Release restores normal relief and does not change value",
+    "Whole-insensitive and endpoint arrows do not change value or appear pressed"
+  ],
+  "custom_behaviors": [
+    "Sunken idle arrow / flat held arrow / sunken release",
+    "Raised trough and sunken thumb sample edges verified in constrained natural-minimum fixture"
+  ],
+  "states_supported": {
+    "arrow": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop"
+    ],
+    "thumb": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop"
+    ],
+    "trough": [
+      "normal",
+      "disabled",
+      "backdrop"
+    ]
+  },
+  "palette_support": "Current KDE effective role snapshots; no static final colors",
+  "native_capture_reuse": "96canonical PNG bytes unchanged after adding sparse-relief support; ACTIVE trough now aliases normal identical bytes. Previous canonical captures remain scoped evidence.",
+  "limits": [
+    "Hover/focus, isolated arrow button and content fitting not translated",
+    "Backdrop interaction/whole-insensitive backdrop combination needs explicit contract",
+    "Thumb dragging override not yet exercised",
+    "Coupled/detached scenes and other GTK2 controls pending",
+    "No final historical fidelity or user approval inferred"
+  ],
+  "scope_progress_percent": 45,
+  "installed": false,
+  "source_sha256": {
+    "tools/theme-lab/gtk2_recipe.py": "6a93e2cde6cdc493985233e23b8ba7889c8e9fa123c2aa92bf2638692e7e2b44",
+    "tools/theme-lab/tests/test_gtk2_recipe.py": "6ff7150c16f5c4df4672dcee2361e52c1113a0b09bed91e1b83d63aa432ed662",
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "18ae80a726d6c7da19c5a42ea15e0902501024a9889ed776934e0e0de12d069c",
+    "tools/theme-lab/tests/test_gtk2_paint_native.py": "3997819fab2912e53f5c4669a6aa509a5104b5a059ba8411919eca2bb119094c",
+    "tools/theme-lab/tests/test_gtk2_interaction_native.py": "fdef882f884b372309a6fb582ba750768eea5bb937828e3461aab69910a9d869",
+    "tools/theme-lab/tests/verify_gtk2_relief_fixture.py": "82f5eccbab05f9bdf686016118e77ebb165e7fc6537af81bdc8fdc5ca1384b79"
+  },
+  "evidence_sha256": {
+    "docs/referencias/domainos-sr104/i167-interaction/canonical-reuse.json": "b7b72df199de0f2acd2cab16cff4a3a5cefccaef9fb8df9df739cd7812d89ba4",
+    "docs/referencias/domainos-sr104/i167-interaction/unit.log": "3829ea1aa47541bd1a47a77d9904b1bfe8e51430159d39848a8c301a709334a1",
+    "docs/referencias/domainos-sr104/i167-interaction/down-held.png": "11719716c04a6143d06d23974d43b2fdf4fea895f1752324c11bf8ac1df4f24d",
+    "docs/referencias/domainos-sr104/i167-interaction/right-released.png": "aef74ac8426e953b41e9a737b967391b307df40b979016497699797bdaeaa214",
+    "docs/referencias/domainos-sr104/i167-interaction/right-held.png": "092736cabfdeed1f033370a93be26f3350e9681e73bc91ac052eac66bf09fcb5",
+    "docs/referencias/domainos-sr104/i167-interaction/custom-verified.json": "22a751c1b8ba7298e02e0b116c013aa47306ba51dcbcf1c0aad86d8a026d6519",
+    "docs/referencias/domainos-sr104/i167-interaction/custom-verify.log": "1da629bf971f968a8a1e8ebbc141b5ff9b6d6ec01842cc00d40a753480f3112d",
+    "docs/referencias/domainos-sr104/i167-interaction/up-held.png": "cf1bc6a3b9aee4d63a95d7e098ff4e8e1f32c622e7a5c85ad83078569b959a69",
+    "docs/referencias/domainos-sr104/i167-interaction/custom-recipe.json": "e851b47bb21849cbe84599b639d9a691712a7812b583d1450faf533cca8807e1",
+    "docs/referencias/domainos-sr104/i167-interaction/left-held.png": "c6e347ce8a8e45b404a70d35b37d79befbe3069be45d47113866af4aeaffa82a",
+    "docs/referencias/domainos-sr104/i167-interaction/left-released.png": "aef74ac8426e953b41e9a737b967391b307df40b979016497699797bdaeaa214",
+    "docs/referencias/domainos-sr104/i167-interaction/native-terminal.log": "4864dd491489c2113d18f3c47ede40d82cc30d07dd249c7e89c5dde48e8edc81",
+    "docs/referencias/domainos-sr104/i167-interaction/down-released.png": "aef74ac8426e953b41e9a737b967391b307df40b979016497699797bdaeaa214",
+    "docs/referencias/domainos-sr104/i167-interaction/four-palettes-cycles.json": "2b5fd50e2a5b446f482373e2921c6ed00cd80ce0cf965476cb8ed4fbf8b6a323",
+    "docs/referencias/domainos-sr104/i167-interaction/up-released.png": "aef74ac8426e953b41e9a737b967391b307df40b979016497699797bdaeaa214",
+    "docs/referencias/domainos-sr104/i167-interaction/custom-native.json": "584098c5df97396c6ea9f33c43c4a1a39e1245c743f1b3ce5e4907a579a72806"
+  }
+}

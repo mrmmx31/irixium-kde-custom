@@ -1,0 +1,74 @@
+{
+  "recorded_at": "2026-10-10T17:47:28.412330+00:00",
+  "scope": "Seções e consolidação; nenhuma avaliação humana ou autorização inferida.",
+  "model_tests_passed": 13,
+  "import_model_tests_passed": 7,
+  "native_navigation_results": {
+    "show_menu_checkbox_enables_tabs": true,
+    "switch_tabs_preserves_both_drafts": true,
+    "checkbox_returns_to_menu": true,
+    "sections_menu_selects_same_content": true,
+    "undo_after_navigation_restores_text": true,
+    "mode_section_and_drafts_survive_restart": true,
+    "navigation_never_commits_or_authorizes": true
+  },
+  "native_flow_results": {
+    "partial_save": true,
+    "reload_preserves_current_draft": true,
+    "reload_preserves_other_draft": true,
+    "assistant_reply_preserved": true,
+    "newer_response_unread": true,
+    "anchored_instruction": true,
+    "instruction_starts_unauthorized": true,
+    "native_save_reload_responsive": true
+  },
+  "native_editing_results": {
+    "unicode_multiline_undo_redo_shortcuts": true,
+    "multi_step_history": true,
+    "copy_cut_paste_select_all_and_reversible_replacement": true,
+    "history_survives_reload_and_item_switch": true,
+    "save_retains_history_and_return_to_saved_is_reversible": true,
+    "context_menu_undo": true,
+    "private_autosave_is_separate_from_answers_and_authorizations": true,
+    "second_editor_cannot_overwrite_journal": true,
+    "crash_restores_multiple_drafts_title_and_undo_redo": true,
+    "failed_checkpoint_prevents_destructive_action": true
+  },
+  "source_sha256": {
+    "src/controller.c": "49886109ace8a248743cfa51338be9a62fdd3344cc8aa0d2bbf05fc1a2ed9353",
+    "src/editor.c": "487fa94d359e8a321dfd3f564a2ece5809f79f35dcf47fd2fe6f52c78c615cee",
+    "src/main.c": "66492e0bef22cfddd35bd52dc32e68e36f5383b0e9f337b9f28c4f3999a178f7",
+    "src/model.c": "32eb756b579d5c117d03b1f673bc8d97a2d9944e3369587048585fe4e5048caf",
+    "src/view.c": "59ca999f1b9667827de13722b083cfc5c257b355279114730441537879ee2a92",
+    "include/board.h": "3d141d8eacb203a095b14d3fdb0f1cc12675a59b2d318119172720fd825432de",
+    "include/editor.h": "b1157e8c24eb9f471aa448a41f3d576c79c04c1090ce3a73f93a9dbfe7630199",
+    "include/view.h": "353efee4436b29bd6a504dbaade9ac1d6a3012f079c7bdea0b02a6f680fec804",
+    "open": "f85d3868b8beb697488fee5c87ecc98f74b2a059104a849994c24cb35d71ebb8",
+    "Makefile": "c0d9f68848cd51bd171fd5f22e422948cf240a54a2e2ebd04ac5c5d9d95aa0ae",
+    "tools/import_legacy.py": "38c0bf0b7900817f16656adec74ada2508f539db05499c646dd040cf712074e6",
+    "tests/test_import.py": "3832837b5a52d14e925fc87185f8871e373065b70f294d8c42129473dd3149b5",
+    "tests/test_navigation.py": "fe0197c062790d3035bc1ca15098f89b80d89b49e81550fc0c6720334e50322e",
+    "docs/MIGRACAO.md": "9fa4135727d835ca389d6d4f76f55563e993ad0fabb129bea8b9489c5bea9d1f",
+    "skills/work-board/SKILL.md": "4cb3cce592b4f80644a8715a4e6a096c1abbd2ea9792041f598a1b2ee020a051",
+    "skills/work-board/references/protocolo.md": "30e0846cc7919a2b8a3f02da01e659a40afa7d52df534f401ea5211b51214d64"
+  },
+  "personal_answers_in_public_project": false,
+  "known_limits": [
+    "Avaliação manual da organização permanece pendente.",
+    "Controles arbitrários por JSON, comparador de conflitos e recarga automática permanecem propostas.",
+    "Menus e abas não iniciam execução de tarefas."
+  ],
+  "live_migration": {
+    "motif_items": 20,
+    "legacy_checklist_items": 38,
+    "legacy_proposal_items": 14,
+    "total_items": 72,
+    "original_user_and_assistant_records_identical_after_open": true,
+    "drafts_identical_after_open": true,
+    "legacy_frontends_closed": true,
+    "new_frontend_open": "native-lsi",
+    "original_backups_preserved": true,
+    "execution_authorizations_from_historical_reviews": false,
+    "private_state": "${XDG_STATE_HOME:-$HOME/.local/state}/ai-work-board"
+  }
+}

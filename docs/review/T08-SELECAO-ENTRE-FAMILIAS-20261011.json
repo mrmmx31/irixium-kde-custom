@@ -1,0 +1,57 @@
+{
+  "at": "2026-10-11T14:07:00.886333+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "cross_family_scene_selection_and_drag_verified_private",
+  "changes": [
+    "Ctrl+clique seleciona a família aplicada após capturar ajustes pendentes da família anterior.",
+    "Ctrl+arraste grava apenas a posição do controle dessa família; não aplica outras propostas."
+  ],
+  "checks": {
+    "status": "passed",
+    "scope": "Native GTK3 startup, two resumes with different pending dimensions and then Qt6 editor selection; original GTK3 scene bytes/hash and actual allocation preserved; proposal fields/history independent; no Qt6 painting claim",
+    "applied_allocation": [
+      220,
+      80
+    ],
+    "gtk3_pending": [
+      330,
+      110
+    ],
+    "qt6_pending": [
+      410,
+      140
+    ],
+    "scene_bytes_preserved": true,
+    "cross_family_native_selection_preserved_recipes": true,
+    "native_drag_changed_only_gtk3_position": true
+  },
+  "strict_build": "passed all build/controller-spin-probe; initial wrong target preserved",
+  "diff_check": "passed",
+  "before_failure": "Evento nativo real recebido; guarda bloqueou seleção de GTK3 com editor Qt6.",
+  "test_observation_failure": "Primeira execução corrigida leu campo antes da atualização do probe. Espera pelo valor observado adicionada; código de produto não alterado para essa sincronização.",
+  "scope": "GTK3 real acoplado sob Motif, entrada X11 privada. Duas reaberturas, seleção entre famílias e arraste+posição/sizes completos. Não prova pintura Qt6 ou fidelidade histórica.",
+  "supersedes_limitation": "T08-REABERTURA-GTK3-20261011.json: guarda entre famílias substituída por seleção com preservação; interação agora ensaiada.",
+  "remaining": [
+    "Entrega pessoal coordenada e avaliação.",
+    "Regenerar/conferir papéis atuais antes de instalar arquivos reconstruídos."
+  ],
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "T08 privado funcional verificado; falta entrega e avaliação. Não percentual do goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "deb4385a0971d4238588ef337dcd3fee41f1ba2ada86065a8499419a20f9da36",
+    "tools/theme-lab/tests/controller_gtk_resume.py": "925b75929610b369fd43d87c87698233a405d2472a875c89d61cffb251d223f2",
+    "tools/theme-lab/README.md": "f29727d68ed92305ed9448a87cc45ed57cf2619d9598524767a964f7c1f819f6"
+  },
+  "evidence_hashes": {
+    "gtk-cross-family-before.log": "51915087f52c13be16bf8de082b5c74bab2669f0f1c8ddbed9f6670dbf70da7e",
+    "gtk-cross-family-before.err": "47e9c019d2e0f9146e9893f7671e71aa34c48ba162373b87c2d1971e6518c1ae",
+    "gtk-cross-family-build.log": "e887d92a0096845bb74164f3774bdca675914336d8f6eafa3b8ccb178497f7fe",
+    "gtk-cross-family-build-fixed.log": "0216e2a042010132642f26419a83c90f5a2f4c37032972fcc386a4254255eb18",
+    "gtk-cross-family-after.log": "363a2c5dd671d20b9bbaafeeece61f68df6e7936936969e261a0de381889e59d",
+    "gtk-cross-family-after.err": "f501014f0c516595bfdc18ac0920d5d2dc888332b6a2eb6cd2ad9c6245c3dbb0",
+    "gtk-cross-family-after-synced.log": "c60b71d22bb351033c8faf8d94d360240e66b859111b6e7eedd389da3c62fee4",
+    "gtk-cross-family-after-synced.err": "2a2859e9b2572e119a8eee7b8c597da3138e1569c6287933cfe0cb4ce9c38b10"
+  }
+}

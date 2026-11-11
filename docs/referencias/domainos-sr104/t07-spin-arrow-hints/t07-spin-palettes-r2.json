@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "scope": "SpinBox painted-arrow hover: cold delay, bounds, no overlap, stability, live source roles, dismissal, native increment/decrement/repeat and no late hint; four initial UI schemes; not disabled arrows or all layouts",
+  "rows": [
+    {
+      "scheme": "DomainOS",
+      "terminal": 0,
+      "stdout": "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1\nSpin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.\n",
+      "stderr": "command: click\ncommand: click\ncommand: mousedown\ncommand: mouseup\n"
+    },
+    {
+      "scheme": "BreezeLight",
+      "terminal": 0,
+      "stdout": "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1\nSpin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.\n",
+      "stderr": "command: click\ncommand: click\ncommand: mousedown\ncommand: mouseup\n"
+    },
+    {
+      "scheme": "BreezeDark",
+      "terminal": 0,
+      "stdout": "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1\nSpin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.\n",
+      "stderr": "command: click\ncommand: click\ncommand: mousedown\ncommand: mouseup\n"
+    },
+    {
+      "scheme": "TestYellow",
+      "terminal": 0,
+      "stdout": "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1\nSpin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.\n",
+      "stderr": "command: click\ncommand: click\ncommand: mousedown\ncommand: mouseup\n"
+    }
+  ]
+}

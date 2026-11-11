@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "T07-MOTIF-UI-HINTS-20261019-R102",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "authorization": "AI Work Board saved state: section=work, user.authorized=true, matching definition hash.",
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed",
+  "scope": "Motif Help menu and dialog interaction; automated native menu/level/topic/read-only selection flow in the current Theme Lab build.",
+  "diagnosis": {
+    "previous_failure": "The test translated a Motif widget position without the actual X window origin and attempted input before the window manager finished mapping the shell. In Xephyr the cascade click landed at y=22, on the titlebar; popup items queried before mapping were relative to their popup shell.",
+    "product_failure": false,
+    "manual_reproduction": "On the owned Xephyr :83, clicking Ajuda opened the pulldown, selecting Geometria, escala e fonte opened the dialog, the level list showed all three choices, and Expert replaced the text with the corresponding explanation."
+  },
+  "harness_change": {
+    "file": "tools/theme-lab/tests/ui_help_flow.c",
+    "details": [
+      "For widgets with their own X window, translate click coordinates with XTranslateCoordinates from that window to the screen root; preserve XtTranslateCoords for Motif gadgets, which share their parent's window.",
+      "Wait 700 ms for the main shell to finish window-manager mapping/reparenting, post the cascade, wait 250 ms for the popup shell to map, then calculate and click the selected menu item."
+    ],
+    "product_source_changed": false
+  },
+  "verification": {
+    "command": "TMPDIR=$HOME/tempia DISPLAY=:83 XAUTHORITY=$HOME/tempia/t07-gtk2-matrix-r95-20261019/Xauthority LC_ALL=C.UTF-8 TL_HELP_ONLY=1 ./build/native-metrics-view",
+    "exit_code": 0,
+    "environment": {
+      "xephyr": ":83",
+      "resolution": "1280x800",
+      "window_manager": "Openbox",
+      "session_owner": "Theme agent; private test display"
+    },
+    "flow": [
+      "Open cascade and select a topic",
+      "Choose Expert and Novice levels and verify distinct text",
+      "Choose another topic and return to Intermediate",
+      "Select and copy the read-only help text; verify clipboard contents",
+      "Confirm cut/paste do not mutate read-only text",
+      "Close, reopen from another topic, close by WM protocol, reopen and verify the project field is unchanged"
+    ],
+    "result_log_sha256": "a189c17184408c826046a106d151b117d506066709d3f92e296ab268d38745f5",
+    "test_source_sha256": "fd21600241da3ecb0e9909831ff557984c013ea16039853c3d27dc3e35e128c0",
+    "test_binary_sha256": "951b2c38b13a1f75533290c79712c1ebdd8860017b0de50ef209f7794aad039e"
+  },
+  "uncompleted_attempt": {
+    "command": "make check-ui-help",
+    "result": "Not counted: xvfb-run repeatedly started new Xvfb display numbers without launching the child test. The run was interrupted; the same test binary passed directly on the owned Xephyr with Openbox.",
+    "product_failure": false
+  },
+  "artifacts": [
+    "~/tempia/t07-help-menu-manual-r102/final-xephyr-83.log",
+    "~/tempia/t07-help-menu-manual-r102/help-click.png",
+    "~/tempia/t07-help-menu-manual-r102/help-dialog.png",
+    "~/tempia/t07-help-menu-manual-r102/level-open.png",
+    "~/tempia/t07-help-menu-manual-r102/level-expert.png",
+    "~/tempia/t07-help-menu-manual-r102/topic-open.png"
+  ],
+  "limitations": [
+    "The Xvfb wrapper itself did not complete; the native test was run and passed in Xephyr with Openbox.",
+    "Startup logged missing font/charset warnings in the isolated test process; this receipt verifies interaction and text selection, not font fidelity or human acceptance.",
+    "This closes only the Motif Help menu/dialog flow. Remaining toolkit/layout hint coverage and user evaluation keep T07 running."
+  ]
+}

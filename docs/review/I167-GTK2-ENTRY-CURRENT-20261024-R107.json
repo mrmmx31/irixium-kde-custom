@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "R107",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Read-only current GtkEntry VUE state",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "interface": "HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "vm_process": 3759847,
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "channel_pending": false
+    },
+    "capture": "/home/lsi/tempia/i167-vue-current-r107.png",
+    "capture_sha256": "0d216cc5928fa5ba647eb7bbcd6fc5e447a64ab9e10010ddca65eb957988ca7"
+  },
+  "observation": {
+    "dialog": "Find Files is visible",
+    "field": "File Name is focused and contains the temporary filter a*a",
+    "pointer": "overlaps the field contents",
+    "selection": "not proven",
+    "paired_historical_selection_capture": false
+  },
+  "actions": {
+    "guest_keyboard_or_mouse_input": false,
+    "search_started": false,
+    "guest_files_changed": false,
+    "theme_or_xchat_changed": false,
+    "main_vm_or_other_sessions_touched": false
+  },
+  "route_check": {
+    "historical_telnet_endpoint": "10.253.104.20:23",
+    "result": "connection timeout; host route resolves through the Wi-Fi gateway",
+    "telnet_login_or_command_sent": false,
+    "consequence": "Do not use this stale endpoint to query or control the current guest."
+  },
+  "remaining": [
+    "Find a verified precise way to observe native VUE selection without risking the File Name filter.",
+    "Complete GTK2 review with existing valid R55/R70/R72/R101 evidence; keep the tested namespace patch uninstalled until its reviewable application is ready.",
+    "Do not infer historical visual acceptance from the isolated GTK2 palette tests."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "I167 implementation/evidence coverage estimate only, not a fidelity score.",
+    "basis": "Dynamic GTK2 palette integration is confirmed and isolated selection rendering is tested; paired SR10.4 selection and reviewed install/reload remain open."
+  }
+}

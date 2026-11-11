@@ -211,8 +211,13 @@ static void tick() {
         checks["native_optional_group_wheel_activates_other_member"]=owned[2]->isActiveWindow();
         invoke("action","ungroup");phase=17;
     } else if(phase==17) {
+        snapshots["before_active_singleton_double_click"]=current;
+        snapshots["button_C_before_active_double_click"]=coordinate("C");
+        checks["task_model_sees_active_C_before_double_click"]=coordinate("C")["active"].toBool();
         doubleClick("C");phase=18;
     } else if(phase==18) {
+        snapshots["after_active_singleton_double_click"]=current;
+        snapshots["button_C_after_active_double_click"]=coordinate("C");
         checks["native_double_click_active_window_minimizes"]=owned[2]->isMinimized();
         doubleClick("C");phase=19;
     } else if(phase==19) {

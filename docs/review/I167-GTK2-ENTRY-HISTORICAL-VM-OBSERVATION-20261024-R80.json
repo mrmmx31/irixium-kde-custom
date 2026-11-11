@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-HISTORICAL-VM-OBSERVATION-20261024-R80",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "clone_pid": 2745483,
+    "screen_resolution_px": [1024, 844],
+    "capture": "~/tempia/i167-live-r80e.png",
+    "capture_sha256": "31e6fa7e77125be79ef7d3ac36252202f0230ced3058b9fa3dca00395a5af220"
+  },
+  "live_state": {
+    "profile": {"paused": false, "frameskip": 4, "throttled": false},
+    "mouse_hook": {"captured": false, "mouse_option": false, "wait_button_up": false},
+    "bridge": {"pending": false, "reply": false},
+    "visible": "VUE settings with Screen dialog, File Manager and Terminal surfaces",
+    "screen_dialog": {"screen_saver_checkbox_visual": "unchecked", "timeout_visual": 10},
+    "process": "vuefile is running"
+  },
+  "historical_probe": {
+    "find_files_xid": "0x28000c3",
+    "map_state": "IsUnMapped",
+    "children": 0,
+    "method": "read-only Telnet xwininfo query against guest display :0",
+    "consequence": "No visible Find Files text field was available to compare native selection or caret blink in this VM state. Root tree entries include unmapped windows and must not be treated as visible controls."
+  },
+  "observation_attempts": {
+    "guest_repaint": "xrefresh -display :0; no new editable field appeared",
+    "keyboard": ["Escape", "equals", "Escape"],
+    "keyboard_result": "Three bounded MAME input-field pulses were acknowledged; the subsequent native captures showed no visible UI change. No settings were applied.",
+    "host_focus": "A temporary KWin script selected the exact clone PID and restored the previously active window on a timer; script unloaded.",
+    "mouse": "No mouse button or new counter movement was sent; hook remains released."
+  },
+  "comparison": {
+    "caret": "R76 remains the only measured same-size pair: GTK2 2.24.33 draws a straight 1x18 px caret; VUE SR10.4 draws a 14 px stem with 5x1 px terminals, 16 px overall.",
+    "selection": "Still not measured in SR10.4. GTK2 R70/R72 verify KDE dynamic selection roles only and do not establish historical parity.",
+    "blink": "Still not measured in SR10.4. Current runtime resources do not declare a caret blink interval.",
+    "product_action": "No GTK2 theme source or user profile changed; preserve the dynamic text and selection roles."
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "clone_restarted": false,
+    "guest_settings_changed": false,
+    "desktop_profile_changed": false,
+    "other_mame_session_touched": false,
+    "other_toolkit_family_touched": false
+  },
+  "next": "Continue only GTK2 GtkEntry historical work. To measure selection/blink, expose and focus a visible SR10.4 VUE text field or establish a reliable guest GUI input route; do not infer from GTK defaults or repeat accelerated counter batches.",
+  "limits": [
+    "The current Screen dialog capture is not a GtkEntry-equivalent control.",
+    "The keyboard pulses and xrefresh did not expose a new paired state.",
+    "Caret shape parity remains impossible through the ordinary GTK2 theme engine; see R63 and R76."
+  ]
+}

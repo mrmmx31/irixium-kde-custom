@@ -17,7 +17,16 @@ def require_private_session():
     namespaced = (os.environ.get("IRIX_DOMAINOS_PRIVATE_NAMESPACE") == "bwrap"
                   and base == sandbox_home and personal == sandbox_home
                   and Path(os.environ.get("HOME", "")).resolve() == sandbox_home)
-    ordinary = base != personal and base != Path("/tmp") and base.is_relative_to(Path("/tmp"))
+    tempia = personal / "tempia"
+    under_tempia = base != tempia and base.is_relative_to(tempia)
+    tempia_private = (under_tempia and tempia.is_dir()
+                      and tempia.stat().st_uid == os.getuid()
+                      and not tempia.stat().st_mode & 0o077)
+    ordinary_location = (base != personal and base != Path("/tmp")
+                         and (base.is_relative_to(Path("/tmp")) or tempia_private))
+    ordinary = (ordinary_location and base.is_dir()
+                and base.stat().st_uid == os.getuid()
+                and not base.stat().st_mode & 0o077)
     if not (namespaced or ordinary):
         raise RuntimeError("Explicit disposable session root or coordinated bwrap fake-home contract is required")
     for name in ("HOME", "XDG_CONFIG_HOME", "XDG_DATA_HOME", "XDG_CACHE_HOME", "XDG_STATE_HOME"):
@@ -29,6 +38,7 @@ def require_private_session():
             raise RuntimeError(name + " must point inside the disposable session root")
     runtime = Path(os.environ.get("XDG_RUNTIME_DIR", "")).resolve()
     runtime_allowed = ((runtime.is_relative_to(Path("/tmp")) and runtime != Path("/tmp"))
+                       or (tempia_private and runtime.is_relative_to(base))
                        or (namespaced and runtime == Path("/run/user") / str(os.getuid())))
     if not runtime_allowed:
         raise RuntimeError("Private runtime must be under /tmp, or /run/user/UID inside coordinated bwrap")

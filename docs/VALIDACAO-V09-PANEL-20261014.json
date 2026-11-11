@@ -1,0 +1,349 @@
+{
+  "item": "P10",
+  "family": "V09",
+  "date": "2026-10-14",
+  "status": "partial_integrated_panel_and_palette_matrix_verified_pager_question_led_pending",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "capture": "/home/lsi/tempia/domainos-vue-study/captures/2026-10-12/mame-vue-desktop-20261012.png",
+    "capture_sha256": "9bc50d396d780f387f825cfebc79f5fe31bdc916478755fbfffa372d9a1bb754",
+    "dimensions": "1024x844 capture; native display 1024x800 at 1:1",
+    "limitation": "The separate 2026-10-14 frontpanel capture has partial occlusion, but the archived 2026-10-12 SR10.4/VUE 2.01 desktop frame shows the complete lower panel unobstructed. Its static crop is registered at 1:1; it does not establish transient states.",
+    "unobstructed_panel_crop": {
+      "path": "/home/lsi/tempia/domainos-vue-study/controls/panels/vuewm-panel-static-20261012.png",
+      "sha256": "b92f55743fb90ddf569ab093807122593c7303d68b161eecb6d0017b58c87412",
+      "source_sha256": "9bc50d396d780f387f825cfebc79f5fe31bdc916478755fbfffa372d9a1bb754",
+      "xyxy_half_open": [
+        43,
+        707,
+        990,
+        800
+      ],
+      "dimensions_px": [
+        947,
+        93
+      ],
+      "scale": "1:1",
+      "receipt": "/home/lsi/tempia/domainos-vue-study/receipts/i295-panel-static-20261014.json"
+    }
+  },
+  "consumer": {
+    "applet": "org.irixclassic.domainos.panel",
+    "host": "plasmawindowed in private Xephyr :69, 1024x844",
+    "dependency": "org.irixclassic.grosview copied into temporary XDG data",
+    "palette": "DomainOS KDE roles read in private XDG; integrated shell matrix revalidated in BreezeClassic, BreezeDark and a private yellow fixture, then restored to DomainOS-SR10-4",
+    "pager_state": "‘Áreas indisponíveis’; standalone host does not expose KWin virtual-desktop service",
+    "hosts": [
+      {
+        "host": "plasmawindowed",
+        "display": ":69",
+        "capture": "/home/lsi/tempia/domainos-v09-panel-20261014/panel-applet-second.png",
+        "scope": "standalone applet; Pager placeholder"
+      },
+      {
+        "host": "plasmawindowed",
+        "display": ":70",
+        "capture": "/home/lsi/tempia/domainos-v09-panel-20261014/xephyr-recheck-20261014/root.png",
+        "scope": "isolated rerender from current copied source"
+      }
+    ],
+    "source_snapshot": {
+      "metadata_sha256": "ac47c7d5647fa8d17d7273cc9cb771bd1e7122a28e0e3a5eb1e206d39b0cb952",
+      "main_qml_sha256": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+      "copy_matches_current_project": true
+    }
+  },
+  "captures": {
+    "applet": {
+      "path": "/home/lsi/tempia/domainos-v09-panel-20261014/panel-applet-second.png",
+      "sha256": "0a02c7b1d2c233f572d713f10b952d39b58e1c781c82f3b5d41329aa288e07a0",
+      "dimensions": "971x110",
+      "observation": "valid applet capture; chassis and Applications icon visible; Pager placeholder prevents reviewing the integrated panel state"
+    },
+    "applet_panel_crop": {
+      "path": "/home/lsi/tempia/domainos-v09-panel-20261014/applet-panel-crop.png",
+      "sha256": "e598df5d2c59a30292a8a3a26d3211d936aeabea5cf7382da16cd4ec31d15ae9"
+    },
+    "native_panel_crop": {
+      "path": "/home/lsi/tempia/domainos-v09-panel-20261014/native-panel-crop.png",
+      "sha256": "f3802e8cd360945552b4f458bf37f4bbf8b05588d8466d0590c5a47a41096cb4",
+      "limitation": "native strip partly occluded by File Manager"
+    },
+    "kwin_attempt": {
+      "path": "/home/lsi/tempia/domainos-v09-panel-20261014/panel-applet-kwin.png",
+      "sha256": "b3bf314bac17a757a7e62f7ef34b58f9fb128533d6aff099277a0d101edd9794",
+      "result": "black capture; not accepted as visual evidence"
+    },
+    "identified_screenshots": {
+      "retry3_state_panel": {
+        "path": "/home/lsi/tempia/domainos-v09-panel-20261014/xdg-retry3/state/panel.png",
+        "sha256": "d8a8e40e11cb4ec1a604cf1b7a5a40789d0fbe1baa2c4b8cee5dff04934d23a8",
+        "dimensions_px": [
+          1024,
+          768
+        ],
+        "reinspection": "Shows a readable Colors page in System Settings; not a black frame and not the integrated panel. Invalid for V09 visual comparison."
+      },
+      "kwin_applet_blank": {
+        "path": "/home/lsi/tempia/domainos-v09-panel-20261014/panel-applet-kwin.png",
+        "sha256": "b3bf314bac17a757a7e62f7ef34b58f9fb128533d6aff099277a0d101edd9794",
+        "dimensions_px": [
+          971,
+          160
+        ],
+        "reinspection": "Black/blank standalone applet capture; invalid for visual comparison."
+      }
+    },
+    "integrated_shell": {
+      "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+      "sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+      "dimensions_px": [
+        971,
+        109
+      ],
+      "scale": "1:1 X11 pixels; extracted from the root capture without resampling",
+      "root_capture": {
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/root-integrated-971x109.png",
+        "sha256": "3f7d2821c25b849fb80b38e3a063efd8a0899b6f82570f332ced21b2c4e95f0d",
+        "dimensions_px": [
+          1600,
+          1200
+        ]
+      },
+      "root_crop_xyxy_half_open": [
+        314,
+        1091,
+        1285,
+        1200
+      ],
+      "host": "actual plasmashell containment and applet in private Xephyr :69 with KWin 6.3.6; XDG profile isolated; no user settings or VM input",
+      "runtime_panel_geometry": {
+        "panel_id": 42,
+        "widget_id": 43,
+        "x": 314,
+        "y": 1091,
+        "width_px": 971,
+        "height_px": 109,
+        "length_mode": "custom",
+        "minimum_length_px": 971,
+        "maximum_length_px": 971
+      },
+      "screen_effective_px": [
+        1600,
+        1200
+      ],
+      "kwin_desktops": 4,
+      "pager_visible_slots": 2,
+      "source_copy_matches_entire_project_applet_tree": true,
+      "qml_source_sha256": {
+        "metadata.json": "ac47c7d5647fa8d17d7273cc9cb771bd1e7122a28e0e3a5eb1e206d39b0cb952",
+        "contents/ui/main.qml": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+        "contents/ui/DomainOSPager.qml": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4"
+      },
+      "observation": "Pager is connected to KWin and displays two desktops with navigation; the current QML limits visibleSlots to Math.min(2, desktopCount). The saved 2026-10-12 SR10.4/VUE 2.01 static reference shows six desktop cells. This is a composition difference; no source change was made.",
+      "valid_for": "current integrated applet appearance and Pager availability; not evidence for transient LED states or manual approval"
+    },
+    "palette_matrix_receipt": "docs/VALIDACAO-V09-PALETAS-20261014.json",
+    "palette_matrix": {
+      "domainos_baseline": {
+        "scheme": "DomainOS-SR10-4",
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+        "sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+        "changed_pixels_vs_domainos_baseline": 0
+      },
+      "neutral": {
+        "scheme": "BreezeClassic",
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-BreezeClassic-restarted.png",
+        "sha256": "6acf1d58ed9b198e8213be3a0b2d826fe8a60d3c92f9580d0f05a708a437bfff",
+        "changed_pixels_vs_domainos_baseline": 104568
+      },
+      "dark": {
+        "scheme": "BreezeDark",
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-BreezeDark.png",
+        "sha256": "d327aded2f1bf7bc9a16373cf2768dad95686003935210558039dbc33bff431a",
+        "changed_pixels_vs_domainos_baseline": 104568
+      },
+      "yellow": {
+        "scheme": "Yellow-QA-Fixture",
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-Yellow-QA-Fixture-stable.png",
+        "sha256": "e2d154f6dfc2bfbb29524a224fe140146443505de3ba778414191d517c4b707f",
+        "changed_pixels_vs_domainos_baseline": 104967
+      },
+      "domainos_restored": {
+        "scheme": "DomainOS-SR10-4",
+        "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/panel-DomainOS-restored.png",
+        "sha256": "5a3aabebab491c2cc7c68c8f77cd49308d8aa2f13fa0749301868b765eea21ce",
+        "changed_pixels_vs_domainos_baseline": 535
+      }
+    }
+  },
+  "led": {
+    "functional_evidence": "R13 launch-delay test, 12/12 behavior checks; semiperiod median 516 ms against configured 500 ms",
+    "scope_limit": "functional behavior only; does not establish visual fidelity of LED geometry, color, or glow"
+  },
+  "changes": {
+    "visual_source_changed": false,
+    "personal_desktop_configuration_changed": false,
+    "VM_input_sent": false,
+    "other_AI_T04_touched": false,
+    "temporary_XDG_palette_test_data_changed": true
+  },
+  "limits": [
+    "The unoccluded native screenshot is a saved static 2026-10-12 frame, not a live recheck of guest state on 2026-10-14.",
+    "A valid integrated applet capture now exists in private Plasma/KWin containment. The earlier black root capture was outside the applet window and is invalid; the valid current image supersedes it.",
+    "The integrated panel shows two Pager cells with navigation, while the static VUE strip shows six cells; Q355 asks the preferred composition. Current dimensions (971x109) and VUE crop dimensions (947x93) remain independent.",
+    "The MAME process is absent and the existing bridge request is unresolved, so no new Apollo input or transient LED/Pager state can be captured.",
+    "Manual visual review remains open.",
+    "The integrated panel alone has a private DomainOS/neutral/dark/yellow palette matrix; this does not complete the V10 cross-family matrix or validate other consumers.",
+    "Outer panel aspect differs: 971×109 current versus 947×93 VUE, at 1:1 with no resampling. Current 50% canvas scaling is configured by the product design; the static reference alone does not tell whether to preserve or alter it. Q358 asks user preference; no change made."
+  ],
+  "next": "Await Q355 (Pager arrangement), Q356 (window-title strip) and Q358 (overall panel proportions) before changing V09 composition or scale. Continue dynamic LED evidence only when the existing Apollo guest/bridge responds.",
+  "attempts": [
+    {
+      "date": "2026-10-14",
+      "method": "Fresh isolated Xephyr :69 retry with a private XDG/KDE profile, explicit Breeze decoration plugin, four KWin virtual desktops, and KWIN_COMPOSE=N.",
+      "kwin_version": "6.3.6 (Debian 4:6.3.6-1)",
+      "source": "https://sources.debian.org/src/kwin/4%3A6.3.6-1/src/options.cpp",
+      "result": {
+        "dbus_virtual_desktop_manager": "available; count property returned 4",
+        "compositor": "disabled by documented KWIN_COMPOSE=N path",
+        "capture": "The previously cited state/panel.png hash resolves to a readable System Settings Colors window, not a black capture and not an integrated panel. The separately saved panel-applet-kwin.png is black/blank. Neither image is valid V09 evidence.",
+        "screenshot": "/home/lsi/tempia/domainos-v09-panel-20261014/xdg-retry3/state/panel.png",
+        "sha256": "d8a8e40e11cb4ec1a604cf1b7a5a40789d0fbe1baa2c4b8cee5dff04934d23a8",
+        "remaining": "No trustworthy integrated panel capture; native VUE panel strip remains occluded."
+      },
+      "changes": {
+        "product_source_changed": false,
+        "personal_configuration_changed": false,
+        "vm_input_sent": false
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "method": "Standalone plasmawindowed rerender in new Xephyr :70 (1024x844), isolated XDG config/data/cache/state/runtime; copied current panel applet, gr_osview and desktop theme; no KWin compositor and no personal configuration.",
+      "source": {
+        "metadata_sha256": "ac47c7d5647fa8d17d7273cc9cb771bd1e7122a28e0e3a5eb1e206d39b0cb952",
+        "main_qml_sha256": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac"
+      },
+      "result": {
+        "window_tree": "plasmawindowed reported top-level windows 440x440, 160x160 and 108x108; no KWin virtual desktop service was running.",
+        "log_observations": [
+          "Loading default layout",
+          "Applet invalid: Cannot find a package for empty",
+          "KWin virtual desktop methods unavailable"
+        ],
+        "capture": {
+          "path": "/home/lsi/tempia/domainos-v09-panel-20261014/xephyr-recheck-20261014/root.png",
+          "sha256": "79a9fce6b8c2c68e307116cf15dafb04e1fb758e9bfbc4cce69a7b203ef118ba",
+          "dimensions_px": [
+            1024,
+            844
+          ],
+          "unique_rgb_colors": 1,
+          "result": "uniform black root capture; invalid as visual output"
+        },
+        "cause": "undetermined; this attempt does not establish whether the failure is in the standalone host, rendering, or root capture.",
+        "remaining": "Use the already archived standalone applet capture only for chassis and Applications; integrated Pager and live panel comparison remain unverified."
+      },
+      "changes": {
+        "product_source_changed": false,
+        "personal_configuration_changed": false,
+        "vm_input_sent": false
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "method": "Private Xephyr with actual plasmashell shell and KWin; created one custom-length panel containment and loaded the production applet as its sole widget. Captured the real panel region from the X root at native scale.",
+      "kwin_version": "6.3.6 (Debian 4:6.3.6-1)",
+      "result": {
+        "dbus_virtual_desktop_manager": "available; count=4",
+        "panel_window": "971x109 at x=314,y=1091; verified by xwininfo",
+        "applet_in_panel_containment": true,
+        "pager": "available; two slots shown with navigation",
+        "capture_path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+        "capture_sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+        "root_path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/root-integrated-971x109.png",
+        "root_sha256": "3f7d2821c25b849fb80b38e3a063efd8a0899b6f82570f332ced21b2c4e95f0d",
+        "limitations": "The current Pager shows two desktops at once while the static VUE panel shows six cells; user preference is asked in Q355. The VUE crop is 947x93 and current canonical panel geometry is 971x109; no rescaling or geometry change inferred. LED/transient states still require the Apollo session."
+      },
+      "changes": {
+        "product_source_changed": false,
+        "personal_configuration_changed": false,
+        "vm_input_sent": false
+      }
+    },
+    {
+      "date": "2026-10-14",
+      "method": "Same real Plasma/KWin panel in isolated Xephyr :69; cold-started neutral, dark and yellow scheme states, then restored DomainOS-SR10-4.",
+      "result": {
+        "receipt": "docs/VALIDACAO-V09-PALETAS-20261014.json",
+        "schemes": [
+          "DomainOS-SR10-4",
+          "BreezeClassic",
+          "BreezeDark",
+          "Yellow-QA-Fixture",
+          "DomainOS-SR10-4 restored"
+        ],
+        "panel_crop": "971x109 at 1:1; XDG-only palette data",
+        "observed": "palette roles alter integrated panel pixels; scheme restored and user KDE config hash unchanged",
+        "invalid_intermediate": "Initial yellow crop was black during containment rebuild; excluded and replaced with a stable capture."
+      },
+      "changes": {
+        "product_source_changed": false,
+        "personal_configuration_changed": false,
+        "vm_input_sent": false,
+        "other_AI_T04_touched": false
+      }
+    }
+  ],
+  "compositional_comparison": {
+    "reference": {
+      "capture": "/home/lsi/tempia/domainos-vue-study/controls/panels/vuewm-panel-static-20261012.png",
+      "dimensions_px": [
+        947,
+        93
+      ],
+      "scale": "1:1"
+    },
+    "integrated_applet": {
+      "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+      "dimensions_px": [
+        971,
+        109
+      ],
+      "scale": "1:1"
+    },
+    "observed_order_reference": "clock, date, graph, mail, six Pager cells, right-side icon groups and lower controls",
+    "observed_order_current": "clock, date, graph, mail, wide window-title strip, two Pager cards with navigation, tray grid and action buttons",
+    "decision_questions": [
+      "Q355: Pager two visible cards with navigation versus up to six in a 3x2 grid.",
+      "Q356: preserve the current separate window-title strip or reposition/remove it to match the static VUE sequence?",
+      "Q358: preserve current 971×109 rendering from the 1942×218 canvas, or adjust panel proportions toward the static VUE crop 947×93?"
+    ],
+    "limits": "The captures are not rescaled or treated as identical layouts. The static VUE frame cannot prove transient visibility/contents of a window-title strip; no source change follows from this observation.",
+    "outer_dimensions": {
+      "reference_vuestrip_px": [
+        947,
+        93
+      ],
+      "current_integrated_panel_px": [
+        971,
+        109
+      ],
+      "current_source_canvas_px": [
+        1942,
+        218
+      ],
+      "current_render_scale": 0.5,
+      "measured_delta_px": [
+        24,
+        16
+      ],
+      "aspect_ratio_reference": 10.182795698924732,
+      "aspect_ratio_current": 8.908256880733944,
+      "comparison": "Both images are 1:1 native pixels and are not rescaled. The current panel follows its 1942×218 design canvas at 50%; the captured VUE strip is 947×93. These are separate dimensions and the static image does not establish whether the current aspect/height is desired.",
+      "decision_question": "Q358: preserve current design canvas/aspect ratio or adjust the overall panel proportions toward the VUE capture?"
+    }
+  }
+}

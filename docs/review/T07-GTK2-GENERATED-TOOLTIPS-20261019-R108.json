@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-GENERATED-TOOLTIPS-20261019-R108",
+  "date": "2026-10-19",
+  "item": "T07",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 4,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee"
+  },
+  "environment": {
+    "xserver": "Xephyr",
+    "display": ":83",
+    "geometry": "1280x800",
+    "window_manager": "Openbox",
+    "gtk2": "2.24.33-2+deb12u1",
+    "qt6": "6.8.2+dfsg-9+deb13u2",
+    "kf6colorscheme": "6.13.0-1"
+  },
+  "change": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "behavior": "Generated DomainOS GTK2 RC now binds *gtk-tooltip* to an explicit style using tooltip_background_breeze and tooltip_text_breeze from the KDE GTK color export.",
+    "test": "tests/test_domainos_motif.py::GtkDomainOSTest::test_gtk2_preparation_is_immutable_and_distinct_by_scheme"
+  },
+  "source_hashes": {
+    "gtk2_domainos_palette.py": "6c12fb77cd5e4c7c2218eb495f34bf5547149c5447929d844c211f3e372175cf",
+    "test_domainos_motif.py": "36b6250bdb0f0fb05630360ea3d5427e7e60b47d1d62f38bf181e0b43cfc73b4",
+    "probe_gtk_hint_hover.py": "9692eef594a7d774613de5e7f746c46afa4798006d6c3617a98d7fcaa9c82070",
+    "theme-lab-colors": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+    "DomainOS source gtkrc": "390f228d6421eda40413790eb869516e245bfcc6ff39ae6ed0faa8c1c8b7e84f",
+    "DomainOS source MANIFEST": "2bae0f8eba25e2cfce85bd1ca517cd90c1b1170b3852fc842d17fc7eb267ace4"
+  },
+  "native_schemes": [
+    {
+      "name": "DomainOS",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "tooltip_roles": {
+        "face": "#78a0d5",
+        "text": "#ffffff"
+      },
+      "generated_rc_sha256": "996c1c81fb6757a7bd8f22228674f7e5c0388d0866c0bd6321013dd0ea62b12d",
+      "face_pixels": 14723,
+      "text_pixels": 2297,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_inside_screen": true,
+      "overlap_pixels": 0,
+      "dismissed_on_leave": true,
+      "button_action_preserved": true
+    },
+    {
+      "name": "BreezeLight",
+      "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "tooltip_roles": {
+        "face": "#f7f7f7",
+        "text": "#232629"
+      },
+      "generated_rc_sha256": "cf94a46df7af920e07d054ffe94cc1e32b72b3e6233d50294e1ddc5f55a3ebab",
+      "face_pixels": 14711,
+      "text_pixels": 2297,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_inside_screen": true,
+      "overlap_pixels": 0,
+      "dismissed_on_leave": true,
+      "button_action_preserved": true
+    },
+    {
+      "name": "BreezeDark",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "tooltip_roles": {
+        "face": "#292c30",
+        "text": "#fcfcfc"
+      },
+      "generated_rc_sha256": "c539d879c785e3026e9ce061ddbfdf48422908ce443f6ed8403bbd1dccafe910",
+      "face_pixels": 14711,
+      "text_pixels": 2297,
+      "delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_inside_screen": true,
+      "overlap_pixels": 0,
+      "dismissed_on_leave": true,
+      "button_action_preserved": true
+    }
+  ],
+  "limitations": [
+    "The native KColorScheme helper omits error_color_breeze, link_color_breeze and link_visited_color_breeze; those artwork-only roles were filled from the current GTK native export (SHA-256 ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70). Tooltip face/text were read independently from each selected KDE .colors file using KColorScheme.",
+    "One push button, one layout and one Xephyr geometry; no installed theme reload, other applications/states, or human visual approval.",
+    "No personal theme/configuration was written; generated assets remained in ~/tempia."
+  ],
+  "artifacts": "~/tempia/t07-gtk2-generated-tooltip-r108-20261019/RESULTADO.json (SHA-256 3198bf7a39b63a75f307ade478294a86a188c69400dd36b8cbdda70c111f006a)",
+  "next": "Continue T07 at an uncovered family/layout or state. Do not mark T07 complete from this focused GTK2 result."
+}

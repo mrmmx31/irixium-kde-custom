@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_button_scene_native.py", line 39, in <module>
+    if child.returncode or child.stderr:raise RuntimeError(child.stderr or child.stdout)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_button_scene.py", line 45, in <module>
+    origin = window.get_window().get_origin(); ox, oy = origin[-2:]
+TypeError: Gdk.Window.get_origin() takes exactly 3 arguments (1 given)
+

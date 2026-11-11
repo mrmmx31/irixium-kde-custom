@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R588",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Wake the black guest display using the project's established single Shift pulse and verify release, current image, and unchanged emulator profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_project_mame_pid": 117186,
+    "other_project_touched": false
+  },
+  "before": {
+    "capture": "~/tempia/domainos-theme-work/I167/vuer-current-r588.png",
+    "sha256": "47b350ec834b8658ecf55748b4f1fed3522fb8d299ad48d438c36e2897418869",
+    "state": "Black guest framebuffer with the persistent Apollo command legend visible."
+  },
+  "wake": {
+    "method": "One-frame guest Shift pulse on :kbd:keyboard4/Shift; automatically cleared at frame 3; native guest screen snapshot at frame 65.",
+    "script": "~/tempia/domainos-theme-work/I167/r589-wake.lua",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "error": null,
+    "capture": "~/tempia/domainos-theme-work/I167/r589-vue-awake.png",
+    "sha256": "a666007ba477c770deb04843cb2b14b0c8a58bfa2694d4f8f6ec9b69a9b9fb8d",
+    "visible": "HP VUE desktop awake with Terminal and Trash Can; both scrollbar orientations visible."
+  },
+  "profile_after": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "mouse_hook": "table",
+    "channel_pending": false
+  },
+  "limits": [
+    "No mouse input, host focus change, emulator restart, profile change, or guest-file change.",
+    "This confirms wake and release only; it does not complete a held horizontal-arrow comparison."
+  ],
+  "next": "Use the awake native reference for the remaining authorized GTK2 work. Do not repeat a mouse route unless a new method can visibly establish the cursor over the intended horizontal arrow before holding it."
+}

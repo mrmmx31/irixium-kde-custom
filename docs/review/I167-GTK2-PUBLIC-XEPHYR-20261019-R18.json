@@ -1,0 +1,56 @@
+{
+  "item": "I167",
+  "revision": "R18",
+  "checked_at_utc": "2026-10-19T14:27:49Z",
+  "family": "GTK2 public preview stepper input and redraw timing",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":83",
+    "xephyr": "assistant-owned, preserved",
+    "scheme": "DomainOS SR10.4 and BreezeDark where specified"
+  },
+  "changes": {
+    "test": "public preview capture now polls the 15x15 cell for up to 1.5 seconds for press/release pixels rather than taking a single fixed 200 ms sample",
+    "product_runtime": "unchanged; test harness only"
+  },
+  "runs": [
+    {
+      "id": "right-only-fixed-200ms",
+      "result": "failed press-pixel assertion",
+      "direction": "horizontal-right",
+      "pointer_path": "XQueryPointer reached preview top-level; xdotool mousedown/up completed",
+      "notes": "Native adjustment events later showed values 36 then 35; screenshot held state matched normal, indicating a fixed-time capture did not observe the pressed paint."
+    },
+    {
+      "id": "right-only-poll-until-change",
+      "result": "passed",
+      "direction": "horizontal-right",
+      "held_differences": 53,
+      "released_differences": 0,
+      "roi_pixels": 225,
+      "native_value_event": 35,
+      "recipe": "DomainOS SR10.4",
+      "notes": "Bounded pixel polling observed the active redraw; click and normal-close path completed."
+    },
+    {
+      "id": "full-public-matrix-with-polling",
+      "result": "failed-first-left-press",
+      "direction": "horizontal-left",
+      "held_capture_timeout_ms": 1500,
+      "native_adjustment_events": 0,
+      "pointer_path": "XQueryPointer reached preview top-level at 23,23",
+      "preview": "closed by harness cleanup",
+      "notes": "No native action and no held pixel change were recorded. This differs from prior public runs where left and/or right held changes passed, so public input delivery remains nondeterministic; do not interpret as a confirmed theme artwork failure."
+    }
+  ],
+  "preserved_results": {
+    "direct_native_gtk2": "R17 still has 4/4 directions with 0 pixel differences in held/released semantic cells; 24 scenes and 96 mask checks remain valid for that exact scope."
+  },
+  "limits": [
+    "Polling fixes false negatives caused by a fixed screenshot delay but does not resolve missed public input events.",
+    "No fresh MAME capture was made because the pre-existing bridge request f2127393cf7642a4896dceae1977ea71 remains unresolved.",
+    "No user profile, guest VM, other Xephyr, color scheme, or running user application was changed."
+  ],
+  "status": "partial; direct GTK2 artwork and right-stepper input pass, full public interaction remains nondeterministic",
+  "next": "Continue to the next authorized Fila Atual demand while preserving the isolated GTK2 result; return to I167 only with a discriminating input-delivery diagnosis or resolved MAME request."
+}

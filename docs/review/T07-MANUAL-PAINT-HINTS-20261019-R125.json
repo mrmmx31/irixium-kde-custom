@@ -1,0 +1,49 @@
+{
+  "id": "T07-R125",
+  "date": "2026-10-19",
+  "scope": "Tooltip hover on the manual paint editor pencil action and width parameter",
+  "environment": {
+    "display": ":81",
+    "resolution": "1600x1000",
+    "window": "Theme Lab - Editor de pintura manual",
+    "pid": 3693563,
+    "family": "Motif"
+  },
+  "observations": [
+    {
+      "control": "Lápis",
+      "result": "Pass",
+      "details": "After a 1 second hover, the native tooltip appeared with its intended text, below the toolbar and outside the drawing area."
+    },
+    {
+      "control": "Largura da camada",
+      "result": "Fail",
+      "details": "After a 1 second hover, the tooltip appeared over the following height scale. It explains pixels of artwork and resize behavior, but overlaps another control."
+    }
+  ],
+  "help_menu": {
+    "status": "Already implemented and covered by prior Xephyr evidence",
+    "scope": "Main Theme Lab window; menu Ajuda provides topic and novice/intermediate/expert selectors",
+    "receipt": "T07-HELP-XEPHYR-20261016.json"
+  },
+  "artifacts": [
+    {
+      "path": "~/tempia/i458-xephyr-20261019/t07-manual-pencil-hint.png",
+      "sha256": "77cffe11eda796bcf291562516a0c72be3d4152c18c1e18dc9b0b8a1823951d7"
+    },
+    {
+      "path": "~/tempia/i458-xephyr-20261019/t07-manual-dimension-hint.png",
+      "sha256": "3ec63b4803269fcb56086d1d36c7dfcb2f2c3e3a88f848b723ea6b87032303c9"
+    }
+  ],
+  "source": {
+    "path": "tools/theme-lab/src/view/manual_paint_view.c",
+    "sha256": "d55262b81db6ae93ca58e717a298b31041a4699493b009d29efe17b954536260"
+  },
+  "limitations": [
+    "Only these two controls were hovered; this does not prove all manual editor hints.",
+    "The tooltip delay was allowed to elapse at 1 second; exact threshold and stability were not timed in this probe.",
+    "No source changes were made in this review."
+  ],
+  "next": "Adjust tooltip placement for long numeric controls so their hints do not cover adjacent controls, then retest the same live geometry."
+}

@@ -346,7 +346,10 @@ Item {
                 onClicked: panel.actionRequested("pins", this)
                 texture: panel.images+"metal-lines.svg"
                 simpleRelief: true; bevelLight: colors.metalLight; bevelDark: colors.shadow; grooveCount: 4
-                imageSource: panel.images+"applications.svg"; imageWidth: 64; imageHeight: 48
+                // The bevel leaves a 44-unit inner face. Keep a four-unit
+                // margin on every side; PreserveAspectFit retains the SVG's
+                // 4:3 drawing inside this square image box.
+                imageSource: panel.images+"applications.svg"; imageWidth: 36; imageHeight: 36
             }
             Repeater {
                 model: 5

@@ -1,0 +1,169 @@
+{
+  "item": "I172",
+  "revision": 1,
+  "family": "plasma",
+  "date": "2026-10-14",
+  "status": "adapter_revalidated_in_xephyr_user_visual_review_pending",
+  "authorization": {
+    "authorized": true,
+    "definition_sha256": "251b26b48b79c7744747344684abeb636f4d7964442ec3cf38219e77be0aa817"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "contract_sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3"
+  },
+  "implementation": {
+    "adapter": "tools/theme-lab/plasma_recipe.py",
+    "route": "tools/theme-lab/plasma_route.py",
+    "controls": [
+      "scroll_h",
+      "scroll_v"
+    ],
+    "scope": "Private XDG Plasma theme snapshot, directly rendered real org.kde.plasma.components.ScrollBar and KSvg controls at DPR 1."
+  },
+  "native_test": {
+    "status": "passed",
+    "command": "python3 -B tools/theme-lab/tests/test_plasma_public_native.py",
+    "runtime": {
+      "qt": "6.8.2",
+      "platform": "xcb",
+      "native_qml": true,
+      "renderer": "org.kde.plasma.components.ScrollBar + KSvg"
+    },
+    "private_guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "scheme": {
+      "id": "DomainOS-SR10.4",
+      "name": "DomainOS SR10.4",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5"
+    },
+    "bars": {
+      "plasmaVerticalScrollBar": {
+        "found": true,
+        "class": "ScrollBar_QMLTYPE_0",
+        "width": 15.0,
+        "height": 230.0,
+        "implicitWidth": 15.0,
+        "implicitHeight": 15.0,
+        "leftPadding": 2.0,
+        "rightPadding": 2.0,
+        "topPadding": 2.0,
+        "bottomPadding": 2.0,
+        "leftInset": 2.0,
+        "rightInset": 2.0,
+        "topInset": 2.0,
+        "bottomInset": 2.0,
+        "visible": true,
+        "enabled": true,
+        "hovered": false,
+        "pressed": false
+      },
+      "plasmaHorizontalScrollBar": {
+        "found": true,
+        "class": "ScrollBar_QMLTYPE_0",
+        "width": 380.0,
+        "height": 15.0,
+        "implicitWidth": 19.0,
+        "implicitHeight": 15.0,
+        "leftPadding": 2.0,
+        "rightPadding": 2.0,
+        "topPadding": 2.0,
+        "bottomPadding": 2.0,
+        "leftInset": 4.0,
+        "rightInset": 4.0,
+        "topInset": 2.0,
+        "bottomInset": 2.0,
+        "visible": true,
+        "enabled": true,
+        "hovered": false,
+        "pressed": false
+      }
+    },
+    "expected_geometry": {
+      "vertical_bar_px": 15,
+      "horizontal_bar_px": 15,
+      "thumb_cross_px": 11,
+      "cross_inset_px": 2
+    },
+    "qml_warnings": [],
+    "screenshot": "docs/review/images/I172-plasma-native-20261014.png",
+    "screenshot_sha256": "a86e0e6a225823b7e53f9593e15d6a97b36b69a9cd615bbca2172488b18738eb",
+    "profile_changed": false,
+    "theme_installed": false,
+    "screenshot_display": ":291"
+  },
+  "reference_comparison": {
+    "source": "docs/VALIDACAO-V08-PLASMA-20261014.json, same SR10.4 VUE scrollbar and same Plasma Components/KSvg renderer",
+    "native_reference_track_px": [
+      15,
+      228
+    ],
+    "native_reference_thumb_px": [
+      11,
+      21
+    ],
+    "previous_measured_plasma_thumb_px": [
+      11,
+      20
+    ],
+    "known_difference": "Plasma thumb begins 1px lower and is 1px shorter at matched page fraction; idle trough is hidden in Plasma, unlike VUE. Existing evidence is reused only for matching source/renderer/geometry; the new recipe preview was not a new content-fraction comparison."
+  },
+  "limitations": [
+    "This generated gallery isolates real Plasma ScrollBar controls; it does not claim ScrollView integration or System Settings QtQuick Controls appearance.",
+    "Plasma Components has no stepper arrows; arrow dimensions remain unrendered.",
+    "Plasma exposes no separate 4px viewport/bar gap metric in this component.",
+    "Hover/disabled SR10.4 appearance remains unverified against this recipe snapshot.",
+    "KDE role colors and shade factors follow the selected scheme; generated theme/color scheme live in private XDG snapshots and must be regenerated after scheme changes.",
+    "Native runtime and geometry tests do not equal user visual approval."
+  ],
+  "tests": {
+    "recipe_unit": "4/4 passed",
+    "native_backend_route": "passed through private bwrap + Xvfb, Qt 6.8.2 / XCB / real Plasma Components QML + KSvg; no QML warnings",
+    "py_compile": "passed",
+    "diff_check": "passed for changed tracked implementation and documentation paths"
+  },
+  "source_sha256": {
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "plasma/IrixClassicDomainOS/widgets/scrollbar.svg": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
+    "tools/theme-lab/backend.py": "1af370d12c1bd3e9c17cdc57c4436dbe1d46aeb61557a099bb2d9d6258a75c72",
+    "tools/theme-lab/scene_contract.py": "810f8faa475c67b7e2312e540a57a1828b55bae01124ae560084bf4d3416be4a",
+    "tools/theme-lab/plasma_recipe.py": "cb53996ca0dc09b3aa3410e2ebd1582f62651a7aa5287324a8e3ec12542fa63c",
+    "tools/theme-lab/plasma_route.py": "16cffe80f19ede437a0c5f9c3d4dd748b70c7cbf7a9c07fbf5aa9ceac04220a6",
+    "plasma/tests/galerias-nativas/plasma_style_demo.py": "efa37e467c2a0a7023430ea9ffce4475bfd1acc741dd667f6137d3f4ca4e2cbd",
+    "tools/theme-lab/tests/test_plasma_route.py": "8506cf641e69f7b6f35fd9ed9fafebb7041369bce694ac4e3a62a2b61fafdcc6",
+    "tools/theme-lab/tests/test_plasma_public_native.py": "51a474f1f15d0ce2de456690380a21dc25f506a0403f368d48bf76b7fccf6293"
+  },
+  "next": "Human visual review remains separate. I172 still documents Plasma component limits: no native stepper arrows, no independent viewport/bar gap, and the historical active/disabled states are not fully matched. Continue another already authorized independent item without treating those limits as solved.",
+  "xephyr_recheck_2026_10_18": {
+    "display": ":80",
+    "environment": "Isolated Xephyr, private XDG home/config/data and DomainOS-SR10.4 color scheme; real Qt 6.8.2 Plasma Components.ScrollBar + KSvg; no theme installation or personal profile changes.",
+    "launcher": "~/tempia/i172-xephyr-20261018-r2/launch_preview.py",
+    "native_result": "~/tempia/i172-xephyr-20261018-r2/home/out/revisions/20261018T104908-363daec2430b/plasma-snapshot/native-preview/RESULTADO.json",
+    "screenshot": "~/tempia/i172-xephyr-20261018-r2/home/out/revisions/20261018T104908-363daec2430b/plasma-snapshot/native-preview/plasma-style.png",
+    "screenshot_sha256": "d284fdc464ca97d12fa01c6c242502ac12d35563651ea50a12a6f6f8db2a327e",
+    "source_namespace": "<svg xmlns=\"http://www.w3.org/2000/svg\"> (default namespace; no ns0 prefixes)",
+    "pixel_comparison_to_saved_xvfb_capture": {
+      "different_pixels": 6,
+      "of": 167900,
+      "interpretation": "Near-identical renderer capture; six-pixel delta is a runtime render difference, not a historical fidelity score."
+    },
+    "initial_xephyr_failure": {
+      "display": ":79",
+      "screenshot": "~/tempia/i172-xephyr-20261018/xephyr-live.png",
+      "sha256": "4c235fbc6bb5c201e0dc5321a9631f230f23efcd6e80b0eddc3917388b8c7f0e",
+      "observation": "The default-namespaced SVG fixed the black thumbs in :80; the :79 capture preserves the previous namespaced serialization failure."
+    },
+    "generator_fix": "ElementTree now registers the default SVG namespace before serializing the KSvg asset. Dynamic KDE role classes and shade factors remain in the SVG."
+  }
+}

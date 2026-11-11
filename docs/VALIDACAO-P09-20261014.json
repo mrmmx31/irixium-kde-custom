@@ -1,0 +1,134 @@
+{
+  "item": "P09",
+  "revision": 1,
+  "definition_sha256": "4a79ca59d4628dc4c929aa33e4a29fabfd1419e6c27d2d3a43630aeef64a6ba2",
+  "status": "waiting_user",
+  "user_evaluation": {
+    "verdict": "approve",
+    "note": "Isso já fiz. E deu tudo certo.",
+    "responded_at": "2026-10-11T02:19:41.967Z"
+  },
+  "date": "2026-10-14",
+  "tests": {
+    "preferences": {
+      "status": "passed",
+      "passed": 48,
+      "total": 48,
+      "qml_diagnostics": 0,
+      "native_dialog_property_scope_warnings": 89,
+      "real_profiles_modified": false,
+      "scope": "Private native Plasma KConfigPropertyMap, two applet IDs, edit/discard/apply/restart and explicit read-only pin import"
+    },
+    "thumbnail_component": {
+      "tests": 16,
+      "status": "passed",
+      "command": "python3 -B plasma/tests/test_domainos_thumbnails.py"
+    },
+    "native_xephyr": {
+      "status": "failed",
+      "passed": 15,
+      "total": 17,
+      "failed": [
+        "native_scenario_completed",
+        "private_worker_exited_cleanly"
+      ],
+      "provider_count": 0,
+      "loaded_provider_count": 0,
+      "available_count": 0,
+      "titles_observed": "1. DomainOS thumbnail owned 1\n2. DomainOS thumbnail owned 0",
+      "renderer": "llvmpipe (LLVM 19.1.7, 256 bits)",
+      "scope": "private Xephyr + KWin X11, real /usr/bin/plasmawindowed, owned source windows only; native title hint captured, preview Loader/providers did not open"
+    },
+    "thumbnail_xvfb": {
+      "status": "failed",
+      "failed": [
+        "native_scenario_completed",
+        "private_worker_exited_cleanly"
+      ],
+      "result": "/tmp/domainos-p09-20261014-thumbnails-xvfb/RESULTADO.json"
+    }
+  },
+  "current_thumbnail_source_sha256": {
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigIconbox.qml": "10b82946cadffadfbf412d3b5940cfeaa7aa5f0edb7af1dcebfdbaee39d0730f",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/Artwork.js": "a0b2f21c090dfb3c26a5a18621ae2d2fde2612383a92131ab07854e1303a8f5c",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigPager.qml": "1acf26f6a7eddfe342e6679def882f19650593fdca50f332611c7c2104b26585",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "1a61a20c2cc95327efb04c2fb2218fe22640658aba39e98a3306e0661cbc4d80",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSGraph.qml": "5e4c029d9489dfe0266d3c82795f89884066b15854fc74277ca24200f6d2149a",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSCategoryDefaults.qml": "68bf84bab2d10c60936171710cf81cd78bf6c89969fcc72705934a1f5998ef6f",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSViewScrollBar.qml": "8781f09f014eb35648ae2a4974cefe86a46be29ba9260eba5661ba6d16637228",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSRuntime.qml": "6e9c1ec149554547cfa880e0220d2461c67ce03cec81dc45562a9a330ec875d6",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigDefaults.qml": "bc34a50e454e35f8f9d1942e945912668882d50173a6ed47b570b7b31306276f",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigApplications.qml": "99e954a131003e13dc48016a98646273f4ff40ba06e08ed9e5b2fa9102b6c104",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowHighlight.qml": "516718dc8e445afbd460de737da4d3a21dc4bae3dbed47daa86710c15c3ef335",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSButton.qml": "1f850382928fa535c83f7d7168d7cbcba088d97afc582933804a58663fec59de",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSScrollBar.qml": "ce527a87c0340b0fa665403d28144c80c69e48b2875c33b1b4dfa433c06060fd",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTextField.qml": "72c49c1089feebbcc1654804c7ace8620d06d26e248b99576c15fdd4deeef3b6",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSX11Thumbnail.qml": "e5df29bf9d53a52b120a91e827d6a063b7b5ec3d0909c1cf7aaec157f839c177",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteMoveButton.qml": "bfd59436a3641258dc09432e1e8dd48978462700d2b5129ffc2b51c24f61399c",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowTitles.qml": "1686c34907786d8fe0e2299d7a240f6fe4b8384b84a4099dcb5ef8d31a3ee93a",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSGroupMemberHint.qml": "87ea1af27d7628687b9e119ab5321f75954dab552be9a8eae5d4a2af9de5b40c",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml": "f9e42a0ad96b4e3fd4f0c2d9ee2c356dc128c76ff89a2983a460e008ef5990bf",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigInstruments.qml": "8b767d685b1304b1f7a4bbb62fa2b3c55b083c768b065e3981cfa5ca1115c62d",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowThumbnails.qml": "9cd7d0654e00935de42872698e18dc6692c0683553fc65aab513b76c801a4728",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/Bevel.qml": "bcd21a341330fa085198bc6f1bd6166488b65e94d35dbec43cd6a9b15cb4461c",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigCommands.qml": "4a5b63523ad0f4671f2f30239d8a1002f83bdb0a317094dd5812536c9c578457",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSDialogButtonBox.qml": "e1bc9e7254fc60f2b4788fc3aabe1402b40f6e0efc2144194907bcfeed935698",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/WorkspaceTile.qml": "bd75f24119cfb9552f8b2396ba3a1aeacb786ddafd0b19ba781b23191bb34275",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSMailState.qml": "a2ee565bf3b7e53d6cbe860269b787acd18981a77346e5d363a474951f82176b",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupPlacement.qml": "09258b6605f9aa60de609ef82f0ab09ed17cf59173a2aefe88b5198a16be9675",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowPreviewContents.qml": "7455a1c3576cabb01efd2a341ebd3b792b141eeafd83917e6d1f9c3e333a704e",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigMonitor.qml": "0b3e4a763099984773a7e77e246588fa40685599e31d89ca687299d8136bd8a3",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/main.qml": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPager.qml": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWindowOperations.qml": "a09b150866c1df83eae269529952788cfc7b6c89a5863e528d239c13f9e3b516",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupWheel.qml": "61b7184aa326fc731bc317201880b6e32e4aa10a6ba130d784e29482e41817e8",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsMenu.qml": "bf00dbd0ff3129b81274cddbe2bfbbc7ae5afa2bb8b00fba621f7cbf458c9895",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFunctionalPanel.qml": "bd364a853f31e12bc27fbeea9fa6cbbf7163ffa38e7d09679fe69995bb2726e3",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/PaletteImage.qml": "2845e9752a39c5f4344bc51363c11a99ab3e4db9ec44006341f1b43abf440a9d",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSNativeMenuPalette.qml": "f785229ad1fd102a4706d2f549c0da09ed315ba39e414597f4c69b72b8087f49",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSControlPalette.qml": "f6f7cd9cd8cc8d364d5e775cfcaf4a94211dda439fd7bc6c4444e9097e58da19",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/PanelButton.qml": "ed09537dbeadd7c891550ef5fb93d2e2ec505b26ed025507f1d614ac6177c09e",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSModifierKeys.qml": "e5d575f1560cfaa2be982877bf1f6f56191534dcefaa99854deb6f7a9cf0b09a",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSDesktopTile.qml": "82b64601271d6ba8c4f3f25fa88f0b88b112de60bff0e812e5f93f0f5cbf7691",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSCheckBox.qml": "3479df6794e549a682b86ddfe432df504f17774abbf88d91c0424979b9588c73",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigTray.qml": "d1ea2514a46e95efa260ef20283d6187a958eb4704dcc61b4032caa9825b5d7a",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKDEPalette.qml": "6045f28d021ce456a6aaa4094648e2db8ac8f0e081bcbdc84b27916c849d41c5",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSWaylandThumbnail.qml": "6f9f3faeb44dfe1af5f7d442094d74aff6fbc5af48a8f82298150314691c5d8d",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigActivity.qml": "9c77f735ef1c5a78e3bf8da56330cf1372cd51b5e7a4530e66c6cf3d33ea4e61",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSNativeScrollGeometry.qml": "f3ac45b5aa312b49fb8af0cb71d303e37b606ed415c5f80b60702f5adbb1c4f9",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml": "66308e4b0b146e2e05f683c7bb76d5123d8484a74535ff289792574c2e3d5ddb",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSNativeTaskMenu.qml": "90895b26f125507e364799cfe95b156788954df1e431d24c26ba476e204587b8",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSCommands.qml": "27494e4f9ba42b36fbdece60ddc8f3489aee0aeb61a83397f5d9dd6328a9382f",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTray.qml": "50c6ed63a4917db69640fd0904587813d4c99e36b3ef9d0b2ced09ddfc525fa0",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteOrdering.qml": "b3370148f1f8e79a6e534d7792e9bb9b4c5fbb4e44b091a4d9215da36f78ec78",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskSelection.js": "c9015fccde1d3f4067757a59f733ffdbfb93e5a7870131d2ed4486b9ddfd8113",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSInstruments.qml": "046c6b7d889715e0925b93f2fa9ffb25375aebf83c3324421e6cc1cc71bdd75e",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/ConfigUtils.js": "7e1fa4663bc0045844dd4ba2c5308c616f6a7d0ba26d723498321103b55f3bbd",
+    "/home/lsi/irixium-kde-custom/plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSNativePopupWheelForwarder.qml": "ed106a1a513a0c9d1973179b7391ac5fc3dafd2878d6c9eda85346b1e0b7b6bb"
+  },
+  "privacy": {
+    "real_user_preferences_unchanged": true,
+    "production_sources_unchanged_during_assay": true,
+    "real_profiles_modified": false
+  },
+  "limits": [
+    "Earlier 2026-10-09 native thumbnail receipts have different hashes for several current components and were not counted as current-source proof.",
+    "Private native thumbnail test failed to open previews under both Xephyr and Xvfb; this does not establish whether the issue is the production component or the isolated host flow.",
+    "The user approval predates this current-source test receipt; Q338 requests a current visual check."
+  ],
+  "next": "Await Q338 while continuing independent authorized P10 work.",
+  "test_source_sha256": {
+    "plasma/tools/testar-domainos-miniaturas.py": "c70edaa73d4bdf0df958fc9a35db3894f4f9e9dc6d862dc7dfa95c39f0758f36",
+    "plasma/tests/domainos-thumbnails-host.cpp": "0f6a25f2f60f1a7fc1037776fb53d184ddeb43196c6de22dae0012db779fad77",
+    "plasma/tests/test_domainos_thumbnails.py": "694eda4b38732b45cab66fb8d09fb96a31621123c1b5b7e28df730987142a931",
+    "plasma/tools/testar-domainos-preferencias.py": "5c683f976990bc3c219748a8b7cd5dfc17dc5214d147b8df631ae6477fc448fe"
+  }
+}

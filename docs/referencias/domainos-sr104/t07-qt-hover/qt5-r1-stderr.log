@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/fixture/root/tools/theme-lab/tests/probe_qt_full_gallery_hints.py", line 77, in <module>
+    raise SystemExit(main(['--qt-major',str(args.major)]))
+                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/fixture/root/plasma/tests/galerias-nativas/qt6_demo.py", line 308, in main
+    return app.exec()
+           ~~~~~~~~^^
+  File "/fixture/root/tools/theme-lab/tests/probe_qt_full_gallery_hints.py", line 51, in inspect_exec
+    assert W.QToolTip.isVisible(), 'native tooltip never appeared'
+           ~~~~~~~~~~~~~~~~~~~~^^
+AssertionError: native tooltip never appeared

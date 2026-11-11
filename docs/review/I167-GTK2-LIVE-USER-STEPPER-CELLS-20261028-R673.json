@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "id": "R673",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify normal GTK2 scrollbar stepper cells as rendered in the user's already-open XChat window, against the active user palette and the canonical Domain/OS SR10.4 + HP VUE 2.01 cell crops.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "application": "XChat GTK2, existing user process",
+    "pid": 327563,
+    "x11_window_id": "0x191f420",
+    "window_geometry_px": [960, 831],
+    "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "selected_theme_rc_sha256": "32a4add9af1f73570c293f33c2339e205e14d4ac888c4f0bb85a114e7fcdc821",
+    "active_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+    "palette_gtkrc_sha256": "ae6248addb5d3bd3770bb5020ffbe0e2aa114836fea4b03b881b4d95b10d81ae",
+    "palette_renderer_source_sha256": "ff39a0849a59cd7d09e3b0a66736e9d9a5a33b4ae01ca74e250689840694755a"
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "native_capture": "~/tempia/domainos-theme-work/gtk2-sr104-20261028-awake.png",
+    "native_capture_sha256": "5e8c713e67158750a9db2eaacba203231475e04cd2ba02c724a011bacb00f9ef",
+    "horizontal_reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "horizontal_reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "vertical_reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "vertical_reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+  },
+  "method": {
+    "capture": "Read only current-user X11 capture held in memory; only exact 15x15 crops were persisted. No full XChat window image or message text was saved.",
+    "comparison": "RGBA exact-pixel comparison, 1:1, no resize or interpolation.",
+    "wake": "The verified project VM initially returned a black guest framebuffer. One Shift pulse was sent to the guest and automatically cleared on frame 2; native screenshot captured on frame 65. No pointer movement or mouse input was sent."
+  },
+  "results": {
+    "vertical_up": {
+      "xchat_cell_xy": [937, 397],
+      "cell_size_px": [15, 15],
+      "live_crop": "~/tempia/domainos-theme-work/gtk2-live-20261028T214454-0x191f420-up-0.png",
+      "live_crop_sha256": "13675041ef6febcd0749abb5a21c6533fba906831112f163efc7a2116ed56754",
+      "active_asset": "assets/scrollbar-stepper-up-normal.png",
+      "active_asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+      "vue_reference_crop_xy": [4, 2],
+      "different_pixels_vs_active_asset": 0,
+      "different_pixels_vs_vue": 0,
+      "pixels_compared": 225
+    },
+    "vertical_down": {
+      "xchat_cell_xy": [937, 504],
+      "cell_size_px": [15, 15],
+      "live_crop": "~/tempia/domainos-theme-work/gtk2-live-20261028T214454-0x191f420-down-0.png",
+      "live_crop_sha256": "a26d6cb100a522f82cd194b409b4046433d3a63ed142aa4f0fa67036cdfbbe67",
+      "active_asset": "assets/scrollbar-stepper-down-normal.png",
+      "active_asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+      "vue_reference_crop_xy": [4, 242],
+      "different_pixels_vs_active_asset": 0,
+      "different_pixels_vs_vue": 0,
+      "pixels_compared": 225
+    },
+    "horizontal_right_candidate": {
+      "xchat_cell_xy": [917, 524],
+      "live_crop": "~/tempia/domainos-theme-work/gtk2-live-20261028T214454-0x191f420-right-0.png",
+      "vue_reference_crop_xy": [526, 4],
+      "different_pixels_vs_active_asset": 0,
+      "different_pixels_vs_vue": 0,
+      "pixels_compared": 225,
+      "interpretation": "Exact pixels, but its widget location is not established; excluded from scrollbar conclusions."
+    },
+    "horizontal_left": "No exact matching cell was found in this window capture."
+  },
+  "vm_identity": {
+    "pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "profile": "frameskip 4, throttle off, not paused",
+    "wake_operation": "Shift field cleared; done=true; frame=65; held=false; no error"
+  },
+  "limits": [
+    "Direct live user-application evidence covers only normal vertical up/down stepper cells.",
+    "The horizontal right candidate was not assigned to a scrollbar; no horizontal left cell was located.",
+    "No held/released, hover, disabled or drag interaction was tested; I517 remains unauthorized.",
+    "This does not complete the GTK2 adapter or human visual acceptance. No application was restarted."
+  ],
+  "next": "Continue only GTK2 work under I167. Keep the VM held/released comparison behind I517 authorization; use independent GTK2 adapter work meanwhile.",
+  "technical_coverage_estimate": {
+    "scope": "GTK2 scrollbar normal-state verification and current-user deployment only",
+    "percent": 95,
+    "basis": "R673 adds direct live XChat pixel evidence for two normal vertical cells, each exact against the current palette and SR10.4/VUE reference. Horizontal attribution and interactive states remain open. This is not a full GTK2 adapter or a visual-fidelity score."
+  }
+}

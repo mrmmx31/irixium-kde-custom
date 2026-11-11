@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-HINT-HOVER-RECHECK-20261018-R87",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed",
+  "runtime": {
+    "gtk": "4.18.6",
+    "display": ":83",
+    "resolution_px": [1600, 1200],
+    "theme": "native GTK4 gallery; isolated HOME/XDG and session bus",
+    "gallery": "tools/theme-lab/tests/gtk4_hint_matrix_worker.py"
+  },
+  "results": {
+    "mapped_targets": 31,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "first_page_targets": 26,
+    "second_page_targets": 5,
+    "cold_delay_ms": 500,
+    "stable_observation_ms": 400,
+    "within_screen": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": true,
+    "closed_after_pointer_leave": true,
+    "temporary_anchors_before_after": [6, 0],
+    "stable_geometry_repositioned_before_settle": 3,
+    "vertical_scrollbars_tested_with_hint_open": 2,
+    "vertical_scrollbar_clicks_changed_adjustment": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk4_hint_popover.py": "1ee694b5757a9a64d06e613bac0259efa03cfdb4c78fc74f88d48773ce1b19b8",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-4.0/gtk.css": "e40930eca9395c8fcb0adc5709c001d36488c20e81e0814290ac76b493e3a7e3",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "23886a58241df0c31920d1bf2a72211408c0542a144a34b3bec975149f2fb55d",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "6c8ce9135fbd3d7f33171d18e091dcbd039de7c912cd78f4762626b406ac7f62",
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "4571c5c95d27324850f08cc08c9a746e3c708e379e0faaad340714488400eec9",
+    "test_result": "7adb3a302f924d5b8df624474cc93cf0d49307b83495c367f4190032531ee670"
+  },
+  "artifacts": "~/tempia/t07-gtk4-hover-recheck-20261018-r87/",
+  "limits": [
+    "This matrix validates GTK4 native gallery hover and stable geometry, not tooltip colors or historical visual fidelity; colors are covered separately by R86.",
+    "One 1600x1200 layout and active local GTK theme; other palettes and GTK applications remain outside this matrix.",
+    "The private Xephyr :83 used by this test was closed after completion; no user-owned or other-work Xephyr was touched."
+  ],
+  "conclusion": "After applying the semantic tooltip CSS class, all 31 GTK4 hint targets retained delayed appearance, stable non-obscuring placement, dismiss on leave, and working vertical scrollbar clicks. Together with R86 this covers the new GTK4 tooltip-role styling without claiming historical fidelity or user approval.",
+  "next": "Continue with another independent open gap in the authorized T07 scope."
+}

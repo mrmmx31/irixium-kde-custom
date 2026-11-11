@@ -1,0 +1,79 @@
+PROMPT PARA A IA RESPONSÁVEL PELO AI WORK BOARD
+Preparado em 2026-10-10. Leia o estado atual antes de confiar neste resumo.
+
+1. MISSÃO E DIVISÃO DE TRABALHO
+Você ficará responsável pela prancheta AI Work Board, aplicativo C99/Motif com MVC. A outra IA continuará o laboratório de temas e a integração DomainOS/KDE. O usuário pretende coordenar as duas pela prancheta. Este prompt não autoriza tarefas que estejam sem consentimento salvo nem concede publicação, commit, push ou alteração de outras aplicações.
+Não modifique tools/theme-lab, plasma, GTK, Qt/Kvantum, a VM MAME ou o tema pessoal. Não abra uma segunda instância editora dos mesmos dados. Não reinicie a prancheta sem coordenar a pausa de digitação.
+
+2. PROJETO E ESTADO EXISTENTES
+Projeto ativo: /home/lsi/Documents/Projetos Open Source/ai-work-board
+Respostas pessoais: /home/lsi/.local/state/ai-work-board/respostas.json
+Seed pessoal: /home/lsi/.local/state/ai-work-board/checklist.json
+Journal: respostas.json.drafts.json, na mesma pasta das respostas.
+Sessão: session.json. Coordenação auxiliar: respostas.json.reopen.json.
+Estes são caminhos desta instalação, não constantes que você deva colocar no software. A aplicação distribuível deriva caminhos de XDG/HOME e do diretório do projeto.
+A cópia tools/work-board no repositório irixium-kde-custom é histórica; não é a implementação pessoal ativa.
+
+3. LEITURAS OBRIGATÓRIAS
+No projeto ativo: AGENTS.md, PROTOCOLO.md, skills/work-board/SKILL.md e references/protocolo.md dentro dessa skill; docs/MANUTENCAO.md, docs/ARQUITETURA.md, docs/FILA-PRANCHETA.md.
+Consulte também docs/FECHAMENTO-MANUAL.md, REABERTURA-TEMPORARIA.md, PRIORIDADES.md, BATE-PAPO.md e AMPLIAR-PAINEIS.md conforme a tarefa.
+Contexto e recibos da última entrega: /home/lsi/irixium-kde-custom/docs/DOMAINOS-FILA-REVISAO-VISUAL.md e docs/review/WORK-BOARD-AMPLIAR-PAINEIS-20261010.json.
+Sempre releia as respostas salvas antes de executar, responder ou instalar. O usuário responde parcialmente; não espere todos os itens e não leia rascunhos como consentimento.
+
+4. FILA SALVA NO MOMENTO DO HANDOFF
+I088 revisão 4: entregue tecnicamente. Botões pequenos +/− ampliam/restauram a própria coluna; colunas independentes; suporta redimensionamento da janela. Foram aprovados 20 fluxos nativos e 17 regressões de Bate-papo. Janela pessoal reaberta com todos os registros humanos, journal, rascunhos e ambos os históricos Undo/Redo idênticos. A avaliação humana ainda é própria do usuário. Não repita provas sem mudança, falha nova ou dúvida não coberta.
+I098 revisão 2: autorizado, queued. Aba própria para demandas criadas pela IA, preservando IDs, intervalos, respostas, rascunhos, histórico e navegação por abas/menu. Esta é a próxima etapa de prancheta anunciada.
+I099 revisão 1: autorizado. Filtro de fechamento independente do filtro de estados; combinar ambos. Nota: reduzir o combobox de todos os estados e colocar o novo ao lado. Não inventar autor de fechamento nos dados legados.
+I100 revisão 1: autorizado. Fechamento técnico pela IA visível na lista; somente a pessoa reabre. Novo defeito distinto gera item novo vinculado ao anterior. Não confundir fechamento, consentimento e aprovação humana. Considere a dependência de metadados de I099.
+I089 revisão 2: autorizado, queued. Visualizador de diferenças por item, arquivos/trechos/motivo e realce por papéis de cor, com botão junto aos seletores. Não está implementado.
+I097: sem autorização na leitura atual. Proposta de canal Q091 fixo e acesso rápido; não execute só porque foi citada neste prompt.
+Q091 revisão 5: pergunta que pediu este prompt. Perguntas não autorizam execução.
+T01 e outras tarefas do laboratório ficam com a outra IA. Confirme prioridades e autorizações atuais: esta lista pode ter mudado.
+
+5. AUTORIZAÇÃO, AUTORIA E CONCORRÊNCIA
+Executar um item por vez. Exigir user.authorized=true, authorized_definition igual a definition_sha256 e task_state aberto; reler nota, critérios, revisão e prioridade. Se a pessoa fechou a tarefa, não executar nem enviar reply/status/review: somente ack da revisão exata é permitido.
+Usar CLI/modelo para ack/reply com revisão exata, nunca regravar o JSON inteiro de um snapshot antigo. Não usar o comando user para preencher autorização, avaliação, prioridade ou nota em nome da pessoa. A IA não apaga o texto dela. running/done são estados técnicos, não aceite humano.
+Se uma revisão mudou, releia. Proposta nova começa sem autorização. Metadados de autoria futuros devem distinguir evidência comprovada de informação desconhecida; não classificar retrospectivamente todos os itens como sendo da IA por dedução frágil.
+Locks e CAS protegem gravações, mas não reservam uma tarefa entre agentes. Declare na prancheta qual item assumiu. Combine com a outra IA uma tarefa distinta. Não editem o mesmo arquivo-fonte nem façam instalação/reabertura simultâneas. Preserve alterações preexistentes; use estágio privado para implementar e verificar, e guarda de hashes antes de instalar.
+
+6. CLI E RESPOSTAS
+Use o binário do projeto ativo, sempre com seed e state explícitos:
+./build/work-board --seed CAMINHO_SEED --state CAMINHO_RESPOSTAS --command read
+./build/work-board --seed CAMINHO_SEED --state CAMINHO_RESPOSTAS --command queue
+./build/work-board --seed CAMINHO_SEED --state CAMINHO_RESPOSTAS --command ack --id ID --revision REVISAO
+./build/work-board --seed CAMINHO_SEED --state CAMINHO_RESPOSTAS --command reply --id ID --revision REVISAO --input ARQUIVO_JSON
+Resposta: {"reply":"Texto da IA", "status":"queued|running|waiting_user|done"}.
+Use arquivo JSON real para preservar UTF-8 e multiline. Não interpolar texto do usuário em comandos shell. Responda no nível novice/intermediate/expert que ele escolher. Mantenha a pergunta, o resultado técnico e a aprovação separados.
+
+7. ARQUITETURA E INVARIANTES
+C99/Motif; helper opcional C++/KDE apenas para ler a paleta. Model: regras/dados/autorização. Persistence: I/O, locks, escrita atômica/fsync e recuperação. Controller: eventos, captura/checkpoint e navegação. View: widgets e apresentação. Editor: histórico de edição, atalhos e menu. Headers públicos em include/work_board; detalhes privados em internal.h locais. Não incluir arquivos .c ou criar monólitos.
+Todo campo editável precisa de Undo/Redo de vários passos, Ctrl+Z/Y/Shift+Z/C/V/X/A e menu de edição. Campos somente leitura permitem selecionar/copiar. Provar UTF-8, vários parágrafos, seleção/substituição, salvar, recarregar, trocar item e reabrir. Nunca entregar campo de texto sem esses recursos.
+Preservar journal e históricos separados das respostas salvas. Não reconstruir editores para atualizar etiquetas ou notificações. Falha de checkpoint bloqueia ações que possam perder edição. Estado inválido/conflito não pode apagar conteúdo.
+Cores finais seguem papéis KDE atuais; não fixar RGB. A prancheta não recebe as exceções LED/Pager do painel DomainOS. Textos e JSON UTF-8, locale/FontSet coerentes. Não converter automaticamente para latin-1 por ser Motif.
+Três documentos principais planejados: recursos de textos estáticos/localizados, definição de interface/controles dinâmicos, interações por ID/revisão. A migração ainda não foi concluída; o formato atual contém definições e respostas juntas. Journals/históricos continuam auxiliares obrigatórios. Não misture nem elimine os documentos durante a evolução.
+
+8. TESTES, ENTREGA E COORDENAÇÃO DA JANELA
+Use dados artificiais e Xvfb privado para input Motif real. Não faça automação de cliques na janela pessoal enquanto o usuário escreve. Testes antigos só valem pelo escopo e pelos hashes cobertos. make check-panels verifica I088; escolha outras provas conforme o módulo alterado.
+A etapa I088 foi instalada em 18 arquivos com binário SHA-256 dd052db9cdfbcaff65bbcea8ea78a52a0bda1b899b4d97b01a696794cd7480ab. Revalide o arquivo e o processo atual, pois outras entregas podem ocorrer.
+Backups pessoais estão em ~/.local/state/ai-work-board/panel-recovery-* e reopen-panels-*. Não os apague. Preserve o backup aprovado do tema em Downloads e a VM.
+Antes de reabrir: concluir implementação, testes e instalação revisável; avisar e coordenar a pausa. O usuário determinou no Q091 revisão 6: quando precisar reabrir, ative o botão de liberação/reinício da própria prancheta por reopen-request; não se limite a perguntar no VS Code. Leia o contrato e confira sessão/pedido/escopo/liberação atuais. Não simule o callback da pessoa nem herde uma liberação antiga. Sandbox pode não enxergar o PID: confira no namespace do host autorizado antes de concluir que morreu.
+Guardar respostas, journal e ambos os históricos antes de encerrar. Conferir todos após recuperar a GUI; manter uma única janela visível, identidade do binário e título. Não mudar uma avaliação humana para aprovada por causa de um teste.
+
+9. COMO ENCERRAR CADA ETAPA
+Na prancheta: o que mudou, por quê, prova obtida, limitações, pendências e próximo item. Preserve texto e horários do usuário. Atualize sua documentação/recibo no projeto AI Work Board. Deixe o registro geral do laboratório/tema à outra IA e comunique a referência do recibo.
+Informe avanço estimado por trabalho entregue e pendências; não transforme quantidade de testes em porcentagem de fidelidade histórica. O goal amplo inclui tema, painel e laboratório e continua incompleto mesmo após uma tarefa da prancheta ser entregue.
+Não faça commit/push/publicação sem pedido aplicável. O usuário quer criar manualmente o repositório GitHub da prancheta.
+
+PRIMEIRA AÇÃO SUGERIDA
+Leia o estado atual e confirme se I098 ainda é a próxima tarefa autorizada. Registre sua responsabilidade e implemente em estágio privado, preservando a janela pessoal. Se houver conflito com o trabalho da outra IA, coordene a divisão antes de escrever os mesmos arquivos.
+
+
+ATUALIZAÇÃO: CANAIS FIXOS ENTREGUES
+O usuário pediu e recebeu uma faixa permanente, independente de todos os filtros.
+Q091 (Canal — Tema e laboratório) fica reservado ao contexto do tema/laboratório.
+Q102 (Canal — Prancheta / outra IA) é seu canal de comunicação com a pessoa.
+Não use Q091 para suas respostas. Consulte docs/CANAIS-FIXOS.md no AI Work Board.
+I097 já foi implementado, testado e entregue; não é mais proposta pendente.
+Respeite model/channels.c, view/channels.c e os metadados communication_channel.
+Reabertura entregue pelo pedido/liberação nativos; textos/Undo preservados.
+Confira os fontes e estado atuais antes de modificar ou instalar o seu trabalho.

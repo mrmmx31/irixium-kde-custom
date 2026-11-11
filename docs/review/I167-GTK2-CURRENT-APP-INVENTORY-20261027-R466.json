@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R466",
+  "date": "2026-10-27",
+  "observed_at_utc": "2026-10-27T14:12:25Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only current GTK2 process inventory and asset freshness check; identify whether a user-owned GTK2 application is available for scrollbar comparison.",
+  "authority": {
+    "board_item": "I167",
+    "board_generation": 8731,
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "gtk2_processes": {
+    "method": "Read /proc comm, executable path and mapped GTK shared-library name only; no window titles, document contents, screenshots, focus or input were inspected or changed.",
+    "observed": [
+      {
+        "pid": 3951437,
+        "comm": "xchat",
+        "role": "Codex XChat client"
+      },
+      {
+        "pid": 3951675,
+        "comm": "xchat",
+        "role": "Codex XChat client"
+      },
+      {
+        "pid": 3996239,
+        "comm": "python3",
+        "role": "Theme Lab GTK2 preview"
+      },
+      {
+        "pid": 4008706,
+        "comm": "python3",
+        "role": "Theme Lab GTK2 preview"
+      },
+      {
+        "pid": 4094547,
+        "comm": "gvim",
+        "executable": "/home/lsi/.cache/codex-xchat/editor/vim-a29425d2d9d2bbf4/gvim",
+        "role": "Codex/XChat internal editor, not a user-owned GTK2 application"
+      }
+    ],
+    "result": "No user-owned GTK2 application suitable for the requested live scrollbar comparison was identified."
+  },
+  "asset_freshness": {
+    "reference_receipt": "R464",
+    "method": "SHA-256 of current four normal GTK2 stepper assets in the worktree and installed DomainOS-SR10-4-KDE profile, compared with R464 hashes.",
+    "all_four_worktree_match_reference": true,
+    "all_four_installed_match_worktree": true,
+    "rendering_repeated": false,
+    "visual_claim": "None; R394 remains the isolated normal-state pixel comparison."
+  },
+  "vm_guard": {
+    "theme_mame_pid": 3971377,
+    "prancheta_mame_pid": 3971019,
+    "prancheta_disk_is_separate": true,
+    "verify_exit": 4,
+    "input_sent": false
+  },
+  "result": "The installed GTK2 stepper assets remain unchanged from R464. The apparent live-app comparison candidate was the XChat/Codex internal editor, so it was not inspected or used. The separate Prancheta MAME still keeps the project VM guard closed.",
+  "next": "Continue GTK2 only after the VM coordination request is answered and the guard permits historical interaction; compare against a user-owned GTK2 app only when one is available, without inspecting its content."
+}

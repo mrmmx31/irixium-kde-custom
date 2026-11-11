@@ -1,0 +1,82 @@
+{
+  "id": "P04-ICONBOX-BATCH-PARENT-CLEAR-20261102",
+  "recorded_at": "2026-11-03T02:04:28Z",
+  "authority": {
+    "source": "pedido direto do usuário e P04 revisão 3 já autorizada",
+    "goal_changed": false,
+    "visual_acceptance_inferred": false
+  },
+  "incident": {
+    "message": "Batch organization is unavailable while an application dialog has an unresolved parent relation",
+    "cause": "window_ops.js recusava todo lote quando qualquer aplicação da sessão tinha um transitório sem transientFor, mesmo sem interseção com as janelas selecionadas",
+    "live_read_only_observation": {
+      "title": "Private Internet Access",
+      "pid": 7383,
+      "desktopFileName": "piavpn",
+      "resourceClass": "privateinternetaccess",
+      "transient": true,
+      "transientFor": null
+    }
+  },
+  "changes": [
+    "A ambiguidade sem transientFor agora bloqueia somente quando não há identidade alguma ou quando PID, desktopFileName ou resourceClass intersecta uma aplicação selecionada.",
+    "Relações transient/modal/transientFor explícitas continuam recusadas antes de qualquer mutação.",
+    "O seletor ganhou Desselecionar tudo ao lado de Continuar seleção; limpa a seleção global sem fechar a lista e inclui dica e descrição acessível.",
+    "O ensaio dirigido passou a abrir Operações pelo botão real e enviar Escape à janela nativa correta."
+  ],
+  "verification": {
+    "unit_and_qml": {
+      "command": "python3 -m unittest test_domainos_window_ops_guard.py test_domainos_operations_handoff.py",
+      "result": "passed",
+      "tests": 18
+    },
+    "iconbox_journey": {
+      "command": "TMPDIR=~/tempia/domainos-theme-work python3 plasma/tools/testar-domainos-iconbox.py --saida <novo-diretorio>",
+      "result": "passed",
+      "checks": 85,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/iconbox-clear-parent-r5-y2KmvV/RESULTADO.json"
+    },
+    "footer_geometry": {
+      "popup_width_px": 400,
+      "usable_width_px": 380,
+      "footer_width_px": 333,
+      "result": "all three buttons fit"
+    },
+    "git_diff_check": "passed"
+  },
+  "deployment": {
+    "tool": "tools/update_domainos_qml.py",
+    "backup": "/home/lsi/.local/state/irixium-domainos/backups/09e82a7c4070470ca7a994167e2bf835",
+    "installed_files": {
+      "contents/code/window_ops.js": "0f407fa83c2d33ef77d6354c9fa4061f85a3231f36ba260c49f72e98068e9599",
+      "contents/ui/DomainOSIconbox.qml": "97c15827fd263bf3bccfdcc84caf160def726225289ddf0cbd04d1df2685e0b3"
+    },
+    "source_and_installed_match": true,
+    "plasmashell": {
+      "pid": 2577229,
+      "active": true,
+      "restart_count": 0
+    },
+    "configuration_hashes_unchanged": true,
+    "new_qml_errors_for_changed_files": false,
+    "preexisting_tray_non_notify_diagnostic": true
+  },
+  "board": {
+    "item": "P04",
+    "user_revision": 3,
+    "authorized": true,
+    "ack_revision": 3,
+    "reply_written": false,
+    "reason": "O CLI PRD disponível recusou a leitura do banco SQLite corrente; nenhum SQL direto ou contorno foi usado."
+  },
+  "limits": [
+    "Nenhuma janela pessoal foi movida durante a verificação; o lote real depende da seleção do usuário.",
+    "A aceitação do botão e da organização na sessão normal permanece do usuário.",
+    "Os avisos anteriores de DomainOSTray não fazem parte deste incidente."
+  ],
+  "progress": {
+    "subscope_percent": 90,
+    "basis": "implementação, testes isolados, jornada completa, instalação e recarga concluídos; resta o clique real e a avaliação do usuário",
+    "not_visual_fidelity_percent": true
+  }
+}

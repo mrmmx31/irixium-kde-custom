@@ -1,0 +1,199 @@
+{
+  "scope": "Limites de texto nos pixels nativos comparados à métrica X11; não é prova de identidade pixel a pixel dos glyphs ou introspecção de recursos do widget",
+  "capture": "docs/referencias/domainos-sr104/i120-fontes-vm.png",
+  "capture_sha256": "10110b1cdce288ba73ecf287f84c18e5436aafa6200b11813dd8e4492f68bb75",
+  "proof": [
+    {
+      "text": "OK",
+      "font_query": "swiss-glyphs",
+      "roi": [
+        104,
+        563,
+        143,
+        579
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        120,
+        566,
+        136,
+        575
+      ],
+      "visible_pixel_count": 71,
+      "X11_text_metrics": {
+        "advance": 17,
+        "ink": [
+          1,
+          -9,
+          16,
+          9
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    },
+    {
+      "text": "Cancel",
+      "font_query": "swiss-glyphs",
+      "roi": [
+        205,
+        563,
+        269,
+        579
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        211,
+        566,
+        250,
+        575
+      ],
+      "visible_pixel_count": 141,
+      "X11_text_metrics": {
+        "advance": 40,
+        "ink": [
+          1,
+          -9,
+          39,
+          9
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    },
+    {
+      "text": "Help",
+      "font_query": "swiss-glyphs",
+      "roi": [
+        316,
+        563,
+        353,
+        579
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        322,
+        566,
+        346,
+        578
+      ],
+      "visible_pixel_count": 113,
+      "X11_text_metrics": {
+        "advance": 25,
+        "ink": [
+          1,
+          -9,
+          24,
+          12
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    },
+    {
+      "text": "Terminal",
+      "font_query": "swiss-glyphs",
+      "roi": [
+        625,
+        89,
+        695,
+        104
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        633,
+        92,
+        682,
+        101
+      ],
+      "visible_pixel_count": 181,
+      "X11_text_metrics": {
+        "advance": 50,
+        "ink": [
+          1,
+          -9,
+          49,
+          9
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    },
+    {
+      "text": "Oct 11",
+      "font_query": "system17-glyphs",
+      "roi": [
+        130,
+        722,
+        197,
+        739
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        139,
+        726,
+        181,
+        736
+      ],
+      "visible_pixel_count": 135,
+      "X11_text_metrics": {
+        "advance": 45,
+        "ink": [
+          1,
+          -10,
+          42,
+          10
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    },
+    {
+      "text": "Fri",
+      "font_query": "system17-glyphs",
+      "roi": [
+        145,
+        740,
+        180,
+        756
+      ],
+      "foreground_sample": [
+        255,
+        255,
+        255
+      ],
+      "visible_bounds": [
+        152,
+        743,
+        169,
+        753
+      ],
+      "visible_pixel_count": 65,
+      "X11_text_metrics": {
+        "advance": 19,
+        "ink": [
+          1,
+          -10,
+          17,
+          10
+        ]
+      },
+      "visible_size_matches_ink_metrics": true
+    }
+  ]
+}

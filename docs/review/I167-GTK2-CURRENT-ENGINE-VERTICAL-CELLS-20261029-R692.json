@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R692",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the normal vertical GTK2 endpoint cells from the currently installed DomainOS engine against the native HP VUE SR10.4 crop, and verify that the installed GTK2 runtime regenerates palette-bound assets after a semantic color input changes.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "installed_profile": {
+    "theme": "DomainOS-SR10-4-KDE",
+    "scheme": "DomainOS-SR10-4",
+    "palette_journal": "active",
+    "engine": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "engine_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "mapped_by_open_gtk2_clients": [1321694, 1327599]
+  },
+  "vertical_cells": {
+    "runtime": "GTK2 2.24.33; capture from the current installed DomainOS engine and active KDE palette",
+    "runtime_capture": "~/tempia/domainos-theme-work/I167/gtk2-current-engine-r690/current.png",
+    "runtime_capture_sha256": "002920d76a32543962cefef57688c03d69374f1303e7923c171c6f26dd5dbce2",
+    "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "method": "Exact RGB, 1:1, 15x15 cells; located the unique exact match in the GTK2 capture without scaling or filtering.",
+    "cells": [
+      {"direction": "up", "reference_origin_px": [4, 2], "runtime_origin_px": [187, 33], "different_pixels": 0, "pixels": 225},
+      {"direction": "down", "reference_origin_px": [4, 242], "runtime_origin_px": [187, 89], "different_pixels": 0, "pixels": 225}
+    ],
+    "all_exact": true
+  },
+  "palette_refresh": {
+    "runtime_root": "~/tempia/domainos-theme-work/I167/R692/runtime-root-r2",
+    "runtime_module": "~/.local/share/irixium/theme-companions/tools/gtk2_palette_runtime.py",
+    "renderer_module": "~/.local/share/irixium/theme-companions/tools/gtk2_domainos_palette.py",
+    "renderer_sha256": "a01cef8ce10acbd310c42fa4436e5253d48eaec28984a293279fd2b2587ef18a",
+    "method": "Ran the installed setup and refresh functions against a copied private theme/config/state root; no D-Bus, real XDG profile, open application, or desktop settings were touched.",
+    "source_palette_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "synthetic_input_only": {"role": "theme_button_background_normal_breeze", "before": "#78a0d5", "after": "#12a4d7"},
+    "setup_status": "updated",
+    "refresh_status": "updated",
+    "palette_identity_changed": true,
+    "gtk2_engine_preserved_in_generated_rc": true,
+    "wrapper_updated": true
+  },
+  "result": "The installed engine's normal vertical up/down cells match the SR10.4/VUE reference exactly (0/225 differences each). The installed palette runtime also updated the private GTK2 wrapper and retained domainos-pixbuf after its semantic color input changed.",
+  "limits": [
+    "The synthetic role perturbation is a private mechanism check, not a real KDE color-scheme transition or a design recommendation.",
+    "The actual scheme-change event through the running observer remains unobserved.",
+    "The production observer's color-scheme transition runs the shared synchronization path, which also refreshes GTK4; no production scheme switch was made during this GTK2-only step.",
+    "Hover, pressed, historical insensitive/limit behavior, thumb-drag, visual review by the user, and direct VUE arrow input remain open; I517 still gates that direct input."
+  ],
+  "changes": {
+    "user_profile_written": false,
+    "desktop_scheme_changed": false,
+    "application_restarted": false,
+    "other_toolkit_families_changed": false,
+    "vm_changed": false
+  },
+  "next": "Do not change the production color scheme under GTK2-only scope because its observer also refreshes GTK4. If needed, isolate the observer event path; otherwise continue with authorized GTK2 references and await manual visual review or I517 for direct VUE input.",
+  "artifacts": "records/ia-tema/I167/R692/ARTIFACTS.json"
+}

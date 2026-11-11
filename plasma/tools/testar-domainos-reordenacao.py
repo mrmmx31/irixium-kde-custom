@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 """Validate production Iconbox drag ordering against the real KDE TasksModel.
 
-All inputs go to private Plasma/KWin/Xvfb and three test-owned native windows.
+All inputs go to private Plasma/KWin on Xvfb or an authorized Xephyr, with three test-owned native windows.
 The fixture observes stable WinIds/PIDs, platform threshold, actual model order,
 window state, pins, grouped targets and stale identity rejection; no mocks replace
 TasksModel or the production Iconbox/TaskButton/controller.
@@ -37,7 +37,7 @@ def worker(output):
             time.sleep(.05)
         else:raise RuntimeError("Private KWin did not become ready")
         environment=dict(os.environ,LD_PRELOAD=os.environ['IRIX_DOMAINOS_REORDER_LIB'],IRIX_DOMAINOS_REORDER_CAPTURE=str(output/"NATIVE-REORDER.png"),IRIX_DOMAINOS_REORDER_REPORT=str(output/"state.json"))
-        result=subprocess.run(["plasmawindowed",IDENTIFIER],env=environment,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=25)
+        result=subprocess.run(["plasmawindowed",IDENTIFIER],env=environment,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,timeout=55)
         (output/"host.log").write_text(result.stdout)
         state=json.loads((output/"state.json").read_text()) if (output/"state.json").is_file() else {}
         errors=[line for line in result.stdout.splitlines() if re.search(r"ReferenceError:|TypeError:|SyntaxError:|Cannot assign|Binding loop|is not a type|Type .+ unavailable|module .+ is not installed",line)]
@@ -56,16 +56,23 @@ def worker(output):
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--saida",type=Path,required=True)
+    parser.add_argument("--xephyr-display",help="Use uma Xephyr privada já aberta")
+    parser.add_argument("--xauthority",type=Path,help="Arquivo Xauthority da Xephyr sob ~/tempia")
     parser.add_argument("--worker",action="store_true",help=argparse.SUPPRESS)
     args=parser.parse_args();output=args.saida.resolve()
     if args.worker:return worker(output)
-    if not output.is_relative_to(Path('/tmp')) or output==Path('/tmp') or output.exists():parser.error("Use a new output directory under /tmp")
+    tempia=(Path.home()/"tempia").resolve()
+    if bool(args.xephyr_display)!=bool(args.xauthority):parser.error("--xephyr-display e --xauthority devem ser usados juntos")
+    if not output.is_relative_to(tempia) or output==tempia or output.exists():parser.error("Use uma pasta nova sob ~/tempia")
+    if args.xauthority:
+        authority=args.xauthority.resolve()
+        if not authority.is_relative_to(tempia) or not authority.is_file():parser.error("Xauthority deve existir sob ~/tempia")
     output.mkdir(mode=0o700)
     env=os.environ.copy();config=Path(env.get("XDG_CONFIG_HOME",str(Path.home()/".config")))
     def hashes():
         return {str(config/name):hashlib.sha256((config/name).read_bytes()).hexdigest() if (config/name).is_file() else None for name in ("kdeglobals","kwinrc","plasmarc","plasma-org.kde.plasma.desktop-appletsrc")}
     before=hashes()
-    resources=Path(tempfile.mkdtemp(prefix='.qa-domainos-reorder-',dir=REPO))
+    resources=Path(tempfile.mkdtemp(prefix='.qa-p04r-',dir=tempia))
     for key in ("DISPLAY","WAYLAND_DISPLAY","DBUS_SESSION_BUS_ADDRESS","DBUS_STARTER_ADDRESS","DBUS_STARTER_BUS_TYPE","LD_PRELOAD","QML_IMPORT_PATH","QML2_IMPORT_PATH","XAUTHORITY","SESSION_MANAGER","QT_STYLE_OVERRIDE","QT_QUICK_CONTROLS_STYLE","KDE_FULL_SESSION","KDE_SESSION_VERSION","XDG_SESSION_ID","PULSE_SERVER","PULSE_COOKIE"):
         env.pop(key,None)
     for key,name in (("HOME","home"),("XDG_CONFIG_HOME","config"),("XDG_DATA_HOME","data"),("XDG_CACHE_HOME","cache"),("XDG_STATE_HOME","state"),("XDG_RUNTIME_DIR","runtime")):
@@ -98,7 +105,7 @@ PlasmoidItem {
             const button=box.buttonForKey(target.key)
             if (!button)return "{}"
             const p=button.mapToItem(null,button.width/2,button.height/2)
-            return JSON.stringify({key:target.key,pid:target.pid,x:p.x,y:p.y,dragDistance:button.dragDistance,dragActive:button.dragActive,reorderEnabled:button.reorderEnabled,activeFocus:button.activeFocus})
+            return JSON.stringify({key:target.key,pid:target.pid,x:p.x,y:p.y,dragDistance:button.dragDistance,dragActive:button.dragActive,reorderEnabled:button.reorderEnabled,active:target.active,minimized:target.minimized,activeFocus:button.activeFocus})
         }
         function state() { return JSON.stringify({rows:tasks.taskRows,order:tasks.taskRows.map(row=>row.key),
             windows:tasks.windowRows.filter(row=>row.title.startsWith("DomainOS reorder ")),
@@ -141,17 +148,25 @@ PlasmoidItem {
             function onSelectedByPointer(record,modifiers){fixture.traces=fixture.traces.concat([{event:"groupClick",key:record.key,modifiers:modifiers}])}
             function onActivatedByPointer(record){fixture.traces=fixture.traces.concat([{event:"groupDouble",key:record.key}])}
         }
+        Connections {
+            target:box.buttonForKey(record("C") ? record("C").key : "")
+            function onPointerPressed(){fixture.traces=fixture.traces.concat([{event:"singletonPress"}])}
+            function onSelectedByPointer(task,modifiers){fixture.traces=fixture.traces.concat([{event:"singletonClick",active:task.active,minimized:task.minimized,pid:task.pid}])}
+            function onActivatedByPointer(task){fixture.traces=fixture.traces.concat([{event:"singletonDouble",active:task.active,minimized:task.minimized,doubleClickActive:task.doubleClickActive,pid:task.pid}])}
+        }
     }
 }
 ''')
     (resources/"config/kwinrc").write_text("[Compositing]\nEnabled=false\n[Desktops]\nNumber=1\nName_1=Private reorder test\n")
     (resources/'temp').mkdir(mode=0o700)
     env.update(QT_QPA_PLATFORM="xcb",QT_QPA_PLATFORMTHEME="generic",QT_QUICK_BACKEND="software",KWIN_COMPOSE="N",XDG_SESSION_TYPE="x11",XDG_CURRENT_DESKTOP="NONE",QT_ACCESSIBILITY="0",LIBGL_ALWAYS_SOFTWARE="1",LANG="C.UTF-8",LC_ALL="C.UTF-8",GIO_USE_VFS="local",DBUS_SYSTEM_BUS_ADDRESS="unix:path="+str(resources/"no-system-bus"),PULSE_SERVER="unix:"+str(resources/"no-audio-server"),IRIX_DOMAINOS_REORDER_PRIVATE="1",IRIX_DOMAINOS_REORDER_LIB=str(resources/'reorder-host.so'),QML_DISABLE_DISK_CACHE='1',TMPDIR=str(resources/'temp'))
+    if args.xauthority:env.update(DISPLAY=args.xephyr_display,XAUTHORITY=str(args.xauthority.resolve()))
     flags=shlex.split(subprocess.check_output(["pkg-config","--cflags","--libs","Qt6Widgets","Qt6Test"],text=True))
-    subprocess.run(["c++","-shared","-fPIC","-std=c++17",str(REPO/"plasma/tests/domainos-reorder-host.cpp"),"-o",str(resources/"reorder-host.so"),*flags,"-ldl"],check=True)
+    subprocess.run(["c++","-shared","-fPIC","-std=c++17",str(REPO/"plasma/tests/domainos-reorder-host.cpp"),"-o",str(resources/"reorder-host.so"),*flags,"-ldl"],check=True,env=env)
     bus=resources/"bus.conf";bus.write_text('<busconfig><type>session</type><listen>unix:tmpdir='+str(resources/'runtime')+'</listen><auth>EXTERNAL</auth><policy context="default"><allow send_destination="*"/><allow receive_sender="*"/><allow own="*"/></policy></busconfig>')
     try:
-        result=subprocess.run(["xvfb-run","-a","-s","-screen 0 1200x700x24 -nolisten tcp","dbus-run-session","--config-file",str(bus),"--",sys.executable,str(Path(__file__).resolve()),"--worker","--saida",str(output)],env=env,capture_output=True,text=True,timeout=40)
+        command=([] if args.xephyr_display else ["xvfb-run","-a","-s","-screen 0 1200x700x24 -nolisten tcp"])+["dbus-run-session","--config-file",str(bus),"--",sys.executable,str(Path(__file__).resolve()),"--worker","--saida",str(output)]
+        result=subprocess.run(command,env=env,capture_output=True,text=True,timeout=75)
     finally:shutil.rmtree(resources)
     (output/"runner.log").write_text(result.stdout+result.stderr)
     report=json.loads((output/"NATIVO.json").read_text()) if (output/"NATIVO.json").is_file() else {"status":"failed","checks":{},"error":result.stdout+result.stderr}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R289",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "current-source-evidence-mapped-no-repeat-required",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only hash audit to determine which GTK2 scrollbar evidence still applies to current renderer and directional preview code."
+  },
+  "current_source_hashes": {
+    "tools/theme-lab/gtk2_recipe.py": "4d7cba2a7fd2b781c3df681ae7f3718837d38471486ab7a54edeb553bad8aefa",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "tools/theme-lab/tests/probe_gtk2_scrollbar_arrow_states.py": "ef44f5ae62932854d8a00c3f3286abc9667b96fac0936fa5a58980290e2bd3d3",
+    "tools/theme-lab/tests/test_gtk2_stepper_capture.py": "e04446f1096305b95528193527422a3b33f0e238f27ade8ac73934e2ca0786a7"
+  },
+  "evidence_reuse": {
+    "R45": {
+      "receipt": "docs/review/I167-GTK2-SCROLLBAR-PUBLIC-20261023-R45.json",
+      "renderer_and_generation_hashes_match": true,
+      "scope_still_valid": "The unchanged GTK2 recipe/generator support reuse of R45's rendered 15px geometry and normal-state four-arrow pixel comparisons.",
+      "nonmatching_route_sources": [
+        "tools/theme-lab/preview_gtk2.py",
+        "tools/theme-lab/tests/test_gtk2_public_native.py"
+      ],
+      "limit": "Do not reuse R45's event-routing results as proof for the later route code; R272/R273 provide current directional mapping and press/release evidence. R45 also does not prove current VUE held-state identity or human acceptance."
+    },
+    "R272_R273": {
+      "receipts": [
+        "docs/review/I167-GTK2-STEPPER-DIRECTION-CAPTURE-20261026-R272.json",
+        "docs/review/I167-GTK2-STEPPER-DIRECTION-STATES-20261026-R273.json"
+      ],
+      "direction_mapper_probe_and_unit_test_hashes_match": true,
+      "scope_still_valid": "All four press/release transitions in separate and coupled GTK2 previews; 53 changed pixels while held and exact restoration on release.",
+      "limit": "Only the down-held cell has a direct retained historical pair; left/right/up held pixel identity remains open."
+    },
+    "R4": {
+      "receipt": "docs/review/I167-GTK2-VM-COMPARISON-20261018-R4.json",
+      "gtk2_recipe_hash_matches": false,
+      "disposition": "Its old rendering matrix is superseded for current-source proof by R45, whose current renderer/generator hashes match. Keep R4 only as historical evidence."
+    }
+  },
+  "method": "Read-only SHA-256 comparisons between the current files and source hashes stored in the named receipts; no build, test, GTK window, desktop profile, VM, or theme resource was changed.",
+  "result": "R45 remains applicable to the renderer/generator. R272/R273 cover the later directional preview and current probe. No existing GTK2 arrow test needs repetition solely due to a source change.",
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "changed": false,
+    "basis": "Evidence validity was reconciled; no new widget state was exercised. Not a visual-fidelity score."
+  },
+  "next": "Continue GTK2 without rerunning matched normal/palette matrices. The remaining historical held-arrow comparison requires fresh guest-pointer visibility; continue other authorized GTK2 work only where it adds distinct evidence."
+}

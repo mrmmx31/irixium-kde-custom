@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "R726",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Correct and deploy the GTK2 scrollbar body relief profile after the user reported the track looking raised and less faithful than before.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "user_assessment": {
+    "result": "failure",
+    "text": "The arrow separator was difficult to remove; the inner relief now looks outward and GTK2 regressed."
+  },
+  "evidence": {
+    "rule": {
+      "path": "tools/domainos_scrollbar_rules.json",
+      "sha256_after": "c42cda1cb5adf86161ed790ce0b9609ed790fbdb259d9c2f730c79cf0f923233",
+      "measured_cross_axis_profile": "DDLLFFFFFFFDDLL",
+      "meaning": "dark, dark, light, light, seven face pixels, dark, dark, light, light; tokens resolve through the current KDE roles."
+    },
+    "reference": {
+      "vertical_crop": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "horizontal_crop": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "method": "Read the 15-pixel cross-section in the straight body away from the thumb and stepper caps, at native scale.",
+      "both_orientations": "DDLLFFFFFFFDDLL"
+    },
+    "prior_gtk2_preview": {
+      "vertical": "records/ia-tema/evidence/I167/r582-gtk2-vertical-preview-20261028.png",
+      "horizontal": "records/ia-tema/evidence/I167/r582-gtk2-horizontal-preview-20261028.png",
+      "captured_body_profile": "DDFFFFFFFFFFFLL",
+      "difference": "Four of 15 cross-axis pixels per body line were missing the inner light/dark rails. R582 measured arrow junction caps but not this long-body profile."
+    },
+    "generated_bundle": {
+      "theme": "DomainOS-SR10-4-KDE-Reload",
+      "bundle_id": "06e087356b248c326f6053bcb63c2feaffc38c369f71fbfaa276d6386c7952cc",
+      "manifest": "/home/lsi/.local/share/irixium/gtk2-palette/06e087356b248c326f6053bcb63c2feaffc38c369f71fbfaa276d6386c7952cc/manifest.json",
+      "vertical_asset": "scroll-trough-normal-vertical.png",
+      "horizontal_asset": "scroll-trough-normal-horizontal.png",
+      "result": "Both generated assets now produce the measured profile from semantic KDE roles; profile pixel hash ccbde17aa261770c7278b7806c9444872ea9ea10455e6444fcd2aa142ff76dc9."
+    },
+    "user_reload": {
+      "gtk2_palette_update": "updated",
+      "native_reload": "112 GTK2 RC reload events sent; zero racing X errors; no applications or desktop restarted.",
+      "service_runtime": "Only the GTK2 renderer, its shared Motif art helper, and the matching GTK2 contract entry were updated in the installed companion runtime. Runtime fingerprint verification passed; service was not restarted."
+    }
+  },
+  "changes": [
+    "tools/domainos_scrollbar_rules.json: record the measured cross-axis relief profile as semantic tokens.",
+    "tools/domainos_motif_art.py: validate and expose the shared 15-pixel profile.",
+    "tools/gtk2_domainos_palette.py: paint the body profile between the existing orientation-specific junction caps.",
+    "User GTK2 palette bundles and the GTK2-only companion runtime were refreshed."
+  ],
+  "verification": {
+    "source_and_bundle_profile": "passed for horizontal and vertical output against the contract and reference crop profile.",
+    "syntax": "Changed Python sources parsed; rule JSON parsed.",
+    "visual_limit": "No screenshot of current XChat content was captured. User visual confirmation of the live GTK2 result remains pending."
+  },
+  "result": "The regression source was identified: the renderer retained the outer dark/light edge but replaced the two inner rails with face pixels across the long trough body. The measured body profile is now generated for both orientations and applied to the user's GTK2 theme. The previous cap-only comparison was insufficient and is corrected in the review record. Human visual acceptance remains open.",
+  "next": "Keep the work on GTK2. The user can inspect the already-open GTK2 application after the live reload; retain the family as pending until that visual review. Preserve the Theme Lab working geometry of 89/11/2.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Technical coverage estimate unchanged; visual acceptance is pending and this is not a visual-fidelity percentage."
+  }
+}

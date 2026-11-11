@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-11T08:59:12.571627+00:00",
+  "item": "I167",
+  "revision": 1,
+  "status": "passed_scoped",
+  "stage_estimate_percent": 76,
+  "estimate_basis": "Selected native RC fragment and public preview dispatch implemented; routing/cache covered offline, public graphical launch still pending. Not project or fidelity percentage.",
+  "proof": {
+    "snippet_tests": 3,
+    "piece_orientation_state_combinations": 22,
+    "preview_route_tests": 3,
+    "backend_regressions": 33,
+    "rc_byte_parity": {
+      "DomainOS": {
+        "equal": true,
+        "sha256": "1e069f3b1e5a51f89fd234fae7a5fc7e4861aa0410726fe943ae508e32bc5138"
+      },
+      "BreezeLight": {
+        "equal": true,
+        "sha256": "69133b4ed01297930aa6f635855de640c1b111e10d892042ace2d659f972f2f8"
+      },
+      "BreezeDark": {
+        "equal": true,
+        "sha256": "1d13f7f61acc246393f21485bff71d480eed3858682dd6c5867d309fe6acddf0"
+      },
+      "TestYellow": {
+        "equal": true,
+        "sha256": "2bc1cc8489d0fb061211ab2610d192d81685b976e88ebd3b921c9f39e472d4eb"
+      }
+    },
+    "generated_assets_byte_parity": 96
+  },
+  "corrected": [
+    "Single emitter shared by GTK2 RC generation and selected fragment.",
+    "Public GTK2 preview now routes to native scrollbar scene instead of unrelated gallery.",
+    "Cached result hash, directory and serialized project compared before reuse; mismatch regenerates."
+  ],
+  "limits": [
+    "Routing tests mock guard and process launch; they do not prove rendering or private namespace enforcement.",
+    "Existing native controller launch evidence covers direct controller path, not this public route.",
+    "Other GTK2 controls, forced states, isolated arrow button/fitting and remaining canvas states pending.",
+    "Fragment depends on private generated palette and images; not a complete installable theme."
+  ],
+  "failures_preserved": [
+    "Backend spec import lacked local GTK2 module path; fixed, 33 regressions passed."
+  ],
+  "human_approval_filled": false,
+  "personal_windows_changed": false,
+  "sha256": {
+    "tools/theme-lab/backend.py": "1138587257cc624716e68797b0aa54dd2248b2f48104ed7eaea2be68d680ecfe",
+    "tools/theme-lab/gtk2_recipe.py": "fd825bdc0b35f8b023234278f1c252e000289969b29c62fcf3029b9c999c4a1c",
+    "tools/theme-lab/gtk2_rc_fragments.py": "3a6146f0ff839ceeda569a7f4d67b44214db85f1aebc2ddcfe6456a69558194f",
+    "tools/theme-lab/gtk2_generation.py": "bed251db929b3125b8e9d7518393df3a96d399540a28b44270466c206fb092fa",
+    "tools/theme-lab/tests/test_gtk2_snippet.py": "a703e62b3d3e753cf0c407c83fe093dbd4e0481985358d444329abd63ba5fd15",
+    "tools/theme-lab/tests/test_gtk2_preview_route.py": "4aec0dcca49d1db6e8e52395e78ffa2be6e7086b3f52a7247a91d973abab649d",
+    "docs/referencias/domainos-sr104/i167-snippet-route/snippet-backend-regression.log": "03b3eb844fdd784200d7ecdcfbd60bbb7d8d8feb18da01ca33747aeb0f26d19d",
+    "docs/referencias/domainos-sr104/i167-snippet-route/preview-route.log": "31e32b0fac6274db3c3dac064d052cc722898ea543f1971ab314fb5aee237f7a",
+    "docs/referencias/domainos-sr104/i167-snippet-route/rc-parity.json": "ec3715310fa981582f74f174b6f79546f5f92ee12aa3b2c83660f3207781fe78",
+    "docs/referencias/domainos-sr104/i167-snippet-route/snippet-scoped.log": "869ea8047d0ae89dddb808470175fa3bdce5d6007a92e195f2d7e7e762e1f49f",
+    "docs/referencias/domainos-sr104/i167-snippet-route/snippet-backend-regression-r2.log": "3022fd881b55035ea7b00289f6cce24b1dda75773e164d606b7efbed1c944003",
+    "docs/referencias/domainos-sr104/i167-snippet-route/generation-snippet.log": "7fc430578eeac66c42e603b52d63f5e82cbd575e5846be574c85f59f0a329cdd"
+  }
+}

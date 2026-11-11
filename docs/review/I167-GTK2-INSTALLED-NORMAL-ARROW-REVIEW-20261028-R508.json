@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "id": "R508",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Human-review aid composed only from retained normal GTK2 installed render R496 and retained SR10.4/VUE crop; no new rendering or input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": [
+    {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "dimensions_px": [
+        542,
+        20
+      ],
+      "system": "Domain/OS SR10.4 + HP VUE 2.01",
+      "origin_receipt": "docs/review/I167-GTK2-VUE-CURRENT-HORIZONTAL-NORMAL-20261027-R469.json"
+    },
+    {
+      "path": "records/ia-tema/evidence/I167/r496-installed-gtk2-post-r495-20261027/installed-theme-horizontal.png",
+      "sha256": "e92be6cd4a6fd037e33570694bb8308695f275efa557a385d38ec24674a8d0cd",
+      "dimensions_px": [
+        360,
+        70
+      ],
+      "runtime": "GTK2 2.24.33, selected installed theme, private Xvfb, scale 1",
+      "origin_receipt": "docs/review/I167-GTK2-POST-R495-INSTALLED-HORIZONTAL-RENDER-20261027-R496.json"
+    }
+  ],
+  "method": {
+    "source_comparison": "RGBA crop comparison at 1:1, no resampling or color normalization",
+    "review_sheet": "18x nearest-neighbor enlargement solely for human inspection; black indicates exact RGB, red indicates any RGB difference",
+    "coordinate_basis": "R296 erratum and R469 native VUE cell origins; R496 GTK2 capture origins"
+  },
+  "comparison": [
+    {
+      "direction": "left",
+      "vue_crop_half_open": [
+        2,
+        4,
+        17,
+        19
+      ],
+      "gtk2_crop_half_open": [
+        2,
+        55,
+        17,
+        70
+      ],
+      "dimensions_px": [
+        15,
+        15
+      ],
+      "different_pixels": 0,
+      "pixels_compared": 225,
+      "sum_absolute_rgb_error": 0
+    },
+    {
+      "direction": "right",
+      "vue_crop_half_open": [
+        526,
+        4,
+        541,
+        19
+      ],
+      "gtk2_crop_half_open": [
+        343,
+        55,
+        358,
+        70
+      ],
+      "dimensions_px": [
+        15,
+        15
+      ],
+      "different_pixels": 0,
+      "pixels_compared": 225,
+      "sum_absolute_rgb_error": 0
+    }
+  ],
+  "review_sheet": {
+    "path": "records/ia-tema/evidence/I167/r508-installed-horizontal-arrow-review/gtk2-installed-vue-normal-cells.png",
+    "sha256": "4ec9e54212d6c49ae07479b8031b70fb53113834f6becd653894070161d14239",
+    "dimensions_px": [
+      1010,
+      700
+    ]
+  },
+  "result": "The left and right normal horizontal cells are pixel-identical in retained source evidence. The sheet is a review aid, not an acceptance; V03 remains unreviewed.",
+  "limits": [
+    "No historical horizontal held/pressed VUE state is available in this proof.",
+    "No hover/insensitive state, personal GTK2 application, or newly captured VM interaction is covered.",
+    "No user profile, app, VM, or GTK2 theme files were changed.",
+    "Human review remains pending and must not be inferred from technical identity."
+  ],
+  "changes": {
+    "source_changed": false,
+    "theme_files_changed": false,
+    "applications_restarted": false,
+    "vm_input_sent": false,
+    "vm_changed": false
+  }
+}

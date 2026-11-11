@@ -7,7 +7,7 @@ senhas, usuário pessoal ou PID da VM original.
 | Skill | Entrada | Recursos |
 | --- | --- | --- |
 | Revisão visual | [retro-ui-review/SKILL.md](retro-ui-review/SKILL.md) | [Política de cores](retro-ui-review/references/color-policy.md), [formato dos checklists](retro-ui-review/references/checklist-format.md) e [prancheta GTK](retro-ui-review/scripts/review_board.py). |
-| Sessão MAME existente | [mame-live-control/SKILL.md](mame-live-control/SKILL.md) | [Protocolo](mame-live-control/references/live-session.md) e [sender serial](mame-live-control/scripts/mame_control.py); os helpers Lua e os testes offline ficam no mesmo diretório de scripts. |
+| Sessão MAME existente | [mame-live-control/SKILL.md](mame-live-control/SKILL.md) | [Protocolo de sessão](mame-live-control/references/live-session.md), [regras da VM SR10.4 deste projeto](mame-live-control/references/domainos-sr104.md) e [sender serial](mame-live-control/scripts/mame_control.py); os helpers Lua e os testes offline ficam no mesmo diretório de scripts. |
 
 Para adaptações temáticas, o padrão é seguir a paleta atual da plataforma.
 Cores históricas são evidência, não cores finais fixadas nos controles.

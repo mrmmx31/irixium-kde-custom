@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R102",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "VUE Find Files entry wake and selection pulse",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "interface": "HP VUE 2.01",
+    "vm_process": 3759847,
+    "vm_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "wake_done": true,
+      "wake_released": true,
+      "wake_error": null,
+      "wake_cleanup_error": null,
+      "selection_done": true,
+      "selection_error": null,
+      "channel_pending": false
+    },
+    "capture_before_wake": "/home/lsi/tempia/i167-vue-entry-current-r102.png",
+    "capture_awake": "/home/lsi/tempia/i167-vue-entry-observed-r102.png",
+    "capture_after_shift_left": "/home/lsi/tempia/i167-vue-entry-selected-shift-left-r102.png",
+    "field_crop": "/home/lsi/tempia/i167-vue-entry-selected-shift-left-r102-crop.png",
+    "visible_state": "Find Files dialog is visible; File Name field displays *a and has a visible insertion cursor. The mouse pointer crosses the field region."
+  },
+  "actions": [
+    {
+      "input": "one bounded Shift pulse",
+      "result": "screen changed from blank to a transient frame and then returned to the visible VUE desktop"
+    },
+    {
+      "input": "one bounded Shift+Cursor Left pulse with the field visibly focused",
+      "result": "callback completed and both key overrides were released; field text remained *a; selection highlight not unequivocally visible"
+    }
+  ],
+  "verification": {
+    "historical_selection_visual_pair": "not proven",
+    "caret": "visible insertion cursor after wake; this is not a new blink-period measurement",
+    "input_cleanup": "verified done=true, no callback or cleanup error",
+    "desktop_or_user_theme_mutation": false,
+    "xchat_reloaded": false,
+    "other_vm_sessions_touched": false,
+    "temporary_paths": "All new scripts and captures are under /home/lsi/tempia. The prior /tmp/theme-lab-model-Tff1V file no longer exists."
+  },
+  "remaining": [
+    "Visually confirm SR10.4 selection with the mouse pointer away from the field, or record the evidence limitation if the live interface cannot expose it reliably.",
+    "Keep the tested local GTK2 palette namespace patch uninstalled until the authorized I167 comparison/review criteria are met."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "Implementation/evidence coverage estimate for I167 only; not historical fidelity.",
+    "basis": "Palette runtime and controls remain verified; the native field is visible, but selection is still not confirmed and the namespace patch is not installed."
+  }
+}

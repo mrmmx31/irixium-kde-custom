@@ -1,0 +1,51 @@
+{
+  "id": "R221",
+  "item": "I167",
+  "title": "R216 residuals classified as parent surface and text rasterization",
+  "status": "technical evidence; human review pending",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "toolkit": "GTK2 2.24.33",
+    "control": "Previously preserved R216 Reset button normal and pressed crops",
+    "new_vm_input": false,
+    "code_change": false
+  },
+  "method": "Read-only pixel classification of the existing R216 crops, grouping mismatch coordinates by the previously measured pixmap body and its label mask. No new render, VM input, theme change, or palette mutation.",
+  "evidence": {
+    "vue_before": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-before-button-press-r216.png",
+      "crop": [
+        295,
+        745,
+        379,
+        789
+      ],
+      "sha256": "cfca4afcdf221f3c50ed4119b398577c8e763e2382bff1659bcb7bdd7a5cee71"
+    },
+    "gtk2_before": {
+      "path": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/gtk2-before.png",
+      "sha256": "3611a8e3b0202d30883809ce67d2a702a0cd2409fb6f5891f1dd08e65cbd802d"
+    },
+    "gtk2_pressed": {
+      "path": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/gtk2-pressed.png",
+      "sha256": "8984ec487ecdfe2b3b826be0074c3c30435b01f86c8b664f7e378a2bc9a2d917"
+    },
+    "focus_outline": "496/496 matching pixels",
+    "button_body": "76x36; zero mismatches outside the label mask",
+    "parent_padding_mismatches": {
+      "count": 464,
+      "shape": "2 px on each edge between the focus outline and the pixmap body",
+      "vue_rgb": "#3297c7",
+      "gtk_fixture_rgb": "#78a0d5",
+      "classification": "parent surface inherited by transparent GTK2 focus padding; outside GtkButton pixmap paint area"
+    },
+    "label": {
+      "mask_pixels": 218,
+      "before_crop_mismatches_total": 681,
+      "text_rasterization_mismatches": 217,
+      "additional_press_delta_pixels_inside_label": 123
+    }
+  },
+  "conclusion": "R216's 464 residual pixels are the surrounding surface showing through the GTK2 focus padding, not a defect in the button bevel. The VUE dialog and GTK fixture have different parent fills. The remaining text difference is GTK2 antialiasing. Thus the button's measured geometry, relief, active transition, and release behavior remain as recorded; compare the next control without changing this button or KDE color roles.",
+  "next": "Continue only I167/GTK2 with a different native control/state. Do not use the parent-fill difference to tune GtkButton artwork."
+}

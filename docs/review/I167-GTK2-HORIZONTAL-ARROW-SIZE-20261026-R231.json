@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-HORIZONTAL-ARROW-SIZE-20261026-R231",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "investigation-open",
+  "user_report": "As setas das barras GTK2 parecem ter tamanho horizontal menor que as setas originais do HP VUE.",
+  "scope": "Somente GTK2; medir a seta horizontal desenhada, separada da célula do stepper e da espessura da barra.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "source_receipt": "docs/review/I167-GTK2-SCROLLBAR-GEOMETRY-SR104-20261025-R224.json"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "project-owned assistant clone",
+    "mame_pid": 1313710,
+    "mame_version": "0.276",
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "live_profile": {"frameskip": 4, "throttled": false, "paused": false, "captured": false, "pending_control_request": false},
+    "current_guest_state": "User started login; HP VUE startup is visible with Terminal and File Manager.",
+    "current_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-r231-vue-ready2-20261026-0215.png",
+      "sha256": "e1a10270ed0e944c1da2e0dfb2ab972864aec1fa8c3277ba84ac8f901df84380"
+    },
+    "guest_files_or_settings_changed": false
+  },
+  "current_evidence": {
+    "shared_contract": "tools/domainos_scrollbar_rules.json",
+    "native_measurements": {
+      "horizontal_bar_bbox": [105, 671, 643, 685],
+      "horizontal_bar_size": [539, 15],
+      "horizontal_arrow_glyph_bbox": null,
+      "note": "O contrato contém glyph 11x11 medido para as setas verticais; ainda não registra bbox independente das setas horizontais do recorte nativo."
+    },
+    "gtk2_r224": {
+      "runtime": "GTK2 2.24.33",
+      "stepper_size_px": 15,
+      "arrow_asset_size_px": [11, 11],
+      "screenshot": "~/tempia/ia-tema/evidence/I167/r224-resume/project-theme-11-15.png",
+      "limitation": "R224 valida a célula GTK2 contra o bitmap produzido pela própria receita, não mede independentemente o bbox horizontal no VUE nem comprova a largura percebida da seta."
+    },
+    "implementation_to_inspect": [
+      "tools/domainos_motif_art.py:kvantum_scrollbar_stepper e kvantum_scrollbar_triangle",
+      "tools/gtk2_domainos_palette.py:gtk2_assets",
+      "gtk/DomainOS-SR10-4/gtk-2.0/gtkrc:pares STEPPER/ARROW para LEFT e RIGHT"
+    ]
+  },
+  "work_done": {
+    "vm_identity_and_disk": "verified by vm/domainos-sr10.4-assistant/verify.sh and exact MAME process arguments",
+    "vm_started": true,
+    "vm_profile_preserved": true,
+    "telnet_session": "closed cleanly after read-only process inspection",
+    "source_code_changed": false,
+    "theme_installed_or_reloaded": false,
+    "disks_deleted_or_moved": false
+  },
+  "next": "Measure the horizontal glyph bbox and relief in a current native Trash Can capture against the GTK2 rendered 15px cell at 1:1. Inspect pixmap-engine clipping/overlay; change only GTK2 if an independent comparison confirms the mismatch, then rerun GTK2 native rendering and dynamic KDE-role checks.",
+  "technical_coverage_estimate": {
+    "percent": 76,
+    "basis": "Retained from R224; this turn established VM availability and a measurement gap but did not complete the GTK2-to-VUE arrow comparison.",
+    "not_a_visual_fidelity_score": true
+  }
+}

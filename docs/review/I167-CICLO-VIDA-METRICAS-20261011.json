@@ -1,0 +1,145 @@
+{
+  "at": "2026-10-11T09:45:07.893713+00:00",
+  "item": "I167",
+  "revision": 1,
+  "status": "passed_integrated_lifecycle_scope",
+  "stage_estimate_percent": 84,
+  "estimate_basis": "Lifecycle defect corrected in the integrated preview; no added control coverage. Full GTK2 adapter and objective remain incomplete.",
+  "defect": "Same scene hash admitted detached metrics after origin closed",
+  "reproduction": "Current controller accepted valid IPC while origin enabled, then revived allocations from late IPC after close",
+  "correction": "Metrics from separate origin require want_separate; coupled metrics remain independent",
+  "proof": {
+    "status": "passed",
+    "scope": "Real Motif controller -> private GTK2 button/range generation and both previews",
+    "initial": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 74,
+        "natural_height": 34
+      }
+    ],
+    "both": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 74,
+        "natural_height": 34
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 74,
+        "natural_height": 34
+      }
+    ],
+    "after_apply": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 74,
+        "natural_height": 34
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 74,
+        "natural_height": 34
+      }
+    ],
+    "gtk3_recipe_preserved": true,
+    "partial_scope_explicit": true,
+    "toggle_unchecked": true,
+    "separate_window_no_longer_visible": true,
+    "coupled_preview_retained": true,
+    "closed_origin_metrics_cleared": true,
+    "valid_ipc_accepted_before_close": true,
+    "late_detached_metrics_rejected": true,
+    "coupled_ipc_still_accepted": true,
+    "reopened_native_origins": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 74,
+        "natural_height": 34
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 74,
+        "natural_height": 34
+      }
+    ],
+    "synthetic_IPC_sentinels_not_native_dimensions": [
+      333,
+      77,
+      444,
+      88,
+      281,
+      61
+    ],
+    "process_exit_not_claimed": true
+  },
+  "synthetic_metrics_are_not_native_measurements": true,
+  "remaining": [
+    "I193/I194/I195 integrations separate",
+    "Other GTK2 controls/states and historical comparison"
+  ],
+  "personal_windows_changed": false,
+  "VM_changed": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/late-metrics-before-fix.log": "9ece51b07f586759f286e4a97147eefbce7765dfcc8cbf16645f3f4a1b5bf732",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/late-metrics-before-fix-r3.log": "8ecaab165f1f7e127ca9a254cc285330cad02014add81bf6be012ad64d868fff",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/late-metrics-after-fix.log": "ce2c8da700afd86e852ed5f6e66c02812a5c8fc94062555452e1079b17cc3af6",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/late-metrics-before-fix-r2.log": "639716c47bef949be924a26398656ef4123dd846a13117bc655143944c3d8bad",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/late-metrics-build.log": "5be70543cf2129e1e28487812d52f1492384a81902d7f59bea1ceb051e375878",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/after-fix/last.png": "1cf9a7314be1f6e9d856992c54b7ad5d4260f884b41f69878c157697095134d3",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/after-fix/native-observation.json": "c799c5492718871ea1b71cdd8d52811c75fc8a1079d5d6c251f36deb19ed61cb",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/after-fix/RESULTADO.json": "51ff974830ce6f1b1763e127e4afcca388fbbec4b4311b3bc9b5c35705c1576d",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/before-fix/last.png": "9f03867c90c7e2423e6b3d6d02b08e21a568e9d9d2044b70aa73c0d93b46e73a",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/before-fix/native-observation.json": "9cbb43aeeac054565c460fbe8349a81d12dde570dcf2bfa9d08587889a98bc69",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/before-fix/RESULTADO.json": "ba85e698993d07b16ea4bb8db7c8c53819a8f5f6240c819e0bf3692f44b327eb",
+    "tools/theme-lab/src/controller.c": "88b46406c02a07835b9885390ebd154e6c62d3ddb28650ea978c6e08f4c89abb",
+    "tools/theme-lab/tests/controller_gtk2_push.py": "ab65c3991fdef9b68dd3633d205163a9e005d6d47275fac612f45506deff0467",
+    "tools/theme-lab/tests/test_controller_spin.py": "1815d8e6de0641424469cde603d98c7a6c1b1175393687c60d66f778f543e57d",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/gtk3-regression.json": "b6bbc9da3f5787a471edc420e670c40fb02eda76568479fbeec851bfa408377d",
+    "docs/referencias/domainos-sr104/i167-metrics-lifecycle/gtk3-regression.log": "095867bc8811489c157ccfb66b5775cd4917c8754c1db1e5683fdbc46b37a77c"
+  },
+  "gtk3_controller_regression": "passed"
+}

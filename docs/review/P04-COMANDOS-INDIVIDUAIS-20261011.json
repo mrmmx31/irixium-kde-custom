@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-11T01:25:20.637797+00:00",
+  "item": "P04",
+  "authority_revision": 1,
+  "cases": {
+    "rows": {
+      "status": "passed",
+      "evidence": "/home/lsi/irixium-kde-custom/.qa-domainos-rows-1/RESULTADO.json",
+      "sha256": "7985911f792b748515a5b296b02c5d710c3bb909afea67b2e16c55dfb8417dfa",
+      "checks": {
+        "group_operations_button_clicked": true,
+        "rows_actual_client_allocation_changed": true,
+        "rows_confirmed_by_kwin": true,
+        "rows_disjoint_native_rectangles": true,
+        "rows_independent_task_untouched": true,
+        "rows_menu_clicked": true,
+        "rows_only_selected_native_uuids": true,
+        "rows_remaining_group_member_untouched": true,
+        "selection_survives_confirmed_rows": true,
+        "real_profiles_unchanged": true
+      },
+      "scope": "Own native Wayland group checkbox selection -> own Operations panel -> rows -> actual KWin confirmed selected windows; no minimization or filtering stages. Directed Qt input, not physical compositor seat. Private profiles only."
+    },
+    "mosaic": {
+      "status": "passed",
+      "evidence": "/home/lsi/irixium-kde-custom/.qa-domainos-mosaic-1/RESULTADO.json",
+      "sha256": "699019bcc7c0efbdc28928c403eb47672dd7a56419d1f8ea2b1915f7b299f9e0",
+      "checks": {
+        "group_operations_button_clicked": true,
+        "mosaic_actual_client_allocation_changed": true,
+        "mosaic_confirmed_by_kwin": true,
+        "mosaic_disjoint_native_rectangles": true,
+        "mosaic_independent_task_untouched": true,
+        "mosaic_menu_clicked": true,
+        "mosaic_only_selected_native_uuids": true,
+        "mosaic_remaining_group_member_untouched": true,
+        "selection_survives_confirmed_mosaic": true,
+        "real_profiles_unchanged": true
+      },
+      "scope": "Own native Wayland group checkbox selection -> own Operations panel -> mosaic -> actual KWin confirmed selected windows; no minimization or filtering stages. Directed Qt input, not physical compositor seat. Private profiles only."
+    },
+    "maximize": {
+      "status": "passed",
+      "evidence": "/home/lsi/irixium-kde-custom/.qa-domainos-maximize-1/RESULTADO.json",
+      "sha256": "20c9818eef3bd342882b9374ebe6c36668da7abc314d0e06e23cb240f2efb3d0",
+      "checks": {
+        "group_operations_button_clicked": true,
+        "maximize_actual_clients_and_native_task_state": true,
+        "maximize_confirmed_by_kwin": true,
+        "maximize_independent_task_untouched": true,
+        "maximize_menu_clicked": true,
+        "maximize_only_selected_native_uuids": true,
+        "maximize_remaining_group_member_untouched": true,
+        "selection_survives_confirmed_maximize": true,
+        "real_profiles_unchanged": true
+      },
+      "scope": "Own native Wayland group checkbox selection -> own Operations panel -> maximize -> actual KWin confirmed selected windows; no minimization or filtering stages. Directed Qt input, not physical compositor seat. Private profiles only."
+    }
+  },
+  "limits": [
+    "Private owned native windows; directed QTest native events, not user-session seat clicks",
+    "Only selected command scenario; existing columns/minimize reused separately",
+    "Manual lsi remains pending"
+  ],
+  "stage_percent": 95,
+  "harness_changes": "--operation selects targeted scenario and terminates after real result, skipping minimize/filter stages; repo scratch allowed to avoid tmp inode exhaustion",
+  "test_sources_sha256": {
+    "plasma/tools/testar-domainos-grupos-wayland.py": "135c9c96d0f1f909192311bab3b11f9ead1ecf0b22e430e6e133773507c01adc",
+    "plasma/tests/domainos-groups-wayland-host.cpp": "667be278381355de6554ccdd06a8f2abd4390b483f1ce55f0c83dc60fc4122ac"
+  }
+}

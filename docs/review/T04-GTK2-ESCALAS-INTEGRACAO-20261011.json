@@ -1,0 +1,75 @@
+{
+  "checked_at": "2026-10-11T17:40:28.328986+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "controls": [
+    "scale_h",
+    "scale_v"
+  ],
+  "coverage": {
+    "integrated": 13,
+    "total": 16,
+    "percentage": 81.25,
+    "scope": "Tipos do catálogo GTK2; não estados completos, fidelidade ou avanço do goal"
+  },
+  "native": {
+    "foundation": ".qa-t04-scale-foundation/native/RESULTADO.json",
+    "scenes": ".qa-t04-scale-integration/scenes-selected/RESULTADO.json",
+    "gestures": ".qa-t04-scale-integration/gestures-final/RESULTADO.json",
+    "controller_h": ".qa-theme-lab-spin-tpptcmed/RESULTADO.json",
+    "controller_v": ".qa-theme-lab-spin-ys1uzdwp/RESULTADO.json",
+    "scene_count": 48,
+    "paired_rebuild_count": 16,
+    "gesture_scenes": 4,
+    "native_minimum_fixture": {
+      "horizontal": [
+        23,
+        19
+      ],
+      "vertical": [
+        19,
+        23
+      ],
+      "font": "Sans 13px",
+      "scope": "Pedido GTK2 desta fixture; não métrica da VM"
+    }
+  },
+  "tests": {
+    "paint": 4,
+    "integration": 4,
+    "spin_regression": 4,
+    "gtk2_contract": 4,
+    "scene_contract": 15,
+    "runtime": 2,
+    "strict_build": "passed with private TMPDIR",
+    "c_receipt": "passed",
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "gtk2_scales.py": "97583b0826377872c7e936924db59358dd61ca2260d5c390559a07dd6ff6c3a9",
+    "gtk2_generation.py": "cc5ec6bfe44b76ddbd0a435f3d1b305779e1c4e87a240561bdb86b72b13369ce",
+    "gtk2_session.py": "f09a5136147ba3087ffeba35ee4a2a9a98a04ea155e150ba2d92e8d686163fb3",
+    "native_scene_gtk2.py": "b1ad2152db6ba9b8e7afd16df6f6267e5c8e5c04fb17aa9d1af448bbfaea540b",
+    "backend.py": "b812609367521de19c6d9440f5eb93c73438103d10482c47eaff3ee8479ccadc",
+    "src/controller/generated_preview.c": "1073279dad01023ee26b1b12b7d305a084189fd6c6f638c169e930ffe262d543",
+    "tests/probe_gtk2_scale_scene.py": "9243f4f111f54b4d9169ed168b3b1d22304965754e959c3061033fdccbc77f9a"
+  },
+  "limits": [
+    "Sem prova completa de pixels pressionado/foco nem certificação histórica.",
+    "Valores de amostra conservados na reconstrução da sessão; persistência entre processos continua pendente."
+  ],
+  "failed_attempts": [
+    "Fixture tratava estado do selecionado como estado de todos; corrigida para selecionar cada orientação mantendo contrato.",
+    "Compilação em /tmp sem espaço falhou; recompilado com TMPDIR próprio.",
+    "Sandbox não montou diretório temporário por falta de espaço; ensaios privados executados com acesso autorizado.",
+    "Caminho test_scene_contract.py inexistente: substituído pelo teste existente test_preview_scene.py."
+  ],
+  "delivery": {
+    "phase": "delivered_lsi",
+    "pid": 2815317,
+    "source_pid": 2794163,
+    "display": ":61",
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-e3adc4922aa94291a38bf409b1f58565/MANIFESTO.json",
+    "preservation": ".qa-t04-scale-integration/delivery-preservation.json"
+  }
+}

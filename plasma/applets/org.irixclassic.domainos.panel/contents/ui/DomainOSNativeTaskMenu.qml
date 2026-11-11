@@ -316,6 +316,7 @@ Item {
             ["mosaic",qsTr("Dispor em mosaico")],
             ["collect",qsTr("Reunir no desktop e monitor atuais")],
             ["maximize",qsTr("Maximizar selecionadas")],
+            ["restore",qsTr("Restaurar selecionadas")],
             ["minimize",qsTr("Minimizar selecionadas")]])
             addItem(submenu,definition[1],prefix+"_"+definition[0],iconbox.geometryReady(records,definition[0]),
                 ()=>iconbox.batch(definition[0],records))

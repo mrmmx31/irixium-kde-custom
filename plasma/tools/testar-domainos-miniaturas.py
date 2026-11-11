@@ -103,8 +103,15 @@ def main():
     if args.worker: return worker(args)
     if args.current_display and args.backend != "x11": parser.error("Owned-ID display probe is X11 only")
     output = args.saida
-    if not output.is_relative_to(Path("/tmp")) or output.exists(): parser.error("Use a new directory under /tmp")
+    scratch = (Path.home() / "tempia").absolute()
+    if not scratch.is_dir() or scratch.is_symlink() or not output.is_relative_to(scratch) \
+            or output == scratch or output.exists() \
+            or any(parent.is_symlink() for parent in output.parents):
+        parser.error("Use a new directory under ~/tempia, without symlinked parents")
     output.mkdir(mode=0o700)
+    private_tmp = output / "tmp"
+    private_tmp.mkdir(mode=0o700)
+    os.environ["TMPDIR"] = str(private_tmp)
     protected = [Path.home() / ".config" / name for name in ("kdeglobals", "kwinrc", "plasmarc", "plasma-org.kde.plasma.desktop-appletsrc")]
     before = {str(path): digest(path) for path in protected}
     sources = {str(path): digest(path) for path in UI.glob("*") if path.is_file()}
@@ -139,12 +146,25 @@ PlasmoidItem {
                     itemVisible:item.item ? item.item.visible : false,
                     itemWidth:item.item ? item.item.width : 0,itemHeight:item.item ? item.item.height : 0})
             }
+            if (item.objectName==="domainosThumbnailFrameCache") {
+                ++result.frameCacheCount
+                if (item.hasFrame) ++result.cachedFrameCount
+                result.frameCaches.push({identity:item.identity,hasFrame:item.hasFrame,
+                    capturePending:item.capturePending,url:item.frameUrl.toString()})
+            }
+            if (item.objectName==="domainosThumbnailCachedFrame") {
+                ++result.cachedImageCount
+                if (item.status===Image.Ready) ++result.cachedImageReadyCount
+                result.cachedImages.push({visible:item.visible,ready:item.status===Image.Ready,
+                    source:item.source.toString()})
+            }
             for (const child of item.children || []) gather(child,result)
         }
         function testState() {
             const result={windowCount:windows.length,backend:preview.backend,enabled:preview.previewsEnabled,
                 hintsEnabled:preview.hintsEnabled,hintMainText:preview.mainText,hintSubText:preview.subText,
                 tooltipVisible:preview.tooltipVisible,contentLoaded:!!preview.contentsLoader.item,providerCount:0,loadedProviderCount:0,availableCount:0,providers:[],
+                frameCacheCount:0,cachedFrameCount:0,frameCaches:[],cachedImageCount:0,cachedImageReadyCount:0,cachedImages:[],
                 windows:windows.map(window=>({id:window.windowIds[0],pid:window.pid,title:window.title}))}
             gather(preview.contentsLoader.item,result)
             return JSON.stringify(result)
@@ -223,7 +243,7 @@ PlasmoidItem {
         real_user_preferences_unchanged=before=={str(path):digest(path) for path in protected},
         privilege_protocol_checks_not_disabled="KWIN_WAYLAND_NO_PERMISSION_CHECKS" not in environment)
     report["source_sha256"] = sources
-    report["scope"] = "Real Plasma thumbnail providers and two owned windows; default disabled, visible capture, source repaint observed, close/disable unload. Real installed plasmawindowed executable, private HOME/XDG/bus and optional PipeWire; no real user preferences changed. " + ("Current X11 display probe uses only explicitly provided own IDs, does not instantiate TasksModel, enumerate other window titles, capture whole screen, or replace/reconfigure compositor." if args.current_display else "Private KWin compositor/session.")
+    report["scope"] = "Real Plasma thumbnail providers and two owned windows; default disabled, visible capture, source repaint observed, frame snapshots retained in memory after hover leaves and reused on reopen; disabling preview clears caches and live providers. Real installed plasmawindowed executable, private HOME/XDG/bus and optional PipeWire; no real user preferences changed. " + ("Current X11 display probe uses only explicitly provided own IDs, does not instantiate TasksModel, enumerate other window titles, capture whole screen, or replace/reconfigure compositor." if args.current_display else "Private KWin compositor/session.")
     report["status"] = "passed" if report["checks"] and all(report["checks"].values()) else "failed"
     (output / "RESULTADO.json").write_text(json.dumps(report, indent=2, ensure_ascii=False)+"\n")
     print(json.dumps({"status":report["status"],"checks":len(report["checks"]),"failed":[name for name,ok in report["checks"].items() if not ok],"report":str(output / "RESULTADO.json")}, ensure_ascii=False))

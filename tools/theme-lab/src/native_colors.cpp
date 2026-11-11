@@ -54,6 +54,13 @@ static QString digest(const QByteArray &bytes)
     return QString::fromLatin1(QCryptographicHash::hash(bytes, QCryptographicHash::Sha256).toHex());
 }
 
+static bool hasHeaderRole(const KSharedConfigPtr &config, bool inactive, const char *key)
+{
+    KConfigGroup group(config, QStringLiteral("Colors:Header"));
+    if (inactive) group = group.group(QStringLiteral("Inactive"));
+    return group.hasKey(QString::fromLatin1(key));
+}
+
 struct Family {
     KCS::ColorSet set;
     const char *background[4];
@@ -120,18 +127,36 @@ static QJsonObject readColors(const QString &path)
     const bool hasHeader = KCS::isColorSetSupported(config, KCS::Header);
     for (int state = 0; state < 4; ++state) {
         // Header/title insensitive use the Inactive set, as GTKConfig does.
-        KCS scheme(state ? QPalette::Inactive : QPalette::Active,
-                   hasHeader ? KCS::Header : KCS::Window, config);
-        output.put(header.background[state], scheme.background().color());
-        output.put(header.foreground[state], scheme.foreground().color());
-        if (hasHeader) {
-            output.put(title.background[state], scheme.background().color());
-            output.put(title.foreground[state], scheme.foreground().color());
-        } else {
-            KConfigGroup wm(config, QStringLiteral("WM"));
-            output.put(title.background[state], wm.readEntry(state ? "inactiveBackground" : "activeBackground", QColor()));
-            output.put(title.foreground[state], wm.readEntry(state ? "inactiveForeground" : "activeForeground", QColor()));
-        }
+        const auto group = state ? QPalette::Inactive : QPalette::Active;
+        KCS windowScheme(group, KCS::Window, config);
+        KCS headerScheme(group, hasHeader ? KCS::Header : KCS::Window, config);
+        const bool headerHasBackground = hasHeader && hasHeaderRole(config, state != 0, "BackgroundNormal");
+        const bool headerHasForeground = hasHeader && hasHeaderRole(config, state != 0, "ForegroundNormal");
+        const QColor windowBackground = windowScheme.background().color();
+        const QColor windowForeground = windowScheme.foreground().color();
+        QColor headerBackground = headerScheme.background().color();
+        QColor headerForeground = headerScheme.foreground().color();
+        // Some third-party .colors files contain a partial Header group. A
+        // group section alone does not make every role valid. Fall back per
+        // missing role to KColorScheme's Window palette, never to a fixed RGB.
+        if (!headerHasBackground || !headerBackground.isValid()) headerBackground = windowBackground;
+        if (!headerHasForeground || !headerForeground.isValid()) headerForeground = windowForeground;
+        output.put(header.background[state], headerBackground);
+        output.put(header.foreground[state], headerForeground);
+
+        KConfigGroup wm(config, QStringLiteral("WM"));
+        QColor titleBackground = headerHasBackground ? headerScheme.background().color() : QColor();
+        QColor titleForeground = headerHasForeground ? headerScheme.foreground().color() : QColor();
+        if (!titleBackground.isValid())
+            titleBackground = wm.readEntry(state ? "inactiveBackground" : "activeBackground", QColor());
+        if (!titleForeground.isValid())
+            titleForeground = wm.readEntry(state ? "inactiveForeground" : "activeForeground", QColor());
+        // A scheme may omit both Header and WM titlebar roles. Keep the
+        // selected palette usable and make the fallback explicit in metadata.
+        if (!titleBackground.isValid()) titleBackground = windowBackground;
+        if (!titleForeground.isValid()) titleForeground = windowForeground;
+        output.put(title.background[state], titleBackground);
+        output.put(title.foreground[state], titleForeground);
     }
     if (readInput(path) != before) throw std::runtime_error("Selected scheme changed during native colour read");
     QJsonObject provenance{
@@ -142,8 +167,8 @@ static QJsonObject readColors(const QString &path)
         {"gtkconfig_policy_source_sha256", "fb3e403291fb667f2495e967772ec7b374bedef661793488c5adc51b55197eee"},
         {"open_mode", "KSharedConfig::openConfig(absolute, KConfig::SimpleConfig)"},
         {"disabled_backdrop", "KColorScheme(Disabled), identical policy to Disabled; not a composed approximation"},
-        {"header_insensitive", "Inactive Header, or Inactive Window when no Header set"},
-        {"titlebar", hasHeader ? "Header active/inactive" : "WM active/inactive entries; invalid/missing colour refused"},
+        {"header_insensitive", "Inactive Header per-role; missing roles use effective Inactive Window palette"},
+        {"titlebar", "Header role per-colour when valid; otherwise selected WM role, then effective Window palette"},
         {"tooltip", "Active Tooltip in every state"},
         {"unspecified_scheme_roles", "Native KColorScheme API defaults, without theme-local RGB fallback"},
     };

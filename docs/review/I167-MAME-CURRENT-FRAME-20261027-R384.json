@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "R384",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Capture and verify the current canonical SR10.4 guest before attempting further GTK2 scrollbar interaction.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01; MAME 0.276 Apollo DN3500",
+    "pid": 3971377,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_instance_pid": 3971019,
+    "other_instance_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "profile": {"paused": false, "frameskip": 4, "throttled": false, "captured": false, "pending_request": null}
+  },
+  "capture": {
+    "kind": "native guest screen:snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r384.png",
+    "sha256": "6d0e9ccd8950c6c2bf3fa16a724cfcd804360e618794c8f5ab8d6183d54eb297",
+    "dimensions_px": [1024, 844],
+    "visible": "VUE desktop, Terminal, File Manager and Trash Can",
+    "pointer": "No pointer is visible over a scrollbar arrow; no graphical input sent."
+  },
+  "changes": {"guest_input": false, "mouse_or_keyboard": false, "guest_files": false, "profile_or_pause": false, "restart": false, "other_vm_touched": false},
+  "next": "Continue authorized GTK2 work without pressing an arrow until a current native image visibly places the pointer on the target."
+}

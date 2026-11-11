@@ -1,6 +1,7 @@
 -- Pure observation: no input, clocks, throttle, UI or capture mutations.
 local machine = manager.machine
 local hook = domainos_mouse_host or mame_live_mouse_host
+local mouse_option = machine.options.entries.mouse
 local lines = {
     'frameskip=' .. tostring(machine.video.frameskip),
     'throttled=' .. tostring(machine.video.throttled),
@@ -9,6 +10,7 @@ local lines = {
     'mouse_hook=' .. tostring(type(hook)),
     'captured=' .. tostring(hook and hook.captured),
     'wait_button_up=' .. tostring(hook and hook.wait_button_up),
+    'mouse_option=' .. tostring(mouse_option and mouse_option:value()),
     'portable_mouse_operation=' .. tostring(mame_live_mouse and mame_live_mouse.operation and mame_live_mouse.operation.done),
 }
 for tag, port in pairs(machine.ioport.ports) do

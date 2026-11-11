@@ -23,7 +23,7 @@ sys.dont_write_bytecode = True
 
 def validate(request):
     action = request.get("action")
-    if action not in ("layout", "inspect", "terminate-check"):
+    if action not in ("layout", "restore", "inspect", "preflight", "terminate-check"):
         raise ValueError("Unknown window operation")
     if action == "layout" and request.get("mode") not in ("columns", "rows", "mosaic", "maximize", "minimize", "collect"):
         raise ValueError("Unknown layout")
@@ -86,8 +86,32 @@ def x11_client_pid(identifier):
         x11.XCloseDisplay(display)
 
 
+def authenticate_x11_identities(request):
+    """Bind decimal WIds to the X server's local client PID.
+
+    KWin can expose pid=0 for legitimate legacy X11 clients that do not set
+    _NET_WM_PID. TaskManager still identifies those clients through XRes. Never
+    trust a marker supplied by QML: rebuild it here only after XRes confirms the
+    same PID carried by the selected TaskManager record.
+    """
+    authenticated = dict(request)
+    windows = []
+    for value in request.get("windows", []):
+        window = dict(value)
+        window.pop("x11PidAuthenticated", None)
+        identifier = str(window["windowIds"][0])
+        if identifier.isdecimal():
+            actual = x11_client_pid(identifier)
+            if actual != window["pid"]:
+                raise RuntimeError("O servidor X autenticou outro processo para uma janela selecionada; atualize a seleção antes de tentar novamente")
+            window["x11PidAuthenticated"] = True
+        windows.append(window)
+    authenticated["windows"] = windows
+    return authenticated
+
+
 def kwin_operation(request):
-    validate(request)
+    request = authenticate_x11_identities(validate(request))
     from PyQt6.QtCore import QCoreApplication, QObject, QTimer, pyqtClassInfo, pyqtSlot
     from PyQt6.QtDBus import QDBusConnection, QDBusMessage
 

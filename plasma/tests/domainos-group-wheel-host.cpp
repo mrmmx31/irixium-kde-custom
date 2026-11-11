@@ -18,7 +18,7 @@ static QWindow *host=nullptr;
 static QList<QProcess*> owned;
 static QJsonObject checks,snapshots;
 static int phase=0,attempts=0,cycle=0;
-static QString targetKey;
+static QString targetKey,activeBefore;
 static QObject *findVisual(QObject *item,const QString &name) {
     if(!item)return nullptr;if(item->objectName()==name)return item;
     const auto children=reinterpret_cast<Children>(dlsym(RTLD_DEFAULT,"_ZNK10QQuickItem10childItemsEv"));
@@ -30,11 +30,20 @@ static QVariant invoke(const char *method) {
 }
 static QJsonObject state(){return QJsonDocument::fromJson(invoke("state").toString().toUtf8()).object();}
 static QJsonObject position(){return QJsonDocument::fromJson(invoke("coordinates").toString().toUtf8()).object();}
+static QJsonObject controlPosition(const char *method){return QJsonDocument::fromJson(invoke(method).toString().toUtf8()).object();}
 static void physical(const QStringList &args) {
     auto process=new QProcess(QCoreApplication::instance());QObject::connect(process,qOverload<int,QProcess::ExitStatus>(&QProcess::finished),process,[process](int,QProcess::ExitStatus){process->deleteLater();});process->start("xdotool",args);
 }
 static void pointer(int button) {
     auto p=position();physical({"mousemove",QString::number(qRound(p["x"].toDouble())),QString::number(qRound(p["y"].toDouble())),"click",QString::number(button)});
+}
+static void pointerAt(const QJsonObject &p) {
+    if(!p.contains("x")||!p.contains("y"))return;
+    physical({"mousemove",QString::number(qRound(p["x"].toDouble())),QString::number(qRound(p["y"].toDouble())),"click","1"});
+}
+static QString activeOwnedKey(const QJsonArray &windows) {
+    for(const auto &value:windows){const auto row=value.toObject();if(row["active"].toBool())return row["key"].toString();}
+    return {};
 }
 static void clearOwnedAttention(const QJsonArray &windows) {
     auto display=XOpenDisplay(nullptr);if(!display)return;
@@ -66,17 +75,33 @@ static void tick() {
     if(phase==0) {
         if(current["rows"].toArray().size()!=9 || current["windows"].toArray().size()!=18){clearOwnedAttention(current["windows"].toArray());QTimer::singleShot(100,tick);return;}
         checks["nine_native_groups_eighteen_owned_clients"]=true;
+        activeBefore=activeOwnedKey(current["windows"].toArray());
         checks["wheel_activation_disabled_by_default"]=!current["wheelActivation"].toBool();
+        pointerAt(controlPosition("nextCoordinates"));phase=9;
+    }else if(phase==9) {
+        if(current["firstVisible"].toInt()!=7){QTimer::singleShot(150,tick);return;}
+        checks["next_arrow_paginates_without_activation"]=!current["open"].toBool()
+            &&current["requests"].toArray().isEmpty()
+            &&(activeOwnedKey(current["windows"].toArray()).isEmpty()||activeOwnedKey(current["windows"].toArray())==activeBefore);
+        pointerAt(controlPosition("previousCoordinates"));phase=10;
+    }else if(phase==10) {
+        if(current["firstVisible"].toInt()!=0){QTimer::singleShot(150,tick);return;}
+        checks["previous_arrow_paginates_without_activation"]=!current["open"].toBool()
+            &&current["requests"].toArray().isEmpty()
+            &&(activeOwnedKey(current["windows"].toArray()).isEmpty()||activeOwnedKey(current["windows"].toArray())==activeBefore);
         targetKey=position()["key"].toString();pointer(1);phase=1;
     }else if(phase==1) {
+        if(!current["open"].toBool()||current["key"].toString()!=targetKey){QTimer::singleShot(150,tick);return;}
         checks["first_group_click_opens_native_list"]=current["open"].toBool() && current["key"].toString()==targetKey;
         pointer(5);phase=2;
     }else if(phase==2) {
+        if(current["firstVisible"].toInt()!=7){QTimer::singleShot(250,tick);return;}
         checks["default_wheel_reaches_second_page"]=current["firstVisible"].toInt()==7;
         checks["default_wheel_does_not_activate_any_owned_window"]=current["requests"].toArray().isEmpty();
         checks["page_change_dismisses_previous_group"]=!current["open"].toBool();
         targetKey=position()["key"].toString();pointer(1);phase=3;
     }else if(phase==3) {
+        if(!current["open"].toBool()||current["key"].toString()!=targetKey){QTimer::singleShot(150,tick);return;}
         checks["new_group_after_wheel_opens_on_first_click"]=current["open"].toBool() && current["key"].toString()==targetKey && current["members"].toArray().size()==2;
         QMetaObject::invokeMethod(fixture,"closePicker");phase=4;
     }else if(phase==4) {pointer(4);phase=5;
@@ -84,16 +109,19 @@ static void tick() {
         checks["default_wheel_returns_first_page"]=current["firstVisible"].toInt()==0;
         targetKey=position()["key"].toString();pointer(1);phase=6;
     }else if(phase==6) {
+        if(!current["open"].toBool()||current["key"].toString()!=targetKey){QTimer::singleShot(150,tick);return;}
         checks["original_group_reopens_after_return_wheel_cycle_"+QString::number(cycle)]=current["open"].toBool() && current["key"].toString()==targetKey;
         QMetaObject::invokeMethod(fixture,"closePicker");pointer(5);phase=7;
     }else if(phase==7) {
         targetKey=position()["key"].toString();pointer(1);phase=8;
     }else if(phase==8) {
+        if(!current["open"].toBool()||current["key"].toString()!=targetKey){QTimer::singleShot(150,tick);return;}
         checks["second_page_group_reopens_after_wheel_cycle_"+QString::number(cycle)]=current["open"].toBool() && current["key"].toString()==targetKey;
         if(++cycle<3){QMetaObject::invokeMethod(fixture,"closePicker");phase=4;}
         else {checks["wheel_and_group_selection_never_activate_any_window"]=current["requests"].toArray().isEmpty();checks["native_scenario_completed"]=true;complete();return;}
     }
-    QTimer::singleShot(350,tick);
+    // Concurrent MAME sessions can delay X input delivery; let KWin and TasksModel settle.
+    QTimer::singleShot(900,tick);
 }
 extern "C" int interceptedExec() asm("_ZN12QApplication4execEv");
 extern "C" int interceptedExec() {

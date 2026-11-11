@@ -1,0 +1,30 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T15:40:09Z",
+  "status": "blocked-current-reference-unavailable",
+  "scope": "Qt6 SpinBox down and ComboBox down arrows; GTK3 ComboBox down arrow only.",
+  "authorization": "Fila Atual, section work; revision 1 acknowledged and authorized.",
+  "reference_observation": {
+    "source": "Existing MAME 0.276 Apollo DN3500 session; read-only capture of :apollo_screen:screen.",
+    "pid": 912338,
+    "capture": "~/tempia/i457-vm-observe-r2/current.png",
+    "sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+    "dimensions_px": [1024, 844],
+    "observed": "Guest screen is black except for the Apollo command strip along the bottom. Domain/OS/VUE widgets and SpinBox/ComboBox arrows are not visible.",
+    "command_result": "The Lua capture wrote the PNG, but its wrapper returned assertion failed because the snapshot API has no truthy return value. No guest input was sent; the existing MAME process remains running. The bridge has no pending request to acknowledge."
+  },
+  "technical_state": {
+    "previous_receipt": "docs/review/I457-ARROW-RELIEF-20261019.json",
+    "gtk3_and_qt6_probes": "Remain valid for their stated isolated native probes and KDE role palettes.",
+    "historical_comparison": "Not possible with the current guest image. No Domain/OS relief or color conclusion is inferred.",
+    "product_change": "None in this revision."
+  },
+  "preservation": {
+    "mame_guest_input_sent": false,
+    "mame_profile_changed": false,
+    "other_vm_touched": false,
+    "xephyr_sessions_touched": false
+  },
+  "next": "Leave I457 running and proceed to the next authorized work item. Revisit the historical comparison only after the already-running Domain/OS VM presents its VUE controls again; do not restart or alter the MAME profile as part of this observation."
+}

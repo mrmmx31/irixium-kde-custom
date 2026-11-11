@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R314",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "selected-user-theme-still-resolves-to-older-gtk2-revision",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only recheck of GTK2 theme selection and installed versus repository recipe; no installation or application restart."
+  },
+  "observation": {
+    "gtk2_selector": "~/.gtkrc-2.0 selects gtk-theme-name=DomainOS-SR10-4-KDE.",
+    "selected_user_copy_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "duplicate_local_share_copy_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "installed_geometry": {
+      "GtkRange::slider-width": 16,
+      "GtkRange::stepper-size": 16,
+      "GtkRange::trough-border": 0
+    },
+    "repository_file": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "repository_sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203",
+    "repository_geometry": {
+      "GtkRange::slider-width": 11,
+      "GtkRange::stepper-size": 15,
+      "GtkRange::trough-border": 2
+    },
+    "running_application": "An XChat process using the user's PRD executable was present during the read-only check; no PID is retained because it is ephemeral."
+  },
+  "interpretation": "A visual comparison made in the currently open GTK2 app would not validate the current repository recipe: the user's selected theme file is an older revision with different metrics/assets. R306/R307 identified this discrepancy previously; R314 confirms it remains present while XChat is open.",
+  "limits": [
+    "The GTK2 process's in-memory resolved theme was not inspected; the selected configuration and installed files are the available evidence.",
+    "No theme package was installed and no app was restarted or closed.",
+    "Corrected user-session validation remains outside the current I167 preview-only scope until separately authorized."
+  ],
+  "isolation": {
+    "profile_written": false,
+    "theme_installed": false,
+    "xchat_touched": false,
+    "scripts_or_sessions_stopped": false,
+    "vm_input_sent": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "This explains why the live selected copy can differ from current preview assets but adds no GTK2 implementation or historical visual acceptance. It is not a visual-fidelity score."
+  }
+}

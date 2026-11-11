@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R727",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Repair the GTK2 Theme Lab native preview so its stretched scrollbar body uses the measured SR10.4 cross-axis relief profile.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "cause": "R726 corrected the installed GTK2 theme renderer, but the Theme Lab preview has its own gtk2_recipe.py generator. That generator continued to stretch a generic bevel across the long body, producing DDFFFFFFFFFFFLL instead of the shared SR10.4 profile DDLLFFFFFFFDDLL.",
+  "changes": [
+    "tools/theme-lab/gtk2_recipe.py: paint the shared measured profile between the five-pixel caps in horizontal and vertical previews; preserve explicit sunken, raised and flat trough adjustments.",
+    "tools/theme-lab/tests/test_gtk2_recipe.py: assert palette-derived body pixels in both orientations and verify raised/flat adjustments."
+  ],
+  "evidence": {
+    "shared_contract": {
+      "path": "tools/domainos_scrollbar_rules.json",
+      "sha256": "c42cda1cb5adf86161ed790ce0b9609ed790fbdb259d9c2f730c79cf0f923233",
+      "normal_cross_axis_profile": "DDLLFFFFFFFDDLL"
+    },
+    "native_gtk2_capture": {
+      "evidence_json": "/home/lsi/tempia/domainos-theme-work/I167/R727-profile-comparison.json",
+      "capture": "/home/lsi/tempia/domainos-theme-work/I167/R726-gtk2-native-horizontal/.qa-gtk2-public-ir8px0y4/preview-window-start.png",
+      "capture_sha256": "5f1f637663e92899422f13f8b5c38a1dbe207ad99ba63fb57bdbef63d348c658",
+      "horizontal_body_profile": "15/15 pixels equal the generated native GTK2 asset",
+      "vertical_body_profile": "15/15 pixels equal the generated native GTK2 asset"
+    },
+    "gallery": {
+      "result": "The public native GTK2 gallery reported metrics for all 16 controls, registered native push/toggle/check/radio clicks, emitted 52 events and closed normally in private bwrap/Xvfb.",
+      "capture": "/home/lsi/tempia/domainos-theme-work/I167/R726-gtk2-native-profile/.qa-gtk2-public-all-6ymgu2e6/preview.png"
+    },
+    "stepper_pressure": "The separate full scrollbar interaction run stopped at the horizontal-left held-state assertion: its GTK2 capture showed zero changed pixels. This does not invalidate the normal long-body profile capture, but the pressed-arrow comparison remains unverified and must not be reported as passing.",
+    "diff": "/home/lsi/tempia/board/diff-records/record-m97exbxc/verified.json"
+  },
+  "verification": {
+    "gtk2_recipe_tests": "8 tests passed with temporary files routed to ~/tempia.",
+    "native_normal_profile": "Passed: native GTK2 horizontal and vertical body cross-sections each match the generated image at 15/15 pixels.",
+    "native_gallery": "Passed for the GTK2 gallery lifecycle and all 16 control metrics; it does not establish pressed-arrow fidelity.",
+    "visual_acceptance": "Pending user review; technical pixel checks are not human visual approval."
+  },
+  "result": "The Theme Lab GTK2 preview now paints the same measured normal body profile as the shared SR10.4 rule, using the current KDE semantic palette. This closes the separate preview-generator gap that remained after R726; it does not certify every GTK2 state or the full family.",
+  "next": "Keep the active family GTK2. The user can regenerate/reload the GTK2 preview and assess the normal relief. Keep the horizontal-left pressed-state discrepancy and human visual review open. Preserve the current user palette and do not change other toolkits in this step.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "I167 technical coverage estimate; visual acceptance and the held-arrow discrepancy remain open. This is not a fidelity percentage."
+  }
+}

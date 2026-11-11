@@ -1,0 +1,1856 @@
+{
+  "id": "I168",
+  "status": "passed_scoped_gtk4_scrollbar_worker_matrix",
+  "date": "2026-10-14",
+  "gtk_version": "4.18.6+ds-2",
+  "contract": "tools/domainos_scrollbar_rules.json",
+  "scope": "GTK4 trough and thumb in separate and Motif-hosted preview, including native adjustment/wheel, four semantic states, 1:1 pixels and role-driven palette matrix. No GTK4 arrows were synthesized. Does not claim historical fidelity or manual approval.",
+  "runs": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 0,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-DomainOS-SR10.4-state-0-0.png",
+          "sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "state": 0,
+          "source_proof_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "30f782a6fd984eea8e1424b6572273f2",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "0ca2ee69fe5130e6f8203c8792cc96db96204f6207fb96cb358c3f173f3d04d3",
+        "emitted_at": "2026-10-14T19:55:16.528101+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "separate",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 35.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 1,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": true,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 1
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 1,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": true
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 1,
+          "capture": "/home/domainos-test/scrollbar-state-1.png",
+          "capture_sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 1,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-DomainOS-SR10.4-state-1-0.png",
+          "sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9",
+          "state": 1,
+          "source_proof_sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9"
+        }
+      ],
+      "wheel_event": null,
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 2,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": false,
+          "state_flags": 136,
+          "forced_state": 2
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 2,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": false,
+          "state_flags": 136,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 2,
+          "capture": "/home/domainos-test/scrollbar-state-2.png",
+          "capture_sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 2,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-DomainOS-SR10.4-state-2-0.png",
+          "sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e",
+          "state": 2,
+          "source_proof_sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e"
+        }
+      ],
+      "wheel_event": null,
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 3,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 192,
+          "forced_state": 3
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 3,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 192,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 3,
+          "capture": "/home/domainos-test/scrollbar-state-3.png",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 3,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-DomainOS-SR10.4-state-3-0.png",
+          "sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "state": 3,
+          "source_proof_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5"
+        }
+      ],
+      "wheel_event": null,
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "BreezeLight",
+      "state": 0,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-dbd1cc239f59f980",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-dbd1cc239f59f980",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "9d4c237c99cb46e54e0a36b17f2308626ddde5638a60a19453deeba9d5d83017",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-BreezeLight-state-0-0.png",
+          "sha256": "9d4c237c99cb46e54e0a36b17f2308626ddde5638a60a19453deeba9d5d83017",
+          "state": 0,
+          "source_proof_sha256": "9d4c237c99cb46e54e0a36b17f2308626ddde5638a60a19453deeba9d5d83017"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "a78156a85cf74c4cb8d2654ecf73528b",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "0ca2ee69fe5130e6f8203c8792cc96db96204f6207fb96cb358c3f173f3d04d3",
+        "emitted_at": "2026-10-14T19:55:26.627056+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "separate",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 35.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "BreezeDark",
+      "state": 0,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-4087adfda879263a",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-4087adfda879263a",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "bbac6c8da5ca56d501a61ed43f40b477968ea06cb570c6481a799839eb172b2d",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-BreezeDark-state-0-0.png",
+          "sha256": "bbac6c8da5ca56d501a61ed43f40b477968ea06cb570c6481a799839eb172b2d",
+          "state": 0,
+          "source_proof_sha256": "bbac6c8da5ca56d501a61ed43f40b477968ea06cb570c6481a799839eb172b2d"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "e9d098ff0c6d4c458bf187058ac353aa",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "0ca2ee69fe5130e6f8203c8792cc96db96204f6207fb96cb358c3f173f3d04d3",
+        "emitted_at": "2026-10-14T19:55:28.954901+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "separate",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 35.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "TestYellow",
+      "state": 0,
+      "origin": "separate",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "23c0f6ac27b757dcf0080f625b73a0cb1532412eb332143030b133c91765bc8c",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-2b539edcc701eeb0",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        },
+        {
+          "index": 11,
+          "allocation": [
+            360,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-2b539edcc701eeb0",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "3aff4ef490a99e6878393a7fa00216e386931eb5adaf272e93d3f9c40d398c4d",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/separate-TestYellow-state-0-0.png",
+          "sha256": "3aff4ef490a99e6878393a7fa00216e386931eb5adaf272e93d3f9c40d398c4d",
+          "state": 0,
+          "source_proof_sha256": "3aff4ef490a99e6878393a7fa00216e386931eb5adaf272e93d3f9c40d398c4d"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "bba013d2342f41b09425bbab918695fa",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "0ca2ee69fe5130e6f8203c8792cc96db96204f6207fb96cb358c3f173f3d04d3",
+        "emitted_at": "2026-10-14T19:55:31.749182+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "separate",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 35.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 0,
+      "origin": "coupled",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        },
+        {
+          "index": 11,
+          "allocation": [
+            320,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/coupled-DomainOS-SR10.4-state-0-0.png",
+          "sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "state": 0,
+          "source_proof_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "c5899dccc29a4c61901e27e44c1d4ed3",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "8fdf1c3bac238ada667f94e61ec78fdf227a4973b3f075746a9718477dad1451",
+        "emitted_at": "2026-10-14T19:55:34.250853+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "coupled",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 35.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    },
+    {
+      "scheme": "DomainOS-SR10.4",
+      "state": 1,
+      "origin": "coupled",
+      "selected_scheme": {
+        "path": "/home/domainos-test/.config/kdeglobals",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "current_kdeglobals_roles",
+        "scheme_id": ""
+      },
+      "controls": [
+        {
+          "index": 10,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": true,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 1
+        },
+        {
+          "index": 11,
+          "allocation": [
+            320,
+            32,
+            15,
+            180
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            15,
+            15
+          ],
+          "native_natural_before_custom_size": [
+            15,
+            15
+          ],
+          "native_request_before_custom_size": [
+            15,
+            15
+          ],
+          "font_description": "",
+          "font_not_applicable": true,
+          "font_kind": 2,
+          "scrollbar_style_class": "theme-lab-gtk4-scrollbar-3e8408202ab442cc",
+          "scrollbar_style_class_present": true,
+          "forced_pressed_class_present": false,
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_state": 0
+        }
+      ],
+      "state_proofs": [
+        {
+          "state": 1,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": true
+        }
+      ],
+      "pixel_proofs": [
+        {
+          "state": 1,
+          "capture": "/home/domainos-test/scrollbar-state-1.png",
+          "capture_sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 1,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/coupled-DomainOS-SR10.4-state-1-0.png",
+          "sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e",
+          "state": 1,
+          "source_proof_sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e"
+        }
+      ],
+      "wheel_event": null,
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "gtk4_arrows_synthesized": false,
+      "historical_fidelity_claimed": false
+    }
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk4_scrollbars.py": "8e7bd26e5d3477a168e4eaa3dca8941312cca3a21e1867f0fb4fe83ce99978e8",
+    "tools/theme-lab/gtk4_scrollbar_session.py": "470e772036d545ea2cc696083bcb4bd27d5a95714066eef07d1f1de71d44d75e",
+    "tools/theme-lab/gtk4_scrollbar_snapshot.py": "952543367cf61ba95e94a6d1af4a7b0eab7fa4fee101f5b789f2318809b045db",
+    "tools/theme-lab/gtk4_push_api.py": "8cb749c749327891acdee87c8c42b3f58748f5aebdafdf0c30793ebc0ae040de",
+    "tools/theme-lab/gtk4_generation.py": "9b6b84d5b68f5b0d21caa75fcf9aa441519476494ad369e47e8ed4e6913ca836",
+    "tools/theme-lab/gtk4_route.py": "35e22f3da1661648c77303801f310674f0754e3043063c31c663a0327e506848",
+    "tools/theme-lab/gtk4_worker.py": "dd749b0cb0bdd7e85d9d43fe157a96834173bb3dbee4df202fdfd0ed2b707ea7",
+    "tools/theme-lab/gtk4_snapshot_job.py": "7fd3523eb68e81bc5354a62af3c50d05bdb8107fea8ef73aa999cc4357798bb1",
+    "tools/theme-lab/preview_gtk4.py": "175df90bc1f0909dd7054a1a345277c9d3a013055e6f4a6b1441a50cd96457d9",
+    "tools/theme-lab/tests/probe_gtk4_scrollbar_worker.py": "08036165fe96812717f3561f52558ef00ea49ce75eb3e0d235e03b045eca2c83",
+    "tools/theme-lab/tests/test_gtk4_worker_native.py": "ebdf3b49c07e6c8ed92547853b0c3b6134eaaa201fda28534751f6a5adedac59"
+  },
+  "limitations": [
+    "GtkScrollbar has no native steppers/arrows; adapter does not invent them.",
+    "Pixels compare GTK renderer output to the translated role-based recipe, not to HP VUE screenshots; this is implementation correctness, not historical approval.",
+    "TestYellow is a synthetic test palette; not an installed color scheme.",
+    "Coupled preview test uses a private 360x240 Motif host fixture."
+  ],
+  "dynamic_rerender": [
+    {
+      "origin": "separate",
+      "scheme": "DomainOS-SR10.4",
+      "gtk4_version": "4.18.6+ds-2",
+      "states_visited": [
+        0,
+        1,
+        2,
+        3,
+        0
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 1,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": true
+        },
+        {
+          "state": 2,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": false,
+          "state_flags": 136,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 3,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 192,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "state_pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "capture": "/home/domainos-test/scrollbar-state-1.png",
+          "capture_sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 1,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "capture": "/home/domainos-test/scrollbar-state-2.png",
+          "capture_sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 2,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "capture": "/home/domainos-test/scrollbar-state-3.png",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 3,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "state": 0,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-separate-state-0.png",
+          "sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5"
+        },
+        {
+          "state": 1,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-separate-state-1.png",
+          "sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9",
+          "capture_sha256": "59dcc7de0382e24110188b5e78214d3752b5fba1d6e570773cd7f42b0eae1ca9"
+        },
+        {
+          "state": 2,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-separate-state-2.png",
+          "sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e",
+          "capture_sha256": "f7b24812343233880f78e8f42b32b28030a609a4537565a385ce2cd678cf042e"
+        },
+        {
+          "state": 3,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-separate-state-3.png",
+          "sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5",
+          "capture_sha256": "3e57bd34550ea247039d5143c384a84c930fc9494ab888fa4c31a620346a12b5"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "78849fea928245918a64398da14977d6",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "0ca2ee69fe5130e6f8203c8792cc96db96204f6207fb96cb358c3f173f3d04d3",
+        "emitted_at": "2026-10-14T19:54:18.979627+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "separate",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "worker_log": "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-axil_coy/home/scrollbar-worker.log",
+      "worker_log_has_glib_gobject_critical": false
+    },
+    {
+      "origin": "coupled",
+      "scheme": "DomainOS-SR10.4",
+      "gtk4_version": "4.18.6+ds-2",
+      "states_visited": [
+        0,
+        1,
+        2,
+        3,
+        0
+      ],
+      "state_proofs": [
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 1,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": true
+        },
+        {
+          "state": 2,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": false,
+          "state_flags": 136,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 3,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 192,
+          "forced_pressed_class": false
+        },
+        {
+          "state": 0,
+          "allocation": [
+            32,
+            32,
+            280,
+            15
+          ],
+          "sensitive": true,
+          "state_flags": 128,
+          "forced_pressed_class": false
+        }
+      ],
+      "state_pixel_proofs": [
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "capture": "/home/domainos-test/scrollbar-state-1.png",
+          "capture_sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 1,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "capture": "/home/domainos-test/scrollbar-state-2.png",
+          "capture_sha256": "5df9b004a98c902a1a2729aa63b8e0efbe4eb21c060175258735547b3910704d",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 2,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 3,
+          "capture": "/home/domainos-test/scrollbar-state-3.png",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 3,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        },
+        {
+          "state": 0,
+          "capture": "/home/domainos-test/scrollbar-state-0.png",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "pixel_comparisons": [
+            {
+              "part": "horizontal",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 3430,
+              "thumb_pixels_compared": 770
+            },
+            {
+              "part": "vertical",
+              "control_state": 0,
+              "trough_non_thumb_differences": 0,
+              "thumb_differences": 0,
+              "trough_pixels_compared": 2205,
+              "thumb_pixels_compared": 495
+            }
+          ]
+        }
+      ],
+      "images": [
+        {
+          "state": 0,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-coupled-state-0.png",
+          "sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3"
+        },
+        {
+          "state": 1,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-coupled-state-1.png",
+          "sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e",
+          "capture_sha256": "13d83b9b9aa698625dbe96e7044be17de300aa0e150622c3ceb71c9915c66e0e"
+        },
+        {
+          "state": 2,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-coupled-state-2.png",
+          "sha256": "5df9b004a98c902a1a2729aa63b8e0efbe4eb21c060175258735547b3910704d",
+          "capture_sha256": "5df9b004a98c902a1a2729aa63b8e0efbe4eb21c060175258735547b3910704d"
+        },
+        {
+          "state": 3,
+          "path": "/home/lsi/tempia/domainos-i168-gtk4-scrollbar-20261014-r2/rerender-coupled-state-3.png",
+          "sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3",
+          "capture_sha256": "dc37ee71106a6e88fd29e81d141279a6f781f2ee10af7d9b2f59d93f345f39d3"
+        }
+      ],
+      "wheel_event": {
+        "schema_version": 1,
+        "kind": "theme_lab_preview_event",
+        "event_id": "b96a78eccea740e58bc3643962ea7c6a",
+        "family": "gtk4",
+        "action": "native",
+        "control_id": "scroll_h",
+        "control_index": 10,
+        "project_sha256": "8fdf1c3bac238ada667f94e61ec78fdf227a4973b3f075746a9718477dad1451",
+        "emitted_at": "2026-10-14T19:54:28.183858+00:00",
+        "state": {
+          "value": 35.0
+        },
+        "origin": "coupled",
+        "preview_instance": "dddddddddddddddddddddddddddddddd"
+      },
+      "state_after_wheel": {
+        "10": 25.0,
+        "11": 25.0
+      },
+      "closed_exit_code": 0,
+      "worker_log": "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-g_jdhogj/home/scrollbar-worker.log",
+      "worker_log_has_glib_gobject_critical": false
+    }
+  ],
+  "dynamic_rerender_note": "All four states changed through project reload in both origins. Moving the pointer outside the scrollbar exposes both GTK overlay indicators for the 1:1 capture."
+}

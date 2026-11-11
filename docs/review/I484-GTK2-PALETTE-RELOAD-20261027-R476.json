@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R476",
+  "date": "2026-10-27",
+  "demand_id": "I484",
+  "section": "work",
+  "user_revision": 1,
+  "definition_sha256": "6cb838c2688484acc740e063153990bb32edcb828ef18a708a86d841780925b4",
+  "title": "GTK2 palette refresh notification and user runtime deployment",
+  "method": {
+    "private_display": "Xvfb",
+    "gtk2": "GTK 2.24.33 native mapped top-level in a separate process",
+    "gtk3": "GTK 3 native mapped top-level in a separate process, concurrent with GTK2",
+    "gtk_theme_name": "IrixClassic-KDE retained in private ~/.gtkrc-2.0 across a palette refresh",
+    "private_artifacts": "~/tempia/ia-tema/evidence/I484/R476-runtime-stage",
+    "runtime_install": "Transactional user bundle install; final package adds/updates four targeted GTK2 modules. Two DomainOS renderer modules were required because the already-installed GTK2 RC references disabled arrow pixmaps absent from the older companion catalog.",
+    "personal_gtk2_application_open": false,
+    "xchat_touched": false,
+    "desktop_or_mame_input": false
+  },
+  "result": {
+    "status": "passed_private_validation_and_installed",
+    "native_reload_tests": "3/3 passed, including no DISPLAY refusal, GTK2 event delivery, and GTK3 control survival/interactivity",
+    "palette_runtime_tests": "24/24 passed",
+    "companion_bridge_tests": "18/18 passed",
+    "gtk_theme_name_changed": false,
+    "gtk_settings_theme_name_before_after_event": "DomainOS-SR10-4-KDE / DomainOS-SR10-4-KDE",
+    "gtk2_reload_event_order": "synchronizer calls the notifier only after the GTK2 palette transaction returns native_reload_required",
+    "no_display_behavior": "refuses to guess a display",
+    "startup_reconciliation": "synchronized; DomainOS GTK2 palette unchanged; no reload event emitted",
+    "installed_runtime_readback": "verified",
+    "service": {
+      "unit": "irix-theme-companions.service",
+      "status": "active",
+      "main_pid": 396380,
+      "installation_backup": "9c54b1e1aa5e4e349893c2d762ff7d63",
+      "initial_incomplete_stage_backup": "5a8e44cdd4cb4039b7767be7cf467f56"
+    },
+    "installed_sha256": {
+      "theme_companion_bridge.py": "71db2588c8cd1a98a9ded69888eb7327b416b62aeaf56a33cece7128a2de3f65",
+      "gtk2_reload_notify.py": "31732d4744c53c0ba9e870a0ba8d888da2be319274fe6b2b5f22f6a99453044a",
+      "gtk2_domainos_palette.py": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "domainos_motif_art.py": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+      "components.json": "e114c3af0213a84ce56d59231fa4c2ebaefa418b3ec03ad71ce977d10e69e574"
+    },
+    "before_after_diff": {
+      "path": "~/tempia/ia-tema/evidence/I484/R476-runtime-before-after.diff",
+      "sha256": "50718fc0d1106446652732fef516218339afb979e8b07df899d1a716a7af5498",
+      "manifest": "~/tempia/ia-tema/evidence/I484/R476-runtime-before-after.json"
+    },
+    "previous_runtime_sha256": {
+      "theme_companion_bridge.py": "74f34ac0d24b91fdec284c5f4b94884002be9b0fe8ddb6e26d692416b0ba6c83",
+      "gtk2_domainos_palette.py": "6c12fb77cd5e4c7c2218eb495f34bf5547149c5447929d844c211f3e372175cf",
+      "domainos_motif_art.py": "52717996b7cb2278e71181a4ed4c241de8843ab0b0ee0713c4136dcacdda6239"
+    }
+  },
+  "limits": [
+    "The first runtime restart exposed a stale renderer/catalog mismatch: the installed DomainOS GTK2 RC referenced disabled arrow pixmaps unsupported by the prior companion. That failed attempt was preserved in the installation backup; the final staged renderer modules now support the installed names and a read-only dry refresh returned unchanged.",
+    "Tests ran on private Xvfb and synthetic palette fixtures; no user color scheme was switched.",
+    "GTKSettings:gtk-theme-name stayed constant during broadcast. A real XSettings manager Net/ThemeName transition and an open GTK2/XChat window were not available for live visual confirmation.",
+    "GTK3 remained functional when the global GTK2 reload broadcast was sent; this does not certify every GTK version or toolkit.",
+    "No Domain/OS VM received input; no historical visual or human acceptance was recorded."
+  ],
+  "next": "After this receipt and queue update, have the user test one real GTK2/XWayland application with a palette change; do not touch the VM without Q499 authorization.",
+  "progress_estimate": "I484 implementation and private tests complete; live GTK2/XWayland visual acceptance remains pending. This is not the percentage of the full GTK2 or project goal."
+}

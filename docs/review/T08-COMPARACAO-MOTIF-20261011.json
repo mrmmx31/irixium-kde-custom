@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-11T13:19:01.341431+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "private_native_verified_not_delivered",
+  "changes": [
+    "Janela Motif modeless e somente leitura, separada do trecho de código.",
+    "Relatório mostra pacote, hashes, mudanças, origem da paleta, arquivos e limitações.",
+    "Conteúdo vem do backend; controlador mostra apenas resultado com review_text válido.",
+    "Fontes e papéis UI propagados à janela; edição protegida pelo editor comum."
+  ],
+  "checks": {
+    "strict_product_and_fixture_build": "passed",
+    "native_export_review": "DomainOS, BreezeLight, BreezeDark, TestYellow: all exit 0; select/copy UTF-8, blocked cut/paste/undo/redo, live roles, close/reopen by button and WM, project name preserved",
+    "native_metrics_regression": "exit 0",
+    "proposal_export": "12 passed",
+    "runtime_dependencies": "2 passed"
+  },
+  "warnings": [
+    "Missing charsets in String to FontSet conversion retained; glyph fidelity not claimed."
+  ],
+  "remaining": [
+    "Fluxo completo do clique Exportar até o relatório.",
+    "Importação/delta e abrir/salvar com preservação nativa.",
+    "Entrega pessoal e avaliação coordenadas."
+  ],
+  "estimated_stage_progress_percent": 60,
+  "percentage_basis": "Relatório e integridade de exportação verificados privadamente; importação, integração completa, entrega e avaliação ainda pendentes.",
+  "hashes": {
+    "tools/theme-lab/src/view/ui_export_review.c": "2ee0900414f11a7a01df8386759c2faebb14f4645fdb2acd98c4bb0b9a9313c7",
+    "tools/theme-lab/include/ui_export_review.h": "ebfed54de73703cc76821a4a90f5d51d1f907c039b3772fbba17dfb0f848bf9b",
+    "tools/theme-lab/src/view.c": "8b67696d00ba93a6b39691fd3b8e200204fe1d8b0ee1d3d30086149fa06c1b20",
+    "tools/theme-lab/src/controller.c": "e7c1eb3ab74f7b2347230763be5bb3851c44b3b1ae88090879eab309f138abec",
+    "tools/theme-lab/proposal_export.py": "f77b5851edefd50f1fb2014d03ebaece5c5332072976c856ac1e206b9c11b0cc",
+    "tools/theme-lab/tests/ui_help_flow.c": "8270031ab564a7e7211eee53d162e11f087b2e2e4494c0557d5fdc450dd364b2",
+    "tools/theme-lab/tests/native_metrics_view.c": "08d324c27614a3c0091737ffca10f6e97674053111532d7c92e65893280111f7",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "d7fa328630381751677ac1a9a26b91ffef10c7e4203e025b1b919d461ee8aea1"
+  },
+  "personal_gui_changed": false
+}

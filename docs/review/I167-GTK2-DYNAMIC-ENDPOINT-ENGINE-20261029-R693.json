@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R693",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise the installed GTK2 DomainOS endpoint painter in a private Xvfb against the user-selected GTK2 palette bundle; verify all arrow state assets, endpoint-vs-widget-insensitive distinction, and blocked input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE",
+    "color_scheme": "DomainOS-SR10-4",
+    "private_xvfb": true,
+    "network_namespace_isolated": true,
+    "GTK_PATH": null,
+    "GTK_EXE_PREFIX": null,
+    "gtk_style_type": "DomainOSPixmapStyle",
+    "installed_engine_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "fresh_build_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "source_matches_installed_binary": true,
+    "palette_bundle": "aa9830f7fd6e6b2e65ab0b16e4ffe8218ae94d28ce5f04c8c8deb63b029abc3f",
+    "active_color_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70"
+  },
+  "method": {
+    "fixture": "R686 native GtkHScrollbar/GtkVScrollbar input fixture, run with private HOME, copied user DomainOS GTK2 theme, current generated role assets and a fresh build of the exact installed engine source.",
+    "captures": "Four directions: initial normal, hover, pressed, released-hover, lower/upper endpoints, and whole-widget-insensitive. Crop each 15x15 stepper at 1:1.",
+    "input": "Simulate press/release at each blocked physical endpoint and compare adjustment values before, held, and after release."
+  },
+  "results": {
+    "pixel_comparisons": 24,
+    "different_pixels_per_15x15_cell": 0,
+    "states": [
+      "normal",
+      "focused/hover",
+      "pressed",
+      "released-hover"
+    ],
+    "endpoint_start": [
+      "left",
+      "up"
+    ],
+    "endpoint_end": [
+      "right",
+      "down"
+    ],
+    "endpoint_policy": "All four range-endpoint cells render the normal palette asset.",
+    "whole_widget_insensitive": "All four cells render their disabled palette assets.",
+    "endpoint_input_checks": 4,
+    "all_endpoint_inputs_blocked": true,
+    "style_engine_loaded": true
+  },
+  "conclusion": "The user-installed DomainOS GTK2 engine distinguishes a blocked AUTO stepper at the range boundary from a wholly insensitive GtkRange. It displays the palette-derived normal stepper at blocked endpoints without changing adjustment/input behavior; a wholly insensitive range still uses the disabled-role assets. All exercised state crops match their corresponding generated GTK2 assets exactly.",
+  "limits": [
+    "This is a private GTK2 test against generated palette assets, not a direct comparison of historical endpoint/disabled behavior in Domain/OS SR10.4/VUE.",
+    "The generated assets came from the current profile bundle; no real KDE scheme transition or production observer event was triggered.",
+    "No user application, desktop setting, VM, theme selection, or other toolkit family was changed.",
+    "Hover, whole-widget-insensitive historical VUE appearance, thumb drag, direct VUE arrow input, and user visual acceptance remain open; I517 remains separate."
+  ],
+  "changes": {
+    "user_profile_written": false,
+    "desktop_scheme_changed": false,
+    "applications_restarted": false,
+    "other_toolkit_families_changed": false,
+    "vm_changed": false
+  },
+  "artifacts": "records/ia-tema/I167/R693/ARTIFACTS.json",
+  "next": "Continue only I167/GTK2. Safely isolate the observer palette event path so it refreshes GTK2 only; keep the real KDE scheme, GTK4, desktop and running applications untouched. Historical pointer input to VUE remains gated by I517."
+}

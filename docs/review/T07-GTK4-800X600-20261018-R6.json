@@ -1,0 +1,122 @@
+{
+  "id": "T07-GTK4-800X600-20261018-R6",
+  "task": "T07",
+  "date_utc": "2026-10-18T16:36:17Z",
+  "scope": "Retest the three GTK4 tooltip overflows recorded in R5 after shortening only their explanatory text.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "screen_px": [
+      800,
+      600
+    ],
+    "requested_client_px": [
+      760,
+      520
+    ],
+    "allocated_client_px_reported": [
+      0,
+      0
+    ],
+    "xephyr_restored_to_px": [
+      1280,
+      800
+    ],
+    "theme": "Default",
+    "font": "Sans 10"
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "3e68755add46f0bfb25ebc05c261246d9cdc7e253b42a68f6817228e9bbb47b4",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79"
+  },
+  "matrix": {
+    "status": "passed",
+    "mapped_targets_first_page": 26,
+    "mapped_targets_second_page": 5,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "initial_cold_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": true,
+    "closed_after_leave": true,
+    "cleanup": {
+      "hints": [
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        },
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        }
+      ],
+      "overlay_anchors_before": 2,
+      "overlay_anchors_after": 0,
+      "anchors_removed": true
+    }
+  },
+  "targeted_tooltips": [
+    {
+      "page": 0,
+      "control": "GtkScale",
+      "text": "Escala 0–100, passo 1; sem unidade.",
+      "tooltip_rect_px": [
+        397,
+        347,
+        248,
+        33
+      ],
+      "inside_800x600": true
+    },
+    {
+      "page": 0,
+      "control": "GtkProgressBar",
+      "text": "Amostra fixa: 57%; não é progresso real.",
+      "tooltip_rect_px": [
+        263,
+        375,
+        274,
+        33
+      ],
+      "inside_800x600": true
+    },
+    {
+      "page": 1,
+      "control": "GtkTextView",
+      "text": "Editor: selecione, copie ou edite a amostra.",
+      "tooltip_rect_px": [
+        251,
+        353,
+        291,
+        33
+      ],
+      "inside_800x600": true
+    }
+  ],
+  "scrollbar_clicks": [
+    {
+      "page": 0,
+      "control": "GtkScrollbar",
+      "responded": true,
+      "scroll_before": 0.0,
+      "scroll_after": 577.1280576024639
+    },
+    {
+      "page": 1,
+      "control": "GtkScrollbar",
+      "responded": true,
+      "scroll_before": 0.0,
+      "scroll_after": 421.31467709458263
+    }
+  ],
+  "limitations": [
+    "The GTK window reports an allocated size of 0×0 although the independent X11 hover matrix measured the mapped controls.",
+    "This verifies geometry and behavior in one GTK4 gallery setup; it does not test another palette or prove historical pixel fidelity.",
+    "Only the gallery control tree currently mapped was covered; later-created controls remain outside this probe."
+  ],
+  "raw_output": "~/tempia/t07-gtk4-800x600-r6-20261018/800x600-r6.stdout",
+  "product_scope": "Only three explanatory strings in the GTK4 demo gallery changed; no production theme/schema or user profile changed."
+}

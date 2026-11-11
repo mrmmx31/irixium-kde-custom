@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-11T03:17:31.437889+00:00",
+  "item": "I116",
+  "phase": "model_axis_lock",
+  "behavior": "Editar comprimento preserva pedido transversal existente, inclusive 0 automático ou pedido legado explícito; recusa edição transversal e medidas fora dos limites sem alteração parcial. Outras receitas/peças intactas.",
+  "integrity": {
+    "model": 900,
+    "backend": 23,
+    "scene": 14,
+    "ipc": "passed",
+    "strict_C99": "passed"
+  },
+  "gui_connected": false,
+  "native_allocation_proven": false,
+  "estimated_stage_progress_percent": 20,
+  "remaining": [
+    "Ligar política aos campos GUI",
+    "Trava e dicas visíveis",
+    "Escolha explícita de direção de crescimento",
+    "Prova nativa de comprimento e espessura"
+  ],
+  "hashes": {
+    "tools/theme-lab/include/control_dimensions.h": "74519b1251e337815af3be2d45137f318d304153a6c79c463f9dfaf4d53c1dcf",
+    "tools/theme-lab/src/model/control_dimensions.c": "285be0e4a667a922ed70df2adb792b92f18b05b723e3b235198d6b5fc6f626b9",
+    "tools/theme-lab/tests/model_test.c": "4fbe0e89272afa4a02e17854ce8af924eeab2c63ea01b63df94e6482c363ece6",
+    "tools/theme-lab/Makefile": "0031cba84a29cd5e3fa0db92d3c98c18f2abf0b779ff7645c96c4964c6737108"
+  }
+}

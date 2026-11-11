@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "R454",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only inventory of visible current-user XChat windows and GTK2 runtime, to distinguish the installed GTK2 path from the isolated R392 renderer.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observations": {
+    "gtkrc_selection": "/home/lsi/.gtkrc-2.0 selects gtk-theme-name=DomainOS-SR10-4-KDE",
+    "installed_theme_gtkrc_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "visible_xchat_processes": [
+      {
+        "pid": 3951437,
+        "window_geometry_px": [1092, 606],
+        "loaded_library": "/usr/lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0.2400.33"
+      },
+      {
+        "pid": 3951675,
+        "visible_window_geometries_px": [[570, 700], [1064, 720], [870, 280], [870, 601], [761, 256], [998, 606]],
+        "loaded_library": "/usr/lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0.2400.33"
+      }
+    ]
+  },
+  "method": "Read process command identities, visible X window geometry, WM_CLASS/PID properties, the current user's GTK2 selection file and mapped GTK2 shared library. Did not read window titles, capture text/content, move focus, send input or inspect private conversation data.",
+  "result": "GTK2 is present in current XChat processes and the user's GTK2 selector names the DomainOS theme. These observations do not expose the GTK settings or pixmap state already loaded by those windows and do not confirm that either process visibly matches the new renderer.",
+  "limits": [
+    "The MAME guard remains active: the project VM is PID 3971377 and the separate Prancheta VM is PID 3971019; verify.sh exits 4. No VM input was sent.",
+    "No XChat screenshot was taken and no app was restarted or modified.",
+    "GTK2 application pixel comparison and human visual acceptance remain open."
+  ],
+  "next": "After exclusive use of the project VM is available, complete the native SR10.4 scrollbar states, then perform a narrowly cropped scrollbar-only comparison in the live GTK2 app without reading chat content or restarting it."
+}

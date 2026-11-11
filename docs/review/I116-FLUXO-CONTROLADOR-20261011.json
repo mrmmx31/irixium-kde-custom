@@ -1,0 +1,250 @@
+{
+  "at": "2026-10-11T04:01:32.684648+00:00",
+  "item": "I116",
+  "revision": 1,
+  "phase": "controller_native_passed",
+  "result": {
+    "status": "passed",
+    "anchor_native_cases": [
+      {
+        "control": 10,
+        "request": 120,
+        "boundary": 236,
+        "native": [
+          {
+            "control": 10,
+            "separate": 0,
+            "width": 120,
+            "height": 15,
+            "x": 116,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 10,
+            "separate": 1,
+            "width": 120,
+            "height": 15,
+            "x": 116,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 10,
+        "request": 1,
+        "boundary": 236,
+        "native": [
+          {
+            "control": 10,
+            "separate": 0,
+            "width": 48,
+            "height": 15,
+            "x": 188,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 10,
+            "separate": 1,
+            "width": 48,
+            "height": 15,
+            "x": 188,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 10,
+        "request": 0,
+        "boundary": 236,
+        "native": [
+          {
+            "control": 10,
+            "separate": 0,
+            "width": 48,
+            "height": 15,
+            "x": 188,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 10,
+            "separate": 1,
+            "width": 48,
+            "height": 15,
+            "x": 188,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 10,
+        "request": 160,
+        "boundary": 236,
+        "native": [
+          {
+            "control": 10,
+            "separate": 0,
+            "width": 160,
+            "height": 15,
+            "x": 76,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 10,
+            "separate": 1,
+            "width": 160,
+            "height": 15,
+            "x": 76,
+            "y": 36,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 11,
+        "request": 120,
+        "boundary": 270,
+        "native": [
+          {
+            "control": 11,
+            "separate": 0,
+            "width": 15,
+            "height": 120,
+            "x": 16,
+            "y": 150,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 11,
+            "separate": 1,
+            "width": 15,
+            "height": 120,
+            "x": 16,
+            "y": 150,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 11,
+        "request": 1,
+        "boundary": 270,
+        "native": [
+          {
+            "control": 11,
+            "separate": 0,
+            "width": 15,
+            "height": 48,
+            "x": 16,
+            "y": 222,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 11,
+            "separate": 1,
+            "width": 15,
+            "height": 48,
+            "x": 16,
+            "y": 222,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 11,
+        "request": 0,
+        "boundary": 270,
+        "native": [
+          {
+            "control": 11,
+            "separate": 0,
+            "width": 15,
+            "height": 48,
+            "x": 16,
+            "y": 222,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 11,
+            "separate": 1,
+            "width": 15,
+            "height": 48,
+            "x": 16,
+            "y": 222,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      },
+      {
+        "control": 11,
+        "request": 160,
+        "boundary": 270,
+        "native": [
+          {
+            "control": 11,
+            "separate": 0,
+            "width": 15,
+            "height": 160,
+            "x": 16,
+            "y": 110,
+            "offset_y": 20,
+            "position_valid": true
+          },
+          {
+            "control": 11,
+            "separate": 1,
+            "width": 15,
+            "height": 160,
+            "x": 16,
+            "y": 110,
+            "offset_y": 20,
+            "position_valid": true
+          }
+        ]
+      }
+    ],
+    "selector": "X11 pointer, actual Motif item bounds",
+    "save_schema_2": true,
+    "other_family_recipe_values_preserved": true,
+    "schema_2_adds_explicit_default_anchor_and_piece_fields": true,
+    "personal_profile_exposed": false,
+    "historical_fidelity_claimed": false
+  },
+  "hashes": {
+    "tools/theme-lab/src/view.c": "69a48309108df0d3079166fa913980dfd42f085cb295b31a918dbfc19e3fd6b1",
+    "tools/theme-lab/src/controller.c": "e578a91a3c9f7e4e0de886b5216d28b9267da5e73ca4aae7e8c69d53306b2b37",
+    "tools/theme-lab/preview_gtk.py": "0a7deadc08054ff3ea475356acf9e8269b1a0681a4bb617721f3499fd8b99c2f",
+    "tools/theme-lab/tests/test_controller_spin.py": "5674de290dfcb88b91557a6e7354ec1034082f05ee674fe022ddd08c104d5c50",
+    ".qa-theme-lab-spin-jfpu_ugr/RESULTADO.json": "4f3463e615de4ddf82de8741a0f01dad6bc94669d74123e9119680c83f63b1a2"
+  },
+  "selector_cause": "callback item_position=0 enquanto XmNselectedPosition=1; seletor agora consulta o recurso do widget",
+  "supersedes_scope": "Fluxo pendente do I116-AUDITORIA-FLUXO-20261011.json; falhas anteriores preservadas",
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "Modelo, integração e fluxo nativo comprovados; entrega pessoal coordenada pendente",
+  "human_approval_filled": false,
+  "remaining": [
+    "Entrega na instância pessoal com preservação de edição",
+    "Avaliação humana separada"
+  ],
+  "scope_limit": "Fluxo completo GTK3; consumidor Motif possui prova nativa própria. Não certifica outros toolkits nem fidelidade histórica."
+}

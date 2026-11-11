@@ -1,0 +1,58 @@
+{
+  "item": "I167",
+  "revision": "R10",
+  "checked_at_utc": "2026-10-18T17:52:53Z",
+  "family": "GTK2 public preview",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":91",
+    "xephyr": "800x600, existing process preserved",
+    "private_preview_guards": true,
+    "project_hash": "4c9c69ab8a48c12c96199440a8827b66844cde66c5c07269207100cc7925c757",
+    "recipe_applied": false
+  },
+  "public_all_controls": {
+    "result": "passed",
+    "metric_controls": 16,
+    "native_events": 52,
+    "native_clicks": {
+      "push": "clicked",
+      "toggle": "active",
+      "check": "active",
+      "radio": "selected_member=1"
+    },
+    "guarded_home_exposed": false,
+    "system_bus_exposed": false,
+    "preview_sha256": "bd0a294965158c251de1018f6a47a356fe80c678374176217797a934f0dc080a"
+  },
+  "public_scrollbar_event": {
+    "result": "still failed at scroll_h left",
+    "held_pixel_differences": 0,
+    "roi_pixels": 225,
+    "native_adjustment_event": false,
+    "pointer": [23, 23],
+    "window_geometry": [0, 0, 640, 420],
+    "pointer_query_window_id": 0,
+    "interpretation": "The pointer coordinate is inside the mapped preview geometry, but the XQueryPointer child id is 0. This observation does not establish the cause.",
+    "held_capture_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f"
+  },
+  "temporary_event_instrumentation": {
+    "scope": "Overlay copy of native_scene_gtk2.py connected button-press-event and button-release-event handlers to the GtkScrollbar; product file was not changed.",
+    "logged_events": 0,
+    "logged_metrics": 2,
+    "overlay_sha256": "2ba40fac1220fb13513ccc6b0fc1a685e56b45b82a00dcf80a331b08d0732aa3",
+    "interpretation": "The added GtkScrollbar handlers produced no button callback log. This narrows the probe but does not prove whether another GTK/GDK child or event path received the XTest input."
+  },
+  "source_hashes": {
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "bd2951e2ca7a9f1ac988c4184489f4f707c1a88d5222d316a6996916ee2a509b",
+    "tools/theme-lab/native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe"
+  },
+  "artifacts": {
+    "directory": "~/tempia/i167-gtk2-xephyr-coordinate-20261018/",
+    "all_controls_results_sha256": "7182d3a6017f7d380fc15907e589b73f081198f21435da0034e369846f878457",
+    "root_tree_sha256": "3358e8da8df77cf3cd1b00fc32dbdd7be6c7b592634e566040f4e0f8533c68e3",
+    "input_debug_sha256": "921f868c168ed014055b90e37141ffba9f6e050e6ea42f4f03ff027ebc2ba147"
+  },
+  "changes": "No product source, project recipe, personal profile, MAME session, or user VM was changed.",
+  "next": "I167 remains partial. Do not repeat the public click check without new input; the source-level cause is unresolved and native VUE comparison remains unavailable because the assistant clone capture is black. Continue to the next independent authorized Fila Atual work when possible."
+}

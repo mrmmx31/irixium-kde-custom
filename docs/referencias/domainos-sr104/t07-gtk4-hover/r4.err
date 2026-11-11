@@ -1,0 +1,26 @@
+dbus-daemon[2296743]: [session uid=1000 pid=2296743 pidfd=5] Activating service name='org.gtk.vfs.Daemon' requested by ':1.0' (uid=1000 pid=2296747 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2296743]: [session uid=1000 pid=2296743 pidfd=5] Successfully activated service 'org.gtk.vfs.Daemon'
+dbus-daemon[2296743]: [session uid=1000 pid=2296743 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=2296747 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2296743]: [session uid=1000 pid=2296743 pidfd=5] Successfully activated service 'org.a11y.Bus'
+command: windowfocus
+command: getwindowgeometry
+command: mousemove
+dbus-daemon[2296815]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=2296747 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2296815]: Successfully activated service 'org.a11y.atspi.Registry'
+command: mousemove
+
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk4_gallery_hints.py", line 50, in <module>
+    stdout,stderr=child.communicate(timeout=12)
+                  ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2129, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1269, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['dbus-run-session', '--', '/usr/bin/python3', '-B', '/home/lsi/irixium-kde-custom/tools/theme-lab/tests/gtk4_hover_worker.py']' timed out after 12 seconds

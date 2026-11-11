@@ -1,0 +1,43 @@
+{
+  "item": "I167",
+  "revision": "R28",
+  "checked_at_utc": "2026-10-22T22:36:00Z",
+  "family": "GTK2 push button in public preview routes",
+  "evidence": {
+    "runner": "tools/theme-lab/tests/test_gtk2_button_scene_native.py equivalent probe with exact R26 recipe",
+    "gtk2": "2.24.33",
+    "candidate": {
+      "font_px": 12,
+      "inner_border_px": 0,
+      "xthickness_px": 2,
+      "ythickness_px": 0,
+      "bevel_px": 2
+    },
+    "scenes": 8,
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "origins": [
+      "separate",
+      "coupled"
+    ],
+    "all_native_requests_match": [
+      63,
+      21
+    ],
+    "native_clicks": 8,
+    "scene_replacements_same_window": 8,
+    "scroll_value_preserved": true,
+    "results_sha256": "469b109268fa6d772b2000a43b7e72c670439259807932b8ef5a92b822a83432",
+    "artifacts": "~/tempia/i167-gtk2-push-public-pair-r28/exact-candidate-r28c/"
+  },
+  "limits": [
+    "The public-route test establishes integration, native metrics and click behavior; it is not a human visual review.",
+    "Motif reference for the 63x21 pair is the local Theme Lab crop, not a fresh measurement from the SR10.4 guest.",
+    "The complete GTK2 theme is still incomplete and has not been applied to the user session/XChat."
+  ],
+  "next": "Button push family is technically closed for the current recipe. Move to the next GTK2 family (toggle/check/radio as separate controls), following the shared Motif rules and recording each family before moving on."
+}

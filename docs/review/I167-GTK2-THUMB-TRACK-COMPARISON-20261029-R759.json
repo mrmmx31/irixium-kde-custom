@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "id": "R759",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the user's current GTK2 screenshot with the narrow screenshot designated Motif, and cross-check the short-thumb relief against the project-owned Domain/OS SR10.4 + HP VUE 2.01 VM.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "references": {
+    "large_gtk2_attachment": {
+      "filename": "e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "size_px": [892, 642],
+      "visible_scrollbar_area_limit": "The screenshot is covered by a uniform gray mask from y=338 to the bottom. Lower thumb position/length and lower arrow are not visible."
+    },
+    "narrow_attachment_designated_motif": {
+      "filename": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "size_px": [102, 655],
+      "state_and_palette": "The image alone does not identify whether the sampled arrow/thumb is normal, hovered, pressed, or which color-role state produced it."
+    },
+    "canonical_short_thumb_vm_observation": {
+      "system": "Domain/OS SR10.4, HP VUE 2.01",
+      "guest_client": "VUE File Manager at /usr",
+      "mame_pid_at_capture": 379349,
+      "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+      "capture": "~/tempia/domainos-theme-work/I167/R758/domainos-sr104-after-one-shift.png; only the scrollbar crop is in versioned records.",
+      "crop": "records/ia-tema/I167/R758/filemanager-vertical-scrollbar-aligned.png",
+      "crop_sha256": "f67c4ad55be4f112a8cb920196de7b1033031a53af395dc63200a480b047492c",
+      "crop_size_px": [15, 230]
+    },
+    "live_gtk2_capture": {
+      "source_report": "docs/review/I167-GTK2-CURRENT-VS-MOTIF-20261029-R752.json",
+      "left_strip_sha256": "24546dd7842719b8575180a4834a4fcd780905f61ef9dbfee5d2456c49c83a86",
+      "right_strip_sha256": "6c376928a6d5cfc44e44caee5d11d62da252b98e6baacf32dd08713d8535084f",
+      "limit": "The new attachment's timestamp is unknown; R752 is the latest exact live GTK2 strip evidence preserved before this review."
+    }
+  },
+  "palette_tokens": {
+    "D": "dark shadow role",
+    "L": "light role",
+    "F": "face role",
+    "T": "trough role",
+    "E": "measured center shade in the narrow user attachment; its semantic state is unknown",
+    "policy": "RGB values below describe measured evidence only. Product colors remain resolved from the active KDE semantic roles."
+  },
+  "comparison": {
+    "bar_thickness": {
+      "large_gtk2": 15,
+      "narrow_attachment": 15,
+      "vm_short_thumb": 15,
+      "result": "All comparable vertical cross-sections are 15 px wide."
+    },
+    "straight_track_profile": {
+      "profile": "DDLLFFFFFFFDDLL",
+      "meaning": "2 dark, 2 light, 7 face, 2 dark, 2 light pixels across the bar.",
+      "large_attachment_vs_narrow_attachment": "15/15 RGB pixels match at the sampled straight-track row.",
+      "large_attachment_vs_vm_rule": "The measured track profile is consistent with the SR10.4 VM contract and the R758 crop."
+    },
+    "upper_stepper": {
+      "cell_px": [15, 15],
+      "triangle_mask": "Same silhouette in the large GTK2 image, narrow attachment, and VM reference.",
+      "large_gtk2_vs_vm": "0/225 pixel differences for the normal upper cell in R756.",
+      "narrow_attachment_vs_vm": "61/225 pixels differ in color only: 50 triangle pixels and 11 inner-face pixels; shape and outer relief are unchanged.",
+      "measured_center_rgb": {
+        "gtk2_and_vm": "#6688b5",
+        "narrow_attachment": "#6f95c6",
+        "delta_rgb": [9, 13, 17]
+      },
+      "interpretation": "The attachment shows a lighter arrow interior than both the live GTK2 sample and the canonical VM raster. State/palette provenance is unknown, so this does not justify changing the KDE-role mapping."
+    },
+    "short_thumb": {
+      "narrow_attachment": {
+        "shaft_rows": [451, 594],
+        "length_px": 144,
+        "cross_axis_profile": "DDEEEEEEEEEEEELL",
+        "center_rgb": "#6f95c6"
+      },
+      "canonical_vm": {
+        "track_rows_in_crop": [16, 195],
+        "track_profile": "DDLLFFFFFFFDDLL",
+        "thumb_rows_in_crop": [198, 217],
+        "thumb_length_px": 20,
+        "thumb_profile": "DDTTTTTTTTTTTLL",
+        "center_rgb": "#6688b5"
+      },
+      "shared_shape": "Both short-thumb shafts preserve 2 dark outer pixels, 11 uniform center pixels, and 2 light outer pixels. Both are visibly distinct from the seven-face-pixel/two-inner-rail track profile.",
+      "length_limit": "The 144px attachment thumb and 20px VM thumb belong to different viewports/ranges; their absolute lengths are not a valid fidelity comparison.",
+      "gtk2_visibility": "The supplied large attachment hides the lower portion below y=338, where its thumb may lie. The full live XChat strips saved in R752 did not expose a separate cross-axis thumb profile; they do not establish the GTK2 thumb's correct length for the attachment's content range."
+    },
+    "lower_stepper_and_container": {
+      "lower_arrow": "Visible in the narrow attachment, hidden by the gray mask in the large screenshot; no direct pairwise comparison is possible from these attachments.",
+      "view_gap_and_junction": "The applications and container bounds differ; these two screenshots do not isolate matching view/bar junctions or establish a gap measurement."
+    }
+  },
+  "result": "The track width, straight cross-axis relief, and upper-arrow silhouette agree. The clear differences are the lighter arrow interior in the narrow attachment and its visibly separate short thumb shaft; the large screenshot masks the relevant lower GTK2 region, so its thumb length/position cannot be compared there. R758 supplies a measured short-thumb sample from the actual SR10.4 VM and corrects R757's earlier limitation that only a nearly-full VM thumb was available. Its center uses the trough role, while the screenshot's brighter center shade is not enough to establish the intended role without state/palette provenance.",
+  "action": "No theme code or palette changed in this comparison. Keep the GTK2 adaptation on the active authorized item; inspect the thumb and exposed trough as separate components before changing either. Do not treat the arrow tint discrepancy as a geometry defect or copy static RGB values from the attachment.",
+  "human_review": "Pending. This is a technical comparison, not a user verdict.",
+  "next": "Continue GTK2-only by checking the installed GTK2 thumb/trough recipes against the R758 short-thumb structure and capturing a same-range, unobscured native GTK2 bar. Keep the user's approval state unchanged.",
+  "checkout_inventory": {
+    "git_worktrees": "The primary checkout and the i167-mame-guard-isolation worktree point to the same HEAD. No separate October 28 GTK2 feature checkout was found.",
+    "source_snapshot": "~/tempia/domainos-theme-work/I167/gtk2-source is an extracted GTK 2.24 source tree with Debian quilt metadata, not a Git worktree."
+  }
+}

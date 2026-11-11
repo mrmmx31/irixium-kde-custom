@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-VUE-KEYBOARD-NAVIGATION-20261025-R170",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "input_sequence": [
+    {"action": "Alt then F then release", "result": "Opened Help Viewer File menu; visible options Print and Exit (Ctrl+X)."},
+    {"action": "Ctrl then X then release", "result": "Closed Help Viewer and revealed File Manager; no guest file or configuration change."},
+    {"action": "Alt then H then release", "result": "Opened File Manager Help menu; visible shortcuts include On Keys (Ctrl+K)."},
+    {"action": "Ctrl then K then release", "result": "Opened Help Viewer topic File Manager Keys, lines 1-15 of 165. Visible text documents Button1 selects an item and Button2 drags an icon."},
+    {"action": "Roll Down", "result": "No visible text movement; no key remained held."},
+    {"action": "Cursor Down", "result": "Moved visible focus outline to the Options control; did not scroll the topic."}
+  ],
+  "captures": [
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-after-alt-f-seq-r163.png", "sha256": "a0680788766cd93b43540d250e9b622c9e96f01f84a7b7d38a4f4107ea5a4c62"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-after-help-exit-r164.png", "sha256": "a3fc0b4978be4f4e8098493b30d625b68d2f740dcc97436ff5412196420bfdbb"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-filemanager-help-onkeys-r165.png", "sha256": "a4004b39f07f1d0643f11b0ec1d658a6f258489166d4aa729c3548702070379d"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-filemanager-onkeys-help-r166.png", "sha256": "9c7a7d773f5a0927ef6ea5eb929365689ce8c1888b1032fb382276bda551fe20"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-help-cursor-down-r169.png", "sha256": "5856b25ebe1a21d4e28e3b11f40cbc482244bd4757e1413e8bdeeb9aa414948e"}
+  ],
+  "final_state": {
+    "mame_pid": 274368,
+    "guest_view": "Help Viewer shows File Manager Keys over the File Manager",
+    "paused": false,
+    "keyboard_fields_released": true,
+    "mouse_hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "host_pointer": {"x": 200, "y": 950},
+    "channel_pending": null,
+    "guest_files_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "conclusion": "The VUE menu path is now confirmed by visible in-guest accelerators and enabled keyboard input; this safely closes the unexpected Help Viewer without mouse capture. The help topic confirms the basic mouse selection/drag actions, but keyboard focus and scrolling into the remaining help text are not yet established. No XmpIcon selected, focused, hovered or rubberband state has been captured.",
+  "next": "Determine whether the unnamed Apollo key is Tab or another focus key using its input sequence/source, then use only documented File Manager navigation to establish an XmpIcon state. Keep capture false and compare each state to the GTK2 preview at 1:1.",
+  "status": "safe_keyboard_window_recovery_proven_iconview_state_comparison_pending"
+}

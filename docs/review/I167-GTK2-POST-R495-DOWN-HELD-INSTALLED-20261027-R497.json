@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "R497",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise the installed DomainOS GTK2 vertical down-stepper press/release in a private GTK2 2.24.33 Xvfb after R495, then compare rendered cell and transition with installed assets and saved SR10.4/VUE hold pair.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "theme": "DomainOS-SR10-4-KDE",
+    "gtk2_rc_files": "current user settings plus installed selected theme"
+  },
+  "input": "xdotool mouse press on the down-stepper inside the private Xvfb, move outside, then release; no host desktop input",
+  "bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+  "captures": {
+    "normal": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/normal.png",
+      "sha256": "48c7c707f51dcc4ee819feb0ec7f64048697dbe54430963e8a3298bfa5f72b0e",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    },
+    "pressed": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/pressed.png",
+      "sha256": "958255d3bad121adaea27728e1378d0be36bf3353abe193a07b1e1e8eccb3195",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    },
+    "released-outside": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/released-outside.png",
+      "sha256": "4d0106355ca59a1ea8a1ada01a96874d771bc8ff77f9605641be343fcd74a206",
+      "dimensions_px": [
+        15,
+        543
+      ]
+    }
+  },
+  "rendered_cell": {
+    "origin_xy": [
+      0,
+      526
+    ],
+    "size_px": [
+      15,
+      15
+    ],
+    "normal_vs_installed_asset_different_pixels": 0,
+    "pressed_vs_installed_asset_different_pixels": 0,
+    "released_vs_normal_asset_different_pixels": 0
+  },
+  "transition": {
+    "gtk2_normal_to_pressed_pixels": 53,
+    "vue_native_visible_transition_pixels": 37,
+    "matching_visible_transition_pixels": 37,
+    "gtk2_transition_pixels_outside_visible_vue_transition": 16,
+    "vue_transition_pixels_occluded_in_reference": 16,
+    "scope_note": "The saved VUE capture has the cursor over 16 expected pixels; the 37 visible transition pixels are compared by exact relative coordinates and RGB."
+  },
+  "limits": [
+    "Private GTK2 widget exercise, not a new MAME VM capture.",
+    "Only down-stepper held/released is covered; direct VUE proof for other directions and states remains open.",
+    "No user application, profile selection, MAME process, or guest state was changed."
+  ],
+  "scripts": {
+    "probe_source": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/probe.c",
+    "probe_source_sha256": "cf69479a4a081858e93e40e64024de86be86f80ec3e3faf58f26c54eebff6f57",
+    "runner": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/run.sh",
+    "runner_sha256": "1b0ee7a258193c82ac46b77781d182dd6fc91ac5e2ddc5baba139cef2f0b3bc7"
+  }
+}

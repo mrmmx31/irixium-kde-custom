@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-CARET-20261024-R61",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "family": "GTK2 GtkEntry insertion caret",
+  "historical_reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "capture": "~/tempia/i167-entry-live-r57/entry-next-field-focused.png",
+    "capture_sha256": "74e08830867226e7fe940e9adbae0a39001cb2aef652a42c79f253cfb3bebb47",
+    "field_roi_xyxy": [229, 404, 566, 438],
+    "caret_stem_px": {"width": 1, "height": 14},
+    "top_and_bottom_caps_px": {"width": 5, "height_each": 1},
+    "whole_caret_bbox_xyxy": [242, 413, 247, 429],
+    "reference_measurement_note": "The caret is distinct from the mouse arrow and lies after the transient .a text. No guest search was executed."
+  },
+  "gtk2_implementation": {
+    "version": "2.24.33",
+    "files_changed": [
+      "tools/theme-lab/gtk2_entries.py",
+      "tools/theme-lab/tests/test_gtk2_entry_paint.py",
+      "tools/theme-lab/tests/test_gtk2_entry_integration.py",
+      "tools/theme-lab/tests/probe_gtk2_entry_caret_offscreen.py"
+    ],
+    "recipe_change": "Generated GtkEntry styles now set GtkWidget::cursor-aspect-ratio = 0.0, which keeps the insertion stem one pixel wide. Its color still comes from the current view text role; no final RGB is fixed.",
+    "gtk_source_basis": {
+      "source_version": "GTK 2.24.33",
+      "entry_cursor_height": "gtk/gtkentry.c:5694-5777 derives cursor height from the Entry text-area window and effective inner border.",
+      "cursor_stem_and_aspect": "gtk/gtkstyle.c:7098-7160 computes stem_width = location.height * cursor_aspect_ratio + 1 and draws the vertical stem; the optional bidi mark is an arrow, not horizontal caps.",
+      "widget_default_aspect": "gtk/gtkwidget.c:2464 installs cursor-aspect-ratio with default 0.04."
+    },
+    "source_sha256": "1e3d9a65a8a5591f332a540a9c0489ae55cf89a5457c6c2c3c9633da594e9a01"
+  },
+  "validation": {
+    "probe": "tools/theme-lab/tests/probe_gtk2_entry_caret_offscreen.py",
+    "probe_sha256": "a9441886a60365be7dbce920b36f617667ed580753d269cb4891dffdec50fd91",
+    "output": "~/tempia/i167-entry-caret-r61/RESULTADO.json",
+    "output_sha256": "6e82d2392c9b364b8f1c17c2f2d13b7dd94392a3891373fc49367cbcd88d45fc",
+    "method": "Real GTK2 GtkEntry rendered offscreen at 338x34; a synthetic GDK focus-in exposes the caret; GTK cursor blinking is disabled only in the probe process to make a stable capture.",
+    "gtk_cursor_blink_time_ms_before_probe": 1200,
+    "rows": [
+      {"scheme": "DomainOS", "text_role_rgb": [255, 255, 255], "caret_stem_bbox_xyxy": [16, 8, 17, 26], "width_px": 1, "height_px": 18},
+      {"scheme": "BreezeLight", "text_role_rgb": [35, 38, 41], "caret_stem_bbox_xyxy": [16, 8, 17, 26], "width_px": 1, "height_px": 18},
+      {"scheme": "BreezeDark", "text_role_rgb": [252, 252, 252], "caret_stem_bbox_xyxy": [16, 8, 17, 26], "width_px": 1, "height_px": 18},
+      {"scheme": "TestYellow", "text_role_rgb": [32, 28, 12], "caret_stem_bbox_xyxy": [16, 8, 17, 26], "width_px": 1, "height_px": 18}
+    ],
+    "test_results": {
+      "test_gtk2_entry_paint.py": "3 passed",
+      "test_gtk2_entry_integration.py": "2 passed; its temporary generation directory now uses ~/tempia",
+      "test_gtk2_entry_guard.py": "1 passed",
+      "probe_gtk2_entry_focus_offscreen.py": "passed across four palettes",
+      "probe_gtk2_entry_selection_offscreen.py": "passed across four palettes",
+      "probe_gtk2_entry_caret_offscreen.py": "passed across four palettes",
+      "json_parse_and_scoped_git_diff_check": "passed"
+    }
+  },
+  "limits": [
+    "At the 338x34 matching outer size, GTK2's font-derived stem is 18px tall, versus the measured 14px VUE stem; the recipe font is 13px and font choice was outside this focused correction.",
+    "GTK2's themed insertion-cursor painter does not draw the VUE horizontal end caps. Matching them would require a custom GTK2 painter or toolkit-level code, outside this theme recipe.",
+    "Focus delivery was synthetic in the offscreen probe. A real mapped X focus cycle remains pending.",
+    "Caret blink period was read from GTK settings (1200ms) but not measured against SR10.4; caret blinking was disabled only inside the probe process.",
+    "No theme was installed or applied to XChat; no user-session settings changed."
+  ],
+  "next": "Continue only within GTK2 I167. Preserve the one-pixel dynamic-role stem; keep historical cap, height/font, blink and real X focus differences explicit. Do not claim caret fidelity or close I167."
+}

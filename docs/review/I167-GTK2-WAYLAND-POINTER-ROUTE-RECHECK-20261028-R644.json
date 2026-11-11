@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "R644",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "wayland-x11-warp-did-not-deliver-mame-click-no-arrow-press",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "method_answer": "Q505 revision 1: user selected temporarily using the existing MAME window capture, without hook/map/profile changes, and releasing with AltGr"
+  },
+  "vm": {
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "verify_result": "passed; confirmed separate Prancheta and Theme disks/channels",
+    "theme_service": "domainos-tema-mame.service",
+    "mame_pid": 379349,
+    "canonical_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_project_vm_touched": false
+  },
+  "guest_wake": {
+    "before_black_sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+    "method": "one-frame Shift on :kbd:keyboard4/Shift, automatically cleared at frame 2",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "after_wake_sha256": "d88009ab6ccfccca784172aa3f197300f175ba4167f5a68cfe38f49a05fee9dc",
+    "visible": "VUE File Manager with horizontal and vertical scrollbar arrows"
+  },
+  "input_route": {
+    "host_session": "Wayland (wayland-0) with XWayland DISPLAY=:1",
+    "mame_window": "0x3800008",
+    "window_pid_verified": 379349,
+    "temporary_isolation": "Moved only the verified MAME window to the otherwise empty fourth virtual desktop; did not minimize or move XChat windows.",
+    "mame_client_geometry": [459, 117, 1024, 844],
+    "target_guest_coordinate": [630, 163],
+    "xdotool_warp_result": "XWayland reported host coordinate (1089,280), window 0x3800008, corresponding to the VUE vertical-up arrow center.",
+    "single_click_result": "After synthetic XTest button down/up, focus and pointer returned to the original XChat window; MAME hook remained captured=false, wait_button_up=false, transitions=19. The click may have reached an XChat surface; no text was typed or sent, and no chat content was inspected.",
+    "comparison": "No scrollbar arrow was pressed. Treat this as an inconclusive host input route, not a GTK2 visual failure.",
+    "mame_host_window_capture": "not acquired"
+  },
+  "host_restore": {
+    "desktop_x11": 2,
+    "active_window": "0x1800003 (XChat main window; same as before the attempt)",
+    "pointer": [558, 517],
+    "mame_window": "returned to desktop 2 and Iconic",
+    "xchat_windows_minimized_or_moved": false
+  },
+  "profile_after": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "wait_button_up": false,
+    "channel_pending": false
+  },
+  "durable_artifacts": "records/ia-tema/I167/R644/",
+  "temporary_artifacts": "~/tempia/domainos-theme-work/I167/R644/",
+  "board_follow_up_question": {
+    "id": "Q515",
+    "section": "work",
+    "after": "I167",
+    "user_authorized": false,
+    "status": "pending"
+  },
+  "source_change": false,
+  "limits": [
+    "No arrow press or pressed/released comparison was completed.",
+    "XTest moved the XWayland pointer to the verified XID, but the subsequent click did not remain on MAME or activate the existing hook.",
+    "No hook, input map, guest files, MAME profile, or user applications were changed.",
+    "A compositor-managed RemoteDesktop portal is present; it was not invoked because it can request a new desktop input grant."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "GTK2 implementation coverage unchanged; this route check adds evidence but closes no visual criterion. Not a fidelity score."
+  }
+}

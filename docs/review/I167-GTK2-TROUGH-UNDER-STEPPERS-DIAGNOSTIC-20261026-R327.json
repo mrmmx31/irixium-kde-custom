@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "R327",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "property-toggle-reproduced; exact-pixel-comparison-in-R328-rejects-as-fix",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 scrollbar comparison; isolated test only, no installed theme changes."
+  },
+  "question": "Does GtkScrollbar::trough-under-steppers change the apparent GTK2 stepper rendering when the same installed wrapper and dynamic palette are loaded?",
+  "method": {
+    "runtime": "GTK 2.24.33; native GtkHScrollbar and GtkVScrollbar in private authenticated Xvfb :188.",
+    "baseline": "Installed GTK2 wrapper and generated palette include, as captured in R326.",
+    "candidate": "The first temporary RC added a GtkScrollbar class style. R328 repeated the property inside the existing generated palette style and produced a byte-identical candidate capture, confirming the same visible result with the existing pixmap assets and geometry.",
+    "candidate_rc": "~/tempia/ia-tema/evidence/I167/gtk2-trough-under-test-r326/wrapper-with-trough-under-false.rc",
+    "capture_dimensions_px": [640, 480],
+    "warnings": "No GTK RC parser or asset-load warnings."
+  },
+  "inputs": {
+    "installed_wrapper_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "baseline_capture_sha256": "d9651fe0d07a6fedda0f50c8dd9fe7d8a64e9b0302a32359b57addb606a15c4d",
+    "candidate_capture_sha256": "417b4e8bd61255ed60703521a734610e4316d3ed99f7e4e93d96492aafed49fb",
+    "candidate_rc_sha256": "45862a013a61b59eecff05debe21849db9b153c3ad22d59123b981f366746cd3"
+  },
+  "observed": {
+    "candidate_effective_metrics": {
+      "GtkHScrollbar": {"slider_width": 11, "stepper_size": 15, "trough_border": 2, "trough_under_steppers": false},
+      "GtkVScrollbar": {"slider_width": 11, "stepper_size": 15, "trough_border": 2, "trough_under_steppers": false}
+    },
+    "render": "The candidate differs from baseline in actual GTK2 drawing. R328 reproduces the identical candidate image after changing only GtkRange::trough-under-steppers within the existing generated palette style.",
+    "historical_match": "R328's coordinate-registered direct comparison shows the candidate has more pixel differences than the installed rendering for both horizontal arrow cells; even the best local 15x15 registration remains worse. Do not apply this property as the correction."
+  },
+  "conclusion": "The first RC route is visually equivalent to a same-style one-property edit, as verified by byte-identical R328 output. Exact horizontal-cell comparison rejects trough-under-steppers=false as a fix for the current discrepancy. The installed theme remains unchanged.",
+  "safety": {
+    "installed_theme_or_palette_changed": false,
+    "repository_theme_sources_changed": false,
+    "xchat_restarted_or_signaled": false,
+    "vm_input_or_disk_changed": false,
+    "user_owned_or_other_agent_xephyr_closed": false,
+    "owned_comparison_xephyr": {"display": ":187", "pid": 3996225, "title": "PARA LSI - GTK2 DomainOS | I167 comparacao", "closed": false},
+    "candidate_window": {"process_session": 9827, "title": "PARA LSI - GTK2 DomainOS | I167 candidata false", "closed": false},
+    "candidate_comparison_capture": "~/tempia/ia-tema/evidence/I167/gtk2-trough-under-test-r326/xephyr-candidate-side-by-side-r327.png"
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "The isolated property was rendered and its horizontal-cell effect measured against the exact SR10.4 reference. The cause of the remaining renderer discrepancy, pressed historical states, and human review remain open.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Use R328's exact comparison; investigate the actual GTK2 stepper pixmap-engine drawing and its geometry before proposing another single-variable correction."
+}

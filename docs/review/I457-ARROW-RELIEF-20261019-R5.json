@@ -1,0 +1,51 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T17:02:05Z",
+  "status": "gtk3-combobox-package-state-pass; historical-comparison-open",
+  "scope": "GTK3 ComboBox down-arrow only. Complete the packaged stylesheet/assets for the already implemented direction-aware relief; do not change Qt6 or other GTK controls in this step.",
+  "authorization": "Fila Atual section work; I457 revision 1 remains authorized. Read the live board SQLite in read-only mode: I167/2, T07/4, I457/1 and I458/1 have matching assistant acknowledgement revisions and saved authorization. No user response or decision was changed.",
+  "baseline_difference": "The generator already emitted the 11x11 direction-specific arrow and active-state rule, but the packaged GTK theme still referenced the generic rotated arrow and lacked the active-state CSS and three corresponding adaptive assets.",
+  "product_change": {
+    "files": [
+      "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css",
+      "gtk/DomainOS-SR10-4-KDE-Reload/common/adaptive/gtk3-combobox-arrow-normal-0-symbolic.svg",
+      "gtk/DomainOS-SR10-4-KDE-Reload/common/adaptive/gtk3-combobox-arrow-pressed-0-symbolic.svg",
+      "gtk/DomainOS-SR10-4-KDE-Reload/common/adaptive/gtk3-combobox-arrow-disabled-0-symbolic.svg",
+      "gtk/DomainOS-SR10-4-KDE-Reload/common/adaptive/MANIFEST.json",
+      "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json"
+    ],
+    "details": "Installed the complete normal/backdrop/disabled/active CSS rules and adaptive masks in the packaged theme. Preserved existing tooltip CSS changes and GTK4 package files. The masks use semantic light/face/dark channels recolored through current KDE Button roles; no final RGB colors were added.",
+    "source_generator_sha256": "46638a79971819d619f2c622ebe6af6af245c7e51c168ddb0e6ad2c4507e04d5",
+    "package_css_sha256": "a0f9fcc4530516b2408eb050f5fc7ae761073aed338d0a2fd7a7ab3e13dd8639"
+  },
+  "validation": {
+    "gtk": "3.24.49",
+    "display": "Xephyr :87, 900x650; isolated HOME/XDG under ~/tempia/i457-gtk3-combo-xephyr-r1",
+    "widget": "Real Gtk.ComboBoxText and internal Gtk.ToggleButton state; loaded the checked-in gtk-3.0/gtk.css through Gtk.CssProvider and captured the mapped GTK window.",
+    "style_path_active": "button:active:focused:dir-ltr[1/1].combo",
+    "parse_errors": 0,
+    "pixels": {
+      "hover_vs_normal_full": 0,
+      "hover_vs_normal_arrow_roi_18x18": 0,
+      "pressed_vs_normal_full": 1723,
+      "pressed_vs_normal_arrow_roi_18x18": 83,
+      "released_vs_normal_full": 0,
+      "released_vs_normal_arrow_roi_18x18": 0
+    },
+    "screenshots_sha256": {
+      "normal": "55b3abf9edc9aefe31f2872cd46e1f2e42c8c5758ad72376155d8d7fe51b4135",
+      "hover": "55b3abf9edc9aefe31f2872cd46e1f2e42c8c5758ad72376155d8d7fe51b4135",
+      "pressed": "3dff6acc7debf0b599d6f8c5310dabe0f2bedc15decb60beeaa95a210ecccbf4",
+      "released": "55b3abf9edc9aefe31f2872cd46e1f2e42c8c5758ad72376155d8d7fe51b4135"
+    },
+    "checks": "Focused GTK3 backend test passed (1/1); packaged theme manifest has 260 files, with no missing files or hash mismatches; git diff --check passed."
+  },
+  "limits": [
+    "This proves the current GTK3 widget consumes the packaged CSS and reverses the arrow bevel only while active. It does not prove that KDE selected the full theme in every application.",
+    "The available MAME guest capture does not currently show HP VUE controls, so no direct SR10.4 ComboBox measurement or historical-match claim is made. The VM and its profile were left untouched.",
+    "Disabled and backdrop appearance across alternative color schemes were not revalidated in this step. No user visual approval is inferred."
+  ],
+  "artifacts": "~/tempia/i457-gtk3-combo-xephyr-r1/",
+  "next": "Keep I457 open for historical SR10.4 comparison when the existing guest visibly shows VUE controls. Next executable work item in Fila Atual is I167 (urgent); preserve all other Xephyr sessions."
+}

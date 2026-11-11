@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-SHIFT-WAKE-CAPTURE-STATE-20261025-R160",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "starting_state": {
+    "native_screen": "black guest display",
+    "native_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-current-screen-r159.png",
+      "sha256": "87f9fedd9f625adfb8e44e75e27e9d2d427259f95721d63f6fd483b96f295397"
+    },
+    "mame_paused": false,
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "channel_pending": null
+  },
+  "input": {
+    "type": "one-frame Shift pulse through the Apollo keyboard input field in the existing MAME Lua bridge",
+    "port": ":kbd:keyboard4",
+    "field": "Shift",
+    "field_mask": 32,
+    "release": "automatic on frame 2"
+  },
+  "result": {
+    "screen_awake": true,
+    "screen": "HP VUE desktop visible with Help Viewer over File Manager",
+    "operation_done": true,
+    "operation_held": false,
+    "frames": 2,
+    "input_error": null,
+    "mame_paused": false,
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none"
+  },
+  "capture": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-screen-after-wake-r160.png",
+    "sha256": "7249c5e046f99a7abeebe9c80c9e26f2d7e5ad3b6945407743f33d812ece9642"
+  },
+  "guest_files_or_configuration_changed": false,
+  "original_vm_changed": false,
+  "conclusion": "The current black guest display was awakened by a short keyboard pulse; the VM remained unpaused and the mouse capture stayed released. This confirms the keyboard-wake path only. It does not reproduce or disprove capture caused by the user's unspecified screen-activation sequence, physical host input, mouse movement or a click used to wake the display.",
+  "next": "Compare against the user's exact activation event before changing the capture hook. Preserve the no-capture result for keyboard wake and the known left-click recapture behavior separately.",
+  "status": "keyboard_wake_confirmed_mouse_remains_released_user_sequence_pending"
+}

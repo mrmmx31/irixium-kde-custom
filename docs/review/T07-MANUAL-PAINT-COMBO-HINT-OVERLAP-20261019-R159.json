@@ -1,0 +1,29 @@
+{
+  "item": "T07",
+  "user_revision": 4,
+  "recorded_at_utc": "2026-10-19T20:15:00Z",
+  "status": "defect-reproduced-before-fix",
+  "scope": "Manual Paint combo-box tooltips must clear the full outer ComboBox, not only its internal text child.",
+  "environment": {
+    "display": ":87",
+    "resolution": "1600x900",
+    "window": "Theme Lab manual paint editor, 1500x850",
+    "work_dir": "~/tempia/i458-validation-20261019/work",
+    "capture": "~/tempia/i458-validation-20261019/xephyr/hint-platform-combo.png",
+    "capture_sha256": "1970a4eb02d45e7802484a09b67c6d7aed03f4762f82e68906b46c53669b9391",
+    "hover_matrix": "~/tempia/i458-validation-20261019/xephyr/t07-manual-paint-control-hints.json",
+    "hover_matrix_sha256": "6233582df46e0db675008a598b2329ffe824516da28141e26076b8ad4e12fae3"
+  },
+  "observations": {
+    "platform_combo": {
+      "outer_rect": [80, 11, 161, 35],
+      "tooltip_rect": [151, 40, 394, 30],
+      "overlap_px": 6,
+      "tooltip_source": "internal text widget"
+    },
+    "other_combos": "The three combo tips were measured against their outer controls; all intersected that outer rectangle. Width/height controls and bottom action hints did not overlap tested neighboring rows.",
+    "manual_paint_row": "15/15 action, role, grid, and zoom hints appeared; none overlapped its button or dimensions label at this geometry."
+  },
+  "impact": "Visual occlusion of the ComboBox frame only; no project or raster data was changed during the hover test.",
+  "next": "Use the internal text widget as the tooltip source but the enclosing Motif ComboBox as the collision boundary, then remeasure all three combo hints and run UI hint regressions."
+}

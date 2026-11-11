@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "id": "R325",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "live-vue-upper-vertical-arrow-matches;-horizontal-bar-not-visible",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Inspect the project-owned SR10.4 VUE scrollbar and continue the GTK2 comparison without changing theme assets."
+  },
+  "vm": {
+    "process_id": 3971377,
+    "service": "domainos-tema-mame.service",
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_alias": "10.253.104.20",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_command": false
+    }
+  },
+  "analysis": {
+    "source_screenshot": "~/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/guest-vue-last.png",
+    "crop": "~/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/filemanager-vertical.png",
+    "crop_dimensions_px": [
+      40,
+      280
+    ],
+    "gtk2_asset": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+    "candidate_bounds_half_open": [
+      13,
+      16,
+      28,
+      31
+    ],
+    "asset_dimensions_px": [
+      15,
+      15
+    ],
+    "comparison": "The live VUE File Manager upper vertical arrow crop is 15x15 and exactly matches the current GTK2 up asset after alpha compositing over the VUE face sampled from the same crop; 0/225 RGB pixels differ.",
+    "down_arrow_candidate": {
+      "bounds_half_open": [
+        13,
+        247,
+        28,
+        262
+      ],
+      "different_pixels": 11,
+      "pixels_compared": 225,
+      "limit": "All 11 differences are on the crop’s first row; exact cell registration or boundary treatment remains unresolved, so this is not accepted as an aligned down-stepper comparison."
+    },
+    "horizontal_bar": "No horizontal scrollbar is present in the current File Manager screenshot. The separate lower crop is the icon row, not a scrollbar.",
+    "prior_horizontal_evidence": "R297/R305 already show 1:1 normal GTK2 horizontal stepper cells matching retained SR10.4 Trash Can crops. This receipt does not change that result and does not prove an interactive GTK2 render in the user session."
+  },
+  "input_attempts": [
+    {
+      "input": "Alt+V through the MAME keyboard ports for one frame, then explicit release",
+      "callback": "done=true, held=false, error=nil",
+      "result": "View menu did not open in the captured guest image."
+    },
+    {
+      "input": "F10 through the MAME keyboard port for one frame, then explicit release",
+      "callback": "done=true, held=false, error=nil",
+      "result": "A menu did not open in the captured guest image."
+    }
+  ],
+  "isolation": {
+    "theme_files_changed": false,
+    "guest_files_changed": false,
+    "view_mode_changed": false,
+    "mouse_or_scrollbar_clicked": false,
+    "user_apps_or_xchat_touched": false,
+    "profile_changed": false,
+    "other_vm_touched": false
+  },
+  "evidence": [
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r325-horizontal-bar-discovery-20261026/guest-view-menu.png",
+      "sha256": "e060d02e10beeab9e8b391613c0aedc803e1b123f32e3559293df2a4a4da86d9",
+      "dimensions_px": [
+        1024,
+        844
+      ]
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r325-horizontal-bar-discovery-20261026/guest-f10-menu.png",
+      "sha256": "79567ad971f142c3de4cf93943237081be5e57da4024b6af815bae5dd974a2f1",
+      "dimensions_px": [
+        1024,
+        844
+      ]
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r325-horizontal-bar-discovery-20261026/pair-up-candidate.png",
+      "dimensions_px": [
+        450,
+        150
+      ]
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r325-horizontal-bar-discovery-20261026/pair-down-candidate.png",
+      "dimensions_px": [
+        450,
+        150
+      ]
+    }
+  ],
+  "next_step": "Keep GTK2 active. The direct horizontal normal-state assets are already pixel-matched; investigate the user’s perceived live size only with a corresponding GTK2 public/interactive render and a visible horizontal VUE control. The normal-session Theme Lab GTK2 route remains unavailable; the requested Xephyr choice is pending.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Adds a live VUE vertical up-arrow crop comparison only. It adds no horizontal target, GTK2 interactive session comparison or held-state historical match; not a fidelity score."
+  }
+}

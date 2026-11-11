@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "R659",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-editor-pressed-state-apply-rebuild-passed",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "root_cause": "NativeSession correctly created and validated Gtk2PressBridge, but combo_popup_color called scene_records(model) with allow_button_pressed=False. That helper rejected an edited pressed arrow during session construction and replacement, before GTK2 painting.",
+  "change": {
+    "file": "tools/theme-lab/gtk2_session.py",
+    "behavior": "combo_popup_color now accepts allow_button_pressed and both NativeSession.__init__ and replace pass true only when the validated pressure bridge exists.",
+    "before_sha256": "6aef549f7314915ea097cc55a0700c83af22030c742eb8de13a345e7eef1ff49",
+    "after_sha256": "9629533a4f3be979b6ddffb5d795eb1e1034f0fed52fc49e746c5bdbdf10af4f",
+    "board_code_change_record": {
+      "item": "I167",
+      "revision": 2,
+      "base": "snapshot of the exact pre-edit untracked file",
+      "content_verified": true,
+      "recorded_at": "2026-10-29T00:46:14.623Z",
+      "verified_artifact": "records/ia-tema/I167/R659/board-change-record/verified.json",
+      "patch_artifact": "records/ia-tema/I167/R659/board-change-record/changes.patch"
+    }
+  },
+  "test": {
+    "command": "TL_TEST_OUTPUT_DIR=~/tempia/domainos-theme-work/I167-R659 /usr/bin/python3 -B tools/theme-lab/tests/test_controller_spin.py ~/tempia/domainos-theme-work/I167-R658/build/controller-spin-probe --gtk2-arrow-pressure --scheme DomainOS-SR10.4",
+    "status": "passed",
+    "probe_sha256": "1ab00b39bd5c8338773708b1dce84cafb1d7550838a6e1c64b30e8e55dbc8289",
+    "test_script_sha256": "8f2040f5f2038358af6e182903046b6c7096593caf8b311051d786fd3ca47c0d",
+    "helper_sha256": "dd4178a2aeaf058eeb9ca7180c3b7563828b420ed1949b938d17b1de446cdd19",
+    "interaction": "Real Motif editor selection of native state row; apply; undo/redo; save/load; restart; both attached and detached GTK2 previews.",
+    "capture_count": 12,
+    "edge_pixels_per_capture": 1024,
+    "edge_differences": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "all_edge_differences_zero": true,
+    "other_recipes_preserved": true,
+    "private_xvfb_bwrap": true
+  },
+  "historical_comparison": {
+    "claimed": false,
+    "reason": "This test verifies the lab editor and preview bridge with the project recipe; canonical SR10.4 held-arrow input is separately gated by Q515."
+  },
+  "side_effects": {
+    "desktop_or_personal_apps_changed": false,
+    "user_profile_changed": false,
+    "mame_input_sent": false,
+    "other_families_changed": false
+  },
+  "remaining": [
+    "Canonical SR10.4 comparison of upper and horizontal held arrows remains gated by unanswered Q515.",
+    "Continue GTK2-only review after Q515 is resolved; do not infer historical fidelity from the private preview."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Controller/preview pressed-state path now passes end to end; canonical held-state comparison in the historical VM remains open. This is not a fidelity score."
+  },
+  "artifacts": "records/ia-tema/I167/R659/ARTIFACTS.json"
+}

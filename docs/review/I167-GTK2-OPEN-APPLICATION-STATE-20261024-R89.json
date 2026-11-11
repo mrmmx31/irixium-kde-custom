@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-OPEN-APPLICATION-STATE-20261024-R89",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "open_application": {
+    "name": "XChat HOM",
+    "pid": 3187233,
+    "display": ":1",
+    "runtime": "GTK2 2.24.33 (libgtk-x11-2.0.so.0.2400.33)",
+    "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+    "configured_theme": "DomainOS-SR10-4-KDE",
+    "theme_rc": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "theme_rc_sha256": "b760e24f752d7d2c288cd3c23dc1d31348336c5c39193b5363fe776684ce0d66",
+    "theme_rc_mtime": "2026-10-23T22:25:18-04:00",
+    "observation": "The existing application is already running GTK2 with the installed DomainOS theme selected. The theme file contains fixed RGB values for widget states, so this installed GTK2 theme does not follow KDE color-role changes. No screenshot of conversation content was captured."
+  },
+  "readiness": {
+    "partial_adaptation_exists": true,
+    "covered_work": ["GTK2 scrollbar and stepper assets", "buttons and toggles", "check and radio controls", "entry focus/caret implementation limits"],
+    "not_complete": ["live SR10.4 GtkEntry selection/blink comparison", "dynamic palette for installed GTK2 theme", "complete visual acceptance and integration"],
+    "existing_evidence": ["R36-R58", "R63", "R68", "R76", "R88"],
+    "user_application_changed": false,
+    "user_profile_changed": false,
+    "application_restarted": false
+  },
+  "next": "I167 remains scoped to completing GTK2 GtkEntry comparison and the partial GTK2 adaptation. Do not claim the installed GTK2 theme is ready for release or schema switching until dynamic KDE roles are implemented and verified."
+}
