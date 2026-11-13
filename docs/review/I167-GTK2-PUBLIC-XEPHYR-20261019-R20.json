@@ -1,0 +1,51 @@
+{
+  "item": "I167",
+  "revision": "R20",
+  "checked_at_utc": "2026-10-19T15:27:54Z",
+  "family": "GTK2 public preview input trace and source-level arrow/trough junction diagnosis",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":84, assistant-owned Xephyr",
+    "scheme": "DomainOS-SR10.4",
+    "private_namespace_guards": true,
+    "other_xephyr_sessions_touched": false
+  },
+  "board_state": {
+    "authoritative_generation": 8002,
+    "section": "work",
+    "user_revision": 2,
+    "assistant_ack_revision": 2,
+    "authorized": true,
+    "unacknowledged_user_revisions": 0
+  },
+  "targeted_input_test": {
+    "direction": "scroll_h-left",
+    "status": "passed",
+    "pressed_pixels_changed": 53,
+    "released_pixels_different_from_normal": 0,
+    "pressed_capture_ms": 179,
+    "native_gtk_range_change_value": {
+      "scroll_type": "step-backward",
+      "requested_value": 34.0
+    },
+    "native_adjustment_value": 34.0,
+    "close_status": "normal",
+    "evidence_directory": "~/tempia/.qa-gtk2-public-av2gqsdn/",
+    "trace": "home/out/revisions/20261019T152443-8fbe38eef295/gtk2-preview-events/gtk2-input-trace.jsonl",
+    "scope_limit": "Only left-stepper input was isolated; this does not explain prior intermittent R18 delivery and does not repeat the full arrow matrix."
+  },
+  "source_analysis": {
+    "gtk_source": "GTK 2.24.33 exact local source; gtk/gtkrange.c SHA-256 ff0173bf6884704a8172033a5a570c46130635cb6435b0419bcd6d84bb6bb6f6",
+    "pixbuf_engine_source": "modules/engines/pixbuf/pixbuf-draw.c SHA-256 02c130d63be06ba72f2d22500f2a9ac43003882f4a61ca4d96a97d42613c5878",
+    "pixbuf_renderer_source": "modules/engines/pixbuf/pixbuf-render.c SHA-256 2ee298ee19e58d8ce7dd2372ea7a568d0ec52da99406aa51f863546c036c99f8",
+    "generated_arrow_asset": "arrow-left-normal.png; 15x15 RGBA; alpha min/max 255/255; SHA-256 8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+    "observed_order": "GtkRange paints the trough before each stepper. The Pixbuf engine reconstructs the stepper rectangle from slider-width and stepper-size; a matched STEPPER image returns handled, skipping the fallback GTK box/arrow.",
+    "current_theme_mapping": "The generator writes a complete opaque 15x15 RGBA stepper raster as overlay_file with overlay_stretch=FALSE. This is not a transparent glyph-only overlay.",
+    "geometry_mismatch": "For horizontal arrows, GTK 2.24.33 reverse_engineer_stepper_box sets the target rectangle to stepper-size × slider-width = 15×11; for vertical arrows it is 11×15. theme_pixbuf_render with stretch=FALSE centers the 15×15 source without scaling, so the 15×11 target clips two source rows at top and bottom, and the 11×15 target clips two source columns at left and right. This predicts an 11-pixel missing edge strip in the full-cell 15x15 comparison, consistent with the R14 residual.",
+    "confidence": "Source-level geometric cause is directly supported by GTK and Pixbuf renderer code and the generated 15x15 fully opaque PNG. It strongly explains the R14 seam but still needs an orientation-specific render comparison.",
+    "next_discriminating_test": "In a disposable private preview, generate orientation-specific full-cell rasters sized 15x11 for horizontal steppers and 11x15 for vertical steppers. Preserve the 11x11 glyph pixels by cropping only the two outer frame rows/columns that GTK necessarily clips; keep relief colors derived from current KDE roles. Compare all four 15x15 reference ROIs and normal/held/released states. Reject if glyph pixels, role-derived colors, or press/release behavior regress."
+  },
+  "product_change": false,
+  "visual_approval": "pending",
+  "status": "diagnostic-complete; junction-cause-unconfirmed; item-remains-running"
+}

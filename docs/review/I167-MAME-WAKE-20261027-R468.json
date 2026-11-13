@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R468",
+  "date": "2026-10-27",
+  "observed_at_utc": "2026-10-27T14:33:35Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "One documented wake pulse after a fresh read-only snapshot found the guest framebuffer black; confirm wake, cleanup, and unchanged MAME profile.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "theme_mame_pid": 3971377,
+    "theme_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "prancheta_mame_pid": 3971019,
+    "prancheta_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "isolation_check": "Separate disk inodes, network namespaces and MAME_CONTROL_DIR values; experimental verifier accepted both instances. The repository verify.sh remains unchanged and its concurrent-MAME guard remains unresolved."
+  },
+  "captures": {
+    "before": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-current-20261027T143304Z.png",
+      "sha256": "ff1f7f368b304298b95f8030c0d3be4008dbf816bf6cd39ef03c8b953bcd4035",
+      "dimensions_px": [1024, 844],
+      "result": "Guest framebuffer black; Apollo command strip visible."
+    },
+    "after": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-after-shift-20261027T143335Z.png",
+      "sha256": "c59e870d56298276384f448a73937eecdabac7e097f51f940f96b7e3553ec4d7",
+      "dimensions_px": [1024, 844],
+      "result": "HP VUE visible with Terminal and File Manager; a horizontal scrollbar is visible in the Terminal window."
+    }
+  },
+  "action": {
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "initial_status": "No pending request, reply, or control files.",
+    "operation": "One guest-injected Shift pulse, held on frame 1 and released on frame 3; native guest snapshot on frame 65.",
+    "request_id": "5ca7775d87a6487d962a0ce5cda90045",
+    "completion_check_request_id": "a8bb0862c984466994ddcd3d1e129181",
+    "completion": "done=true; held=false; frame=65; error=nil",
+    "profile": {"paused": false, "frameskip": 4, "throttled": false, "captured": false},
+    "final_channel_status": "No pending request, reply, or control files.",
+    "host_mouse_or_focus_changed": false,
+    "guest_files_or_settings_changed": false,
+    "processes_stopped": false
+  },
+  "result": "The documented one-shot wake method worked on the current project clone and left the key released. This only restores a visible VUE frame; it does not compare a held horizontal arrow, alter GTK2, or resolve the repository guard for simultaneous MAMEs.",
+  "next": "Continue authorized GTK2 analysis using existing receipts and visible native geometry. Any further guest input or held-arrow comparison remains pending resolution of Q499; no screenshot indicates GTK2 visual approval."
+}

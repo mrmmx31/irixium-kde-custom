@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-WAYLAND-INPUT-ROUTE-20261024-R79",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "clone_pid": 2745483,
+    "clone_disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "native_resolution": [1024, 844]
+  },
+  "authenticated_host_window": {
+    "method": "temporary read-only KWin script enumerated workspace.stackingOrder and matched the PID",
+    "uuid": "{9632a690-5456-4456-ba49-c11d29b5860c}",
+    "pid": 2745483,
+    "caption": "Apollo DN3500 [dn3500] - MAME 0.276 (LP64)",
+    "geometry_px": [437, 43, 1046, 885],
+    "minimized": false,
+    "other_mame_window": {
+      "pid": 3053638,
+      "uuid": "{85f566cb-8c9c-49c3-8ac4-9fd1cfc17fb1}",
+      "minimized": true,
+      "touched": false
+    },
+    "focus_after": "prior active window restored; all temporary KWin scripts unloaded"
+  },
+  "guest_target": {
+    "window": "Find Files",
+    "xid": "0x28000c3",
+    "map_state": "IsUnMapped",
+    "children": 0,
+    "consequence": "No visible GtkEntry-equivalent VUE field is available in the current workspace for a paired selection/blink observation."
+  },
+  "input_route_test": {
+    "existing_hook": "domainos_mouse_host; preserved, not replaced",
+    "initial": {"captured": false, "mouse_option": false},
+    "procedure": "Temporarily invoked the existing hook's capture/release methods and used the bounded helper on the verified clone; no button press or text key was sent.",
+    "result": "Sustained relative-counter movement accelerated nonlinearly and sent the guest pointer to the screen edge. Reversing returned it near the prior area; a smaller batch was also nonlocal. Exact pointer restoration was not achieved.",
+    "final": {"captured": false, "mouse_option": false, "operation_done": true, "cleanup_error": null},
+    "final_capture": "~/tempia/i167-live-r79/domainos-final.png",
+    "final_capture_sha256": "bc287f0e8960e4ce2374a3df46e112f0f63734d124e0d9acbc884dc3572a6717"
+  },
+  "preservation": {
+    "guest_button_clicked": false,
+    "guest_keyboard_input_sent": false,
+    "guest_settings_changed": false,
+    "mame_restarted": false,
+    "profile_unchanged": {"paused": false, "frameskip": 4, "throttled": false},
+    "bridge_pending": false,
+    "other_mame_session_touched": false
+  },
+  "gtk2_entry_status": {
+    "historical_pair": "R76 remains the only matched caret measurement: GTK2 is a straight 1x18 px stem; VUE is a 14 px stem with 5x1 px end caps, 16 px overall.",
+    "selection": "SR10.4 selection appearance remains unmeasured.",
+    "blink": "SR10.4 caret blink interval remains unmeasured; current xrdb resources do not set it.",
+    "next": "Use a safe, lower-acceleration guest input route to map/raise Find Files and focus its text field, then capture native selection and blink. Do not use long relative-counter batches or assume GTK defaults."
+  },
+  "limits": [
+    "The Screen Saver box still appears unchecked and Timeout still shows 10; neither persistence nor ten-minute behavior was tested.",
+    "The guest pointer is left near the right screen edge; mouse routing is released. The user can recapture with a click and adjust the pointer normally.",
+    "This receipt contains no new historical GtkEntry pixel comparison."
+  ]
+}

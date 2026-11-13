@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "R730",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Recheck the reported outward GTK2 scrollbar relief using a native GTK2 fixture with scrollbar allocations matching the Domain/OS SR10.4 reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "user_assessment": {
+    "result": "failure",
+    "text": "The previous arrow-separator correction left the inner scrollbar relief appearing outward; the GTK2 appearance regressed."
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "horizontal": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "widget_crop": [2, 4, 541, 19]
+    },
+    "vertical": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "widget_crop": [4, 2, 19, 257]
+    },
+    "measured_cross_axis_profile": "DDLLFFFFFFFDDLL"
+  },
+  "runtime": {
+    "toolkit": "GTK 2.24.33",
+    "theme": "DomainOS-SR10-4-KDE-Reload",
+    "palette_bundle": "06e087356b248c326f6053bcb63c2feaffc38c369f71fbfaa276d6386c7952cc",
+    "fixture": "Native GtkHScrollbar and GtkVScrollbar under isolated Xvfb, using the installed GTK2 RC and renderer; no user application or desktop was restarted.",
+    "allocations_px": {
+      "horizontal": [539, 15],
+      "vertical": [15, 255]
+    },
+    "adjustment": "page_size 999 / upper 1000, selected to approximate the nearly full-length SR10.4 Trash Can thumb; not a product constant."
+  },
+  "comparison": {
+    "straight_body": "The normal 15px cross-axis pixels match the SR10.4 reference for both orientations.",
+    "normal_stepper_cells": "The horizontal and vertical normal endpoint cells match the reference; differing pixels are confined to the two thumb boundary rows/columns.",
+    "whole_bar": {
+      "horizontal": {"different_pixels": 96, "total_pixels": 8085, "fraction": "1.19%"},
+      "vertical": {"different_pixels": 96, "total_pixels": 3825, "fraction": "2.51%"},
+      "difference_location": "At the thumb start/end boundaries only. The chosen GTK page-size ratio is a fixture input and does not establish the ratio used by the historical widget."
+    },
+    "visual_acceptance": "The user's outward-relief report remains open. This isolated native fixture did not reproduce a pixel difference in the straight trough or normal arrow cells that explains the report."
+  },
+  "artifacts": {
+    "vm_awake_capture": {
+      "path": "~/tempia/domainos-theme-work/I167/R729-live-vue/sr104-after-wake.png",
+      "sha256": "abc4cfc3c83c4f9e1884c5d1c6031f98bb5df5cd15af7e411e7a83ed8c80a055"
+    },
+    "installed_theme_capture": {
+      "path": "~/tempia/domainos-theme-work/I167/R729-live-vue/installed-gtk2-scrolledwindow.png",
+      "sha256": "d29cd8f1a1a10d5c1800554d41c0d1963a908500fb07dfb9b19c62928b357fdc"
+    },
+    "matched_geometry_fixture": {
+      "path": "~/tempia/domainos-theme-work/I167/R730-matched-gtk2-bars/matched-bars.png",
+      "sha256": "61717aed9b0eb798557e25a4ddeeb5e11db2d12f91b8bb79d7241c72232006bf"
+    }
+  },
+  "limits": [
+    "No specific GTK2 application owned by lsi was identified for a read-only capture. The visible XChat process belonged to another user and was not touched.",
+    "The fixture covers normal state only. No arrow was pressed, held-state item I517 remains unauthorized, and no user profile setting was changed.",
+    "The prior comparison used a short thumb and was inadequate for assessing the whole bar; the R726/R727 technical profile checks do not constitute visual acceptance."
+  ],
+  "result": "The earlier claim that the GTK2 scrollbar was visually corrected was premature. The normal trough pattern and endpoint art match the measured SR10.4 pixels in this fixture, but the user's actual outward-relief observation is not reproduced or explained by this evidence. Keep the visual status failed; do not invert the relief speculatively.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "I167 technical coverage remains unchanged; the visual regression is still open. This is not a visual-fidelity percentage."
+  },
+  "next": "Continue on GTK2 only. Identify the exact GTK2 window/control showing the reported relief, then compare its full live widget to the VM. Preserve the installed profile and the user's Theme Lab geometry until the relief is localized."
+}

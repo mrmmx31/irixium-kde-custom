@@ -1,0 +1,291 @@
+{
+  "at": "2026-10-12T00:50:23.905534+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "control_family": "GTK4 push",
+  "positive_native_session": 20111,
+  "positive_native_exit_code": 0,
+  "native_result": {
+    "status": "passed",
+    "scope": "C controller GTK4 push Apply, physical move, Undo/Redo and origins",
+    "initial": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "both": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "after_apply": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      }
+    ],
+    "native_drag_saved": [
+      52,
+      52
+    ],
+    "undo_position": [
+      32,
+      32
+    ],
+    "redo_position": [
+      52,
+      52
+    ],
+    "other_family_preserved": true,
+    "detached_closed_coupled_retained": true,
+    "canvas_and_button_pixels_match_current_roles": [
+      [
+        120,
+        160,
+        213
+      ],
+      [
+        120,
+        160,
+        213
+      ]
+    ],
+    "historical_fidelity_claimed": false
+  },
+  "negative_runs": [
+    {
+      "session": 48288,
+      "exit_code": 1,
+      "reason": "Test launched before dependent compilation completed; old probe rejected --gtk4-host-bridge. Invalid as new implementation proof."
+    },
+    {
+      "session": 82314,
+      "exit_code": 0,
+      "limit": "Functional allocations/gestures/history passed, but root capture black canvas; not accepted as paint proof."
+    },
+    {
+      "session": 91960,
+      "exit_code": 1,
+      "reason": "Pixel assertion reproduced black surface after notice-only fix; automatic renderer remains unsupported in this host test."
+    }
+  ],
+  "renderer": "Cairo default only in coupled GTK4 child, explicit renderer preserved; underlying GPU driver cause not proven",
+  "native_canvas_button_pixels": [
+    [
+      120,
+      160,
+      213
+    ],
+    [
+      120,
+      160,
+      213
+    ]
+  ],
+  "image_inspection": "Root capture inspected: real GTK4 button visible in native canvas, GTK4 adoption notice. Snippet remains proposed JSON/not_implemented; CSS snippet still pending.",
+  "legacy_regression_session": 80334,
+  "legacy_regression_exit_code": 0,
+  "legacy_regression": {
+    "status": "passed",
+    "scope": "Real Motif controller, pointer selection of measured native list item, Apply, Undo/Redo, Save/Load and restart; native GTK2 edge paint in both origins.",
+    "control": 12,
+    "dimensions": [
+      220,
+      40
+    ],
+    "captures": [
+      {
+        "label": "normal",
+        "separate": true,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/normal-separate-0.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "normal",
+        "separate": false,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/normal-coupled-1.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "pressed",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/pressed-separate-2.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "pressed",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/pressed-coupled-3.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "undo",
+        "separate": true,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/undo-separate-4.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "undo",
+        "separate": false,
+        "state": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/undo-coupled-5.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "redo",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/redo-separate-6.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "redo",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/redo-coupled-7.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "restart",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/restart-separate-8.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "restart",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/restart-coupled-9.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "loaded",
+        "separate": true,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/loaded-separate-10.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      },
+      {
+        "label": "loaded",
+        "separate": false,
+        "state": 1,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-lzzu4290/loaded-coupled-11.png",
+        "edge_pixels": 1024,
+        "differences": 0
+      }
+    ],
+    "other_recipes_preserved": true,
+    "historical_fidelity_claimed": false
+  },
+  "pure_tests": 58,
+  "build_session": 42504,
+  "build_exit_code": 0,
+  "proof_scope_note": "GTK4 r4 functional probe precedes help-only rebuild; final help checked separately. GTK2 regression used final probe. No claim that unrelated controls or states were newly certified.",
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false,
+  "estimated_unit_progress_percent": 60,
+  "percentage_basis": "Foundation and private scene/session complete for push, C controller functional integration partly proved, delivery pending; not overall goal/fidelity.",
+  "remaining": [
+    "GTK4 CSS snippet",
+    "Native Save/Load/restart on GTK4",
+    "Further controller state/palette checks with changed inputs",
+    "Staged delivery/reopening coordination",
+    "Other GTK4 controls and goal families"
+  ],
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "63c1e3b3aec53db8461f315b795b3221e727fcc6acde8c338c9cbed0a6e21a71",
+    "tools/theme-lab/src/view.c": "a0b31809ff28ffca4823410241bbf7288e9decce1779ce5d64ebe44cd14bbfe8",
+    "tools/theme-lab/native-gtk4/focus.c": "b61223578a1d3de9762af97d1f2ed3737ff24e773f9bc76f8aef02767bc323fa",
+    "tools/theme-lab/native-gtk4/focus.h": "ac71d8d0b06990452a423f2e1b913561446191401ff98a43bf98a5d75881cf59",
+    "tools/theme-lab/gtk4_generation.py": "1d6c33d5343f2bb10c875d410d05ab2627a30070d40fe368465a217fa13977d0",
+    "tools/theme-lab/gtk4_worker.py": "2227caf6303ec99f32356beca02ffd5dfc99143f72743a8c854c190d29258de1",
+    "tools/theme-lab/tests/controller_gtk4_push.py": "1dd7c819c98cc233b97bf9a8d2fd79c05f0bff6a87ac962c2c97d0e35195b40b",
+    "tools/theme-lab/tests/test_controller_spin.py": "771d7495da10d10ede32228e6fdc6f56aae1a49f946de46e5b15a16cba114ccf",
+    "tools/theme-lab/tests/controller_spin_probe.c": "f2a5eb61d7c1016fd486b12446c58f0968c20580fa9c044a193f89b24aea0925",
+    "tools/theme-lab/tests/test_gtk4_generation.py": "d3d19e90481e9d166212c3eb56c37dc9ed016f7c208c3a5d54f030ffb667fc36",
+    "tools/theme-lab/Makefile": "0a3865a5629a8573a8a2cd80bbd09b04a7db4026bafed26e0384078b88631ae3",
+    "tools/theme-lab/README.md": "a60bc3e429748a83c9a581c300280ffc8a02eed6f5386f062652a9c26d0df6ea",
+    ".qa-t04-anchor-foundation/gtk4-controller-r4-cairo.log": "b6f8d8786795ddbbbe2a62912407d33d20fdc45de5d4290622c2d290df2c9771",
+    ".qa-t04-anchor-foundation/gtk4-controller-r4-pure.log": "2d596887d27972ffb3663c634733c5c9b08b91d2162fb380bf4ac0e2cb52cd10",
+    ".qa-t04-anchor-foundation/gtk4-controller-gtk2-regression.log": "459be60fe8a430a0d577f65a1e64d72b58015890930913a18d5ae2a39f1da287",
+    ".qa-t04-anchor-foundation/gtk4-controller-final-build.log": "a7902b156542f100ab5ad506b944b18e66c3a56fc3b0b5bed9c745be89a2b1bf",
+    ".qa-theme-lab-spin-fwozydby/RESULTADO.json": "10eaeb478d0e9c3ecdc052b19f0332a9fedc46b43bc4d64a25813381ad5763b3",
+    ".qa-theme-lab-spin-lzzu4290/RESULTADO.json": "8e0f57ba2d3326b40f0fd32715b0978198325d4b259a0bbc45cc6679b7f91695",
+    ".qa-theme-lab-spin-fwozydby/last.png": "d0e46fdcb9e9aebf6624ba81243c26dc291537aacb9fc43f9c7d3a8280bd54c4",
+    ".qa-theme-lab-spin-fwozydby/gtk4-coupled-painted.png": "8e1de980e4288fbf78c745b5350e9b6ce914ea8cad09d03faca0c00777761b78",
+    ".qa-t04-anchor-foundation/gtk4-host-build/theme-lab": "8c381643b9da2282286541ce72d875446528ff5386dacf1ed17f50125d23807a",
+    ".qa-t04-anchor-foundation/gtk4-host-build/controller-spin-probe": "8c856bb2dda52eb8a14643464b6dc51a03ec9fb27a1e9a9ae6866c85b9d32edb"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R651",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-active-pressed-map-complete-historical-directions-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source_audit": {
+    "gtkrc": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "active_stepper_mappings_lines": [109, 115],
+    "mapping": "GTK2 ACTIVE maps each direction's STEPPER to its pressed 15x15 asset; ARROW overlays use overlay_stretch=FALSE.",
+    "asset_dimensions": "Pressed stepper cells are 15x15 RGBA; separate arrow glyph overlays are 11x11 RGBA in all four directions, matching the contract's 15 = 11 + 2*2 geometry.",
+    "source_only": true
+  },
+  "existing_evidence_reconciled": {
+    "installed_horizontal_configuration": "R510 audits 40 left/right mappings across four installed theme copies; each retains 15x15 assets and non-stretched arrow overlays.",
+    "isolated_gtk2_interaction": "R642 observes each of four arrows change 53 pixels while held and return to exact pixels on release in a private GTK2 preview under BreezeDark.",
+    "canonical_vm_down": "R648 confirms a 37-pixel visible held/release transition on the canonical SR10.4 down arrow; do not repeat.",
+    "canonical_vm_up_horizontal": "Still unverified for pressed state."
+  },
+  "changes": {
+    "source": false,
+    "user_profile": false,
+    "vm_input": false,
+    "other_board_section": false
+  },
+  "remaining": [
+    "Obtain canonical VM held/released captures for up and horizontal arrows after an authorized input route is available; Q515 remains unanswered.",
+    "Manual visual acceptance remains separate."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The GTK2 ACTIVE-to-pressed mapping is present for all directions and isolated interaction is already evidenced; canonical SR10.4 upper/horizontal held states remain unverified. Not a fidelity score."
+  }
+}

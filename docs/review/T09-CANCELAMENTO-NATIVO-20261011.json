@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-11T14:38:37.372016+00:00",
+  "item": "T09",
+  "authority_revision": 1,
+  "phase": "private_native_cancel_and_quit",
+  "change": "Nonblocking waitid WNOWAIT completion retains direct child identity until remaining owned group is killed, then waitpid collects. Cancellation retains leader until monotonic 2-second grace expires, without waiting on UI thread.",
+  "tests": {
+    "owned_kernel_groups": "passed shutdown and polling for running/exited leaders, resistant descendant, independent child alive",
+    "native": {
+      "status": "passed",
+      "scope": "Native Motif Load cancels real gated generation leader and resistant descendant; actual GTK3 recovers223x80; native Quit closes next owned group; independent child stays alive, project and scene preserved. Test-only descendant, no historical fidelity claim.",
+      "cancelled_group": [
+        2560628,
+        2560629
+      ],
+      "quit_group": [
+        2560840,
+        2560841
+      ],
+      "cancellation_seconds": 2.1340634069638327,
+      "independent_process_preserved": true
+    },
+    "build": "strict all/probe and forced probe rebuild completed",
+    "runtime_closure": 2,
+    "scoped_diff_check": "passed tools/theme-lab"
+  },
+  "failed_test_attempts": [
+    {
+      "fixture": ".qa-theme-lab-spin-pj7ygi3i",
+      "reason": "Probe built while wrapper source changed; binary lacked descendant branch. Forced rebuild completed before next launch."
+    },
+    {
+      "fixture": ".qa-theme-lab-spin-b9irvh5n",
+      "reason": "Incorrect test assumed Apply cancels; actual controller cancels generation on Load. Corrected native test uses Load, preserves scene and then explicit Apply."
+    }
+  ],
+  "limits": [
+    "X display disappearance not yet exercised natively with resistant descendant",
+    "Descendants escaping their group are outside this contract",
+    "No personal installation or handoff; no historical fidelity claim"
+  ],
+  "estimated_stage_progress_percent": 75,
+  "basis": "Failure/timeout/identity and owned completion/cancellation/native Quit proved. Lost-display path and delivery remain; not full goal percentage.",
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "2e5b73a9586531686d2d7af0c06fb2d5e28aaad971bdec8443d15214ba2979b2",
+    "tools/theme-lab/src/controller/owned_processes.c": "f402f6dcd2c059f64256b21a621aeac37a82a064e010db28a4b8188d4da694ae",
+    "tools/theme-lab/include/owned_processes.h": "8b053b1db602bd471c7cc0806921e77dde8b59d10d2fd14c40a504f740c62372",
+    "tools/theme-lab/tests/owned_processes_test.c": "c1da5a5b6a49eb24a0ed5dcb9d05086e5545ccaf10e31de7d1f0c346b825783f",
+    "tools/theme-lab/tests/import_exec_gate.c": "52ac647c6bdc0af911e586757987e243ca8161c80880c6160f017a1a3291d858",
+    "tools/theme-lab/tests/controller_cancel_group.py": "328d99a4ff5650a5cc09f3270ae5e1a9a9e88f5539b75cf6fec4050924977998",
+    "tools/theme-lab/tests/test_controller_spin.py": "c77397f0bd1411c03cb21283a91b0441e968b6fd595fbb38a50da76e967c24ca",
+    "tools/theme-lab/build/theme-lab": "af4fbcec4e113691c9b9929c67ab181be2e9843291a425811f2f3294879b3ed2",
+    "tools/theme-lab/build/controller-spin-probe": "e18259305fa14605c766b8932b178fba8acc9d9ef490033242d4ab9dc7b55b68"
+  }
+}

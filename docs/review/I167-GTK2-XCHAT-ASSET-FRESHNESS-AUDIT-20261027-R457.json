@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R457",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the deployed GTK2 scrollbar arrow assets with the current theme source and determine whether the open XChat processes predate the deployed files.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observations": {
+    "xchat_processes": [
+      {"pid": 3951437, "gtk2_library": "2.24.33", "started_local": "2026-10-26 19:38:49", "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0"},
+      {"pid": 3951675, "gtk2_library": "2.24.33", "started_local": "2026-10-26 19:39:02", "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0"}
+    ],
+    "theme_selector": "/home/lsi/.gtkrc-2.0 selects DomainOS-SR10-4-KDE",
+    "deployed_assets_mtime_local": "2026-10-27 02:47",
+    "source_and_deployed_hashes": {
+      "scrollbar-arrow-left-normal.png": "c97e0ecc88ff4267ffaa612a241dfe22141e73337c75adf1858d69ab9f899771",
+      "scrollbar-arrow-right-normal.png": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15",
+      "scrollbar-stepper-left-normal.png": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+      "scrollbar-stepper-right-normal.png": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+    },
+    "geometry": "Arrow PNGs are 11x11; stepper cells are 15x15. R453 independently confirms the current isolated GTK2 renderer's normal horizontal 15x15 cells match the retained VUE reference 0/225 pixels."
+  },
+  "gtk2_reload_semantics": {
+    "primary_source": "https://sources.debian.org/src/gtk%2B2.0/2.24.32-3/gtk/gtkrc.c/",
+    "observation": "GTK 2.24 source for gtk_rc_reparse_all_for_settings checks modification times of parsed RC files and then clears/rebuilds style data. This is an explicit reparse path; it does not establish that an already-open app automatically notices a replacement PNG or that its theme engine refreshes the image cache.",
+    "implication": "The open XChat processes predating the installed asset update strengthens the stale-process hypothesis, but a fresh-process visual check is still required to distinguish it from a renderer or widget difference."
+  },
+  "result": "The open XChat processes started before the deployed GTK2 arrow assets were replaced, while the installed files currently match the repository. A stale in-process GTK2 pixbuf/style cache is therefore a plausible explanation for the reported appearance, but this read-only audit does not prove which files either process loaded or how it currently renders them.",
+  "limits": [
+    "No XChat title, message content, screenshot, focus, input, restart, or theme file was accessed or changed.",
+    "No VM input was sent. verify.sh continues to guard against concurrent use of the project and Prancheta MAME instances.",
+    "This does not replace the pending native SR10.4 state comparison or live XChat scrollbar-only comparison."
+  ],
+  "next": "After the separate MAME releases the guard, complete the specific pending VUE comparisons and then validate the live GTK2 scrollbar without reading chat content; do not modify normal arrow geometry absent a reproduced visual difference."
+}

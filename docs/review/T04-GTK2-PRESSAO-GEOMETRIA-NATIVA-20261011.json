@@ -1,0 +1,94 @@
+{
+  "at": "2026-10-11T19:49:02.771470+00:00",
+  "item": "T04",
+  "family": "gtk2",
+  "scope": "One standalone native GtkButton; painting ACTIVE versus physical held input. No product capability enabled.",
+  "runtime_probe": {
+    "default_session": 42443,
+    "default_exit": 0,
+    "displaced_session": 11686,
+    "displaced_exit": 0,
+    "private_child_displacement_px": 2
+  },
+  "evidence": ".qa-t04-anchor-foundation/gtk2-pressed-demo-displaced.json",
+  "evidence_sha256": "f0cb82fc108910d9a8f6008e359a7e853e2fef8eda8d32d6b5dc1a3583510e1f",
+  "source_sha256": "392c6e69da76ebe340f940f16cc725fcc5c4c2035e618801e5061c321c153d6f",
+  "findings": [
+    "Default displacement0 masks the difference; both child allocations coincide",
+    "With displacement2 native child moves45,45 to47,47; forced ACTIVE leaves45,45",
+    "Both have GtkState ACTIVE and outer180x60; state/outer dimensions alone do not prove pressed equivalence",
+    "Forced display emitted no activation; restored physical press/release activated exactly once"
+  ],
+  "limitations": [
+    "Uses private geometry-only RC, not generated DomainOS recipe paint proof",
+    "No Motif/VM fidelity, mouse-hover persistence, rebuild or scene integration proof",
+    "Failed initial Gdk.get_origin binding call was fixed by private X11 window coordinates; prior failure log retained",
+    "Bridge proof is only standalone normal/forced/reset/physical press; hover, scene rebuild, painting equivalence and other button subclasses remain unproved."
+  ],
+  "next": "Design the scoped GTK2 bridge lifecycle/capability before scene integration, then prove rebuild and coupled/separate paths; exact-runtime ABI guard and native paint comparison remain required.",
+  "product_guard_changed": false,
+  "native_signal_hypothesis": {
+    "session": 93719,
+    "exit_code": 1,
+    "evidence": ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-signals.json",
+    "result": "enter/pressed/leave/released alone did not produce ACTIVE or native child displacement; rejected as implementation shortcut. Diagnostics retained before assertion."
+  },
+  "updated_at": "2026-10-11T20:04:53.930000+00:00",
+  "native_crossing": {
+    "session": 27734,
+    "exit_code": 0,
+    "proof": ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-crossing.json",
+    "result": "Local crossing events plus press reproduce native child displacement; input flags change, so not promoted to product."
+  },
+  "visual_bridge": {
+    "session": 60432,
+    "exit_code": 0,
+    "proof": ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-bridge-flags.json",
+    "runtime": "GTK 2.24.33",
+    "input_flags": [
+      0,
+      0,
+      0
+    ],
+    "allocation_equal": true,
+    "child_allocation_equal": true,
+    "forced_activations": 0,
+    "native_activations_after_reset": 1,
+    "source_url": "https://github.com/GNOME/gtk/blob/2.24.33/gtk/gtkbutton.c",
+    "private_experiment": true,
+    "risk": "Uses exposed GTK2 struct field depressed, exact compile/runtime version guarded. This is not a portable public setter; GTK3 and other GTK2 versions unsupported by this experiment."
+  },
+  "hashes": {
+    "tools/theme-lab/tests/probe_gtk2_pressed_bridge.c": "ff7ff4d13eed7894e7a2f08f22527987814a88349c56ffde25ccd76e8b86907b",
+    "tools/theme-lab/tests/probe_gtk2_pressed_demo.py": "597f10a36ec56c0154381fcb28c470a2c30b7958e40c9d25e889d45865cbf387",
+    ".qa-t04-anchor-foundation/gtkbutton-2.24.33.c": "a8a26244a971b0ead59dc8b868084b68e533c040f5ba2f9ee08216e067238056",
+    ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-bridge-flags.json": "a29d7f79edc66bad20cbe8f24b1a4779d6bdd28444c2356861453f7284a7c020"
+  },
+  "hover_lifecycle": {
+    "unmaintained_session": 82027,
+    "unmaintained_exit": 0,
+    "unmaintained_proof": ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-bridge-hover.json",
+    "finding": "Native crossing updates remove visual depressed state unless reapplied after native handlers.",
+    "maintained_session": 91582,
+    "maintained_exit": 0,
+    "cleanup_session": 59824,
+    "cleanup_exit": 0,
+    "proof": ".qa-t04-anchor-foundation/gtk2-pressed-demo-native-bridge-cleanup.json",
+    "proof_sha256": "ccc5db3d537736680b3662e994aa94958947ac4f7e267f8cb4f0bc74ae171a7a",
+    "forced_hover_states": [
+      1,
+      1
+    ],
+    "native_input_flags_during_hover": [
+      1,
+      0
+    ],
+    "hover_states_after_disconnect": [
+      2,
+      0
+    ],
+    "zero_artificial_activations": true,
+    "one_real_activation_after_cleanup": true,
+    "callbacks_scope": "Only the standalone private GtkButton; disconnected before restoring native interaction."
+  }
+}

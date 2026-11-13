@@ -1,0 +1,20 @@
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: 222
+command: mousemove
+command: click
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1272, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 242, in main
+    results.update(run(output, observation, click, wait, environment))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_preview_recovery.py", line 62, in run
+    assert observation()['native_push_allocation'] == [222, 80]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

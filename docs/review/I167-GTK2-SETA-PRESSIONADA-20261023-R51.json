@@ -1,0 +1,53 @@
+{
+  "id": "I167",
+  "receipt": "R51",
+  "date": "2026-10-23",
+  "checked_at_utc": "2026-10-23T03:12:00Z",
+  "family": "GTK2 vertical scrollbar down arrow, normal/held/released",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "state_record": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "state_record_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "authoritative_rows": "The checked-in record preserves native normal and held glyph pixel rows plus semantic L/D/F mapping; 71 glyph pixels, including 53 relief pixels and 18 face pixels."
+  },
+  "implementation_capture": {
+    "run": "~/tempia/.qa-gtk2-public-v3snxnog",
+    "results_sha256": "ff4109fbf2ff751102eb7f8ed277de99365b9f3b31f1a96c212cd84890935093",
+    "roi_in_capture": [
+      260,
+      181,
+      275,
+      196
+    ],
+    "glyph_crop": "offset 2,2 inside the 15x15 cell; 11x11 glyph",
+    "held_png_sha256": "fc32c3338484184a124edfc38072e37a4f9bb8836bad50b033fe49d5871931cb",
+    "released_png_sha256": "3fc03ea48e5923184dd63a07a0d96bd0b9561770cdd0e4b9d38a4c966804d85f"
+  },
+  "validation": {
+    "gtk2_version": "2.24.33",
+    "public_domainos_result": "passed",
+    "normal_vs_SR10_4_recorded_glyph": "71/71 pixels equal",
+    "held_vs_SR10_4_recorded_glyph": "71/71 pixels equal",
+    "normal_to_held": "53 pixels changed, matching the measured VUE relief swap",
+    "release": "public run reports zero changed pixels relative to its pre-press normal cell; recorded normal glyph restored exactly",
+    "comparison_mask": "Compared L/D/F glyph pixels; excluded cursor/context labels from the archived pixel-row record.",
+    "code_changed": false
+  },
+  "invalid_artifact_excluded": {
+    "path": "~/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/diagnostics/lower-arrow-held.png",
+    "finding": "Its held and released crops have the same SHA-256, so this pair cannot support a held-state comparison. Used the canonical R10.4 state rows instead."
+  },
+  "limits": [
+    "This proves only GTK2 down-arrow normal/held/released against the recorded SR10.4 down-arrow cycle.",
+    "Other pressed directions, disabled/hover states, thumb behavior and other control families remain open.",
+    "No user session, XChat or VM state was changed."
+  ],
+  "next": "Continue the remaining authorized GTK2 gaps one family at a time; retain the confirmed GTK2 down-arrow implementation and obtain additional VM captures only after the existing MAME request is resolved."
+}

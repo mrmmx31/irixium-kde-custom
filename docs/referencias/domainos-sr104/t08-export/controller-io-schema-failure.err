@@ -1,0 +1,23 @@
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/incoming.json
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1215, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 238, in main
+    results.update(run(output, observation, click, wait, environment))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_project_io.py", line 50, in run
+    wait(lambda: read_project().get('name') == incoming['name'])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 32, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

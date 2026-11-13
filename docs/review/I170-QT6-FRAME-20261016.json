@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "revision": 1,
+  "definition_sha256": "eee59ace856d938dfe9eae115b0e49a50bfc86b78f28670e06e9be7b26554426",
+  "control": "frame",
+  "status": "passed",
+  "implementation": "Real Qt6 QFrame Panel/Sunken, using the shared shadow width and KDE-role-derived view face/text plus window light/shadow bevel. Backdrop follows the top-level window activation tracker.",
+  "native_evidence": {
+    "widgetClass": "QFrame",
+    "objectName": "domainosRecipeFrame",
+    "frameShape": 2,
+    "frameShadow": 48,
+    "lineWidth": 2,
+    "sizeHint": [
+      86,
+      47
+    ],
+    "states": [
+      "normal",
+      "backdrop",
+      "disabled"
+    ],
+    "backdropSelector": "[domainosBackdrop=\"true\"]",
+    "backdropTracksTopLevelActivation": true,
+    "selectedScheme": {
+      "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "kind": "xdg_user_color_scheme",
+      "scheme_id": "DomainOS-SR10.4",
+      "scheme_name": "DomainOS SR10.4"
+    },
+    "paletteInputs": [
+      {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      {
+        "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+        "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+      },
+      {
+        "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+        "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+      }
+    ],
+    "limitations": [
+      "A real QFrame recipe does not establish historical SR10.4 fidelity."
+    ]
+  },
+  "validation": {
+    "qt6_recipe_suite": "21/21 passed, including the real frame pixels in DomainOS, neutral, dark and yellow palettes.",
+    "qt5_regression_suite": "4/4 passed.",
+    "public_xephyr": {
+      "status": "passed",
+      "display": ":68",
+      "qt": "6.8.2",
+      "pyqt": "6.9.0",
+      "platform": "xcb",
+      "style": {
+        "objectName": "fusion",
+        "className": "QFusionStyle"
+      },
+      "private_namespace_guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "preview_exit_code": 0
+    },
+    "visual_capture": "Qt6 frame tab reviewed; native panel/sunken frame, content and role-derived surface are visible."
+  },
+  "artifacts": {
+    "public_result": "/home/lsi/tempia/i170-qt6-public-ke1ejwx7/home/qtwidgets-proof/RESULTADO.json",
+    "public_result_sha256": "1242645e6bc85bb115a4cac21d7fd64ee9217d17ab732c11fe1c5cc1f00814e5",
+    "screenshot": "docs/review/I170-QT6-FRAME-20261016.png",
+    "screenshot_sha256": "009851b7f8cb1301170fa70542f87169f1fde6f7d81c08fd68f11d5355233713",
+    "source_sha256": {
+      "tools/theme-lab/qt6_scrollbar_recipe.py": "e3b128f3d43dc990d6db88d4831c18bf1f667c152d489acb006449a31509c877",
+      "tools/theme-lab/qt6_scrollbar_route.py": "afdd4c380fddef1c8cc4f14596632a288af3c62ae28d68c0dddfa869311039b3",
+      "plasma/tests/galerias-nativas/qt6_demo.py": "fa18d5fcacde899ad6ff9e4054520ee6b3c27f54e0128c86f0d9c9afaa6e74d1",
+      "tools/theme-lab/tests/probe_qt6_frame_widget.py": "6814e008055caf7b1ae757ef8d38c2e70e0746c7f5066abddf8e6d7bb9313b5b",
+      "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "2ba7198e4bf8903eac5b83ec00537ffbd80963fa6bfc9ec0d35a788e96fecbce",
+      "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "5a5514c8cc92685c48101b4fb8233ebb2435ea00213953f2806990f7b8fad248"
+    }
+  },
+  "limitations": [
+    "Technical preview only; no direct matching SR10.4 VM measurement or human visual approval is claimed."
+  ]
+}

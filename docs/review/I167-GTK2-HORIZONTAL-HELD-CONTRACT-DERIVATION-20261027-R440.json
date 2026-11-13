@@ -1,0 +1,491 @@
+{
+  "schema_version": 1,
+  "id": "R440",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Derive GTK2 horizontal held-arrow pixels from the exact SR10.4 normal cells using the shared light/shadow exchange contract; compare with the selected adaptive GTK2 palette assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "sources": {
+    "historical_normal": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "historical_normal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "rule": "tools/domainos_scrollbar_rules.json",
+    "rule_sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "semantic_renderer": "tools/domainos_motif_art.py",
+    "semantic_renderer_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+    "gtk2_assets": "~/.local/share/irixium/gtk2-palette/14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467/assets/scrollbar-stepper-{left,right}-{normal,pressed}.png"
+  },
+  "method": {
+    "alignment": "The historical normal horizontal cells are 15x15 at x=2,y=4 and x=526,y=4; R344 supersedes R334’s y=2 registration.",
+    "derivation": "Within the shared semantic stepper geometry, compute normal-to-pressed token changes, exchange the contract light/shadow reference colors at those coordinates, and preserve face/trough/silhouette. Compare the derived 15x15 cell to the active GTK2 pressed asset at 1:1.",
+    "reference_rgb_only": {
+      "face": "#78a0d5",
+      "light": "#c4d5ed",
+      "shadow": "#3e536e",
+      "trough": "#6688b5"
+    },
+    "interpretation": "The RGB values are source evidence for this derived comparison, not product constants."
+  },
+  "results": [
+    {
+      "direction": "left",
+      "reference_normal_origin_xy": [
+        2,
+        4
+      ],
+      "native_normal_vs_cache_normal_different_pixels": 0,
+      "contract_derived_held_vs_cache_pressed_different_pixels": 0,
+      "contract_changed_pixels": 53,
+      "contract_changed_xy": [
+        [
+          11,
+          2
+        ],
+        [
+          12,
+          2
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          10,
+          3
+        ],
+        [
+          11,
+          3
+        ],
+        [
+          12,
+          3
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          8,
+          4
+        ],
+        [
+          9,
+          4
+        ],
+        [
+          10,
+          4
+        ],
+        [
+          11,
+          4
+        ],
+        [
+          12,
+          4
+        ],
+        [
+          5,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          11,
+          5
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          6,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          12,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          5,
+          8
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          12,
+          8
+        ],
+        [
+          5,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          11,
+          9
+        ],
+        [
+          12,
+          9
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          8,
+          10
+        ],
+        [
+          9,
+          10
+        ],
+        [
+          10,
+          10
+        ],
+        [
+          11,
+          10
+        ],
+        [
+          12,
+          10
+        ],
+        [
+          9,
+          11
+        ],
+        [
+          10,
+          11
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          12,
+          11
+        ],
+        [
+          11,
+          12
+        ],
+        [
+          12,
+          12
+        ]
+      ]
+    },
+    {
+      "direction": "right",
+      "reference_normal_origin_xy": [
+        526,
+        4
+      ],
+      "native_normal_vs_cache_normal_different_pixels": 0,
+      "contract_derived_held_vs_cache_pressed_different_pixels": 0,
+      "contract_changed_pixels": 53,
+      "contract_changed_xy": [
+        [
+          2,
+          2
+        ],
+        [
+          3,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          3
+        ],
+        [
+          4,
+          3
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          4
+        ],
+        [
+          5,
+          4
+        ],
+        [
+          6,
+          4
+        ],
+        [
+          7,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          6,
+          5
+        ],
+        [
+          7,
+          5
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          9,
+          5
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          3,
+          6
+        ],
+        [
+          8,
+          6
+        ],
+        [
+          9,
+          6
+        ],
+        [
+          10,
+          6
+        ],
+        [
+          11,
+          6
+        ],
+        [
+          2,
+          7
+        ],
+        [
+          3,
+          7
+        ],
+        [
+          10,
+          7
+        ],
+        [
+          11,
+          7
+        ],
+        [
+          12,
+          7
+        ],
+        [
+          2,
+          8
+        ],
+        [
+          3,
+          8
+        ],
+        [
+          8,
+          8
+        ],
+        [
+          9,
+          8
+        ],
+        [
+          10,
+          8
+        ],
+        [
+          11,
+          8
+        ],
+        [
+          2,
+          9
+        ],
+        [
+          3,
+          9
+        ],
+        [
+          6,
+          9
+        ],
+        [
+          7,
+          9
+        ],
+        [
+          8,
+          9
+        ],
+        [
+          9,
+          9
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          3,
+          10
+        ],
+        [
+          4,
+          10
+        ],
+        [
+          5,
+          10
+        ],
+        [
+          6,
+          10
+        ],
+        [
+          7,
+          10
+        ],
+        [
+          2,
+          11
+        ],
+        [
+          3,
+          11
+        ],
+        [
+          4,
+          11
+        ],
+        [
+          5,
+          11
+        ],
+        [
+          2,
+          12
+        ],
+        [
+          3,
+          12
+        ]
+      ]
+    }
+  ],
+  "conclusion": "Both horizontal normal GTK2 palette cells equal the historical SR10.4 cells at 0/225. Applying the shared press rule to the historical normal cells yields the selected GTK2 left/right pressed assets exactly at 0/225; each derived transition changes 53 pixels. This confirms the GTK2 recipe follows the common design contract for horizontal held arrows, but it is a rule-derived comparison, not a direct observation of a held horizontal arrow in the Domain/OS VM. R344 remains the valid correction for the normal-cell corner counts: 3/225 left and 1/225 right, all outside the glyph.",
+  "limits": [
+    "Does not replace the direct horizontal held-state capture from the SR10.4 VM.",
+    "Does not provide human visual acceptance or live application reload proof.",
+    "No code, theme, profile, application, or VM was modified."
+  ],
+  "next": "Continue I167/GTK2. When the separately owned MAME instance is gone, capture the actual horizontal held state in the canonical VM; retain live-app and human review."
+}

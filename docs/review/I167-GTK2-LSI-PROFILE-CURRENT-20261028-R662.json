@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "R662",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only verification of the active GTK2 profile and installed DomainOS GTK2 theme tree",
+  "status": "selected_profile_active; installed_tree_matches_source_with_generated_kde_palette_include",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed_at": "2026-10-29T01:01:00Z",
+  "observations": {
+    "user_rc": {
+      "path": "/home/lsi/.gtkrc-2.0",
+      "selected_theme": "DomainOS-SR10-4-KDE-Reload"
+    },
+    "installed_theme": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+      "companion_service": "irix-theme-companions.service",
+      "companion_service_state": "active"
+    },
+    "repository_theme": {
+      "path": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7"
+    },
+    "comparison": "The only gtkrc difference is the generated BEGIN/END KDE GTK2 palette include pointing into this user's XDG data. A recursive comparison of the remaining GTK2 theme files reported no differences. This preserves dynamic KDE color roles; it is not a static-color substitution."
+  },
+  "limits": [
+    "This confirms the selected profile and installed bytes, not the rendered pixels of every already-running GTK2 application.",
+    "R654 recorded a broadcast to 177 windows, but did not correlate delivery or repaint to each application window.",
+    "No GTK2 process was restarted, no window was focused, and no theme or desktop setting was changed in this observation."
+  ],
+  "next": "Keep I167 on GTK2. Q505/Q515 are resolved without changing their user fields. The narrowly scoped instruction I517 waits for its own authorization checkbox before any pointer input; meanwhile keep other families untouched.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The profile and installed GTK2 tree are current, while per-window repaint and canonical historical held-arrow evidence remain open. This is not a visual-fidelity score."
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "metrics": [
+    {
+      "id": "scroll_h",
+      "index": 10,
+      "allocation": [
+        41,
+        57,
+        240,
+        15
+      ],
+      "requested_size": [
+        240,
+        15
+      ],
+      "native_request_before_custom_size": [
+        49,
+        15
+      ],
+      "slider_range": [
+        88,
+        130
+      ],
+      "sensitive": true,
+      "widget_name": "GtkHScrollbar",
+      "value": 35.0,
+      "scale_factor": 1,
+      "origin": "separate",
+      "coordinate_space": "gtk_logical_px",
+      "font_not_applicable": true
+    },
+    {
+      "id": "scroll_v",
+      "index": 11,
+      "allocation": [
+        311,
+        103,
+        15,
+        270
+      ],
+      "requested_size": [
+        15,
+        270
+      ],
+      "native_request_before_custom_size": [
+        15,
+        49
+      ],
+      "slider_range": [
+        98,
+        146
+      ],
+      "sensitive": true,
+      "widget_name": "GtkVScrollbar",
+      "value": 35.0,
+      "scale_factor": 1,
+      "origin": "separate",
+      "coordinate_space": "gtk_logical_px",
+      "font_not_applicable": true
+    }
+  ],
+  "embedded": false,
+  "gesture_results": {
+    "ctrl_drag_delta": [
+      36,
+      24
+    ],
+    "ctrl_preserves_native_adjustment": true,
+    "plain_click_delta": -1,
+    "grab_released": true,
+    "failed_commit_rolls_back_position_and_releases_grab": true,
+    "plain_click_works_after_failure": true
+  },
+  "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+  "ipc_events_emitted": false,
+  "native_toolkit": "GTK2",
+  "scene_scope": "Scrollbar foundation only",
+  "personal_display_input_sent": false
+}

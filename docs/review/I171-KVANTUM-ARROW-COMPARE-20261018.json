@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "item": "I171",
+  "date": "2026-10-18",
+  "scope": "1:1 semantic-pixel comparison of all four arrow cells in the existing real Qt6/Kvantum QScrollArea capture.",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "geometry_px": {
+      "bar": 15,
+      "arrow_cell": 15,
+      "glyph": 11,
+      "relief": 2
+    },
+    "vertical_capture": {
+      "path": "/home/lsi/irixium-kde-custom/docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+    },
+    "horizontal_capture": {
+      "path": "/home/lsi/irixium-kde-custom/docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    }
+  },
+  "runtime": {
+    "display": ":61",
+    "qt": "6.8.2",
+    "style": "Kvantum::Style",
+    "scheme": "DomainOS-SR10-4",
+    "capture": {
+      "path": "/home/lsi/tempia/board/i171-kvantum-current-20261014-r3/home/theme-lab-55a3885a1986/generated/revisions/20261014T223238-29a835cdc984/kvantum-snapshot/qtwidgets-proof/qtwidgets.png",
+      "sha256": "88cde7962a70faf2f21944b43dba53a013358eb60a98307364a8a22bb503281e"
+    },
+    "capture_dimensions_px": [
+      500,
+      490
+    ],
+    "source_receipt": "docs/review/I171-KVANTUM-RECIPE-20261014.json",
+    "palette_roles": {
+      "face": "#78a0d5",
+      "trough": "#6688b5",
+      "light": "#c4d5ed",
+      "shadow": "#3e536e"
+    }
+  },
+  "comparison": {
+    "normalization": "The prior nearest-role mapping compared silhouette/relief layout only. It discarded the distinction between active and disabled palette roles and must not be read as color equivalence.",
+    "directions": [
+      {
+        "direction": "up",
+        "reference_cell_px": [
+          15,
+          15
+        ],
+        "reference_box": [
+          560,
+          70,
+          575,
+          85
+        ],
+        "kvantum_box": [
+          476,
+          73,
+          491,
+          88
+        ],
+        "semantic_pixel_differences": 0,
+        "semantic_pixels_total": 225
+      },
+      {
+        "direction": "down",
+        "reference_cell_px": [
+          15,
+          15
+        ],
+        "reference_box": [
+          560,
+          310,
+          575,
+          325
+        ],
+        "kvantum_box": [
+          476,
+          427,
+          491,
+          442
+        ],
+        "semantic_pixel_differences": 0,
+        "semantic_pixels_total": 225
+      },
+      {
+        "direction": "left",
+        "reference_cell_px": [
+          15,
+          15
+        ],
+        "reference_box": [
+          2,
+          4,
+          17,
+          19
+        ],
+        "kvantum_box": [
+          9,
+          442,
+          24,
+          457
+        ],
+        "semantic_pixel_differences": 0,
+        "semantic_pixels_total": 225
+      },
+      {
+        "direction": "right",
+        "reference_cell_px": [
+          15,
+          15
+        ],
+        "reference_box": [
+          526,
+          4,
+          541,
+          19
+        ],
+        "kvantum_box": [
+          461,
+          442,
+          476,
+          457
+        ],
+        "semantic_pixel_differences": 0,
+        "semantic_pixels_total": 225
+      }
+    ],
+    "all_four_cells_match": "shape_and_relief_only_after_palette_normalization",
+    "contact_sheet": {
+      "path": "docs/review/images/I171-KVANTUM-ARROW-CELLS-20261018.png",
+      "sha256": "eec0c80d0985666acbe3deac32a45b6c486e487a6994b6dcb8a728f3457c377c"
+    },
+    "palette_pixels_ignored": true
+  },
+  "limits": [
+    "The saved screenshot does not record pointer position; no normal-versus-hover claim is made.",
+    "Pressed/released and disabled arrow states were not tested in this substep.",
+    "The only controlled historical pressed state remains the SR10.4 down-arrow capture; this receipt compares normal silhouette/relief layout only.",
+    "This Qt6/Kvantum QScrollArea capture does not establish behavior in every Qt application.",
+    "No product source or personal theme configuration changed."
+  ],
+  "conclusion": "The four arrow cells have matching shape/relief layout under the old palette-normalized comparison only. That comparison did not validate color continuity or range-boundary states. See the state-controlled I171 receipt, which supersedes it for color/state conclusions.",
+  "review_correction_2026_10_18": {
+    "superseded_by": "docs/review/I171-KVANTUM-BOUNDARY-STATE-20261018.json",
+    "correction": "Previous comparison collapsed colors into nearest semantic roles. It cannot support a claim that range-boundary arrows follow the parent scrollbar palette."
+  }
+}

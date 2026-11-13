@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "R371",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct the normal GTK2 vertical down-stepper top band and lower-left clipped corner from role-derived trough pixels, and register both vertical cells against the retained SR10.4 VUE capture",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "full_capture": "~/tempia/ia-tema/evidence/I167/r324-vm-start-20261026/filemanager-vertical.png",
+    "full_capture_sha256": "a688c0511ebb737ee6a2a0e5e3dd6dee79b7467be6c12d8f325ce4af765e2ba0",
+    "up_cell_xyxy": [13, 16, 28, 31],
+    "down_cell_xyxy": [13, 247, 28, 262],
+    "registration_note": "The R325 candidate down crop is the lower 15x15 stepper in the full 40x280 image. Comparing that crop directly with the GTK2 lower cell at y=526 gives an exact match after the generated edge correction; the earlier 11-pixel first-row difference was in the GTK2 art, not crop registration."
+  },
+  "implementation": {
+    "generator": "tools/gtk2_domainos_palette.py repair_active_vertical_stepper_edges",
+    "vertical_active_trough": "Independent 24x24 asset with a 2/2/4/4 border. The three upper-right pixels remain copied from the normal up-stepper. The clipped lower-left pixel at trough (1,21) is copied from down-stepper (1,14).",
+    "down_stepper_normal": "Pixels x=2..12 on row 0 use the center face from the KDE-rendered ACTIVE trough. This removes GTK2's extra inner bevel and exposes the same trough band seen at the top of the VUE down-arrow cell.",
+    "color_policy": "Every copied pixel comes from palette-rendered GTK2 assets; no product RGB constant was added.",
+    "orientation_rules": {
+      "horizontal_active": "scroll-trough-pressed-horizontal.png; border {4,4,2,2}",
+      "vertical_active": "scroll-trough-pressed-vertical.png; border {2,2,4,4}"
+    }
+  },
+  "generated_preview": {
+    "gtk": "GTK2 2.24.33, actual repository generator output loaded with Gtk.rc_parse in private Xvfb",
+    "bundle": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/bundles/11892bce8e9b0c796b644d79b2a69948349e545554ab952910014c4c43b67256",
+    "colors_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "vertical_capture": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/vertical-loaded.png",
+    "vertical_sha256": "8b2819244994ac9e5875e7172cf68b1da31c95e5721a5c966013538aad9d1473",
+    "horizontal_capture": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/horizontal-loaded.png",
+    "horizontal_sha256": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba",
+    "gtkrc_sha256": "ed0a5f8d5d27e672287a07b78fcaecd5ceb7d49e3eab72d4152fa983e1c0b8b5",
+    "vertical_trough_asset_sha256": "992e72b8b7dd8593e37832e361e8f0d0d8a262a907915c36b6e2d141683dbe46",
+    "down_stepper_asset_sha256": "3131718393bed432792456ecfcd8a692c5c633a0d5ee7c7e4d53839d7d288502"
+  },
+  "comparison": {
+    "vertical_widget_px": [15, 543],
+    "upper_cell_vs_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "lower_cell_vs_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "pixels_changed_from_R370": 12,
+    "changed_pixels": "eleven interior pixels on the first row of the lower cell and the lower-left clipped relief pixel; no other vertical pixels changed",
+    "horizontal_widget_px": [543, 15],
+    "horizontal_left_cell_vs_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "horizontal_right_cell_vs_vue": {"different_pixels": 0, "pixels_compared": 225}
+  },
+  "validation": {
+    "command": "PYTHONPATH=tests PYTHONPYCACHEPREFIX=/home/lsi/tempia/pycache-I167-r371 TMPDIR=/home/lsi/tempia python3 -m unittest -v test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "result": "7 tests passed",
+    "palette_refresh": "The test changes KDE roles and verifies both the down-stepper trough band and vertical relief sample follow the refreshed palette.",
+    "py_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "This proof covers normal up/down vertical and left/right horizontal cells in the current palette only.",
+    "Held, hover, disabled states, full live application comparison and human visual review remain open.",
+    "The user's theme profile and applications were not changed or restarted; no input was sent to any VM."
+  ],
+  "next": "Continue only GTK2/I167 with the held-down transition, verifying that the trough-derived top band remains unchanged while the 11x11 arrow relief reverses."
+}

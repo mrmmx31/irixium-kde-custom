@@ -1,0 +1,233 @@
+{
+  "at": "2026-10-12T02:24:45.882021+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "C controller GTK4 toggle Apply, independent selection, physical drag and project Undo/Redo; detached reopening still under validation",
+  "build_session": 70179,
+  "build_exit_code": 0,
+  "partial_native_session": 40222,
+  "partial_native_exit_code": 1,
+  "partial_failure": "At detached close: native checkbox click did not change persisted separate_preview; no completed reopening proof.",
+  "captures": [
+    {
+      "origin": "coupled",
+      "selected": false,
+      "size": [
+        180,
+        50
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 904,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-0.png"
+    },
+    {
+      "origin": "coupled",
+      "selected": true,
+      "size": [
+        180,
+        50
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 904,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-1.png"
+    },
+    {
+      "origin": "separate",
+      "selected": false,
+      "size": [
+        180,
+        50
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 904,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-2.png"
+    },
+    {
+      "origin": "separate",
+      "selected": true,
+      "size": [
+        180,
+        50
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 904,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-3.png"
+    },
+    {
+      "origin": "separate",
+      "selected": false,
+      "size": [
+        180,
+        50
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 904,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-4.png"
+    },
+    {
+      "origin": "coupled",
+      "selected": true,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-5.png"
+    },
+    {
+      "origin": "separate",
+      "selected": false,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-6.png"
+    },
+    {
+      "origin": "coupled",
+      "selected": true,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        52,
+        52
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-7.png"
+    },
+    {
+      "origin": "coupled",
+      "selected": true,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-8.png"
+    },
+    {
+      "origin": "separate",
+      "selected": false,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-9.png"
+    },
+    {
+      "origin": "coupled",
+      "selected": true,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        32,
+        32
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-10.png"
+    },
+    {
+      "origin": "separate",
+      "selected": false,
+      "size": [
+        280,
+        60
+      ],
+      "position": [
+        52,
+        52
+      ],
+      "edge_pixels": 1344,
+      "differences": 0,
+      "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-11.png"
+    }
+  ],
+  "edge_pixels": 13928,
+  "edge_differences": 0,
+  "earlier_negative_evidence": "9398 exit1 on import5s timeout during window replacement; scoped screenshot failure retries now observe the same controller.",
+  "active_validation_handle": 39174,
+  "handle_last_observed_live": true,
+  "remaining": [
+    "New bounded checkbox retry proof and detached reopening",
+    "Selected CSS fragment",
+    "Save/Load/restart and palette matrix",
+    "Native push regression and coordinated delivery"
+  ],
+  "estimated_toggle_unit_progress_percent": 60,
+  "percentage_basis": "Native controller Apply/history and selection pixels proved; reopening/remaining delivery gates not proved.",
+  "personal_instance_changed": false,
+  "historical_fidelity_claimed": false,
+  "sha256": {
+    "tools/theme-lab/tests/controller_gtk4_toggle.py": "a97e3c96973e1e0fa203eda3fb9f24918b6ce9845ee5812e44c6d96ca0492332",
+    "tools/theme-lab/tests/controller_spin_probe.c": "6d0a8b7507df6f85da33335b1c29237b9187fcbea33ba55f5393e3ebdc4ff8d8",
+    "tools/theme-lab/tests/test_controller_spin.py": "7035736609253026954ca0a24db2010edf9e808e691c93802b06fceb96ec96cc",
+    ".qa-t04-anchor-foundation/gtk4-toggle-controller-build.log": "7f9243eef4f1d24431b593b8af24e0199307eec4a306502b6ad668dabca12a24",
+    ".qa-theme-lab-spin-h39t1lho/gtk4-toggle-controller-pixels.json": "bb19ee929717b15ee6974650aaf89e36efde6dd86ef3fcc4253c0823abd0d197",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-0.png": "5ff08bd51a6113f54b010dc6c3c98ef7c2d1027feb90d7741c57d1149439dd98",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-1.png": "34d5e1016698fc7724dd616501f4b89ff56ec3fcd0610592fd924ef84f5e3546",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-2.png": "d28d076407b453a8f5ec27c9736cda2cf510bc1ed0965125b81a1fa17b03ce47",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-3.png": "c04cfff6042c3e11d962060cc3fb55c6bc7dc9a05e4b9c167f7338ad0323f0cf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-4.png": "d28d076407b453a8f5ec27c9736cda2cf510bc1ed0965125b81a1fa17b03ce47",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-5.png": "3ce4c529370bfaee871d474e1fbfb0f22ac939dfb0c4cbfddae160da9030c8a0",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-6.png": "dd5e119c1c7eaf632b235356b21f0d2d2a534ea81c2fcab9d5b06569c3e304bf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-7.png": "3de5fcbfb6df0e4d8d5c772864d9cf7982b9f1df5fa7ca490200082b82236637",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-8.png": "3ce4c529370bfaee871d474e1fbfb0f22ac939dfb0c4cbfddae160da9030c8a0",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-9.png": "dd5e119c1c7eaf632b235356b21f0d2d2a534ea81c2fcab9d5b06569c3e304bf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-coupled-10.png": "3ce4c529370bfaee871d474e1fbfb0f22ac939dfb0c4cbfddae160da9030c8a0",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-h39t1lho/toggle-separate-11.png": "fc116a4e0ffb27c9aef7ddb16c9d39ae68894cd406c81c5a4394f978e9f70032"
+  },
+  "superseded_handle_terminal": {
+    "session": 55788,
+    "exit_code": 1,
+    "cause": "Three native checkbox clicks did not change persisted option; full reopening still unproven."
+  },
+  "next_scope": "Visibility after Apply only, with root screenshots before each native checkbox click; no history repetition."
+}

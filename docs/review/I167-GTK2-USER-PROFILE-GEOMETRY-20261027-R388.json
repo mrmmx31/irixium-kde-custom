@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "R388",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the currently selected user GTK2 theme's scrollbar geometry and stepper asset files.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "user_gtkrc": "/home/lsi/.gtkrc-2.0 selects DomainOS-SR10-4-KDE",
+    "copies": ["/home/lsi/.themes/DomainOS-SR10-4-KDE", "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE"],
+    "gtk2_metrics": {"GtkRange::stepper-size": 15, "GtkRange::slider-width": 11, "GtkRange::trough-border": 2},
+    "normal_cells": {
+      "left": {"size_px": [15, 15], "sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99"},
+      "right": {"size_px": [15, 15], "sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"},
+      "up": {"size_px": [15, 15], "sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7"},
+      "down": {"size_px": [15, 15], "sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"}
+    },
+    "source_asset_hashes_match": true
+  },
+  "interpretation": "The on-disk user theme currently has the same 15x15 cells and 15/11/2 metrics as the repository source, unlike the older 16/12 installation measured in R315. This does not prove which bundle an already-running application loaded or what it rendered; runtime application comparison remains open.",
+  "changes": {"profile_written": false, "application_restarted": false, "theme_installed": false},
+  "next": "Compare a user GTK2 application only through an explicitly authorized preview/session; do not infer its in-memory theme from these files."
+}

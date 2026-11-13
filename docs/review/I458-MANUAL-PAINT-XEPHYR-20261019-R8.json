@@ -1,0 +1,34 @@
+{
+  "item": "I458",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T15:40:09Z",
+  "status": "technical-partial",
+  "scope": "Manual Paint invalid-project diagnostics; Motif pilot only.",
+  "authorization": "Fila Atual, section work; revision 1 acknowledged and authorized.",
+  "change": {
+    "model": "Invalid raster dimensions now report the one-based document number and the rejected dimensions. Loading remains transactional: the in-memory model is replaced only after every document validates.",
+    "view": "The Motif editor now opens a native error dialog with the model diagnostic instead of discarding it behind a generic open failure.",
+    "recovery_policy": "No automatic partial salvage was added. The malformed source remains untouched; safely recovering valid sibling layers still needs a separate explicit workflow that cannot silently checkpoint over the original."
+  },
+  "validation": {
+    "strict_model_test": "PASS: make -C tools/theme-lab check-manual-paint-model. Synthetic valid project plus a third 0×0 document reports Document 3; original fixture bytes remain identical; prior model remains available.",
+    "strict_theme_lab_build": "PASS: make -C tools/theme-lab -B build/theme-lab (C99, -Wall -Wextra -Werror).",
+    "actual_private_fixture": {
+      "path": "~/tempia/i458-resume-20261019/work/manual-paint.json",
+      "sha256_before_and_after": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431",
+      "diagnostic": "Documento 3 inválido (dimensões 0×0 fora do intervalo permitido); original preservado."
+    },
+    "gui_dialog_runtime": "Not opened in this revision; only strict build and model diagnostics were verified. Existing Xephyr :84 was not disturbed."
+  },
+  "preservation": {
+    "malformed_fixture_modified": false,
+    "theme_installed_or_reloaded": false,
+    "other_xephyr_sessions_touched": false
+  },
+  "remaining": [
+    "Exercise the new native Motif error dialog in an owned test session.",
+    "Define and implement a recovery/export path for valid sibling layers without overwriting the malformed source.",
+    "Manual visual approval of the clean editor remains pending."
+  ],
+  "next": "Keep I458 running and continue the next authorized item; preserve the original malformed fixture."
+}

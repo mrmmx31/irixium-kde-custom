@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R105",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "GtkEntry selection keyboard probe reached its safe limit",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "interface": "HP VUE 2.01",
+    "vm_process": 3759847,
+    "vm_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "callbacks_done": true,
+      "callback_errors": [],
+      "channel_pending": false
+    },
+    "capture_pointer_clear": "/home/lsi/tempia/i167-vue-entry-selection-pointer-clear-r103b.png",
+    "capture_current": "/home/lsi/tempia/i167-vue-after-close-find-r105.png",
+    "current_guest_state": "Find Files remains visible in the assistant clone. File Name displays a*a; no search was started."
+  },
+  "actions": [
+    {
+      "input": "Shift+Cursor Left with pointer crossing the field",
+      "result": "field text stayed *a; selection not visually clear"
+    },
+    {
+      "input": "Move pointer away, then Ctrl+A",
+      "result": "no selection highlight observed; text appeared unchanged"
+    },
+    {
+      "input": "Shift+Cursor Right",
+      "result": "field changed from *a to a*a; no search was started"
+    },
+    {
+      "input": "Escape",
+      "result": "dialog remained open"
+    }
+  ],
+  "verification": {
+    "historical_selection_visual_pair": "not proven",
+    "keyboard_test_safety": "stop further guest keyboard input until a verifiable method is established",
+    "read_only_input_mapping": {
+      "Cursor Left": "KEYCODE_LEFT",
+      "Cursor Right": "KEYCODE_RIGHT",
+      "Shift": "KEYCODE_RSHIFT",
+      "Ctrl": "KEYCODE_LCONTROL OR KEYCODE_RCONTROL",
+      "Escape": "KEYCODE_ESC",
+      "interpretation": "Default and current input sequences agree; this does not explain the unexpected filter edit."
+    },
+    "search_started": false,
+    "guest_files_changed": false,
+    "callback_cleanup": "all input fields released without error",
+    "main_vm_or_other_sessions_touched": false,
+    "xchat_or_installed_theme_changed": false,
+    "capture_note": "The initial R103 image was overwritten by a later post-cleanup snapshot; R103b preserves the moved-pointer frame."
+  },
+  "remaining": [
+    "Find a verified, non-destructive way to observe SR10.4 text selection without allowing keyboard probes to alter the filter.",
+    "Keep the uninstalled namespace patch and XChat untouched while historical selection evidence is unresolved."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "Implementation/evidence coverage of I167 only; not visual fidelity.",
+    "basis": "Dynamic palette integration and tests are verified; the native selection comparison and installed reload remain incomplete."
+  }
+}

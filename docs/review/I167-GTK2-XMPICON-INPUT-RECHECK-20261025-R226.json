@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-XMPICON-INPUT-RECHECK-20261025-R226",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "user_revision": 2,
+    "authorized": true,
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Apollo DN3500 / Domain/OS SR10.4 / HP VUE 2.01",
+    "mame_pid": 274368,
+    "mame_version": "0.276",
+    "screen_resolution": [1024, 844],
+    "profile_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "mouse_captured": false,
+      "mouse_option": false,
+      "mouse_device": "none",
+      "wait_button_up": false
+    },
+    "clean_icon_grid_reference": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-ready-r147.png",
+      "sha256": "4943ea650ee51e8e9725ca19a2476f35bb125a7b6d4a2f766c59050e9711a0d3",
+      "visible_state": "File Manager /node_12345; 28 files, 2 filtered; four-column XmpIcon grid; no selection or rubberband state"
+    },
+    "current_guest_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r225-xmpicon/sr104-current.png",
+      "sha256": "79eda50a48ebe591b7324718f9ca2f96efe04f6472e3badb6701a6b7e04f9cf5",
+      "visible_state": "Find Files dialog overlays most of the File Manager; its search fields remain at defaults and the Files Found list is empty"
+    }
+  },
+  "input_attempts": {
+    "escape": "One-frame guest ESC, automatically released; the Find Files dialog remained open.",
+    "alt_f4": "One-frame guest Alt+F4, automatically released; the dialog remained open.",
+    "host_mouse": "Authenticated MAME XID 0x1c00008 and PID 274368. A host XTest move/click at the visible Close button coordinates did not visibly change the guest UI, even with the existing hook temporarily rearmed.",
+    "result": "No new XmpIcon hover, keyboard-focus, selected, or rubberband state was captured. Do not repeat the R197/R198 host XTest or counter route without a new, independently supported input path."
+  },
+  "capture_cleanup": {
+    "existing_hook_version": 4,
+    "capture_temporarily_rearmed": true,
+    "capture_restored_to_initial_released_state": true,
+    "keyboard_and_mouse_buttons_released": true,
+    "guest_files_or_configuration_changed": false,
+    "theme_source_or_user_profile_changed": false,
+    "xchat_changed": false
+  },
+  "evidence_paths": {
+    "directory": "~/tempia/ia-tema/evidence/I167/r226-xmpicon/",
+    "final_released_capture": {
+      "path": "final-released.png",
+      "sha256": "f08f90b2a36dc425f84110835f75a18a5ef7ea5ec2b89e4ce93cdb72375f93ac"
+    },
+    "after_close_click_capture": {
+      "path": "after-close-click.png",
+      "sha256": "c84b84b4acb5c222223a383466d9e831ab6addca8ad9545c4747a6f6ee306181"
+    }
+  },
+  "evidence_incident": {
+    "path": "~/tempia/ia-tema/evidence/I167/r208-after-esc.png",
+    "incident": "The reused R208 script wrote over a pre-existing capture before the destination check had been treated as a stop condition. The original was not found elsewhere under ~/tempia and its prior hash was not recorded; it could not be recovered.",
+    "current_replacement_sha256": "00bc0b06e4264d919d34b18fb38ae03fc41ea2da6883239b7a542e4cffd3dc97"
+  },
+  "conclusion": "The live SR10.4 reference is available and visibly responsive, but the dialog obscures most of the XmpIcon grid. The bounded keyboard and XTest actions did not establish a new state pair. Existing R197/R198 already document the same ineffective host pointer path; do not repeat it. GTK2 selected/focus/hover/rubberband historical comparison remains open.",
+  "next": "Continue I167/GTK2 only through a distinct, evidence-based interaction route or another GTK2 state independently measurable against retained SR10.4 evidence. Do not apply the partial adapter to XChat. Preserve the VM profile and do not use another VM as a substitute.",
+  "status": "running",
+  "user_acceptance": "pending"
+}

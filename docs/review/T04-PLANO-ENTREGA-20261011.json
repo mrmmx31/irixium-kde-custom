@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-11T15:36:19.947272+00:00",
+  "phase": "approved_launching",
+  "item": "T04",
+  "revision": 2,
+  "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+  "source_pid": 1947021,
+  "source_starttime": 35312649,
+  "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-37d5b41b3a424f0dad5ae750b465a4d3/MANIFESTO.json",
+  "source_manifest_sha256": "cf7cb75bfbba07e0a1bfcac7dc2c8d9e7e368d5d5a9186154541536e13061dca",
+  "delivery": "New private instance in verified existing Xephyr61; origin stays open. Snapshot four files via launcher, no generated outputs.",
+  "scope": [
+    "T02 catalog",
+    "T04 GTK2 progress",
+    "T07 hints/help",
+    "T08 projects/export/resume",
+    "T09 execution/recovery",
+    "T04 saved separate-preview choice (same authorized criterion; native Save/Load/restart proved)"
+  ],
+  "coordination": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "e27191b5f59a408aeaadecf270f037c1186e666bd7f843a5cf7dd8f63040b607",
+      "item_id": "T04",
+      "user_revision": 2,
+      "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+      "application": "Laboratório — catálogo, recuperação e progresso GTK2; Xephyr :61 (origem PID1947021)",
+      "reason": "Candidato testado T02/T04/T07/T08/T09: catálogo/Enter, progresso GTK2, dicas/Ajuda, projetos/exportação e recuperação. Nova instância no Xephyr :61 copia projeto salvo, cena, rascunhos e Undo/Redo; mantém origem PID1947021 aberta. Salve ajustes e pause a edição antes de liberar. Texto sem checkpoint não é importado. Não altera o tema pessoal; adaptadores continuam parciais.",
+      "requested_at": "2026-10-11T15:36:19.863Z"
+    },
+    "answer": {
+      "approved": true,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "request_id": "e27191b5f59a408aeaadecf270f037c1186e666bd7f843a5cf7dd8f63040b607",
+      "responded_at": "2026-10-11T15:38:20.606Z"
+    },
+    "available": true,
+    "permitted": true,
+    "scope_current": true
+  },
+  "reason_replaced": "Tested candidate now contains T04 GTK2 progress; scope changed, not renewed because of delay.",
+  "remaining": [
+    "Current exact theme permission",
+    "Launch and inspect frozen fixture and four saved files"
+  ],
+  "limits": [
+    "No unsaved text promise",
+    "No installation/theme/profile/VM changes"
+  ],
+  "sha256": {
+    "plasma/tools/abrir-laboratorio-temas.py": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d",
+    "tools/theme-lab/build/theme-lab": "da3e0c55d88bf300cd6f6745280bb407c502f8715974dee1088825b96b90b194",
+    "tools/theme-lab/src/view/control_catalog.c": "4eeff588182227cea05e59e1b2c932107f68a125bf61acb71fe20e78628c5d52",
+    "tools/theme-lab/gtk2_progress.py": "d071397402432a2a24c3aab06cda2161c30683b67ff7f29234e3a66cedc12a59"
+  },
+  "handoff_checked_at": "2026-10-11T15:53:59.583112+00:00"
+}

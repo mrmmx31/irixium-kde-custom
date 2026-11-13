@@ -1,0 +1,89 @@
+{
+  "item": "P10",
+  "family": "V10",
+  "date": "2026-10-14",
+  "status": "partial_decoration_revalidated_other_families_open",
+  "reference": {
+    "system": "Domain/OS SR10.4, HP VUE 2.01",
+    "path": "/home/lsi/Downloads/irixium/Domain_OS SR10.4 - 01 VUE desktop.png",
+    "sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b",
+    "source": "decorations/domainos/ORIGEM.json"
+  },
+  "component": {
+    "package": "decorations/domainos",
+    "version": "0.1.1",
+    "manifest_sha256": "27faed7fdffc9cf7fbda04dc4a72bc4135b47ae69ec464e45a280a25485402fa",
+    "source_hashes": {
+      "package/contents/ui/main.qml": "992293de88dbfaeea0357ce0c0ee4a3a1865b7f28060b1bbe4ac8505c883dd26",
+      "package/contents/ui/Surface.qml": "46997d5b4e8a6723a58c8df8e72e0ceee08d58b2bc85ab9462983e9e930946b7",
+      "package/contents/ui/Frame.qml": "623132cae69686b4b3d83e47ee2513cd95d4e95c758754abc774bbe9a0828717",
+      "package/contents/ui/Relief.qml": "ce3859db920964dd57c77abad8066ae38ed171b9c2cb154b1c2efc6098555294",
+      "package/contents/ui/Palette.js": "789a4a4de143e2b6a64db0567fc8eab4ba2e316b018023ed3b409a00692b1afb"
+    },
+    "dynamic_color_path": "Aurorae uses DecorationOptions.titleBarColor; Surface.qml derives the historical light/shadow relationship with Palette.tone. DomainOS reference colors are retained as measured baselines for that transform."
+  },
+  "verification": {
+    "qt_surface_input_render": {
+      "command": "python3 decorations/domainos/tests/test_input_render.py --saida /tmp/domainos-v10-decoration-current-input-20261014 --referencia '/home/lsi/Downloads/irixium/Domain_OS SR10.4 - 01 VUE desktop.png'",
+      "report": "/tmp/domainos-v10-decoration-current-input-20261014/RESULTADO.json",
+      "status": "passed",
+      "checks_passed": 85,
+      "reference_pixel_report": "/tmp/domainos-v10-decoration-current-input-20261014/REFERENCE-PIXELS.json",
+      "reference_regions": 12,
+      "different_pixels": 0,
+      "coverage": "active/inactive border and button crops; title press/release, controls and native input event behavior"
+    },
+    "private_kwin_native_actions": {
+      "command": "python3 decorations/domainos/tests/test_native_actions.py --saida /tmp/domainos-v10-decoration-current-native-20261014",
+      "report": "/tmp/domainos-v10-decoration-current-native-20261014/RESULTADO.json",
+      "status": "passed",
+      "checks_passed": 39,
+      "coverage": "thick resizable frame, thin fixed dialog, title relief held/released, move/resize, menu and native actions",
+      "private_screenshots": [
+        "/tmp/domainos-v10-decoration-current-native-20261014/native-active-inactive.png",
+        "/tmp/domainos-v10-decoration-current-native-20261014/native-title-held.png",
+        "/tmp/domainos-v10-decoration-current-native-20261014/native-title-released.png"
+      ]
+    },
+    "native_kdecoration_preview": {
+      "command": "python3 decorations/tools/preview_domainos.py --saida /tmp/domainos-v10-decoration-current-preview-20261014 --referencia '/home/lsi/Downloads/irixium/Domain_OS SR10.4 - 01 VUE desktop.png'",
+      "report": "/tmp/domainos-v10-decoration-current-preview-20261014/RESULTADO.json",
+      "status": "passed",
+      "checks_passed": 9,
+      "warnings_in_report": [],
+      "comparison_png": "/tmp/domainos-v10-decoration-current-preview-20261014/reference-native-comparison.png",
+      "comparison_sha256": "bd086113820b47a6429f7e68001bc0b06d1cd557bcbfcde6e00a26275c9f3322",
+      "console_note": "Qt printed QSettings empty-key and KDecoration module-identifier diagnostics; the structured report recorded zero QML warnings and all checks passed."
+    },
+    "integrated_panel_palette_matrix": {
+      "status": "passed_for_V09_panel_scope_only",
+      "receipt": "docs/VALIDACAO-V09-PALETAS-20261014.json",
+      "schemes": [
+        "DomainOS-SR10-4",
+        "BreezeClassic",
+        "BreezeDark",
+        "Yellow-QA-Fixture (private XDG)"
+      ],
+      "capture_dimensions_px": [
+        971,
+        109
+      ],
+      "scale": "1:1",
+      "result": "Integrated Plasma/KWin panel responded to all three test schemes and private XDG was restored to DomainOS-SR10-4. This is not cross-family coverage."
+    }
+  },
+  "limits": [
+    "Only the window decoration component was revalidated for V10; menus, panels and toolkits were not collectively captured in this run.",
+    "V02-V09 remain partial or blocked, including the Qt Quick painter path and panel consumer evidence.",
+    "A panel-only matrix in isolated Xephyr now covers DomainOS, neutral, dark and yellow; the integrated suite across current consumers remains incomplete.",
+    "Maximized layout is a KDE adaptation and is not visible in the reference image.",
+    "Technical comparison is not user visual acceptance."
+  ],
+  "changes": {
+    "source_changed": false,
+    "personal_desktop_configuration_changed": false,
+    "VM_input_sent": false,
+    "other_AI_T04_touched": false
+  },
+  "next": "Continue unresolved families in the authorized order; Q355 controls Pager composition. After remaining current consumers and states have evidence, run the full joint palette/state comparison. Keep manual review separate."
+}

@@ -7,6 +7,7 @@ replacement for the complete license.
 
 Source: <https://github.com/jujum4n/sgi-enhanced>
 
-The cursor payload is preserved unchanged. Confirm the exact GPL version with
+Original source binaries are preserved under `../sources/sgi-enhanced`.
+The installed payload includes local aliases, sizes and compatibility artwork. Confirm the exact GPL version with
 the upstream maintainer before redistributing it as a separately licensed
 package.

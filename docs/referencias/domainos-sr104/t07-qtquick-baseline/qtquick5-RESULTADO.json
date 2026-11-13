@@ -1,0 +1,200 @@
+{
+  "scope": "Owned bwrap/Xephyr preview only; native KDE QtQuick controls",
+  "guards": {
+    "verified": true,
+    "uid": 1000,
+    "passwdName": "domainos-test",
+    "passwdHome": "/home/domainos-test",
+    "namespaceMarker": "/etc/domainos-preview",
+    "personalHomeExposed": false,
+    "systemBusSocketExposed": false,
+    "procStatusPresent": true,
+    "cwd": "/home/domainos-test"
+  },
+  "qtMajor": 5,
+  "qtVersion": "5.15.15",
+  "qtRuntimeVersion": "5.15.15",
+  "pyqtVersion": "5.15.11",
+  "qmlSource": "/home/domainos-test/qtquick5-proof/gallery.qml",
+  "dataSource": "/home/domainos-test/qtquick5-proof/artificial-scroll-text.txt",
+  "actions": [
+    {
+      "action": "button",
+      "detail": "clicked"
+    },
+    {
+      "action": "menu",
+      "detail": "activated"
+    }
+  ],
+  "qmlWarnings": [
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\""
+  ],
+  "customDrawing": false,
+  "paletteOverride": false,
+  "fontOverride": false,
+  "platform": "xcb",
+  "platformTheme": null,
+  "quickStyle": {
+    "requested": "org.kde.desktop",
+    "name": null,
+    "nameApiAvailable": false,
+    "kdeDesktopQmlObserved": true
+  },
+  "loadedQmlContexts": [
+    "file:///home/domainos-test/qtquick5-proof/gallery.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/ApplicationWindow.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Button.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/CheckBox.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/ComboBox.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Frame.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/GroupBox.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Label.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/MenuBar.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/MenuBarItem.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/MenuItem.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/MenuSeparator.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/ProgressBar.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/RadioButton.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/ScrollBar.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/ScrollView.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Slider.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/SpinBox.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Switch.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/SwitchIndicator.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/TabBar.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/TabButton.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/TextArea.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/TextField.qml",
+    "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/private/MobileCursor.qml"
+  ],
+  "nativeHints": [],
+  "widgetStyle": {
+    "objectName": "fusion",
+    "className": "QFusionStyle"
+  },
+  "font": "Sans Serif,9,-1,5,50,0,0,0,0,0",
+  "nativeControlFont": "Sans Serif;9",
+  "selections": {
+    "kdeglobals": {
+      "KDE": {
+        "widgetStyle": null,
+        "LookAndFeelPackage": "org.magpie.irixclassic.domainos.desktop"
+      },
+      "General": {
+        "ColorScheme": "DomainOS-SR10.4",
+        "font": null
+      },
+      "Icons": {
+        "Theme": null
+      }
+    },
+    "Kvantum/kvantum.kvconfig": {
+      "General": {
+        "theme": null
+      }
+    },
+    "plasmarc": {
+      "Theme": {
+        "name": null
+      }
+    },
+    "kcminputrc": {
+      "Mouse": {
+        "cursorTheme": null,
+        "cursorSize": null
+      }
+    }
+  },
+  "palette": {
+    "active": {
+      "Window": "#efefef",
+      "WindowText": "#000000",
+      "Base": "#ffffff",
+      "Text": "#000000",
+      "Button": "#efefef",
+      "ButtonText": "#000000",
+      "Highlight": "#308cc6",
+      "HighlightedText": "#ffffff"
+    },
+    "inactive": {
+      "Window": "#efefef",
+      "WindowText": "#000000",
+      "Base": "#ffffff",
+      "Text": "#000000",
+      "Button": "#efefef",
+      "ButtonText": "#000000",
+      "Highlight": "#308cc6",
+      "HighlightedText": "#ffffff"
+    },
+    "disabled": {
+      "Window": "#efefef",
+      "WindowText": "#bebebe",
+      "Base": "#efefef",
+      "Text": "#bebebe",
+      "Button": "#efefef",
+      "ButtonText": "#bebebe",
+      "Highlight": "#919191",
+      "HighlightedText": "#ffffff"
+    }
+  },
+  "nativeControlPalettes": {
+    "normalButton": {
+      "button": "#efefef",
+      "buttonText": "#000000",
+      "window": "#efefef",
+      "highlight": "#308cc6"
+    },
+    "disabledButton": {
+      "button": "#efefef",
+      "buttonText": "#bebebe",
+      "window": "#efefef",
+      "highlight": "#919191"
+    }
+  },
+  "window": {
+    "objectName": "privateQtQuick5Window",
+    "width": 660,
+    "height": 560,
+    "x": 0,
+    "y": 0
+  },
+  "apiLimits": [
+    "QtQuick ScrollBar has no native Motif arrow buttons.",
+    "TableView uses native ItemDelegate cells, not historical TreeView geometry."
+  ],
+  "screenshotSaved": true,
+  "screenshot": "/home/domainos-test/qtquick5-proof/qtquick5.png"
+}

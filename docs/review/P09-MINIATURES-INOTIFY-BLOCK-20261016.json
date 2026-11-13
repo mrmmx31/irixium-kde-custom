@@ -1,0 +1,49 @@
+{
+  "checked_at_utc": "2026-10-16T22:32:22Z",
+  "stage": "P09 isolated X11 thumbnail test, private Xephyr/KWin",
+  "request_revision": 1,
+  "status": "blocked_environment_inotify_quota",
+  "host_resources": {
+    "inotify_max_user_instances": 384,
+    "visible_uid_inotify_file_descriptors": 405,
+    "visible_uid_processes_holding_inotify_descriptors": 344,
+    "fd_count_caveat": "Descriptor count is not a distinct instance count; duplicated descriptors may refer to one instance.",
+    "direct_probe": {
+      "call": "inotify_init1(O_CLOEXEC|O_NONBLOCK)",
+      "result": "failed",
+      "errno": 24,
+      "symbol": "EMFILE",
+      "message": "Too many open files"
+    },
+    "user_fd_soft_hard_limit": "524288 / 524288",
+    "interpretation": "EMFILE with a high per-process descriptor limit is consistent with max_user_instances being exhausted; the descriptor scan alone does not prove a unique-instance count.",
+    "tmp_filesystem": "100% full; all test outputs and TMPDIR were kept under ~/tempia",
+    "diagnostic": "private D-Bus log reports Cannot initialize inotify: Too many open files"
+  },
+  "interpretation": [
+    "Two owned X11 windows and two real provider objects loaded, but availableCount remained 0; no thumbnail pixels were produced.",
+    "The isolated KWin worker failed to initialize its private D-Bus inotify watcher. A direct inotify_init1 probe also returned EMFILE with a 524288 descriptor limit; this is consistent with the per-UID inotify instance limit of 384 being exhausted. The visible 405 entries are descriptors, not a distinct-instance count.",
+    "No user process was terminated, no sysctl or personal profile was changed, and the existing Xephyr sessions were preserved.",
+    "This is an inconclusive environment failure, not a product pass or a confirmed product defect. Defer P09 thumbnail capture until inotify capacity is naturally available or a separately authorized isolated approach avoids creating watchers."
+  ],
+  "evidence": {
+    "result": "~/tempia/p09-thumbnail-xephyr-20261016/RESULTADO.json",
+    "runner_log": "~/tempia/p09-thumbnail-xephyr-20261016/RUNNER.log",
+    "runner_log_sha256": "4ef50c247df54a264aeb439039e4c9dc9452a3af03154eae240989e594957b8e",
+    "fallback_capture": "~/tempia/p09-thumbnail-xephyr-20261016/NATIVE-THUMBNAILS-UNAVAILABLE.png",
+    "fallback_sha256": "1d991cadde3c875e16d260786484ec2677f4ad23ab28d5bf7797e490a94ddac0"
+  },
+  "test_facts": {
+    "backend": "x11",
+    "private_compositor_ready": true,
+    "private_compositing_active": true,
+    "native_scenario_completed": null,
+    "provider_count": 2,
+    "loaded_provider_count": 2,
+    "available_count": 0,
+    "private_worker_exited_cleanly": false,
+    "qml_runtime_errors": 0,
+    "production_sources_unchanged": true,
+    "real_user_preferences_unchanged": true
+  }
+}

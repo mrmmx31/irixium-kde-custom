@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-11T11:35:13.606979+00:00",
+  "item": "T07",
+  "status": "partial",
+  "result": {
+    "status": "passed",
+    "native_gallery": {
+      "status": "opened",
+      "toolkit": "GTK4 C ABI",
+      "version": "4.18.6",
+      "pid": 2297784,
+      "theme": "Default",
+      "font": "Sans 10",
+      "custom_css": false,
+      "display": ":249",
+      "hintCoverage": {
+        "controls": 53,
+        "utf8_resources_verified": true,
+        "internal": {
+          "scrollbars": 12,
+          "menu_rows": 15
+        },
+        "limits": "Current native child tree; later-created controls and hover not verified"
+      },
+      "hover": {
+        "status": "passed",
+        "control": [
+          15,
+          110,
+          144,
+          34
+        ],
+        "tooltip": [
+          0,
+          148,
+          396,
+          51
+        ],
+        "stable_ms": 400,
+        "delay_checked_ms": 200,
+        "closed_after_leave": true,
+        "native_clicks": 1,
+        "scope": "one real GTK4 production push, default native style"
+      }
+    },
+    "scope": "real GTK4 logical controls and current scrollbar/menu-row tooltip resources; no hover/paint/later-creation proof"
+  },
+  "scope": "One native GTK4 production push, Default palette; 53 native resource getters retained",
+  "harness_corrections": [
+    "GTK4 tooltip is a CSS tooltip node under native tree, not standalone GtkTooltipWindow in toplevel list",
+    "Bounded X subprocesses; focus only owned private window"
+  ],
+  "failures_preserved": true,
+  "remaining": [
+    "Other GTK4 controls/layouts/menus and late-created widgets",
+    "Plasma gallery",
+    "Coordinated personal handoff"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "source_hashes": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "1c79a7b49548a4a4b213d2e471550629caa05d8249939d8ffe07a88dd4e58be2",
+    "tools/theme-lab/tests/gtk4_hover_worker.py": "1178c1fb03c27cc352b9f86e91c99190e08131795b257da692ed4fdafdb78dca",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "8b0a8a54bda121c386eae21ffc9fedca83897617e7f0b781480d827151b9185d"
+  },
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

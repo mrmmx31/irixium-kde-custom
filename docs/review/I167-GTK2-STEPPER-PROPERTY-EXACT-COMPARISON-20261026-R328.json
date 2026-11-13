@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "R328",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "exact-widget-pairing-complete; trough-under-steppers-false-rejected-as-fix",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Compare installed GTK2 and a one-property GTK2 candidate to the exact SR10.4 horizontal scrollbar cells at 1:1; do not install changes."
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4, HP VUE 2.01, Trash Can horizontal scrollbar",
+    "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "dimensions_px": [542, 20],
+    "reference_strip": {"crop": [0, 4, 542, 19], "dimensions_px": [542, 15]},
+    "cells": {
+      "left": {"crop": [2, 4, 17, 19], "size_px": [15, 15]},
+      "right": {"crop": [527, 4, 542, 19], "size_px": [15, 15]}
+    }
+  },
+  "method": {
+    "runtime": "GTK 2.24.33; actual GtkHScrollbar in the project's owned Xephyr :187.",
+    "scale": "1:1; no image resizing or interpolation.",
+    "installed": "Current installed GTK2 wrapper and generated palette include.",
+    "candidate": "Temporary copy of the installed wrapper and generated palette; only GtkRange::trough-under-steppers = 0 was added inside the existing palette style. Theme assets and KDE-derived role data were copied unchanged.",
+    "effective_metrics_both": {"slider_width": 11, "stepper_size": 15, "trough_border": 2},
+    "reference_row_registration": {
+      "installed": {"screen_origin": [18, 58], "exact_source_strip_pixel_differences": 0},
+      "candidate": {"screen_origin": [418, 278], "exact_source_strip_pixel_differences": 0}
+    },
+    "gtk_widget_registration": {
+      "installed": {"screen_origin": [18, 101], "size_px": [542, 15]},
+      "candidate": {"screen_origin": [418, 321], "size_px": [542, 15], "window_local_allocation": [18, 101, 542, 15]}
+    },
+    "source_files": {
+      "installed_wrapper": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "installed_palette_include": "/home/lsi/.local/share/irixium/gtk2-palette/c33f7a5a1b14e5edc7a882a8194a3a8d2b955c59652b4d9fd1dfef655d05afa1/gtkrc",
+      "temporary_candidate_wrapper": "~/tempia/ia-tema/evidence/I167/gtk2-preserved-pixmap-property-r328/candidate-theme/gtk-2.0/gtkrc",
+      "candidate_palette_diff": "The copied generated palette adds exactly one GtkRange property declaration; its GTK engine and assets are preserved.",
+      "GTK2_runtime_probe": "tools/theme-lab/tests/probe_gtk2_runtime.py"
+    }
+  },
+  "results": {
+    "normal_state_registered_cell_pixel_differences": {
+      "installed": {"left": {"different": 85, "total": 225}, "right": {"different": 121, "total": 225}},
+      "candidate_false": {"left": {"different": 192, "total": 225}, "right": {"different": 174, "total": 225}}
+    },
+    "best_local_15x15_registration_within_delta_x_minus4_to_plus8_y_minus4_to_plus4": {
+      "installed": {"left": {"different": 85, "offset_px": [0, 0]}, "right": {"different": 95, "offset_px": [-1, 0]}},
+      "candidate_false": {"left": {"different": 138, "offset_px": [-2, -1]}, "right": {"different": 132, "offset_px": [1, 1]}}
+    },
+    "interpretation": "The property changes the actual cell drawing and shifts the best local match, but the candidate is less similar to the SR10.4 reference for both directions even when locally re-registered. This rejects this property as the fix; it does not prove why the installed render differs from the reference or establish overall GTK2 fidelity.",
+    "capture": "~/tempia/ia-tema/evidence/I167/gtk2-preserved-pixmap-property-r328/xephyr-candidate-preserved-pixmap-r328.png",
+    "capture_sha256": "cd23324f933fe14438c478cc3791d3b93044d5c87530bf62b57af400af95c0e4",
+    "runtime_probes": {
+      "installed": "~/tempia/ia-tema/evidence/I167/gtk2-preserved-pixmap-property-r328/installed-baseline.json",
+      "candidate": "~/tempia/ia-tema/evidence/I167/gtk2-preserved-pixmap-property-r328/candidate-preserved-pixmap.json"
+    }
+  },
+  "safety": {
+    "installed_theme_or_palette_changed": false,
+    "repository_theme_source_changed": false,
+    "xchat_restarted_or_signaled": false,
+    "VM_input_or_disk_changed": false,
+    "other_agent_Xvfb_or_Xephyr_touched": false,
+    "owned_Xephyr_display": ":187",
+    "owned_candidate_window_title": "PARA LSI - GTK2 DomainOS | I167 candidata false",
+    "candidate_is_temporary_only": true
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Completes an exact 1:1 comparison of installed and one-property candidate horizontal arrow cells to the exact SR10.4 source. Renderer cause, pressed historical pairings, other GTK2 states, and user review remain pending.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Keep GTK2 active. Inspect the effective GTK2 pixmap stepper and overlay drawing geometry to locate the remaining render mismatch; test one source-supported variable at a time and leave the product unchanged until the exact VUE comparison improves."
+}

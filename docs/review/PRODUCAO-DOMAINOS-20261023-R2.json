@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-23",
+  "scope": "Read-only confirmation of the currently running lsi profile after the user's request to use ready DomainOS work in production.",
+  "request": "Use completed panel and application theme changes in the open lsi session and test them in production.",
+  "checks": {
+    "suite": {
+      "command": "TMPDIR=/home/lsi/tempia python3 tools/install_suite.py --verificar",
+      "exit_code": 0,
+      "result": "52 installed suite components match the local suite; no files changed.",
+      "pending_generated_gtk2_resources": 13,
+      "native_module": "build_required reported by the read-only checker"
+    },
+    "theme_selector": {
+      "command": "TMPDIR=/home/lsi/tempia bash aplicar-tema.sh domainos --verificar",
+      "exit_code": 1,
+      "result": "Selector refused altered/incomplete/extra theme files and preserved them; no files changed.",
+      "pending_generated_gtk4_resources": 13
+    },
+    "active_profile": {
+      "look_and_feel": "org.magpie.irixclassic.domainos.desktop",
+      "color_scheme": "DomainOS-SR10-4",
+      "plasma_style": "IrixClassicDomainOS",
+      "decoration": "domainos_sr104",
+      "widget_style": "kvantum",
+      "kvantum": "DomainOS-SR10-4",
+      "gtk2": "DomainOS-SR10-4-KDE",
+      "gtk3": "DomainOS-SR10-4-KDE",
+      "gtk4": "DomainOS-SR10-4-KDE",
+      "style_bridge": "active",
+      "theme_companions": "active"
+    },
+    "panel": {
+      "configured_applet": "org.irixclassic.domainos.panel",
+      "source_qml_sha256": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+      "installed_qml_sha256": "ffedb8060a8549cde478a59707d90bfe0fc29dbd27152b70dc88fe7b5d84b0ac",
+      "match": true
+    },
+    "gtk2_r55": "Not deployed to the open session; its live KDE/XSettings notification route is not proven and board item I484 is unauthorised."
+  },
+  "decision": "The ready panel and theme suite are already selected and their installed package components match the checkout, so no duplicate write or Plasma restart was needed. Do not run the whole-suite writer or deploy R55: GTK2 palette resources remain pending, the theme selector refuses its current file state, and I484 awaits its own authorization. Current production is available for the user's visual testing.",
+  "limits": [
+    "This readback proves active configuration and package correspondence, not fresh human visual acceptance.",
+    "No user application, XChat, Plasma process, theme resource, or setting was changed."
+  ],
+  "progress_estimate": "I167 remains approximately 93% technical coverage; this is not a visual fidelity score or approval."
+}

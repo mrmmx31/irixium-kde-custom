@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "id": "R438",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify that the GTK2 scrollbar arrow recipe follows the dark Breeze KDE color scheme through a real isolated GTK2 2.24.33 preview, including normal, held and released rendering for each direction.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "scheme": "BreezeDark",
+    "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+    "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+    "isolated_test": "tools/theme-lab/tests/test_gtk2_public_native.py via a focused runner in ~/tempia; private Xvfb and bwrap/user/network namespace; generated GTK2 RC/assets; no personal home or system bus exposed",
+    "guards_real": true,
+    "native_events": 14,
+    "normal_close": true,
+    "generated_recipe_applied_to_user": false
+  },
+  "comparison": {
+    "path": "~/tempia/ia-tema/evidence/I167/r438-gtk2-breezedark-20261027/pixel-comparison.json",
+    "sha256": "33a22ced58e004a4dfd9921cc07b8a08d31901b3b42c0c42644a83fcdf4f5a20",
+    "directions": [
+      {
+        "control_id": "scroll_h",
+        "direction": "left",
+        "roi": [
+          16,
+          16,
+          31,
+          31
+        ],
+        "pixels": 225,
+        "held_differences": 53,
+        "release_differences": 0,
+        "held_capture_ms": 35,
+        "release_capture_ms": 0
+      },
+      {
+        "control_id": "scroll_h",
+        "direction": "right",
+        "roi": [
+          221,
+          16,
+          236,
+          31
+        ],
+        "pixels": 225,
+        "held_differences": 53,
+        "release_differences": 0,
+        "held_capture_ms": 65,
+        "release_capture_ms": 0
+      },
+      {
+        "control_id": "scroll_v",
+        "direction": "up",
+        "roi": [
+          260,
+          16,
+          275,
+          31
+        ],
+        "pixels": 225,
+        "held_differences": 53,
+        "release_differences": 0,
+        "held_capture_ms": 38,
+        "release_capture_ms": 0
+      },
+      {
+        "control_id": "scroll_v",
+        "direction": "down",
+        "roi": [
+          260,
+          181,
+          275,
+          196
+        ],
+        "pixels": 225,
+        "held_differences": 53,
+        "release_differences": 0,
+        "held_capture_ms": 68,
+        "release_capture_ms": 0
+      }
+    ],
+    "assertion": "For all four 15×15 direction cells, hover and released GTK2 pixels equal the generated normal asset (0/225 RGB differences), held pixels equal the generated pressed asset (0/225), held changes 53 pixels, release restores 0 differences."
+  },
+  "result": {
+    "status": "passed for isolated BreezeDark GTK2 rendering",
+    "gtk2_recipe_changed": false,
+    "user_profile_changed": false,
+    "user_apps_restarted": false,
+    "mame_input_sent": false,
+    "historical_VUE_fidelity_proven": false
+  },
+  "limits": [
+    "This verifies the generated GTK2 recipe in one isolated GTK2 runtime and a dark KDE scheme. It does not prove live desktop-wide scheme switching, installed XChat in-memory styling, or historical VUE held-arrow fidelity.",
+    "Horizontal held appearance in the SR10.4 VM remains unverified; current local MAME guard sees a second separately owned MAME instance and blocks graphical input."
+  ],
+  "next": "Resume the authorized GTK2 horizontal held-state comparison on the canonical SR10.4 clone when the other MAME instance is no longer active; do not alter that VM."
+}

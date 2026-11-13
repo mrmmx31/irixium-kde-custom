@@ -1,0 +1,79 @@
+{
+  "item": "P10",
+  "revision": "R33",
+  "checked_at_utc": "2026-10-18T16:32:07Z",
+  "instance": "assistant-clone-20261018",
+  "change": "Changed only the assistant clone network-namespace alias and FTP/Telnet relays from 10.104.246.10 to 10.104.246.11.",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_namespace": "net:[4026533751]",
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "endpoint": {
+    "address": "10.104.246.11",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2 (private to clone namespace)",
+    "client_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh"
+  },
+  "uniqueness": {
+    "host_interface_collision": false,
+    "candidate_found_on_other_accessible_active_mame_interfaces": false,
+    "original_vm_pid": 497923,
+    "original_vm_network_namespace_matches_host_checked": true,
+    "assistant_clone_owns_alias": true,
+    "checked_other_mame_pids": [
+      800468,
+      897534,
+      912338,
+      986722,
+      2038627
+    ]
+  },
+  "retired_endpoint": {
+    "address": "10.104.246.10",
+    "alias_absent_from_clone": true,
+    "listeners_absent": true,
+    "former_listener_processes_stopped": [
+      1955910,
+      1955911,
+      1955909
+    ]
+  },
+  "validation": {
+    "ftp": {
+      "banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+      "login": "230 User root logged in.",
+      "transfer_mode": "active",
+      "source_binding": "192.168.240.1",
+      "root_listing_entries": 27,
+      "result": "passed after migration and after retiring old alias"
+    },
+    "telnet": {
+      "listener": "10.104.246.11:23 listening",
+      "initial_negotiation_hex": "fffd18 (observed once after migration)",
+      "later_probe": "TCP connected but banner read timed out; direct guest backend 192.168.240.2:23 also timed out in same probe",
+      "prior_guest_shell_evidence": "R31 reached user shell through previous alias; current service response remains intermittent"
+    }
+  },
+  "lifecycle": {
+    "supervisor": "~/tempia/domainos-assistant-vm-20261018/sessao/start-endpoint-r33.sh",
+    "behavior": "stops clone-only relays and removes 10.104.246.11/32 after exact MAME PID exits"
+  },
+  "preservation": {
+    "guest_network_configuration_changed": false,
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "approved_archive_sha256": "fa79d20bf59c8dc28d7a9893186085411dca29c0650ea7dbea4739c0ea54206c",
+    "mame_restarted_or_tuned": false,
+    "profile_preserved": true,
+    "clone_disk_directly_edited": false,
+    "clone_disk_hash_before": "2f434c422579617080ef93eaf25c8aae1d1940ce9574d66995276ace987bde1a",
+    "clone_disk_hash_after": "458fcd021eed6fc6a2bd7c26ecfaeaa45be1021fd44f2a8039775c8c8f9e5c29",
+    "disk_hash_note": "The live MAME disk hash changed while the emulator remained running; no direct disk write was performed, so attribution is not inferred."
+  },
+  "visual_limit": "This endpoint update does not resolve the black native VUE capture recorded in P10 R32."
+}

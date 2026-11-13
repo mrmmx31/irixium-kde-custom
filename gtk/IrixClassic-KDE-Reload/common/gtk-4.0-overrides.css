@@ -1,0 +1,425 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+scrollbar {
+  min-width: 18px;
+  min-height: 18px;
+}
+listview {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+}
+gridview {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+}
+columnview {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+}
+listview row {
+  padding: 2px 3px;
+  min-height: 18px;
+}
+columnview row {
+  padding: 2px 3px;
+  min-height: 18px;
+}
+columnview header button {
+  padding: 1px 3px;
+}
+dropdown > button {
+  padding: 1px 3px;
+}
+dropdown arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.81372549));
+}
+dropdown button:checked arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.81372549));
+}
+dropdown:disabled arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+popover.menu contents {
+  padding: 2px;
+}
+popover.menu modelbutton {
+  min-height: 20px;
+  padding: 2px 3px;
+}
+menubutton arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.81372549));
+}
+expander-widget > box > title > expander {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_normal_breeze);
+}
+expander-widget > box > title > expander:checked {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_normal_breeze);
+}
+listview:backdrop {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+}
+gridview:backdrop {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+}
+columnview:backdrop {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+}
+dropdown arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.81372549));
+}
+dropdown button:checked arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.81372549));
+}
+menubutton arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.81372549));
+}
+expander-widget > box > title > expander:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_breeze);
+}
+expander-widget > box > title > expander:checked:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_breeze);
+}
+listview:disabled {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+}
+gridview:disabled {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+}
+columnview:disabled {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+}
+dropdown arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+dropdown button:checked arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+menubutton arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+expander-widget > box > title > expander:disabled {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_insensitive_breeze, success @theme_button_foreground_insensitive_breeze);
+}
+expander-widget > box > title > expander:checked:disabled {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_insensitive_breeze, success @theme_button_foreground_insensitive_breeze);
+}
+listview:disabled:backdrop {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+}
+gridview:disabled:backdrop {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+}
+columnview:disabled:backdrop {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+}
+dropdown arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+dropdown button:checked arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+menubutton arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+expander-widget > box > title > expander:disabled:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_insensitive_breeze, success @theme_button_foreground_backdrop_insensitive_breeze);
+}
+expander-widget > box > title > expander:checked:disabled:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_insensitive_breeze, success @theme_button_foreground_backdrop_insensitive_breeze);
+}
+button {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.button {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:active {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:checked {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:hover {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:active {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:checked {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus-within {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus-within {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:active {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+scrolledwindow.frame {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+frame > border {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.button:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:active:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:checked:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:hover:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:active:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:checked:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus-within:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus-within:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:active:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+scrolledwindow.frame:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+frame > border:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.button:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:active:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:checked:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:hover:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:active:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:checked:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus-within:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus-within:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:active:disabled {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+scrolledwindow.frame:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+frame > border:disabled {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+.button:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:active:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button:checked:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:hover:disabled:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:active:disabled:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+button.flat:checked:disabled:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+entry:focus-within:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton:focus-within:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:disabled:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+spinbutton button:active:disabled:backdrop {
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 100% 2px, 100% 2px, 2px 100%, 2px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+scrolledwindow.frame:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}
+frame > border:disabled:backdrop {
+  background-size: 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 3px 3px, 100% 3px, 100% 3px, 3px 100%, 3px 100%;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+}

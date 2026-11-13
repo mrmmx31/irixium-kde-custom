@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ORIGINAL-VM-HORIZONTAL-ARROW-CROSSCHECK-20261026-R311",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "exact-normal-state-match-across-source-and-preview",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only cross-check of GTK2 normal horizontal scrollbar arrows against existing original-VM study evidence."
+  },
+  "source_study_documents": [
+    {
+      "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/FILA.md",
+      "sha256": "47f0fe8522f153f1967082131f3df14de46d4150fefbe3a2c5f8ba68fb9638fb",
+      "use": "I295 history and limits for original-VM scrollbar observations"
+    },
+    {
+      "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/ACERVO-DESIGN-VUE.md",
+      "sha256": "f7f7a90ef009c5ef7e64d1e0d67ce7d59ba0d8fc79bc8f6a2cc88f3ac397aba9",
+      "use": "source-VM design evidence provenance"
+    },
+    {
+      "path": "/home/lsi/Documents/Projetos Open Source/domainos-mame-lab/docs/CONTROLE-MAME.md",
+      "sha256": "0bf97a62176d791078d16e3ae48394ecec78aaf0ac2c548cdd8d56563795ed01",
+      "use": "source-VM interaction and capture procedure"
+    },
+    {
+      "path": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/receipt.json",
+      "sha256": "ee00237a6f926cfc8d1512c437c027153bf5e40006a6bb2cddd86b70e9c56d91",
+      "use": "I295 live source capture provenance and limits"
+    },
+    {
+      "path": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/manifest.json",
+      "sha256": "02d0ac379ba292cc4d78450a2d54bc5dbab5723de2fd6c6f99a94558eaa65fc2",
+      "use": "native crop coordinates, scale and source hashes"
+    }
+  ],
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "source_vm": "User-owned original VM; only existing read-only study captures were inspected in this step.",
+    "gtk_runtime": "GTK2 2.24.33 isolated native preview captured in R233"
+  },
+  "inputs": {
+    "original_vm_capture": {
+      "path": "/home/lsi/tempia/domainos-vue-study/controls/scroll-arrows/i295-live-20261018/sources/upper-arrow-released.png",
+      "sha256": "f284b60af1061cfd915c0af6fd2e4d838f27cb013160f4659b43a1d4a645f90e",
+      "dimensions_px": [
+        1024,
+        844
+      ],
+      "note": "Original-VM capture with the pointer over the vertical upper arrow; both horizontal cells are unobstructed."
+    },
+    "retained_project_reference": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "dimensions_px": [
+        542,
+        20
+      ]
+    },
+    "gtk2_preview": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+      "sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+      "dimensions_px": [
+        1600,
+        1000
+      ]
+    }
+  },
+  "method": {
+    "scale": "1:1 RGB; no resizing, interpolation, color normalization or masking",
+    "cells_px": [
+      15,
+      15
+    ],
+    "original_vm_left_xyxy": [
+      689,
+      301,
+      704,
+      316
+    ],
+    "original_vm_right_xyxy": [
+      944,
+      301,
+      959,
+      316
+    ],
+    "project_reference_left_xyxy": [
+      2,
+      4,
+      17,
+      19
+    ],
+    "project_reference_right_xyxy": [
+      527,
+      4,
+      542,
+      19
+    ],
+    "gtk2_left_origin_xy": [
+      976,
+      402
+    ],
+    "gtk2_right_origin_xy": [
+      1002,
+      402
+    ]
+  },
+  "results": {
+    "left_personal_vm_vs_project_reference_different_pixels": 0,
+    "right_personal_vm_vs_project_reference_different_pixels": 0,
+    "left_project_reference_vs_gtk2_different_pixels": 0,
+    "right_project_reference_vs_gtk2_different_pixels": 0,
+    "left_personal_vm_vs_gtk2_different_pixels": 0,
+    "right_personal_vm_vs_gtk2_different_pixels": 0,
+    "interpretation": "In the normal state, both horizontal GTK2 stepper cells in the isolated preview match the same 15x15 pixels visible in the existing original-VM capture. The report that these normal arrows are narrower is not reproduced in this GTK2 preview. No geometry change is supported by this comparison."
+  },
+  "limits": [
+    "This verifies only the normal left/right cells in the isolated GTK2 preview and the existing original-VM screenshot.",
+    "The I295 source study provides held/released transition pairs for vertical arrows only; horizontal held-state behavior remains unmeasured historically.",
+    "This does not prove the GTK2 theme revision currently loaded by any user application; R306/R307 found an older installed copy.",
+    "The canonical assistant VM live view remains separately unresolved; no input was sent in this cross-check.",
+    "This is technical evidence, not user visual approval or full GTK2 fidelity."
+  ],
+  "changes": {
+    "theme_assets_modified": false,
+    "user_profile_modified": false,
+    "original_vm_operated": false,
+    "canonical_vm_input_sent": false,
+    "production_application_restarted": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "No new distinct control state was completed; this cross-check corroborates the existing normal horizontal-arrow comparison across an additional original-VM source capture.",
+    "not_a_visual_fidelity_score": true
+  }
+}

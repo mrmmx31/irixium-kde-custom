@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-FOCUSED-PAIR-20261025-R126",
+  "date": "2026-10-25",
+  "item": "I167",
+  "family": "GTK2 GtkEntry focused face and perimeter",
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "guest": "Dedicated MAME clone PID 3759847",
+    "screen": "Find Files, File Name entry",
+    "vm_state": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false
+    }
+  },
+  "wake_input": {
+    "reason": "Native screen snapshot was fully black while MAME and the guest were running.",
+    "method": "One emulated keyboard Shift field pulse via the existing MAME Lua bridge; assert for one guest frame, clear on the next frame.",
+    "field": ":kbd:keyboard4/Shift",
+    "result": "The VUE screen returned. Operation completed with done=true, held=false, reason=Shift tapped and released, error=nil.",
+    "side_effects": "Shift alone changed no text or configuration. No mouse capture hook was replaced; no user profile or guest file was changed."
+  },
+  "comparison": {
+    "method": "Exact 338x34 pixel crops, no resize or interpolation. Compare the two-pixel focused perimeter mask and dominant interior face separately; exclude glyph/selection pixels from face interpretation.",
+    "vue": {
+      "capture": "~/tempia/i167-sr104-wake-r126.png",
+      "sha256": "0b25611ec5aa14e3da18cf2162c7673031fba6088a30f6ed3050180198633d06",
+      "roi_xyxy": [
+        176,
+        365,
+        514,
+        399
+      ],
+      "allocation_px": [
+        338,
+        34
+      ],
+      "dominant_face_rgb": [
+        42,
+        128,
+        169
+      ],
+      "focused_outline_rgb": [
+        254,
+        130,
+        130
+      ]
+    },
+    "gtk2": {
+      "version": "2.24.33",
+      "capture": "~/tempia/i167-r126-gtk2-entry/gtk2-entry-focused-338x34.png",
+      "sha256": "164e21747eb72edbf0d6e8b881c84cc8501836c584c91bdb19b949745a8b8251",
+      "allocation_px": [
+        338,
+        34
+      ],
+      "widget_focus": true,
+      "schema": "DomainOS-SR10.4.colors",
+      "view_role_rgb": [
+        102,
+        136,
+        181
+      ],
+      "focused_outline_rgb": [
+        254,
+        130,
+        130
+      ]
+    },
+    "focus_outline": {
+      "vue_pixels": 1472,
+      "gtk2_pixels": 1472,
+      "symmetric_difference_pixels": 0
+    },
+    "result": "The focused two-pixel perimeter matches exactly at 338x34. The face differs: VUE #2a80a9, GTK2 #6688b5 from the selected KDE View role. GTK2 remains role-derived; do not hard-code the historical RGB into the widget. This is a measured palette translation difference, not an outline mismatch."
+  },
+  "limits": [
+    "One focused snapshot does not establish the SR10.4 caret blink interval.",
+    "Text glyph pixels and selection state are not used to score face color.",
+    "The KDE DomainOS scheme role does not reproduce the guest's current VUE color-set RGB exactly.",
+    "No public theme installation, XChat change, or profile setting change was performed."
+  ],
+  "evidence": [
+    {
+      "path": "~/tempia/i167-sr104-wake-r126.png",
+      "sha256": "0b25611ec5aa14e3da18cf2162c7673031fba6088a30f6ed3050180198633d06"
+    },
+    {
+      "path": "~/tempia/i167-r126-gtk2-entry/gtk2-entry-focused-338x34.png",
+      "sha256": "164e21747eb72edbf0d6e8b881c84cc8501836c584c91bdb19b949745a8b8251"
+    },
+    {
+      "path": "~/tempia/i167-r126-gtk2-entry/pair-analysis.json",
+      "sha256": "9053b525631dcd5d64d245a9cc986cae2323235456291e9bdbd95a4b8cb9db26"
+    },
+    {
+      "path": "~/tempia/i167-vue-colorset-probe-r126.txt",
+      "sha256": "eae080d30c6a1ab101ae1d8903280ebd638afff2b8f1e0c3e0a8b068cae0965e",
+      "scope": "Read-only xrdb/Vuefile filter output; command echo and returned prompt are present. Does not locate the palette storage."
+    }
+  ],
+  "next": "Use a bounded, prompt-synchronized read of the guest ~/.vue/palettes directory to resolve ColorSet 5 before changing GTK2. Then finish remaining GtkEntry caret/selection/blink questions using R76/R116/R117 without repeating their valid measurements.",
+  "guest_color_resources": {
+    "readback": "~/tempia/i167-vue-colorset-probe-r126.txt",
+    "readback_sha256": "eae080d30c6a1ab101ae1d8903280ebd638afff2b8f1e0c3e0a8b068cae0965e",
+    "xrdb": "*background #7848A075D500 (RGB 120,160,213); *foreground #FFFFFFFFFFFF.",
+    "vuefile": "/usr/X11/lib/app-defaults/Vuefile sets *secondaryColorSetId: 5; it contains no per-role RGB definitions.",
+    "limit": "The follow-up search under /usr did not complete with reliable Telnet prompt synchronization; no conclusion about palette file locations. The guest ~/.vue/palettes directory is present but its contents were not obtained."
+  }
+}

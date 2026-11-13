@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-10-11T15:11:01.533834+00:00",
+  "request": "Canal Ok pode reabrir fixo, renomeado e canal separado para colega",
+  "channels": [
+    {
+      "id": "Q091",
+      "title": "Canal — Tema e laboratório",
+      "owner": "IA do tema e laboratório"
+    },
+    {
+      "id": "Q102",
+      "title": "Canal — Prancheta / outra IA",
+      "owner": "IA da Prancheta"
+    }
+  ],
+  "result": "Configuração já entregue e confirmada no estado atual. Faixa independente dos filtros; canais excluídos da fila de tarefas.",
+  "reused_native_evidence": "docs/review/WORK-BOARD-CANAIS-FIXOS-20261010.json",
+  "scope_progress_percent": 100,
+  "limitations": "Conferência de estado e código; não repetiu ensaio gráfico nem mudou a janela pessoal.",
+  "source_sha256": {
+    "src/view/channels.c": "47845bcc5e8eb8838bc447948f44b0ffd9ceb4418687bea5cfc3238b43059ea7",
+    "src/model/filter.c": "8ce6bc38053110235a2eaf42d5990599e3e7b0ac313cef5cd4904938c5fa9dce",
+    "src/view/task_list.c": "100e0fc81343757280359155cdee7cd50b6f32407d62a162152ea749d5c06e2d",
+    "docs/CANAIS-FIXOS.md": "dd179a9bead287531da794dc6fea94258e526ffc35dc96c50a6e1db4bf44427f"
+  }
+}

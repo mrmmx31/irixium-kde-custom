@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-PALETTES-20261024-R138",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2 GtkIconView effective role change across KDE palettes; same authorized family as R137",
+  "evidence": {
+    "status": "passed",
+    "scope": "GTK2 GtkIconView runtime palette roles; isolated Xvfb; no live KDE profile changes",
+    "results": [
+      {
+        "scheme": "DomainOS",
+        "rc_sha256": "6878eb7c699c0e3ee78f132dd030de2986048a799015f6e971393947d77fbf57",
+        "bundle": "/home/lsi/tempia/i167-r138-gtk2-iconview-palettes/bundles/060e2083e2a6d0ca8add8512d9e9799aa07e151e659465fba0fa1cdc418145da",
+        "gtk": [
+          2,
+          24,
+          33
+        ],
+        "selected_items": 1,
+        "effective": {
+          "normal": {
+            "bg": "#6688b5",
+            "fg": "#ffffff",
+            "base": "#6688b5",
+            "text": "#ffffff"
+          },
+          "prelight": {
+            "bg": "#6688b5",
+            "fg": "#ffffff",
+            "base": "#6688b5",
+            "text": "#ffffff"
+          },
+          "active": {
+            "bg": "#6688b5",
+            "fg": "#ffffff",
+            "base": "#6688b5",
+            "text": "#ffffff"
+          },
+          "selected": {
+            "bg": "#3297c7",
+            "fg": "#ffffff",
+            "base": "#3297c7",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "bg": "#6182ad",
+            "fg": "#9fb5d2",
+            "base": "#6182ad",
+            "text": "#9fb5d2"
+          }
+        },
+        "expected_roles": {
+          "normal": {
+            "base": "#6688b5",
+            "text": "#ffffff"
+          },
+          "selected": {
+            "base": "#3297c7",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "base": "#6182ad",
+            "text": "#9fb5d2"
+          }
+        },
+        "matched": true
+      },
+      {
+        "scheme": "BreezeLight",
+        "rc_sha256": "8c4caf593aa13ebe873f0ab1225cbd1a9bcbf695cf91ecde7609acd8522065c3",
+        "bundle": "/home/lsi/tempia/i167-r138-gtk2-iconview-palettes/bundles/2eb4acf30113f6d2ec39f46499d3b4b90388ecec2609ffbc347d1a2c02542955",
+        "gtk": [
+          2,
+          24,
+          33
+        ],
+        "selected_items": 1,
+        "effective": {
+          "normal": {
+            "bg": "#ffffff",
+            "fg": "#232629",
+            "base": "#ffffff",
+            "text": "#232629"
+          },
+          "prelight": {
+            "bg": "#ffffff",
+            "fg": "#232629",
+            "base": "#ffffff",
+            "text": "#232629"
+          },
+          "active": {
+            "bg": "#ffffff",
+            "fg": "#232629",
+            "base": "#ffffff",
+            "text": "#232629"
+          },
+          "selected": {
+            "bg": "#3daee9",
+            "fg": "#ffffff",
+            "base": "#3daee9",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "bg": "#f3f3f3",
+            "fg": "#aaabac",
+            "base": "#f3f3f3",
+            "text": "#aaabac"
+          }
+        },
+        "expected_roles": {
+          "normal": {
+            "base": "#ffffff",
+            "text": "#232629"
+          },
+          "selected": {
+            "base": "#3daee9",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "base": "#f3f3f3",
+            "text": "#aaabac"
+          }
+        },
+        "matched": true
+      },
+      {
+        "scheme": "BreezeDark",
+        "rc_sha256": "0a6b92a510c1c1a5859dfc47bf8389d41f803023d88915255381c4d51f739e2c",
+        "bundle": "/home/lsi/tempia/i167-r138-gtk2-iconview-palettes/bundles/ef7e10145cb1ce070d18ada1ba4a28907dadd50663d111330084a5bdd0365a62",
+        "gtk": [
+          2,
+          24,
+          33
+        ],
+        "selected_items": 1,
+        "effective": {
+          "normal": {
+            "bg": "#141618",
+            "fg": "#fcfcfc",
+            "base": "#141618",
+            "text": "#fcfcfc"
+          },
+          "prelight": {
+            "bg": "#141618",
+            "fg": "#fcfcfc",
+            "base": "#141618",
+            "text": "#fcfcfc"
+          },
+          "active": {
+            "bg": "#141618",
+            "fg": "#fcfcfc",
+            "base": "#141618",
+            "text": "#fcfcfc"
+          },
+          "selected": {
+            "bg": "#3daee9",
+            "fg": "#fcfcfc",
+            "base": "#3daee9",
+            "text": "#fcfcfc"
+          },
+          "insensitive": {
+            "bg": "#131517",
+            "fg": "#606263",
+            "base": "#131517",
+            "text": "#606263"
+          }
+        },
+        "expected_roles": {
+          "normal": {
+            "base": "#141618",
+            "text": "#fcfcfc"
+          },
+          "selected": {
+            "base": "#3daee9",
+            "text": "#fcfcfc"
+          },
+          "insensitive": {
+            "base": "#131517",
+            "text": "#606263"
+          }
+        },
+        "matched": true
+      },
+      {
+        "scheme": "YellowFixture",
+        "rc_sha256": "d72af8999275d7a98967c69929988e01f723cf116768dce3668feeee3c48ec0d",
+        "bundle": "/home/lsi/tempia/i167-r138-gtk2-iconview-palettes/bundles/b81b71c8abba54c44805493f6588f4c8e5eb9c525378cca6a907f04572e5d45d",
+        "gtk": [
+          2,
+          24,
+          33
+        ],
+        "selected_items": 1,
+        "effective": {
+          "normal": {
+            "bg": "#e8d070",
+            "fg": "#151515",
+            "base": "#e8d070",
+            "text": "#151515"
+          },
+          "prelight": {
+            "bg": "#e8d070",
+            "fg": "#151515",
+            "base": "#e8d070",
+            "text": "#151515"
+          },
+          "active": {
+            "bg": "#e8d070",
+            "fg": "#151515",
+            "base": "#e8d070",
+            "text": "#151515"
+          },
+          "selected": {
+            "bg": "#6655aa",
+            "fg": "#ffffff",
+            "base": "#6655aa",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "bg": "#bca958",
+            "fg": "#534c32",
+            "base": "#bca958",
+            "text": "#534c32"
+          }
+        },
+        "expected_roles": {
+          "normal": {
+            "base": "#e8d070",
+            "text": "#151515"
+          },
+          "selected": {
+            "base": "#6655aa",
+            "text": "#ffffff"
+          },
+          "insensitive": {
+            "base": "#bca958",
+            "text": "#534c32"
+          }
+        },
+        "matched": true
+      }
+    ],
+    "limit": "YellowFixture is synthetic; runtime role match does not establish visual fidelity or VUE interaction parity."
+  },
+  "method": {
+    "runtime": "GTK 2.24.33; one isolated Xvfb; native GTK RC and GtkStyle state arrays; one selected item",
+    "schemes": [
+      "DomainOS-SR10.4.colors",
+      "BreezeLight.colors",
+      "BreezeDark.colors",
+      "YellowFixture synthetic role palette"
+    ],
+    "assertions": "For every palette, normal base/text, selected base/text and insensitive base/text exactly matched the emitted KDE role values.",
+    "yellow_fixture": "Distinct View, Selection and insensitive colors ensure selection is proven as a separate role, not a coincidental match."
+  },
+  "limitations": [
+    "GTK2 has no distinct Backdrop state.",
+    "Runtime style role readback does not prove pixel identity or historical state behavior.",
+    "Focus, pointer hover, rubberband interaction and direct SR10.4 comparison remain open.",
+    "The previously identified MAME clone PID 3759847 was absent; no VM input or restart was attempted."
+  ],
+  "temp_evidence": "~/tempia/i167-r138-gtk2-iconview-palettes/RESULTADO.json",
+  "temp_result_sha256": "83b666b41208e0f4abbcf3d108f0e042786d85839c9834afa36b96b0d481dd8e",
+  "status": "four_palette_native_role_checks_passed_vm_state_review_pending",
+  "user_acceptance": "pending",
+  "next": "Resume the same authorized SR10.4 clone when present; compare GtkIconView focus, hover and selection/rubberband states at 1:1. Do not install into personal profile before historical review."
+}

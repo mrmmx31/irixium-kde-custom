@@ -1,0 +1,208 @@
+{
+  "at": "2026-10-12T02:29:45.034712+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 toggle visibility after Apply and selected CSS fragment; not full history/reopen sequence certification",
+  "visibility_session": 39174,
+  "visibility_exit_code": 0,
+  "visibility_result": {
+    "status": "passed",
+    "scope": "Controller toggle detached visibility after Apply only",
+    "captures": [
+      {
+        "origin": "coupled",
+        "selected": false,
+        "size": [
+          180,
+          50
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-coupled-0.png"
+      },
+      {
+        "origin": "coupled",
+        "selected": true,
+        "size": [
+          180,
+          50
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-coupled-1.png"
+      },
+      {
+        "origin": "separate",
+        "selected": false,
+        "size": [
+          180,
+          50
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-separate-2.png"
+      },
+      {
+        "origin": "separate",
+        "selected": true,
+        "size": [
+          180,
+          50
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-separate-3.png"
+      },
+      {
+        "origin": "separate",
+        "selected": false,
+        "size": [
+          180,
+          50
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 904,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-separate-4.png"
+      },
+      {
+        "origin": "coupled",
+        "selected": true,
+        "size": [
+          280,
+          60
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 1344,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-coupled-5.png"
+      },
+      {
+        "origin": "separate",
+        "selected": false,
+        "size": [
+          280,
+          60
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 1344,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-separate-6.png"
+      },
+      {
+        "origin": "separate",
+        "selected": false,
+        "size": [
+          280,
+          60
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 1344,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-separate-7.png"
+      },
+      {
+        "origin": "coupled",
+        "selected": true,
+        "size": [
+          280,
+          60
+        ],
+        "position": [
+          32,
+          32
+        ],
+        "edge_pixels": 1344,
+        "differences": 0,
+        "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9157ld0s/toggle-coupled-8.png"
+      }
+    ],
+    "detached_close_reopen": true,
+    "history_checked": false
+  },
+  "parser_session": 64757,
+  "parser_exit_code": 0,
+  "parser_result": {
+    "status": "passed_toggle_snippet_parser",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "toolkit": "GTK4",
+    "parsed_states": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop",
+      "hover"
+    ],
+    "real_snapshot_dependencies": true,
+    "widget_painting_claimed": false,
+    "historical_fidelity_claimed": false
+  },
+  "python_tests_passed": 29,
+  "changes": [
+    "Selected toggle fragment emits native checked/unselected rules and prospective pressure relief.",
+    "Renderer and fragment share state selector generator.",
+    "Fragment imports existing toggle.css and its push.css role aliases; no new final color definitions.",
+    "Other controls/focus remain explicitly pending."
+  ],
+  "remaining": [
+    "Close/reopen after Undo/Redo failed in earlier full sequence, still needs composition diagnosis; after Apply alone now passed.",
+    "Native code panel verification and project Save/Load/restart.",
+    "Controller palette matrix and current push native regression.",
+    "Prepared build and coordinated delivery."
+  ],
+  "estimated_toggle_unit_progress_percent": 65,
+  "percentage_basis": "Standalone visibility-after-Apply and selected code/parser passed; remaining integrated sequence/persistence/delivery gates incomplete.",
+  "personal_instance_changed": false,
+  "historical_fidelity_claimed": false,
+  "sha256": {
+    "tools/theme-lab/gtk4_toggles.py": "00937b6ac81d2ea4b03d6a2611a4f1c37111a93a0d8cfe54b1ca357eef21763a",
+    "tools/theme-lab/backend.py": "7639ae863a2a6115c4e275d598736a123ffeccdeb5cb8d4bc62500734e3501e7",
+    "tools/theme-lab/tests/test_gtk4_snippet.py": "5541724b2423714a4eada94c35d69d62b0f0c506b6e2183551f10c19a5256d1e",
+    "tools/theme-lab/tests/probe_gtk4_toggle_snippet.py": "c17941b563edf01c90980670890c9ad2dfd1b023e2f306d081b0484e52295826",
+    "tools/theme-lab/tests/controller_gtk4_toggle.py": "4df9e38096b5ef2d661b5c58ebc7c30e94b20c2d76800ab2eae002ad9b05938b",
+    "tools/theme-lab/tests/test_controller_spin.py": "9fc98fdc6cd78123f06cf4d1a5218050660c00cd3e74082109db39c960b19896",
+    ".qa-t04-anchor-foundation/gtk4-toggle-snippet-tests.log": "dae081704f1e5456f33eb1acf3643259d08b3c1fdc5a6a00c52e8ff9cb18b820",
+    ".qa-t04-anchor-foundation/gtk4-toggle-snippet-native.log": "046de878ffb60dbfad2d8f424d1966a4a8604e718749833ae3dea6302a92787c",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-9a401vnb/home/WORKER-RESULTADO.json": "dbbc79cd74e89a44f1e8543652c96155861191ea83c3b8e8ff1382de82efe5aa",
+    ".qa-theme-lab-spin-9157ld0s/RESULTADO.json": "b97d1cdc37e940794d33eb6bd06338001ba0dc6d212731e2c4965d5515e1da6b",
+    ".qa-theme-lab-spin-9157ld0s/checkbox-False-0.png": "383ae8f1a114abc0b142ae944bec8e99bb48a03840663112f1029954bd25e024"
+  }
+}

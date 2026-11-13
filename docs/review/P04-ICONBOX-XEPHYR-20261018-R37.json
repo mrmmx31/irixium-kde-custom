@@ -1,0 +1,81 @@
+{
+  "item": "P04",
+  "revision": "R37",
+  "recorded_at": "2026-10-18",
+  "authorization": {
+    "section": "work",
+    "user_authorized": true,
+    "user_revision": 3
+  },
+  "scope": "Production Iconbox QML/controller under private Plasma/KWin on the already-open Xephyr :513. Test-owned clients only; normal lsi panel and personal applications were not driven.",
+  "implementation": {
+    "changed": false,
+    "qml_sha256": {
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01"
+    },
+    "test_harness": {
+      "plasma/tests/domainos-group-wheel-host.cpp": "bd7c79ef2d54d41cbc6254df8e415b73e7351dd1e1389387155b39fff535ef87",
+      "plasma/tools/testar-domainos-grupos-roda.py": "e9446171dffacde8e91f606d40a5b68bca819fb40831624aaf0df55fd5584faf",
+      "plasma/tests/domainos-reorder-host.cpp": "f5eb2263a6fc78c8f695d1c6357e2ca6448a95f174f34da0f6f9463b475555f2",
+      "plasma/tools/testar-domainos-reordenacao.py": "1d7ab8c9acbf5171b760a4bd3bd579326dff948002058cab8e1f0b1c91a00bcb"
+    }
+  },
+  "runs": [
+    {
+      "case": "Native wheel pagination and grouped chooser cycles",
+      "result": "passed",
+      "checks": 19,
+      "all_checks_passed": true,
+      "qml_diagnostics": 0,
+      "output": "~/tempia/p04-xephyr-wheel-statewait-20261018/RESULTADO.json",
+      "output_sha256": "775a8455f32f7d58445fc33fa971974ea82dbb5b041dab7177b34d1d14c50eba"
+    },
+    {
+      "case": "Native next/previous arrows plus wheel/group regressions",
+      "result": "passed",
+      "checks": 21,
+      "all_checks_passed": true,
+      "qml_diagnostics": 0,
+      "output": "~/tempia/p04-xephyr-arrows-20261018-r2/RESULTADO.json",
+      "output_sha256": "bf56eb49d93bc2a613ef7979c9ed8fdfb92a6ddef12b67399ca994a7399e5327",
+      "limitation": "The standalone plasmawindowed fixture can take keyboard focus when its arrow button is clicked. The check proves page changes without a task action or activation of a different owned client; it does not prove focus retention in the real panel containment."
+    },
+    {
+      "case": "Native single/double click, group chooser, minimize and restore",
+      "result": "passed",
+      "checks": 44,
+      "all_checks_passed": true,
+      "qml_diagnostics": 0,
+      "output": "~/tempia/p04-singleton-reorder-xephyr-20261018-r4/RESULTADO.json",
+      "output_sha256": "48fa285a18320164d57cefe85df078beee96cb7439a836bcd0632e82eb10efbf",
+      "details": "The task model reported the target active before the double click; the signal carried doubleClickActive=true; the native request was minimize; the second double click restored and focused it."
+    }
+  ],
+  "manual_observation": {
+    "Q360_revision_1": "The user reported Operations works in the production session.",
+    "remaining": "No complete manual acceptance of all P04 gestures was inferred from the synthetic native clients."
+  },
+  "preservation": {
+    "user_profiles_unchanged": true,
+    "product_qml_changed": false,
+    "existing_xephyr_servers_closed": false,
+    "failed_attempts_preserved_under_tempia": true
+  },
+  "failed_attempts": [
+    {
+      "output": "~/tempia/p04-xephyr-restored-20261018/RESULTADO.json",
+      "reason": "A fixed delay sampled before the queued wheel event reached KWin; replaced with state polling, then the full wheel run passed."
+    },
+    {
+      "output": "~/tempia/p04-singleton-reorder-xephyr-20261018-r3/RESULTADO.json",
+      "reason": "A race in the test fixture's active-state transition; the instrumented rerun records the active state and passes."
+    },
+    {
+      "output": "~/tempia/p04-singleton-reorder-xephyr-20261018-r2/RESULTADO.json",
+      "reason": "The private D-Bus socket path exceeded the Unix socket length limit before UI interaction; the runner now uses a short private directory under ~/tempia."
+    }
+  ],
+  "next": "Proceed to the next authorized open work item after P04; keep P04 awaiting remaining human assessment."
+}

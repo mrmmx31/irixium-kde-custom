@@ -1,0 +1,55 @@
+{
+  "at": "2026-10-11T05:54:42.165814+00:00",
+  "item": "I118",
+  "revision": 1,
+  "stage": "Continuous GTK3 contents frame states",
+  "native_contract": "Normal, disabled and backdrop only. GTK update_trough_state strips PRELIGHT/ACTIVE before setting contents; hover/press belong to inner trough. Default scrollbar cannot focus.",
+  "source": "https://raw.githubusercontent.com/GNOME/gtk/3.24.49/gtk/gtkrange.c",
+  "historical_fidelity_claimed": false,
+  "proof": {
+    "native_result": ".qa-theme-lab-trough-states-o04x5red/home/results/RESULTADO.json",
+    "cases": 36,
+    "checks": 2088,
+    "pixels": 1592064,
+    "scope": "Full enclosing-frame border pixels in both orientations and unchanged GtkViewport, native trough pointer interaction, sensitivity and controlled BACKDROP; four palettes",
+    "backend_tests": 31,
+    "native_css_combinations": 42,
+    "compile": "C99 -Wall -Wextra -Werror passed",
+    "unit": "Motif callback-level editor capability and recipe preservation passed",
+    "first_native_failure": ".qa-theme-lab-trough-states-rc_srzlf",
+    "diagnosis": "Fixture theme IDs collided after first three cases; suffix now unique per case. Run was terminal before retry.",
+    "first_backend_failure": "Test assumed mask canvas15; actual base sampling canvas24. Assertion now derives canvas extent from preserved original mask."
+  },
+  "editor": {
+    "enabled": [
+      "normal",
+      "disabled",
+      "backdrop"
+    ],
+    "unsupported": [
+      "pressed",
+      "hover",
+      "focus"
+    ],
+    "integration_by_pointer": "pending"
+  },
+  "remaining": [
+    "Real pointer editor -> controller -> manual Apply -> persistence for this piece",
+    "Other GTK3 pieces thumb/fitting",
+    "Preview initial/reopen readiness",
+    "Personal delivery and human evaluation"
+  ],
+  "personal_window_changed": false,
+  "scope_progress_percent": 72,
+  "percentage_basis": "Native enclosing frame translation and capability editor added; integrated GUI test and other pieces/delivery remain. Not overall goal or historical fidelity.",
+  "hashes": {
+    "tools/theme-lab/backend.py": "a0c948088c0c6d33af67884d684e21c983a8fc2d5489b341d7d98ec782f06c0a",
+    "tools/theme-lab/src/view.c": "86d4734839360a028176bd5bf42773eadd31a0c834eac2771e56089797a3d45d",
+    "tools/theme-lab/src/view/part_relief_editor.c": "b1e10f611fe135720cdd0f0270340e015cec7ab41e990c539f77a6415df85f9a",
+    "tools/theme-lab/include/part_relief_editor.h": "894edabadea57b018a2338ee416385701effb131c6c311c088ebda0124063697",
+    "tools/theme-lab/tests/test_backend.py": "cf4515bf9365d9c4641300ef3e7956cc6468b70751173cbd632156534ba88631",
+    "tools/theme-lab/tests/test_trough_states_native.py": "554d3a7dd0e52dfa9879d2a6c33c585a7f0e548312837c64600c5526fc2c7d96",
+    "tools/theme-lab/tests/part_relief_editor_test.c": "cddc9bffee7f3bf640b5cae090873c74f2c5a086d6d62718b9b436f3b6dff0c2",
+    "tools/theme-lab/TRILHO-ESTADOS-GTK3.md": "9fe7dfffeb6b22d5ed6c4d2ebfed571dbd6397d42d68cf79b6949ed263582ca0"
+  }
+}

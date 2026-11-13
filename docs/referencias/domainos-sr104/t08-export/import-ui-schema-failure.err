@@ -1,0 +1,120 @@
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/incoming.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/saved.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/invalid.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/incoming.json
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/wrong-base.json
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/delta.json
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/incoming.json
+command: mousemove
+command: click
+command: windowfocus
+command: mousemove
+command: click
+command: key
+command: type
+Exec arg[0]: /home/domainos-test/delta.json
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1230, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 253, in main
+    results.update(run(output, observation, click, wait, environment, restart))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_project_io.py", line 159, in run
+    wait(lambda: read_project().get('name') == delta_proposal['name'])
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 32, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

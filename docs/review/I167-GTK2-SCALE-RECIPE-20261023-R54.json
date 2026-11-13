@@ -1,0 +1,70 @@
+{
+  "id": "I167",
+  "receipt": "R54",
+  "date": "2026-10-23",
+  "family": "GTK2 scale geometry recipe and Motif UI exposure",
+  "authorization": {
+    "section": "work",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true
+  },
+  "scope": "Expose and persist GTK2 GtkScale slider width/length in the C99/Motif Theme Lab; clearly disable the GTK2-only settings when another family is selected.",
+  "changes": [
+    "The GTK2 recipe has scale_slider_width_px and scale_slider_length_px, defaults 8×27 px, integer validation 1–128, and GTK2-only numeric controls with unit hints.",
+    "The entire GTK2 scale geometry frame, including its title, now becomes insensitive outside GTK2. Native UI testing exposed that only the inner content had previously been disabled."
+  ],
+  "validation": {
+    "c99_warnings_as_errors_build": "passed; native-metrics-view built in ~/tempia",
+    "gtk2_scale_integration": "5/5 passed",
+    "model_test": "passed, 1027 checks; TMPDIR=~/tempia",
+    "native_motif_ui": {
+      "display": ":1",
+      "result": "passed, process exited 0",
+      "checks": "GTK2 fields showed 9 and 33, tl_view_read preserved both values, and switching to GTK3 disabled the outer GTK2 frame. The complete native-metrics-view harness also passed.",
+      "side_effects": "temporary test window closed automatically; no desktop settings changed"
+    },
+    "gtk2_native_scene": {
+      "runtime": "GTK2 2.24.33",
+      "palettes": [
+        "DomainOS"
+      ],
+      "state": "normal",
+      "scenes": 4,
+      "axes": [
+        "horizontal",
+        "vertical"
+      ],
+      "origins": [
+        "separate",
+        "coupled"
+      ],
+      "custom_slider_width_px": 9,
+      "custom_slider_length_px": 33,
+      "gestures": "Ctrl selection and drag on both axes",
+      "rebuilds": "four transactional rebuilds retained values and resized allocations",
+      "model_unchanged": true,
+      "artifact": "~/tempia/theme-lab-gtk2-scale-recipe/native/RESULTADO.json",
+      "artifact_sha256": "ef389af7762809fa5eb657220be8ef5eec5605cf757938205ded4bf4737f8964"
+    },
+    "python_compile": "passed for probe_gtk2_scale_scene.py",
+    "git_diff_check": "passed for scoped theme-lab sources and tests"
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/view.c": "e731ffbd65f608dcc3b8ba0d5091272fef5e4dc09a4a9955597ad58caae1db2a",
+    "tools/theme-lab/include/theme_lab.h": "0a82ffb086b0dbc738595479925d44e874785f6745b52ee6174ab02db9362537",
+    "tools/theme-lab/src/model.c": "dc539fc881aa489f53f6e63df963cbba7d18d6b9de183892d5f0ace62034342c",
+    "tools/theme-lab/tests/native_metrics_view.c": "8cb1e0c77b2dc46f9fc40a0962359ea8ef128a9f3f3a4eb8c03d9c3b05de644d",
+    "tools/theme-lab/tests/model_test.c": "dea81606af35a8cfd565bce1e167b6d7d00fbc9909c0427dae68acb169cb4445",
+    "tools/theme-lab/tests/test_gtk2_scale_integration.py": "fea7e57493db1183619188e72f56b352abf9f701757308a74f990e26db4efa25",
+    "tools/theme-lab/tests/probe_gtk2_scale_scene.py": "0d8bf77bb7e4a8501020ccdc8c41ffda854e6a7c4bd338cc4b654ef233ccd821"
+  },
+  "limitations": [
+    "The four scene rows cover DomainOS normal state only; they do not establish all palettes or disabled/backdrop appearance.",
+    "The C UI runtime test ran on the normal display :1, not in an isolated Xephyr.",
+    "No paired historical SR10.4 GtkScale reference exists for the vertical scale; these dimensions are editor recipe values, not VM measurements.",
+    "This does not complete I167 or GTK2 fidelity. Other states, controls, public integration and historical gaps remain open. No XChat, user theme installation, VM or live panel was changed."
+  ],
+  "next": "Continue within authorized I167: investigate R53 open GTK2 pixmap palette refresh and validate the actual KDE/XSettings reload path before any XChat change; then resume the remaining GTK2 evidence gaps one family at a time.",
+  "progress_estimate": "~92% technical coverage of I167, based on completed GTK2 control recipes and validation receipts; not a visual fidelity percentage or human approval."
+}

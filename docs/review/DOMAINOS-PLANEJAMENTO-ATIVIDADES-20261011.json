@@ -1,0 +1,92 @@
+{
+  "at": "2026-10-11T06:59:53.913758+00:00",
+  "request": {
+    "item": "Q091",
+    "revision": 25
+  },
+  "result": "Planejamento e criação concluídos; implementação das novas propostas não iniciada",
+  "new_items": [
+    {
+      "id": "I167",
+      "title": "Adaptador GTK2: traduzir receitas próprias e comparar prévias nativas",
+      "after": "T04",
+      "authorized": false
+    },
+    {
+      "id": "I168",
+      "title": "Adaptador GTK4: receita nativa e contrato explícito para setas ausentes",
+      "after": "I167",
+      "authorized": false
+    },
+    {
+      "id": "I169",
+      "title": "Adaptador Qt5: receitas independentes em controles Qt Widgets reais",
+      "after": "I168",
+      "authorized": false
+    },
+    {
+      "id": "I170",
+      "title": "Adaptador Qt6: receitas independentes em controles Qt Widgets reais",
+      "after": "I169",
+      "authorized": false
+    },
+    {
+      "id": "I171",
+      "title": "Adaptador Kvantum: SVG e métricas gerados da receita, com paleta KDE",
+      "after": "I170",
+      "authorized": false
+    },
+    {
+      "id": "I172",
+      "title": "Adaptador Plasma Style: aplicar receita aos controles Plasma reais",
+      "after": "I171",
+      "authorized": false
+    },
+    {
+      "id": "I173",
+      "title": "GTK1 e GTK5: confirmar suporte real e registrar dependências ou ausência",
+      "after": "I172",
+      "authorized": false
+    },
+    {
+      "id": "I174",
+      "title": "Painel 2.0: preservar desenho atual e medir a altura contra o SR10.4",
+      "after": "P10",
+      "authorized": false
+    },
+    {
+      "id": "I175",
+      "title": "Painel 2.0: propor composição histórica compacta e ícones proporcionais",
+      "after": "I174",
+      "authorized": false
+    },
+    {
+      "id": "I176",
+      "title": "Painel 2.0: quadro alternável de Iconbox, Pager e bandeja",
+      "after": "I175",
+      "authorized": false
+    },
+    {
+      "id": "I177",
+      "title": "Painel 2.0: escolher visual atual ou histórico nas preferências",
+      "after": "I176",
+      "authorized": false
+    },
+    {
+      "id": "I178",
+      "title": "GTK3: concluir a moldura da tabela preenchida sem pintar as células",
+      "after": "P10",
+      "authorized": false
+    }
+  ],
+  "existing_groups_preserved": [
+    "T01–T10",
+    "P01–P10",
+    "I115–I120",
+    "I124"
+  ],
+  "planning_progress_percent": 100,
+  "I120_research_progress_percent": 45,
+  "full_goal_complete": false,
+  "ui_reopened": false
+}

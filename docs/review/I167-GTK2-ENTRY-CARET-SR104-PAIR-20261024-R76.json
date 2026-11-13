@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-CARET-SR104-PAIR-20261024-R76",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 GtkEntry caret visual comparison",
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "previous_live_capture": "~/tempia/i167-entry-live-r57/entry-next-field-focused.png",
+    "previous_live_capture_sha256": "74e08830867226e7fe940e9adbae0a39001cb2aef652a42c79f253cfb3bebb47",
+    "control": "Search Directories GtkTextField-like VUE field, text .a, keyboard caret at x=16 in a 338x34 px native field"
+  },
+  "comparison": {
+    "gtk2": {
+      "toolkit": "GTK 2.24.33 GtkEntry",
+      "capture": "~/tempia/i167-entry-caret-blink-r69-verified/transition-02-1315ms.png",
+      "sha256": "f797f789ce9fdf7cc1170ee7541c5fc32fe79a113206239876748a31d8d8bd0e",
+      "text": ".a",
+      "native_allocation_px": [
+        338,
+        34
+      ],
+      "caret": {
+        "color_rgb": [
+          255,
+          255,
+          255
+        ],
+        "stem_bbox_local_xyxy_half_open": [
+          16,
+          8,
+          17,
+          26
+        ],
+        "height_px": 18,
+        "endpoint_caps": false
+      }
+    },
+    "vue": {
+      "capture": "~/tempia/i167-entry-live-r57/entry-next-field-focused.png",
+      "sha256": "74e08830867226e7fe940e9adbae0a39001cb2aef652a42c79f253cfb3bebb47",
+      "native_allocation_px": [
+        338,
+        34
+      ],
+      "caret": {
+        "color_rgb": [
+          255,
+          255,
+          255
+        ],
+        "stem_x_local": 16,
+        "stem_y_local_inclusive": [
+          10,
+          23
+        ],
+        "stem_height_px": 14,
+        "terminal_rows_local": [
+          9,
+          24
+        ],
+        "terminal_row_x_local_inclusive": [
+          14,
+          18
+        ],
+        "overall_bbox_local_xyxy_half_open": [
+          14,
+          9,
+          19,
+          25
+        ],
+        "height_px": 16
+      }
+    },
+    "result": "Both captures use the same 338x34 px field allocation, text, caret x position and white text role. At 1:1 scale, GTK2 draws a straight 1x18 px stem; VUE draws a 14 px stem with 5x1 px horizontal terminals at each end. This is a measured visual mismatch, not a palette mismatch."
+  },
+  "method": {
+    "analysis_script": "~/tempia/i167-caret-compare-r76.py",
+    "analysis_script_sha256": "12379c27997de16255ce7884657bbd112d43f63e62c6e6f3a8f2eb65af00b9a3",
+    "pixel_rule": "Classify near-white pixels (each RGB component >=250) in the exact native field crop; no resizing or interpolation. VUE crop is x=228..565,y=404..437. Verify endpoint row spans separately.",
+    "source_limit": "The VUE caret image is a single captured phase; it does not establish the SR10.4 blink interval."
+  },
+  "implementation_limit": {
+    "source_receipt": "docs/review/I167-GTK2-CARET-THEME-ENGINE-LIMIT-20261024-R63.json",
+    "finding": "GTK 2.24.33 GtkEntry calls gtk_draw_insertion_cursor directly. GtkStyleClass has no insertion-cursor draw vfunc; its style cursor-aspect-ratio controls width, while text layout supplies height. A conventional GTK2 theme engine cannot add the VUE end caps or set only this caret's height to 14 px.",
+    "action": "Keep the current dynamic text-role 1 px GTK2 caret. Do not add static color or imply exact shape parity. Exact emulation requires an upstream/toolkit change or application-specific widget code, outside this theme-only correction."
+  },
+  "preservation": {
+    "product_source_changed": false,
+    "mame_restarted": false,
+    "guest_input_sent": false,
+    "user_profile_changed": false,
+    "other_toolkit_family_touched": false
+  },
+  "next": "Continue only remaining authorized GTK2 GtkEntry historical states. For guest input, first authenticate a visible host window for clone PID 2745483; do not target the other MAME session. Keep caret-shape incompatibility explicit.",
+  "host_focus_check": {
+    "result": "No graphical input was sent.",
+    "observed_window": "The only visible host X11 window titled Apollo DN3500 [dn3500] - MAME 0.276 reports _NET_WM_PID 3053638, while the authorized clone is PID 2745483.",
+    "reason": "The visible window does not authenticate as the authorized clone; preserve the other MAME session and defer guest interaction until the clone window itself can be authenticated."
+  }
+}

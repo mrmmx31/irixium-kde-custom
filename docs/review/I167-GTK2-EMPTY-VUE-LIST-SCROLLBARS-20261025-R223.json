@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-EMPTY-VUE-LIST-SCROLLBARS-20261025-R223",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "existing assistant clone",
+    "mame_pid": 274368,
+    "mame_version": "0.276",
+    "state": "Find Files, File Name *, Search Directories ., Files Found empty",
+    "capture": "~/tempia/ia-tema/evidence/I167/r222-vue-current/screen.png",
+    "capture_sha256": "dad32719b4c361fe3b934888cf4174e3fe2a376e10281c7964d215fd6539ff1d",
+    "crop": "~/tempia/ia-tema/evidence/I167/r222-vue-current/find-files-empty-list.png",
+    "crop_sha256": "15d2c4c6b34e1f9bb8c9bb4999a590647f11d48ac7addb8a48e76b16b6052953",
+    "crop_px": [
+      322,
+      139
+    ],
+    "observed_bars": {
+      "vertical": true,
+      "horizontal": true
+    },
+    "guest_input_or_changes": false
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "fixture": "private GtkScrolledWindow + GtkTreeView at 322x139; empty model; DomainOS current KDE roles",
+    "automatic": {
+      "metrics": "~/tempia/ia-tema/evidence/I167/r223-empty-list/metrics-automatic.json",
+      "crop": "~/tempia/ia-tema/evidence/I167/r223-empty-list/gtk2-empty-list-crop.png",
+      "crop_sha256": "b52cb3d3b8a1b6b02e6b95d0b1c67bdb3f8161b2a3fe12879d86fd2f70b8237c",
+      "bars": {
+        "vertical": false,
+        "horizontal": false
+      },
+      "tree_allocation": [
+        2,
+        2,
+        318,
+        135
+      ]
+    },
+    "always": {
+      "metrics": "~/tempia/ia-tema/evidence/I167/r223-empty-list/metrics-always.json",
+      "crop": "~/tempia/ia-tema/evidence/I167/r223-empty-list/gtk2-empty-list-forced-bars-crop.png",
+      "crop_sha256": "dcccda4f3ba71fa71b8ab7be6426156fd8cd01c08d0c68cdd79b1475853e1e3a",
+      "bars": {
+        "vertical": true,
+        "horizontal": true
+      },
+      "tree_allocation": [
+        2,
+        2,
+        299,
+        116
+      ]
+    },
+    "scale": "1:1 native 322x139; no image resampling",
+    "limitations": [
+      "Xvfb private GTK2 preview, not live session or human visual acceptance.",
+      "Toolkit warning: optional atk-bridge could not load in this host; the GTK2 fixture rendered and exposed allocations."
+    ]
+  },
+  "finding": "The live VUE empty result list keeps both scrollbar controls visible. GTK2 AUTOMATIC hides both when the model is empty; GTK2 ALWAYS displays both at the same 322x139 outer allocation. This is a per-application GtkScrolledWindow policy difference, not a theme-only drawing defect; do not change global theme geometry or roles to force it.",
+  "code_or_product_change": false,
+  "human_acceptance": "pending",
+  "next": "Continue only I167/GTK2 with another distinct native control/state under the approved scope. Record any new VM issue before switching families. Do not alter GTK2 global scrollbar policy from this single VUE application state.",
+  "status": "running"
+}

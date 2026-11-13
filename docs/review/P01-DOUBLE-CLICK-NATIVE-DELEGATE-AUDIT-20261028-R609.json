@@ -1,0 +1,39 @@
+{
+  "id": "R609",
+  "date_local": "2026-10-28T14:43:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "inspection": {
+    "menu_list_delegate": {
+      "file": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDelegate.qml",
+      "lines": "104-108",
+      "behavior": "A pressed leaf item calls model.trigger() on release and sets kicker.expanded=false."
+    },
+    "menu_grid_delegate": {
+      "file": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemGridView.qml",
+      "lines": "421-432",
+      "behavior": "A pressed grid item calls model.trigger() on release and toggles the root popup."
+    }
+  },
+  "conclusion": "The native release handlers identify where activation occurs. Because the first release closes/toggles the popup, this static inspection does not prove that a double click causes two launches or a Plasma crash. The affected menu, application and timing remain necessary to correlate the report.",
+  "actions": {
+    "applications_launched": false,
+    "dispatch_changed": false,
+    "other_board_sections_touched": false
+  },
+  "runtime": {
+    "plasmashell_pid": 752206,
+    "active": true,
+    "automatic_restarts": 0
+  },
+  "remaining": [
+    "P01 manual acceptance of search focus and KDE category/submenu hover.",
+    "Q510 response identifying whether the symptom was in the KDE menu, own menu or drawer, the application, observed process, sequence and approximate time."
+  ]
+}

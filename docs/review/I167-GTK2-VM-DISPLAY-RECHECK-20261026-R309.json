@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R309",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-vm-identity-confirmed-guest-display-still-black-no-input-sent",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Recheck current canonical VM visibility for remaining authorized GTK2 historical arrow comparison; read-only only."
+  },
+  "result": {
+    "canonical_vm": "same live process PID 1313710 and canonical disk; verify.sh passed; no other MAME process",
+    "profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false,
+      "captured": false
+    },
+    "guest_snapshot_sha256": "bcdbb8c61edc1ae4c0e16049be18b58f554c4b39bf28b941152b9a40a56c1a79",
+    "guest_snapshot_identical_to_R304": true,
+    "host_window_verified": true,
+    "host_window_visible": true,
+    "host_focus_is_elsewhere": true,
+    "no_mouse_or_keyboard_input": true,
+    "channel_pending": null
+  },
+  "historical_evidence_inventory": "The consulted I295 source study bundle contains held/released captures for upper and lower vertical arrows only; no horizontal left/right held pair appears in its manifest. R51 compares the lower direction with retained SR10.4 state pixels, R308 adds supplemental upper direction evidence, and R52 covers GTK2 state transitions only.",
+  "limitation": "The only available host pointer helper is synthetic XTest; the project VM rules require a physical mouse/key wake for this black guest screen. uinput is root-only here. No pointer movement was sent because the host focus is an unrelated active session.",
+  "evidence": {
+    "tempia_archive": "~/tempia/ia-tema/archived/i167-redundant-capture-r309/manifest.json",
+    "R304": "docs/review/I167-GTK2-VM-DISPLAY-RECHECK-20261026-R304.json"
+  },
+  "changes": {
+    "theme_modified": false,
+    "profile_modified": false,
+    "personal_vm_operated": false,
+    "canonical_vm_modified": false,
+    "other_board_tabs_modified": false
+  },
+  "next": "Wait for a physical wake event on the project MAME window, then capture horizontal left/right held and released pairs; continue GTK2 only."
+}

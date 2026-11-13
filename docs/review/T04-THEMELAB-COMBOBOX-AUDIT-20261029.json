@@ -1,0 +1,67 @@
+{
+  "id": "T04-THEMELAB-COMBOBOX-AUDIT-20261029",
+  "date": "2026-10-29",
+  "scope": "Static audit of every Motif ComboBox in Theme Lab forms after the family selector remained on Motif.",
+  "inventory": {
+    "main_editor": [
+      "familyCombo",
+      "schemeCombo",
+      "editState",
+      "lengthAnchor",
+      "scrollPartCombo"
+    ],
+    "native_sample": ["nativeComboBox"],
+    "manual_paint": ["paintFamily", "paintControl", "paintState"],
+    "piece_relief_editor": ["pieceReliefState", "pieceReliefKind"],
+    "help_dialog": ["helpTopicCombo", "helpLevelCombo"]
+  },
+  "findings": [
+    {
+      "widgets": ["familyCombo", "scrollPartCombo", "paintFamily", "paintControl", "paintState"],
+      "risk": "These callbacks relied on XmComboBoxCallbackStruct.item_position. Prior Theme Lab evidence records that Motif may report a stale position or one inconsistent with the configured position mode. The intermediate XmStringCompare-only correction also rejected a real selection in the isolated Motif runtime, leaving family_argument=-1 and the project on Motif.",
+      "change": "Read the committed one-based selection from the ComboBox's internal XmList and convert it to a bounded zero-based model index. Use XmString matching and the configured zero-based callback index only as fallbacks."
+    },
+    {
+      "widgets": ["schemeCombo", "editState"],
+      "path": "Generic changed callback schedules model reading after the callback returns; controller reads XmNselectedPosition during its deferred edit/persist/preview path.",
+      "assessment": "No direct stale callback index found; UI-level behavior still needs a human switch check."
+    },
+    {
+      "widgets": ["lengthAnchor", "pieceReliefState", "pieceReliefKind", "helpTopicCombo", "helpLevelCombo"],
+      "path": "Callbacks read XmNselectedPosition synchronously. The piece editor has a code comment that this resource reflects the live list selection in its affected Motif runtime; programmatic relief updates temporarily detach the callback.",
+      "assessment": "No direct item_position dependency found. Not interactively exercised in this audit."
+    },
+    {
+      "widgets": ["nativeComboBox"],
+      "path": "Demonstration control has no selection callback connected to the Theme Lab model.",
+      "assessment": "Cannot cause the application's family model to remain on Motif."
+    }
+  ],
+  "verification": {
+    "build": {
+      "command": "make -C tools/theme-lab build/theme-lab",
+      "result": "success"
+    },
+    "targeted_integration": {
+      "command": "TL_TEST_OUTPUT_DIR=/home/lsi/tempia/domainos-theme-work python3 -B tools/theme-lab/tests/test_controller_spin.py tools/theme-lab/build/controller-spin-probe --catalog-families",
+      "first_run": "failed: XmStringCompare-only resolver returned no family selection; controller family_argument=-1; saved project remained Motif.",
+      "after_fix": "passed: GTK3→Motif→GTK3→Apply→GTK4→Apply→Motif. Apply preserved the selected family in scene/project and all family recipes/visibility masks.",
+      "artifact_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-spin-d629vm42",
+      "gtk4_input": "Native XmListSelectPos selection with notify=True into the actual ComboBox selection callback; popup pointer placement was not part of this pass.",
+      "scope_limit": "Isolated Xvfb/controller integration, not personal-window visual acceptance, pointer popup placement or adapter fidelity."
+    },
+    "live_window": {
+      "status": "reopened",
+      "pid": 2891463,
+      "window_id": "0x2c00248",
+      "wm_name": "Laboratório de temas — Motif MVC / três painéis",
+      "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+      "loaded_saved_project": true,
+      "working_json_selected_family_at_last_read": "gtk3",
+      "user_install_changed": false
+    },
+    "interactive_selection": "The updated build is now open; no selection was injected into the personal window. User visual confirmation remains pending."
+  },
+  "theme_or_user_install_changed": false,
+  "next": "When the user is ready to reopen Theme Lab, verify family changes Motif→GTK2→Motif and the Paint family/control/state selectors. Then spot-check scheme, state, anchor, scroll part, piece relief and help selectors; keep each result scoped to the exercised widget."
+}

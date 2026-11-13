@@ -1,0 +1,38 @@
+{
+  "item": "I167",
+  "revision": "R22",
+  "checked_at_utc": "2026-10-19T15:48:42Z",
+  "type": "read-only audit of saved public GTK2 pressure attempts",
+  "current_worktree": {
+    "display": ":84",
+    "xephyr_pid": 44778,
+    "status": "left running; no input was sent during this audit"
+  },
+  "audited_attempts": [
+    {
+      "evidence_dir": "~/tempia/i167-r22-gtk2-public/.qa-gtk2-public-3iagln42",
+      "namespace_log": "launcher ended with SIGTERM (-15); result.json was not produced",
+      "pointer": "XQueryPointer path contained the GTK2 preview top-level at root coordinate 23,23; xdotool's WINDOW field was 0",
+      "images": "640×420 hover/held/released captures were preserved",
+      "roi_differences_15x15": {"hover_to_held": 0, "hover_to_released": 0},
+      "gtk_signal_trace": "not enabled in this attempt"
+    },
+    {
+      "evidence_dir": "~/tempia/i167-r22-gtk2-public/.qa-gtk2-public-i93atz4e",
+      "namespace_log": "launcher ended with SIGTERM (-15); result.json was not produced",
+      "pointer": "XQueryPointer path contained the GTK2 preview top-level at root coordinate 23,23; xdotool's WINDOW field was 0",
+      "images": "640×420 hover/held/released captures were preserved",
+      "roi_differences_15x15": {"hover_to_held": 0, "hover_to_released": 0},
+      "gtk_signal_trace": "enabled; file remained empty"
+    }
+  ],
+  "interpretation": "The X pointer hit-test reached the preview window, but these two saved attempts produced no held relief pixels; with tracing enabled, no GtkRange change-value or adjustment signal was recorded. This is consistent with the already documented intermittent public input path and is not new evidence against the pressed bitmap. R20 remains the successful targeted trace (53 changed pixels; GtkRange step-backward), and R21 remains the exact normal-state 225/225 comparison.",
+  "product_change": false,
+  "preservation": {
+    "other_xephyr_sessions_touched": false,
+    "user_profile_changed": false,
+    "mame_or_guest_touched": false
+  },
+  "status": "normal-pixel-comparison-passed; public pressure remains nondeterministic",
+  "next": "Do not repeat the same public click matrix. Proceed to another authorized Fila Atual item; revisit I167 only if a new, independently discriminating input-delivery test is available."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-INSTANCE-IDENTITY-20261024-R62",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "purpose": "Read-only identification of the assistant-owned DomainOS MAME clone and other live MAME windows before any visual capture.",
+  "observed_at_utc": "2026-10-24T03:53:16Z",
+  "host_window_properties_evidence": {
+    "path": "~/tempia/i167-mame-window-readonly-20261024/window-properties.txt",
+    "sha256": "73edb9dbd2c16062fb408f27b99706ff4bcc1465ff51c2a0161348f26ad5cff0"
+  },
+  "mame_processes": [
+    {
+      "pid": 2745483,
+      "role": "assistant-owned clone for DomainOS theme work",
+      "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+      "video_backend": "opengl",
+      "elapsed_at_observation": "55 minutes",
+      "host_x_window_found_on_display_1": false
+    },
+    {
+      "pid": 3053638,
+      "role": "separate I342 DomainC clone; not the assistant-owned theme VM",
+      "disk": "/home/lsi/tempia/i342-domainc-run-20261016/discos/dn3500_sr10.4.clone.awd",
+      "video_backend": "none",
+      "x_window": {
+        "id": "0x3200002",
+        "title": "Apollo DN3500 [dn3500] - MAME 0.276 (LP64)",
+        "net_wm_pid": 3053638
+      },
+      "capture": "Not captured or raised. The XWD request returned BadMatch; the recorded _NET_WM_PID identifies this as a separate I342 window."
+    },
+    {
+      "pid": 912338,
+      "role": "separate board/i350 MAME instance; not the assistant-owned theme VM",
+      "disk": "/home/lsi/tempia/board/i350-resources/disk.awd",
+      "video_backend": "soft"
+    }
+  ],
+  "assistant_clone_control": {
+    "channel": "legacy channel inspected read-only",
+    "request_id": "f2127393cf7642a4896dceae1977ea71",
+    "pending": true,
+    "acknowledged": false,
+    "reply": null,
+    "new_commands_sent": false
+  },
+  "result": "Three MAME processes are running. Only PID 2745483 is the assistant-owned theme clone. The MAME X window visible in the display tree belongs to the separate I342 process PID 3053638; it is not evidence of the assistant clone's guest screen.",
+  "limits": [
+    "This is host process/window identity evidence, not proof that the SR10.4 guest is responsive.",
+    "The last usable guest video observation remains R59; the current clone screen was not recaptured because its Lua bridge still has an unresolved request.",
+    "No VM was restarted, focused, raised, sent input, or otherwise changed; no other MAME instance or Xephyr was touched."
+  ],
+  "next": "Keep the assistant clone and its pending request intact. Resume visual validation only through its own window or a resolved existing bridge reply; do not use the similarly titled I342 window as a substitute."
+}

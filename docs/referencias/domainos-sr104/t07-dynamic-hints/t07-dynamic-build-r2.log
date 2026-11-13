@@ -1,0 +1,11 @@
+make: Entering directory '/home/lsi/irixium-kde-custom/tools/theme-lab'
+cc -Iinclude -I/usr/include/json-c -I/usr/include/libpng16  -O2 -g -std=c99 -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700  tests/native_metrics_view.c tests/ui_help_flow.c tests/dynamic_hints.c src/view.c src/view/ui_hints.c src/view/ui_help.c src/model/help_topics.c src/view/project_history_controls.c src/view/part_relief_editor.c src/model.c src/model/scrollbar_parts.c src/model/part_states.c src/model/control_dimensions.c src/native_metrics.c src/native_font_motif.c src/font_policy_motif.c src/native_pair_motif.c src/native_parts_motif.c src/editor/view.c src/editor/store.c src/view/ui_menu_hints.c -lXm -lXt -lX11 -ldl -ljson-c -lpng16 -lcrypto  -lm -o "build/native-metrics-view"
+tests/dynamic_hints.c: In function ‘numeric’:
+tests/dynamic_hints.c:39:11: error: implicit declaration of function ‘XmIsSpinBox’ [-Wimplicit-function-declaration]
+   39 |     CHECK(XmIsSpinBox(XtParent(w)));
+      |           ^~~~~~~~~~~
+tests/dynamic_hints.c:9:27: note: in definition of macro ‘CHECK’
+    9 | #define CHECK(x) do {if(!(x)){fprintf(stderr,"dynamic hints line %d\n",__LINE__);exit(1);}}while(0)
+      |                           ^
+make: *** [Makefile:54: build/native-metrics-view] Error 1
+make: Leaving directory '/home/lsi/irixium-kde-custom/tools/theme-lab'

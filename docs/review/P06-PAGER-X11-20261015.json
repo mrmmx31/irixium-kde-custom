@@ -1,0 +1,45 @@
+{
+  "item": "P06",
+  "user_revision": 1,
+  "definition_sha256": "c2790a68f146b1c11ebaf7115d24427a8d1013410d24c3526bd8d95f559375b5",
+  "checked_at": "2026-10-15T02:50:20Z",
+  "scope": "Pager desktop UUIDs, one/multiple desktop layouts, naming, navigation, button press/selection, wheel defaults, real window geometry and short-host popup sizing; private KWin/X11 only.",
+  "test": {
+    "status": "passed",
+    "checks": 103,
+    "passed": 103,
+    "failures": []
+  },
+  "finding": {
+    "previous_threshold": "native popup height >= fractional QML implicitHeight - 0.5 px",
+    "measurement": {
+      "name_dialog_native_height": 82,
+      "name_dialog_implicit_height": 82.8,
+      "remove_dialog_native_height": 69,
+      "remove_dialog_implicit_height": 69.8
+    },
+    "interpretation": "Native Popup.Window geometry is integer-sized under this X11 test. The former half-pixel assertion classified a subpixel remainder as a clipped dialog. The revised check allows less than 1 px quantization and still fails if a whole pixel or more is missing."
+  },
+  "implementation_change": "Test assertion only; production DomainOSPager.qml hash is unchanged. No palette, desktop, or user configuration changed.",
+  "limits": [
+    "This is a private X11/KWin integration run, not manual visual approval in the user session.",
+    "Wayland not covered by this runner.",
+    "P04 normal-session Operations button report remains unresolved in a personal-session route; prior Xephyr proof does not establish production input behavior."
+  ],
+  "artifacts": {
+    "private_directory": "~/tempia/goal-resume-20261015/p06-after-fix/full-quantized",
+    "sha256": {
+      "pager_qml": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4",
+      "pager_test": "54dd42d8355d16a63ea334a0e66c1a0cbbf098abcf5b3faaee0b6a7b1a03af2a",
+      "result": "8eb1fb6d1ab8c5976cb84900b2fa59740fa0a07eccc7344fde822cd914404596",
+      "native_result": "b43158e4ca991bf717a9edca61016d39cdacfa79cb5e5e930770db798ba59e18",
+      "name_dialog_capture": "593717dc8ab48f50b94fc09555658e852d284fb1356006a719de33a7c1adb0b1",
+      "remove_dialog_capture": "07c57004c4b637020864ef6f36aa9d406fa61a6012e411e9a108cd96e3b66505"
+    }
+  },
+  "source_sha256": {
+    "DomainOSPager.qml": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4",
+    "testar-domainos-pager.py": "54dd42d8355d16a63ea334a0e66c1a0cbbf098abcf5b3faaee0b6a7b1a03af2a"
+  },
+  "personal_configuration_unchanged": true
+}

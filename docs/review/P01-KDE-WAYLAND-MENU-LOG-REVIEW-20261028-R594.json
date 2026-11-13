@@ -1,0 +1,47 @@
+{
+  "id": "R594",
+  "date_utc": "2026-10-28T17:45:00Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "sources": {
+    "installed_kicker": "plasma-workspace 6.3.6-2; /usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/{ItemListView.qml,ItemListDialog.qml,ItemListDelegate.qml}",
+    "panel_qml": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "journal": "user lsi, PID 505510, 2026-10-28 12:45–13:05 local session window"
+  },
+  "confirmed_evidence": [
+    {
+      "source": "ItemListView.qml:60-77",
+      "fact": "Kicker opens a child dialog after hover delay, clears hide-on-deactivate while focus transfers, calls windowSystem.forceActive(childDialog.mainItem), then sets mainItem.focus=true."
+    },
+    {
+      "source": "ItemListDialog.qml:24-32",
+      "fact": "A submenu window deactivation closes the whole Kicker menu unless the dialog is being destroyed."
+    },
+    {
+      "source": "journal PID 505510",
+      "fact": "During menu activity on the Wayland session there are KX11Extras::forceActiveWindow X11-only warnings, ItemListDialog shadow recreation warnings and eglSwapBuffers surface 0x0 warnings. They are correlated with menu activity but do not prove the cause of the reported closure or restart."
+    },
+    {
+      "source": "ItemListDelegate.qml:104-107,149-155",
+      "fact": "An application is launched on pointer release and closes the menu; pointer exit itself only clears press state and stops the timer. This does not explain a Plasma restart on double-click."
+    },
+    {
+      "source": "coredumpctl and journal",
+      "fact": "No plasmashell coredump after 2026-10-26; the current PID has no fatal record in the inspected interval."
+    }
+  ],
+  "interpretation": "A possible hover-close chain is Kicker opening a submenu, attempting focus transfer through its WindowSystem, then the submenu receiving a deactivation signal and setting kicker.expanded=false. The Wayland warnings support investigating this path, but no stack/event trace proves causality. R593 window focus correction remains a candidate; it has not been loaded/tested live.",
+  "action": "No additional code change: the implicated WindowSystem.forceActive call and ItemListDialog deactivation handler are KDE-owned source loaded from /usr/share, not code in this theme repository. Avoid copying/forking KDE implementation without a controlled proof and scope decision.",
+  "validation": {
+    "live_hover_reproduction": false,
+    "tests_run": false,
+    "plasmashell_restarted": false,
+    "other_user_process_touched": false
+  },
+  "next": [
+    "Safely reload and test R593 in the current lsi session when there is a maintenance window, then observe whether moving over a top-level category spawns a submenu and closes the parent.",
+    "If it persists, isolate the popup/Wayland activation path before considering a KDE QML compatibility adaptation.",
+    "Wait for Q510 to identify affected apps and distinguish app launch stall from plasmashell restart."
+  ]
+}

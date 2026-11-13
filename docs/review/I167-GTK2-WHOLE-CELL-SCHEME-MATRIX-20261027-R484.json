@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "id": "R484",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct the GTK2 horizontal stepper cell crop registration from R483 and compare both complete 15x15 cells against the generated normal stepper assets across four schemes.",
+  "method": "Re-read the four GTK2 OffscreenWindow captures and generated bundles from R483. Use each cell origin at x=2 and x=203 within the 220x15 widget capture; these correspond to the actual outer cells and match the independent full-window coordinates recorded in R470. Compare RGBA per pixel for both sides. No runtime was started during this reanalysis.",
+  "result": {
+    "schemes": 4,
+    "cells": 8,
+    "pixels_compared": 1800,
+    "all_cells_exact": true,
+    "different_pixels": 0,
+    "correction": "R483 had compared four corner pixels correctly but deliberately left the whole cell unclaimed because its exploratory crops started at x=0 and x=205. Those were offset outside the real cells. R484 uses x=2 and x=203 and proves both full cells match."
+  },
+  "schemes": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "scheme_path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        220,
+        15
+      ],
+      "cells": {
+        "left": {
+          "native_crop_xywh": [
+            2,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-left-normal.png",
+          "native_capture_sha256": "2223aa5b265ae5b244436092f64838ee9bbeb6458864bd4cd6b3a15240a66969",
+          "generated_asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        },
+        "right": {
+          "native_crop_xywh": [
+            203,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-right-normal.png",
+          "native_capture_sha256": "2223aa5b265ae5b244436092f64838ee9bbeb6458864bd4cd6b3a15240a66969",
+          "generated_asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "BreezeClassic",
+      "scheme_path": "/usr/share/color-schemes/BreezeClassic.colors",
+      "scheme_sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        220,
+        15
+      ],
+      "cells": {
+        "left": {
+          "native_crop_xywh": [
+            2,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-left-normal.png",
+          "native_capture_sha256": "5a8339c28cd9bf4894330f15178fd49359ebcd6372d0d121724f836650de4f39",
+          "generated_asset_sha256": "f83a3f0504423087f05e2e9796face9a651996f65329b846d99e55fedb8c391d",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        },
+        "right": {
+          "native_crop_xywh": [
+            203,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-right-normal.png",
+          "native_capture_sha256": "5a8339c28cd9bf4894330f15178fd49359ebcd6372d0d121724f836650de4f39",
+          "generated_asset_sha256": "b2bee182c789991dc6e5a158c10393402d1e6b4c8cdba9aed660291ac68e5f78",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "BreezeDark",
+      "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        220,
+        15
+      ],
+      "cells": {
+        "left": {
+          "native_crop_xywh": [
+            2,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-left-normal.png",
+          "native_capture_sha256": "dbbcc5a608eed808d4a9f8f291089ae7da7c3e44be683e9a037af6cffecd4596",
+          "generated_asset_sha256": "5c51a1e2b8e67687654a3ca6343e32af9a3c06aa481e787da28fc642bdfc030b",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        },
+        "right": {
+          "native_crop_xywh": [
+            203,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-right-normal.png",
+          "native_capture_sha256": "dbbcc5a608eed808d4a9f8f291089ae7da7c3e44be683e9a037af6cffecd4596",
+          "generated_asset_sha256": "7709341ff16b0242793f60396046c0a0cef49de064e99a94cff197e1f25b3773",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "KvBeige",
+      "scheme_path": "/usr/share/color-schemes/KvBeige.colors",
+      "scheme_sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        220,
+        15
+      ],
+      "cells": {
+        "left": {
+          "native_crop_xywh": [
+            2,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-left-normal.png",
+          "native_capture_sha256": "32fd5a8c2b6fa577fdb4a3ea4b9ddcc7047b023bbc8db03df4ad882b4802b8bc",
+          "generated_asset_sha256": "00d10ff5b2708a317b0712b00afaaa7d1fef0f1bce297b9ff39a5c2eec179805",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        },
+        "right": {
+          "native_crop_xywh": [
+            203,
+            0,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-right-normal.png",
+          "native_capture_sha256": "32fd5a8c2b6fa577fdb4a3ea4b9ddcc7047b023bbc8db03df4ad882b4802b8bc",
+          "generated_asset_sha256": "e5f89ef333ebd462752921c623e8e4875358006a4427f329b4f9bf98f7f0f26b",
+          "pixels": 225,
+          "different_pixels": 0,
+          "first_differences": []
+        }
+      },
+      "both_cells_exact": true
+    }
+  ],
+  "limits": "Normal horizontal GTK2 stepper cells only. Does not prove historical VUE states other than the separate R470 normal comparison; pressed/hover/disabled, vertical family review and human visual approval remain pending.",
+  "changes": {
+    "theme_source_changed": false,
+    "user_profile_changed": false,
+    "app_restarted": false,
+    "vm_contacted": false
+  }
+}

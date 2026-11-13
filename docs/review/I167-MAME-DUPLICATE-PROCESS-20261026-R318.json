@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "R318",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "runtime-safety",
+  "status": "duplicate-live-processes;ownership-unresolved",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only process ownership check before continuing authorized GTK2 reference work."
+  },
+  "runtime_observation": {
+    "observed_at": "2026-10-26T19:20:54Z",
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "matching_processes": [
+      {"pid": 3600675, "started_local": "2026-10-26 15:12:48", "ppid": 3600663, "service": "codex-xchat-bridge-16667.service", "provenance": "launched by this Codex/XChat work session"},
+      {"pid": 3601189, "started_local": "2026-10-26 15:13:17", "ppid": 3601177, "service": "codex-xchat-bridge-16667.service", "provenance": "same service ancestry; originating context not identified"}
+    ],
+    "control_input_sent": false,
+    "processes_terminated": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Read-only ownership check did not add GTK2 arrow comparison coverage. This is task coverage, not visual fidelity."
+  },
+  "next_step": "Use the XChat channel the user is creating to identify the second process owner. Do not send guest input or start another process on this disk until ownership is unambiguous. Resume GTK2 comparison only when the authorized VM is visible."
+}

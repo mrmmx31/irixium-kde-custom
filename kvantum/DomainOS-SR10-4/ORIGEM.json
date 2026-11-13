@@ -1,0 +1,42 @@
+{
+  "kind": "original_integer_motif_control_reconstruction",
+  "license": "GPL-3.0-or-later",
+  "version": "DomainOS SR10.4",
+  "reference_sha256": "fbc724a50477f8f7871f244805c5847ca473881abf2498882d4574463fbb3d8b",
+  "reference_distributed": false,
+  "geometry": {
+    "bevel": 2,
+    "scrollbar": 15,
+    "triangle": 11,
+    "thumb_grips": 0,
+    "check_radio": 14
+  },
+  "geometry_evidence": [
+    "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+    "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json"
+  ],
+  "excluded": [
+    "SR10.4.1",
+    "other versions",
+    "HP bitmaps",
+    "HP fonts",
+    "HP software"
+  ],
+  "files": {
+    "DomainOS-SR10-4.kvconfig": "8fe2b44f535534b097c0767ef2c982b2d643746d6a9b5a8ba0f3c778bcbb9860",
+    "DomainOS-SR10-4.svg": "fd26d79091378c87e624e4936f0060f76e7fb1e79b8f7c31ceedd8d62c6f0536",
+    "LICENSE": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "color_policy": {
+    "primary_relief": "Current Window/Button face with calibrated relative light/shadow levels",
+    "secondary_relief": "Current Header/Selection face with calibrated relative light/shadow levels",
+    "inset_view": "KDE View face/text with enclosing Window color-set shadows",
+    "marked_check_radio": "Select interior relative to current Button face and reversed relief"
+  },
+  "adaptation_limits": [
+    "KDE shared application palette does not represent eight per-client VUE color sets",
+    "KDE list/text selection keeps the exported Selection role rather than native XmList reverse video",
+    "KDE/user fonts and non-scrollbar control metrics are preserved",
+    "Scrollbar art is generated as integer SVG shapes; no HP bitmap is bundled"
+  ]
+}

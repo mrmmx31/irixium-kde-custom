@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R663",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "guest-awake; repeated-filemanager-down-cell-delta-same-as-R661",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "release": "Domain/OS SR10.4 + HP VUE 2.01",
+    "pid": 379349,
+    "service": "domainos-tema-mame.service",
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile": "frameskip 4; throttle off; not paused; pointer capture off",
+    "other_instance_preserved": "Prancheta PID 117186; separate disk, namespace and control channel"
+  },
+  "observation": {
+    "initial_channel": "No pending command or reply",
+    "initial_guest_image": "Black after idle display sleep",
+    "wake_action": "Exactly one Shift frame, released at frame 2; screenshot at frame 65",
+    "guest_after": "VUE visible; no mouse input",
+    "capture": "records/ia-tema/I167/R663/after-wake.png",
+    "capture_sha256": "3d40ee586bd3e16a940b3b00610b09f83184a6f9d70a60cc10630e072ad8213d"
+  },
+  "comparison": {
+    "method": "1:1 RGB search against the retained SR10.4 normal vertical-arrow cell",
+    "filemanager_down": {
+      "capture_origin_xy": [622, 372],
+      "reference_origin_xy": [4, 242],
+      "cell_px": [15, 15],
+      "different_pixels": 11,
+      "difference_bbox_relative_xyxy": [2, 0, 12, 0]
+    },
+    "lower_window_down": {
+      "capture_origin_xy": [595, 680],
+      "reference_origin_xy": [4, 242],
+      "cell_px": [15, 15],
+      "different_pixels": 0
+    },
+    "relation_to_R660": "The full screenshot differs at 336 pixels only in the taskbar region; the VUE/File Manager content and the 11-pixel cell delta are unchanged. This repeats the observation but does not identify its cause or provide an independent UI state."
+  },
+  "limits": [
+    "This is another normal/resting-state observation, not the historical held/released comparison.",
+    "The remaining File Manager delta may be state/context dependent; no GTK2 geometry or color was changed.",
+    "I517 still requires explicit execution authorization before pointer input."
+  ],
+  "side_effects": {
+    "pointer_input_sent": false,
+    "vm_configuration_changed": false,
+    "other_vm_touched": false,
+    "user_application_restarted": false
+  },
+  "artifacts": "records/ia-tema/I167/R663/ARTIFACTS.json",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The display was safely restored and the prior contextual arrow delta repeated, but no new state or held comparison was obtained. Not a visual-fidelity score."
+  }
+}

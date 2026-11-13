@@ -1,0 +1,284 @@
+{
+  "item": "P10",
+  "family": "V07",
+  "date": "2026-10-14",
+  "status": "partial_two_axis_corner_and_arrows_verified",
+  "environment": {
+    "app": "System Settings 6.3.4",
+    "qt": "6.8.2",
+    "display": ":69",
+    "server": "Xephyr 1024x768",
+    "qpa": "xcb",
+    "dpr": 1.0,
+    "isolated_xdg": "/home/lsi/tempia/domainos-v07-qtquick-20261014/xdg-config",
+    "kde_widget_style": "kvantum",
+    "kvantum_theme_path": "Kvantum/DomainOS-SR10-4-KDE/DomainOS-SR10-4-KDE.{kvconfig,svg}",
+    "isolated_kdeglobals_widgetStyle": "kvantum",
+    "qml_diagnostic_overlay": "/home/lsi/tempia/domainos-v07-qtquick-20261014/qml-overlay/org/kde/desktop/ScrollBar.qml",
+    "personal_settings_written": false
+  },
+  "observed_control": {
+    "qml": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/ScrollBar.qml",
+    "qml_sha256": "6ba3ec80108c58f50e79e46b6f6010194f3ff0c20f3a617baadd0f68ada0a401",
+    "package": "qml6-module-org-kde-desktop 4:6.3.4-2",
+    "delegate": "StylePrivate.StyleItem, elementType=scrollbar",
+    "runtime_style_name": "kvantum::",
+    "runtime_implicit_scrollbar_extent_px": 15,
+    "runtime_visible_sidebar_extent_px": 15,
+    "qml_overlay_sha256": "ce9f2b573ef5c4b611b212114b0b17bef311f50a0279d8ea078cacf23becb9eb",
+    "style_route": "KDE qqc2-desktop-style v6.13.0 QStyleOptionSlider maps activeControl down to SC_ScrollBarAddLine/up to SC_ScrollBarSubLine; Kvantum CC_ScrollBar calls CE_ScrollBarAddLine/SubLine and uses the Scrollbar indicator spec."
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/domainos-v07-qtquick-20261014/systemsettings-kvantum-theme-path-fixed.png",
+    "sha256": "1f911c3e7f6f5a938c0a7ea68131a2c0f0f6ec1a45e620879bf950101b819053",
+    "dpr": 1.0,
+    "observation": "Real System Settings left navigation scrollbar forced visible by reducing window viewport; up arrow at upper limit, down arrow normal."
+  },
+  "isolated_test_cause_and_fix": {
+    "cause": "The earlier temporary Kvantum files were placed flat under XDG_CONFIG_HOME/Kvantum. Kvantum 1.1.4 searches a named subdirectory and could not load that theme, so QStyle used default 12px metrics and a small fallback arrow.",
+    "test_only_fix": "Placed the generated Kvantum config/SVG under XDG_CONFIG_HOME/Kvantum/DomainOS-SR10-4-KDE/; no system or personal configuration changed.",
+    "source": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kvantum-source-1.1.4/Kvantum/style/Kvantum.cpp setTheme()"
+  },
+  "comparison": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "metrics": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+    "qtquick_cell_size_px": [
+      15,
+      15
+    ],
+    "screen_cell_diffs_to_active_svg": {
+      "down_normal": {
+        "screen_crop": "/home/lsi/tempia/domainos-v07-qtquick-20261014/sidebar-down-normal-cell.png",
+        "source_element": "dm-stepper-down-normal",
+        "source_crop": [
+          576,
+          480,
+          591,
+          495
+        ],
+        "different_pixels": 0,
+        "total_pixels": 225
+      },
+      "up_at_minimum_disabled": {
+        "screen_crop": "/home/lsi/tempia/domainos-v07-qtquick-20261014/sidebar-up-disabled-cell.png",
+        "source_element": "dm-stepper-up-disabled",
+        "source_crop": [
+          384,
+          2720,
+          399,
+          2735
+        ],
+        "different_pixels": 0,
+        "total_pixels": 225
+      }
+    },
+    "native_reference": "V06 receipt records the same normal 15x15 Kvantum stepper cells matching SR10.4 at 0 differing pixels; this V07 capture directly confirms the Qt Quick delegate paints the checked-in active stepper asset.",
+    "result": "The initially small arrow was caused by an incorrectly laid-out isolated test theme, not by the checked-in DomainOS SVG/QML. Correctly configured Qt Quick paints the exact active 15x15 Kvantum cells (0/225 pixel difference for down-normal and upper-limit up-disabled). No product correction is indicated by this test."
+  },
+  "palette_limit": {
+    "kcm_message": "DomainOS-SR10-4 color scheme is not installed; KCM selected default theme",
+    "color_comparison": "not performed; only exact rendered indicator-cell/asset comparison recorded"
+  },
+  "changes": {
+    "project_svg_changed": false,
+    "system_qml_changed": false,
+    "personal_kde_config_changed": false,
+    "vm_input_sent": false,
+    "isolated_xdg_changed": true
+  },
+  "remaining": [
+    "4px frame-to-bar spacing in a real Qt Quick consumer with a visible content frame (question Q345 opened in production board)",
+    "content-matched thumb length against a scrollable SR10.4 reference",
+    "neutral/dark/yellow palette review with scheme assets available in isolated XDG",
+    "human review"
+  ],
+  "next": "Q345 remains unanswered; the installed System Monitor did not expose a framed scroll area or matched-content thumb. Continue with V08 on the existing Xephyr, recording V07 as waiting on user-named framed app or other directly comparable content.",
+  "content_scrollview": {
+    "capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/systemsettings-content-metrics-2.png",
+    "capture_sha256": "42776ad95b2cb1b5dcada26543cc36cae7d734ba44e36b4eec9ccfb9c036c7ef",
+    "layout_log": "/home/lsi/tempia/domainos-v07-qtquick-20261014/systemsettings-layout.log",
+    "layout_log_sha256": "054fe7db6f25984fe6e7a2b47ba687004fba3599f9abfca0317ffc82a1efe61c",
+    "observed": {
+      "scrollview_px": [
+        629,
+        468
+      ],
+      "content_item_px": [
+        625,
+        464
+      ],
+      "right_padding_px": 15,
+      "background_visible": false,
+      "background_right_padding_px": 2,
+      "vertical_bar_relative_rect_px": [
+        614,
+        0,
+        15,
+        468
+      ],
+      "thumb_fraction": 0.09013209013209013,
+      "thumb_length_derived_px": 42.18,
+      "thumb_position_fraction": 0.09634809634809635
+    },
+    "visible_down_normal_cell": {
+      "screen_crop_xywh": [
+        905,
+        659,
+        15,
+        15
+      ],
+      "source_element": "dm-stepper-down-normal",
+      "source_crop_xywh": [
+        576,
+        480,
+        591,
+        495
+      ],
+      "different_pixels": 0,
+      "total_pixels": 225
+    },
+    "spacing_and_corner": "This view has no visible framed content boundary (StyleItem background visible=false); its card edges are page content with their own margins, so they cannot establish the 4px frame-to-bar spacing. No horizontal bar was visible, so the two-bar corner is not observable here.",
+    "thumb_comparison": "The live thumb is measurable (42.18px from fraction × 468px viewport) but content and viewport do not match the SR10.4 reference; no historical equivalence conclusion."
+  },
+  "kinfocenter_scrollview": {
+    "application": "KInfoCenter 6.3.6, module kcm_kwinsupportinfo (real Qt Quick/Kirigami CommandOutputKCM)",
+    "display": ":69",
+    "window_px": [
+      922,
+      691
+    ],
+    "capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-kwin-support-confirmed.png",
+    "capture_sha256": "a9146f6744acbbe504297a6ad532e1b61b889e82f559b306ff828903a496e1ac",
+    "layout_log": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-kwin-support.log",
+    "layout_log_sha256": "7552c2f04509352150adc0fc6d44c5ef417132ca0b7379b7ee63cd42d4bf88ac",
+    "overlay_qml": "/home/lsi/tempia/domainos-v07-qtquick-20261014/qml-overlay/org/kde/kirigami/ScrollablePage.qml",
+    "overlay_qml_sha256": "8e12ce249a89811c49c2e2a963036038f3b7d66314f0156ce02d1d4aa45832fd",
+    "runtime_style_name": "kvantum::",
+    "scrollview_metrics": {
+      "viewport_px": [
+        651,
+        649
+      ],
+      "content_item_px": [
+        636,
+        634
+      ],
+      "right_padding_px": 15,
+      "bottom_padding_px": 15,
+      "background_visible": false,
+      "background_right_padding_px": 2,
+      "vertical_bar_relative_rect_px": [
+        636,
+        0,
+        15,
+        634
+      ],
+      "horizontal_bar_relative_rect_px": [
+        0,
+        634,
+        636,
+        15
+      ],
+      "corner_reserved_px": [
+        15,
+        15
+      ]
+    },
+    "arrow_comparisons": {
+      "up_at_top_disabled": {
+        "screen_xy": [
+          907,
+          42
+        ],
+        "source_element": "dm-stepper-up-disabled",
+        "different_pixels": 0,
+        "total_pixels": 225
+      },
+      "down_normal": {
+        "screen_xy": [
+          907,
+          661
+        ],
+        "source_element": "dm-stepper-down-normal",
+        "different_pixels": 0,
+        "total_pixels": 225
+      },
+      "left_at_start_disabled": {
+        "screen_xy": [
+          271,
+          676
+        ],
+        "source_element": "dm-stepper-left-disabled",
+        "different_pixels": 0,
+        "total_pixels": 225
+      },
+      "right_normal": {
+        "screen_xy": [
+          892,
+          676
+        ],
+        "source_element": "dm-stepper-right-normal",
+        "different_pixels": 0,
+        "total_pixels": 225
+      }
+    },
+    "corner": {
+      "screen_xywh": [
+        907,
+        676,
+        15,
+        15
+      ],
+      "pixels": 225,
+      "unique_rgba": [
+        [
+          102,
+          136,
+          181,
+          255
+        ]
+      ],
+      "role": "KDE View.BackgroundNormal; matches the active Kvantum corner role"
+    },
+    "spacing_limit": "background.visible=false and the page has no visible frame around the scroll viewport; 4px frame-to-bar distance cannot be measured from this consumer.",
+    "pressed_state_attempt": {
+      "capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-down-pressed.png",
+      "capture_sha256": "9152d249e5be55274ce4c4a55e64fcd265d6d9752b6bbe162da6c2e32d0e06ff",
+      "result": "inconclusive; the content moved after injected input but the 15x15 cell matched neither normal nor pressed SVG. Keep held/release appearance unverified."
+    },
+    "press_release_verification": {
+      "down_arrow": {
+        "pressed_capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-down-pressed-held.png",
+        "pressed_sha256": "f33ce1f7b4cee7ce9a888c36d94b10d69ca730c185c90dcfb7b99fb0385d20a4",
+        "pressed_vs_svg_px": 0,
+        "release_capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-down-released.png",
+        "released_sha256": "896045e7ba102914cb9d0ada049993199121067aa61320ec2c17f20b8ab02c38",
+        "released_vs_normal_svg_px": 0,
+        "cell_xy": [
+          907,
+          661
+        ]
+      },
+      "right_arrow": {
+        "pressed_capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-right-pressed.png",
+        "pressed_sha256": "f715339a17212caa15abd49fca5ea50dceac993deefa137cdd5d5afa46581b4e",
+        "pressed_vs_svg_px": 0,
+        "release_capture": "/home/lsi/tempia/domainos-v07-qtquick-20261014/kinfocenter-right-released.png",
+        "released_sha256": "2431e5a255c3e3392f0488f76cb1356fcb6424701713269028075dff56366230",
+        "released_vs_normal_svg_px": 0,
+        "cell_xy": [
+          892,
+          676
+        ]
+      },
+      "scope": "Native pointer input in isolated Xephyr :69, one short press per operable arrow; mouse release sent in finally path. The first separate-process attempt was inconclusive and is retained above."
+    }
+  },
+  "attempted_alternatives": [
+    {
+      "receipt": "docs/VALIDACAO-V07-SYSTEMMONITOR-20261014.json",
+      "result": "Real Plasma System Monitor was tested on existing Xephyr :69 with isolated XDG. Without the QML overlay its Processes page remained blank with a loading indicator and showed no scrollbar; installed BaseTableView ScrollView has only a background Rectangle and no frame border. It does not satisfy Q345. Overlay-enabled attempt is excluded because ScrollablePage emitted a TypeError.",
+      "screenshot_sha256": "147146e6c5375bcf51ba54ec987cb02d015f5b66c0394dbfc22f262ad03ea3db"
+    }
+  ]
+}

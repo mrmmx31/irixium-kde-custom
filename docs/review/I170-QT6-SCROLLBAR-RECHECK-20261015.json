@@ -1,0 +1,140 @@
+{
+  "id": "I170",
+  "revision": 1,
+  "checked_at_utc": "2026-10-15T03:13:09Z",
+  "reason": "Revalidar a rota pública depois de backend.py, qt6_demo.py e Makefile mudarem em relação ao recibo de 2026-10-14.",
+  "command": "tests/test_qt6_scrollbar_public_native.py; tempfile.mkdtemp redirecionado para o namespace /tmp do bwrap, montado sobre ~/tempia.",
+  "result": "passed",
+  "environment": {
+    "qtVersion": "6.8.2",
+    "pyqtVersion": "6.9.0",
+    "platform": "xcb",
+    "style": {
+      "objectName": "fusion",
+      "className": "QFusionStyle"
+    }
+  },
+  "guards": {
+    "verified": true,
+    "uid": 1000,
+    "passwdName": "domainos-test",
+    "passwdHome": "/home/domainos-test",
+    "namespaceMarker": "/etc/domainos-preview",
+    "personalHomeExposed": false,
+    "systemBusSocketExposed": false,
+    "procStatusPresent": true,
+    "cwd": "/home/domainos-test"
+  },
+  "recipe": {
+    "scheme": "DomainOS-SR10.4",
+    "translated_controls": [
+      "scroll_h",
+      "scroll_v"
+    ],
+    "scrollbars": {
+      "vertical": {
+        "allocation": [
+          15,
+          377
+        ],
+        "sizeHint": [
+          15,
+          15
+        ],
+        "minimumSizeHint": [
+          -1,
+          -1
+        ],
+        "visible": true,
+        "value": 0,
+        "minimum": 0,
+        "maximum": 247,
+        "pageStep": 373,
+        "singleStep": 20,
+        "objectName": "domainosScrollBarVertical",
+        "widgetClass": "RecipeScrollBar"
+      },
+      "horizontal": {
+        "allocation": [
+          459,
+          15
+        ],
+        "sizeHint": [
+          15,
+          15
+        ],
+        "minimumSizeHint": [
+          -1,
+          -1
+        ],
+        "visible": true,
+        "value": 0,
+        "minimum": 0,
+        "maximum": 195,
+        "pageStep": 455,
+        "singleStep": 20,
+        "objectName": "domainosScrollBarHorizontal",
+        "widgetClass": "RecipeScrollBar"
+      }
+    },
+    "screenshot_sha256": "399b28261f8123b05af03cdc697f021146d81d3aeef56af4fe9b3a0c5b1592f0",
+    "screenshot": "/home/lsi/tempia/.qa-i170-qt6-public-ydrgl7_w/home/qtwidgets-proof/qtwidgets.png",
+    "previous_receipt_screenshot_sha256": "399b28261f8123b05af03cdc697f021146d81d3aeef56af4fe9b3a0c5b1592f0",
+    "byte_identical_to_previous": true
+  },
+  "preview": {
+    "private": true,
+    "display": ":180",
+    "closed_normally": true,
+    "exit_code": 0,
+    "personal_home_exposed": false,
+    "system_bus_exposed": false
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "741e1458dac74ea06cb057b02bfd8d3ce8b4ba18ed75ac8c816b2548447ddfb4",
+    "tools/theme-lab/qt6_scrollbar_route.py": "bce59d3f455c6f345fcc69e62c692402d038259647840282f45966ed890d73b2",
+    "tools/theme-lab/qt6_scrollbar_widgets.py": "a31dad616da982e896b95750db3f49832b1673bfce0f73cc885c41de9244f809",
+    "tools/theme-lab/backend.py": "1af370d12c1bd3e9c17cdc57c4436dbe1d46aeb61557a099bb2d9d6258a75c72",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "4f59d71b958eeb38ca5b826ed965775675383b4b2d48f2a989c7e1ce82f1943d",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "71d0f4c3abd15d4c6edc1dbb29ba6f33bff1f26cdf9c24ee452e0e047352972d",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "8e618c26b4acf65ddc234884049228c431f96b1f1506596fbecdde3eb84f5c0c",
+    "tools/theme-lab/Makefile": "347f4ca7314f23da4ad98bff9a71ef2080e9b483ee4739c5cfecd4649df8e976"
+  },
+  "limitations": [
+    "Revalidação automatizada da rota pública; não substitui comparação visual direta com a VM SR10.4 nem aprovação da pessoa.",
+    "Xephyr :68 contém a galeria Qt6 sem snapshot de recipe; a captura automatizada de validação vem da execução privada isolada.",
+    "Xephyr :68 recebeu redimensionamento RandR após o lançamento; o modo real foi conferido e não foi alterado nesta etapa."
+  ],
+  "no_product_changes": true,
+  "temporary_artifacts": "/home/lsi/tempia/.qa-i170-qt6-public-ydrgl7_w; nenhuma captura ou fixture nova gravada no repositório ou em /tmp do host.",
+  "live_xephyr": {
+    "display": ":68",
+    "process_pid": 1442542,
+    "launch_mode": "-screen 1024x844",
+    "effective_root_px": [
+      1600,
+      1200
+    ],
+    "randr_modes": [
+      "1600x1200",
+      "1400x1050",
+      "1280x960",
+      "1280x1024",
+      "1152x864",
+      "1024x768",
+      "832x624",
+      "800x600",
+      "720x400",
+      "480x640",
+      "640x480",
+      "640x400",
+      "320x240",
+      "240x320",
+      "160x160",
+      "1024x844"
+    ],
+    "capture": "/home/lsi/tempia/work-board/xephyr-inspection/xephyr68-root.png",
+    "capture_sha256": "f1e93db8a1d3f989416d9bd399242836251cf3c6873b6e49aa363f8b188cac3f",
+    "observed": "Qt6 native gallery open; no private scrollbar recipe snapshot in this GUI window; session was not resized or otherwise changed."
+  }
+}

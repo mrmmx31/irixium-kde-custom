@@ -1,0 +1,37 @@
+{
+  "id": "R229",
+  "date": "2026-10-25",
+  "scope": "Documentar a VM SR10.4 como referência principal e preservar em skills as regras reutilizáveis de interação MAME desta cópia.",
+  "vm": {
+    "canonical_runtime": "vm/domainos-sr10.4-assistant/runtime/",
+    "disk_size_bytes": 398458880,
+    "canonical_and_private_names_same_inode": true,
+    "legacy_tempia_symlink_resolves_to_canonical_disk": true,
+    "mame_process_active": false,
+    "guest_started_or_modified": false
+  },
+  "changes": [
+    "skills/mame-live-control/SKILL.md agora direciona leituras DomainOS para as regras canônicas deste projeto.",
+    "skills/mame-live-control/references/domainos-sr104.md registra identificação, perfil, foco/captura, despertar físico, entrada limitada, preservação de captura e proveniência das evidências.",
+    "AGENTS.md, docs/DOMAINOS-REGRAS-VM.md, docs/DOMAINOS-INDICE-REGRAS.md e skills/INDEX.md apontam para a skill.",
+    "docs/DOMAINOS-FILA-REVISAO-VISUAL.md registra este resultado e o próximo passo."
+  ],
+  "reuse_from_other_project": {
+    "source_context": "Engenharia reversa do Apollo Help Viewer no contexto Rui.",
+    "reusable_mame_skill_found": false,
+    "adapted_principles_only": ["proveniência", "isolamento de artefatos", "limites entre evidência host e prova no convidado"],
+    "other_vm_or_project_files_accessed": false
+  },
+  "validation": {
+    "skill_quick_validate": "passed",
+    "vm_verify_sh": "passed",
+    "git_diff_check_for_changed_files": "passed",
+    "mame_launch_or_input": "not performed"
+  },
+  "limits": [
+    "A VM e o estado mutável permanecem locais e ignorados pelo Git; um clone novo não baixa o disco.",
+    "Este recibo documenta procedimento, não valida um novo boot após a mudança de caminho.",
+    "Nenhuma comparação visual histórica foi executada nesta tarefa."
+  ],
+  "next": "Usar a skill em futura interação explicitamente focada na VM e retomar a etapa autorizada I167/GTK2 sem repetir evidência válida."
+}

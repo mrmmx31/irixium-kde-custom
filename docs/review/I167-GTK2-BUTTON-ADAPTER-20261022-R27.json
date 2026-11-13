@@ -1,0 +1,74 @@
+{
+  "item": "I167",
+  "revision": "R27",
+  "checked_at_utc": "2026-10-22T22:25:00Z",
+  "family": "GTK2 push button adapter source integration",
+  "change": {
+    "source": "tools/theme-lab/gtk2_buttons.py",
+    "source_sha256": "6172c8f671811969c668e5e027f29f7b0baeb11e30bbdc0ac5ac2a21ef7b876e",
+    "test": "tools/theme-lab/tests/test_gtk2_buttons.py",
+    "test_sha256": "de7457d396afb2e109d1db6c0c0ac467ec2963d122bcbe4ad85e7219f9a3d391",
+    "gtk2_geometry": "xthickness=2, ythickness=0, GtkButton::inner-border=0, font=12px; bevel remains 2px",
+    "scope": "push button only; no other GTK2 family or personal/session theme changed"
+  },
+  "results": {
+    "status": "passed",
+    "gtk2": "2.24.33",
+    "schemes": [
+      {
+        "scheme": "DomainOS",
+        "natural_request": [
+          63,
+          21
+        ],
+        "click_count": 1,
+        "disabled_input_blocked": true,
+        "rc_sha256": "1e6859be8c613be33e456779ac4dec987d37650399def8567ed11c26581f0200"
+      },
+      {
+        "scheme": "BreezeLight",
+        "natural_request": [
+          63,
+          21
+        ],
+        "click_count": 1,
+        "disabled_input_blocked": true,
+        "rc_sha256": "1134d79773a2f3086cda6865fd4704eb46aa3cd0d81ebb1df2b91cbb96a0883e"
+      },
+      {
+        "scheme": "BreezeDark",
+        "natural_request": [
+          63,
+          21
+        ],
+        "click_count": 1,
+        "disabled_input_blocked": true,
+        "rc_sha256": "de1a7afaf098ba37a7f181aaf031663f8d83e15c96954e480044f06ce971f898"
+      },
+      {
+        "scheme": "TestYellow",
+        "natural_request": [
+          63,
+          21
+        ],
+        "click_count": 1,
+        "disabled_input_blocked": true,
+        "rc_sha256": "77902a1b9e60bae8e5c0bdf42f400e06be7f455fabe981899900c17996c2f1fe"
+      }
+    ],
+    "exact_domainos_rc_matches_R26": true,
+    "visual_pair": "~/tempia/i167-gtk2-push-font12-y0-r26/actual/motif-gtk2-pair.png",
+    "visual_pair_sha256": "aedc95d4a0ae47b8282f2e7b71b561621bb8d871c9baa0cf5e07b9f4af3adbc4",
+    "pair_visible_delta_px": [
+      1,
+      0
+    ],
+    "pytest": "2 targeted unit tests passed; source assertions cover xthickness and ythickness"
+  },
+  "limits": [
+    "Motif 62x21 visible bbox is from the local Theme Lab Motif sample, not a Domain/OS SR10.4 guest measurement.",
+    "Native interaction and four palettes are technical evidence; no human visual approval is inferred.",
+    "GTK2 recipe is not complete and has not been installed/applied in the user session or XChat."
+  ],
+  "next": "Complete the GTK2 push-button comparison in the public paired preview, then proceed one GTK2 control family at a time. Apply GTK2 to the session/XChat only after GTK2 as a whole is complete."
+}

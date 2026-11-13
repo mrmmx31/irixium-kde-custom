@@ -1,0 +1,79 @@
+{
+  "id": "I436",
+  "recorded_at": "2026-10-17",
+  "scope": "Avaliar XMMS 1.2.11 GTK+ 1.2 em ambiente privado; sem instalação de pacotes nem áudio real.",
+  "host": {
+    "distribution": "Debian GNU/Linux 13.7 (trixie)",
+    "architecture": "x86_64",
+    "apt": "xmms 1.x e GTK1/GLib1.2 não têm candidato; somente xmms2 está no APT configurado."
+  },
+  "sources": {
+    "xmms_1_2_11": {
+      "mirrors": [
+        "https://mirror.aarnet.edu.au/slackware/slackware-current/source/xap/xmms/xmms-1.2.11.tar.bz2",
+        "https://mirrors.slackware.com/slackware/slackware-current/source/xap/xmms/xmms-1.2.11.tar.bz2"
+      ],
+      "sha256_both": "7ec15c56632b6c82e61ccddeaefd372359af2f005708a58cdf3951c574b20390",
+      "mirror_bytes_match": true
+    },
+    "gtk1_runtime_packages": {
+      "archive_base": "https://archive.debian.org/debian/pool/main/",
+      "versions": {
+        "libglib1.2ldbl": "1.2.10-19",
+        "libgtk1.2": "1.2.10-18.1",
+        "libgtk1.2-common": "1.2.10-18.1"
+      },
+      "downloaded_sha256": {
+        "libglib1.2ldbl_1.2.10-19_amd64.deb": "76f7d8b819ae4db64d1bda21e763f0255324350fcea4db8a9229a55299622565",
+        "libgtk1.2_1.2.10-18.1_amd64.deb": "91747bbc64cae8b55c7c7c060d23b7daf2d99b7816c6e22599c2ca2db6e8883f",
+        "libgtk1.2-common_1.2.10-18.1_all.deb": "962cba589ca1e4eaaf2ab05327c2d2b025616b7ee0f2227d598651a4b6a858d3",
+        "libglib1.2-dev_1.2.10-19_amd64.deb": "7f5334b30f86e886de2be66e0267c33577e5b4468144e5e0f0beff1dfeccf81f",
+        "libgtk1.2-dev_1.2.10-18.1_amd64.deb": "0bb7a1431fd7f607fb11b868b36a00633df4f731446a7ca135f7b12a71ef4ce7"
+      },
+      "extraction": "Somente em ~/tempia/i436-xmms-gtk1-20261017/root; nenhum .deb instalado no sistema."
+    }
+  },
+  "build": {
+    "configure": "--disable-opengl --disable-esd --disable-mikmod --disable-vorbis",
+    "cflags": "-g -O2 -fgnu89-inline",
+    "cppflags": "-I<fonte XMMS 1.2.11>",
+    "result": "Build completo em build5; saída executada diretamente do diretório de build. make install tentou copiar para prefixo temporário, mas parou porque o libtool antigo requisitou um .lai ausente. Nada foi escrito em /usr nem instalado por dpkg.",
+    "compatibility_notes": [
+      "GTK1/GLib1.2 amd64 de archive Debian funcionam com o Debian 13 atual.",
+      "GCC atual exigiu semântica GNU89 para os inline extern da GLib1.2.",
+      "Foi preciso ajustar arquivos .la extraídos e incluir headers do source, apenas dentro de ~/tempia."
+    ]
+  },
+  "runtime": {
+    "display": ":74",
+    "xephyr_title": "XMMS 1.2.11 GTK1 — teste privado",
+    "process_pid": 4094255,
+    "process_maps_confirm_gtk1": true,
+    "process_maps_confirm_glib1": true,
+    "audio_device_fds": [],
+    "main_window_title": "XMMS",
+    "visible_version": "1.2.11",
+    "gtk_preferences_window": "Aberta pelo menu Options → Preferences; Gtk1 real, com tabs, listagem, botão, combobox e scrollbar com setas visíveis. Saída de áudio sem plugin configurado na janela de preferências; nenhum dispositivo de áudio foi aberto.",
+    "theme_used": "GTK_RC_FILES apontou para gtk/Irixium/gtk-1.2/gtkrc, o único tema GTK1 no repositório. A janela principal do XMMS usa a skin pixmap do próprio XMMS e não serve como prova de estilo GTK1."
+  },
+  "captures": {
+    "xmms-gtk1-idle.png": {
+      "path": "/home/lsi/tempia/i436-xmms-gtk1-20261017/xmms-gtk1-idle.png",
+      "sha256": "71d7485ed5422ccbbfd14114a52e08167818d7a4faea7f47a544cd9d500b7bf4"
+    },
+    "xmms-gtk1-context.png": {
+      "path": "/home/lsi/tempia/i436-xmms-gtk1-20261017/xmms-gtk1-context.png",
+      "sha256": "be9ebef4f0898ed632755a40f97b2adcf897e8108952fe1902c081f38831f7fa"
+    },
+    "xmms-gtk1-preferences.png": {
+      "path": "/home/lsi/tempia/i436-xmms-gtk1-20261017/xmms-gtk1-preferences.png",
+      "sha256": "33a53bdf9a44054f1cf4cfdd4c713d4d8a0380be498d5094ac20aa6f085eead3"
+    }
+  },
+  "limits": [
+    "A prova estabelece viabilidade de executar XMMS/GTK1 localmente e permite testar GTK1 real no Xephyr; não estabelece fidelidade DomainOS nem cria tema GTK1 DomainOS.",
+    "A janela de preferências foi capturada, mas setas não foram comparadas pixel a pixel com a VM nesta demanda.",
+    "O runtime temporário depende dos artefatos em ~/tempia; a tarefa não instalou um aplicativo de uso diário nem criou integração de áudio."
+  ],
+  "status": "Tecnicamente concluída no escopo de viabilidade e teste privado; avaliação/decisão humana não presumida."
+}

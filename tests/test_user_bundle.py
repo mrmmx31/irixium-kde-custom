@@ -88,13 +88,60 @@ class UserBundleTest(unittest.TestCase):
     def test_all_theme_dependencies_present_and_user_scoped(self):
         data,config = self.root/'data',self.root/'config'
         pairs = sources(data,config)
-        self.assertEqual(len(pairs),15)
+        self.assertEqual(len(pairs),40)
         for source,dest in pairs:
             self.assertTrue(source.exists(),source)
             self.assertTrue(dest.is_relative_to(data) or dest.is_relative_to(config))
         targets = {str(d.relative_to(data)) for _,d in pairs if d.is_relative_to(data)}
         self.assertIn('color-schemes/Irixium.colors',targets)
         self.assertTrue({'icons/Irixium','icons/IrixClassic-SGI','icons/sgi'}.issubset(targets))
+        self.assertTrue({'plasma/look-and-feel/org.magpie.irixclassic.domainos.desktop',
+            'themes/DomainOS-SR10-4','themes/DomainOS-SR10-4-KDE',
+            'themes/DomainOS-SR10-4-KDE-Reload'}.issubset(targets))
+        config_targets={str(d.relative_to(config)) for _,d in pairs if d.is_relative_to(config)}
+        self.assertIn('Kvantum/DomainOS-SR10-4',config_targets)
+
+    def test_domainos_options_install_and_restore_without_changing_selection_or_layouts(self):
+        data, config = self.root/'data', self.root/'config'
+        config.mkdir()
+        preferences = {
+            'kdeglobals': '[KDE]\nLookAndFeelPackage=org.magpie.irixclassic.desktop\n[General]\nColorScheme=Irixium\n',
+            'plasmarc': '[Theme]\nname=IrixClassic\n',
+            'kwinrc': '[Desktops]\nNumber=3\nName_1=Personal work\n',
+            'plasma-org.kde.plasma.desktop-appletsrc': '[Containments][1822]\nplugin=org.kde.panel\n[Containments][1822][General]\nAppletOrder=1852;1880\n',
+        }
+        for name, value in preferences.items():
+            (config/name).write_text(value)
+        previous_config = fingerprint(config)
+        classic = data/'plasma/desktoptheme/IrixClassic'
+        classic.mkdir(parents=True)
+        (classic/'existing-user-setting').write_text('preserve Classic option')
+        previous_classic = fingerprint(classic)
+        sibling_colors = data/'color-schemes/Other.colors'
+        sibling_colors.parent.mkdir(parents=True)
+        sibling_colors.write_text('preserve another palette')
+
+        names = {'plasma/desktoptheme/IrixClassicDomainOS',
+                 'plasma/plasmoids/org.irixclassic.domainos.panel',
+                 'color-schemes/DomainOS-SR10-4.colors'}
+        pairs = [(source, dest) for source, dest in sources(data, config)
+                 if dest.is_relative_to(data) and dest.relative_to(data).as_posix() in names]
+        self.assertEqual(len(pairs), 3)
+        bundle = Bundle(self.state, [dest for _, dest in pairs])
+        bundle.install(pairs, dry=True)
+        self.assertTrue(all(not dest.exists() for _, dest in pairs))
+        self.assertFalse(self.state.exists())
+        bundle.install(pairs)
+        for source, dest in pairs:
+            self.assertEqual(fingerprint(dest), fingerprint(source))
+        self.assertEqual(fingerprint(config), previous_config)
+        self.assertEqual(fingerprint(classic), previous_classic)
+        self.assertEqual(sibling_colors.read_text(), 'preserve another palette')
+        bundle.restore()
+        self.assertTrue(all(not dest.exists() for _, dest in pairs))
+        self.assertEqual(fingerprint(config), previous_config)
+        self.assertEqual(fingerprint(classic), previous_classic)
+        self.assertEqual(sibling_colors.read_text(), 'preserve another palette')
 
     def test_single_file_does_not_replace_sibling_color_schemes(self):
         sibling = self.root/'data/color-schemes/Other.colors'

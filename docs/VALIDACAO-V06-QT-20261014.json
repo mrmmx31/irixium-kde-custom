@@ -1,0 +1,107 @@
+{
+  "item": "P10",
+  "family": "V06",
+  "date": "2026-10-14",
+  "status": "partial_states_verified_spacing_mismatch_unresolved",
+  "environment": {
+    "display": ":69",
+    "server": "Xephyr 1024x844",
+    "toolkit": "Qt 6.8.2",
+    "style": "Kvantum::Style",
+    "scale": 1.0
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "metrics": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+    "capture_sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5",
+    "native_bar_width_px": 15,
+    "native_arrow_bbox_px": [
+      11,
+      11
+    ],
+    "native_spacing_px": 4
+  },
+  "implementation": {
+    "config": "kvantum/DomainOS-SR10-4/DomainOS-SR10-4.kvconfig",
+    "config_sha256": "8fe2b44f535534b097c0767ef2c982b2d643746d6a9b5a8ba0f3c778bcbb9860",
+    "svg": "kvantum/DomainOS-SR10-4/DomainOS-SR10-4.svg",
+    "svg_sha256": "fd26d79091378c87e624e4936f0060f76e7fb1e79b8f7c31ceedd8d62c6f0536",
+    "generator": "tools/domainos_motif_art.py",
+    "geometry": {
+      "scroll_width": 15,
+      "indicator_size": 15,
+      "stepper_cell": [
+        15,
+        15
+      ],
+      "arrow_glyph": [
+        11,
+        11
+      ]
+    },
+    "origin_manifest_sha256": "adb7421d00a83b4e279192068f2e39928e9d415eef36fee1e5832eafafd9593d"
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/domainos-v06-qtwidgets-20261014/qt-scrollbars-after.png",
+    "sha256": "0952d67b1143681dc8a3efd045157e70292ec23434c5336dcb410d5763412555",
+    "metrics_path": "/home/lsi/tempia/domainos-v06-qtwidgets-20261014/metrics-after.json",
+    "metrics_sha256": "142a9006bd983acac52c43cdaabfce13df4a075cd6089e4c67ed9b8749581b2b",
+    "reported_extent_px": 15,
+    "vertical_stepper_rect": [
+      15,
+      15
+    ],
+    "horizontal_stepper_rect": [
+      15,
+      15
+    ],
+    "crop_diffs_pixels": {
+      "up": 0,
+      "down": 0,
+      "left": 0,
+      "right": 0
+    }
+  },
+  "palette_variant": {
+    "path": "/home/lsi/tempia/domainos-v06-qtwidgets-20261014/qt-scrollbars-dynamic.png",
+    "sha256": "0b957d86eeae56b80af9c2fac59dabc8948892a87d48e07b4cac5644822d1a0f",
+    "report_path": "/home/lsi/tempia/domainos-v06-qtwidgets-20261014/dynamic-xdg/variant-report.json",
+    "report_sha256": "83a9e29979a628f1a3bfca2d18f4ac6b4716201556e4e10129320be2e4e2c2c4",
+    "geometry_unchanged": true,
+    "geometry_sha256": "5e924b9fdd1c3ca832a9ca2ea4d61dd7b26974de84afb7b3518baa17fe962f84",
+    "colored_svg_groups": 1868,
+    "opaque_rectangles": 6850,
+    "native_checks": {
+      "kde_platform_loaded": true,
+      "kvantum_not_loaded": true,
+      "no_widget_palette_injection": true
+    },
+    "personal_config_modified": false
+  },
+  "verification": {
+    "focused_test": "python3 -m unittest tests.test_domainos_motif.KvantumDomainOSTest -v",
+    "result": "passed, 6 tests",
+    "interaction": "Qt scrollbar widgets captured using Kvantum::Style; cell comparison at 1:1; no click/hold/drag state matrix performed"
+  },
+  "remaining": [
+    "Qt pressed and disabled visual states",
+    "thumb comparison with matched content/page size against a scrollable SR10.4 control",
+    "content/bar spacing and corner composition (native spacing 4 px)",
+    "dynamic palette variants in neutral, dark and yellow schemes",
+    "manual user review",
+    "4px viewport/bar spacing unsupported by current Kvantum configuration; Q357 awaits user preference on documenting limitation vs a separate authorized Qt adapter demand",
+    "thumb-length difference of approximately 1px without sufficiently matched native content/font metrics",
+    "native disabled-thumb comparison and corner face/color comparison",
+    "manual review"
+  ],
+  "next": "Remain partial. Q357 asks whether to document the unsupported 4px spacing as a limitation or create a separate authorized demand for a Qt style adapter. After recording the decision, continue V08; revisit only if native matched-content or corner evidence becomes available.",
+  "limits": "Pixel equality applies only to four normal-state 15x15 arrow button cells. It does not certify the whole scrollbar, full Qt Quick, V06 completion, or historical interaction beyond the separate HP evidence.",
+  "states_receipt": "docs/VALIDACAO-V06-ESTADOS-20261014.json",
+  "verified_states": {
+    "down_arrow": "Qt QTest: value 0→1 while held; 53 glyph pixels changed; release restored baseline at min value. With the nine VUE cursor pixels masked, normal/held/released crops matched the corresponding VUE glyphs at 0 differing pixels.",
+    "disabled": "Qt disabled capture exists as implementation evidence only; matching SR10.4 Xt-insensitive reference is unavailable.",
+    "matched_content_fixture": "Synthetic 165-line QPlainTextEdit, estimated 15 visible lines; measured range [0,151], pageStep 14, viewport 536×289, scrollbar 15px and slider 22px.",
+    "corner": "Dual-axis fixture allocates a 15×15 corner; native face/color comparison remains open."
+  }
+}

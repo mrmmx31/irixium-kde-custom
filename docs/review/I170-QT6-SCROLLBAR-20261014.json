@@ -1,0 +1,448 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "revision": 1,
+  "definition_sha256": "eee59ace856d938dfe9eae115b0e49a50bfc86b78f28670e06e9be7b26554426",
+  "title": "Adaptador Qt6: receitas independentes em controles Qt Widgets reais",
+  "status": "partial_waiting_user",
+  "scope_completed": "Qt6 Widgets partial recipe covers real QPushButton, checkable QPushButton, QCheckBox, exclusive QRadioButton pair, QLineEdit, QComboBox/native popup, QSpinBox/QDoubleSpinBox, horizontal and vertical QSlider, QScrollArea and QScrollBar; translated controls: check, combo, entry, push, radio, scale_h, scale_v, scroll_h, scroll_v, spin, text, toggle, arrow and progress (16/16 catalog controls).",
+  "implementation": {
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "palette": "KDE color roles resolved into private recipe snapshots; palette source changes are validated and stale snapshots rejected.",
+    "rendering": "Qt owns range, page step, thumb, wheel and pointer input. A local QScrollBar subclass overlays only the four fixed-size arrow cells after native painting, preserving arrow art at scroll limits.",
+    "geometry": "Scrollbar geometry follows tools/domainos_scrollbar_rules.json. Horizontal and vertical QSlider handles use thumb_cross_px plus relief borders and reserve the full cross-axis minimum so Qt does not clip them.",
+    "other_widgets": "Qt6 controls not listed in translated_controls remain unstyled by this partial recipe; unsupported visible controls fail closed.",
+    "files": [
+      "plasma/tests/galerias-nativas/qt6_demo.py",
+      "tools/theme-lab/Makefile",
+      "tools/theme-lab/README.md",
+      "tools/theme-lab/backend.py",
+      "tools/theme-lab/qt6_scale_widget.py",
+      "tools/theme-lab/qt6_scrollbar_recipe.py",
+      "tools/theme-lab/qt6_scrollbar_route.py",
+      "tools/theme-lab/qt6_scrollbar_widgets.py",
+      "tools/theme-lab/tests/probe_qt6_check_widget.py",
+      "tools/theme-lab/tests/probe_qt6_combo_widget.py",
+      "tools/theme-lab/tests/probe_qt6_entry_widget.py",
+      "tools/theme-lab/tests/probe_qt6_frame_widget.py",
+      "tools/theme-lab/tests/probe_qt6_list_widget.py",
+      "tools/theme-lab/tests/probe_qt6_push_widget.py",
+      "tools/theme-lab/tests/probe_qt6_radio_widget.py",
+      "tools/theme-lab/tests/probe_qt6_scale_h_widget.py",
+      "tools/theme-lab/tests/probe_qt6_toggle_widget.py",
+      "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py",
+      "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py"
+    ],
+    "controls": {
+      "push": "A standalone real QPushButton; KDE-role-derived QSS covers normal, pressed, backdrop and disabled states. It can be previewed alone or beside scrollbars.",
+      "scroll_h": "Existing real Qt6 QScrollBar horizontal recipe, range/page/wheel/input remain native.",
+      "scroll_v": "Existing real Qt6 QScrollBar vertical recipe, range/page/wheel/input remain native.",
+      "toggle": "A real checkable QPushButton; KDE-role-derived QSS keeps selected relief sunk, keeps it visually locked while held, releases to raised on the second click, and defines backdrop/disabled states.",
+      "check": "A real QCheckBox with QSS-painted indicator assets for unchecked/checked × normal/pressed/backdrop/disabled; all surface and relief colors resolve from selected KDE roles.",
+      "radio": "An exclusive pair of real QRadioButton widgets; generated indicator assets cover unchecked/checked, pressed, backdrop and disabled; selection is exclusive and surface/relief colors come from KDE roles.",
+      "entry": "A real QLineEdit keeps native UTF-8 entry, cursor, selection, undo/redo and clipboard shortcuts; KDE-role-derived QSS covers normal, focused, backdrop and disabled states.",
+      "combo": "A real QComboBox and native QAbstractItemView popup use KDE-role-derived QSS and a generated right-aligned arrow; Qt retains popup, keyboard and pointer selection.",
+      "scale_h": "One real horizontal QSlider. QSS groove/handle colors follow selected KDE button roles; backdrop uses [domainosBackdrop=\"true\"], synchronized from top-level WindowActivate/WindowDeactivate events because QSS :!active also matches an idle slider. Qt retains range, page step, pointer, keyboard and value semantics.",
+      "text": "A real QTextEdit uses KDE-role QSS for normal, focused, backdrop and disabled states. Window activation updates domainosBackdrop. Qt retains multiline UTF-8 editing, undo/redo, selection, clipboard and context-menu behavior.",
+      "arrow": "A real QToolButton paints a recipe-owned 11×11 KDE-role arrow glyph inside a 15×15 total control. Qt6 retains click/focus semantics; generated states cover normal, held-pressed, released, backdrop and disabled.",
+      "progress": "A real QProgressBar retains Qt range/value/fill/text semantics. Normal/backdrop/disabled surface, chunk and text colors derive from KDE roles; focus uses KDE focus relief; domainosState follows activation and native state events.",
+      "list": "A real QTreeWidget provides native single-row selection, keyboard/mouse semantics and internal scrollbars; KDE-role QSS covers selected/focused/backdrop/disabled states.",
+      "frame": "A real QFrame with native Panel/Sunken semantics, shared line width, KDE-role-derived face/text and bevel, and top-level activation tracking for backdrop."
+    }
+  },
+  "source_sha256": {
+    "tools/theme-lab/qt6_scrollbar_recipe.py": "c3361b50d95ee026ad28f65f6630050da3bdc25eaed05239dadd56ea7b0eda79",
+    "tools/theme-lab/qt6_scrollbar_route.py": "fd91ed7f52dfdb5b5c339f9d96d6f4b3a2deee985fceb61574ed598c682585e3",
+    "tools/theme-lab/qt6_scrollbar_widgets.py": "a31dad616da982e896b95750db3f49832b1673bfce0f73cc885c41de9244f809",
+    "tools/theme-lab/backend.py": "bf4352f5b86ef106a94c7bdc33016c7ae74978113ccbab3ce8fd217ae85ea4ff",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "de8f5827cc6a0960951fea1f6f6914b8cc05c1207aa16fb35eef4e3761c8d849",
+    "tools/theme-lab/Makefile": "276af5f1b731f8a05779859eda85a3ddcfbf06bda6a9bcf2884d381b2ce7573d",
+    "tools/theme-lab/README.md": "3cb394c904ac916be51b93aefad570f1f68bc467877b3c46d3e1b02b9a60e96b",
+    "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "631b05aa4a81665ec252973815fa5ffd90852e74595a3e7fab5acec3ba91bb42",
+    "tools/theme-lab/tests/probe_qt6_push_widget.py": "5ab12f617e00c0136001941bcbbfa8c8c9ef813ff0235ca118e2dbc2110c210f",
+    "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "dd2c7d1cf38eae645f8b1b41aef73d04b81ba509dcd0ea261abbaedf9dc8949d",
+    "tools/theme-lab/tests/probe_qt6_scrollbar_widget.py": "f61d8f27b44b2d851bd7f16d258eaceb3fcc27f0cca00d4d9b542ea9cfc9b9f6",
+    "tools/theme-lab/tests/probe_qt6_toggle_widget.py": "afad45524425b691994d39448d18025947bf9f2c741216c7c3afd1b45c31b98c",
+    "tools/theme-lab/tests/probe_qt6_check_widget.py": "f20d3c353ce49c3eb7456eca41ecd967176640280aa997ea18e7a696bb9030cf",
+    "tools/theme-lab/tests/probe_qt6_radio_widget.py": "568e513edfd4734bd241a282e302ef9064a584bf304a3f4d933081fd2027a051",
+    "tools/theme-lab/tests/probe_qt6_entry_widget.py": "9466ee477a08be1358ea12227bc75bd32b087850917845a0190698b0a7d6a5d6",
+    "tools/theme-lab/tests/probe_qt6_combo_widget.py": "4b107c415ce0f22c15da1c9f68578c05de7ed4587903a3e093d2b63c3d4f52b0",
+    "tools/theme-lab/qt6_scale_widget.py": "81c1cd6a23c545aa64585d5d4d4e0f9360cf16ae408b7e7b4bbb4745013d3cbd",
+    "tools/theme-lab/tests/probe_qt6_scale_h_widget.py": "8a613f91f0984b3c41af902984971ad811daecee9e1b68eaa177e259f275bfd5",
+    "tools/theme-lab/tests/probe_qt6_text_widget.py": "e7d23367064ec3a8a0b6c58a54b2b591aaea0420576184a4c648017a8e79e786",
+    "tools/theme-lab/qt6_arrow_widget.py": "6714df315d21a25953632dbf1d91695f6a28c333a53685a7dbc97e852ffbb366",
+    "tools/theme-lab/tests/probe_qt6_arrow_widget.py": "4d231327d3e3d9c96d4106861d77553397d1434a70adb409d1a2a7eb6b1e49ca",
+    "tools/theme-lab/qt6_progress_widget.py": "253dc3a5c8119ced92e3c6e96d23f0d0282395bc643f6d757d89797bddefceef",
+    "tools/theme-lab/tests/probe_qt6_progress_widget.py": "6a081c335260f3be4a8c871b31daeae5118b3fe964ab5e5875998b7a70ec3194"
+  },
+  "validation": {
+    "make_check": {
+      "status": "not_rerun_after_toggle_addition",
+      "checks": "The earlier broad check is historical. This turn ran the focused Qt6 recipe suite and public route below."
+    },
+    "make_check_qt6_scrollbar_native": {
+      "status": "passed",
+      "environment": "private bwrap/Xvfb, Qt 6.8.2, PyQt 6.9.0, QFusionStyle, Xcb",
+      "guards": "private UID/HOME verified; personal HOME and system bus not exposed",
+      "scrollbars": {
+        "vertical_allocation_px": [
+          15,
+          377
+        ],
+        "horizontal_allocation_px": [
+          459,
+          15
+        ],
+        "both_visible_and_scrollable": true
+      },
+      "interaction": "four directions change range while held; pressed relief returns on release; normal arrow cell pixels match the recipe at minimum/maximum.",
+      "preview_process_exit": 0
+    },
+    "compile": "python3 -m py_compile passed for Qt6 recipe/route/gallery, activation tracker, generic horizontal/vertical slider probe, focused tests and public-route harness.",
+    "xephyr": {
+      "display": ":68",
+      "status": "Existing Xephyr remained open; public preview process exited normally.",
+      "observed": "All four arrow controls visible; a pre-existing MWM QUIT prompt was dismissed with Cancel only.",
+      "capture": ".qa-i170-qt6-xephyr-c9koieby/xephyr-root-latest.png",
+      "capture_sha256": "934559fa82369686952e158dad98626476b47adb5cbdfbc5732061a7b8473e90"
+    },
+    "qt6_push_button": {
+      "status": "passed",
+      "test": "test_qt6_push_only_recipe_paints_a_real_button_and_uses_selected_kde_roles",
+      "result": "A real PyQt6 QPushButton accepted normal/pressed/release/disabled QSS; sampled normal and disabled face pixels matched their generated KDE-role colors; pressed pixels changed and release returned to baseline; changing the selected KDE button role changed the push-only recipe.",
+      "route": "Qt6 route accepts push-only scene; unsupported controls still fail closed."
+    },
+    "test_counts": {
+      "qt6_recipe": "21/21 passed; includes all 16 supported Qt6 catalog controls and role-derived frame/list states.",
+      "qt5_shared-generator_regression": "4/4 passed after Qt6 frame support."
+    },
+    "public_gallery_attempt": {
+      "status": "passed_after_increasing_preview_window",
+      "reason": "The 1.8 s run raced with the close timer and the final aboutToQuit snapshot reported hidden scrollbar widgets; a 5 s run gave the gallery time to emit its visible snapshot and passed.",
+      "display": ":68",
+      "preview_ms": 5000,
+      "xephyr_preserved": true
+    },
+    "qt6_toggle_button": {
+      "status": "passed",
+      "widget": "PyQt6.QtWidgets.QPushButton, setCheckable(True), native click/press/release via QTest",
+      "result": "Unselected press changes the face; after selecting, the relief remains sunk while held; the second click releases and restores the exact initial pixels; disabled checked state differs; states emitted [true,false,true].",
+      "palette": "Generated recipe changed when the selected KDE button role changed; no final color literal was introduced.",
+      "screenshot": "docs/review/I170-QT6-TOGGLE-20261016.png",
+      "screenshot_sha256": "88bb7ced1149eba78704290a82fd7f450d7c868cfa0e675434b4dc1246e8f4cd"
+    },
+    "public_route_i170_toggle": {
+      "status": "passed_with_check_checkbox",
+      "display": ":68 (already-running Xephyr; server kept alive)",
+      "runtime": "Qt 6.8.2, PyQt 6.9.0, Xcb, QFusionStyle",
+      "sandbox": "Private bwrap preview; verified fake UID/HOME, personal HOME and system bus not exposed.",
+      "result": "Public backend route generated and verified the snapshot, loaded the generated QSS in the actual gallery, recorded real checkable QPushButton and selected screenshot, and exited 0 after 3 s.",
+      "translated_controls": [
+        "check",
+        "push",
+        "scroll_h",
+        "scroll_v",
+        "toggle"
+      ],
+      "toggle_screenshot": "docs/review/I170-QT6-TOGGLE-20261016.png",
+      "native_scrollbar_allocations_px": {
+        "vertical": [
+          15,
+          377
+        ],
+        "horizontal": [
+          459,
+          15
+        ]
+      },
+      "preview_receipt_sha256": "ff2dda9a792763204d7dd44f87adbe7ba750de078c3fc9b0cad7defb8d137a21",
+      "native_result_sha256": "152505b8ee1db1c2458623924c289d22208b70ba922e79e284656994c475c0da",
+      "screenshot_sha256": "88bb7ced1149eba78704290a82fd7f450d7c868cfa0e675434b4dc1246e8f4cd",
+      "artifact_directory": ".qa-i170-qt6-public-sb1dif7g",
+      "check_box": {
+        "applied": true,
+        "objectName": "domainosRecipeCheckBox",
+        "checkable": true,
+        "states": [
+          "unchecked",
+          "checked",
+          "pressed",
+          "backdrop",
+          "disabled"
+        ],
+        "sizeHint_px": [
+          68,
+          18
+        ]
+      },
+      "check_screenshots": {
+        "checked": "docs/review/I170-QT6-CHECK-20261016-checked.png",
+        "unchecked": "docs/review/I170-QT6-CHECK-20261016-unchecked.png"
+      }
+    },
+    "qt6_checkbox": {
+      "status": "passed",
+      "widget": "PyQt6.QtWidgets.QCheckBox, native click/press/release via QTest",
+      "result": "Unchecked press changed pixels; click selected; second click restored the exact unchecked baseline; a distinct disabled role changed the selected indicator; checked and disabled asset states are emitted.",
+      "palette": "Selected button roles drive surface/relief. Test fixture gives disabled roles distinct values to verify the disabled path; no final palette constants were added.",
+      "screenshots": {
+        "checked": "docs/review/I170-QT6-CHECK-20261016-checked.png",
+        "checked_sha256": "4d5ec8a8b3bfd6a0c28b25d9c45f0dee8b5854962ca1eeb3a2dcf8caa45b9bd8",
+        "unchecked": "docs/review/I170-QT6-CHECK-20261016-unchecked.png",
+        "unchecked_sha256": "e5eb9f91ee35662a90f2382c6d43a7450cbb6330906f33c28c8af84d873b3892"
+      }
+    },
+    "public_route_i170_radio": {
+      "status": "passed",
+      "display": ":68 (existing Xephyr reused; server kept alive)",
+      "runtime": "Qt 6.8.2, PyQt 6.9.0, Xcb, QFusionStyle",
+      "sandbox": "Private bwrap preview; fake UID/HOME verified; personal HOME and system bus not exposed.",
+      "result": "Public backend route applied a six-control recipe; verified real exclusive QRadioButton pair and KDE-role palette input; process exited 0 after 3 s.",
+      "translated_controls": [
+        "check",
+        "push",
+        "radio",
+        "scroll_h",
+        "scroll_v",
+        "toggle"
+      ],
+      "radio_screenshots": {
+        "checked": "docs/review/I170-QT6-RADIO-20261016-checked.png",
+        "checked_sha256": "2a9f9b9c845bf43d099d32e14086bf161eca36d27a00dfe6dc0bc2ea6a5117bf",
+        "unchecked": "docs/review/I170-QT6-RADIO-20261016-unchecked.png",
+        "unchecked_sha256": "7192018207a11591329f5c3c5d2bb55482c437bb5adc79105f23cf3c10b1ec00"
+      },
+      "preview_receipt_sha256": "e357ce5c5a3029d5aa07aa23939bca72c049b0a2ccc1fc9fb2347bd50bf779e0",
+      "native_result_sha256": "29729b7979d460b768a1ec60f1ac458c0138300abf3cd43a784572fdb4f14dd6",
+      "gallery_screenshot_sha256": "399b28261f8123b05af03cdc697f021146d81d3aeef56af4fe9b3a0c5b1592f0",
+      "artifact_directory": ".qa-i170-qt6-public-uxd9wd1i"
+    },
+    "public_route_i170_entry": {
+      "status": "passed",
+      "display": ":68 (existing Xephyr reused; kept open)",
+      "runtime": "Qt 6.8.2, PyQt 6.9.0, Xcb, QFusionStyle",
+      "sandbox": "Private bwrap preview; fake UID/HOME verified; personal HOME and system bus not exposed.",
+      "result": "Public route applied seven translated controls; actual QLineEdit objectName and selected DomainOS SR10.4 scheme were recorded. Entry screenshot saved; preview exited 0 after 3 s. Editing shortcuts were separately exercised against the actual Qt widget offscreen.",
+      "translated_controls": [
+        "check",
+        "entry",
+        "push",
+        "radio",
+        "scroll_h",
+        "scroll_v",
+        "toggle"
+      ],
+      "entry": {
+        "objectName": "domainosRecipeEntry",
+        "states": [
+          "normal",
+          "focused",
+          "backdrop",
+          "disabled"
+        ],
+        "sizeHint_px": [
+          118,
+          31
+        ],
+        "screenshot": "docs/review/I170-QT6-ENTRY-20261016.png",
+        "screenshot_sha256": "d36ea6d09c8f87147bef1045117f48786daa7d896951113d938853df09fa7102",
+        "verified_shortcuts": [
+          "Ctrl+Z",
+          "Ctrl+Y",
+          "Ctrl+Shift+Z",
+          "Ctrl+C",
+          "Ctrl+X",
+          "Ctrl+V",
+          "Ctrl+A"
+        ],
+        "utf8_sample": "UTF-8: ação — 東京"
+      },
+      "preview_receipt_sha256": "99170d3a0872d46b30835f67f23e86f41a22a8294c839a3d478e916a8ac5feef",
+      "native_result_sha256": "592f19952d6bf77a18087f7e7be0571a4f79dc05e89fbe2c5047eca0357e812b",
+      "gallery_screenshot_sha256": "399b28261f8123b05af03cdc697f021146d81d3aeef56af4fe9b3a0c5b1592f0",
+      "artifact_directory": ".qa-i170-qt6-public-ylqk_j7i"
+    },
+    "public_route_i170_combo": {
+      "status": "passed",
+      "display": ":68 (existing Xephyr reused; kept open)",
+      "runtime": "Qt 6.8.2, PyQt 6.9.0, Xcb, QFusionStyle",
+      "sandbox": "Private bwrap preview; fake UID/HOME verified; personal HOME and system bus not exposed.",
+      "result": "Public route applied eight translated controls; real QComboBox and QAbstractItemView popup were captured, popup selection moved to row 1 and closed normally; selected DomainOS SR10.4 scheme recorded; process exited 0 after 3 s.",
+      "translated_controls": [
+        "check",
+        "combo",
+        "entry",
+        "push",
+        "radio",
+        "scroll_h",
+        "scroll_v",
+        "toggle"
+      ],
+      "combo": {
+        "objectName": "domainosRecipeCombo",
+        "popupObjectName": "domainosRecipeComboPopup",
+        "items": 3,
+        "sizeHint_px": [
+          202,
+          31
+        ],
+        "arrowSubcontrolPosition": "center right",
+        "closed_screenshot": "docs/review/I170-QT6-COMBO-20261016.png",
+        "closed_sha256": "45d86c3a040fe7c9fe665c4e8cfaa24401887baed441962fb4f16313ce8ef494",
+        "popup_screenshot": "docs/review/I170-QT6-COMBO-POPUP-20261016.png",
+        "popup_sha256": "57315e6c1419a4f3457f5c2a9ef95533a5474a2e5e6ab12c0075326e2d0630e3"
+      },
+      "preview_receipt_sha256": "2b3e36461382da539f96acc575b8f9b79fb9ca35289f7c18ef746bc02662fbe0",
+      "native_result_sha256": "ff7266f46ec00079830b892a205670f5efa21987035cd7ef35f3aafeb52f87ee",
+      "gallery_screenshot_sha256": "399b28261f8123b05af03cdc697f021146d81d3aeef56af4fe9b3a0c5b1592f0",
+      "artifact_directory": ".qa-i170-qt6-public-nn06ptmn"
+    },
+    "qt6_scale_h": {
+      "status": "passed",
+      "widget": "PyQt6.QtWidgets.QSlider; horizontal; real Qt 6.8.2 / PyQt 6.9.0",
+      "recipe": "KDE-role QSS changes actual normal pixels when Colors:Button/BackgroundNormal changes; backdrop pixels follow the backdrop role through a dynamic property driven by real window activation events.",
+      "geometry": "QSS reserves thumb cross-size plus two relief borders; real handle rectangle stayed inside slider allocation.",
+      "input": "QTest pointer click and keyboard arrow changed the native value; press state existed only while held and released cleanly.",
+      "unit_tests": "15/15 Qt6 recipe tests passed; 4/4 Qt5 shared-generator regressions passed.",
+      "public_xephyr": {
+        "status": "passed",
+        "display": ":68",
+        "qt": "6.8.2 / PyQt 6.9.0 / QFusionStyle / Xcb",
+        "private_namespace_guards": {
+          "verified": true,
+          "personal_home_exposed": false,
+          "system_bus_socket_exposed": false
+        },
+        "preview_exit_code": 0,
+        "report_path": "/home/lsi/tempia/i170-qt6-public-5eo6nw8x/home/qtwidgets-proof/RESULTADO.json",
+        "report_sha256": "eab59187281daf21bbaa127cf9c1b89bcebf5f0c82f783a53d55d5ccd5d9584b",
+        "scale_screenshot": "docs/review/I170-QT6-SCALE-H-20261016.png",
+        "scale_screenshot_sha256": "f06d49dfb5cced1d39b763e084c2044ff5c95a55e8f3206b83dee47ed379896e",
+        "preview_receipt_path": "/home/lsi/tempia/i170-qt6-public-5eo6nw8x/home/out/revisions/20261016T131355-9af2dc7e5afc/qt6-PREVIEW.json",
+        "preview_receipt_sha256": "08121e0b70d21f993d24866731f04592e8de6d631f9eaac889f0205b54e8956a"
+      },
+      "limits": [
+        "No direct QSlider appearance/metrics comparison against the live Domain/OS SR10.4 guest was made in this substep.",
+        "No user visual approval is inferred."
+      ]
+    },
+    "qt6_scale_v": {
+      "status": "passed",
+      "widget": "PyQt6.QtWidgets.QSlider; vertical; real Qt 6.8.2 / PyQt 6.9.0",
+      "recipe": "KDE-role QSS draws the real vertical groove and handle; a dynamic property tracks top-level activation for backdrop colors. Width minimum reserves handle cross-size and relief borders.",
+      "input": "QTest pointer click and Down key changed native value; press state existed only while held and released cleanly.",
+      "unit_tests": "16/16 Qt6 recipe tests; 4/4 Qt5 shared-generator regressions.",
+      "public_xephyr": {
+        "status": "passed",
+        "display": ":68",
+        "qt": "6.8.2 / PyQt 6.9.0 / QFusionStyle / Xcb",
+        "private_namespace_guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "preview_exit_code": 0,
+        "report_path": "/home/lsi/tempia/i170-qt6-public-v6n832lm/QT6-PUBLIC-PREVIEW-RESULT.json",
+        "report_sha256": "388d3c2a0e1bd703ab3aee71cdd58fcd388d8200a756ced6a9bb50322f7ff076",
+        "native_result_sha256": "d007364a644388ff01616f7155ddd61ee5932a536a30bf1409788781aeb51c33",
+        "scale_screenshot": "docs/review/I170-QT6-SCALE-V-20261016.png",
+        "scale_screenshot_sha256": "d234e6e4610dacc11b6af8d338cdc3df8c1edfc3000442ae8a793bbc7431722b",
+        "preview_receipt_path": "/home/lsi/tempia/i170-qt6-public-v6n832lm/home/out/revisions/20261016T132547-f86b0844fbaa/qt6-PREVIEW.json",
+        "preview_receipt_sha256": "2e59fd78a1224ee98d5422168c8ca657c9acf605c5c072d5217474ed54ccb349"
+      },
+      "limits": [
+        "No matching vertical slider measurement was taken in the Domain/OS SR10.4 guest.",
+        "No human visual approval is inferred. Qt QSS implementation does not establish historical fidelity."
+      ]
+    },
+    "qt6_text": {
+      "status": "passed",
+      "tests": "17/17 Qt6 focused tests; 4/4 Qt5 regression tests.",
+      "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; private namespace guards passed; preview exited 0 and Xephyr remained open.",
+      "editing": "Multiline UTF-8, undo/redo and clipboard/context-menu actions validated in a real QTextEdit.",
+      "palettes": "DomainOS, neutral, dark and yellow KDE-role palettes were exercised in the real-widget test."
+    },
+    "qt6_arrow": {
+      "status": "passed",
+      "tests": "22/22 Qt6 focused tests; 4/4 Qt5 regression tests.",
+      "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; isolated namespace checks passed; preview exited 0 and Xephyr remained open.",
+      "interaction": "Real QToolButton click works; pressed state occurs only while held; release returns to normal; backdrop and disabled use separate generated glyphs. Visible pixels match each state asset.",
+      "palettes": "DomainOS, neutral, dark and yellow schemes were rendered by the real widget; normal, backdrop and disabled output pixels varied with KDE roles."
+    },
+    "qt6_progress": {
+      "status": "passed",
+      "tests": "23/23 Qt6 focused tests; 4/4 Qt5 regression tests.",
+      "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle; private namespace guards passed; preview exited 0 and Xephyr remained open.",
+      "native": "Value 43 to 70 updated native text and fill; backdrop and disabled state recipes rendered on real Qt6 QProgressBar.",
+      "palettes": "DomainOS, neutral, dark and yellow palettes produced different real control pixels for normal, backdrop and disabled states."
+    },
+    "qt6_list": {
+      "status": "passed",
+      "tests": "20/20 Qt6 recipe tests; 4/4 Qt5 shared-generator regression tests.",
+      "public_route": "Passed in existing Xephyr :68; Qt 6.8.2/PyQt 6.9.0; isolated preview completed with exit code 0.",
+      "native": "QTreeWidget with 40 rows; native selected row and vertical/horizontal scrolling; private namespace checks passed.",
+      "visual": "Real Qt6 list capture reviewed; not a historical-fidelity or human-approval claim."
+    },
+    "qt6_frame": {
+      "status": "passed",
+      "tests": "21/21 Qt6 recipe tests; 4/4 Qt5 regression tests.",
+      "public_route": "Passed in existing Xephyr :68; Qt 6.8.2/PyQt 6.9.0; isolated preview exited 0.",
+      "native": "Real QFrame Panel/Sunken, line width 2, role-derived normal/backdrop/disabled states; four palette outputs differ and match expected face pixels.",
+      "visual": "Real Qt6 frame tab capture reviewed; no claim of SR10.4 fidelity or human approval."
+    }
+  },
+  "public_route_artifacts": {
+    "report": "/home/lsi/tempia/i170-qt6-public-v6n832lm/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "report_sha256": "388d3c2a0e1bd703ab3aee71cdd58fcd388d8200a756ced6a9bb50322f7ff076",
+    "screenshot": "docs/review/I170-QT6-SCALE-H-20261016.png",
+    "screenshot_sha256": "f06d49dfb5cced1d39b763e084c2044ff5c95a55e8f3206b83dee47ed379896e",
+    "scale_v_screenshot": "docs/review/I170-QT6-SCALE-V-20261016.png",
+    "scale_v_screenshot_sha256": "d234e6e4610dacc11b6af8d338cdc3df8c1edfc3000442ae8a793bbc7431722b",
+    "display": ":68",
+    "preview_exit_code": 0,
+    "text_screenshot": "docs/review/I170-QT6-TEXT-20261016.png",
+    "text_screenshot_sha256": "5a0e34ce844ea97df5c0470cfb0283a8a21b29a31e06b13046000d05fbb9c7d2",
+    "text_public_report": "/home/lsi/tempia/i170-qt6-public-34i2752_/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "text_public_report_sha256": "3b54d26e50766bbecfff923aa7d4287d39d623ac92813b8468f55e9b60fc5a14",
+    "arrow_screenshot": "docs/review/I170-QT6-ARROW-20261016.png",
+    "arrow_screenshot_sha256": "4c7b50ba57a5e6083c1821b6082e671446cceebe0c34f797a0712dbc87c9c0e3",
+    "arrow_public_report": "/home/lsi/tempia/i170-qt6-public-7r2ms9e9/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "arrow_public_report_sha256": "782a19a2da4282bd72ca8653e5adbdbd20c6c401d1c65f89adabcb6da18f450a",
+    "progress_screenshot": "docs/review/I170-QT6-PROGRESS-20261016.png",
+    "progress_screenshot_sha256": "ebe92d9a173f612cb7bf277786e3353c2703a30c9f7523cdaa2f7af7bb9fc5b9",
+    "progress_public_report": "/home/lsi/tempia/i170-qt6-public-5w2551dt/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "progress_public_report_sha256": "593b3145c612d567e11c3216e07aad6092c19e30dc6d039b3a0aafa502b740c7",
+    "list_screenshot": "docs/review/I170-QT6-LIST-20261016.png",
+    "list_screenshot_sha256": "635c1743873e9b13f56ede8df9b0e26729942b1823ff299b03396ac560d5132b",
+    "list_public_report": "/home/lsi/tempia/i170-qt6-public-t7jghh3d/home/qtwidgets-proof/RESULTADO.json",
+    "list_public_report_sha256": "fb9cb1ec6b63536eb6fa633dc8e9000b1313f483a83e236849ba1a84ed32d22c",
+    "list_display": ":68",
+    "list_preview_exit_code": 0,
+    "frame_screenshot": "docs/review/I170-QT6-FRAME-20261016.png",
+    "frame_screenshot_sha256": "009851b7f8cb1301170fa70542f87169f1fde6f7d81c08fd68f11d5355233713",
+    "frame_public_report": "/home/lsi/tempia/i170-qt6-public-ke1ejwx7/home/qtwidgets-proof/RESULTADO.json",
+    "frame_public_report_sha256": "1242645e6bc85bb115a4cac21d7fd64ee9217d17ab732c11fe1c5cc1f00814e5",
+    "frame_display": ":68",
+    "frame_preview_exit_code": 0
+  },
+  "limitations": [
+    "This remains a partial Qt6 Widgets adapter, not a translator for every Qt6 control.",
+    "The arrow-cell painter remains a local overlay; range, page step, thumb, wheel and pointer input remain Qt native.",
+    "The Qt6 push-button QSS paints one real QPushButton and is not historical pixel-fidelity proof.",
+    "Automated checks do not establish historical visual fidelity or user approval.",
+    "No new direct comparison against the live Domain/OS SR10.4 VM was performed in this substep.",
+    "Checkbox and radio indicator recipes are technically exercised but lack matching native SR10.4 control measurements and human visual approval.",
+    "QLineEdit editing shortcuts were verified in a real Qt widget, and its public preview was recorded; no matching native SR10.4 measurement or human visual approval has been made.",
+    "QComboBox/popup behavior and arrow placement are technically tested but have no matching native SR10.4 measurement or human visual approval.",
+    "The activation/backdrop mapping is a Qt adaptation and is not evidence of historical SR10.4 focus behavior.",
+    "No manual user review or approval is recorded for the new slider preview.",
+    "Horizontal and vertical QSlider steps are technically validated; neither has a matching appearance/metric measurement from the SR10.4 guest."
+  ],
+  "next": "All 16 Qt6 catalog controls now have technical preview coverage. Await human review for I170; this is not historical-fidelity approval. Then continue the next authorized item in the Work Board Fila Atual."
+}

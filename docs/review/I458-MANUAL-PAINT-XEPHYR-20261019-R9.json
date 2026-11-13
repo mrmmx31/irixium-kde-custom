@@ -1,0 +1,41 @@
+{
+  "item": "I458",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T15:51:53Z",
+  "status": "native-error-dialog-verified; recovery-still-partial",
+  "scope": "Invalid Paint project error path in a dedicated Xephyr session.",
+  "runtime": {
+    "xephyr": ":85, 1600x900, PID 86792",
+    "title": "PARA LSI — I458 Paint dialog | Xephyr :85",
+    "theme_lab_pid": 87403,
+    "binary": "tools/theme-lab/build/theme-lab",
+    "binary_sha256": "4031b2cab6603a041cf6e0b74f79a5d266c4ebe2e61352c9cbab3f2043f11eb4",
+    "test_work_dir": "~/tempia/i458-paint-dialog-xephyr-r152/work",
+    "source_fixture": "~/tempia/i458-resume-20261019/work/manual-paint.json",
+    "source_fixture_sha256_before_and_after": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431",
+    "test_copy_sha256_after_open": "5c8d24135d5fe130aaffbd027d477cece0a72fcb6919c4e3e0598b1c4ce30431"
+  },
+  "observed": {
+    "dialog_title": "Falha ao abrir camada manual",
+    "message": "Documento 3 inválido (dimensões 0x0 fora do intervalo permitido); original preservado.",
+    "capture": "~/tempia/i458-paint-dialog-xephyr-r152/load-error-dialog.png",
+    "capture_sha256": "f925fc9bd18a41b4bb4005f992ff937db2dd92bd85737cd646d2a1a446143da8"
+  },
+  "validation": {
+    "model_test": "PASS: make -C tools/theme-lab check-manual-paint-model",
+    "strict_build": "PASS: make -C tools/theme-lab build/theme-lab; C99 -Wall -Wextra -Werror",
+    "gui": "PASS: actual Motif editor button opened the error dialog using the malformed project copy. No save or overwrite occurred.",
+    "color_scope": "Private XDG config had no KDE palette, so the app kept Motif fallback colors. This run validates only error-dialog text and reachability, not theme colors. Motif logged missing charset warnings for the multiplication glyph, rendered as x on screen."
+  },
+  "preservation": {
+    "source_fixture_changed": false,
+    "installed_application_replaced": false,
+    "other_xephyr_sessions_touched": false
+  },
+  "remaining": [
+    "The dialog is open in the dedicated Xephyr for manual inspection.",
+    "Recovery/export of the two valid sibling layers to a separate file remains unresolved.",
+    "Manual approval of the clean editor and its broader workflow remains pending."
+  ],
+  "next": "Keep the user's Xephyr available for inspection; continue another authorized Fila Atual item without closing unrelated sessions."
+}

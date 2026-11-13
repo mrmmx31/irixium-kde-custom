@@ -1,0 +1,41 @@
+{
+  "id": "R262",
+  "date": "2026-10-26",
+  "scope": "Fresh pixel comparison of active and inactive DomainOS window decoration faces and bevels",
+  "user_observation": "The active orange/coral and inactive green/teal decoration still look slightly lighter than the original VM.",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01 assistant VM",
+    "capture_type": "read-only native guest screen snapshot",
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/domainos-live-r262.png",
+    "sha256": "1d9552cb9bffba06381433c00cd6f8f39905e200baab9da9bdcdd0df1897cab4",
+    "resolution": [1024, 844]
+  },
+  "comparison": {
+    "system": "private Theme Lab Xephyr :60",
+    "capture_type": "read-only Xephyr root XWD converted to PNG",
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/xephyr-root-r262.png",
+    "sha256": "9bbed3b063ff9efd867310fb1fedaff59a4e85e8c3cb9705e916b80ea699246d",
+    "resolution": [1600, 1000],
+    "host_xdg_session": "wayland",
+    "kde_color_scheme": "DomainOS-SR10-4"
+  },
+  "measured_pixels": {
+    "active_face": "#fe8282",
+    "inactive_face": "#7acac5",
+    "active_bevel_light": "#ffc8c8",
+    "active_bevel_dark": "#864545",
+    "inactive_bevel_light": "#c5e8e6",
+    "inactive_bevel_dark": "#406b68",
+    "vm_and_xephyr_match": true,
+    "rois": {
+      "vm_inactive": [90, 57, 340, 66],
+      "vm_active": [90, 377, 340, 384],
+      "xephyr_inactive": [40, 5, 400, 11],
+      "xephyr_active": [500, 263, 700, 269]
+    }
+  },
+  "implementation": "decorations/domainos/package/contents/ui/main.qml binds DecorationOptions.titleBarColor and fontColor to the real Surface; the face follows the current KDE title-bar role and bevel tones are derived from that face.",
+  "result": "The new VM-to-Xephyr captures reproduce the R241 pixel equality for both faces and sampled bevels. No code, palette, or KDE color role was changed.",
+  "limit": "This fresh sample covers the private Xephyr :60 test session, not an independently captured window in the user's main Wayland session. If the report refers specifically to the main session, that display path remains unmeasured.",
+  "vm_state": "One canonical MAME process (PID 1313710, disk verified), captured=false, paused=false, frameskip=4, throttled=false. Read-only probe and screen snapshot only; no input sent."
+}

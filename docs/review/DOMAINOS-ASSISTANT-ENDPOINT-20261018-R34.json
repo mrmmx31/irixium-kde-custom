@@ -1,0 +1,52 @@
+{
+  "item": "P10",
+  "revision": "R34",
+  "checked_at_utc": "2026-10-18T16:42:39Z",
+  "instance": "assistant-clone-20261018",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false,
+    "probe": "passed through the clone's existing MAME Lua bridge"
+  },
+  "source_backup": {
+    "archive": "DomainOS-SR10.4-backup-base-20261014.zip (approved Downloads backup)",
+    "archive_sha256_verified": "fa79d20bf59c8dc28d7a9893186085411dca29c0650ea7dbea4739c0ea54206c",
+    "disk_member": "DomainOS-SR10.4/discos/dn3500_sr10.4.awd",
+    "disk_member_sha256_verified": "de5d44ad44b62a9ab7368902a8fb1c65aed7994877122794f5d9469706737645",
+    "approved_archive_modified": false
+  },
+  "network": {
+    "namespace": "net:[4026533751]",
+    "guest_backend": "192.168.240.2",
+    "clone_only_endpoint": "10.104.246.11",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "host_address_collision": false,
+    "source_receipt": "R33 checked this alias against the original and other accessible MAME interfaces; old alias 10.104.246.10 retired."
+  },
+  "validation": {
+    "ftp": {
+      "endpoint": "10.104.246.11:21",
+      "result": "passed",
+      "evidence": "Received 220 Domain/OS FTPD banner through the clone endpoint; guest backend 192.168.240.2:21 also returned the banner."
+    },
+    "telnet": {
+      "endpoint": "10.104.246.11:23",
+      "result": "protocol_negotiation_passed",
+      "evidence": "After client Telnet option negotiation, endpoint and guest backend returned FF FD 18. An idle TCP connect without negotiation did not emit bytes within the short probe."
+    },
+    "native_guest_capture": {
+      "result": "black_screen",
+      "evidence": "Fresh MAME screen snapshot at 1024x844; Apollo command strip remains visible. This does not establish that VUE is visually usable."
+    }
+  },
+  "changes_this_revision": "Read-only endpoint, MAME-state, and backup-hash checks. No guest settings, original VM, approved backup, or MAME performance settings were changed.",
+  "use": {
+    "network_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+    "telnet_example": "run-in-assistant-vm-network.sh telnet 10.104.246.11 23",
+    "ftp_note": "Use active FTP through the helper and bind/advertise 192.168.240.1 for the data connection."
+  }
+}

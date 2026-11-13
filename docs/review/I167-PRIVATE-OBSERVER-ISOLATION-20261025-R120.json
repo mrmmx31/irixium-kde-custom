@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "R120",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Invalid observer test detected and contained a host environment leak",
+  "incident": {
+    "cause": "The test passed private XDG/HOME/D-Bus variables to its fake service subprocess, but did not apply that environment to the parent Qt observer. QFileSystemWatcher therefore launched its QProcess worker with the real user's environment. The worker reached the real session D-Bus and real XDG theme paths.",
+    "test_result": "Invalid for private end-to-end or visual verification; it is excluded from I167 fidelity evidence.",
+    "scope": "The worker regenerated the user's GTK2 palette bundle and signaled the real KDE GTKConfig service to re-export the already selected DomainOS palette. It did not change kdeglobals, the selected color scheme, or the persisted GTK theme name."
+  },
+  "containment": {
+    "gtk2_transaction_receipt": "~/.local/state/irixium-gtk2-palette/backups/20261025T004033-c8d150bb5cb0/receipt.json",
+    "gtk2_restore_transaction": "~/.local/state/irixium-gtk2-palette/backups/20261025T004039-113e4a977c63/receipt.json",
+    "original_existing_entries_restored": "All 5 existing GTK2 RC/active-record paths match the first transaction's Before snapshots; the restore receipt's 5 entries match their recorded After snapshots.",
+    "gtk2_active_palette_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "gtk3_and_gtk4_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "gtk_theme_names": "GTK2, GTK3, GTK4 and GSettings all read DomainOS-SR10-4-KDE after containment.",
+    "kde_selection": "LookAndFeelPackage org.magpie.irixclassic.domainos.desktop; ColorScheme DomainOS-SR10-4.",
+    "residual": "108 immutable GTK2 cache files created by the failed test remain. They are not referenced by the restored current GTK2 RC, but are retained because a process that read the transient RC may still hold their paths. No cache file was deleted while windows could reference it."
+  },
+  "verification": {
+    "current_settings_and_palette_hashes_match": true,
+    "gtk2_transaction_before_state_verified": true,
+    "gtk2_restore_transaction_verified": true,
+    "personal_applications_closed": false,
+    "test_screenshots_used_as_theme_evidence": false
+  },
+  "evidence": {
+    "restoration_state": {
+      "path": "~/tempia/i167-r118/r120-restoration-state.json",
+      "sha256": "a3ccf5617e126b80b79f3dc8f9a6f641ad03d9d42b3f569cd5ed6fab51580c30"
+    },
+    "invalid_probe": {
+      "path": "~/tempia/i167-r118/probe_private_observer-r120-failed-isolation.py",
+      "sha256": "38709c491709ba1128945b299dd9ad99bdc57688f4531c6950e17095c8ee2d25"
+    },
+    "scripts_catalog": {
+      "count": 45,
+      "previous_entries_preserved": 42
+    }
+  },
+  "prevention": "Before any future QProcess or subprocess observer test, set the private HOME/XDG/DBUS environment on the parent process itself and assert those values in the launched worker before permitting it to call synchronize(). Do not rerun this saved probe unchanged.",
+  "next": "Continue only after strengthening the private observer fixture with worker-side HOME, XDG and D-Bus assertions; keep the theme profile and installed session untouched. Then resume the authorized GTK2 audit."
+}

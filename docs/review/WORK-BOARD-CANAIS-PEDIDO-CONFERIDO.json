@@ -1,0 +1,29 @@
+{
+  "checked_at": "2026-10-11T18:49:51.816094+00:00",
+  "request": "Canal antigo Ok pode reabrir fixo, renomeado e separado do canal da colega",
+  "channels": [
+    {
+      "id": "Q091",
+      "title": "Canal — Tema e laboratório",
+      "communication_channel": {
+        "owner": "IA do tema e laboratório"
+      }
+    },
+    {
+      "id": "Q102",
+      "title": "Canal — Prancheta / outra IA",
+      "communication_channel": {
+        "owner": "IA da Prancheta"
+      }
+    }
+  ],
+  "result": "Já implementado e entregue; conferência atual da definição e fontes. Nenhuma mensagem, rascunho, autorização ou janela modificada.",
+  "evidence": "docs/review/WORK-BOARD-CANAIS-FIXOS-20261010.json",
+  "source_sha256": {
+    "src/view/channels.c": "47845bcc5e8eb8838bc447948f44b0ffd9ceb4418687bea5cfc3238b43059ea7",
+    "src/model/filter.c": "8ce6bc38053110235a2eaf42d5990599e3e7b0ac313cef5cd4904938c5fa9dce",
+    "src/view/task_list.c": "100e0fc81343757280359155cdee7cd50b6f32407d62a162152ea749d5c06e2d"
+  },
+  "scope_progress_percent": 100,
+  "basis": "Dois canais configurados e faixa fixa independente dos filtros; não representa conclusão do projeto."
+}

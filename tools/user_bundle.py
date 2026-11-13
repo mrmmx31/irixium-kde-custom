@@ -10,7 +10,7 @@ from pathlib import Path
 import shutil
 import uuid
 
-from theme_transaction import Failure, atomic, no_links
+from theme_transaction import Failure, atomic, decode, no_links, snapshot
 
 
 def fingerprint(root):
@@ -32,6 +32,60 @@ def fingerprint(root):
             result[rel] = hashlib.sha256(p.read_bytes()).hexdigest()
         elif not p.is_dir():
             raise Failure(f'Arquivo especial recusado: {p}')
+    return result
+
+
+def restoration_projection(overlays, destinations):
+    """Validate exact file changes supplied by an owned overlay's dry restore.
+
+    This is only a read-only view of the already validated restoration plan.
+    It never exempts a directory or accepts a file whose current bytes/mode
+    differ from the overlay receipt.
+    """
+    projection = {}
+    for entry in overlays or ():
+        if not isinstance(entry, dict) or set(entry) != {'path', 'before', 'after'}:
+            raise Failure('Projeção de restauração inválida.')
+        path = Path(entry['path'])
+        no_links(path)
+        if path in projection or not any(path == dest or path.is_relative_to(dest)
+                                         for dest in destinations):
+            raise Failure('Projeção duplicada ou fora do pacote: ' + str(path))
+        decode(entry['before']); decode(entry['after'])
+        if snapshot(path) != entry['before']:
+            raise Failure('Overlay mudou desde a verificação: ' + str(path))
+        projection[path] = entry
+    return projection
+
+
+def projected_fingerprint(root, projection):
+    """Fingerprint the complete tree as it would be after exact file restores."""
+    relevant = {path: entry for path, entry in projection.items()
+                if path == root or path.is_relative_to(root)}
+    for path, entry in relevant.items():
+        if snapshot(path) != entry['before']:
+            raise Failure('Overlay mudou durante a verificação: ' + str(path))
+    result = fingerprint(root)
+    if relevant:
+        if result is None:
+            raise Failure('Raiz de overlay ausente: ' + str(root))
+        result = dict(result)
+        for path, entry in relevant.items():
+            if root.is_file():
+                if path != root:
+                    raise Failure('Overlay abaixo de destino regular: ' + str(path))
+                result = {'@file': entry['after']['sha256']} if entry['after']['exists'] else None
+            else:
+                relative = path.relative_to(root).as_posix()
+                if relative in ('.', 'icon-theme.cache', '.icon-theme.cache'):
+                    raise Failure('Overlay fora dos arquivos do tema: ' + str(path))
+                if entry['after']['exists']:
+                    result[relative] = entry['after']['sha256']
+                else:
+                    result.pop(relative, None)
+        for path, entry in relevant.items():
+            if snapshot(path) != entry['before']:
+                raise Failure('Overlay mudou durante a verificação: ' + str(path))
     return result
 
 
@@ -170,7 +224,10 @@ class Bundle:
                 if stage.exists():
                     remove_path(stage)
 
-    def restore(self, dry=False):
+    def restore(self, dry=False, *, overlays=None):
+        if overlays and not dry:
+            raise Failure('A projeção de overlays é somente para verificação sem escrita.')
+        projection = restoration_projection(overlays, self.destinations)
         latest = self.latest()
         if not latest:
             raise Failure('Nenhum backup disponível.')
@@ -183,7 +240,7 @@ class Bundle:
                 raise Failure('Caminho de backup inválido.')
             if fingerprint(receipt.parent/saved) != entry['before']:
                 raise Failure('Backup alterado.')
-            current = fingerprint(Path(entry['destination']))
+            current = projected_fingerprint(Path(entry['destination']), projection)
             accepted = [entry['before'], entry['after']]
             if record['status'] == 'prepared':
                 accepted.append(None)

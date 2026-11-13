@@ -1,0 +1,46 @@
+{
+  "item": "I167",
+  "revision": "R29",
+  "checked_at_utc": "2026-10-22T22:42:00Z",
+  "family": "GTK2 push-button geometry isolation and exact public route",
+  "change": {
+    "source": "tools/theme-lab/gtk2_buttons.py",
+    "source_sha256": "7b5283413e97ccb33ec4a0964afc4745f0a9d4101ebcceaed30d0a1338b63b1a",
+    "summary": "Separated push_geometry_lines (ythickness=0) from shared GTK2 button-like geometry_lines (ythickness=shadow), preventing the push-specific visual adjustment from changing toggle and combo.",
+    "tests": [
+      "test_gtk2_buttons",
+      "test_gtk2_toggles",
+      "test_gtk2_combo_integration",
+      "test_gtk2_spin_integration"
+    ],
+    "test_result": "12 passed; TemporaryDirectory redirected to ~/tempia"
+  },
+  "results": {
+    "status": "passed",
+    "scenes": 8,
+    "schemes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "origins": [
+      "separate",
+      "coupled"
+    ],
+    "native_request_px": [
+      63,
+      21
+    ],
+    "click_and_replacement": "passed on all scenes",
+    "button_asset_hashes_match_per_scheme": "verified by exact per-scheme comparison against the adapter-generated RC hashes recorded in R27; combined scene RC has distinct additional styles and therefore a different hash",
+    "results_sha256": "db118628302da91e3a87237cf185afe02e857f59b4bdad715c12b48b5641be99",
+    "artifacts": "~/tempia/i167-gtk2-push-public-pair-r28/exact-candidate-r28d/"
+  },
+  "limits": [
+    "This confirms native preview route and isolation of the push geometry; no visual human approval is inferred.",
+    "Motif visual pair remains a lab sample, not an SR10.4 VM metric.",
+    "No GTK2 theme was applied to the user session or XChat."
+  ],
+  "next": "Push-button recipe is complete for this scope. Continue with GTK2 toggle separately, first obtaining/using a corresponding Motif reference, then compare the native adapter and palette states before proceeding to check/radio."
+}

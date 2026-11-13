@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "R534",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "after-expose-repair-mechanism-proven-in-private-harness; engine-integration-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 partial repaint investigation only; no installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "window_px": [200, 100],
+    "scale": 1,
+    "theme_engine": "private R525 prototype",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "mame_input_sent": false,
+    "other_mame_instance_touched": false
+  },
+  "findings": {
+    "r527_reconciliation": "The vertical corruption at (0,0) missed the stepper. GtkRange has no own GdkWindow in this probe and shares the top-level window; the actual vertical stepper is at (92,22). For this no-window widget, queue_draw_area must use shared-window coordinates. The previous R527 vertical pixel result was invalid.",
+    "baseline_partial_expose": "With R525 geometry, GTK emits an expose for a 1x1 damage at the outer 2px of the reconstructed 15x15 asset, but GtkRange does not invoke the stepper draw callback because its declared area is 15x11 horizontally / 11x15 vertically. Damage within the declared area does invoke the callback.",
+    "property_alternatives": "trough-under-steppers=0 yields full 15x15 callbacks and repairs partial damage, but shifts cell positions by 2px; this remains rejected in the installed rendering by R327-R329. A private stepper-size=19 variant keeps the 15x15 asset inside a 19x15/15x19 draw area and repaints, but in a 542px horizontal test its right cell lands at x=525 while SR10.4 is x=526 (72/225 differences at the reference crop). Neither variant is selected.",
+    "after_expose_harness": "An after-expose handler in a separate private GTK2 harness redrew only the damaged intersection of the cached 15x15 stepper cell. Horizontal-left overscan and vertical-up overscan each changed by 1 pixel when damaged and returned to 0/225 difference from the initial cell after repaint. The original 15x15 geometry/asset placement was preserved."
+  },
+  "limits": [
+    "The after-expose repair is an external test harness callback, not integrated into the theme engine.",
+    "Only two normal-state overscan points were damaged; four directions, end cells, endpoint/pressed/hover/disabled states and resize remain untested.",
+    "Cached state handling, signal lifetime and interaction with GTK2's native repaint path must be proven in a private engine before any package change.",
+    "This does not constitute a fresh VM comparison or visual acceptance."
+  ],
+  "artifacts": {
+    "probe_and_captures": "records/ia-tema/experiments/i167-r534-expose-repair/",
+    "engine_baseline": "records/ia-tema/experiments/i167-r525-endpoint-clip/r525-engine.c",
+    "prior_pixel_baseline": "docs/review/I167-GTK2-ENDPOINT-RENDER-20261028-R525.json"
+  },
+  "next": "Prototype the post-expose handler inside a private GTK2 style engine with per-widget cell geometry and current state derived from the range/palette. Verify all four directions, each affected state, endpoint input blocking, resize and exact 1:1 cell pixels before considering integration. Keep the installed theme unchanged."
+}

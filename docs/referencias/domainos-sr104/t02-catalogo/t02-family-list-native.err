@@ -1,0 +1,33 @@
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: key
+command: mousemove
+command: click
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1315, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 249, in main
+    results.update(run(output, observation, click, wait, environment, families_only=True))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_catalog_matrix.py", line 83, in run
+    family(3, 'gtk3')
+    ~~~~~~^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_catalog_matrix.py", line 73, in family
+    wait(lambda: project()['selected_family'] == name, 10)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 33, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

@@ -1,0 +1,46 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Warning: Missing charsets in String to FontSet conversion
+Warning: Missing charsets in String to FontSet conversion
+Warning: Missing charsets in String to FontSet conversion
+[Detaching after fork from child process 2337918]
+command: mousemove
+command: click
+[Detaching after fork from child process 2337919]
+command: type
+Exec arg[0]: ABC
+[Detaching after fork from child process 2337920]
+command: key
+[Detaching after fork from child process 2337924]
+command: key
+[Detaching after fork from child process 2337965]
+command: key
+[Detaching after fork from child process 2337968]
+command: key
+[Detaching after fork from child process 2337969]
+command: key
+[Detaching after fork from child process 2337970]
+command: key
+[Detaching after fork from child process 2337976]
+[Detaching after fork from child process 2337977]
+command: key
+[Detaching after fork from child process 2337999]
+command: key
+[Detaching after fork from child process 2338006]
+command: key
+[Detaching after fork from child process 2338013]
+command: click
+[Detaching after fork from child process 2338062]
+command: mousemove
+command: click
+[Detaching after fork from child process 2338066]
+[Detaching after fork from child process 2338070]
+command: key
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007ffff7f41eec in XtWidgetToApplicationContext () from /lib/x86_64-linux-gnu/libXt.so.6
+#0  0x00007ffff7f41eec in XtWidgetToApplicationContext () from /lib/x86_64-linux-gnu/libXt.so.6
+#1  0x00007ffff7d6ae70 in XmTextFieldGetString () from /lib/x86_64-linux-gnu/libXm.so.4
+#2  0x000055555555ebde in expect_field (field=<optimized out>, expected=0x7ffffffe79e0 "/tmp/theme-lab-file-dialog.A3vbd0/ABC") at tests/ui_help_flow.c:128
+#3  0x0000555555561267 in tl_test_file_dialog_native (view=view@entry=0x5555555d9f30, shell=shell@entry=0x5555555c32f0) at tests/ui_help_flow.c:197
+#4  0x000055555555c706 in main (argc=<optimized out>, argv=<optimized out>) at tests/native_metrics_view.c:181

@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-800X600-20261018-R72",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "Saved AI Work Board state: section=work; user.authorized=true; authorized_definition matches current definition_sha256 a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee; theme agent policy allows work only.",
+  "status": "passed_in_scope",
+  "scope": "Repeat the complete real GTK3 native hint geometry/timing matrix at a 800x600 viewport after R59, covering all 16 catalogued controls at four screen corners.",
+  "environment": {
+    "xephyr": ":81",
+    "display": ":81",
+    "screen_px": [
+      800,
+      600
+    ],
+    "restored_screen_px": [
+      1280,
+      800
+    ],
+    "gtk": "3.24.49",
+    "theme": "Adwaita",
+    "font": "Sans 10",
+    "isolation": "64 short-lived processes; each used a private HOME, XDG config/data/cache/state/runtime and TMPDIR under ~/tempia; NativeScene.factory created the actual GTK3 controls; no CSS/provider/theme override.",
+    "personal_profile_changed": false
+  },
+  "matrix": {
+    "controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "corners": [
+      {
+        "id": "tl",
+        "window_origin": [
+          0,
+          0
+        ],
+        "control_position": [
+          0,
+          0
+        ]
+      },
+      {
+        "id": "tr",
+        "window_origin": [
+          160,
+          0
+        ],
+        "control_position": [
+          500,
+          0
+        ]
+      },
+      {
+        "id": "bl",
+        "window_origin": [
+          0,
+          0
+        ],
+        "control_position": [
+          0,
+          520
+        ]
+      },
+      {
+        "id": "br",
+        "window_origin": [
+          160,
+          0
+        ],
+        "control_position": [
+          500,
+          520
+        ]
+      }
+    ],
+    "total": 64,
+    "passed": 64,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "stable_ms": 400,
+    "all_hints_within_screen": true,
+    "control_overlap_pixels": 0,
+    "closed_after_pointer_leave": true,
+    "push_remained_actionable_after_leave": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "tools/theme-lab/preview_gtk.py": "e453b7c7e5b36a2141a9beb8b18602e97ea7e9c1a86a3aaa2e00aabff9af852a",
+    "tools/theme-lab/gtk3_hint_position.py": "fbfd551f43d21c13ed30e497030e53070a6a527ca0f8439f0a833986c5ec195f",
+    "temporary_probe_with_variable_owner_coordinates": "fd4ef73d27fef3d69545df02f455e746e2bd55e6550bf5835d55d04921f796ce",
+    "temporary_runner": "93f2e97e6da4d4464ef57a31755423e8bc5b24c4ee716d8c58c053202ae14e19"
+  },
+  "artifacts": {
+    "result": "~/tempia/t07-gtk3-small-viewport-20261019-r3/result.json",
+    "result_sha256": "1337d67caffdb3b79a30a630bca648c96b3bb17814bf54b794462f11f995f359",
+    "per_case": "~/tempia/t07-gtk3-small-viewport-20261019-r3/{corner}-{control}/result.json"
+  },
+  "diagnostics": {
+    "neutral_pointer": "Probe moved the pointer to (799,599), outside every tested owner, before and after hover. Two earlier diagnostic attempts are preserved in sibling -20261019/ and -r2/ directories; they exposed that the probe’s former (0,0) neutral point can land on a top-left owner and were not treated as product failures.",
+    "runtime_warning": "Each GTK3 process may emit the existing non-fatal Gdk.Screen.get_width/get_height deprecation warning; all 64 cases completed.",
+    "resolution": "R59 had no 800x600 GTK3 run. This matrix uses positions sized for this screen and supersedes only the missing small-viewport evidence, not other application layouts."
+  },
+  "limitations": [
+    "One NativeScene fixture, Adwaita/Sans 10 only; no alternate KDE palette or Domain/OS pixel fidelity claim.",
+    "Does not cover other GTK3 applications, font sizes, disabled states beyond those represented by the controls, or user visual approval.",
+    "The test fixture was adjusted only in ~/tempia to place each control at a corner; no product source or color schema was changed."
+  ],
+  "next": "Continue T07 on an independent remaining gap; GTK2 R58/R60 failure remains documented and the Help menu still needs the remaining user-facing review."
+}

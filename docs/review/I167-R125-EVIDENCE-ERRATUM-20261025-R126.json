@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "id": "I167-R125-EVIDENCE-ERRATUM-20261025-R126",
+  "item": "I167",
+  "date": "2026-10-25",
+  "affects": "docs/review/I167-GTK2-SR104-FINDFILES-20261025-R125.json",
+  "issue": "R126 reused the R125 snapshot script, which wrote to the same i167-current-sr104-20261025.png path. The prior image bytes were overwritten before they were copied under a unique name.",
+  "previous_sha256": "5a5085c9b9655e147cd3b166c3ed75f16371ce29e451bdf8d92e8b253f210dac",
+  "current_file_sha256": "0b25611ec5aa14e3da18cf2162c7673031fba6088a30f6ed3050180198633d06",
+  "recovery": "No byte-identical copy of the previous 39,610-byte image was found in the searched ~/tempia artifacts. R125's screenshot assertion is not currently re-verifiable from that path. Its separate XID and Expose transcripts retain their recorded hashes. R126 preserves the new post-wake image under a unique filename.",
+  "corrective_rule": "Use a unique output path for every capture revision; never reuse the capture filename cited by a prior receipt."
+}

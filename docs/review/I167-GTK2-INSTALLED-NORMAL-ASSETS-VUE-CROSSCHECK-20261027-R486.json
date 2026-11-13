@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "id": "R486",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Cross-check all four normal 15x15 stepper cells in both installed user GTK2 theme copies against the retained Domain/OS SR10.4 + HP VUE 2.01 reference.",
+  "method": "Direct RGBA pixel comparison at the already registered native 1:1 reference coordinates. No resize, palette normalization, or cursor masking. This is an on-disk asset audit; installed runtime rendering was independently measured in R394.",
+  "result": {
+    "theme_copies": 2,
+    "cells": 8,
+    "pixels_compared": 1800,
+    "different_pixels": 0,
+    "all_exact": true,
+    "geometry": "Each full stepper cell is 15x15 px, including the horizontal left/right cells."
+  },
+  "theme_copies": [
+    {
+      "theme_copy": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+      "assets": [
+        {
+          "direction": "left",
+          "reference_file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+          "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+          "reference_crop_xywh": [
+            2,
+            4,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png",
+          "installed_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "right",
+          "reference_file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+          "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+          "reference_crop_xywh": [
+            526,
+            4,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png",
+          "installed_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "up",
+          "reference_file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+          "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+          "reference_crop_xywh": [
+            4,
+            2,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+          "installed_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "down",
+          "reference_file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+          "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+          "reference_crop_xywh": [
+            4,
+            242,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-normal.png",
+          "installed_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+          "pixels": 225,
+          "different_pixels": 0
+        }
+      ]
+    },
+    {
+      "theme_copy": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE",
+      "assets": [
+        {
+          "direction": "left",
+          "reference_file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+          "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+          "reference_crop_xywh": [
+            2,
+            4,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png",
+          "installed_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "right",
+          "reference_file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+          "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+          "reference_crop_xywh": [
+            526,
+            4,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png",
+          "installed_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "up",
+          "reference_file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+          "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+          "reference_crop_xywh": [
+            4,
+            2,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-up-normal.png",
+          "installed_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+          "pixels": 225,
+          "different_pixels": 0
+        },
+        {
+          "direction": "down",
+          "reference_file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+          "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+          "reference_crop_xywh": [
+            4,
+            242,
+            15,
+            15
+          ],
+          "installed_asset": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-down-normal.png",
+          "installed_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+          "pixels": 225,
+          "different_pixels": 0
+        }
+      ]
+    }
+  ],
+  "cross_references": {
+    "runtime_install_comparison": "docs/review/I167-GTK2-INSTALLED-THEME-STEPPERS-20261027-R394.json",
+    "four_palette_vertical_runtime": "docs/review/I167-GTK2-VERTICAL-WHOLE-CELL-SCHEME-MATRIX-20261027-R485.json",
+    "palette_roles_rule": "docs/DOMAINOS-REGRAS-CORES.md"
+  },
+  "interpretation": "The reported smaller horizontal arrow is not reproduced in the current normal-state 1:1 assets or the R394 GTK2 runtime comparison. No size change is justified by current evidence. This does not identify what an already-running personal app has loaded or explain a scaled screenshot.",
+  "limits": [
+    "Normal state only; it does not close historical pressed, hover, or insensitive states.",
+    "It does not prove an already-running application has reloaded the current user theme.",
+    "It does not claim human visual acceptance."
+  ],
+  "changes": {
+    "source_changed": false,
+    "profile_changed": false,
+    "application_restarted": false,
+    "vm_input_sent": false,
+    "vm_changed": false
+  }
+}

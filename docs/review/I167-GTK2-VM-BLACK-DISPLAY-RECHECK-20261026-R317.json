@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R317",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-vm-still-black;physical-wake-required",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only recheck of the project-owned MAME VM after the prior black-screen finding."
+  },
+  "runtime": {
+    "process_id": 2633006,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "canonical_verifier": "bash vm/domainos-sr10.4-assistant/verify.sh",
+    "verifier_result": "Passed; canonical disk is in use by exactly one MAME process.",
+    "probe": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false
+    },
+    "control_channel": "No pending command or reply."
+  },
+  "capture": {
+    "time_local": "2026-10-26T10:12:41-04:00",
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/r316-assistant-vm-start/domainos-current-goal-turn.png",
+    "sha256": "5fff64eb0ebcc6414ab0cbed24a524251b897bf8379ded8dd1fd265ed5896b2a",
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "visual_result": "Entire guest display remains black; no prompt, HP VUE, scrollbar or target is visible. This image is byte-identical to the prior R316 wake-check capture."
+  },
+  "isolation": {
+    "guest_input_sent": false,
+    "host_focus_changed": false,
+    "mouse_capture_changed": false,
+    "performance_profile_changed": false,
+    "xchat_or_user_app_touched": false,
+    "scripts_or_sessions_stopped": false,
+    "disk_replaced_or_moved": false
+  },
+  "next_step": "Wait for the user to wake the guest with a physical mouse or keyboard event under DOMAINOS-REGRAS-VM.md. Then take a fresh snapshot and proceed only if the HP VUE target is visible.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Current runtime recheck adds no arrow-comparison coverage; this is technical task coverage, not visual fidelity."
+  }
+}

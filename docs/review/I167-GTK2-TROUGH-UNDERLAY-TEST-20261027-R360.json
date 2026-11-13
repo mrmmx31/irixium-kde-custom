@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "R360",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify whether GTK2's scrollbar trough underlay paints the pixels outside each allocated horizontal stepper rectangle",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "fixture": {
+    "path": "~/tempia/ia-tema/evidence/I167/r360-trough-underlay-sentinel/",
+    "gtk": "2.24.33",
+    "renderer": "/usr/lib/x86_64-linux-gnu/gtk-2.0/2.10.0/engines/libpixmap.so",
+    "selected_theme": "I167-TroughSentinel",
+    "gtk_widget_state": "NORMAL",
+    "gtk_range_trough_state": "ACTIVE, as passed by gtk_range_expose for a sensitive range",
+    "changed_only_in_isolated_fixture": "The ACTIVE detail=trough pixbuf was opaque magenta; stepper metrics and assets were held local to the fixture."
+  },
+  "result": {
+    "capture": "~/tempia/ia-tema/evidence/I167/r360-trough-underlay-sentinel/sentinel-both.png",
+    "widget_size_px": [543, 15],
+    "magenta_pixels": 7265,
+    "magenta_remaining_in_each_15x15_stepper_cell": 60,
+    "meaning": "The trough is painted beneath the steppers and supplies the four 15px edge rows outside each stepper's 15x11 allocated rectangle. Thus the underlay is a viable owner of the corner pixels without expanding the stepper or changing the measured bar thickness."
+  },
+  "limitations": [
+    "The sentinel proves draw order and pixel ownership, not that the current KDE-role trough artwork can be changed at the exact source coordinates yet.",
+    "The attempted direct source-pixel edit used an unverified 9-slice coordinate mapping and did not change the four registered output values; it is rejected as evidence for a fix.",
+    "No production GTK2 code, generated palette, installed theme, XChat process, or VM was changed."
+  ],
+  "next": "Use coordinate-coded corner colors in an isolated trough asset to map the 9-slice source-to-destination coordinates, then derive those corner values through existing dynamic KDE semantic roles and compare the full 15x15 cells to VUE SR10.4."
+}

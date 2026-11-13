@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-CURRENT-VUE-STATE-20261025-R222",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "existing assistant clone",
+    "mame_pid": 274368,
+    "mame_version": "0.276",
+    "purpose": "Confirm the current native Find Files state before choosing the next GTK2 comparison; no theme rendering was repeated.",
+    "screen_capture": "~/tempia/ia-tema/evidence/I167/r222-vue-current/screen.png",
+    "screen_sha256": "dad32719b4c361fe3b934888cf4174e3fe2a376e10281c7964d215fd6539ff1d",
+    "screen_px": [1024, 844],
+    "observed": "VUE Terminal and Find Files are visible over File Manager. File Name remains '*', Search Directories remains '.', and Files Found is empty. Reset has the visible focus marker.",
+    "guest_files_or_settings_changed": false,
+    "mouse_input": false
+  },
+  "wake_and_runtime": {
+    "initial_observation": "The first read-only guest snapshot appeared black; that file was reused for the final capture and the initial image was not preserved as a separate artifact.",
+    "input": "One guest Shift frame through the existing MAME bridge; automatic release on frame 2; native snapshot on frame 65.",
+    "script": "~/tempia/ia-tema/evidence/I167/r222-vue-current/wake-shift.lua",
+    "script_sha256": "e74ac7c6d75dbbf3ac30c297a120c3a498417fd644adae157768a42a551cfb7c",
+    "callback": {
+      "done": true,
+      "frame": 65,
+      "held": false,
+      "error": null,
+      "reason": "Shift released; screen captured at frame 65"
+    },
+    "post_state": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "channel_pending": null
+    }
+  },
+  "interpretation": {
+    "current_results_list": "No results are visible in this current state; do not treat the older R217 image as the live screen.",
+    "prior_list_comparison": "R204 remains the valid 1:1 comparison of the six-result VUE list and GTK2 GtkTreeView. R205 records the resource lookup and R207 the theme-only row-density limit; no need to repeat those tests.",
+    "code_or_product_change": false,
+    "human_acceptance": "pending"
+  },
+  "next": "Continue only I167/GTK2 with a distinct native control/state. Reuse R204/R205/R207 for the prior Find Files list comparison. Do not alter GTK2 color roles or row geometry based on this state refresh.",
+  "status": "running"
+}

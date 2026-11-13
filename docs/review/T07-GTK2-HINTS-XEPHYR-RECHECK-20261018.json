@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK2",
+  "display": ":74",
+  "command": "T07_PRIVATE_PROBE=1 /usr/bin/python3 -B tools/theme-lab/tests/probe_control_hints.py --family gtk2",
+  "result": {
+    "status": "passed",
+    "initial_scope": {
+      "native_types": 6,
+      "widgets_with_hint": 13,
+      "result": "passed"
+    },
+    "all_controls_scope": {
+      "native_types": 16,
+      "widgets_with_hint": 31,
+      "controls": [
+        "arrow",
+        "check",
+        "combo",
+        "entry",
+        "frame",
+        "list",
+        "progress",
+        "push",
+        "radio",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "spin",
+        "text",
+        "toggle"
+      ],
+      "result": "passed",
+      "artifacts": "~/tempia/t07-gtk2-hints-all-controls-20261018/"
+    },
+    "scope": "production native factories and compound descendants across the 16-control generated GTK2 scene",
+    "timing_or_pixel_fidelity_proven": false,
+    "timed_hover": {
+      "status": "passed",
+      "control": "combo",
+      "gtk_backend": "GTK2 native tooltip from production-generated scene",
+      "cold_hover_delay_ms": 500,
+      "control_rect_px": [
+        540,
+        320,
+        120,
+        36
+      ],
+      "tooltip_rect_px": [
+        441,
+        362,
+        317,
+        76
+      ],
+      "position": "within screen and does not overlap the control",
+      "stable_hover_ms": 400,
+      "dismissed_on_pointer_leave": true,
+      "palette_pixel_fidelity_proven": false,
+      "artifacts": "~/tempia/t07-gtk2-combo-hover-20261018-r4/"
+    },
+    "harness_retries": "Earlier r1-r3 attempts exposed probe issues (popup click/hover re-entry); r4 passed without GTK criticals. An atk-bridge module warning remains non-fatal.",
+    "hover_matrix": {
+      "status": "passed",
+      "native_types": 16,
+      "controls": [
+        "arrow",
+        "check",
+        "combo",
+        "entry",
+        "frame",
+        "list",
+        "progress",
+        "push",
+        "radio",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "spin",
+        "text",
+        "toggle"
+      ],
+      "cold_delay_ms": 500,
+      "stable_ms": 400,
+      "tooltip_within_screen": true,
+      "tooltip_nonoverlap": true,
+      "dismissed_on_pointer_leave": true,
+      "push_native_click_preserved": true,
+      "screen": "Xephyr :74, 1600x1000",
+      "scope": "One generated GTK2 scene/layout and centered pointer position per control; does not cover alternate layouts or every state.",
+      "artifacts": "~/tempia/t07-gtk2-hover-matrix-20261018-r2/matrix-result.json"
+    },
+    "role_palette_matrix": {
+      "status": "passed",
+      "cases": 8,
+      "fixtures": [
+        "DomainOS",
+        "BreezeLight",
+        "BreezeDark",
+        "TestYellow"
+      ],
+      "origins": [
+        "separate",
+        "embedded"
+      ],
+      "native_delay_ms": 500,
+      "face_exact_rgb_pixels_per_case": 14733,
+      "text_exact_rgb_pixels_per_case": 2295,
+      "scope": "GTK2 tooltip native rendering from explicit GTK RC role fixtures; not proof that the theme generator exports roles or that historical colors match SR10.4.",
+      "artifacts": "~/tempia/t07-gtk2-tooltip-palettes-20261018-r2/RESULTADO.json"
+    }
+  },
+  "runtime_notice": "GTK emitted an atk-bridge module warning; the probe completed successfully.",
+  "sha256": {
+    "probe_control_hints.py_before_full_catalog_extension": "8577a5bf7022032df2f178e392fd8f6c9c41ece3cf7a2ff5eb85e5008cde5f0f",
+    "probe_control_hints.py_full_catalog_extension": "d868052e28138fa643668bcda36c5d66842c6e239a7842994ff2f9d087c98518",
+    "control_hints.py": "506d9fef9ed22bf4cbc91ce8ff91d4e3bc6d3656b5ebe340c82f89a1a8274086",
+    "probe_gtk_hint_hover.py": "13054db988531c35f3fb8be9ce6f59041551a929de7e017a4afdca34838417c6",
+    "test_gtk2_hint_palettes.py": "cf106d7f4e1ca250d81f9e66d089b5698ac1fbca8c222d801801a07cbdd3643c",
+    "hover_matrix_result.json": "c99d915c4b456a68ee56ef1de992013a2a0dd773db3fd86f84bd087e8153ce0e",
+    "role_palette_result.json": "84920ac8f3693c9ea940d1b1bf7a4abf5125797f759e6df5de100d367fa8b06e"
+  },
+  "conclusion": "GTK2 hint assignment is covered for 16 native control types and 31 widgets/compound descendants. Cold native hover passed on all 16 controls in one scene/layout: 500 ms delay, non-overlap, within-screen, stable 400 ms and dismissal on leave; push remains clickable. Four explicit semantic-role fixtures rendered the expected tooltip pixels in both embedded and separate hosts. T07 remains partial: the palette test does not validate the production role exporter; other layouts/states, GTK3/4/Qt/Plasma coverage limits listed in the inventory and visual review remain.",
+  "harness_retries": "The initial palette runner used xvfb-run and timed out before its child started; a standalone hello probe confirmed the wrapper stall. Switched to the already authorized Xephyr :74 by passing DISPLAY/XAUTHORITY directly. Five xvfb-run scratch Xauthority directories from this attempt were identified and removed; no user request or system configuration was touched."
+}

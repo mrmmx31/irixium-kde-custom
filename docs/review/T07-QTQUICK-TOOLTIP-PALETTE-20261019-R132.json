@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-TOOLTIP-PALETTE-20261019-R132",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:38:20Z",
+  "status": "passed_scoped",
+  "scope": "Pixel-level color-role responsiveness of the native attached QtQuick6 ToolTip, using one disabled button and identical hint text under four KDE color schemes.",
+  "runtime": {
+    "display": "Owned Xephyr :82, host 1600x1000; isolated gallery 660x560",
+    "qt": "Qt 6.8.2",
+    "style": "org.kde.desktop",
+    "profiles": "Separate disposable HOME, kdeglobals, color-schemes directory and private D-Bus/network namespace per scheme",
+    "product_theme_or_user_config_changed": false,
+    "custom_drawing": false,
+    "palette_override": false,
+    "font_override": false
+  },
+  "method": {
+    "control": "Native disabled QtQuick Button, unchanged text, same position and 750 ms declared hint delay",
+    "capture": "QQuickWindow screenshot while the attached native ToolTip was visible; background sampled in popup interior and foreground in the text ROI",
+    "stability_ms": 400,
+    "tooltip_rect": [137, 64, 246, 46],
+    "observed_delay_ms": 600,
+    "interpretation": "Measured pixels from isolated previews, not constants added to QML. Observed delay is probe polling resolution; the attached control retains its declared 750 ms delay."
+  },
+  "results": [
+    {"scheme":"DomainOS-SR10.4","source":"colors/DomainOS-SR10.4.colors","source_sha256":"1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5","background_mode_rgb":[120,160,213],"foreground_cluster_rgb":[243,246,251],"capture":"~/tempia/t07-qtquick6-palette-domainos-r132-20261019/home/qtquick6-proof/disabled-button-tooltip.png","capture_sha256":"041c28adfcc9c6cf3e02fd85f7898746551bdf0872b49c7c07f5d414578c79ca"},
+    {"scheme":"BreezeLight","source":"/usr/share/color-schemes/BreezeLight.colors","source_sha256":"06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67","background_mode_rgb":[239,240,241],"foreground_cluster_rgb":[54,57,59],"capture":"~/tempia/t07-qtquick6-palette-breezelight-r132-20261019/home/qtquick6-proof/disabled-button-tooltip.png","capture_sha256":"0c8348b081f20230a76f6c3a521e545b1505000a7c9fd7ef14cc06682fe1502d"},
+    {"scheme":"BreezeDark","source":"/usr/share/color-schemes/BreezeDark.colors","source_sha256":"36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08","background_mode_rgb":[32,35,38],"foreground_cluster_rgb":[232,232,232],"capture":"~/tempia/t07-qtquick6-palette-breezedark-r132-20261019/home/qtquick6-proof/disabled-button-tooltip.png","capture_sha256":"9835e404854b75f93244c9a82db09736f46e2018b280f17401b9ecc6da81c47"},
+    {"scheme":"Irixium","source":"~/.local/share/color-schemes/Irixium.colors (read-only source)","source_sha256":"3941115cb04949238cdfd249db20071bb2d41ce9b448a58b8f4b02f005c29769","background_mode_rgb":[193,193,193],"foreground_cluster_rgb":[17,17,17],"capture":"~/tempia/t07-qtquick6-palette-irixium-r132-20261019/home/qtquick6-proof/disabled-button-tooltip.png","capture_sha256":"9bc021c43da75bd753f6826e06694617802cd4a9b45367129b6ec12c71b155c8"}
+  ],
+  "conclusion": "Popup background and text pixel clusters follow the active KDE scheme in QtQuick6. No fixed color was added, schemes were only read, and the user's color profile was not changed.",
+  "change_record": {"product_source_changed_in_this_step":false,"code_basis":"T07 QtQuick source from R130; runner/probe already recorded in R131","scripts_recorded":true,"script_count":15,"scripts_readback":"~/tempia/t07-r131-scripts-after.json"},
+  "limitations": ["One disabled button and one popup position were sampled; other controls and positions were not sampled across all four schemes.","This proves scheme responsiveness in this QtQuick6 popup, not full WCAG contrast or pixel fidelity to historical HP VUE.","The gallery emitted existing KDE TabButton null-y warnings; they did not affect the isolated tooltip target or passing probe."],
+  "artifacts": ["~/tempia/t07-qtquick6-palette-domainos-r132-20261019/","~/tempia/t07-qtquick6-palette-breezelight-r132-20261019/","~/tempia/t07-qtquick6-palette-breezedark-r132-20261019/","~/tempia/t07-qtquick6-palette-irixium-r132-20261019/"],
+  "next": "Continue T07 with remaining controls and layouts, avoiding repetition of the QtQuick disabled-control matrix and single-target palette checks covered in R130-R132."
+}

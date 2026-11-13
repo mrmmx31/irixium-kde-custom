@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK2-BREEZEDARK-FULL-20261019-R113",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:20:32Z",
+  "purpose": "Ampliar a validação GTK2 R108 de um botão para os 16 tipos da cena, usando o RC DomainOS gerado para BreezeDark.",
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":83 Xephyr existente, preservada",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "window_manager": "Openbox privado da sessão T07",
+    "base_scene": "NativeSession GTK2 real gerada pelo Theme Lab; isolada em HOME/XDG sob ~/tempia",
+    "tooltip_style": "RC gerado em R108 pela rota DomainOS GTK2 para BreezeDark; GTK.rc_parse aplicado à classe gtk-tooltip após o RC base da cena e antes do primeiro popup",
+    "tooltip_roles": {
+      "background": "#292c30",
+      "text": "#fcfcfc"
+    },
+    "personal_profile_changed": false
+  },
+  "method": "16 widgets nativos foram hoverados com ponteiro X11; cada caso verificou 500 ms de atraso, 400 ms de estabilidade, limites, zero sobreposição, saída/dismiss e pixels da face/texto Tooltip.",
+  "result": {
+    "passed": 16,
+    "failed": 0,
+    "controls": [
+      {
+        "control": "arrow",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          321,
+          380,
+          280,
+          68
+        ],
+        "background_pixels": 13795,
+        "text_pixels": 26
+      },
+      {
+        "control": "check",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          331,
+          380,
+          259,
+          68
+        ],
+        "background_pixels": 12749,
+        "text_pixels": 23
+      },
+      {
+        "control": "combo",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          328,
+          380,
+          266,
+          68
+        ],
+        "background_pixels": 13521,
+        "text_pixels": 24
+      },
+      {
+        "control": "entry",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "background_pixels": 14609,
+        "text_pixels": 25
+      },
+      {
+        "control": "frame",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          315,
+          380,
+          292,
+          68
+        ],
+        "background_pixels": 14538,
+        "text_pixels": 24
+      },
+      {
+        "control": "list",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "background_pixels": 14540,
+        "text_pixels": 28
+      },
+      {
+        "control": "progress",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          305,
+          380,
+          312,
+          68
+        ],
+        "background_pixels": 15676,
+        "text_pixels": 28
+      },
+      {
+        "control": "push",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          331,
+          380,
+          260,
+          68
+        ],
+        "background_pixels": 12848,
+        "text_pixels": 29
+      },
+      {
+        "control": "radio",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          323,
+          380,
+          275,
+          68
+        ],
+        "background_pixels": 13634,
+        "text_pixels": 23
+      },
+      {
+        "control": "scale_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          324,
+          380,
+          274,
+          68
+        ],
+        "background_pixels": 13680,
+        "text_pixels": 29
+      },
+      {
+        "control": "scale_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          322,
+          380,
+          278,
+          68
+        ],
+        "background_pixels": 14009,
+        "text_pixels": 29
+      },
+      {
+        "control": "scroll_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "background_pixels": 15455,
+        "text_pixels": 30
+      },
+      {
+        "control": "scroll_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          306,
+          380,
+          310,
+          68
+        ],
+        "background_pixels": 15519,
+        "text_pixels": 30
+      },
+      {
+        "control": "spin",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          311,
+          380,
+          299,
+          68
+        ],
+        "background_pixels": 14857,
+        "text_pixels": 28
+      },
+      {
+        "control": "text",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          309,
+          378,
+          292,
+          68
+        ],
+        "background_pixels": 14502,
+        "text_pixels": 28
+      },
+      {
+        "control": "toggle",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          321,
+          380,
+          279,
+          68
+        ],
+        "background_pixels": 14150,
+        "text_pixels": 26
+      }
+    ]
+  },
+  "artifacts": [
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/RESULTADO.json",
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/cases/ (16 captures and per-case output)",
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/run_matrix.py",
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/probe_gtk2_palette.py",
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/theme/gtkrc",
+    "~/tempia/t07-gtk2-breezedark-full-r113-20261019/diagnostics/SETUP.json"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "9692eef594a7d774613de5e7f746c46afa4798006d6c3617a98d7fcaa9c82070",
+    "private_probe_copy": "0d077d3184b4caa07e7c286a361108bdcc133336f5b68e4f810b5e253edbb38c",
+    "matrix_runner": "c8c6f3b53a657003fb248ea976fc94a16603f98648a81a7fd7c94a6ef649443b",
+    "generated_BreezeDark_gtkrc": "c539d879c785e3026e9ce061ddbfdf48422908ce443f6ed8403bbd1dccafe910",
+    "generated_BreezeDark_manifest": "8c6398a2d41df5500fb7dfb567238a871191d7cab18bdda6eb4c5d8348df3f6a",
+    "matrix_result": "ee9d7131a828694b88aa76d43206d82750269f06f6cda8aee9cf13d5eae0d714"
+  },
+  "diagnostics": [
+    "The initial copied-harness attempt failed before creating GTK widgets because the tests package was absent from PYTHONPATH; the early probe and output-path setup errors are kept in diagnostics/SETUP.json and are not counted as product failures.",
+    "The successful probe applies the already generated BreezeDark Tooltip RC after the base scene RC and before popup creation; it validates GTK2 tooltip rendering with all control types, not GTK2 application-wide KDE color-scheme switching."
+  ],
+  "limits": [
+    "One screen/layout and one position in 1280×800; R97/R106 cover other positions and the 800×600 viewport separately.",
+    "One alternate palette. R108 covers DomainOS, BreezeLight and BreezeDark on a button; R113 expands the control matrix only for BreezeDark.",
+    "No historical VM pixel equivalence or human visual approval is claimed."
+  ],
+  "conclusion": "The 16 GTK2 control types displayed delayed, stable and correctly placed hints with exact generated BreezeDark Tooltip pixels. This extends R108 from one button to the full control catalog, while leaving GTK2 system-wide palette re-export and manual visual review outside this receipt. T07 remains in progress."
+}

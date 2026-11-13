@@ -1,0 +1,60 @@
+{
+  "id": "I167",
+  "receipt": "R48",
+  "date": "2026-10-23",
+  "checked_at_utc": "2026-10-23T02:40:46Z",
+  "family": "GTK2 ComboBox popup Header relief",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "source_capture": "~/tempia/domainos-vue-study/captures/2026-10-14/mame-vue-filemanager-view-open-20261014.png",
+    "source_sha256": "68471382253454fd5da61f853807e4c43ef0a3096a9053c88c0ec9f3ddd5b602",
+    "existing_measurement": "R36 identified a popup Header light token of #a3d0e6 at the source palette; GTK2's shared .56 factor had produced #a5d1e6.",
+    "motif_rule": "tools/domainos_motif_art.py: pixel_plan assigns Header/Selection light=.55 and dark=.502; these are mixing ratios over current semantic KDE roles, not final colors."
+  },
+  "change": {
+    "summary": "GTK2 ComboBox popup shell, selected-row relief and pressed-row relief now retain the Header family's Motif light/shadow ratios when the shared GTK2 recipe overrides primary Button relief. The separate 14x8 option-menu indicator remains on Button roles and is unchanged.",
+    "files": {
+      "tools/theme-lab/gtk2_combos.py": "903b58811c8b2eb802a1cc8832c39761a29a8b084d578ba106616b8fb6016a2f",
+      "tools/theme-lab/tests/test_gtk2_combo_integration.py": "e3ffefd03094da395694b22d1339b24a9eb8fa90e8577a6e158d0b05af5cc8e7",
+      "tools/theme-lab/tests/probe_gtk2_combo_scene.py": "21b3a007576697f91c5ba96eafacde45142ad89a843db81ddbbd084905164292"
+    },
+    "board_diff_record": "~/tempia/board/diff-records/record-nc1yvku1/verified.json",
+    "board_diff_content_verified": true
+  },
+  "validation": {
+    "focused_tests": "7 GTK2 ComboBox integration tests passed.",
+    "python_compile": "passed for all three changed Python files",
+    "native_matrix": {
+      "gtk2": "2.24.33",
+      "status": "passed",
+      "scenes": 24,
+      "matrix": "four KDE schemes x normal/disabled/backdrop x coupled/separate native preview",
+      "model_unchanged": true,
+      "result": "~/tempia/i167-combo-header-r48/RESULTADO.json",
+      "result_sha256": "ad4e151a776b066cf8fa3dc26c1226c2720db69e1eb26a0c0eac71d9ca6a436f",
+      "domainos_normal_header_light_rgb": [163, 208, 230],
+      "domainos_normal_header_light_hex": "#a3d0e6"
+    },
+    "interaction": {
+      "status": "passed",
+      "native_gestures": 2,
+      "result": "~/tempia/i167-combo-header-r48-gestures/RESULTADO.json",
+      "result_sha256": "3e21024cfd46e1e111fa54bef071e9b8ea7d8fa8947bb7fef8f90b174e53eabc"
+    },
+    "indicator": "The R35 14x8 exact normal-state geometry/role test still passes.",
+    "warnings": "The existing GTK2 atk-bridge ABI warning was printed; all assertions passed."
+  },
+  "limits": [
+    "The tested pixel is the semantic Header light token; this does not claim full popup pixel equivalence or historical proof for unrecorded states.",
+    "The GTK2 list row-height gap remains as recorded in R42: the theme cannot override the application renderer's ypad; do not shrink the font.",
+    "The public Theme Lab path and the user's GTK2 session/XChat have not been updated.",
+    "No SR10.4 guest command or MAME state was changed."
+  ],
+  "next": "Continue the authorized GTK2 I167 audit, closing remaining theme-controlled family gaps and the public preview route before applying the completed GTK2 theme to the user's session and XChat."
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-STEPPER-DIRECTION-STATES-20261026-R273",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-four-directions-press-release-passed-historical-held-pair-partial",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "GTK2 scrollbar stepper preview and comparison to the retained SR10.4 held-state evidence"
+  },
+  "runtime": {
+    "toolkit": "GTK 2.24.33",
+    "display": ":60 private Xephyr already open for this project",
+    "origins": ["separate", "coupled"],
+    "scale": 1,
+    "scheme": "DomainOS-SR10.4",
+    "scheme_path": "colors/DomainOS-SR10.4.colors",
+    "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "recipe_sha256": "0b472ef76a2dcb8da1dcf006159689e91d7ef749cfe877af5ee9afbf7feaada0"
+  },
+  "method": {
+    "probe": "tools/theme-lab/tests/probe_gtk2_scrollbar_arrow_states.py",
+    "probe_sha256": "ef44f5ae62932854d8a00c3f3286abc9667b96fac0936fa5a58980290e2bd3d3",
+    "uses_owned_window_capture_only": true,
+    "pointer_restored": true,
+    "press_release_cleanup": "Each left-button press releases in finally; each GTK2 window and socket host is destroyed after its captures.",
+    "per_direction_cell": "15x15 px (225 RGB pixels); hover baseline, held capture, then released capture.",
+    "full_window_capture_retention": "Full owned-window images were cropped to 15x15 cells and removed; no Xephyr root capture was taken."
+  },
+  "results": {
+    "separate": {
+      "left": {"held_differences": 53, "release_differences": 0},
+      "right": {"held_differences": 53, "release_differences": 0},
+      "up": {"held_differences": 53, "release_differences": 0},
+      "down": {"held_differences": 53, "release_differences": 0}
+    },
+    "coupled": {
+      "left": {"held_differences": 53, "release_differences": 0},
+      "right": {"held_differences": 53, "release_differences": 0},
+      "up": {"held_differences": 53, "release_differences": 0},
+      "down": {"held_differences": 53, "release_differences": 0}
+    }
+  },
+  "historical_comparison": {
+    "normal_all_four_directions": "R233/R234 matched the four retained SR10.4 normal arrow cells at 1:1 with zero differing pixels.",
+    "down_held": {
+      "gtk2_cell": "~/tempia/ia-tema/evidence/I167/r273-gtk2-arrow-states/separate-down-held-cell.png",
+      "vue_paired_sample": "~/tempia/ia-tema/evidence/I167/i167-theme-lab-gtk2-pressed-r236.png",
+      "vue_sample_sha256": "23160c194d6594fb979fc828686ec5ebd32ad51c675a8a2aa4826bbe0c571b6a",
+      "vue_cell_roi": [0, 39, 15, 15],
+      "different_pixels": 0,
+      "coupled_and_separate_cells_identical": true
+    },
+    "left_right_up_held": "Interaction transition is verified; direct held-pixel comparison against SR10.4 is not available, so historical fidelity for these three held arrows is not claimed."
+  },
+  "artifacts": {
+    "directory": "~/tempia/ia-tema/evidence/I167/r273-gtk2-arrow-states/",
+    "result_sha256": "323bd5e1f25985bcfe994a027407c4663e0f3dc6e10d7b583c052cde6402a404",
+    "crop_manifest": "~/tempia/ia-tema/evidence/I167/r273-gtk2-arrow-states/CAPTURAS-CELULAS.json",
+    "crop_manifest_sha256": "c507b9658593f4e3775197a75d2975ae3f3b78687d019ce76871877775e13aaa",
+    "cell_count": 24,
+    "contact_sheet": "~/tempia/ia-tema/evidence/I167/r273-gtk2-arrow-contact-sheet.png",
+    "contact_sheet_sha256": "82670aec4bcf700bd0c1b9a9c52754996f57337b1ebb51592f96abe610d57aad"
+  },
+  "validation": {
+    "directional_mapper_tests": "4 passed",
+    "python_ast_parse": "passed for preview_gtk2.py and probe_gtk2_scrollbar_arrow_states.py",
+    "git_diff_check": "passed for the GTK2 direction mapper and probe files",
+    "visual_roi_inspection": "All 24 cells are 15x15; the four arrow orientations are visible; hover and released pixels are identical for each direction.",
+    "historical_fidelity_claimed": "Only the down-held state, by exact 15x15 equality to R236; normal directions reuse R233/R234."
+  },
+  "product_changes": {
+    "theme_assets_changed": false,
+    "gtk2_palette_or_colors_changed": false,
+    "other_toolkits_changed": false,
+    "mame_or_guest_changed": false,
+    "static_final_colors_added": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "basis": "The GTK2 four-direction press/release matrix now passes in both preview origins, closing a directional interaction-state gap. This estimate is technical work coverage only, not a visual fidelity score; three held arrows still lack direct SR10.4 pixel pairs and I167 remains open.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Continue GTK2 only. Obtain historical SR10.4 held-state evidence for left, right, and up arrows if the VUE controls can be presented safely; do not change the normal arrows or infer those held pixels by rotating the down-arrow sample."
+}

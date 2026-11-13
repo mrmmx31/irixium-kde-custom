@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "item": "I171",
+  "date": "2026-10-18",
+  "status": "partial_theme_only_limit_confirmed",
+  "scope": "Controlled Qt6/Kvantum state comparison for scrollbar endpoint arrows versus a wholly insensitive scrollbar, under the active KDE semantic palette.",
+  "contract": {
+    "source": "tools/domainos_scrollbar_rules.json",
+    "endpoint_arrow_color_policy": "parent_scrollbar_state",
+    "endpoint_arrow_input_policy": "unavailable direction remains blocked",
+    "whole_widget_insensitive": "separate state using KDE insensitive roles"
+  },
+  "environment": {
+    "qt": "6.8.2",
+    "plugin": "Kvantum::Style",
+    "debian_packages": "qt-style-kvantum 1.1.4-3; qt-style-kvantum-themes 1.1.4-3",
+    "platform": "offscreen; real Qt Widgets and installed Kvantum plugin",
+    "theme": "private DomainOS-SR10-4 generated theme",
+    "color_scheme": "private KDE DomainOS-SR10-4",
+    "palette": {
+      "Window": "#78a0d5",
+      "Base": "#6688b5",
+      "Button": "#78a0d5"
+    },
+    "no_personal_profile_changed": true,
+    "no_product_installation_changed": true
+  },
+  "method": {
+    "script": "/home/lsi/tempia/qt-kvantum-range-state-20261018/test_kvantum_boundary.py",
+    "output_directory": "/home/lsi/tempia/qt-kvantum-range-state-20261018",
+    "states": ["minimum", "middle", "maximum", "whole_disabled"],
+    "measurement": "15x15 arrow-cell pixel color histograms plus scrollbar values before/after clicks",
+    "limitations": [
+      "Offscreen rendering verifies the installed style and input state, but is not an on-screen visual acceptance test.",
+      "The script uses allocated scrollbar geometry for horizontal cell crops because the offscreen subControlRect query returned the origin for both horizontal line controls.",
+      "Hover and pressed glyph relief were not measured in this state test."
+    ]
+  },
+  "observations": {
+    "minimum": {
+      "vertical_value": 0,
+      "horizontal_value": 0,
+      "vertical_enabled": true,
+      "horizontal_enabled": true,
+      "up_arrow_palette": "KDE insensitive appearance",
+      "left_arrow_palette": "KDE insensitive appearance",
+      "down_and_right_palette": "normal KDE roles",
+      "click_at_boundary": "blocked; values stayed 0"
+    },
+    "middle": {
+      "vertical_value": 299,
+      "horizontal_value": 79,
+      "all_arrows_palette": "normal KDE roles",
+      "active_click": "vertical 299 to 279; horizontal 79 to 59"
+    },
+    "maximum": {
+      "vertical_value": 599,
+      "horizontal_value": 159,
+      "down_arrow_palette": "KDE insensitive appearance",
+      "right_arrow_palette": "KDE insensitive appearance",
+      "up_and_left_palette": "normal KDE roles"
+    },
+    "whole_disabled": {
+      "vertical_enabled": false,
+      "horizontal_enabled": false,
+      "all_arrows_palette": "KDE insensitive appearance"
+    },
+    "color_histogram_equality": {
+      "minimum_up_equals_whole_disabled_up": true,
+      "minimum_left_equals_whole_disabled_left": true,
+      "maximum_down_equals_whole_disabled_down": true,
+      "maximum_right_equals_whole_disabled_right": true
+    }
+  },
+  "implementation_analysis": {
+    "runtime_result": "At a range endpoint, Kvantum paints the unavailable arrow with the same disabled-role appearance used when the entire scrollbar is disabled. Input remains blocked correctly.",
+    "configuration_limit": "Kvantum theme configuration exposes scroll_arrows as a presence toggle, not an independent range-boundary versus whole-widget-insensitive artwork state.",
+    "reference": "https://github.com/tsujan/Kvantum/blob/master/Kvantum/doc/Theme-Config",
+    "source_explanation": {
+      "repository": "https://github.com/tsujan/Kvantum",
+      "revision": "4d3ee37facc76a298d234e0d136d4365d8d424da",
+      "file": "Kvantum/style/Kvantum.cpp",
+      "lines": "8737-8783",
+      "note": "This upstream checkout is explanatory and is not claimed to be the exact Debian 1.1.4-3 source. The installed plugin's output was tested directly."
+    },
+    "conclusion": "The authorized SVG-and-metrics-only I171 scope cannot give a range-boundary arrow the parent's normal palette while preserving the separate insensitive appearance: both are mapped to the same disabled SVG state by the installed style. This needs a style-level state distinction or a revised design rule; neither was changed here."
+  },
+  "evidence": {
+    "result_json": {
+      "path": "/home/lsi/tempia/qt-kvantum-range-state-20261018/result.json",
+      "sha256": "bec01225b6345bc6193cce3e0afb62ea0a8be9cc3ddd9557cef86947abe31e9e"
+    },
+    "images": {
+      "minimum": {"path": "/home/lsi/tempia/qt-kvantum-range-state-20261018/minimum.png", "sha256": "3fb7756555faf45847117120adb02c012dbef5305e79b53a7dc69d4eab17375b"},
+      "middle": {"path": "/home/lsi/tempia/qt-kvantum-range-state-20261018/middle.png", "sha256": "15d732724996e1bd544380fbed96cdfbb307bdbecbec03302c33eb360e3504ac"},
+      "maximum": {"path": "/home/lsi/tempia/qt-kvantum-range-state-20261018/maximum.png", "sha256": "75921073c9159f937333728077cf2cfc48ce6a73cec2d7beff5485939ff177fc"},
+      "whole_disabled": {"path": "/home/lsi/tempia/qt-kvantum-range-state-20261018/whole-disabled.png", "sha256": "8a8d0c34ccb8e3456cf5272d817ea4f59d376d308e857a6b50f67f230a1998f9"}
+    },
+    "previous_shape_comparison": "docs/review/I171-KVANTUM-ARROW-COMPARE-20261018.json"
+  },
+  "next": "Wait for a separately authorized scope if changing Kvantum style code or revising the endpoint color contract; meanwhile continue only another already authorized independent queue item."
+}

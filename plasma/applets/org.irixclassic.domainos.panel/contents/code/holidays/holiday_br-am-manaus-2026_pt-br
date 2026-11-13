@@ -1,0 +1,32 @@
+:: SPDX-FileCopyrightText: 2026 mrmmx31
+:: SPDX-License-Identifier: GPL-3.0-or-later
+:: Country: Manaus, Amazonas, Brazil
+:: Language: Brazilian Portuguese
+:: Scope: Public holidays in Manaus in 2026 only. No optional days off.
+:: Source: Manaus Official Gazette, edition 6251, 11 February 2026, page 1.
+:: https://www.manaus.am.gov.br/wp-content/uploads/2026/02/Prefeitura-de-Manaus-publica-calendario-de-feriados-e-pontos-facultativos-municipais-no-Diario-Oficial.pdf
+:: January 1 source: Federal Law 10.607/2002, article 1.
+:: https://www.planalto.gov.br/ccivil_03/leis/2002/l10607.htm
+:: All dates have an explicit year; they must not recur in 2025 or 2027.
+:: parseYear guard prevents duplicate absolute dates across December/January ranges.
+
+country "BR"
+language "pt_BR"
+name "Manaus, Amazonas, Brasil — 2026"
+description "Feriados municipais e nacionais em Manaus, somente 2026; fontes oficiais. Sem pontos facultativos."
+
+"1º de janeiro" public on january ((year == 2026) ? 1 : 0) 2026
+"Carnaval" public on february ((year == 2026) ? 17 : 0) 2026
+"Paixão de Cristo" public on april ((year == 2026) ? 3 : 0) 2026
+"Tiradentes" public on april ((year == 2026) ? 21 : 0) 2026
+"Dia do Trabalho" public on may ((year == 2026) ? 1 : 0) 2026
+"Corpus Christi" public on june ((year == 2026) ? 4 : 0) 2026
+"Elevação do Amazonas à Província" public on september ((year == 2026) ? 5 : 0) 2026
+"Independência do Brasil" public on september ((year == 2026) ? 7 : 0) 2026
+"Nossa Senhora Aparecida" public on october ((year == 2026) ? 12 : 0) 2026
+"Aniversário de Manaus" public on october ((year == 2026) ? 24 : 0) 2026
+"Finados" public on november ((year == 2026) ? 2 : 0) 2026
+"Proclamação da República" public on november ((year == 2026) ? 15 : 0) 2026
+"Consciência Negra" public on november ((year == 2026) ? 20 : 0) 2026
+"Nossa Senhora da Conceição" public on december ((year == 2026) ? 8 : 0) 2026
+"Natal" public on december ((year == 2026) ? 25 : 0) 2026

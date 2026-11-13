@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "R504",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Determine whether existing retained horizontal-held images can satisfy the direct Domain/OS SR10.4/VUE comparison without another VM session.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "findings": [
+    {
+      "artifact": "docs/referencias/domainos-sr104/i167-interaction/four-palettes-cycles.json",
+      "sha256": "2b5fd50e2a5b446f482373e2921c6ed00cd80ce0cf965476cb8ed4fbf8b6a323",
+      "provenance": "Manifest scope is 'GTK2 native four-direction input/value, pressed relief, release and blocked input in four role palettes'; personal_input_sent=False and historical_all_states_claimed=False. The retained left/right held images under i167-interaction are GTK2 native preview palette-cycle fixture captures, not VUE guest captures."
+    },
+    {
+      "artifact": "docs/review/I167-GTK2-HORIZONTAL-STEPPER-PRESS-INPUT-20261027-R417.json",
+      "sha256": "026787cc4e7fcbe0074bcace252c2e5111211d5a2c76a79aebd77ecb98c5ee0b",
+      "provenance": "Authorized VM target was the horizontal left arrow, but the held and released full-screen captures have identical SHA-256; target ROI also had 0 pixel changes. It does not provide an observed VUE relief transition."
+    },
+    {
+      "artifact": "records/ia-tema/evidence/I167/r376-vue-horizontal-held-reference/vm-current.png",
+      "sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+      "provenance": "R376 retained VM-current screenshot is a black guest framebuffer with only Apollo command band visible; no usable GTK/VUE target."
+    }
+  ],
+  "result": "No retained file among the inspected candidate captures provides a usable direct horizontal-held VUE reference. Do not promote GTK2 fixture captures or the unchanged R417 press attempt as historical proof.",
+  "method": "Read-only provenance and pixel-artifact audit; searched retained I167 evidence and DomainOS reference files; no VM input, window, or application changes.",
+  "limits": [
+    "This is a bounded audit of the repository evidence identified above, not a claim that no other image exists anywhere outside the project.",
+    "The missing comparison still requires a cursor-clear horizontal held state in the canonical SR10.4 VM."
+  ],
+  "next": "Resume the direct VUE comparison only when the canonical VM input gate and MAME ownership conditions permit it.",
+  "verification": {
+    "palette_cycle_manifest": "docs/referencias/domainos-sr104/i167-interaction/four-palettes-cycles.json",
+    "palette_cycle_manifest_sha256": "2b5fd50e2a5b446f482373e2921c6ed00cd80ce0cf965476cb8ed4fbf8b6a323",
+    "retained_gtk2_direction_images": {
+      "left": {
+        "path": "docs/referencias/domainos-sr104/i167-interaction/left-held.png",
+        "sha256": "c6e347ce8a8e45b404a70d35b37d79befbe3069be45d47113866af4aeaffa82a"
+      },
+      "right": {
+        "path": "docs/referencias/domainos-sr104/i167-interaction/right-held.png",
+        "sha256": "092736cabfdeed1f033370a93be26f3350e9681e73bc91ac052eac66bf09fcb5"
+      }
+    }
+  }
+}

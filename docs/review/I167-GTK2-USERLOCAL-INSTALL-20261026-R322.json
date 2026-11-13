@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R322",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-user-local-overlay-installed-reversibly;-live-application-review-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Install the current GTK2 DomainOS theme for user-local testing, using the prior explicit request to apply ready theme components in the lsi session. Only the GTK2 recipe and its referenced common scrollbar assets are updated."
+  },
+  "installation": {
+    "source": "/home/lsi/irixium-kde-custom/gtk/DomainOS-SR10-4-KDE",
+    "destination": "/home/lsi/.themes/DomainOS-SR10-4-KDE",
+    "changed_files": 41,
+    "changed_paths_scope": "gtk-2.0/** plus only common/assets files referenced by that GTK2 gtkrc",
+    "gtkrc_sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203",
+    "metrics": {
+      "slider_width": 11,
+      "stepper_size": 15,
+      "trough_border": 2
+    },
+    "source_tree_matches_installed_files": true,
+    "verification": "transaction receipt exact readback; GTK3 and GTK4 file maps byte-identical to pre-install; metadata unchanged; restore --dry-run passed",
+    "backup": "/home/lsi/tempia/ia-tema/install-state/i167-gtk2-kde/backups/67c29cf9997b4573ba894d959886c44c/0",
+    "backup_state": "/home/lsi/tempia/ia-tema/install-state/i167-gtk2-kde/backups",
+    "rollback_receipt_status": "installed"
+  },
+  "related_evidence": {
+    "normal_scrollbar_stepper_cells": "R305: 12 current 15x15 cells, 0/225 differing pixels against retained SR10.4 normal crops",
+    "gtk2_palette_and_asset_regression": "R319: 24 tests passed; reused, no source code changed"
+  },
+  "safety": {
+    "GTK3_changed": false,
+    "GTK4_changed": false,
+    "theme_selection_preferences_changed": false,
+    "XChat_restarted_or_signaled": false,
+    "MAME_input_sent": false
+  },
+  "limits": [
+    "Existing GTK2 application processes keep their loaded style and assets until their next launch/reload.",
+    "No live-app visual acceptance was performed.",
+    "Held left/right/up historical comparison and coordinated native VM inspection remain pending."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "The update exposes the validated current GTK2 recipe to future GTK2 launches; it does not close held-state VM comparisons or the user visual review and is not a fidelity score."
+  },
+  "next_step": "When an open GTK2 application is safely reopened, compare its horizontal stepper at 1:1. Resume held-state DomainOS comparison only after the duplicate MAME ownership is resolved and the VUE target is visible."
+}

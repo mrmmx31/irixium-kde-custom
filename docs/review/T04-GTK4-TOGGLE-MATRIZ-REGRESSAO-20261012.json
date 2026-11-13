@@ -1,0 +1,1057 @@
+{
+  "at": "2026-10-12T02:54:32.670004+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 toggle real controller, four palettes × checked/unselected × four inspected states × two origins; shared push regression",
+  "matrix": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "session": 89590,
+      "exit_code": 0,
+      "result": {
+        "status": "passed",
+        "scheme": "DomainOS-SR10.4",
+        "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+        "captures": [
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-False-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-False-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-False-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-False-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-False-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-False-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-False-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-False-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-True-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 0,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-True-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-True-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 1,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-True-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-True-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 2,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-True-coupled.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-True-separate.png"
+          },
+          {
+            "scheme": "DomainOS-SR10.4",
+            "state": 3,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-True-coupled.png"
+          }
+        ],
+        "other_recipes_preserved": true,
+        "historical_fidelity_claimed": false,
+        "focus_or_combined_backdrop_disabled_certified": false
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "session": 69417,
+      "exit_code": 0,
+      "result": {
+        "status": "passed",
+        "scheme": "BreezeLight",
+        "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+        "captures": [
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-False-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-False-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-False-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-False-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-True-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 0,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-True-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 1,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-True-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 2,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-True-separate.png"
+          },
+          {
+            "scheme": "BreezeLight",
+            "state": 3,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-True-coupled.png"
+          }
+        ],
+        "other_recipes_preserved": true,
+        "historical_fidelity_claimed": false,
+        "focus_or_combined_backdrop_disabled_certified": false
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "session": 69417,
+      "exit_code": 0,
+      "result": {
+        "status": "passed",
+        "scheme": "BreezeDark",
+        "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+        "captures": [
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-False-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-False-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-False-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-False-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-False-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-True-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 0,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-True-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 1,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-True-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 2,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-True-coupled.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-True-separate.png"
+          },
+          {
+            "scheme": "BreezeDark",
+            "state": 3,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-True-coupled.png"
+          }
+        ],
+        "other_recipes_preserved": true,
+        "historical_fidelity_claimed": false,
+        "focus_or_combined_backdrop_disabled_certified": false
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "session": 69417,
+      "exit_code": 0,
+      "result": {
+        "status": "passed",
+        "scheme": "TestYellow",
+        "scope": "GTK4 toggle native controller: selection × four inspected states × two origins",
+        "captures": [
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-False-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-False-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-False-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-False-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-False-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-False-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "selected": false,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-False-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "selected": false,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-False-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-True-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 0,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-True-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-True-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 1,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-True-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-True-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 2,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-True-coupled.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "selected": true,
+            "origin": "separate",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-True-separate.png"
+          },
+          {
+            "scheme": "TestYellow",
+            "state": 3,
+            "selected": true,
+            "origin": "coupled",
+            "edge_pixels": 904,
+            "differences": 0,
+            "capture": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-True-coupled.png"
+          }
+        ],
+        "other_recipes_preserved": true,
+        "historical_fidelity_claimed": false,
+        "focus_or_combined_backdrop_disabled_certified": false
+      }
+    }
+  ],
+  "unique_captures": 64,
+  "edge_pixels": 57856,
+  "edge_differences": 0,
+  "face_samples": 192,
+  "opaque_text_pixels_matching_effective_foreground": 768,
+  "offline_color_analysis": "Reused existing captures; no new graphical test or claim of typography equivalence.",
+  "push_regressions": [
+    {
+      "session": 3800,
+      "exit_code": 0,
+      "result": {
+        "status": "passed_scoped_worker",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "native_clicks": 3,
+        "backend_generation_and_preview_command": true,
+        "selected_fragments_parsed_by_native_gtk4": [
+          "normal",
+          "pressed",
+          "disabled",
+          "backdrop",
+          "hover"
+        ],
+        "actual_worker_events_consumed_by_c": 13,
+        "ctrl_click_select_only": true,
+        "ctrl_drag_move_without_native_activation": true,
+        "drag_allocation": [
+          52,
+          52,
+          180,
+          60
+        ],
+        "origin": "separate",
+        "initial_metrics": {
+          "index": 0,
+          "allocation": [
+            32,
+            32,
+            180,
+            60
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "custom_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            200,
+            70
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "automatic_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            112,
+            48
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            112,
+            48
+          ],
+          "native_natural_before_custom_size": [
+            112,
+            48
+          ],
+          "native_request_before_custom_size": [
+            112,
+            48
+          ],
+          "font_description": "Sans 20px",
+          "font_not_applicable": false
+        },
+        "natural_measurements_independent_of_custom_request": true,
+        "below_minimum_request_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            72,
+            30
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "close_during_live_generation": true,
+        "generation_child_reaped": true,
+        "host_loss_exit_code": null,
+        "responsive_while_owned_generation_child_live": true,
+        "artificial_clicks": 0,
+        "identity_preserved": true,
+        "metrics_after_update": [
+          50,
+          65,
+          200,
+          70
+        ],
+        "unsupported_scene_preserved": true,
+        "valid_recovery": true,
+        "closed_exit_code": 0,
+        "instance_preserved": true,
+        "public_controller_connected": false,
+        "historical_fidelity_claimed": false
+      }
+    },
+    {
+      "session": 45598,
+      "exit_code": 0,
+      "result": {
+        "status": "passed_scoped_worker",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "native_clicks": 3,
+        "backend_generation_and_preview_command": true,
+        "selected_fragments_parsed_by_native_gtk4": [
+          "normal",
+          "pressed",
+          "disabled",
+          "backdrop",
+          "hover"
+        ],
+        "actual_worker_events_consumed_by_c": 13,
+        "ctrl_click_select_only": true,
+        "ctrl_drag_move_without_native_activation": true,
+        "drag_allocation": [
+          52,
+          52,
+          180,
+          60
+        ],
+        "origin": "coupled",
+        "initial_metrics": {
+          "index": 0,
+          "allocation": [
+            32,
+            32,
+            180,
+            60
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "custom_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            200,
+            70
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "automatic_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            112,
+            48
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            112,
+            48
+          ],
+          "native_natural_before_custom_size": [
+            112,
+            48
+          ],
+          "native_request_before_custom_size": [
+            112,
+            48
+          ],
+          "font_description": "Sans 20px",
+          "font_not_applicable": false
+        },
+        "natural_measurements_independent_of_custom_request": true,
+        "below_minimum_request_metrics": {
+          "index": 0,
+          "allocation": [
+            50,
+            65,
+            72,
+            30
+          ],
+          "scale_factor": 1,
+          "native_minimum_before_custom_size": [
+            72,
+            30
+          ],
+          "native_natural_before_custom_size": [
+            72,
+            30
+          ],
+          "native_request_before_custom_size": [
+            72,
+            30
+          ],
+          "font_description": "Sans 13px",
+          "font_not_applicable": false
+        },
+        "close_during_live_generation": true,
+        "generation_child_reaped": true,
+        "host_loss_exit_code": 1,
+        "responsive_while_owned_generation_child_live": true,
+        "artificial_clicks": 0,
+        "identity_preserved": true,
+        "metrics_after_update": [
+          50,
+          65,
+          200,
+          70
+        ],
+        "unsupported_scene_preserved": true,
+        "valid_recovery": true,
+        "closed_exit_code": 0,
+        "instance_preserved": true,
+        "public_controller_connected": false,
+        "historical_fidelity_claimed": false
+      }
+    }
+  ],
+  "build_session": 93845,
+  "build_exit_code": 0,
+  "launcher_session": 50855,
+  "launcher_exit_code": 0,
+  "launcher_tests_passed": 45,
+  "visually_inspected": [
+    "BreezeDark selected+pressed coupled",
+    "TestYellow selected+disabled separate"
+  ],
+  "limits": [
+    "No focus appearance/composed disabled-backdrop/high-DPI/Wayland or historical fidelity claim.",
+    "Opaque glyph pixels verify color only, not font equivalence.",
+    "Frozen delivery candidate and coordinated personal handoff pending."
+  ],
+  "estimated_toggle_unit_progress_percent": 80,
+  "percentage_basis": "Functional integration, persistence, four-palette matrix and current regressions/build proved; package/handoff remain.",
+  "personal_instance_changed": false,
+  "sha256": {
+    "tools/theme-lab/tests/controller_gtk4_toggle_states.py": "341fe184af506d2cf49755db8dc85275c18ffe76d15e08ff7f76eea2ff2c90d6",
+    "tools/theme-lab/tests/test_controller_spin.py": "6e7504efb6ec069bd121724bf3896bbf815ed19ae6998fe53a539087f826d088",
+    ".qa-t04-anchor-foundation/gtk4-toggle-matrix-colors.json": "c6aba98ca6b8e574c283a4a83fc5bce47cebae655020bca2a72a01fb3741bd4b",
+    ".qa-t04-anchor-foundation/gtk4-toggle-launcher-regression.log": "519b8ff5cdc70f2c550e1998bb465a794c94924a58b4030961476e73ec44aec9",
+    ".qa-t04-anchor-foundation/gtk4-toggle-delivery-build.log": "b073303c0542e59cbd03ffc925f2b41599db99e5932910d7dedcb2ac1a858f2b",
+    "tools/theme-lab/build/theme-lab": "e0f8ee3c4e51a968f77556d166dda67b2c191e4ad3dd2985394ee5bc957bc567",
+    ".qa-t04-anchor-foundation/gtk4-toggle-states-domainos.log": "f027d6286b3e61eb8a5e22a4c34821fa56e2b1be7668a9c50f61319b8727cbfb",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/RESULTADO.json": "9c776db0d70cd0db795db260604ab8c8eacedc29defa068b3b44ef617a284432",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-False-separate.png": "d28d076407b453a8f5ec27c9736cda2cf510bc1ed0965125b81a1fa17b03ce47",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-False-coupled.png": "5ff08bd51a6113f54b010dc6c3c98ef7c2d1027feb90d7741c57d1149439dd98",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-False-separate.png": "c04cfff6042c3e11d962060cc3fb55c6bc7dc9a05e4b9c167f7338ad0323f0cf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-False-coupled.png": "34d5e1016698fc7724dd616501f4b89ff56ec3fcd0610592fd924ef84f5e3546",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-False-separate.png": "d0f466f3f7c94daa4deb5e38d19ecc3d28925349facd758c780a54b4999d1518",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-False-coupled.png": "93e92e47cbfad507707b2be5654a44bc0b3eacea4fdd501205ca182a003719b2",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-False-separate.png": "d28d076407b453a8f5ec27c9736cda2cf510bc1ed0965125b81a1fa17b03ce47",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-False-coupled.png": "5ff08bd51a6113f54b010dc6c3c98ef7c2d1027feb90d7741c57d1149439dd98",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-True-separate.png": "c04cfff6042c3e11d962060cc3fb55c6bc7dc9a05e4b9c167f7338ad0323f0cf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-0-True-coupled.png": "34d5e1016698fc7724dd616501f4b89ff56ec3fcd0610592fd924ef84f5e3546",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-True-separate.png": "d28d076407b453a8f5ec27c9736cda2cf510bc1ed0965125b81a1fa17b03ce47",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-1-True-coupled.png": "5ff08bd51a6113f54b010dc6c3c98ef7c2d1027feb90d7741c57d1149439dd98",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-True-separate.png": "4c16569fda6b53bf2ed70d823241d39e7331a87d212d7e532b645b7e258bc195",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-2-True-coupled.png": "fe9525757c80a4141fc7060ba3a18f6f7af9663780e635adfccc765e92dc0595",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-True-separate.png": "c04cfff6042c3e11d962060cc3fb55c6bc7dc9a05e4b9c167f7338ad0323f0cf",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ilvey4dn/DomainOS-SR10.4-3-True-coupled.png": "34d5e1016698fc7724dd616501f4b89ff56ec3fcd0610592fd924ef84f5e3546",
+    ".qa-t04-anchor-foundation/gtk4-toggle-states-BreezeLight.log": "13ced51cef6ec2c04b30b195a3a56bf3a3e33f1fc74bb51d2945824a9dded4ca",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/RESULTADO.json": "9d2fdb6f74fcf5e60da489dca190d5446ce3cbd5b4b5cdea764c7e28da42bd66",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-False-separate.png": "e7ea9f079184d4200459935de9bfa4f81b32e0ec91df26f39382722809631728",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-False-coupled.png": "a0aa3f7e763306f303aefdc79749d2515a17461f962ab64641b6dda9deb3de31",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-False-separate.png": "4f3f9287edee3166fa1d3f3c78ab76018ab33a4ff123db383c5ceeec76f4b4e8",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-False-coupled.png": "f4f94b2dd4f2c3de7839eae8f37ad943f6344a2f326d3f84a28acdbce17cc785",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-False-separate.png": "bed325276bd7598b4c7dee9e83e83000ad9a409298baa599821fdcd951bd7120",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-False-coupled.png": "5a5007dbc163c944d4c9252a2d485902bdf0dea8c0daffe81b2f9477b5bd0f2c",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-False-separate.png": "e7ea9f079184d4200459935de9bfa4f81b32e0ec91df26f39382722809631728",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-False-coupled.png": "a0aa3f7e763306f303aefdc79749d2515a17461f962ab64641b6dda9deb3de31",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-True-separate.png": "4f3f9287edee3166fa1d3f3c78ab76018ab33a4ff123db383c5ceeec76f4b4e8",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-0-True-coupled.png": "f4f94b2dd4f2c3de7839eae8f37ad943f6344a2f326d3f84a28acdbce17cc785",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-True-separate.png": "e7ea9f079184d4200459935de9bfa4f81b32e0ec91df26f39382722809631728",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-1-True-coupled.png": "a0aa3f7e763306f303aefdc79749d2515a17461f962ab64641b6dda9deb3de31",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-True-separate.png": "d8735b7ba21f04491d45fb451bc3551119e9869dad0d13e0f9a2359eb108bd1d",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-2-True-coupled.png": "9ea0dfc7423fe1a10063d05a6a7b0c8f6bb74979ed95c593280fef8d089d431a",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-True-separate.png": "4f3f9287edee3166fa1d3f3c78ab76018ab33a4ff123db383c5ceeec76f4b4e8",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-9kmh1sqn/BreezeLight-3-True-coupled.png": "f4f94b2dd4f2c3de7839eae8f37ad943f6344a2f326d3f84a28acdbce17cc785",
+    ".qa-t04-anchor-foundation/gtk4-toggle-states-BreezeDark.log": "90e1226ee7216c3be8494874630a4690c48ccc2f392bdb062364434f5fd80a0b",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/RESULTADO.json": "c839f37544ebb9002536e567aef5e5bca7a3da14662ec561c8e280b605e221e8",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-False-separate.png": "7190b57d9eb66d703ab0e1ecd6b5de3f2406f280401176da376139e9ad7aaeae",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-False-coupled.png": "14262f9be35645911e9bf59480da436d60ee8395b10f895bc3e9d4c3d95d8b9a",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-False-separate.png": "617a2b02ed73c89930a8b843a2cf848337a9aed3a7812472e086d42f16b6cdb7",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-False-coupled.png": "5ffa70883ecf74b985bdd8bd0bbdeadf89dc25eb15894de8ab10935e55f46dbd",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-False-separate.png": "68818764903e1096ed9a2bd7d7798711fefe6389c4c5ba01f2be56da864360b0",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-False-coupled.png": "92fe1a58ef6d49f730a3be11e301f11faa4bbea06035399344150f697b1ea64b",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-False-separate.png": "7190b57d9eb66d703ab0e1ecd6b5de3f2406f280401176da376139e9ad7aaeae",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-False-coupled.png": "14262f9be35645911e9bf59480da436d60ee8395b10f895bc3e9d4c3d95d8b9a",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-True-separate.png": "617a2b02ed73c89930a8b843a2cf848337a9aed3a7812472e086d42f16b6cdb7",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-0-True-coupled.png": "5ffa70883ecf74b985bdd8bd0bbdeadf89dc25eb15894de8ab10935e55f46dbd",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-True-separate.png": "7190b57d9eb66d703ab0e1ecd6b5de3f2406f280401176da376139e9ad7aaeae",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-1-True-coupled.png": "14262f9be35645911e9bf59480da436d60ee8395b10f895bc3e9d4c3d95d8b9a",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-True-separate.png": "6e7e94231a524427c383a1138402a9dd00493308396dfea66bd26bb099596fa1",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-2-True-coupled.png": "798ec541dddba07c06a0993876bfa7758672b5667487c88aa9435da72aef1aa5",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-True-separate.png": "617a2b02ed73c89930a8b843a2cf848337a9aed3a7812472e086d42f16b6cdb7",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-acq4cjt_/BreezeDark-3-True-coupled.png": "5ffa70883ecf74b985bdd8bd0bbdeadf89dc25eb15894de8ab10935e55f46dbd",
+    ".qa-t04-anchor-foundation/gtk4-toggle-states-TestYellow.log": "84ad6e474644c53ac8f535b9f3501c1d0606b6966323db2d12a5acfbb15edf3f",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/RESULTADO.json": "4ea5f49334c58e1770ecc662a7e8b205760303f0b886592dd62bd559887578fa",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-False-separate.png": "19970c2a67ed743fb27c6dcf769c40b84c40544189d766267be10112c62f217e",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-False-coupled.png": "2dcde8acb8a1db0e833e144ea596d9cb2ced4a0326f07269de6490b0e48a0541",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-False-separate.png": "7586d01550751edb1a2c98c58c9db3616127cb048b49e9b01092c5da58a51bb5",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-False-coupled.png": "c608f3875f129edd32d16eaeadb62fa4d143b522f93801355c743fa05b661e0f",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-False-separate.png": "5e2c1d45d33e4dd2c8a8e5e9055bd113a4e9ece0104757afcbf679825f16dea6",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-False-coupled.png": "b554b0b0bae4b93c83e851a8871ffec87ca1e88fe6bdfffb0f44cc2f289cbe20",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-False-separate.png": "19970c2a67ed743fb27c6dcf769c40b84c40544189d766267be10112c62f217e",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-False-coupled.png": "2dcde8acb8a1db0e833e144ea596d9cb2ced4a0326f07269de6490b0e48a0541",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-True-separate.png": "7586d01550751edb1a2c98c58c9db3616127cb048b49e9b01092c5da58a51bb5",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-0-True-coupled.png": "c608f3875f129edd32d16eaeadb62fa4d143b522f93801355c743fa05b661e0f",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-True-separate.png": "19970c2a67ed743fb27c6dcf769c40b84c40544189d766267be10112c62f217e",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-1-True-coupled.png": "2dcde8acb8a1db0e833e144ea596d9cb2ced4a0326f07269de6490b0e48a0541",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-True-separate.png": "9617de7f189284d8275e7330ea76f9b4a15e3b2674c7c3ca7edb5abe939c3018",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-2-True-coupled.png": "35e23dbed6ae1916749135ffdd77b232e0bfa9f4f979f07976d86e62e2d99f2c",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-True-separate.png": "7586d01550751edb1a2c98c58c9db3616127cb048b49e9b01092c5da58a51bb5",
+    "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-7nfy6u0t/TestYellow-3-True-coupled.png": "c608f3875f129edd32d16eaeadb62fa4d143b522f93801355c743fa05b661e0f",
+    ".qa-t04-anchor-foundation/gtk4-push-after-toggle-regression.log": "9a180c8c326a746912662eb4dbefed5cf68614e41df3ffb7f07b13cc6688c723",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-lqzulegx/home/WORKER-RESULTADO.json": "1ec7585ccf7d34b6c11aaf9e4d0fb5a76d0f282c8518f5ceb4f39dea7fc26418",
+    ".qa-t04-anchor-foundation/gtk4-push-after-toggle-coupled.log": "236d8a397a10ec5390895d7e11ad5e7609872c099a51c2c02ce19d9145dec99b",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-53zpulke/home/WORKER-RESULTADO.json": "fb4e54710d05018e4aedd59e23cacf8024e4b7048c6c5e3bdf87444797cb3864"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "id": "R112",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Read SR10.4 application-default resources for GtkEntry selection evidence",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "transport": "Read-only Telnet to the authorized assistant clone",
+    "main_vm_touched": false
+  },
+  "method": {
+    "files": [
+      "/usr/X11/lib/app-defaults/Vue",
+      "/usr/X11/lib/app-defaults/Vuestyle",
+      "/usr/X11/lib/app-defaults/Vuefile",
+      "/usr/X11/lib/sys.Xdefaults"
+    ],
+    "operation": "Read each file with cat and retain matching lines for selection, highlight, XmText, TextField, foreground, background, and color terms. No guest file was written.",
+    "initial_attempt": "An initial client matcher timed out at the login prompt before sending credentials or a guest command; the read-only query was corrected and completed.",
+    "script": "~/tempia/i167-vue-current-r110/read_vue_selection_resources.py",
+    "script_sha256": "9c44d29101454290e27245acdb6e744138d3932662126e98a9e69399ceb791dd",
+    "captured_filtered_results": "~/tempia/i167-vue-current-r110/vue-resource-scan-r112.json",
+    "captured_filtered_results_sha256": "78d9f20245a156e47deb0aff04a86a4a0521d77a9482f5dab75f498ddc93a465",
+    "initial_attempt_script": "~/tempia/i167-vue-current-r110/read_vue_selection_resources-login-regex-failed.py",
+    "initial_attempt_script_sha256": "302c984d5773ed40b952b1380a17d709f92d9d0d8151bb0efa99e34dbe5a8051"
+  },
+  "findings": [
+    {
+      "path": "/usr/X11/lib/app-defaults/Vue",
+      "line_count": 60,
+      "matching_lines": [],
+      "meaning": "No matching selection/text-field resource in this application-default file."
+    },
+    {
+      "path": "/usr/X11/lib/app-defaults/Vuestyle",
+      "line_count": 93,
+      "matching_lines": [
+        "Lines 15 and 18 are comments about color resources and the Style Manager's secondary color set.",
+        "Line 19 sets Vuestyle*SecondaryColorSetId to 7."
+      ],
+      "meaning": "The active match is a Style Manager color-set selector; it does not define XmTextField selection colors."
+    },
+    {
+      "path": "/usr/X11/lib/app-defaults/Vuefile",
+      "line_count": 10,
+      "matching_lines": [
+        "Line 1 sets the secondary color set ID to 5.",
+        "Line 2 sets XmpIcon pixmapForeground to black.",
+        "Line 5 sets XmpIcon highlightThickness to 0."
+      ],
+      "meaning": "These are Vuefile/XmpIcon resources, not XmTextField selection resources."
+    },
+    {
+      "path": "/usr/X11/lib/sys.Xdefaults",
+      "line_count": 135,
+      "matching_lines": [
+        "Most color and selection-related matches are commented examples.",
+        "The active matches are an mwm_bw black-and-white Mwm profile, unrelated to the current VUE Find Files text field."
+      ],
+      "meaning": "Do not use the unrelated Mwm profile as a VUE text-selection color rule."
+    }
+  ],
+  "result": {
+    "explicit_selection_resource_found": false,
+    "claim_limit": "This bounds only the four application-default files read. It does not rule out Motif compiled defaults, inherited resources outside these files, or other SR10.4 runtime behavior.",
+    "native_selection_pixels": "still unverified; see R111",
+    "code_or_theme_changed": false,
+    "xchat_changed": false
+  },
+  "next": "Continue I167/GTK2 only. Obtain a visible native VUE selected/unselected pair or bound that comparison without substituting an assumption; then close remaining GTK2 delivery/reload checks."
+}

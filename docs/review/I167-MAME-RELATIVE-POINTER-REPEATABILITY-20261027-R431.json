@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R431",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Test whether the existing MAME host capture route can be repeated and whether small/slow xdotool relative steps give a stable path to an enabled VUE arrow.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_board_mame_pid": 3971019,
+    "separate_board_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "evidence": [
+    {
+      "path": "~/tempia/ia-tema/evidence/I431-recapture-check-20261027.png",
+      "sha256": "497ab9ce647bc7df98331257de4db7a460e37e8914c273bf979e917689f7b160",
+      "observation": "After mapping/focusing the authenticated MAME window and the previously successful blank-area click gesture, the pointer appeared at the lower-left screen edge; the capture hook remained captured=false."
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r432-captured-position-20261027.png",
+      "sha256": "4b17e08a2b49797e094c8143c3d4b4f00fb85d8f795a40f0966d9e3249d70a92",
+      "observation": "Calling the existing hook's capture() safely enabled mouse input and cleared wait_button_up, but the pointer remained at the lower-left edge."
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r433-slow-step-20261027.png",
+      "sha256": "4b17e08a2b49797e094c8143c3d4b4f00fb85d8f795a40f0966d9e3249d70a92",
+      "observation": "A small relative +10,+10 host movement produced no visible guest cursor displacement."
+    },
+    {
+      "path": "~/tempia/ia-tema/evidence/I167/r434-slow-step-20261027.png",
+      "sha256": "ca55983bade8f79192ca975c658f811298421301aa4a94e76b56cf73a02ed0f9",
+      "observation": "A subsequent +100,0 movement moved the edge cursor only about 7 guest pixels."
+    }
+  ],
+  "result": "The hook's capture() method itself reliably re-enabled the configured MAME mouse without a second hook. The xdotool route is still not a predictable coordinate mapping: the repeated click did not capture; the pointer appeared at an edge; +10,+10 was below visible displacement and +100,0 produced only about +7 px. No scrollbar or application control was clicked, so there is no held-state or scrolling evidence.",
+  "cleanup": {
+    "existing_hook_release_used": true,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "left_button_raw": 0,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_pointer_restored": [600, 100],
+    "mame_window": "Iconic/unmapped, matching pre-test state",
+    "channel_pending": false
+  },
+  "actions": {
+    "guest_control_clicked": false,
+    "gtk2_recipe_changed": false,
+    "mame_restarted": false,
+    "profile_changed": false,
+    "other_vm_sessions_touched": false
+  },
+  "next": "Continue only I167. Find a repeatable way to map relative input to the cursor using the existing capture hook without relying on large instantaneous XTest warps. Keep the same enabled VUE scrollbar target; press only after a fresh native image visibly places the cursor hotspot inside it. Otherwise retain this as an unresolved input-path limit and do not claim the GTK2 pressed state."
+}

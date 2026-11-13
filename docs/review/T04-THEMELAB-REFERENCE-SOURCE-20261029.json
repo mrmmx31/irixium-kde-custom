@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "item": "T04",
+  "date": "2026-10-29",
+  "scope": "Editor manual: fonte de referência independente e importação das duas amostras",
+  "authorization": {
+    "authorized": true,
+    "source": "instrução direta do usuário no escopo ativo do Theme Lab"
+  },
+  "implemented": [
+    "Seletor Fonte da referência independente de Plataforma da arte",
+    "Amostra esquerda pode usar Motif, GTK2, GTK3 ou GTK4 sem trocar a camada editada",
+    "Amostra de referência e prévia nativa usam pedidos assíncronos, estado e cancelamento separados",
+    "Seleção explícita do callback/lista prevalece sobre o texto anterior ainda não confirmado pelo OpenMotif",
+    "Resultado JSON do capturador permanece validável quando o toolkit escreve avisos antes da resposta",
+    "Botões Copiar referência e Copiar prévia nativa importam fontes distintas para a camada manual",
+    "Cada importação substitui pixels e dimensões em uma operação atômica e um passo de Undo/Redo",
+    "Painéis histórico, nativo e raster manual permanecem explicitamente separados"
+  ],
+  "verification": [
+    {
+      "command": "make -C tools/theme-lab -j2 build/theme-lab build/native-metrics-view build/generated-preview-test build/controller-spin-probe",
+      "result": "passed with -Wall -Wextra -Werror"
+    },
+    {
+      "command": "TL_PAINT_REFERENCE_ONLY=1 tools/theme-lab/build/native-metrics-view",
+      "result": "passed: reference and native copies are separate persisted Undo operations"
+    },
+    {
+      "command": "TL_PAINT_SELECTION_ONLY=1 tools/theme-lab/build/native-metrics-view",
+      "result": "passed: GTK3 reference selection emitted an independent request while the edited target remained unchanged"
+    },
+    {
+      "command": "python3 -B tools/theme-lab/tests/test_controller_spin.py tools/theme-lab/build/controller-spin-probe",
+      "result": "passed: controller lifecycle and asynchronous native preview path"
+    },
+    {
+      "command": "tools/theme-lab/build/generated-preview-test <revision-file> <generation-dir>",
+      "result": "passed: family-local generated preview receipt gates"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "seleção GTK3 pelo popup real do OpenMotif na sessão normal",
+      "result": "passed: selector remained GTK3; left sample loaded at 70 x 30 while target remained GTK2 at 78 x 34"
+    }
+  ],
+  "live_observation": {
+    "reference_panel": "GTK3 button visible at 70 x 30 px, displayed at 4:1 after an actual pointer selection",
+    "native_panel": "GTK2 button visible at 78 x 34 px, displayed at 4:1",
+    "actions_visible": [
+      "Copiar referência",
+      "Copiar prévia nativa"
+    ],
+    "capture": "~/tempia/domainos-theme-work/theme-lab-r26-reference-gtk3-live.png"
+  },
+  "preservation": {
+    "manual_paint_sha256_before": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87",
+    "manual_paint_sha256_after": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87",
+    "scene_sha256_before": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+    "scene_sha256_after": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+    "copy_activated_on_user_document": false,
+    "installed_theme_changed": false,
+    "user_configuration_changed": false
+  },
+  "runtime": {
+    "service": "domainos-theme-lab-reference-source-r26-20261029.service",
+    "pid": 3605497,
+    "work_dir": "~/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "manual_editor_open": true
+  },
+  "source_hashes": {
+    "tools/theme-lab/src/view/manual_paint_view.c": "e5d3fb32219651b22b2c9d4ba62eb5e3a3c8f1ebb1872bcbc53365cbce2ca3d7",
+    "tools/theme-lab/src/view.c": "d394ee5e8065a6c30a5056f63a5fd7f229ceda6f7fe94e2b6ac560c84cd6a819",
+    "tools/theme-lab/src/controller.c": "acde4d92ad2687bd91ba3bd925a4ff07da0012dbc92231f229e4ce499226273e",
+    "tools/theme-lab/src/controller/generated_preview.c": "ab0a654f0ea807a171519f2b84e94552b05468279fb40485dfc46a440888e69d",
+    "tools/theme-lab/tests/native_metrics_view.c": "558bfe5237b9af655de73a7b5d0d732c364decb035ca380e2f07752a80bcb3d9"
+  },
+  "limits": [
+    "Motif is the only historical reference; GTK2, GTK3 and GTK4 are native current-family captures, not historical Motif substitutes",
+    "Families without a native capture route remain explicit unavailable references instead of receiving a drawn approximation",
+    "Copying still requires Controle inteiro until independently verified piece boundaries exist",
+    "Technical verification does not constitute the user's visual acceptance"
+  ],
+  "next": "User evaluates the live editor and chooses which visible sample to copy; do not infer acceptance or activate either copy action automatically."
+}

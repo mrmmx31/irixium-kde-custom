@@ -1,0 +1,50 @@
+{
+  "item": "I167",
+  "revision": "R23",
+  "checked_at_utc": "2026-10-21T17:21:24Z",
+  "family": "GTK2 public preview coverage and scrollbar input",
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "scope": "Existing archived SR10.4 captures and measured geometry; this run verifies native GTK2 behavior, not new VM pixels."
+  },
+  "scope": "GTK2 only. Public route ran in isolated bwrap/Xvfb under ~/tempia/i167-public-rerun-20261021. Xephyr :81 was inspected read-only and left open. No personal theme/profile was changed.",
+  "commands": [
+    "env TMPDIR=$HOME/tempia I167_PUBLIC_OUTPUT_ROOT=$HOME/tempia/i167-public-rerun-20261021 /usr/bin/python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+    "env TMPDIR=$HOME/tempia /usr/bin/python3 -B tools/theme-lab/tests/test_gtk2_all_controls_native.py"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/preview_gtk2.py": "39f13f1d3fc38aa4da8dc9a887aeffb97f9f6530f554733ca7f8540597cff6d3",
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "59a2c5021cf02fb88135df9e63b6702ed0fed2d0851712d0046a3daea1cb4d1a",
+    "tools/theme-lab/tests/test_gtk2_all_controls_native.py": "5710565f2813bcff83266c0b84a3f2878ad0314984a83c1909b62546e451dc3e"
+  },
+  "results": {
+    "public_scrollbar_schemes": ["DomainOS-SR10.4", "BreezeDark"],
+    "public_scrollbar_directions": ["left", "right", "up", "down"],
+    "held_pixel_differences": 53,
+    "released_pixel_differences": 0,
+    "value_change_and_restore": true,
+    "normal_close": true,
+    "guards_verified": true,
+    "all_controls": 16,
+    "all_controls_schemes": 4,
+    "all_controls_origins": ["coupled", "separate"],
+    "all_controls_native_scenes": 8,
+    "all_controls_interactions": ["push", "toggle", "check", "radio"]
+  },
+  "limitations": [
+    "The generated receipt keeps recipe_applied=false; the DomainOS theme is still partial.",
+    "The all-controls capture has no per-control pixel-fidelity claim.",
+    "The all-controls gallery preview clips several labels and widgets in its compact layout; use the one-family native canvas for visual calibration, and fix the gallery layout separately under the authorized preview work.",
+    "No fresh visual comparison against the live SR10.4 VM was made in this run.",
+    "In Xephyr :81, detached preview 0xa00003 was viewable while Theme Lab window 0x6006c5 was IsUnMapped; preserve both windows and investigate preview focus/stacking behavior."
+  ],
+  "artifacts": {
+    "root": "~/tempia/i167-public-rerun-20261021",
+    "domainos_scrollbar": ".qa-gtk2-public-jku3cdqa/results.json",
+    "breeze_dark_scrollbar": ".qa-gtk2-public-6wo3_k2e/results.json",
+    "all_controls": ".qa-gtk2-public-all-el6af971/results.json",
+    "all_controls_capture": ".qa-gtk2-public-all-el6af971/preview.png"
+  },
+  "next": "Continue GTK2 one control family at a time: compare generated/native appearance to the SR10.4 reference, translate the remaining recipe states and palette roles, and only then assess applying the GTK2 changes to the user's XChat session."
+}

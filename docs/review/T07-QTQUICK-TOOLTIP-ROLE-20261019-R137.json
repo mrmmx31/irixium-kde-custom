@@ -1,0 +1,95 @@
+{
+  "id": "T07-R137",
+  "date": "2026-10-19",
+  "purpose": "Compare QtQuick6's shared KDE ToolTip with an application-owned ToolTip that explicitly resolves the KDE Tooltip role.",
+  "environment": {
+    "xephyr": ":82",
+    "xephyr_pid": 3782338,
+    "screen": "1600x1000",
+    "qt": "6.8.2",
+    "controls_style": "org.kde.desktop",
+    "qpa_platform_theme": "kde",
+    "isolation": "disposable bwrap HOME, bus, state, palette, and read-only project; no personal profile or product source modified"
+  },
+  "method": {
+    "fixture": "Production QtQuick gallery QML with a diagnostic default ToolTip, a second application-owned ToolTip, role swatches, and a real pointer hover over disabledButton.",
+    "owned_tooltip": "Kirigami.Theme.Tooltip and inherit=false on the ToolTip, Text contentItem, and Rectangle background; foreground and background read Kirigami theme roles.",
+    "hover": "Seven-target/full timing probe for BreezeLight; single disabled button for the three additional palette comparisons.",
+    "screenshots": "Full-window PNGs preserve the visible attached, default, and application-owned tooltip states."
+  },
+  "palette_matrix": [
+    {
+      "scheme": "BreezeLight",
+      "targets": 7,
+      "status": "passed",
+      "stable_ms": 400,
+      "attached_visible_during_sample": true,
+      "tooltip_role": "#f7f7f7",
+      "window_role": "#eff0f1",
+      "default_attached_background": "#eff0f1",
+      "application_owned_background": "#f7f7f7",
+      "application_owned_text": "#232629",
+      "failures": 0,
+      "screenshot_sha256": "7c20d6ec53613f5b2ddae027bf63db8a29cf652d7bf11c370b2bb8cda6ac7915"
+    },
+    {
+      "scheme": "BreezeDark",
+      "targets": 1,
+      "status": "passed",
+      "stable_ms": 400,
+      "attached_visible_during_sample": true,
+      "tooltip_role": "#292c30",
+      "window_role": "#202326",
+      "default_attached_background": "#202326",
+      "application_owned_background": "#292c30",
+      "application_owned_text": "#fcfcfc",
+      "failures": 0,
+      "screenshot_sha256": "cc026eb955049421945479ebc0b56690bf8137fdc0fd22db79b8e80b2efbde5e"
+    },
+    {
+      "scheme": "DomainOS-SR10-4",
+      "targets": 1,
+      "status": "passed",
+      "stable_ms": 400,
+      "attached_visible_during_sample": true,
+      "tooltip_role": "#78a0d5",
+      "window_role": "#78a0d5",
+      "default_attached_background": "#78a0d5",
+      "application_owned_background": "#78a0d5",
+      "application_owned_text": "#ffffff",
+      "failures": 0,
+      "screenshot_sha256": "32f98aed43ba9b18b0393ecdb4187f88f48a33283244d4658f851f50cd0dbbbc"
+    },
+    {
+      "scheme": "Irixium",
+      "targets": 1,
+      "status": "passed",
+      "stable_ms": 400,
+      "attached_visible_during_sample": true,
+      "tooltip_role": "#c1c1c1",
+      "window_role": "#c1c1c1",
+      "default_attached_background": "#c1c1c1",
+      "application_owned_background": "#c1c1c1",
+      "application_owned_text": "#000000",
+      "failures": 0,
+      "screenshot_sha256": "59b253d8f774db95d8a29d603fc56a98a3a5b0cf4405ffb94fc57f0a38bc906c"
+    }
+  ],
+  "conclusion": "In BreezeLight and BreezeDark, the default attached QtQuick6 ToolTip displays the Window role even while the tooltip is visibly open; the application-owned variant displays the distinct Tooltip role. In DomainOS and Irixium both roles have equal values, so those palettes confirm dynamic propagation but cannot distinguish the role. The application-owned variant follows the selected Tooltip/Window text roles in all four schemes; no static RGB values were introduced.",
+  "limitations": [
+    "This is a diagnostic QML variant, not a product-code change.",
+    "The application-owned popup was always visible as a comparison swatch; this does not validate its delay, positioning, dismissal, or reuse across every gallery control.",
+    "The native default tooltip and the app-owned variant have not yet been integrated into one production factory path.",
+    "R133 remains the full 56/56 disabled-target timing/geometry proof; R137's three added palette cases cover one target each."
+  ],
+  "artifacts": {
+    "directory": "~/tempia/t07-qtquick-tooltip-role-r137-20261019/",
+    "palette_matrix_sha256": "f655ec23bb05df1c5ec8bee59199fa6ec6d188ec349bf3d1bd63d2f5fbb625ef",
+    "full_hover_matrix_sha256": "78fbcbf855bdefd77086e86691a1a65f0443e39b6670cc6bed4fc151d54a395c",
+    "probe_sha256": "d81bcce346e3d3671d948c2292b6ba886ccd77549b4d42a952f4cefede3489ac",
+    "palette_probe_sha256": "9b6af8be0018f0cdfdc27b13ac00bbc6df4b24f106a65c444922f3b3b807ba2d"
+  },
+  "product_changed": false,
+  "user_visual_approval": false,
+  "next": "Test the application-owned role binding on one production-generated QtQuick control with real hover, delay, geometry and dismiss before deciding whether a reusable tooltip adapter belongs in the current authorized T07 scope."
+}

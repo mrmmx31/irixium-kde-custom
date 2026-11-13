@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "R647",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "five-normal-cells-exact; pressed-state-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01, project assistant VM",
+    "native_guest_image": "records/ia-tema/I167/R646/guest-after-wake-r646.png",
+    "sha256": "856660406ce92ee477a484e957fb9373213e751b814595065cf6ab917f3cd4a4",
+    "capture": "MAME screen:snapshot; 1024x844; no resizing",
+    "theme_assets": "gtk/DomainOS-SR10-4-KDE-Reload/common/assets; normal stepper base plus normal arrow overlay at (2,2)"
+  },
+  "method": {
+    "cell": "15x15 RGB pixels",
+    "match": "exact equality for all 225 pixels",
+    "regions": "bounded to visible scrollbar strips; no OCR, text extraction, or host-window capture",
+    "script": "records/ia-tema/I167/R647/compare-normal-cells.py"
+  },
+  "matches": [
+    {
+      "widget": "File Manager vertical",
+      "direction": "up",
+      "xy": [
+        622,
+        156
+      ],
+      "different_pixels": 0
+    },
+    {
+      "widget": "Terminal vertical",
+      "direction": "up",
+      "xy": [
+        595,
+        440
+      ],
+      "different_pixels": 0
+    },
+    {
+      "widget": "Terminal vertical",
+      "direction": "down",
+      "xy": [
+        595,
+        680
+      ],
+      "different_pixels": 0
+    },
+    {
+      "widget": "Terminal horizontal",
+      "direction": "left",
+      "xy": [
+        52,
+        699
+      ],
+      "different_pixels": 0
+    },
+    {
+      "widget": "Terminal horizontal",
+      "direction": "right",
+      "xy": [
+        576,
+        699
+      ],
+      "different_pixels": 0
+    }
+  ],
+  "other_cells": "File Manager vertical down had no exact match inside its scanned strip; this single miss is inconclusive and is not counted as a defect.",
+  "r645_erratum": {
+    "result_file": "empty; no scan result produced",
+    "process": "The created brute-force scan remained active for 4m37s at approximately 85% CPU after the turn returned.",
+    "action": "Sent SIGTERM to the exact owned shell and Python PIDs, confirmed both exited, preserved the script in this record, and removed only its empty output file and temporary copy.",
+    "evidence_use": "R645 is not evidence. This bounded, vectorized recheck used only the existing native VUE screenshot.",
+    "preserved_script": "records/ia-tema/I167/R647/rejected-unbounded-scan.py"
+  },
+  "limits": [
+    "This confirms five normal-state cells only; it does not compare held/released states or establish all GTK2 behavior.",
+    "The normal 15x15 pattern in these five visible cells is pixel-identical to the current theme assets at native scale.",
+    "No theme source, user profile, guest configuration, mouse, or other project VM was changed."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Fresh normal-state cells strengthen existing evidence but close no remaining pressed-state visual criterion. Not a fidelity score."
+  }
+}

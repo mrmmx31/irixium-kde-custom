@@ -1,0 +1,60 @@
+{
+  "item": "T07",
+  "revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "round": "R53",
+  "scope": "QtQuick6 targeted recheck of the two controls flagged by the exploratory full-matrix probe; no production/gallery QML changed in this round.",
+  "environment": {
+    "display": ":87",
+    "resolution": "1280x800",
+    "runtime": "QtQuick 6.8.2, PyQt 6.9.0, XCB",
+    "style": "org.kde.desktop QML observed",
+    "palette_override": false,
+    "palette": "Qt default/Fusion values were reported; not the KDE DomainOS scheme.",
+    "isolation": "Owned Xephyr and bwrap namespace, disposable HOME/XDG/DBus, no personal profile exposure."
+  },
+  "targeted_results": [
+    {
+      "control": "Mixed tristate checkbox",
+      "tooltip": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+      "onset_from_pointer_ms": 700,
+      "stable_ms": 400,
+      "closed_ms": 350,
+      "owner_rect": [436, 275, 55, 23],
+      "tooltip_rect": [339, 226, 249, 46],
+      "status": "passed"
+    },
+    {
+      "control": "Editable native TextField",
+      "tooltip": "Entrada nativa de uma linha: selecione ou edite o texto da amostra; não altera o projeto.",
+      "onset_from_pointer_ms": 650,
+      "stable_ms": 400,
+      "closed_ms": 300,
+      "owner_rect": [414, 459, 548, 29],
+      "tooltip_rect": [565, 393, 247, 63],
+      "status": "passed"
+    }
+  ],
+  "probe_diagnostics": {
+    "full_matrix_attempt": "A passagem exploratória QtQuick6 encontrou 16 alvos e dois hovers ausentes; a repetição com nomes semânticos estáveis passou exatamente esses dois alvos. Uma passagem posterior que filtrou visibilidade por ancestrais observou sete alvos; o runner recusou declarar a matriz ampla completa.",
+    "interpretation": "A evidência direcionada remove a falha observada nesses dois controles nesta execução, mas não identifica de forma conclusiva a causa da divergência na matriz nem certifica a cobertura QtQuick6 integral.",
+    "next": "Ajustar a sonda de cobertura para percorrer páginas reais e identificar controles persistentes sem confundir descendentes de páginas inativas; então medir novamente a matriz completa QtQuick6."
+  },
+  "limitations": [
+    "Sem comparação visual manual, de cores, ou de fidelidade histórica Domain/OS.",
+    "A paleta observada foi a padrão Qt/Fusion, não DomainOS KDE.",
+    "A matriz ampla QtQuick6 continua parcial; esta prova cobre somente dois controles habilitados.",
+    "Avisos de portal/inotify do ambiente privado não são atribuídos à aplicação nem à dica."
+  ],
+  "outputs": {
+    "targeted_matrix": "~/tempia/t07-qtquick-scrollview-20261018/qt6-r55-targeted/result/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+    "targeted_matrix_sha256": "4215f78ac7ef6000cc40f97439ceebdc3250add8b0c561313db065e366abe0a2",
+    "generated_qml": "~/tempia/t07-qtquick-scrollview-20261018/qt6-r55-targeted/result/home/qtquick6-proof/gallery.qml",
+    "generated_qml_sha256": "d8195a0a8f6fe9143fcaa929ae273c671dbd26986da485de8a0ea849dbadd713",
+    "scripts": [
+      {"path": "~/tempia/t07-qtquick-scrollview-20261018/probe_qtquick6_targets_r55.py", "sha256": "ac9a10c5be5265304480821131b8bcb8e2ee09f1bdd6eb8d8e630d5f1bf82dcb"},
+      {"path": "~/tempia/t07-qtquick-scrollview-20261018/run_targeted_qtquick_probe_r55.py", "sha256": "0abf4e1276ce62758fd7d61be555fae0fb910bdccf5cb5482f450f99a28612a8"}
+    ]
+  },
+  "status": "targeted pass; T07 remains running"
+}

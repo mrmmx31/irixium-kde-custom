@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R650",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "post-R638-visible-XChat-up-cells-match;horizontal-normal-assets-chain-to-VUE",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "live_window_scan": {
+    "profile": "/home/lsi/.gtkrc-2.0 selects DomainOS-SR10-4-KDE-Reload",
+    "process_pid": 327563,
+    "gtk2_mapped": true,
+    "window_xid": "25165827",
+    "class_pid_verified": true,
+    "capture_px": [870, 601],
+    "method": "XWD read in memory; compared only 15x15 current installed stepper patterns; no screenshot or conversation pixels saved/emitted",
+    "exact_cells": {
+      "up-normal": [[217, 66], [749, 100]],
+      "up-focused": [[217, 66], [749, 100]],
+      "up-disabled": [[217, 66], [749, 100]]
+    },
+    "not_found_in_this_window": ["down", "left", "right"],
+    "limits": "The other prior XChat window is currently unmapped. No conclusion about cells absent from this one visible window; no other XChat PID/window was captured."
+  },
+  "asset_provenance": {
+    "installed_reload_assets_match_repository": true,
+    "right_stepper_normal_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+    "right_arrow_normal_sha256": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15",
+    "right_normal_stepper_is_exact_base_plus_arrow_composite": true,
+    "prior_live_XChat_match": "R585 found right-normal at window 25443786 before R638; its stepper and arrow source hashes equal current Reload assets. That window is now unmapped, so this is retained pre-R638 live evidence, not a new post-R638 horizontal capture.",
+    "native_VUE_match": "R647 found current SR10.4/VUE terminal horizontal left/right cells exactly equal to the current 15x15 base+arrow composites (0/225 differences each)."
+  },
+  "artifacts": {
+    "script": "records/ia-tema/I167/R650/current-xchat-stepper-scan.py",
+    "result": "records/ia-tema/I167/R650/current-xchat-stepper-result.json",
+    "temporary_copy": "~/tempia/domainos-theme-work/I167/R650/"
+  },
+  "changes": {
+    "input_sent": false,
+    "screenshots_saved": false,
+    "theme_source": false,
+    "user_profile": false,
+    "application_restarted": false
+  },
+  "remaining": [
+    "No normal horizontal geometry mismatch is reproduced in the current GTK2 assets or the VUE reference.",
+    "Historical canonical-VM held-state comparisons for up and horizontal directions remain open; Q515 remains unanswered.",
+    "Manual visual acceptance is separate from pixel evidence."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "Confirms a post-R638 GTK2 live up-stepper and reconciles prior live horizontal evidence with unchanged current assets and the current VUE normal reference. No new held-state criterion closes. Not a fidelity score."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "item": "I167",
+  "revision": "R26",
+  "checked_at_utc": "2026-10-22T22:18:00Z",
+  "family": "GTK2 push button",
+  "reference": {
+    "authority": "Domain/OS SR10.4 with HP VUE 2.01 remains the historical authority.",
+    "source_used_this_round": "Native Motif push-button pixels in the existing Theme Lab pair capture; not a new capture from the SR10.4 guest.",
+    "visible_motif_bbox_px": [62, 21],
+    "widget_reference_request_px": [66, 25],
+    "capture": "~/tempia/i167-theme-lab-domainos-xephyr-20261022/session-r3/motif-reference-crop.png"
+  },
+  "candidate": {
+    "toolkit": "GTK2 2.24.33",
+    "font_px": 12,
+    "inner_border_px": [0, 0, 0, 0],
+    "xthickness_px": 2,
+    "ythickness_px": 0,
+    "bevel_asset_thickness_px": 2,
+    "natural_request_px": [63, 21],
+    "comparison_delta_from_visible_motif_px": [1, 0]
+  },
+  "results": {
+    "font12_padding0_schemes_with_ythickness2": {
+      "status": "passed_native",
+      "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+      "natural_request_px": [63, 25],
+      "click_each_scheme": true,
+      "disabled_input_blocked_each_scheme": true
+    },
+    "candidate_with_ythickness0": {
+      "status": "passed_native",
+      "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+      "native_widget": "GtkButton",
+      "natural_request_px": [63, 21],
+      "click_each_scheme": true,
+      "disabled_input_blocked_each_scheme": true,
+      "normal_vs_pressed_changed_pixels_domainos": 320,
+      "normal_vs_released_changed_pixels_domainos": 0,
+      "matrix_results": "~/tempia/i167-gtk2-push-font12-y0-r26/four-schemes/results.json",
+      "matrix_sha256": "9f143d11fa026437110c63f6cb8dc3d56d380d75b91a9c2fb498ceb63f908fa2"
+    },
+    "visual_pair": "~/tempia/i167-gtk2-push-font12-y0-r26/actual/motif-gtk2-pair.png",
+    "pair_sha256": "aedc95d4a0ae47b8282f2e7b71b561621bb8d871c9baa0cf5e07b9f4af3adbc4"
+  },
+  "limits": [
+    "The 62x21 visible Motif bbox comes from the local Theme Lab crop; it is not an SR10.4 default measurement.",
+    "All four schemes exercise the exact ythickness=0 candidate; detailed pixel press/release counts are from the DomainOS capture.",
+    "The 66x26 candidate in R25 matched the widget request but looked larger in the pixel comparison; it is superseded as the preferred visual candidate.",
+    "No repository theme, saved project, personal profile, or XChat process was changed; no human approval is inferred."
+  ],
+  "artifacts": {
+    "exact_candidate_rc_sha256": "1e6859be8c613be33e456779ac4dec987d37650399def8567ed11c26581f0200",
+    "native_result_sha256": "9b17af3ed522de1102fe42fe5770432e6086ca27f22d424cd114c967d7c4eafe",
+    "candidate_directory": "~/tempia/i167-gtk2-push-font12-y0-r26/",
+    "font12_four_scheme_directory": "~/tempia/i167-gtk2-push-font12-padding0-r26/"
+  },
+  "next": "Translate the independently measured GTK2 push-button vertical metric into its adapter without changing other control families. Validate the exact candidate in the public Motif/GTK2 preview; proceed to another GTK2 family only after that comparison is recorded."
+}

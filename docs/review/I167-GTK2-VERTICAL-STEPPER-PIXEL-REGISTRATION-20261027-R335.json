@@ -1,0 +1,40 @@
+{
+  "id": "R335",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "GTK2 vertical scrollbar steppers, normal state, 1:1 local crop comparison",
+  "status": "comparison_recorded_manual_and_live_vm_review_pending",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "up_crop": {"xy": [4, 2], "size": [15, 15]},
+    "down_crop": {"xy": [4, 241], "size": [15, 15]}
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r332-pipeline-live/normal-wide.png",
+    "sha256": "5ad20897a595865a466e5f04a5cf25fdc8ebebe6cb9c220d173897cc080f1087",
+    "scope": "native GTK2 pipeline capture; 15x180 allocation; not an already-open user application",
+    "up_crop": {"xy": [250, 12], "size": [15, 15]},
+    "down_crop": {"xy": [250, 172], "size": [15, 15]}
+  },
+  "result": {
+    "up_stepper": {"different_pixels": 3, "compared_pixels": 225, "best_local_shift": [0, 0]},
+    "down_stepper": {"different_pixels": 11, "compared_pixels": 225, "best_local_shift": [0, 0]},
+    "interpretation": "At the registered 15x15 stepper cells, both GTK2 arrows preserve the overall SR10.4 shape closely; the vertical capture is not pixel-identical. This count includes the cell relief, so it does not isolate arrow-only silhouette errors. Do not change artwork from these totals alone.",
+    "limitation": "The DomainOS reference bar is 15x255 and the GTK2 test widget is 15x180; this comparison registers each end cell locally and does not compare track/thumb placement.",
+    "vm_state": "Guest remained in standby. No synthetic key/mouse was sent; live capture awaits a physical wake event under the documented VM rule.",
+    "scope_limits": [
+      "Pipeline output is not an already-open GTK2 application or manual user acceptance.",
+      "This verifies normal-state up/down cells only; no conclusion about pressed or disabled vertical arrows is drawn here.",
+      "No source or user profile changes were made for this measurement."
+    ]
+  },
+  "visual_artifact": {
+    "path": "~/tempia/ia-tema/evidence/I167/gtk2-vertical-steppers-reference-vs-r332-r335.png",
+    "sha256": "71a09233ed75f492fd3aeba608e81f91560f3f50e9d0c283843ebf6d06aec90e",
+    "scale": "12x nearest-neighbor; measurements use native 15x15 crops"
+  },
+  "next": "Keep I167 on GTK2. After the VM is awake, capture the native vertical cells and compare; isolate cell-relief pixels from arrow pixels before any artwork change."
+}

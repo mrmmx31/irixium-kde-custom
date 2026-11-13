@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "id": "R707",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Deploy the shared 4 px GtkScrolledWindow gap into the active GTK2 DomainOS role palette for user lsi, using the base GTK2 recipe selected by the palette renderer.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "installed_dynamic_recipe_validated_and_native_reload_sent",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "source_variants_installed": [
+      "DomainOS-SR10-4",
+      "DomainOS-SR10-4-KDE",
+      "DomainOS-SR10-4-KDE-Reload"
+    ],
+    "user_files_updated": 18,
+    "scope": "GTK2 gtkrc, MANIFEST and ORIGEM only, in ~/.local/share/themes and ~/.themes; no GTK3/GTK4/Qt/Kvantum/Plasma/panel files.",
+    "renderer_source_correction": "The GTK2 KDE role renderer maps both selectable DomainOS KDE identities to the installed DomainOS-SR10-4 base recipe. Updating only KDE/Reload retained the old generated RC. The base GTK2 package was also updated, then the dynamic palette was regenerated and its emitted cache verified.",
+    "dynamic_palette": {
+      "status": "active",
+      "current_kde_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "managed_gtk2_wrappers": 12,
+      "cache_assets": 215,
+      "generated_rc": "~/.local/share/irixium/gtk2-palette/5b53a1f6511c26fe6e551a290f17d3745de03efe6cc7f67f5d256dae021cc629/gtkrc",
+      "generated_rc_sha256": "9bb99b1bd464efe21d3f89e4c1593c308d3b090c13ad4076e15bb773a8455ec7",
+      "generated_rc_contains_spacing4": true,
+      "cache_manifest_sha256": "bec76674f6a4dc7c7c074f844ca29a5632cda6e1a4387fe9163c94c978b7841b"
+    },
+    "source_package_hashes": [
+      {
+        "path": "gtk/DomainOS-SR10-4/gtk-2.0/gtkrc",
+        "sha256": "b1fb471644e41bdb2824b6a73d9f6f77e05d9aa0dfb0e6f95885c38607a09770"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4/MANIFEST.json",
+        "sha256": "48f17527759f2d4a2c097c7fc91bdbaad6bb293266122885218e14fe754575f4"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4/ORIGEM.json",
+        "sha256": "3bb6fb0b7b1b1410e32d4b7a9d34988d6d9716b272a45f6569868d6187f89376"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "b1fb471644e41bdb2824b6a73d9f6f77e05d9aa0dfb0e6f95885c38607a09770"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE/MANIFEST.json",
+        "sha256": "1d3ed415aa72e211ceb74123b1f0e7cf970ab0cf19795b05feb0c617a8416aed"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE/ORIGEM.json",
+        "sha256": "3bb6fb0b7b1b1410e32d4b7a9d34988d6d9716b272a45f6569868d6187f89376"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+        "sha256": "b1fb471644e41bdb2824b6a73d9f6f77e05d9aa0dfb0e6f95885c38607a09770"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json",
+        "sha256": "01a611c9aea1ba96b8cb7b9e066b9f6b663fbedad09c574e4ba8e0b86815d4d1"
+      },
+      {
+        "path": "gtk/DomainOS-SR10-4-KDE-Reload/ORIGEM.json",
+        "sha256": "3bb6fb0b7b1b1410e32d4b7a9d34988d6d9716b272a45f6569868d6187f89376"
+      }
+    ],
+    "native_reload": {
+      "display": ":1",
+      "status": "sent",
+      "windows_considered": 141,
+      "events_sent": 141,
+      "racing_x_errors": 0,
+      "applications_restarted": false,
+      "note": "The broadcast targets X11 top-levels; non-GTK2 clients ignore this event. It does not prove each GTK2 window visibly repainted."
+    },
+    "live_processes_after_reload": [
+      "1321694 /home/lsi/.cache/codex-xchat/hom/xchat",
+      "1327599 /home/lsi/.cache/codex-xchat/prd/xchat"
+    ],
+    "backup_receipts": {
+      "theme_package": "~/.local/state/irixium-domainos-gtk2-theme/backups/71a17cc2cd7c462c9f2f43d8bb3bda24/receipt.json",
+      "theme_package_receipt_sha256": "2909c38566cab605dae9f1aad3b0218bb32c115d810ff40442ba4cd7853c306d",
+      "palette_restore": "~/.local/state/irixium-gtk2-palette/backups/20261029T050824-065d113ab93d/receipt.json",
+      "palette_restore_sha256": "2e3244f61e24c192a8ea335adcc4e852ed08c16edafe007982e0bd53fdd5aa30",
+      "palette_setup": "~/.local/state/irixium-gtk2-palette/backups/20261029T050834-f41b310493ce/receipt.json",
+      "palette_setup_sha256": "c1c537d86c341682d3df478ec70ad9a6daed053679537c328a8e213f3637d9ef"
+    }
+  },
+  "limits": [
+    "The user has not yet provided visual acceptance in a GTK2 application.",
+    "The 2 px inward placement of terminal arrow cells remains unresolved; the 4 px content-to-bar gap is a separate correction.",
+    "I517 remains unauthorized, so no direct input or new capture was made in the historical VM.",
+    "The X11 reload broadcast was sent and processes remained alive; this does not by itself verify the resulting pixels in each open client."
+  ],
+  "coverage_estimate": {
+    "percent": 93,
+    "basis": "Technical I167 coverage: the measured shared gap now appears in the active generated GTK2 role RC, the selected user profile and its dynamic palette are validated, and native reload was sent. This is not a historical visual-fidelity score or human acceptance."
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "id": "R553",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Fresh live recheck of the horizontal scrollbar in the project-owned Domain/OS SR10.4 + HP VUE 2.01 clone, paired to the retained native Trash Can reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "service_state": "systemd unit reports inactive while this exact MAME process and its shell parent remain alive; no restart attempted",
+    "network_profile": "alias 10.253.104.20, FTP 21, Telnet 23; listeners not currently available",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "pending_request": null
+  },
+  "guest_input": {
+    "actions": [
+      {
+        "script": "vm/domainos-sr10.4-assistant/runtime/sessao/type-vue.lua",
+        "request_id": "0839e75f151942a597e8fa3100503ad3",
+        "outcome": "input error at first field lookup; held=false; no V key delivered because the current MAME mapping exposes V on :kbd:keyboard2, not :kbd:keyboard1. Subsequent snapshot showed VUE already visible; causality is unassigned."
+      },
+      {
+        "script": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/i167-r551-file-menu.lua",
+        "sha256": "87efe65927883b9c279ed17a71b79e356d3ee5fb953ce8cd15dd3a42c6cda689",
+        "request_id": "0b36f707eaef4edba24ad0c88c568416",
+        "precheck": "ALT_L and F fields present; VM unpaused",
+        "outcome": "done=true; frame=65; held=false; reason=Alt+F released; error=nil; screenshot r551 shows File menu and Show Trash."
+      },
+      {
+        "script": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/i167-r552-select-show-trash.lua",
+        "sha256": "6eafea797e5462331c55e5b8832ea75260a5a3e56424aa5fbb9bd1cd46ddab71",
+        "request_id": "68538728de634bbaa5c1926c44516f5a",
+        "precheck": "S field present; VM unpaused",
+        "outcome": "done=true; frame=90; held=false; reason=S released; error=nil; screenshot r552 shows Trash Can."
+      }
+    ],
+    "input_held_at_end": false,
+    "pointer_moved": false,
+    "filesystem_mutated": false
+  },
+  "capture": {
+    "type": "MAME native guest screen:snapshot",
+    "path": "/home/lsi/tempia/domainos-theme-work/i167-vue-captures-20261028/domainos-screen-r552-trash-open.png",
+    "sha256": "982de24ddd117cac1fbd97f1bbc0eb80c2549cece8f4d6cdcada603caded33b9",
+    "size_px": [
+      1024,
+      844
+    ],
+    "visible": "HP VUE Trash Can in front; File Manager and Terminal behind."
+  },
+  "reference": {
+    "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "size_px": [
+      542,
+      20
+    ]
+  },
+  "comparison": {
+    "method": "Direct RGB, no scale/interpolation; exact fixed crop from the previous live VM receipt.",
+    "live_crop_xyxy": [
+      50,
+      695,
+      592,
+      715
+    ],
+    "different_pixels": 0,
+    "pixels_compared": 10840,
+    "horizontal_arrow_cells": "The current native VUE crop is pixel-identical to the retained 542x20 reference; both 15x15 endpoint cells are included."
+  },
+  "result": "The fresh live VUE horizontal scrollbar matches the retained SR10.4 reference exactly (0/10,840 differing pixels). Together with GTK2 R496/R509 (normal horizontal cells 0/225 per cell), the reported short-arrow geometry is not reproduced in the current normal-state fixture. No GTK2 files or user applications were changed.",
+  "limits": [
+    "This is a fresh VM-to-reference comparison, not a new GTK2 render.",
+    "It does not compare pressed, hover, insensitive or content-scrolling states.",
+    "No current personal GTK2 application was inspected or reloaded.",
+    "The GTK2 fallback/cache scratch patch remains unintegrated and uninstalled.",
+    "The stale type-vue helper failure is distinct from the successful, field-checked R551 Alt+F and R552 S input scripts documented above."
+  ],
+  "next": "Keep GTK2/I167 active. Do not change the normal arrow geometry from this evidence. Continue the remaining state-specific GTK2/VUE comparison using an enabled native arrow and the already documented bounded input route; preserve XChat reload and user visual acceptance as separate pending checks."
+}

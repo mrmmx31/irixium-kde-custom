@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "R109",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Local evidence audit for SR10.4 XmTextField selection color",
+  "sources_reviewed": [
+    {
+      "path": "docs/referencias/domainos-sr104/CONFIGURACOES-VERIFICADAS.json",
+      "finding": "Records hashes and guest paths for Vue, Vuestyle, sys.Xdefaults and live xrdb; it does not preserve the raw resource contents."
+    },
+    {
+      "path": "docs/referencias/domainos-sr104/I120-FONTES-IDENTIFICADAS.json",
+      "finding": "Records XmText and XmTextField FontList resources only."
+    },
+    {
+      "path": "docs/DOMAINOS-REGRAS-ROLAGEM.md",
+      "finding": "States that the local resource reads did not declare a matched selection appearance; does not supply a native selected/unselected pair."
+    }
+  ],
+  "result": {
+    "documented_xmtextfield_selection_color": "not found in retained local evidence",
+    "raw_guest_resource_contents_available_locally": false,
+    "compiled_or_inherited_default_ruled_out": false,
+    "historical_visual_pair": "still not proven"
+  },
+  "preservation": {
+    "guest_input_sent": false,
+    "guest_files_changed": false,
+    "main_vm_or_other_sessions_touched": false,
+    "theme_or_xchat_changed": false
+  },
+  "remaining": [
+    "Keep GTK2 selection colors role-driven as already tested in R70/R72.",
+    "Do not infer a historical selection color from another Motif release or from the GTK2 preview.",
+    "A visual SR10.4 selected/unselected pair remains necessary to claim historical fidelity."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "I167 technical implementation/evidence estimate, not visual fidelity.",
+    "basis": "The local record search narrows documentary evidence but does not add a native comparison or alter the GTK2 implementation."
+  }
+}

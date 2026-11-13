@@ -1,0 +1,49 @@
+{
+  "item": "T07",
+  "user_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at_utc": "2026-10-18T18:22:49Z",
+  "family": "Qt6 Widgets submenu-opening QAction hints",
+  "runtime": {
+    "qt": "6.8.2",
+    "display": ":95",
+    "isolated": "Xephyr + guarded disposable namespace/profile; existing Xephyr sessions preserved",
+    "theme": "QFusionStyle for this hint test; no claim of KDE/Kvantum visual fidelity"
+  },
+  "implementation": {
+    "approach": "Delayed help in the gallery status strip for a submenu-opening action, because the parent QMenu surface leaves while the child opens.",
+    "delay_ms": 500,
+    "expiry_ms": 2400,
+    "native_parent_tooltip_suppressed": true,
+    "child_action_uses_native_tooltip": true,
+    "status_restores_previous_text": true,
+    "source_files": [
+      "plasma/tests/galerias-nativas/qt_widget_hints.py",
+      "plasma/tests/galerias-nativas/qt6_demo.py",
+      "tools/theme-lab/tests/probe_qt_full_gallery_hints.py"
+    ]
+  },
+  "verification": {
+    "guarded_full_gallery": "passed",
+    "buttons_with_hint": 36,
+    "menu_rows": 8,
+    "submenu_parent_delay_assertion": "status unchanged after 250 ms; expected help present after additional 350 ms",
+    "submenu_child_open": true,
+    "parent_help_stable_ms": 400,
+    "status_does_not_overlap_parent_row": true,
+    "child_hint_replaces_parent": true,
+    "help_closes_after_pointer_leaves": true,
+    "py_compile": "passed for current edited Python files",
+    "qa_json_sha256": "de19f7cb6285fd29c35f426b8febfbb4d0b34228b0631d469b577a32567cbd48",
+    "result_json_sha256": "7573a65cc1bb1fd76c1b79ce2a38ffe37777dfd46c791a07c9265da211f7af9f",
+    "screenshot": "~/tempia/t07-qt6-menu-helpstrip-r1-20261018/full-gallery-delay-check/home/qtwidgets-proof/submenu-help-strip.png",
+    "screenshot_sha256": "29f737c0415bccc712d85ecbdd6ad994c8e68885a1351adf32674742b53b2fda",
+    "proof_directory": "~/tempia/t07-qt6-menu-helpstrip-r1-20261018/full-gallery-delay-check/home/qtwidgets-proof"
+  },
+  "limitations": [
+    "Only the Qt6 native gallery and its sample parent/child menu were covered by this new pattern.",
+    "This does not complete all T07 toolkit families, layouts, palette states, KDE/Kvantum rendering, historical visual fidelity, or human approval.",
+    "A test-only status strip is not evidence that every product menu has an equivalent help surface."
+  ],
+  "queue_state": "T07 remains partial and waiting for user assessment; authorization, user revision, note, verdict, and ack_revision were not changed."
+}

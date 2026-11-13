@@ -1,0 +1,58 @@
+{
+  "at": "2026-10-11T19:43:26.295315+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "gtk2_controller": {
+    "session": 24979,
+    "exit_code": 0,
+    "proof": ".qa-theme-lab-spin-mobnrhcf/RESULTADO.json",
+    "sha256": "c41fd219f361b67bca8c5db4167767f13b604d2a2bc9de0d28234e1083aa0212",
+    "cases": 8,
+    "native_save_load_project_undo_redo_restart": true,
+    "saved_scene_working_recipes_equal": true,
+    "origin_count": 2,
+    "other_family_recipes_preserved": true
+  },
+  "delivery_checks": {
+    "runtime_file_closure": "2 passed",
+    "resume": "19 passed, session55611 exit0, own TMPDIR; prior host /tmp run had ENOSPC",
+    "source_host_pid": 2925274,
+    "source_start_ticks": "39292729",
+    "source_preserved": true
+  },
+  "gtk3_regression": {
+    "session": 25790,
+    "exit_code": 0,
+    "proof": ".qa-theme-lab-spin-zb10dmem/RESULTADO.json",
+    "sha256": "4c685be432872fc693ee5054bfc25fe5d5a26af1f930e0f165f76e98b3f20c02",
+    "cases": 8,
+    "native_save_load_project_undo_redo_restart": true,
+    "origin_count": 2,
+    "settled_edge_required_after_restart": true,
+    "historical_fidelity_claimed": false,
+    "prior_failures_retained": [
+      50337,
+      47054,
+      98839
+    ]
+  },
+  "sources": {
+    "tools/theme-lab/backend.py": "e2b4a8b85027a5570a7e51a70447aa88bc8d57feb1a792699e92def392b6eddd",
+    "tools/theme-lab/scene_anchor.py": "3a3e7ab92c00da44a6b813b08fe80d732879566724a356524cc9e057025466a1",
+    "tools/theme-lab/native_scene_gtk2.py": "4bc18f59663625215fef7a791028178656f8abe9e53f4bec710c2a9347713fe7",
+    "tools/theme-lab/gtk2_placement.py": "a5ad86f7eab05ccca717851e8f402fdcbb28c7a69e3225e9e0e0598b1f079ce2",
+    "tools/theme-lab/tests/controller_gtk_anchor.py": "466dff28d5d3ecef9f06db9b326e744d354b18a8162ce5ffb3f2f29a1b45272b",
+    "tools/theme-lab/tests/test_controller_spin.py": "5ae4998f587b13cd7f594245ee02490fce2f3fda946410930aabc3140f6220f2"
+  },
+  "progress": {
+    "anchor_percent": 100,
+    "basis": "Geometry, lifecycle/gestures, controller/persistence proofs in GTK2/GTK3, coordinated delivery completed. Scope only scrollbar anchor functionality."
+  },
+  "limits": [
+    "No human approval or historical fidelity claim",
+    "Overall T04 and goal incomplete"
+  ],
+  "next": "Scoped GTK2 pressed lifecycle integration and capability/ABI proof.",
+  "updated_at": "2026-10-11T20:00:28.964700+00:00",
+  "delivery_receipt": "docs/review/T04-GTK2-ANCORAS-ENTREGA-20261011.json"
+}

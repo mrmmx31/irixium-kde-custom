@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-11T11:30:58.486472+00:00",
+  "item": "T07",
+  "status": "partial",
+  "runtime": "GTK4 4.18.6 C ABI",
+  "native_result": {
+    "display": ":244",
+    "theme": "Default",
+    "font": "Sans 10",
+    "logical_controls_with_hint": 26,
+    "utf8_resources_verified": true,
+    "custom_css": false,
+    "exit_code": 0
+  },
+  "command": "T07_PRIVATE_PROBE=1 LC_ALL=C.UTF-8 xvfb-run -a python3 -B tools/theme-lab/tests/probe_gtk4_gallery_hints.py",
+  "source_hashes": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "9887f528343b5fd9152559322deb9890be3741e6894af9f3204b07973eb41346",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "3d92c2e5f399fbd8c3c56709a7300b4158c5eed6503ac4a8fc29e1f526f15277"
+  },
+  "scope": "Real production gallery and native getters in private Xvfb; resources only",
+  "limits": [
+    "Hover/position/timing not yet proven GTK4",
+    "Popover menu rows and internal children not yet covered",
+    "Plasma gallery and handoff pending",
+    "Default native palette used in resource proof; no colour translation claim"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

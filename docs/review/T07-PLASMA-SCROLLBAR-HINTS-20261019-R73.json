@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "T07-PLASMA-SCROLLBAR-HINTS-20261019-R73",
+  "date": "2026-10-19",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "Saved AI Work Board item: section=work; user.authorized=true; authorized_definition matches current definition_sha256 a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee.",
+  "status": "passed_in_scope",
+  "scope": "Add delayed native hints to the vertical and horizontal Plasma Components.ScrollBar controls in the native Plasma Style gallery; verify timing, stability, bounds, owner separation and dismissal.",
+  "environment": {
+    "xephyr": ":81",
+    "display": ":81",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "qt": "6.8.2",
+    "platform": "xcb",
+    "controls_style": "org.kde.desktop",
+    "renderer": "org.kde.plasma.components.ScrollBar + QtQuick.Controls.ToolTip",
+    "native_qml": true,
+    "isolation": "Private HOME and XDG config/data/cache/runtime under ~/tempia; copied plasma/IrixClassicDomainOS assets to private XDG_DATA_HOME; no installation or personal profile writes.",
+    "personal_profile_changed": false,
+    "theme_installed": false
+  },
+  "matrix": {
+    "controls": [
+      "vertical ScrollBar",
+      "horizontal ScrollBar"
+    ],
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "native_delay_ms": 500,
+    "cold_check_ms": 300,
+    "visible_by_ms": 600,
+    "stable_ms": 400,
+    "close_after_leave_ms": 300,
+    "within_window": true,
+    "overlaps_owner": false,
+    "overlaps_footer_label": false,
+    "dismissed_on_leave": true,
+    "within_screen": true,
+    "positions": {
+      "vertical": {
+        "window_local": {
+          "x": 24.0,
+          "y": 306.0,
+          "width": 216.0,
+          "height": 30.0
+        },
+        "window_origin": [
+          0,
+          0
+        ]
+      },
+      "horizontal": {
+        "window_local": {
+          "x": 24.0,
+          "y": 306.0,
+          "width": 234.0,
+          "height": 30.0
+        },
+        "window_origin": [
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/plasma_style_demo.py": "8f91b7f9e5be66f7ea2b3f25ff08e3fb77347364e3e00849c2f01279e9abaa29",
+    "plasma/IrixClassicDomainOS/widgets/scrollbar.svg": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
+    "temporary_probe.py": "4f129fec3ee55d03676f5cf17dc9600de1adf5cc7687f7e53e0153e646351fae",
+    "result": "4243719b9114e7b0ed064ad68b8f61f55c89cac6bc99284d146450e8cd087b8b"
+  },
+  "artifacts": {
+    "result": "~/tempia/t07-plasma-scrollbar-hints-r73-20261019/RESULTADO.json",
+    "result_sha256": "4243719b9114e7b0ed064ad68b8f61f55c89cac6bc99284d146450e8cd087b8b",
+    "vertical_capture": "~/tempia/t07-plasma-scrollbar-hints-r73-20261019/plasma-vertical-hint.png",
+    "vertical_capture_sha256": "e31383696eb2da9eac70479ebb6d74aa959ccdfd1df65cbf813264b3fba91f6e",
+    "horizontal_capture": "~/tempia/t07-plasma-scrollbar-hints-r73-20261019/plasma-horizontal-hint.png",
+    "horizontal_capture_sha256": "ade33f00d916e3e2e764eac4738275d9f44b277fdc83a0a7d9ba7759a47f265c"
+  },
+  "limitations": [
+    "The private XDG preview did not contain the Irixium color scheme; the KDE style reported fallback to BreezeLight. This receipt covers hint timing/geometry only, not color roles or palette fidelity.",
+    "One gallery geometry and Qt 6.8.2 only; no alternate scheme, other Plasma controls, or manual approval.",
+    "The system emitted a non-fatal Qt session-management message; QML warnings were empty and both hover cases completed."
+  ],
+  "next": "Continue T07 on an independent remaining authorized gap; GTK2 R58/R60 stays unresolved without a discriminating hypothesis. Plasma scrollbar hints are covered only in this native gallery.",
+  "diagnostics": {
+    "probe_setup": "A primeira execução confirmou as dicas, mas falhou apenas na captura porque PyQt6 expôs o root QML como QWindow sem grabWindow(); corrigi somente a sonda temporária para usar QScreen.grabWindow e repeti a matriz.",
+    "asset_setup": "A execução inicial não tinha os assets KSvg no XDG isolado e desenhou as barras como trilhos finos. Copiei plasma/IrixClassicDomainOS para o XDG privado e repeti a prova; nenhum arquivo foi instalado no perfil pessoal.",
+    "palette": "O estilo KDE avisou que Irixium não estava disponível no XDG privado e recorreu a BreezeLight. As cores da captura não são aceitação do tema."
+  }
+}

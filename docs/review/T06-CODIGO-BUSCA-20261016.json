@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "id": "T06",
+  "user_revision": 5,
+  "definition_sha256": "0bfeae708de0e933e4e8af804392a835ac4d4ce1a758d4cdad6d729da7fede74",
+  "status": "tecnicamente_concluido_revisao_humana_pendente",
+  "scope": "Busca para frente/atrás, realce do termo, explicação do alias de cores _breeze e trecho somente do controle em edição.",
+  "implementation": [
+    "Busca UTF-8 por caracteres Unicode com direção, distinção de maiúsculas/minúsculas e limite de palavra opcional.",
+    "Realce Motif XmHIGHLIGHT_SELECTED usa XmNselectColor proveniente do papel Selection/BackgroundNormal da paleta da prévia atual; não adiciona cor RGB final estática.",
+    "O status de busca ocupa uma linha própria abaixo dos filtros para evitar truncamento na coluna estreita.",
+    "O comentário gerado explica que _breeze é alias do exportador e que os valores vêm do esquema KDE escolhido.",
+    "O backend emite apenas o controle/estado selecionado; o teste verifica que scroll_h exclui scrollbar.vertical e spinbutton."
+  ],
+  "verification": {
+    "build": "make com C99, -Wall -Wextra -Werror concluído.",
+    "unit": "code-search-test passou com posição UTF-8, busca bidirecional, case, whole-word, Ação/janela e entradas inválidas.",
+    "backend": "35 testes passaram.",
+    "xephyr": "Busca manual na sessão privada :61: breeze para frente encontrou 90–95; button para trás a partir do fim encontrou 1099–1104; seleção ficou visível e legível. Campo de busca também passou Ctrl+Z, Ctrl+Y, Ctrl+Shift+Z, Ctrl+A, Ctrl+C, Ctrl+X e Ctrl+V; valor original restaurado.",
+    "limitations": "A GUI direta de teste não foi executada pelo launcher bwrap; a barreira de saída privada recusou gerar prévia native nessa instância. Nenhuma gravação no perfil do desktop foi feita. Geração de snippet foi coberta pela suíte do backend."
+  },
+  "human_review": "pendente; resultado técnico não preenche veredito ou autorização humana.",
+  "evidence": "docs/review/T06-BUSCA-CODIGO-20261016.png",
+  "sha256": {
+    "view": "4ded09b49464892d514c9ac960940abbfdf0cd3d363e6da57ca18ea7c80d3378",
+    "search_model": "4e9fe2abf97fd07b8c3360fde8238c455267f6347767895aa8899a7484fd1f4d",
+    "search_header": "391f489563b672427fd2bfafff693c3e0156c9357392ec9f287b778138e271a4",
+    "search_tests": "98cf41c1e49a15663530737a1a0fce5cfc00c3ef0050b61e431af36241a0d7f9",
+    "backend": "eda03e683ec8146e9bc23075387e444aae41da4918b4789e05d83087a9ff8862",
+    "backend_tests": "2a54b3a50d50071e0ae3036f5930d72068c22b414e027e21a20fd05ecf615cb8",
+    "binary": "e72b1b87d983b97f20b23a4085308eddd36be518732d81c6399abb3008557d11",
+    "search_test_binary": "84f11742760b8ad539620a94c4ab272209ce97d5cb24ef394e1921bba5e14b59",
+    "screenshot": "540dd12d4e55e2b5eac306d5cb690428a07e3f55e526908fd2e58f8dae87a9a4"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-SELECTION-MAPPED-20261024-R70",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 GtkEntry selected text with mapped X11 focus",
+  "implementation_change": {
+    "file": "tools/theme-lab/tests/probe_gtk2_entry_selection_mapped.py",
+    "sha256": "3fb17128ebd92ad6d1048930a7de0e4f6546d0e5bb359ad3842676f34754f919",
+    "change": "Added isolated probe that uses a real X11 focus path and Ctrl+A keyboard event, then verifies selected-text role pixels against the active KDE schema."
+  },
+  "method": {
+    "toolkit": "GTK 2.24.33 real GtkEntry",
+    "palette": "DomainOS-SR10.4 KDE roles",
+    "palette_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+    "display": "private Xvfb :701, no window manager",
+    "temporary_storage": "private mount namespace binds ~/tempia/i167-xvfb-private-r70 over /tmp inside that namespace only",
+    "focus": {
+      "xid": 2097155,
+      "xdotool_focused_xid": 2097155,
+      "gtk_entry_is_focus": true,
+      "gtk_toplevel_has_focus": true,
+      "focus_retained_after_selection": true
+    },
+    "selection": {
+      "input_method": "xdotool Ctrl+A key event",
+      "utf8_text": "DomainOS SR10.4 selection",
+      "bounds": [
+        0,
+        25
+      ],
+      "selection_background_role_rgb": [
+        50,
+        151,
+        199
+      ],
+      "selection_foreground_role_rgb": [
+        255,
+        255,
+        255
+      ],
+      "exact_background_pixels_before": 0,
+      "exact_background_pixels_selected": 2108,
+      "added_background_role_pixels": 2108,
+      "changed_pixels": 2896
+    }
+  },
+  "result": {
+    "status": "passed",
+    "baseline_selection_role_pixels": 0,
+    "selected_role_pixels": 2108,
+    "added_role_pixels": 2108,
+    "selection_bounds": [
+      0,
+      25
+    ],
+    "selected_text": "DomainOS SR10.4 selection",
+    "conclusion": "With actual mapped X focus retained, a real Ctrl+A event selects all 25 UTF-8 characters and GTK paints the current KDE selection background and foreground roles. No fixed product RGB was added."
+  },
+  "captures": {
+    "unselected": {
+      "path": "/home/lsi/tempia/i167-entry-selection-mapped-r70/unselected-mapped.png",
+      "sha256": "d096163bdd80945ae593752c7af39fba6f3e90280e5476547e1b9f8b50777bf0"
+    },
+    "selected": {
+      "path": "/home/lsi/tempia/i167-entry-selection-mapped-r70/selected-mapped.png",
+      "sha256": "3a3d2e321d985861f5e1f248d8f64460404f497b6a6109852108a707029df917"
+    }
+  },
+  "artifacts": {
+    "result": "~/tempia/i167-entry-selection-mapped-r70/RESULTADO.json",
+    "result_sha256": "37adfc11e006141ad98f412c4c9428a218b2d2704abafefdbe2cabfe444cf7bc",
+    "probe": "tools/theme-lab/tests/probe_gtk2_entry_selection_mapped.py",
+    "probe_sha256": "3fb17128ebd92ad6d1048930a7de0e4f6546d0e5bb359ad3842676f34754f919"
+  },
+  "limits": [
+    "The stored VUE image does not prove a distinct native selected-text highlight, so historical selection color/geometry remain unknown.",
+    "Xvfb without a window manager does not prove KWin integration or desktop behavior.",
+    "This is a GTK2 role/runtime proof, not visual approval.",
+    "No user profile, XChat, guest state, or other X session changed."
+  ],
+  "next": "Continue only remaining GTK2 Entry checks. Historical selection/caret comparison waits for an unambiguous visible SR10.4 reference."
+}

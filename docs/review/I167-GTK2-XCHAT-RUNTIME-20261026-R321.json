@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R321",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "diagnosis",
+  "status": "open-xchat-processes-confirmed-gtk2;profile-rc-path-inherited",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only confirmation of GTK2 runtime and RC search inputs for the current user's XChat processes."
+  },
+  "processes": [
+    {
+      "pid": 2824156,
+      "executable": "/home/lsi/.cache/codex-xchat/prd/xchat",
+      "gtk_runtime": ["libgtk-x11-2.0.so.0.2400.33", "libgdk-x11-2.0.so.0.2400.33"],
+      "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0"
+    },
+    {
+      "pid": 3599731,
+      "executable": "/home/lsi/.cache/codex-xchat/hom/xchat",
+      "gtk_runtime": ["libgtk-x11-2.0.so.0.2400.33", "libgdk-x11-2.0.so.0.2400.33"],
+      "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0"
+    }
+  ],
+  "interpretation": "Both inspected XChat processes are GTK2 2.24.33 and include the selected user's ~/.gtkrc-2.0 in GTK2_RC_FILES. That file selects DomainOS-SR10-4-KDE, whose installed copies remain older per R320. This proves the process configuration path, not which pixmap bytes were cached in memory or the exact pixels currently drawn.",
+  "safety": {
+    "read_only_proc_maps_and_environment": true,
+    "application_restarted_or_signaled": false,
+    "theme_changed": false,
+    "other_user_processes_inspected": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Confirmed the actual XChat runtime follows the stale GTK2 profile files; pixel-level live-app comparison and historical review remain open."
+  },
+  "next_step": "After MAME process ownership is resolved and the VUE target is visible, finish the native historical comparison. Then, if the authorized GTK2 recipe passes, apply the user-local update and restart only the application chosen for review."
+}

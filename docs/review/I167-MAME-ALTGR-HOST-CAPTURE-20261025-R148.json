@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-ALTGR-HOST-CAPTURE-20261025-R148",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "Apollo DN3500, Domain/OS SR10.4, HP VUE 2.01 on the assistant clone",
+  "finding": {
+    "user_report": "After screen activation, MAME still captures the host pointer even though AltGr had been used to release it.",
+    "live_state_before_release": {
+      "mame_pid": 274368,
+      "hook_captured": true,
+      "hook_transitions": 4,
+      "mouse_option": true,
+      "paused": false
+    },
+    "implementation_boundary": "The custom mouse-altgr.lua hook only observes right-Alt key transitions while MAME polls input, and toggles the guest mouse option/input sequences. That reported guest-input state is not proof that MAME/SDL host-pointer capture is released, particularly across window/screen activation.",
+    "safe_action": "Called the existing hook release function through the live bridge; no physical mouse click, guest file change, launch-option change, or restart.",
+    "live_state_after_release": {
+      "hook_captured": false,
+      "hook_transitions": 5,
+      "mouse_option": false,
+      "paused": false
+    },
+    "host_pointer_release_verified": false
+  },
+  "limits": "The bridge exposes guest-device state, not SDL host-capture state. Do not claim this fixes host capture. Next diagnose the MAME/SDL host release path without changing the original VM or restarting this clone before preserving guest state.",
+  "status": "host_pointer_capture_issue_unresolved"
+}

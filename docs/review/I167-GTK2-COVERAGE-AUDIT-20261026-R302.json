@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "id": "R302",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "coverage-audit-16-controls-partial-interaction-and-vm-image-black",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Audit only GTK2 Theme Lab controls and the canonical Domain/OS reference for I167; no installation to user session."
+  },
+  "method": "Cross-referenced the public-preview manifest and receipts R297-R301; compared coverage dimensions without treating mount/size evidence as interaction or visual proof.",
+  "coverage": {
+    "catalog_controls": 16,
+    "public_preview_metrics": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "coupled_and_detached_controller": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "controls": [
+      {
+        "id": 0,
+        "name": "push",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R299: clicked; state retained after Apply/restart in both origins"
+      },
+      {
+        "id": 1,
+        "name": "toggle",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R299: activated; state retained after Apply/restart in both origins"
+      },
+      {
+        "id": 2,
+        "name": "check",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R299: activated; indicator and state retained after Apply/restart in both origins"
+      },
+      {
+        "id": 3,
+        "name": "radio",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R299: member selected; indicator and state retained after Apply/restart in both origins"
+      },
+      {
+        "id": 4,
+        "name": "entry",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 5,
+        "name": "combo",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 6,
+        "name": "spin",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 7,
+        "name": "text",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 8,
+        "name": "scale_h",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 9,
+        "name": "scale_v",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 10,
+        "name": "scroll_h",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R297: click changed range value; four arrow directions held/released in public preview"
+      },
+      {
+        "id": 11,
+        "name": "scroll_v",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R297: click changed range value; four arrow directions held/released in public preview"
+      },
+      {
+        "id": 12,
+        "name": "arrow",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "R297: arrow press/release in public preview; historical normal pixels exact"
+      },
+      {
+        "id": 13,
+        "name": "progress",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not applicable: passive indicator; inspect value/rendering, no direct input action"
+      },
+      {
+        "id": 14,
+        "name": "list",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not exercised as a specific control interaction"
+      },
+      {
+        "id": 15,
+        "name": "frame",
+        "public_preview_metrics": true,
+        "controller_coupled_and_detached": true,
+        "interaction_evidence": "not applicable: structural container; inspect rendering, no direct input action"
+      }
+    ]
+  },
+  "historical_reference": {
+    "status": "blocked-current-display-black",
+    "canonical_vm": "verified running MAME process PID 1313710 with canonical assistant disk; read-only probe reports unpaused, frameskip 4, throttle off, host pointer uncaptured",
+    "snapshot": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-current-r302-20261026.png",
+    "snapshot_sha256": "691083851ca24920941d3b818513cce6146d62c0f3ad6ba2430627df9bd771f5",
+    "guest_input_sent": false,
+    "reason": "The native guest snapshot remains black. The skill requires physical input to wake it; no host focus or guest input was attempted while the host desktop was in use."
+  },
+  "conclusions": [
+    "All 16 catalog controls have public native preview metrics and coupled/detached controller coverage across R297-R301.",
+    "Control-specific interactions remain partial: push/toggle/check/radio, scrollbars and arrows have direct interaction evidence; seven actionable controls still need directed interaction checks. Frame is structural and progress is passive, so their verification is visual/value based rather than clicking.",
+    "The public GTK2 normal-state arrow glyphs match all four retained SR10.4 cells at 1:1 in R297. Historical held comparison is complete only for the lower arrow; left/right/up remain unverified."
+  ],
+  "remaining": [
+    "Exercise interactions for the seven actionable controls without specific controller-input evidence: combo, horizontal and vertical scales, list selection, entry typing, text editing and spin value changes.",
+    "Compare historical held states for left/right/up when the VM image is awake and pointer target is visible.",
+    "Complete visual review with the user; do not install partial GTK2 recipe into XChat."
+  ],
+  "evidence_receipts": [
+    "R297",
+    "R298",
+    "R299",
+    "R300",
+    "R301"
+  ],
+  "technical_coverage_estimate": {
+    "percent": 90,
+    "basis": "Same estimate as R301: all 16 types are mounted in the public preview and now have coupled/detached controller coverage, but several lack control-specific interaction checks and three historical held states remain unverified. This is not visual fidelity."
+  }
+}

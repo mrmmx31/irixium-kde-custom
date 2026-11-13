@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "R576",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Strengthen the GTK2 generated-RC regression guard from horizontal stepper overlays to all four scrollbar directions and all five GTK2 states.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "file": "tests/test_domainos_motif.py",
+    "test": "GtkDomainOSTest.test_gtk2_all_steppers_keep_square_overlays_for_all_states",
+    "description": "Checks exact direction/state coverage, VERTICAL/HORIZONTAL mapping, 15x15 GTK2 stepper background assets, 11x11 arrow glyphs, and non-stretched overlay_file rules for the generated GTK2 RC.",
+    "product_theme_changed": false,
+    "installed_theme_changed": false,
+    "user_application_changed": false,
+    "vm_changed": false
+  },
+  "verification": {
+    "command": "TMPDIR=/home/lsi/tempia/domainos-theme-work python3 tests/test_domainos_motif.py GtkDomainOSTest.test_gtk2_preparation_is_immutable_and_distinct_by_scheme GtkDomainOSTest.test_gtk2_all_steppers_keep_square_overlays_for_all_states",
+    "result": "2 tests passed",
+    "scope_limit": "The generated-RC guard and existing three-scheme palette-generation check pass. This does not prove GTK2 live rendering, historical pressed appearance in the VM, or the user's reported application/state."
+  },
+  "reconciliation": {
+    "normal_horizontal_measurement": "R496/R553 remain exact at 0/225 pixels per cell and 0/10840 pixels for the captured normal strip.",
+    "historical_live_state": "R434 covers the down arrow only; R573 remains inconclusive and must not be repeated.",
+    "authorization_state": "I167 remains authorized. I500 remains unauthorized and Q501 remains unanswered in the current saved board state."
+  },
+  "next": "Keep normal geometry unchanged. Continue GTK2 work that does not require MAME graphical input; resume the horizontal held-state VM comparison only after its saved authorization and a target-confirmed route are available."
+}

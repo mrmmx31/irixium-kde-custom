@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-11T06:15:10.755911+00:00",
+  "item": "I118",
+  "revision": 2,
+  "previous_goal_turn_classification": "progress: thumb integrated editor proved",
+  "stage": "GtkViewport fitting state translation and native proof in progress",
+  "backend_tests": 33,
+  "css_combinations": 66,
+  "native_handle": 30372,
+  "native_log": "/tmp/i118-fitting-native-r2.log",
+  "native_root": ".qa-theme-lab-fitting-states-xhoxqfum",
+  "native_completed_at_checkpoint": 9,
+  "native_terminal": false,
+  "prior_attempt": {
+    "root": ".qa-theme-lab-fitting-states-vdh8a43a",
+    "handle": 48684,
+    "exit": 130,
+    "reason": "Fixture inherited assertion expected trough interaction although pointer targets viewport; interrupted own test, preserved records; corrected only this assertion."
+  },
+  "editor_enabled": false,
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "scope_progress_percent": 83,
+  "remaining": [
+    "Finish native proof before enabling fitting editor",
+    "Integrated fitting editor",
+    "Initial/post-reopen readiness",
+    "Personal delivery and evaluation"
+  ],
+  "hashes": {
+    "tools/theme-lab/tests/test_fitting_states_native.py": "18b8a6229510ebf7edb2a830bc7e9241a1ee09955387dea09ea4e9175ecc20ef",
+    "tools/theme-lab/fitting_states.py": "23cd46c3ec400db5113da2713250a582d48f8862c71db4e0152c65bc976fb995",
+    "tools/theme-lab/backend.py": "44b355abf7f19e89415176b1190f60900802fbf87f294f3167347f850f2b65bc"
+  }
+}

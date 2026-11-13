@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R584",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "related_parent": "P10",
+  "scope": "Apply the authorized current GTK2 palette-generation update to the invoking user's selected DomainOS theme and reload GTK2 resources without restarting applications.",
+  "authority": {
+    "P10": {
+      "user_revision": 1,
+      "authorized": true,
+      "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"
+    },
+    "I167": {
+      "user_revision": 2,
+      "authorized": true,
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+    }
+  },
+  "before": {
+    "global_theme": "org.magpie.irixclassic.domainos.desktop",
+    "gtkconfig_theme": "DomainOS-SR10-4-KDE",
+    "gsettings_gtk_theme": "DomainOS-SR10-4-KDE",
+    "gtk2_runtime": "active",
+    "dry_plan_entries": 119,
+    "dry_run_wrote_files": false
+  },
+  "transaction": {
+    "status": "installed",
+    "backup": "~/.local/state/irixium-gtk2-palette/backups/20261028T162938-cc64d93c5f40/receipt.json",
+    "backup_sha256": "d4e9b663138418442cd1b721e76edf8d55bd76b49ee9391eb3ec61ea0bc2bebf",
+    "entries": 119,
+    "changed_entries": 119,
+    "entry_classes": {
+      "immutable GTK2 palette assets": 112,
+      "GTK2 wrappers": 5,
+      "bundle manifests": 1,
+      "transaction journal": 1
+    },
+    "palette_source_colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "generated_bundle": "~/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+    "domainos_gtkrc_sha256": "32a4add9af1f73570c293f33c2339e205e14d4ac888c4f0bb85a114e7fcdc821"
+  },
+  "reload": {
+    "status": "sent",
+    "windows_considered": 179,
+    "events_sent": 179,
+    "x_errors": 0,
+    "applications_restarted": false
+  },
+  "after": {
+    "global_theme_unchanged": true,
+    "gtkconfig_theme_unchanged": true,
+    "gsettings_gtk_theme_unchanged": true,
+    "gtk2_runtime_record": "active and validated against owned files",
+    "domainos_gtkrc_matches_active_record": true,
+    "scrollbar_assets": {
+      "directions": ["up", "down", "left", "right"],
+      "states": ["normal", "pressed", "disabled", "focused", "toggled"],
+      "stepper_cell_px": [15, 15],
+      "glyph_px": [11, 11],
+      "direction_state_pairs_checked": 20
+    }
+  },
+  "limits": [
+    "This transaction updates generated GTK2 resources/wrappers across the owned adaptive themes; it does not select a different theme or color scheme.",
+    "The reload notification was sent, but no screenshot or human visual acceptance is claimed.",
+    "The horizontal held-state VUE comparison, hover/insensitive VUE states, thumb drag, and live application pixel review remain open under Q330.",
+    "No other toolkit family, user application, theme selection, color schema, or MAME state was changed."
+  ],
+  "next": "Continue I167 in GTK2 only. Await Q505 before changing the VM mouse-capture route; use the applied GTK2 resources in the next visual check without restarting an active application."
+}

@@ -1,0 +1,80 @@
+{
+  "checked_at": "2026-10-23T01:01:35Z",
+  "status": "motif_local_scale_translation_verified",
+  "family": "gtk2",
+  "controls": [
+    "scale_h",
+    "scale_v"
+  ],
+  "reference": {
+    "kind": "local_native_motif_theme_lab_sample",
+    "image": "theme-lab-motif-reference/01-MOTIF-REFERENCE.png",
+    "sha256": "f413f7ab6eb2306998d8582b480dba01fa3bf7caf66715dd7136e5e435443527",
+    "scale": "1:1",
+    "horizontal_track_visible_px": [
+      131,
+      12
+    ],
+    "horizontal_thumb_approx_px": [
+      27,
+      8
+    ],
+    "shows_value": true,
+    "vertical_metric": "not measured; cropped by the local sample viewport"
+  },
+  "changes": {
+    "show_value_in_comparison_scene": true,
+    "scale_slider_width_default_px": 8,
+    "scale_slider_length_default_px": 27,
+    "optional_recipe_overrides": {
+      "scale_slider_width_px": "integer 1..128",
+      "scale_slider_length_px": "integer 1..128"
+    },
+    "scrollbar_thumb_geometry_reused": false,
+    "colors": "derived from active KDE roles; no final RGB constants"
+  },
+  "validation": {
+    "unit": {
+      "test_gtk2_scale_paint.py": "4/4 passed",
+      "test_gtk2_scale_integration.py": "4/4 passed",
+      "py_compile": "passed"
+    },
+    "native": {
+      "gtk2_version": "2.24.33",
+      "paint_scenes": 48,
+      "paint_matrix": "four palettes x three variants x two origins x two orientations",
+      "scene_scenes": 48,
+      "scene_matrix": "four palettes x three variants x two origins x two selected-control states; each scene contains both orientations",
+      "gesture_scenes": 4,
+      "gesture_result": "Ctrl-select and drag preserved values and model",
+      "model_unchanged": true,
+      "visual_inspection": "value label and elongated horizontal thumb visible at native scale"
+    },
+    "artifacts": {
+      "root": "~/tempia/i167-scale-r40.MEBghA",
+      "paint_result": "paint/RESULTADO.json",
+      "scene_result": "scene/RESULTADO.json",
+      "gesture_result": "scene-gestures/RESULTADO.json",
+      "sample_capture": "scene/DomainOS/separate-0-8.png"
+    }
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk2_scales.py": "959a877a9e493801e87a0d4970725b3e1f98b4b999cb9dcb62c73ae2cd009806",
+    "tools/theme-lab/native_scene_gtk2.py": "00aa00cb37e0f0eb8a19cbd9cead29e284e000346d0e9949899a0508fdd046c7",
+    "tools/theme-lab/tests/test_gtk2_scale_paint.py": "a7f798b91988ff7dcaa3a749258a04a89b80e164bbc5b28e2604418f1b0c0690",
+    "tools/theme-lab/tests/test_gtk2_scale_integration.py": "0d9e403856e7c702a5fa2b53b7da6ef8589314fab485ab528121405551cccf9a",
+    "tools/theme-lab/tests/probe_gtk2_scale_paint.py": "7e965c71b933c2158774864a695881b895e4bced61217480c291c3dc73eda7b2",
+    "tools/theme-lab/tests/probe_gtk2_scale_scene.py": "604834258516442924458ca01ab04e370751ffe8b5bd08dfe3d990f58cba0950"
+  },
+  "failed_attempts": [
+    "The old invalid-dimension test expected thumb_cross_px to govern scale width; after separating families it was replaced by validation of scale_slider_width_px and scale_slider_length_px.",
+    "A single fixed screenshot point no longer sampled the trough once the visible value label moved it; the probe now checks the expected role inside each widget's actual allocation."
+  ],
+  "limits": [
+    "Local Motif sample only; this is not a Domain/OS SR10.4 VM comparison or an SR10.4 default metric.",
+    "The vertical local Motif scale is clipped; its slider size was not directly measured.",
+    "The C Theme Lab model/UI does not yet persist or expose scale_slider_width_px and scale_slider_length_px.",
+    "The existing MAME channel had an unresolved request f2127393cf7642a4896dceae1977ea71 with no correlated reply; no new guest command was sent.",
+    "No public GTK2 installation, personal profile change, XChat change, or user visual approval was performed."
+  ]
+}

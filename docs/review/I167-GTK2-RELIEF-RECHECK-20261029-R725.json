@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R725",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Recheck the newly reiterated GTK2 inner-relief regression against the current GTK2 recipe, its displayed preview state, and the exact SR10.4 rule.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "user_assessment": {
+    "result": "failure",
+    "text": "The GTK2 scrollbar's inner relief now looks outward; GTK2 has regressed compared with the earlier version."
+  },
+  "evidence": {
+    "shared_rule": {
+      "path": "tools/domainos_scrollbar_rules.json",
+      "sha256": "5f56bf69a5ca67bf687550d979f001ed83953d7c9a5ddf8d6d3ea647efc1d92e",
+      "normal_trough": "The complete trough is a continuous two-pixel inset; its bevel must stay separate from the raised thumb."
+    },
+    "gtk2_generator": {
+      "path": "tools/domainos_motif_art.py",
+      "finding": "GTK2 normal trough artwork is generated with down=True, and the normal thumb with down=False. This confirms source intent only, not what the user's currently loaded window displays."
+    },
+    "last_live_capture": {
+      "path": "records/ia-tema/I167/R708/captures/gtk2-scrolledwindow-full.png",
+      "sha256": "4e2776a879ef9085f926755db8d3a8921ecd870d98ede739a2a146a309300eeb",
+      "limit": "The one-pixel cross-section noted in R724 matches the SR10.4 profile, and R708 matches four normal GTK2 arrow cells. Neither checks the full current trough and thumb after the reported regression."
+    },
+    "theme_lab_state": {
+      "path": "/home/lsi/tempia/domainos-theme-work/themelab-gtk2-lsi-20261029/working.json",
+      "geometry": {"bar_px": 89, "thumb_cross_px": 11, "shadow_px": 2},
+      "latest_status": "unavailable",
+      "reason": "GTK2 native range thickness must equal thumb cross dimension plus two trough borders.",
+      "effect": "The current GTK2 recipe has no valid native preview. A window-only capture of the open Theme Lab shows the GTK2 canvas empty; no stale image is visible there."
+    },
+    "current_theme_lab_window": {
+      "path": "/home/lsi/tempia/domainos-theme-work/gtk2-check-8zPC43/themelab.png",
+      "sha256": "de962f9d6a69c083832212cee69de9345c5c698f35f26274687f4ec3f40e31b1",
+      "method": "Captured only the existing Theme Lab client window; no focus, keyboard, mouse or XChat content was used.",
+      "observation": "Native GTK2 canvas says backend embedding is not mapped and is empty; status reports GTK2 generation unavailable."
+    },
+    "gtk2_property_semantics": {
+      "source": "GTK+ 2.24 GtkRange reference",
+      "url": "https://www.manpagez.com/html/gtk2/gtk2-2.24.29/GtkRange.php",
+      "properties": "slider-width sets scrollbar/thumb width; trough-border spaces the thumb or steppers from the trough bevel; stepper-size sets end-button length.",
+      "consequence": "GTK2 cannot independently realize the saved 89 px bar, 11 px thumb cross-size, and 2 px border as one native scrollbar. Do not silently stretch or invert relief to disguise the mismatch."
+    }
+  },
+  "changes": [],
+  "result": "The user-visible regression remains open. Source intent and old 15 px samples are insufficient to overrule the user's visual failure report. The current Theme Lab canvas is empty and cannot compare GTK2. The applied GTK2 appearance was not captured this turn; no GTK2 artwork or relief direction was altered by guess.",
+  "next": "Keep the task in GTK2. Restore a truthful, usable GTK2 native preview through the authorized Theme Lab route; then compare a fresh complete GTK2 trough/thumb capture at the same 1:1 geometry and state as the SR10.4 reference. Change the bevel only when that comparison identifies its reversed edge. Preserve the user's working geometry and do not restart the GTK2 application or open Xephyr without the user's coordination.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Technical coverage estimate remains unchanged; visual acceptance is not achieved and no fidelity percentage is claimed."
+  }
+}

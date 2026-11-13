@@ -1,0 +1,48 @@
+{
+  "id": "R638",
+  "date_utc": "2026-10-28T22:53:05Z",
+  "scope": "Repair only the GTK2 companion renderer deployment and restore the user-local theme observer after R637; T04/GTK2 user-profile application.",
+  "authorization": {
+    "board_item": "T04",
+    "section": "work",
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+    "user_revision": 9,
+    "authorized": true
+  },
+  "reconciliation": {
+    "order": [
+      "restore R495 owned renderer receipt 65b8…5efb to its recorded before hash e830…a398",
+      "restore R492 owned renderer receipt e830…a398 to outer bundle expected hash 1a10…e2d8",
+      "verify original companion bundle",
+      "install exact staged R495 runtime with outer Bundle transaction"
+    ],
+    "staged_source": "/home/lsi/tempia/domainos-theme-work/R637-reconcile/package",
+    "staged_source_fingerprint_matches_pre_restore_runtime": true,
+    "only_runtime_file_updated": "tools/gtk2_domainos_palette.py",
+    "renderer_sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb",
+    "outer_bundle_new_receipt": "/home/lsi/.local/state/irixium-theme-companions/installation/backups/a6d73d9c064e4685b91c1bf349393c64",
+    "outer_bundle_verification": "passed after install"
+  },
+  "service": {
+    "unit": "irix-theme-companions.service",
+    "state": "active/running",
+    "main_pid": 1060526,
+    "result": "success"
+  },
+  "gtk2_application": {
+    "gtkrc_selection": "DomainOS-SR10-4-KDE-Reload",
+    "palette_state": "active",
+    "startup_sync": "synchronized profile domainos",
+    "palette_files_updated": 5,
+    "windows_considered": 177,
+    "native_reload_events_sent": 177,
+    "x_errors": 0,
+    "applications_restarted": false
+  },
+  "related_profile_refresh": {
+    "gtk4_palette": "reloaded by existing global-profile observer on startup"
+  },
+  "changes_made": true,
+  "manual_visual_acceptance": "not asserted; user review remains separate",
+  "limits": "This restores the observer and reapplies the current dynamic KDE-derived palette; it does not complete all GTK2 family fidelity states or the broader T04 adapter matrix."
+}

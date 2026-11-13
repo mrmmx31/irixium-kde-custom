@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-11T20:12:49.204939+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "scope": "GTK2 push-button forced-pressure lifecycle foundation; renderer capability still rejects forced pressure.",
+  "module": "tools/theme-lab/gtk2_pressed_state.py",
+  "unit_tests": {
+    "count": 5,
+    "result": "passed",
+    "covers": [
+      "hover and explicit reset",
+      "destruction without setter on dying widget",
+      "failed construction cleanup",
+      "hover setter failure disables callbacks",
+      "original error preserved if reset fails"
+    ]
+  },
+  "native_test": {
+    "session": 45478,
+    "exit_code": 0,
+    "proof": ".qa-t04-anchor-foundation/gtk2-pressed-module-destroy.json",
+    "hover_maintained": true,
+    "native_hover_restored_after_disconnect": true,
+    "zero_artificial_activations": true,
+    "one_physical_activation_after_reset": true,
+    "destroy_cleanup": {
+      "closed": true,
+      "remaining_handlers": 0,
+      "setter_calls": [
+        true
+      ],
+      "activations_after_destroy": 1
+    }
+  },
+  "hashes": {
+    ".qa-t04-anchor-foundation/gtk2-pressed-module-destroy.json": "df3bb50489eff875ef80fd15aea64febabe8db42da8acc22ac520aaeca2437be",
+    "tools/theme-lab/gtk2_pressed_state.py": "59decfd772b93b8cf1512ff1cfa79c3dd37ed4d1a2710e9aa8b54146b12ad47c",
+    "tools/theme-lab/tests/test_gtk2_pressed_state.py": "268e77502d52f1c1a9a0d07576d3f13cc95f43f71773263a273410dcb3cb5cd7",
+    "tools/theme-lab/tests/probe_gtk2_pressed_demo.py": "838136a9733bb77d348e03f1e363bc4371beb03529008dd44265a3f9fdf460a9"
+  },
+  "limits": [
+    "Only a standalone native GtkButton with private GTK2.24.33 bridge, not scene or historical paint proof.",
+    "Exact runtime bridge ABI/build/packaging strategy pending.",
+    "No coupled/separate scene rebuild or controller persistence proof for forced pressure yet.",
+    "No personal delivery, theme or palette change."
+  ],
+  "progress": {
+    "percent": 25,
+    "basis": "One of four stages: lifecycle foundation; guarded bridge and renderer; native coupled/separate and rebuild/controller proof; coordinated delivery."
+  },
+  "next": "Guarded GTK2 bridge/build strategy and renderer wiring with per-control capability; keep unsupported controls rejected."
+}

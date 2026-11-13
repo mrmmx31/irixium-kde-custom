@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-11T07:25:24.284357+00:00",
+  "scope": "I179 module only, not integrated into view or installed",
+  "authorized_revision": 1,
+  "definition_sha256": "d96d1fd6346542bbe8a598c222d423f227f290830934afddda1d3379d3b7dd21",
+  "terminal_status": 0,
+  "native_proof": [
+    "Fallback XLFD derived from actual primary registry/encoding, no fixed family/size",
+    "Candidate only adopted when first-font identity and95ASCII ink/logical extents remain equal",
+    "Actual glyph table queried from resolved Unicode font",
+    "Portuguese Greek Cyrillic sample present",
+    "CJK2glyphs absent reported; supplementary emoji unsupported",
+    "Malformed overlong surrogate truncated and above-Unicode input rejected"
+  ],
+  "failures_before_fix": [
+    "Test lacked Xt display initialization",
+    "FontSet aggregate structures falsely reported13Latin characters missing; querying actual font table corrected diagnosis"
+  ],
+  "remaining": [
+    "Integrate into view loading/sizing and report coverage visibly",
+    "Native text readback, UI/palette/states and Undo/journal preservation",
+    "Coordinated delivery; no personal reopen yet"
+  ],
+  "scope_progress_percent": 40,
+  "installed": false,
+  "files": {
+    "tools/theme-lab/include/font_policy_motif.h": "d35827ca818d90735894778f0997e4dd410ae49e8f54e57353ac45ffb999cebe",
+    "tools/theme-lab/src/font_policy_motif.c": "feb36d8f95d5eb552830db141560ad6ae86e63955ccfe86451749adc14771c8a",
+    "tools/theme-lab/tests/font_policy_motif_test.c": "2500ab4b2b68a89e1b6995454b1fa41e81e328f579710182137c48d7930b7fd5",
+    "docs/referencias/domainos-sr104/I179-POLITICA-NATIVA.log": "97add32e55a30d0767d94340d7a88167212aea3dfcf38e59f703b804e6629977"
+  }
+}

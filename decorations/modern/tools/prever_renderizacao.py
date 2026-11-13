@@ -66,7 +66,8 @@ def main():
         surface = root.findChild(QObject, name)
         check(name + ' frame artwork exists', surface is not None and surface.property('artworkValid'))
         if not surface: continue
-        for suffix in ('Menu', 'Minimize', 'Maximize', 'Close'):
+        check(name + ' no close button', surface.findChild(QObject, 'irixiumModernClose') is None)
+        for suffix in ('Menu', 'Minimize', 'Maximize'):
             button = surface.findChild(QObject, 'irixiumModern' + suffix)
             check(name + ' ' + suffix + ' selected asset exists', button is not None and button.property('artworkValid'))
             if button and suffix != 'Menu':

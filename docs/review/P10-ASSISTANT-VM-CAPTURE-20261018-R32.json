@@ -1,0 +1,54 @@
+{
+  "id": "P10-ASSISTANT-VM-CAPTURE-20261018-R32",
+  "date_utc": "2026-10-18T16:15:17Z",
+  "task": "P10",
+  "scope": "Read-only native screen snapshot from the already-running assistant clone; diagnose whether the guest has visible VUE pixels for visual review.",
+  "instance": {
+    "mame_pid": 1925360,
+    "network_namespace": "net:[4026533751]",
+    "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "ftp_telnet_alias": "10.104.246.10"
+  },
+  "capture": {
+    "api": "manager.machine.screens[\":apollo_screen:screen\"]:snapshot(path)",
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "guest_viewport_px": [
+      1024,
+      768
+    ],
+    "viewport_black_pixels": 786432,
+    "viewport_total_pixels": 786432,
+    "viewport_black_ratio": 1.0,
+    "visible_region": "Apollo command strip in bottom 76 px",
+    "sha256": "a9c01286ae2000781c33d5b8c478936b07285438f56d096c57d8ddb4f570b224",
+    "artifact": "~/tempia/domainos-assistant-vm-20261018/p10-current-capture-20261018/domainos-screen.png"
+  },
+  "mame_probe": {
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false,
+    "capture_hook": "table",
+    "captured": false,
+    "screen_tag": ":apollo_screen:screen"
+  },
+  "bridge_end_state": {
+    "pending": null,
+    "reply": null,
+    "pending_files": []
+  },
+  "preservation": {
+    "physical_input_sent": false,
+    "mame_restarted": false,
+    "guest_files_changed": false,
+    "disk_changed": false,
+    "performance_profile_changed": false
+  },
+  "result": "No usable VUE pixels for historical comparison. The clone remains available; this specific visual comparison is deferred while other authorized work proceeds.",
+  "limits": [
+    "The snapshot proves the captured guest viewport is black, not why it is black.",
+    "No UI input was sent because the intended visual target was not visible."
+  ]
+}

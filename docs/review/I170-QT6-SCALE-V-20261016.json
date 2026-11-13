@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "step": "scale_v",
+  "date": "2026-10-16",
+  "status": "passed",
+  "scope": "One real vertical QSlider in the private Qt6 gallery; Qt retains range and native mouse/keyboard semantics.",
+  "recipe": {
+    "palette": "KDE button roles for normal, backdrop, disabled and focus states; backdrop follows the top-level activation event through domainosBackdrop.",
+    "geometry": "Vertical handle cross-axis minimum reserves thumb_cross_px plus two relief borders (19 px at the shared 11 px thumb / 2 px relief); QSS dimensions are not final static colors."
+  },
+  "validation": {
+    "qt6_recipe_tests": "16/16 passed, including vertical range/input/press-release and alternate palette pixels.",
+    "qt5_regression_tests": "4/4 passed.",
+    "public_route": "Passed in existing Xephyr :68; Qt 6.8.2, PyQt 6.9.0, QFusionStyle, Xcb; private namespace checks passed; preview closed with exit 0 and Xephyr stayed open.",
+    "widget": {
+      "applied": true,
+      "scope": "one real vertical QSlider; Qt retains range, mouse and keyboard semantics",
+      "widgetClass": "QSlider",
+      "objectName": "domainosRecipeScaleVertical",
+      "orientation": "vertical",
+      "value": 38,
+      "sizeHint": [
+        15,
+        19
+      ],
+      "source": "/home/domainos-test/out/revisions/20261016T132547-f86b0844fbaa/qt6-scrollbar-snapshot/qt6-scrollbar.qss",
+      "states": [
+        "normal",
+        "focused",
+        "backdrop",
+        "disabled"
+      ],
+      "backdropSelector": "[domainosBackdrop=\"true\"]",
+      "backdropTracksTopLevelActivation": true,
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "limitations": [
+        "The QSS uses Qt subcontrols; this does not establish historical SR10.4 fidelity."
+      ]
+    },
+    "native_scrollbars": {
+      "vertical": {
+        "allocation": [
+          15,
+          377
+        ],
+        "sizeHint": [
+          15,
+          15
+        ],
+        "minimumSizeHint": [
+          -1,
+          -1
+        ],
+        "visible": true,
+        "value": 0,
+        "minimum": 0,
+        "maximum": 247,
+        "pageStep": 373,
+        "singleStep": 20,
+        "objectName": "domainosScrollBarVertical",
+        "widgetClass": "RecipeScrollBar"
+      },
+      "horizontal": {
+        "allocation": [
+          459,
+          15
+        ],
+        "sizeHint": [
+          15,
+          15
+        ],
+        "minimumSizeHint": [
+          -1,
+          -1
+        ],
+        "visible": true,
+        "value": 0,
+        "minimum": 0,
+        "maximum": 195,
+        "pageStep": 455,
+        "singleStep": 20,
+        "objectName": "domainosScrollBarHorizontal",
+        "widgetClass": "RecipeScrollBar"
+      }
+    }
+  },
+  "evidence": {
+    "public_report": "/home/lsi/tempia/i170-qt6-public-v6n832lm/QT6-PUBLIC-PREVIEW-RESULT.json",
+    "public_report_sha256": "388d3c2a0e1bd703ab3aee71cdd58fcd388d8200a756ced6a9bb50322f7ff076",
+    "native_result": "/home/lsi/tempia/i170-qt6-public-v6n832lm/home/qtwidgets-proof/RESULTADO.json",
+    "native_result_sha256": "d007364a644388ff01616f7155ddd61ee5932a536a30bf1409788781aeb51c33",
+    "preview_receipt": "/home/lsi/tempia/i170-qt6-public-v6n832lm/home/out/revisions/20261016T132547-f86b0844fbaa/qt6-PREVIEW.json",
+    "preview_receipt_sha256": "2e59fd78a1224ee98d5422168c8ca657c9acf605c5c072d5217474ed54ccb349",
+    "screenshot": "docs/review/I170-QT6-SCALE-V-20261016.png",
+    "screenshot_sha256": "d234e6e4610dacc11b6af8d338cdc3df8c1edfc3000442ae8a793bbc7431722b",
+    "display": ":68"
+  },
+  "limits": [
+    "No matching vertical slider measurement was taken in the Domain/OS SR10.4 guest.",
+    "No human visual approval is inferred. Qt QSS implementation does not establish historical fidelity."
+  ]
+}

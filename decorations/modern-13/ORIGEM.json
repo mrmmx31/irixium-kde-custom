@@ -1,0 +1,36 @@
+{
+  "componente": "Aurorae Irixium 1.3",
+  "fonte_local": "/home/lsi/.local/share/aurorae/themes/Irixium",
+  "identificador_original": "Irixium",
+  "versao_metadados": "1.3",
+  "origem_publica": "https://store.kde.org/p/1457768",
+  "evidencia": "Metadados locais e window-decorations.knsregistry do KNewStuff",
+  "destino_pacote": "decorations/modern-13/package",
+  "identificador_independente": "irixium_modern_13",
+  "licenca_metadados": "GPL3",
+  "licenca_arquivo": "GNU GPL version 3, preservada sem alterações",
+  "licenca_observacao": "Metadados GPL3 e arquivo GPLv3 preservados.",
+  "implementacao_layout": "Geometria e camadas SVG equivalentes ao Aurorae do KWin 6.3; botão fechar não é criado; menu nativo abre ao soltar sem timer.",
+  "referencias_layout": [
+    "https://develop.kde.org/docs/plasma/aurorae/",
+    "https://raw.githubusercontent.com/KDE/kwin/Plasma/6.3/src/plugins/kdecorations/aurorae/src/lib/auroraetheme.cpp"
+  ],
+  "arquivos_originais": {
+    "Irixiumrc": "d7c597c3c39e32674b368705452a04d775e42c89db344d60f394f43f43c7ade3",
+    "LICENSE": "840b5fbaa57259124139c65dcd5b9560e623ec24ec294a4197baf83d0811d7a7",
+    "alldesktops.svg": "f1a31b3f4c839f7d686d25d92481525cd2b5b043b49502e492c926d4a4d525eb",
+    "applications.png": "8230f7eff697361dbfa0d09ba62a33ad0d0d8f858bbdb252504a60db4152bc4c",
+    "close.svg": "c3d35495ab25dbae63121f0bbd82da9b443be458499ae411ec95fd7f3a903dbb",
+    "decoration.svg": "986fffa5b40e01e531b665df4300d4c1ef63e3d912bcf4de714548efc9244fdc",
+    "keepabove.svg": "ef1c230b907c0b41c8836c220e45317eb97ab8f6e5668c9b1b28eecebff9658d",
+    "keepbelow.svg": "38d4246aebec6558629f9cbb286c60c1a2306ec48cdff9ed718548e95b66d0d1",
+    "maximize.svg": "9159b9ff4f97f044430e9040909e6cb44cef39a2de000a5b41721579db9624f9",
+    "metadata.desktop": "74bf84d4d63c9186cba37fb09360d26eda527dd623ad3b8be89776e5069ae1d2",
+    "minimize.svg": "c3d35495ab25dbae63121f0bbd82da9b443be458499ae411ec95fd7f3a903dbb",
+    "restore.svg": "ecf930eda27dc39a4cb0ad4f7dbfbe343f8a6648172a0e117c94272777fafdcd",
+    "shade.svg": "ab6743b9a6965909c6e2f3a2f196a53b7fd5a271b7975931ad61f6079977fc27"
+  },
+  "arquivos_metadados_preservados": {
+    "metadata.desktop": "package/upstream/metadata.desktop"
+  }
+}

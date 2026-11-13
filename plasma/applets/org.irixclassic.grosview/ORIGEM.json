@@ -1,0 +1,47 @@
+{
+  "kind": "original_implementation",
+  "author": "mrmmx31",
+  "license": "GPL-3.0-or-later",
+  "historical_name": "gr_osview",
+  "description": "Original IRIX Classic instrument monitor using native KDE System Statistics sensors; not the SGI executable or a binary emulation.",
+  "local_research": {
+    "gr_osview_binary_found": false,
+    "sgi_program_or_artwork_copied": false,
+    "installed_plasma_version": "6.3.6"
+  },
+  "api_references": [
+    {
+      "source": "https://invent.kde.org/plasma/libksysguard/-/tree/v6.3.6/sensors",
+      "local": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/ksysguard/sensors/Sensors.qmltypes",
+      "used": "Sensor sensorId/status/value/formattedValue/updateRateLimit",
+      "installed_sha256": "55b2573f71440f0def32d4dadf4fb981f0f3e7317e6d85284810190b6f094171"
+    },
+    {
+      "source": "https://invent.kde.org/plasma/plasma-workspace/-/tree/v6.3.6/applets/systemmonitor",
+      "local": "/usr/share/plasma/plasmoids/org.kde.plasma.systemmonitor/contents/ui/main.qml",
+      "used": "PlasmoidItem and native Sensor API conventions",
+      "installed_sha256": "53277f004dc528ab03c67a1657075072088a0b009c804470e3092cd59431362c"
+    },
+    {
+      "local": "/usr/share/dbus-1/interfaces/org.kde.ksystemstats1.xml",
+      "used": "Native daemon interface and sensor metadata",
+      "installed_sha256": "1fcc7eba971375316ed22d422f65f9d41e290dd98b19239e3977cd35c5acf8c6"
+    }
+  ],
+  "behavior": [
+    "Seven real sensor subscriptions; unavailable data shown as a dash and an explicit sensor availability message.",
+    "CPU/MEM/SWAP bars use percentage scale; disk and network rates use each bar's observed peak, disclosed in the footer.",
+    "Native sensor updates limited to 1000ms; no production animation or polling Timer.",
+    "No mouse grabber overrides the native desktop widget movement or resize handles."
+  ],
+  "sensors": [
+    "cpu/all/usage",
+    "memory/physical/usedPercent",
+    "memory/swap/usedPercent",
+    "disk/all/read",
+    "disk/all/write",
+    "network/all/download",
+    "network/all/upload"
+  ],
+  "validation_tool": "tools/testar.py: private plasmawindowed + native ksystemstats +3 samples + widget-only280x220 capture; no injected values"
+}

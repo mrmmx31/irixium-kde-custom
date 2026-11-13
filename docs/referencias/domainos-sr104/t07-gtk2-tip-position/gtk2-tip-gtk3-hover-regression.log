@@ -1,0 +1,5 @@
+/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py:134: DeprecationWarning: Gdk.Screen.get_width is deprecated
+  assert position[0] + size[0] <= screen.get_width()
+/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py:135: DeprecationWarning: Gdk.Screen.get_height is deprecated
+  assert position[1] + size[1] <= screen.get_height()
+{"status": "passed", "family": "gtk3", "native_delay_ms": 500, "button_rect": [540, 320, 120, 36], "tooltip_rect": [301, 366, 599, 81], "style_colors": null, "embedded": false, "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"}

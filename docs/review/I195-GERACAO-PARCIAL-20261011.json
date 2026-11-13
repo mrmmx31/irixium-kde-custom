@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-11T10:00:57.166652+00:00",
+  "item": "I195",
+  "revision": 1,
+  "status": "in_progress",
+  "evidence": "docs/referencias/domainos-sr104/i195-radio-generation",
+  "implemented": [
+    "OPTION generation when radio requested",
+    "Native selected fragment with both shadow states, role-dependent snapshot",
+    "C gate accepts canonical push/toggle/radio/scroll_h/scroll_v and rejects CHECK substitution"
+  ],
+  "proof": {
+    "pure_tests": 46,
+    "palette_generation": 4,
+    "native_foundation_asset_parity": 36,
+    "receipt_gate_passed": true
+  },
+  "fixture_issue": "Initial ad-hoc fixture lacked visible_controls; replaced with explicit canonical visibility in reusable test. No renderer defect inferred.",
+  "remaining": [
+    "Native two-option group in scene",
+    "Native exclusivity and member/group size measurements",
+    "Selection preservation during scene replacement and controller Apply",
+    "Native coupled/separate tests and regressions"
+  ],
+  "stage_estimate_percent": 35,
+  "parent_I167_estimate_percent": 86,
+  "estimate_basis": "Generation/snippet/receipt foundation checked; no new scene/controller coverage yet.",
+  "historical_fidelity_claimed": false,
+  "human_approval_inferred": false,
+  "personal_session_changed": false,
+  "sha256": {
+    "gtk2_radios.py": "dff133a70779d0ea3bd2c643b8a023a75137119c3ae490ac4fccc0f0aef158c8",
+    "gtk2_generation.py": "c72617061fb7dd1ae5e3a1977e2aed44c8d1991c26b9a00e43510da8900a5238",
+    "backend.py": "cf14788cd0e6331df8790d01fe028aca22422a73d5a67438c1faf72164555f44",
+    "src/controller/generated_preview.c": "07e975a0ab4323d77a4898ba2350da2acd0693e782f26cee88658805d75b5a91",
+    "tests/test_gtk2_snippet.py": "1914f054402942ecd68a2252bd7879a88fb6c5a27205dc7acdc0b5681f050b2d",
+    "tests/test_gtk2_radio_generation.py": "934f616e77b32f8b041eaa4c32c6f3d8e0be777bedc9c651fbf705a4c8df540b",
+    "tests/generated_preview_test.c": "b3af67173cb428fdf0810ed93e03fbae37446341563026bba4f3bedb7a2b3d9e"
+  }
+}

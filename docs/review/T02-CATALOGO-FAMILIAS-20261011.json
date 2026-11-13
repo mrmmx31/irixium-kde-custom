@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-11T15:07:53.023081+00:00",
+  "item": "T02",
+  "authority_revision": 1,
+  "phase": "private_keyboard_and_family_selection",
+  "defect_confirmed": {
+    "fixture": ".qa-theme-lab-spin-bxptzov1",
+    "callback_argument": 0,
+    "widget_selected_position": 3,
+    "requested_family": "gtk3",
+    "actual_family_before_fix": "motif"
+  },
+  "fix": "family_callback reads XmNselectedPosition instead of callback item_position, matching existing anchor selector guard.",
+  "tests": {
+    "native_family_after_fix": {
+      "status": "passed",
+      "scope": "Independent family selection via native combobox and catalog member selection only; GTK3→Motif→GTK3→Motif preserves independent masks/selected controls/positions and untouched other families. No adapter or visual fidelity claim.",
+      "categories_checked": 0,
+      "members_checked": 0,
+      "keyboard": [
+        "Return"
+      ],
+      "family_recipes_independent": true,
+      "positions_preserved": true
+    },
+    "matrix_subphase": {
+      "fixture": ".qa-theme-lab-spin-b6zas954",
+      "status": "category/member assertions reached family step; overall test failed afterwards",
+      "scope": "Five category collapse/Space expansion and category check/Space restore, sixteen member check/Space restore and pointer label selection, all initial positions unchanged; later native combobox selection failed. Reuse only this prefix, not an overall passing matrix.",
+      "proof": "Traceback at family(0,motif) after loops; original logs retained. No human approval inferred."
+    },
+    "strict_build": "product and probe passed",
+    "runtime_closure": 2,
+    "scoped_diff_check": "passed tools/theme-lab"
+  },
+  "fixture_fixes": [
+    "Remove duplicate XmScrollVisible calls causing test overscroll",
+    "Wait for observation newer than reveal command and verify target inside native clip",
+    "Reveal oversized combobox arrow with private horizontal scrollbar",
+    "Read real list-item bounds for native item clicks"
+  ],
+  "reused": "T02-CATALOGO-ARVORE-20261011.json Save/Load path and independent masks; tree module unchanged.",
+  "limits": [
+    "Keyboard combobox Home/Down/Return route not validated; family proof uses actual list-item clicks",
+    "Return was sent to an already-selected member; not a proof of selecting a different member by Return",
+    "Expanded/collapsed presentation does not persist between processes",
+    "Personal handoff and human review pending",
+    "Other selector callbacks using item_position require independent measurement; not fixed or declared defective"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "basis": "Tree and saved data proven, category/member keyboard prefix recorded, cross-family selector bug fixed and native round trip passed. Keyboard coverage limits and delivery remain; not goal/fidelity.",
+  "sha256": {
+    "tools/theme-lab/src/view.c": "76987e12bc1f2553d661b852265e2977fdac3d1d2a07f90252eb99775c8c8521",
+    "tools/theme-lab/src/view/control_catalog.c": "df429a059d342b01110a4010b5296044e297d328ac3ff763170311411890e238",
+    "tools/theme-lab/include/control_catalog.h": "2e7da96590b3e23ec591fbb5fe3395dfc08d61f840be2bda812183aff6e41fe6",
+    "tools/theme-lab/tests/controller_catalog_matrix.py": "bd4453b43abd5791ec6ef6edd527909085d2ded009ed099cd3b464d0665e0852",
+    "tools/theme-lab/tests/controller_spin_probe.c": "e4bda422aa9e666ff0186335cfa567f3f516fe281218e3786fa888985f029039",
+    "tools/theme-lab/tests/test_controller_spin.py": "6cedde716a4aa14bd47cab28cc4a5e308e56105ed8964da970aaab814bbd7caf",
+    "tools/theme-lab/build/theme-lab": "5f4757fcb2dccc9c52c4023f35c678fb63f455a8801a01ffe706e01013ccbec1",
+    "tools/theme-lab/build/controller-spin-probe": "0de9a5afd3ad74a07c935b4f896f9f76d0424077a3612a90e8caa68f36f2113a"
+  }
+}

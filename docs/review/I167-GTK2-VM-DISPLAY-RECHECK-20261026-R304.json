@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "id": "R304",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-vm-display-still-black-read-only",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only status and image query for the canonical Domain/OS reference while continuing GTK2 I167."
+  },
+  "identity": {
+    "mame_pid_observed": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "mame_version": "0.276",
+    "additional_mame_instances_observed": 0
+  },
+  "probe": {
+    "channel": "vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "pending": null,
+    "reply": null,
+    "captured": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-current-r304-20261026.png",
+    "sha256": "bcdbb8c61edc1ae4c0e16049be18b58f554c4b39bf28b941152b9a40a56c1a79",
+    "result": "black guest display with MAME command strip at the bottom"
+  },
+  "input_sent": false,
+  "consequence": "Historical held-state comparison for GTK2 scrollbar left, right and up arrows cannot proceed until a physical mouse or keyboard event wakes the guest. No focus change or synthetic guest input was attempted.",
+  "next": "After the user wakes the VM physically, recapture the native screen and continue the three held-arrow comparisons; keep MAME/profile/disk unchanged."
+}

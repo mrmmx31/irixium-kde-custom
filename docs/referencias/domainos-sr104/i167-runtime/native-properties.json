@@ -1,0 +1,47 @@
+{
+  "runtime": "2.24.33",
+  "private_display": ":205",
+  "gui_native": true,
+  "recipe_applied": false,
+  "historical_fidelity_claimed": false,
+  "widgets": [
+    {
+      "type": "GtkHScrollbar",
+      "allocation": [
+        0,
+        0,
+        51,
+        16
+      ],
+      "properties": {
+        "slider-width": 14,
+        "stepper-size": 14,
+        "trough-border": 1,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 0,
+        "trough-under-steppers": true
+      }
+    },
+    {
+      "type": "GtkVScrollbar",
+      "allocation": [
+        0,
+        20,
+        51,
+        51
+      ],
+      "properties": {
+        "slider-width": 14,
+        "stepper-size": 14,
+        "trough-border": 1,
+        "min-slider-length": 21,
+        "has-backward-stepper": true,
+        "has-forward-stepper": true,
+        "stepper-spacing": 0,
+        "trough-under-steppers": true
+      }
+    }
+  ]
+}

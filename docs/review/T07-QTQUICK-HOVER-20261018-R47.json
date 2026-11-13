@@ -1,0 +1,748 @@
+{
+  "id": "T07-QTQUICK-HOVER-20261018-R47",
+  "date": "2026-10-18",
+  "demand": "T07",
+  "status": "partial evidence; not a completion or human acceptance",
+  "purpose": "Exercise real enabled QtQuick controls on the Controls page and multiline TextArea for delayed hint onset, stable placement, non-overlap, screen bounds and closure after pointer exit.",
+  "method": {
+    "input": "synthetic pointer motion only to the isolated gallery on Xephyr :76",
+    "scope": "Controls tab controls, Save button and Scroll tab TextArea. TableView delegate and horizontal/vertical scrollbars were not exercised. Disabled controls were excluded because they do not accept hover.",
+    "delay": "No hint at 300 ms; observed onset from pointer motion 700-900 ms (750 ms is configured; polling is 50 ms).",
+    "stability": "400 ms unchanged placement; closes 150-350 ms after pointer leaves.",
+    "visual": "Each tested tooltip stayed inside the screen and did not overlap its owning control. No pixel/history comparison or human review."
+  },
+  "results": {
+    "QtQuick5": {
+      "status": "passed",
+      "resources_declared": 66,
+      "enabled_targets_tested": 18,
+      "disabled_targets_not_hoverable": 7,
+      "skipped": [],
+      "failures": [],
+      "targets": [
+        {
+          "name": "t07HintTarget0",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            318,
+            181,
+            81,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            213,
+            250,
+            63
+          ]
+        },
+        {
+          "name": "t07HintTarget1",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            399,
+            181,
+            65,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            213,
+            250,
+            63
+          ]
+        },
+        {
+          "name": "t07HintTarget2",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 350,
+          "owner_rect": [
+            464,
+            181,
+            65,
+            29
+          ],
+          "tooltip_rect": [
+            372,
+            213,
+            250,
+            63
+          ]
+        },
+        {
+          "name": "qtquick5_pressButton",
+          "hint": "Botão da amostra: pressione para observar o relevo e solte para acionar.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            324,
+            238,
+            107,
+            25
+          ],
+          "tooltip_rect": [
+            316,
+            189,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget3",
+          "hint": "Botão da amostra: pressione para observar o relevo e solte para acionar.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            436,
+            238,
+            80,
+            25
+          ],
+          "tooltip_rect": [
+            351,
+            189,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget4",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            318,
+            274,
+            39,
+            22
+          ],
+          "tooltip_rect": [
+            316,
+            225,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget5",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 150,
+          "owner_rect": [
+            362,
+            274,
+            69,
+            22
+          ],
+          "tooltip_rect": [
+            316,
+            225,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget6",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            436,
+            274,
+            55,
+            22
+          ],
+          "tooltip_rect": [
+            339,
+            225,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget8",
+          "hint": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+          "onset_from_pointer_ms": 700,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            318,
+            301,
+            63,
+            22
+          ],
+          "tooltip_rect": [
+            316,
+            252,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget9",
+          "hint": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            386,
+            301,
+            63,
+            22
+          ],
+          "tooltip_rect": [
+            316,
+            252,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "qtquick5_switch",
+          "hint": "Interruptor nativo da amostra: liga ou desliga seu estado quando habilitado.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            454,
+            303,
+            115,
+            19
+          ],
+          "tooltip_rect": [
+            387,
+            254,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "qtquick5_combo",
+          "hint": "Escolha uma opção da amostra; não altera o esquema do desktop.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            414,
+            328,
+            548,
+            25
+          ],
+          "tooltip_rect": [
+            563,
+            279,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "qtquick5_spin",
+          "hint": "Valor da amostra, sem unidade: de -99 a 999, passo 1. Use as setas ou edite; não altera medidas do tema em px.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            414,
+            388,
+            51,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            322,
+            250,
+            63
+          ]
+        },
+        {
+          "name": "t07HintTarget13",
+          "hint": "Entrada nativa de uma linha: selecione ou edite o texto da amostra; não altera o projeto.",
+          "onset_from_pointer_ms": 700,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            414,
+            456,
+            548,
+            29
+          ],
+          "tooltip_rect": [
+            563,
+            390,
+            250,
+            63
+          ]
+        },
+        {
+          "name": "qtquick5_slider",
+          "hint": "Escala da amostra, sem unidade: de 0 a 100. Arraste o cursor; não altera o tema.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            355,
+            524,
+            398,
+            22
+          ],
+          "tooltip_rect": [
+            429,
+            475,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget16",
+          "hint": "Indicador do valor da escala na amostra; não mede uma tarefa em execução.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            318,
+            551,
+            644,
+            22
+          ],
+          "tooltip_rect": [
+            515,
+            502,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget23",
+          "hint": "Salva a captura e o JSON desta janela no perfil privado; não instala o tema.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            848,
+            653,
+            114,
+            25
+          ],
+          "tooltip_rect": [
+            714,
+            604,
+            250,
+            46
+          ]
+        },
+        {
+          "name": "qtquick5_textArea",
+          "hint": "Editor nativo de várias linhas: selecione, copie ou edite a amostra; não modifica arquivos pessoais.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 150,
+          "owner_rect": [
+            318,
+            215,
+            1419,
+            794
+          ],
+          "tooltip_rect": [
+            714,
+            149,
+            250,
+            63
+          ]
+        }
+      ],
+      "environment": {
+        "qt_major": 5,
+        "platform": "xcb",
+        "guards_verified": true,
+        "private_home": "/home/domainos-test",
+        "palette": "DomainOS-SR10-4 in disposable profile",
+        "xephyr": ":76 1280x800"
+      },
+      "source_sha256": "3804b9e75457b5bd57d15b7b4d8c2783aba13511818ec9128fb0605a5ce108fa",
+      "probe_sha256": "12b38984ff9b64d39176fee6b38627134a386ddd5d2fcb60227fb8adaf135d0c",
+      "matrix_sha256": "68464266acae71d4479790a4a5fc5e77bac32174151bb4b798791ff65abd3be6"
+    },
+    "QtQuick6": {
+      "status": "passed",
+      "resources_declared": 69,
+      "enabled_targets_tested": 18,
+      "disabled_targets_not_hoverable": 7,
+      "skipped": [],
+      "failures": [],
+      "targets": [
+        {
+          "name": "t07HintTarget0",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 900,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            318,
+            182,
+            84,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            133,
+            259,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget1",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            402,
+            182,
+            66,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            133,
+            259,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget2",
+          "hint": "Escolha esta página de controles; os valores das demais páginas são preservados.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            468,
+            182,
+            67,
+            29
+          ],
+          "tooltip_rect": [
+            372,
+            133,
+            259,
+            46
+          ]
+        },
+        {
+          "name": "qtquick6_pressButton",
+          "hint": "Botão da amostra: pressione para observar o relevo e solte para acionar.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 150,
+          "owner_rect": [
+            324,
+            239,
+            116,
+            25
+          ],
+          "tooltip_rect": [
+            316,
+            190,
+            256,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget4",
+          "hint": "Botão da amostra: pressione para observar o relevo e solte para acionar.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            445,
+            239,
+            80,
+            25
+          ],
+          "tooltip_rect": [
+            357,
+            190,
+            256,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget6",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            318,
+            275,
+            39,
+            23
+          ],
+          "tooltip_rect": [
+            316,
+            226,
+            249,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget7",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            362,
+            275,
+            69,
+            23
+          ],
+          "tooltip_rect": [
+            316,
+            226,
+            249,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget8",
+          "hint": "Opção independente da amostra: observe os estados marcado, misto e desabilitado.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            436,
+            275,
+            55,
+            23
+          ],
+          "tooltip_rect": [
+            339,
+            226,
+            249,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget10",
+          "hint": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            318,
+            303,
+            63,
+            23
+          ],
+          "tooltip_rect": [
+            316,
+            254,
+            248,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget11",
+          "hint": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            386,
+            303,
+            63,
+            23
+          ],
+          "tooltip_rect": [
+            316,
+            254,
+            248,
+            46
+          ]
+        },
+        {
+          "name": "qtquick6_switch",
+          "hint": "Interruptor nativo da amostra: liga ou desliga seu estado quando habilitado.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            454,
+            304,
+            117,
+            21
+          ],
+          "tooltip_rect": [
+            400,
+            255,
+            226,
+            46
+          ]
+        },
+        {
+          "name": "qtquick6_combo",
+          "hint": "Escolha uma opção da amostra; não altera o esquema do desktop.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            414,
+            331,
+            548,
+            25
+          ],
+          "tooltip_rect": [
+            557,
+            282,
+            262,
+            46
+          ]
+        },
+        {
+          "name": "qtquick6_spin",
+          "hint": "Valor da amostra, sem unidade: de -99 a 999, passo 1. Use as setas ou edite; não altera medidas do tema em px.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 200,
+          "owner_rect": [
+            414,
+            391,
+            43,
+            29
+          ],
+          "tooltip_rect": [
+            316,
+            325,
+            239,
+            63
+          ]
+        },
+        {
+          "name": "t07HintTarget18",
+          "hint": "Entrada nativa de uma linha: selecione ou edite o texto da amostra; não altera o projeto.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            414,
+            459,
+            548,
+            29
+          ],
+          "tooltip_rect": [
+            565,
+            393,
+            247,
+            63
+          ]
+        },
+        {
+          "name": "qtquick6_slider",
+          "hint": "Escala da amostra, sem unidade: de 0 a 100. Arraste o cursor; não altera o tema.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            355,
+            528,
+            518,
+            15
+          ],
+          "tooltip_rect": [
+            484,
+            479,
+            261,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget22",
+          "hint": "Indicador do valor da escala na amostra; não mede uma tarefa em execução.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            318,
+            549,
+            644,
+            16
+          ],
+          "tooltip_rect": [
+            520,
+            500,
+            241,
+            46
+          ]
+        },
+        {
+          "name": "t07HintTarget26",
+          "hint": "Salva a captura e o JSON desta janela no perfil privado; não instala o tema.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            837,
+            653,
+            125,
+            25
+          ],
+          "tooltip_rect": [
+            726,
+            604,
+            238,
+            46
+          ]
+        },
+        {
+          "name": "qtquick6_textArea",
+          "hint": "Editor nativo de várias linhas: selecione, copie ou edite a amostra; não modifica arquivos pessoais.",
+          "onset_from_pointer_ms": 800,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            318,
+            216,
+            1419,
+            794
+          ],
+          "tooltip_rect": [
+            727,
+            150,
+            237,
+            63
+          ]
+        }
+      ],
+      "environment": {
+        "qt_major": 6,
+        "platform": "xcb",
+        "guards_verified": true,
+        "private_home": "/home/domainos-test",
+        "palette": "DomainOS-SR10-4 in disposable profile",
+        "xephyr": ":76 1280x800"
+      },
+      "source_sha256": "3804b9e75457b5bd57d15b7b4d8c2783aba13511818ec9128fb0605a5ce108fa",
+      "probe_sha256": "ef804fd4d39e97a79c2ae27b201c6107e9a58c0237bec8a15fe32e08311e289b",
+      "matrix_sha256": "77a74d78d21332e1dd39a06a06af07d0339e1d963f455a645233835dffb2030a"
+    }
+  },
+  "diagnostics": {
+    "QtQuick5": "Initial full matrix was invalidated by reused temporary names across tabs. The instrumented page diagnostic exposed the issue; the corrected R6 probe passed. A duplicate attempt later timed out at 90 s while D-Bus reported host inotify exhaustion; raw timeout retained under ~/tempia.",
+    "QtQuick6": "Corrected output validator accepted the R4 matrix."
+  },
+  "remaining": "Test one real TableView delegate and both scrollbars in QtQuick5/6; inspect disabled-control hint policy; finish remaining T07 families/layouts and human review. This receipt covers only the listed QtQuick interactions.",
+  "repo_changes": "No production source changed in this test."
+}

@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-11T07:46:23.611321+00:00",
+  "item": "I179",
+  "authority_revision": 1,
+  "definition_sha256": "d96d1fd6346542bbe8a598c222d423f227f290830934afddda1d3379d3b7dd21",
+  "phase": "ready_for_coordinated_delivery",
+  "build_terminal": 0,
+  "policy_terminal": 0,
+  "native_widget_terminal": 0,
+  "states": [
+    "Arm",
+    "Disarm",
+    "sensitive",
+    "insensitive"
+  ],
+  "text_unchanged": true,
+  "requested_sizes": [
+    12,
+    18,
+    24
+  ],
+  "limits": [
+    "Helvetica Portuguese coverage present; Greek/Cyrillic15missing table glyphs at tested sizes",
+    "Fixed18/24 Unicode table reports9missing sample glyphs; this does not establish absence of legacy FontSet ink",
+    "No universal shaping/language rendering claim"
+  ],
+  "new_guard": "Reject sized primary fonts without usable metrics and FontSets without ink/logical extents; retained native resource is measured rather than fabricated",
+  "failed_assertion": "Full Unicode coverage at every fixed size was an invalid test expectation; failed log retained, diagnostic scope corrected",
+  "installed": false,
+  "scope_progress_percent": 95,
+  "remaining": [
+    "Coordinated personal delivery preserving saved project/journal/history and open original",
+    "User evaluation separate"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/src/font_policy_motif.c": "18ce3edf1a06ee5f6a603de2d3f2a2306eb182e42696377e30c1005742eb0204",
+    "tools/theme-lab/src/view.c": "fd176e45a6253f78359fcc2c2a410bd599ed1c679c09800c65015ad1d738bc6a",
+    "tools/theme-lab/tests/native_metrics_view.c": "7614dfa1df3e1e8316e96b814224737e1d6f1870d62c9b169528b3336c67105d",
+    "tools/theme-lab/tests/font_policy_motif_test.c": "1ce6b7043ef04fb6dea2646eb621739add96dc3372bf2104e020f7b6443bd3cf",
+    "tools/theme-lab/FONT-POLICY.md": "4ada7c39bbf279c8b826299a23fb9e00d19536053d124bbacb0a58ff3aebc2c6"
+  },
+  "evidence_sha256": {
+    "docs/referencias/domainos-sr104/i179-sizing/i179-sized-guard-build.log": "490b15ba3cde9159b08b0e3683a08ba601677519d31763b85359402e5eac607f",
+    "docs/referencias/domainos-sr104/i179-sizing/i179-sized-guard-policy.log": "a3d8e6a18e686f4648fb9856b99694837741b91fdba73651f91e3072a2aebeec",
+    "docs/referencias/domainos-sr104/i179-sizing/i179-zero-width-native.log": "9f7dfd3adde9f6beac12b4ea32f6caf50c501cfa1c67775c53a9a97029057b69",
+    "docs/referencias/domainos-sr104/i179-sizing/i179-sized-guard-native.log": "1387e79df3e94e2d60f9bf5e5efec4e8e78a5d5217150bba593794e1e1f426bb",
+    "docs/referencias/domainos-sr104/i179-sizing/i179-sized-native-view-final.log": "1387e79df3e94e2d60f9bf5e5efec4e8e78a5d5217150bba593794e1e1f426bb"
+  }
+}

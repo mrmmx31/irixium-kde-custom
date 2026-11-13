@@ -1,0 +1,32 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T18:37:38Z",
+  "status": "live-Qt6-Kvantum-preview-open; historical-comparison-pending",
+  "scope": "Current installed DomainOS Qt6/Kvantum combo and spin-down arrows only; no code or palette changes.",
+  "environment": {
+    "xephyr": ":73 (pre-existing; 1024x768; preserved)",
+    "isolation": "bwrap with disposable HOME under ~/tempia; host personal profile and system bus not exposed",
+    "qt": "Qt 6.8.2 / PyQt6 6.9.0",
+    "style": "Kvantum::Style",
+    "theme": "DomainOS-SR10-4",
+    "color_scheme": "DomainOS-SR10-4",
+    "screenshot": "~/tempia/i457-qt6-domainos-live-20261019-r1/home/qtwidgets-proof/qtwidgets.png",
+    "screenshot_sha256": "7a17819d5927d23c55377826a458019108922e9738769f66e0b58c7c4abab9ee",
+    "post_interaction_screenshot": "~/tempia/i457-qt6-domainos-live-20261019-r1/current-ui-restored.png",
+    "post_interaction_sha256": "94d8b38937a7fe3557d80561bfd66d683c327e1bcfb766740573502817484f81"
+  },
+  "observations": {
+    "combo": "Pointer over down-arrow region caused 0 changed pixels versus pointer-out baseline. Clicking opened the native popup; after dismissal the arrow region returned pixel-identical to baseline.",
+    "spin_down": "Hover over the verified down-button coordinate caused 0 changed pixels in the arrow ROI. Pressing changed the live control; release restored the arrow ROI. The private demo value changed 42 to 41 and was restored to 42.",
+    "selection": "The live user profile was already DomainOS global/GTK/Kvantum; this preview reads a disposable copy of only the DomainOS color scheme and Kvantum theme. No theme selection changed.",
+    "application": "The actual Kvantum SVG/theme was used; no generated Theme Lab stylesheet was applied."
+  },
+  "limits": [
+    "This establishes the current Qt6/Kvantum live state and interaction restoration only; it is not a direct visual comparison against SR10.4 Motif controls.",
+    "Disabled-state comparison was not made in this live gallery.",
+    "The MAME Lua bridge status reports an unresolved legacy request with no reply; I did not overwrite it or issue another probe. The current guest image therefore remains unrefreshed and historical comparison remains open.",
+    "The existing GTK3 correction remains installed per I457 R8 and the user reported that its ComboBox now looks better."
+  ],
+  "next": "Leave I457 waiting for human inspection of the live Qt6 preview and a safe refreshed Domain/OS reference; continue with the next authorized Fila Atual item without touching other Xephyr sessions."
+}

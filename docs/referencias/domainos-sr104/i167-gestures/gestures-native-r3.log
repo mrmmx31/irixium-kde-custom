@@ -1,0 +1,29 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_ipc_native.py", line 61, in <module>
+    run(args.fixtures.resolve(), args.output.resolve(), args.gestures)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_gtk2_ipc_native.py", line 29, in run
+    if child.returncode or child.stderr: raise RuntimeError(child.stderr or child.stdout)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_scene.py", line 98, in <module>
+    x('mousemove', '--sync', sx, sy)
+    ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_scene.py", line 68, in x
+    return subprocess.run(['xdotool', *map(str, values)], check=True, capture_output=True, text=True, timeout=5).stdout
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 556, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1222, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 2129, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 1269, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['xdotool', 'mousemove', '--sync', '84', '88']' timed out after 5 seconds
+

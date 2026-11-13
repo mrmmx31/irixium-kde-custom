@@ -1,0 +1,12 @@
+make: Entering directory '/home/lsi/irixium-kde-custom/tools/theme-lab'
+cc -Iinclude -I/usr/include/json-c -I/usr/include/libpng16  -O2 -g -std=c99 -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700  tests/spin_hint_hover.c src/view/ui_hints.c src/view/ui_spin_hints.c -lXm -lXt -lX11 -o "build/spin-hint-hover"
+src/view/ui_spin_hints.c: In function ‘post’:
+src/view/ui_spin_hints.c:51:5: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+   51 |     if(x+w>sw)x=sw-w;if(x<0)x=0;
+      |     ^~
+src/view/ui_spin_hints.c:51:22: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   51 |     if(x+w>sw)x=sw-w;if(x<0)x=0;
+      |                      ^~
+cc1: all warnings being treated as errors
+make: *** [Makefile:231: build/spin-hint-hover] Error 1
+make: Leaving directory '/home/lsi/irixium-kde-custom/tools/theme-lab'

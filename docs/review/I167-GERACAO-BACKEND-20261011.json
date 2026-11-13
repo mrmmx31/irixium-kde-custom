@@ -1,0 +1,26 @@
+{
+  "item": "I167",
+  "revision": 1,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "at": "2026-10-11T08:14:20.547037+00:00",
+  "scope": "GTK2 scrollbar private generation integrated into backend dispatch; native scenes not yet integrated",
+  "status": "partially_generated",
+  "recipe_applied": false,
+  "four_schemes_verified": true,
+  "96_pngs_identical_to_previously_verified_native_assets": true,
+  "unsupported_fitting_rejected_without_recipe_mutation": true,
+  "generation_dispatch_isolated_capability_fixture_passed": true,
+  "backend_tests": 33,
+  "host_changed": false,
+  "human_approval_claimed": false,
+  "stage_estimate_percent": 52,
+  "estimate_basis": "Generation/provenance gate connected; native preview integration and remaining controls still pending",
+  "hashes": {
+    "tools/theme-lab/backend.py": "222fe7a4262e2289d307983e901ca1990ea606d33b7b863fad71c5d1e78ae215",
+    "tools/theme-lab/gtk2_generation.py": "22ece1ce3a1ade42ccfcb3812afa33b92c7e934902aa9473ee43566528e3976a",
+    "tools/theme-lab/tests/test_gtk2_generation.py": "3d04131244306031983cd566e5bc7a0c60afecc45c3e622a2152e441f973386f",
+    "docs/referencias/domainos-sr104/i167-generation/generation.log": "7fc430578eeac66c42e603b52d63f5e82cbd575e5846be574c85f59f0a329cdd",
+    "docs/referencias/domainos-sr104/i167-generation/backend-tests.log": "f4933e2ef1d23a5a3b219a7ecb50efdd8e245b2a99166eef12a5a25fd64af575",
+    "docs/referencias/domainos-sr104/i167-generation/results.json": "74c5af363c1fb3884cc7d699b9e193f3ce4e0de6724948f69091c59c1258cd4b"
+  }
+}

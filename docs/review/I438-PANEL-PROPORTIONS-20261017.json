@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "id": "I438",
+  "definition_sha256": "6f071fde8527890c877a181e10a2753cc68c091e15a58d3ce8a64a04ee5c484b",
+  "date": "2026-10-17",
+  "status": "isolated-proposal-ready-human-review-pending",
+  "authorization": "I438 revision 1; user.authorized=true and authorized_definition matches the saved definition",
+  "preserved_decisions": {
+    "pager": "Two desktop cards in the current panel; six cells belong only to future historical mode I177.",
+    "window_title_strip": "Keep the current title strip; historical mode remains separate.",
+    "proportion": "Move the external proportions toward the VUE crop."
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "path": "/home/lsi/tempia/domainos-vue-study/controls/panels/vuewm-panel-static-20261012.png",
+    "sha256": "b92f55743fb90ddf569ab093807122593c7303d68b161eecb6d0017b58c87412",
+    "dimensions_px": [947, 93],
+    "scale": "1:1, original static capture"
+  },
+  "integrated_baseline": {
+    "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+    "sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+    "dimensions_px": [971, 109],
+    "scale": "1:1 native X11 crop; no resampling"
+  },
+  "uniform_candidate": {
+    "dimensions_px": [947, 106],
+    "panel_widget_geometry_px": [947, 106],
+    "display": ":65",
+    "session_root": "/home/lsi/tempia/i438-panel-proportion-20261017/session-947x106",
+    "capture_root": "/home/lsi/tempia/i438-panel-proportion-20261017/preview-open-947x106.png",
+    "capture_panel": "/home/lsi/tempia/i438-panel-proportion-20261017/candidate-947x106-panel.png",
+    "capture_panel_sha256": "454d5a2805e1230028ca5ca09012e0c93280b3658cb3edeb462da47b7d5dd626",
+    "capture_root_sha256": "d216398bb3ae44b46fd8d6e4383ac7bebd3da9fced504564672a2e7a72b4c98f",
+    "candidate_package": "/home/lsi/tempia/i438-panel-proportion-20261017/domainos-proportions-947x106.zip",
+    "candidate_package_sha256": "506a0e120e2d01c930905c5a25364777eac47188e1dfddca7f26683cb25c3fa5",
+    "package_integrity": "Verified by tools/package_domainos.py verify_archive; private test archive derived from DomainOS 0.2.12-beta.1.",
+    "render_scale": 0.48623853211009177,
+    "aspect_policy": "Uniform fit; one scale for the entire artwork, with no non-uniform stretch. Icon assets retain their intrinsic proportions.",
+    "adjustment": "Only the disposable package's Plasmoid minimum/preferred dimensions changed from 971x109 / 1942x218 to 947x106 / 1894x212. The product source tree, release archive, installed applet, and user settings were not changed.",
+    "host_geometry": "Private plasmashell/KWin panel length 979 includes 16px containment gutters on both sides; the applet itself measures 947x106. Height is 106px."
+  },
+  "exact_target_probe": {
+    "requested_outer_px": [947, 93],
+    "result": "With the original applet minimums, the private Plasma containment reduced to 947x93 while its widget stayed 971px wide; content was clipped. No product file was changed.",
+    "capture": "/home/lsi/tempia/i438-panel-proportion-20261017/candidate-947x93-settled.png",
+    "implication": "The exact VUE aspect ratio needs an internal vertical reflow or smaller components. Uniformly fitting the 1942x218 canvas into 947x93 would use scale 93/218=0.4266055 and render only about 828px of artwork across the 947px slot, leaving about 59px at each side. That geometry was calculated, not presented as a native capture."
+  },
+  "comparison": {
+    "candidate_vs_vue_width_px": 0,
+    "candidate_vs_vue_height_px": 13,
+    "candidate_height_over_vue_percent": 13.978494623655912,
+    "baseline_to_candidate": "Width -24px (-2.47%); height -3px (-2.75%).",
+    "finding": "The 947x106 proposal matches the VUE width and preserves the current artwork's aspect ratio and layout, but remains 13px taller than VUE. It is a proportional resize, not a reflow and not an exact historical geometry match.",
+    "functions": "Production applet runs inside real private plasmashell/KWin. The current title strip and two-card Pager remain present; no controls were removed or rearranged.",
+    "manual_review": "Pending. This is a reviewable isolated proposal, not acceptance or installation."
+  },
+  "runtime": {
+    "session": "Owned full-theme Xephyr :65, private HOME, XDG configuration/data/state, private D-Bus and no audio/device access.",
+    "open_process": 4111573,
+    "existing_sessions_preserved": [":61", ":68", ":73", ":74"],
+    "installed_panel_changed": false,
+    "historical_mode_activated": false,
+    "user_settings_changed": false
+  },
+  "next": "Keep this private proposal for review. If the direction is accepted, implement a separate reflow candidate in an isolated copy and compare it at 1:1. Do not replace the installed panel. Then return to the authorized work queue; a comprehensive arrow review still needs its own authorized Fila Atual item."
+}

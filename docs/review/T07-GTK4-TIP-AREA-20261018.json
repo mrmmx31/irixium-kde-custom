@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "kind": "domainos_review_evidence",
+  "item": "T07",
+  "subtask": "GTK4 tooltip placement near vertical scrollbars",
+  "recorded_at": "2026-10-18",
+  "result": "partial_blocked",
+  "environment": {
+    "display": ":77",
+    "session": "Xephyr disposable",
+    "gtk": "4.18.6",
+    "test": "real GTK4 C-ABI gallery; 2 pages"
+  },
+  "hypothesis": "GTK4 gtk_tooltip_set_tip_area can anchor the native tooltip away from the center of a long scrollbar.",
+  "method": "Temporarily connected a query-tooltip callback that set a one-pixel tip area at the scrollbar start, once before and once after GTK default handling. Ran the existing full hover matrix in both cases.",
+  "runs": [
+    {
+      "signal_handler_phase": "after-handler",
+      "gtk_version": "4.18.6",
+      "mapped_targets": 31,
+      "targets_passed": 31,
+      "targets_failed": 0,
+      "matrix_status": "partial",
+      "small_control_nonoverlap": false,
+      "vertical_scrollbars": [
+        {
+          "page": 0,
+          "control_rect_px": [
+            15,
+            565,
+            805,
+            15
+          ],
+          "tooltip_rect_px": [
+            230,
+            584,
+            375,
+            51
+          ],
+          "overlaps_large_owner_region": false,
+          "status": "passed"
+        },
+        {
+          "page": 0,
+          "control_rect_px": [
+            820,
+            333,
+            15,
+            232
+          ],
+          "tooltip_rect_px": [
+            621,
+            461,
+            420,
+            51
+          ],
+          "overlaps_large_owner_region": true,
+          "status": "passed"
+        },
+        {
+          "page": 1,
+          "control_rect_px": [
+            828,
+            102,
+            15,
+            486
+          ],
+          "tooltip_rect_px": [
+            629,
+            357,
+            420,
+            51
+          ],
+          "overlaps_large_owner_region": true,
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "signal_handler_phase": "before-default-handler",
+      "gtk_version": "4.18.6",
+      "mapped_targets": 31,
+      "targets_passed": 31,
+      "targets_failed": 0,
+      "matrix_status": "partial",
+      "small_control_nonoverlap": false,
+      "vertical_scrollbars": [
+        {
+          "page": 0,
+          "control_rect_px": [
+            15,
+            565,
+            805,
+            15
+          ],
+          "tooltip_rect_px": [
+            230,
+            584,
+            375,
+            51
+          ],
+          "overlaps_large_owner_region": false,
+          "status": "passed"
+        },
+        {
+          "page": 0,
+          "control_rect_px": [
+            820,
+            333,
+            15,
+            232
+          ],
+          "tooltip_rect_px": [
+            621,
+            461,
+            420,
+            51
+          ],
+          "overlaps_large_owner_region": true,
+          "status": "passed"
+        },
+        {
+          "page": 1,
+          "control_rect_px": [
+            828,
+            102,
+            15,
+            486
+          ],
+          "tooltip_rect_px": [
+            629,
+            357,
+            420,
+            51
+          ],
+          "overlaps_large_owner_region": true,
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "conclusion": "Both executions kept 31/31 targets functional, but the two vertical scrollbar tooltip rectangles were identical to the previous receipt and still overlapped the scrollbar. The experiment did not resolve placement. The callback path was not separately instrumented, so this only establishes that the attempted hook produced no observed geometry change.",
+  "change_retained": false,
+  "production_file_sha256_after_restore": "3a7cd1fe1df42f8baa7044ad77e2f9f01446e4d972201948ced3d88ce1b0151c",
+  "expected_restored_sha256": "3a7cd1fe1df42f8baa7044ad77e2f9f01446e4d972201948ced3d88ce1b0151c",
+  "limits": [
+    "No color-palette matrix.",
+    "No historical pixel comparison.",
+    "Tooltip overlap remains a real GTK4 limitation in the tested gallery."
+  ],
+  "artifacts": {
+    "directory": "~/tempia/t07-gtk4-tip-area-20261018",
+    "first_run": "result.json",
+    "second_run": "result-before-handler.json"
+  }
+}

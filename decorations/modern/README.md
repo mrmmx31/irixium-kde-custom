@@ -19,6 +19,10 @@ o menu na soltura, sem espera adicional. O timer é exclusivo desse gesto e não
 O duplo clique também funciona em janelas inativas e durante mudanças de foco,
 sem exigir um clique adicional para ativar a janela.
 
+A barra contém menu de ações, minimizar e maximizar/restaurar. Não há botão
+fechar separado; o fechamento continua disponível pelo duplo clique no menu
+e pelas ações nativas do KWin.
+
 Os botões mostram o estado pressionado enquanto o mouse está segurado e
 executam a ação ao soltar. O menu bitmap usa bordas de relevo baixo; os demais
 botões usam seus SVGs pressionados. Não há timer para esse feedback.
@@ -30,6 +34,10 @@ bash instalar.sh --verificar
 bash instalar.sh
 bash instalar.sh --ativar
 ```
+
+Se uma atualização mantiver o código antigo em memória, execute na própria
+sessão KDE `python3 ../../tools/reload_decoration.py`. A ferramenta recarrega o
+QML sem alterar a seleção ou as configurações e sem reiniciar o KWin.
 
 Para alternar sem reinstalar:
 

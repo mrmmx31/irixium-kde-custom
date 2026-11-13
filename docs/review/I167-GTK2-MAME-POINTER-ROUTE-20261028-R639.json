@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "R639",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "mame-pointer-recapture-tested-arrow-not-pressed",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "method_question": "Q505 revision 1; user selected existing MAME-window capture, no hook/map/profile changes, release with AltGr"
+  },
+  "vm": {
+    "service": "domainos-tema-mame.service",
+    "mame_pid": 379349,
+    "canonical_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "host_window": "0x3800008",
+    "initial_window_state": "Iconic",
+    "separate_other_mame_pid": 117186,
+    "note": "The other MAME belongs to the Prancheta and was not controlled."
+  },
+  "method": {
+    "wake": "one released Shift keypress after a black guest frame; VUE became visible",
+    "pointer": "First left press only triggered the existing MAME recapture hook (wait_button_up=true); after AltGr release the guest pointer alignment was not safely verified. No scrollbar-arrow press was sent.",
+    "profile": "Restored capture false; hook/map/profile unchanged; VM not restarted. Host focus and pointer were restored."
+  },
+  "observation": {
+    "target": "Horizontal scrollbar in the lower VUE window",
+    "held_vs_released_target_roi": {
+      "guest_capture_roi_xyxy": [
+        560,
+        690,
+        620,
+        725
+      ],
+      "changed_pixels": 0,
+      "interpretation": "No arrow state changed because the pointer was not confirmed on the arrow; this is an input-route limitation, not a GTK2 visual failure."
+    }
+  },
+  "evidence": {
+    "directory": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028",
+    "files": [
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/host-focus-before.json",
+        "sha256": "8fc378ffc02b7205ea31251eef9492aa9a1e05632ea0b8f05dc5b645d9b4e87c",
+        "bytes": 267
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-pre-input.png",
+        "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+        "bytes": 9981
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-awake.png",
+        "sha256": "24acd6edddbb637c31eb93360438a5cb4ef104aec910dbd8f8107172ebcc3c87",
+        "bytes": 34550
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-target-before-hold.png",
+        "sha256": "f1d336e5c65ab6db8c0d1db8dd4ca085c13d7ae9d4e0ec06274b0792a2970058",
+        "bytes": 34419
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-right-held.png",
+        "sha256": "59e658a09a11d98d4a59b9f7465d21a06ced072bda504ac1b0e069d629a6e881",
+        "bytes": 34548
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-right-released.png",
+        "sha256": "a9fe93dae0ab9e06c2ba6594b8394d13cf8ad628257e81711a7959915124e2c0",
+        "bytes": 34549
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-captured-pointer-initial.png",
+        "sha256": "bd23cf48b3876bdb28d0e5864644207b57e5a8b210e8477949cbb3de4fbb74f5",
+        "bytes": 34396
+      },
+      {
+        "file": "records/ia-tema/evidence/I167/R639-mame-pointer-route-20261028/vm-captured-step1.png",
+        "sha256": "3951be30b389f08aebeb37ce4438de6963fe5aeede012cf1b51ad8dab7f0fbf1",
+        "bytes": 34526
+      }
+    ],
+    "temporary_originals": "~/tempia/domainos-theme-work/I167/R639/"
+  },
+  "limits": [
+    "This run does not prove a held GTK2 arrow in SR10.4.",
+    "It does not alter or invalidate prior normal-state GTK2 comparisons.",
+    "The historical held-state comparison remains open; continue GTK2 adapter work with already-valid evidence or a safely calibrated pointer route."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "No criterion closed in this capture attempt; retain the latest I167 GTK2 technical coverage estimate. Not a visual-fidelity score."
+  }
+}

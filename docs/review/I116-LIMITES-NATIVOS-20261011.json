@@ -1,0 +1,52 @@
+{
+  "at": "2026-10-11T03:23:44.479850+00:00",
+  "item": "I116",
+  "phase": "native_minimum_auto_coupled_separate",
+  "native_result": {
+    "minimum_and_automatic_both_native_previews": {
+      "10:1": {
+        "metrics": "Pedido em edição: 1 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 48 x 15 px lógicos; escala1Mínimo 48 x 15; preferido 48 x 15GTK3 separado: 48 x 15 px lógicos; escala1Mínimo 48 x 15; preferido 48 x 15Medidas da amostra; não são defaults daVM.",
+        "cross": 15,
+        "long": 48
+      },
+      "10:0": {
+        "metrics": "Pedido em edição: 0 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 48 x 15 px lógicos; escala1Mínimo 48 x 15; preferido 48 x 15GTK3 separado: 48 x 15 px lógicos; escala1Mínimo 48 x 15; preferido 48 x 15Medidas da amostra; não são defaults daVM.",
+        "cross": 15,
+        "long": 48
+      },
+      "11:1": {
+        "metrics": "Pedido em edição: 0 x 1 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 15 x 48 px lógicos; escala1Mínimo 15 x 48; preferido 15 x 48GTK3 separado: 15 x 48 px lógicos; escala1Mínimo 15 x 48; preferido 15 x 48Medidas da amostra; não são defaults daVM.",
+        "cross": 15,
+        "long": 48
+      },
+      "11:0": {
+        "metrics": "Pedido em edição: 0 x 0 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 15 x 48 px lógicos; escala1Mínimo 15 x 48; preferido 15 x 48GTK3 separado: 15 x 48 px lógicos; escala1Mínimo 15 x 48; preferido 15 x 48Medidas da amostra; não são defaults daVM.",
+        "cross": 15,
+        "long": 48
+      }
+    },
+    "status": "passed",
+    "axis_lock_native_metrics": {
+      "10": "Pedido em edição: 320 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 320 x 15 px lógicos; escala1Mínimo 320 x 15; preferido 320 x 15GTK3 separado: 320 x 15 px lógicos; escala1Mínimo 320 x 15; preferido 320 x 15Medidas da amostra; não são defaults daVM.",
+      "11": "Pedido em edição: 0 x 260 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 15 x 260 px lógicos; escala1Mínimo 15 x 260; preferido 15 x 260GTK3 separado: 15 x 260 px lógicos; escala1Mínimo 15 x 260; preferido 15 x 260Medidas da amostra; não são defaults daVM."
+    },
+    "locked_cross_fields_insensitive": true,
+    "length_native_undo_redo": true,
+    "unchanged_family_geometry_and_other_families": true,
+    "historical_fidelity_claimed": false,
+    "personal_profile_exposed": false
+  },
+  "test_source_sha256": "1221674704293ccfae12735b04448f46e72e4585dd919a6dbebfc70e891683fb",
+  "result_sha256": "5f83e655ace41d75c565460786ba4a2839a8ccba0bb81a9a5403dcea035ac57c",
+  "scope": "GTK3 current recipe, scale 1, native coupled and detached previews. Motif independent reference intentionally unchanged.",
+  "historical_defaults_claimed": false,
+  "personal_windows_preserved": true,
+  "estimated_stage_progress_percent": 70,
+  "basis": "Modelo e GUI de eixo, medidas longas/mínimas/automáticas e igualdade das duas prévias comprovados. Ancoragem explícita e entrega ainda pendentes.",
+  "remaining": [
+    "Escolha e persistência da extremidade ancorada",
+    "Prova de ancoragem com mínimo nativo",
+    "Entrega pessoal coordenada",
+    "Comparação pareada Motif I117 separada"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "R106",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Bounded mouse counter calibration without click",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "interface": "HP VUE 2.01",
+    "vm_process": 3759847,
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "mouse_operations_done": true,
+      "mouse_errors": [],
+      "channel_pending": false
+    },
+    "initial_capture": "/home/lsi/tempia/i167-vue-current-r106.png",
+    "during_relative_motion": [
+      "/home/lsi/tempia/i167-vue-pointer-one-step-r106.png",
+      "/home/lsi/tempia/i167-vue-pointer-20-steps-r106.png",
+      "/home/lsi/tempia/i167-vue-pointer-diagonal-one-step-r106.png"
+    ],
+    "after_cleanup_capture": "/home/lsi/tempia/i167-vue-current-after-diagonal-step-r106.png",
+    "guest_state": "Find Files remains open; File Name displays a*a; no search was started."
+  },
+  "actions": [
+    {
+      "input": "one horizontal counter step",
+      "result": "small local pixel difference; not enough displacement to clear the field"
+    },
+    {
+      "input": "twenty horizontal counter steps of one count each",
+      "result": "pointer moved away from the field in the temporary override capture; after cleanup it rested at the lower-left area"
+    },
+    {
+      "input": "one diagonal counter step",
+      "result": "pointer remained away from the field after cleanup; no click or text edit"
+    }
+  ],
+  "verification": {
+    "selection_highlight": "not demonstrated",
+    "pointer_drag_precision": "insufficient; relative counter displacement is too large for character-level drag on the short field text",
+    "text_mutated": false,
+    "search_started": false,
+    "guest_files_changed": false,
+    "input_cleanup": "all helper operations done; no error or cleanup error",
+    "main_vm_or_other_sessions_touched": false,
+    "xchat_or_installed_theme_changed": false
+  },
+  "remaining": [
+    "Review the GTK2 renderer and existing isolated selection evidence; historical VUE text-selection appearance remains unconfirmed.",
+    "Do not send further guest keyboard or mouse input until a precise route is established.",
+    "Keep the tested local palette namespace patch uninstalled while I167 comparison remains open."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "Coverage estimate for I167 implementation/evidence milestones, not historical fidelity.",
+    "basis": "Dynamic palette integration and isolated GTK2 tests are verified; native selection and installed reload remain open."
+  }
+}

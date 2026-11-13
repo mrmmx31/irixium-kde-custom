@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R685",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile the latest GTK2 evidence by state and separate installed behavior, private-engine prototypes, direct SR10.4/VUE observations, and human review.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "state_matrix": {
+    "normal": {
+      "gtk2": "Installed GTK2 normal stepper cells compare 0/225 to the retained SR10.4/VUE crops (R394/R496); the live VUE horizontal cells also compare 0/225 to its retained native crop (R469/R553).",
+      "status": "verified for normal-state geometry; the reported narrow horizontal cell is not reproduced"
+    },
+    "pressed_released": {
+      "gtk2": "Private native GTK2 previews change 53 pixels per arrow and restore exactly on release (R480/R642/R683).",
+      "sr104_vue": "The lower vertical arrow has a partial live transition: 37 of 53 changed pixels are visible because the pointer occludes 16 (R434/R648); horizontal and upper held states lack direct cursor-clear VUE captures.",
+      "status": "GTK2 interaction verified; historical comparison partial"
+    },
+    "hover": {
+      "gtk2": "GTK2 runtime paints the focused assets in private previews (R383/R387/R669).",
+      "sr104_vue": "No direct VUE hover capture identified.",
+      "status": "historical comparison open"
+    },
+    "whole_widget_insensitive": {
+      "gtk2": "Directional disabled assets and underlay composition were fixed and verified (R379/R380).",
+      "sr104_vue": "The historical XtSensitive=False appearance has not been captured.",
+      "status": "GTK2 rendering covered; historical comparison open"
+    },
+    "range_endpoint": {
+      "gtk2": "R513 confirms that an endpoint stepper is painted from the disabled asset while its input remains blocked; the shared rule calls for the parent palette at a blocked endpoint. R515-R540 explored private custom-engine prototypes, but no role-driven engine was integrated into the product.",
+      "sr104_vue": "The matching disabled/endpoint appearance is not established from SR10.4/VUE.",
+      "status": "known GTK2 product mismatch; correction/integration and historical basis remain open"
+    },
+    "thumb_drag": {
+      "gtk2": "Private GTK2 interaction probes exist, but do not provide a direct SR10.4 measurement.",
+      "sr104_vue": "No direct historical drag measurement was identified.",
+      "status": "historical comparison open"
+    }
+  },
+  "current_profile": {
+    "receipt": "docs/review/I167-GTK2-USER-PROFILE-CURRENT-20261029-R682.json",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "status": "already active for new GTK2 clients; R683 is preview verification and did not install a separate partial recipe"
+  },
+  "authorization_and_safety": {
+    "I167_revision": 2,
+    "I167_authorized": true,
+    "I517_revision": 0,
+    "I517_authorized": false,
+    "this_audit_sent_vm_input": false,
+    "this_audit_changed_profile_or_application": false
+  },
+  "next": "Continue only GTK2. Investigate a role-driven endpoint painter in a private prototype, retaining blocked endpoint input and whole-widget disabled styling. Do not integrate the historical-state prototype into the user theme until its product behavior and supported VUE evidence are clear. Keep horizontal/up held capture gated on I517 and preserve manual review as pending.",
+  "coverage_estimate": {
+    "percent": 90,
+    "basis": "The profile is active and the public adapter route, all-control scene, normal cells, and GTK2 press/release behavior are verified. A confirmed endpoint paint mismatch remains outside the product fix, and several historical states plus manual acceptance remain open. This is technical coverage of I167, not visual fidelity."
+  }
+}

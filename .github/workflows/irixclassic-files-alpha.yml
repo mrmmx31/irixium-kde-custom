@@ -1,0 +1,59 @@
+name: IrixClassic Files — Debian 13 build
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'aplicativos/irixclassic-files/**'
+      - '.github/workflows/irixclassic-files-alpha.yml'
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: debian:13
+    timeout-minutes: 50
+    steps:
+      - name: Prepare isolated CI dependencies
+        run: |
+          sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources
+          apt-get update
+          apt-get install -y --no-install-recommends git ca-certificates build-essential cmake ninja-build python3 dpkg-dev dbus kio6 qt6-image-formats-plugins
+          apt-get build-dep -y dolphin
+          useradd --create-home --shell /bin/sh builder
+          install -d -o builder -g builder /tmp/irix-builds
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, retrieved 2026-10-06
+        with:
+          persist-credentials: false
+      - name: Source contract tests
+        run: bash aplicativos/irixclassic-files/testar-fontes.sh
+      - name: Native build, tests and artifacts (ordinary user)
+        run: |
+          # The build works outside the checkout and never installs upstream Dolphin.
+          runuser -u builder -- bash "$GITHUB_WORKSPACE/aplicativos/irixclassic-files/construir.sh" \
+            --baixar --jobs 2 --trabalho /tmp/irix-builds/alpha1
+      - name: Debian package (ordinary user)
+        run: |
+          runuser -u builder -- python3 "$GITHUB_WORKSPACE/aplicativos/irixclassic-files/tools/build_deb.py" \
+            --bundle /tmp/irix-builds/alpha1/IrixClassic-Files-0.1.0-alpha1 \
+            --fonte /tmp/irix-builds/alpha1/pacotes/IrixClassic-Files-0.1.0-alpha1-source.tar.gz \
+            --saida /tmp/irix-builds/deb-alpha1
+      - name: Keep build logs even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: irixclassic-files-build-diagnostics
+          path: |
+            /tmp/irix-builds/alpha1/BUILD.log
+            /tmp/irix-builds/alpha1/TESTS.xml
+            /tmp/irix-builds/alpha1/RESULTADO-BUILD.json
+            /tmp/irix-builds/alpha1/LDD.txt
+          if-no-files-found: warn
+      - name: Keep tested binary and corresponding source
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: irixclassic-files-0.1.0-alpha1-debian13
+          path: |
+            /tmp/irix-builds/alpha1/pacotes/
+            /tmp/irix-builds/deb-alpha1/
+          if-no-files-found: error
+# No release permission, tag creation, secrets, or automatic publication.

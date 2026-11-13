@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-11T14:11:34.133492+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "native_launcher_transfer_verified_private",
+  "checks": {
+    "status": "passed",
+    "scope": "Native GTK3 startup, two resumes with different pending dimensions and then Qt6 editor selection; original GTK3 scene bytes/hash and actual allocation preserved; proposal fields/history independent; no Qt6 painting claim",
+    "applied_allocation": [
+      220,
+      80
+    ],
+    "gtk3_pending": [
+      330,
+      110
+    ],
+    "qt6_pending": [
+      410,
+      140
+    ],
+    "scene_bytes_preserved": true,
+    "cross_family_native_selection_preserved_recipes": true,
+    "native_drag_changed_only_gtk3_position": true,
+    "native_launcher_transfer": "passed: two actual snapshot transfers, scene/proposal/journals copied exactly, fresh generation, native GTK3 selection/drag"
+  },
+  "transfers": {
+    "lab-addon/run-a794ec84f4dde94a8fe7c6d4a45437ee/TRANSFER.json": {
+      "source_manifest": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ru3eb0b_/lab-addon/run-a794ec84f4dde94a8fe7c6d4a45437ee/MANIFESTO.json",
+      "source_manifest_sha256": "9d0451d9b20250fa521d86a68018e6b02a22dc3b719c6fd500d53cd4fac51f2d",
+      "saved_files_sha256": {
+        "working.json": "54d60d494a78e211326cc5d54e2a7b0a033ad7e553d2e7d95f28f1aa721e4c2e",
+        "scene.json": "6512502ce1f066216a871dd6cb2759da3e1b0a41094c0734a09ea7743e6f6507",
+        "editor-journal.json": "302558d5f0ab6746d4ea1a6ab6a51324cfb23474c1e52d181cae6c8464af0146",
+        "project-history.json": "c1006820d008206a7781057a29e763405040fe592705ab4ae07b5947bc0edbe3"
+      },
+      "source_untouched": true,
+      "unsaved_widget_text_imported": false,
+      "runtime_outputs_imported": false,
+      "applied_scene_imported": true
+    },
+    "lab-addon/run-8d402181450340642fd37e74dd15cea2/TRANSFER.json": {
+      "source_manifest": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-ru3eb0b_/lab-addon/run-8d402181450340642fd37e74dd15cea2/MANIFESTO.json",
+      "source_manifest_sha256": "d698a6aacb68a3b398f7baadbb03fb8e21f99b18d60e10856d58865964dd0fca",
+      "saved_files_sha256": {
+        "working.json": "c11aa63566936b039e1ee87adf9239b3bc3c3773e96d229e86f6df0141e15638",
+        "scene.json": "6512502ce1f066216a871dd6cb2759da3e1b0a41094c0734a09ea7743e6f6507",
+        "editor-journal.json": "9589008af55f879eb6e733044a70941817c70a7e83b79da55a7650ac8f707810",
+        "project-history.json": "3d3bd40934c54d7067193408d6292df26c5d7904208a440304252a5bd7186b59"
+      },
+      "source_untouched": true,
+      "unsaved_widget_text_imported": false,
+      "runtime_outputs_imported": false,
+      "applied_scene_imported": true
+    }
+  },
+  "scope": "Lançador real resume_snapshot e controlador real em duas novas encarnações privadas, sem gerados herdados. Entrada X11 seleciona e arrasta GTK3. Não executa handoff na sessão pessoal ou prova pintura/fidelidade Qt6.",
+  "diff_check": "passed",
+  "hashes": {
+    "tools/theme-lab/tests/test_controller_spin.py": "dfb27442a8d22cbedfca0cfc3739c6e1efde00bf98f98a4f66fb8acfa248b196",
+    "plasma/tools/abrir-laboratorio-temas.py": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d",
+    "tools/theme-lab/src/controller.c": "deb4385a0971d4238588ef337dcd3fee41f1ba2ada86065a8499419a20f9da36"
+  },
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "Entrega tecnicamente preparada e retomada nativa verificada; falta liberar/abrir/conferir instância pessoal e avaliação. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "remaining": [
+    "Liberação atual T08 owner theme e handoff pessoal",
+    "Conferência da nova fixture e avaliação humana"
+  ]
+}

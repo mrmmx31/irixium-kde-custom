@@ -1,0 +1,98 @@
+# Private GTK2 CHECK proposal; effective KDE roles only.
+style "theme-lab-gtk2-check" {
+  GtkCheckButton::indicator-size = 17
+  GtkCheckButton::indicator-spacing = 7
+  font_name = "18px"
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+  engine "pixmap" {
+    image { function = FLAT_BOX detail = "checkbutton" state = NORMAL file = "check-canvas-normal.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = NORMAL shadow = OUT overlay_file = "check-normal.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = NORMAL shadow = IN overlay_file = "check-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = PRELIGHT file = "check-canvas-normal.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = PRELIGHT shadow = OUT overlay_file = "check-normal.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = PRELIGHT shadow = IN overlay_file = "check-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = ACTIVE file = "check-canvas-normal.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = ACTIVE shadow = OUT overlay_file = "check-normal.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = ACTIVE shadow = IN overlay_file = "check-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = SELECTED file = "check-canvas-normal.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = SELECTED shadow = OUT overlay_file = "check-normal.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = SELECTED shadow = IN overlay_file = "check-normal-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = INSENSITIVE file = "check-canvas-disabled.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = INSENSITIVE shadow = OUT overlay_file = "check-disabled.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = INSENSITIVE shadow = IN overlay_file = "check-disabled-selected.png" overlay_stretch = FALSE }
+  }
+}
+style "theme-lab-gtk2-check-backdrop" {
+  GtkCheckButton::indicator-size = 17
+  GtkCheckButton::indicator-spacing = 7
+  font_name = "18px"
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+  engine "pixmap" {
+    image { function = FLAT_BOX detail = "checkbutton" state = NORMAL file = "check-canvas-backdrop.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = NORMAL shadow = OUT overlay_file = "check-backdrop.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = NORMAL shadow = IN overlay_file = "check-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = PRELIGHT file = "check-canvas-backdrop.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = PRELIGHT shadow = OUT overlay_file = "check-backdrop.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = PRELIGHT shadow = IN overlay_file = "check-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = ACTIVE file = "check-canvas-backdrop.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = ACTIVE shadow = OUT overlay_file = "check-backdrop.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = ACTIVE shadow = IN overlay_file = "check-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = SELECTED file = "check-canvas-backdrop.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = SELECTED shadow = OUT overlay_file = "check-backdrop.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = SELECTED shadow = IN overlay_file = "check-backdrop-selected.png" overlay_stretch = FALSE }
+    image { function = FLAT_BOX detail = "checkbutton" state = INSENSITIVE file = "check-canvas-disabled.png" stretch = TRUE }
+    image { function = CHECK detail = "checkbutton" state = INSENSITIVE shadow = OUT overlay_file = "check-disabled.png" overlay_stretch = FALSE }
+    image { function = CHECK detail = "checkbutton" state = INSENSITIVE shadow = IN overlay_file = "check-disabled-selected.png" overlay_stretch = FALSE }
+  }
+}
+widget "*themeLabCheck" style : highest "theme-lab-gtk2-check"
+widget "*themeLabCheck.*" style : highest "theme-lab-gtk2-check"
+widget "*themeLabBackdropCheck" style : highest "theme-lab-gtk2-check-backdrop"
+widget "*themeLabBackdropCheck.*" style : highest "theme-lab-gtk2-check-backdrop"
+# Canvas uses effective KDE window roles; no reference RGB fallback.
+style "theme-lab-gtk2-canvas" {
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+}
+style "theme-lab-gtk2-canvas-insensitive" {
+  bg[NORMAL] = "#6d99d0"
+  fg[NORMAL] = "#a7c2e4"
+  bg[PRELIGHT] = "#6d99d0"
+  fg[PRELIGHT] = "#a7c2e4"
+  bg[ACTIVE] = "#6d99d0"
+  fg[ACTIVE] = "#a7c2e4"
+  bg[SELECTED] = "#6d99d0"
+  fg[SELECTED] = "#a7c2e4"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+}
+widget "*themeLabCanvasWindow" style : highest "theme-lab-gtk2-canvas"
+widget "*themeLabCanvas" style : highest "theme-lab-gtk2-canvas"
+widget "*themeLabCanvasInsensitiveWindow" style : highest "theme-lab-gtk2-canvas-insensitive"
+widget "*themeLabCanvasInsensitive" style : highest "theme-lab-gtk2-canvas-insensitive"

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "item": "I261 / user goal: durable unsaved drafts",
+  "checked_at_utc": "2026-10-15T02:11:09Z",
+  "scope": "Synthetic editing and crash-recovery checks against an exact private copy of the current AI Work Board build; no personal journal was opened.",
+  "source": {
+    "repository": "/home/lsi/Documents/Projetos Open Source/ai-work-board",
+    "checkpoint_source": "src/controller/actions.c",
+    "checkpoint_source_sha256": "862b965ebfc28b760f8750c4ddd554eba3b29445de8cbf8d0c2acf6fbb6a69ec",
+    "build_sha256": "e770db9463abb20cf320fdb51a663c6e18d673d69dc8176210ee51092b442585",
+    "make_target_up_to_date_before_test": true,
+    "make_q_exit": 0,
+    "staged_exact_copy": "/home/lsi/tempia/board/i261-current-build-GvycCn/repo/build/work-board",
+    "staged_copy_sha256": "e770db9463abb20cf320fdb51a663c6e18d673d69dc8176210ee51092b442585",
+    "main_build_hash_matched_before_and_after_test": true
+  },
+  "validation": {
+    "command": "TMPDIR=$HOME/tempia python3 -B tests/test_editing.py && TMPDIR=$HOME/tempia python3 -B tests/test_draft_durability.py && TMPDIR=$HOME/tempia python3 -B tests/test_conversation_draft_durability.py (private exact-build snapshot)",
+    "exit_code": 0,
+    "temporary_root": "$HOME/tempia",
+    "editing_invariants_passed": 12,
+    "fast_crash": {
+      "confirmed_widget_edit_ms": 11.1,
+      "journal_written_before_sigkill": true,
+      "draft_restored_after_sigkill": true,
+      "saved_user_record_unchanged": true
+    },
+    "individual_and_shared_compositions": {
+      "durable_before_sigkill": true,
+      "both_recovered": true,
+      "saved_answers_unchanged": true
+    },
+    "fixture_only": true
+  },
+  "live_application": {
+    "pid": 4906,
+    "running_executable_sha256": "39f3a366b2a56a13641c91654fce5040a0bec917e7132b5ed304b7770afa009c",
+    "installed_build_sha256": "e770db9463abb20cf320fdb51a663c6e18d673d69dc8176210ee51092b442585",
+    "same_build": false,
+    "action": "Preserved the live process and its in-memory editor state; did not terminate or relaunch it. The tested build remains at build/work-board, but the open process still uses the older executable."
+  },
+  "previous_check": {
+    "build_sha256": "b132a3e19b935ad468dad247f96d7b938db165b43107a2300b0c68ed9c267ae4",
+    "checked_at_utc": "2026-10-15T02:00:11Z",
+    "confirmed_widget_edit_ms": 11.1,
+    "result": "All checks passed."
+  },
+  "build_churn_note": "The main build path changed during an earlier test attempt. The final validation used an exact staged copy of the then-current e770… build; its SHA-256 matched the main path before and after the test, and make -q reported the target up to date.",
+  "result": "The fast-checkpoint fix passes on the current e770… build. No duplicate demand was created. User approval and personal-draft state were not inferred. The live UI remains on the older executable and was preserved."
+}

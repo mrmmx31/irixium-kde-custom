@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R452",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Run the focused GTK2 scrollbar asset, role-palette, and runtime suites against the current worktree without changing the user profile or VM.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source_sha256": {
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "tools/gtk2_domainos_palette.py": "f4b14c5e4b72f837c4c5d0a9e67977c9dd9bfa2e0f43497e5f5753c588fbcca7",
+    "tests/test_gtk2_scrollbar_assets.py": "9821c7aa12f15d030ceb029c14150f849511b146c60a293fab6daffd543c10b6",
+    "tests/test_gtk2_palette.py": "81410164ac963f57e527403cdc1368ce417a260a271625b65866aa3039083edb",
+    "tests/test_gtk2_palette_runtime.py": "6a295af9d713b914a7b696fc0703c337db6acddcf10331ceb780a85851dd3cf1"
+  },
+  "tests": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/home/lsi/tempia python3 -m unittest tests.test_gtk2_scrollbar_assets -v",
+      "result": "passed",
+      "passed": 4,
+      "failed": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/home/lsi/tempia python3 -m unittest tests.test_gtk2_palette -v",
+      "result": "passed",
+      "passed": 10,
+      "failed": 0
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 TMPDIR=/home/lsi/tempia python3 -m unittest discover -s tests -p 'test_gtk2_palette_runtime.py' -v",
+      "result": "passed",
+      "passed": 22,
+      "failed": 0
+    }
+  ],
+  "findings": [
+    "The current GTK2 scrollbar recipe and oriented stepper assets pass the focused geometry/state contract tests.",
+    "Role-based palette generation, pressed light/shadow relief, insensitive corner composition, reload and restore pass their current test coverage.",
+    "R394 remains the authoritative native comparison for normal arrows: all four installed 15x15 cells match the live SR10.4 reference at 0/225 pixels. The reported smaller horizontal normal glyph is not reproduced, so no geometry change is justified by current evidence."
+  ],
+  "limits": [
+    "These are automated GTK2/asset/runtime checks, not visual equivalence evidence from HP VUE.",
+    "R450's direct native-state gaps remain open: held up/left/right, full cursor-clear down comparison, hover, insensitive state and thumb drag.",
+    "verify.sh returned 4 because the distinct Prancheta MAME PID 3971019 is active alongside this project's canonical VM PID 3971377. No guest input was sent, and neither VM, user profile nor application was changed."
+  ],
+  "result": "All 36 focused tests passed. This raises confidence in the existing GTK2 generator/runtime but does not close the native visual review or authorize applying the partial GTK2 recipe to XChat.",
+  "next": "Resume native scrollbar-state comparison only after the distinct MAME instance releases the guard; then validate the project VM identity, wake the guest once using the documented procedure if its screen is still black, and compare an unobscured target."
+}

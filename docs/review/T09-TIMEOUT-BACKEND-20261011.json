@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-11T14:21:48.009308+00:00",
+  "item": "T09",
+  "revision": 1,
+  "phase": "backend_deadline_editor_recovery_verified_private",
+  "changes": [
+    "Deadline de jobs limitados usa CLOCK_MONOTONIC em vez da hora civil; mantém30s.",
+    "Timeout fica registrado no job, mata grupo próprio uma vez e exibe mensagem explícita; aplicação continua responsiva.",
+    "Barreira pré-exec de geração45s só no probe, acionada uma vez; sem saída backend simulada."
+  ],
+  "checks": {
+    "status": "passed",
+    "scope": "Real controller deadline on a stalled test-only pre-exec generation child; actual native typing/Undo/Redo while child lives; proposal/scene preserved on timeout and real GTK3 generation recovers by Apply. No computation/other-toolkit/historical fidelity claim.",
+    "deadline_elapsed_seconds": 30.45155690202955,
+    "timed_out_owned_pid": 2540907,
+    "editor_input_undo_redo_while_waiting": true,
+    "recovered_allocation": [
+      223,
+      80
+    ]
+  },
+  "strict_build": "all/build-controller-spin-probe passed",
+  "production_wrapper_check": {
+    "theme-lab": false,
+    "controller-spin-probe": true
+  },
+  "runtime_closure": "2 passed",
+  "diff_check": "passed",
+  "scope": "Prazo real no controlador e filho próprio retido antes do exec; edição/Undo/Redo nativos durante espera, pending223×80 versus applied222×80 preservados após timeout; segunda tentativa gera GTK3 real223×80. Não simula clock nem prova cálculo pesado/Qt/GTK2/fidelidade.",
+  "remaining": [
+    "Eventos atrasados de cena/origem antiga.",
+    "Cancelamento/encerramento e descendentes próprios.",
+    "Entrega pessoal e avaliação."
+  ],
+  "estimated_stage_progress_percent": 40,
+  "percentage_basis": "Falha GTK3 e deadline+responsividade verificados; eventos atrasados/encerramento e entrega ainda pendentes. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "dbe874da0b45a36df0d289e24fa320b7acecf7464461d1f1ebde7c66299e6cae",
+    "tools/theme-lab/tests/import_exec_gate.c": "5fbcd54e505cad75a5157ad3e08a86aa755416b1b8c67409496eaad47b3078cf",
+    "tools/theme-lab/tests/controller_backend_timeout.py": "d31b75136253f5bd4dadd5a7d201d8707659167100a0414ff58e5f0ad1e09c49",
+    "tools/theme-lab/tests/test_controller_spin.py": "2e5324e101379276261459e2ac4bde57f7a5398c7ab76afcb615664216cd878a"
+  },
+  "evidence_hashes": {
+    "t09-timeout-build.log": "98a6f3684e16e0d4141697ea0af594b2adf9044f6d63f312dd99b105aa8fe8ca",
+    "t09-timeout-native.log": "da08bf6be4b1f4abd89876b1865a0e6d847cb955f32bf58c34f577e863be2a16",
+    "t09-timeout-native.err": "0a337b971b6bf0501ba8f7a8300dd851830cda43c4886029b577e3a1a27bca84",
+    "t09-timeout-runtime.log": "dcc481c429c0f479998a8b95d85af126eb75d562c5cae6ed466c1c2ca73415de"
+  }
+}

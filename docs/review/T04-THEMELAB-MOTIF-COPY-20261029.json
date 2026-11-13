@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "item": "T04",
+  "date": "2026-10-29",
+  "scope": "Editor manual: referência Motif legível e cópia raster reversível",
+  "authorization": {
+    "authorized": true,
+    "source": "instrução direta do usuário no escopo ativo do Theme Lab"
+  },
+  "implemented": [
+    "Zoom visual compartilhado por Motif e captura nativa, iniciado em 4:1 e ajustável de 1:1 a 8:1",
+    "Títulos conservam dimensões originais e declaram o fator visual real",
+    "Cópia explícita da referência Motif inteira para a camada manual",
+    "Substituição atômica de pixels e dimensões como um único passo de Undo/Redo",
+    "Conversão XImage para RGBA pelo colormap da janela, sem pressupor TrueColor",
+    "Separação preservada entre referência histórica, captura nativa, camada manual e receita"
+  ],
+  "verification": [
+    {
+      "command": "make -C tools/theme-lab -j2",
+      "result": "passed with -Wall -Wextra -Werror"
+    },
+    {
+      "command": "make -C tools/theme-lab check-manual-paint-model",
+      "result": "passed: atomic replace, validation, single Undo and Redo"
+    },
+    {
+      "command": "TMPDIR=~/tempia/domainos-theme-work/test-themelab make -C tools/theme-lab check-paint-hints check-paint-reference-copy",
+      "result": "passed: 51 hints; Motif 15x65 and native 15x120 at explicit 4:1; persisted copy, Undo and Redo"
+    },
+    {
+      "command": "TL_PAINT_SELECTION_ONLY=1 and TL_PAINT_CURSORS_ONLY=1 under Xvfb",
+      "result": "passed: selectors and applied tool cursors preserved"
+    }
+  ],
+  "preservation": {
+    "manual_paint_sha256_before": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87",
+    "scene_sha256_before": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+    "backup": "~/tempia/domainos-theme-work/t04-motif-copy-20261029-before",
+    "installed_theme_changed": false,
+    "user_configuration_changed": false
+  },
+  "runtime": {
+    "service": "domainos-theme-lab-motif-copy-r23-20261029.service",
+    "pid": 3568455,
+    "work_dir": "~/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "capture": "~/tempia/domainos-theme-work/theme-lab-r23-manual.png",
+    "copy_activated_on_user_document": false
+  },
+  "source_hashes": {
+    "tools/theme-lab/src/view/manual_paint_view.c": "235170b2a268fd999c12b8b2dfb57e431888f563eaca68a012db19c6de7f6f33",
+    "tools/theme-lab/src/paint/model.c": "aaa4a66692b09a6322dddf7d50253caeb4d7c06ea58dccaa602339d9e09ab5be",
+    "tools/theme-lab/tests/native_metrics_view.c": "1421aa8c45bcef120283d4c9c340abbe7dc4fd443f77d8062543c8158b5327b9",
+    "tools/theme-lab/tests/manual_paint_model_test.c": "573f7b92df627ebed27274835c5e787bf02b006b408edf829d2f3e013d81a73b"
+  },
+  "limits": [
+    "A cópia segura atual usa somente a referência inteira; recortes por peça exigem geometria comprovada ou seleção manual futura",
+    "Pixels históricos copiados permanecem arte raster separada e não se adaptam automaticamente aos papéis do esquema KDE",
+    "Verificação técnica não constitui aceite visual do usuário"
+  ],
+  "next": "Receber a avaliação visual do usuário; a cópia Motif permanece uma ação explícita ainda não executada no documento ativo."
+}

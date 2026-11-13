@@ -1,0 +1,120 @@
+{
+  "id": "P04-ICONBOX-XRES-IDENTITY-20261103",
+  "recorded_at": "2026-11-03T05:24:05Z",
+  "authority": {
+    "source": "retorno direto do usuário: duas colunas ainda mostrava que uma janela selecionada desapareceu ou mudou de processo",
+    "goal_changed": false,
+    "visual_acceptance_inferred": false
+  },
+  "diagnosis": {
+    "selected_windows": [
+      {
+        "title": "Esteio / Xt + Xaw",
+        "x11_window_id": 54525976,
+        "kwin_pid": 0,
+        "xres_pid": 2675062,
+        "assessment": "cliente X11 legado sem _NET_WM_PID; o PID zero do KWin não significa troca de identidade"
+      },
+      {
+        "title": "Esteio / FLTK — piloto isolado",
+        "kwin_internal_id": "9088f311-4b21-4072-bdcb-c395cb849f66",
+        "kwin_pid": 2674714,
+        "assessment": "identidade nativa disponível, mas o cliente declara tamanho fixo"
+      }
+    ],
+    "root_cause": "o helper conhecia o PID real do cliente Xt/Xaw pelo TaskManager, mas o script do KWin comparava esse PID com window.pid=0 e emitia um falso erro de identidade",
+    "second_constraint": {
+      "client": "Esteio / FLTK — piloto isolado",
+      "resizeable": false,
+      "content_size": "1060x620",
+      "frame_size": "1082x661",
+      "two_column_width_on_current_screen": "aproximadamente 960 px",
+      "assessment": "duas colunas iguais não cabem sem recorte ou sobreposição enquanto esse cliente permanecer de tamanho fixo"
+    }
+  },
+  "change": {
+    "identity_contract": [
+      "remover qualquer marcador x11PidAuthenticated recebido na entrada",
+      "resolver WId decimal pelo XRes no helper Python",
+      "aceitar window.pid=0 somente quando XRes autenticar o mesmo PID já registrado para a janela",
+      "continuar recusando toda divergência quando o KWin fornecer PID diferente de zero"
+    ],
+    "preflight_contract": [
+      "inspecionar movimento e redimensionamento sem alterar as janelas",
+      "desabilitar somente colunas, linhas e mosaico quando uma selecionada for fixa",
+      "manter disponíveis restauração, minimização e demais ações de estado",
+      "explicar no próprio painel qual janela não aceita redimensionamento"
+    ],
+    "live_read_only_result": {
+      "identity_resolved": true,
+      "available": true,
+      "geometry_available": false,
+      "detail": "\"Esteio / FLTK — piloto isolado\" não aceita redimensionamento; colunas, linhas e mosaico ficam indisponíveis. Outras ações de estado continuam disponíveis.",
+      "windows_moved": false
+    }
+  },
+  "verification": {
+    "focused_suites": {
+      "result": "passed",
+      "tests": 46,
+      "parts": {
+        "xres_identity": 5,
+        "geometry_and_capabilities": 8,
+        "relation_guard": 6,
+        "operations_handoff": 20,
+        "panel_measurement": 1,
+        "middle_click_regression": 6
+      }
+    },
+    "native_x11": {
+      "result": "passed",
+      "checks": 71,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-xres-final-x11-20261103/RESULTADO.json",
+      "sha256": "7f02818006b93b7b57f7eb619aa3c815a83383cd95b4df159c118d242ec85f64"
+    },
+    "native_wayland": {
+      "result": "passed",
+      "checks": 71,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/p04-xres-final-wayland-20261103/RESULTADO.json",
+      "sha256": "ddb1b9b5a32970ac72c2773c5bc13c31f2394386ab95da4b94de612e06863b57"
+    },
+    "source_sha256": {
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/window_ops.py": "3a71ea35ff05ef4d565a53fe6597237588b6dad83020df97c29eb9abbe9bfb0e",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/code/window_ops.js": "62af5a9baad0d689d1989a5872269460809a78ce6384804b84fe11805ca3e3bf",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "1afac117cc33fda58637a2d5cc0603c1a5fed3a7f692e88e7e6d154e0278fbdf",
+      "plasma/tests/test_domainos_window_ops_identity.py": "76b84a91db2e32f1a968ea5f1a91fb63243c8ddda9404eeef29ef499d1e247b9",
+      "plasma/tests/test_domainos_window_ops_geometry.py": "e399186a5d8fd94b6daccf1d640f77ee5274ab0ef1cc664f352632fe6434e8cf",
+      "plasma/tests/test_domainos_operations_handoff.py": "c65f666a34d726585dad6008e40f173027f72e834c06cf65e3c577b117513073"
+    },
+    "git_diff_check": "passed"
+  },
+  "deployment": {
+    "tool": "tools/update_domainos_qml.py",
+    "backup": "/home/lsi/.local/state/irixium-domainos/backups/106c97cd791344499cba723a718fb767",
+    "source_and_installed_match": true,
+    "plasmashell": {
+      "current_pid": 2684558,
+      "active": true,
+      "other_user_pid_preserved": 332937
+    },
+    "configuration": {
+      "unchanged_hashes": {
+        "kdeglobals": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+        "plasmarc": "ae86c7cebd4ffd3d2a378d8b0763426215de530c89bbc0ea6d9bb0e19ec5e0b3",
+        "kwinrc": "131f276c31272897f2eb4e5429c3dfcddc3363143cc089707bd882e958598a26"
+      },
+      "plasma_appletsrc_after_restart": "59000fed4c38a00380f1b910b35fa27dbed3e5cca266911590cb8668dda7078b",
+      "assessment": "o Plasma reserializou appletsrc durante a recarga; a gravação foi preservada e não sobrescrita"
+    }
+  },
+  "limits": [
+    "As provas nativas usaram compositores e clientes privados; a pré-verificação das duas janelas reais foi somente leitura.",
+    "A correção elimina o falso erro de identidade, mas não torna redimensionável um cliente FLTK que declara tamanho fixo.",
+    "A aceitação da interação na sessão real continua pertencendo ao usuário."
+  ],
+  "progress": {
+    "subscope_percent": 95,
+    "basis": "correção, provas X11/Wayland, publicação e diagnóstico da limitação fixa concluídos; resta a avaliação do usuário no painel real",
+    "not_visual_fidelity_percent": true
+  }
+}

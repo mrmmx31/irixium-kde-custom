@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "id": "R378",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify GTK2 2.24.33 left/right horizontal scrollbar stepper normal-held-released output using the current generated bundle.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "input": "xdotool press/hold/release in private Xvfb only; GdkPixbuf captures exclude cursor",
+    "allocation_px": [
+      543,
+      15
+    ],
+    "theme_bundle": "~/tempia/ia-tema/evidence/I167/r371-down-stepper-edge-fix/bundles/41e63f50494e5c95229d803105e0bdf2309013898b5cb53ccf1d52d0ac9a8e5c",
+    "probe": "~/tempia/ia-tema/evidence/I167/r378-horizontal-held-gdk-capture/probe.c",
+    "probe_sha256": "59c485774ddd0e7d2c3b3ee937576eba78de66072bde9078063c1181146b0942"
+  },
+  "captures": {
+    "baseline": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba",
+    "left_held": "aa05776a8dc166ec0af255586a8b2796c72fb1df43d3e3c78a24a1a2775300ad",
+    "left_released": "352a3f1d7d40bf465dc4149de29930ed1165d93589a2e289213bd41b60dd1049",
+    "right_held": "e0246d65b90c0d0529f778c33ff72d7bc8554badf1ecf26845a1fce367cd4405",
+    "right_released": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba"
+  },
+  "generated_assets": {
+    "left_normal": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+    "left_pressed": "d98e9d1df5bf59fb0e913abbad3d1966f0a47d575126a21ba2bb89c47d36605f",
+    "right_normal": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+    "right_pressed": "4d5821a113c217769190d0c20a2adcff5187f5eeb78b007e63d1632f9f53b4ca"
+  },
+  "comparison": {
+    "left_cell_origin_xy": [
+      2,
+      0
+    ],
+    "right_cell_origin_xy": [
+      526,
+      0
+    ],
+    "cell_size_px": [
+      15,
+      15
+    ],
+    "left": {
+      "baseline_vs_normal": 0,
+      "held_vs_pressed": 0,
+      "released_vs_normal": 0,
+      "normal_to_held": 53,
+      "released_to_baseline": 0
+    },
+    "right": {
+      "baseline_vs_normal": 0,
+      "held_vs_pressed": 0,
+      "released_vs_normal": 0,
+      "normal_to_held": 53,
+      "released_to_baseline": 0
+    }
+  },
+  "interpretation": "The first diagnostic crop used the wrong origins x=0 and x=528 and did not match the stepper cells. Re-registering to x=2 and x=526 yields exact 15x15 normal, pressed and released asset matches. Each held transition changes 53 pixels; release restores the baseline. No horizontal artwork change is indicated by this probe.",
+  "historical_limit": "This verifies current GTK2 output and state transitions only. No direct held left/right SR10.4/VUE pixel pair is retained; the canonical VM guest snapshot is currently black.",
+  "vm_preflight": {
+    "pid": 3971377,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_request": null
+    },
+    "snapshot": "~/tempia/ia-tema/evidence/I167/r376-vue-horizontal-held-reference/vm-current.png",
+    "snapshot_sha256": "dfb457189f76bec661c1ce54a218d57c3567008ef7404a47541082570b93a8e5",
+    "visible_target": false,
+    "action": "No guest input; waiting for user physical wake event before a historical horizontal hold capture."
+  },
+  "limits": [
+    "No theme changes or installation; no user applications were restarted.",
+    "No guest input was sent to the VM.",
+    "Retained historical horizontal held captures and human visual review remain open."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R472",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Render the actually selected and installed GTK2 DomainOS theme in private Xvfb, then compare its horizontal scrollbar stepper cells against SR10.4/VUE and the R470 generated render.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": ":189",
+    "theme_setting": "DomainOS-SR10-4-KDE",
+    "rc_files": "/home/lsi/.gtkrc-2.0 and the selected installed theme gtkrc",
+    "theme_rc_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "scrollbar_allocation_px": [360, 15],
+    "stepper_size_configured_px": 15
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/r472-installed-theme-gtk2-20261027/installed-theme-horizontal.png",
+    "sha256": "42f4df73344163315ca4921546029608e78db6e33246ab4755fd123ae799bdf3",
+    "dimensions_px": [360, 70],
+    "probe_script": "/home/lsi/tempia/ia-tema/evidence/I167/r472-installed-theme-gtk2-20261027/probe.py",
+    "probe_script_sha256": "d998983f2aaef204469ce5b7ec665a8158031f4d1c1459a35e0a0fd5bf662eec"
+  },
+  "comparison": {
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "scale": "1:1; no resampling",
+    "method": "Search the installed-theme screenshot for each 15x15 VUE cell by minimum absolute RGB error, then list every differing coordinate.",
+    "left": {
+      "installed_origin_px": [2, 55],
+      "size_px": [15, 15],
+      "vue_different_pixels": 3,
+      "difference_offsets_xy": [[0, 13], [1, 13], [0, 14]],
+      "center_11x11_differences": 0
+    },
+    "right": {
+      "installed_origin_px": [343, 55],
+      "size_px": [15, 15],
+      "vue_different_pixels": 1,
+      "difference_offsets_xy": [[14, 1]],
+      "center_11x11_differences": 0
+    },
+    "r470_generated_native_capture": {
+      "left_different_pixels_vs_vue": 0,
+      "right_different_pixels_vs_vue": 0
+    }
+  },
+  "result": "The real installed GTK2 theme preserves 15x15 horizontal stepper cells and an exact 11x11 central arrow region. Its only four pixel differences from the live VUE cells are the three left and one right outer-relief corner pixels already corrected by R470. The R470 private generated renderer matches the VUE cells 0/225; the installed user theme has not yet received that output.",
+  "limits": [
+    "This is an isolated Xvfb render, not an already-running user application or live desktop screenshot.",
+    "It proves the installed theme's current normal horizontal composition, not pressed, hover, disabled or thumb-drag behavior.",
+    "No user profile, app, GTK2 theme file, VM, guest setting or desktop window was modified."
+  ],
+  "next": "Keep I167 focused on GTK2. Continue historical interactive states when the existing VM guard allows input, and treat deployment/live-application verification as separate from this adapter/native-preview proof."
+}

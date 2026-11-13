@@ -1,2 +1,44 @@
 __pycache__/
 *.py[cod]
+
+# Private DomainOS test/compile workspaces; their reports are kept outside Git.
+/.qa-domainos-*/
+/.qa-domainos-native-colors-final-audit-r2
+/plasma/tools/.qa-*.py
+/.qa-calendar-mail-*/
+/.qa-thunderbird-count-*/
+/.qa-task-resources-*/
+/.domainos-*/
+/.g2-qa-*/
+/.mh-qa-*/
+/.ird-fav-*/
+/.native-palette-*/
+/.native-footer-controls-*/
+/.gtk-kde-*/
+/.qa-irix-*/
+/.gtk2-runtime-native-*/
+/.qa-kvantum-*/
+/.qa-theme-lab-*/
+/.gtk2-*-private-proof-*.tar.gz
+/.gtk2-*-private-proof-cleanup-*.json
+/.vscode/
+
+# Roteiro local do emulador, a migrar para outro projeto.
+/docs/domainos-mame-local
+
+# Imagem local do convidado SR10.4; os metadados e regras ficam versionados.
+/vm/domainos-sr10.4-assistant/private/
+
+# Runtime local da VM (sessao MAME, configuracoes e capturas); nao publicar.
+/vm/domainos-sr10.4-assistant/runtime/
+
+# Registros brutos locais do contexto Tema; resumos verificados ficam em docs/.
+/records/ia-tema/
+
+# Workspaces e saídas transitórias de QA; recibos duráveis ficam em docs/review/.
+/.qa-*/
+/.work-board-staging/
+
+# Bundles GTK2 gerados na raiz pelo hash de conteúdo e artefato vazio acidental.
+/????????????????????????????????????????????????????????????????/
+/-

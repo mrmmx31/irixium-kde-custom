@@ -1,0 +1,65 @@
+{
+  "item": "I167",
+  "revision": "R34",
+  "checked_at_utc": "2026-10-22T23:42:08Z",
+  "family": "GTK2 GtkEntry normal face and static DomainOS SR10.4 comparison",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "correction_to": "R33; R33 is retained as an audit record, but its Window/WindowText mapping conclusion was incorrect and is superseded here.",
+  "implementation": {
+    "source": "tools/theme-lab/gtk2_entries.py",
+    "source_sha256": "41a237aa3914b475c3a2c8562328666181cc99b471bb153038234fa194e674e6",
+    "related_files": {
+      "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "a8a7642975a79cdf1aebc776e31435854454555f569b7d7f3f12734a1607af5c",
+      "tools/theme-lab/tests/test_gtk2_entry_paint.py": "ce37dbf9c39fc779b7b6fb2c4b426f20691dad43aec2d4729efa2297e0a525ea"
+    },
+    "summary": "Restored KDE View/ViewText for the normal GtkEntry face and text, with KDE Selection/SelectionText for selected text. The incorrect Window mapping proposed in R33 is not active. The focused test now puts disposable output under ~/tempia."
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01, MAME capture from 2026-10-14",
+    "source_png": "~/tempia/domainos-vue-study/captures/2026-10-14/mame-vue-help-snapshot-20261014.png",
+    "source_png_sha256": "a3988c00d55d26c383957a8eca220e88928a35a66944b30116ad2c8d84a5fd2d",
+    "reference_crop": "~/tempia/domainos-vue-study/controls/text-fields/help-snapshot-search-field-static-20261014.png",
+    "reference_crop_sha256": "b04e7b4a5fbebf32247e9c3e87993ae0a962093a9c2842c7cac2c7d757c7289f",
+    "crop_xyxy_half_open": [393, 592, 524, 622],
+    "measured_roles": {
+      "field_face": "KDE View BackgroundNormal, RGB sampled as (102,136,181)",
+      "surrounding_form": "KDE Window background, sampled as (120,160,213)",
+      "top_left_bevel": "shadow role, sampled as (62,83,110)",
+      "bottom_right_bevel": "highlight role, sampled as (196,213,237)"
+    },
+    "state_limit": "The static reference shows a blank field. It does not establish focus, caret, selection, or active-editing appearance."
+  },
+  "comparison": {
+    "gtk2": "2.24.33",
+    "allocation_px": [131, 30],
+    "different_pixels": 0,
+    "total_pixels": 3930,
+    "method": "Direct crop comparison between native GTK2 rendering and the measured SR10.4 field rectangle.",
+    "artifacts": {
+      "gtk2_render": "~/tempia/i167-gtk2-entry-r41/gtk2-field-131x30.png",
+      "gtk2_render_sha256": "fddd6566b024b3d28ec7e29f39fbc57327d0c6f0a0589a0c01786e2b6288c062",
+      "reference_crop": "~/tempia/i167-gtk2-entry-r41/domainos-sr104-field-131x30.png",
+      "reference_crop_sha256": "dae120cddf827ba94fe45708368d2dcf00e8eb29adac8d392001ad3c49eb51c7",
+      "difference_image": "~/tempia/i167-gtk2-entry-r41/field-difference.png",
+      "difference_image_sha256": "b4c53816f953d4833f4ea6ec6320430604d46704f05560ffd92cf1849f59fbf3",
+      "comparison_json": "~/tempia/i167-gtk2-entry-r41/comparison.json"
+    }
+  },
+  "tests": {
+    "native_scenes": "24 passed: four color schemes x three states x separate/coupled origins.",
+    "keyboard_editing": "passed: UTF-8, select/replace, copy/paste/cut, Ctrl+Z, Ctrl+Y, Ctrl+Shift+Z, multi-step undo and native edit popup.",
+    "focused_unit_tests": "3 passed.",
+    "py_compile": "passed.",
+    "public_preview_route": "not revalidated in this step; no claim of public route or user-session delivery."
+  },
+  "limits": [
+    "The exact pixel match covers only the blank, normal SR10.4 field rectangle; it does not establish that all GTK2 Entry states or typography match Motif/VUE.",
+    "Focus ring, caret and selection appearance still need a corresponding historical VM reference before visual claims are made.",
+    "A separate current live MAME read-only snapshot was black outside the Apollo command strip; this did not invalidate the archived 2026-10-14 static VUE capture used above.",
+    "GTK2 as a whole is incomplete; nothing was applied to the personal session or XChat."
+  ],
+  "next": "Continue the GTK2-only family sequence from the current authorized I167 scope. Before claiming the GtkEntry family complete, classify a focused/selected reference if available; otherwise keep those states explicitly unverified. The public preview gate and remaining GTK2 families precede applying the finished GTK2 theme to XChat."
+}

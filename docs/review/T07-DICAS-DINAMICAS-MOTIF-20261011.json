@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-11T12:39:02.804480+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: native history hover verified and insensitive action limitation documented",
+  "change": "The thumb-shadow numeric hint now explicitly states pixels. Added a native audit of changing piece/axis guidance, all visible numeric SpinBox descendants, inheritance values and visibility/sensitivity.",
+  "proof": {
+    "native_metrics_build_exit": 0,
+    "product_build_exit": 0,
+    "schemes": [
+      {
+        "name": "DomainOS",
+        "terminal": 0
+      },
+      {
+        "name": "BreezeLight",
+        "terminal": 0
+      },
+      {
+        "name": "BreezeDark",
+        "terminal": 0
+      },
+      {
+        "name": "TestYellow",
+        "terminal": 0
+      }
+    ],
+    "scope": "dynamic hints for five scrollbar pieces and both size axes in all recipe families: native child resources, visibility, sensitivity, inheritance and unchanged model; four initial UI schemes; not hover or adapters"
+  },
+  "finding": "Installed XmSpinBox draws internal arrows (public manual XmSpinBox(3), arrowSize/arrowLayout; local header SpinBP.h only corroborates topology). Numeric entry hint resources do not prove internal arrow hover. No private Motif API used.",
+  "failed_attempts": [
+    "Initial audit expected two arrow child widgets; installed runtime did not expose them as children. Fixture corrected to actual topology, arrow hover explicitly excluded.",
+    "Build used nonexistent XmIsSpinBox macro; changed to public XtIsSubclass/xmSpinBoxWidgetClass.",
+    "Audit caught missing pixel unit in thumb-shadow hint; actual product text corrected and all four role schemes passed."
+  ],
+  "remaining": [
+    "Internal SpinBox arrow hover needs dedicated native verification and implementation if absent",
+    "Disabled action hover guidance",
+    "Other native hover/layout states and coordinated personal delivery"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "progress_basis": "Dynamic guidance semantics now verified, without extending resource tests to hover or claiming adapter/runtime availability. Entire goal remains incomplete.",
+  "personal_session_modified": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-build-r2.log": "c42cb1a1a5c571ac92a0e857260cc68660bf545ce00718900cb1c7b0d2c997df",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-build-r3.log": "ec858c7fe84aeee4e9b07a8e1be9ed53fbbc8ab224d75379775c49677d4ae931",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-build-r4.log": "ec858c7fe84aeee4e9b07a8e1be9ed53fbbc8ab224d75379775c49677d4ae931",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-build-r5.log": "ec858c7fe84aeee4e9b07a8e1be9ed53fbbc8ab224d75379775c49677d4ae931",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-build.log": "ec858c7fe84aeee4e9b07a8e1be9ed53fbbc8ab224d75379775c49677d4ae931",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r2.json": "ff19624ea3f49889554762e9f354263f0cad5cb80802571bf5f98bdd5b834aba",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r3.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r3.json": "8e1286c22ed97e440a65ecaf089454cce26ec7b61639dd0e628925e9f0cd368d",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r4.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes-r4.json": "8b6fa0492b475e033a54ac3bd5b8f74960cd95481365a0918d0bdc1a58dae097",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-palettes.json": "8acbd22e5f2aa4140da633f95901902e45ee2eac6a7f2453330ada4232e3a964",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-product-build.log": "57f17917ea34b5dc55158ffc7d7ad74a341d07acdd7ffaa6153a0a3a471ba497",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-xvfb-r2.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-xvfb-r3.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-xvfb-r4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-dynamic-hints/t07-dynamic-xvfb.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tools/theme-lab/src/view.c": "3f94228804e9929831ed2a03ac893cce53d945d3c2597a8dd3f530d77dbdfbe3",
+    "tools/theme-lab/tests/dynamic_hints.c": "cedd9299d8f60e58816d58f8ddf12a8d09b964a3ede3f56242f168a792486776",
+    "tools/theme-lab/tests/native_metrics_view.c": "0a527f894f7de028a673b039f7ccb13de46ee4c3afd38075b971e0a984888b6c",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "91df6629b6d4a7322dc9010e961f9e810c1db48abc3010c708d16db3ceae5a0a",
+    "tools/theme-lab/Makefile": "cbe241b3c4097118cbef4b03c811c6f5f8059d3f568467a77756cfd6cd0683b8"
+  }
+}

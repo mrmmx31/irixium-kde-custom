@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "I167-USER-MAME-VM-VISIBILITY-CHECK-20261024-R83",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "instance": "user VM; distinct from assistant clone PID 2745483",
+    "pid": 912338,
+    "screen_resolution_px": [1024, 844],
+    "capture": "~/tempia/i167-live-r83-user-vm.png",
+    "capture_sha256": "7cccf1bcb84df23678e2b90f52be82045164b11eda0360ea9a517fd52b7bfebb"
+  },
+  "live_state": {
+    "paused": false,
+    "frameskip": 0,
+    "throttled": false,
+    "capture_hook": null,
+    "bridge": {"pending": false, "reply": false},
+    "screenshot": "The guest raster is black; the Apollo command strip remains visible. No VUE text field is available for comparison.",
+    "interpretation": "A single black snapshot does not establish whether screen saver timing/configuration is correct or whether the display is otherwise blank. No ten-minute wait or wake input was attempted."
+  },
+  "preservation": {
+    "vm_restarted": false,
+    "guest_input_sent": false,
+    "guest_settings_changed": false,
+    "performance_profile_changed": false,
+    "assistant_clone_touched": false
+  },
+  "next": "Use the assistant clone for GTK2 historical comparison when it presents a live mapped VUE text field. The user VM is currently not visually usable for this measurement; do not infer cause from this capture."
+}

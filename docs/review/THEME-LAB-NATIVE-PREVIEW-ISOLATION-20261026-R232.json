@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "id": "THEME-LAB-NATIVE-PREVIEW-ISOLATION-20261026-R232",
+  "date": "2026-10-26",
+  "item": "T04",
+  "section": "work",
+  "status": "gtk2-coupled-and-separate-previews-verified-waiting-visual-review",
+  "user_report": "As prévias GTK2 e das demais famílias aparecem indisponíveis no Theme Lab.",
+  "scope": "Disponibilidade das prévias nativas no Theme Lab aberto diretamente na sessão normal; nenhuma alteração de tema ou toolkit.",
+  "observed": {
+    "theme_lab_pid": 1416802,
+    "window_id": "0x2800248",
+    "window_state": "IsViewable",
+    "work_directory": "~/tempia/ia-tema/theme-lab-r231",
+    "selected_family_at_capture": "gtk2",
+    "capture": "~/tempia/ia-tema/evidence/theme-lab-r231-preview-unavailable-20261026.png",
+    "capture_sha256": "a44655d2a9cbf912c454e6710e369d753244222443591bc544ab672350c68be5",
+    "gtk2_status": "Prévia indisponível: Abra pelo lançador privado: a prévia exige o namespace bwrap coordenado.",
+    "coupled_canvas_status": "Backend acoplado ainda não mapeado neste canvas.",
+    "coupled_canvas_status_at_initial_normal_session": "Backend acoplado ainda não mapeado neste canvas.",
+    "follow_up": "Essa mensagem veio da sessão normal anterior. Na sessão privada coordenada Xephyr :60, a família GTK2 foi selecionada e o renderer acoplado real abriu; a captura inicial não demonstrava a rota atual."
+  },
+  "cause": {
+    "separate_native_preview": "backend.preview() exige backend.private_namespace(); a janela normal não herda IRIX_DOMAINOS_PRIVATE_NAMESPACE=bwrap, marcadores de sessão privada, HOME/XDG temporários e DISPLAY autenticado exigidos pelas galerias. O backend devolve indisponível antes de iniciar GTK/Qt. O requisito comum explica a indisponibilidade das galerias GTK/Qt em execução direta.",
+    "gtk2_coupled_preview": "A montagem GTK2 no canvas central ainda não está implementada; iniciar a janela em Xephyr não resolve esse caminho acoplado.",
+    "not_a_dependency_failure": "GTK2 2.24.33, GIR GTK2 e libgtk2.0-0t64 estão instalados. Não é necessária instalação com sudo para esta causa."
+  },
+  "scope_limits": [
+    "GTK1 e GTK5 não têm runtime disponível; Motif não possui galeria nativa registrada.",
+    "O estado das outras famílias nesta captura não foi testado uma por uma; o bloqueio comum foi inferido do preflight compartilhado no backend.",
+    "Nenhuma família visual foi corrigida, instalada ou aceita visualmente."
+  ],
+  "safety": {
+    "normal_theme_lab_kept_open": false,
+    "work_journal_preserved": true,
+    "vm_or_guest_changed": false,
+    "xephyr_started": true,
+    "user_decision_pending": null
+  },
+  "next": "A prévia nativa GTK2 acoplada e separada está disponível no Xephyr e consome a mesma cena/GTKRC; a checkbox está salva como true no estado de trabalho. Continuar somente na família GTK2: comparar a seta horizontal com a referência SR10.4 conforme R231. Esta prova de disponibilidade/mesma receita não certifica fidelidade histórica nem aparência.",
+  "technical_coverage_estimate": {
+    "percent": 76,
+    "basis": "I167 GTK2 continua na base R224; o diagnóstico T04 não altera sua cobertura.",
+    "not_a_visual_fidelity_score": true
+  },
+  "authorization": {
+    "source": "AI Work Board — T04, seção work",
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+    "authorized": true,
+    "scope": "Abrir a sessão privada coordenada para comparar prévias nativas; uma família por vez."
+  },
+  "private_preview": {
+    "session_directory": "~/tempia/ia-tema/theme-lab-r232-session",
+    "display": ":60",
+    "host_xephyr_pid": 1423092,
+    "supervisor_pid": 1423089,
+    "theme_lab_pid": 1424025,
+    "theme_lab_work_directory": "~/tempia/ia-tema/theme-lab-r232-session/home/theme-lab",
+    "previous_work_directory_preserved": "~/tempia/ia-tema/theme-lab-r231",
+    "initial_global_theme": "org.magpie.irixclassic.domainos.desktop",
+    "initial_color_scheme": "DomainOS-SR10-4",
+    "package": "irixclassic-domainos-0.2.12-beta.1.zip",
+    "package_sha256": "3976fe6c8ad77633817a49541f8def14d09192641034f84777aefad40acfe6d2",
+    "status": "open",
+    "available_galleries": [
+      "GTK2",
+      "GTK3",
+      "GTK4",
+      "Qt5",
+      "Qt6",
+      "QtQuick5",
+      "QtQuick6"
+    ],
+    "unavailable_galleries": [
+      "GTK1 (runtime not installed)"
+    ],
+    "checks": {
+      "native_gtk2_window": true,
+      "native_gtk3_window": true,
+      "native_gtk4_window": true,
+      "native_qt5_window": true,
+      "native_qt6_window": true,
+      "native_qtquick5_window": true,
+      "native_qtquick6_window": true,
+      "isolated_namespace_and_private_home": true,
+      "gtk2_coupled_renderer_open": true,
+      "gtk2_separate_renderer_open": true,
+      "same_scene_and_gtkrc_hashes": true,
+      "checkbox_persisted_in_working_json": true,
+      "screenshot_sha256": "3f515084f95be887d4f10015ead559c0df97c0dfe4949c80d09bca311b827714"
+    },
+    "visual_acceptance": "pending user review",
+    "selected_family": "gtk2",
+    "separate_preview_enabled": true,
+    "separate_preview_persisted_in_working_json": true,
+    "coupled_preview_pid": 1426869,
+    "separate_preview_pid": 1426870,
+    "scene_sha256": "db52d03bef3e4cebbfefb86282925f535a580a1384dae3f839eaa8837b9125d9",
+    "gtkrc_sha256": "3568760454f6d3ca86e99fef560c01975627e9975ad20bdc1240561db60dbed9",
+    "runtime_state_files": [
+      "preview-events/runtime-gtk2-coupled.json",
+      "preview-events/runtime-gtk2-separate.json"
+    ],
+    "runtime_states_match": true,
+    "screenshot": "~/tempia/ia-tema/evidence/theme-lab-r232-gtk2-dual-preview-20261026-061034.png",
+    "initial_capture_note": {
+      "path": "TEMA-COMPLETO.png",
+      "sha256_before_later_captures": "69adfd83a6d923614abd6da1a237ab9d0335b55fa30a502ee98d6e17f02cc97a",
+      "overwritten_by_repeated_capture_action": true,
+      "reason": "O comando capture do launcher reutiliza esse nome fixo; a captura GTK2 atual foi preservada com nome único em evidence."
+    }
+  }
+}

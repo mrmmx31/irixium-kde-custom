@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-EVIDENCE-PATH-20261025-R146",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "scope": "Restore the exact Domain/OS SR10.4 capture referenced by the active R135/R136 GTK2 comparison and synchronize the authorized Fila Atual reply.",
+  "board": {
+    "database_generation": 8349,
+    "items": {
+      "P10": {
+        "section": "work",
+        "group": "Tema/painel",
+        "revision": 1,
+        "authorized": true,
+        "ack_revision": 1,
+        "assistant_status": "waiting_user",
+        "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"
+      },
+      "I167": {
+        "section": "work",
+        "group": "Instruções",
+        "revision": 2,
+        "authorized": true,
+        "ack_revision": 2,
+        "assistant_status": "waiting_user",
+        "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+        "assistant_reply_sha256": "7c5d64b73292dcdd541ae70a4528d34623eb1428d36946dbb235203a77d2b0a6"
+      }
+    },
+    "other_items_modified": false
+  },
+  "evidence": {
+    "source_before": "/home/lsi/tempia/archived/domainos-theme-i167-20261025/i167-r153-list-clean-pointer.png",
+    "active_path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-r153-list-clean-pointer.png",
+    "sha256": "2e87017da0815b348866cf71ff8292ed9d155bff2417fb2c251301fba72d030b",
+    "expected_sha256_from_R136": "2e87017da0815b348866cf71ff8292ed9d155bff2417fb2c251301fba72d030b",
+    "legacy_path": "/home/lsi/tempia/i167-r153-list-clean-pointer.png",
+    "legacy_path_resolves": "/home/lsi/tempia/ia-tema/evidence/I167/i167-r153-list-clean-pointer.png"
+  },
+  "archive_manifest": {
+    "active_file_removed_from_archived_entries": true,
+    "manifest": "/home/lsi/tempia/ia-tema/INVENTARIO.json"
+  },
+  "actions": {
+    "theme_code_changed": false,
+    "user_response_or_authorization_changed": false,
+    "assistant_reply_updated_for_I167": true,
+    "mame_input_sent": false,
+    "mame_started": false,
+    "other_board_sections_touched": false
+  },
+  "remaining": "Live comparison of GTK2 GtkIconView focus, hover and rubberband selection against the same SR10.4 XmpIcon; no MAME process is currently active.",
+  "status": "active_evidence_restored_live_visual_pair_pending"
+}

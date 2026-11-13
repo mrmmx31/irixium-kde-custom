@@ -1,0 +1,1381 @@
+{
+  "format": 1,
+  "policy": "Only repeated application identities, missing icons and menu categories outside the SGI visual language are changed. Other artwork is preserved.",
+  "references": [
+    "https://code.visualstudio.com/brand",
+    "https://www.jetbrains.com/company/brand/",
+    "https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch02.html"
+  ],
+  "icons": [
+    {
+      "name": "vscode",
+      "variant": "vscode",
+      "category": "apps",
+      "aliases": [
+        "code",
+        "code-oss",
+        "com.visualstudio.code",
+        "com.microsoft.VSCode"
+      ]
+    },
+    {
+      "name": "idea",
+      "variant": "idea",
+      "category": "apps",
+      "aliases": [
+        "jetbrains-idea",
+        "intellij-idea"
+      ]
+    },
+    {
+      "name": "texdoctk",
+      "variant": "texdoctk",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "snxgui",
+      "variant": "snx",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "applications-education",
+      "variant": "education",
+      "category": "categories",
+      "aliases": [
+        "applications-education-symbolic"
+      ]
+    },
+    {
+      "name": "applications-science",
+      "variant": "science",
+      "category": "categories",
+      "aliases": [
+        "applications-science-symbolic"
+      ]
+    },
+    {
+      "name": "applications-system",
+      "variant": "system",
+      "category": "categories",
+      "aliases": [
+        "applications-system-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games",
+      "variant": "games",
+      "category": "categories",
+      "aliases": [
+        "applications-games-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-arcade",
+      "variant": "arcade",
+      "category": "categories",
+      "aliases": [
+        "applications-games-arcade-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-board",
+      "variant": "board",
+      "category": "categories",
+      "aliases": [
+        "applications-games-board-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-card",
+      "variant": "cards",
+      "category": "categories",
+      "aliases": [
+        "applications-games-card-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-children",
+      "variant": "children",
+      "category": "categories",
+      "aliases": [
+        "applications-games-children-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-logic",
+      "variant": "logic",
+      "category": "categories",
+      "aliases": [
+        "applications-games-logic-symbolic"
+      ]
+    },
+    {
+      "name": "applications-games-strategy",
+      "variant": "strategy",
+      "category": "categories",
+      "aliases": [
+        "applications-games-strategy-symbolic"
+      ]
+    },
+    {
+      "name": "applications-education-language",
+      "variant": "languages",
+      "category": "categories",
+      "aliases": [
+        "applications-education-language-symbolic"
+      ]
+    },
+    {
+      "name": "applications-education-mathematics",
+      "variant": "mathematics",
+      "category": "categories",
+      "aliases": [
+        "applications-education-mathematics-symbolic"
+      ]
+    },
+    {
+      "name": "applications-education-miscellaneous",
+      "variant": "misc-education",
+      "category": "categories",
+      "aliases": [
+        "applications-education-miscellaneous-symbolic"
+      ]
+    },
+    {
+      "name": "eom",
+      "variant": "eom",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "gpicview",
+      "variant": "gpicview",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lximage-qt",
+      "variant": "lximage",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "display-im7.q16",
+      "variant": "imagemagick",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.kontrast",
+      "variant": "kontrast",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "libreoffice-draw",
+      "variant": "lo-draw",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "tdeiconedit",
+      "variant": "icon-editor",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "gimp",
+      "variant": "gimp",
+      "category": "apps",
+      "aliases": [
+        "org.gimp.GIMP"
+      ]
+    },
+    {
+      "name": "krita",
+      "variant": "krita",
+      "category": "apps",
+      "aliases": [
+        "org.kde.krita"
+      ]
+    },
+    {
+      "name": "AdobeReader9",
+      "variant": "adobe",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "atril",
+      "variant": "atril",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "calibre-gui",
+      "variant": "calibre",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "calibre-viewer",
+      "variant": "ebook-viewer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "calibre-ebook-edit",
+      "variant": "ebook-editor",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "calibre-lrfviewer",
+      "variant": "lrf-reader",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qpdfview",
+      "variant": "qpdfview",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xpdf",
+      "variant": "xpdf",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lokalize",
+      "variant": "lokalize",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "abiword",
+      "variant": "abiword",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "libreoffice-writer",
+      "variant": "lo-writer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "libreoffice-calc",
+      "variant": "lo-calc",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "libreoffice-impress",
+      "variant": "lo-impress",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "libreoffice-math",
+      "variant": "lo-math",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kontact",
+      "variant": "kontact",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kaddressbook",
+      "variant": "addressbook",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.merkuro.contact",
+      "variant": "merkuro-contacts",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.merkuro.calendar",
+      "variant": "merkuro-calendar",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "sieveeditor",
+      "variant": "sieveeditor",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "contact-theme-editor",
+      "variant": "contact-theme",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "contact-print-theme-editor",
+      "variant": "contact-print",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mail-header-theme-editor",
+      "variant": "mail-theme",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kate",
+      "variant": "kate",
+      "category": "apps",
+      "aliases": [
+        "org.kde.kate"
+      ]
+    },
+    {
+      "name": "kwrite",
+      "variant": "kwrite",
+      "category": "apps",
+      "aliases": [
+        "org.kde.kwrite"
+      ]
+    },
+    {
+      "name": "org.gnome.gedit",
+      "variant": "gedit",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.xfce.mousepad",
+      "variant": "mousepad",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "featherpad",
+      "variant": "featherpad",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "feathernotes",
+      "variant": "feathernotes",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "cherrytree",
+      "variant": "cherrytree",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "notepadqq",
+      "variant": "notepadqq",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "pluma",
+      "variant": "pluma",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xfw",
+      "variant": "xfw",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xfi",
+      "variant": "xfi",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "powershell",
+      "variant": "powershell",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lxterminal",
+      "variant": "lxterminal",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mate-terminal",
+      "variant": "mate-terminal",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qterminal",
+      "variant": "qterminal",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qterminal-drop",
+      "variant": "qterminal-drop",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.xfce.terminal",
+      "variant": "xfce-terminal",
+      "category": "apps",
+      "aliases": [
+        "org.xfce.terminalemulator"
+      ]
+    },
+    {
+      "name": "org.xfce.terminal-settings",
+      "variant": "terminal-settings",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xterm",
+      "variant": "xterm",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "uxterm",
+      "variant": "uxterm",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "yakuake",
+      "variant": "yakuake",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.isoimagewriter",
+      "variant": "iso-writer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mintstick-writer",
+      "variant": "usb-writer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mintstick-format",
+      "variant": "usb-format",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "gparted",
+      "variant": "gparted",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "partitionmanager",
+      "variant": "partitionmanager",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kdf",
+      "variant": "diskfree",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kwikdisk",
+      "variant": "kwikdisk",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "disks",
+      "variant": "usermount",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.gnome.DiskUtility",
+      "variant": "gnome-disks",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "htop",
+      "variant": "htop",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qps",
+      "variant": "qps",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksystemlog",
+      "variant": "ksystemlog",
+      "category": "apps",
+      "aliases": [
+        "utilities-log-viewer"
+      ]
+    },
+    {
+      "name": "crashed-processes-viewer",
+      "variant": "crashviewer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "etherape",
+      "variant": "etherape",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "nmapsi4",
+      "variant": "nmapsi",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "barrier",
+      "variant": "barrier",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "quicksynergy",
+      "variant": "quicksynergy",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "smb4k",
+      "variant": "smb4k",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kwalletmanager",
+      "variant": "kwallet",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kleopatra",
+      "variant": "kleopatra",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.kwatchgnupg",
+      "variant": "gpglog",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.gnome.FileRoller",
+      "variant": "file-roller",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "engrampa",
+      "variant": "engrampa",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xarchiver",
+      "variant": "xarchiver",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kalarm",
+      "variant": "kalarm",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ktimer",
+      "variant": "ktimer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kteatime",
+      "variant": "kteatime",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kcharselect",
+      "variant": "kcharselect",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "gucharmap",
+      "variant": "gucharmap",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mate-font-viewer",
+      "variant": "fontviewer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "galculator",
+      "variant": "galculator",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "mate-calculator",
+      "variant": "mate-calculator",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmousetool",
+      "variant": "mouse-tool",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmouth",
+      "variant": "kmouth",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "plasma-emojier",
+      "variant": "emojier",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "sweeper",
+      "variant": "sweeper",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kvantum",
+      "variant": "kvantum",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "galternatives",
+      "variant": "galternatives",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "winetricks",
+      "variant": "winetricks",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "vmware-player",
+      "variant": "vmware-player",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "vmware-workstation",
+      "variant": "vmware-workstation",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "virt-manager",
+      "variant": "virt-manager",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "openbox",
+      "variant": "openbox",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "q4wine",
+      "variant": "q4wine",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "obconf",
+      "variant": "obconf",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "WPrefs",
+      "variant": "wPrefs",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xscreensaver",
+      "variant": "xscreensaver",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.xfce.thunar",
+      "variant": "thunar",
+      "category": "apps",
+      "aliases": [
+        "org.xfce.filemanager"
+      ]
+    },
+    {
+      "name": "thunar-bulk-rename",
+      "variant": "thunar-rename",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "pcmanfm",
+      "variant": "pcmanfm",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "pcmanfm-qt",
+      "variant": "pcmanfm-qt",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xfe",
+      "variant": "xfe",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmenuedit",
+      "variant": "kmenuedit",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qlipper",
+      "variant": "clipboard",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "shutter",
+      "variant": "shutter",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "screengrab",
+      "variant": "screengrab",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmag",
+      "variant": "kmag",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kfind",
+      "variant": "kfind",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "android-studio",
+      "variant": "android-studio",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "tesourarias-mc",
+      "variant": "tesourarias",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "agenda-cientifica",
+      "variant": "scientific-agenda",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "blinken",
+      "variant": "game-blinken",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "bomber",
+      "variant": "game-bomber",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "bovo",
+      "variant": "game-bovo",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "fifteenpuzzle",
+      "variant": "game-fifteenpuzzle",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "gnugo48",
+      "variant": "game-gnugo48",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "granatier",
+      "variant": "game-granatier",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kajongg",
+      "variant": "game-kajongg",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kapman",
+      "variant": "game-kapman",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "katomic",
+      "variant": "game-katomic",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kblackbox",
+      "variant": "game-kblackbox",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kblocks",
+      "variant": "game-kblocks",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kbounce",
+      "variant": "game-kbounce",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kbreakout",
+      "variant": "game-kbreakout",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kdiamond",
+      "variant": "game-kdiamond",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kfourinline",
+      "variant": "game-kfourinline",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kgoldrunner",
+      "variant": "game-kgoldrunner",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "khangman",
+      "variant": "game-khangman",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kigo",
+      "variant": "game-kigo",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "killbots",
+      "variant": "game-killbots",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kiriki",
+      "variant": "game-kiriki",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kjumpingcube",
+      "variant": "game-kjumpingcube",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "klickety",
+      "variant": "game-klickety",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "klines",
+      "variant": "game-klines",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmahjongg",
+      "variant": "game-kmahjongg",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmines",
+      "variant": "game-kmines",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "knavalbattle",
+      "variant": "game-knavalbattle",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "knetwalk",
+      "variant": "game-knetwalk",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "knights",
+      "variant": "game-knights",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kolf",
+      "variant": "game-kolf",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kollision",
+      "variant": "game-kollision",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "konquest",
+      "variant": "game-konquest",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kpat",
+      "variant": "game-kpat",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kreversi",
+      "variant": "game-kreversi",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksame",
+      "variant": "game-ksame",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kshisen",
+      "variant": "game-kshisen",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksirk",
+      "variant": "game-ksirk",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksnakeduel",
+      "variant": "game-ksnakeduel",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kspaceduel",
+      "variant": "game-kspaceduel",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksquares",
+      "variant": "game-ksquares",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ksudoku",
+      "variant": "game-ksudoku",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ktuberling",
+      "variant": "game-ktuberling",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kturtle",
+      "variant": "game-kturtle",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kubrick",
+      "variant": "game-kubrick",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lskat",
+      "variant": "game-lskat",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "palapeli",
+      "variant": "game-palapeli",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "picmi",
+      "variant": "game-picmi",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "skladnik",
+      "variant": "game-skladnik",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "artikulate",
+      "variant": "edu-artikulate",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "cantor",
+      "variant": "edu-cantor",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kalgebra",
+      "variant": "edu-kalgebra",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kbruch",
+      "variant": "edu-kbruch",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kig",
+      "variant": "edu-kig",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kmplot",
+      "variant": "edu-kmplot",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kalzium",
+      "variant": "edu-kalzium",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "step",
+      "variant": "edu-step",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kanagram",
+      "variant": "edu-kanagram",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kiten",
+      "variant": "edu-kiten",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "klettres",
+      "variant": "edu-klettres",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "parley",
+      "variant": "edu-parley",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ktouch",
+      "variant": "edu-ktouch",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.kde.kwordquiz",
+      "variant": "edu-wordquiz",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "cervisia",
+      "variant": "cervisia",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kompare",
+      "variant": "kompare",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.gnome.Meld",
+      "variant": "meld",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kapptemplate",
+      "variant": "kapptemplate",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kuiviewer",
+      "variant": "kuiviewer",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "umbrello",
+      "variant": "umbrello",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lazarus-40",
+      "variant": "lazarus",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "okteta",
+      "variant": "okteta",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "kcachegrind",
+      "variant": "kcachegrind",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "akonadiconsole",
+      "variant": "akonadiconsole",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "applications-development-translation",
+      "variant": "translation-category",
+      "category": "categories",
+      "aliases": [
+        "applications-development-translation-symbolic"
+      ]
+    },
+    {
+      "name": "applications-development-web",
+      "variant": "web-category",
+      "category": "categories",
+      "aliases": [
+        "applications-development-web-symbolic"
+      ]
+    },
+    {
+      "name": "qt5ct",
+      "variant": "qt5ct",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "qt6ct",
+      "variant": "qt6ct",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "user_icon",
+      "variant": "userinfo",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "vmware-netcfg",
+      "variant": "vmware-netcfg",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "synaptic",
+      "variant": "synaptic",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "org.gnome.Software",
+      "variant": "gnome-software",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "thunar-settings",
+      "variant": "thunar-settings",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "lxtask",
+      "variant": "lxtask",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "xfa",
+      "variant": "xfa",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "ktnef",
+      "variant": "ktnef",
+      "category": "apps",
+      "aliases": []
+    },
+    {
+      "name": "google-chrome",
+      "variant": "chrome",
+      "aliases": [
+        "com.google.Chrome"
+      ]
+    },
+    {
+      "name": "project-open",
+      "category": "actions",
+      "variant": "kate-project",
+      "aliases": []
+    },
+    {
+      "name": "git",
+      "category": "actions",
+      "variant": "kate-git",
+      "aliases": []
+    }
+  ],
+  "menu_aliases": {
+    "accessories-text-editor-symbolic": "accessories-text-editor",
+    "applications-development-symbolic": "applications-development",
+    "applications-graphics-symbolic": "applications-graphics",
+    "applications-internet-symbolic": "applications-internet",
+    "applications-multimedia-symbolic": "applications-multimedia",
+    "applications-network-symbolic": "network-workgroup",
+    "applications-office-symbolic": "applications-office",
+    "applications-other-symbolic": "applications-other",
+    "applications-toys-symbolic": "applications-games",
+    "applications-utilities-symbolic": "applications-utilities",
+    "help-about-symbolic": "help-about",
+    "office-calendar-symbolic": "office-calendar",
+    "preferences-desktop-accessibility-symbolic": "preferences-desktop-accessibility",
+    "preferences-desktop-peripherals-symbolic": "preferences-desktop-peripherals",
+    "preferences-system-symbolic": "preferences-system",
+    "system-file-manager-symbolic": "system-file-manager",
+    "user-desktop-symbolic": "user-desktop",
+    "utilities-terminal-symbolic": "utilities-terminal",
+    "x-symbolic": "user-desktop"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "id": "T07-QTQUICK-TABLE-HOVER-20261018-R48",
+  "date": "2026-10-18",
+  "demand": "T07",
+  "status": "partial evidence; not visual approval",
+  "purpose": "Exercise one visible native TableView delegate and both QtQuick ScrollBar orientations after the earlier page-name collision skipped these targets.",
+  "method": {
+    "tab": "Table (currentIndex=1)",
+    "hover": "Synthetic pointer motion to each target center; 300 ms cold check then poll for display.",
+    "criteria": "Hint stays within screen and outside owner bounds, remains at same position for 400 ms, closes after pointer exit.",
+    "user_session": ":70 preserved; all probes ran only on private :76."
+  },
+  "results": {
+    "QtQuick5": {
+      "status": "passed",
+      "qt_major": 5,
+      "resources_declared": 66,
+      "page_index": 1,
+      "tested": 3,
+      "failures": [],
+      "targets": [
+        {
+          "kind": "table_cell",
+          "name": "t07HintTarget17",
+          "hint": "Célula da tabela: clique para selecionar esta linha de dados artificiais.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            324,
+            243,
+            230,
+            32
+          ],
+          "tooltip_rect": [
+            316,
+            194,
+            250,
+            46
+          ]
+        },
+        {
+          "kind": "horizontal_scrollbar",
+          "name": "t07HintTarget56",
+          "hint": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 850,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            324,
+            628,
+            632,
+            14
+          ],
+          "tooltip_rect": [
+            515,
+            579,
+            250,
+            46
+          ]
+        },
+        {
+          "kind": "vertical_scrollbar",
+          "name": "t07HintTarget57",
+          "hint": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            942,
+            243,
+            14,
+            399
+          ],
+          "tooltip_rect": [
+            714,
+            194,
+            250,
+            46
+          ]
+        }
+      ],
+      "environment": {
+        "display": ":76",
+        "resolution": "1280x800",
+        "platform": "xcb",
+        "guards_verified": true,
+        "palette": "DomainOS-SR10-4 in disposable HOME",
+        "product_style_changed": false
+      },
+      "probe_sha256": "c835461c2c3eb6ee4851af879c26e5de8497a259e6bb1d29850749caee5453a8",
+      "matrix_sha256": "ea054cf872b04e95aef5f8ee3a9fb9910963525fd5c2b4eb3e06d8507a1efb96"
+    },
+    "QtQuick6": {
+      "status": "passed",
+      "qt_major": 6,
+      "resources_declared": 69,
+      "page_index": 1,
+      "tested": 3,
+      "failures": [],
+      "targets": [
+        {
+          "kind": "table_cell",
+          "name": "t07HintTarget23",
+          "hint": "Célula da tabela: clique para selecionar esta linha de dados artificiais.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            324,
+            244,
+            230,
+            32
+          ],
+          "tooltip_rect": [
+            316,
+            195,
+            258,
+            46
+          ]
+        },
+        {
+          "kind": "horizontal_scrollbar",
+          "name": "t07HintTarget65",
+          "hint": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 750,
+          "stable_ms": 400,
+          "closed_ms": 250,
+          "owner_rect": [
+            324,
+            628,
+            632,
+            14
+          ],
+          "tooltip_rect": [
+            509,
+            579,
+            262,
+            46
+          ]
+        },
+        {
+          "kind": "vertical_scrollbar",
+          "name": "t07HintTarget66",
+          "hint": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra.",
+          "onset_from_pointer_ms": 650,
+          "stable_ms": 400,
+          "closed_ms": 300,
+          "owner_rect": [
+            942,
+            244,
+            14,
+            398
+          ],
+          "tooltip_rect": [
+            702,
+            195,
+            262,
+            46
+          ]
+        }
+      ],
+      "environment": {
+        "display": ":76",
+        "resolution": "1280x800",
+        "platform": "xcb",
+        "guards_verified": true,
+        "palette": "DomainOS-SR10-4 in disposable HOME",
+        "product_style_changed": false
+      },
+      "probe_sha256": "e20589924c9f328996b57a1388f087136f847dc8545aee7b563451b0febf289b",
+      "matrix_sha256": "5bdf58d4618ecc6a612fbffc91d2d92afb4b0672ba8b32cec8d3cabf8600dd5d"
+    }
+  },
+  "diagnosis": {
+    "QtQuick6 first attempt": "The first custom probe reported no visible targets. A separate page diagnostic showed 48 items visible, including a table cell and both scrollbars. The cause was the probe variant that changed dynamic object names, not a product failure. The final QtQuick6 probe reused the working R4 QML instrumentation and identified controls by tooltip text and geometry; it passed all three targets.",
+    "host_warnings": "The private D-Bus/portal emitted inotify and FUSE warnings; they did not prevent the final isolated gallery or hover checks. KDE TabButton logged a null-y warning during QtQuick6 diagnostics; the tested table and scrollbar controls still mapped and passed."
+  },
+  "limits": "This covers one TableView delegate plus one horizontal and one vertical scrollbar per version. It does not test scroll interaction, other TableView rows, other layouts, color/pixel fidelity or human acceptance. T07 remains open.",
+  "source_sha256": "3804b9e75457b5bd57d15b7b4d8c2783aba13511818ec9128fb0605a5ce108fa",
+  "runner_sha256": "960fdb13c91ebc38237205b2a3c81662afa25dc48c10ee06639972d14bf820e5"
+}

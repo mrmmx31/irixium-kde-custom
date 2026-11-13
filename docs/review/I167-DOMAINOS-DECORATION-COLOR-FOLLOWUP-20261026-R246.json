@@ -1,0 +1,15 @@
+{
+  "id": "R246",
+  "date": "2026-10-26",
+  "scope": "Follow-up to the active/inactive DomainOS window-decoration color comparison",
+  "user_observation": "The active orange/coral and inactive green/teal decoration still appear slightly lighter than the original VM.",
+  "prior_evidence": "docs/review/I167-DOMAINOS-DECORATION-COLOR-CHECK-20261026-R241.json",
+  "prior_measurements": {
+    "active_VM_and_Xephyr": "#fe8282",
+    "inactive_VM_and_Xephyr": "#7acac5",
+    "bevel_samples_match": true
+  },
+  "interpretation": "The reported appearance remains a valid human observation, but the saved captures show pixel-identical solid faces and sampled bevels. R241 therefore does not support a color-value correction. The remaining uncertainty is perceptual/rendering context (for example, display path or comparison state), not a measured face-color delta.",
+  "action": "No palette or source change. Keep KDE semantic-role binding. Reopen this comparison only with a new aligned capture/state that can distinguish face color from rendering context.",
+  "coverage": "I167 remains at 78% technical coverage; this follow-up does not complete a control family or establish visual acceptance."
+}

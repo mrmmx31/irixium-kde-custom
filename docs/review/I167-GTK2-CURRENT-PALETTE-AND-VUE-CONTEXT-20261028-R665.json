@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "R665",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Determine whether the 11-pixel lower-arrow difference in the existing SR10.4 capture comes from the GTK2 palette bundle currently selected by user lsi.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "vue_capture": "records/ia-tema/I167/R663/after-wake.png",
+    "vue_capture_sha256": "3d40ee586bd3e16a940b3b00610b09f83184a6f9d70a60cc10630e072ad8213d",
+    "normal_reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "normal_reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+    "user_profile": "/home/lsi/.gtkrc-2.0",
+    "selected_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "selected_down_normal_asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"
+  },
+  "method": {
+    "scale": "1:1 RGB; no registration offset, filtering, or normalization",
+    "reference_cell": "15x15 down-arrow cell at (4,242) in the retained SR10.4 normal crop",
+    "same_capture_cells": {
+      "active_file_manager_down": [622, 372],
+      "inactive_lower_window_down": [595, 680]
+    },
+    "palette_asset": "Compare the installed generated down-normal 15x15 asset directly with the SR10.4 normal cell."
+  },
+  "results": {
+    "installed_down_normal_vs_sr104_normal": {"different_pixels": 0, "pixels": 225},
+    "active_file_manager_vs_sr104_normal": {
+      "different_pixels": 11,
+      "difference_bbox_relative_xyxy": [2, 0, 12, 0],
+      "capture_row_rgb": "#6688b5",
+      "reference_row_rgb": "#3e536e"
+    },
+    "inactive_lower_window_vs_sr104_normal": {"different_pixels": 0, "pixels": 225},
+    "active_vs_inactive_same_capture": {
+      "different_pixels": 11,
+      "difference_bbox_relative_xyxy": [2, 0, 12, 0]
+    }
+  },
+  "interpretation": "The selected GTK2 palette bundle's normal down-arrow is an exact 0/225 match to the normal SR10.4 reference, so the installed static normal asset does not explain the active File Manager's 11-pixel row difference. In the same VUE capture, the inactive lower window matches the reference exactly. This establishes a context-correlated VUE state difference, but does not identify whether focus, sensitivity, or another widget state caused it. Do not change GTK2 artwork from this evidence.",
+  "limits": [
+    "This is offline analysis of existing captures and the installed bundle; no MAME input or application restart occurred.",
+    "The two VUE controls were not independently tested for focus or sensitivity.",
+    "Pressed/released historical comparison and manual visual acceptance remain open."
+  ],
+  "next": "Keep the GTK2 palette unchanged. Continue the state-paired comparison only after I517 has user.authorized=true for its current definition hash.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The current installed normal asset is confirmed exact against SR10.4; the captured context difference remains unexplained and held-state evidence/visual acceptance remain open. This is not a visual-fidelity score."
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-11T06:33:14.417772+00:00",
+  "item": "I119",
+  "revision": 1,
+  "previous_turn": "progress: storage and fault tests implemented",
+  "phase": "transactional_session_private",
+  "result": "passed",
+  "command": "make -C tools/theme-lab check-project-session",
+  "log": "/tmp/i119-project-session.log",
+  "verified": [
+    "persisted push, Undo/Redo and independent checkpoint",
+    "restore point produces undoable branch",
+    "selected thumb reset preserves other pieces, numbers and notes",
+    "reopen restores full history/cursor/point",
+    "stale concurrent session cannot change live model/history",
+    "invalid candidate and missing-parent checkpoint failure conserve prior state"
+  ],
+  "hashes": {
+    "tools/theme-lab/src/controller/project_session.c": "f8cda66d9798f17353664291aa3a271b3c6a83b4b78e211f43bb0ff77fb5da50",
+    "tools/theme-lab/include/project_session.h": "8758ef785ca9caa1e991c677261203b77c4f109842f54368156d709da8cd7b03",
+    "tools/theme-lab/tests/project_session_test.c": "2ebb3cb7875ec170cc0c0f6b99dfd42e1f27c22a8db4bd22cfd92ab82c02f758"
+  },
+  "not_yet": [
+    "main controller mutation paths not migrated",
+    "GUI/history actions and shortcuts not added",
+    "native workflow and personal delivery"
+  ],
+  "scope_progress_percent": 45,
+  "personal_windows_changed": false,
+  "coordination": "Q165 inserted after Q102 for colleague; no claim it was read or answered"
+}

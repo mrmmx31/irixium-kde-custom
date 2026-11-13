@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "R471",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only audit of the selected user GTK2 theme, deployed horizontal arrow assets and currently available user-owned GTK2 comparison targets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "selection": {
+    "file": "/home/lsi/.gtkrc-2.0",
+    "sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+    "gtk_theme_name": "DomainOS-SR10-4-KDE"
+  },
+  "installed_theme": {
+    "gtk2_rc_files": [
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331"
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331"
+      }
+    ],
+    "configured_stepper_size_px": 15,
+    "horizontal_arrow_assets": {
+      "left_normal": {
+        "size_px": [11, 11],
+        "sha256": "c97e0ecc88ff4267ffaa612a241dfe22141e73337c75adf1858d69ab9f899771"
+      },
+      "right_normal": {
+        "size_px": [11, 11],
+        "sha256": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15"
+      },
+      "left_pressed": {
+        "size_px": [11, 11],
+        "sha256": "50b8b69154c67efdb36cdaf276d8797f5788100c91ce7cc8324e122ea18c1cc5"
+      },
+      "right_pressed": {
+        "size_px": [11, 11],
+        "sha256": "2ead11fd1115180fa6ad4859ee782cc8528f2d1184636d7f1342ed7bbac95052"
+      }
+    },
+    "source_and_both_user_installs_match_byte_for_byte": true,
+    "note": "The normal and pressed glyph PNGs are 11x11 within the configured 15px GTK2 stepper allocation. These files match the repository source and both installed theme copies; this does not establish how a particular already-running application composites them."
+  },
+  "dynamic_palette": {
+    "include": "/home/lsi/.local/share/irixium/gtk2-palette/14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467/gtkrc",
+    "sha256": "40df05843705adeb86a721e75bb5a291ab6e32951dc15ad84fa91a7ffea4dcef",
+    "role_based": true,
+    "user_theme_replaced_with_R470_output": false
+  },
+  "live_targets": {
+    "gtk2_processes_owned_by_lsi": [
+      {"pid": 3951437, "comm": "xchat", "executable": "/home/lsi/.cache/codex-xchat/hom/xchat"},
+      {"pid": 3951675, "comm": "xchat", "executable": "/home/lsi/.cache/codex-xchat/prd/xchat"},
+      {"pid": 3996239, "comm": "python3", "executable": "/usr/bin/python3.13"},
+      {"pid": 4008706, "comm": "python3", "executable": "/usr/bin/python3.13"},
+      {"pid": 4094547, "comm": "gvim", "executable": "/home/lsi/.cache/codex-xchat/editor/vim-a29425d2d9d2bbf4/gvim"}
+    ],
+    "user_owned_GTK2_application_available": false,
+    "inspection_boundary": "Process metadata and GTK2 library mappings only; no titles, chat contents, screenshots, focus, input, restarts or window state read or changed."
+  },
+  "result": "The selected theme and installed normal/pressed GTK2 glyph assets match the repository source: each horizontal glyph is 11x11, inside a 15px stepper cell. R470 is not deployed to the user's theme. No user-owned GTK2 app is available now to reproduce the reported apparent size difference in a live application.",
+  "limits": [
+    "Installed asset dimensions and hashes are configuration evidence, not a fresh screenshot of an already-running application.",
+    "This does not replace direct historical comparisons for hover, insensitive and horizontal pressed states.",
+    "The six missing native interaction states remain those recorded in R450.",
+    "No user profile, application, repository runtime asset, VM or guest setting was changed."
+  ],
+  "next": "Keep I167 on GTK2. When a user-owned GTK2 app becomes available, compare only its scrollbar. Obtain remaining historical held/hover/insensitive evidence after the existing MAME guard allows safe VM input."
+}

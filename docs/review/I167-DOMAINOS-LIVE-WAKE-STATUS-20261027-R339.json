@@ -1,0 +1,27 @@
+{
+  "id": "R339",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "read-only refresh of the current project-owned DomainOS guest image before deciding whether live GTK2 comparison can proceed",
+  "vm_identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_vm_pid_3971019": "not targeted"
+  },
+  "profile": {
+    "mame": "0.276",
+    "frameskip": 4,
+    "throttled": false,
+    "paused": false,
+    "captured": false,
+    "bridge_pending": null
+  },
+  "capture": {
+    "type": "native DomainOS guest screen snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/r339-domainos-live-20261027.png",
+    "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "result": "video area remains black/in standby with Apollo command bar visible; no VUE window or scrollbar is available"
+  },
+  "input_sent": false,
+  "conclusion": "Live comparison is still unavailable. The documented VM rule requires a physical keyboard or mouse event to wake the guest; no synthetic input or restart was used. Continue only independent GTK2 analysis until the VM is physically awake. Goal remains active; no pause or completion state change was made."
+}

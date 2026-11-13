@@ -1,0 +1,30 @@
+{
+  "id": "R240",
+  "date": "2026-10-26",
+  "scope": "T04 / GTK2 native preview availability in existing private Xephyr :60",
+  "result": "Available in the existing isolated session; not available from the normal Wayland app session by design.",
+  "evidence": {
+    "screenshot": "/home/lsi/tempia/ia-tema/evidence/T04/theme-lab-native-previews-20261026-030100.png",
+    "sha256": "3ed187185394d0fdcd989b05d52d3f0ffc7a65d24bee0e081a54191b67f312f2",
+    "display": ":60",
+    "xephyr_pid": 1423092,
+    "theme_lab_pid": 1424020,
+    "gtk2_preview_pids": [
+      1426869,
+      1426870
+    ]
+  },
+  "checks": {
+    "gtk2_attached_native_preview_visible": true,
+    "gtk2_separate_native_preview_visible": true,
+    "gtk3_gallery_process_alive": true,
+    "gtk4_gallery_process_alive": true,
+    "qt5_gallery_process_alive": true,
+    "qt6_gallery_process_alive": true,
+    "gtk1_unavailable_by_design_no_runtime": true,
+    "no_new_xephyr_started": true,
+    "existing_xephyr_raised": true
+  },
+  "diagnosis": "The normal user session does not have access to the private Xephyr X server and its isolated preview processes. Both GTK2 preview processes were alive; one GtkPlug parent was non-viewable at inspection time, while the Theme Lab contained an attached GTK2 native canvas and separate GTK2 window. The existing Xephyr was activated and captured for the user.",
+  "limits": "This confirms current native availability and process state, not historical visual acceptance or universal adapters. GTK1 gallery is unavailable because no runtime is installed."
+}

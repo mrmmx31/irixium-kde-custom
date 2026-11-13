@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R449",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck the current project VM guest image and guarded-input state without waking or otherwise changing it.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_mame_pid": 3971019,
+    "separate_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "separate_vm_contacted": false,
+    "verify_script_exit_code": 4,
+    "verify_script_blocks_graphical_input": true
+  },
+  "method": {
+    "capture": "Read-only manager.machine.screens[':apollo_screen:screen']:snapshot(path) through the explicit project bridge pointer.",
+    "probe": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "ui_active": false,
+      "pending_bridge_request": false
+    },
+    "guest_input_sent": false,
+    "host_focus_changed": false,
+    "settings_changed": false
+  },
+  "observation": {
+    "image": "~/tempia/ia-tema/evidence/I167/r449-current-screen-20261027.png",
+    "script": "~/tempia/ia-tema/evidence/I167/r449-current-screen-20261027.lua",
+    "sha256": "ff1f7f368b304298b95f8030c0d3be4008dbf816bf6cd39ef03c8b953bcd4035",
+    "dimensions": [
+      1024,
+      844
+    ],
+    "screen_state": "The guest framebuffer area y=0..799 is exactly RGB (0,0,0) at every pixel (819200/819200); the Apollo command strip remains visible at the bottom. No VUE window, pointer target, or horizontal GTK2 scrollbar is visible.",
+    "bridge": {
+      "pending": null,
+      "reply": null,
+      "pending_files": []
+    }
+  },
+  "result": {
+    "classification": "Fresh read-only confirmation that the project guest display is still black; this adds current evidence but no graphical target.",
+    "historical_appearance_proven": false,
+    "interpretation": "The documented one-frame Shift wake is available for this clone, but the separate Prancheta MAME remains active and verify.sh blocks graphical input. No wake attempt was made."
+  },
+  "cleanup": {
+    "bridge_pending": false,
+    "project_vm_paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "separate_vm_changed": false,
+    "guest_disk_modified_by_test": false
+  },
+  "next": "After the separate MAME releases the guard, revalidate the project PID/disk and bridge; if still black, try the documented one-frame Shift once, verify VUE is visible, then capture the horizontal held-arrow state."
+}

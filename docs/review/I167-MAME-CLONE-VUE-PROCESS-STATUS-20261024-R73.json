@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-VUE-PROCESS-STATUS-20261024-R73",
+  "observed_at": "2026-10-24T04:34:37Z",
+  "item": "I167",
+  "authority": {
+    "board_generation": 8189,
+    "section": "work",
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "instance": "assistant clone, not the original VM",
+    "process_pid": 2745483,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "~/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "profile_probe_request": "64abf7c057ec4dbfa8203b9ad76ee89c",
+    "capture_request": "4a0bf8f0c37944239d7d5fce34918f37",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "pending_after": null
+  },
+  "guest": {
+    "telnet_endpoint": "10.253.104.20:23",
+    "ftp_endpoint": "10.253.104.20:21",
+    "ports_reachable_in_clone_namespace": true,
+    "read_only_commands": ["uname -a", "ps -ef"],
+    "uname": "DomainOS node_123 10.4 sys5.3 DN3500",
+    "vue_processes": [
+      "vuelogin",
+      "/usr/X11/bin/hpvue2",
+      "/usr/lib/X11/vue/etc/vuesession",
+      "/usr/X11/bin/xinit /usr/X11/lib/vue/Vuelogin/Xsession -- /etc/Xdomain",
+      "vuewm",
+      "vuefile -dir / -geometry 570x320+35+370"
+    ],
+    "guest_files_changed": false,
+    "graphical_input_sent": false
+  },
+  "capture": {
+    "method": "Existing correlated MAME Lua bridge; screen:snapshot on :apollo_screen:screen",
+    "path": "~/tempia/i167-live-r73/domainos-screen.png",
+    "sha256": "ff1f7f368b304298b95f8030c0d3be4008dbf816bf6cd39ef03c8b953bcd4035",
+    "dimensions_px": [1024, 844],
+    "observation": "Byte-identical to R71: nearly all black with the Apollo command/status strip; no VUE window pixels are available for comparison even though VUE processes are active."
+  },
+  "actions": {
+    "mame_restarted": false,
+    "disk_or_guest_configuration_changed": false,
+    "performance_profile_changed": false,
+    "original_vm_touched": false,
+    "other_mame_sessions_touched": false
+  },
+  "result": "Corrects the earlier inference that VUE was absent: the guest has an active VUE session and vuewm, but MAME's current screen snapshot does not display it. The historical comparison is still not possible from this image.",
+  "next": "Continue I167/GTK2 only. Diagnose a read-only way to observe the running guest X display; do not restart MAME, alter the guest, or send graphical input until an authenticated target image is visible."
+}

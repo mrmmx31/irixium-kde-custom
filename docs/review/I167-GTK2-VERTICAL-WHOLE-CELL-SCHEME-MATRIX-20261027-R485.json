@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "id": "R485",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify complete normal vertical GTK2 scrollbar stepper cells against the GTK2 assets generated for four KDE color schemes.",
+  "method": "Re-read the 15x220 GTK2 2.24.33 native captures in the isolated R485 run and each corresponding generated bundle. Scan every possible 15x15 vertical crop and compare RGBA pixels against the up/down normal stepper assets. Each asset has one exact occurrence in the expected end region; this test does not compare vertical cells to the VUE framebuffer.",
+  "result": {
+    "schemes": 4,
+    "cells": 8,
+    "pixels_compared": 1800,
+    "all_cells_exact": true,
+    "different_pixels": 0,
+    "up_crop_y": 2,
+    "down_crop_y": 203
+  },
+  "schemes": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "scheme_path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        15,
+        220
+      ],
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r485-gtk2-vertical-cells-20261027/DomainOS-SR10.4/native-vertical.png",
+      "capture_sha256": "791051b5543d7b00f689c0bb60e5b9e548a2be654a055e8758f201dff2986bb0",
+      "xvfb_log_sha256": "21a0b266b9b31e74f5843aaada9637bb08db5c5a4162c8811453392be43cc01d",
+      "xvfb_log_note": "Contains X socket listener collision warnings; the assigned private display completed and the captured pixels were readable and exactly registered to the renderer assets.",
+      "cells": {
+        "up": {
+          "native_crop_xywh": [
+            0,
+            2,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-up-normal.png",
+          "native_capture_sha256": "791051b5543d7b00f689c0bb60e5b9e548a2be654a055e8758f201dff2986bb0",
+          "generated_asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            2
+          ]
+        },
+        "down": {
+          "native_crop_xywh": [
+            0,
+            203,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-down-normal.png",
+          "native_capture_sha256": "791051b5543d7b00f689c0bb60e5b9e548a2be654a055e8758f201dff2986bb0",
+          "generated_asset_sha256": "3131718393bed432792456ecfcd8a692c5c633a0d5ee7c7e4d53839d7d288502",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            203
+          ]
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "BreezeClassic",
+      "scheme_path": "/usr/share/color-schemes/BreezeClassic.colors",
+      "scheme_sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        15,
+        220
+      ],
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r485-gtk2-vertical-cells-20261027/BreezeClassic/native-vertical.png",
+      "capture_sha256": "3586326732e0e7eee67e31d326be1a3a49ff12bd6aea3815ac1fc7da8304d000",
+      "xvfb_log_sha256": "21a0b266b9b31e74f5843aaada9637bb08db5c5a4162c8811453392be43cc01d",
+      "xvfb_log_note": "Contains X socket listener collision warnings; the assigned private display completed and the captured pixels were readable and exactly registered to the renderer assets.",
+      "cells": {
+        "up": {
+          "native_crop_xywh": [
+            0,
+            2,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-up-normal.png",
+          "native_capture_sha256": "3586326732e0e7eee67e31d326be1a3a49ff12bd6aea3815ac1fc7da8304d000",
+          "generated_asset_sha256": "4e5ce516c37586ba7c82e955e35f04e558dd59290b2fb150050e0e5f763ce7ef",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            2
+          ]
+        },
+        "down": {
+          "native_crop_xywh": [
+            0,
+            203,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-down-normal.png",
+          "native_capture_sha256": "3586326732e0e7eee67e31d326be1a3a49ff12bd6aea3815ac1fc7da8304d000",
+          "generated_asset_sha256": "7a0767c1af4886beecd31141dc2d85a93a752b3e8820d8ac00fff7112bb927b8",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            203
+          ]
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "BreezeDark",
+      "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        15,
+        220
+      ],
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r485-gtk2-vertical-cells-20261027/BreezeDark/native-vertical.png",
+      "capture_sha256": "bd8ef1514eb634d8d291c691994ab206d68106542ad21bf88d105aefc0e3c040",
+      "xvfb_log_sha256": "21a0b266b9b31e74f5843aaada9637bb08db5c5a4162c8811453392be43cc01d",
+      "xvfb_log_note": "Contains X socket listener collision warnings; the assigned private display completed and the captured pixels were readable and exactly registered to the renderer assets.",
+      "cells": {
+        "up": {
+          "native_crop_xywh": [
+            0,
+            2,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-up-normal.png",
+          "native_capture_sha256": "bd8ef1514eb634d8d291c691994ab206d68106542ad21bf88d105aefc0e3c040",
+          "generated_asset_sha256": "d84927c1fe0dd2c90ad3b037fb06195cde6c28644f45cf1ee64b4b734f1e0389",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            2
+          ]
+        },
+        "down": {
+          "native_crop_xywh": [
+            0,
+            203,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-down-normal.png",
+          "native_capture_sha256": "bd8ef1514eb634d8d291c691994ab206d68106542ad21bf88d105aefc0e3c040",
+          "generated_asset_sha256": "f8ff9740088c83ef6b4e7a2f10b7966ba95feb8c308052c6451b34a59a00ee50",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            203
+          ]
+        }
+      },
+      "both_cells_exact": true
+    },
+    {
+      "scheme": "KvBeige",
+      "scheme_path": "/usr/share/color-schemes/KvBeige.colors",
+      "scheme_sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3",
+      "gtk2_version": "2.24.33",
+      "capture_size": [
+        15,
+        220
+      ],
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r485-gtk2-vertical-cells-20261027/KvBeige/native-vertical.png",
+      "capture_sha256": "948c069ccd4366f7cda5d45ecd9fcc07b4ad0c5b4733b9f6c2786dfaaacc9bf6",
+      "xvfb_log_sha256": "21a0b266b9b31e74f5843aaada9637bb08db5c5a4162c8811453392be43cc01d",
+      "xvfb_log_note": "Contains X socket listener collision warnings; the assigned private display completed and the captured pixels were readable and exactly registered to the renderer assets.",
+      "cells": {
+        "up": {
+          "native_crop_xywh": [
+            0,
+            2,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-up-normal.png",
+          "native_capture_sha256": "948c069ccd4366f7cda5d45ecd9fcc07b4ad0c5b4733b9f6c2786dfaaacc9bf6",
+          "generated_asset_sha256": "910b57a25ae797d612d5805fd26397a77a6c7831e780d2bff5f25453c6fe44b9",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            2
+          ]
+        },
+        "down": {
+          "native_crop_xywh": [
+            0,
+            203,
+            15,
+            15
+          ],
+          "asset": "scrollbar-stepper-down-normal.png",
+          "native_capture_sha256": "948c069ccd4366f7cda5d45ecd9fcc07b4ad0c5b4733b9f6c2786dfaaacc9bf6",
+          "generated_asset_sha256": "bb15c32648195e7fbf6bcc09fe1c89e1c623ff8d7212016609af28239f1704e4",
+          "pixels": 225,
+          "different_pixels": 0,
+          "exact_positions_found_by_full_scan": [
+            203
+          ]
+        }
+      },
+      "both_cells_exact": true
+    }
+  ],
+  "limits": [
+    "This proves GTK2 renderer-to-generated-asset parity for normal vertical cells, not historical VUE parity.",
+    "Pressed, hover and disabled vertical VUE states remain unverified.",
+    "Whole-family/manual acceptance remains open.",
+    "The Xvfb logs contain socket-listener warnings; the assigned test displays produced valid captures, and pixel identity was independently checked against scheme-specific assets."
+  ],
+  "changes": {
+    "source_changed": false,
+    "user_profile_changed": false,
+    "xchat_restarted": false,
+    "mame_input_sent": false,
+    "vm_changed": false
+  }
+}

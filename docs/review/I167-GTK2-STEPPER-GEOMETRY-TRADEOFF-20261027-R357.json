@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "R357",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Isolated test of slider-width=15 and trough-border=0 as a possible way to expand the GTK2 stepper paint clip",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "candidate": {
+    "path": "~/tempia/ia-tema/evidence/I167/r357-slider15-border0/",
+    "gtk_theme": "I167-GeomProbe",
+    "source_palette": "Copied from active DomainOS KDE-role GTK2 palette; only geometry values changed in the test copy.",
+    "properties": {"slider-width": 15, "stepper-size": 15, "trough-border": 0},
+    "bar_allocation": [543, 15]
+  },
+  "results": {
+    "overlay_clip": "A 15x15 opaque sentinel painted all 225 pixels of each stepper cell.",
+    "reference_cell_match": {"left_at_x0": "0/225 against VUE x2,y4", "right_at_x528": "0/225 against VUE x526,y4"},
+    "historical_cell_positions": {"vue_left_x": 2, "candidate_left_x": 0, "vue_right_x": 526, "candidate_right_x": 528},
+    "differences_at_previous_registered_positions": {"left": "97/225", "right": "95/225"},
+    "bar_thickness": "The forced 543x15 fixture remained 15px high; the candidate does not keep the VUE end-cell placement or the 2px trough border."
+  },
+  "decision": "Reject this property pair as a production correction. It expands the drawing area but moves both stepper cells outward by 2px and removes the 2px trough inset measured in SR10.4.",
+  "changes": {
+    "repository_theme_code": false,
+    "installed_theme": false,
+    "user_applications_restarted": false,
+    "vm_input_or_state": false,
+    "colors_or_schemes": false
+  },
+  "next": "Preserve the GTK2 geometry. Investigate whether a GTK2 rc draw path can complete only the four outer relief pixels using dynamic KDE light/shadow roles; document the pixbuf-engine clip limitation if no rc path supports this. Do not accept a fix that moves the stepper cells."
+}

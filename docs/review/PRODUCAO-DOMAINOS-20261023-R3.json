@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "PRODUCAO-DOMAINOS-20261023-R3",
+  "date": "2026-10-23",
+  "scope": "Read-only production readiness audit for currently installed lsi DomainOS theme",
+  "session": {
+    "user": "lsi",
+    "session_type": "wayland",
+    "display": ":1",
+    "active_look_and_feel": "org.magpie.irixclassic.domainos.desktop",
+    "active_color_scheme": "DomainOS-SR10-4",
+    "active_gtk_theme": "DomainOS-SR10-4-KDE",
+    "active_kvantum_theme": "DomainOS-SR10-4"
+  },
+  "source_vs_installed": {
+    "panel/contents/ui/DomainOSPanel.qml": {
+      "sha256": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+      "equal": true
+    },
+    "panel/contents/ui/DomainOSApplications.qml": {
+      "sha256": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+      "equal": true
+    },
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-3.0/gtk.css": {
+      "sha256": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+      "equal": true
+    },
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc": {
+      "source_sha256": "390f228d6421eda40413790eb869516e245bfcc6ff39ae6ed0faa8c1c8b7e84f",
+      "installed_sha256": "b760e24f752d7d2c288cd3c23dc1d31348336c5c39193b5363fe776684ce0d66",
+      "difference": "Installed gtkrc includes the generated KDE-role palette overlay; do not replace with the base checkout file."
+    }
+  },
+  "distribution_check": {
+    "command": "TMPDIR=$HOME/tempia python3 tools/install_suite.py --verificar --sem-cache --sem-integracao",
+    "exit_code": 0,
+    "result": "No files written. The dry run listed 13 GTK2 and 13 GTK4 generated outputs for update and reported the native menu module build as required."
+  },
+  "decision": "No new production deployment was made: panel and GTK3 already match; GTK2 remains the active I167 family with historical gaps; GTK4 is outside the current authorized visual step; a full installer run would mix both families.",
+  "preserved": [
+    "Open XChat and Mousepad processes",
+    "Current production theme selections and desktop settings",
+    "All existing user-local backups"
+  ],
+  "limitations": [
+    "Hash equality and dry-run output do not constitute visual acceptance.",
+    "No screenshot or human assessment was taken in this audit.",
+    "GTK2 I167 remains partial; do not claim historical fidelity or completion."
+  ]
+}

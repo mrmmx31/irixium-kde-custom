@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "R469",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the unobstructed horizontal normal arrow cells in the current live SR10.4/VUE capture against the retained native crop.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "native_crop": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "native_crop_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "capture": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-after-shift-20261027T143335Z.png",
+    "capture_sha256": "c59e870d56298276384f448a73937eecdabac7e097f51f940f96b7e3553ec4d7",
+    "capture_dimensions_px": [1024, 844],
+    "scale": "1:1"
+  },
+  "comparison": {
+    "method": "For each native 15x15 reference cell, scan the current native guest screenshot and minimize summed absolute RGB difference without resizing or filtering.",
+    "left": {
+      "reference_origin": [2, 4],
+      "current_origin": [52, 699],
+      "dimensions_px": [15, 15],
+      "different_pixels": 0,
+      "pixels_compared": 225,
+      "sum_absolute_rgb_difference": 0
+    },
+    "right": {
+      "reference_origin": [526, 4],
+      "current_origin": [576, 699],
+      "dimensions_px": [15, 15],
+      "different_pixels": 0,
+      "pixels_compared": 225,
+      "sum_absolute_rgb_difference": 0
+    }
+  },
+  "result": "Both current VUE horizontal normal cells are exact 15x15 matches to the retained native reference. This independently confirms the live VM's normal geometry and source pixels.",
+  "limits": [
+    "The capture is the historical VUE reference, not a GTK2 runtime image.",
+    "It does not compare a pressed horizontal arrow, GTK2 application memory, hover/disabled states, or other GTK families.",
+    "No guest input or GTK2 code/theme change was made for this comparison."
+  ],
+  "next": "Combine with GTK2 R233/R305/R394/R439 for the normal state. The report still needs a live GTK2 application/state reproducer or the historical horizontal held-state comparison before changing geometry."
+}

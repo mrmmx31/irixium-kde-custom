@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "R635",
+  "date_utc": "2026-10-28T22:36:41+00:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "authorization": {
+    "authorized": true,
+    "definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+    "definition_matches": true
+  },
+  "scope": "Private end-to-end click-toggle proof for the current DomainOSApplications QML in Plasma/KWin/Xvfb, using actual PanelButton components and the native Kicker representation.",
+  "method": {
+    "environment": "Disposable HOME/XDG, PlasmaWindowed/KWin/Xvfb, private session bus/activity service; no MAME. Existing R610 harness was adapted only in ~/tempia and all new runtime/temp paths were kept there.",
+    "interaction": "QtTest mouse events were sent to the actual QML PanelButton instances. For both the Applications launcher (KDE menu selected) and the pinned-applications drawer launcher, the test opened on click 1, closed on click 2 of the same button, and reopened on click 3.",
+    "existing_suite": "The 71 R610 catalog/favorites/pins assertions were retained and passed. Fourteen additional assertions cover the two launcher open-close-reopen sequences and pointer click delivery.",
+    "attempts": "Runs 1-3 did not test the new assertions because of fixture-path/action/host wiring mistakes. They remain in Tempia; only run4 is used as the result.",
+    "production_sources_changed": false,
+    "personal_profile_changed": false,
+    "user_window_or_compositor_touched": false
+  },
+  "result": {
+    "status": "passed",
+    "total_checks": 85,
+    "all_checks_passed": true,
+    "new_toggle_assertions": {
+      "applications_launcher_first_click_real_pointer": true,
+      "applications_launcher_prepared": true,
+      "applications_launcher_second_click_real_pointer": true,
+      "applications_launcher_third_click_real_pointer": true,
+      "applications_menu_closed_by_same_button": true,
+      "applications_menu_opened_by_panel_button": true,
+      "applications_menu_reopened_by_same_button": true,
+      "drawer_closed_by_same_button": true,
+      "drawer_launcher_first_click_real_pointer": true,
+      "drawer_launcher_second_click_real_pointer": true,
+      "drawer_launcher_third_click_real_pointer": true,
+      "drawer_opened_by_panel_button": true,
+      "drawer_prepared": true,
+      "drawer_reopened_by_same_button": true
+    },
+    "personal_profiles_unchanged": true,
+    "production_sources_unchanged": true,
+    "private_daemons_stopped": true
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "44b8602342c8ab849a554497dae3d2e15f58617b9a3e1671278480a21ffdb3b4",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteOrdering.qml": "b3370148f1f8e79a6e534d7792e9bb9b4c5fbb4e44b091a4d9215da36f78ec78",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteMoveButton.qml": "bfd59436a3641258dc09432e1e8dd48978462700d2b5129ffc2b51c24f61399c",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSButton.qml": "1f850382928fa535c83f7d7168d7cbcba088d97afc582933804a58663fec59de",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSControlPalette.qml": "f6f7cd9cd8cc8d364d5e775cfcaf4a94211dda439fd7bc6c4444e9097e58da19",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/ApplicationActions.js": "0fdfd7dfc79192e1cd632bef5171b403ba5b021ea79a33e7d2d773927db9757d",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/favorite_order.py": "7ac6ab462cbc6adbbb99a3a8c9c1b500c8f18c330e0546a82f134451255986c9",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/pin_import.py": "05da1ad1323ab7215646e951d8554fa745e5c8963db6544dd4a147aa0c6051b1"
+  },
+  "fixture_artifacts_sha256": {
+    "testar-r635.py": "3e488724b8c4bae74af0fdb86189b476aeb4ee53d287c56118a118f998388939",
+    "testar-domainos-aplicativos-private.py": "daa53fa62502545310d0eef044688d03f7e9c7ee07626d10b55798d55eb679ee",
+    "domainos-drawer-favorites-host-r635.cpp": "5fe987d4579fb22e27f5f85fcaf532b2ecf8d11788df2cf8910ec523df3571ad",
+    "run4/RESULTADO.json": "0311cd4fd23117321710c15d6fb035af9d1d8ae1df9bd734f1ef1c2af507dfe1",
+    "run4/EVIDENCIAS.tar.gz": "4ab43a6c816b98d1af1b92bdcae99d1865ea088387c03d06393ea82bfdbd95b1"
+  },
+  "evidence": {
+    "record_directory": "records/ia-tema/P01/R635-private-panel-click-toggle-20261028/",
+    "temporary_directory": "~/tempia/domainos-theme-work/P01/R635-private-panel-click-toggle/run4/",
+    "result": "records/ia-tema/P01/R635-private-panel-click-toggle-20261028/run4/RESULTADO.json",
+    "archive": "records/ia-tema/P01/R635-private-panel-click-toggle-20261028/run4/EVIDENCIAS.tar.gz"
+  },
+  "limits": [
+    "Input was generated by QtTest inside the isolated Xvfb/KWin session, not by a physical mouse in the user desktop.",
+    "The fixture is not the live lsi panel and does not replace the user’s visual/interaction review.",
+    "The test uses synthetic desktop entries and isolated config/data; no production install or user preference was changed."
+  ],
+  "conclusion": "The current DomainOSApplications component and both real PanelButton QML launchers pass same-button open, close and reopen in the private Plasma/KWin fixture; all 85/85 checks pass. This closes the technical test gap for this criterion but does not assert live-session acceptance. P01 remains waiting for the user review.",
+  "next": "Wait for the user to review the Applications search/focus, category hover, and same-button open/close for both launchers in the live lsi session; keep P01 authorized and do not mark complete before that review."
+}

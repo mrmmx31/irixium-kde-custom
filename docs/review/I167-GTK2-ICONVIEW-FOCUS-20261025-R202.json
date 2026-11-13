@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-FOCUS-20261025-R202",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "question": "Can GTK2 hide the full-cell dotted focus outline on selected IconView items without removing keyboard focus indication when no item is selected?",
+  "runtime": "GTK 2.24.33 native GtkIconView in private Xvfb; selection mode MULTIPLE; cursor item focused; selected_count=0; no live application changed.",
+  "variants": {
+    "normal_focus_width": {
+      "style": "GtkWidget::focus-line-width = 1",
+      "capture": "~/tempia/i167-r202-gtk2-iconview-focus/focus-visible/preview.png",
+      "sha256": "52456e28ae3a1231313da25297acc1c0588611d8df23f9cd5b8c8b8b81280aa4",
+      "result": "A dotted focus outline remains visible around the cursor item while no item is selected."
+    },
+    "focus_width_zero": {
+      "style": "GtkWidget::focus-line-width = 0 on the GtkIconView style only",
+      "capture": "~/tempia/i167-r202-gtk2-iconview-focus/focus-hidden/preview.png",
+      "sha256": "cd3c05e4a55f39b5807b205f26b454aaf0367179915f1e69c6091cceed9fbb58",
+      "result": "The focus outline disappears with selected_count=0 even though the widget still has focus. With an item selected, the KDE selection fill remains, but that does not cover the no-selection keyboard-navigation state."
+    }
+  },
+  "decision": "Do not set the IconView focus line width to zero globally. It would erase the only visible keyboard focus cue when multiple-selection mode has a cursor item but no selected item. Preserve the existing focus line until a supported, more precise focus treatment has evidence.",
+  "limits": [
+    "No matching VUE unselected-but-focused XmpIcon state was obtained; this is a GTK2 safety probe, not a historical match claim.",
+    "No product GTK2 RC, palette, user setting, XChat process, VM or MAME capture hook was changed by this probe."
+  ],
+  "next": "Continue I167/GTK2 with a measurable control or state. Preserve keyboard focus visibility and keep the R200 full-cell selection geometry gap explicit."
+}

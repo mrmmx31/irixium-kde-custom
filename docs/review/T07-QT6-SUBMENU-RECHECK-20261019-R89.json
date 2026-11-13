@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "T07-QT6-SUBMENU-RECHECK-20261019-R89",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_with_scope_limits",
+  "purpose": "Revalidate the current Qt6 submenu help-strip implementation after the prior R4 receipt because its source files changed afterward.",
+  "runtime": {
+    "qt": "6.8.2",
+    "display": ":83",
+    "screen_px": [1600, 1000],
+    "window_manager": "Openbox on the private Xephyr display, using system read-only rc.xml and a HOME under ~/tempia",
+    "gallery_isolation": "guarded disposable bwrap profile, private HOME/passwd/session bus; no personal configuration exposed",
+    "style": "QFusionStyle",
+    "historical_or_kde_fidelity_claimed": false
+  },
+  "verification": {
+    "guarded_full_gallery": "passed",
+    "buttons_with_hints": 36,
+    "widgets_with_hints": 65,
+    "actions_with_hints": 10,
+    "visible_menu_rows_tested": 8,
+    "all_menu_rows_passed": true,
+    "submenu_parent": {
+      "route": "gallery QLabel help strip",
+      "not_visible_at_ms": 250,
+      "visible_by_ms": 600,
+      "stable_while_child_menu_open_ms": 400,
+      "does_not_cover_parent_row": true,
+      "child_action_native_tooltip_replaces_parent_help": true
+    },
+    "normal_menu_hints": {
+      "inside_screen": true,
+      "no_overlap_with_row_or_menu": true,
+      "stable_ms": 400,
+      "closed_after_pointer_leave": true
+    },
+    "edge_menu_positions_tested": ["top-left", "top-right", "bottom-left", "bottom-right"],
+    "source_component_lifecycle_probe": {
+      "qt_style_override": "Fusion",
+      "not_visible_at_ms": 250,
+      "visible_by_ms": 600,
+      "submenu_open": true,
+      "pointer_left_both_menus": true,
+      "original_label_text_restored_within_ms": 150,
+      "status_color_or_palette_checked": false
+    },
+    "python_syntax": "4/4 current helper/gallery/probe/runner source files compiled in memory",
+    "nonfatal_environment_warnings": ["portal/FUSE unavailable in disposable namespace", "Qt session-management socket unavailable"]
+  },
+  "diagnostic_attempt": {
+    "display": ":83",
+    "without_window_manager": "The probe stopped before submenu coverage because the initial ordinary tooltip did not appear.",
+    "with_private_openbox": "The same guarded gallery passed; this is a test-display focus/window-manager requirement, not a product failure."
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qt_widget_hints.py": "302b41f88e474d2a737e34e65ac7810d2b965b9ce6592941c6829e8e0083321b",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "7575886e387647abff0cb135041365190a87000b3e2f1b6be8b4f5912bcfd3e5",
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "27b1e38939976f8823725e6cff89ec3b500a1bbeeb739761e7b89ac79d03fd6c",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "b3179f410aaca6d70b0a1cf524ac455d7b01041a0ea4ce0341e6d6144dfa45d5"
+  },
+  "artifacts": {
+    "directory": "~/tempia/t07-qtwidgets-submenu-r5-xephyr-20261019/",
+    "qa_sha256": "f5c614245e72522ad8dcff58ce32549409b50eff50d93636ca0f6524ac6a6fcd",
+    "native_result_sha256": "7573a65cc1bb1fd76c1b79ce2a38ffe37777dfd46c791a07c9265da211f7af9f",
+    "submenu_screenshot_sha256": "95d11d3ec3810052c69917c7a12e5517fe886dc121c996b561b6d6c4f5d0d388",
+    "status_lifecycle_log": "submenu_lifecycle_r5.log"
+  },
+  "limits": [
+    "QFusionStyle tests behavior and geometry only; no KDE/Kvantum tooltip text/background roles or theme-switch behavior were verified.",
+    "The status help surface is a QLabel in the native gallery; this does not establish an equivalent help strip in every product menu.",
+    "Only Qt6 gallery and one layout were tested; other toolkits/layouts, historical fidelity, and human approval remain open.",
+    "The initial no-window-manager run and two malformed standalone probes were preserved as diagnostics and were not counted as product failures."
+  ],
+  "conclusion": "The current Qt6 gallery submenu help is delayed, remains stable while its child menu is open, does not cover the opener, yields to the child's native tooltip, and restores the prior label text after pointer exit. T07 remains partial.",
+  "next": "Continue with a distinct open T07 gap; do not repeat the GTK2 Progress or GTK3 R83/R85 investigations without a new discriminating hypothesis."
+}

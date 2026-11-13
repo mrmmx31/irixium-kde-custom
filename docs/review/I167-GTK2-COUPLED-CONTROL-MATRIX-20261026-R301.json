@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "R301",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "passed-coupled-detached-controller-matrix-10-controls",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Validate GTK2 controls and the Theme Lab controller in isolated private fixtures; no user-session installation."
+  },
+  "method": "Exact repository controller probe with test_controller_spin.py; GTK2-only fixture Xvfb disables MIT-SHM while bwrap --unshare-ipc remains enabled.",
+  "result": {
+    "cases_passed": 10,
+    "cases_total": 10,
+    "controls": [
+      "combo",
+      "scale_h",
+      "scale_v",
+      "arrow",
+      "list",
+      "frame",
+      "progress",
+      "entry",
+      "text",
+      "spin"
+    ],
+    "origins": [
+      "coupled",
+      "detached"
+    ],
+    "applied_size_px": [
+      300,
+      50
+    ],
+    "verified": "Apply, native allocations, detached close/reopen, project Undo/Redo, Save/Load, controller restart, and separation of pending edit from applied scene."
+  },
+  "evidence": {
+    "matrix": "/home/lsi/tempia/ia-tema/evidence/I167/r301-coupled-controls/MATRIX.json",
+    "matrix_sha256": "059a66a29675d505fb09df0d9178ad91abecd63ad4aafee8d47d3487bab39306",
+    "fixture_artifacts": "/home/lsi/tempia/ia-tema/evidence/I167/r301-coupled-controls",
+    "prior_receipts": [
+      "R298",
+      "R299",
+      "R300"
+    ],
+    "probe_binary_sha256": "1ab00b39bd5c8338773708b1dce84cafb1d7550838a6e1c64b30e8e55dbc8289"
+  },
+  "source_hashes": {
+    "tools/theme-lab/tests/test_controller_spin.py": "8f2040f5f2038358af6e182903046b6c7096593caf8b311051d786fd3ca47c0d",
+    "tools/theme-lab/tests/controller_gtk2_progress.py": "839bcba2863788f2fd33c9b3e734a84f9733c51252ceaf286efb5a8577252e6f",
+    "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f"
+  },
+  "historical_reference": {
+    "status": "not_observed-this-turn",
+    "vm": "canonical project Domain/OS SR10.4 + HP VUE 2.01; MAME process and disk verified",
+    "screenshots": [
+      "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-live-r301-20261026-01.png",
+      "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-live-r301-20261026-02.png"
+    ],
+    "reason": "Guest display remained black. No key or click was sent because host focus was active in another application; automation input is not treated as physical wake input."
+  },
+  "limits": [
+    "Controller integration and lifecycle coverage is not historical visual fidelity.",
+    "The live guest image was black, so held-state comparison for left, right and up remains open.",
+    "This does not exercise every control-specific input or every embedded layout/state.",
+    "No product installation, XChat restart, user profile change, or guest input occurred."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 90,
+    "basis": "Ten additional native GTK2 control types now pass coupled/detached controller lifecycle and geometry checks, supplementing R297-R300. This is estimated technical coverage, not visual fidelity or human acceptance."
+  }
+}

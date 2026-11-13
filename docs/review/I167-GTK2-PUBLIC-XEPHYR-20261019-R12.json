@@ -1,0 +1,82 @@
+{
+  "item": "I167",
+  "revision": "R12",
+  "checked_at_utc": "2026-10-19T12:22:20Z",
+  "family": "GTK2 public preview scrollbar stepper event path",
+  "runtime": {
+    "gtk": "2.24.33",
+    "xephyr": ":82, 800x600, assistant-owned session preserved",
+    "private_namespace_guards": true,
+    "target": "scroll_h-left, single-target diagnostic",
+    "project_sha256": "4b24c44d0806415742d2a8bc30f67f95f900a50f4870fec2be444010b64686e2"
+  },
+  "procedure": {
+    "raw_event_observer": "XI2 RawButtonPress/RawButtonRelease on Xephyr root; observes events without selecting core button events",
+    "public_route": "Original public preview backend -> preview_gtk2.py with verified --rc; one horizontal-left stepper only",
+    "probe_source": "/home/lsi/tempia/i167-r12-xi2-event-path-20261019/probe_r12.py",
+    "probe_sha256": "0060861c84103e699202111e1c52909f5962f4caebbe4e9842e9eac42daea8ca",
+    "observer_source": "/home/lsi/tempia/i167-r12-xi2-event-path-20261019/xi2_raw_monitor.c",
+    "observer_sha256": "c8f1a62abd61a49bcead5341750480adbd63ea2d070c7487380fe17b673332d9"
+  },
+  "observations": {
+    "public_target_run": {
+      "server_events": [
+        {
+          "type": 15,
+          "meaning": "XI_RawButtonPress",
+          "master_device": 2,
+          "source_device": 4,
+          "button": 1
+        }
+      ],
+      "raw_button_release_observed": false,
+      "gdk_native_adjustment_event_observed": false,
+      "held_pixel_differences": 0,
+      "released_pixel_differences": 0,
+      "hover_held_released_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f",
+      "test_exit": "Assertion held_differences > 0 failed; runner then closed its own preview and backend child"
+    },
+    "observer_control_same_display": {
+      "target": "Xephyr root with no GTK preview mapped",
+      "xdotool_commands": "separate mousedown 1; 0.25 s delay; mouseup 1",
+      "server_events": [
+        {
+          "type": 15,
+          "meaning": "XI_RawButtonPress",
+          "button": 1
+        },
+        {
+          "type": 16,
+          "meaning": "XI_RawButtonRelease",
+          "button": 1
+        }
+      ],
+      "purpose": "confirms observer sees press and release from separate xdotool invocations in this Xephyr"
+    },
+    "recipe_path": "Existing R11 source audit: the public command passes --rc; NativeSession validates its receipt and calls Gtk.rc_parse. recipe_applied=false means incomplete GTK2 coverage, not omitted RC; neither fact proves pixel effect."
+  },
+  "interpretation": "The public-target run reached the X server as a raw button press, but no release or native adjustment was recorded and the stepper pixels did not change. The same observer saw both events in the empty-root control. This narrows the discrepancy to the target-window test path but does not localize cause among xdotool target delivery, pointer/grab behavior, or GTK2 scene routing. No causal claim is made. R13 later showed pointer child=0 at mapped preview coordinates; therefore the R12 raw press does not establish that the pointer was over the GTK2 window, and its target attribution remains unverified.",
+  "limitations": [
+    "One target only; no full matrix.",
+    "Raw events are server-level and do not prove delivery to a specific GDK widget.",
+    "No new MAME input or guest action.",
+    "No product code or palette changed."
+  ],
+  "state_after": {
+    "public_preview_closed": true,
+    "raw_observer_stopped": true,
+    "xephyr_82_alive": true,
+    "button_release_sent_by_probe_cleanup": true,
+    "other_xephyr_sessions_touched": false
+  },
+  "artifacts": {
+    "output_directory": "/home/lsi/tempia/.qa-gtk2-public-r12-47b3zyz7",
+    "preview_window_sha256": "20f8e3c2019d24cee8eeba233064a41f1e3fd4ceeb09fc392ecc6b31041f4c3f",
+    "output_files": [
+      "/home/lsi/tempia/.qa-gtk2-public-r12-47b3zyz7/arrow-scroll_h-left-hover.png",
+      "/home/lsi/tempia/.qa-gtk2-public-r12-47b3zyz7/arrow-scroll_h-left-held.png",
+      "/home/lsi/tempia/.qa-gtk2-public-r12-47b3zyz7/arrow-scroll_h-left-released.png"
+    ]
+  },
+  "conclusion": "R12 adds a discriminating event-path observation but does not pass I167. Do not repeat the same click matrix. The next diagnostic must log client/GDK delivery or use another independently authorized Fila Atual item. Historical SR10.4 comparison remains outstanding. Later R13 hit-test evidence weakens target attribution: the raw press is real server evidence, but the intended GTK2 window was not confirmed under the pointer."
+}

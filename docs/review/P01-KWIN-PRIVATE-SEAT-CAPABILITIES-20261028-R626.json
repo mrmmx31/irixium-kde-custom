@@ -1,0 +1,53 @@
+{
+  "id": "R626",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 isolated Wayland menu input investigation",
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "private KWin Wayland registry inventory",
+    "compositor": "kwin_wayland --virtual",
+    "client": "wayland-info",
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "private_compositor_exited": true,
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R626-wayland-globals-ejj7i6gw/",
+    "preserved_evidence": "records/ia-tema/P01/R626-private-wayland-globals-20261028/"
+  },
+  "observations": {
+    "wayland_info_exit": 0,
+    "wl_seat_capabilities": [
+      "keyboard"
+    ],
+    "pointer_capability": false,
+    "advertised_input_injection_protocols": {
+      "org_kde_kwin_fake_input": false,
+      "zwp_virtual_pointer_manager_v1": false,
+      "zwp_virtual_keyboard_manager_v1": false
+    },
+    "files": {
+      "wayland-info.txt": "ad214d650221341518738f5227cfa35aa0738612b412f512b8f06568fc23b871",
+      "result.json": "d9518df5475f8a98ecdf4c1406929a4e42c18d1c09f5831e2b21fdeb849659a3",
+      "kwin.log": "727370bb067dffe2746878239935f8a9b083ff8836c7aca860e1eb6fc24992dc"
+    },
+    "advertised_input_protocols_scope": "Filtered for the wayland-info client, whose desktop metadata does not request org_kde_kwin_fake_input; this was not an exhaustive compositor-global inventory."
+  },
+  "interpretation": {
+    "status": "initial-seat-keyboard-only; privileged-fake-input-client-filtering-explains-missing-global",
+    "conclusion": "The private --virtual session initially exposed a keyboard-only wl_seat to wayland-info. The absence of org_kde_kwin_fake_input in that client registry did not prove the compositor lacked the protocol: KWin filters this privileged interface per client desktop metadata. R627 registered an isolated probe with X-KDE-Wayland-Interfaces=org_kde_kwin_fake_input; KWin authorized it and exposed fake-input v5. Binding it added pointer capability to wl_seat (observed 2→3→7), removed again when destroyed (6→2).",
+    "production_fix_indicated": false,
+    "human_acceptance": false,
+    "superseded_by": "R627"
+  },
+  "next": [
+    "Trace why authorized synthetic key/pointer events do not change the private Kicker QML state; do not infer hover or focus behavior from protocol advertisement alone.",
+    "Keep the R619 ordering hypothesis open until a native UI event trace or user-confirmed live observation correlates hover, focus, deactivation, and popup closure."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "R493",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the installed GTK2 down-stepper pressed asset after R492 with the recorded Domain/OS SR10.4 held down-arrow glyph.",
+  "authority": {
+    "theme_board_item": "P10",
+    "theme_board_section": "work",
+    "theme_user_revision": 1,
+    "theme_user_authorized": true,
+    "theme_definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4",
+    "visual_review_item": "I167",
+    "visual_review_user_revision": 2,
+    "visual_review_authorized": true,
+    "visual_review_definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "state_record": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "state_record_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "source_capture_hashes": {
+      "normal": "cab2b598869a7e6909a9de583b75e7ba0e630c59478816d37440b9ce3f30a46b",
+      "held": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568",
+      "released": "1a5c823b09e65f00d309bdf6b2c0820981e68a3a427c8b35a451a977d228a62b"
+    }
+  },
+  "installed_asset": {
+    "path": "/home/lsi/.local/share/irixium/gtk2-palette/b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa/assets/scrollbar-stepper-down-pressed.png",
+    "bundle_id": "b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa",
+    "generation_bundle_json_sha256": "80f83eb7686a911c964f69c4d12bbc45c957aade2e8367522aebf7a374476192",
+    "asset_sha256": "07ca3901c24dc819c8469ef581fa3b7610ca71ec7d437e1f6d500fb95bb0eb04",
+    "dimensions_px": [15, 15],
+    "provenance": "Installed palette bundle generated from current KDE role export and recorded by R492; no fixed historical RGB values were added."
+  },
+  "comparison": {
+    "method": "Read the current installed PNG and compare the centered 11x11 glyph at offset (2,2) against the recorded held-state semantic rows. Compare only L/D/F glyph pixels; exclude trough context and the recorded white cursor outside the arrow silhouette.",
+    "semantic_pixels_compared": 71,
+    "mismatches": 0,
+    "sampled_rgb_values": {
+      "light": "#c4d5ed",
+      "dark": "#3e536e",
+      "face": "#78a0d5",
+      "trough": "#6688b5"
+    },
+    "result": "All 71 historical held-glyph pixels match the installed post-R492 pressed asset. The light/dark relief orientation is correct, and face pixels and silhouette are preserved. R51/R52/R480 separately document the GTK2 normal/held/release interaction contract; they do not replace direct native evidence for the remaining states."
+  },
+  "limits": [
+    "This is a pixel comparison against the archived SR10.4 held capture, not a new live interaction in the VM.",
+    "It covers only the down-stepper held glyph; horizontal/up held, hover, insensitive and thumb-drag states remain without complete direct SR10.4 evidence.",
+    "No MAME input, profile change, or application restart occurred."
+  ],
+  "next": "Continue only I167/GTK2. Compare the remaining applicable states when the VM input gate permits; keep the remaining direct-state and human visual review gaps explicit."
+}

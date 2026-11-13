@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "R738",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Pixel-level comparison of the user's small GTK2 scrollbar attachment against the measured normal-state Domain/OS SR10.4 HP VUE 2.01 Motif vertical scrollbar crop. No source changes or GUI input.",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "gtk2_attachment": {
+      "filename": "capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [
+        102,
+        655
+      ],
+      "note": "Only the scrollbar region was sampled; no text/pixel crop was copied into project records."
+    },
+    "context_attachment": {
+      "filename": "capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [
+        892,
+        642
+      ],
+      "note": "Used to orient the narrow scrollbar crop; no content was transcribed."
+    },
+    "motif_reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "motif_reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+  },
+  "method": "Compared 1:1 pixel coordinates and cross-axis profiles from the supplied 102x655 crop with the project's native VUE crop. The face-role-only color substitution is reported separately from geometric/relief differences; no palette RGB was proposed as a product constant.",
+  "comparison": {
+    "geometry": {
+      "gtk2_bar_bbox_in_crop_inclusive": [
+        47,
+        37,
+        61,
+        607
+      ],
+      "gtk2_bar_width_px": 15,
+      "motif_width_px": 15,
+      "result": "Width matches the native metric. The cropped context is insufficient to separate the content frame from the 4px view-to-bar gap."
+    },
+    "upper_arrow": {
+      "gtk2_cell_bbox_in_crop_inclusive": [
+        47,
+        37,
+        61,
+        51
+      ],
+      "motif_cell_px": [
+        15,
+        15
+      ],
+      "raw_exact_pixels": "164/225",
+      "after_face_role_normalization": "225/225",
+      "gtk2_face_rgb": "#6f95c6",
+      "motif_face_rgb": "#6688b5",
+      "result": "Arrow mask, placement, dark and light relief match. The 61 raw RGB differences are the face role only."
+    },
+    "lower_arrow": {
+      "gtk2_cell_bbox_in_crop_inclusive": [
+        47,
+        593,
+        61,
+        607
+      ],
+      "raw_exact_pixels": "153/225",
+      "after_face_role_normalization": "214/225",
+      "remaining_difference": "11 pixels in the first cell row: GTK2 face where VUE has the measured dark/light leading-edge pattern.",
+      "result": "The triangle body aligns, but the cell's first horizontal relief row differs; do not describe this as a glyph-size mismatch."
+    },
+    "trough_cross_section": {
+      "motif_profile": "DDLLFFFFFFFDDLL",
+      "gtk2_profile": "DDFFFFFFFFFFFLL",
+      "gtk2_sample_rows_in_crop": [
+        470,
+        580
+      ],
+      "direct_profile_match": "11/15",
+      "differences": [
+        {
+          "offsets": [
+            2,
+            3
+          ],
+          "motif": "light",
+          "gtk2": "face"
+        },
+        {
+          "offsets": [
+            11,
+            12
+          ],
+          "motif": "dark",
+          "gtk2": "face"
+        }
+      ],
+      "result": "The R731 flatter adaptation is present in the long non-thumb trough; it removes the four inner bevel pixels per cross-section measured in VUE."
+    },
+    "thumb_cross_section": {
+      "sample_row_in_crop": 300,
+      "motif_profile": "DDLLFFFFFFFDDLL",
+      "gtk2_profile": "DDLLFFFFFFFDDLL",
+      "result": "The raised thumb profile matches in this sample. Its visible length is content-dependent and cannot be judged against the nearly-full thumb in the empty Trash Can."
+    },
+    "interaction_state": "The screenshot is a single static view. It does not prove pressed, hover, disabled, or scrolling behavior."
+  },
+  "result": "The attachment confirms the 15px GTK2 bar width and distinguishes the raised thumb from the flatter trough. Three differences are visible against the native reference: the face role is brighter in this active GTK palette; the lower arrow cell lacks the first-row relief pattern; and the trough lacks the four measured inner relief pixels. The upper arrow's shape/relief otherwise matches after separating the dynamic face color.",
+  "changes": [],
+  "next": "Keep GTK2 as the active family. Record this as a new comparison, but do not alter the theme until the user reviews these separated differences. Pressed/disabled VUE input and thumb drag remain separately gated by I517/I518.",
+  "status": "superseded_misidentified_inputs",
+  "superseded_by": "docs/review/I167-GTK2-ATTACHMENT-ROLE-CORRECTION-20261029-R739.json",
+  "correction": "R738 inverted the two user attachments: the narrow image is the Motif reference and the large image is GTK2. Its GTK2 trough-profile conclusions must not be used."
+}

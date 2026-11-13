@@ -1,0 +1,19 @@
+{
+  "upstream": "KDE plasma-desktop 6.3.6",
+  "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/analog-clock",
+  "original_id": "org.kde.plasma.analogclock",
+  "changes": [
+    "Private Classic ID; native time data source, tooltip, timezone configuration, hand rotations and calendar preserved.",
+    "Shared square instrument socket with direct pressed prefix and 1px content displacement; fixed inset well, no interaction timers.",
+    "Original flat cream clock artwork supplied by IrixClassic/widgets/clock.svg; readable hour markers, unshaded hands, native element IDs and explicit rotation hints.",
+    "Optional timezone label remains available and elides inside the instrument instead of overflowing the square housing."
+  ],
+  "original_files": {
+    "metadata.json": "0325008ef97884b36588cf7e5f12becd80877ca6f98bd52ea226bf5c9373ec18",
+    "contents/config/main.xml": "1967bcc5f4f85cc17b3df31e9b4f4dafc2d77f8b2fd50804e02f7e5865c58927",
+    "contents/config/config.qml": "c446aa5bf8883b866090e540493068fadc2e7160dd05943b8368f9ef7f6d10ed",
+    "contents/ui/Hand.qml": "c42b85924fc443f5c30f4d3d2e9c97090ed637fd896a8456f2527d1c2ae50a5b",
+    "contents/ui/main.qml": "426355ba83376a886aed785a6de39f3c0ebe9858de621760ebe0bebff01d2197",
+    "contents/ui/configGeneral.qml": "8bdef3cc80b1f064afa30727cf23c644d645dd07c2b5fb007e1c00832b2113a2"
+  }
+}

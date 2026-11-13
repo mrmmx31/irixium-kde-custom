@@ -1,0 +1,48 @@
+{
+  "item": "I167",
+  "revision": "R295",
+  "checked_at_utc": "2026-10-26T10:15:00Z",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 scrollbar press/release and input boundaries",
+  "toolkit": "GTK 2.24.33 with the project GTK2 pixmap adapter",
+  "environment": "Disposable Xvfb; no personal display or VM input",
+  "validation": {
+    "status": "passed",
+    "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "states": {
+      "normal": "All four directions accepted; 16/16 cycles changed the range value.",
+      "endpoint": "All four directions rejected at the current range boundary in each palette; 16/16 cycles remained blocked.",
+      "disabled": "Whole-insensitive GtkRange rejected all four directions in each palette; 16/16 cycles remained blocked."
+    },
+    "cycles": 48,
+    "directions_per_state_and_palette": 4,
+    "held_images_match_pressed_assets": true,
+    "released_images_match_normal_assets": true,
+    "mask_pixel_differences": 0,
+    "scope_limit": "Native GTK2 behavior and generated assets only; not a historical comparison for disabled or boundary states."
+  },
+  "evidence": {
+    "directory": "~/tempia/ia-tema/evidence/I167/r294-gtk2-scrollbar-interaction/",
+    "report": "results.json",
+    "report_sha256": "ddca316e55333015d8f642abbe709bb17d3e3efc7e918f84abc2aecf4bf97fe1"
+  },
+  "sources": {
+    "tools/theme-lab/tests/test_gtk2_interaction_native.py": "fdef882f884b372309a6fb582ba750768eea5bb937828e3461aab69910a9d869",
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "04195003b87b0705c39b71cef6a1f10f348caffff61d713e5bf6e86c89f4bca1",
+    "tools/theme-lab/gtk2_recipe.py": "7dec8c3fc1302c9e7f71ce59cc2810803a8460c5a9f80ae70b5be048d564d0ee"
+  },
+  "personal_input_sent": false,
+  "theme_installed": false,
+  "vm_changed": false,
+  "remaining": [
+    "Compare the left, right and up held pixels against SR10.4 once the guest is awake and the pointer is visible over each target.",
+    "Continue the final GTK2 control-state audit; do not infer historical appearance from the native GTK2 probe."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 80,
+    "basis": "This adds behavior/state coverage for endpoint and whole-insensitive bars, plus four-palette press/release evidence; it does not close the remaining historical or human-review gates. Not a fidelity score."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "item": "I167",
+  "revision": "R21",
+  "checked_at_utc": "2026-10-19T15:37:09Z",
+  "family": "GTK2 scrollbar arrows: full-cell pixel check and intermittent input delivery",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "sources": [
+      "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "docs/referencias/domainos-sr104/barra-vertical-normal.png"
+    ],
+    "metric_contract": "tools/domainos_scrollbar_rules.json"
+  },
+  "current_worktree": {
+    "display": ":84",
+    "xephyr_pid": 44778,
+    "gtk": "2.24.33",
+    "recipe": "current GTK2 public recipe; generated full-cell opaque 15x15 assets",
+    "capture": "~/tempia/.qa-gtk2-public-av2gqsdn/preview.png",
+    "capture_sha256": "4de070cc3810a592c33d6e91ba58eeed19b59b8438bab89c2b0f8d321a2ac080",
+    "scale": "1:1"
+  },
+  "normal_pixel_comparison": {
+    "up": {"equal_pixels": 225, "pixels": 225},
+    "down": {"equal_pixels": 225, "pixels": 225},
+    "left": {"equal_pixels": 225, "pixels": 225},
+    "right": {"equal_pixels": 225, "pixels": 225},
+    "method": "Exact RGB comparison of the four registered 15x15 ROIs against the pinned SR10.4 normal reference images; no resampling.",
+    "result": "The full-cell current public GTK2 rendering has no remaining outer axial edge mismatch in these four ROIs. This supersedes the R14 normal-state residual for the current recipe."
+  },
+  "oriented_asset_trial": {
+    "status": "rejected",
+    "trial": "Cropped full-cell assets to 15x11 horizontal and 11x15 vertical before rendering.",
+    "evidence": "The private native GTK2 test found an extra default background color (#dcdad5) in the horizontal bar allocation; expected pixels were only the KDE-derived face/light/dark/trough roles. The oriented crop exposed two cross-axis rows rather than preserving full-cell fill.",
+    "product_change": false,
+    "result": "Restored full 15x15 assets; do not apply this crop strategy."
+  },
+  "press_release_diagnostic": {
+    "attempts": [
+      {
+        "mode": "public full direction matrix",
+        "display": ":84",
+        "first_direction": "scroll_h-left",
+        "result": "failed: no visible pressed-pixel delta"
+      },
+      {
+        "mode": "public left-only with GTK2 trace",
+        "display": ":84",
+        "result": "failed: no visible pressed-pixel delta; gtk2-input-trace.jsonl remained empty"
+      }
+    ],
+    "interpretation": "The GTK2 change-value and adjustment trace callbacks did not run in the failed attempt, so this is input delivery, not evidence of a bad pressed-state bitmap. The same single direction passed in R20 and all four arrows passed press/release in R14; delivery remains intermittent.",
+    "current_visual_state": "normal states are exact; press/release function is not consistently reproducible in the public fixture"
+  },
+  "scope_limits": {
+    "breeze_dark_repeated": false,
+    "other_toolkits_touched": false,
+    "other_xephyr_sessions_touched": false,
+    "personal_profile_changed": false,
+    "human_visual_approval": "pending"
+  },
+  "status": "normal-pixels-verified; interaction-intermittent; keep-item-running-and-continue-next-authorized-item"
+}

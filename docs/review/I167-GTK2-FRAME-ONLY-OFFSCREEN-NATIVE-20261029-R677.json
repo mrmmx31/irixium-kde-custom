@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "id": "R677",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Render a generated GTK2 frame-only scene through NativeSession without scrollbar controls, in a private Xvfb process.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "fixture": {
+    "family": "gtk2",
+    "scheme_source": "colors/DomainOS-SR10.4.colors",
+    "scene_controls": ["frame"],
+    "translated_controls": ["frame"],
+    "project_sha256": "70434f3f2231c731f8327ee2d02bfb43774e5c76db90178efd60c579e964fbad",
+    "receipt_sha256": "ddf8afe6bcb033fd5e7de5b04c75d1100a4dfad723632ec6945cfde027193fa5"
+  },
+  "result": {
+    "status": "passed",
+    "renderer": "GTK2 2.24 NativeSession / GtkOffscreenWindow",
+    "display": "private Xvfb :142",
+    "controls_rendered": ["frame"],
+    "allocation_px": [0, 0, 72, 30],
+    "capture": "records/ia-tema/I167/R677/gtk2-frame-only.png",
+    "capture_sha256": "a6a8a5f7c27bd4db0e8a29c64575b407d821b2f87f578f1ba5cd40bb146723c1"
+  },
+  "verification": {
+    "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_generation_visibility.py",
+    "result": "passed; generated receipt validated and real GTK2 offscreen frame rendered",
+    "git_diff_check": "passed",
+    "desktop_changed": false,
+    "user_profile_changed": false,
+    "applications_restarted": false,
+    "mame_input_sent": false
+  },
+  "limits": [
+    "This proves GTK2 native scene rendering in private Xvfb, not the public bwrap/Xephyr launcher.",
+    "The capture is not compared to a Motif or SR10.4 reference and is not a visual approval.",
+    "The production preview in private Xephyr remains unverified pending the user's choice to open that session."
+  ],
+  "next": "Use the authorized private Xephyr flow for the public GTK2 preview and user comparison; preserve the current deployed GTK2 profile."
+}

@@ -1,0 +1,42 @@
+{
+  "id": "I167",
+  "receipt": "R50",
+  "date": "2026-10-23",
+  "checked_at_utc": "2026-10-23T03:01:00Z",
+  "family": "GTK2 KDE palette bridge and generated pixmap refresh",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "change": {
+    "source_changed": false,
+    "summary": "Verified the existing GTK2 palette bridge. The active DomainOS GTK2 companion path calls setup/refresh; the runtime reads KDE exported GTK color roles, produces content-addressed pixmap bundles and updates owned GTK2 RC wrappers transactionally."
+  },
+  "validation": {
+    "command": "env TMPDIR=$HOME/tempia PYTHONPATH=tools:tests python3 -m unittest test_gtk2_palette_runtime",
+    "result": "17 tests passed",
+    "cases": [
+      "three palette values refreshed actual pixmap files while preserving canonical art",
+      "restore recovered original wrapper bytes and modes",
+      "refresh was idempotent for unchanged colors",
+      "edited or unsafe theme resources were refused",
+      "transaction failure and concurrent color changes were guarded"
+    ],
+    "source_sha256": {
+      "tools/gtk2_palette_runtime.py": "d342012447656f8165b49f4b8b24f2e96977250ffdb7c8a07b21ea409dc5d131",
+      "tools/gtk2_palette.py": "3550e9643212dc629aa8b5715ce24386fa27642e45ffdd9aa6c8fa54a7e416eb",
+      "tools/theme_companion_bridge.py": "74f34ac0d24b91fdec284c5f4b94884002be9b0fe8ddb6e26d692416b0ba6c83",
+      "gtk/tools/build_kde_domainos.py": "46638a79971819d619f2c622ebe6af6af245c7e51c168ddb0e6ad2c4507e04d5",
+      "tests/test_gtk2_palette_runtime.py": "a3321b252d606fae6915c2a620ff504314a72371185ad9a5ef6d66373d0a41f5"
+    },
+    "isolation": "Synthetic XDG roots under temporary test fixtures; TMPDIR pointed to ~/tempia. Personal profile, XChat and MAME were not modified."
+  },
+  "limits": [
+    "This test verifies runtime generation/transaction semantics, not live KDE schema-change notification or GTK2 application redraw in the user session.",
+    "Does not establish historical SR10.4 fidelity of every GTK2 control.",
+    "The MAME channel still contains an uncorrelated screenshot request whose path belongs to another item; no new VM command was sent."
+  ],
+  "next": "Continue the authorized GTK2 audit with current palette roles and one control family at a time. Obtain the matching VM evidence only when the existing MAME request is resolved; do not apply to the user profile or XChat while I167 remains partial."
+}

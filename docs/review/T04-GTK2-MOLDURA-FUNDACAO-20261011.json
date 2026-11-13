@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-11T18:08:35.710607+00:00",
+  "status": "foundation_verified",
+  "family": "gtk2",
+  "control": "frame",
+  "native_result": ".qa-t04-frame-foundation/native/RESULTADO.json",
+  "native_controls": 24,
+  "pure_tests": 3,
+  "source_sha256": {
+    "tools/theme-lab/gtk2_frames.py": "089df08860fc4acbcb8b1eec1f74fb97aa4fa0b7796ec36d0357c04c8c168834",
+    "tools/theme-lab/tests/test_gtk2_frame_paint.py": "1595f1a5558242830495f0b02d8ef7f51624b1d24f0c2bfa87346e23d7f2b949",
+    "tools/theme-lab/tests/probe_gtk2_frame.py": "34fcd02bb3458a77391fd0d7524814ae8523c49e6468b008143b243a658e637e"
+  },
+  "scope": "Real unlabelled GtkFrame with content label, native alignment padding, window-role raised bevel. Four palettes, normal/disabled/explicit backdrop, coupled/separate. Face and each top/bottom bevel layer verified against symbolic raster. Native allocation240x120 and requisition/font collected.",
+  "visual_inspection": ".qa-t04-frame-foundation/native/DomainOS/separate-normal.png inspected; content and raised boundary visible.",
+  "limits": [
+    "Not integrated pipeline/scene/session/controller; coverage stays15/16",
+    "Standalone frame is separate from scrollbar_parts.fitting, which remains unsupported GTK2",
+    "No full historical/manual approval or forced-focus proof",
+    "Left/right/corner pixel matrix and native Ctrl gestures still pending"
+  ],
+  "coverage": {
+    "integrated": 15,
+    "total": 16,
+    "percentage": 93.75,
+    "scope": "GTK2 catalog only; not goal/fidelity"
+  }
+}

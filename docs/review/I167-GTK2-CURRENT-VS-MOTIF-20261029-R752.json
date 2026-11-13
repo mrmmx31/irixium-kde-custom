@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "id": "R752",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the GTK2 scrollbar after R751 against the two user attachments and the measured Domain/OS SR10.4 Motif scrollbar, with a fresh read-only capture of only the current XChat scrollbar strips.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "live_target": {
+    "window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "client_px": [
+      870,
+      601
+    ],
+    "gtk": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE-Reload",
+    "capture": "Read-only XWD bytes decoded in memory; only the two 15px-wide scrollbar strips were written. No focus, pointer, keyboard, click, or conversation text was captured or sent."
+  },
+  "references": {
+    "large_user_attachment": {
+      "filename": "e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [
+        892,
+        642
+      ]
+    },
+    "small_user_attachment": {
+      "filename": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [
+        102,
+        655
+      ],
+      "sample": {
+        "xy": [
+          47,
+          100
+        ],
+        "width_px": 15
+      }
+    },
+    "canonical_vm_bar": {
+      "system": "Domain/OS SR10.4, HP VUE 2.01",
+      "path": "records/ia-tema/I167/R747/motif-sr104-vertical-bar.png",
+      "dimensions_px": [
+        15,
+        255
+      ],
+      "sha256": "6ddc3424693ad0a565a2d40c8c3e8611295b3ec6477d0d85fc551848d21ea9b0"
+    }
+  },
+  "palette_roles_observed": {
+    "D": "#3e536e",
+    "L": "#c4d5ed",
+    "F": "#78a0d5",
+    "T": "#6688b5",
+    "source": "Current KDE semantic-role palette; RGBs are measurements, not fixed product colors."
+  },
+  "comparison": {
+    "cross_axis_contract": {
+      "motif_and_R751_GTK2": "DDLLFFFFFFFDDLL",
+      "columns_zero_based": {
+        "0-1": "outer shadow",
+        "2-3": "inner light rail",
+        "4-10": "seven face pixels",
+        "11-12": "inner shadow rail",
+        "13-14": "outer light rail"
+      },
+      "width_px": 15,
+      "result": "The small attachment's sample at (47,100), both large-attachment samples at y=200, and the fresh live straight-track samples all use the Motif profile. The old GTK2 adaptation omitted columns 2,3,11,12, making the exposed track look flatter. R751 restores those rails."
+    },
+    "fresh_live_capture": {
+      "left": {
+        "path": "records/ia-tema/I167/R752/left-vertical-strip.png",
+        "xy": [
+          217,
+          64
+        ],
+        "size_px": [
+          15,
+          535
+        ],
+        "sha256": "24546dd7842719b8575180a4834a4fcd780905f61ef9dbfee5d2456c49c83a86",
+        "motif_profile_rows": 503,
+        "prior_R749_exposed_trough_rows": 181,
+        "prior_R749_thumb_rows": 322
+      },
+      "right": {
+        "path": "records/ia-tema/I167/R752/right-vertical-strip.png",
+        "xy": [
+          749,
+          98
+        ],
+        "size_px": [
+          15,
+          465
+        ],
+        "sha256": "6c376928a6d5cfc44e44caee5d11d62da252b98e6baacf32dd08713d8535084f",
+        "motif_profile_rows": 433,
+        "prior_R749_exposed_trough_rows": 408,
+        "prior_R749_thumb_rows": 25
+      },
+      "before_after_pixel_delta": {
+        "left": {
+          "changed_pixels": 724,
+          "old_flat_rows": 181,
+          "changed_columns_each_row": [
+            2,
+            3,
+            11,
+            12
+          ]
+        },
+        "right": {
+          "changed_pixels": 1632,
+          "old_flat_rows": 408,
+          "changed_columns_each_row": [
+            2,
+            3,
+            11,
+            12
+          ]
+        },
+        "result": "Every pixel change from the R749 live strips is exactly one of the four restored inner-rail pixels in a previously flat trough row; no other scrollbar pixels changed."
+      },
+      "normal_arrow_cells": {
+        "left_top": "225/225 equal to canonical Motif",
+        "left_bottom": "225/225 equal to canonical Motif",
+        "right_top": "225/225 equal to canonical Motif",
+        "right_bottom": "225/225 equal to canonical Motif",
+        "cell_size_px": [
+          15,
+          15
+        ]
+      }
+    },
+    "attachment_alignment": {
+      "large_left_visible": {
+        "size_px": [
+          15,
+          244
+        ],
+        "different_pixels_from_live": 17,
+        "total_pixels": 3660,
+        "difference_location": "two rows at the thumb-start boundary; the attached image shows the thumb beginning two rows earlier."
+      },
+      "large_right_visible": {
+        "size_px": [
+          15,
+          210
+        ],
+        "different_pixels_from_live": 12,
+        "total_pixels": 3150,
+        "difference_location": "single final row at the screenshot's gray-occluded lower edge; not a trough-profile difference."
+      },
+      "limit": "The large attachment is cut off at y=338, so it does not show either complete scrollbar or its lower endpoint. Its timestamp is unknown. The small attachment is a different widget/content range; compare 15px thickness and cross-axis profile, not absolute bar or thumb length."
+    },
+    "thumb_and_trough": "Both use the same 15px cross-axis profile after R751. Their lengths and positions follow each application's scroll range and viewport; the attached small scrollbar's gradient/near-full thumb is not a GTK2 length target."
+  },
+  "result": "R751's restored inset rails are visible in the actual mapped GTK2 XChat. The current bars now match Motif's measured 15px cross-axis relief; all four normal vertical arrow cells remain pixel-identical. The confirmed previous mismatch was the four omitted internal rail columns in the exposed trough, now restored without altering arrow geometry, thumb length, or the active KDE role palette.",
+  "human_review": "Pending. This comparison documents the visible result; it does not fill the user's verdict.",
+  "changes": {
+    "theme_or_code": "R751 changed only the GTK2 cross-axis profile and synchronized the Theme Lab recipe; already registered to I167.",
+    "deployment": "The R751 DomainOS GTK2 variants were applied to lsi and native GTK reload was sent without restarting XChat.",
+    "current_capture": "R752 saved only scrollbar strips, summaries, this report, and an isolated native preview."
+  },
+  "next": "Await the user's visual assessment of the restored GTK2 trough. Continue only within I167/GTK2 until this family is evaluated.",
+  "native_candidate_preview": {
+    "path": "records/ia-tema/I167/R752/isolated-native-gtk2-preview.png",
+    "size_px": [
+      640,
+      360
+    ],
+    "sha256": "650f0eebf35200d879a31fca85fa0a0b979497f9e10e9f52fa4cb9c2f5840461",
+    "scope": "Actual GTK2 controls rendered in isolated Xvfb using the current KDE semantic palette; supports the 15px profile comparison only."
+  },
+  "board_evidence": {
+    "code_changes_record": "Verified at I167 revision 2; four files content_verified=true; changes-diff bytes match the prepared patch (SHA-256 34c55b434db8a9f78439d8b9ba1ea8f178418b003308c97a7cb3dfbffeccbf2f).",
+    "scripts_record": "Six exact script sources are saved/read back on I167 revision 2; files_changed=true."
+  }
+}

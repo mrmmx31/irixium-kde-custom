@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R736",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Compare the already visible GTK2 XChat vertical scrollbar after R731 against the native Domain/OS SR10.4 HP VUE 2.01 vertical scrollbar, without reading or retaining conversation text.",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "map_state": "IsViewable",
+    "gtk_library": "/usr/lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0.2400.33",
+    "theme_engine": "/home/lsi/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so"
+  },
+  "capture": {
+    "method": "xwd of the identified GTK2 client, cropped in memory to the scrollbar strip before writing; no input, focus change, application restart, full-window image, or conversation text was retained.",
+    "display": ":1",
+    "capture_time_utc": "2026-10-29T09:55:05Z",
+    "temporary_source": "/home/lsi/tempia/domainos-theme-work/I167/R736-live-XChat-bar-20261029T0950Z/scrollbar-aligned.png",
+    "recorded_crop": "records/ia-tema/I167/R736/live-xchat-gtk2-vertical-scrollbar.png",
+    "sha256": "5625cfac04df68554db9d691703149b09832ae04db4d3711c36e9889cf69e271",
+    "dimensions_px": [15, 481]
+  },
+  "comparison": {
+    "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "reference_native_bbox_px": [648, 412, 662, 666],
+    "gtk_visible_scrollbar_bbox_in_crop_px": [0, 0, 14, 464],
+    "bar_thickness_px": 15,
+    "normal_arrow_cells_px": [15, 15],
+    "up_arrow_rgb_differences": 0,
+    "down_arrow_rgb_differences": 0,
+    "pixels_per_arrow_cell": 225,
+    "gtk2_straight_body_profile": "DDFFFFFFFFFFFLL",
+    "motif_sr104_straight_body_profile": "DDLLFFFFFFFDDLL",
+    "body_difference_per_straight_cross_section": {
+      "different_pixels": 4,
+      "total_pixels": 15,
+      "offsets": [2, 3, 11, 12],
+      "interpretation": "GTK2 uses the face role at the two inner light and two inner dark Motif positions. It retains both outer dark pixels, the 11-pixel face span, and both outer light pixels. This is the R731 visual adaptation, not the literal VM raster."
+    },
+    "active_dynamic_roles_rgb": {
+      "dark": "#3e536e",
+      "face": "#78a0d5",
+      "light": "#c4d5ed"
+    },
+    "thumb": {
+      "visible_span_y_px": [428, 449],
+      "length_px": 22,
+      "interpretation": "Runtime geometry for this XChat content; do not equate it to the empty Trash Can thumb. The lower arrow cell is fully visible and matches the Motif reference."
+    }
+  },
+  "result": "The live XChat client has the GTK2 DomainOS engine loaded. Its vertical scrollbar is 15 px thick; both normal 15x15 arrows match the SR10.4 raster exactly. The straight body follows the R731 adapted relief profile and differs from the measured literal Motif body at four of 15 pixels per straight cross-section. This verifies the post-reload vertical normal state in a real GTK2 application. It does not cover the horizontal bar, pressed/disabled states, or human preference for the adapted body relief.",
+  "changes": [],
+  "next": "Keep I167 open for the user's assessment of the R731 body relief. Continue remaining GTK2 states only within their authorized scope; do not infer acceptance of the adapted body from pixel measurements."
+}

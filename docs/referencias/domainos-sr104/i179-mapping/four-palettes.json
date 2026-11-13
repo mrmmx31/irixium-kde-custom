@@ -1,0 +1,70 @@
+{
+  "scope": "FontSet UTF8/MB vs direct Unicode glyph pixels, four role palettes; not widget state or all languages",
+  "status": "passed",
+  "rows": [
+    {
+      "name": "DomainOS",
+      "roles": {
+        "face": "#78a0d5",
+        "text": "#ffffff"
+      },
+      "samples": [
+        "sample=OK Cancel Help Terminal direct-vs-utf8=0 direct-vs-mb=0 ink=297",
+        "sample=Árvore — ação direct-vs-utf8=0 direct-vs-mb=0 ink=149",
+        "sample=Ελληνικά direct-vs-utf8=0 direct-vs-mb=0 ink=124",
+        "sample=Русский direct-vs-utf8=0 direct-vs-mb=0 ink=109",
+        "sample=— direct-vs-utf8=0 direct-vs-mb=0 ink=6"
+      ],
+      "stderr": "Warning: Missing charsets in String to FontSet conversion\nWarning: Missing charsets in String to FontSet conversion\n",
+      "terminal": 0
+    },
+    {
+      "name": "BreezeLight",
+      "roles": {
+        "face": "#eff0f1",
+        "text": "#232629"
+      },
+      "samples": [
+        "sample=OK Cancel Help Terminal direct-vs-utf8=0 direct-vs-mb=0 ink=297",
+        "sample=Árvore — ação direct-vs-utf8=0 direct-vs-mb=0 ink=149",
+        "sample=Ελληνικά direct-vs-utf8=0 direct-vs-mb=0 ink=124",
+        "sample=Русский direct-vs-utf8=0 direct-vs-mb=0 ink=109",
+        "sample=— direct-vs-utf8=0 direct-vs-mb=0 ink=6"
+      ],
+      "stderr": "Warning: Missing charsets in String to FontSet conversion\nWarning: Missing charsets in String to FontSet conversion\n",
+      "terminal": 0
+    },
+    {
+      "name": "BreezeDark",
+      "roles": {
+        "face": "#202326",
+        "text": "#fcfcfc"
+      },
+      "samples": [
+        "sample=OK Cancel Help Terminal direct-vs-utf8=0 direct-vs-mb=0 ink=297",
+        "sample=Árvore — ação direct-vs-utf8=0 direct-vs-mb=0 ink=149",
+        "sample=Ελληνικά direct-vs-utf8=0 direct-vs-mb=0 ink=124",
+        "sample=Русский direct-vs-utf8=0 direct-vs-mb=0 ink=109",
+        "sample=— direct-vs-utf8=0 direct-vs-mb=0 ink=6"
+      ],
+      "stderr": "Warning: Missing charsets in String to FontSet conversion\nWarning: Missing charsets in String to FontSet conversion\n",
+      "terminal": 0
+    },
+    {
+      "name": "TestYellow",
+      "roles": {
+        "face": "#ecd870",
+        "text": "#201c0c"
+      },
+      "samples": [
+        "sample=OK Cancel Help Terminal direct-vs-utf8=0 direct-vs-mb=0 ink=297",
+        "sample=Árvore — ação direct-vs-utf8=0 direct-vs-mb=0 ink=149",
+        "sample=Ελληνικά direct-vs-utf8=0 direct-vs-mb=0 ink=124",
+        "sample=Русский direct-vs-utf8=0 direct-vs-mb=0 ink=109",
+        "sample=— direct-vs-utf8=0 direct-vs-mb=0 ink=6"
+      ],
+      "stderr": "Warning: Missing charsets in String to FontSet conversion\nWarning: Missing charsets in String to FontSet conversion\n",
+      "terminal": 0
+    }
+  ]
+}

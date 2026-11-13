@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-11T04:14:00.471537+00:00",
+  "item": "I117",
+  "revision": 1,
+  "phase": "scrollbar_position_sensitivity_pair",
+  "implementation": [
+    "Novo módulo de visão pareia somente barra selecionada, sem gravar receita Motif",
+    "Coordenadas GTK lógicas convertidas a X11 físicas; escala/posição ausentes ou fora do canvas recusadas",
+    "Troca de seleção/cache inválido restauram posição e sensibilidade de referência independente",
+    "Sensibilidade real GTK opcional no IPC, booleano estrito; ausência explícita",
+    "Valores iniciais de ambas as barras 35, intervalo 0..100 e tamanho de página 20; comprimento de referência continua independente"
+  ],
+  "tests": {
+    "strict_compile": "passed",
+    "native_motif_pair": "passed horizontal/vertical, scale 2 and 1, disabled/enabled, restore on selection/cache reset, recipes unchanged",
+    "origin_bounds": "passed unknown scale and physical coordinate overflow; output untouched",
+    "gtk3_native": "2 passed, coupled/separate; sensitivity measured, initial scrollbar value 35",
+    "ipc_sensitivity": "passed boolean accepted, integer rejected transactionally",
+    "metrics_formatter": "passed sensitivity text",
+    "syntax_and_diff": "passed"
+  },
+  "limitations": [
+    "Escopo novo limitado às barras horizontal e vertical",
+    "Posição pareada com a amostra acoplada, não uma posição global de tela",
+    "Somente sensibilidade pareada; pressionado/backdrop sem equivalência Motif comprovada",
+    "Tamanho e receita Motif permanecem independentes; igualdade visual não declarada",
+    "Valor inicial equivalente não comprova sincronização de rolagem interativa",
+    "Demais conteúdos/controles e métricas de peças internas ainda pendentes"
+  ],
+  "hashes": {
+    "tools/theme-lab/include/native_pair_motif.h": "ca223562dee0ff38567cdb7dd78ce182a11d9a218d133e09d97cd5e35cfaf10a",
+    "tools/theme-lab/src/native_pair_motif.c": "77f8067bfb82ca2b6f81aafa20cae06fc3520fe6d32ec4dfe0ad6d69afff93c8",
+    "tools/theme-lab/include/native_metrics.h": "987dded2d41bf15aebb64a31311b49251ec2b4a702c1963e614ce3f46039daef",
+    "tools/theme-lab/src/native_metrics.c": "7d93a6344c719bca6c7f964367a23720e16c16191501124a53fd524ec87c4597",
+    "tools/theme-lab/src/view.c": "38b92b87cea402e02a8ad5d6267f7eefdcf2bbc13e30e22586bb496f58a8ac58",
+    "tools/theme-lab/src/preview_event.c": "31cbb60aa72479ebf70d05344d9fc39bb593d7a0b231ed2ab5541a5d3470289a",
+    "tools/theme-lab/preview_gtk.py": "fdac1a226c1690d805215cfab746c536d0945c1650cfe48d30d737a1a13d79f8",
+    "tools/theme-lab/tests/native_metrics_view.c": "0963c9093c149ceb6c9a55f408e1a1c92889205e293afee2662699ba3b7f3925",
+    "tools/theme-lab/tests/test_native_metrics.py": "8101ec6646ed5d204f285400cfa85e029dafc271b16eaad06849a7b1646eb2be",
+    "tools/theme-lab/tests/preview_event_test.c": "7596ca75f9919a50837086686b7c27364c5c8bb477183d93a541f67ea3d065fe",
+    ".qa-i117-pair-native/motif-final.log": "d72223d2e024b001fc23d7d52cd51e193d77d82bf8bf539333f1881113289582",
+    ".qa-i117-pair-native/gtk3.log": "f196f84f2790472a6e1095a8965ac879ea3cf601461e203ff3cca99301d7dacf"
+  },
+  "estimated_stage_progress_percent": 50,
+  "percentage_basis": "Base de medidas/fontes e pareamento físico/sensibilidade de barras provados; peças internas, demais controles, fluxo completo e entrega faltam",
+  "personal_window_changed": false,
+  "vm_input_sent": false,
+  "human_approval_filled": false
+}

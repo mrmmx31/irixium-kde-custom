@@ -1,0 +1,182 @@
+{
+  "identity": "domainos-arrow-color-existing-evidence-review-r1",
+  "date": "2026-10-10",
+  "method": "Read-only analysis of already captured images and source. No GUI input, VM input, repeated native tests, profile writes, or public palette edits. Crops use native pixels without interpolation.",
+  "scope": "GTK3 first family; full R13 screenshot at 1600x1000. The latest user complaint does not identify the widget family, so this finding cannot be assigned to every Linux arrow.",
+  "status": "diagnostic_complete_acceptance_open",
+  "records": [
+    {
+      "direction": "up",
+      "r13_box_exclusive": [
+        1557,
+        427,
+        1568,
+        438
+      ],
+      "reference_box_exclusive": [
+        562,
+        72,
+        573,
+        83
+      ],
+      "r13_state_inferred_from_exact_exported_role_match": "disabled",
+      "comparison_to_native_normal": {
+        "different_cell_pixels": 121,
+        "cell_pixels": 121,
+        "max_channel_difference": 11,
+        "mean_absolute_channel_difference": 5.454545454545454
+      },
+      "comparison_to_expected_role_render": {
+        "different_pixels": 0,
+        "max_channel_difference": 0
+      },
+      "actual_rgb_counts": {
+        "#5d82b1": 50,
+        "#bfd2ea": 20,
+        "#384f6c": 33,
+        "#6d99d0": 18
+      }
+    },
+    {
+      "direction": "down",
+      "r13_box_exclusive": [
+        1557,
+        597,
+        1568,
+        608
+      ],
+      "reference_box_exclusive": [
+        562,
+        312,
+        573,
+        323
+      ],
+      "r13_state_inferred_from_exact_exported_role_match": "normal",
+      "comparison_to_native_normal": {
+        "different_cell_pixels": 0,
+        "cell_pixels": 121,
+        "max_channel_difference": 0,
+        "mean_absolute_channel_difference": 0.0
+      },
+      "comparison_to_expected_role_render": {
+        "different_pixels": 0,
+        "max_channel_difference": 0
+      },
+      "actual_rgb_counts": {
+        "#c4d5ed": 34,
+        "#3e536e": 19,
+        "#6688b5": 50,
+        "#78a0d5": 18
+      }
+    },
+    {
+      "direction": "left",
+      "r13_box_exclusive": [
+        734,
+        616,
+        745,
+        627
+      ],
+      "reference_box_exclusive": [
+        19,
+        331,
+        30,
+        342
+      ],
+      "r13_state_inferred_from_exact_exported_role_match": "disabled",
+      "comparison_to_native_normal": {
+        "different_cell_pixels": 121,
+        "cell_pixels": 121,
+        "max_channel_difference": 11,
+        "mean_absolute_channel_difference": 5.454545454545454
+      },
+      "comparison_to_expected_role_render": {
+        "different_pixels": 0,
+        "max_channel_difference": 0
+      },
+      "actual_rgb_counts": {
+        "#5d82b1": 50,
+        "#bfd2ea": 20,
+        "#384f6c": 33,
+        "#6d99d0": 18
+      }
+    },
+    {
+      "direction": "right",
+      "r13_box_exclusive": [
+        1538,
+        616,
+        1549,
+        627
+      ],
+      "reference_box_exclusive": [
+        543,
+        331,
+        554,
+        342
+      ],
+      "r13_state_inferred_from_exact_exported_role_match": "normal",
+      "comparison_to_native_normal": {
+        "different_cell_pixels": 0,
+        "cell_pixels": 121,
+        "max_channel_difference": 0,
+        "mean_absolute_channel_difference": 0.0
+      },
+      "comparison_to_expected_role_render": {
+        "different_pixels": 0,
+        "max_channel_difference": 0
+      },
+      "actual_rgb_counts": {
+        "#c4d5ed": 34,
+        "#6688b5": 50,
+        "#78a0d5": 18,
+        "#3e536e": 19
+      }
+    }
+  ],
+  "palette_sources": {
+    "native_normal": {
+      "face": "#78a0d5",
+      "light": "#c4d5ed",
+      "shadow": "#3e536e",
+      "trough": "#6688b5"
+    },
+    "r13_normal": {
+      "face": "#78a0d5",
+      "light": "#c4d5ed",
+      "shadow": "#3e536e",
+      "trough": "#6688b5"
+    },
+    "r13_disabled": {
+      "face": "#6d99d0",
+      "light": "#bfd2ea",
+      "shadow": "#384f6c",
+      "trough": "#5d82b1"
+    },
+    "exported_role": "theme_button_background_insensitive_breeze=#6d99d0",
+    "derivation": "tools/domainos_motif_art.py pixel_plan: light=mix(face,white,.56), shadow=mix(face,black,.482), trough=mix(face,black,.15). Disabled faces come from the distinct exported KDE insensitive role.",
+    "runtime_rounding_observation": "The four normal color samples in the current R13 screenshot equal the native normal samples exactly; a one-channel rounding issue is not the discrepancy found here."
+  },
+  "findings": [
+    "The GTK3 upper and left arrows in R13 match the disabled exported palette at every cell pixel; the down and right arrows match the native normal cell at every pixel.",
+    "At identical confirmed cell positions, disabled up/left differ from native normal in all 121 cell pixels (71 glyph pixels plus 50 trough pixels), maximum channel difference 11. The geometry and light direction of the compared silhouette are preserved.",
+    "The native empty Trash Can screenshot uses one normal palette on all four arrows, and its separate down press/release observation confirms an active arrow even in that empty view. This does not establish the colors of genuinely insensitive Motif arrows in all applications.",
+    "The shared contract explicitly lists disabled native state as unverified. It has no original disabled-color mapping to check, so generated disabled output tests can pass while historical harmony remains unproved.",
+    "The previous TRIANGLE-VM-COMPARISON zero difference applies to reference-normal rendering; native GTK3 tests compare GTK output with current generated artwork and exported palette, not all historical toolkit disabled appearances."
+  ],
+  "limits": [
+    "No new user-selected scheme state was captured in this diagnostic; the R13 image records its capture-time palette.",
+    "Qt/Kvantum, Qt Quick/System Settings, GTK2/GTK4 and Plasma are not color-validated by this report.",
+    "The broader visual harmony, backdrop state and genuine native disabled appearance require an explicit rule or reference; this report does not close the GTK3 visual queue."
+  ],
+  "capture_sha256": {
+    "R13_TEMA-COMPLETO.png": "7a6a0ba86f7845a71893d3b4271afc8e5f06bb60cb0e853dbf39383e387ce638",
+    "docs/referencias/domainos-sr104/trash-can-normal.png": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+  },
+  "source_sha256": {
+    "tools/domainos_scrollbar_rules.json": "0e2a63049c98f64df49f6aa4c6fc65fc3f8786b29bfff4ca5c30d928a620f7b0",
+    "tools/domainos_motif_art.py": "8566413452b205dcbea4537f179be2eb69441909cb3214bcb6d657b67b35096f",
+    "gtk/tools/build_kde_domainos.py": "3a30a245280a22342e20293b7b68d08f1d8800df48bd1d395ad60b0abbcd3753"
+  },
+  "crop_directory": "docs/review/images/arrow-colors-r13"
+}

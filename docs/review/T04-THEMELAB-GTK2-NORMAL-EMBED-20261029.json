@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "T04-GTK2-NORMAL-EMBED-20261029",
+  "date": "2026-10-29",
+  "item": "T04",
+  "phase": "theme_lab_normal_user_gtk2_embedded_preview",
+  "authority": {
+    "section": "work",
+    "user_revision": 9,
+    "authorized": true,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "cause": "O diretório temporário padrão da sessão privada ficava diretamente em ~/tempia, fora da raiz permitida pela guarda que habilita a prévia GTK2 acoplada no lançamento normal.",
+  "change": {
+    "files": [
+      {
+        "path": "tools/theme-lab/src/controller.c",
+        "before_sha256": "0569539752ffdb2a36469a61abd98fc0f305c38ee6877add80a8277215f02fa8",
+        "after_sha256": "cd72dccd13499b003a908d9ea24bdd18516afefe77c1184b2d18e1067ec384ea",
+        "summary": "A sessão privada criada sem --work-dir passa a usar ~/tempia/domainos-theme-work/theme-lab-*; criação continua privada e sem seguir link simbólico."
+      },
+      {
+        "path": "tools/theme-lab/README.md",
+        "before_sha256": "8952c6db3a1de6e8dc7e61d84231de1d12480ff40885aa353b0c578e245dd8b8",
+        "after_sha256": "c92e4ac3794cddf43a4b1aeae946fec4a4a2e6ed8f73874102330e7f6d5ae2f5",
+        "summary": "Documenta o diretório padrão e o motivo da guarda GTK2."
+      }
+    ],
+    "preservation": "Os snapshots Before foram salvos antes desta alteração em ~/tempia/domainos-theme-work/T04-embedded-normal-launch-20261029/before. O diff foi comparado apenas com esses snapshots; alterações anteriores do checkout foram preservadas."
+  },
+  "validation": {
+    "build": "make -C tools/theme-lab -j2 concluído com sucesso; compilação C99 estrita e verificação de contrato incluídas.",
+    "diff_check": "git diff --check para os dois arquivos passou.",
+    "normal_session": {
+      "display": ":1",
+      "theme_lab_pid": 2623474,
+      "gtk2_preview_pid": 2626049,
+      "theme_lab_window_xid": "0x5400248",
+      "gtk2_preview_window_xid": "0x5600003",
+      "gtk2_preview_parent_xid": "0x540028e",
+      "gtk2_preview_dimensions_px": [
+        740,
+        410
+      ],
+      "map_state": "IsViewable",
+      "evidence": "xwininfo confirma GTK2 filho de um contêiner do ThemeLab na sessão normal X11; não é uma janela GTK2 desacoplada nem um placeholder Motif.",
+      "capture": {
+        "path": "~/tempia/domainos-theme-work/theme-lab-5Ex05E/themelab-gtk2-embedded-20261029.png",
+        "sha256": "e72fc4860961b9b8769caa05d1aed57afa8b3ded96c0df7dba7a7d8c4f9556b5",
+        "dimensions_px": [
+          1280,
+          800
+        ]
+      }
+    }
+  },
+  "result": "A prévia GTK2 nativa agora aparece acoplada ao abrir ThemeLab normalmente com --family gtk2. A janela foi deixada aberta para conferência do usuário.",
+  "board_record": {
+    "item": "T04",
+    "user_revision": 9,
+    "files": 2,
+    "all_content_verified": true,
+    "assistant_status": "running",
+    "evidence_directory": "~/tempia/domainos-theme-work/T04-embedded-normal-launch-20261029/change-records/record-oaz49d0y"
+  },
+  "limits": [
+    "Nenhum arquivo de tema, esquema KDE ou cor visual GTK2 foi alterado.",
+    "Não prova fidelidade visual histórica nem valida os demais adaptadores.",
+    "O item T04 permanece running; a aceitação visual do usuário continua pendente.",
+    "O editor manual inspirado em Paint/KolourPaint pertence ao item I458 e não foi alterado nesta fase."
+  ],
+  "next": "Conferir a prévia GTK2 embutida no ThemeLab aberto e continuar apenas as lacunas de prévia cobertas pelo escopo ativo T04."
+}

@@ -1,0 +1,354 @@
+{
+  "at": "2026-10-12T01:01:00.914753+00:00",
+  "item": "T04",
+  "revision": 6,
+  "scope": "GTK4 push selected CSS and real controller Save/Load/restart",
+  "native_session": 6192,
+  "native_exit_code": 0,
+  "native_result": {
+    "status": "passed",
+    "scope": "C controller GTK4 push Apply, physical move, Undo/Redo and origins",
+    "initial": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "both": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 180,
+        "height": 50,
+        "natural_width": 72,
+        "x": 32,
+        "y": 32,
+        "natural_height": 30
+      }
+    ],
+    "after_apply": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      }
+    ],
+    "native_drag_saved": [
+      52,
+      52
+    ],
+    "undo_position": [
+      32,
+      32
+    ],
+    "redo_position": [
+      52,
+      52
+    ],
+    "other_family_preserved": true,
+    "detached_closed_coupled_retained": true,
+    "save_load_and_restart": true,
+    "scene_bytes_preserved_after_restart": true,
+    "restart_metrics": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      }
+    ],
+    "load_metrics": [
+      {
+        "control": 0,
+        "separate": 0,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      },
+      {
+        "control": 0,
+        "separate": 1,
+        "scale": 1,
+        "font_kind": 1,
+        "font": "Sans 13px",
+        "width": 280,
+        "height": 60,
+        "natural_width": 72,
+        "x": 52,
+        "y": 52,
+        "natural_height": 30
+      }
+    ],
+    "gtk4_css_visible_in_code_panel": true,
+    "canvas_and_button_pixels_match_current_roles": [
+      [
+        120,
+        160,
+        213
+      ],
+      [
+        120,
+        160,
+        213
+      ]
+    ],
+    "historical_fidelity_claimed": false
+  },
+  "parser_session": 74472,
+  "parser_exit_code": 0,
+  "parser_result": {
+    "status": "passed_scoped_worker",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "native_clicks": 3,
+    "backend_generation_and_preview_command": true,
+    "selected_fragments_parsed_by_native_gtk4": [
+      "normal",
+      "pressed",
+      "disabled",
+      "backdrop",
+      "hover"
+    ],
+    "actual_worker_events_consumed_by_c": 13,
+    "ctrl_click_select_only": true,
+    "ctrl_drag_move_without_native_activation": true,
+    "drag_allocation": [
+      52,
+      52,
+      180,
+      60
+    ],
+    "origin": "separate",
+    "initial_metrics": {
+      "index": 0,
+      "allocation": [
+        32,
+        32,
+        180,
+        60
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "custom_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        200,
+        70
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "automatic_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        112,
+        48
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        112,
+        48
+      ],
+      "native_natural_before_custom_size": [
+        112,
+        48
+      ],
+      "native_request_before_custom_size": [
+        112,
+        48
+      ],
+      "font_description": "Sans 20px",
+      "font_not_applicable": false
+    },
+    "natural_measurements_independent_of_custom_request": true,
+    "below_minimum_request_metrics": {
+      "index": 0,
+      "allocation": [
+        50,
+        65,
+        72,
+        30
+      ],
+      "scale_factor": 1,
+      "native_minimum_before_custom_size": [
+        72,
+        30
+      ],
+      "native_natural_before_custom_size": [
+        72,
+        30
+      ],
+      "native_request_before_custom_size": [
+        72,
+        30
+      ],
+      "font_description": "Sans 13px",
+      "font_not_applicable": false
+    },
+    "close_during_live_generation": true,
+    "generation_child_reaped": true,
+    "host_loss_exit_code": null,
+    "responsive_while_owned_generation_child_live": true,
+    "artificial_clicks": 0,
+    "identity_preserved": true,
+    "metrics_after_update": [
+      50,
+      65,
+      200,
+      70
+    ],
+    "unsupported_scene_preserved": true,
+    "valid_recovery": true,
+    "closed_exit_code": 0,
+    "instance_preserved": true,
+    "public_controller_connected": false,
+    "historical_fidelity_claimed": false
+  },
+  "pure_tests_passed": 51,
+  "selected_source": "Imports existing push.css, references its state aliases, shares geometry/layer emitter with renderer, records source KDE role aliases in comments",
+  "new_color_definition_file_created": false,
+  "auto_review_rejection": {
+    "action": "Proposed additional kde-roles.css with effective color values",
+    "reason": "Reviewer considered materializing color values contrary to dynamic-role rule",
+    "applied": false,
+    "resolution": "Use aliases already supplied by verified push.css; no additional color materialization or approval bypass"
+  },
+  "negative_pure_test": "First final-alias run had an obsolete assertion prohibiting all url() in flat fragment. Corrected to prohibit PNG URLs while allowing required import.51 tests passed afterward.",
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false,
+  "estimated_unit_progress_percent": 66,
+  "percentage_basis": "Foundation/session and much of controller integration established for push; controller states/palettes and delivery still pending; not full goal or visual fidelity",
+  "remaining": [
+    "Controller palette/state matrix for GTK4 with changed inputs",
+    "Delivery/reopening coordination preserving personal journals",
+    "Other GTK4 controls and other goal families"
+  ],
+  "sha256": {
+    "tools/theme-lab/gtk4_css.py": "8f7fd4d50cf078abee766d731ec7a88fc4280c488404487053828ec9d43e4740",
+    "tools/theme-lab/gtk4_buttons.py": "f5ace62d02dc37887776516b125e0abd49edf0a6f3ef2665745fad8161135d16",
+    "tools/theme-lab/backend.py": "38d3f292b216b30d3d642dc78450b887327d7fdd4096b050ec7a0c43d0e72312",
+    "tools/theme-lab/tests/test_gtk4_snippet.py": "dfa44a732f0930658b3d91ec67f0b750c5ad448a67b0d898f19673b2be73986f",
+    "tools/theme-lab/tests/controller_gtk4_push.py": "90f9766ef1d5b25802891dcbc2f1e0dc1a4c2651256dee0b90433ba2dd89e7be",
+    "tools/theme-lab/tests/test_controller_spin.py": "fee38102c3e8292c7d342e7047f8fce1bf9f0469079c8ad901ec3dd355d82ead",
+    "tools/theme-lab/tests/probe_gtk4_worker.py": "07e0042e64b50d19d32cd8869b7804a8976f842aaed63ce90cf99f64bf52d96e",
+    "tools/theme-lab/README.md": "1a99392ef66b118c94659bc32ea4223b304879b9159e43ae7ba7e96ba276df63",
+    ".qa-t04-anchor-foundation/gtk4-snippet-final-pure-r2.log": "03daf60b815773ee9e8e856798075d279cb77c928be6fb25e4631988a90d00f9",
+    ".qa-t04-anchor-foundation/gtk4-controller-persistence-final.log": "bd43f5ef2045908492783c0c535bcc3a02c619f74d91a24e88ccd3e11ab8d37e",
+    ".qa-t04-anchor-foundation/gtk4-snippet-native-parser.log": "df9e45ffb9706fc1ecaeff54b6175eff04431a84f87e24babf9475516b4f2491",
+    ".qa-theme-lab-spin-tc5hl2qn/RESULTADO.json": "20473d65610c5084e9a0f7611fc7fdbb8e6262c7d006120e81bc2f35f8382555",
+    ".qa-gtk4-worker-f1fg6uao/home/WORKER-RESULTADO.json": "1ec7585ccf7d34b6c11aaf9e4d0fb5a76d0f282c8518f5ceb4f39dea7fc26418",
+    ".qa-theme-lab-spin-tc5hl2qn/last.png": "44c319b1a4938360c316ed33cb6cf5d2549254b77bda875691fa1e305f1ae721"
+  }
+}

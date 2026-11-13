@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "T07-MOTIF-INTERACTIVE-HINT-COVERAGE-20261019-R104",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "authorization": "AI Work Board saved state: section=work, user.authorized=true; complete hint coverage audit of the Motif Theme Lab UI.",
+  "status": "passed",
+  "scope": "Runtime traversal of all Motif Theme Lab widgets classified as interactive, checking a native tooltip on each widget or its actual interactive child surface.",
+  "environment": {
+    "xephyr": ":83",
+    "screen_px": [1280, 800],
+    "window_manager": "Openbox, existing owned Xephyr",
+    "theme": "Isolated DomainOS role fixture for the hint palette; no desktop palette changed"
+  },
+  "coverage": {
+    "interactive_widgets_checked": 178,
+    "direct_tooltip_resources": 141,
+    "composite_controls_with_tooltipped_interactive_child_surfaces": 37,
+    "missing": 0,
+    "existing_required_widget_and_tooltip_policy_assertions": "passed"
+  },
+  "test_change": {
+    "file": "tools/theme-lab/tests/native_metrics_view.c",
+    "details": "Adds TL_AUDIT_ALL_HINTS runtime traversal and reports direct vs composite-child tooltip placement. No product source changed.",
+    "sha256": "3db6d98aa9c3c5413658985e0a5da51b67f7ef9ffec4c63f99c56e3cfd87adab"
+  },
+  "verification": {
+    "command": "TL_AUDIT_ALL_HINTS=1 TL_HINTS_ONLY=1 DISPLAY=:83 tools/theme-lab/build/native-metrics-view",
+    "result_log_sha256": "4010915f96b1c7d42c2f0ffcc43b7c55a939a8b767d5253599aaa08935bc9df9",
+    "summary": "178 checked, 141 direct, 37 on composite child surfaces, 0 missing; theme roles, preview isolation and UTF-8 FontSet assertions passed."
+  },
+  "limitations": [
+    "This checks attachment/presence, not the semantic quality of every individual tooltip string or manual hover on all 178 widgets.",
+    "FontSet initialization logged missing font/charset warnings in this isolated process; this test does not certify font rendering.",
+    "T07 remains open for remaining authorized scopes and user review."
+  ],
+  "artifacts": ["~/tempia/t07-live-widget-audit-r104/run-final.log"]
+}

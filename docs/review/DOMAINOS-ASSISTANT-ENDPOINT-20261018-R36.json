@@ -1,0 +1,55 @@
+{
+  "item": "P10",
+  "revision": "R36",
+  "checked_at_utc": "2026-10-18T17:44:31Z",
+  "instance": "assistant-clone-20261018",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "state": "same live process; not restarted or tuned",
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "network": {
+    "namespace": "net:[4026533751]",
+    "guest_backend": "192.168.240.2",
+    "clone_only_endpoint": "10.104.255.10",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "retired_endpoint": "10.104.254.10",
+    "collision_check": "10.104.255.10 was absent from host addresses and all inspectable active MAME network namespaces before assignment."
+  },
+  "validation": {
+    "ftp": {
+      "banner": "220 Domain/OS FTPD banner received",
+      "login": "root login passed",
+      "transfer_mode": "active",
+      "source_binding": "192.168.240.1",
+      "listing_entries": 26,
+      "result": "passed through new endpoint"
+    },
+    "telnet": {
+      "listener": "10.104.255.10:23",
+      "trigger": "CRLF",
+      "negotiation_hex": "fffd18",
+      "result": "passed through new endpoint"
+    },
+    "retirement": {
+      "old_alias_absent": true,
+      "old_ftp_listener_absent": true,
+      "old_telnet_listener_absent": true,
+      "new_ftp_listener_active": true,
+      "new_telnet_listener_active": true
+    }
+  },
+  "preservation": {
+    "guest_network_configuration_changed": false,
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "mame_restarted_or_tuned": false,
+    "profile_preserved": true,
+    "mame_disk_written": false
+  },
+  "visual_limit": "The prior native capture remains black in the VUE area; endpoint validation does not resolve P10 visual access."
+}

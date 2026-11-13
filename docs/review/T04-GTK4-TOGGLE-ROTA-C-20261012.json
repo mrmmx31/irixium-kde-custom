@@ -1,0 +1,723 @@
+{
+  "at": "2026-10-12T02:15:37.840463+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 backend route and C receipt/event contracts, native worker in two origins; full controller GUI not yet certified",
+  "cases": [
+    {
+      "session": 79233,
+      "exit_code": 0,
+      "result": {
+        "status": "passed_toggle_worker",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "origin": "separate",
+        "native_clicks": 3,
+        "ctrl_layout_without_toggle_activation": true,
+        "responsive_during_generation": true,
+        "selection_preserved_on_reload": true,
+        "unsupported_preserves_scene": true,
+        "events_identity_verified": true,
+        "events": [
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "aebccb295d184305b75119500059a3b3",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:08.795750+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  32,
+                  32,
+                  180,
+                  60
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "separate",
+            "width": 180,
+            "height": 60,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 32,
+            "position_y": 32,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "3831f6b792334d129365e615d2d4b279",
+            "family": "gtk4",
+            "action": "select",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:08.878252+00:00",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "44613adb525a4a29b16fb7f290cd79aa",
+            "family": "gtk4",
+            "action": "select",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:09.082271+00:00",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "0f202062395c411e9c42e39a8f9ab924",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:09.264049+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  52,
+                  52,
+                  180,
+                  60
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "separate",
+            "width": 180,
+            "height": 60,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 52,
+            "position_y": 52,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "87e8cd49853a4ccfbbe1ac94dcdd3129",
+            "family": "gtk4",
+            "action": "move",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:09.318601+00:00",
+            "x": 52,
+            "y": 52,
+            "coordinate_space": "gtk_logical_px",
+            "scale_factor": 1,
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "5f077909f6c142c3ad022aea37029c5b",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:09.383058+00:00",
+            "state": {
+              "clicked": true,
+              "selected": true,
+              "active": true
+            },
+            "origin": "separate",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "0ce07c7757684ea7aa13459078459ea2",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:09.754389+00:00",
+            "state": {
+              "clicked": true,
+              "selected": false,
+              "active": false
+            },
+            "origin": "separate",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "ded3a3ed9a374840a97ff777ef47af7b",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "eefabce16be0f1d98cfc98786baf224b6bb3d914e622f0279fda5b94d6190d4f",
+            "emitted_at": "2026-10-12T02:14:11.009876+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  32,
+                  32,
+                  210,
+                  70
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "separate",
+            "width": 210,
+            "height": 70,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 32,
+            "position_y": 32,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "26a458f134d044c5ad055375ea15e578",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "eefabce16be0f1d98cfc98786baf224b6bb3d914e622f0279fda5b94d6190d4f",
+            "emitted_at": "2026-10-12T02:14:11.230970+00:00",
+            "state": {
+              "clicked": true,
+              "selected": true,
+              "active": true
+            },
+            "origin": "separate",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          }
+        ],
+        "closed_exit_code": 0,
+        "backend_route_used": true,
+        "actual_events_consumed_by_c": [
+          {
+            "action": 3,
+            "control": 1,
+            "width": 180,
+            "height": 60
+          },
+          {
+            "action": 0,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 0,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 3,
+            "control": 1,
+            "width": 180,
+            "height": 60
+          },
+          {
+            "action": 1,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 3,
+            "control": 1,
+            "width": 210,
+            "height": 70
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "public_controller_connected": false,
+        "historical_fidelity_claimed": false
+      }
+    },
+    {
+      "session": 97937,
+      "exit_code": 0,
+      "result": {
+        "status": "passed_toggle_worker",
+        "guards": {
+          "verified": true,
+          "uid": 1000,
+          "passwdName": "domainos-test",
+          "passwdHome": "/home/domainos-test",
+          "namespaceMarker": "/etc/domainos-preview",
+          "personalHomeExposed": false,
+          "systemBusSocketExposed": false,
+          "procStatusPresent": true,
+          "cwd": "/home/domainos-test"
+        },
+        "origin": "coupled",
+        "native_clicks": 3,
+        "ctrl_layout_without_toggle_activation": true,
+        "responsive_during_generation": true,
+        "selection_preserved_on_reload": true,
+        "unsupported_preserves_scene": true,
+        "events_identity_verified": true,
+        "events": [
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "aceb25f3988347f48c6b712bc8a9831c",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.364585+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  32,
+                  32,
+                  180,
+                  60
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "coupled",
+            "width": 180,
+            "height": 60,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 32,
+            "position_y": 32,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "3f175ec8d4454a1da30a45a60dc2f105",
+            "family": "gtk4",
+            "action": "select",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.496907+00:00",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "cd9142e714a5461a9477305a7f5a2141",
+            "family": "gtk4",
+            "action": "select",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.677818+00:00",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "23fcc721e3d64a80b8c2316963df104a",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.806986+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  52,
+                  52,
+                  180,
+                  60
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "coupled",
+            "width": 180,
+            "height": 60,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 52,
+            "position_y": 52,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "90233f03544342dea56188f428397d4b",
+            "family": "gtk4",
+            "action": "move",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.875063+00:00",
+            "x": 52,
+            "y": 52,
+            "coordinate_space": "gtk_logical_px",
+            "scale_factor": 1,
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "b061619591e04aa1a8dcca8f8b3e0a4d",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:46.918444+00:00",
+            "state": {
+              "clicked": true,
+              "selected": true,
+              "active": true
+            },
+            "origin": "coupled",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "0ad084709c4349568728fcf8c477cc20",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "189dbd129567f1ddb281b37c7727d2e0851a1d19bd5abdf3627f36040c9fcf47",
+            "emitted_at": "2026-10-12T02:14:47.530100+00:00",
+            "state": {
+              "clicked": true,
+              "selected": false,
+              "active": false
+            },
+            "origin": "coupled",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "2012543db7b64a1992c18f6966d167fb",
+            "family": "gtk4",
+            "action": "metrics",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "eefabce16be0f1d98cfc98786baf224b6bb3d914e622f0279fda5b94d6190d4f",
+            "emitted_at": "2026-10-12T02:14:49.694710+00:00",
+            "metrics": [
+              {
+                "index": 1,
+                "allocation": [
+                  32,
+                  32,
+                  210,
+                  70
+                ],
+                "scale_factor": 1,
+                "native_minimum_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_natural_before_custom_size": [
+                  62,
+                  30
+                ],
+                "native_request_before_custom_size": [
+                  62,
+                  30
+                ],
+                "font_description": "Sans 13px",
+                "font_not_applicable": false
+              }
+            ],
+            "origin": "coupled",
+            "width": 210,
+            "height": 70,
+            "minimum_width": 62,
+            "minimum_height": 30,
+            "natural_width": 62,
+            "natural_height": 30,
+            "scale_factor": 1,
+            "coordinate_space": "gtk_logical_px",
+            "position_x": 32,
+            "position_y": 32,
+            "font_kind": 1,
+            "font_description": "Sans 13px",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          },
+          {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "738fa8b1be3342b18de7b1a93950388e",
+            "family": "gtk4",
+            "action": "native",
+            "control_id": "toggle",
+            "control_index": 1,
+            "project_sha256": "eefabce16be0f1d98cfc98786baf224b6bb3d914e622f0279fda5b94d6190d4f",
+            "emitted_at": "2026-10-12T02:14:49.904019+00:00",
+            "state": {
+              "clicked": true,
+              "selected": true,
+              "active": true
+            },
+            "origin": "coupled",
+            "preview_instance": "ffffffffffffffffffffffffffffffff"
+          }
+        ],
+        "closed_exit_code": 0,
+        "backend_route_used": true,
+        "actual_events_consumed_by_c": [
+          {
+            "action": 3,
+            "control": 1,
+            "width": 180,
+            "height": 60
+          },
+          {
+            "action": 0,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 0,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 3,
+            "control": 1,
+            "width": 180,
+            "height": 60
+          },
+          {
+            "action": 1,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "action": 3,
+            "control": 1,
+            "width": 210,
+            "height": 70
+          },
+          {
+            "action": 2,
+            "control": 1,
+            "width": 0,
+            "height": 0
+          }
+        ],
+        "public_controller_connected": false,
+        "historical_fidelity_claimed": false
+      }
+    }
+  ],
+  "python_tests_passed": 25,
+  "build_session": 94134,
+  "build_exit_code": 0,
+  "c_events_contract": "passed",
+  "c_receipt_contract": "passed",
+  "negative_evidence": "First receipt-test invocation used nonexistent RC path; assertion22 at setup, no product defect. Reused actual revisions/current/gtkrc; exit0.",
+  "implemented": [
+    "Route detects visible toggle and passes explicit capability; unsupported controls rejected.",
+    "Python verifies snapshot saved model/digest and exact renderer capability.",
+    "C accepts canonical push or push,toggle lists with boolean toggle marker.",
+    "C accepts indices0,1 and rejects other GTK4 controls transactionally.",
+    "Native toggle events carry active boolean and origin for existing controller retention.",
+    "Controller launches explicit toggle capability and retained selection per origin."
+  ],
+  "actual_c_event_count": 18,
+  "limits": [
+    "Controller GUI Apply/relaunch and selection retention through C are implemented but not yet tested natively.",
+    "Selected CSS snippet, Save/Load/restart, palette matrix in controller and delivery pending.",
+    "Native push regression after worker changes remains delivery gate.",
+    "No visual/historical or human approval inferred."
+  ],
+  "estimated_toggle_unit_progress_percent": 55,
+  "percentage_basis": "Native backend routing and C event consumption verified; controller GUI proof, code view/persistence and delivery remain.",
+  "personal_instance_changed": false,
+  "sha256": {
+    "tools/theme-lab/gtk4_route.py": "2eda2c4ace7dfea34affe54a79c81b9666c2ec90287b4324cdb47a9ca75cb0d8",
+    "tools/theme-lab/backend.py": "1537dbaf00d483fb8038fe7bac0088d4866c442a52d2bfb0613e2f9e5e428a17",
+    "tools/theme-lab/gtk4_worker.py": "f97dc19e7a1ec9fd3f06e6d64a6cfcdedf24fc6990635d2310f12ae331664c12",
+    "tools/theme-lab/preview_gtk4.py": "d758f5dec0e49cff18d2013a0a6002a309656dd81eb6b8fdad3fc9192b14d300",
+    "tools/theme-lab/src/controller.c": "bb1b1662299c190dbcaed7d87993679206ecc7f44453768d7c702bbe22e0a874",
+    "tools/theme-lab/src/controller/generated_preview.c": "038f0ead41f3d7ebbdff30914579ec9b32aeaebc24c9d78256d07558e9a0025f",
+    "tools/theme-lab/src/preview_event.c": "f97ed03552c9ef78226e1eac2cbed2f0bdb601214328a8c2fcc495647412f606",
+    "tools/theme-lab/tests/test_gtk4_route.py": "8c50bff5f784f220d853a639045d96bcbed2217e521d4ab6b473332a7984f6b4",
+    "tools/theme-lab/tests/test_gtk4_worker.py": "33343a71d31e24ee0760fa18aeddc45842429e867aff2102163c36d18a35ec05",
+    "tools/theme-lab/tests/probe_gtk4_toggle_worker.py": "5e8720dfd4cf154725c320bee4c40337a3813fe21122841d233a14cdf8e266ed",
+    "tools/theme-lab/tests/preview_event_test.c": "a2f74778f5d5bfd946d0ce35c00fc7f1bd19296acf3bfaa696f071bfea813514",
+    "tools/theme-lab/tests/generated_preview_test.c": "2ccf48815df866a0bf671b8d0eb0bb2d5b1fb2f4970af98289a3ef3b4c858cb7",
+    ".qa-t04-anchor-foundation/gtk4-toggle-route-tests.log": "3065f049c993db6e86f7325533ec3cc93e55db079e0f5a0c5ae516ec84a664ab",
+    ".qa-t04-anchor-foundation/gtk4-toggle-route-build.log": "15b012f8d5f4ffdfe04b688414eec0bde07e3705526a816dab98e2309105de1b",
+    ".qa-t04-anchor-foundation/gtk4-toggle-c-receipt.log": "e74f8e3ce030d082658f8a4e87cf2a1504c8b64ade8df92f0ac8916e7cac7013",
+    ".qa-t04-anchor-foundation/gtk4-host-build/preview-event-file-test": "d52b3abe8b252b959e340e5f7d83a161abf7191259ca433ae91275baf72c1f4b",
+    ".qa-t04-anchor-foundation/gtk4-host-build/theme-lab": "e0f8ee3c4e51a968f77556d166dda67b2c191e4ad3dd2985394ee5bc957bc567",
+    ".qa-t04-anchor-foundation/gtk4-toggle-route-native.log": "ce2c8e39c1382c4d28eda8ddcae61159a36300d6a4e2da56389fa642e2a4b76b",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-cdyly7f8/home/WORKER-RESULTADO.json": "be566e254dc442e056d315011139c655d71ca6746444c8234db1ac1ea22f3bd3",
+    ".qa-t04-anchor-foundation/gtk4-toggle-route-coupled.log": "a3f0bb434ef6f920b6e564095e81b035a732d1dc43fd699de864331c8be17a5e",
+    "/home/lsi/irixium-kde-custom/.qa-gtk4-worker-6g678jvt/home/WORKER-RESULTADO.json": "90fd15cc3821156c8ec251da0a6fc7fdfe5c9b566d6d86ca9f3257008256ef5b"
+  }
+}

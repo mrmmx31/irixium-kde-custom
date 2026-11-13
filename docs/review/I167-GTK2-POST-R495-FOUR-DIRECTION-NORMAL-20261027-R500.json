@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "id": "R500",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Cross-compare all four current installed GTK2 normal stepper cells from fresh R496-R498 post-R495 runtime captures against the retained Domain/OS SR10.4 + HP VUE 2.01 normal references.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": "GTK2 2.24.33, selected installed DomainOS-SR10-4-KDE, private Xvfb, scale 1",
+  "result": {
+    "directions": 4,
+    "pixels_compared": 900,
+    "different_pixels": 0,
+    "glyph_11x11_different_pixels": 0,
+    "all_exact": true,
+    "cell_px": [
+      15,
+      15
+    ],
+    "glyph_px": [
+      11,
+      11
+    ]
+  },
+  "cells": [
+    {
+      "direction": "left",
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r496-installed-gtk2-post-r495-20261027/installed-theme-horizontal.png",
+      "capture_sha256": "e92be6cd4a6fd037e33570694bb8308695f275efa557a385d38ec24674a8d0cd",
+      "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "capture_origin_xy": [
+        2,
+        55
+      ],
+      "reference_crop_xywh": [
+        2,
+        4,
+        15,
+        15
+      ],
+      "scale": "1:1; no resampling",
+      "pixels_compared": 225,
+      "different_pixels_vs_vue": 0,
+      "glyph_11x11_different_pixels": 0
+    },
+    {
+      "direction": "right",
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r496-installed-gtk2-post-r495-20261027/installed-theme-horizontal.png",
+      "capture_sha256": "e92be6cd4a6fd037e33570694bb8308695f275efa557a385d38ec24674a8d0cd",
+      "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "capture_origin_xy": [
+        343,
+        55
+      ],
+      "reference_crop_xywh": [
+        526,
+        4,
+        15,
+        15
+      ],
+      "scale": "1:1; no resampling",
+      "pixels_compared": 225,
+      "different_pixels_vs_vue": 0,
+      "glyph_11x11_different_pixels": 0
+    },
+    {
+      "direction": "up",
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r498-installed-up-held-gtk2-20261027/normal.png",
+      "capture_sha256": "48c7c707f51dcc4ee819feb0ec7f64048697dbe54430963e8a3298bfa5f72b0e",
+      "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "capture_origin_xy": [
+        0,
+        2
+      ],
+      "reference_crop_xywh": [
+        4,
+        2,
+        15,
+        15
+      ],
+      "scale": "1:1; no resampling",
+      "pixels_compared": 225,
+      "different_pixels_vs_vue": 0,
+      "glyph_11x11_different_pixels": 0
+    },
+    {
+      "direction": "down",
+      "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r497-installed-down-held-gtk2-20261027/normal.png",
+      "capture_sha256": "48c7c707f51dcc4ee819feb0ec7f64048697dbe54430963e8a3298bfa5f72b0e",
+      "reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "reference_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "capture_origin_xy": [
+        0,
+        526
+      ],
+      "reference_crop_xywh": [
+        4,
+        242,
+        15,
+        15
+      ],
+      "scale": "1:1; no resampling",
+      "pixels_compared": 225,
+      "different_pixels_vs_vue": 0,
+      "glyph_11x11_different_pixels": 0
+    }
+  ],
+  "source_receipts": [
+    "docs/review/I167-GTK2-POST-R495-INSTALLED-HORIZONTAL-RENDER-20261027-R496.json",
+    "docs/review/I167-GTK2-POST-R495-DOWN-HELD-INSTALLED-20261027-R497.json",
+    "docs/review/I167-GTK2-POST-R495-UP-HELD-INSTALLED-20261027-R498.json"
+  ],
+  "limits": [
+    "The four captures are private GTK2 runtime screenshots after R495, not new captures from the canonical MAME VM.",
+    "Normal state only; pressed/hover/insensitive VUE states and live application review remain open.",
+    "No source, user GTK profile, personal application or VM was changed."
+  ],
+  "verification_script": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/r500-post-r495-four-direction-normal-20261027/compare-four-directions-v3.py",
+    "sha256": "35cc2930738bfcd863738514b28fd3921800afd3a5cf9221fd4f6512d783b81e",
+    "result_path": "/home/lsi/tempia/ia-tema/evidence/I167/r500-post-r495-four-direction-normal-20261027/report.json"
+  },
+  "harness_notes": [
+    "Draft v1 rejected by the validator because it applied the 15x15 check to the nested 11x11 glyph comparison.",
+    "Draft v2 corrected the check but omitted the output directory variable.",
+    "v3 ran successfully; no report was emitted by the failed drafts."
+  ]
+}

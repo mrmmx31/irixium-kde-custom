@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-BLINK-AND-COLORSET-20261025-R127",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "family": "GTK2 GtkEntry caret blink and VUE ColorSet lookup",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "guest": "Dedicated assistant MAME clone PID 3759847",
+    "screen": "Find Files, File Name field",
+    "vm_state": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_command": false
+    }
+  },
+  "observations": {
+    "current_screen": {
+      "path": "~/tempia/i167-current-sr104-r127.png",
+      "sha256": "cc1208d38128cbdd2acb79d2f23ccc9f56c102ac270f632557be47f51cac08d6",
+      "size_px": [1024, 844],
+      "result": "The live VUE desktop and Find Files dialog are visible. File Name contains the existing pattern a*a; no search was started and no guest data was edited."
+    },
+    "caret_blink": {
+      "roi_xyxy": [176, 365, 514, 399],
+      "allocation_px": [338, 34],
+      "samples": [
+        {"guest_time_s": 12696.505608423, "sha256": "213b8d0e6f2a862d2349e654085252248896fc414275826cfd84c20c9e8b1154", "phase": "A"},
+        {"guest_time_s": 12696.971720305, "sha256": "cc1208d38128cbdd2acb79d2f23ccc9f56c102ac270f632557be47f51cac08d6", "phase": "B"},
+        {"guest_time_s": 12697.421185334, "sha256": "213b8d0e6f2a862d2349e654085252248896fc414275826cfd84c20c9e8b1154", "phase": "A"},
+        {"guest_time_s": 12697.870650364, "sha256": "cc1208d38128cbdd2acb79d2f23ccc9f56c102ac270f632557be47f51cac08d6", "phase": "B"},
+        {"guest_time_s": 12698.370055952, "sha256": "213b8d0e6f2a862d2349e654085252248896fc414275826cfd84c20c9e8b1154", "phase": "A"},
+        {"guest_time_s": 12698.919402099, "sha256": "cc1208d38128cbdd2acb79d2f23ccc9f56c102ac270f632557be47f51cac08d6", "phase": "B"}
+      ],
+      "changes": [
+        {"elapsed_guest_s": 0.466, "changed_pixels": 24, "bbox_local_xyxy": [14, 9, 19, 25]},
+        {"elapsed_guest_s": 0.45, "changed_pixels": 24, "bbox_local_xyxy": [14, 9, 19, 25]},
+        {"elapsed_guest_s": 0.449, "changed_pixels": 24, "bbox_local_xyxy": [14, 9, 19, 25]},
+        {"elapsed_guest_s": 0.499, "changed_pixels": 24, "bbox_local_xyxy": [14, 9, 19, 25]},
+        {"elapsed_guest_s": 0.549, "changed_pixels": 24, "bbox_local_xyxy": [14, 9, 19, 25]}
+      ],
+      "result": "The caret-region pixels alternated A/B/A/B/A/B without keyboard or mouse input. This proves visible blinking in the current SR10.4 field. The roughly half-second sampling intervals do not establish the exact native blink period or phase lengths.",
+      "gtk2_comparison": "R76 remains the exact-shape comparison: VUE caret has 14-pixel stem plus 5x1-pixel terminals; GTK2 GtkEntry has a straight 1x18-pixel stem. Theme-engine limits and the decision to keep a dynamic text-role caret are documented in R63/R76. R127 does not change that implementation conclusion."
+    },
+    "color_set": {
+      "resource": "/usr/X11/lib/app-defaults/Vuefile sets *secondaryColorSetId: 5",
+      "directory": "~/.vue/palettes",
+      "listing_result": "Empty: total 2, only . and ..",
+      "listing_capture": "~/tempia/i167-vue-palette-directory-r126.txt",
+      "listing_sha256": "bde4897e5c4a21728586973266c4841a740b236c7a00fd95c8bbfe00caf40b05",
+      "conclusion": "The selected application palette is not stored in this user palette directory. Its actual source remains unresolved; do not change GTK2's role mapping based on this result."
+    }
+  },
+  "scripts": {
+    "snapshot": {"path": "~/tempia/i167-current-sr104-r127.lua", "sha256": "56d3ff0776a442a39bbe0c4ec422e417fa63138de9dd370f9be945f438b70edb"},
+    "palette_listing": {"path": "~/tempia/i167-vue-palette-directory-r126.py", "sha256": "f26b8952eaeb064f16291fb4fbfc1967ac57588fd5fa01959869e717ef6ceba1"},
+    "sample_analysis": {"path": "~/tempia/i167-vue-caret-samples-r127.json", "sha256": "b9d93ebab946c9aa6c2b32586068e46164587a7e266322be2ac670f79fa03f45"}
+  },
+  "preservation": {
+    "guest_input_sent_during_samples": false,
+    "guest_configuration_changed": false,
+    "guest_text_changed": false,
+    "product_theme_changed": false,
+    "xchat_changed": false,
+    "other_toolkit_family_touched": false
+  },
+  "limits": [
+    "The blink period is not precisely measured; only six alternating snapshots and their guest timestamps are available.",
+    "The native selected/unselected pair remains unverified. R111's failed key sequences are not treated as proof of absence of selection.",
+    "The guest's ColorSet 5 source is still unknown after the user's ~/.vue/palettes directory was found empty.",
+    "R127 is technical evidence, not human visual approval or proof of complete GTK2 fidelity."
+  ],
+  "next": "Continue GTK2 only: locate the effective SR10.4 VUE ColorSet 5 definition using bounded, prompt-synchronized reads of relevant VUE resource paths, then revisit the native selection pair with visible field focus. Preserve role-derived KDE colors and do not repeat the valid R76/R116/R117 measurements.",
+  "status": "running",
+  "user_acceptance": "pending",
+  "files_changed": false,
+  "guest_configuration_changed": false
+}

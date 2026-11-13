@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK5-HINT-SEMANTIC-AUDIT-20261019-R120",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:53:07Z",
+  "scope": "Revisão semântica dos hints de controles QtQuick5, incluindo estados desabilitados e unidade/intervalo dos spins.",
+  "findings": "Os controles desabilitados agora descrevem demonstração passiva, sem instruir clique/edição/arraste que não funcionaria. O botão latched explica alternância; a opção mista, checkboxes e switches explicam estado/efeito. Spin mantém mínimo/máximo/passo e separa valores adimensionais de px.",
+  "runtime": {
+    "qt": "5.15.15",
+    "quick_style": {
+      "requested": "org.kde.desktop",
+      "name": null,
+      "nameApiAvailable": false,
+      "kdeDesktopQmlObserved": true
+    },
+    "display": "Xvfb privada via xvfb-run; namespace bwrap descartável",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "private_guard": true
+  },
+  "controls_and_hints": [
+    {
+      "name": "",
+      "text": "Escolha esta página de controles; os valores das demais páginas são preservados."
+    },
+    {
+      "name": "",
+      "text": "Escolha esta página de controles; os valores das demais páginas são preservados."
+    },
+    {
+      "name": "",
+      "text": "Escolha esta página de controles; os valores das demais páginas são preservados."
+    },
+    {
+      "name": "qtquick5_pressButton",
+      "text": "Botão da amostra: pressione para observar o relevo e solte para acionar."
+    },
+    {
+      "name": "",
+      "text": "Botão alternável: clique para ligar ou desligar o estado da amostra."
+    },
+    {
+      "name": "qtquick5_disabledButton",
+      "text": "Botão desabilitado: mostra o relevo deste estado sem executar uma ação."
+    },
+    {
+      "name": "",
+      "text": "Escolha independente: clique para marcar ou desmarcar; não altera o projeto."
+    },
+    {
+      "name": "",
+      "text": "Escolha independente: clique para marcar ou desmarcar; não altera o projeto."
+    },
+    {
+      "name": "",
+      "text": "Escolha independente com estado misto; clique para alternar na amostra, sem alterar o projeto."
+    },
+    {
+      "name": "",
+      "text": "Opção desabilitada: mostra o estado marcado sem permitir alteração."
+    },
+    {
+      "name": "",
+      "text": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra."
+    },
+    {
+      "name": "",
+      "text": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra."
+    },
+    {
+      "name": "qtquick5_switch",
+      "text": "Interruptor nativo: clique para ligar ou desligar o estado da amostra; não altera o projeto."
+    },
+    {
+      "name": "",
+      "text": "Interruptor desabilitado: mostra o estado ligado sem permitir alteração."
+    },
+    {
+      "name": "qtquick5_combo",
+      "text": "Escolha uma opção da amostra; não altera o esquema do desktop."
+    },
+    {
+      "name": "",
+      "text": "Lista desabilitada: mostra o estado indisponível sem permitir escolher uma opção."
+    },
+    {
+      "name": "qtquick5_spin",
+      "text": "Valor da amostra, sem unidade: de -99 a 999, passo 1. Use as setas ou edite; não altera medidas do tema em px."
+    },
+    {
+      "name": "",
+      "text": "Campo numérico desabilitado: mostra o valor da amostra sem permitir edição."
+    },
+    {
+      "name": "",
+      "text": "Entrada nativa de uma linha: selecione ou edite o texto da amostra; não altera o projeto."
+    },
+    {
+      "name": "",
+      "text": "Campo de texto desabilitado: mostra o conteúdo sem permitir edição."
+    },
+    {
+      "name": "qtquick5_slider",
+      "text": "Escala da amostra, sem unidade: de 0 a 100. Arraste o cursor; não altera o tema."
+    },
+    {
+      "name": "",
+      "text": "Escala desabilitada: mostra o valor da amostra sem permitir ajuste."
+    },
+    {
+      "name": "",
+      "text": "Indicador do valor da escala na amostra; não mede uma tarefa em execução."
+    },
+    {
+      "name": "",
+      "text": "Célula da tabela: clique para selecionar esta linha de dados artificiais."
+    },
+    {
+      "name": "",
+      "text": "Célula da tabela: clique para selecionar esta linha de dados artificiais."
+    },
+    {
+      "name": "",
+      "text": "Célula da tabela: clique para selecionar esta linha de dados artificiais."
+    },
+    {
+      "name": "",
+      "text": "Célula da tabela: clique para selecionar esta linha de dados artificiais."
+    },
+    {
+      "name": "",
+      "text": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra."
+    },
+    {
+      "name": "",
+      "text": "Barra nativa: arraste o cursor para percorrer o conteúdo da amostra."
+    },
+    {
+      "name": "qtquick5_textArea",
+      "text": "Editor nativo de várias linhas: selecione, copie ou edite a amostra; não modifica arquivos pessoais."
+    },
+    {
+      "name": "qtquick5_scrollViewVertical",
+      "text": "Barra vertical nativa: arraste o cursor para percorrer o conteúdo da amostra."
+    },
+    {
+      "name": "qtquick5_scrollViewHorizontal",
+      "text": "Barra horizontal nativa: arraste o cursor para percorrer o conteúdo da amostra."
+    },
+    {
+      "name": "",
+      "text": "Salva a captura e o JSON desta janela no perfil privado; não instala o tema."
+    }
+  ],
+  "validation": {
+    "native_hints": 33,
+    "expected_texts_present": [
+      "checkbox",
+      "disabled_button",
+      "disabled_check",
+      "disabled_combo",
+      "disabled_slider",
+      "disabled_spin",
+      "disabled_text",
+      "latched",
+      "mixed",
+      "push"
+    ],
+    "spin_range_unit_confirmed": true,
+    "push_hover": {
+      "delay_checked_ms": 300,
+      "stable_ms": 400,
+      "no_overlap": true,
+      "closed_after_leave": true,
+      "control": [
+        14.0,
+        112.0,
+        107.0,
+        25.0
+      ],
+      "tooltip": [
+        6.0,
+        63.0,
+        250.0,
+        46.0
+      ]
+    },
+    "menu_action": {
+      "opened": true,
+      "real_first_item_click": true,
+      "closed_after_action": true,
+      "row_hint_text": "Registra a ativação da ação de exemplo; não inicia aplicações.",
+      "row_hover": {
+        "delay_checked_ms": 300,
+        "stable_ms": 400,
+        "no_owner_overlap": true,
+        "inside_screen": true,
+        "outside_menu_bounds": true,
+        "closed_after_leave": true,
+        "row": [
+          310.0,
+          153.0,
+          192.0,
+          30.0
+        ],
+        "tooltip": [
+          510.0,
+          145.0,
+          250.0,
+          46.0
+        ],
+        "second_row_text": "Marca ou desmarca esta opção do menu nativo.",
+        "switch_delay_checked_ms": 250,
+        "second_row_stable_ms": 400,
+        "second_row_tooltip": [
+          510.0,
+          175.0,
+          250.0,
+          46.0
+        ]
+      }
+    },
+    "scope": "production QtQuick KDE Controls, one push and one menu-row hover/click; not Plasma SVG or all layouts"
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "510074477e170cb3889f323cfd6646f60eb127e50f89782554019d1a73748244",
+    "tools/theme-lab/tests/probe_qtquick_gallery_hints.py": "a5f52c1e9847fcd1ffaa918f3791cbd3a4945cd3bd5c067d0640aa886b158d89",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "b3179f410aaca6d70b0a1cf524ac455d7b01041a0ea4ce0341e6d6144dfa45d5"
+  },
+  "artifacts": [
+    "~/tempia/t07-qtquick5-hint-audit-r120-20261019/run/"
+  ],
+  "limits": [
+    "Quick probe validates presence of all emitted text and hovers/clicks representative controls; it does not hover every control or test every geometry/palette.",
+    "Does not verify Plasma SVG fidelity, historical comparison, or human approval."
+  ],
+  "conclusion": "QtQuick5 emits semantically coherent hints for the scene in this version; guarded probe passed presence, spin range/unit and representative button/menu interaction."
+}

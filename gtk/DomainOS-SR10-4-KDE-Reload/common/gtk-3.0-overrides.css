@@ -1,0 +1,791 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+
+* {
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+  -GtkScrollbar-has-secondary-backward-stepper: false;
+  -GtkScrollbar-has-secondary-forward-stepper: false;
+  -GtkScrolledWindow-scrollbar-spacing: 4;
+}
+scrollbar contents { border: 2px solid transparent; padding: 0; margin: 0; }
+scrollbar trough { min-width: 11px; min-height: 11px; border: none; padding: 0; margin: 0; }
+scrollbar slider { min-width: 7px; min-height: 16px; border: 2px solid transparent; padding: 0; margin: 0; }
+scrollbar.horizontal slider { min-width: 16px; min-height: 7px; }
+scrolledwindow > viewport { border: 2px solid transparent; }
+scrollbar button {
+  min-width: 11px; min-height: 11px; padding: 0; margin: 0;
+  border: none; border-image-source: none; box-shadow: none;
+  -gtk-icon-source: none; background-origin: border-box; background-clip: border-box;
+}
+scrollbar.vertical button.up { margin-bottom: 1px; }
+scrollbar.vertical button.down { margin-top: 1px; }
+scrollbar.horizontal button.up { margin-right: 1px; }
+scrollbar.horizontal button.down { margin-left: 1px; }
+textview text, textview border {
+  color: @theme_text_color_breeze;
+  background-color: @theme_base_color_breeze;
+  caret-color: @theme_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_text_color_breeze;
+}
+textview text selection {
+  color: @theme_selected_fg_color_breeze;
+  background-color: @theme_selected_bg_color_breeze;
+}
+scrollbar contents {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+  border-color: transparent;
+}
+scrollbar slider {
+  background-image: -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-left-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-right-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_button_background_normal_breeze;
+  border-color: transparent;
+}
+scrolledwindow > viewport {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #000000, 0.482), success mix(@theme_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #000000, 0.482), success mix(@theme_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_bg_color_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_base_color_breeze;
+  border-color: transparent;
+}
+scrolledwindow, scrolledwindow > junction {
+  background-color: @theme_bg_color_breeze;
+}
+scrollbar.vertical button.up {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.up:active {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-pressed-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:active {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-pressed-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:active {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-pressed-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:active {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-pressed-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+textview:backdrop text, textview:backdrop border {
+  color: @theme_unfocused_text_color_breeze;
+  background-color: @theme_unfocused_base_color_breeze;
+  caret-color: @theme_unfocused_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_unfocused_text_color_breeze;
+}
+textview:backdrop text selection {
+  color: @theme_unfocused_selected_fg_color_breeze;
+  background-color: @theme_unfocused_selected_bg_color_breeze;
+}
+scrollbar:backdrop contents {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+  border-color: transparent;
+}
+scrollbar:backdrop slider {
+  background-image: -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_button_background_backdrop_breeze;
+  border-color: transparent;
+}
+scrolledwindow > viewport:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #000000, 0.482), success mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #000000, 0.482), success mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_unfocused_bg_color_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_unfocused_base_color_breeze;
+  border-color: transparent;
+}
+scrolledwindow:backdrop, scrolledwindow:backdrop > junction {
+  background-color: @theme_unfocused_bg_color_breeze;
+}
+scrollbar.vertical button.up:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.up:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+textview:disabled text, textview:disabled border {
+  color: @insensitive_base_fg_color_breeze;
+  background-color: @insensitive_base_color_breeze;
+  caret-color: @insensitive_base_fg_color_breeze;
+  -gtk-secondary-caret-color: @insensitive_base_fg_color_breeze;
+}
+textview:disabled text selection {
+  color: @insensitive_selected_fg_color_breeze;
+  background-color: @insensitive_selected_bg_color_breeze;
+}
+scrollbar:disabled contents {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+  border-color: transparent;
+}
+scrollbar:disabled slider {
+  background-image: -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-left-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-right-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_button_background_insensitive_breeze;
+  border-color: transparent;
+}
+scrolledwindow > viewport:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #000000, 0.482), success mix(@insensitive_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #000000, 0.482), success mix(@insensitive_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@insensitive_bg_color_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @insensitive_base_color_breeze;
+  border-color: transparent;
+}
+scrolledwindow:disabled, scrolledwindow:disabled > junction {
+  background-color: @insensitive_bg_color_breeze;
+}
+scrollbar.vertical button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.up:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-pressed-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-pressed-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-pressed-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-disabled-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-pressed-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.482), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_insensitive_breeze, #000000, 0.15);
+}
+textview:disabled:backdrop text, textview:disabled:backdrop border {
+  color: @theme_unfocused_view_text_color_breeze;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+  caret-color: @theme_unfocused_view_text_color_breeze;
+  -gtk-secondary-caret-color: @theme_unfocused_view_text_color_breeze;
+}
+textview:disabled:backdrop text selection {
+  color: @insensitive_unfocused_selected_fg_color_breeze;
+  background-color: @insensitive_unfocused_selected_bg_color_breeze;
+}
+scrollbar:disabled:backdrop contents {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+  border-color: transparent;
+}
+scrollbar:disabled:backdrop slider {
+  background-image: -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-top-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-bottom-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-left-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-thumb-frame-right-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_button_background_backdrop_insensitive_breeze;
+  border-color: transparent;
+}
+scrolledwindow > viewport:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-trough-frame-top-left-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-right-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482), success mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-left-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482), success mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-right-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-top-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-bottom-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56)), -gtk-recolor(url("adaptive/gtk3-trough-frame-left-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #000000, 0.482)), -gtk-recolor(url("adaptive/gtk3-trough-frame-right-0-symbolic.svg"), error mix(@insensitive_unfocused_bg_color_breeze, #ffffff, 0.56));
+  background-position: left top, right top, left bottom, right bottom, left top, left bottom, left top, right top;
+  background-size: 2px 2px, 2px 2px, 2px 2px, 2px 2px, 1px 2px, 1px 2px, 2px 1px, 2px 1px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat-x, repeat-x, repeat-y, repeat-y;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+  background-color: @theme_unfocused_view_bg_color_breeze;
+  border-color: transparent;
+}
+scrolledwindow:disabled:backdrop, scrolledwindow:disabled:backdrop > junction {
+  background-color: @insensitive_unfocused_bg_color_breeze;
+}
+scrollbar.vertical button.up:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.up:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical button.down:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.up:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-disabled-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.horizontal button.down:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-pressed-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.482), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  min-width: 11px;
+  min-height: 11px;
+  padding: 0;
+  border: none;
+  border-image-source: none;
+  -gtk-icon-source: none;
+  box-shadow: none;
+  background-color: mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.15);
+}
+scrollbar.vertical:not(:disabled):not(:backdrop) button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.vertical:not(:disabled):not(:backdrop) button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal:not(:disabled):not(:backdrop) button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.horizontal:not(:disabled):not(:backdrop) button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-normal-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.482), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_normal_breeze, #000000, 0.15);
+}
+scrollbar.vertical:not(:disabled):backdrop button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-up-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.vertical:not(:disabled):backdrop button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-down-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal:not(:disabled):backdrop button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-left-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}
+scrollbar.horizontal:not(:disabled):backdrop button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/gtk3-stepper-right-normal-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.482), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.56));
+  background-position: center;
+  background-size: 11px 11px;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  background-color: mix(@theme_button_background_backdrop_breeze, #000000, 0.15);
+}

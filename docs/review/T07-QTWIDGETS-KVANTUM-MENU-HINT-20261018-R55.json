@@ -1,0 +1,353 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTWIDGETS-KVANTUM-MENU-HINT-20261018-R55",
+  "date": "2026-10-18",
+  "title": "Qt Widgets/Kvantum: dica de menu não sobrepõe itens adjacentes",
+  "status": "partial_progress",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "cause": "QMenu em alguns fluxos não encaminha QEvent.ToolTip ao filtro da aplicação; a janela QTipLabel aparece sobre a linha vizinha.",
+  "change": {
+    "file": "plasma/tests/galerias-nativas/qt_widget_hints.py",
+    "behavior": "Captura o retângulo da superfície QMenu em Show e MouseMove; no Show de QTipLabel usa a geometria final do Qt e move sincronamente antes do primeiro desenho. Dicas de controle preservam seu posicionamento atual; eventos hide limpam o proprietário do menu.",
+    "sha256": "302b41f88e474d2a737e34e65ac7810d2b965b9ce6592941c6829e8e0083321b"
+  },
+  "regression_probe": {
+    "file": "tools/theme-lab/tests/probe_qt_full_gallery_hints.py",
+    "sha256": "485940ea0848b2f64644ea72bf116508c911edae921bcb089f1f00f9fd2b25e1",
+    "assertion": "tooltip must not intersect the entire menu rectangle, including neighboring actions"
+  },
+  "environment": {
+    "xephyr": ":81",
+    "resolution": "1024x768",
+    "purpose": "temporary isolated test server, closed after tests",
+    "namespace": "bwrap with disposable HOME and XDG; no personal session bus or host config",
+    "palette": "DomainOS-SR10-4",
+    "kvantum_theme": "DomainOS-SR10-4-KDE"
+  },
+  "kvantum_first_frame": {
+    "Qt5": {
+      "status": "passed",
+      "qt_major": 5,
+      "qt_version": "5.15.15",
+      "style": "Kvantum::Style",
+      "style_name": "kvantum",
+      "hint_text": "Dica do item de menu: a opção não deve ser coberta por esta explicação.",
+      "stable_ms": 400,
+      "active_row": [
+        122,
+        167,
+        191,
+        30
+      ],
+      "menu": [
+        120,
+        165,
+        195,
+        64
+      ],
+      "tooltip": [
+        1,
+        235,
+        432,
+        20
+      ],
+      "no_active_row_overlap": true,
+      "no_other_menu_item_overlap": true,
+      "inside_screen": true,
+      "hover_did_not_toggle": true,
+      "screen_capture": "/home/domainos-test/qtwidgets-proof/qt5-first-frame.png",
+      "closed_after_leave": true,
+      "palette_scheme": "DomainOS-SR10-4",
+      "kvantum_theme": "DomainOS-SR10-4-KDE",
+      "image_sha256": "ff5be2fdc05a4118cdcce761805aa0918239a5ea1335fb33ee34008620cf7314",
+      "image_path": "~/tempia/t07-kvantum-native-hover-20261018/standalone-xephyr/home/qtwidgets-proof/qt5-first-frame.png"
+    },
+    "Qt6": {
+      "status": "passed",
+      "qt_major": 6,
+      "qt_version": "6.8.2",
+      "style": "Kvantum::Style",
+      "style_name": "kvantum",
+      "hint_text": "Dica do item de menu: a opção não deve ser coberta por esta explicação.",
+      "stable_ms": 400,
+      "active_row": [
+        122,
+        167,
+        191,
+        30
+      ],
+      "menu": [
+        120,
+        165,
+        195,
+        64
+      ],
+      "tooltip": [
+        1,
+        235,
+        432,
+        24
+      ],
+      "no_active_row_overlap": true,
+      "no_other_menu_item_overlap": true,
+      "inside_screen": true,
+      "hover_did_not_toggle": true,
+      "screen_capture": "/home/domainos-test/qtwidgets-proof/qt6-first-frame.png",
+      "closed_after_leave": true,
+      "palette_scheme": "DomainOS-SR10-4",
+      "kvantum_theme": "DomainOS-SR10-4-KDE",
+      "image_sha256": "493c62778904bf7338af62bc50ab33e4c80ed308d668174fcc2d1bb110cbc7e8",
+      "image_path": "~/tempia/t07-kvantum-native-hover-20261018/standalone-xephyr/home/qtwidgets-proof/qt6-first-frame.png"
+    }
+  },
+  "full_native_gallery": {
+    "Qt6": {
+      "qt_version": "6.8.2",
+      "status": "passed",
+      "menu_rows_tested": 8,
+      "menu_rows_passed": true,
+      "controls": {
+        "combo": {
+          "text": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            224,
+            390,
+            25
+          ],
+          "tooltip": [
+            307,
+            260,
+            456,
+            23
+          ]
+        },
+        "integer_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            208,
+            292,
+            802,
+            23
+          ]
+        },
+        "decimal_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            308,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            0,
+            292,
+            821,
+            23
+          ]
+        },
+        "horizontal_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            350,
+            369,
+            15
+          ],
+          "tooltip": [
+            296,
+            381,
+            675,
+            23
+          ]
+        },
+        "vertical_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            485,
+            318,
+            15,
+            80
+          ],
+          "tooltip": [
+            155,
+            404,
+            675,
+            23
+          ]
+        }
+      },
+      "coverage": {
+        "widgets": 65,
+        "actions": 10,
+        "submenu_help_strip": true,
+        "scope": "native Qt hints assigned; timing/geometry and theme translation need separate proof"
+      },
+      "qa_sha256": "d017df4d99ad16e944a0d54a983bddfbcd50716d59d080e5c2ed482c9871ee63",
+      "screenshot_sha256": "4c65cfdbb1b7db20aea35cdedb803a24c988b25e68ff85d69fcd58133deef2ea",
+      "output_dir": "~/tempia/t07-kvantum-native-hover-20261018/standalone-xephyr/full-gallery-qt6-parent/run/home/qtwidgets-proof"
+    },
+    "Qt5": {
+      "qt_version": "5.15.15",
+      "status": "passed",
+      "menu_rows_tested": 8,
+      "menu_rows_passed": true,
+      "controls": {
+        "combo": {
+          "text": "Abra a lista e escolha uma opção da amostra; isso não troca o tema do desktop.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            224,
+            390,
+            25
+          ],
+          "tooltip": [
+            307,
+            252,
+            456,
+            23
+          ]
+        },
+        "integer_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo -99, máximo 999, passo 1. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            208,
+            284,
+            802,
+            23
+          ]
+        },
+        "decimal_spin": {
+          "text": "Valor da amostra, sem unidade: mínimo 0.0, máximo 99.99, passo 1.0. Use as setas ou edite o campo; isso não modifica medidas do tema em px.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            308,
+            255,
+            192,
+            26
+          ],
+          "tooltip": [
+            0,
+            284,
+            821,
+            23
+          ]
+        },
+        "horizontal_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            110,
+            350,
+            369,
+            15
+          ],
+          "tooltip": [
+            296,
+            373,
+            675,
+            23
+          ]
+        },
+        "vertical_slider": {
+          "text": "Escala da amostra, sem unidade: de 0 a 100, passo 1. Arraste o cursor; o indicador de progresso acompanha este valor.",
+          "no_overlap": true,
+          "inside_screen": true,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "control": [
+            485,
+            318,
+            15,
+            80
+          ],
+          "tooltip": [
+            155,
+            404,
+            675,
+            23
+          ]
+        }
+      },
+      "coverage": {
+        "widgets": 62,
+        "actions": 10,
+        "submenu_help_strip": false,
+        "scope": "native Qt hints assigned; timing/geometry and theme translation need separate proof"
+      },
+      "qa_sha256": "9bbc7711fcd9ce95969a256a39449669c647b126ad38296ba1c42c094827e6b1",
+      "screenshot_sha256": "c51d9285efff1631ab9f7cdc8d723a60e6431190805c9eee4d3e5ccd3284318d",
+      "output_dir": "~/tempia/t07-kvantum-native-hover-20261018/standalone-xephyr/full-gallery-qt5-parent/run/home/qt5widgets-proof"
+    }
+  },
+  "checks": {
+    "py_compile": true,
+    "tooltip_geometry_unit_tests": "4/4 passed",
+    "full_qt5_gallery": "passed",
+    "full_qt6_gallery": "passed",
+    "first_observed_tooltip_geometry_outside_menu_in_qt5_and_qt6_kvantum": true
+  },
+  "failed_attempts": [
+    {
+      "display": ":69",
+      "result": "probe could not hover: an existing 1600x1000 InputOnly window intercepted pointer input; preserved that user preview."
+    },
+    {
+      "display": ":69",
+      "result": "full Qt6 gallery stopped before menu coverage at the first button hover and emitted host inotify/portal errors; not counted as product regression. Repeated successfully on clean :81."
+    }
+  ],
+  "limitations": [
+    "This proves Qt5/Qt6 native gallery hint geometry and Kvantum menu positioning, not pixel fidelity to SR10.4.",
+    "Other T07 families/layouts and human review remain outstanding; T07 stays running."
+  ],
+  "temporary_evidence_root": "~/tempia/t07-kvantum-native-hover-20261018/standalone-xephyr"
+}

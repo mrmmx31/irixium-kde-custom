@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R460",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read the current guest framebuffer after the user's earlier physical wake report, without sending graphical input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_vm_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4
+  },
+  "method": "Confirmed project PID and canonical disk, explicit control directory, clean correlated status, then ran probe and screen:snapshot on :apollo_screen:screen. No keyboard/mouse fields, host focus, guest files, or VM settings were changed.",
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-readonly-r460.png",
+    "sha256": "4a9f740c610fd7c1d94e5c25506a3eb7a849cfea5b1d9a43def49be220d64a14",
+    "size_bytes": 10015,
+    "dimensions_px": [1024, 844],
+    "guest_framebuffer_roi": [0, 0, 1024, 800],
+    "guest_framebuffer_black_pixels": 819200,
+    "guest_framebuffer_total_pixels": 819200,
+    "apollo_command_strip_visible": true
+  },
+  "live_profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_capture": false,
+    "channel_pending_after_capture": false
+  },
+  "result": "The fresh guest capture is black across all 819200 framebuffer pixels; only the Apollo command strip is visible. This is a new current observation after the user's earlier physical wake, not a claim that the VM was previously black. The Prancheta MAME remains a distinct active process, so the project verify guard still blocks guest input.",
+  "next": "When the separate MAME releases the guard, revalidate identity and capture state. If the guest still requires waking, use the documented single Shift pulse for this clone only, confirm release and visible VUE, then continue the authorized GTK2 comparison."
+}

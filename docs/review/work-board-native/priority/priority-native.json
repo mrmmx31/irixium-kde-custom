@@ -1,0 +1,41 @@
+{
+  "tests": {
+    "legacy_default_normal_creates_no_user_change_or_phantom_draft": true,
+    "unsaved_priority_does_not_reorder_and_reverting_normal_removes_only_its_draft": true,
+    "native_save_reorders_same_as_cli_preserves_selection_and_does_not_authorize": true,
+    "sorted_insertion_interval_keeps_anchor_id": true,
+    "reload_preserves_text_undo_and_unsaved_priority_without_reordering": true,
+    "native_undo_redo_and_save_keep_priority_text_and_independent_consent": true,
+    "chat_metadata_only_save_preserves_previous_note_and_updates_priority": true,
+    "chat_draft_survives_item_switch_with_priority": true,
+    "stale_save_refused_with_draft_text_and_priority_intact": true,
+    "empty_filter_disables_priority_and_return_restores_it": true,
+    "four_kde_schemes_native_priority_button_roles": {
+      "DomainOS": {
+        "native_combo_matches_button_roles": true
+      },
+      "neutral": {
+        "native_combo_matches_button_roles": true
+      },
+      "dark": {
+        "native_combo_matches_button_roles": true
+      },
+      "yellow": {
+        "native_combo_matches_button_roles": true
+      }
+    },
+    "reopen_preserves_both_draft_histories_priorities_and_saved_users": true,
+    "reopen_keeps_chat_undo_redo": true
+  },
+  "screen_resolution": [
+    1920,
+    1080
+  ],
+  "native_board_geometry": [
+    0,
+    0,
+    1650,
+    950
+  ],
+  "scope": "Motif priority selector, saved queue and editing preservation"
+}

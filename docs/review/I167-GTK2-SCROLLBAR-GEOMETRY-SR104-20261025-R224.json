@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SCROLLBAR-GEOMETRY-SR104-20261025-R224",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "existing project assistant clone",
+    "mame_pid": 274368,
+    "mame_version": "0.276",
+    "state": "Find Files open; current capture from R224 shows an empty Files Found list",
+    "input_sent": false,
+    "guest_or_profile_changed": false
+  },
+  "change": {
+    "family": "GTK2 only",
+    "source_contract": "Measured SR10.4 scrollbar geometry; shared light/shadow masks remain dynamic from KDE roles.",
+    "geometry_px": {
+      "bar_thickness": 15,
+      "arrow_cell": [11, 11],
+      "thumb_cross_axis": 11,
+      "trough_border": 2,
+      "gtk2_slider_width": 11,
+      "gtk2_stepper_size": 15,
+      "view_to_bar_gap": 4
+    },
+    "gtk2_fixture": {
+      "version": "2.24.33",
+      "outer": [322, 139],
+      "horizontal_request": [54, 15],
+      "vertical_request": [15, 54],
+      "horizontal_allocation": [0, 124, 304, 15],
+      "vertical_allocation": [307, 0, 15, 121],
+      "png_stepper": [15, 15],
+      "png_arrow": [11, 11]
+    },
+    "package_variants": [
+      "gtk/DomainOS-SR10-4",
+      "gtk/DomainOS-SR10-4-KDE",
+      "gtk/DomainOS-SR10-4-KDE-Reload"
+    ],
+    "production_install": {
+      "roots": ["~/.local/share/themes/DomainOS-SR10-4", "~/.themes/DomainOS-SR10-4"],
+      "transaction": "~/.local/state/irixium-domainos-gtk2-i167-r224",
+      "runtime_receipt": "~/.local/state/irixium-gtk2-palette/backups/20261025T213937-98744aebf187/receipt.json",
+      "runtime_entries": 113,
+      "native_reload": {
+        "atom": "_GTK_READ_RCFILES",
+        "events_sent": 63,
+        "top_level_windows_considered": 63,
+        "racing_x_errors": 0
+      }
+    },
+    "color_policy": "No final RGB values were added; the GTK2 assets are recolored from the current KDE roles.",
+    "application_policy": "No global GtkScrolledWindow policy was changed. R223 remains an application-specific AUTOMATIC versus ALWAYS finding."
+  },
+  "validation": {
+    "tests": [
+      {"command": "TMPDIR=~/tempia/ia-tema/qa/I167-tmp python3 tests/test_domainos_motif.py", "result": "25 passed"},
+      {"command": "TMPDIR=~/tempia/ia-tema/qa/I167-tmp python3 tests/test_gtk2_palette_runtime.py", "result": "20 passed"},
+      {"command": "python3 -m py_compile tools/domainos_motif_art.py tools/gtk2_domainos_palette.py gtk/tools/build_kde_domainos.py", "result": "passed"},
+      {"command": "git diff --check", "result": "passed"}
+    ],
+    "package_manifests": "All three source variant manifests verified against their files; the two installed DomainOS base themes verified after installation.",
+    "active_runtime": "Journal and included GTK2 RC verified at both XDG and ~/.themes wrapper paths; generated assets measured 15x15 and 11x11.",
+    "human_acceptance": "pending"
+  },
+  "limitations": [
+    "The native event was sent without X errors, but this does not prove every running GTK2 application visibly repainted.",
+    "The user should inspect the open GTK2 application; no screenshot of its private conversation content was captured.",
+    "R223's empty-list visibility depends on the application's GtkScrolledWindow policy and is not addressed globally here."
+  ],
+  "next": "Continue only I167/GTK2 with another distinct control or state measurable against the live SR10.4 reference. Record any new VM issue before switching families.",
+  "status": "running",
+  "technical_coverage_estimate": {
+    "percent": 76,
+    "basis": "GTK2 button, text-entry, list/tree and scrollbar states now have scoped native comparisons or runtime checks; other controls, states and the user's visual acceptance remain open.",
+    "not_a_visual_fidelity_score": true
+  }
+}

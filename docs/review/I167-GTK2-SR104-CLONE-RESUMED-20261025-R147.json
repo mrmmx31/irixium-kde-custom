@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SR104-CLONE-RESUMED-20261025-R147",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "guest": "Apollo DN3500, Domain/OS SR10.4, HP VUE 2.01",
+    "mame_pid": 274368,
+    "disk": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "assistant_clone_only": true,
+    "original_vm_touched": false
+  },
+  "startup": {
+    "launcher": "~/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/abrir-domainos-assistant-vm.sh",
+    "launcher_path_fix": "Derives ROOT from the resolved launcher location and inherits the current readable DISPLAY/XAUTHORITY instead of forcing stale personal paths.",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "video": "OpenGL",
+      "sound": "disabled"
+    },
+    "guest_login": {
+      "account": "user",
+      "password_entered": false,
+      "result": "VUE session started; File Manager and Terminal became visible"
+    },
+    "visible_guest": {
+      "file_manager_path": "/node_12345",
+      "status": "28 Files 2 Filtered",
+      "widget": "four-column XmpIcon grid",
+      "selection": "no item selection or rubberband state established"
+    }
+  },
+  "evidence": {
+    "native_capture": "~/tempia/ia-tema/evidence/I167/i167-vue-ready-r147.png",
+    "native_capture_sha256": "4943ea650ee51e8e9725ca19a2476f35bb125a7b6d4a2f766c59050e9711a0d3",
+    "resolution": [1024, 844],
+    "one_step_mouse_capture": "~/tempia/ia-tema/evidence/I167/i167-mouse-left-step-r147.png",
+    "one_step_mouse_capture_sha256": "563a102ed590f73db3955ec0f31241d2e01155d7b80197b4178905c2d55e97dd",
+    "active_mouse_capture": "~/tempia/ia-tema/evidence/I167/i167-mouse-left-step-active-r147.png",
+    "active_mouse_capture_sha256": "5ab283f30aa87acdd051fe4979029d9754e58b3e6b696315a11aedf1bb03ab66"
+  },
+  "input_and_limits": {
+    "channel_pending": null,
+    "keyboard_pulses_released": true,
+    "mouse_operation": {
+      "done": true,
+      "steps": 2,
+      "cleanup_error": null,
+      "hook_captured": true,
+      "mouse_option": true,
+      "buttons_down": false
+    },
+    "pointer_result": "The bounded counter movement produced no verifiable pointer relocation; no selected, focus, hover or rubberband comparison was claimed.",
+    "theme_source_changed": false,
+    "guest_files_or_configuration_changed": false,
+    "personal_profile_changed": false,
+    "xchat_restarted": false
+  },
+  "board": {
+    "database_generation_before": 8349,
+    "database_generation_after": 8350,
+    "updated_item": "I167 assistant.reply/status only",
+    "user_revision_authorization_note_and_response_time_preserved": true,
+    "other_items_modified": false
+  },
+  "remaining": "Capture equivalent selected, keyboard-focus, pointer-hover and rubberband states in the live SR10.4 XmpIcon, then compare each at 1:1 with the GTK2 GtkIconView preview. Keep the adapter out of the personal XChat profile until that comparison is complete.",
+  "status": "assistant_clone_booted_vue_visible_historical_state_pair_pending",
+  "user_acceptance": "pending"
+}

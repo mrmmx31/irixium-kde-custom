@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-HINT-SEMANTIC-AUDIT-20261019-R119",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:49:37Z",
+  "scope": "Revisão semântica do hint da sessão GTK4 GtkScrollbar, confrontando o texto com o GtkAdjustment e seu uso na amostra.",
+  "finding": "A frase anterior (“comprimento controlado pelo ajuste; entrada original preservada”) era técnica e não explicava o efeito nem a escala. O novo texto diz que arrastar move o conteúdo, informa o intervalo efetivo calculado como upper-page_size (0–75), passo 1, tamanho de página 25, incremento de página 10 e ausência de unidade; também descreve a ausência de setas neste GtkScrollbar.",
+  "expected_hint": "Barra GTK4: arraste o cursor para mover o conteúdo. Valor efetivo 0–75, passo 1, página visível 25, avanço de página 10; sem unidade. GTK4 não desenha setas neste controle.",
+  "source_adjustment": {
+    "value": 25.0,
+    "lower": 0.0,
+    "upper": 100.0,
+    "step_increment": 1.0,
+    "page_increment": 10.0,
+    "page_size": 25.0,
+    "effective_maximum": 75.0
+  },
+  "validation": {
+    "python_compile_in_memory": "passed",
+    "source_adjustment_checked": "passed",
+    "source_text_checked": "passed",
+    "runtime_retest": "not repeated; GTK4 helper positioning/timing matrix remains covered by R114 and prior GTK4 session receipts"
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk4_scrollbar_session.py": "eea5b2796198603e15fb40077eb10e7a5ead84bd30bfc97cf5528768c58721aa",
+    "tools/theme-lab/gtk4_hint_popover.py": "1ee694b5757a9a64d06e613bac0259efa03cfdb4c78fc74f88d48773ce1b19b8"
+  },
+  "limits": [
+    "Static semantic check of the production scroll-session hint and its adjustment; does not claim a fresh popup pixel/geometry test of this exact sentence.",
+    "GTK4 widget styling or DomainOS historical fidelity is not established by this receipt.",
+    "No human approval inferred."
+  ],
+  "conclusion": "GTK4 scrollbar hint now explains its action and numerical semantics without calling the dimensionless adjustment pixels. Exact live popup behavior still relies on existing GTK4 helper/runtime evidence and remains separately scoped."
+}

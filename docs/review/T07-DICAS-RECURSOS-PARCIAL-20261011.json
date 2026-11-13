@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-11T10:27:11.651230+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "implemented": [
+    "Módulo próprio ui_hints: textos UTF-8 e tips nativos nos primitives/gadgets dos combos e spins.",
+    "Dicas das nove ações, seletores, categorias, posição, geometria, fatores, papéis, notas e proposta.",
+    "Política da aplicação: atraso750ms, duração6000ms; sem criar timers próprios.",
+    "Dicas dinâmicas de dimensão e peças preservam o significado vigente; seletores de relevo usam o mesmo módulo."
+  ],
+  "verification": {
+    "strict_build": "passed",
+    "native_probe": "passed",
+    "scope": "26 caminhos de controles/seletores, nove ações e recursos de tempo; regressão nativa de métricas/âncoras.",
+    "log": ".qa-t07-hints/native-r8.log",
+    "initial_failure": "ComboBox manager não possui toolTipString; corrigida atribuição aos componentes internos.",
+    "regression_fixture": "Cursor inicial do Xvfb sobre controles podia abrir dica e cobrir leitura de pixels; probe desloca cursor fora dos controles, sem reduzir assertions."
+  },
+  "remaining": [
+    "Dicas dos controles da amostra e inventário de ações criadas dinamicamente.",
+    "Ensaio de hover real: atraso, posição, fechamento e estabilidade nas bordas.",
+    "Menu de ajuda e conteúdo orientado por novice/intermediate/expert.",
+    "Instalação/handoff pessoal coordenado quando a entrega estiver pronta."
+  ],
+  "estimated_progress_percent": 25,
+  "percentage_basis": "Estimativa de T07: primeira etapa de recursos/dicas implementada; demais etapas de cobertura, comportamento nativo e ajuda permanecem. Não representa progresso do goal nem fidelidade visual.",
+  "personal_window_reopened": false,
+  "hashes": {
+    "tools/theme-lab/include/ui_hints.h": "251decd1cf1bfef545a0a1dd034b6debe74701d211ca164cbda7e376a427b9db",
+    "tools/theme-lab/src/view/ui_hints.c": "2e58bc1453384344de2ee132bbc208bf91ecefbd81ca77e77e34d7627e0b8474",
+    "tools/theme-lab/src/view.c": "6a2ffd6756dce3277c7ab33acdf685a8b070f321bff18d990e2b7ea089902160",
+    "tools/theme-lab/src/view/part_relief_editor.c": "e5901b626552a7d2adf23dd7d04f8731c570527fe7042d7a4c3c30211b3b60f7",
+    "tools/theme-lab/tests/native_metrics_view.c": "e939282b5ff29a539f19d008a0dadd65fd38e44cfa919ee939213addac7feb1d",
+    "tools/theme-lab/Makefile": "dccf9519fd6c0bc15c4a2ee9118d4408924b2edc4668299529049e6b6ac74f97"
+  }
+}

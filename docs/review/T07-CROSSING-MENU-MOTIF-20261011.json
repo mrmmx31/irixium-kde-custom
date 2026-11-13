@@ -1,0 +1,97 @@
+{
+  "at": "2026-10-11T12:22:37.504504+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: live menu/tip palette update implemented and tested",
+  "observations": [
+    "Native trace shows EnterNotify mode NotifyUngrab after Copy activation",
+    "Cold failure with diagnostics proves menu=0 tip=0 before hover; not a tooltip oscillation",
+    "Backtrace identifies native unmap during release of posting button; test input path must distinguish menu posting from hover"
+  ],
+  "changes": [
+    "Ignore grab-release EnterNotify as a new hover request",
+    "At delayed posting, check native menu/command viewability and current pointer inside command",
+    "Test waits1100ms after actual activation to verify no late hint",
+    "Keyboard Shift+F10 isolates tooltip hover using existing application gesture"
+  ],
+  "experiments_reverted": [
+    "Eager menu creation did not solve dismissal; removed",
+    "Posting on Button3Release/menuPost Btn3Up had inconsistent repeated positioning; restored original mouse-posting behavior"
+  ],
+  "build_exit_code": 0,
+  "full_native_metrics_exit_code": 0,
+  "palette_runs": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0,
+      "visible_updates": 2,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537"
+      ]
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0,
+      "visible_updates": 2,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537"
+      ]
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0,
+      "visible_updates": 2,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537"
+      ]
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0,
+      "visible_updates": 2,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-558,-537"
+      ]
+    }
+  ],
+  "proof_scope": "Keyboard-posted native menu, physical hover and left-click Copy: delay, bounds, no overlap, stability, visible role changes, selection/text/clipboard, closure and no resurrection1100ms later. Four initial schemes.",
+  "remaining": [
+    "Mouse posting/traversal release behavior needs separate native/manual review; not declared fixed",
+    "Other actions/layouts and coordinated personal delivery remain"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/src/view/ui_menu_hints.c": "206ca1b39987b6e3f220370d70cd69a6a130c447313ce2761340ad4656d4adc7",
+    "tools/theme-lab/src/editor/view.c": "1f7224973c012329235880c51c7bf8201040a69394b4ac0011f251f3196b3a4b",
+    "tools/theme-lab/tests/ui_help_flow.c": "f9f18aab42e3fdd01a63d22c9998b1a05b12ce2e12a3f2d66bfe2a8fc5f8b135"
+  },
+  "evidence_sha256": {
+    "editor-crossing-baseline-r1.log": "2b84fb6ef50fd5c8c95e82ca5690ddfc6fd15088cae95c5a936a6eede482422a",
+    "editor-crossing-baseline-r1.err": "41065a879793ac40c2575f7460acee9332a5a7fa3a4b5f9f6f243dc534a9d33d",
+    "editor-crossing-guard-build.log": "9cc6621f696f1770faa28dfaea2aa28c34d216ffa6f376eaa09ef3d0feb7de1f",
+    "editor-crossing-guard-palettes-r1.json": "58a4cc588d83514e275553ed78a43e172dbe5e45e987ed35bf3c0586e98b3f38",
+    "editor-crossing-guard-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-crossing-staged-palettes-r1.json": "ae55690a1f0b9c003d3e8dbdb10a8a806fef31bb69edea6912ecc52e255776bc",
+    "editor-crossing-staged-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-menu-initialization-palettes-r1.json": "ae55690a1f0b9c003d3e8dbdb10a8a806fef31bb69edea6912ecc52e255776bc",
+    "editor-menu-initialization-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-first-unmap-backtrace-r1.log": "26e9d32f50f883cbe5b7add77341f7c488311c823944a45bd2df8351214d7a82",
+    "editor-menu-native-traversal-r1.json": "5fec2bb74786cbc8aa0c31ec105504c4f3005d4f643a2612b75956adb3262d90",
+    "editor-menu-native-traversal-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-menu-release-r1.log": "94ef85057db4e8940bf89e3fb1ce2877e6f6c1b1c4501724ec5dfe3115c5dc97",
+    "editor-menu-release-r1.err": "315b1fd19c2c3c10cb7e8a0efadd6d0c039f1732e521d113403217bcd6c43b44",
+    "editor-keyboard-hover-build.log": "9cc6621f696f1770faa28dfaea2aa28c34d216ffa6f376eaa09ef3d0feb7de1f",
+    "editor-keyboard-hover-r1.log": "9c5975892fc3750e11dff4449775ed991c237dec201d60b7dbe0774fe9b10cfb",
+    "editor-keyboard-hover-r1.err": "871537b8737808e9d24edfcd0175617b8488c5df430f3d105973692f8a238637",
+    "editor-keyboard-hover-palettes-r1.json": "1299d2b960b0407f125e4683ae12844b9e37d70d8130a5379f9adc544f9a7b0b",
+    "editor-keyboard-hover-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-keyboard-full-regression-r1.log": "be2fbb1cb04e60dedc446231d65f869430f6690bae7e3a7ac8665063b45d3178",
+    "editor-keyboard-full-regression-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191"
+  },
+  "estimated_stage_progress_percent": 90,
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

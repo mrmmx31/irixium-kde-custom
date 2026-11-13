@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-10T22:35:57.622843+00:00",
+  "item": "I094",
+  "revision": 4,
+  "phase": "delivered; live handoff verified",
+  "files": [
+    {
+      "path": "src/view/details_layout.c",
+      "before_sha256": "114d1ab9c2357b8250dec9c9daf025c7d058bbcc50adb06f1436e60e6671e827",
+      "after_sha256": "72dd8260108fa4fcb3b07f7fd677ed46dfb23022f1edc18d26dbe86fd932b1c1"
+    },
+    {
+      "path": "tests/native_priority_probe.c",
+      "before_sha256": "5751148534ee68e0fcd2122235c238415d93a403236fb30c15ea35c22fb4a221",
+      "after_sha256": "9b94813417561989e84bb49d5a95a86f15a1a11821f27bbe233a38d09f5dcbb7"
+    },
+    {
+      "path": "tests/test_priority_layout.py",
+      "before_sha256": "3847b513be745ae4a21e72657dbb06ad1fe81acbd4e8b238842ecfc17710868f",
+      "after_sha256": "98aafab5076eff966067c9ee1efccf8035f6662b46b0e929c0a96e5440dc3c0f"
+    },
+    {
+      "path": "docs/PRIORIDADES.md",
+      "before_sha256": "9f10e9bfa75e9353c7d2db9401f3a7673d56cd918c8ecb3a28f90e28959713cc",
+      "after_sha256": "0f5ea8d8dfaa92bd1f1003079acd7cd3b94f0b0c067d8f0faa49658954cebcc8"
+    },
+    {
+      "path": "build/work-board",
+      "before_sha256": "08ceaae806bd2c1d99e5b5f10a31ff7be8b8af9982c2136fe366f9a0ec1de74b",
+      "after_sha256": "9a090e5b432b9c26cc4e7799e27c63d0041e4e08c1575882b1299a1dbbf0252e"
+    }
+  ],
+  "checks": {
+    "layout_native_cases": 6,
+    "selector_hints_visible": 3,
+    "priority_native_flows": 13,
+    "editing_flows": 10,
+    "kde_schemes": 4
+  },
+  "user_approval_filled": false,
+  "I096_installed": false,
+  "scope": "I094 revision 4 selector row and native hints; no I096",
+  "handoff": {
+    "date": "2026-10-10T22:38:04.949371+00:00",
+    "item": "I094",
+    "revision": 4,
+    "pid": 1359624,
+    "display": ":1",
+    "binary_sha256": "9a090e5b432b9c26cc4e7799e27c63d0041e4e08c1575882b1299a1dbbf0252e",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "Native temporary button for exact I094 request/session, revalidated before SIGTERM",
+    "ephemeral_request_hidden_on_start": true
+  }
+}

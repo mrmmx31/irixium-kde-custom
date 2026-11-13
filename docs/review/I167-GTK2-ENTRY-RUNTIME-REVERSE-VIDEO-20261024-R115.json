@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "id": "R115",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Verify reverse-video GtkEntry selection in the preview and complete GTK2 runtime adapter",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "native_evidence": "R113: an idle VUE File Finder field with pattern a*a shows one stable inverse-video character; 124-pixel delta in an 8x16-pixel box, with a separate blinking caret.",
+    "main_vm_touched": false
+  },
+  "method": {
+    "preview_probe": "tools/theme-lab/tests/probe_gtk2_entry_selection_palettes_mapped.py",
+    "preview_probe_sha256": "b83163a8883b512c166c049b6572d5aae2cdcf6c44f8727501103d879e0cf3dd",
+    "runtime_probe": "tools/theme-lab/tests/probe_gtk2_domainos_entry_runtime.py",
+    "runtime_probe_sha256": "09bef486af144f77e74d7764ea434594fb9b1f3047ef3c7c4a0524daa9846ee0",
+    "runtime_probe_result": "~/tempia/i167-entry-selection-runtime-r115-final/output/RESULTADO.json",
+    "runtime_probe_result_sha256": "96639fa5bf3524b2f797f9b76676b8bc55e5ce454a791d8ae62b2195e4712ca4",
+    "preview_probe_result": "~/tempia/i167-entry-selection-preview-r115/output/RESULTADO.json",
+    "preview_probe_result_sha256": "829668f1591ce98e2413d0d919fe4907889a8857652ad17951d8a88b13e03b65",
+    "gtk_version": "2.24.33",
+    "display": "private Xvfb, closed after each probe",
+    "selection": "The field contains a*a; select only the middle asterisk with Shift+Left. The text cursor blink is disabled only in the isolated probe.",
+    "runtime_adapter": "prepare_domainos() produced a complete immutable GTK2 RC and pixmap bundle from each tested KDE palette; no user theme or open application was modified.",
+    "schemes": [
+      {
+        "name": "DomainOS SR10.4",
+        "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "inverse_background_rgb": [255, 255, 255],
+        "inverse_text_rgb": [102, 136, 181],
+        "runtime_rc_sha256": "6fcf2e19f583ad6703b028f14fe842e34e78c40bb0323581d594addab4788031",
+        "selected_capture": "~/tempia/i167-entry-selection-runtime-r115-final/output/DomainOS/runtime-capture/selected.png",
+        "selected_capture_sha256": "2ab2d64d015a15b9798d4c34bd52b07cd4bcf77ac19807e0f37c6ab7716db20a",
+        "changed_pixels": 235
+      },
+      {
+        "name": "Breeze Light",
+        "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+        "inverse_background_rgb": [35, 38, 41],
+        "inverse_text_rgb": [255, 255, 255],
+        "runtime_rc_sha256": "f396db0ac34e46923d4ed9903eae2e32ca32fa5a349f8079e54a0a269c94ff25",
+        "selected_capture": "~/tempia/i167-entry-selection-runtime-r115-final/output/BreezeLight/runtime-capture/selected.png",
+        "selected_capture_sha256": "a0d555fe1ac5f43a97ecb732e4a1fcf73de0f35d8b25f1a90e3bf1142034ded7",
+        "changed_pixels": 235
+      },
+      {
+        "name": "Breeze Dark",
+        "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+        "inverse_background_rgb": [252, 252, 252],
+        "inverse_text_rgb": [20, 22, 24],
+        "runtime_rc_sha256": "8154616fed2a5be5f36451c86b16c3c836b676dee28bd0318dde83fc5b981bb8",
+        "selected_capture": "~/tempia/i167-entry-selection-runtime-r115-final/output/BreezeDark/runtime-capture/selected.png",
+        "selected_capture_sha256": "4d1abfbf92328c9e8613b64038a0057837d281219efff23e58b7f8a0ebab75f1",
+        "changed_pixels": 234
+      }
+    ]
+  },
+  "implementation": {
+    "runtime_file": "tools/gtk2_domainos_palette.py",
+    "runtime_sha256": "8b520ad41d1c6e91e45191ed723d5849510aca0f0626336053b6a892a7afb952",
+    "preview_file": "tools/theme-lab/gtk2_entries.py",
+    "preview_sha256": "b170089857e09c1962cb3b4e049061388325222af84ec0bcb981472cb6410a8d",
+    "rule": "Only GtkEntry selected background/text invert the current KDE View and View Text roles. Generic list/menu selection keeps the KDE Selection roles. Palette refresh generates a new namespaced RC from the active roles; the product contains no fixed final RGB for this selection.",
+    "changes_record": {
+      "base_ref": "git:9a67cc83d763e1e5a910a891dbfc77979fc562d8",
+      "files": 6,
+      "content_verified_files": 6,
+      "diff_sha256": "16d5149952e60485a30e37e6f6938465cf9d4b554863dad260541369f3363c90",
+      "export_matches_prepared_patch": true
+    },
+    "execution_scripts_recorded": 33
+  },
+  "tests": {
+    "theme_lab_entry_recipe": "passed: 3 tests",
+    "runtime_palette_mapping": "passed: focused DomainOS GtkEntry inversion and generic selection regression",
+    "domainos_gtk2_preparation": "passed: immutable preparation across three schemes",
+    "mapped_theme_lab_preview": "passed in DomainOS, Breeze Light and Breeze Dark",
+    "mapped_complete_runtime_rc": "passed in DomainOS, Breeze Light and Breeze Dark; selection bounds [1,2], 234–235 changed pixels per mapped window",
+    "python_syntax": "passed for all six changed files"
+  },
+  "limits": [
+    "The tests establish role-based inverse video in the GTK2 preview and generated runtime RC. They do not prove exact 8x16 text metrics or font parity with VUE.",
+    "The native VUE screenshot proves the visible selection state, not which compiled Motif resource supplied its colors.",
+    "Xvfb has no window manager. KWin integration, a live schema-change event in the user's session, GTK application reload, and human approval remain untested.",
+    "No change has been installed into the user's profile or open XChat session."
+  ],
+  "next": "Continue only I167/GTK2: finish the remaining native line metrics and integration/reload checks using the authorized DomainOS reference, then stage the complete GTK2 adapter for user-session validation."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "I167-VUE-MENU-RESOURCE-LOOKUP-20261025-R209",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01, running in the assistant-owned MAME clone",
+    "mame_pid": 274368,
+    "transport": "Telnet read-only probe to the previously used clone endpoint 10.253.104.20:23",
+    "probe_result": "TCP connection timed out before login; no command or credential was sent"
+  },
+  "offline_evidence_reviewed": {
+    "R205_readback": "~/tempia/ia-tema/evidence/I167/r205-vue-find-resources-readback.txt",
+    "vuefile": "The earlier bounded grep records *secondaryColorSetId: 5 and XmpIcon pixmapForeground; it did not search menu resources.",
+    "vuestyle": "The earlier bounded grep records Vuestyle*SecondaryColorSetId: 7 and Host Dialog list settings; it did not search menu resources.",
+    "palette_inventory": "The repository records /usr/X11/lib/vue/palettes/CoralReef.vp and its hash, but no local content copy was found in the reviewed paths.",
+    "scope": "Existing evidence is insufficient to attribute the File menu face to a specific VUE color-set resource."
+  },
+  "decision": "Do not infer menu resource mapping from unrelated list or Host Dialog settings. Preserve the existing dynamic KDE Header mapping for now and leave the R208 color discrepancy open. Do not add static RGB.",
+  "no_changes": {
+    "product_source": false,
+    "user_profile": false,
+    "xchat": false,
+    "guest_files_or_configuration": false,
+    "mame_settings_or_profile": false,
+    "original_vm": false,
+    "other_board_sections": false
+  },
+  "next": "Use the retained VUE menu capture and dynamic-role evidence; only query menu-specific guest resources after the existing clone transport is responsive. Continue I167/GTK2 without changing another control family or installing the partial theme.",
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

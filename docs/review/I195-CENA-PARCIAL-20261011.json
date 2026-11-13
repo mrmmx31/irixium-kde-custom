@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-11T10:03:59.325764+00:00",
+  "item": "I195",
+  "revision": 1,
+  "status": "in_progress",
+  "evidence": "docs/referencias/domainos-sr104/i195-radio-scene",
+  "implemented": [
+    "Native two-member radio group in scene",
+    "Native member/group metrics with explicit composition contract",
+    "Selection preserved on transactional scene replacement",
+    "Ctrl drag moves group without changing selected member"
+  ],
+  "proof": {
+    "native_origins": 8,
+    "palettes": 4,
+    "group_request": [
+      180,
+      100
+    ],
+    "initial_member_allocation": [
+      180,
+      50
+    ],
+    "updated_group_request": [
+      200,
+      120
+    ],
+    "updated_member_allocation": [
+      200,
+      60
+    ],
+    "updated_position": [
+      260,
+      90
+    ],
+    "ctrl_drag_final_position": [
+      300,
+      110
+    ],
+    "pure_suite": 46,
+    "new_contract_suite": 4
+  },
+  "remaining": [
+    "Controller Apply restart selection transport and persistence per origin",
+    "Native Motif controller input/size regression"
+  ],
+  "stage_estimate_percent": 65,
+  "parent_I167_estimate_percent": 86,
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "sha256": {
+    "radio_group_gtk2.py": "21c287afd3c55c396784ee8c0faaaaecc513261498583c119407b1b04b426fde",
+    "native_scene_gtk2.py": "73d07c1ee45f838f63aa8ec66065a2a9f900441a95079a90bfc70887a3bf4907",
+    "gtk2_session.py": "e89671ab8e263fc9a0adb68694fc486acf505947e93eb92ac7881f55274574fa",
+    "gestures_gtk2.py": "582e1875cbf3c77e64277b0957ca6b0db7b4bdd56a2f7d7c95194b54bec82d1e",
+    "tests/probe_gtk2_button_scene.py": "c4bf94b534e453cbc71b4b8fac866c403db67ebd03d2e605607ab20e7073fa25",
+    "tests/test_gtk2_button_scene_native.py": "3ed8f62d175a4979d8d074f4697cf82ac8ecf22812636dd05e98b70af65eda08",
+    "GTK2-RADIO-GROUP.md": "bca1595d4325178a52882156e7462de2cce25e2b06310983733048fea73a1cf0"
+  }
+}

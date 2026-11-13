@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R525",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Private GTK2 2.24.33 theme-engine prototype for preserving the full 15x15 stepper cell while GTK2 reports an inset 15x11/11x15 draw area; classify endpoint state separately from whole-widget-insensitive appearance.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "theme_installed": false,
+    "user_app_touched": false,
+    "desktop_changed": false,
+    "mame_input_sent": false,
+    "prototype_path": "records/ia-tema/experiments/i167-r525-endpoint-clip/"
+  },
+  "measurements": {
+    "gtk_style_area_horizontal_px": [15, 11],
+    "gtk_style_area_vertical_px": [11, 15],
+    "native_stepper_asset_px": [15, 15],
+    "clipping_test_r524": "Literal style-area clip cropped 60/225 pixels from each full stepper asset.",
+    "r525_asset_clip": "Clip follows the centered 15x15 asset footprint; no pixels are drawn beyond that reconstructed cell.",
+    "private_pixels_vs_assets": {
+      "normal_interior": "4 directions, each 0/225 different pixels",
+      "normal_at_lower_endpoint": "horizontal-left and vertical-up, each 0/225",
+      "normal_at_upper_endpoint": "horizontal-right and vertical-down, each 0/225",
+      "whole_widget_insensitive": "4 disabled-role directions, each 0/225"
+    },
+    "captured_vue_normal_vs_assets": {
+      "horizontal_left_right": "each 0/225",
+      "vertical_up_down": "each 0/225"
+    }
+  },
+  "input_evidence": {
+    "source_run": "R521 isolated probe; renderer changed afterward only",
+    "result": "PASS 8 cases: H/V movement within range, H/V blocked at both endpoint directions, H/V blocked with whole-widget insensitive.",
+    "stderr_limit": "Only unrelated GTK atk-bridge module warning."
+  },
+  "source_analysis": {
+    "gtk_source": "GTK 2.24.33 modules/engines/pixbuf/pixbuf-draw.c and pixbuf-render.c, downloaded only under ~/tempia/domainos-theme-work/",
+    "finding": "GTK2 reconstructs stepper geometry from slider-width/stepper-size and handles a matching stepper asset as the complete cell. The private adapter follows that geometry and adds the position detail supplied by stepper-position-details.",
+    "limit": "GTK Pixbuf Engine source explains the drawing algorithm but is not evidence of Domain/OS SR10.4 behavior."
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "evidence": "docs/referencias/domainos-sr104/barra-horizontal-normal.png and barra-vertical-normal.png; reference crops match the four normal assets at 0/225 differences.",
+    "endpoint_state": "Historical endpoint and whole-widget-insensitive states were not captured; R525 tests the project's approved role policy, not historical disabled-state equivalence."
+  },
+  "artifacts": {
+    "pixel_check": "records/ia-tema/experiments/i167-r525-endpoint-clip/verify_pixels.py",
+    "prototype_source": "records/ia-tema/experiments/i167-r525-endpoint-clip/r525-engine.c",
+    "captures": "records/ia-tema/experiments/i167-r525-endpoint-clip/captures/"
+  },
+  "limits": [
+    "No partial-expose or resize repaint test yet.",
+    "The assistant-owned MAME was not running; the only MAME process belonged to the Prancheta and was not touched.",
+    "No engine was installed and no user-facing GTK2 window was changed.",
+    "GTK2 endpoint behavior is still a technical prototype, not a completed visual acceptance or human review."
+  ],
+  "next": "Continue I167 only: validate cell repaint under partial damage and resize in private GTK2; then attach to the project-owned SR10.4 VM only when its live channel is available and compare the relevant native states. Do not integrate the engine or install the theme until those checks pass."
+}

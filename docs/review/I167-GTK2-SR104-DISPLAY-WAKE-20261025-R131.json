@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SR104-DISPLAY-WAKE-20261025-R131",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "process_pid": 3759847,
+    "role": "dedicated assistant clone; original user MAME and other session were not targeted"
+  },
+  "procedure": {
+    "before": "Native guest snapshot was black except for the Apollo command/status bar. No command was pending in the clone channel.",
+    "input": "Reused the bounded one-frame Shift pulse from R129 on :kbd:keyboard4/Shift; the callback released it on frame 2.",
+    "result": "done=true, held=false, frame=2, reason=Shift tapped and released, error=nil.",
+    "after": "The guest display became visible with Terminal, Find Files and the existing file-manager desktop. The File Name field currently displays aaa; no additional key or mouse input was sent after wake."
+  },
+  "profile_after_probe": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "ui_active": false,
+    "wait_button_up": false,
+    "channel_pending": null
+  },
+  "captures": {
+    "before_black": {
+      "path": "~/tempia/i167-current-sr104-r131.png",
+      "sha256": "4041fe4323e2bfadd776a56cefb26c65d96ae9f8eba7ea3b38f786f65a14cfdc"
+    },
+    "after_wake": {
+      "path": "~/tempia/i167-current-sr104-r132.png",
+      "sha256": "8fa6d572c075d1dace41d66d825fefaed0828348e8795484b26fd0f0aa340dba"
+    }
+  },
+  "input_script": {
+    "path": "~/tempia/i167-r129-wake.lua",
+    "sha256": "3146396db52857d2e7610597ee75b297bc6a6f5917a08c5eb16e0532ce1291fc"
+  },
+  "preservation": {
+    "guest_files_or_configuration_changed": false,
+    "guest_text_entered": false,
+    "input_released": true,
+    "original_vm_touched": false,
+    "profile_changed": false,
+    "other_mame_session_touched": false
+  },
+  "next": "Use the now-visible authorized clone for the next direct GTK2/SR10.4 control comparison. Do not send more input until a specific visual target and required state are chosen; reuse R113-R117 for GtkEntry and do not repeat those measurements.",
+  "status": "running",
+  "user_acceptance": "pending"
+}

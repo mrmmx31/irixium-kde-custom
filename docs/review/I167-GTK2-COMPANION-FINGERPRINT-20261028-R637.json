@@ -1,0 +1,63 @@
+{
+  "id": "R637",
+  "date_utc": "2026-10-28T22:50:12Z",
+  "scope": "Read-only reconciliation audit for the already selected GTK2 DomainOS theme in user lsi; T04 / GTK2 companion runtime only.",
+  "authorization": {
+    "board_item": "T04",
+    "section": "work",
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+    "user_revision": 9,
+    "authorized": true
+  },
+  "observations": {
+    "gtk2_selection": {
+      "path": "/home/lsi/.gtkrc-2.0",
+      "key": "gtk-theme-name",
+      "value": "DomainOS-SR10-4-KDE"
+    },
+    "service": {
+      "unit": "irix-theme-companions.service",
+      "enabled": true,
+      "active_state": "failed",
+      "result": "exit-code",
+      "main_pid": 7322,
+      "exit_status": "1/FAILURE"
+    },
+    "bundle": {
+      "state": "/home/lsi/.local/state/irixium-theme-companions/installation",
+      "latest": "9c54b1e1aa5e4e349893c2d762ff7d63",
+      "status": "installed",
+      "runtime_entries_audited": 25,
+      "unit_matches_control": true,
+      "runtime_mismatch_count": 1,
+      "mismatch_path": "tools/gtk2_domainos_palette.py",
+      "expected_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "installed_sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb"
+    },
+    "authorized_renderer_update": {
+      "receipt": "docs/review/I167-GTK2-DOWN-STEPPER-PRESSED-DELTA-REPAIR-20261027-R495.json",
+      "transaction": "/home/lsi/.local/state/irix-theme-companions/gtk2-domainos-generator-r495/backups/20261027T171149-d95287d256f0/receipt.json",
+      "status": "installed",
+      "before_sha256": "e8309ac9515847903ae32b1399742d1c079a60fab17839319f6f9302af75a398",
+      "after_sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb",
+      "after_matches_installed": true
+    },
+    "verification": {
+      "read_only_verify_runtime": "failed with exact owned-tree fingerprint mismatch",
+      "mismatch_is_accounted_for_by": "R495 renderer transaction",
+      "other_runtime_files": "match the installed bundle fingerprint; current checkout has separate source drift in domainos_motif_art.py and domainos_scrollbar_rules.json"
+    },
+    "previous_live_apply": {
+      "source_receipt": "docs/review/I167-GTK2-DOWN-STEPPER-PRESSED-DELTA-REPAIR-20261027-R495.json",
+      "palette_installed": true,
+      "gtk_windows_notified": 130,
+      "x_errors": 0,
+      "applications_restarted": false
+    }
+  },
+  "result": "The GTK2 theme is selected and the R495 renderer/palette were applied. Future palette synchronization is currently unavailable because the shared companion bundle fingerprint was not advanced with the authorized R495 renderer transaction.",
+  "changes_made": false,
+  "service_restarted": false,
+  "personal_preferences_changed": false,
+  "next": "Repair the nested user-local companion bundle transactionally, preserving R495 as rollback base and validating exact rollback semantics before restarting its failed observer; do not edit control.json by hand."
+}

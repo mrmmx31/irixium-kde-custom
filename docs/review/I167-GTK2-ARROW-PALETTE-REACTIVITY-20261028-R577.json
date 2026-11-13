@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "id": "R577",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Add a regression check that every generated GTK2 scrollbar arrow asset changes pixel color data when the selected KDE color roles change.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "file": "tests/test_domainos_motif.py",
+    "test": "GtkDomainOSTest.test_gtk2_preparation_is_immutable_and_distinct_by_scheme",
+    "description": "Compare decoded RGBA pixels of all 4 directions × 5 states across the blue, dark, and yellow synthetic palette fixtures; require three distinct pixel rasters per asset.",
+    "product_theme_changed": false,
+    "installed_theme_changed": false,
+    "user_application_changed": false,
+    "vm_changed": false
+  },
+  "verification": {
+    "command": "TMPDIR=/home/lsi/tempia/domainos-theme-work python3 tests/test_domainos_motif.py GtkDomainOSTest.test_gtk2_preparation_is_immutable_and_distinct_by_scheme GtkDomainOSTest.test_gtk2_all_steppers_keep_square_overlays_for_all_states",
+    "result": "2 tests passed",
+    "scope_limit": "This proves generated assets react to distinct synthetic role palettes and geometry remains protected. It does not prove real KDE schema switching, GTK2 live rendering, or historical appearance in HP VUE."
+  },
+  "reconciliation": {
+    "R576": "The generated-RC geometry guard covers the four arrow directions and all five states.",
+    "live_comparison": "The horizontal held-state comparison is still pending. R573 remains inconclusive and was not repeated.",
+    "board": "I167 is still authorized. I500 remains unauthorized and Q501 remains unanswered in the saved Fila Atual."
+  },
+  "next": "Keep theme and VM unchanged. Continue only GTK2 work; obtain the saved authorization for a safe live MAME input route and the user's GTK2 application/state before claiming the horizontal held comparison."
+}

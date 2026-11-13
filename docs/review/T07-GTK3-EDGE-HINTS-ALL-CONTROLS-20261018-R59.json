@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-EDGE-HINTS-ALL-CONTROLS-20261018-R59",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "passed_in_scope",
+  "purpose": "Verify GTK3 native delayed tooltip geometry for every catalogued control at four screen positions.",
+  "environment": {
+    "xephyr": ":81",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "gtk3": "3.24.49",
+    "theme": "Default, Sans 10, isolated HOME/XDG",
+    "host_settings_changed": false
+  },
+  "criteria": {
+    "cold_native_delay_ms": 500,
+    "stable_ms": 400,
+    "inside_screen": true,
+    "control_overlap_pixels": 0,
+    "closed_after_leave": true,
+    "push_action_after_leave": true
+  },
+  "matrix": {
+    "controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "positions": [
+      "top-left",
+      "top-right",
+      "bottom-left",
+      "bottom-right"
+    ],
+    "total": 64,
+    "passed": 64,
+    "failed": 0
+  },
+  "runtime_notice": "All 64 process runs emitted the same non-fatal DeprecationWarning for Gdk.Screen.get_width at probe_gtk_hint_hover.py:224; every case returned success.",
+  "source_sha256": {
+    "probe_gtk_hint_hover.py": "81e3052e64318f6d23866c880a6df909071e7b76d3b85606ad4fd5a7ba50684d",
+    "control_hints.py": "1f35d9adcbe661f35687f43b730ca909341bebae5cd5189f6572c22d9b79b07c",
+    "gtk3_hint_position.py": "fbfd551f43d21c13ed30e497030e53070a6a527ca0f8439f0a833986c5ec195f"
+  },
+  "result_sha256": "f12bef027cd544c6c0ee387301f365518c0985a5acc037d947c2e6e581065b75",
+  "artifacts": "~/tempia/t07-gtk3-all-controls-edges-20261018/",
+  "limitations": [
+    "One GtkScene layout and theme Default only.",
+    "Does not validate alternate palettes, rendered hint text/pixels, other application layouts, historical DomainOS fidelity, or human visual acceptance.",
+    "The GTK2 progress/top-left failure is separately recorded in R58 and remains open."
+  ]
+}

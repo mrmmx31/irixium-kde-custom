@@ -1,0 +1,49 @@
+{
+  "at": "2026-10-11T06:21:49.801513+00:00",
+  "item": "I118",
+  "revision": 2,
+  "previous_goal_turn_classification": "progress: integrated fitting and actual readiness proved; delivery binary compiled",
+  "phase": "delivery prepared; coordination pending",
+  "source_pid": 1707007,
+  "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480/MANIFESTO.json",
+  "display": ":61",
+  "saved_project_journal_backup": "/tmp/i118-delivery-preservation",
+  "saved_files_sha256": {
+    "working.json": "170922a88211e6e3cb6789dd3df4f305f21ba14ed9e1cc101c0222db59b5b72f",
+    "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd"
+  },
+  "source_alive_verified": true,
+  "source_untouched": true,
+  "raw_unsaved_widget_text_imported": false,
+  "source_to_remain_open": true,
+  "coordination": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "962ae95731b9c548efa214082c843c2fb4b61875ef6ed2df38a5506554f61938",
+      "item_id": "I118",
+      "user_revision": 2,
+      "definition_sha256": "7daffa636699a0eec06a9b9433a39b2f81ec02110aab48791db04dedfe337c03",
+      "application": "Laboratório I118 — nova versão no Xephyr :61, origem PID1707007",
+      "reason": "Versão compilada e testada: relevos por peça/estado GTK3 e cores KDE. Copiar projeto salvo e journal/Undo para nova instância; manter a origem aberta porque texto bruto não persistido não é importado. O botão coordena a entrega e a pausa de edição, sem fechar outras janelas.",
+      "requested_at": "2026-10-11T06:21:14.513Z"
+    },
+    "available": true,
+    "permitted": false,
+    "scope_current": true
+  },
+  "permitted_at_checkpoint": false,
+  "resume_tests": 8,
+  "mount_tests": 4,
+  "scope_progress_percent": 92,
+  "percentage_basis": "Implementation/native tests/build and safe delivery preparation done; actual personal handoff and human evaluation pending. Not overall goal or historical fidelity.",
+  "hashes": {
+    "tools/theme-lab/build/theme-lab": "63a85f7ec949bf775712ab77c688acac6ecc23ca6edcc1e3eabbcb5bdfe9c964",
+    "plasma/tools/abrir-laboratorio-temas.py": "e812286957f3ec3038c0c2707a642fce304cd0fe6657009fb624b34423be1b4b",
+    "tools/theme-lab/arrow_button_states.py": "7d65441b71d741f1d76184cbbc6217cdeaca241f90a013d43383bf5c9025e3cd",
+    "tools/theme-lab/thumb_states.py": "b69a05ac8b0a95169860f12cde892eb8ae964ff42e7ec8289bcc168dd6c49a97",
+    "tools/theme-lab/fitting_states.py": "23cd46c3ec400db5113da2713250a582d48f8862c71db4e0152c65bc976fb995"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-11T05:04:08.027532+00:00",
+  "item": "I118",
+  "revision": 1,
+  "phase": "arrow-native-pixels-and-editor-base",
+  "estimated_stage_progress_percent": 40,
+  "percentage_basis": "Contrato, primeira tradução da seta, pixels em quatro paletas e editor modular básico prontos; faltam percurso integrado de edição, demais peças/estados e entrega pessoal.",
+  "native_pixels": {
+    "artifact": ".qa-theme-lab-arrow-relief-ksr227pb/home/results/RESULTADO.json",
+    "sha256": "cdc341e05361a718bdebcefd3f43af6dd43fc5ac158ba3d513cf9416e33b08fc",
+    "passed": true,
+    "cases": 24,
+    "checks": 3360,
+    "scope": "Real GTK3 scrollbar arrow pixels, four directions, six proposed normal/pressed relief overrides, hover/release/restoration, four KDE schemes; isolated HOME",
+    "visual_inspection": "pressed-down.png DomainOS-SR10.4-pressed-flat-3 inspecionada: barras reais, relevo plano somente na seta pressionada, thumb/trilho presentes.",
+    "initial_failure": ".qa-theme-lab-arrow-relief-ku9cwz2v: nomes temporários repetidos e amostragem indevida da caixa com margem. Preservada. Não prova defeito no desenho."
+  },
+  "editor": {
+    "module": "src/view/part_relief_editor.c",
+    "states": "Seis disponíveis para inspeção; edição de normal/pressed da seta GTK3 habilitada. Demais peças/estados bloqueados com aviso.",
+    "semantics": "Estado da receita independente do estado nativo; seletor não força GtkRange. Escolha de estado da receita é navegação local, não altera edit_state do projeto. Herdar limpa somente override escolhido.",
+    "test": "Widget Motif real em Xvfb; callbacks controlados, preservação de geometria, estados independentes, herança e bloqueio de estados pendentes passaram. Não é prova de entrada real do ponteiro no editor integrado."
+  },
+  "backend_tests": 26,
+  "logs": {
+    "/tmp/i118-arrow-pixels-second.log": "a6220a2aff20e62f3a71e2e67062081cccb1ae10d1275c23e8ac5c881a2edd19",
+    "/tmp/i118-ui-build.log": "4029ed256011d0cb9628eac309bfadfd4c5b76134f60c8b7ac780593564ecdb2",
+    "/tmp/i118-ui-test-final.log": "920287def8b255e7d6e30dacf62faefb7aa5d832127c217564ea68e4888edbc2",
+    "/tmp/i118-arrow-backend-final.log": "5cde9410c1635d5ee87290827e09423bcf22c9b808b5e5c51367977053f49313"
+  },
+  "hashes": {
+    "tools/theme-lab/backend.py": "24593dd62d99c91ba3c6830e2bc701c4c7adae51ebb9f13e8334a4a436e867cb",
+    "tools/theme-lab/tests/test_arrow_relief_native.py": "05e550b5fcee4b84d802ffc3be3965ac2bd813b11f38b97c1cf925bd55fb47a3",
+    "tools/theme-lab/tests/test_trough_native.py": "b0079faebe10e8ac8a0b331d5dc002248900e849c8682c8161571572ee23ec19",
+    "tools/theme-lab/src/view.c": "e0efebfcbe0f1420f6d08eca0c59d8fd7a04638fc435a4644709ec232dcc71f8",
+    "tools/theme-lab/src/view/part_relief_editor.c": "0c7491528856393f9ad66db2de27d2d08559185ee1eed20a1d390bf196b7e262",
+    "tools/theme-lab/include/part_relief_editor.h": "4f53e0d0035b8fca897f292b1d876ba3cfb60948a5c07b1bf5bf9fa2615a0b5e",
+    "tools/theme-lab/tests/part_relief_editor_test.c": "4ce4a433c355e2bdbc4f57e71aa3adf23f692061677f6a5e27ce0477381f4d5b",
+    "tools/theme-lab/Makefile": "1ebbb47cb145ca99d597e8235b6b21daf5a401b22befe1ee72abaff0a63042e8"
+  },
+  "next": "Testar editor pelo controlador real, salvar/reabrir e observar a tradução nas prévias acoplada/separada; depois ampliar estados/peças.",
+  "not_claimed": [
+    "Fidelidade histórica integral",
+    "Demais famílias",
+    "Entrega pessoal da atualização",
+    "Suporte para forçar estados de subpeças GTK"
+  ]
+}

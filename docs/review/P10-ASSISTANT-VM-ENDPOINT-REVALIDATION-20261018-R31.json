@@ -1,0 +1,68 @@
+{
+  "item": "P10",
+  "checked_at_local": "2026-10-18T11:53:10-04:00",
+  "instance": "assistant-clone-20261018",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_namespace": "net:[4026533751]",
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "endpoint": {
+    "address": "10.104.246.10",
+    "ports": {
+      "ftp": 21,
+      "telnet": 23
+    },
+    "uniqueness_rechecked": {
+      "active_mame_namespaces": 6,
+      "assistant_clone_owns_alias": true,
+      "other_namespaces_own_alias": false,
+      "original_vm_pid": 497923,
+      "original_vm_network_namespace": "net:[4026531840]",
+      "retired_alias_10.104.104.10_absent": true
+    },
+    "ftp": {
+      "greeting": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+      "root_login": "230 User root logged in.",
+      "active_listing_entries": 27
+    },
+    "telnet": {
+      "negotiation": "FF FD 18",
+      "login_shell_reached": true,
+      "user": "user",
+      "directory": "//node_12345/users/user"
+    }
+  },
+  "guest_processes": [
+    "/etc/Xdomain :0",
+    "/usr/X11/bin/hpvue2",
+    "/usr/lib/X11/vue/etc/vuesession",
+    "vuewm",
+    "vuefile -dir /",
+    "xterm",
+    "xload"
+  ],
+  "visual_capture": {
+    "mame_snapshot": "~/tempia/domainos-assistant-vm-20261018/captures/sr104-live-r28.png",
+    "mame_snapshot_sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "guest_xwd_remote": "/users/user/domainos-vue-20261018-r30.xwd",
+    "guest_xwd_local": "~/tempia/domainos-assistant-vm-20261018/captures/guest-vue-r30.xwd",
+    "guest_xwd_sha256": "93b0543ade0216f17ebc7c1f8188af4bcb8a72e5eaaabdde3531873b4e229b67",
+    "guest_xwd_png": "~/tempia/domainos-assistant-vm-20261018/captures/guest-vue-r30.png",
+    "guest_xwd_png_sha256": "8a05628af60de7e0f9a412b7df770256059fe776d1178067a85421e621e54db5",
+    "result": "Both the MAME snapshot and guest XWD pixels are black; neither is usable for visual comparison."
+  },
+  "changes_this_check": {
+    "endpoint_reconfigured": false,
+    "reason": "The requested distinct endpoint was already configured as 10.104.246.10 in R24; this check revalidated its ownership and access.",
+    "guest_configuration_changed": false,
+    "clone_disk_changed": false,
+    "original_vm_changed": false,
+    "downloads_backup_changed": false,
+    "mame_restarted_or_tuned": false
+  },
+  "next": "Use the isolated clone for authorized SR10.4 reads; visual design comparison remains blocked until a usable guest image is available."
+}

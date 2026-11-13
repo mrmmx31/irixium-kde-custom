@@ -1,0 +1,441 @@
+{
+  "schema_version": 1,
+  "id": "R482",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify R470 normal horizontal GTK2 trough-corner repair regenerates from current native KDE roles across four schemes, with invariant geometry.",
+  "method": "The project KDE role helper read each selected .colors file with display/session environment unset. The GTK2 renderer generated the normal trough and two normal horizontal steppers from those roles, then applied R470 corner composition in memory. Four trough corner pixels were compared exactly with their stepper source pixels.",
+  "schemes": [
+    {
+      "scheme": "DomainOS-SR10.4",
+      "scheme_path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "native_role_helper_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+      "source_art_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+      "gtk2_corner_renderer_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "palette_roles": {
+        "theme_button_background_normal_breeze": "#78a0d5",
+        "theme_button_foreground_normal_breeze": "#ffffff",
+        "theme_bg_color_breeze": "#78a0d5",
+        "theme_fg_color_breeze": "#ffffff"
+      },
+      "assets_sha256": {
+        "scroll-trough-normal.png": "26d9ccb65f947043f69a4ed4050437cc6840e82f061d6dfb8d06aadc2c7fa058",
+        "scrollbar-stepper-left-normal.png": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+        "scrollbar-stepper-right-normal.png": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+        "scroll-trough-normal-horizontal.png": "bab8ad5c787b6044d0a14a37a5122df055969ccd1cf9588576d2096de7ba1ebc"
+      },
+      "geometry": {
+        "trough": [
+          24,
+          24
+        ],
+        "left_stepper": [
+          15,
+          15
+        ],
+        "right_stepper": [
+          15,
+          15
+        ]
+      },
+      "corner_samples": [
+        {
+          "trough_xy": [
+            2,
+            22
+          ],
+          "stepper_xy": [
+            0,
+            13
+          ],
+          "rgba": [
+            62,
+            83,
+            110,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            3,
+            22
+          ],
+          "stepper_xy": [
+            1,
+            13
+          ],
+          "rgba": [
+            62,
+            83,
+            110,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            2,
+            23
+          ],
+          "stepper_xy": [
+            0,
+            14
+          ],
+          "rgba": [
+            62,
+            83,
+            110,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            21,
+            1
+          ],
+          "stepper_xy": [
+            14,
+            1
+          ],
+          "rgba": [
+            196,
+            213,
+            237,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "BreezeClassic",
+      "scheme_path": "/usr/share/color-schemes/BreezeClassic.colors",
+      "scheme_sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca",
+      "native_role_helper_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+      "source_art_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+      "gtk2_corner_renderer_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "palette_roles": {
+        "theme_button_background_normal_breeze": "#eff0f1",
+        "theme_button_foreground_normal_breeze": "#232627",
+        "theme_bg_color_breeze": "#eff0f1",
+        "theme_fg_color_breeze": "#232627"
+      },
+      "assets_sha256": {
+        "scroll-trough-normal.png": "4f1c9d5aa0be76d1ac74c2d10dbc15c96da43668f54b6bb4b5033e959dd80f63",
+        "scrollbar-stepper-left-normal.png": "f83a3f0504423087f05e2e9796face9a651996f65329b846d99e55fedb8c391d",
+        "scrollbar-stepper-right-normal.png": "b2bee182c789991dc6e5a158c10393402d1e6b4c8cdba9aed660291ac68e5f78",
+        "scroll-trough-normal-horizontal.png": "f490ac1a0fb9f1ada2cdde238a96ac6d82893f9cedd9fb730e6962aaa9f06c46"
+      },
+      "geometry": {
+        "trough": [
+          24,
+          24
+        ],
+        "left_stepper": [
+          15,
+          15
+        ],
+        "right_stepper": [
+          15,
+          15
+        ]
+      },
+      "corner_samples": [
+        {
+          "trough_xy": [
+            2,
+            22
+          ],
+          "stepper_xy": [
+            0,
+            13
+          ],
+          "rgba": [
+            124,
+            124,
+            125,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            3,
+            22
+          ],
+          "stepper_xy": [
+            1,
+            13
+          ],
+          "rgba": [
+            124,
+            124,
+            125,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            2,
+            23
+          ],
+          "stepper_xy": [
+            0,
+            14
+          ],
+          "rgba": [
+            124,
+            124,
+            125,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            21,
+            1
+          ],
+          "stepper_xy": [
+            14,
+            1
+          ],
+          "rgba": [
+            248,
+            248,
+            249,
+            255
+          ]
+        }
+      ],
+      "corner_rgb_differences_vs_DomainOS": 4
+    },
+    {
+      "scheme": "BreezeDark",
+      "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "native_role_helper_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+      "source_art_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+      "gtk2_corner_renderer_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "palette_roles": {
+        "theme_button_background_normal_breeze": "#292c30",
+        "theme_button_foreground_normal_breeze": "#fcfcfc",
+        "theme_bg_color_breeze": "#202326",
+        "theme_fg_color_breeze": "#fcfcfc"
+      },
+      "assets_sha256": {
+        "scroll-trough-normal.png": "532bab8def5c376c0111f52d42bba8509feb25eacc21106137b68af3b977d114",
+        "scrollbar-stepper-left-normal.png": "5c51a1e2b8e67687654a3ca6343e32af9a3c06aa481e787da28fc642bdfc030b",
+        "scrollbar-stepper-right-normal.png": "7709341ff16b0242793f60396046c0a0cef49de064e99a94cff197e1f25b3773",
+        "scroll-trough-normal-horizontal.png": "83e8507d6baba57bdc88d129ab408a70c04a3b49417ce6d3082fa2dff76e721a"
+      },
+      "geometry": {
+        "trough": [
+          24,
+          24
+        ],
+        "left_stepper": [
+          15,
+          15
+        ],
+        "right_stepper": [
+          15,
+          15
+        ]
+      },
+      "corner_samples": [
+        {
+          "trough_xy": [
+            2,
+            22
+          ],
+          "stepper_xy": [
+            0,
+            13
+          ],
+          "rgba": [
+            21,
+            23,
+            25,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            3,
+            22
+          ],
+          "stepper_xy": [
+            1,
+            13
+          ],
+          "rgba": [
+            21,
+            23,
+            25,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            2,
+            23
+          ],
+          "stepper_xy": [
+            0,
+            14
+          ],
+          "rgba": [
+            21,
+            23,
+            25,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            21,
+            1
+          ],
+          "stepper_xy": [
+            14,
+            1
+          ],
+          "rgba": [
+            161,
+            162,
+            164,
+            255
+          ]
+        }
+      ],
+      "corner_rgb_differences_vs_DomainOS": 4
+    },
+    {
+      "scheme": "KvBeige",
+      "scheme_path": "/usr/share/color-schemes/KvBeige.colors",
+      "scheme_sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3",
+      "native_role_helper_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+      "source_art_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+      "gtk2_corner_renderer_sha256": "1a10f238c95340e897af8be3c2f2826046961735d807e4be9444e2ef5ed8e2d8",
+      "palette_roles": {
+        "theme_button_background_normal_breeze": "#efebe7",
+        "theme_button_foreground_normal_breeze": "#141312",
+        "theme_bg_color_breeze": "#efebe7",
+        "theme_fg_color_breeze": "#141312"
+      },
+      "assets_sha256": {
+        "scroll-trough-normal.png": "02a5900de50b32e28dd183fec2e8b930c581b51bc3c8bf315fb9cb6cbaa0e73c",
+        "scrollbar-stepper-left-normal.png": "00d10ff5b2708a317b0712b00afaaa7d1fef0f1bce297b9ff39a5c2eec179805",
+        "scrollbar-stepper-right-normal.png": "e5f89ef333ebd462752921c623e8e4875358006a4427f329b4f9bf98f7f0f26b",
+        "scroll-trough-normal-horizontal.png": "8442ad08fcfe3a9d6fadd26125e730e86b452402b18608ac5dd8e323bdf7bb31"
+      },
+      "geometry": {
+        "trough": [
+          24,
+          24
+        ],
+        "left_stepper": [
+          15,
+          15
+        ],
+        "right_stepper": [
+          15,
+          15
+        ]
+      },
+      "corner_samples": [
+        {
+          "trough_xy": [
+            2,
+            22
+          ],
+          "stepper_xy": [
+            0,
+            13
+          ],
+          "rgba": [
+            124,
+            122,
+            120,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            3,
+            22
+          ],
+          "stepper_xy": [
+            1,
+            13
+          ],
+          "rgba": [
+            124,
+            122,
+            120,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            2,
+            23
+          ],
+          "stepper_xy": [
+            0,
+            14
+          ],
+          "rgba": [
+            124,
+            122,
+            120,
+            255
+          ]
+        },
+        {
+          "trough_xy": [
+            21,
+            1
+          ],
+          "stepper_xy": [
+            14,
+            1
+          ],
+          "rgba": [
+            248,
+            246,
+            244,
+            255
+          ]
+        }
+      ],
+      "corner_rgb_differences_vs_DomainOS": 4
+    }
+  ],
+  "result": {
+    "all_four_corner_pixels_match_generated_stepper_source": true,
+    "expected_asset_geometry_all_schemes": true,
+    "alternative_schemes_with_changed_corner_rgb": [
+      "BreezeClassic",
+      "BreezeDark",
+      "KvBeige"
+    ],
+    "static_final_rgb_added": false,
+    "limitations": "Generated-asset proof only. Does not prove native GTK2 runtime reload in each palette, VUE fidelity or whole GTK2 family completion. A full-bundle attempt exposed three unrelated required roles absent from the KDE helper (error/link); it stopped without evidence and those roles were not guessed."
+  },
+  "changes": {
+    "source_changed": false,
+    "user_profile_changed": false,
+    "gtk2_runtime_started": false,
+    "vm_contacted": false
+  },
+  "incomplete_attempts_preserved": [
+    "~/tempia/ia-tema/evidence/I167/r482-r470-corner-schema-matrix-20261027",
+    "~/tempia/ia-tema/evidence/I167/r482-r470-corner-schema-matrix-20261027-v2",
+    "~/tempia/ia-tema/evidence/I167/r482-r470-corner-schema-matrix-20261027-v3"
+  ],
+  "harness_notes": [
+    "First helper import omitted tools/ from sys.path and failed before generation.",
+    "Second helper setup supplied a full theme palette; the role reader lacks three unrelated error/link roles, so the full generator correctly rejected the incomplete bundle.",
+    "Third focused renderer used logical asset names in place of .png keys and stopped before comparisons."
+  ]
+}

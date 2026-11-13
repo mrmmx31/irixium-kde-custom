@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "R313",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-project-vm-not-running-disk-verified-preserved",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only check of the project-owned assistant VM runtime; no guest input or launch."
+  },
+  "observation": {
+    "command": "ps -C mame,mame64,MAME -o pid,etime,comm,args",
+    "result": "No matching MAME process.",
+    "canonical_verifier": "bash vm/domainos-sr10.4-assistant/verify.sh",
+    "verifier_result": "Canonical disk and Tempia compatibility symlink resolve to the same preserved 398458880-byte file; no MAME instance is using it; VM is available for the registered launcher.",
+    "channel_pointer": "/home/lsi/tempia/ia-tema/domainos-mame-control-path",
+    "guest_snapshot": null
+  },
+  "limits": [
+    "No claim about the guest display is possible while MAME is not running.",
+    "This does not inspect or operate the user's personal VM.",
+    "The GTK2 historical pressed-state comparisons cannot resume until a current project-owned guest session is visibly available and safely coordinated."
+  ],
+  "isolation": {
+    "mame_launched": false,
+    "guest_input_sent": false,
+    "disk_modified": false,
+    "scripts_or_sessions_stopped": false,
+    "xchat_or_user_application_touched": false
+  },
+  "next_step": "Re-identify the canonical disk and profile before using the previously authorized project VM for native GTK2 arrow-state comparison; wake a black guest only with the physical input required by the VM rules.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "The runtime is currently unavailable for capture; this changes no completed GTK2 implementation evidence and is not a visual-fidelity score."
+  }
+}

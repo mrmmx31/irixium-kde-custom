@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-RESUME-CHECK-20261025-R145",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "waiting_user",
+    "ack_revision": 2,
+    "theme_item": "P10",
+    "theme_item_revision": 1,
+    "theme_item_authorized": true
+  },
+  "scope": "Revalidate current GTK2 I167 resume prerequisite and reuse of R140 integration evidence; read-only",
+  "observation": {
+    "process_query": "pgrep -a -x mame; pgrep -af ^/usr/games/mame|^mame64|^mame ",
+    "result": "No MAME process matched.",
+    "channel": "/home/lsi/tempia/ia-tema/vm/shared/domainos-assistant-vm-20261018/sessao/controle",
+    "channel_status": {
+      "pending": null,
+      "reply": null,
+      "pending_files": [],
+      "acknowledged": false
+    }
+  },
+  "evidence_reuse": {
+    "receipt": "I167-GTK2-ICONVIEW-PALETTE-REFRESH-20261024-R140.json",
+    "current_hashes": {
+      "tests/test_gtk2_palette_runtime.py": "94ebf3e876896d4cad7567976b558596fb4eb2ad1558bc63a605bac2f03c80ac",
+      "gtk/tools/build_kde_domainos.py": "2bd743c8a6805641eded6c223059b6299dadf887a582da3e2dc43c9003294baa",
+      "tools/gtk2_domainos_palette.py": "72ace2edbaec2770ae0d25b0157b72741499fedd3ae75fa4b6345459ad33000b"
+    },
+    "result": "All three hashes equal R140; no GTK2 runtime source/test changed, so its 6/6 suite was not rerun."
+  },
+  "actions": {
+    "guest_input_sent": false,
+    "mame_started_or_restarted": false,
+    "vm_configuration_changed": false,
+    "other_board_sections_touched": false
+  },
+  "remaining": "Historical 1:1 comparison of GtkIconView focus, hover and rubberband selection with the same live Domain/OS SR10.4 XmpIcon.",
+  "resume_condition": "The already authorized assistant clone is active and identifiable. The current host has no MAME process; no input can reach its guest now. Do not start another instance.",
+  "status": "waiting_for_existing_clone"
+}

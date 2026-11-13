@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "id": "R750",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the two user attachments pixelwise against each other and the currently mapped GTK2 XChat scrollbar, reusing R749 content-free live strips.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "attachments": {
+    "large_xchat": {
+      "filename": "e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "size_px": [
+        892,
+        642
+      ],
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "samples": {
+        "left_bar": {
+          "xy": [
+            228,
+            200
+          ],
+          "width_px": 15,
+          "profile": "DDLLFFFFFFFDDLL"
+        },
+        "right_bar": {
+          "xy": [
+            760,
+            200
+          ],
+          "width_px": 15,
+          "profile": "DDLLFFFFFFFDDLL"
+        }
+      },
+      "limit": "Occluded below y=338; full lower endpoints are not visible."
+    },
+    "small_motif": {
+      "filename": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "size_px": [
+        102,
+        655
+      ],
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "sample": {
+        "xy": [
+          47,
+          100
+        ],
+        "width_px": 15,
+        "profile": "DDLLFFFFFFFDDLL"
+      },
+      "identity_basis": "This profile and RGB role sequence match the canonical SR10.4 Motif strip."
+    },
+    "profile_legend": {
+      "D": "shadow #3e536e",
+      "L": "light #c4d5ed",
+      "F": "face #78a0d5",
+      "T": "trough #6688b5",
+      "note": "RGB values are evidence from the blue schema, not product color constants."
+    }
+  },
+  "live_xchat": {
+    "window": "0x1800003",
+    "pid": 1327599,
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "display": ":1",
+    "client_px": [
+      870,
+      601
+    ],
+    "gtk": "2.24.33",
+    "theme": "DomainOS-SR10-4-KDE-Reload",
+    "capture": "Fresh XWD read-only capture, cropped in memory to two 15px strips; no focus, pointer, keyboard or conversation content saved.",
+    "same_pixels_as_R749": true,
+    "left_bar": {
+      "size_px": [
+        15,
+        535
+      ],
+      "raised_thumb_profile_rows": 322,
+      "flat_long_trough_profile_rows": 181,
+      "long_trough_profile": "DDFFFFFFFFFFFLL"
+    },
+    "right_bar": {
+      "size_px": [
+        15,
+        465
+      ],
+      "raised_thumb_profile_rows": 25,
+      "flat_long_trough_profile_rows": 408,
+      "long_trough_profile": "DDFFFFFFFFFFFLL"
+    },
+    "normal_steppers": "R749 verifies all four normal cells as 15x15 and 225/225 identical to canonical SR10.4; the current crop is pixel-identical to R749."
+  },
+  "comparison": {
+    "motif_profile": "DDLLFFFFFFFDDLL",
+    "gtk2_live_long_trough_profile": "DDFFFFFFFFFFFLL",
+    "difference": "The live GTK2 long trough omits the 2px inner light rail at left and 2px inner shadow rail at right (columns 2, 3, 11, 12): four of fifteen cross-axis pixels per straight row are flatter. It is not an inverted bevel.",
+    "thumb": "The live GTK2 thumb and Motif use DDLLFFFFFFFDDLL; raised thumb remains distinct from the flatter exposed trough.",
+    "geometry": "All bars are 15px thick; normal arrow cells are 15x15 and their glyph artwork remains exact. Motif’s near-full thumb is from the empty Trash Can; XChat thumb lengths (322/535 left, 25/465 right) depend on content and viewport.",
+    "attachment_vs_live": "Both sampled rows in the large attachment show the Motif profile, but the fresh live XChat capture has a flatter exposed trough. The attachment is another render state; its capture time is unknown."
+  },
+  "result": "The current live visual difference is confined to the long exposed trough profile, not thickness, normal arrow size, or thumb relief. The supplied large screenshot does not depict the current live trough profile.",
+  "changes": {
+    "theme_or_code": false,
+    "palette_or_user_setting": false,
+    "vm": false,
+    "documentation_and_evidence": true
+  },
+  "human_review": "Pending; comparison does not approve or reject the GTK2 adaptation.",
+  "next": "Keep the historical Motif profile and R731 adaptation distinct; await visual verdict on the flatter live trough before changing it."
+}

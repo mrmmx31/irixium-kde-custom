@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R710",
+  "date": "2026-10-29",
+  "observed_at_utc": "2026-10-29T06:20:36Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Validate the authorized GTK2 color-role observer across a real KDE color-scheme transition using private XDG roots and private D-Bus/KDED; do not change the live desktop or other toolkit renderers.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": {
+    "kde_export": "Real kded6 GTKConfig module and plasma-apply-colorscheme, isolated with private HOME/XDG config/data/state/cache/runtime and an abstract private D-Bus address.",
+    "observer": "Real theme_companion_bridge QFileSystemWatcher/QProcess and GTK2 palette runtime; private roots explicitly inherited by the worker.",
+    "transition": {
+      "from": "BreezeLight",
+      "to": "BreezeDark",
+      "kde_button_background_normal": [
+        "252,252,252",
+        "41,44,48"
+      ],
+      "gtk_exported_button_role": [
+        "#fcfcfc",
+        "#292c30"
+      ]
+    },
+    "gtk2_palette_sha256": [
+      "f8158f7b9b4ff8762b3ffa9998a81594513a64d6523fb060a13604fd430a9c7a",
+      "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6"
+    ],
+    "gtk2_refresh": [
+      "unchanged",
+      "updated"
+    ],
+    "engine": "domainos-pixbuf preserved after palette update.",
+    "cross_family_and_live_reload": "GTK4 refresh and GTK2 X11 window-reload notifier were intercepted; no GTK4 renderer or live window was changed/reloaded."
+  },
+  "result": "passed",
+  "boundaries": {
+    "live_user_kde_scheme": "DomainOS-SR10-4",
+    "live_user_gtkrc_sha256_after": "597acb65503625211fe98e4b049a737ff9eff9a7becc8af9c8c4430b4ec4d42f",
+    "live_user_kdeglobals_sha256_after": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+    "live_user_gtk2_palette_sha256_after": "73e20d073bad5ee7a902e142e42ad9efb620cb96f3c4ba1fe5a9435f7b4346eb",
+    "live_gtk3_gtk4_colors_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "live_companion_service": "active",
+    "live_xchat_pids": "1321694, 1327599; neither restarted",
+    "vm_touched": false,
+    "visual_fidelity_or_human_acceptance_proved": false
+  },
+  "harness_history": [
+    {
+      "attempt": "R713",
+      "result": "invalid harness: its QProcess worker inherited the real user environment and emitted a KDE ConfigChanged notification on the live session bus. GTK3/GTK4 CSS mtimes show a write at 02:15:05 -04; their current content hashes are the known DomainOS export, KDE scheme remains DomainOS-SR10-4, and the GTK2 active palette remains unchanged. Exclude R713 from proof; R718 now uses private DBus and updates os.environ before creating the observer."
+    },
+    {
+      "attempts": "R714-R717",
+      "result": "private harness failures before a valid scheme-transition proof: stale export race, import order, wrong assertion for stored scheme-name, and the private worker safety guard. Each attempt was preserved under ~/tempia/domainos-theme-work/I167; no additional changes were made to the live user profile."
+    }
+  ],
+  "artifacts": {
+    "reproducible_private_script": "../../records/ia-tema/I167/R710/private-scheme-observer.py",
+    "script_sha256": "07a3b9d0efaca4476161c536e067b88c005f3a1f47ff5bd5270f9cd948f252bf",
+    "verification": "../../records/ia-tema/I167/R710/verification.json",
+    "verification_sha256": "719c37a3de2654a9873c4eca2c66ea4e6e6cadf2192b41042a9e9d64873a1f1e"
+  },
+  "pending": [
+    "Direct VUE held/released arrow comparison requires I517 authorization.",
+    "Thumb-drag comparison requires I518 authorization.",
+    "No live GTK2 window repaint or human visual review was performed."
+  ],
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "R710 closes the real KDE scheme-export-to-GTK2 palette update gap in an isolated integration path. This is technical I167 coverage, not visual fidelity or user acceptance."
+  }
+}

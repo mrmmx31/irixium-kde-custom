@@ -1,0 +1,41 @@
+Breakpoint 1 at 0x21c10: file src/view/ui_menu_hints.c, line 92.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+Warning: Missing charsets in String to FontSet conversion
+Warning: Missing charsets in String to FontSet conversion
+Warning: Missing charsets in String to FontSet conversion
+[Detaching after fork from child process 2359861]
+command: mousemove
+command: click
+[Detaching after fork from child process 2359866]
+command: type
+Exec arg[0]: ABC
+[Detaching after fork from child process 2359867]
+command: key
+[Detaching after fork from child process 2359869]
+command: key
+[Detaching after fork from child process 2359883]
+command: key
+[Detaching after fork from child process 2359885]
+command: mousedown
+[Detaching after fork from child process 2359913]
+command: mouseup
+
+Breakpoint 1, unmapped (w=0x555555824e30, data=0x55555580daa0, call=0x7ffffffe6030) at src/view/ui_menu_hints.c:92
+92	    (void)w;(void)call;hide(data);
+#0  unmapped (w=0x555555824e30, data=0x55555580daa0, call=0x7ffffffe6030) at src/view/ui_menu_hints.c:92
+#1  0x00007ffff7cfbe74 in _XmCallRowColumnUnmapCallback () from /lib/x86_64-linux-gnu/libXm.so.4
+#2  0x00007ffff7ce0a38 in ?? () from /lib/x86_64-linux-gnu/libXm.so.4
+#3  0x00007ffff7cdeaa8 in ?? () from /lib/x86_64-linux-gnu/libXm.so.4
+#4  0x00007ffff7f6cbaf in ?? () from /lib/x86_64-linux-gnu/libXt.so.6
+#5  0x00007ffff7f6d67c in ?? () from /lib/x86_64-linux-gnu/libXt.so.6
+#6  0x00007ffff7f6e420 in _XtTranslateEvent () from /lib/x86_64-linux-gnu/libXt.so.6
+#7  0x00007ffff7f44e23 in XtDispatchEventToWidget () from /lib/x86_64-linux-gnu/libXt.so.6
+#8  0x00007ffff7f4554b in ?? () from /lib/x86_64-linux-gnu/libXt.so.6
+#9  0x00007ffff7f456c1 in XtDispatchEvent () from /lib/x86_64-linux-gnu/libXt.so.6
+#10 0x00007ffff7f51aa0 in XtAppProcessEvent () from /lib/x86_64-linux-gnu/libXt.so.6
+#11 0x000055555555f4cd in drain_app (app=0x555555595c70) at tests/ui_help_flow.c:20
+#12 drain (w=0x5555556338c0) at tests/ui_help_flow.c:21
+#13 post_editor_menu (field=field@entry=0x5555556338c0) at tests/ui_help_flow.c:142
+#14 0x00005555555614a6 in tl_test_file_dialog_native (view=view@entry=0x5555555daf50, shell=shell@entry=0x5555555c42f0) at tests/ui_help_flow.c:235
+#15 0x000055555555c746 in main (argc=<optimized out>, argv=<optimized out>) at tests/native_metrics_view.c:181

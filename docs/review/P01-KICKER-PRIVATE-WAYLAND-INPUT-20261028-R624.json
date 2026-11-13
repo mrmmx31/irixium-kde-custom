@@ -1,0 +1,70 @@
+{
+  "id": "R624",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 applications menu open/search/hover behavior",
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "isolated private Wayland KWin and native Kicker QML inspection",
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "production_qml_changed": false,
+    "board_database_changed": false,
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R624-private-wayland-pointer-20261028/",
+    "preserved_evidence": "records/ia-tema/P01/R624-private-wayland-pointer-20261028/"
+  },
+  "observations": {
+    "native_menu_opened_in_private_wayland": true,
+    "real_kicker_menu_representation_loaded": true,
+    "search_field_active_focus_at_open": true,
+    "search_field_center_logical_px": [168, 402],
+    "first_category_center_logical_px": [164, 77],
+    "category_count": 11,
+    "xdotool_attempt": {
+      "commands_reported": ["keyboard_sent", "pointer_moved", "search_clicked", "search_text_sent"],
+      "native_wayland_pointer_enter_observed": false,
+      "qml_current_index": -1,
+      "qml_contains_mouse": false,
+      "child_dialog_visible": false,
+      "interpretation": "Xwayland-directed XTest did not constitute a compositor-delivered Wayland pointer event; do not count as hover or typing validation."
+    },
+    "fake_input_attempt": {
+      "protocol": "org_kde_kwin_fake_input",
+      "advertised_by_private_kwin": false,
+      "events_sent": false,
+      "log": "KWin fake-input interface unavailable"
+    },
+    "cleanup": {
+      "private_owned_daemons_exited": true,
+      "owned_pids": [950494, 950495],
+      "production_session_untouched": true
+    }
+  },
+  "interpretation": {
+    "status": "input_delivery_unverified",
+    "conclusion": "The private Wayland run verifies that the Kicker representation opens and its search field reports activeFocus. It does not verify real keyboard delivery, pointer hover, submenu creation from hover, or the user's production symptom.",
+    "broad_harness_result": "The runner's aggregate RESULTADO.json is not used as a verdict: it includes unrelated P01 pin/favorites/launch checks that this focused probe did not execute.",
+    "production_fix_indicated": false,
+    "human_acceptance": false
+  },
+  "evidence": {
+    "host_run3_sha256": "64b23fa9b34dabe8bc683537cf81b9edebc9de2627fc3f94d6512902d67e9ab1",
+    "pointer_actions_run3_sha256": "bedbfcd61d5afd51d4db86ee52c654a571551dec0b12b5ee5eac52ac6fa7c602",
+    "host_run5_sha256": "d10e1ef53064cb60222df984a07ba8d1febbc5f2f73b272e23713892f7c35eb1",
+    "fake_input_log_sha256": "567192715734cbc86d244299b5cf9fa263c0d2f07087c830d7a42f7298b55851",
+    "kwin_log_sha256": "9f372689ebc57bb1a8d7dc62df6f5de810048ea7490b45f4b82809bd1d6c493d",
+    "cleanup_sha256": "74294991619eadbb4b04c11ea77d7b088586bb51bcab62090ebb53f2333f3e7e"
+  },
+  "next": [
+    "Continue static review of the P01 click and launch path without inferring a Plasma crash cause from the user's report.",
+    "Use only a valid native pointer/keyboard path for an isolated Wayland reproduction; otherwise retain live user confirmation as pending.",
+    "Do not alter production QML until an event trace or a reproducible isolated failure identifies the responsible transition."
+  ]
+}

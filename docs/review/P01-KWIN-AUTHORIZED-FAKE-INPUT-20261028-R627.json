@@ -1,0 +1,89 @@
+{
+  "id": "R627",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "board_generation": 9114,
+    "item_generation": 9100,
+    "closed": false,
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "private KWin Wayland privileged fake-input probe against the native Kicker menu fixture",
+    "compositor": "kwin_wayland --virtual with default permission checks enabled",
+    "client": "test binary declared only in private XDG_DATA_HOME via X-KDE-Wayland-Interfaces=org_kde_kwin_fake_input",
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "private_compositor_exited": true,
+    "temporary_root": "/home/lsi/tempia/domainos-theme-work/P01/R627-authorized-fake-input-20261028",
+    "preserved_evidence": "records/ia-tema/P01/R627-private-fake-input-20261028/"
+  },
+  "observations": {
+    "kwin_authorized_probe": true,
+    "fake_input_version": "v5",
+    "seat_capability_sequence": [
+      "keyboard (2)",
+      "keyboard+pointer (3)",
+      "keyboard+pointer+touch (7)",
+      "keyboard+touch (6)",
+      "keyboard (2)"
+    ],
+    "fake_input_authenticate_requested": true,
+    "synthetic_pointer_and_key_requests_sent": true,
+    "kicker_menu_remained_visible_after_sequence": true,
+    "kicker_search_text_after_sequence": "",
+    "kicker_current_index_after_sequence": -1,
+    "kicker_list_contains_mouse_after_sequence": false,
+    "kicker_child_dialog_after_sequence": false,
+    "host_surface_pointer_observer_after_sequence": false,
+    "aggregate_runner_checks": "failed because this invocation intentionally did not execute its broader pins/favorites/launch scenarios; not used as R627 verdict"
+  },
+  "interpretation": {
+    "status": "inconclusive_input_delivery",
+    "conclusion": "KWin did expose its privileged fake-input v5 interface to a test client whose private desktop entry requested it, and the seat gained a pointer capability while the fake device existed. Yet the synthetic sequence did not change the observed Kicker search text/currentIndex/containsMouse and the fixture host did not log pointer enter/motion. This does not reproduce the reported hover-close or typing failure; it narrows the next diagnostic to event delivery/coordinate/focus on the isolated surface. No production fix is justified by this probe.",
+    "production_fix_indicated": false,
+    "human_acceptance": false
+  },
+  "sources": [
+    {
+      "url": "https://sources.debian.org/src/kwin/4:6.3.6-1/src/wayland_server.cpp",
+      "claim": "Privileged globals are filtered per client; requested interfaces are derived from desktop metadata; fake-input is on the deny list unless declared."
+    },
+    {
+      "url": "https://sources.debian.org/src/kwin/4:6.3.6-1/src/input.cpp",
+      "claim": "When WaylandServer exists, InputRedirection installs FakeInputBackend."
+    },
+    {
+      "url": "https://sources.debian.org/src/kwin/4:6.3.6-1/src/backends/fakeinput/fakeinputbackend.cpp",
+      "claim": "authenticate marks the device authenticated; absolute pointer and key requests emit KWin input-device events."
+    },
+    {
+      "url": "https://sources.debian.org/src/kwin/4:6.3.6-1/src/pointer_input.cpp",
+      "claim": "Absolute pointer positions are processed as compositor coordinates and then delivered through pointer input processing."
+    }
+  ],
+  "evidence_files": {
+    "fake-input-client.c": "7db5ff517a90140711ecd15d41356b99bb9ba39f75d569819bb1f0686018c3a2",
+    "fake-input.xml": "89f4ada4a1f09168a4528f47c0495e3f89dc2a25e8b23f4539ed3f5110eff708",
+    "run5/RESULTADO.json": "6381f8d3e4f133e4ea4b540f3b94f453e18eb7af8184522850c140c8cefafe50",
+    "run5/cleanup.json": "981d9987f04f94e12551c52de5131eebb30323a8783a2b04c312156ca8f0337e",
+    "run5/fake-input.log": "496946f07b4ccba980d825f5afde11ab587fcf31319abf0c15ee710a2abbdfcb",
+    "run5/host.log": "53fad6a8a2b572854c3808f21a05801dc193e8a5140511f933ba9d3776655d7d",
+    "run5/kwin.log": "1a9b4371063f80984f43c470c8906d93f0b1c40b2f961bb742ac7346d2958a54",
+    "run7/RESULTADO.json": "01834a518374c7981c4d0192a68a170882989f7698edab976ac7ab84ff9d6f6c",
+    "run7/cleanup.json": "3a179780203ae5562a9a7e3f4d329baf01fa357e687c8cd4712a5ccba646ff8e",
+    "run7/fake-input.log": "6ceb3319c3be3965d1cb0c4ec9383c20ef3291a83f590f97e1407af348cfcb2a",
+    "run7/host.log": "a4e911174c7d42f2c82920cec028fe2abb8bcbb5a1dcf58f51be138d44298afa",
+    "run7/kwin.log": "5eef6257268959e7cbc252a6de8b8616ebeefa2c0648f4e1cc7b034efdbe2002",
+    "testar-r627.py": "8e35410500b453e00df63c62f3882629ecc0a654f38ab124ec42c690ec921497"
+  },
+  "next": [
+    "Instrument actual pointer enter/motion delivery to both the host surface and popup surface, and verify the private output geometry/cursor position before claiming the UI received input.",
+    "After the input route is proven, repeat only the necessary search focus and category-hover sequence; record event ordering for visible/activeFocus/currentIndex/child popup/deactivation."
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-11T19:15:55.856171+00:00",
+  "stage": "T04 GTK2 anchor capability integration",
+  "status": "generation_scene_selector_and_eight_size_cases_passed",
+  "proofs": {
+    ".qa-t04-anchor-foundation/pipeline-r1/RESULTADO.json": {
+      "sha256": "df34ea38462755d108bb9ec9ecf76d48e7bd32d0615add9b801eea4c21e270c8",
+      "status": "passed"
+    },
+    ".qa-theme-lab-spin-fd_pbdo8/RESULTADO.json": {
+      "sha256": "fc58fe8685b83725254f92abfda2874abfc4985ddca91ceac7e48fb65c74d14a",
+      "status": "passed"
+    }
+  },
+  "verified": [
+    "Backend, generation, scene and C selector accept valid GTK2 scrollbar anchors",
+    "Private pipeline with actual anchored recipes passes geometry/gestures/rollback",
+    "Actual Motif pointer selection preserves placement",
+    "Horizontal and vertical requested120,1,0,160 keep boundary in both origins",
+    "Automatic GTK2 scrollbar requisition49px measured, explicit1px allocated1px",
+    "Other recipe values and schema2 anchor fields preserved",
+    "Backend34 and scene contract5 passed"
+  ],
+  "limits": [
+    "GtkRange may return internal thumb outside area under natural requisition; raw measurement retained as range_geometry_unavailable while real allocation/position still emitted",
+    "SaveLoad/project UndoRedo/restart extension not yet run",
+    "GTK3 shared-harness regression failed because arrow was outside clip; fixture adjusted, retest pending",
+    "No historical fidelity or personal delivery claimed"
+  ],
+  "remaining": [
+    "Finish current compile then run extended GTK2 and GTK3 controller proofs",
+    "Coordinate delivery only after proofs pass"
+  ],
+  "live_compile": {
+    "session_id": 7275,
+    "pid": 2963660,
+    "observed_at": "2026-10-11T19:15:55.856171+00:00",
+    "state": "live_with_active_cc1"
+  },
+  "goal_complete": false,
+  "user_approval_filled": false
+}

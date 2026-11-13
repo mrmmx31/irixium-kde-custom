@@ -1,0 +1,19 @@
+{
+  "rc": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/toggles-native-r3/DomainOS/toggle.gtkrc",
+  "assets": [
+    "toggle-normal.png",
+    "toggle-normal-selected.png",
+    "toggle-disabled.png",
+    "toggle-disabled-selected.png",
+    "toggle-backdrop.png",
+    "toggle-backdrop-selected.png"
+  ],
+  "translated_control": "toggle",
+  "scope": "Standalone native toggle foundation; scene/controller integration pending",
+  "unsupported": [
+    "inconsistent",
+    "focus",
+    "default indicator",
+    "automatic backdrop"
+  ]
+}

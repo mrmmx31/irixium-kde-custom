@@ -1,0 +1,1268 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK4",
+  "display": ":74",
+  "resolution": "1600x1000",
+  "runtime": {
+    "gtk4": "4.18.6",
+    "theme": "Default",
+    "font": "Sans 10",
+    "custom_css": false
+  },
+  "resource_assignment": {
+    "controls": 53,
+    "utf8_resources_verified": true,
+    "internal": {
+      "scrollbars": 12,
+      "menu_rows": 15,
+      "scrollbar_contract": {
+        "gtk_version": "4.18.6",
+        "widget_css_name": "scrollbar",
+        "arrow_stepper_properties": {
+          "has-backward-stepper": false,
+          "has-forward-stepper": false,
+          "has-secondary-backward-stepper": false,
+          "has-secondary-forward-stepper": false
+        },
+        "observed_widget_type": "GtkScrollbar",
+        "orientation": "horizontal"
+      }
+    },
+    "limits": "Current native child tree; later-created controls and hover not verified"
+  },
+  "timed_hover_matrix": {
+    "status": "partial",
+    "initial_cold_delay_ms": 500,
+    "mapped_targets_first_page": 26,
+    "mapped_targets_second_page": 5,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "within_screen": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": false,
+    "stable_ms": 400,
+    "closed_after_leave": true,
+    "cases": [
+      {
+        "page": 0,
+        "control_type": "GtkPopoverMenuBar",
+        "tooltip_text": "Menu nativo da amostra: acione, alterne opções ou feche somente esta galeria privada.",
+        "control_rect_px": [
+          6,
+          31,
+          838,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          235,
+          62,
+          381,
+          51
+        ],
+        "tooltip_rect_px": [
+          235,
+          62,
+          381,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            235,
+            62,
+            381,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkNotebook",
+        "tooltip_text": "Abas de controles nativos: escolha controles ou texto; os valores das páginas são preservados.",
+        "control_rect_px": [
+          6,
+          64,
+          838,
+          525
+        ],
+        "initial_tooltip_rect_px": [
+          429,
+          338,
+          376,
+          51
+        ],
+        "tooltip_rect_px": [
+          241,
+          338,
+          376,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            429,
+            338,
+            376,
+            51
+          ],
+          [
+            241,
+            338,
+            376,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkButton",
+        "tooltip_text": "Botão GTK4: mantenha pressionado para observar o relevo; solte para registrar o clique da amostra.",
+        "control_rect_px": [
+          15,
+          110,
+          144,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          87,
+          148,
+          396,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          148,
+          396,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            87,
+            148,
+            396,
+            51
+          ],
+          [
+            0,
+            148,
+            396,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkToggleButton",
+        "tooltip_text": "Botão alternável da amostra: clique para ligar ou desligar seu estado.",
+        "control_rect_px": [
+          167,
+          110,
+          128,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          28,
+          148,
+          407,
+          51
+        ],
+        "tooltip_rect_px": [
+          28,
+          148,
+          407,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            28,
+            148,
+            407,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkButton",
+        "tooltip_text": "Botão desabilitado da amostra: mostra o estado sem executar uma ação.",
+        "control_rect_px": [
+          303,
+          110,
+          135,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          165,
+          148,
+          411,
+          51
+        ],
+        "tooltip_rect_px": [
+          165,
+          148,
+          411,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            165,
+            148,
+            411,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkMenuButton",
+        "tooltip_text": "Abre o menu nativo desta amostra; nenhuma ação inicia aplicações pessoais.",
+        "control_rect_px": [
+          446,
+          110,
+          165,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          341,
+          148,
+          375,
+          51
+        ],
+        "tooltip_rect_px": [
+          341,
+          148,
+          375,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            341,
+            148,
+            375,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkEntry",
+        "tooltip_text": "Entrada nativa de uma linha: edite o texto da amostra; não modifica o tema.",
+        "control_rect_px": [
+          15,
+          152,
+          268,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          0,
+          190,
+          389,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          190,
+          389,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            0,
+            190,
+            389,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkEntry",
+        "tooltip_text": "Campo somente leitura ou desabilitado: mostra texto sem permitir alteração.",
+        "control_rect_px": [
+          291,
+          152,
+          268,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          232,
+          190,
+          386,
+          51
+        ],
+        "tooltip_rect_px": [
+          232,
+          190,
+          386,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            232,
+            190,
+            386,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkEntry",
+        "tooltip_text": "Campo somente leitura ou desabilitado: mostra texto sem permitir alteração.",
+        "control_rect_px": [
+          567,
+          152,
+          268,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          701,
+          190,
+          386,
+          51
+        ],
+        "tooltip_rect_px": [
+          508,
+          190,
+          386,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            701,
+            190,
+            386,
+            51
+          ],
+          [
+            508,
+            190,
+            386,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Escolha independente da amostra: observe os estados marcado, misto ou desabilitado.",
+        "control_rect_px": [
+          15,
+          194,
+          48,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          0,
+          225,
+          363,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          225,
+          363,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            0,
+            225,
+            363,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Escolha independente da amostra: observe os estados marcado, misto ou desabilitado.",
+        "control_rect_px": [
+          71,
+          194,
+          82,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          0,
+          225,
+          363,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          225,
+          363,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            0,
+            225,
+            363,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Escolha independente da amostra: observe os estados marcado, misto ou desabilitado.",
+        "control_rect_px": [
+          161,
+          194,
+          67,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          13,
+          225,
+          363,
+          51
+        ],
+        "tooltip_rect_px": [
+          13,
+          225,
+          363,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            13,
+            225,
+            363,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Escolha independente da amostra: observe os estados marcado, misto ou desabilitado.",
+        "control_rect_px": [
+          236,
+          194,
+          83,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          277,
+          225,
+          363,
+          51
+        ],
+        "tooltip_rect_px": [
+          96,
+          225,
+          363,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            277,
+            225,
+            363,
+            51
+          ],
+          [
+            96,
+            225,
+            363,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+        "control_rect_px": [
+          327,
+          194,
+          76,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          164,
+          225,
+          402,
+          51
+        ],
+        "tooltip_rect_px": [
+          164,
+          225,
+          402,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            164,
+            225,
+            402,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkCheckButton",
+        "tooltip_text": "Opção exclusiva do grupo: selecionar esta opção desmarca a outra.",
+        "control_rect_px": [
+          411,
+          194,
+          76,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          449,
+          225,
+          402,
+          51
+        ],
+        "tooltip_rect_px": [
+          248,
+          225,
+          402,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            449,
+            225,
+            402,
+            51
+          ],
+          [
+            248,
+            225,
+            402,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkSwitch",
+        "tooltip_text": "Interruptor nativo da amostra: altera seu estado ligado/desligado quando habilitado.",
+        "control_rect_px": [
+          191,
+          229,
+          50,
+          26
+        ],
+        "initial_tooltip_rect_px": [
+          30,
+          259,
+          372,
+          51
+        ],
+        "tooltip_rect_px": [
+          30,
+          259,
+          372,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            30,
+            259,
+            372,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkSwitch",
+        "tooltip_text": "Interruptor nativo da amostra: altera seu estado ligado/desligado quando habilitado.",
+        "control_rect_px": [
+          249,
+          229,
+          50,
+          26
+        ],
+        "initial_tooltip_rect_px": [
+          274,
+          259,
+          372,
+          51
+        ],
+        "tooltip_rect_px": [
+          88,
+          259,
+          372,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            274,
+            259,
+            372,
+            51
+          ],
+          [
+            88,
+            259,
+            372,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkSwitch",
+        "tooltip_text": "Interruptor nativo da amostra: altera seu estado ligado/desligado quando habilitado.",
+        "control_rect_px": [
+          307,
+          229,
+          50,
+          26
+        ],
+        "initial_tooltip_rect_px": [
+          332,
+          259,
+          372,
+          51
+        ],
+        "tooltip_rect_px": [
+          146,
+          259,
+          372,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            332,
+            259,
+            372,
+            51
+          ],
+          [
+            146,
+            259,
+            372,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkDropDown",
+        "tooltip_text": "Escolha uma opção da lista nativa; isso não troca o esquema do desktop.",
+        "control_rect_px": [
+          15,
+          263,
+          114,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          0,
+          301,
+          420,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          301,
+          420,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            0,
+            301,
+            420,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkSpinButton",
+        "tooltip_text": "Valor da amostra, sem unidade: mínimo 0, máximo 100, passo 1. Edite ou use as setas; não altera medidas do tema em px.",
+        "control_rect_px": [
+          137,
+          263,
+          112,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          193,
+          301,
+          412,
+          51
+        ],
+        "tooltip_rect_px": [
+          0,
+          301,
+          412,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            193,
+            301,
+            412,
+            51
+          ],
+          [
+            0,
+            301,
+            412,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkScale",
+        "tooltip_text": "Escala da amostra, sem unidade: intervalo 0 a 100, passo 1. O progresso é uma amostra independente.",
+        "control_rect_px": [
+          257,
+          263,
+          578,
+          34
+        ],
+        "initial_tooltip_rect_px": [
+          546,
+          301,
+          407,
+          51
+        ],
+        "tooltip_rect_px": [
+          343,
+          301,
+          407,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            546,
+            301,
+            407,
+            51
+          ],
+          [
+            343,
+            301,
+            407,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkProgressBar",
+        "tooltip_text": "Progresso de exemplo fixado em 57%; não mede uma operação em execução.",
+        "control_rect_px": [
+          15,
+          305,
+          820,
+          20
+        ],
+        "initial_tooltip_rect_px": [
+          425,
+          329,
+          421,
+          51
+        ],
+        "tooltip_rect_px": [
+          215,
+          329,
+          421,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            425,
+            329,
+            421,
+            51
+          ],
+          [
+            215,
+            329,
+            421,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkScrolledWindow",
+        "tooltip_text": "Área rolável da lista: barras horizontal e vertical percorrem o conteúdo nativo.",
+        "control_rect_px": [
+          15,
+          333,
+          820,
+          247
+        ],
+        "initial_tooltip_rect_px": [
+          237,
+          468,
+          384,
+          51
+        ],
+        "tooltip_rect_px": [
+          237,
+          468,
+          384,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            237,
+            468,
+            384,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkListBox",
+        "tooltip_text": "Lista de dados artificiais: selecione uma linha e percorra o conteúdo pelas barras.",
+        "control_rect_px": [
+          15,
+          333,
+          820,
+          247
+        ],
+        "initial_tooltip_rect_px": [
+          429,
+          468,
+          384,
+          51
+        ],
+        "tooltip_rect_px": [
+          237,
+          468,
+          384,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            429,
+            468,
+            384,
+            51
+          ],
+          [
+            237,
+            468,
+            384,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkScrollbar",
+        "tooltip_text": "Barra horizontal: arraste o cursor ou acione o trilho para percorrer o conteúdo nativo.",
+        "control_rect_px": [
+          15,
+          565,
+          805,
+          15
+        ],
+        "initial_tooltip_rect_px": [
+          417,
+          584,
+          375,
+          51
+        ],
+        "tooltip_rect_px": [
+          230,
+          584,
+          375,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            417,
+            584,
+            375,
+            51
+          ],
+          [
+            230,
+            584,
+            375,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 0,
+        "control_type": "GtkScrollbar",
+        "tooltip_text": "Barra vertical: arraste o cursor ou acione o trilho para percorrer o conteúdo nativo.",
+        "control_rect_px": [
+          820,
+          333,
+          15,
+          232
+        ],
+        "initial_tooltip_rect_px": [
+          621,
+          461,
+          420,
+          51
+        ],
+        "tooltip_rect_px": [
+          621,
+          461,
+          420,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            621,
+            461,
+            420,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 1,
+        "control_type": "GtkPopoverMenuBar",
+        "tooltip_text": "Menu nativo da amostra: acione, alterne opções ou feche somente esta galeria privada.",
+        "control_rect_px": [
+          6,
+          31,
+          838,
+          27
+        ],
+        "initial_tooltip_rect_px": [
+          425,
+          62,
+          381,
+          51
+        ],
+        "tooltip_rect_px": [
+          235,
+          62,
+          381,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            425,
+            62,
+            381,
+            51
+          ],
+          [
+            235,
+            62,
+            381,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": false,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 1,
+        "control_type": "GtkNotebook",
+        "tooltip_text": "Abas de controles nativos: escolha controles ou texto; os valores das páginas são preservados.",
+        "control_rect_px": [
+          6,
+          64,
+          838,
+          525
+        ],
+        "initial_tooltip_rect_px": [
+          429,
+          338,
+          411,
+          51
+        ],
+        "tooltip_rect_px": [
+          224,
+          338,
+          411,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            429,
+            338,
+            411,
+            51
+          ],
+          [
+            224,
+            338,
+            411,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 1,
+        "control_type": "GtkScrolledWindow",
+        "tooltip_text": "Área rolável do editor: percorra os parágrafos com as barras nativas.",
+        "control_rect_px": [
+          7,
+          102,
+          836,
+          486
+        ],
+        "initial_tooltip_rect_px": [
+          224,
+          357,
+          411,
+          51
+        ],
+        "tooltip_rect_px": [
+          224,
+          357,
+          411,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            224,
+            357,
+            411,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 1,
+        "control_type": "GtkTextView",
+        "tooltip_text": "Editor nativo de várias linhas: selecione, copie ou edite o texto de amostra; não altera o projeto.",
+        "control_rect_px": [
+          7,
+          102,
+          821,
+          486
+        ],
+        "initial_tooltip_rect_px": [
+          216,
+          357,
+          411,
+          51
+        ],
+        "tooltip_rect_px": [
+          216,
+          357,
+          411,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            216,
+            357,
+            411,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      },
+      {
+        "page": 1,
+        "control_type": "GtkScrollbar",
+        "tooltip_text": "Barra vertical: arraste o cursor ou acione o trilho para percorrer o conteúdo nativo.",
+        "control_rect_px": [
+          828,
+          102,
+          15,
+          486
+        ],
+        "initial_tooltip_rect_px": [
+          629,
+          357,
+          420,
+          51
+        ],
+        "tooltip_rect_px": [
+          629,
+          357,
+          420,
+          51
+        ],
+        "initial_layout_positions_px": [
+          [
+            629,
+            357,
+            420,
+            51
+          ]
+        ],
+        "overlaps_large_owner_region": true,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "status": "passed"
+      }
+    ],
+    "scope": "Mapped native hint-bearing widgets on both pages of the GTK4 gallery; cold delay checked on first target, active-session tooltip cycles on remaining targets."
+  },
+  "conclusion": "GTK4 exposed and dismissed hints for all 31 mapped targets across both gallery pages; the first cold delay was 500 ms, each tooltip stayed stable for 400 ms, remained inside the screen and never covered the pointer, then closed on leave. The overall result remains partial: in both tested vertical GtkScrollbar cases, the native tooltip overlaps part of the scrollbar itself, even though it does not cover the pointer. The GTK4 default tooltip API did not provide a repositioning control in this probe. This receipt does not claim pixel or historical fidelity.",
+  "known_issue": {
+    "control": "GtkScrollbar vertical",
+    "occurrences": 2,
+    "geometry": [
+      {
+        "owner_px": [
+          820,
+          333,
+          15,
+          232
+        ],
+        "tooltip_px": [
+          621,
+          461,
+          420,
+          51
+        ]
+      },
+      {
+        "owner_px": [
+          828,
+          102,
+          15,
+          486
+        ],
+        "tooltip_px": [
+          629,
+          357,
+          420,
+          51
+        ]
+      }
+    ],
+    "impact": "tooltip popup covers some of the scrollbar region while the pointer remains over the bar; criterion to avoid covering the control is not met for this control.",
+    "next": "evaluate a GTK4-supported placement or an explicit documented limitation before calling GTK4 hint behavior complete."
+  },
+  "harness": {
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "b5ad2f09b0ef4645d318fbb32099fac7351a728898dd9a961811440ad40a9609",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "95d071f3b834ebf6ea89b85a037d095e4481867b34825c90947a8dc871f37fa4",
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "3a7cd1fe1df42f8baa7044ad77e2f9f01446e4d972201948ced3d88ce1b0151c"
+  },
+  "raw_run": "~/tempia/t07-gtk4-hover-matrix-20261018/runner-stdout-r9.json",
+  "stderr": "~/tempia/t07-gtk4-hover-matrix-20261018/runner-stderr-r9.log",
+  "limits": [
+    "The app used the system session bus after the per-user inotify-instance limit prevented starting a private dbus-run-session; the app ID is non-unique and the gallery contains only artificial data.",
+    "The tooltip palette came from the active GTK session; no palette matrix was run.",
+    "The list/page targets are one geometry and one centered pointer position each."
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "I167",
+  "date": "2026-10-14",
+  "status": "public_gtk2_all_controls_route_passed",
+  "command": "python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+  "route": "Real backend CLI -> generated GTK2 recipe -> preview_gtk2.py in owned bwrap/Xvfb namespace; no mocks of backend, GTK scene or event parser.",
+  "scenario": {
+    "scheme": "DomainOS-SR10.4",
+    "native_controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "native_control_count": 16,
+    "native_events": 36,
+    "clicks": [
+      {
+        "control_id": "push",
+        "state": {
+          "clicked": true
+        }
+      },
+      {
+        "control_id": "toggle",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "check",
+        "state": {
+          "active": true
+        }
+      },
+      {
+        "control_id": "radio",
+        "state": {
+          "selected_member": 1
+        }
+      }
+    ],
+    "guards_verified": true,
+    "window_closed_normally": true,
+    "preview_exit_code": 0,
+    "recipe_applied": false,
+    "capture": "docs/referencias/domainos-sr104/i167-public-all-controls/20261014/DomainOS-preview.png",
+    "capture_sha256": "f2b2535dd61cd0c4bdb34cefb2c14ffe2477f5a46d8c4afc942d5fbb822703ab"
+  },
+  "limits": [
+    "This proves all 16 control types are emitted by the recipe, mounted by the actual public GTK2 preview and report native metrics. It drives native input only for push, toggle, check and radio.",
+    "It is not an all-controls visual pixel comparison, does not establish all control states, and is not historical fidelity approval.",
+    "MAME/DomainOS VM comparison was not run: the running Xephyr :68 currently shows a black root and a QUIT Mwm dialog; it was preserved without input."
+  ],
+  "source_sha256": {
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "9d4a5c8f40eda551720515bcb24bf4c589cd3e80b7e293633ae98b35ee4070e8",
+    "tools/theme-lab/tests/test_gtk2_all_controls_native.py": "5710565f2813bcff83266c0b84a3f2878ad0314984a83c1909b62546e451dc3e",
+    "tools/theme-lab/tests/probe_gtk2_all_controls_native.py": "a6ee926c3fda34b98847b2626946cf3b816f52cea240a4109bbb1bdc56a09b0d",
+    "tools/theme-lab/tests/test_gtk2_snippet.py": "cb6d5d4e6c4906ddf633b7025d43c268f09141066e393f7cb7c91eddc6e02d5d",
+    "tools/theme-lab/backend.py": "4f65c32cc08ef1231117bff7121115e889a9dcdf45ecfb1f4c5d7bccfe6bb576",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/native_scene_gtk2.py": "3ed58d1127447feb1755b88ded92d01775e38c955698c0fab34390b8341d19fe",
+    "tools/theme-lab/gtk2_session.py": "99c1fdbc773649a5e694d8f0ed3f447fd2d6eb5e8b091fd04278cdbea100e998",
+    "tools/theme-lab/preview_gtk2.py": "d8ffd8d289f15361abd35ebe9f81ed76265fb7154e4b5ee95378b89707f1db3c",
+    "tools/theme-lab/preview_event_writer.py": "3dcb0466b1390383e155100b51012ddd77dfa46c9996b11498b60783646748ac",
+    "tools/theme-lab/scene_contract.py": "d0115114af988c8b7547b7527eb9bb879e1c6a16c43db1f6cbf49e1948add40a"
+  }
+}

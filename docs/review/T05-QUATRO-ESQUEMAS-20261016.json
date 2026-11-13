@@ -1,0 +1,59 @@
+{
+  "at": "2026-10-16T07:18:32Z",
+  "scope": "T05 selected-scheme effective KDE role reader, four palettes; no desktop writes",
+  "schemes": [
+    {
+      "name": "DomainOS",
+      "path": "/home/lsi/.local/share/color-schemes/DomainOS-SR10-4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "status": "ok",
+      "color_count": 50,
+      "titlebar_active": "#3297c7",
+      "window_bg": "#78a0d5",
+      "header_bg": "#3297c7",
+      "provenance": "Header role per-colour when valid; otherwise selected WM role, then effective Window palette"
+    },
+    {
+      "name": "BreezeLight",
+      "path": "/usr/share/color-schemes/BreezeLight.colors",
+      "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "status": "ok",
+      "color_count": 50,
+      "titlebar_active": "#dee0e2",
+      "window_bg": "#eff0f1",
+      "header_bg": "#dee0e2",
+      "provenance": "Header role per-colour when valid; otherwise selected WM role, then effective Window palette"
+    },
+    {
+      "name": "BreezeDark",
+      "path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "status": "ok",
+      "color_count": 50,
+      "titlebar_active": "#292c30",
+      "window_bg": "#202326",
+      "header_bg": "#292c30",
+      "provenance": "Header role per-colour when valid; otherwise selected WM role, then effective Window palette"
+    },
+    {
+      "name": "TestYellow",
+      "path": "/home/lsi/irixium-kde-custom/docs/referencias/domainos-sr104/i200-gtk2-entry/20261014/TestYellow.colors",
+      "scheme_sha256": "76ab8043dfdb507b6db35350e10714705fef9cfad31584f2408d354de898ce7c",
+      "status": "ok",
+      "color_count": 50,
+      "titlebar_active": "#3297c7",
+      "window_bg": "#ecd870",
+      "header_bg": "#3297c7",
+      "provenance": "Header role per-colour when valid; otherwise selected WM role, then effective Window palette"
+    }
+  ],
+  "dynamic_role_distinct_values": {
+    "theme_bg_color_breeze": 4,
+    "theme_button_background_normal_breeze": 4,
+    "theme_base_color_breeze": 4,
+    "theme_selected_bg_color_breeze": 3,
+    "theme_titlebar_background_breeze": 3
+  },
+  "helper_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+  "source_sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+}

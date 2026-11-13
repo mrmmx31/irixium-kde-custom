@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "kind": "font-equivalence-research-proposal",
+  "historical_reference": "Domain/OS SR10.4 HP VUE2.01",
+  "applied": false,
+  "human_approved": false,
+  "roles": {
+    "controls": {
+      "original": "Swiss742 Bold system16",
+      "original_px": 16,
+      "candidates": [
+        {
+          "family": "Liberation Sans",
+          "bold": true,
+          "absolute_px": 12
+        },
+        {
+          "family": "Nimbus Sans",
+          "bold": true,
+          "absolute_px": 12
+        }
+      ],
+      "limit": "ASCII advances close, glyph masks unequal; Qt6 Nimbus exactMatchfalse"
+    },
+    "text": {
+      "original": "Prestige Medium user8x16",
+      "original_px": 16,
+      "candidates": [
+        {
+          "family": "Liberation Mono",
+          "absolute_px": 13
+        },
+        {
+          "family": "Nimbus Mono PS",
+          "absolute_px": 13
+        }
+      ],
+      "limit": "Pango advance8; Qt advance7.796875, ink/height differ"
+    },
+    "date": {
+      "original": "Swiss742 Bold system17",
+      "original_px": 17,
+      "candidates": [
+        {
+          "family": "Liberation Sans",
+          "bold": true,
+          "absolute_px": 14
+        }
+      ],
+      "limit": "Pango Oct11/Fri advance differences -2/-1px, same ink height10, not glyph equality; panel approved font retained"
+    }
+  },
+  "preferred_trial": "Liberation candidates are a trial proposal, not the original fonts or a user choice",
+  "installation_gate": "Separate per-toolkit adaptation and user choice; no automatic install",
+  "palette": "No color values: use current KDE roles",
+  "coverage_gate": "Unicode original text and rendered coverage must both pass; I179 independent"
+}

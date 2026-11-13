@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-REVERSE-VIDEO-20261025-R200",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": "Domain/OS SR10.4 / HP VUE 2.01 on Apollo DN3500, MAME 0.276 assistant clone",
+  "question": "Does GTK2 GtkIconView selection reproduce the VUE XmpIcon reverse-video label without selecting the folder pixmap and cell padding?",
+  "native_observation": {
+    "action": "File Manager View > Select All (Ctrl+S), then restore with Unselect All (Ctrl+U)",
+    "selected_state": "XmpIcon names use black text on a white label rectangle; folder pixmaps and surrounding cell area retain the normal View face.",
+    "native_capture": "~/tempia/ia-tema/evidence/I167/select-all-after-r200.png",
+    "native_sha256": "165cdb06a8c0e91ed997bf3709eafbbc17019e5378d7863f5b40a06f78bcc23a",
+    "restored_capture": "~/tempia/ia-tema/evidence/I167/final-unselected-r200.png",
+    "restored_sha256": "ff1f04412e422476f6d61b1d0c6bb3e8123597e74b41d8aac1c33c58c51b1815",
+    "interaction": "Keyboard accelerators only; no mouse movement or click was sent to MAME during this selection observation."
+  },
+  "gtk2_preview": {
+    "runtime": "GTK 2.24.33, native GtkIconView in private Xvfb, focused single selection, 1:1 capture",
+    "palette_source": "DomainOS-SR10-4 role fixture derived from the active KDE palette; no final RGB values are embedded in the adapter",
+    "selected_capture": "~/tempia/i167-r200-gtk2-iconview/gtk2-iconview-selected-focused.png",
+    "selected_sha256": "6294030e10891fddf860dc915f2fdee3b0baa9d0112e3ec4c89aadea32b5ce61",
+    "color_result": "Selected text and face match the observed VUE reverse-video colors for this palette; adapter recomputes the colors from current KDE View roles and contrast on palette refresh.",
+    "geometry_result": "Not matched: GTK2 paints the selected-cell face across the icon and its label allocation (approximately 130x51 px in this fixture); VUE paints only the text label (approximately 101x16 px for domain_examples in the native capture)."
+  },
+  "capability_probe": {
+    "upstream_gtk2_source": {
+      "version_branch": "GNOME GTK gtk-2-24 branch",
+      "function": "gtk_icon_view_paint_item",
+      "finding": "When an item is selected, GTK2 calls gtk_paint_flat_box with detail icon_view_item and the full item width and height before drawing the cells. The theme provides the face color but does not receive a text-only selection rectangle.",
+      "source": "https://raw.githubusercontent.com/GNOME/gtk/gtk-2-24/gtk/gtkiconview.c"
+    },
+    "normal_cell_face_variant": {
+      "capture": "~/tempia/i167-r200-gtk2-iconview/variant-no-cell-highlight/gtk2-iconview-selected-focused.png",
+      "sha256": "9f6bf103d4f3e633008a2928f13e36722e94f2d15854e3e37b348badc112f05c",
+      "result": "Removing the selected GtkIconView base face removes the full-cell rectangle but also removes the white label face; selected text alone remains."
+    },
+    "base_normal_bg_selected_variant": {
+      "capture": "~/tempia/i167-r200-gtk2-iconview/variant-bg-only/gtk2-iconview-selected-focused.png",
+      "sha256": "7bcc4881d0dc7f6c4a6c54c0cf677b8e5dbc63b9c471bf82d0689e8b283046fe",
+      "result": "Keeping bg[SELECTED] white while base[SELECTED] uses the normal face still paints the full cell rectangle; standard GTK2 RC cannot clip it to the text renderer."
+    }
+  },
+  "automated_validation": {
+    "command": "TMPDIR=/home/lsi/tempia PYTHONPATH=tests python3 -m unittest test_domainos_motif.GtkDomainOSTest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests -v",
+    "result": "17 tests passed",
+    "scope": "Palette role mapping and refresh, runtime bundle immutability, GTK2 RC generation and existing adjacent regressions. This does not prove historical geometry or human approval."
+  },
+  "result": "The palette-dependent reverse-video color translation is supported by a native SR10.4 paired state. The GTK2 theme-level highlight geometry remains visibly different; upstream GTK2 source confirms the selected background is painted over the full item rectangle before the cell renderers. No application-specific GtkIconView subclass or custom GTK2 theme engine was added.",
+  "limits": [
+    "The GTK2 capture is a controlled native preview, not a live application or XChat session.",
+    "Font metrics, label wrapping, hover and rubberband states remain outside this comparison.",
+    "The MAME SDL host grab is not measured by this visual receipt; no capture hook or VM option was changed.",
+    "Human visual approval remains pending."
+  ],
+  "next": "Keep I167 open. Preserve the theme-only limitation; any application-specific renderer or custom GTK2 engine requires a separately authorized proposal. Continue the remaining GTK2 comparisons only."
+}

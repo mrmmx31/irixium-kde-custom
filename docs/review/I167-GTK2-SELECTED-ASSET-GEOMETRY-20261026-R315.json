@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R315",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "selected-gtk2-assets-are-one-pixel-larger-than-current-repository-assets",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only semantic comparison of GTK2 assets referenced by the selected installed recipe and the current repository recipe."
+  },
+  "inputs": {
+    "current_recipe": {
+      "path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203"
+    },
+    "selected_installed_recipe_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "asset_reference_pairs": 106
+  },
+  "comparison": {
+    "shared_paths_identical_sha256": 66,
+    "renamed_directional_assets": {
+      "count": 40,
+      "definition": "Four directions × five states × arrow glyph and stepper cell.",
+      "current_repository_arrow_glyphs": "11x11 px",
+      "selected_installed_arrow_glyphs": "12x12 px",
+      "current_repository_stepper_cells": "15x15 px",
+      "selected_installed_stepper_cells": "16x16 px",
+      "each_semantic_pair_has_different_dimensions": true
+    },
+    "gtkrc_metrics": {
+      "current_repository": {
+        "slider_width": 11,
+        "stepper_size": 15,
+        "trough_border": 2
+      },
+      "selected_installed": {
+        "slider_width": 16,
+        "stepper_size": 16,
+        "trough_border": 0
+      }
+    }
+  },
+  "interpretation": "The selected theme is not merely named differently: every directional arrow/stepper state uses the old asset naming and larger one-pixel geometry, and its GtkRange metrics differ from the current repository recipe. Restarting an application while this installed directory remains selected will not load the new repository files.",
+  "limits": [
+    "This compares selected files and config; it does not inspect GTK2 in-memory style caches or prove actual application pixels.",
+    "No asset, profile, application, or live process was modified.",
+    "Installing the current recipe is outside the authorized preview-adapter scope of I167."
+  ],
+  "isolation": {
+    "profile_written": false,
+    "theme_installed": false,
+    "xchat_touched": false,
+    "scripts_or_sessions_stopped": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "This confirms the selected installation is stale but adds no implementation change, VM held-state comparison, or human visual acceptance. It is not a fidelity score."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "id": "R672",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the four normal GTK2 trough junction caps in the newly regenerated and selected user-lsi palette bundle against the canonical Domain/OS SR10.4 + HP VUE 2.01 scrollbar crops, at 1:1.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "historical_reference": {
+      "system": "Domain/OS SR10.4 + HP VUE 2.01",
+      "source": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "source_sha256": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07",
+      "horizontal_crop": {
+        "file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+        "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+        "dimensions": [542, 20]
+      },
+      "vertical_crop": {
+        "file": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+        "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+        "dimensions": [20, 258]
+      }
+    },
+    "active_user_palette": {
+      "profile": "/home/lsi/.gtkrc-2.0",
+      "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+      "palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+      "active_state_sha256": "c8130043582211406936839dc90c21414963d3ccfe10cc2db7cb84f2dbf612f1",
+      "kde_color_roles_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "source_contract": {
+        "file": "tools/domainos_scrollbar_rules.json",
+        "sha256": "5f56bf69a5ca67bf687550d979f001ed83953d7c9a5ddf8d6d3ea647efc1d92e"
+      }
+    },
+    "active_normal_trough_assets": {
+      "horizontal": {
+        "file": "assets/scroll-trough-normal-horizontal.png",
+        "sha256": "ce22b1025c54b16688a622b34a24d3c63f8da6f7093bf0b5f88915da799f4c3f",
+        "dimensions": [24, 15]
+      },
+      "vertical": {
+        "file": "assets/scroll-trough-normal-vertical.png",
+        "sha256": "c17fcd085e4a53c97225f8500cd4fed4b67efc4896f2a9fc9ef4529a72c7ca4b",
+        "dimensions": [15, 24]
+      }
+    }
+  },
+  "method": {
+    "comparison": "RGBA exact pixel comparison, no scaling or interpolation",
+    "reference_strips_local_coordinates_exclusive": {
+      "horizontal_start": [17, 4, 22, 19],
+      "horizontal_end": [521, 4, 526, 19],
+      "vertical_start": [4, 17, 19, 22],
+      "vertical_end": [4, 237, 19, 242]
+    },
+    "bundle_strips_local_coordinates_exclusive": {
+      "horizontal_start": [0, 0, 5, 15],
+      "horizontal_end": [19, 0, 24, 15],
+      "vertical_start": [0, 0, 15, 5],
+      "vertical_end": [0, 19, 15, 24]
+    }
+  },
+  "result": {
+    "horizontal_start": "0/75 differing RGBA pixels",
+    "horizontal_end": "0/75 differing RGBA pixels",
+    "vertical_start": "0/75 differing RGBA pixels",
+    "vertical_end": "0/75 differing RGBA pixels"
+  },
+  "related_stepper_asset_identity_check": {
+    "prior_pixel_receipt": "docs/review/I167-GTK2-SELECTED-BUNDLE-NORMAL-ARROWS-20261028-R666.json",
+    "gtkrc_mapping": "GTK2 scrollbar function STEPPER uses scrollbar-stepper-{direction}-normal.png; generic ARROW assets are a separate mapping.",
+    "hashes_equal_to_R666": {
+      "left": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+      "right": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+      "up": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+      "down": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"
+    },
+    "result": "All four active stepper asset hashes equal the R666 assets that matched their SR10.4/VUE 15x15 cells in 0/225 pixels."
+  },
+  "limits": [
+    "This proves exact pixels for the four normal junction-cap assets in the selected regenerated palette, not that every open GTK2 window visibly repainted.",
+    "It does not cover disabled or pressed trough caps, application-specific geometry, or interactive VM input.",
+    "I517 remains unauthorized; no MAME mouse or keyboard input was sent. Human visual acceptance remains pending."
+  ],
+  "technical_coverage_estimate": {
+    "scope": "GTK2 scrollbar normal-state and user-profile deployment substage only",
+    "percent": 95,
+    "basis": "R671 deployment plus R672 exact RGBA equality for all four normal junction caps in the active regenerated palette; live repaint and remaining interaction/human acceptance are still separate. This is not the full GTK2 adapter or P10, and is not a fidelity score."
+  }
+}

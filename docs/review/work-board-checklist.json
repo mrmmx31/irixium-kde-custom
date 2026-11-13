@@ -1,0 +1,584 @@
+{
+  "schema_version": 1,
+  "kind": "motif_work_board",
+  "title": "DomainOS — trabalho por autorização",
+  "items": [
+    {
+      "id": "T01",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Medidas nativas, spins e equivalência de tamanho",
+      "technical_status": "Spins e largura/altura estão no código; pipeline de métricas ainda é rascunho.",
+      "scope": "Concluir métricas e tamanho por controle em Motif/GTK3; diferenciar automático, mínimo e personalizado, mantendo escala 1:1.",
+      "criteria": [
+        "Mostrar largura e altura medidas dos dois controles correspondentes.",
+        "Alterar pelo spin e conferir a prévia acoplada e separada.",
+        "Concluir a view/emissor de métricas antes de recompilar o laboratório."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T02",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Catálogo em árvore e montagem dos controles",
+      "technical_status": "16 tipos de controles em cinco categorias já existem.",
+      "scope": "Trocar o catálogo por árvore com checkboxes; selecionar categorias e controles, mantendo montagens e posições equivalentes.",
+      "criteria": [
+        "Expandir/recolher categorias e ativar controles individualmente.",
+        "Persistir visibilidade, seleção, posições e montagem no projeto."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T03",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Propriedades e estados de cada controle",
+      "technical_status": "Receitas globais e estados básicos existem; parâmetros individuais ainda são limitados.",
+      "scope": "Agrupar ferramentas por controle: botões, setas, barras, entradas e contêineres; editar estado sem confundir a amostra com default histórico.",
+      "criteria": [
+        "Editar normal, pressionado, desabilitado e foco quando a API permitir.",
+        "Indicar limites e distinguir parâmetros compartilhados dos individuais.",
+        "Comparar com a referência Motif e a VM SR10.4 no escopo escolhido."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T04",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Prévias nativas e demais adaptadores",
+      "technical_status": "Motif e GTK3 têm controles reais. Outros seletores não equivalem a tradutores prontos.",
+      "scope": "Concluir os adaptadores uma família por vez: GTK2/4, Qt5/6, Kvantum e Plasma. GTK1/5 só se houver runtime viável.",
+      "criteria": [
+        "Acoplada e separada interpretam a mesma receita nativamente.",
+        "Checkbox controla a prévia separada e persiste no projeto.",
+        "Família ausente é indicada como indisponível; não usar desenho substituto."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T05",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Esquemas, papéis de cores e pipeta",
+      "technical_status": "Leitor KColorScheme e referência Motif interativa já existem; pipeta é X11.",
+      "scope": "Regular fatores e papéis por controle sem RGB final estático; tornar medidas da pipeta e limites X11/Wayland claros.",
+      "criteria": [
+        "Esquema escolhido altera apenas itens de teste, preservando o desktop.",
+        "A pipeta registra posição, cor e origem; não substitui papéis KDE automaticamente.",
+        "Conferir pares de contraste e estados no controle selecionado."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T06",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Código: realce, busca e explicações",
+      "technical_status": "Trecho do controle selecionado existe; busca e realce ainda faltam.",
+      "scope": "Adicionar busca para frente/trás e realce do trecho; explicar nomes como breeze nos papéis e emitir só o que está em edição.",
+      "criteria": [
+        "Busca com direção, correspondência e indicação de resultado.",
+        "Realce legível com o esquema selecionado.",
+        "Texto explica que o sufixo dos papéis KDE não fixa a aparência Breeze."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T07",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Hints e orientação da interface",
+      "technical_status": "Hints gerais do laboratório ainda precisam de implementação e revisão.",
+      "scope": "Adicionar dica em cada ação, combobox e parâmetro; informar finalidade, unidade, efeito e limites.",
+      "criteria": [
+        "Dicas com atraso, sem cobrir o controle nem oscilar.",
+        "Medidas em px e fatores sem unidade claramente identificados.",
+        "Orientação adapta a explicação a novice, intermediate ou expert."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T08",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Projetos, propostas e exportação verificável",
+      "technical_status": "Modelo JSON, receitas por família e exportação privada já existem.",
+      "scope": "Completar fluxos de abrir/salvar/importar e comparar proposta, cena aplicada e exportação; instalação exige resultado revisável.",
+      "criteria": [
+        "Reabrir projeto sem perder ajustes, posições ou receitas de outras famílias.",
+        "Exportar somente mudanças e suas dependências, com origem das regras.",
+        "Mostrar o que foi aplicado à prévia e o que ainda é proposta."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T09",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Execução nativa, atualização e recuperação",
+      "technical_status": "Tarefas assíncronas existem; execução normal ainda precisa fechar a etapa.",
+      "scope": "Rodar na sessão do usuário com prévias isoladas; atualização manual ou automática com atraso; tratar falhas sem bloquear a UI.",
+      "criteria": [
+        "Falha ou timeout de um preview mantém editor e dados responsivos.",
+        "Eventos antigos não alteram a cena nova; restauração não perde projeto.",
+        "Fechar apenas processos próprios e preservar trabalhos do usuário."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "T10",
+      "type": "task",
+      "group": "Ferramenta",
+      "title": "Validação, documentação e entrega da ferramenta",
+      "technical_status": "V2 e referência Motif possuem recibos; não são aprovação de todos os recursos.",
+      "scope": "Consolidar testes por entrada alterada, revisão manual por etapas, dependências portáveis e versão verificável.",
+      "criteria": [
+        "Reutilizar provas válidas e registrar escopo/hashes das novas.",
+        "Atualizar manual, índice, fila e instruções de compilação sem caminhos pessoais.",
+        "Publicar somente versão e itens explicitamente autorizados."
+      ],
+      "evidence": "docs/DOMAINOS-LABORATORIO-TEMAS.md; tools/theme-lab/README.md; docs/review/theme-lab-v2/RESULTADO.json",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P01",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Applications e gaveta de fixados",
+      "scope": "Busca de aplicações; preferências permanentes; pins da barra; favoritos do KDE na ordem de origem, em seções separadas. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Catálogo, busca, favoritos e ordem têm evidências. Preferências ficam fixas no topo; pins e favoritos são separados. A origem dos favoritos é consultada ao abrir, sem promessa de atualização instantânea com a gaveta aberta. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Abra Applications e procure uma aplicação pelo nome.",
+        "Confira as três seções da gaveta e a ordem dos favoritos.",
+        "Abra e feche cada menu repetindo o clique no mesmo botão."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P02",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Relógio, calendário e feriados",
+      "scope": "Hora e fusos; data/localidade; calendário; feriados de Manaus, Amazonas e Brasil. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Relógio e calendário usam fontes reais e botões separados. Os feriados de Manaus/AM/Brasil foram conferidos para 2026, sem duplicatas; outros anos não foram preenchidos por suposição. Agenda depende de fonte configurada. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Confira data e hora; abra os fusos pelo relógio.",
+        "Abra o calendário pela data e confira os feriados de 2026."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P03",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Rede, gr_osview e correio",
+      "scope": "Recepção/envio e unidades; outras métricas; gr_osview; cliente de correio e contagem opcional autorizada. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "RX/TX e gr_osview têm evidência com provedores reais. A contagem de correio foi comprovada em Thunderbird descartável e é opcional; isso não declara a extensão instalada no perfil pessoal. Fonte ausente não vira zero. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Confira RX/TX e abra gr_osview pelo gráfico.",
+        "Confira o cliente de correio escolhido e o estado da integração."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; integrations/thunderbird-domainos/README.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P04",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Iconbox: cliques, grupos e rolagem",
+      "scope": "Tarefas abertas/minimizadas; clique simples e duplo; setas e roda; agrupamento e filtro automático opcional. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Há evidências de lista, restauração por título, navegação sem ativação e filtro por contagem anterior ao agrupamento. Algumas provas de duplo clique usam modelos controlados; não equivalem a uma validação de todos os aplicativos. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Use um clique para abrir a lista e dois para minimizar/restaurar uma janela.",
+        "Use a roda e as setas: devem percorrer os itens sem ativar janelas.",
+        "Abra um grupo e confira os títulos sem marcar caixas."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P05",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Seleção, Operações e pin temporário",
+      "scope": "Checkboxes entre grupos; Ctrl/Shift; menus direito e do meio; operações nas janelas escolhidas; pin temporário e unpin. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Seleção parcial, menu Operações e organização têm provas nativas nos escopos registrados. Janelas excluídas foram preservadas. Pin/unpin tem prova própria; não se presume nova execução de todos os layouts em cada revisão. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Marque uma caixa e continue a seleção em outro grupo.",
+        "Abra Operações e confira se lista ações para os membros escolhidos.",
+        "Fixe uma janela temporariamente; confira Unpin no menu direito."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P06",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Pager e áreas de trabalho",
+      "scope": "Identidades e nomes de áreas; seleção com luz; uma/duas/várias áreas; navegação e elevação pela geometria da janela. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Áreas por identidade estável, luz, nomes e elevação pela geometria têm evidências nativas delimitadas por backend. A roda navega no padrão. Arrastar janelas entre cartões permanece adiado, conforme a decisão anterior. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Troque de área e confira a luz sem afundamento permanente.",
+        "Clique na geometria de uma janela e confira se ela vem à frente.",
+        "Confira nomes, quantidade e navegação nas preferências."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P07",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Bandeja, excedentes e notificações",
+      "scope": "Seis posições; ordem/visibilidade; provedores nativos; estado ocupado; volume; excedentes e ocultos. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "Provedores reais, ordem, atenção, excedentes e abertura/fechamento têm evidências. A roda de volume foi conferida no alvo. Ações físicas de conectar, montar ou ejetar não foram executadas; não se presume suporte a todo hardware. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Confira a textura dos espaços ocupados e dos vazios.",
+        "Confira ordem, excedentes e ocultos; repita o clique para fechar.",
+        "Confira se a roda altera volume somente sobre o item de volume."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P08",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Rodapé, ajuda e LED de espera",
+      "scope": "Terminal, aparência, sessão, bloqueio e ajuda; luz e cursor durante a inicialização; tempo extra opcional. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas. Revisão do efeito histórico de espera/LED e borrão/escala do lado direito da chapa continua na fila; consultar os recibos antes de repetir.",
+      "technical_status": "Comandos e ajuda têm provas próprias. O LED atual foi conferido por clique real no Terminal da R13, com espera até mapear e cauda desligada. A prova do LED é X11; o KDE pode omitir startup associado a uma janela já existente. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Confira os menus de Sessão e Ajuda sem executar ações de sessão.",
+        "Abra o teste de espera do LED de 3 segundos e observe luz/cursor.",
+        "Confira se luz e cursor voltam ao normal após a janela abrir."
+      ],
+      "evidence": "docs/DOMAINOS-FILA-REVISAO-VISUAL.md; docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P09",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Preferências, dicas e miniaturas",
+      "scope": "Categorias do painel; Aplicar/Descartar; padrões gerais e por categoria; dicas, miniaturas e realce opcionais. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas.",
+      "technical_status": "A central e a persistência têm evidências. O padrão é dicas gerais desligadas, texto da Iconbox ligado, miniaturas e realce desligados. Esses estados técnicos não substituem sua conferência de legibilidade e estabilidade. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Abra Preferências pela gaveta e confira as categorias do painel.",
+        "Altere uma opção temporária; confira Descartar, Aplicar e Padrões.",
+        "Confira dicas e miniaturas nos títulos completos e cortados."
+      ],
+      "evidence": "docs/DOMAINOS-MATRIZ-VALIDACAO-R2.md; docs/DOMAINOS-PREFERENCIAS.md; plasma/applets/org.irixclassic.domainos.panel/FUNCTIONAL.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    },
+    {
+      "id": "P10",
+      "type": "task",
+      "group": "Tema/painel",
+      "title": "Temas, cores, decorações e suíte",
+      "scope": "Três temas globais; estilos e decorações; GTK/Qt/Kvantum; cores; pacote por usuário, migração e restauração. Revisar somente o defeito ou alteração selecionada, uma família por vez; não repetir provas inalteradas. Revisão visual V03–V10, incluindo setas/relevos de GTK2/4/1, Qt/Kvantum, Qt Quick e Plasma, chapa metálica/LED e conjunto. V01/V02 têm retorno parcial preservado; não declarar fidelidade de outra família.",
+      "technical_status": "Trocas e scripts têm evidências. A revisão visual segue aberta: cores das setas, moldura GTK3 e demais famílias. GTK1 não tem cobertura DomainOS comprovada; falta o teste funcional final em p001532. Integridade não comprova fidelidade. Avaliação manual pendente neste grupo.",
+      "criteria": [
+        "Confira a troca de tema e esquema na prévia isolada.",
+        "Compare GTK e Qt com o DomainOS; detalhe a família que divergir.",
+        "Confira os nomes e as opções de decoração disponíveis."
+      ],
+      "evidence": "docs/DISTRIBUICAO-SUITE.md; docs/DOMAINOS-REGRAS-ROLAGEM.md; docs/DOMAINOS-FILA-REVISAO-VISUAL.md; docs/DOMAINOS-COMPARACAO-ROLAGEM-GTK3.md",
+      "user": {
+        "verdict": "pending",
+        "note": "",
+        "level": "intermediate",
+        "authorized": false,
+        "revision": 0,
+        "responded_at": ""
+      },
+      "assistant": {
+        "reply": "",
+        "status": "queued",
+        "read_at": "",
+        "replied_at": "",
+        "ack_revision": 0
+      }
+    }
+  ]
+}

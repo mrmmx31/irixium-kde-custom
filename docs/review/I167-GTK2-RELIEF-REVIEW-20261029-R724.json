@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R724",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Investigate the user-reported GTK2 scrollbar relief regression while preserving the GTK2-only scope and current Theme Lab edits.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "evidence": {
+    "theme_lab_capture": {
+      "path": "/home/lsi/tempia/domainos-theme-work/themelab-gtk2-lsi-20261029/theme-lab-live.png",
+      "sha256": "7d401590f1a78a1e29408f8b4c5bebfaedbcbfe5ec14ce3654f9b00215bd2c78",
+      "project_geometry_at_capture": "GTK2 bar_px=15; captured before the later working-state edit"
+    },
+    "gtk2_runtime_capture": {
+      "path": "records/ia-tema/I167/R708/captures/gtk2-scrolledwindow-full.png",
+      "sha256": "4e2776a879ef9085f926755db8d3a8921ecd870d98ede739a2a146a309300eeb"
+    },
+    "vue_reference_crop": {
+      "path": "docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e"
+    }
+  },
+  "findings": {
+    "user_report": "The user reports that the GTK2 scrollbar relief now appears outward and that GTK2 is less faithful than before. Treat the visual assessment as a failure report; do not infer acceptance from pixel diagnostics.",
+    "previous_evidence_limit": "R708 validated arrow cells, not the complete trough/thumb relief or the user's current preview state.",
+    "single_profile_check": {
+      "coordinates": {
+        "theme_lab_horizontal_thumb_cross_section": "x=600, y=501..515",
+        "gtk2_r708_horizontal_thumb_cross_section": "x=100, y=270..284",
+        "vue_horizontal_scrollbar_cross_section": "x=300, y=329..343"
+      },
+      "semantic_profile": "DDLLFFFFFFFDDLL",
+      "meaning": "The sampled 15-pixel line matches across these three images. This is one normal-state cross-section only; it does not resolve the reported full-control appearance or other states."
+    },
+    "current_theme_lab_state": {
+      "saved_project_gtk2_bar_px": 15,
+      "working_gtk2_bar_px": 89,
+      "working_gtk2_thumb_cross_px": 11,
+      "working_gtk2_shadow_px": 2,
+      "latest_generation_status": "unavailable",
+      "reason": "GTK2: native range thickness must equal cursor + two borders",
+      "impact": "The GTK2 renderer did not generate a preview for the latest working recipe. The visible GTK2 image is stale relative to that saved working recipe and cannot validate the current appearance. The working value 89 was preserved."
+    }
+  },
+  "changes": [],
+  "result": "The reported relief regression is not yet visually resolved. The last valid 15px sample has a matching local profile, but the current working preview is unavailable and the single-line comparison is too narrow to reject the user's report. No relief direction or artwork was changed without a valid full GTK2 comparison.",
+  "next": "Keep work limited to GTK2. Restore a current, truthful GTK2 preview for the saved working recipe without overwriting user edits; then compare the complete trough and thumb against the same 1:1 SR10.4 state before any relief change.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Technical I167 coverage remains the prior estimate; this diagnosis neither proves visual fidelity nor increases coverage."
+  }
+}

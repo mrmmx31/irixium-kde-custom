@@ -1,0 +1,60 @@
+{
+  "item": "I167",
+  "revision": "R37",
+  "checked_at_utc": "2026-10-23T00:48:00Z",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true
+  },
+  "family": "GTK2 GtkSpinButton steppers",
+  "reference": {
+    "kind": "native Motif control in the Theme Lab reference screenshot; not a VM capture",
+    "image": "docs/review/theme-lab-motif-reference/01-MOTIF-REFERENCE.png",
+    "sha256": "f413f7ab6eb2306998d8582b480dba01fa3bf7caf66715dd7136e5e435443527",
+    "up_crop_xyxy": [929, 647, 942, 660],
+    "down_crop_xyxy": [929, 663, 942, 676],
+    "measured_glyph_px": [13, 13],
+    "interpreted_rule": "Free-standing up/down triangles on the field surface; consistent upper-left light and lower-right shadow; no raised square panel around each glyph."
+  },
+  "change": {
+    "summary": "Removed raised square panels from GTK2 spin steppers. Added independent 13px spin-arrow geometry while leaving the shared GTK2 scrollbar arrow metric at 11px. Both glyphs and flat panels resolve through the selected KDE View and Window relief roles; no final RGB values were added to the product code.",
+    "files": {
+      "tools/theme-lab/gtk2_spins.py": "b7d6441cd1965b4efed3e00b090ff3896c4d79b174ccdb095d306fc46837f8f4",
+      "tools/theme-lab/tests/test_gtk2_spin_motif.py": "6a0f05e221c2ab846704db2b6734b76ef0e5c2065a29814eefccb6dcd3731ebc",
+      "tools/theme-lab/tests/probe_gtk2_spin_paint.py": "fc903b942be93eea8714dfd9fa27304a77c35abcd7dbc1614ba1943150dd3ba3"
+    }
+  },
+  "validation": {
+    "gtk_version": "2.24.33",
+    "native_matrix": "24 GTK2 scenes passed: DomainOS, BreezeLight, BreezeDark and TestYellow; normal, backdrop and disabled; coupled and separate previews.",
+    "surface_palette": "The field and flat stepper surface matched the selected effective View role in all 24 scenes.",
+    "motif_masks": "Up and down 13x13 glyph masks each matched the Motif sample in all 169/169 normalized face/light/shadow pixels.",
+    "interaction": "In the DomainOS scene, mouse and keyboard stepping, numeric commit, Undo/Redo and clipboard shortcuts passed. Both + and - steppers changed relief while held, matched their generated pressed mask, and returned pixel-identically to normal on release.",
+    "focused_test": "test_gtk2_spin_motif.py passed.",
+    "py_compile": "passed for the GTK2 spin adapter, native probe and Motif comparison test.",
+    "git_diff_check": "passed for scoped source, test and queue paths."
+  },
+  "artifacts": {
+    "directory": "~/tempia/i167-spin-audit/r44/",
+    "result": "~/tempia/i167-spin-audit/r44/RESULTADO.json",
+    "result_sha256": "9b61671c2ea3f35eab29f00d08c5ed5d6a866022ad2c44e115b751fb162ee965",
+    "normal_capture": "~/tempia/i167-spin-audit/r44/DomainOS/separate-normal.png",
+    "normal_capture_sha256": "934913317d039720d9427175d0049c0a1486fb3230e6a73cf49dd024e5b60687",
+    "pressed_capture_hashes": {
+      "up": "d631efa4c741a2860b41ce0997e9c887c04f35c8220e3d6261274cecfa957a7f",
+      "down": "f7fcaa108466f225df89dd28efdb92a2849a1e03d7c4c414ea7e03f1eb17c457"
+    },
+    "released_capture_hashes": {
+      "up": "decf28c9dc1e134e84749ba137bc4ddda1023645dc760cb4a2bb2db0813dd8d0",
+      "down": "47c5e0f3666382657ee0afce210c8f2f3e4453b699920d07e496a219688a9ab9"
+    }
+  },
+  "limits": [
+    "The 13px glyph metric is measured in the local native Motif Theme Lab sample, not the Domain/OS SR10.4 VM; this does not prove historical VUE sizing.",
+    "The Theme Lab UI does not yet expose a persistent per-glyph spin metric; 13px is the adapter default and can be overridden in a recipe programmatically.",
+    "This closes only the isolated GTK2 spin visual/interaction step. The remaining GTK2 control families, public/product integration, historical per-control VM comparisons and human approval remain open.",
+    "The personal GTK2 session and XChat were not modified."
+  ],
+  "next": "Continue the next authorized GTK2 control family from I167's visual queue; keep XChat unchanged until the GTK2 family has been completed and reviewed."
+}

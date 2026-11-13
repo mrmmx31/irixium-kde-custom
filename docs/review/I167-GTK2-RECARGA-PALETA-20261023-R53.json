@@ -1,0 +1,79 @@
+{
+  "id": "I167",
+  "receipt": "R53",
+  "date": "2026-10-23",
+  "family": "GTK2 live palette refresh diagnostic",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "environment": {
+    "gtk2": "2.24.33",
+    "display": "private Xvfb :512",
+    "xdg_profile": "~/tempia/gtk2-live-palette-r53c",
+    "real_user_session": false,
+    "xchat_touched": false,
+    "mame_commands": false
+  },
+  "procedure": "Installed the project adaptive GTK2 palette into a private profile, opened a real GTK2 Button and Entry, changed synthetic KDE role export, refreshed generated GTK2 assets, and toggled Gtk.Settings gtk-theme-name from the KDE alias to its reload alias and back.",
+  "palette_roles": {
+    "window_bg": [
+      "#314151",
+      "#243648"
+    ],
+    "button_bg": [
+      "#52677c",
+      "#b43752"
+    ],
+    "button_fg": [
+      "#f1e2d3",
+      "#fff0e1"
+    ]
+  },
+  "result": {
+    "setup": "updated",
+    "refresh": "updated",
+    "restore": "restored",
+    "window_bg_sample_rgb": [
+      [
+        49,
+        65,
+        81
+      ],
+      [
+        36,
+        54,
+        72
+      ]
+    ],
+    "button_face_sample_rgb": [
+      [
+        120,
+        160,
+        213
+      ],
+      [
+        120,
+        160,
+        213
+      ]
+    ],
+    "button_face_changed": false,
+    "button_roi_changed_pixels": 340,
+    "button_roi_total_pixels": 9720,
+    "full_window_changed_pixels": 35548,
+    "screenshots_sha256": {
+      "palette-a.png": "b126942c828751703b29530ed24f645ff757d3dd86aa41c65fcfb82c956dbefb",
+      "palette-b.png": "5012162cd2b9c7dd5359e009e7ce576b05ca1fe198729d4f2d94601c0ad5b8d6"
+    }
+  },
+  "interpretation": "The live GTK2 window updated its Window background and foreground text, but the pixmap-backed button face stayed at RGB (120,160,213) while the generated command-normal asset and KDE Button role changed. This is evidence of a partial refresh in this isolated setup, not proof of the real KDE/XSettings signal path; the alias toggle used Gtk.Settings directly.",
+  "limits": [
+    "Synthetic role values were used only in a disposable profile.",
+    "The process used GTK2 Settings alias toggling, not a KDE XSettings notification.",
+    "No source files, personal profile, XChat, MAME guest, or VM state were changed."
+  ],
+  "next": "Investigate why an open GTK2 process retains the old pixmap-backed button face after generated asset refresh, then validate the actual native reload notification before considering XChat application."
+}

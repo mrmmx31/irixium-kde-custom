@@ -1,0 +1,33 @@
+{
+  "at": "2026-10-11T12:57:06.270035+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: disabled hint implementation and native proofs",
+  "change": "Launcher froze only selected entry scripts; now freezes shipped flat runtime Python modules, preserving import dependencies and excluding test trees. Includes control_hints, scene_contract, preview_event_writer, GTK2 helpers and qt_widget_hints.",
+  "tests": {
+    "runtime_files_and_local_import_closure": 2,
+    "private_mount_contract": 4,
+    "saved_project_and_journal_resume": 9,
+    "all_passed": true
+  },
+  "scope": "Dependency packaging and launcher contracts; no actual new addon started and no manual evaluation inferred.",
+  "host_observation": "Actual host reopen-status available=true; sandbox cannot see GUI PID and earlier false values do not prove it stopped. Current theme gate permitted=false before requesting T07.",
+  "delivery_plan": "T07-PLANO-ENTREGA-20261011.json",
+  "remaining": [
+    "User temporary release and verified exact gate",
+    "Frozen addon startup and native preview after delivery",
+    "Manual evaluation and unproved layouts/states"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "basis": "Package dependencies fixed and delivery prepared; no full-goal/fidelity claim.",
+  "personal_windows_changed": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/t07-runtime-delivery/t07-runtime-files.log": "5ce72ab56a2951181ae2e69993565579778ccb2c80888b74aed2bccee07324fc",
+    "docs/referencias/domainos-sr104/t07-runtime-delivery/t07-runtime-mounts.log": "b6a161abed43b9a0dba9259cd451b39b20b10425ac13cc14786554c0e6fac7f1",
+    "docs/referencias/domainos-sr104/t07-runtime-delivery/t07-runtime-resume.log": "cad4b5a6c7a3ead5c109e2d6fde865e8a8e6bb34d6d5fec7c4bd9f3be355982d",
+    "plasma/tools/abrir-laboratorio-temas.py": "89468c0ff494c8a91d1044ae3f6dac9ececb427efd3a27845587848b50aeca25",
+    "plasma/tests/test_lab_runtime_files.py": "676093f747a29c9533f2b8f4dc9bee2be141c7e3c88fb489dd80217b26154755",
+    "plasma/tests/test_lab_mounts.py": "281347c445bcf06fcdded0d5eb6147b5caac987ff764eadbffbb7351bf27f3a4",
+    "plasma/tests/test_lab_resume.py": "c89ac4971ec389997cf57faf68b6c36afd850ca6822f5e83bfd3227c68403dc7"
+  }
+}

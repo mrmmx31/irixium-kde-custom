@@ -1,0 +1,1759 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-10",
+  "scope": "GTK3 painted editor text surface; no other family or font-fidelity claim",
+  "cause": "Mousepad none selects GtkSourceView Classic; its root background comes from its line-number style, while text inherited the theme foreground",
+  "sources": [
+    "https://github.com/xfce-mirror/mousepad/blob/mousepad-0.6.3/mousepad/mousepad-view.c#L203",
+    "https://github.com/GNOME/gtksourceview/blob/4.8.4/gtksourceview/gtksourcestylescheme.c#L890",
+    "https://docs.gtk.org/gtk3/class.TextView.html#css-nodes"
+  ],
+  "before": {
+    "root_foreground": "rgb(255,255,255)",
+    "root_background": "rgb(238,238,236)",
+    "text_foreground": "#00000000ffff",
+    "drawn_colors": [
+      [
+        [
+          238,
+          238,
+          236
+        ],
+        46210
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        1915
+      ]
+    ]
+  },
+  "after": {
+    "root_foreground": "rgb(255,255,255)",
+    "root_background": "rgb(238,238,236)",
+    "text_foreground": "#00000000ffff",
+    "drawn_colors": [
+      [
+        [
+          102,
+          136,
+          181
+        ],
+        46210
+      ],
+      [
+        [
+          255,
+          255,
+          255
+        ],
+        1915
+      ]
+    ]
+  },
+  "native_validation": {
+    "scope": "GTK3 native painted editor surface; no personal documents or profile edits",
+    "passed": true,
+    "cases": [
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "normal",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "725f7e63d7c90341369c7a221fce0feddc880b7271e223f135381058461a9c5c"
+      },
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "725f7e63d7c90341369c7a221fce0feddc880b7271e223f135381058461a9c5c"
+      },
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "disabled",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              97,
+              130,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              159,
+              181,
+              210
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "8c65fdbb345089ef6a646b28cfa145bf984dad112cf7ccc9983017a5f750cfbc"
+      },
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              97,
+              130,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              159,
+              181,
+              210
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "8c65fdbb345089ef6a646b28cfa145bf984dad112cf7ccc9983017a5f750cfbc"
+      },
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "selection",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            42672
+          ],
+          [
+            [
+              50,
+              151,
+              199
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "7680197b87c6e457ef2a91ebf009225d45f384363c3f48735de753a17ea7d06f"
+      },
+      {
+        "palette": "domainos",
+        "widget": "textview",
+        "state": "selection-backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            42672
+          ],
+          [
+            [
+              50,
+              151,
+              199
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "7680197b87c6e457ef2a91ebf009225d45f384363c3f48735de753a17ea7d06f"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "normal",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "725f7e63d7c90341369c7a221fce0feddc880b7271e223f135381058461a9c5c"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "725f7e63d7c90341369c7a221fce0feddc880b7271e223f135381058461a9c5c"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "disabled",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              97,
+              130,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              159,
+              181,
+              210
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "8c65fdbb345089ef6a646b28cfa145bf984dad112cf7ccc9983017a5f750cfbc"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              97,
+              130,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              159,
+              181,
+              210
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "8c65fdbb345089ef6a646b28cfa145bf984dad112cf7ccc9983017a5f750cfbc"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "selection",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            42672
+          ],
+          [
+            [
+              50,
+              151,
+              199
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "7680197b87c6e457ef2a91ebf009225d45f384363c3f48735de753a17ea7d06f"
+      },
+      {
+        "palette": "domainos",
+        "widget": "mousepad-none-classic",
+        "state": "selection-backdrop",
+        "color_input_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              102,
+              136,
+              181
+            ],
+            42672
+          ],
+          [
+            [
+              50,
+              151,
+              199
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "7680197b87c6e457ef2a91ebf009225d45f384363c3f48735de753a17ea7d06f"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "normal",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            45624
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "651e7f658fad8a5be9f373898ceeaaa74eccc078de5ab155797e59edb39f9b6e"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            45624
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "651e7f658fad8a5be9f373898ceeaaa74eccc078de5ab155797e59edb39f9b6e"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "disabled",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              143,
+              173,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              86,
+              104,
+              104
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "80a3efcd544641bd298c6e9e7743d0cb8b816099851080ca424ce734ab04eb63"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              143,
+              173,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              86,
+              104,
+              104
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "80a3efcd544641bd298c6e9e7743d0cb8b816099851080ca424ce734ab04eb63"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "selection",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            42672
+          ],
+          [
+            [
+              120,
+              160,
+              160
+            ],
+            2952
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "6fd74fcaa3afb70e26a1bbcca4192b361727acaffdc44cbb07816a39ae52f0fb"
+      },
+      {
+        "palette": "gray",
+        "widget": "textview",
+        "state": "selection-backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            42672
+          ],
+          [
+            [
+              120,
+              160,
+              160
+            ],
+            2952
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "6fd74fcaa3afb70e26a1bbcca4192b361727acaffdc44cbb07816a39ae52f0fb"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "normal",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            45624
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "651e7f658fad8a5be9f373898ceeaaa74eccc078de5ab155797e59edb39f9b6e"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            45624
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "651e7f658fad8a5be9f373898ceeaaa74eccc078de5ab155797e59edb39f9b6e"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "disabled",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              143,
+              173,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              86,
+              104,
+              104
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "80a3efcd544641bd298c6e9e7743d0cb8b816099851080ca424ce734ab04eb63"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              143,
+              173,
+              173
+            ],
+            45624
+          ],
+          [
+            [
+              86,
+              104,
+              104
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "80a3efcd544641bd298c6e9e7743d0cb8b816099851080ca424ce734ab04eb63"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "selection",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            42672
+          ],
+          [
+            [
+              120,
+              160,
+              160
+            ],
+            2952
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "6fd74fcaa3afb70e26a1bbcca4192b361727acaffdc44cbb07816a39ae52f0fb"
+      },
+      {
+        "palette": "gray",
+        "widget": "mousepad-none-classic",
+        "state": "selection-backdrop",
+        "color_input_sha256": "f0998bf8b392b420f115c923eccb93c0fb35efc2f8b301b9f5e05163fd779e35",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              158,
+              191,
+              191
+            ],
+            42672
+          ],
+          [
+            [
+              120,
+              160,
+              160
+            ],
+            2952
+          ],
+          [
+            [
+              0,
+              0,
+              0
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "6fd74fcaa3afb70e26a1bbcca4192b361727acaffdc44cbb07816a39ae52f0fb"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "normal",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            45624
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "539d3da0fbe864b4394015940e9015f032e3614dddaf1c8917c55a5e247fd106"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            45624
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "539d3da0fbe864b4394015940e9015f032e3614dddaf1c8917c55a5e247fd106"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "disabled",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              19,
+              21,
+              23
+            ],
+            45624
+          ],
+          [
+            [
+              96,
+              98,
+              99
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "15768112e649389a43fca79e5916b706ae09ede01f6c17c1139aa279be9bf8b5"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              19,
+              21,
+              23
+            ],
+            45624
+          ],
+          [
+            [
+              96,
+              98,
+              99
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "15768112e649389a43fca79e5916b706ae09ede01f6c17c1139aa279be9bf8b5"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "selection",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            42672
+          ],
+          [
+            [
+              61,
+              174,
+              233
+            ],
+            2952
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "d2e85cd831fb213df1cf8a036a88e663f520a8861d3b17177f1fadb0f572915b"
+      },
+      {
+        "palette": "dark",
+        "widget": "textview",
+        "state": "selection-backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            42672
+          ],
+          [
+            [
+              27,
+              65,
+              85
+            ],
+            2952
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "06148acf4aa2aa7b7520b545efd6b5a265161483f926e93c0aac3c7daad4c6f0"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "normal",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            45624
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "539d3da0fbe864b4394015940e9015f032e3614dddaf1c8917c55a5e247fd106"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            45624
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "539d3da0fbe864b4394015940e9015f032e3614dddaf1c8917c55a5e247fd106"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "disabled",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              19,
+              21,
+              23
+            ],
+            45624
+          ],
+          [
+            [
+              96,
+              98,
+              99
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "15768112e649389a43fca79e5916b706ae09ede01f6c17c1139aa279be9bf8b5"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              19,
+              21,
+              23
+            ],
+            45624
+          ],
+          [
+            [
+              96,
+              98,
+              99
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "15768112e649389a43fca79e5916b706ae09ede01f6c17c1139aa279be9bf8b5"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "selection",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            42672
+          ],
+          [
+            [
+              61,
+              174,
+              233
+            ],
+            2952
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "d2e85cd831fb213df1cf8a036a88e663f520a8861d3b17177f1fadb0f572915b"
+      },
+      {
+        "palette": "dark",
+        "widget": "mousepad-none-classic",
+        "state": "selection-backdrop",
+        "color_input_sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              20,
+              22,
+              24
+            ],
+            42672
+          ],
+          [
+            [
+              27,
+              65,
+              85
+            ],
+            2952
+          ],
+          [
+            [
+              252,
+              252,
+              252
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "06148acf4aa2aa7b7520b545efd6b5a265161483f926e93c0aac3c7daad4c6f0"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "normal",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "29d9efc9bac75ceaa360e69cfe0bef183a4e1ad89e9023cda2f62565b3e352f2"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "29d9efc9bac75ceaa360e69cfe0bef183a4e1ad89e9023cda2f62565b3e352f2"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "disabled",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              252,
+              232,
+              0
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              238,
+              75
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "34790911942d9b1bd11201cd94070ff51f605f707b7653ad6c74f386fff4c011"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              252,
+              232,
+              0
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              238,
+              75
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "34790911942d9b1bd11201cd94070ff51f605f707b7653ad6c74f386fff4c011"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "selection",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            42672
+          ],
+          [
+            [
+              245,
+              208,
+              0
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "4913c20aa7724d5fe59974b2b4e984d03d4d0cf18a331125721d0d0fb1b1c365"
+      },
+      {
+        "palette": "yellow",
+        "widget": "textview",
+        "state": "selection-backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            42672
+          ],
+          [
+            [
+              245,
+              208,
+              0
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "4913c20aa7724d5fe59974b2b4e984d03d4d0cf18a331125721d0d0fb1b1c365"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "normal",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "29d9efc9bac75ceaa360e69cfe0bef183a4e1ad89e9023cda2f62565b3e352f2"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "29d9efc9bac75ceaa360e69cfe0bef183a4e1ad89e9023cda2f62565b3e352f2"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "disabled",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "insensitive_base_color_breeze",
+        "text_role": "insensitive_base_fg_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              252,
+              232,
+              0
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              238,
+              75
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "34790911942d9b1bd11201cd94070ff51f605f707b7653ad6c74f386fff4c011"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "disabled-backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_view_bg_color_breeze",
+        "text_role": "theme_unfocused_view_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true
+        },
+        "painted_colors": [
+          [
+            [
+              252,
+              232,
+              0
+            ],
+            45624
+          ],
+          [
+            [
+              255,
+              238,
+              75
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "34790911942d9b1bd11201cd94070ff51f605f707b7653ad6c74f386fff4c011"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "selection",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_base_color_breeze",
+        "text_role": "theme_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            42672
+          ],
+          [
+            [
+              245,
+              208,
+              0
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "4913c20aa7724d5fe59974b2b4e984d03d4d0cf18a331125721d0d0fb1b1c365"
+      },
+      {
+        "palette": "yellow",
+        "widget": "mousepad-none-classic",
+        "state": "selection-backdrop",
+        "color_input_sha256": "50f5d194a737228d097f21fdf20c69850023a5119462a37c5f1baadfd086a1fc",
+        "background_role": "theme_unfocused_base_color_breeze",
+        "text_role": "theme_unfocused_text_color_breeze",
+        "checks": {
+          "painted_background_matches_view": true,
+          "painted_text_matches_view": true,
+          "painted_selection_background": true,
+          "painted_selection_text": true
+        },
+        "painted_colors": [
+          [
+            [
+              255,
+              242,
+              156
+            ],
+            42672
+          ],
+          [
+            [
+              245,
+              208,
+              0
+            ],
+            2952
+          ],
+          [
+            [
+              255,
+              255,
+              255
+            ],
+            2501
+          ]
+        ],
+        "image_sha256": "4913c20aa7724d5fe59974b2b4e984d03d4d0cf18a331125721d0d0fb1b1c365"
+      }
+    ]
+  },
+  "lsi_application": {
+    "status": "applied",
+    "theme": "DomainOS-SR10-4-KDE",
+    "native_reload": "GTK alias switch during owned suite update",
+    "mousepad_preserved": true,
+    "syntax_preference": "none",
+    "sync": {
+      "status": "synchronized",
+      "profile": "domainos",
+      "companions": {
+        "status": "unchanged",
+        "profile": "domainos"
+      },
+      "native_palette": "native_palette_exported",
+      "gtk2_palette": {
+        "status": "unchanged",
+        "themes": [
+          "DomainOS-SR10-4-KDE",
+          "DomainOS-SR10-4-KDE-Reload",
+          "IrixClassic-KDE",
+          "IrixClassic-KDE-Reload",
+          "Irixium-KDE",
+          "Irixium-KDE-Reload"
+        ],
+        "colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+        "native_reload_required": false
+      },
+      "gtk4_palette": {
+        "status": "unchanged",
+        "theme": "DomainOS-SR10-4-KDE"
+      }
+    },
+    "installed_overrides_sha256": "920b332f1974ad80fd6153f4f10ed7c41b986bc503e2ff9e0fe802ecc85a874c"
+  },
+  "user_approval": {
+    "feedback": "Sim, consigo ler",
+    "scope": "Legibility of the already open Mousepad editor after GTK3 update"
+  },
+  "limits": [
+    "Real KDE palette snapshots tested locally; this experiment does not switch the live desktop scheme",
+    "Syntax highlighting and explicitly selected application color schemes are outside these 48 cases",
+    "No personal editor text copied to evidence"
+  ],
+  "source_hashes": {
+    "gtk/tools/build_kde_domainos.py": "5370dbaf7cd64b0dd9162707e1c078f9f7659071955b7b06baa71e043951f933",
+    "gtk/DomainOS-SR10-4-KDE/common/gtk-3.0-overrides.css": "920b332f1974ad80fd6153f4f10ed7c41b986bc503e2ff9e0fe802ecc85a874c",
+    "gtk/tests/test_domainos_native_text.py": "69cae4a5f4b7e461c6dc879cbf3bb7c1ccc1a80458d113958cb6cdbf277c5e30"
+  }
+}

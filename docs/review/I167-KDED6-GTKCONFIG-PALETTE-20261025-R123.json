@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "R123",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "GTKConfig real isolated export and KDE palette notification",
+  "method": {
+    "package": "kde-config-gtk-style 4:6.3.4-1; Debian source archive SHA-256 f73efc18d46e7e6e6515137e71bf8d97da0e5b496d60506e8371c6b7b22df4a4",
+    "plugin_sha256": "45ed5ab79fe42cce6ced85d35f3cc266c7347e28fc9751338bbdab851bd519c9",
+    "isolation": "Bubblewrap read-only root; separate PID and network namespaces; private HOME/XDG/runtime/tempia-backed /tmp; private session D-Bus; unavailable system D-Bus; only gtkconfig.so mounted in the KDED module directory.",
+    "fixture": "Private kdeglobals contained the effective DomainOS color-role groups and selected LookAndFeelPackage. The test then changed General/ColorScheme and Colors:Window/BackgroundNormal and emitted the same org.kde.kconfig.notify.ConfigChanged signal used by the production bridge.",
+    "probe": "~/tempia/i167-r123-private-kded.py",
+    "evidence_directory": "~/tempia/i167-r123d-private-kded"
+  },
+  "result": {
+    "status": "passed",
+    "real_gtkconfig_plugin": true,
+    "gtkTheme_reply": "DomainOS-SR10-4-KDE",
+    "only_kded_plugin_visible": "gtkconfig.so",
+    "initial_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "updated_css_sha256": "3028ec387c0e1a2040262bd7c890bf9dc29ed0008aa0f06d904cd7ac58980c8f",
+    "gtk3_and_gtk4_exports_changed": true,
+    "window_role_before": "#78a0d5",
+    "window_role_after": "#d1435b",
+    "system_bus_available": false,
+    "host_xsettingsd_visible_in_private_pid_namespace": false,
+    "private_processes_terminated": true,
+    "loaded_modules_introspection": "An optional diagnostic queried an unsupported interface at /modules; it was not used as evidence. The mounted KDED plugin directory contained only gtkconfig.so."
+  },
+  "limits": [
+    "This proves the installed GTKConfig module exports effective KDE color roles after the native KConfig notification in a constrained private KDED process.",
+    "It does not yet prove the production theme companion watcher and GTK2 palette runtime in the same process chain; R121 separately covers the watcher/QProcess/reload using a private GTKConfig fixture.",
+    "The first fixture attempt supplied only a ColorScheme filename and correctly fell back to Breeze defaults. The passing run included the effective Colors:* groups in private kdeglobals, matching the roles consumed by KColorScheme.",
+    "The private run logged non-fatal GLib file-monitor and KConfig update warnings; GTKConfig returned the selected theme and both color exports changed as expected. No host theme, XSettings process, color scheme, or user window was altered."
+  ],
+  "evidence": {
+    "probe": {
+      "path": "~/tempia/i167-r123-private-kded.py",
+      "sha256": "dc8c05bf48bb2b5b816048779fb9ca91fac357e333b474d4d2afd0f0da1eaec1"
+    },
+    "result": {
+      "path": "~/tempia/i167-r123d-private-kded/result.json",
+      "sha256": "1fcdf7df901aa6edeb8f56d58bd4d725ad89b3a0906d6ee69bdece879789c38d"
+    },
+    "summary": {
+      "path": "~/tempia/i167-r123d-private-kded/summary.json",
+      "sha256": "a40d28a8934eebe36741779fa95414bb2138ae79ffd4a32628b74f352acbd5dc"
+    },
+    "kded_log": {
+      "path": "~/tempia/i167-r123d-private-kded/kded6.log",
+      "sha256": "9bec62bfb27443c96476c34348c719648e1197376aee7962f33f63cd21d44cac"
+    }
+  },
+  "next": "Combine the real isolated GTKConfig module with the already-tested production theme_companion_bridge observer and GTK2 2.24 runtime in one private test, then resume remaining GtkEntry/VM and visual gaps. Keep XChat and the personal GTK profile unchanged until I167 is actually closed."
+}

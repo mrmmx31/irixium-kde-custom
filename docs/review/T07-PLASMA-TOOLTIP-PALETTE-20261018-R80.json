@@ -1,0 +1,90 @@
+{
+  "item": "T07",
+  "revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "receipt": "R80",
+  "checked_at": "2026-10-18",
+  "scope": "Qt Quick org.kde.desktop tooltip palette roles in an isolated XDG profile on Xephyr :81",
+  "runtime": {
+    "qt": "6.8.2",
+    "platform": "xcb",
+    "requested_style": "org.kde.desktop",
+    "resolved_tooltip_qml": "qrc:/qt/qml/org/kde/breeze/ToolTip.qml",
+    "reference_qml_source": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/breeze/ToolTip.qml"
+  },
+  "results": [
+    {
+      "scheme": "Irixium",
+      "kirigami_tooltip_color_set": 4,
+      "expected_tooltip_background": "#c1c1c1",
+      "observed_tooltip_theme_background": "#c1c1c1",
+      "expected_tooltip_text": "#000000",
+      "observed_tooltip_theme_text": "#000000",
+      "background_item_color_set": 1,
+      "window_background": "#c1c1c1",
+      "screen_pixel_inside_tooltip": "#c1c1c1",
+      "match": true,
+      "interpretation": "Tooltip and Window palette values happen to match in this scheme."
+    },
+    {
+      "scheme": "DomainOS-SR10-4",
+      "kirigami_tooltip_color_set": 4,
+      "expected_tooltip_background": "#78a0d5",
+      "observed_tooltip_theme_background": "#78a0d5",
+      "expected_tooltip_text": "#ffffff",
+      "observed_tooltip_theme_text": "#ffffff",
+      "background_item_color_set": 1,
+      "window_background": "#78a0d5",
+      "screen_pixel_inside_tooltip": "#78a0d5",
+      "match": true,
+      "interpretation": "Tooltip and Window palette values happen to match in this scheme."
+    },
+    {
+      "scheme": "BreezeLight",
+      "kirigami_tooltip_color_set": 4,
+      "expected_tooltip_background": "#f7f7f7",
+      "observed_tooltip_theme_background": "#f7f7f7",
+      "expected_tooltip_text": "#232629",
+      "observed_tooltip_theme_text": "#232629",
+      "background_item_color_set": 1,
+      "window_background": "#eff0f1",
+      "screen_pixel_inside_tooltip": "#eff0f1",
+      "match": false,
+      "interpretation": "The tooltip's Kirigami theme sees the correct Tooltip roles, but the rendered background item and screenshot use Window."
+    },
+    {
+      "scheme": "BreezeDark",
+      "kirigami_tooltip_color_set": 4,
+      "expected_tooltip_background": "#292c30",
+      "observed_tooltip_theme_background": "#292c30",
+      "expected_tooltip_text": "#fcfcfc",
+      "observed_tooltip_theme_text": "#fcfcfc",
+      "background_item_color_set": 1,
+      "window_background": "#202326",
+      "screen_pixel_inside_tooltip": "#202326",
+      "match": false,
+      "interpretation": "The tooltip's Kirigami theme sees the correct Tooltip roles, but the rendered background item and screenshot use Window."
+    }
+  ],
+  "source_observation": "org.kde.breeze/ToolTip.qml sets Kirigami.Theme.colorSet to Tooltip on the tooltip root. Its background Rectangle binds color to Kirigami.Theme.backgroundColor but does not set a Tooltip colorSet on that Rectangle; runtime inspection reports its colorSet as Window (1).",
+  "test_artifacts": {
+    "directory": "~/tempia/t07-plasma-tooltip-colors-20261018-r80/",
+    "matrix": "MATRIX.json",
+    "direct_kcolorscheme": "KCOLORSCHEME-MATRIX.txt",
+    "screenshots": [
+      "BreezeLight/screen-capture.png",
+      "BreezeDark/screen-capture.png",
+      "DomainOS-SR10-4/screen-capture.png",
+      "Irixium/screen-capture.png"
+    ],
+    "scripts_recorded_on": "T07"
+  },
+  "product_files_changed": false,
+  "status": "partial",
+  "limits": [
+    "This establishes a Qt Quick tooltip palette-role mismatch in the installed org.kde.desktop/Breeze style; it does not authorize changes to Qt/KDE source.",
+    "The text-color probe reads the Kirigami Tooltip role; a dedicated rendered text-pixel sample was not isolated.",
+    "The existing GTK2 progress-hint failure and broader T07 layout/state coverage remain open.",
+    "A technical pass does not constitute human visual approval."
+  ]
+}

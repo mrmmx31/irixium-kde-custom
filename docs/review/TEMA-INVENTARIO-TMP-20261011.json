@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-11T09:27:53.627593+00:00",
+  "scope": "Requested theme-context TXT classification; no cleanup",
+  "source": "Canal—Conjunto messages25–29 and Q091 guidance",
+  "counts": {
+    "CANDIDATA_A_REVISAO": 18,
+    "PRESERVAR": 4,
+    "PRESERVAR_EVIDENCIA": 7
+  },
+  "candidate_allocated_bytes_from_I185": 1279074304,
+  "candidate_entries_from_I185": 216555,
+  "limitations": [
+    "Current UID process references only; 34 unreadable fields",
+    "Allocation counters inherited from I185 snapshot, not a new recursive measurement",
+    "No observed reference is not proof of no other consumer",
+    "Candidates are not deletion/archiving approval"
+  ],
+  "known_keep": {
+    "/tmp/domainos-control-vb9vmvkk": "Tema: controle Lua MAME ativo, mensagem20",
+    "/tmp/I084-motif-reference": "Tema: referência Motif ainda necessária, mensagem20",
+    "/tmp/i167-gtkrange-reference.c": "Tema: referência GTK2 da etapa ativa, mensagem20"
+  },
+  "files_moved": 0,
+  "files_deleted": 0,
+  "I186_executed": false,
+  "I167_estimate_unchanged": 82,
+  "hashes": {
+    ".work-board-staging/i167/tmp-inventory-theme-20261011.txt": "f85378a08d2c12269c71c1f6ce5d138dfd8a0fece93ea3660842ca9159108372",
+    ".work-board-staging/i167/tmp-inventory-theme-20261011.json": "007cbd1756b21bd9b0e37d40d00e2deb241762dfa668c13f365186428f1649ac",
+    ".work-board-staging/i167/classify_tmp.py": "9aa3e133f86ea0aedc48f5ef68011477b6d846d9f90272c1407df273d917a0ec"
+  }
+}

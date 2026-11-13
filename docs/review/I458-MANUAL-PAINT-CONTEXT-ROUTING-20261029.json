@@ -1,0 +1,57 @@
+{
+  "id": "I458-R14",
+  "date": "2026-10-29",
+  "scope": "Manual Paint editor: platform/control/state routing and GTK2 native offscreen sample",
+  "authorization": {
+    "item": "I458",
+    "user_authorized": true,
+    "user_revision": 1,
+    "definition_sha256": "2722126ca0b2b6e38564e4f23d204bfa52c7a6d8bd20bf363cf5a96693401b7c"
+  },
+  "observed": {
+    "source": "user screenshot capture-xchat-codex-EOQ8X3.png",
+    "platform_selector": "GTK2",
+    "control_selector": "Rolagem vertical",
+    "raster_status": "GTK2 / Botão / Normal",
+    "native_sample": "unavailable",
+    "raster_layer": "separate per-context art, 96x32 default"
+  },
+  "findings": [
+    {
+      "cause": "manual_paint_view.c deferred combo callback reread XmNselectedPosition after callback unwinding; Motif could return the previous row, leaving selectors and model/status on different contexts.",
+      "change": "Apply XmComboBoxCallbackStruct.item_position synchronously; combo_new uses XmZERO_BASED. Remove the deferred selection timer."
+    },
+    {
+      "cause": "GTK2 paint sample uses Gtk.OffscreenWindow, but normal-session launch entered the bwrap-only private namespace guard because the host-session exception accepted XEmbed only.",
+      "change": "Permit a narrowly scoped GTK2 offscreen capture through the existing host-session guard, validate project/recipe/events/output under the private Theme Lab session directory, and pass --host-session-root for paint samples."
+    }
+  ],
+  "changed_files": [
+    "tools/theme-lab/src/view/manual_paint_view.c",
+    "tools/theme-lab/src/controller.c",
+    "tools/theme-lab/preview_gtk2.py",
+    "tools/theme-lab/backend.py"
+  ],
+  "build": {
+    "command": "make -C tools/theme-lab build/theme-lab",
+    "result": "success",
+    "finished_at_utc": "2026-10-29T16:18:11Z"
+  },
+  "runtime": {
+    "previous_theme_lab_pid": 2623474,
+    "previous_window_closed": "WM_DELETE sent to the Theme Lab main shell; process exited",
+    "theme_lab_pid": 2840633,
+    "restarted": true,
+    "paint_editor_reopened": true,
+    "native_gtk2_sample_visible": true,
+    "native_sample_context": "GTK2 / Botão / Normal; captured 78x34 native sample in screenshot",
+    "screenshot": "~/tempia/domainos-theme-work/themelab-paint-reopened-20261029T1619.png",
+    "platform_switch_verified": false
+  },
+  "limits": [
+    "Only the GTK2 paint sample capture route is enabled here; GTK3/GTK4 capture and other toolkit adapters remain their own work.",
+    "The 96x32 raster layer remains separate artwork and does not become a native control or automatically copy the native sample dimensions.",
+    "No theme output or installed user theme was changed."
+  ],
+  "tests": "Not run."
+}

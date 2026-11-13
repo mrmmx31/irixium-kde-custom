@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "kind": "domainos_review_evidence",
+  "item": "T07",
+  "family": "GTK4",
+  "revision": "R3",
+  "recorded_at": "2026-10-18",
+  "environment": {
+    "display": ":92",
+    "resolution": "1600x1200",
+    "session": "private Xephyr",
+    "gtk": "4.18.6",
+    "theme": "Default",
+    "font": "Sans 10",
+    "custom_css": false
+  },
+  "previous_failure": {
+    "receipt": "docs/review/T07-GTK4-STABLE-OVERLAP-20261018-R2.json",
+    "stable_overlaps": [
+      {
+        "page": 0,
+        "control_rect_px": [
+          820,
+          333,
+          15,
+          232
+        ],
+        "tooltip_rect_px": [
+          621,
+          461,
+          420,
+          51
+        ]
+      },
+      {
+        "page": 1,
+        "control_rect_px": [
+          828,
+          102,
+          15,
+          486
+        ],
+        "tooltip_rect_px": [
+          629,
+          357,
+          420,
+          51
+        ]
+      }
+    ]
+  },
+  "product_change": {
+    "file": "tools/theme-lab/gtk4_hint_popover.py",
+    "sha256": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "change": "Choose left/right based on measured overlay space, then top/bottom or wrapped side placement when constrained; keep GTK-native popover painting and palette. No final RGB values added."
+  },
+  "test_harness_change": {
+    "file": "tools/theme-lab/tests/gtk4_hint_matrix_worker.py",
+    "sha256": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79",
+    "change": "Reset scroll-click test state for each target, test each vertical scrollbar independently at 75% of its track, and record the click point. The earlier R4 probe used the last 8 px and produced one unchanged adjustment; targeted 75% tests showed both bars responding."
+  },
+  "related_gallery": {
+    "file": "plasma/tests/galerias-nativas/gtk4_demo.py",
+    "sha256": "cb65b09c02a2cfa83f5380c2727a3428755aabdb35e00620051a812938e108cc"
+  },
+  "result": {
+    "runner_exit_code": 0,
+    "matrix_status": "passed",
+    "mapped_targets_first_page": 26,
+    "mapped_targets_second_page": 5,
+    "passed_targets": 31,
+    "failed_targets": 0,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen": true,
+    "never_covers_hover_point": true,
+    "small_controls_nonoverlap": true,
+    "closed_after_leave": true,
+    "popover_anchor_cleanup": {
+      "hints": [
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        },
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        }
+      ],
+      "overlay_anchors_before": 2,
+      "overlay_anchors_after": 0,
+      "anchors_removed": true
+    },
+    "vertical_scrollbars": [
+      {
+        "page": 0,
+        "control_rect_px": [
+          820,
+          333,
+          15,
+          232
+        ],
+        "popover_rect_px": [
+          448,
+          437,
+          359,
+          61
+        ],
+        "click_point_px": [
+          827,
+          507
+        ],
+        "adjustment_before": 0.0,
+        "adjustment_after": 469.13783286798486,
+        "clicked_with_hint_open": true
+      },
+      {
+        "page": 1,
+        "control_rect_px": [
+          828,
+          102,
+          15,
+          486
+        ],
+        "popover_rect_px": [
+          456,
+          333,
+          359,
+          61
+        ],
+        "click_point_px": [
+          835,
+          466
+        ],
+        "adjustment_before": 0.0,
+        "adjustment_after": 197.1699166536667,
+        "clicked_with_hint_open": true
+      }
+    ]
+  },
+  "validation": {
+    "command": "DISPLAY=:92 GDK_BACKEND=x11 T07_PRIVATE_PROBE=1 python3 tools/theme-lab/tests/probe_gtk4_gallery_hints.py --hover-matrix --matrix-timeout-sec 240 --capture ...",
+    "py_compile": "passed for gtk4_hint_popover.py, gtk4_hint_matrix_worker.py, gtk4_demo.py",
+    "stdout": "~/tempia/t07-gtk4-stable-overlap-r3-20261018/gtk4-full-matrix-r5.stdout",
+    "stdout_sha256": "8d9b0f806b5b41abfe51b88d82dab3a5f4db8f4e9f55f78445087d13ff0884f1",
+    "stderr": "~/tempia/t07-gtk4-stable-overlap-r3-20261018/gtk4-full-matrix-r5.stderr",
+    "stderr_sha256": "327904ea28f093bf38a2b5488c0662a56d1dd353226c348080cf01777796b7ec",
+    "gtk4_demo_sha256": "cb65b09c02a2cfa83f5380c2727a3428755aabdb35e00620051a812938e108cc",
+    "environment_warning": "dbus-daemon reported Cannot initialize inotify: Too many open files and A connection to the bus cannot be made after gallery completion; the worker and runner exited 0 and emitted the complete passed matrix.",
+    "capture": "XWD root capture despite .png extension; not used as pixel/color evidence; placement was checked from live X11 popup/control geometries."
+  },
+  "product_changes_this_turn": false,
+  "limits": [
+    "One GTK4 gallery geometry and active default GTK palette only; no schema-color matrix or historical pixel comparison.",
+    "The lower 8 px click point from R4 did not move the first scrollbar; the final criterion uses an interior track point at 75%, which changed both page adjustments. Exact edge behavior remains outside this proof.",
+    "T07 remains partial: other layouts/states/families and human review remain open."
+  ],
+  "conclusion": "The former stable tooltip intersections are resolved in this 1600x1200 GTK4 gallery geometry. All 31 hint targets passed delay, stable placement, screen bounds, leave cleanup, and the two vertical scrollbars remained interactive at the tested track points. This is not a visual approval or completion of T07."
+}

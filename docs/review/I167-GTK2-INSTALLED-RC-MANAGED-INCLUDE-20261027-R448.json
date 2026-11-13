@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "R448",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Explain the hash difference between the GTK2 repository gtkrc and the user's installed theme copies.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "repository_base_sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "installed_home_theme_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "installed_xdg_theme_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+    "baseline_sha256_recorded_in_active_journal": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "diff": "Exactly one owned four-line KDE GTK2 palette include block appended to each installed gtkrc; no other content differs from repository base.",
+    "included_palette_gtkrc": "/home/lsi/.local/share/irixium/gtk2-palette/14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467/gtkrc",
+    "included_palette_gtkrc_sha256": "40df05843705adeb86a721e75bb5a291ab6e32951dc15ad84fa91a7ffea4dcef",
+    "include_is_generated_and_role_adaptive": true
+  },
+  "method": "Read-only SHA-256, exact unified diff, active palette journal summary and include-palette ownership-marker implementation inspection.",
+  "conclusion": "The installed/repository hash difference is the expected runtime-managed KDE palette include, not an unsynchronized GTK2 recipe. Both installed theme copies match each other, preserve the repository gtkrc as the recorded baseline, and include the generated active palette. This does not prove what an already-open GTK2 application has loaded, nor resolve the historical held-arrow comparison.",
+  "changes": {
+    "theme_or_profile_written": false,
+    "application_restarted": false,
+    "guest_or_vm_changed": false
+  },
+  "next": "Keep I167 focused on GTK2. The normal horizontal cells already match the SR10.4 references exactly; the direct VUE horizontal held-state capture remains gated by the other live MAME instance."
+}

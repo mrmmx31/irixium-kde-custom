@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R585",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only, in-memory scan of two already-running XChat GTK2 windows after the R584 palette reload; compare exact installed normal/focused 15x15 scrollbar stepper cells without retaining conversation pixels.",
+  "authority": {
+    "P10": {
+      "user_revision": 1,
+      "authorized": true,
+      "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"
+    },
+    "I167": {
+      "user_revision": 2,
+      "authorized": true,
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+    }
+  },
+  "target": {
+    "process_pid": 327563,
+    "process_comm": "xchat",
+    "gtk2_library_mapped": true,
+    "window_class": ["xchat", "Xchat"],
+    "profile_after_R584": "DomainOS-SR10-4-KDE"
+  },
+  "method": {
+    "capture": "XGetWindow image via xwd, converted in a pipe and scanned in memory",
+    "asset_source": "~/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755/assets",
+    "comparison": "Exact RGB match of installed 15x15 stepper assets; directions and all five GTK2 states searched.",
+    "script": "records/ia-tema/evidence/I167/r585-xchat-scrollbar-readonly.py",
+    "script_sha256": "4f2f3f245dfd474d7eeeb49589e853981ae73d126ea3ab0117a15c550fdf9f86",
+    "screenshots_saved": false,
+    "conversation_text_or_pixels_emitted": false,
+    "input_sent": false
+  },
+  "matches": [
+    {
+      "window": 25165827,
+      "capture_px": [870, 601],
+      "exact_cells": {
+        "up-normal": [[749, 100]],
+        "up-focused": [[749, 100]],
+        "down-normal": [[125, 582]],
+        "down-focused": [[125, 582]]
+      }
+    },
+    {
+      "window": 25443786,
+      "capture_px": [998, 930],
+      "exact_cells": {
+        "down-normal": [[293, 857]],
+        "down-focused": [[293, 857]],
+        "right-normal": [[273, 877]],
+        "right-focused": [[273, 877]]
+      }
+    }
+  ],
+  "result": "The live XChat process renders exact current GTK2 assets for the observed up/down vertical steppers and one horizontal right stepper. This confirms the R584 native reload reached existing GTK2 windows without restarting them.",
+  "limits": [
+    "No left-stepper cell was found in these two windows; this is not evidence of a rendering mismatch because the target cell/state may not be present in either capture.",
+    "This is normal/focused pixel identity only; it does not prove the user's full visual acceptance or any pressed VUE state.",
+    "No conversation content was read or retained."
+  ],
+  "next": "Continue I167 in GTK2 only. Keep the horizontal-left/pressed VUE state pending Q505; do not repeat normal-cell scans already covered by R580/R584/R585."
+}

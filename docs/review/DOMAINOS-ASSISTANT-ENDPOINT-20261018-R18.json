@@ -1,0 +1,52 @@
+{
+  "date_local": "2026-10-18T08:58:49-04:00",
+  "revision": "R18",
+  "purpose": "Move the assistant clone FTP/Telnet endpoint to an address distinct from other active MAME guests and the original VM",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1354178,
+  "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "network_namespace": "net:[4026533817]",
+  "endpoint": {
+    "address": "10.104.18.104",
+    "ftp_port": 21,
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "telnet_port": 23,
+    "telnet_negotiation_hex": "fffd18",
+    "guest_backend": "192.168.240.2 (private to this clone namespace)"
+  },
+  "retired_endpoint": {
+    "address": "10.104.10.104",
+    "validation": "old alias absent from interface; old listeners stopped; legacy Telnet sessions and R17 socat session closed"
+  },
+  "uniqueness": {
+    "candidate": "10.104.18.104",
+    "checked_host_interfaces": true,
+    "checked_all_six_active_mame_namespace_routes": true,
+    "checked_tempia_endpoint_records": true,
+    "result": "not assigned to host or any other inspected active MAME guest"
+  },
+  "validation": {
+    "new_ftp_banner": true,
+    "new_telnet_negotiation": true,
+    "ftp_root_login_and_active_listing": "reused R17 proof on same guest backend; no guest service/config changed",
+    "listener_pids": {
+      "ftp": 1763674,
+      "telnet": 1763676
+    },
+    "cleanup_monitor_pid": 1763831,
+    "old_alias_and_listeners_absent": true,
+    "mame_profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false
+    }
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "guest_network_files_modified": false,
+    "assistant_clone_disk_modified": false
+  },
+  "client_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+  "visual_limit": "The current guest capture is still black except for the Apollo command strip; endpoint validation does not establish VUE visual readiness."
+}

@@ -1,0 +1,94 @@
+{
+  "item": "I173",
+  "revision": 1,
+  "date": "2026-10-14",
+  "status": "support_inventory_complete",
+  "authorization": {
+    "authorized": true,
+    "definition_sha256": "269b2641d97a6baf7e84c2cbe0ca92da510aa87f58eb78b9187d3cf0262b0c56"
+  },
+  "scope": "Determine whether GTK1 and GTK5 runtimes/engines are usable on this host; no package install or profile change.",
+  "host": {
+    "os": "Debian GNU/Linux 13 (trixie)",
+    "version": "13.7"
+  },
+  "results": {
+    "gtk1": {
+      "runtime": false,
+      "shared_library": "libgtk-1.2.so absent from ldconfig and /usr/lib,/usr/local/lib",
+      "headers": false,
+      "pkg_config": false,
+      "engine_or_demo": false,
+      "active_apt_package_search": false,
+      "conclusion": "No GTK1 runtime or build interface is available locally; no GTK1 renderer can be implemented or validated here."
+    },
+    "gtk5": {
+      "runtime": false,
+      "shared_library": "libgtk-5.so absent",
+      "pkg_config": false,
+      "official_project_status": "GTK 5 does not exist yet; project docs describe preparation and possible breaking changes, not a release/runtime.",
+      "conclusion": "No GTK5 engine or adapter can be tested until upstream publishes a usable runtime/API."
+    },
+    "local_context": {
+      "gtk2_runtime": "present; pkg-config 2.24.33; GTK2 headers present",
+      "gtk3_runtime": "shared library present; pkg-config metadata and development headers absent",
+      "gtk4_runtime": "shared library present; pkg-config metadata and development headers absent"
+    }
+  },
+  "evidence": {
+    "os_release": {
+      "command": "cat /etc/os-release",
+      "returncode": 0,
+      "stdout": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.7\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"",
+      "stderr": ""
+    },
+    "gtk_pkg_config": {
+      "command": "/bin/bash -lc for p in gtk+-1.2 gtk+-2.0 gtk+-3.0 gtk4 gtk+-5.0 gtk5; do printf \"%s: \" \"$p\"; pkg-config --modversion \"$p\" 2>/dev/null || echo absent; done",
+      "returncode": 0,
+      "stdout": "gtk+-1.2: absent\ngtk+-2.0: 2.24.33\ngtk+-3.0: absent\ngtk4: absent\ngtk+-5.0: absent\ngtk5: absent",
+      "stderr": ""
+    },
+    "apt_gtk1": {
+      "command": "apt-cache search --names-only libgtk1.2|gtk1.2",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "gtk_libraries": {
+      "command": "python3 ctypes.util.find_library for GTK shared objects",
+      "returncode": 0,
+      "stdout": "{\"gtk-1.2\": null, \"gtk-3\": \"libgtk-3.so.0\", \"gtk-4\": \"libgtk-4.so.1\", \"gtk-5\": null, \"gtk-x11-2.0\": \"libgtk-x11-2.0.so.0\"}",
+      "stderr": ""
+    },
+    "gtk_packages": {
+      "command": "dpkg-query -W for GTK2/3/4 runtimes",
+      "returncode": 0,
+      "stdout": "libgtk-3-0:amd64 3.24.38-2~deb12u3\nlibgtk-4-1:amd64 4.18.6+ds-2\nlibgtk2.0-0:amd64 2.24.33-2+deb12u1",
+      "stderr": ""
+    }
+  },
+  "official_sources": [
+    {
+      "url": "https://gnome.pages.gitlab.gnome.org/gtk/gtk4/migrating-4to5.html",
+      "finding": "The current official GTK migration guide explicitly says GTK 5 does not exist yet."
+    },
+    {
+      "url": "https://discourse.gnome.org/t/gtk-planning-call-minutes-for-2026-04-24/34806",
+      "finding": "GNOME planning notes discuss identifying candidate GTK5 features; this is planning work, not an available toolkit release."
+    },
+    {
+      "url": "https://blogs.gnome.org/gtk/2026/",
+      "finding": "The 2026 GTK development blog records ongoing GTK 4.x releases, consistent with GTK5 not being released."
+    }
+  ],
+  "install_guidance": {
+    "command": null,
+    "reason": "No GTK1 package appears in the configured Debian 13 APT indexes, and GTK5 is not released. Installing an obsolete GTK1 stack from an archive or source build would require a separate scoped decision; no sudo command is suggested."
+  },
+  "changes": {
+    "packages_installed": false,
+    "profile_changed": false,
+    "repository_code_changed": false
+  },
+  "next": "Continue using existing GTK2/3/4 runtime families where supported. Revisit GTK1 only if a safe isolated source/runtime becomes an explicit task; revisit GTK5 after an upstream release."
+}

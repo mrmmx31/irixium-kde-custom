@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R297",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "public-isolated-separate-route-passed-coupled-and-human-review-open",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Validate the public GTK2 preview route and its current translated controls; do not install to the user session."
+  },
+  "test": {
+    "command": "TMPDIR=/home/lsi/tempia python3 tools/theme-lab/tests/test_gtk2_public_native.py",
+    "exit_code": 0,
+    "implementation": "Real Theme Lab backend, generator, GTK2 2.24.33 preview process, input events, capture, and pixel verifier; isolated bwrap/Xvfb fixture; no mocks.",
+    "routes": "Public separate native-preview route only. No claim for the embedded/coupled Theme Lab canvas.",
+    "runs": [
+      {"palette": "DomainOS-SR10.4", "scope": "horizontal and vertical scrollbar preview", "range_click_value": 34.0, "directions": ["left", "right", "up", "down"], "held_pixels_changed": 53, "release_pixels_different_from_normal": 0, "public_pixel_verifier": {"arrow_differences_from_generated_assets": {"left": 0, "right": 0, "up": 0, "down": 0}, "bar_role_colors_match": true}},
+      {"palette": "BreezeDark", "scope": "horizontal and vertical scrollbar preview", "range_click_value": 34.0, "directions": ["left", "right", "up", "down"], "held_pixels_changed": 53, "release_pixels_different_from_normal": 0, "public_pixel_verifier": {"arrow_differences_from_generated_assets": {"left": 0, "right": 0, "up": 0, "down": 0}, "bar_role_colors_match": true}},
+      {"palette": "DomainOS-SR10.4", "scope": "all-control public preview", "native_metrics_received": ["arrow", "check", "combo", "entry", "frame", "list", "progress", "push", "radio", "scale_h", "scale_v", "scroll_h", "scroll_v", "spin", "text", "toggle"], "native_interactions": ["push clicked", "toggle activated", "check activated", "radio member selected"], "normal_close": true}
+    ]
+  },
+  "historical_pixel_comparison": {
+    "reference": "Retained Domain/OS SR10.4 HP VUE 2.01 Trash Can normal-state PNGs.",
+    "method": "RGB crop comparison at 1:1; 15x15 pixels per stepper, no resizing or interpolation.",
+    "differences": {"left": 0, "right": 0, "up": 0, "down": 0},
+    "pixels_each": 225,
+    "right_cell_source_crop": [526, 4, 541, 19],
+    "public_capture_rois": {"left": [16, 16, 31, 31], "right": [221, 16, 236, 31], "up": [260, 16, 275, 31], "down": [260, 181, 275, 196]},
+    "scope": "The DomainOS public preview screenshot matches all four retained normal arrow cells. This does not compare historical pressed states."
+  },
+  "isolation": {
+    "real_private_guard_verified": true,
+    "fixture_user": "domainos-test",
+    "personal_home_exposed": false,
+    "system_bus_socket_exposed": false,
+    "theme_installed": false,
+    "production_application_touched": false,
+    "vm_input_sent": false,
+    "theme_or_source_changed": false,
+    "normal_close": true,
+    "temporary_outputs_curated_under": "~/tempia/ia-tema/evidence/I167/r297-public-native-preview/"
+  },
+  "evidence_manifest_sha256": "0e1a22fedda97b74335b1a3413132b468c1bd7cbb4195853c2fb39f84364e150",
+  "sources": {
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "f844bfa1ff8fb3f6846d8f14e2e62654e37b270105a3863ff85a37c53978d52c",
+    "tools/theme-lab/tests/verify_gtk2_public_capture.py": "9f1520c5107d5f9f3850a0288a8dc281a5b773ab5274f097ae3e5eba6516541a",
+    "tools/theme-lab/backend.py": "34a30abe57dfca5f0818032b033df1d7393f3df7c9017fabbc21b0b9219c1765",
+    "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+    "tools/theme-lab/gtk2_session.py": "6aef549f7314915ea097cc55a0700c83af22030c742eb8de13a345e7eef1ff49"
+  },
+  "limits": [
+    "GTK2 preview remains partial and recipe scope is limited to translated_controls; this test is not approval of all theme settings.",
+    "The embedded/coupled GTK2 preview route remains unverified.",
+    "Historical held-state comparisons for left, right and up remain pending until the project VM visibly shows the guest pointer on each target.",
+    "Remaining GTK2 control-state audit and user visual review remain open."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 82,
+    "basis": "Adds public isolated separate-route evidence for scrollbar input/press/release in two palettes, historical pixel equality for all four normal arrows in that route, and native metrics/interactions for all 16 translated controls. Coupled preview, remaining historical pressed-state comparisons, full audit and human review remain open. Not a visual-fidelity score."
+  }
+}

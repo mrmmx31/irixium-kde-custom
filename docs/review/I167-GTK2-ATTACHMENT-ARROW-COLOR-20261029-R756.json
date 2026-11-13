@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R756",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the visible GTK2 scrollbar in the user's large attachment against the narrow attachment designated as Motif, separating geometry, track relief, arrow shape, arrow color, and crop limitations.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "references": {
+    "large_gtk2_attachment": {
+      "filename": "e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [892, 642],
+      "upper_stepper_crop_xy": [228, 94],
+      "straight_track_sample_xy": [228, 200]
+    },
+    "narrow_user_attachment_designated_motif": {
+      "filename": "d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [102, 655],
+      "upper_stepper_crop_xy": [47, 37],
+      "straight_track_sample_xy": [47, 100],
+      "state_provenance": "The screenshot does not establish whether this arrow cell is normal, hover, pressed, or rendered under a different color-role state."
+    },
+    "canonical_vm_raster": {
+      "source": "Domain/OS SR10.4, HP VUE 2.01",
+      "path": "records/ia-tema/I167/R747/motif-sr104-vertical-bar.png",
+      "sha256": "6ddc3424693ad0a565a2d40c8c3e8611295b3ec6477d0d85fc551848d21ea9b0",
+      "dimensions_px": [15, 255],
+      "upper_stepper_crop_xy": [0, 0]
+    }
+  },
+  "comparison": {
+    "bar_geometry": {
+      "large_gtk2": "15 px cross-axis thickness",
+      "narrow_attachment": "15 px cross-axis thickness",
+      "result": "No width mismatch in the comparable straight-track samples."
+    },
+    "straight_track_rgb": {
+      "profile": "DDLLFFFFFFFDDLL",
+      "positions": "2 dark, 2 light, 7 face, 2 dark, 2 light",
+      "large_gtk2_vs_narrow_attachment": "15/15 identical RGB pixels",
+      "large_gtk2_vs_canonical_vm": "15/15 identical RGB pixels",
+      "narrow_attachment_vs_canonical_vm": "15/15 identical RGB pixels"
+    },
+    "upper_stepper_geometry_and_color": {
+      "cell_size_px": [15, 15],
+      "large_gtk2_vs_canonical_vm": "0/225 differing pixels",
+      "narrow_attachment_vs_canonical_vm": "61/225 differing pixels",
+      "difference_map": {
+        "triangle": "50 pixels differ only in color; the pixel mask and triangle shape are identical.",
+        "button_face": "11 interior pixels differ only in color at the lower face row of the cell.",
+        "other_pixels": "164/225 match exactly."
+      },
+      "colors": {
+        "canonical_vm_and_large_gtk2_triangle_and_face": "#6688b5",
+        "narrow_attachment_triangle_and_face": "#6f95c6",
+        "delta_rgb": [9, 13, 17],
+        "outer_shadow_light_and_face_edges": "No difference in the compared cell."
+      },
+      "result": "The GTK2 screenshot's top arrow geometry and color match the measured VM raster. Relative to the narrow attachment, only the arrow's interior shade is darker in GTK2; no protruding or inset geometry difference is visible in this cell."
+    },
+    "other_parts": {
+      "thumb": "Lengths and positions are not comparable because the widgets have different content ranges and viewport dimensions.",
+      "lower_stepper": "The GTK2 attachment is covered by gray from y=338 downward, so its lower cell cannot be compared with the lower arrow in the narrow image.",
+      "surrounding_frame_and_gap": "The two screenshots show different widget/container layouts; this pair does not isolate a common scrolled-window frame or spacing measurement.",
+      "pressed_hover_disabled": "The screenshots do not document matching states. R755 covers GTK2 native press/release in an isolated preview, not a direct state pair in the VM."
+    }
+  },
+  "result": "In the part that can be aligned, the GTK2 bar has the same 15 px thickness and exact straight-track relief as the narrow attachment and canonical SR10.4 raster. The upper arrow cell has the same silhouette; its 50-pixel glyph and 11-pixel inner face use #6688b5 in GTK2 and the VM raster, while the narrow attachment uses the lighter #6f95c6. This is a color-state/provenance discrepancy, not evidence of a geometry regression. The direct VM raster and GTK2 agree; the narrow attachment's arrow shade does not.",
+  "action": "No theme or palette change made. Do not change this arrow shade from the screenshot alone until the narrow image's state/palette is identified, because doing so would diverge from the measured SR10.4 VM raster.",
+  "human_review": "Pending; no user verdict was recorded or inferred."
+}

@@ -15,9 +15,9 @@ import shutil
 import sys
 from pathlib import Path
 
-VERSION = '0.1.0'
+VERSION = '0.4.1'
 THEME = 'IrixClassic-SGI'
-SIZES = (16, 22, 24, 32, 48, 64, 96, 128)
+SIZES = (16, 22, 24, 32, 44, 48, 64, 96, 128)
 INK = '#20201e'
 LIGHT = '#f3f2e9'
 PAPER = '#e3e1d7'
@@ -488,9 +488,47 @@ for name,variant,aliases in (
  ('emblem-favorite','star',''),('emblem-important','error',''),('emblem-default','check','')):
     add('emblems',name,'mark',variant,aliases)
 
+import classic_extensions
+classic_extensions.register(sys.modules[__name__])
+import classic_identity
+classic_identity.register(sys.modules[__name__])
+
+# GtkSpinButton asks for these symbolic fallbacks. Ordinary "-symbolic.png"
+# files are not symbolic PNGs in GTK: they prevent foreground recolouring.
+# Keep the coloured list-add/list-remove artwork separate from these masks.
+SYMBOLIC_CONTROLS = {'list-add-symbolic': 'plus', 'list-remove-symbolic': 'minus'}
+if 'list-remove-symbolic' not in USED:
+    add('actions', 'list-remove-symbolic', 'action', 'minus')
+
+
+def symbolic_control_body(name: str) -> str:
+    """Own 16-unit glyphs; colour comes from the toolkit's foreground role."""
+    if name not in SYMBOLIC_CONTROLS:
+        raise ValueError(name)
+    bars = '<rect x="3" y="7" width="10" height="2" fill="currentColor"/>'
+    if SYMBOLIC_CONTROLS[name] == 'plus':
+        bars += '<rect x="7" y="3" width="2" height="10" fill="currentColor"/>'
+    return '<g class="ColorScheme-Text">' + bars + '</g>'
+
+
+def symbolic_control_svg(name: str, size: int = 16) -> str:
+    return svg(symbolic_control_body(name), name, size=size, box=16)
+
+
+def symbolic_control_manifest() -> dict:
+    return {name: {'format': 'svg', 'native_grid': 16, 'stroke': 2, 'extent': 10,
+                   'foreground': 'currentColor', 'kde_role': 'ColorScheme-Text',
+                   'gtk_role': 'foreground', 'fixed_sizes': [16]}
+            for name in SYMBOLIC_CONTROLS}
+
 
 def draw(item: dict) -> str:
+    if item['name'] in SYMBOLIC_CONTROLS:
+        return group(symbolic_control_body(item['name']), 'scale(4)')
     kind=item['kind'];v=item['variant']
+    if kind=='menu_alias':return draw(next(i for i in ITEMS if i['name']==v))
+    if kind=='identity':return classic_identity.draw(sys.modules[__name__],item)
+    if kind in ('app_ext','paper_ext','ext'):return classic_extensions.draw(sys.modules[__name__],item)
     if kind=='folder':return folder('' if v=='open' else v, v=='open')
     if kind=='paper':return paper(v)
     if kind=='trash':return trash(v=='full')
@@ -511,6 +549,7 @@ def mini(item: dict, size: int) -> str:
     Fine textures are omitted. This is not individually pixel-hinted artwork.
     """
     k=item['kind'];v=item['variant']
+    if k=='menu_alias':return mini(next(i for i in ITEMS if i['name']==v),size)
     if k=='folder':
         s=poly('1,6 8,2 11,3 11,11 4,15 1,13',MID,w=.75)+poly('3,7 12,3 14,11 4,15',PAPER,w=.75)
         if v and v!='open':s+=group(mark(v),'matrix(.32 -.12 .025 .32 6 7)')
@@ -549,9 +588,30 @@ def mini(item: dict, size: int) -> str:
         # Large action forms are already intentionally simple. Their native
         # bitmap is redrawn from vectors, not resized from another bitmap.
         s=group(draw(item),'scale(.25)')
+    if symbolic_monochrome(item):
+        s=monochrome(s)
     # Inset all small drawings: 0.5 logical pixel safeguards outlines at the edge.
     s=group(s,'translate(.35 .25) scale(.94)')
     return svg(s,item['name'],size=size,box=16)
+
+
+def monochrome(body: str) -> str:
+    import re
+    # Retain outlines and openings rather than turning entire paper/carpet
+    # silhouettes into opaque rectangles. No external fonts or stylesheet.
+    pale={LIGHT,PAPER,MID,'white','#ffffff','none'}
+    def colour(match):
+        prop,value=match.groups()
+        return f'{prop}="'+('none' if prop=='fill' and value in pale else 'currentColor' if value!='none' else 'none')+'"'
+    body=re.sub(r'(fill|stroke)="([^"]+)"',colour,body)
+    return '<g class="ColorScheme-Text" style="color:#242424">'+body+'</g>'
+
+
+def symbolic_monochrome(item):
+    # The Classic panel uses fixed SGI colours, including its launcher and
+    # status indicators. Symbolic naming must not turn these into black blobs.
+    return (item['name'].endswith('-symbolic') and item['category'] not in ('status','categories') and item['kind']!='identity'
+            and not item['name'].startswith('start-here'))
 
 
 CONTEXTS={'actions':'Actions','apps':'Applications','categories':'Categories','devices':'Devices','emblems':'Emblems','mimetypes':'MimeTypes','places':'Places','status':'Status'}
@@ -591,7 +651,13 @@ def make_preview(out: Path, preview: Path) -> None:
     for i,item in enumerate(ITEMS):
         x=(i%cols)*cw;y=head+(i//cols)*ch
         d.line((x,y+ch-1,x+cw,y+ch-1),fill='#7494a9')
-        im=Image.open(out/f'48x48/{item["category"]}/{item["name"]}.png').convert('RGBA')
+        if item['name'] in SYMBOLIC_CONTROLS:
+            import io
+            import cairosvg
+            source=out/'scalable'/item['category']/(item['name']+'.svg')
+            im=Image.open(io.BytesIO(cairosvg.svg2png(url=str(source),output_width=48,output_height=48))).convert('RGBA')
+        else:
+            im=Image.open(out/f'48x48/{item["category"]}/{item["name"]}.png').convert('RGBA')
         image.paste(im,(x+(cw-48)//2,y+10),im)
         label=item['name']
         if len(label)>22:
@@ -608,7 +674,7 @@ def make_preview(out: Path, preview: Path) -> None:
     tilew=180;tileh=124;ss=Image.new('RGB',(6*tilew,3*tileh+104),'#86a4b8');dd=ImageDraw.Draw(ss)
     dd.rectangle((0,0,ss.width,85),fill='#c1bcaa')
     dd.text((24,14),'IRIX CLASSIC — SGI',font=font(29),fill=INK)
-    dd.text((25,52),'Prévia 0.1.0 • ícones do pacote a 64 px',font=font(15),fill=INK)
+    dd.text((25,52),f'Prévia {VERSION} • ícones do pacote a 64 px',font=font(15),fill=INK)
     lookup={i['name']:i for i in ITEMS}
     for j,name in enumerate(selected):
         item=lookup[name];x=(j%6)*tilew;y=89+(j//6)*tileh
@@ -620,7 +686,7 @@ def make_preview(out: Path, preview: Path) -> None:
     scales=Image.new('RGB',(980,160+len(names)*145),'#dfdcd0');ds=ImageDraw.Draw(scales)
     ds.text((20,17),'TAMANHOS NATIVOS / 100%',font=font(24),fill=INK)
     ds.text((20,52),'Cada imagem usa seu tamanho real. Faixa inferior: fundo escuro.',font=font(14),fill=INK)
-    xx=[235,290,350,415,492,591,720,860]
+    xx=[220,260,305,350,405,460,530,640,805]
     for x,s in zip(xx,SIZES):ds.text((x,94),str(s)+' px',font=font(12),fill=INK)
     for row,name in enumerate(names):
         item=lookup[name];y=130+row*145
@@ -647,7 +713,16 @@ def build(out: Path, preview: Path | None) -> None:
     manifest=[]
     try:
         for item in ITEMS:
-            cat=item['category'];name=item['name'];large=svg(draw(item),name)
+            cat=item['category'];name=item['name'];body=draw(item)
+            if name in SYMBOLIC_CONTROLS:
+                # Native 16px lookup and scalable lookup remain SVG symbolic.
+                # Never emit an ordinary PNG for these two control glyphs.
+                for directory,size in (('16x16',16),('scalable',64)):
+                    dest=out/directory/cat;dest.mkdir(parents=True,exist_ok=True)
+                    (dest/(name+'.svg')).write_text(symbolic_control_svg(name,size),encoding='utf-8')
+                manifest.append(item)
+                continue
+            large=svg(monochrome(body) if symbolic_monochrome(item) else body,name)
             dest=out/'scalable'/cat;dest.mkdir(parents=True,exist_ok=True)
             p=dest/(name+'.svg');p.write_text(large,encoding='utf-8')
             for a in item['aliases']:shutil.copyfile(p,dest/(a+'.svg'))
@@ -659,8 +734,23 @@ def build(out: Path, preview: Path | None) -> None:
                 for a in item['aliases']:shutil.copyfile(target,dest/(a+'.png'))
             manifest.append(item)
         (out/'index.theme').write_text(index_text(categories),encoding='utf-8')
-        (out/'manifest.json').write_text(json.dumps({'version':VERSION,'canonical_icons':len(ITEMS),'unique_artworks':len({draw(i) for i in ITEMS}),'icon_names':len(USED),'sizes':SIZES,'icons':manifest},indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-        (out/'README.txt').write_text('IrixClassic-SGI '+VERSION+'\n\nReconstrução independente inspirada em SGI Indigo Magic.\nNão é um pacote oficial nem uma extração do IRIX.\nMIT: consulte LICENSE.\n\nInstalar esta pasta em ~/.local/share/icons/ e selecionar\nIRIX Classic — SGI nas Configurações do Sistema > Ícones.\nFallback: breeze,hicolor (não incluídos).\nNão altera decoração, cursores, sons, GTK ou Kvantum.\n\nSímbolos não cobertos e nomes -symbolic usam o fallback.\nAplicativos com ícones embutidos/absolutos e miniaturas podem\nnão seguir o tema. Não reproduz automaticamente a animação\nde aplicação em execução (magic carpet) do IRIX.\n',encoding='utf-8')
+        (out/'manifest.json').write_text(json.dumps({'version':VERSION,'canonical_icons':len(ITEMS),'unique_artworks':len({draw(i) for i in ITEMS}),'icon_names':len(USED),'sizes':SIZES,'icons':manifest,'symbolic_controls':symbolic_control_manifest()},indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+        (out/'PROVENANCE.txt').write_text(
+            f'IrixClassic-SGI {VERSION}\n\n'
+            'Original SVG geometry and native-size PNG renderings generated by\n'
+            'build_classic.py, classic_extensions.py and the classic identity artwork modules. MIT license; see LICENSE.\n'
+            f'{len(ITEMS)} canonical icons; {len({draw(i) for i in ITEMS})} detailed compositions; {len(USED)} supported names.\n\n'
+            'Inspired by SGI Indigo Magic User Interface Guidelines, chapter 2:\n'
+            'https://techpubs.jurassic.nl/library/manuals/2000/007-2167-002/sgi_html/ch02.html\n'
+            'Independent adaptation, not extracted from IRIX or an official SGI product.\n'
+            'No third-party icon artwork or font files are included.\n\n'
+            'Audit-derived coverage: icons/sources/classic-audit-coverage.json.\n'
+            'MIME candidates do not prove runtime use. Application aliases represent\n'
+            'reviewed names. Application identities are independently drawn from their original motifs. Symbolic actions are monochrome; tray and launcher retain SGI colours.\n'
+            'list-add-symbolic and list-remove-symbolic are original 16-unit foreground masks,\n'
+            'provided as native 16px and scalable SVGs; ordinary PNG aliases are omitted.\n'
+            'No external audit application is included. Other names inherit breeze,hicolor.\n',encoding='utf-8')
+        (out/'README.txt').write_text('IrixClassic-SGI '+VERSION+'\n\nReconstrução independente inspirada em SGI Indigo Magic.\nNão é um pacote oficial nem uma extração do IRIX.\nMIT: consulte LICENSE.\n\nInstalar esta pasta em ~/.local/share/icons/ e selecionar\nIRIX Classic — SGI nas Configurações do Sistema > Ícones.\nFallback: breeze,hicolor (não incluídos).\nNão altera decoração, cursores, sons, GTK ou Kvantum.\n\nCobertura de nomes auditados e aliases semânticos documentada em\nicons/sources/classic-audit-coverage.json. Ícones -symbolic cobertos\nusam desenhos próprios; ações são monocromáticas e a bandeja/menu mantém a paleta SGI. Nomes desconhecidos usam o fallback.\nAplicativos com ícones embutidos/absolutos e miniaturas podem\nnão seguir o tema. Não reproduz automaticamente a animação\nde aplicação em execução (magic carpet) do IRIX.\n',encoding='utf-8')
         license_path=Path(__file__).resolve().parents[1]/'LICENSE'
         if license_path.is_file():shutil.copyfile(license_path,out/'LICENSE')
         if preview:make_preview(out,preview)

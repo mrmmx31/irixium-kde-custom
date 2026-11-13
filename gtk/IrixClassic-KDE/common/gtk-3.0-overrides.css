@@ -1,0 +1,239 @@
+/* SPDX-License-Identifier: GPL-3.0-or-later */
+* {
+  -GtkScrolledWindow-scrollbar-spacing: 0;
+  -GtkScrollbar-has-backward-stepper: true;
+  -GtkScrollbar-has-forward-stepper: true;
+  -GtkScrollbar-has-secondary-backward-stepper: false;
+  -GtkScrollbar-has-secondary-forward-stepper: false;
+  -GtkTreeView-expander-size: 9;
+  -GtkTreeView-horizontal-separator: 2;
+  -GtkTreeView-vertical-separator: 2;
+}
+treeview.view {
+  background-color: @theme_base_color_breeze;
+}
+treeview.view:selected {
+  background-color: @theme_selected_bg_color_breeze;
+}
+treeview.view:selected:backdrop {
+  background-color: @theme_unfocused_selected_bg_color_breeze;
+}
+treeview.view header button {
+  padding: 1px 3px;
+}
+treeview.view.expander {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_normal_breeze);
+}
+treeview.view.expander:checked {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_normal_breeze);
+}
+scrollbar button {
+  min-width: 18px;
+  min-height: 18px;
+  padding: 0;
+  border: none;
+}
+scrollbar.vertical button.up {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-up-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.down {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-down-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.up {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-left-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.down {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-right-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.up:active {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-up-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.down:active {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-down-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.up:active {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-left-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.down:active {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success mix(@theme_button_background_normal_breeze, #000000, 0.24836601), warning @theme_button_background_normal_breeze), -gtk-recolor(url("adaptive/stepper-right-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_normal_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+combobox arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.81372549));
+}
+combobox button:active arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_normal_breeze, #000000, 0.50326797), success @theme_button_background_normal_breeze, warning mix(@theme_button_background_normal_breeze, #ffffff, 0.81372549));
+}
+combobox button:disabled arrow {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+treeview.view:backdrop {
+  background-color: @theme_unfocused_base_color_breeze;
+}
+treeview.view:selected:backdrop {
+  background-color: @theme_unfocused_selected_bg_color_breeze;
+}
+treeview.view.expander:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_breeze);
+}
+treeview.view.expander:checked:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-normal-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_breeze);
+}
+scrollbar button:backdrop {
+  border: none;
+}
+scrollbar.vertical button.up:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-up-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.down:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-down-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.up:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-left-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.down:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-right-normal-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.up:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-up-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.vertical button.down:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-down-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.up:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-left-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+scrollbar.horizontal button.down:active:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success mix(@theme_button_background_backdrop_breeze, #000000, 0.24836601), warning @theme_button_background_backdrop_breeze), -gtk-recolor(url("adaptive/stepper-right-pressed-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #ffffff, 0.50000000), success mix(@theme_button_background_backdrop_breeze, #ffffff, 0.70588235));
+}
+combobox arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-normal-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.81372549));
+}
+combobox button:active arrow:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-pressed-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_breeze, #000000, 0.50326797), success @theme_button_background_backdrop_breeze, warning mix(@theme_button_background_backdrop_breeze, #ffffff, 0.81372549));
+}
+treeview.view:disabled {
+  background-color: @insensitive_base_color_breeze;
+}
+treeview.view:selected:disabled {
+  background-color: @insensitive_selected_bg_color_breeze;
+}
+treeview.view.expander:disabled {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_insensitive_breeze, success @theme_button_foreground_insensitive_breeze);
+}
+treeview.view.expander:checked:disabled {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_insensitive_breeze, success @theme_button_foreground_insensitive_breeze);
+}
+scrollbar button:disabled {
+  border: none;
+}
+scrollbar.vertical button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.up:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.down:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.up:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.down:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.up:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.down:active:disabled {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+combobox arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+combobox button:active arrow:disabled {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_insensitive_breeze, warning mix(@theme_button_background_insensitive_breeze, #ffffff, 0.50000000));
+}
+treeview.view:disabled:backdrop {
+  background-color: @theme_unfocused_view_bg_color_breeze;
+}
+treeview.view:selected:disabled:backdrop {
+  background-color: @insensitive_unfocused_selected_bg_color_breeze;
+}
+treeview.view.expander:disabled:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-right-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_insensitive_breeze, success @theme_button_foreground_backdrop_insensitive_breeze);
+}
+treeview.view.expander:checked:disabled:backdrop {
+  -gtk-icon-source: -gtk-recolor(url("adaptive/arrow-down-disabled-glyph-0-symbolic.svg"), error @theme_button_foreground_backdrop_insensitive_breeze, success @theme_button_foreground_backdrop_insensitive_breeze);
+}
+scrollbar button:disabled:backdrop {
+  border: none;
+}
+scrollbar.vertical button.up:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.down:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.up:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.down:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.up:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-up-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.vertical button.down:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-down-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.up:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-left-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar.horizontal button.down:active:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.08496732), warning @theme_button_background_backdrop_insensitive_breeze), -gtk-recolor(url("adaptive/stepper-right-disabled-glyph-1-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.25490196), success mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+combobox arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+combobox button:active arrow:disabled:backdrop {
+  background-image: -gtk-recolor(url("adaptive/optionmark-disabled-glyph-0-symbolic.svg"), error mix(@theme_button_background_backdrop_insensitive_breeze, #000000, 0.13071895), success @theme_button_background_backdrop_insensitive_breeze, warning mix(@theme_button_background_backdrop_insensitive_breeze, #ffffff, 0.50000000));
+}
+scrollbar button,
+scrollbar button:hover,
+scrollbar button:active,
+scrollbar button:checked,
+scrollbar button:backdrop,
+scrollbar button:hover:backdrop,
+scrollbar button:active:backdrop,
+scrollbar button:checked:backdrop,
+scrollbar button:disabled,
+scrollbar button:hover:disabled,
+scrollbar button:active:disabled,
+scrollbar button:checked:disabled,
+scrollbar button:disabled:backdrop,
+scrollbar button:hover:disabled:backdrop,
+scrollbar button:active:disabled:backdrop,
+scrollbar button:checked:disabled:backdrop {
+  -gtk-icon-source: none;
+  background-size: 18px 18px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  background-clip: border-box;
+  border-image-source: none;
+}

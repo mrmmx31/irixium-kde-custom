@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-11T20:18:24.419836+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "scope": "Compiled GTK2.24.33 push-button pressure bridge and binding ownership. Renderer remains blocked.",
+  "build": {
+    "target": "make -C tools/theme-lab gtk2-pressure",
+    "session": 91832,
+    "exit_code": 0,
+    "optional": true,
+    "main_motif_binary_not_linked_to_gtk2": true
+  },
+  "native_boundaries": {
+    "session": 15380,
+    "exit_code": 0,
+    "tests": 6,
+    "log": ".qa-t04-anchor-foundation/gtk2-project-bridge-contract.log",
+    "covers": [
+      "missing bridge",
+      "ABI refusal",
+      "reject toggle/label instead of substituting types",
+      "reject disabled pressure and non-boolean input",
+      "reject setter use after close/destroy",
+      "reset under real pointer respects native hover/touchscreen policy"
+    ]
+  },
+  "lifecycle_unit_tests": 5,
+  "native_path": {
+    "session": 7984,
+    "exit_code": 0,
+    "proof": ".qa-t04-anchor-foundation/gtk2-project-bridge-owned-native.json",
+    "forced_activations": 0,
+    "native_activations_after_reset": 1,
+    "native_destroy_cleanup": {
+      "closed": true,
+      "remaining_handlers": 0,
+      "setter_calls": [
+        true
+      ],
+      "activations_after_destroy": 1
+    }
+  },
+  "hashes": {
+    "tools/theme-lab/native-gtk2/press.c": "35b9847ba7b775a5748b7380433ec410cd37e52d76f75b87876519589a8148f1",
+    "tools/theme-lab/native-gtk2/press.h": "41b7b90728360be3fccc0b358f702e45c43e0d293860bb07bd8dc16110af4b31",
+    "tools/theme-lab/gtk2_press_bridge.py": "1d3706be896056db47aa49838fe0fe04549953d1ecbff8c4894867708a663cac",
+    "tools/theme-lab/gtk2_pressed_state.py": "b63d65240ddf808faba4419770ba47e9fbaeeb0a46c309b66391fc7cfe4b1cf4",
+    "tools/theme-lab/build/libtheme-lab-gtk2-press.so": "9d00390239a4e461ba32cdaf0d7060170642b3421c4ec7b711063652cd1cf8c8",
+    "tools/theme-lab/tests/test_gtk2_press_bridge_native.py": "cf5ef0e183d3e6962a9176087d78f3ea0974c17e4866be365327f9d983ae7c5f",
+    ".qa-t04-anchor-foundation/gtk2-project-bridge-owned-native.json": "fba751a4bc2ff11e9634524fb2ef2444f6b1898163ee8f6b63f57747436c3bba"
+  },
+  "limits": [
+    "GTK2.24.33 only; exposed struct field, not a portable public setter.",
+    "Renderer, capability negotiation, immutable snapshot packaging and controller proof pending.",
+    "No coupled/separate scene rebuild or historical paint proof.",
+    "No personal delivery or theme/color changes."
+  ],
+  "next": "Integrate guarded bridge into GtkButton scene only, preserve refusals for other controls, then prove paired rebuild/controller persistence and packaging.",
+  "progress": {
+    "percent": 25,
+    "basis": "First of four stages complete: lifecycle foundation. Guarded bridge is verified; stage2 still needs renderer integration."
+  }
+}

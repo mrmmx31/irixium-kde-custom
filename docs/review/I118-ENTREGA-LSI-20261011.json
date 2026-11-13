@@ -1,0 +1,71 @@
+{
+  "at": "2026-10-11T06:23:24.882462+00:00",
+  "item": "I118",
+  "authority_revision": 2,
+  "previous_goal_turn_classification": "progress: delivery prepared and coordination requested",
+  "phase": "delivered_lsi",
+  "pid": 1834334,
+  "window": "44040354",
+  "display": ":61",
+  "run": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-a05c335fd0aa41ea85aeb1cd97b37358",
+  "release_used": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "962ae95731b9c548efa214082c843c2fb4b61875ef6ed2df38a5506554f61938",
+      "item_id": "I118",
+      "user_revision": 2,
+      "definition_sha256": "7daffa636699a0eec06a9b9433a39b2f81ec02110aab48791db04dedfe337c03",
+      "application": "Laboratório I118 — nova versão no Xephyr :61, origem PID1707007",
+      "reason": "Versão compilada e testada: relevos por peça/estado GTK3 e cores KDE. Copiar projeto salvo e journal/Undo para nova instância; manter a origem aberta porque texto bruto não persistido não é importado. O botão coordena a entrega e a pausa de edição, sem fechar outras janelas.",
+      "requested_at": "2026-10-11T06:21:14.513Z"
+    },
+    "answer": {
+      "approved": true,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "request_id": "962ae95731b9c548efa214082c843c2fb4b61875ef6ed2df38a5506554f61938",
+      "responded_at": "2026-10-11T06:21:30.681Z"
+    },
+    "available": true,
+    "permitted": true,
+    "scope_current": true
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-18ecfeb4d42e4df4946e2a037c6a7480/MANIFESTO.json",
+    "source_manifest_sha256": "5fd33ccaf83a43b7b1b2e2ccd233575dc98edbb09f5fcca2d1693b6b91e08855",
+    "saved_files_sha256": {
+      "working.json": "170922a88211e6e3cb6789dd3df4f305f21ba14ed9e1cc101c0222db59b5b72f",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "preservation": {
+    "source_pid1707007_confirmed_live": true,
+    "journal_and_histories_byte_identical": true,
+    "all_working_fields_except_exported_at_semantically_identical": true,
+    "current_Motif_selection_preserved": true,
+    "personal_gui_input_sent": false,
+    "raw_unsaved_widget_text_imported": false,
+    "source_remains_open": true
+  },
+  "visual_inspection": "New client capture inspected: three panels, native Motif controls, previous Motif selection and dynamic palette preserved. GTK3 editor state painting/interaction was proved in private fixtures; no personal click used to replace selection.",
+  "capture": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/i118-delivered.png",
+  "capture_initial_failures": "import symlink unavailable in namespace; ImageMagick7 executable then used successfully. No GUI input sent.",
+  "frozen_modules": {
+    "arrow_button_states.py": "7d65441b71d741f1d76184cbbc6217cdeaca241f90a013d43383bf5c9025e3cd",
+    "thumb_states.py": "b69a05ac8b0a95169860f12cde892eb8ae964ff42e7ec8289bcc168dd6c49a97",
+    "fitting_states.py": "23cd46c3ec400db5113da2713250a582d48f8862c71db4e0152c65bc976fb995"
+  },
+  "estimated_stage_progress_percent": 100,
+  "percentage_basis": "I118 implementation, native painting, integrated editing, readiness, frozen handoff and delivered window inspected. Human evaluation and full goal remain incomplete.",
+  "remaining": [
+    "Human evaluation",
+    "Broader goal and later authorized items"
+  ],
+  "historical_fidelity_claimed": false,
+  "new_manifest_sha256": "1a4b0a750cadf21532ea26b4a62c700c0966957e79ebcac4eeae838b503e07f0"
+}

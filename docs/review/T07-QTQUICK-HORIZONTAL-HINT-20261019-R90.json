@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-HORIZONTAL-HINT-20261019-R90",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_with_scope_limits",
+  "purpose": "Close R88's specific omission: native hover and palette verification for the project's horizontal Qt Quick scrollbar hint.",
+  "runtime": {
+    "qt": "6.8.2",
+    "controls_style": "org.kde.desktop",
+    "display": ":83",
+    "screen_px": [1600, 1000],
+    "theme_preview": "current plasma/tests/galerias-nativas/plasma_style_demo.py QML, isolated XDG profiles",
+    "source_sha256": "706323bb1a220cf52235406988d9d7b243dba58f10f2a9938e0acaaea076596d"
+  },
+  "control_geometry": {
+    "horizontal_scrollbar_px": [24, 283, 380, 15],
+    "tooltip_px": [24, 306, 234, 30],
+    "gap_below_scrollbar_px": 8,
+    "overlap": false
+  },
+  "palette_matrix": {
+    "expected_tooltip_color_set": 4,
+    "results": [
+      {"scheme":"Irixium","background":"#c1c1c1","text":"#000000","captured_background":"#c1c1c1","text_pixels":36,"status":"passed"},
+      {"scheme":"DomainOS-SR10-4","background":"#78a0d5","text":"#ffffff","captured_background":"#78a0d5","text_pixels":36,"status":"passed"},
+      {"scheme":"TestYellow","background":"#e7d26e","text":"#25200a","captured_background":"#e7d26e","text_pixels":36,"status":"passed"},
+      {"scheme":"BreezeLight","background":"#f7f7f7","text":"#232629","captured_background":"#f7f7f7","text_pixels":36,"status":"passed"},
+      {"scheme":"BreezeDark","background":"#292c30","text":"#fcfcfc","captured_background":"#292c30","text_pixels":36,"status":"passed"}
+    ],
+    "all_five_passed": true,
+    "per_case": {
+      "bar_hovered": true,
+      "tooltip_opened_by_later_sample": true,
+      "not_open_at_250ms": true,
+      "closed_after_pointer_leave": true,
+      "bar_hover_ended_after_leave": true,
+      "qml_warnings": 0
+    }
+  },
+  "diagnostic_attempt": {
+    "initial_matrix": "Irixium's first startup sample did not receive hover; DomainOS, TestYellow, BreezeLight and BreezeDark passed. The pixel check alone was not treated as hover evidence.",
+    "cause_tested": "The QML probe began moving the pointer 150 ms after engine load, before the first Irixium gallery was consistently ready.",
+    "recheck": "Irixium rerun with a 700 ms initial settle passed the complete hover, delay, palette, pixel and leave checks.",
+    "product_failure_claimed": false
+  },
+  "artifacts": {
+    "directory": "~/tempia/t07-qtquick-horizontal-hint-r90-20261019/",
+    "initial_matrix_sha256": "ca2b092b182b55a577bd797039d13706d7c23347aed14231845eb38fd3bc54a5",
+    "settled_irixium_matrix_sha256": "07e6400040448fcd0f47fac05ef58fa4d2e8f02f025071776124b4f308aa934d",
+    "settled_irixium_capture_sha256": "2718468fc7b65a6c3f30d908a6a24ede48637360ab51f5d59db752a8f690d200",
+    "yellow_capture_sha256": "6afda7204bb18380e8f2cf07a005e365b5266d90740f95d5ed07a4648a2594ef"
+  },
+  "limits": [
+    "The changed QML component is shared with R88; this is one orientation's hover/pixel proof, not a new source modification.",
+    "No historical SR10.4 pixel comparison, Qt Quick native-app KCM integration, other layouts, or human approval was tested.",
+    "The gallery itself is a project-owned test preview; this does not establish tooltip behavior in unrelated Plasma applications."
+  ],
+  "conclusion": "The project's horizontal scrollbar hint uses the selected KDE Tooltip role for both background and text in five schemes, including a yellow scheme; the actual hovered bar is not covered, and the hint closes after pointer leave.",
+  "next": "Continue with the next independent open gap in authorized T07; avoid repeating GTK2 Progress or the GTK3 R83/R85 evidence without a new discriminating hypothesis."
+}

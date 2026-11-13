@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "R636",
+  "date": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "definition_matches": true,
+    "task_state": "open"
+  },
+  "scope": "Prove that the real installed KDE Kicker application search accepts keyboard input without clicking the field and filters a unique app entry; retain the private panel open/close checks.",
+  "method": {
+    "environment": "Private Plasma/KWin/Xvfb session with disposable XDG homes, current installed Kicker QML copied and instrumented privately, current DomainOS application applet/panel, private D-Bus runtime under ~/tempia.",
+    "search_entry": "One artificial desktop entry named R636UniqueSearchMarker, visible only in disposable XDG_DATA_HOME.",
+    "input": "The native Kicker search field had activeFocus before any field click; QTest sent each character to its QWindow. Search text was observed, category root list became hidden, runner results became visible, and exactly one matching result was counted.",
+    "result": {
+      "status": "passed",
+      "checks_total": 91,
+      "checks_false": [],
+      "search_focus": true,
+      "text_received": true,
+      "root_to_results": true,
+      "unique_result": true,
+      "applications_open_close_reopen": true,
+      "drawer_open_close_reopen": true
+    },
+    "cleanup": "The result reports own_daemons_stopped=true, private_host_exited_cleanly=true, qml_runtime_errors_zero=true.",
+    "production_changed": false,
+    "user_profile_changed": false,
+    "personal_session_touched": false
+  },
+  "artifact_hashes": {
+    "result_sha256": "8b471e934ce2d6431129a58ca7825e5e736e650dabab24047a4f3ffcbfbe46f5",
+    "evidence_archive_sha256": "d0fd00019637813f654529343ed18bec5683dd3cf78000cb588cda184f3b685f",
+    "runner_sha256": "03fbbc7020bb98077eaf4ca50315e2b2bebe4eac7da3167379eb20c084f64d79",
+    "private_app_fixture_sha256": "6e51a364b8f87de7ea9fec010915a714ff203b645aa2b38b3bbac56b6f556faa",
+    "host_probe_sha256": "65cd3fd3ea76e2b9eb76f7e2cccb1f9b6fb4cede831d5c834e20f76ce06721ee"
+  },
+  "fixture_limits": [
+    "Private Plasma/KWin/Xvfb fixture; not the live plasmashell panel or the user desktop.",
+    "The search application is synthetic and is not launched.",
+    "Human visual acceptance of the live menu and drawer remains pending."
+  ],
+  "conclusion": "The Kicker search field was focused before input, accepted the typed unique name without a field click, switched to result mode, and returned exactly one matching artificial application. The existing same-button menu toggles also passed in the private panel fixture. No production change is indicated by this proof.",
+  "next": "Keep P01 at waiting_user. The user should inspect Applications search without clicking its field and verify menu/drawer repeated-click behavior in the live lsi desktop."
+}

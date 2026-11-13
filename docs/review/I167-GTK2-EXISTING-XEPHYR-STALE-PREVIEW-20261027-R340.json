@@ -1,0 +1,29 @@
+{
+  "id": "R340",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "read-only identification of the already-running GTK2 comparison preview after R332 installation",
+  "processes": {
+    "launcher_pid": 3996225,
+    "xephyr_pid": 3996226,
+    "gtk2_preview_pid": 3996239,
+    "started": "2026-10-26 20:48:54 -0400",
+    "display": ":187",
+    "preview_script": "/home/lsi/tempia/ia-tema/gtk2-live-preview-r326.py",
+    "wrapper_loaded_by_script": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc"
+  },
+  "config_timestamps": {
+    "wrapper_mtime": "2026-10-27 02:52:45 -0400",
+    "current_reload_theme_gtkrc_mtime": "2026-10-27 02:52:45 -0400",
+    "installed_theme_asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+  },
+  "capture": {
+    "type": "read-only X11 root capture of existing Xephyr display :187",
+    "path": "~/tempia/ia-tema/evidence/I167/r340-existing-xephyr-readonly-20261027.png",
+    "sha256": "963557320ffc9b0a98a5fd4c72f15653639351f9d89de7b70cd1ca027f139a10",
+    "preview_zoom": "~/tempia/ia-tema/evidence/I167/r340-existing-xephyr-scrollbar-pair-zoom-20261027.png",
+    "preview_zoom_sha256": "64514b4d08a4575116f506e51bf5ed1194474b91b40c5476e0402c568adc46d9"
+  },
+  "conclusion": "The existing GTK2 preview predates the R332-installed GTK2 RC file and loaded it through an explicit Gtk.rc_parse call at startup. Its visible arrow dimensions therefore cannot validate or contradict the current R332 GTK2 recipe. The preview belongs to a separate running session and was only captured read-only; no process was closed, restarted, or modified.",
+  "next": "Keep the existing preview untouched. Validate the current R332 recipe in a newly opened isolated GTK2 preview only when a new Xephyr session is authorized; retain the live SR10.4 comparison as pending until a physical wake event."
+}

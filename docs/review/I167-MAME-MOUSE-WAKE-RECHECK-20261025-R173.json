@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-MOUSE-WAKE-RECHECK-20261025-R173",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "process": {
+    "pid": 274368,
+    "window_xid": "0x1c00008",
+    "window_pid_verified": true,
+    "window_geometry": "+885+59 1024x844",
+    "frameskip": 4,
+    "throttled": false,
+    "paused": false
+  },
+  "initial_state": {
+    "guest_display": "black",
+    "host_pointer": {"x": 200, "y": 950, "outside_mame_window": true},
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "hook_transitions": 8
+  },
+  "observations": [
+    {
+      "action": "XTest pointer motion to host (1400,500), over the black MAME client, while MAME was unfocused",
+      "result": "Guest remained black; hook and mouse options remained released."
+    },
+    {
+      "action": "Activated the PID-verified MAME window without a click",
+      "result": "hook_captured=false, mouse=false, mouse_device=none."
+    },
+    {
+      "action": "One XTest left click at host (1400,500) with MAME focused",
+      "result": "xdotool exited 0; a subsequent live probe still reported hook_captured=false, mouse=false, mouse_device=none. Guest remained black. This did not reproduce the reported capture during black-screen wake."
+    },
+    {
+      "action": "One host XTest Shift key with MAME focused",
+      "result": "VUE returned in the next captured frame; hook_captured=false, mouse=false, mouse_device=none, wait_button_up=false."
+    }
+  ],
+  "final_state": {
+    "host_focus_restored_to": "XChat window 0x01800003",
+    "host_pointer": {"x": 200, "y": 950},
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "transitions": 8,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "guest_display": "awake; Help Viewer and File Manager visible",
+    "guest_files_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "captures": [
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-current-screen-R173.png", "sha256": "47b350ec834b8658ecf55748b4f1fed3522fb8d299ad48d438c36e2897418869"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-host-window-prewake-R173.png", "sha256": "18b4f5184c1c9e313c111fd2c6bb8cf28ddb0d22a4627a63a19d272fccd2f6c6"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-screen-after-move-R173.png", "sha256": "87f9fedd9f625adfb8e44e75e27e9d2d427259f95721d63f6fd483b96f295397"},
+    {"path": "~/tempia/ia-tema/evidence/I167/i167-screen-after-host-shift-R173.png", "sha256": "1e608a1ff9cf3ab290530c0cb0ab7e6992c014ad7bac297a2c5779a2fc0a62bd"}
+  ],
+  "comparison_with_prior": "R161 remains valid for a click delivered to a visible VUE menu: that first click recaptured and was consumed. This black-screen test did not reproduce the user's wake-time capture. XTest is host-generated input, not a physical mouse device event; do not generalize it to the physical gesture reported.",
+  "next": "Retain the hook unchanged. Continue I167's authorized GTK2 comparison from the now-visible VUE session; if the user reports the exact physical wake gesture, use that event to test the capture path without altering the original VM or performance profile.",
+  "status": "black-screen-mouse-wake-not-reproduced; host-key-wake-restored; mouse-released"
+}

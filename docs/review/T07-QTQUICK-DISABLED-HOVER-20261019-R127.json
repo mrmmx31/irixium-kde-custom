@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-DISABLED-HOVER-20261019-R127",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:03:37Z",
+  "status": "passed_scoped_with_qtquick5_gap",
+  "scope": "Attempt hover on every disabled control in the native QtQuick5/6 test gallery, retaining the existing hover-delay, stable-position, screen-bounds, owner-overlap and leave-dismiss checks.",
+  "runtime": {
+    "display": "private Xvfb :2, 1280x800",
+    "profiles": "per-run disposable HOME, KDE colors config and private D-Bus/network namespace",
+    "style": "org.kde.desktop",
+    "product_theme_or_user_config_changed": false,
+    "qtquick5": "Qt 5.15.15",
+    "qtquick6": "Qt 6.8.2"
+  },
+  "method": {
+    "probe": "Private copy of the established R4 native QtQuick matrix probe; removed only its early skip for controls with enabled=false. The regular pointer/tooltip criteria were unchanged.",
+    "runner": "run_t07_qtquick_matrix_r4.py with --quick and the private probe",
+    "cold_check_ms": 300,
+    "stable_ms": 400,
+    "tested_targets": "All materialized native gallery controls on three pages, including seven disabled controls per Qt version."
+  },
+  "results": {
+    "qtquick5": {
+      "matrix_sha256": "d21e16edc7cb44458a71a7897ff08ea0143034e5bfa9d1241bd5d83839981931",
+      "hovered": 20,
+      "disabled_hints_attempted": 7,
+      "disabled_hints_shown": 0,
+      "disabled_controls_nonhoverable": [
+        "disabledButton",
+        "disabled CheckBox",
+        "disabled Switch",
+        "disabled ComboBox",
+        "disabled SpinBox",
+        "disabled TextField",
+        "disabled Slider"
+      ],
+      "failures": 0,
+      "runner_exit": 0
+    },
+    "qtquick6": {
+      "matrix_sha256": "0061bcc5df88992a6412a3a1f91c8c202ac6bdadf77d27d1193712556abc1112",
+      "hovered": 27,
+      "disabled_hints_attempted": 7,
+      "disabled_hints_shown": 7,
+      "disabled_controls_stable_in_bounds_without_owner_overlap_and_dismissed": 7,
+      "failures": 0,
+      "runner_exit": 0
+    }
+  },
+  "source": {
+    "gallery": "plasma/tests/galerias-nativas/qtquick_demo.py",
+    "gallery_sha256": "510074477e170cb3889f323cfd6646f60eb127e50f89782554019d1a73748244",
+    "probe_copy": "~/tempia/probe_t07_qtquick_disabled_r127.py",
+    "probe_sha256": "d0cac4309b7ac4ecfd1898febb4494e960fdf66b5ca6b04ca170b4e5cb904486",
+    "runner": "~/tempia/run_t07_qtquick_matrix_r4.py",
+    "runner_sha256": "ed72565a5a9fd38ea2f572623c8b477b3d75106ff4eb438826c3ede4cd084d55"
+  },
+  "artifacts": "~/tempia/t07-qtquick-disabled-r127r2-20261019/",
+  "limits": [
+    "The proof covers the project's QtQuick native gallery, not unrelated applications or historical SR10.4 pixels.",
+    "QtQuick5 disabled controls expose tooltip text semantically but do not receive hover in this gallery; a future solution must not enable or activate them merely to show a hint.",
+    "The initial diagnostic run used an incorrect output-path mode and the runner rejected its final aggregation after the matrices had been saved. It is excluded; R127 uses the clean second run where both version runners exited successfully."
+  ],
+  "discarded_followup_prototypes": [
+    {
+      "approach": "Observe pointer motion with a HoverHandler on the enabled gallery parent and drive the disabled controls' attached ToolTip after a 750 ms timer.",
+      "result": "Did not expose hints in QtQuick5; the observer did not identify the disabled control under the pointer. The attempt also revealed one pre-existing hover-matrix cold-check contamination when a preceding popup remained visible.",
+      "retained": false
+    },
+    {
+      "approach": "Place transparent MouseArea siblings over disabled controls, with acceptedButtons=Qt.NoButton and an attached delayed ToolTip.",
+      "result": "The MouseAreas did not report hover in the isolated QtQuick5 gallery; the matrix failed those seven targets. No code was retained.",
+      "retained": false
+    }
+  ],
+  "conclusion": "QtQuick5 and QtQuick6 differ for disabled-control hover in the tested runtime. The QtQuick5 gap remains open; all enabled controls tested in both versions passed the existing hover criteria. No production source was changed.",
+  "next": "Continue T07 at another uncovered authorized scope. Return to QtQuick5 disabled-control hints only with a new event-delivery hypothesis; the parent HoverHandler and MouseArea overlay trials are recorded and should not be repeated."
+}

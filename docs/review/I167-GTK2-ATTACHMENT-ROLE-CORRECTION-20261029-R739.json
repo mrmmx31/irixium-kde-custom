@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "id": "R739",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Correctly compare the large current GTK2 XChat image with the narrow user-supplied Motif scrollbar reference; supersede the reversed-input interpretation in R738.",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "gtk2_attachment": {
+      "filename": "capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [
+        892,
+        642
+      ],
+      "role": "large screenshot; current GTK2 XChat scrollbar"
+    },
+    "motif_attachment": {
+      "filename": "capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [
+        102,
+        655
+      ],
+      "role": "narrow Motif scrollbar reference"
+    },
+    "project_motif_crosscheck": "docs/referencias/domainos-sr104/barra-vertical-normal.png"
+  },
+  "method": "Compared only scrollbar pixels at native screenshot scale; retained neither attachment crop nor conversation text. Separated geometry from the distinct face-role RGB in the two captures.",
+  "comparison": {
+    "geometry": {
+      "gtk2_bar_x_in_large_capture_inclusive": [
+        228,
+        242
+      ],
+      "gtk2_bar_width_px": 15,
+      "motif_bar_x_in_small_capture_inclusive": [
+        47,
+        61
+      ],
+      "motif_bar_width_px": 15,
+      "result": "The visible GTK2 and Motif bars have the same 15px width."
+    },
+    "upper_stepper": {
+      "gtk2_cell_xywh": [
+        228,
+        94,
+        15,
+        15
+      ],
+      "motif_cell_xywh": [
+        47,
+        37,
+        15,
+        15
+      ],
+      "direct_equal": "164/225",
+      "after_face_role_normalization": "225/225",
+      "gtk2_face_rgb": "#6688b5",
+      "motif_attachment_face_rgb": "#6f95c6",
+      "result": "Arrow silhouette and relief geometry coincide; the face-role color differs between captures."
+    },
+    "first_stepper_to_track_or_thumb_region": {
+      "gtk2_origin_xy": [
+        228,
+        94
+      ],
+      "motif_origin_xy": [
+        47,
+        37
+      ],
+      "compared_rows": 30,
+      "raw_equal": "372/450",
+      "after_face_role_normalization": "433/450",
+      "remaining_pixel_differences_by_relative_row": {
+        "17": 9,
+        "18": 8
+      },
+      "observed_pattern": "The two captures differ in the ordering/placement of the short light/dark transition rows after the upper arrow. This may involve the slider start position or the trough/slider junction; this crop alone does not identify which part generated those rows.",
+      "remaining_pixel_coordinates_relative_to_cell": {
+        "row_17_x_offsets": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "row_18_x_offsets": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "gtk2_absolute_rows": [
+          111,
+          112
+        ],
+        "motif_absolute_rows": [
+          54,
+          55
+        ],
+        "interpretation": "Two horizontal transition bands immediately below the upper stepper. Their exact visual source remains unresolved."
+      }
+    },
+    "cross_axis_sample": {
+      "gtk2_sample_xy": [
+        228,
+        150
+      ],
+      "motif_sample_xy": [
+        47,
+        200
+      ],
+      "equal": "15/15",
+      "profile": "DDLLFFFFFFFDDLL",
+      "scope": "One visible cross-section only; not proof of the entire trough."
+    },
+    "limits": "The large screenshot is covered by a gray block from y=338 downward. It does not show the full GTK2 bar, its lower arrow, the whole trough, or total thumb length. The narrow reference supplies those Motif features, but does not reveal matching GTK2 pixels."
+  },
+  "source_note": {
+    "gtk_range_property": "GtkRange::trough-border participates in slider positioning as well as range sizing. Upstream GTK 2.24.33 source computes slider start from focus_width + trough_border; this makes it a candidate factor, not proof of the attachment mismatch.",
+    "source_url": "https://github.com/GNOME/gtk/blob/2.24.33/gtk/gtkrange.c#L3403-L3408"
+  },
+  "result": "The prior R738 assignment of the attachments was reversed and is superseded. On the correctly identified images, the visible bar width and upper arrow geometry match; the two captures use different face RGBs. Seventeen pixels in two short transition rows differ after separating that palette role. The clipped GTK2 image is insufficient to call the full trough or thumb wrong.",
+  "changes": [],
+  "next": "Keep GTK2 active. Use an isolated native GTK2 preview at the same 15px geometry and slider-at-start position to identify whether the two transition rows come from GtkRange positioning or the trough/slider artwork. Do not infer or change the profile from the incomplete GTK2 crop. VM interaction remains governed by I517/I518."
+}

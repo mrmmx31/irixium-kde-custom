@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "release": "1.1.0-beta.2",
+  "channel": "prerelease",
+  "panel": "0.2.12-beta.1",
+  "suite_sha256": "03a5fe14b1284133bfba5a4543190ed3b1f188f9b3736e26b48a74fe179c22b7",
+  "components": 40,
+  "verified_archive_files": 31403,
+  "source_audit": "passed",
+  "native_binary_sha256": "60734648f19cf08d790eb94d97069c1e9373942383e4391ed5d1a51365542c21",
+  "native_panel_zip_sha256": "3976fe6c8ad77633817a49541f8def14d09192641034f84777aefad40acfe6d2",
+  "validation_log_hashes": {
+    "irix-color-apply-kvantum-tests.log": "f2d77bfba3edc6b981cade9c4ff308a66617167dc78a3ff846873e93c72ab484",
+    "irix-color-apply-suite-tests.log": "885f7840893a6914b5811e106ea03efe6706eae69cec926a3956272f6ae02c78",
+    "irix-color-apply-bridge-tests.log": "16e55b32e7e2b38b76e49ceabc641d3ec4d194cd02db090712f1178fd0fbb14b",
+    "irix-beta2-native-color-tests.log": "2cbd00920971869c06751f1e466273b2597640974658ee21e0be777953fd8900",
+    "irix-beta2-distribution-with-native.log": "5010447a3ff548bf3ee0093cb39d28d0ab9b382b2ba36c5795566564020ddfd1",
+    "irix-beta2-audit.log": "7bf188ea2200762b0cf8ccfa467ab31836f2fea1f34bcfcca1e36ce07b01cc8e"
+  },
+  "scoped_tests": {
+    "color_application": 6,
+    "gtk2_runtime": 17,
+    "kvantum_runtime": 39,
+    "suite_application": 22,
+    "decoration_reload": 12,
+    "companion_bridge": 18,
+    "motif_resources": 19,
+    "distribution": 3,
+    "native_color_apply": 1,
+    "gtk3_painted_text_cases": 48
+  },
+  "installed_user": "lsi",
+  "final_package_difference_from_installed_candidate": [
+    "docs/DOMAINOS-FILA-REVISAO-VISUAL.md"
+  ],
+  "live_check": {
+    "installed_gtk3_matches_source": true,
+    "mousepad_original_process_still_present": true,
+    "editor_scheme": "'none'",
+    "services": {
+      "plasma-plasmashell.service": "active",
+      "irix-theme-companions.service": "active",
+      "irix-domainos-style-bridge.service": "active"
+    }
+  },
+  "user_feedback": {
+    "decorations": "Sim, agora correspondem",
+    "mousepad": "Sim, consigo ler"
+  },
+  "evidence": [
+    "PALETA-APLICACAO-20261010-R2.json",
+    "GTK3-TEXTO-20261010-R3.json"
+  ],
+  "limits": [
+    "Only lsi was reapplied; p001532 unchanged",
+    "Historical fidelity of other control families and laboratory improvements remain queued",
+    "No experimental laboratory drafts included in the graphical suite"
+  ]
+}

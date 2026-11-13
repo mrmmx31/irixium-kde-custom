@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R433",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Measure the VUE down-arrow ROI during a 150 ms emulated left-button field override and verify post-test input/capture cleanup.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_board_mame_pid": 3971019,
+    "separate_board_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "method": {
+    "target": "Visible enabled File Manager vertical down arrow, guest pointer hotspot over the arrow in the native frame.",
+    "port": ":kbd:mouse1",
+    "field_mask": 16,
+    "field_override": "field:set_value(1), held until a frame callback after 0.15 emulated seconds; snapshots taken before clear and after clear.",
+    "raw_button_sample_during_hold": false,
+    "operation_done": true,
+    "operation_reason": "held for 150ms emulated; pre-clear and post-clear snapshots saved",
+    "operation_error": null
+  },
+  "evidence": {
+    "held": {
+      "path": "~/tempia/ia-tema/evidence/I167/r440-long-field-held-20261027.png",
+      "sha256": "3ee1ee4661bf3ee3ad3ed6c1e69350831463b085a70d0ab3f10813698cd8d4c6"
+    },
+    "released": {
+      "path": "~/tempia/ia-tema/evidence/I167/r440-long-field-released-20261027.png",
+      "sha256": "bce487b8c4e9f7c77bbb3d4be45d86c5fb5cfe7b58375aebbdd3aad424ac0fd3"
+    },
+    "cleanup_frame": {
+      "path": "~/tempia/ia-tema/evidence/I167/r441-after-cleanup-20261027.png",
+      "sha256": "d18d4d34823fce15dff6af0cd46e1bd842a3ed9f96dbeba0aa37b588b663fbf9"
+    },
+    "pixel_comparison": {
+      "dimensions": [1024, 844],
+      "down_arrow_roi_xyxy": [840, 545, 866, 574],
+      "changed_pixels_in_arrow_roi": 0,
+      "changed_pixels_full_frame": 132,
+      "full_frame_change_bbox": [932, 808, 944, 820]
+    }
+  },
+  "result": "The held and released captures are identical across the arrow/cursor ROI. The callback completed, but the raw mouse port was not sampled while the override was held. Therefore this result does not prove that the guest received a valid button edge and cannot establish the VUE held-arrow appearance.",
+  "cleanup": {
+    "left_button_raw": 0,
+    "mouse_capture_released": true,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mame_window": "Iconic, restored to the pre-test state",
+    "channel_pending": false,
+    "other_vm_contacted": false
+  },
+  "changes": {
+    "gtk2_theme_changed": false,
+    "user_profile_changed": false,
+    "mame_restarted": false,
+    "vm_performance_profile_changed": false
+  },
+  "next": "Do not infer a visual pressed state from this direct field override. The physical input route in R438 produced an observed button bit and scroll action on release; continue only with a fresh visible target and a longer held-state capture, while recording the raw bit at capture time."
+}

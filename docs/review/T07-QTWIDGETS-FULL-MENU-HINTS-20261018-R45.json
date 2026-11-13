@@ -1,0 +1,206 @@
+{
+  "item": "T07",
+  "revision": "R45",
+  "checked_date_local": "2026-10-18",
+  "scope": "Qt Widgets 5/6: hover em todas as ações de menu reais da galeria, incluindo submenu pai/filho, e hovers representativos de controles com atraso, estabilidade, geometria e fechamento.",
+  "authorization": {
+    "section": "work",
+    "authorized": true,
+    "user_revision": 4,
+    "assistant_ack_revision": 4,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee"
+  },
+  "environment": {
+    "display": ":76",
+    "screen_px": [
+      1280,
+      800
+    ],
+    "backend": "X11",
+    "private_home_bus_and_passwd": true,
+    "theme": "DomainOS-SR10.4 palette in private namespace",
+    "scope_note": "native Qt Widgets gallery; not Kvantum fidelity or historical pixel comparison"
+  },
+  "versions": {
+    "5": {
+      "status": "passed",
+      "toolkit": null,
+      "widgets_with_hints": 62,
+      "actions_with_hints": 10,
+      "menu_action_rows_tested": 8,
+      "all_menu_action_rows_passed": true,
+      "all_rows_no_overlap_inside_screen_stable_and_closed": true,
+      "submenu_help_strip": false,
+      "actions": [
+        {
+          "text": "Open file dialog...",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Private System Settings...",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Checkable native QAction",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Disabled native QAction",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Submenu",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Close",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Submenu item",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "About this private demo",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        }
+      ],
+      "raw_result": "/home/lsi/tempia/t07-qt5-full-menus-r45-20261018.json"
+    },
+    "6": {
+      "status": "passed",
+      "toolkit": null,
+      "widgets_with_hints": 65,
+      "actions_with_hints": 10,
+      "menu_action_rows_tested": 8,
+      "all_menu_action_rows_passed": true,
+      "all_rows_no_overlap_inside_screen_stable_and_closed": true,
+      "submenu_help_strip": true,
+      "actions": [
+        {
+          "text": "Open file dialog...",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Private System Settings...",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Checkable native QAction",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Disabled native QAction",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Submenu",
+          "route": "delayed status label",
+          "delay_ms": 500,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": null,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Close",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "Submenu item",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        },
+        {
+          "text": "About this private demo",
+          "route": null,
+          "delay_ms": null,
+          "stable_ms": 400,
+          "no_overlap": true,
+          "inside_screen": true,
+          "closed_after_leave": true
+        }
+      ],
+      "raw_result": "/home/lsi/tempia/t07-qt6-full-menus-r45-20261018.json"
+    }
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "b3179f410aaca6d70b0a1cf524ac455d7b01041a0ea4ce0341e6d6144dfa45d5",
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "2da60ee8aa9f93ba94146c8ac810c36c92bd8c765106d660fc555a871d72d1ba",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "7575886e387647abff0cb135041365190a87000b3e2f1b6be8b4f5912bcfd3e5"
+  },
+  "limits": [
+    "Qt Widgets/QFusion probe does not verify rendered Kvantum appearance.",
+    "Representative controls only; all visible menu action rows were hovered.",
+    "No human visual approval was inferred; T07 remains partial."
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T07:51:53.268522+00:00",
+  "item": "I167",
+  "authority_revision": 1,
+  "phase": "native_geometry_translation",
+  "previous_goal_turn_classification": "progress: coordinated I179 delivery, native GTK2 runtime audit",
+  "pure_tests": 3,
+  "native_terminals": [
+    0,
+    0,
+    0
+  ],
+  "verified_thicknesses": [
+    15,
+    23,
+    31
+  ],
+  "native_widgets": [
+    "GtkHScrollbar",
+    "GtkVScrollbar"
+  ],
+  "geometry_applied": true,
+  "paint_recipe_applied": false,
+  "layout_evidence": "GtkAlignment prevents cross-axis expansion; both actual allocations and natural requests match translated cursor+2border",
+  "min_slider_length": "Native runtime default21 preserved; no historical minimum invented",
+  "limits": [
+    "No pixmap paint/state-role translation yet",
+    "No full per-piece/state adapter claim",
+    "No coupled/detached product scene integration yet",
+    "No historical visual approval inferred from geometry"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk2_recipe.py": "3c7a4179b0fb323d062d5dde40864f3afdcfb0df71083154242ab84e440289c5",
+    "tools/theme-lab/tests/test_gtk2_recipe.py": "33166c248aaa541ba5814d9e79aa1bc3ca8fa45803c1465f188b4045070d65d5",
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "358b59433e6b13dbc2a31349fb3831fb9bc0a34bc5b4252b9762486a4c8f21b4"
+  },
+  "evidence_sha256": {
+    "docs/referencias/domainos-sr104/i167-geometry/native-0.json": "449e1cb3804c9fb78f80ed648d6837c79cd820d8d4ce34431c0aaf786b85e4f3",
+    "docs/referencias/domainos-sr104/i167-geometry/recipe-0.json": "35456b2fba073369ebc2d3199354f3cc8904bc701988b6e48921a88c3a0fc20a",
+    "docs/referencias/domainos-sr104/i167-geometry/unit.log": "33060fd73862c5e1af97335504d5b45211fce6d229657f556d8deceeadc52ce4",
+    "docs/referencias/domainos-sr104/i167-geometry/native-0.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/i167-geometry/recipe-2.json": "6fd08998e918a4e51f746b94c15cfb6e85102f559ca2078f00e083f62ab4c757",
+    "docs/referencias/domainos-sr104/i167-geometry/native-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/i167-geometry/native-2.json": "aa448beb46a4749c9f2c6ebbcaf06af255a231cb377d0116c3727037e462f2e2",
+    "docs/referencias/domainos-sr104/i167-geometry/first-GIR-probe-error.log": "1eb2365a4f5ff059dfa64309a35dfda36e1d4abe9491f23cd0fc3efb780cfe60",
+    "docs/referencias/domainos-sr104/i167-geometry/native-2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/i167-geometry/native-1.json": "b2c78458ff507828e8fff81cbedf539502fa45bc64ed2f3af4fcf299771e8179",
+    "docs/referencias/domainos-sr104/i167-geometry/recipe-1.json": "0d9ecdfeb20b8e9f0bdffd4798f4772acd7d442a7c030a371a222dca6a1330d5"
+  },
+  "installed": false,
+  "scope_progress_percent": 20,
+  "next": "Translate GTK2 pixmap painting and KDE state roles, then integrate native scene/metrics"
+}

@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-11T15:45:07.849537+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "phase": "separate_preview_model_codec",
+  "changes": [
+    "Optional global boolean separate_preview, default false for existing schema1/2 projects.",
+    "C and Python readers reject non-booleans; C encoder stores preference.",
+    "Project history round-trip and Undo/Redo retain preference with independent recipes."
+  ],
+  "tests": {
+    "model": "1002 checks passed, offline",
+    "backend": "1 focused test passed; both schema versions, true/false/missing and six malformed values",
+    "history": "existing multistep/reset/checkpoint/serialization test now changes preference; passed",
+    "build": "product and model/history tests compiled with strict flags",
+    "diff": "tools/theme-lab passed"
+  },
+  "remaining": [
+    "Controller checkbox still uses runtime want_separate; persisted field is not wired to UI yet.",
+    "Startup/load/Undo/Redo opening must use applied scene without applying pending recipes.",
+    "Native toggle/save/load/restart tests and coordinated handoff remain."
+  ],
+  "coverage": {
+    "gtk2_control_kinds": 7,
+    "catalog_total": 16,
+    "percent": 43.75,
+    "basis": "catalog only; unchanged, not fidelity or total goal"
+  },
+  "sources": {
+    "tools/theme-lab/include/theme_lab.h": "fdc4570bf531c316f804128260b4aa2efdaa151f9324bbab0344c3a5011bfd40",
+    "tools/theme-lab/src/model.c": "ff3aebaf8b2fcf5597aa79340391a5faac2206815026878eaa731c15e4dfd783",
+    "tools/theme-lab/backend.py": "29187610da2f371552701d0b488e2bdadd13a9ace4d56e48c27c22d4f6d7c800",
+    "tools/theme-lab/tests/model_test.c": "868b9c52a4f82adf012090d057436ba1838cd18ceb5d702f3391dca2507b7910",
+    "tools/theme-lab/tests/project_history_test.c": "5622127f88492e4a719f3664f8fd036183c1b60c3af8d3c8e551fd392a0c5477",
+    "tools/theme-lab/tests/test_backend.py": "46189582d2d204e1405cc6c44ac7ccafab27e71dc6a7cbecc732c5774aaa3f43"
+  },
+  "logs": ".qa-t04-separate-model-tmp",
+  "personal_session": "untouched"
+}

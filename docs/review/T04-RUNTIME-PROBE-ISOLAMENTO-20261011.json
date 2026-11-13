@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-11T19:30:58.315126+00:00",
+  "item": "T04",
+  "user_revision": 2,
+  "result": "Per-family runtime timeout and launch/response failures reported as unconfirmed availability; full inventory retained. Optional package version failure returns null. No timeout extended.",
+  "tests": {
+    "failure_contract": "4 passed; session57391 exit0",
+    "backend_first": "34 tests,3 errors ENOSPC in /tmp; session13571 exit1",
+    "backend_private_tmp": "34 passed; session26560 terminal exit0; backend-probe-isolation-private-tmp.log",
+    "native_controller": "session54809 exit1 before first native bars;30-second operation timeout; .qa-theme-lab-spin-ogc0mho2"
+  },
+  "previous_build": "session7275 completed exit0; not restarted",
+  "limits": [
+    "Native anchor SaveLoad/UndoRedo/restart not proven",
+    "No personal delivery",
+    "No historical fidelity claim"
+  ],
+  "sources": {
+    "tools/theme-lab/backend.py": "cf7f9298f85a287582d30373a5c77de1e98e35854fa46c29b831ba1c2a7b8b63",
+    "tools/theme-lab/tests/test_runtime_probe_failures.py": "327cd73ac4c60a4c0b0da57d8649338cce2865e4ebc62706b3309990e033eecc"
+  },
+  "next": "Complete native controller anchor SaveLoad/UndoRedo/restart proof; inspect aggregate inventory cost versus operation deadline without weakening runtime checks."
+}

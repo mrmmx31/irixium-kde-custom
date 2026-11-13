@@ -1,0 +1,62 @@
+{
+  "id": "T04-THEMELAB-PREVIEW-ROUTING-20261029",
+  "date": "2026-10-29",
+  "scope": "Diagnose family previews that did not appear in the running Theme Lab and restore the direct-session GTK3 embedded route.",
+  "authorization": {
+    "item": "T04",
+    "user_authorized": true,
+    "user_revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "initial_state": {
+    "theme_lab_pid": 3077982,
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "selected_family": "gtk3",
+    "separate_preview": false,
+    "personal_theme_install_changed": false
+  },
+  "findings": {
+    "gtk3": "The native helper required IRIX_DOMAINOS_PRIVATE_NAMESPACE=bwrap, but the user-launched Theme Lab runs in the normal desktop session. Added a narrowly scoped private-workdir/Xauthority/display guard for GTK3 XEmbed and offscreen capture.",
+    "gtk4": "The route also requires a private namespace. Its current renderer rejects the saved all-controls catalog when unsupported controls are visible; the default selected arrow is outside the declared subset.",
+    "qt5_qt6_plasma": "Recipe generation exists, but the controller does not route these families into the central canvas. Their native preview is a separate-window path; the saved separate-preview option was false.",
+    "gtk1": "No installed GTK1 runtime or native gallery was confirmed."
+  },
+  "changes": {
+    "files": [
+      "tools/theme-lab/backend.py",
+      "tools/theme-lab/preview_gtk.py",
+      "tools/theme-lab/src/controller.c"
+    ],
+    "summary": "Pass the private Theme Lab work directory to GTK3 preview/capture and validate its XEmbed/offscreen access before GTK initialization. Existing bwrap sessions keep their prior guard."
+  },
+  "verification": {
+    "build": {
+      "command": "make -C tools/theme-lab build/theme-lab",
+      "result": "passed"
+    },
+    "direct_session_guard": {
+      "result": "passed",
+      "display": ":1",
+      "mode": "explicit_user_session_xembed",
+      "personal_profile_written": false
+    },
+    "native_gtk3_capture": {
+      "result": "passed",
+      "control": "push",
+      "size_px": [70, 30],
+      "image": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0/preview-events/paint-sample-a61d1b4c37e24d4782096deedce5f010.png"
+    },
+    "live_embedded_gtk3": {
+      "result": "running",
+      "theme_lab_pid": 3093268,
+      "preview_pid": 3093937,
+      "theme_lab_window": "0x2c00248",
+      "canvas_window": "0x2c0028e",
+      "preview_child_window": "0x5000007",
+      "native_widget_count": 16,
+      "image": "/home/lsi/tempia/domainos-theme-work/themelab-gtk3-embedded-20261029T1427.png"
+    },
+    "manual_visual_acceptance": "pending"
+  },
+  "next": "Keep GTK3 open for user comparison. Continue the central preview work one family at a time, starting with the GTK4 supported-control subset; then Qt5, Qt6, and Plasma Style. Do not claim those routes are embedded until each is observed inside the canvas."
+}

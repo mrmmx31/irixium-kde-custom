@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py", line 75, in <module>
+    wid=x('search','--onlyvisible','--name',window.get_title()).split()[0]
+        ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk_hint_hover.py", line 73, in x
+    return subprocess.run(['xdotool', *map(str,args)],check=True,
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                          capture_output=True,text=True,timeout=3).stdout
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['xdotool', 'search', '--onlyvisible', '--name', 'T07 hover fixture 2248064']' returned non-zero exit status 1.
+xvfb-run: error: problem while cleaning up temporary directory

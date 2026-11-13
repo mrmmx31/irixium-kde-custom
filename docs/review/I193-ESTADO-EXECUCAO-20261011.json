@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-11T09:55:29.799754+00:00",
+  "item": "I193",
+  "revision": 1,
+  "status": "in_progress",
+  "implementation": "Native GTK2 toggle events carry strict boolean state and origin; controller caches each origin separately and passes seed on native GTK2 restart; imported project clears cache. Cache never enters model JSON. Disabled detached origin rejects state updates.",
+  "proof": {
+    "strict_build": true,
+    "parser_validates_bool_origin_and_transactionality": true,
+    "native_origins_C_parser": 8
+  },
+  "evidence": "docs/referencias/domainos-sr104/i193-toggle-runtime",
+  "remaining": [
+    "Real controller Apply and restart must demonstrate selection preservation by origin.",
+    "Real controller toggle size/input test and GTK3 regression."
+  ],
+  "stage_estimate_percent": 75,
+  "parent_I167_estimate_percent": 84,
+  "estimate_basis": "State transport implemented and parser/native IPC verified; controller end-to-end not yet proven.",
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "sha256": {
+    "include/preview_event.h": "0935f4e9d78688ec7858b6fc96f9a3aa28fd67995be19ddcd8f3d8e8614b900b",
+    "src/preview_event.c": "ab84b7325eadaa71be5d35f9ba9ef57d70608aa7e3df8e657bcdb436808d6782",
+    "src/controller.c": "a8b3f4b53ff51956452f73615f40df50f945557a03123c8628096d1cdd8cdf2e",
+    "native_scene_gtk2.py": "6f4da65d569f4c62d08ba351bef9342da830e5b4f58d9d0e4e1c65068950a527",
+    "preview_gtk2.py": "d90a65b080e9bdc4c90ce37e62ff6894149df32396ccbd188ab390bcaba414f9",
+    "tests/preview_event_test.c": "4a010b750eb614cf89d6b77a4a9b55d261dc82468d293f9aee351f53edfcbd7e"
+  }
+}

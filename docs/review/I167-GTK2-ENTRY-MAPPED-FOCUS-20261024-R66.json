@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-MAPPED-FOCUS-20261024-R66",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "family": "GTK2 GtkEntry mapped X11 focus and active role",
+  "implementation_change": {
+    "file": "tools/theme-lab/tests/probe_gtk2_entry_paint.py",
+    "sha256": "77ca9ee2cf6deb43684e21e37d6ef6b4eea4c5220c424f724fff7879e53f6b49",
+    "change": "The probe now moves the X server's input focus to the mapped GtkWindow with xdotool, verifies the focused XID and GtkWindow.has-toplevel-focus, then measures focused-role pixels. Gtk.Window.set_focus and GtkWidget.grab_focus alone only change GTK's internal focus child and were insufficient for this proof.",
+    "board_code_change_recorded": true
+  },
+  "method": {
+    "toolkit": "GTK 2.24.33 real GtkEntry using the DomainOS pixmap recipe",
+    "display": "private Xvfb :700, 1280x1024, no window manager",
+    "temporary_storage": "A private mount namespace bind-mounted ~/tempia/i167-xvfb-private-r66 over /tmp inside that namespace; the shared /tmp and other X sessions were not modified.",
+    "focus_delivery": "Mapped host window received xdotool windowfocus --sync; xdotool getwindowfocus matched the GTK XID and GtkWindow.has-toplevel-focus was true. The test runs both separate toplevel and GtkSocket/GtkPlug origins.",
+    "test_runner": "tools/theme-lab/tests/test_gtk2_entry_keyboard_native.py passed; 24 native scenes across four palettes.",
+    "probe_command": "unshare --user --map-root-user --mount --propagation private; bind ~/tempia/i167-xvfb-private-r66 to /tmp; xvfb-run -a -n 700; run probe_gtk2_entry_paint.py"
+  },
+  "focus_role_pixels": [
+    {"palette": "DomainOS", "origin": "separate", "baseline": 0, "focused": 1200, "changed": 2838, "focus_rgb": [254, 130, 130]},
+    {"palette": "DomainOS", "origin": "GtkSocket/GtkPlug", "baseline": 0, "focused": 1200, "changed": 2838, "focus_rgb": [254, 130, 130]},
+    {"palette": "BreezeLight", "origin": "separate", "baseline": 0, "focused": 2416, "changed": 2856, "focus_rgb": [61, 174, 233]},
+    {"palette": "BreezeLight", "origin": "GtkSocket/GtkPlug", "baseline": 0, "focused": 2416, "changed": 2856, "focus_rgb": [61, 174, 233]},
+    {"palette": "BreezeDark", "origin": "separate", "baseline": 0, "focused": 2416, "changed": 2852, "focus_rgb": [61, 174, 233]},
+    {"palette": "BreezeDark", "origin": "GtkSocket/GtkPlug", "baseline": 0, "focused": 2416, "changed": 2852, "focus_rgb": [61, 174, 233]},
+    {"palette": "TestYellow", "origin": "separate", "baseline": 0, "focused": 1200, "changed": 2856, "focus_rgb": [254, 130, 130]},
+    {"palette": "TestYellow", "origin": "GtkSocket/GtkPlug", "baseline": 0, "focused": 1200, "changed": 2856, "focus_rgb": [254, 130, 130]}
+  ],
+  "keyboard_editing": {
+    "status": "passed",
+    "utf8_multilingual_text": true,
+    "select_all_and_replace": true,
+    "copy_paste_cut": true,
+    "ctrl_z_undo": true,
+    "ctrl_y_redo": true,
+    "ctrl_shift_z_redo": true,
+    "replacement_undo_steps": 4,
+    "context_menu": ["undo", "redo", "gtk-cut", "gtk-copy", "gtk-paste", "gtk-select-all"]
+  },
+  "artifacts": {
+    "directory": "~/tempia/i167-entry-native-r66-final/",
+    "result_sha256": "1ef80fb3ca421dda7d429970b5125bf3aff22b71ea09cb63ff0789a3150460fe",
+    "domainos_focused_capture": "DomainOS/separate-entry-focused.png",
+    "focused_capture_sha256": "9a85f129ec091e98d550e800ca3ae41b03bd408614ad9ad3452546d2492afe53",
+    "domainos_unfocused_capture": "DomainOS/separate-entry-unfocused.png",
+    "unfocused_capture_sha256": "501cf2772319f974d4ac70cb8ed850701a5a1da1e5defac1881155b446776d2c"
+  },
+  "limits": [
+    "This proves the GTK2 focus event and dynamic focus-role painting on mapped X11 toplevels, not behavior under a desktop window manager.",
+    "Historical focus comparison remains limited to R57's saved SR10.4 image; current clone video is still almost entirely black.",
+    "Historical selected-text shape/color and caret blink period remain unmeasured. GTK2 caret height/caps retain the R61/R63 limitation.",
+    "No product theme was installed and XChat, the user profile, guest, network and other MAME instances were untouched."
+  ],
+  "next": "Continue I167 GTK2 only. Use the now-proven mapped focus path for further Entry state tests; resume direct historical visual comparison only when the correct SR10.4 guest shows VUE."
+}

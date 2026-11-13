@@ -1,0 +1,54 @@
+{
+  "id": "R620",
+  "date_utc": "2026-10-28T22:20:00Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "scope": "P01 menu behavior only"
+  },
+  "method": {
+    "environment": "Private Wayland compositor, private XDG profile, installed KDE Kicker MenuRepresentation.qml and ItemListDialog.qml copied to a disposable test profile.",
+    "test_path": "~/tempia/domainos-theme-work/P01/R620-kicker-index-submenu-20261028/output2",
+    "interaction": "Instrumented the native Kicker root ItemListView and assigned currentIndex to a visible category with children, invoking Kicker's real dialogSpawnTimer path without injecting physical pointer input.",
+    "variant_path": "~/tempia/domainos-theme-work/P01/R621-kicker-focusin-gate-variant-20261028/output",
+    "variant": "Removed only the DomainOS wrapper's focusIn-to-hideOnWindowDeactivate reset in the disposable copy; production source was not changed."
+  },
+  "observations": {
+    "real_kicker_category_row_found": true,
+    "kicker_child_dialog_created_and_visible": true,
+    "child_hide_on_deactivate_at_capture": false,
+    "qml_trace_root_hide_false_before_child_creation": true,
+    "root_dialog_hidden_after_programmatic_index_path": true,
+    "focusin_gate_variant_changed_result": false,
+    "real_pointer_hover_tested": false,
+    "wayland_input_serial_present": false
+  },
+  "interpretation": {
+    "status": "inconclusive_for_user_hover_defect",
+    "details": "The native Kicker submenu code path was reached, but assigning ListView.currentIndex does not supply a compositor pointer serial. A Wayland popup created this way is not an equivalent reproduction of a user hover. The root window became hidden in this synthetic path; removing the focusIn reset in an isolated variant did not change that outcome. This does not establish that the installed R619 binding fails during physical hover, nor does it identify the close cause.",
+    "production_state_changed": false,
+    "board_state_changed": false
+  },
+  "checks": {
+    "private_harness_compiled_and_ran": true,
+    "focused_submenu_path_reached": true,
+    "no_production_install_or_desktop_input": true,
+    "no_visual_or_human_acceptance_claim": true
+  },
+  "current_production": {
+    "source_sha256": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "installed_sha256": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "plasmashell_pid": 925745,
+    "plasmashell_active": true,
+    "kwin_restarted": false
+  },
+  "next": [
+    "Await the user's live result for hovering a category and typing immediately in the KDE menu after the R619 reload.",
+    "If the live hover still closes the menu, obtain a real pointer event in the isolated Wayland compositor or diagnose the live deactivation sequence before changing the installed QML."
+  ],
+  "durable_evidence": "records/ia-tema/P01/R620-kicker-index-submenu-20261028/"
+}

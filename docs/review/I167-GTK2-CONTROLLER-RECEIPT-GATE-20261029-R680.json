@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R680",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify the Motif controller C gate accepts current canonical GTK2 generated-preview receipts for full scenes and visible subsets, while rejecting invalid order, duplicates, unknown controls, and missing/invalid style identities.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "passed",
+    "controller_gate": "tl_generated_preview GTK2 receipt validation",
+    "canonical_catalog_controls": 16,
+    "scenes_checked": [
+      "full 16-control catalog",
+      "entry plus horizontal and vertical scrollbars",
+      "frame-only",
+      "empty visible set",
+      "basic controls and scrollbar subsets"
+    ],
+    "invalid_cases_rejected": [
+      "misordered canonical control list",
+      "duplicate control",
+      "unknown control",
+      "missing optional-control style id",
+      "malformed optional-control style id"
+    ],
+    "legacy_append_only_receipts": "retained and passed existing compatibility cases"
+  },
+  "verification": {
+    "command": "make -C tools/theme-lab build/generated-preview-test && tools/theme-lab/build/generated-preview-test <fixture-gtkrc> <generation-dir> && git diff --check",
+    "result": "passed",
+    "log": "records/ia-tema/I167/R680/test-generated-preview.log",
+    "source": "tools/theme-lab/src/controller/generated_preview.c",
+    "source_sha256": "9c66f57223a09828de4377825ce7354b9218d303eaf3bffc6b38998e5561c0de",
+    "test": "tools/theme-lab/tests/generated_preview_test.c",
+    "test_sha256": "b530b98ec72166b68c53e5fb22c687a05c492c33413cdc8f830350440bb266c3",
+    "binary": "tools/theme-lab/build/generated-preview-test",
+    "binary_sha256": "eac4fe476a8c6df757f1ee52f55d3365d2ab540221b119446bd9d66656953298",
+    "temporary_root": "~/tempia/domainos-theme-work/I167/R680-controller-validator",
+    "static_integration": {
+      "makefile_source_list": "tools/theme-lab/Makefile:13,47",
+      "generation_result_path": "tools/theme-lab/src/controller.c:473-482",
+      "finding": "generated_preview.c is linked into the Theme Lab executable; JOB_GENERATE calls tl_generated_preview before setting the theme path and scheduling a preview."
+    }
+  },
+  "limits": [
+    "The C gate test passes and static source tracing confirms the module is linked and called from JOB_GENERATE.",
+    "No end-to-end launch of the Motif public UI was performed.",
+    "No GTK2 appearance comparison with Domain/OS SR10.4 was performed; Xephyr awaits the user choice.",
+    "Live guest pointer input to compare pressed/released arrows is separately gated by I517; its current authorization is false.",
+    "No user profile, desktop, applications, or VM were changed."
+  ],
+  "next": "Use the public isolated preview after the user selects Xephyr. For pressed/released arrow comparison in the canonical VM, wait for I517 authorization. Continue only GTK2."
+}

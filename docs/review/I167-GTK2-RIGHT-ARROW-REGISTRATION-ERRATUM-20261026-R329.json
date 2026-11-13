@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R329",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "right-cell-coordinate-corrected; trough-under-steppers-false-still-worse",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Erratum to the right horizontal cell coordinate used in R328; same screenshots and no theme changes."
+  },
+  "correction": {
+    "prior_receipt": "R328",
+    "prior_source_crop": [527, 4, 542, 19],
+    "canonical_source_crop": [526, 4, 541, 19],
+    "basis": "R296 corrected the saved SR10.4 crop registration: the final cell is x=526..540 inclusive. The retained 542-pixel strip includes a leading 2-pixel offset and ends at x=540; x=527..541 was one pixel too far right."
+  },
+  "method": {
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png; source row y=4..18 inclusive.",
+    "screenshot": "~/tempia/ia-tema/evidence/I167/gtk2-preserved-pixmap-property-r328/xephyr-candidate-preserved-pixmap-r328.png",
+    "screenshot_sha256": "cd23324f933fe14438c478cc3791d3b93044d5c87530bf62b57af400af95c0e4",
+    "scale": "1:1, same previously registered GTK2 widget origins; only the right source and screen ROI moved left by one pixel."
+  },
+  "results": {
+    "registered_15x15_cell_differences": {
+      "installed": {"left": 85, "right": 117},
+      "candidate_false": {"left": 192, "right": 174},
+      "total_pixels_per_cell": 225
+    },
+    "best_local_registration_delta_x_minus4_to_plus8_y_minus4_to_plus4": {
+      "installed": {"left": {"different": 85, "offset_px": [0, 0]}, "right": {"different": 85, "offset_px": [-1, 0]}},
+      "candidate_false": {"left": {"different": 138, "offset_px": [-2, -1]}, "right": {"different": 139, "offset_px": [1, 1]}}
+    },
+    "conclusion": "The corrected right-cell counts remain worse with trough-under-steppers=false, both at the registered position and after local offset search. This correction does not change the decision not to apply the candidate. It does not establish the root cause of the installed rendering or overall GTK2 fidelity."
+  },
+  "safety": {
+    "theme_or_palette_changed": false,
+    "XChat_touched": false,
+    "VM_touched": false,
+    "Xephyr_candidate_still_open": true
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Corrects only the right-arrow ROI in the one-property comparison; GTK2 renderer investigation and human visual review remain open.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Use x=526 for the right horizontal native cell in future comparisons. Continue investigating the installed GTK2 render path before any product edit."
+}

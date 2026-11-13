@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R670",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile the GTK2 runtime renderer installed for user lsi with the authorized I502 separator correction and the currently included generated palette.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "user_profile": {
+      "path": "/home/lsi/.gtkrc-2.0",
+      "sha256": "1b8701d8dcd6a671feeaa0c86a9596875b270ba61e3b7a470c2ff1a16e38dc4d"
+    },
+    "selected_theme_gtkrc": {
+      "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+      "sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247"
+    },
+    "source_renderer": {
+      "path": "/home/lsi/irixium-kde-custom/tools/gtk2_domainos_palette.py",
+      "sha256": "ff39a0849a59cd7d09e3b0a66736e9d9a5a33b4ae01ca74e250689840694755a",
+      "normal_border": "5, 5, 2, 2",
+      "vertical_border": "2, 2, 5, 5"
+    },
+    "installed_renderer": {
+      "path": "/home/lsi/.local/share/irixium/theme-companions/tools/gtk2_domainos_palette.py",
+      "sha256": "65b8f5e0fa01d9173ee6938e41e123e7e9f349c1139721051b60ecbf8a5e5efb",
+      "normal_border": "4, 4, 2, 2",
+      "vertical_variant": "not emitted by installed copy",
+      "byte_identical_to_source": false
+    },
+    "current_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "current_palette_gtkrc": {
+      "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/gtkrc",
+      "sha256": "eea7c619144c25eb2701d455b9eb0449c65b97a30992f893ffd6de8ac772d838",
+      "normal_horizontal_border": "4, 4, 2, 2"
+    },
+    "current_palette_manifest": {
+      "path": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/manifest.json",
+      "sha256": "108edac7c8fad57d74eb464c59ef5544255b6bc9eab7cde39aaeeafcbc949017"
+    },
+    "companion_service": "irix-theme-companions.service (active)"
+  },
+  "result": {
+    "finding": "The selected GTK2 profile includes a generated palette produced with a stale installed renderer. Its NORMAL horizontal trough uses 4/4 caps; the source renderer implementing authorized R582 emits 5/5 horizontal and 5/5 vertical junction caps. The installed renderer differs by SHA-256 from the current source.",
+    "impact": "The R582 separator correction is present in the repository but not in the currently included user palette bundle. The profile/theme name is selected, but the active generated palette is stale for this geometry."
+  },
+  "limits": [
+    "This is a configuration and renderer-version audit; it does not claim the current application pixels were freshly captured.",
+    "The ACTIVE 4/4 cap implementation is not implicated by this NORMAL-state mismatch.",
+    "No installation, application reload, user selection change, or VM input occurred during this audit."
+  ],
+  "next": "Install the current user-scoped theme companion through its journaled installer, refresh GTK2 from the current KDE palette, broadcast the native GTK2 RC reload, and verify the generated bundle and selected profile. Keep all other theme-family designs unchanged.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "A stale GTK2 runtime renderer was found after R582; technical completion remains below full verification until the current user palette is regenerated and its GTK2 reload is confirmed. This is not a fidelity score."
+  }
+}

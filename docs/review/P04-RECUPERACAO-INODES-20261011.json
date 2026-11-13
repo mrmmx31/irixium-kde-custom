@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-11T01:23:43.606526+00:00",
+  "cause": "tmpfs inode exhaustion, not byte exhaustion",
+  "removed_partial_copy": "/tmp/domainos-p04-rows-reais-20261011-r1/data",
+  "partial_entries": 76,
+  "closed_test_archive": "/home/lsi/irixium-kde-custom/.qa-p04-inode-recovery/closed-wayland-j8kt8i4e.tar.gz",
+  "closed_test_directories": [
+    "/tmp/domainos-p04-wayland-j8kt8i4e/cache",
+    "/tmp/domainos-p04-wayland-j8kt8i4e/data"
+  ],
+  "preserved": "logs/result/config/evidence and personal projects/responses/windows unchanged",
+  "additional_closed_archives": [
+    {
+      "archive": "/home/lsi/irixium-kde-custom/.qa-p04-inode-recovery/domainos-p04-grupos-reais-20261011-r1.tar.gz",
+      "directories": [
+        "/tmp/domainos-p04-grupos-reais-20261011-r1/data",
+        "/tmp/domainos-p04-grupos-reais-20261011-r1/cache"
+      ]
+    },
+    {
+      "archive": "/home/lsi/irixium-kde-custom/.qa-p04-inode-recovery/domainos-p04-wayland-ehy66j4c.tar.gz",
+      "directories": [
+        "/tmp/domainos-p04-wayland-ehy66j4c/data",
+        "/tmp/domainos-p04-wayland-ehy66j4c/cache"
+      ]
+    },
+    {
+      "archive": "/home/lsi/irixium-kde-custom/.qa-p04-inode-recovery/domainos-p04-wayland-p3qx61_t.tar.gz",
+      "directories": [
+        "/tmp/domainos-p04-wayland-p3qx61_t/data",
+        "/tmp/domainos-p04-wayland-p3qx61_t/cache"
+      ]
+    }
+  ],
+  "available_tmp_inodes_after": 1168
+}

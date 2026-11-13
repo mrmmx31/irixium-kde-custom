@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "id": "THEME-LAB-PREVIEW-REOPEN-20261026-R237",
+  "date": "2026-10-26",
+  "items": ["T04", "I167"],
+  "section": "work",
+  "authorization": {
+    "T04": {"revision": 9, "authorized": true, "scope": "Theme Lab previews and GTK2 work"},
+    "I167": {"revision": 2, "authorized": true, "scope": "GTK2 visual review"}
+  },
+  "observation": {
+    "display": ":60 private Xephyr",
+    "action": "Read-only inspection after the user said the window had been closed and the board authorization was saved.",
+    "existing_processes": ["Xephyr :60", "Theme Lab", "native GTK2 attached preview", "native GTK2 separate preview"],
+    "visible_windows": ["Theme Lab with GTK2 attached canvas", "GTK2 native preview", "GTK3 gallery", "GTK4 gallery"],
+    "duplicate_launched": false,
+    "capture": {
+      "path": "~/tempia/ia-tema/evidence/T04/theme-lab-before-reopen-r237.png",
+      "sha256": "145e5f8ad3304a1d0b2e2431fcc37fe97d6a5536deedb49315506bf29d4eabea"
+    }
+  },
+  "finding": "The authorized GTK2 preview is available in the existing private Xephyr session. The normal Wayland session remains guarded and does not expose those isolated native previews. Since the authorized preview processes and windows are already present, reopening would create an unnecessary duplicate.",
+  "changes": "No source, desktop, VM, or preview configuration changed.",
+  "coverage": {"I167_percent": 78, "basis": "No new control family completed; this records preview availability only.", "visual_fidelity_score": false},
+  "next": "User can inspect the existing GTK2 canvas and separate native GTK2 window in the private Xephyr :60 session; continue the authorized GTK2 review only after this availability issue is resolved."
+}

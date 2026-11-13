@@ -9,25 +9,26 @@ panel.maximumLength = geo.width * 3 /4
 panel.lengthMode = "custom"
 panel.floating = true
 
-kickoff = panel.addWidget("org.kde.plasma.kickoff")
+kickoff = panel.addWidget("org.irixclassic.applications")
 
-const globals = ConfigFile("kdeglobals")
-globals.group = "General"
-const user_browser = "file:///usr/share/applications/" + globals.readEntry("BrowserApplication")
+const browserId = defaultApplication("browser", true)
+const launcherUrls = []
+if (browserId) {
+    launcherUrls.push("applications:" + encodeURIComponent(browserId))
+}
+launcherUrls.push("applications:io.github.mrmmx31.irixclassic.files.desktop",
+                  "applications:org.kde.konsole.desktop")
 
-const appsLaunch = panel.addWidget("org.kde.plasma.quicklaunch")
+const appsLaunch = panel.addWidget("org.irixclassic.quicklaunch")
 appsLaunch.currentConfigGroup = ["General"]
-appsLaunch.writeConfig("launcherUrls", [user_browser,
-                "file:///usr/share/applications/org.kde.dolphin.desktop",
-                "file:///usr/share/applications/org.kde.konsole.desktop"
-                ])
+appsLaunch.writeConfig("launcherUrls", launcherUrls)
 appsLaunch.writeConfig("maxSectionCount", 1)
 
 panel.addWidget("org.kde.plasma.panelspacer")
 
-const tasks = panel.addWidget("org.kde.plasma.taskmanager")
+const tasks = panel.addWidget("org.irixclassic.iconbox")
 tasks.currentConfigGroup = ["General"]
-tasks.writeConfig("maxStripes", "2")
+tasks.writeConfig("maxStripes", "1")
 tasks.writeConfig("forceStripes", true)
 tasks.writeConfig("launchers", "")
 tasks.writeConfig("onlyGroupWhenFull", false)
@@ -72,9 +73,16 @@ if (langIds.indexOf(languageId) != -1) {
 }
 
 panel.addWidget("org.kde.plasma.marginsseparator")
-panel.addWidget("org.kde.plasma.systemtray")
+panel.addWidget("org.irixclassic.systemtray")
 panel.addWidget("org.kde.plasma.marginsseparator")
 
-var aclock = panel.addWidget("org.kde.plasma.analogclock")
+var aclock = panel.addWidget("org.irixclassic.analogclock")
 aclock.currentConfigGroup = ["General"]
 aclock.writeConfig("showSecondHand", true)
+
+// Initial placement only. Existing monitors keep the user's chosen position.
+var desktop = desktopForScreen(panelScreen)
+if (desktop && geo.width >= 312 && geo.height >= 252 &&
+    !desktop.widgets().some(w => w.type === "org.irixclassic.grosview")) {
+    desktop.addWidget("org.irixclassic.grosview", geo.width - 296, 16, 280, 220)
+}

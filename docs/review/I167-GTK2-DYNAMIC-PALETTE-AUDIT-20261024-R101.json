@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "id": "R101",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Corrected GTK2 dynamic palette audit",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "interface": "HP VUE 2.01",
+    "vm_process": 3759847,
+    "vm_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "capture": false,
+      "wait_button_up": false,
+      "mouse_operation_done": true,
+      "mouse_operation_error": null,
+      "channel_pending": false
+    },
+    "current_guest_capture": "/home/lsi/tempia/i167-vue-entry-current.png",
+    "current_guest_state": "Screen blank; Find Files and GtkEntry target not visible; no input sent during this observation."
+  },
+  "correction": {
+    "supersedes": ["R89", "R100 palette conclusion"],
+    "previous_claim": "Literal RGB values in the installed GTK2 gtkrc prove that palette roles are static and dynamic KDE integration is incomplete.",
+    "verified_result": "False. The GTK2 wrapper references generated immutable palette resources whose manifest records the current KDE role export. RGB literals are rendered outputs, not fixed source colors."
+  },
+  "live_palette": {
+    "companion_service": "irix-theme-companions.service",
+    "service_state": "active",
+    "service_main_pid": 2711821,
+    "color_scheme": "DomainOS-SR10-4",
+    "look_and_feel": "org.magpie.irixclassic.domainos.desktop",
+    "colors_css": "/home/lsi/.config/gtk-3.0/colors.css",
+    "colors_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "active_journal": "/home/lsi/.local/state/irixium-gtk2-palette/active.json",
+    "journal_status": "active",
+    "journal_colors_sha256_matches_current_css": true,
+    "domainos_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/9d8d5730296f6df81966103584264dc8396f2a7911238b53c29d82c0be5ea611",
+    "manifest_role_count": 84,
+    "current_export_role_count": 84,
+    "manifest_roles_equal_current_export": true,
+    "tooltip_roles_present": true,
+    "installed_domainos_renderer_sha256": "6c12fb77cd5e4c7c2218eb495f34bf5547149c5447929d844c211f3e372175cf"
+  },
+  "current_source": {
+    "path": "tools/gtk2_domainos_palette.py",
+    "sha256": "b7ec8825ff990952633ac9500edd7c435c24a7efa033863255159c6bdfb01cf5",
+    "change_summary": "Adds a deterministic style namespace derived from all current palette roles so reparsing GTK2 pixmap styles after a KDE palette change produces fresh styles. Tooltip roles/style already exist in the installed renderer.",
+    "dry_run": {
+      "status": "ready",
+      "proposed_file_count": 113,
+      "proposed_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/b4c27474ab41eb2d447a3b7473b6ee162bc09388a744333c27a02d1d50c7a8f7",
+      "proposed_bundle_exists_after_dry_run": false,
+      "native_reload_required_if_installed": true
+    },
+    "installation_state": "Not installed by this audit."
+  },
+  "verification": {
+    "focused_test": {
+      "name": "test_tooltips_use_kde_roles_and_palette_namespaces_change_on_refresh",
+      "result": "passed"
+    },
+    "module_regression": {
+      "runner": "Python unittest module runner; TemporaryDirectory redirected to ~/tempia",
+      "passed": 18,
+      "failed": 0,
+      "duration_seconds": 48.715
+    },
+    "code_change_record": {
+      "item": "I167",
+      "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+      "user_revision": 2,
+      "base_commit": "9a67cc83d763e1e5a910a891dbfc77979fc562d8",
+      "result_patch_sha256": "6edb2a67db953954a0edea39c9bf28256b634b99b05b2110cf81414ec2afb4d5",
+      "files": [
+        "tools/theme-lab/tests/probe_gtk2_entry_selection_palettes_mapped.py",
+        "tools/gtk2_domainos_palette.py",
+        "tests/test_gtk2_palette_runtime.py"
+      ],
+      "content_verified": true,
+      "temporary_record": "/home/lsi/tempia/board/diff-records/record-kze1akfp/verified.json"
+    },
+    "historical_selection_visual_pair": "not verified; native field not visible in the current guest capture",
+    "gtk2_xchat_reload": "not performed",
+    "desktop_or_user_theme_mutation": false,
+    "other_board_sections_touched": false
+  },
+  "remaining": [
+    "Re-establish a visible and focused Find Files GtkEntry in the authorized SR10.4 clone before comparing selection or caret states.",
+    "Install/reload the tested palette namespace change only within the authorized GTK2 item after the source patch is recorded and reviewable.",
+    "Do not treat palette runtime tests as historical visual acceptance."
+  ],
+  "progress_estimate": {
+    "technical_coverage_percent": 96,
+    "meaning": "Estimated coverage of I167 implementation/evidence milestones only; not a visual fidelity score.",
+    "basis": "Existing GTK2 controls and palette integration are active; dynamic roles are confirmed. Historical selection/caret verification and installed reload of the local namespace change remain open."
+  }
+}

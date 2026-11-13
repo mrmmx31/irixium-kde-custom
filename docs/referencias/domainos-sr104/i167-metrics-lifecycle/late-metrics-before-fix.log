@@ -1,0 +1,10 @@
+/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-zduc2zw9
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1191, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 195, in main
+    from controller_gtk2_push import run
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_gtk2_push.py", line 6, in <module>
+    from preview_event_writer import EventWriter
+ModuleNotFoundError: No module named 'preview_event_writer'

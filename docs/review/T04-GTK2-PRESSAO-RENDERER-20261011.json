@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-11T20:22:40.725018+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "scope": "Explicit guarded push bridge in GTK2 renderer and NativeSession preflight. Public backend/controller forced-pressure gate remains closed.",
+  "native_scene_test": {
+    "session": 6640,
+    "exit_code": 0,
+    "tests": 3,
+    "origins": [
+      "GtkWindow separate",
+      "GtkPlug in GTK2 GtkSocket host"
+    ],
+    "covers": [
+      "220x80 allocation",
+      "staged Fixed transfer",
+      "old binding and demonstration closed",
+      "new pressure stays ACTIVE",
+      "final close releases new binding",
+      "rejected binding destroys uncommitted window"
+    ],
+    "limits": "Direct renderer/container transfer, not actual NativeSession.replace transaction, Motif-host controller or generated-paint proof."
+  },
+  "unit_scene_preflight": {
+    "tests": 9,
+    "result": "passed",
+    "optional_bridge_not_loaded_for_normal_scene": true,
+    "unsupported_controls_rejected_before_load": true,
+    "missing_push_bridge_rejected_before_style_changes": true
+  },
+  "runtime_import_closure": {
+    "tests": 2,
+    "result": "passed",
+    "native_shared_object_not_yet_packaged": true
+  },
+  "hashes": {
+    "tools/theme-lab/native_scene_gtk2.py": "2ce6a5df83bb38afa22ca9e14f30058034bb4bdf2ce935b525663109d4c49005",
+    "tools/theme-lab/gtk2_session.py": "e601ef112591e9b56edbfa41484ed9a87b35d39fcc95f054d426c2ce37c8880d",
+    "tools/theme-lab/tests/test_gtk2_pressed_scene_native.py": "c6b983294f6c02bdda89f06484d9ec3d3783dbc351d7324933c55647031aa62e",
+    "tools/theme-lab/tests/test_gtk2_scene_contract.py": "2473792a8dba0252300f7831c589345a5a972fcd7bf208e5ce06bb599df80b80",
+    ".qa-t04-anchor-foundation/gtk2-pressed-scene-ownership.log": "394ff50bde8b88bd43e6a218ce0d008bf94e54f2184c40e7b3f3a6e365dca14f"
+  },
+  "prior_fixture": {
+    "session": 21238,
+    "exit_code": 0,
+    "tests": 2,
+    "limitation": "Wrong unused dimension field names meant natural allocation; updated fixture uses sizes and actual220x80 assertions."
+  },
+  "next": "Generate valid recipe and prove NativeSession.replace/rollback, then immutable bridge packaging and per-control public capability/controller proof.",
+  "progress": {
+    "percent": 25,
+    "basis": "Lifecycle foundation completed. Second milestone has bridge/renderer wiring; generated-session integration and packaging gates still incomplete."
+  },
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false
+}

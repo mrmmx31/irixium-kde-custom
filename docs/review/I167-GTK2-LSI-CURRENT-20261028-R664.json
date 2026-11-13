@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R664",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "gtk2-current-source-already-installed; non-gtk2-restored",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed_at": "2026-10-29T01:11:17Z",
+  "profile": {
+    "user_rc": "/home/lsi/.gtkrc-2.0",
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "companion_service": "irix-theme-companions.service",
+    "companion_service_state": "active",
+    "installed_gtkrc_sha256_both_roots": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "repository_gtkrc_sha256_without_user_palette_include": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+    "user_palette_include": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6/gtkrc",
+    "user_palette_include_exists": true
+  },
+  "verification": {
+    "gtk2_assets_match_repository_in_local_share_theme": true,
+    "gtk2_assets_match_repository_in_compat_theme": true,
+    "gtkrc_matches_repository_after_preserving_dynamic_palette_include": true,
+    "other_family_files_match_preoperation_snapshot_in_local_share_theme": true,
+    "other_family_files_match_preoperation_snapshot_in_compat_theme": true,
+    "changed_non_gtk2_files_restored": 8,
+    "gtk2_files_needed_update": false,
+    "gtk2_reload_broadcast_called": true,
+    "broadcast_result_persisted": false
+  },
+  "transaction": {
+    "backup_receipt": "/home/lsi/.local/state/irixium/domainos-gtk2-update/backups/56cc98fe8c7e48abb7277fcc0b7de6e5/receipt.json",
+    "status": "installed; non-GTK2 files restored from the exact before-images",
+    "non_gtk2_restore_count": 8,
+    "gtk2_source_was_already_current": true
+  },
+  "limits": [
+    "This confirms the user profile and installed GTK2 theme files, not pixel rendering in every existing GTK2 window.",
+    "The held/released canonical SR10.4 arrow comparison and manual visual acceptance remain pending.",
+    "No GTK2 source or profile configuration was changed by this operation."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The installed GTK2 assets already matched the current repository with the user's dynamic KDE palette include; historical held-arrow evidence remains pending. This is not a visual-fidelity score."
+  }
+}

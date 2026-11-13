@@ -1,0 +1,30 @@
+{
+  "status": "foundation_verified",
+  "family": "gtk2",
+  "control": "entry",
+  "native_scenes": 24,
+  "proof": ".qa-t04-entry-foundation/evidence/RESULTADO.json",
+  "hashes": {
+    "tools/theme-lab/gtk2_entries.py": "aab07ef31462ab916bb4f6afa68e60d6d3a454c7315ec4db3657d5703c9600eb",
+    "tools/theme-lab/tests/probe_gtk2_entry_paint.py": "b09d122089ca80d6c20c37f87486116c3bbcaa233579cdedfbba4bd4fa97fcdb",
+    "tools/theme-lab/tests/test_gtk2_entry_paint.py": "602aeb48a11d9f0463984f8b6fa3ab68231e5d6ed255bb8aa2f64a29b0fff3c8"
+  },
+  "scope": "GtkEntry native foundation, 24 scenes in one process. Interior background, Unicode, size, sensitivity and font metadata. Not controller integration, text-history persistence, full selection pixel proof or historical approval.",
+  "pure_tests": 3,
+  "controller_integrated": false,
+  "catalog_coverage": "7/16 unchanged",
+  "capture_examined": ".qa-t04-entry-foundation/evidence/DomainOS/separate-normal.png",
+  "delivery": {
+    "pid": 2692415,
+    "display": ":61",
+    "source_pid": 2658139,
+    "source_alive": true,
+    "preservation": ".qa-t04-entry-foundation/delivery-preservation.json",
+    "scope": "GTK3 safe editing candidate; GTK2 Entry foundation not integrated"
+  },
+  "limitations": [
+    "Text and selection pixels not yet asserted",
+    "GTK sample histories remain process-local",
+    "No historical fidelity approval"
+  ]
+}

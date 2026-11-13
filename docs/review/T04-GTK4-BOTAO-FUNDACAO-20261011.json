@@ -1,0 +1,510 @@
+{
+  "status": "passed_scoped_foundation",
+  "recorded_at": "2026-10-11T22:55:46.696249+00:00",
+  "authorization": {
+    "id": "T04",
+    "user_revision": 6,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "runtime": {
+    "family": "GTK4",
+    "version": "4.18.6",
+    "api": "C ABI",
+    "renderer": "cairo",
+    "display": "private Xvfb X11"
+  },
+  "rows": [
+    {
+      "scheme": "DomainOS",
+      "allocation": [
+        160,
+        60
+      ],
+      "states": [
+        {
+          "state": "normal",
+          "native_flags": 128,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "pressed",
+          "native_flags": 129,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "disabled",
+          "native_flags": 136,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "backdrop",
+          "native_flags": 192,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        }
+      ],
+      "physical": {
+        "forced_equals_held": true,
+        "released_equals_normal": true,
+        "normal_pressed_changed_pixels": 864
+      },
+      "artificial_clicks": 0,
+      "physical_clicks": 1,
+      "palette_input_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "palette_snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd"
+    },
+    {
+      "scheme": "BreezeLight",
+      "allocation": [
+        160,
+        60
+      ],
+      "states": [
+        {
+          "state": "normal",
+          "native_flags": 128,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "pressed",
+          "native_flags": 129,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "disabled",
+          "native_flags": 136,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "backdrop",
+          "native_flags": 192,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        }
+      ],
+      "physical": {
+        "forced_equals_held": true,
+        "released_equals_normal": true,
+        "normal_pressed_changed_pixels": 864
+      },
+      "artificial_clicks": 0,
+      "physical_clicks": 1,
+      "palette_input_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "palette_snapshot_sha256": "47746c098577dbe3800b1d219773210b37adf31e643f94639271fbf4de554d2f"
+    },
+    {
+      "scheme": "BreezeDark",
+      "allocation": [
+        160,
+        60
+      ],
+      "states": [
+        {
+          "state": "normal",
+          "native_flags": 128,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "pressed",
+          "native_flags": 129,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "disabled",
+          "native_flags": 136,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "backdrop",
+          "native_flags": 192,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        }
+      ],
+      "physical": {
+        "forced_equals_held": true,
+        "released_equals_normal": true,
+        "normal_pressed_changed_pixels": 864
+      },
+      "artificial_clicks": 0,
+      "physical_clicks": 1,
+      "palette_input_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "palette_snapshot_sha256": "95c8e2c035f3d4c329edfdbc6c6af926f82a28f19341f2df273498c8c1d0df25"
+    },
+    {
+      "scheme": "TestYellow",
+      "allocation": [
+        160,
+        60
+      ],
+      "states": [
+        {
+          "state": "normal",
+          "native_flags": 128,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "pressed",
+          "native_flags": 129,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "disabled",
+          "native_flags": 136,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        },
+        {
+          "state": "backdrop",
+          "native_flags": 192,
+          "edge_pixels": 864,
+          "edge_differences": 0
+        }
+      ],
+      "physical": {
+        "forced_equals_held": true,
+        "released_equals_normal": true,
+        "normal_pressed_changed_pixels": 864
+      },
+      "artificial_clicks": 0,
+      "physical_clicks": 1,
+      "palette_input_sha256": "76ab8043dfdb507b6db35350e10714705fef9cfad31584f2408d354de898ce7c",
+      "palette_snapshot_sha256": "18bebab0c7852a718b8c9cdde3a25de18566c0faade6357db5920c3fb76b1fba"
+    },
+    {
+      "scheme": "DomainOS-resized",
+      "allocation": [
+        192,
+        72
+      ],
+      "states": [
+        {
+          "state": "normal",
+          "native_flags": 128,
+          "edge_pixels": 1040,
+          "edge_differences": 0
+        },
+        {
+          "state": "pressed",
+          "native_flags": 129,
+          "edge_pixels": 1040,
+          "edge_differences": 0
+        },
+        {
+          "state": "disabled",
+          "native_flags": 136,
+          "edge_pixels": 1040,
+          "edge_differences": 0
+        },
+        {
+          "state": "backdrop",
+          "native_flags": 192,
+          "edge_pixels": 1040,
+          "edge_differences": 0
+        }
+      ],
+      "physical": {
+        "forced_equals_held": true,
+        "released_equals_normal": true,
+        "normal_pressed_changed_pixels": 1040
+      },
+      "artificial_clicks": 0,
+      "physical_clicks": 1,
+      "palette_input_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "palette_snapshot_sha256": "e2f188cd611f324b818d48fd47a9f92d52e6e0a72ffb0ed295f4ff5c738553cd"
+    }
+  ],
+  "total_edge_pixels": 17984,
+  "edge_differences": 0,
+  "physical_clicks": 5,
+  "artificial_clicks": 0,
+  "css_parser_errors": 0,
+  "drawing": "Shared bevel mask, eight separate background slices; no interpolation across differently lit corners",
+  "color_policy": "Effective active/inactive/disabled KColorScheme button and text roles. No final static widget RGB. Palette input affects this private child only.",
+  "observed_visual": "Native DomainOS normal capture inspected: square raised two-pixel edge, blue role-derived face and centered readable white label. This is not a comparison against a new VM capture.",
+  "negative_attempts": [
+    {
+      "log": ".qa-t04-anchor-foundation/gtk4-push-foundation.log",
+      "result": "First border-image approach produced53 mismatching normal edge pixels due corner interpolation; replaced by separate slices."
+    },
+    {
+      "log": ".qa-t04-anchor-foundation/gtk4-push-cycle.log",
+      "result": "Allocation assertion used content width instead of whole allocation; fixture corrected, no product drawing change."
+    }
+  ],
+  "test_results": {
+    "pure_translation_tests": 4,
+    "status": "passed"
+  },
+  "limits": [
+    "Independent native GtkWindow only; coupled scene/session and controller integration pending.",
+    "Focus and combined states not certified; only normal,pressed,disabled,backdrop individually.",
+    "Recipe dimensions are proposals, not measured SR10.4 default dimensions.",
+    "No public GTK4 adapter enabled, no personal window replaced, no GTK4 family or historical fidelity completion claimed."
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk4_buttons.py": "4a9491adce8b5ee1c292e8aeefc57558eea41370b33f0a4d6ddcaf2c7dcdc1cc",
+    "tools/theme-lab/tests/probe_gtk4_push.py": "4c2c313b9a858578317c974c1ae818dd0d95a521e69808ce1253e395b2212136",
+    "tools/theme-lab/tests/test_gtk4_buttons.py": "e25af5eff33b1f9dd9e41f90780ebaf8a6436d1a5a2d753272b4f559875e4a1a",
+    "tools/theme-lab/tests/test_backend.py": "d227c18506ece67676fa198cc5fd91188310ecd06ea1e505ff39c19fe58f6df3",
+    "tools/theme-lab/gtk2_buttons.py": "ffa5dafa2628ea94087b239f2ce1121a537e23fe8af8a438f4077913788c3a5f",
+    "tools/theme-lab/backend.py": "19920666b1be1741c7185b5039e091dc42607b635855f68a5fb1b35943cb5d5a",
+    "gtk/tools/build_kde_domainos.py": "5370dbaf7cd64b0dd9162707e1c078f9f7659071955b7b06baa71e043951f933",
+    "tools/domainos_motif_art.py": "8566413452b205dcbea4537f179be2eb69441909cb3214bcb6d657b67b35096f",
+    "gtk/tools/adaptive_assets.py": "7615085b8f14ae08a06c97cd8ffa035e125bb478b283d12909570c1ba1c764ad",
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "tools/theme-lab/src/native_colors.cpp": "da2d4c9d8262ff08a8dd2d847f473ee210a3da64d0bcccd678852355cc64a465",
+    "tools/theme-lab/build/theme-lab-colors": "f6562702f82d5963aaab0f2883ff9e0551a43da97bae3fe7a9cc9418381d765f"
+  },
+  "artifact_sha256": {
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/PIXELS.json": "4f53d94d708890587c9d171f06cbe25506b11625d1e5ad5930f7cae7fb5edb68",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/RESULTADO.json": "ebbee82e3bc44117ae7a2e661d35d4d9c476e0794b5b0aed88f14db26e87d186",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/backdrop.png": "f7b8e8c917e825fb00a48e0e9c84cb8628ec78be05149e7c7b3bcca90dfc8821",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/disabled.png": "a502ab727d3c2d2b6188f53b33d603afd294fe37327aeeaf3dc034ced86905fb",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-0773d596a12d38da.png": "676ccc2f9081645a9efa9ab3ef337e14efcdaeef3ceeb7b2cc2be026abacc04b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-bottom-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-bottomleft-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-bottomright-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-left-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-right-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-top-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-topleft-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-backdrop-topright-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-0773d596a12d38da.png": "a245b4753ea7755860f14042e49ede54c51798704b4dcb9f24bdbce36ae8e8e4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-bottom-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-bottomleft-0773d596a12d38da.png": "b401430fdfafa29e3e586aa79f3cbe85118520f3c804528fcf29c83c5b784c8d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-bottomright-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-left-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-right-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-top-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-topleft-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-disabled-topright-0773d596a12d38da.png": "b401430fdfafa29e3e586aa79f3cbe85118520f3c804528fcf29c83c5b784c8d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-0773d596a12d38da.png": "676ccc2f9081645a9efa9ab3ef337e14efcdaeef3ceeb7b2cc2be026abacc04b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-bottom-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-bottomleft-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-bottomright-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-left-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-right-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-top-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-topleft-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-normal-topright-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-0773d596a12d38da.png": "71185b6540b1be0b27987fdde460ff4342dd9d034ef745fdb6f52167b57bc026",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-bottom-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-bottomleft-0773d596a12d38da.png": "5dff6bb0640174712f19e3886b97bda74451d72d5c7e2c4775e5e80424722f13",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-bottomright-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-left-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-right-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-top-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-topleft-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push-pressed-topright-0773d596a12d38da.png": "5dff6bb0640174712f19e3886b97bda74451d72d5c7e2c4775e5e80424722f13",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/generated/push.css": "8c01826bf709262614fbdf014ab0d82ff34fa40250c7b6db30cf00445c83c86d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/normal.png": "f7b8e8c917e825fb00a48e0e9c84cb8628ec78be05149e7c7b3bcca90dfc8821",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/physical-held.png": "38b23ee8ba07a10283ba5d11458f18534c42abdd058022793ae0e592c710b70a",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/physical-released.png": "f7b8e8c917e825fb00a48e0e9c84cb8628ec78be05149e7c7b3bcca90dfc8821",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-20261011/pressed.png": "38b23ee8ba07a10283ba5d11458f18534c42abdd058022793ae0e592c710b70a",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/PIXELS.json": "4f53d94d708890587c9d171f06cbe25506b11625d1e5ad5930f7cae7fb5edb68",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/RESULTADO.json": "6a46564d304877229e908bb79c1db3be9db6aee2563b94a1565898a5e3e654be",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/backdrop.png": "566744c411a10d9a1543537597e8e2e01ee23a704324d30922b9fb85546aaa6e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/disabled.png": "808e11588569356904fd435ccfd732d5001296a23ce19c1bf16aa8c7203d06a8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-a1c19b88940f8edd.png": "5f92fe343ce91b7c161607b632867e210cf7ffa0153067de8920aae8bc263e60",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-bottom-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-bottomleft-a1c19b88940f8edd.png": "dffecdcce857aacbc76f7f3b50e94f42dcd72fc7c912ddc9729e15bbfb446929",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-bottomright-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-left-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-right-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-top-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-topleft-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-backdrop-topright-a1c19b88940f8edd.png": "dffecdcce857aacbc76f7f3b50e94f42dcd72fc7c912ddc9729e15bbfb446929",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-a1c19b88940f8edd.png": "a9ea941982075d3e43d2e4c32a43879619e1f195c47f984316d080d04492a478",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-bottom-a1c19b88940f8edd.png": "eed2edbf408be325af532b2b4c0afb059d656369f2890b9d6e20c290daebd825",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-bottomleft-a1c19b88940f8edd.png": "62153d911206fdc7355f75977b81c67870ee6bbe4f86eb42fbd5ea5d07305278",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-bottomright-a1c19b88940f8edd.png": "eed2edbf408be325af532b2b4c0afb059d656369f2890b9d6e20c290daebd825",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-left-a1c19b88940f8edd.png": "d4d827ea93cb7d164ea4da17671b645c857eb48e5f59474d07996abbf7af4ad7",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-right-a1c19b88940f8edd.png": "eed2edbf408be325af532b2b4c0afb059d656369f2890b9d6e20c290daebd825",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-top-a1c19b88940f8edd.png": "d4d827ea93cb7d164ea4da17671b645c857eb48e5f59474d07996abbf7af4ad7",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-topleft-a1c19b88940f8edd.png": "d4d827ea93cb7d164ea4da17671b645c857eb48e5f59474d07996abbf7af4ad7",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-disabled-topright-a1c19b88940f8edd.png": "62153d911206fdc7355f75977b81c67870ee6bbe4f86eb42fbd5ea5d07305278",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-a1c19b88940f8edd.png": "5f92fe343ce91b7c161607b632867e210cf7ffa0153067de8920aae8bc263e60",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-bottom-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-bottomleft-a1c19b88940f8edd.png": "dffecdcce857aacbc76f7f3b50e94f42dcd72fc7c912ddc9729e15bbfb446929",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-bottomright-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-left-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-right-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-top-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-topleft-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-normal-topright-a1c19b88940f8edd.png": "dffecdcce857aacbc76f7f3b50e94f42dcd72fc7c912ddc9729e15bbfb446929",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-a1c19b88940f8edd.png": "edbabd6d27a8fb3ea259b01a373d6091c431f976b809894684903f2ffdb6fb7d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-bottom-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-bottomleft-a1c19b88940f8edd.png": "41154fd4bcd17772bb5dab4ee3397ecfb23d291d8ccb5ae7729d5ada9ef6449d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-bottomright-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-left-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-right-a1c19b88940f8edd.png": "a6f87ce7d88a911214a3a78fbe74bca6050ce13d3de43889fcabd8c1e8dc7b1b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-top-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-topleft-a1c19b88940f8edd.png": "e22a7701f6464f87937c614ff64a680bb86c9372e41f50d4fa9c1c7b7467eff3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push-pressed-topright-a1c19b88940f8edd.png": "41154fd4bcd17772bb5dab4ee3397ecfb23d291d8ccb5ae7729d5ada9ef6449d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/generated/push.css": "1476d43efe22df19c2cf3af798ccad6143ab1d191b77c78cf2ed7a6454926eb1",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/normal.png": "566744c411a10d9a1543537597e8e2e01ee23a704324d30922b9fb85546aaa6e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/physical-held.png": "505a083a869ba8e9125c30d7a4ff791e1e5f4889a292283658a722528068dad8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/physical-released.png": "566744c411a10d9a1543537597e8e2e01ee23a704324d30922b9fb85546aaa6e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeLight-20261011/pressed.png": "505a083a869ba8e9125c30d7a4ff791e1e5f4889a292283658a722528068dad8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/PIXELS.json": "4f53d94d708890587c9d171f06cbe25506b11625d1e5ad5930f7cae7fb5edb68",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/RESULTADO.json": "c6b26dcfabd4ac685fc936add08433f247a45d93349d10cf9aa3a94a9df28df8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/backdrop.png": "338d50dca1b4a696fd89578f9a91e7ab701710242ec81c034bce38237b212ee9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/disabled.png": "05cad27a844f32ed872f9cedc1fca8450fdd754e62d77b66e8b801cd3bdcf10c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-1feba497b24ff24c.png": "64b0ea6be9e7817647c8ac4591efb2497bb74b916340da81e46261b12ccb55ef",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-bottom-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-bottomleft-1feba497b24ff24c.png": "5ae80527c9ea4f4991b0d444abb70812376132818a4279d4920e17b54ad113f8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-bottomright-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-left-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-right-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-top-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-topleft-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-backdrop-topright-1feba497b24ff24c.png": "5ae80527c9ea4f4991b0d444abb70812376132818a4279d4920e17b54ad113f8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-1feba497b24ff24c.png": "d69652955c1f04ed562026aa9d1787089b79de34f83d2f1d432cd060ed4c03cc",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-bottom-1feba497b24ff24c.png": "21bc124e6fb4ff532452a9630a1475fff2753a1080cf736c3582837c61ec7ee2",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-bottomleft-1feba497b24ff24c.png": "5d8a13b342ab9bab914d5226109768872fc6d26f28f44a86ee06c915ae1f0ca6",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-bottomright-1feba497b24ff24c.png": "21bc124e6fb4ff532452a9630a1475fff2753a1080cf736c3582837c61ec7ee2",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-left-1feba497b24ff24c.png": "973932b203cd3696c4207c46a0b5810d08120b01b55f03ed7485996ad7e9fb93",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-right-1feba497b24ff24c.png": "21bc124e6fb4ff532452a9630a1475fff2753a1080cf736c3582837c61ec7ee2",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-top-1feba497b24ff24c.png": "973932b203cd3696c4207c46a0b5810d08120b01b55f03ed7485996ad7e9fb93",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-topleft-1feba497b24ff24c.png": "973932b203cd3696c4207c46a0b5810d08120b01b55f03ed7485996ad7e9fb93",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-disabled-topright-1feba497b24ff24c.png": "5d8a13b342ab9bab914d5226109768872fc6d26f28f44a86ee06c915ae1f0ca6",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-1feba497b24ff24c.png": "64b0ea6be9e7817647c8ac4591efb2497bb74b916340da81e46261b12ccb55ef",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-bottom-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-bottomleft-1feba497b24ff24c.png": "5ae80527c9ea4f4991b0d444abb70812376132818a4279d4920e17b54ad113f8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-bottomright-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-left-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-right-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-top-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-topleft-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-normal-topright-1feba497b24ff24c.png": "5ae80527c9ea4f4991b0d444abb70812376132818a4279d4920e17b54ad113f8",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-1feba497b24ff24c.png": "61fd4b776f6bb18e42a0dca68fb03dcde6a3e54fd8d08b342ae6c18e991624ec",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-bottom-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-bottomleft-1feba497b24ff24c.png": "e91f4043c6155bea420a317084be5848462b199eb750dba5350048d36ca5e67b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-bottomright-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-left-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-right-1feba497b24ff24c.png": "18bb6dbaee5f35a3492a1b3aea68580f0cf160be835f74198fe4911382e3bbc0",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-top-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-topleft-1feba497b24ff24c.png": "6be42cae3c1ae2932170c022e00105267f46bde863f36618570a3be6cf03732c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push-pressed-topright-1feba497b24ff24c.png": "e91f4043c6155bea420a317084be5848462b199eb750dba5350048d36ca5e67b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/generated/push.css": "7ed129086e25b50acf33e8901d558e62af094e4921f4f80b290fa605f939abe4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/normal.png": "338d50dca1b4a696fd89578f9a91e7ab701710242ec81c034bce38237b212ee9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/physical-held.png": "f453d849d5c52991f3f0dbe9097c7c2be72ed4cb1be9aa38056e1826301db05e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/physical-released.png": "338d50dca1b4a696fd89578f9a91e7ab701710242ec81c034bce38237b212ee9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-BreezeDark-20261011/pressed.png": "f453d849d5c52991f3f0dbe9097c7c2be72ed4cb1be9aa38056e1826301db05e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/PIXELS.json": "4f53d94d708890587c9d171f06cbe25506b11625d1e5ad5930f7cae7fb5edb68",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/RESULTADO.json": "0f9137ae7cdb5f2e0e4f9409358a494b2a15eb5ad988525179d8f2d416482c16",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/backdrop.png": "5e7f749315b5edc139202618545fcf49f5e731d82ed68fb3ab0b4d9421cf5470",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/disabled.png": "8920512ff9296cd9074eaa75ada6ca5ae3afc13c01cb43dadbb3b1602b6f3560",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-7c1eac206f2fffb5.png": "bfdd923b83ba7eb85f0bdaf6df551ff6989db0ebfb989c590d9dad120aa447ea",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-bottom-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-bottomleft-7c1eac206f2fffb5.png": "b668aade07c729f98cb4b928ec9b6075acce4b909ca83f303952a704a5de917e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-bottomright-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-left-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-right-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-top-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-topleft-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-backdrop-topright-7c1eac206f2fffb5.png": "b668aade07c729f98cb4b928ec9b6075acce4b909ca83f303952a704a5de917e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-7c1eac206f2fffb5.png": "d042e0b4c4416a1b441257ccf2e9e0abfadb9aaa44479d9e4bfe1edda6b77165",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-bottom-7c1eac206f2fffb5.png": "3d35c64969e0febf1b9ef6dd814d4f32ca34b3ab86d8a94adf7b8d470f602c97",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-bottomleft-7c1eac206f2fffb5.png": "d356c9ff66b2e19dc0bc4650ada550396777595b98bc084bdf0f7c2bd54cbfef",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-bottomright-7c1eac206f2fffb5.png": "3d35c64969e0febf1b9ef6dd814d4f32ca34b3ab86d8a94adf7b8d470f602c97",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-left-7c1eac206f2fffb5.png": "824415d1d7feb4d2297e54b7cd6c61cefbf619291bed7d6a4e8d9c18116a8d79",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-right-7c1eac206f2fffb5.png": "3d35c64969e0febf1b9ef6dd814d4f32ca34b3ab86d8a94adf7b8d470f602c97",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-top-7c1eac206f2fffb5.png": "824415d1d7feb4d2297e54b7cd6c61cefbf619291bed7d6a4e8d9c18116a8d79",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-topleft-7c1eac206f2fffb5.png": "824415d1d7feb4d2297e54b7cd6c61cefbf619291bed7d6a4e8d9c18116a8d79",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-disabled-topright-7c1eac206f2fffb5.png": "d356c9ff66b2e19dc0bc4650ada550396777595b98bc084bdf0f7c2bd54cbfef",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-7c1eac206f2fffb5.png": "bfdd923b83ba7eb85f0bdaf6df551ff6989db0ebfb989c590d9dad120aa447ea",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-bottom-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-bottomleft-7c1eac206f2fffb5.png": "b668aade07c729f98cb4b928ec9b6075acce4b909ca83f303952a704a5de917e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-bottomright-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-left-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-right-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-top-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-topleft-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-normal-topright-7c1eac206f2fffb5.png": "b668aade07c729f98cb4b928ec9b6075acce4b909ca83f303952a704a5de917e",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-7c1eac206f2fffb5.png": "aad172fa9ac675e60846c41de5b37617079fc94977904aa391ef3aebcc5e4b8d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-bottom-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-bottomleft-7c1eac206f2fffb5.png": "ea875795f1e4d75d212de8f31e9ce61b2a7451ecffc35595382cab29d091b924",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-bottomright-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-left-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-right-7c1eac206f2fffb5.png": "38ff5de79466f122af1384172060030e91a838cb963a886a3633ffe3600a5271",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-top-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-topleft-7c1eac206f2fffb5.png": "13e01508fed150e0553c0a926e5f3f5629c0204096e85f4e3d3463d0391849b5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push-pressed-topright-7c1eac206f2fffb5.png": "ea875795f1e4d75d212de8f31e9ce61b2a7451ecffc35595382cab29d091b924",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/generated/push.css": "f055858291dc1c20bde9485200fbb8439d8390c1674673a46af0a43885f72880",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/normal.png": "5e7f749315b5edc139202618545fcf49f5e731d82ed68fb3ab0b4d9421cf5470",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/physical-held.png": "0201555560d34a0063eed7c0f86b6f575023556850fe98b2008667d9c8d5ec81",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/physical-released.png": "5e7f749315b5edc139202618545fcf49f5e731d82ed68fb3ab0b4d9421cf5470",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-TestYellow-20261011/pressed.png": "0201555560d34a0063eed7c0f86b6f575023556850fe98b2008667d9c8d5ec81",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/PIXELS.json": "630466861f58a150c73c9a2ba10d40e23ad624b492e0c30d32ef3f5c41e4a95c",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/RESULTADO.json": "f3308d3e2c1fd9d82c3f646e9858b244cd1101e8159616e7d33b1bac55868123",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/backdrop.png": "ff40312c4417c77a9c629c7ef4a6be9c7950f8578e15f400c57672cb72d5c6bd",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/disabled.png": "811a54700f4f145dcbb1093794590a92d3de1f69fad0daf942b9007d14274971",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-0773d596a12d38da.png": "676ccc2f9081645a9efa9ab3ef337e14efcdaeef3ceeb7b2cc2be026abacc04b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-bottom-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-bottomleft-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-bottomright-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-left-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-right-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-top-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-topleft-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-backdrop-topright-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-0773d596a12d38da.png": "a245b4753ea7755860f14042e49ede54c51798704b4dcb9f24bdbce36ae8e8e4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-bottom-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-bottomleft-0773d596a12d38da.png": "b401430fdfafa29e3e586aa79f3cbe85118520f3c804528fcf29c83c5b784c8d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-bottomright-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-left-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-right-0773d596a12d38da.png": "6162560306500a16dd96bf2313b106bda54c4fa6e0c49facb6633ae9435ba4e9",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-top-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-topleft-0773d596a12d38da.png": "22456dfbeb9bb3f20ac89dd4b354b03a821237b0ea8643c2cf5a794fde59cbd5",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-disabled-topright-0773d596a12d38da.png": "b401430fdfafa29e3e586aa79f3cbe85118520f3c804528fcf29c83c5b784c8d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-0773d596a12d38da.png": "676ccc2f9081645a9efa9ab3ef337e14efcdaeef3ceeb7b2cc2be026abacc04b",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-bottom-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-bottomleft-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-bottomright-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-left-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-right-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-top-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-topleft-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-normal-topright-0773d596a12d38da.png": "9b2eaa039d3e02479dfa9c7ece239dd8e1df8a344b5bc2b79adb8baf6f530de4",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-0773d596a12d38da.png": "71185b6540b1be0b27987fdde460ff4342dd9d034ef745fdb6f52167b57bc026",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-bottom-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-bottomleft-0773d596a12d38da.png": "5dff6bb0640174712f19e3886b97bda74451d72d5c7e2c4775e5e80424722f13",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-bottomright-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-left-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-right-0773d596a12d38da.png": "1444e141d3fb50ae334ebacd56e8c930956da2539e3e746d67bedf140075c774",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-top-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-topleft-0773d596a12d38da.png": "d9ddd978dea3bad0279128f9b85d8a76143f458b7b1f8ef21bae9619e7a522e3",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push-pressed-topright-0773d596a12d38da.png": "5dff6bb0640174712f19e3886b97bda74451d72d5c7e2c4775e5e80424722f13",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/generated/push.css": "0c5ed86a57d7fc58b8f5c0da26dcba16b0d9308e867530321b024a6a3b742943",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/normal.png": "ff40312c4417c77a9c629c7ef4a6be9c7950f8578e15f400c57672cb72d5c6bd",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/physical-held.png": "d576063411af6161be8b5e1ecd830525b31d25f203ff3d75e1d2f2ed452d005d",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/physical-released.png": "ff40312c4417c77a9c629c7ef4a6be9c7950f8578e15f400c57672cb72d5c6bd",
+    ".qa-t04-anchor-foundation/private/t04-gtk4-push-cycle-r2-DomainOS-resized-20261011/pressed.png": "d576063411af6161be8b5e1ecd830525b31d25f203ff3d75e1d2f2ed452d005d"
+  },
+  "progress": {
+    "unit": "GTK4 push integration",
+    "milestones": [
+      "foundation",
+      "scene/session",
+      "controller/history",
+      "delivery"
+    ],
+    "completed": [
+      "foundation"
+    ],
+    "percent": 25
+  }
+}

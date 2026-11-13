@@ -1,0 +1,28 @@
+{
+  "item": "T07",
+  "user_revision": 4,
+  "checked_at_utc": "2026-10-19T15:50:24Z",
+  "status": "environmental-limit-observed; prior-matrix-not-repeated",
+  "previous_attempt": {
+    "artifact_directory": "~/tempia/t07-gtk4-hover-matrix-r150/",
+    "worker": "tools/theme-lab/tests/gtk4_hint_matrix_worker.py",
+    "timeout_seconds": 90,
+    "result_json": "empty",
+    "stderr": "Two private dbus-daemon processes reported Cannot initialize inotify: Too many open files. The worker was terminated after timeout; this does not prove that the inotify warning caused the timeout."
+  },
+  "current_read_only_census": {
+    "same_uid_inotify_fd_references": 398,
+    "largest_executable_group": "dbus-daemon: 272 descriptor references",
+    "rlimit_nofile_soft_hard": [524288, 524288],
+    "fs_inotify_max_user_instances": 384,
+    "fs_inotify_max_user_watches": 250145,
+    "interpretation_limit": "Descriptor references can be shared or duplicated; they are not asserted to equal kernel inotify instances. The census confirms host pressure and a need to avoid another private D-Bus-heavy matrix, but not a causal explanation for R150."
+  },
+  "preservation": {
+    "processes_killed": false,
+    "sysctl_changed": false,
+    "user_configuration_changed": false,
+    "xephyr_sessions_touched": false
+  },
+  "next": "Do not repeat the same 90-second matrix or alter host inotify limits. Proceed to another authorized work item. Revisit the matrix only with a discriminating bus-free/minimal diagnostic or after the resource condition changes."
+}

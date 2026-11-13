@@ -1,0 +1,24 @@
+{
+  "component": "SGI-Irixium",
+  "kind": "cursor-theme",
+  "source": {
+    "url": "https://github.com/jujum4n/sgi-enhanced",
+    "revision": "b7a02161f8e13da639d2ecff5735436c9f447d67",
+    "path": "cursor/sgi",
+    "original_artist": "BEHRZ, credited by upstream",
+    "verified_original_binaries": 49
+  },
+  "license": {
+    "upstream_declaration": "GNU General Public License; version unspecified; complete license absent upstream",
+    "integration_code": "GPL-3.0-or-later"
+  },
+  "original_design": "SGI/IRIX-inspired recreation; not a dump of original IRIX cursor fonts",
+  "local_changes": [
+    "Qt, X11 and Wayland aliases; wait and progress distinct; resize axes corrected",
+    "24,32,48,64,96 sizes; hotspots scaled with the pixels",
+    "Open/closed hand, vertical text and zoom artwork generated locally",
+    "Continuous arrow polygons and simplified source contours rendered per size; native watch primitives; Classic 32 arrow unchanged; Irixium premultiplied antialiasing"
+  ],
+  "busy_design": "Locally drawn red/white watch with eight native Xcursor frames; pointer retained during progress",
+  "linked_profile": "moderno"
+}

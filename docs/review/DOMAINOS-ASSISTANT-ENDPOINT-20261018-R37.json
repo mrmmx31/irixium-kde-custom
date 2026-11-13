@@ -1,0 +1,42 @@
+{
+  "item": "P10",
+  "revision": "R37",
+  "checked_at_utc": "2026-10-18T17:57:57Z",
+  "instance": "assistant-clone-20261018",
+  "change": "Moved the assistant clone FTP/Telnet alias from 10.104.255.10 to 10.104.253.10 inside its isolated network namespace.",
+  "mame": {
+    "pid": 1925360,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "same_process": true,
+    "frameskip": 4,
+    "paused": false,
+    "throttled": false
+  },
+  "network": {
+    "namespace": "net:[4026533751]",
+    "new_endpoint": "10.104.253.10",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2, private to the clone namespace",
+    "retired_endpoint": "10.104.255.10",
+    "collision_check": "New alias absent from host IPv4 addresses and inspected active MAME network namespaces before assignment; I342 shares the host namespace; board MAME has networkprovider none."
+  },
+  "validation": {
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "ftp_login": "passed",
+    "ftp_transfer_mode": "active",
+    "ftp_source_binding": "192.168.240.1",
+    "ftp_listing_entries": 26,
+    "telnet_crlf_negotiation_hex": "fffd18",
+    "new_listeners_active": true,
+    "old_alias_and_listeners_absent": true
+  },
+  "preservation": {
+    "guest_network_configuration_changed": false,
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "mame_restarted_or_tuned": false,
+    "mame_disk_written": false
+  },
+  "remaining_limit": "The guest VUE screen capture remains black; network access is available for SR10.4 reads, but this does not make the visual session observable."
+}

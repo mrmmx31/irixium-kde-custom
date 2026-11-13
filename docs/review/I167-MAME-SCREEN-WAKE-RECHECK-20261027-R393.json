@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R393",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Wake and verify the project-owned SR10.4 assistant clone after a fresh black snapshot, without restarting or touching the separate board VM.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "project_channel": "vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "before": {
+    "capture": "~/tempia/ia-tema/evidence/I167/r390-current/domainos-sr104-current.png",
+    "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "state": "Black guest framebuffer, captured in the immediately preceding read-only check."
+  },
+  "wake": {
+    "method": "One-frame Shift pulse using the existing MAME bridge field :kbd:keyboard4/Shift, released on frame 3. This is guest-injected input, not physical host keyboard input.",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "error": null,
+    "native_capture": "~/tempia/ia-tema/evidence/I167/r393-vm-wake-check/vm-after-shift.png",
+    "native_capture_sha256": "62515cafac84264125763fc36b0b2f0664a720be38eebbef46fda94a5bbc831f",
+    "visible": "VUE desktop with Terminal, File Manager and Trash Can."
+  },
+  "profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "capture": false,
+    "channel_pending": false,
+    "vm_restarted": false,
+    "guest_files_changed": false,
+    "other_vm_touched": false
+  },
+  "interpretation": "This exact bridge pulse has now succeeded in R381 and R393 on this project clone. It remains distinct from the physical event the user demonstrated and is not generalized to other VMs.",
+  "limits": [
+    "No mouse input was sent.",
+    "No historical arrow state was compared in this wake receipt."
+  ]
+}

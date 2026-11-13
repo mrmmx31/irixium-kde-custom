@@ -1,0 +1,19 @@
+{
+  "item": "P10",
+  "revision": "R42",
+  "checked_at_utc": "2026-10-18T20:00:18Z",
+  "purpose": "Revalidate whether the documented assistant Domain/OS clone is still live before resuming the native visual capture.",
+  "expected_instance": "assistant-clone-20261018",
+  "expected_mame_pid": 1925360,
+  "checks": {
+    "expected_pid_exists": false,
+    "mame_process_matches_expected_assistant_disk": false,
+    "control_channel_used": false,
+    "graphical_input_sent": false,
+    "mame_restarted_or_tuned": false,
+    "guest_or_disk_modified": false
+  },
+  "result": "The documented assistant clone is not running. Its last documented process PID is absent and no live process matches its assistant-clone disk path. P10 native comparison cannot continue against that live instance in this turn.",
+  "preservation": "No MAME process was started or stopped. The source VM and approved backup were not accessed or changed.",
+  "next": "Continue with the next independently actionable authorized item; resume P10 visual comparison only after its documented assistant clone is available again."
+}

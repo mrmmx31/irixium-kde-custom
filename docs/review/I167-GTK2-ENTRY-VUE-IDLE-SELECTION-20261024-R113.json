@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "id": "R113",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Observe idle VUE text field after the sequential Shift+Left attempt",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "transport": "Read-only screenshots from the authorized assistant MAME clone",
+    "main_vm_touched": false
+  },
+  "method": {
+    "operation": "After the R111 sequential Shift+Left attempt, capture the existing VUE Find Files field eight times at 0.2 emulated-second intervals. No input was sent during this sampling sequence.",
+    "sample_count": 8,
+    "sample_times_emulated_seconds": [
+      4671.4906241716,
+      4671.6887900503,
+      4671.904955929,
+      4672.1051218077,
+      4672.3052876864,
+      4672.5054535651,
+      4672.7056194438,
+      4673.0054877892
+    ],
+    "field_roi_capture_xyxy": [
+      176,
+      365,
+      515,
+      399
+    ],
+    "sampling_script": "~/tempia/i167-vue-current-r110/observe-selection-idle.lua",
+    "sampling_script_sha256": "21005c08720b2d3bdc0dc2ef990eed1812e54c632fadd4c55ebbbdbf26fb139e",
+    "analysis_script": "~/tempia/i167-vue-current-r110/analyze_r113_idle.py",
+    "analysis_script_sha256": "b709e33b823644a64470fe3559f2c046a2e85bf80063908803ee05a25c5fd0f2",
+    "analysis": "~/tempia/i167-vue-current-r110/selection-idle-analysis-r113.json",
+    "analysis_sha256": "a34fd369bc4da1fd76dd9e093429fcf507fb0f35fd0b414f4106e37f38dfbf5c",
+    "contact_sheet": "~/tempia/i167-vue-current-r110/domainos-entry-selection-idle-contact.png",
+    "contact_sheet_sha256": "fe4ef71db1192dd93f845591fe38ea99ed5165145bf04fdfd4ed693eab374ece",
+    "captures": [
+      {
+        "name": "domainos-entry-selection-idle-01.png",
+        "sha256": "a0b26790b4defb87ef9fa9dfe94157b330f4f24827613db67d0031b16adb1c05"
+      },
+      {
+        "name": "domainos-entry-selection-idle-02.png",
+        "sha256": "c739b1453dc960fa93fb599693dc319f9a0976ae39978559fd0bee8c0b4c838a"
+      },
+      {
+        "name": "domainos-entry-selection-idle-03.png",
+        "sha256": "c739b1453dc960fa93fb599693dc319f9a0976ae39978559fd0bee8c0b4c838a"
+      },
+      {
+        "name": "domainos-entry-selection-idle-04.png",
+        "sha256": "a0b26790b4defb87ef9fa9dfe94157b330f4f24827613db67d0031b16adb1c05"
+      },
+      {
+        "name": "domainos-entry-selection-idle-05.png",
+        "sha256": "a0b26790b4defb87ef9fa9dfe94157b330f4f24827613db67d0031b16adb1c05"
+      },
+      {
+        "name": "domainos-entry-selection-idle-06.png",
+        "sha256": "e653c1b547902057e451fa3f82327e1c2f2ff6872a1f091816b622d2a5571b7f"
+      },
+      {
+        "name": "domainos-entry-selection-idle-07.png",
+        "sha256": "c739b1453dc960fa93fb599693dc319f9a0976ae39978559fd0bee8c0b4c838a"
+      },
+      {
+        "name": "domainos-entry-selection-idle-08.png",
+        "sha256": "c739b1453dc960fa93fb599693dc319f9a0976ae39978559fd0bee8c0b4c838a"
+      }
+    ],
+    "mame_profile_after_sampling": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "ui_active": false,
+      "wait_button_up": false,
+      "profile_probe_request_id": "301ba2ad91d14ac08e3528e082509acc"
+    },
+    "baseline_r111_capture": "~/tempia/i167-vue-current-r110/domainos-entry-select-char-sequential.png",
+    "baseline_r111_sha256": "8b3588eceb1e646e9348a6162e0236762ba8b173c15e081871f567c9347526aa",
+    "baseline_comparison_contact_sheet": "~/tempia/i167-vue-current-r110/domainos-entry-selection-vs-r111-contact.png",
+    "baseline_comparison_contact_sheet_sha256": "729fe78a857ba291dbcc2d87515e3559676328fd248d6c3bc8fe7269d880cded"
+  },
+  "findings": {
+    "persistent_inverse_video_pixels_vs_r111": 124,
+    "persistent_inverse_video_bbox_relative_to_roi_xyxy": [
+      17,
+      9,
+      25,
+      25
+    ],
+    "persistent_delta_colors_rgb": [
+      {
+        "rgb": [
+          255,
+          255,
+          255
+        ],
+        "count": 107
+      },
+      {
+        "rgb": [
+          42,
+          128,
+          169
+        ],
+        "count": 17
+      }
+    ],
+    "temporally_unstable_caret_pixels": 24,
+    "temporally_unstable_caret_bbox_relative_to_roi_xyxy": [
+      14,
+      9,
+      19,
+      25
+    ],
+    "interpretation": "Correction to the first temporal-only interpretation: compared with the R111 capture, all eight idle samples contain a stable inverse-video band around the middle asterisk in the existing a*a pattern. The stable delta occupies an 8x16 px box; 107 pixels become white and 17 return to the field blue, consistent with one selected character. The separate 24-pixel unstable 5x16 px footprint is the blinking caret at the selection edge. This demonstrates a visible selected state in this live VUE field; the exact toolkit resource or compiled source of the color is not identified.",
+    "claim_limit": "The compared R111 image was recorded as lacking a visible selection band. R113 shows the same field and pattern; the 8x16 inverse-video region around the middle asterisk is stable through all eight samples, while a smaller caret footprint blinks at its left edge. This is visual evidence of one selected character in this live VUE state, not a declaration of which compiled resource produced the colors.",
+    "existing_filename_pattern_preserved": "a*a",
+    "guest_text_or_files_changed": false,
+    "gtk2_theme_or_xchat_changed": false
+  },
+  "next": "Continue I167/GTK2 only. Compare the native selected state with the existing GTK2 selection render and document exact KDE role mapping; then complete authorized GTK2 integration/reload checks. The separate keymap query could not connect to the clone and is recorded as R114."
+}

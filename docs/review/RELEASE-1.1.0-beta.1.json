@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "release": "1.1.0-beta.1",
+  "channel": "prerelease",
+  "panel": "0.2.12-beta.1",
+  "suite_sha256": "b0ddf65a61e3f4eb105e5ecd3c3824448e7a9687d834f575fd6c1d9d9b823dfd",
+  "panel_zip_sha256": "3976fe6c8ad77633817a49541f8def14d09192641034f84777aefad40acfe6d2",
+  "components": 40,
+  "verified_archive_files": 31402,
+  "source_audit": "passed",
+  "tests": {
+    "command": "python3 -B -m unittest discover -s tests -q",
+    "log_sha256": "b1d7dd275d2e376bdb110b1b837b64fbe11ad5d5c33e6df66aa7d8db186731e0",
+    "status": "passed"
+  },
+  "installed_user": "lsi",
+  "selection": "org.magpie.irixclassic.domainos.desktop",
+  "loaded_decoration": "domainos_sr104",
+  "gtk": "DomainOS-SR10-4-KDE",
+  "kvantum": "DomainOS-SR10-4",
+  "panel_reloaded": true,
+  "installation_backup": "irixium-suite/backups/b337c57899dd40538a705f0cccf4b406",
+  "selection_backup": "irixium-selection/7841152a48f04b408e13f092c8893c4c",
+  "limits": "Fidelity review pending by family; experimental Theme Lab. Classic reload attempt restored selection; actual DomainOS loaded by global theme apply.",
+  "post_release_correction": {
+    "user_report": "Selected IDs matched but actual KDE RGB remained old; GTK2 restored journal blocked synchronization.",
+    "original_evidence_limit": "Selection and service restart did not verify the effective palette.",
+    "follow_up": "PALETA-APLICACAO-20261010-R2.json"
+  }
+}

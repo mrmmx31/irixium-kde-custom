@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-11T03:26:03.541097+00:00",
+  "item": "I116",
+  "phase": "anchor_model_persistence",
+  "behavior": "Âncora inicial/final preservada em schema 2; troca usa comprimento nativo e mantém origem. Origem derivada da extremidade fixa usa alocação real; posições inválidas recusadas transacionalmente.",
+  "integrity": {
+    "model": 935,
+    "backend": 24,
+    "scene": 14,
+    "ipc": "passed",
+    "strict_C99": "passed"
+  },
+  "native_anchor_enabled": false,
+  "scope": "Modelo e contrato de persistência; não comprova seletor ou posicionamento nativo.",
+  "estimated_stage_progress_percent": 75,
+  "remaining": [
+    "Seletor de âncora",
+    "Posicionamento GTK3 e Motif com tamanho real",
+    "Prova nativa e entrega coordenada"
+  ],
+  "hashes": {
+    "tools/theme-lab/include/theme_lab.h": "067ae617fa44b3b1080685afaba3471fbae9d251ba6d940f7c6b39bd32c84f34",
+    "tools/theme-lab/include/control_dimensions.h": "c32bf2470fba793ae11f101c9dd0c63989b6d9de19283731f3d3502dc63b6a0b",
+    "tools/theme-lab/src/model/control_dimensions.c": "29bfb520bc0a48781393c7c5378fbe7318d2b68d954fb8cad0480859a5126fc7",
+    "tools/theme-lab/src/model.c": "6fae55721616af67a0440b70c4b955de43fbbf9236b9cab55f3f1ee8815eba35",
+    "tools/theme-lab/backend.py": "385b0e5941cf55e096bf6d4289970b5b4f5189f7d5d761744bd8252ed5b2219e",
+    "tools/theme-lab/src/controller.c": "3588ebea97d99b2bcd97a848d9af5b4647735e3ac1c44d9cdaeba8d499692584",
+    "tools/theme-lab/tests/model_test.c": "2144fce6630c8c107be4c1919efa4da2b4589b4111f2f1c234e0891be3a12a90",
+    "tools/theme-lab/tests/test_backend.py": "5eb0b35993d1f4d637881f1b96dffd72b0930453b5d4f9de3965edc933fb7623"
+  }
+}

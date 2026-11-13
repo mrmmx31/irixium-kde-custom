@@ -1,0 +1,54 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "status": "partial_waiting_user",
+  "date": "2026-10-14",
+  "test_environment": {
+    "display": ":70",
+    "server": "private Xephyr 1100x700, isolated XDG and DBus; no personal application data or VM input",
+    "scenario": "real production Runtime/Commands/Activity/helper and installed KIO; private Desktop Entry; window mapped after ~3 seconds",
+    "interaction": "launchPin controller API (no full-panel pointer click)"
+  },
+  "changes": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml": "coalesce presentation acknowledgement when command light is already visible, allowing startup blink to continue; only request an acknowledgement frame when transitioning from dark to lit",
+    "plasma/tests/test_domainos_activity_light.py": "regression for overlap between lit command and genuine TaskManager startup, then blinking until startup window maps"
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSActivity.qml": "27c7c1927bfecade5b745aad639714496b383f22ba00032bdd82acaa4032b30c",
+    "plasma/tests/test_domainos_activity_light.py": "261d0db08f8e1d69fb64281f6314d83e342361142da8e248c1116cce6131c0c9"
+  },
+  "regression": {
+    "command": "python3 -B plasma/tests/test_domainos_activity_light.py --output /home/lsi/tempia/domainos-p08-startup-20261014/regression-xvfb",
+    "passed": 49,
+    "total": 49
+  },
+  "xephyr_run": {
+    "report": "/home/lsi/tempia/domainos-p08-startup-20261014/run7/RESULTADO.json",
+    "native_report": "/home/lsi/tempia/domainos-p08-startup-20261014/run7/native.json",
+    "native_report_sha256": "402092d13d35929c35122e5bab3ce8ebefc6c0a324162c6d2783c4484197a7ea",
+    "during_startup_capture": "/home/lsi/tempia/domainos-p08-startup-20261014/run7/DURING-STARTUP.png",
+    "during_startup_capture_sha256": "ebc8d69db5d2a7e8923e8ffdc3f435d326f69b80d84242650ee5ba52de0de756",
+    "startup_samples": 28,
+    "checks": 37,
+    "all_checks_passed": true,
+    "lamp_blinked_off_and_on_during_startup": true,
+    "busy_cursor_during_startup": true,
+    "startup_ended_when_window_mapped": true,
+    "lamp_and_cursor_normal_after_window": true,
+    "qml_diagnostics": 0,
+    "personal_preferences_unchanged": true,
+    "production_sources_unchanged_by_harness": true
+  },
+  "limitations": [
+    "P08 remains partial; complete real-panel pointer path and manual visual review remain open.",
+    "Q334 still blocks MAME guest input.",
+    "Three command/helper subprocess fixture checks from prior P08 receipt remain failed and are not covered by the startup scenario.",
+    "Production P08 QML installation/reload of this latest Activity.qml fix has not been performed; proof is isolated Xephyr."
+  ],
+  "progress_estimate": {
+    "percent": 85,
+    "basis": "technical evidence milestones for P08: installed icon geometry, menu/session coverage, actual delayed KDE startup with blinking light and wait cursor, and recovery to idle. Remaining gates are the three helper-process checks, production installation/reload of this latest QML fix, manual review, and Q334 guest input. This is not a visual-fidelity percentage."
+  },
+  "next": "Keep AI Work Board production available for user responses; do not install this Activity.qml fix into the personal session until the relevant authorization path is satisfied; continue independent authorized work, retain P08 partial."
+}

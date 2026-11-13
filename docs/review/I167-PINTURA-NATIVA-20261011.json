@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-11T07:59:19.028833+00:00",
+  "item": "I167",
+  "revision": 1,
+  "phase": "private_pixmap_paint_validated",
+  "previous_goal_turn_classification": "progress: GTK2 geometry translator/native sizes",
+  "native_cases": 16,
+  "schemes": [
+    "DomainOS",
+    "BreezeLight",
+    "BreezeDark",
+    "TestYellow"
+  ],
+  "states": [
+    "normal",
+    "range_endpoint",
+    "whole_insensitive_fixture",
+    "backdrop_fixture"
+  ],
+  "directional_masks": 64,
+  "pixel_differences": 0,
+  "palette_source": "Native KDE state role reader; no historical RGB fallback",
+  "gtk2_source_reference": {
+    "url": "https://raw.githubusercontent.com/GNOME/gtk/gtk-2-24/gtk/gtkrange.c",
+    "sha256": "ff0173bf6884704a8172033a5a570c46130635cb6435b0419bcd6d84bb6bb6f6",
+    "scope": "GTK2 implementation support only; not DomainOS Motif historical defaults",
+    "lines": [
+      1904,
+      1910,
+      1956
+    ]
+  },
+  "bugs_found_and_fixed": [
+    "Nonzero stepper-spacing disables trough-under-stepper paint in GTK2 expose path; reserve visual gap within longitudinal stepper allocation with directional padding",
+    "Pixmap file/stretch FALSE tiles arrow texture; overlay_file/overlay_stretch FALSE centers mask without repeating"
+  ],
+  "limits": [
+    "Pressed/release native interaction not yet proved",
+    "Whole-insensitive/backdrop paint requires explicit preview widget names; scene integration pending",
+    "Custom per-state relief, isolated arrow-button and content fitting remain rejected",
+    "Adapter backend not integrated; other controls pending",
+    "Pure geometry support and canonical paint only, not full visual approval"
+  ],
+  "scope_progress_percent": 35,
+  "installed": false,
+  "sources": {
+    "tools/theme-lab/gtk2_recipe.py": "562b1fa20f9837c3082103ebb6a2ea57e4a071af351758a98612c0d83f1dc90f",
+    "tools/theme-lab/tests/probe_gtk2_runtime.py": "6446712712aa84ee90f8aa1b7c98349713e5e4a0dea027e5eb1fc0c800d8984a",
+    "tools/theme-lab/tests/test_gtk2_paint_native.py": "4fdb5f1191ec3f8544d608a4588083747d229de43854efc4094c7a3c44cd20ec"
+  },
+  "evidence_sha256": {
+    "docs/referencias/domainos-sr104/i167-paint/before-gap-fix.png": "cbe300c9f8fc248844e2853c807dac6881b0efcb8300d2571ecfe9212667dce6",
+    "docs/referencias/domainos-sr104/i167-paint/TestYellow-endpoint.png": "713f141049be3f063e3e673a037c51d635c1c5eb3c96dbf5068f2a63db5097af",
+    "docs/referencias/domainos-sr104/i167-paint/geometry-unit.log": "921b60a7fd52e978fbb551cacd29df2d6708879400278e1fcc70fceeb0c6f8e0",
+    "docs/referencias/domainos-sr104/i167-paint/DomainOS-backdrop.png": "0ebb3602754c9399fbab5bf114aea57a5cec9db7db10edab0a7921b727353365",
+    "docs/referencias/domainos-sr104/i167-paint/DomainOS-endpoint.png": "0ebb3602754c9399fbab5bf114aea57a5cec9db7db10edab0a7921b727353365",
+    "docs/referencias/domainos-sr104/i167-paint/native-results.json": "a3b771d029f4bd542ae27a85315cabb14f9bb3bcfae8344c0b88b848ec76e215",
+    "docs/referencias/domainos-sr104/i167-paint/TestYellow-normal.png": "713f141049be3f063e3e673a037c51d635c1c5eb3c96dbf5068f2a63db5097af",
+    "docs/referencias/domainos-sr104/i167-paint/TestYellow-disabled.png": "d80effd3410d359147275754c8900ec354551c3b28565b25a06ca7343f652ad1",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeLight-disabled.png": "bc422cc14b28e23236d7ebc90d768996483369524b33eb7aa2ba9ae4609d2b8a",
+    "docs/referencias/domainos-sr104/i167-paint/native-terminal.log": "6705b61be2ca6decf2b8a04dd699e7f59d61aaa4dc01d46f220d5772ac534ded",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeLight-backdrop.png": "2dbd1972b82c3301fe7201aa0ac7263370507fa30a3cde157126d73d6b21cbb5",
+    "docs/referencias/domainos-sr104/i167-paint/DomainOS-disabled.png": "1802253b7d5d2072530a14017397d150df05a33e0befb7cbfbc626087dec50ba",
+    "docs/referencias/domainos-sr104/i167-paint/after-gap-fix-before-overlay.png": "cb0c328bb7e728fb5d56a2e2aa4e8df3e33ff6939ea30072a51986f7a5405199",
+    "docs/referencias/domainos-sr104/i167-paint/DomainOS-normal.png": "0ebb3602754c9399fbab5bf114aea57a5cec9db7db10edab0a7921b727353365",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeLight-normal.png": "2dbd1972b82c3301fe7201aa0ac7263370507fa30a3cde157126d73d6b21cbb5",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeDark-disabled.png": "69c2430004651d6ec77ec2e31bd0260c98509767305caf6c3dd6a897a72d20f2",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeDark-backdrop.png": "f7c7daae1a3c53ddc57e95dd6404eb98d942090ea734e71b33acf31dca9f747f",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeLight-endpoint.png": "2dbd1972b82c3301fe7201aa0ac7263370507fa30a3cde157126d73d6b21cbb5",
+    "docs/referencias/domainos-sr104/i167-paint/TestYellow-backdrop.png": "713f141049be3f063e3e673a037c51d635c1c5eb3c96dbf5068f2a63db5097af",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeDark-normal.png": "f7c7daae1a3c53ddc57e95dd6404eb98d942090ea734e71b33acf31dca9f747f",
+    "docs/referencias/domainos-sr104/i167-paint/BreezeDark-endpoint.png": "f7c7daae1a3c53ddc57e95dd6404eb98d942090ea734e71b33acf31dca9f747f"
+  }
+}

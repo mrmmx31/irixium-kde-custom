@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-11T10:56:47.506801+00:00",
+  "request": "Fixar Q091 fora dos filtros e manter canal separado para o colega",
+  "channels": [
+    {
+      "id": "Q091",
+      "title": "Canal — Tema e laboratório",
+      "owner": "IA do tema e laboratório"
+    },
+    {
+      "id": "Q102",
+      "title": "Canal — Prancheta / outra IA",
+      "owner": "IA da Prancheta"
+    }
+  ],
+  "result": "Configuração solicitada já presente; não recriar canais nem alterar mensagens ou rascunhos.",
+  "evidence_reused": [
+    "docs/review/WORK-BOARD-CANAIS-FIXOS-20261010.json",
+    "/home/lsi/Documents/Projetos Open Source/ai-work-board/docs/VALIDACAO-SECAO-CANAL.json"
+  ],
+  "verification": "Estado salvo atual e exclusão explícita de canais em task_list.c; faixa fixa em view/channels.c.",
+  "personal_window_reopened_this_turn": false,
+  "estimated_request_progress_percent": 100,
+  "basis": "Nomes, canais separados e exclusão dos filtros implementados; não representa conclusão do tema ou nova avaliação visual."
+}

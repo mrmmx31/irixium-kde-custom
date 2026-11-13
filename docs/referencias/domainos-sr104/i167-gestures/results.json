@@ -1,0 +1,286 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "mode": "coupled",
+      "gesture_results": {
+        "ctrl_drag_delta": [
+          36,
+          24
+        ],
+        "ctrl_preserves_native_adjustment": true,
+        "plain_click_delta": -1,
+        "grab_released": true,
+        "failed_commit_rolls_back_position_and_releases_grab": true,
+        "plain_click_works_after_failure": true
+      },
+      "events": [
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "3960097c9d584192bdc81f850479bad6",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:42.238462+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "934ac95adcf44ddda2bf58c5223fb5be",
+            "family": "gtk2",
+            "action": "move",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:42.490154+00:00",
+            "x": 77,
+            "y": 81,
+            "coordinate_space": "gtk_logical_px"
+          },
+          "parsed": {
+            "action": 1,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "c22816e410184a398a287e94ff593b44",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:42.634051+00:00",
+            "state": {
+              "value": 34.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "d7e36ddadfe548d48a82e8561f9068ef",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:42.777185+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "08ae84ba90894a00b8daa65bd4f56caa",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:42.782888+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "90195bd4690c48a3bbace69d97d463df",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:43.048715+00:00",
+            "state": {
+              "value": 33.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "cross_family_and_stale_rejected": true
+    },
+    {
+      "mode": "separate",
+      "gesture_results": {
+        "ctrl_drag_delta": [
+          36,
+          24
+        ],
+        "ctrl_preserves_native_adjustment": true,
+        "plain_click_delta": -1,
+        "grab_released": true,
+        "failed_commit_rolls_back_position_and_releases_grab": true,
+        "plain_click_works_after_failure": true
+      },
+      "events": [
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "5cd31842396a46a3aedb16b48aa378f6",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:43.891561+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "d8b263f65ad543e3adbc8c2fe087c366",
+            "family": "gtk2",
+            "action": "move",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:44.158700+00:00",
+            "x": 77,
+            "y": 81,
+            "coordinate_space": "gtk_logical_px"
+          },
+          "parsed": {
+            "action": 1,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "c5db3077c6a242f39a65203b79af4669",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:44.313379+00:00",
+            "state": {
+              "value": 34.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "2bde911095c740bb9569d2cb53505802",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:44.458322+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "a5b088a702be4d8f89992442c8783f3a",
+            "family": "gtk2",
+            "action": "select",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:44.463939+00:00"
+          },
+          "parsed": {
+            "action": 0,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        },
+        {
+          "payload": {
+            "schema_version": 1,
+            "kind": "theme_lab_preview_event",
+            "event_id": "3e3eeefb2f9748af961d831021d78dae",
+            "family": "gtk2",
+            "action": "native",
+            "control_id": "scroll_h",
+            "control_index": 10,
+            "project_sha256": "c1ae49f71283a764748a283aca2327f46edd1e3a8614caeed9b48b1d1952dd30",
+            "emitted_at": "2026-10-11T08:25:44.736258+00:00",
+            "state": {
+              "value": 33.0
+            }
+          },
+          "parsed": {
+            "action": 2,
+            "control": 10,
+            "width": 0,
+            "height": 0
+          }
+        }
+      ],
+      "cross_family_and_stale_rejected": true
+    }
+  ],
+  "scope": "Native GTK2 input to C parser"
+}

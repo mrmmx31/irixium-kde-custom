@@ -1,0 +1,249 @@
+{
+  "date": "2026-10-10T20:28:50.151910+00:00",
+  "scope": "I084 revision 2: upper-right notice and reversible global unread filter",
+  "definition_sha256": "90e9077338c507bed53754443a174b78e90d6cffcbde11a44693d5468856f106",
+  "binary_sha256": "2bfbfefef0b1cfa1e71bee75a7a14351e4cddd1751a478a603393978b501784c",
+  "library_sha256": "00a49d1d66a05dcc98c1573eb7c5a6b969e0d5a6b458b70c246546dd059078d4",
+  "helper_sha256": "46db6a60f895743b67810aa129503c01c651be3a076dab02b237392bb565dece",
+  "source_hashes": {
+    "src/platform/x11_window.h": "7402dbf65d601a164566b783b38ce8b11534d3acd8c2a824489ae2ebd62bf916",
+    "src/platform/x11_window.c": "fa8885cfdce78d5d91f18687fbba620d2c8ade21615d27b51a0f9f897136ee4b",
+    "src/app/main.c": "0fa94ecb4b917652615c91c5a9292b418317c8ec6f28ba92675d558c9b3a2256",
+    "src/model/notifications.c": "756161b0f9817fd6344d70135ad786bbf61b44b4097bda9186d53460f442d2d7",
+    "src/model/history.c": "710436cbc37daebeee07d70ce227d6252fde6681c0337fe01db90ec2960595a1",
+    "src/model/internal.h": "25c61f3087e4d70a738735fdc6c01e11017510b837ecd62af27585cf7359560a",
+    "src/model/authorization.c": "1ffb86dec2aea60e5d4ccebadc316ebd4b18464e92e05cefffb5afdf8ace03ed",
+    "src/model/history_internal.h": "696c66641116284e159554918cffa31abe12f3e7fafd366a60def484c67c72e2",
+    "src/model/items.c": "d12df0020738dc028c2f7f96a8517088635caec3ad47151a883c813c3667eac7",
+    "src/model/user_response.c": "08fb066f0813b3003cb17b59afb9449cb35606f5426795e4bc809b55f5d7dbaf",
+    "src/model/filter.c": "4ac20d42bdec008cf2c02cb34b78786fafdc8896dc94af6b4b07d6e830e2859e",
+    "src/model/validation.c": "8f1b8d627133311c5ef158f13460f7bede64864154561e5e8571ca8f050f80bd",
+    "src/model/validation.h": "30e63066e496d752e50609b686aa4fff9a0ca48282abd5bfa26e1cbe0d101b2d",
+    "src/model/history_time.c": "63b9667aacaabe8c81fcd7a785f37671eec0f9780d6866b5cbf17fc226f074ca",
+    "src/model/definitions.c": "43548cc4b1212f2063139398d07022db67be97173285314cd6c44a939066bbdc",
+    "src/model/progress.c": "f98f6cbe1cbe860003dde21037baa0a97177868022f2ca2868d9bdf3afb70a55",
+    "src/model/assistant_response.c": "fa1d1ed4abe394d6f63f5d456a3e586ce4d38d9afebb62a1df1daba537c408bb",
+    "src/model/records.c": "6439d23bc0fa2918d7976176b7ab00c1de060c1e4a707d579ad1b654ba5b0fc7",
+    "src/model/history_page.c": "cf47d89d6d8ab8e29054e2d9f81ca0c2daae417b491634faac042c572611a971",
+    "src/editor/history.c": "35afc2f4f41610edb90b550cf0695002f111a4561012411d52dac6650207db74",
+    "src/editor/text_adapter.c": "5063c9fe87efbdb822c9b0b1477f0e55830e7e95f32fb5be1f4b9699c3839f22",
+    "src/editor/internal.h": "7a144b57813d789c66d1b08a1f816d72dfc80db6e578a82008747a63e08ac4eb",
+    "src/editor/input.c": "43bee256fa2473c1ca04a279d13e6e403b502b892b0b2f78e61dc45d8c103749",
+    "src/editor/bindings.c": "c77fa42286eb46183e49b9f6de0b2a0e7a5083f08d82c0426409cdbc3ece8166",
+    "src/editor/context_menu.c": "741e957637ad953e4409e67460670a12ae0f8f7845ff58ed8e5925807a97c013",
+    "src/persistence/history_read.c": "14471b1413e51c343f3687288d52161378692f4aed3e4caba8773231ab79cd8c",
+    "src/persistence/history_files.c": "9a694eca76328889aedbd67c17bb610f96e7c61541541a8b4b3e22251011c89a",
+    "src/persistence/json_file.c": "d77cc1ddf8bebbd0932496867ebf3159c25658bb1d75c615b9b2faabd43dcd74",
+    "src/persistence/internal.h": "bae603b743efcfe06cb543b5c075c365babe8d63e913b142dbc6948806778671",
+    "src/persistence/history_internal.h": "ccc2bd0f479748a13c6e88a6f5298d89238d9cd2072093df8686e5f10f5e41f0",
+    "src/persistence/journal.c": "6fdcfc9a6123f3cbcab25f7e92c89a57a221a775146cd844d0e246a1173f60fc",
+    "src/persistence/atomic_file.c": "4766284da2bc7bbc8ec6fcc92a74657c837228b8070490d38c0bf5a0d6506b77",
+    "src/persistence/store.c": "4946277bd77f4256f2c61e960eb84aaf71ca2af15c98c91a44934baed4d729c8",
+    "src/view/palette.c": "68cbeafc85a29a13896af5fcfc0dd6786ae6ef5062194a907006e091db1b952c",
+    "src/view/task_list.c": "91bbf51d65f81d217f1ee67c182e4bd27dfed21bbf379d88cabad0dcdbe56ef6",
+    "src/view/navigation.c": "c0a1503fb1b705b80d11ce021fa819c7a598e2774d8e0438e4bc2a96f8a0c55d",
+    "src/view/toolbar.c": "9adfc586321a0cf875c5d97a31ef994ce5b47d5e5bee0324031cc170193755fe",
+    "src/view/notifications.c": "b02139cd48420e52aaf699c9974f5c09f5b2beb78090ffb53eee48835b042f72",
+    "src/view/notification_palette.c": "dcb86b05daa7236717f68558a7d150a2dde1d33d5913013e349a85da5a827072",
+    "src/view/panels.c": "3429667f3df1706875bbc70254c3015a2b6e1422561c549f63be995ed5fd4303",
+    "src/view/history.c": "ca839546ef379824d8c9a06cf1943c11a6923864408971b90b425102f452fc98",
+    "src/view/internal.h": "04d86e129b988447da0801bfaaaa9d1814128b55814b95d7d34ba8182b5ac589",
+    "src/view/fonts.c": "73894df90c268eccdda70a3c9824256bd7acedfd98dec3d745a7fc432709eeb3",
+    "src/view/view.c": "d7c416ee3a32227668572e6efd5102c85818b600b26f7203ab6ae00df882c424",
+    "src/view/progress.c": "56b122ee396c20f59f2e5ffec70832b8669de7d994437084e0f43be7628da874",
+    "src/view/details_layout.c": "b42e980921e3b1e2e325b4bf64ee34aaa5dd914ab7e1d4f2e75f6024ee7a3244",
+    "src/view/footer.c": "c28480adabf62300c038ad0dadc295e2b945d6e83d4cdda99529d230eb466c69",
+    "src/view/history_layout.c": "e601a0f78477558bad7b5df708d43330540df960004fcac3e382e2ee40232248",
+    "src/view/edit_bindings.c": "6ae990153a0516bb7b3add5915c64d024f05c453d6c2799377dc428afd38480a",
+    "src/view/state_filter.c": "1a86e4377bbc65cea6f1b46177e2c67fe5f3b235246f8bb35d2add0e524069c5",
+    "src/view/item_details.c": "d274799370d449b23251428d4335eda7826973ea366527183fa03c28cf99514e",
+    "src/view/widgets.c": "d4d6dada4ec793c38696aaec09e9b6c245162504fa5cfb70bcd3e87fdf9c98d2",
+    "src/controller/session.c": "82f2f112fb76d2ab15e68a901c1bbf8ae0fff231bf70e621cb4822e4e288fcb1",
+    "src/controller/state_filter.c": "6da9000da9505340491ba3fb75ccdfcf4729c504da06227c426f66b4b4f57f8e",
+    "src/controller/internal.h": "77af2abe2a2cc796e01f10ed7d950f5830f1a85aa2d71308bbc3ddabc628df30",
+    "src/controller/actions.c": "5da03f8cb7f8905a81222e6d64267de2abe181c2ffcef3b2f9bf6f91b00d5113",
+    "src/controller/progress_watch.c": "23e97dc6232c314198aeffb2d7f0eccffd3ee9516276887150f9e722de4b688d",
+    "src/controller/notifications_read.c": "a1b56968711818fc3c470a30d96df9de9b0e52023e831153d59dcfd9f5dd6164",
+    "src/controller/notifications_action.c": "91196853215828a1d78c8a771c2b0ef2f2fe731761768931be6d47c59d91d25f",
+    "src/controller/lifecycle.c": "476127eff65a7c2b2ac7bf7e2a8f6ae7e1571b30b12a479589d65b2c329cf084",
+    "src/controller/history_actions.c": "bd813ed3006d36aeafa83a202d29cbf1eab368b6e3568edabca3f6cafac8d9c1",
+    "src/controller/history_process.c": "88a3b5d375cf9e2812008f8576c7bc165ad551cf9952c990e662599f40a834c5",
+    "src/controller/navigation.c": "f973c04bfad533ea5cbd448bb8f2d73a269d75bac8b0944ccf099d9d9d980614",
+    "src/controller/history_job.c": "f02c3213325a30144f4b604eba4652dd376003e61c5566554455f8657b124613",
+    "src/controller/commands.c": "d9d30438c1e8f43ac3fdd6d9e1e931962cb96995b4acbb65577c5df7231d970a",
+    "src/controller/palette_bridge.c": "6b176b95b9e0960384c97c6455efb9c6a32f7678058c2086d68ee3df01f7d6d1",
+    "src/common/json.c": "fe03c7c9caf95fb647d65896b9e7160a3194845a6f77ae5fc258ce9e315fbc6d",
+    "include/view.h": "056e40327793bdfca950f5982dd0468c46f7e7f7f5950dc96b4a9a9cbf28192c",
+    "include/board.h": "dcab5926b877bbcc9e985d7082fc284c9e0b9fc6e050c962e38094ac6145acda",
+    "include/editor.h": "f8a1f2628c23805cf287eb3191027c770fb5085c702373bcaa31aa592e87689a",
+    "include/work_board/notifications.h": "391959735396f08ef3cbe44784889a86e3a78a423c83a98e5a2a55e5ec0bfd99",
+    "include/work_board/view.h": "c1931d98d06f7a87b59055b1eafca2f4fd5e5ed0ea3ba8114057cfe5b2a24ce0",
+    "include/work_board/authorization.h": "9f19cd67b00b5af2d66c2c2a8ec3d7c3acf114965296859f9bb64899c221e636",
+    "include/work_board/filter.h": "3538b5ace52c05440ec9b1cfd0ab56e51290979d960c361c02b09be7e61ad1ec",
+    "include/work_board/model.h": "6dea35e0bbb8169cdc920abe5be48d19c1bf1ebb7ab4e2609576bc0cdd93f8ef",
+    "include/work_board/application.h": "29ee763288bc1f803994100490c465eb777bac0b41ef16e35205c6ebc56ea6e6",
+    "include/work_board/json.h": "782432c4b130e13d56c1a04387d81aef9c8f7c9566292c58e6e5fe736c974c38",
+    "include/work_board/editor.h": "5897014785e2a740a7659d5cadc03c0cc0e16cd82212846cd61c4874a591a9b4",
+    "include/work_board/history.h": "e2ff034dd2b6a9190511257641452ebc2317dad42790212a08e8ed480a9e8555",
+    "include/work_board/progress.h": "c150aab50d6c3503c3f67da0c8fd74b0c25640301682be1a081dc052b52aceb5",
+    "include/work_board/store.h": "f7d432e7fe7bfb8fa8723ab1e5989f12a4f258a5b47dfb2d3fa39570dc28a06c",
+    "helpers/kde-colors/main.cpp": "038181808d0bf52681401d43fb320fe12fa63d846fa48baf36f814544651eaf0",
+    "helpers/kde-colors/CMakeLists.txt": "014b7b17fa7d7de1262c2c901e30ab6c6eb13f0c2332421a7268ef6fc81a697d",
+    "Makefile": "9361978ce5d26f68a19b8d5379c740e9582b300ebddd41feb793ae7b7c3e61ed"
+  },
+  "tests": {
+    "notifications_native": {
+      "upper_right_notice_pulses_and_filter_tab_is_available": true,
+      "new_saved_replies_notify_without_focus_cursor_draft_or_undo_changes": true,
+      "notice_opens_latest_replies_and_global_unread_filter": true,
+      "leaving_displayed_reply_marks_only_private_read_ledger": true,
+      "watch_while_typing_in_global_unread_filter_preserves_editor": true,
+      "newer_reply_is_not_acknowledged_by_leaving_an_older_displayed_one": true,
+      "filter_exit_restores_navigation_and_multistep_editor_history": true,
+      "assistant_ack_does_not_create_a_new_message_notice": true,
+      "empty_unread_filter_is_valid_and_reversible": true,
+      "menu_layout_has_the_same_reversible_unread_filter": true,
+      "invalid_saved_file_preserves_notice_editor_and_recovers": true,
+      "four_native_kde_palettes_and_low_contrast_attention_fallback": {
+        "DomainOS": {
+          "attention_contrast": 3.518,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "neutral": {
+          "attention_contrast": 3.731,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "dark": {
+          "attention_contrast": 3.295,
+          "fallback_to_button_text": false,
+          "native_pixels_match": true
+        },
+        "yellow": {
+          "attention_contrast": 1.139,
+          "fallback_to_button_text": true,
+          "native_pixels_match": true
+        }
+      },
+      "older_helper_without_attention_role_keeps_dynamic_text_and_outline_pulse": true,
+      "failed_checkpoint_prevents_read_ack_and_navigation": true,
+      "reopen_preserves_read_ledger_filter_drafts_and_undo": true
+    },
+    "editing": {
+      "unicode_multiline_undo_redo_shortcuts": true,
+      "multi_step_history": true,
+      "copy_cut_paste_select_all_and_reversible_replacement": true,
+      "history_survives_reload_and_item_switch": true,
+      "save_retains_history_and_return_to_saved_is_reversible": true,
+      "context_menu_undo": true,
+      "private_autosave_is_separate_from_answers_and_authorizations": true,
+      "second_editor_cannot_overwrite_journal": true,
+      "crash_restores_multiple_drafts_title_and_undo_redo": true,
+      "failed_checkpoint_prevents_destructive_action": true
+    },
+    "reload": {
+      "title_and_taskbar_name_are_explicit_utf8": true,
+      "unchanged_reload_keeps_tabs_geometry_and_utf8_draft": true,
+      "live_added_sections_and_all_old_tabs_are_accessible": true,
+      "partial_definition_preserves_sections_items_and_responses": true,
+      "undo_redo_still_work_after_dynamic_and_partial_reloads": true
+    },
+    "filters": {
+      "authorized_filter_uses_saved_scope_bound_decisions": true,
+      "reported_failure_is_separate_and_preserves_hidden_draft_history": true,
+      "group_and_state_intersect_instead_of_broadening_when_empty": true,
+      "undo_redo_survive_filter_switch_and_empty_results": true,
+      "state_filter_and_drafts_restore_after_restart": true,
+      "reload_of_changed_scope_hides_revoked_item_without_erasing_draft": true,
+      "draft_filter_uses_journal_without_sending_response": true,
+      "state_filter_combines_with_each_section": true,
+      "navigation_does_not_commit_drafts_or_restore_revoked_consent": true,
+      "empty_result_keeps_section_and_state_across_restart": true
+    },
+    "progress": {
+      "readonly_lower_left_panel_matches_scope_scale": true,
+      "external_reply_updates_without_focus_cursor_draft_or_history_change": true,
+      "selection_is_preserved_during_live_update": true,
+      "undo_redo_remain_available_after_progress_updates": true,
+      "invalid_json_keeps_last_progress_and_editor_usable_without_rewriting_input": true,
+      "valid_json_resumes_monitor_while_draft_remains_intact": true,
+      "updates_from_another_item_replace_the_notice_without_accumulating": true,
+      "monitor_supports_select_copy_and_rejects_typing_without_committing": true,
+      "monitor_does_not_grant_authorization": true
+    },
+    "history": {
+      "wide_selectors_keep_history_visible_to_their_right": true,
+      "history_toggle_preserves_scope_draft_cursor_and_undo": true,
+      "history_is_readonly_copyable_and_does_not_rewrite_sources": true,
+      "return_to_editor_keeps_multistep_undo_redo": true,
+      "history_refresh_reads_external_replies_without_reloading_editor": true,
+      "invalid_state_preserves_last_history_and_recovers": true,
+      "history_tracks_selected_item_without_leaking_another_conversation": true,
+      "older_and_newer_pages_are_available_without_truncating_messages": true,
+      "slow_reader_cancels_without_blocking_ui_or_applying_stale_result": true,
+      "reader_timeout_preserves_editor_and_allows_retry": true,
+      "reopen_restores_history_choice_draft_and_undo": true
+    }
+  },
+  "model_notifications_pure_client": true,
+  "regression_contract": {
+    "store_cases": 15,
+    "import_cases": 7,
+    "independent_c_model_client": true
+  },
+  "fixtures": {
+    "DomainOS": {
+      "origin": "irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5"
+    },
+    "neutral": {
+      "origin": "KDE BreezeClassic.colors",
+      "sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca"
+    },
+    "dark": {
+      "origin": "KDE BreezeDark.colors",
+      "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08"
+    },
+    "yellow": {
+      "origin": "derived from neutral; low-contrast Button NegativeText fixture",
+      "sha256": "8feeaa5bb31c69e9090c5a305f837b3af8dd6a773217ad635c67c85f9b462284"
+    }
+  },
+  "earlier_failures": [
+    {
+      "issue": "One editing test failed while clicking the Undo popup; editor source was not modified.",
+      "result": "Cause not established. Probe now observes actual button window, mapping, geometry and sensitivity. Final native editing run passed all ten flows."
+    },
+    {
+      "issue": "Reload test assumed toolbar at y=0 and exactly section-count tabs.",
+      "result": "Test observes actual top-row geometry and verifies all section tabs plus the new unread-filter tab are mapped. Five native reload flows passed."
+    }
+  ],
+  "installed": true,
+  "native_lsi_reopened": true,
+  "human_approval_filled": false,
+  "historical_theme_fidelity_claimed": false,
+  "technical_delivery_progress_estimate": 100,
+  "pending": "Human evaluation; no approval filled by assistant.",
+  "completed_at": "2026-10-10T20:31:53.174586+00:00",
+  "preservation": {
+    "user_records_identical": true,
+    "drafts_identical": true,
+    "undo_histories_identical": true,
+    "all_prior_journal_fields_identical": true,
+    "assistant_read_ledger_preserved_or_initialized_empty": true,
+    "unread_filter_preserved_or_initialized_off": true,
+    "user_approval_filled_by_assistant": false
+  },
+  "native_lsi_verification": {
+    "unique_maximized_window": true,
+    "upper_right_notice_visible": true,
+    "unread_filter_visible_after_section_tabs": true,
+    "history_and_scope_visible": true,
+    "current_native_kde_roles": true,
+    "eight_notice_pixel_samples": 8,
+    "distinct_notice_frames": 2,
+    "personal_capture_private": true
+  }
+}

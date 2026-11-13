@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "id": "R383",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise mouse hover over each GTK2 scrollbar stepper in private Xvfb and compare its 15x15 cell to generated PRELIGHT/focused assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "bundle": "~/tempia/ia-tema/evidence/I167/r380-disabled-runtime/bundles/e290e42babe1a13f34b00e1024397075739e28ce5d83a5814f27fdfca3a920dd",
+    "palette": "Current generated KDE roles; no fixed RGB added",
+    "probe_source": "~/tempia/ia-tema/evidence/I167/r383-prelight-xvfb/probe_hover.c",
+    "probe_source_sha256": "f3fee0def7708fd03cc75780765bf90d05532cb483d84025f5c658dc17f69128",
+    "probe_binary_sha256": "5b9ad3e2ecb3e9a8f9b1a99382e3998a994c151a34485c9bbebeb68fa0d7fd60",
+    "metrics": "~/tempia/ia-tema/evidence/I167/r383-prelight-xvfb/metrics.json",
+    "metrics_sha256": "63db09eb2326e0fdd57a890e4b7a1b7054cd9cda63030d2a709b303ebdcc68f7",
+    "input": "XWarpPointer to each stepper center; one GDK enter and motion event per target; button1 mask clear; coordinates confirmed by GDK widget/window pointer query",
+    "cell_size_px": [
+      15,
+      15
+    ]
+  },
+  "cells": {
+    "left": {
+      "pointer_xy": [
+        9,
+        7
+      ],
+      "capture_sha256": "3ae7d70e26501a35672ca33a0372fc0c9487b9ad3b37550d2a926e61f344700e",
+      "vs_focused_asset": 0,
+      "vs_normal_asset": 0,
+      "normal_vs_focused_asset": 0
+    },
+    "right": {
+      "pointer_xy": [
+        533,
+        7
+      ],
+      "capture_sha256": "407b06a6a71ca98ab05bb530a5e9b1f98225f122ca046d619e510db6dfcf3d9f",
+      "vs_focused_asset": 0,
+      "vs_normal_asset": 0,
+      "normal_vs_focused_asset": 0
+    },
+    "up": {
+      "pointer_xy": [
+        557,
+        29
+      ],
+      "capture_sha256": "b4c3f9c847e06dabcc3aba9db095f712a4da674dc961291cce676445d2b4e644",
+      "vs_focused_asset": 0,
+      "vs_normal_asset": 0,
+      "normal_vs_focused_asset": 0
+    },
+    "down": {
+      "pointer_xy": [
+        557,
+        553
+      ],
+      "capture_sha256": "788756af5dd60369bf240e088b4cba081950bf237b39786c8b16f5f0b964c3d6",
+      "vs_focused_asset": 0,
+      "vs_normal_asset": 11,
+      "normal_vs_focused_asset": 11
+    }
+  },
+  "interpretation": "All four hover captures render exactly as the generated PRELIGHT/focused assets. In this recipe left/right/up PRELIGHT artwork is pixel-identical to normal; only the lower arrow changes, by 11 pixels. The parent GtkScrollbar still reports GTK_STATE_NORMAL (0); the evidence for the stepper route is the delivered enter/motion event at the cell and the cell pixel match.",
+  "historical_limit": "The rules contract explicitly leaves native SR10.4 hover unverified. No current VM hover capture was made; its screenshot has no pointer visible over a target. The 11-pixel lower-only hover difference is a candidate asymmetry, not yet a demonstrated mismatch to VUE.",
+  "product_changes": false,
+  "vm_or_user_desktop_input": false,
+  "next": "Keep this as an open GTK2/VUE comparison. Do not normalize the asymmetric hover state without native evidence."
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "R696",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise the real theme_companion_bridge.synchronize() GTK2 palette worker on private roots with a synthetic semantic-role change; prevent GTK4 writes and live window reload.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "results": {
+    "gtk2": "updated",
+    "profile": "DomainOS-SR10-4-KDE",
+    "role": "theme_button_background_normal_breeze",
+    "before": "#78a0d5",
+    "synthetic_after": "#2d9bf0",
+    "palette_changed": true,
+    "resources_changed": 70,
+    "engine_preserved": true,
+    "gtk4": "mocked_no_write",
+    "application_reload": "blocked in fixture",
+    "real_kde_or_dbus_event": false,
+    "all_roots_under_tempia": true
+  },
+  "conclusion": "The real synchronizer and GTK2 runtime regenerate the GTK2 palette from a changed KDE semantic role on isolated roots, preserving the custom GTK2 engine. No GTK4 output, real user profile, desktop, running application or VM was written.",
+  "limits": [
+    "synthetic role event only; does not prove the production observer calling this worker after a real KColorScheme change",
+    "GTK4 refresh was deliberately mocked; this does not validate GTK4",
+    "no live application RC reload or visual acceptance"
+  ],
+  "receipt": "~/tempia/domainos-theme-work/I167/R696-real-gtk2-worker/verification.json",
+  "artifacts": "records/ia-tema/I167/R696/ARTIFACTS.json",
+  "next": "Continue I167/GTK2 using historical evidence available; the real scheme/observer transition remains unobserved because its shared path also updates other toolkit consumers."
+}

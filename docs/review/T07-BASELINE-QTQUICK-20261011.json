@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-11T11:45:02.665067+00:00",
+  "item": "T07",
+  "status": "partial",
+  "baseline_commit": "9a67cc83d763e1e5a910a891dbfc77979fc562d8",
+  "comparisons": [
+    {
+      "major": 5,
+      "baseline_warnings": {
+        "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"": 32
+      },
+      "current_warnings": {
+        "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"": 32
+      },
+      "warnings_identical": true,
+      "palette_font_style_identical": true,
+      "baseline_actions": [
+        {
+          "action": "button",
+          "detail": "clicked"
+        },
+        {
+          "action": "menu",
+          "detail": "activated"
+        }
+      ],
+      "current_actions": [
+        {
+          "action": "button",
+          "detail": "clicked"
+        },
+        {
+          "action": "menu",
+          "detail": "activated"
+        }
+      ]
+    },
+    {
+      "major": 6,
+      "baseline_warnings": {
+        "file:///usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/TabButton.qml:22: TypeError: Cannot read property 'y' of null": 3
+      },
+      "current_warnings": {
+        "file:///usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/TabButton.qml:22: TypeError: Cannot read property 'y' of null": 3
+      },
+      "warnings_identical": true,
+      "palette_font_style_identical": true,
+      "baseline_actions": [
+        {
+          "action": "button",
+          "detail": "clicked"
+        },
+        {
+          "action": "menu",
+          "detail": "activated"
+        }
+      ],
+      "current_actions": [
+        {
+          "action": "button",
+          "detail": "clicked"
+        },
+        {
+          "action": "menu",
+          "detail": "activated"
+        }
+      ]
+    }
+  ],
+  "conclusion": "Observed Qt5 menu and Qt6 TabButton warnings predate hint changes in same tested environments; not proof of all modes or root cause",
+  "scope": "Pre-hint QML with diagnostic nativeHints stub only, real production main and original guards",
+  "estimated_stage_progress_percent": 85,
+  "source_hashes": {
+    "tools/theme-lab/tests/probe_qtquick_baseline.py": "5f0e0e4b36842e7c708f082514b55aca8b2114ce7c9a15c8dd87c815cfedbc63",
+    "tools/theme-lab/tests/fixtures/qtquick-before-hints.qml": "ba6c5a08deae7191281424ea6876726a2a86d3b2038af749c962aef32dd141bb",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "c45bd796f66b230518fdccd10e92f6f7b83f66dc8cfcb304923eb5e53fd0e110"
+  },
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

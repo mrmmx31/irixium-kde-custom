@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-BLINK-20261024-R100",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "application": "VUE Find Files",
+    "control": "File Name text field",
+    "screen": "1024x844 native MAME screen capture"
+  },
+  "assistant_clone": {
+    "pid": 3759847,
+    "emulator": "MAME 0.276",
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile_after_test": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false
+    },
+    "channel": "~/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "channel_pending": false,
+    "final_capture": {
+      "path": "~/tempia/i167-live-r100-clone-final.png",
+      "sha256": "50a79e5e28cee8e95fbf1f1c5d696cfea4868d79511337c8257cfda7acf233f8"
+    }
+  },
+  "caret_observation": {
+    "focused_field_visible": true,
+    "sample_count": 12,
+    "emulated_elapsed_seconds": [0.017, 2.214],
+    "sampling_interval_seconds": 0.2,
+    "field_roi": [176, 362, 516, 405],
+    "changing_footprint_px": [5, 16],
+    "crop_hash_repeats": [
+      {"sample_indices": [1, 6, 11], "elapsed_seconds": [0.216, 1.215, 2.214]}
+    ],
+    "interpretation": "The caret is visibly blinking. The repeated crop at one-second intervals supports an approximate one-second recurrence under this unthrottled, frameskip-4 clone; these captures do not prove the exact compiled VUE blink interval or universal SR10.4 behavior.",
+    "captures": "~/tempia/i167-vue-entry-blink-00-20261024.png through ~/tempia/i167-vue-entry-blink-11-20261024.png",
+    "analysis_contact_sheet": "~/tempia/i167-vue-entry-blink-contact-20261024.png"
+  },
+  "selection_observation": {
+    "initial_value_visible": "*",
+    "attempted_non_mutating_navigation": ["Ctrl+A", "Home then Shift+End", "Shift+Home", "Shift+Cursor Left"],
+    "selection_highlight_confirmed": false,
+    "text_mutated": false,
+    "conclusion": "No selection highlight was visually confirmed in this VUE field. The selected-state comparison remains open; do not claim historical selection colors from this probe.",
+    "selected_captures": [
+      "~/tempia/i167-vue-entry-selected-all-20261024.png",
+      "~/tempia/i167-vue-entry-selected-shift-end-20261024.png",
+      "~/tempia/i167-vue-entry-selected-shift-home-20261024.png",
+      "~/tempia/i167-vue-entry-selected-shift-left-20261024.png"
+    ]
+  },
+  "preservation": {
+    "user_main_vm_interacted_with": false,
+    "other_session_vm_interacted_with": false,
+    "guest_configuration_changed": false,
+    "gtk_theme_or_user_xchat_changed": false,
+    "keyboard_overrides_released": true,
+    "mouse_axis_overrides_released": true,
+    "original_capture_state_restored": true
+  },
+  "gtk2_status": {
+    "selection_roles_across_kde_schemes": "Existing R70/R72 evidence remains valid for GTK2; the historical VUE selection comparison is still missing.",
+    "installed_theme_palette": "R89 still identifies fixed RGB values in the installed GTK2 gtkrc; dynamic KDE role regeneration remains incomplete.",
+    "readiness": "partial; do not label the GTK2 adaptation release-ready or apply it to XChat as complete"
+  },
+  "next": "Continue only I167/GTK2. Resolve or explicitly bound the historical selection-state comparison, then complete and verify dynamic KDE-role integration before treating GTK2 as ready."
+}

@@ -1,0 +1,45 @@
+{
+  "status": "closed",
+  "family": "gtk2",
+  "recipe_applied": false,
+  "theme_mode": "private_partial_recipe",
+  "guards": {
+    "verified": true,
+    "uid": 1000,
+    "passwdName": "domainos-test",
+    "passwdHome": "/home/domainos-test",
+    "namespaceMarker": "/etc/domainos-preview",
+    "personalHomeExposed": false,
+    "systemBusSocketExposed": false,
+    "procStatusPresent": true,
+    "cwd": "/home/domainos-test"
+  },
+  "gallery": "/fixture/root/tools/theme-lab/preview_gtk2.py",
+  "argv": [
+    "/usr/bin/python3",
+    "-B",
+    "/fixture/root/tools/theme-lab/preview_gtk2.py",
+    "--root",
+    "/fixture/root",
+    "--project",
+    "/home/domainos-test/out/revisions/20261011T090147-9985b4917282/PROJECT.json",
+    "--rc",
+    "/home/domainos-test/out/revisions/20261011T090147-9985b4917282/gtk2-scrollbars/gtkrc",
+    "--events-dir",
+    "/home/domainos-test/out/revisions/20261011T090147-9985b4917282/gtk2-preview-events"
+  ],
+  "namespace_created": false,
+  "existing_coordinated_namespace": true,
+  "project_sha256": "4ab3901de3462d1853afb1fe2c4d43459008cf5e3bf4d00e99869aa24cfac195",
+  "selection": "Verified private GTK2 RC and PNG snapshot",
+  "limitation": "Only GTK2 scrollbar scenes translated; other controls remain pending. Launch is not proof of rendering.",
+  "recipe_scope": "scrollbars_only",
+  "translated_controls": [
+    "scroll_h",
+    "scroll_v"
+  ],
+  "preview_project_sha256": "a0ff64bf40a0ef62a07045bfd29fec9a4eea3fbcd84967fe513b93c7cf41cc9f",
+  "pid": 2057329,
+  "log": "/home/domainos-test/out/revisions/20261011T090147-9985b4917282/gtk2-preview-a75e9410.log",
+  "exit_code": 0
+}

@@ -1,0 +1,129 @@
+{
+  "item": "T05",
+  "scope": "Esquemas, papéis de cores e pipeta",
+  "status": "partial_waiting_user_review_and_scope_decision",
+  "user_approval": "pending_not_filled_by_assistant",
+  "date": "2026-10-16",
+  "verified": {
+    "native_kcolorscheme_reader": {
+      "result": "ok for DomainOS, BreezeLight, BreezeDark and TestYellow; 50 effective role values each",
+      "header_fallback": "missing Header roles use the selected scheme's WM role, then effective Window role; no fixed RGB fallback",
+      "source_sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6",
+      "binary_sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1",
+      "four_scheme_report_sha256": "25463b64882cff449b055ee7cd4df74af5a764e97c6d37f8b839ca2536795bef"
+    },
+    "isolated_gtk3_preview": {
+      "scheme": "Irixium",
+      "scope": "GTK3 preview only; host KDE configuration unchanged",
+      "screenshot": "T05-GTK3-IRIXIUM-PREVIEW.png",
+      "screenshot_sha256": "21bb3fb028d8f015cddf4b8ae7b38332fd30af7c8d78f53ad4c314e426b2355d"
+    },
+    "pipette": {
+      "result": "sample retained as evidence; no automatic role replacement",
+      "sample": "X11 :61 at (800,500), RGB8 [120,160,213], visual 0x33, evidence_only",
+      "scene_restored": true
+    },
+    "contrast": {
+      "result": "diagnostic recorded without automatic color correction",
+      "report_sha256": "0ca4c8e8608f26f68d80b8be4c402ec5729330ac7ee9f3b9eb6fb3662434ecf8",
+      "limitation": "Irixium active titlebar pair measures 1.91:1; this reflects the selected scheme and was not replaced with static RGB"
+    },
+    "tests": {
+      "command": "pytest -q tools/theme-lab/tests/test_backend.py",
+      "result": "35 passed",
+      "native_build": "theme-lab-colors rebuilt with strict C++ compiler flags"
+    },
+    "per_control_palette_editor": {
+      "result": "Schema v3 stores optional semantic KDE role/factor overrides by stable control ID; absent overrides inherit the family palette. The selected control editor exposes its scope and the selected-control proposal snippet consumes that override.",
+      "static_rgb": "not introduced; palette fields remain KDE semantic roles and illumination factors",
+      "source_sha256": {
+        "tools/theme-lab/include/theme_lab.h": "91d44f7baef0b7f42582b0fb087d1c32a68bb15525e4a14e80bc0479c048b0d1",
+        "tools/theme-lab/src/model.c": "6ae69e49dd27c8ab1563058cb117e5a3b92d6360b1cb8924ee1cabcb565ef44b",
+        "tools/theme-lab/src/view.c": "2f8441ea2f871266fa87b55ac6522cf591bffa494ad1eddf0299edae4457b725",
+        "tools/theme-lab/backend.py": "a691ba80784cce53a7fb154d5d816f094841b8737fb7cb176d655563adcb5842",
+        "tools/theme-lab/tests/model_test.c": "93287734a741d23b0c24bf48fcbd77dcf88ba00966a5237018894ddb208df36e",
+        "tools/theme-lab/tests/test_backend.py": "75a636e23996ba501c9623d37a029c25c7b3ce90258c6e58921297929d760a35"
+      },
+      "strict_native_build_sha256": "50e4c6ed3449f4acb64c223708657967598b54604348ba2dc8cf1adde2beea3c",
+      "tests": {
+        "model": "1007 offline checks passed, including per-control role/factor round-trip",
+        "backend": "36 passed; selected-control snippet uses its override, family palette remains unchanged; unknown IDs and RGB literals are rejected"
+      }
+    },
+    "motif_ui_smoke": {
+      "display": ":68 (existing Xephyr; left running)",
+      "result": "Native Motif editor launched and inspected with the selected-control palette scope visible; no host desktop scheme or user profile changed.",
+      "screenshot_private": "/home/lsi/tempia/t05-work/t05-gui-scrolled.png",
+      "screenshot_sha256": "ce6db12feeca3edfcbe98006ba963a6692d2869fea19f2580240d316385c803d",
+      "approval": "technical visual inspection only; no user aesthetic approval inferred"
+    },
+    "gtk3_full_theme_control_overrides": {
+      "result": "GTK3 full-theme generation now translates per-control KDE role/factor overrides for selectors the native CSS tree can isolate. Horizontal/vertical scale and scrollbar rules are specialized to their orientation; the enclosing scrolledwindow remains family-scoped.",
+      "supported_controls": [
+        "check",
+        "radio",
+        "entry",
+        "text",
+        "scale_h",
+        "scale_v",
+        "scroll_h",
+        "scroll_v",
+        "progress",
+        "list",
+        "frame"
+      ],
+      "refused_as_ambiguous": [
+        "push",
+        "toggle",
+        "combo",
+        "spin",
+        "arrow"
+      ],
+      "ambiguity_behavior": "Generation returns Unavailable with the exact shared CSS selector and affected control IDs; it does not silently leak a control palette into neighbors.",
+      "static_rgb": "No authored final RGB added. Generated declarations continue to reference role aliases resolved from the selected KDE scheme and illumination factors.",
+      "native_gtk3_css_load": "GTK3 CssProvider loaded a generated theme with check and orientation-specific scrollbar overrides; zero parsing errors. Xvfb fixture only; this does not replace four-scheme visual validation or user review.",
+      "tests": "39 backend tests passed, including full generated-theme receipt, role-specific check rules, orientation isolation and ambiguous-selector refusal.",
+      "source_sha256": {
+        "tools/theme-lab/backend.py": "466ec72cbd370b589526c8058e1049d18ef24313c1e013461a97da2b8848beac",
+        "tools/theme-lab/tests/test_backend.py": "527b35000400d003d32ae6050bbe133b7ce4a83b1d3584ee756b99657448be46"
+      },
+      "coverage_report_sha256": "89a7a3d67f489036afa31c2efa16b864fa19727e0e1d68557c602039e8f4eb4e",
+      "generated_receipt_sha256": "390a53b737dc6676adc530a613a428ce6d66e4a0a16e615396353024edecfc47",
+      "gtk3_parser_log_sha256": "6c9526b39098472621f88a31724cc24960d7b1170cdf50a8f60edf2b75b104ab"
+    },
+    "private_output_policy": {
+      "result": "GTK3 generated themes and preview now both accept private destinations under ~/tempia; /tmp is no longer accepted as a generation or preview theme directory. The namespace HOME remains accepted only in the bwrap test environment.",
+      "source_sha256": {
+        "tools/theme-lab/backend.py": "d1650805784667c30cd262ee63417245e83d323881553eee7c2ea329b51e910a",
+        "tools/theme-lab/preview_gtk.py": "e453b7c7e5b36a2141a9beb8b18602e97ea7e9c1a86a3aaa2e00aabff9af852a",
+        "tools/theme-lab/tests/test_backend.py": "9bfcd7da7b1009d57cbb7c600286faf1807f6850757c7e58aa7f6920e36957c6",
+        "tools/theme-lab/tests/test_preview_scene.py": "4a637cd4027d3da3b164775a3ec32dd753cf544df5fc041632cefe590a9ddfd9"
+      },
+      "tests": "55 backend/preview scene tests passed; make check passed on the changed source."
+    },
+    "gtk3_four_scheme_render_matrix": {
+      "result": "passed",
+      "method": "Generated each private theme from its selected KDE scheme, loaded generated gtk-3.0/gtk.css with Gtk.CssProvider, checked three effective role values against the native KDE export, rendered five GTK3 controls through Gtk.OffscreenWindow, and captured four distinct images. No desktop scheme/profile was changed.",
+      "display": ":68",
+      "private_report": "~/tempia/t05-gtk3-four-scheme-native/RESULTADO.json",
+      "report_sha256": "e235c2e091be2f073d3929eb2e881172d15fde8aff3e607fea1988b23c13987a",
+      "schemes": {
+        "DomainOS-SR10.4": "d9e87c0b944c40735f59d4ba42f3341e704af8f45b3338a101c1277eae50725f",
+        "BreezeLight": "46e69c8b226caae8ee18e2ec6174367a2deb90edd0b1548d6f7aad6842ce7e0c",
+        "BreezeDark": "430305ebe6034a242b275dbc204652626995a0d7764f1199d805829efaf024ac",
+        "TestYellow": "8f4b731689c0e20159fb077ff20ce11126a66723b93bcb2eeb1e5542ea1a0018"
+      },
+      "limits": "Offscreen GTK rendering verifies loaded roles and basic controls; it is not a four-scheme visual review of every generated control and does not prove historical fidelity."
+    }
+  },
+  "remaining": [
+    "Five GTK3 controls have no safe per-control selector with the current Theme Lab widget mapping: push, toggle, combo, spin and arrow. They are explicitly refused when their KDE roles/factors differ; decide whether to retain that limit or redesign the native control classes before claiming all 16 controls.",
+    "Only GTK3 full-theme generation was updated. This does not certify GTK2/GTK4/Qt/Kvantum/Plasma adapter export behavior.",
+    "No human visual approval is inferred."
+  ],
+  "next": "Continue the next authorized Fila Atual item while the five shared GTK3 selectors and human review remain open.",
+  "execution_authorization": "Fila Atual: user.authorized=true, user.revision=4, assistant.ack_revision=4. Changes remain in the repository and private test output; no theme was installed and no host palette was changed.",
+  "technical_validation_percent": 100,
+  "estimated_item_progress_percent": 85,
+  "percentage_basis": "Four-scheme native GTK3 role loading/rendering and ~/tempia export/preview integration are now proven. Five controls remain intentionally refused due shared selectors; control-by-control visual review and human approval remain."
+}

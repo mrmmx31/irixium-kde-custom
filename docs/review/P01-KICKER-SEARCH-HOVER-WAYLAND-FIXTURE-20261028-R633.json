@@ -1,0 +1,46 @@
+{
+  "id": "R633",
+  "date_utc": "2026-10-28T22:20:00Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "definition_matches": true,
+    "task_state": "open"
+  },
+  "scope": "Focused diagnostic of current KDE Kicker search focus and category hover in a disposable private Wayland/KWin fixture.",
+  "method": {
+    "environment": "Private KWin --virtual Wayland session, active QQuickView host, actual installed Kicker QML copied into isolated XDG data, disposable Plasmoid singleton shim, authenticated org_kde_kwin_fake_input client.",
+    "search_focus_run": "run5 opened the native Kicker representation, waited for deferred focus, sent an initial keyboard sequence before clicking the search field, and then confirmed the text in the field.",
+    "hover_run": "run9 used one authenticated fake-input client for launcher click and pointer motion to the first native category; no second click was sent after opening.",
+    "focused_result": "Search activeFocus became true after the popup opened and the pre-click text sequence was received. In the hover run the category list reported containsMouse=true, childDialog.visible=true, menuVisible=true, and popup.active=true.",
+    "cleanup": "Both private KWin/QQuickView processes exited; cleanup.json lists only the fixture PIDs.",
+    "production_changed": false,
+    "user_profile_changed": false,
+    "personal_session_touched": false
+  },
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "44b8602342c8ab849a554497dae3d2e15f58617b9a3e1671278480a21ffdb3b4",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/ApplicationActions.js": "0fdfd7dfc79192e1cd632bef5171b403ba5b021ea79a33e7d2d773927db9757d"
+  },
+  "fixture_limits": [
+    "This is not the production plasmashell panel: a QQuickView hosts Kicker and a test-only Plasmoid singleton supplies shell properties.",
+    "The copied QML adds diagnostic aliases only; no production source was edited.",
+    "The focused run proves this input path in the fixture, not the user's full Wayland desktop behavior or human acceptance.",
+    "The broad applications suite's RESULTADO is not used: this focused run intentionally did not execute its unrelated pin/catalog checks."
+  ],
+  "evidence": {
+    "records": "records/ia-tema/P01/R633-kicker-focus-hover-20261028/",
+    "tempia_work": "~/tempia/domainos-theme-work/P01/R633-active-qquickview-kicker-20261028/",
+    "search_focus_host_log_sha256": "7551d19031846c045cb29341a1d23df19da5b96a02dde804fb8e953d0cdd50fb",
+    "hover_host_log_sha256": "2a93fa25e956fafe0e43a47961a0e39ab4bef34b864cf78763e70bfa20497fa2",
+    "hover_helper_sha256": "0584c27438736c318a657eb395e5d4c5cd081fd5a8500d9be8bbff9ad7dd444f",
+    "cleanup_sha256": "e26f977d1583ce5dd40daeefd2780610764a3dcb90fb2d90f21df2be2abef592"
+  },
+  "conclusion": "The focused private fixture opened the current Kicker menu, deferred focus reached its search field without a prior field click, and a category hover opened a child submenu while the popup remained visible. This does not justify another production QML change by itself. P01 remains open for the user's live-session review and any remaining criteria.",
+  "next": "Continue only P01: reuse R610's favorite-order evidence where its source hashes match; keep the changed Kicker wrapper scoped to R633; do not infer production acceptance from the fixture."
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "id": "R344",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Erratum for GTK2 normal horizontal stepper pixel registration in R334/R343",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "historical_reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "historical_reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "historical_crop_origins": {"left": [2, 4], "right": [526, 4]},
+    "asset_check": "R305 confirms both normal 15x15 horizontal assets match the historical reference crop at y=4 in all 225 pixels.",
+    "pipeline_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r332-pipeline-live/normal-wide.png",
+    "pipeline_capture_sha256": "5ad20897a595865a466e5f04a5cf25fdc8ebebe6cb9c220d173897cc080f1087",
+    "installed_native_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r343-installed-gtk2/gtk2-installed-horizontal-no-atk.png",
+    "installed_native_sha256": "913456498bc68e3617305824ed651f5082035a5a68212837479d42c4ed3f3c2d"
+  },
+  "correction": {
+    "supersedes": "R334 cell-count conclusion only; prior R334 capture and receipt are retained unchanged.",
+    "cause": "R334 compared the historical crop at y=2 with GTK pipeline crops beginning y=8. The actual 15x15 horizontal cells in the GTK capture begin at y=10; R305 independently anchors the historical cell at y=4. The y=8/y=2 comparison is a two-pixel vertical registration error.",
+    "aligned_pipeline_comparison": {
+      "left": {"gtk_origin": [12, 10], "reference_origin": [2, 4], "different_pixels": 3, "different_xy_in_crop": [[0, 13], [1, 13], [0, 14]]},
+      "right": {"gtk_origin": [535, 10], "reference_origin": [526, 4], "different_pixels": 1, "different_xy_in_crop": [[14, 1]]}
+    },
+    "installed_native_comparison": {
+      "left": {"gtk_origin": [2, 0], "reference_origin": [2, 4], "different_pixels": 3, "different_xy_in_crop": [[0, 13], [1, 13], [0, 14]]},
+      "right": {"gtk_origin": [526, 0], "reference_origin": [526, 4], "different_pixels": 1, "different_xy_in_crop": [[14, 1]]}
+    },
+    "interpretation": "The four differing pixels lie at the lower-left and upper-right outside relief corners. The normal arrow glyph is not shortened; its cells retain the exact 15x15 assets, and the remaining live-application review is still open."
+  },
+  "unchanged_limits": [
+    "No guest input was sent during this audit.",
+    "No user application was restarted.",
+    "This does not prove the pixels currently held in the open XChat process.",
+    "This is not human visual acceptance or proof for pressed, disabled, vertical, or other GTK families."
+  ],
+  "verification": {
+    "method": "Pillow/NumPy direct RGB comparison; scan confirmed GTK painted cell starts at y=10 in the pipeline capture. The installed 543x15 GtkHScrollbar is compared at y=0. Historical asset exact match at y=4 independently validates the reference registration.",
+    "result": "R343 3/225 left and 1/225 right is confirmed. R334's 0/225 left count is invalid due to y registration and its right count was coincidentally still 1/225."
+  },
+  "next": "Continue the same authorized GTK2/I167 item. Obtain the historical horizontal-bar state from the awake guest when safe, then preserve live XChat reload and user visual review as separate pending checks."
+}

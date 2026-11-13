@@ -1,0 +1,192 @@
+{
+  "item": "P10",
+  "revision": 1,
+  "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4",
+  "status": "running_partial",
+  "date": "2026-10-14",
+  "scope": "Visual review V03-V10, one family at a time; exact Domain/OS SR10.4 and HP VUE 2.01 reference only.",
+  "blockers": [
+    {
+      "family": "Painel (V09)",
+      "reason": "A captura integrada válida já existe (applet real em containment Plasma/KWin, Pager ligado a quatro desktops) e a resposta do painel a DomainOS/neutro/escuro/amarelo foi registrada. A composição de dois cartões contra seis células VUE aguarda Q355; LED/transições Apollo continuam sem resposta dinâmica por bridge/guest inacessível. Nenhuma alteração visual de produto foi feita."
+    },
+    {
+      "family": "Revisão conjunta (V10)",
+      "reason": "Decoração revalidada; V09 agora tem captura integrada e matriz de paletas do painel apenas. V02-V08 e estados nativos ainda estão parciais, então a revisão conjunta de todos os consumidores permanece aberta."
+    },
+    {
+      "family": "GTK3 (V02)",
+      "reason": "Remaining comparison requires VM-dependent observation; Q334 unresolved and no guest input may be sent. Existing normal-state/geometry evidence remains scoped, family not complete."
+    },
+    {
+      "family": "GTK2/GTK4 (V03/V04)",
+      "reason": "Overlap with the other AI’s T04 task; no changes or tests started in these families."
+    },
+    {
+      "family": "GTK1 (V05)",
+      "reason": "No GTK1 pkg-config package, shared library or gtk-demo found in this lab; question Q339 opened to identify a user application before declaring coverage."
+    },
+    {
+      "family": "GTK3 TreeView frame (I178)",
+      "reason": "Xephyr comparison confirmed that generic GtkTreeView border/shadow paints row/cell outlines, while transparent border has no visible pixels. Q359 awaits whether to keep the theme limitation or open a separate authorized app-integration item."
+    },
+    {
+      "family": "I176/I177 future panel 2.0",
+      "reason": "Current item I176 was read at authorized revision 1 and acknowledged. The saved I174-I177 scope and P02 note place this panel redesign after P10 to keep the current beta intact. I174 measurement and I175 textual proposal are preparatory only; no product layout changed. I176/I177 remain gated until P10 is closed."
+    }
+  ],
+  "environment_check": {
+    "pkg_config_gtk_1_2": "not found",
+    "gtk1_shared_library": "not found in ldconfig",
+    "gtk1_demo": "not found",
+    "gtk2": "2.24.33",
+    "gtk3": "3.24.38",
+    "gtk4": "4.18.6",
+    "packages_installed": false
+  },
+  "actions": {
+    "source_changed": false,
+    "personal_theme_settings_changed": false,
+    "vm_input_sent": false,
+    "other_ai_T04_touched": false
+  },
+  "next": "V08 tem agora evidência pareada por página (15/165) e trilho (15x228): thumb SR10.4 11x21 e Plasma 11x20, começando 1 px abaixo. O fundo de trilho Plasma some em repouso; a variação privada de inset não remove a diferença de comprimento e alarga o thumb horizontal. Q372 (revisão 0) aguarda escolha entre documentar limite e abrir demanda QML separada; sem escolha, não alterar assets/código nem avançar a outra família visual. Xephyr :68 continua viva, mas não há processo MAME e a bridge mantém 4260854bc6024f04a92238d48a3cd4c7 sem reply/ack; Q334/Q354 ainda gateiam qualquer nova entrada. Q357, Q345, Q355/Q356/Q358 e Q359 seguem pendentes; T04 permanece com a outra IA.",
+  "families_completed_or_advanced": {
+    "V06": {
+      "status": "partial_down_arrow_states_verified_spacing_mismatch_unresolved",
+      "receipt": "docs/VALIDACAO-V06-ESTADOS-20261014.json",
+      "verified": "Qt 6.8.2/Kvantum real: 15px bar; lower arrow normal/held/released glyphs match native crops at 0 pixel differences after masking nine cursor pixels; QTest held state changes 53 glyph pixels and release restores baseline. Synthetic 165/15 content fixture measured 0px viewport/bar gap against 4px SR10.4 contract.",
+      "remaining": [
+        "Q357 decision: document unsupported 4px gap or authorize separate Qt style adapter demand",
+        "thumb is ~1px longer than standalone VUE reference without sufficiently matched font/frame/content metrics",
+        "native disabled thumb and corner face comparison",
+        "four-palette revalidation and manual review, if not covered by prior valid receipt"
+      ]
+    },
+    "V07": {
+      "status": "partial_two_axis_corner_and_arrows_verified",
+      "receipt": "docs/VALIDACAO-V07-QTQUICK-20261014.json",
+      "verified": "Real System Settings content arrow is 15×15 and matches active SVG at 0/225; real KInfoCenter Qt Quick/Kirigami scrollview has both bars (15px), reserved 15×15 corner filled with View.BackgroundNormal, and up-disabled/down-normal/left-disabled/right-normal stepper cells each match active SVG at 0/225. No source change. 4px frame spacing cannot be measured because the KInfoCenter scrollview background is invisible; matched-content thumb, palettes and human review remain open. Held down and right arrows match the pressed SVG groups at 0/225 pixels; after release each matches normal at 0/225. An initial invalid capture is preserved separately.",
+      "remaining": [
+        "4px frame spacing (Q345 asks for a real framed app)",
+        "matched-content thumb",
+        "neutral/dark/yellow palette cases",
+        "human review"
+      ]
+    },
+    "V08": {
+      "status": "partial_content_fraction_matched_thumb_geometry_and_idle_trough_differ_manual_review_open",
+      "receipt": "docs/VALIDACAO-V08-PLASMA-20261014.json",
+      "verified": "Consumidor real PC.ScrollBar+KSvg em fixture, DPR1: página 15/165 e trilho 15x228 pareados com Help Viewer SR10.4/HP VUE 2.01; thumb nativo 11x21 em bbox (2,1)-(13,22), Plasma 11x20 em (2,2)-(13,22). Matriz de quatro paletas, geometria transversal 15px e canto de popup host-owned também possuem recibos separados.",
+      "remaining": [
+        "Decisão Q372: documentar a limitação ou abrir escopo/autorização separados para integração QML;",
+        "diferença de 1px no comprimento/início e trilho Plasma oculto em repouso; fixture é fração/geometry pareada, não mesma aplicação/widget/dados;",
+        "setas não são implementadas por PC.ScrollBar; estados histórico pressed/disabled não inferidos;",
+        "revisão manual do usuário"
+      ]
+    },
+    "V09": {
+      "status": "partial_integrated_capture_palette_matrix_verified_pager_preference_and_led_pending",
+      "receipt": "docs/VALIDACAO-V09-PANEL-20261014.json",
+      "verified": "Applet real em containment Plasma/KWin no Xephyr, 971×109 a 1:1 e quatro desktops; recorte VUE estático 947×93 a 1:1; painel integrado responde a DomainOS-SR10-4, BreezeClassic, BreezeDark e fixture amarelo XDG privado. Recibos V09-PANEL e V09-PALETAS.; compared 1:1 external bounds: current 971×109 from 1942×218 at 50%, VUE static crop 947×93; Q358 asks to preserve/adjust proportions",
+      "remaining": [
+        "Pager composition preference Q355",
+        "window-title strip preference Q356",
+        "overall dimensions/proportions preference Q358: current 971×109 from 1942×218 canvas vs static VUE 947×93",
+        "dynamic Apollo LED/Pager states after guest bridge resumes",
+        "manual review"
+      ]
+    },
+    "V10": {
+      "status": "partial_decoration_revalidated_other_families_open",
+      "receipt": "docs/VALIDACAO-V10-DECORATION-20261014.json",
+      "verified": "Decoração DomainOS 0.1.1: 12 regiões com zero diferenças; KWin privado 39/39 e prévia KDecoration3 9/9. A matriz neutro/escuro/amarelo foi comprovada somente para o painel integrado V09, sem completar a suíte cross-family.",
+      "remaining": [
+        "V02-V08 e estados nativos pendentes",
+        "matriz de paletas e estados nos demais consumidores atuais",
+        "revisão humana continua separada"
+      ]
+    }
+  },
+  "latest_progress": {
+    "family": "V08 Plasma Style",
+    "evidence": "docs/VALIDACAO-V08-PLASMA-20261014.json#matched_content_thumb_probe; /home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/result.json",
+    "result": "A captura nativa SR10.4/HP VUE 2.01 mostra 15/165 linhas num trilho 15x228 e thumb 11x21. O Plasma Components.ScrollBar real, com a mesma fração e geometria, produz 11x20, deslocado 1 px. Uma variação privada dos hints corrigiu a origem vertical, mas continuou 20 px e alargou o thumb horizontal para 13 px. Q372 foi reconhecida na revisão 0 e aguarda escolha A/B; nenhum SVG/QML de produto foi alterado.",
+    "estimated_progress": "V08 permanece parcial; comparação de fração/track concluída, geometria e trilho em repouso diferem; não inferir percentagem de fidelidade visual."
+  },
+  "production_board_runtime": {
+    "status": "stable_candidate_running_for_user_responses",
+    "build_flags": "-Werror",
+    "launcher": "official ./open",
+    "display": ":1 (Wayland session wayland-0)",
+    "window_visible": true,
+    "active_executable_sha256": "efc1c1b4461d6324f0f1e45c81e4fd8823e51095dc0a45b878a6443f8e4888be",
+    "q102_sequence_sent": 254,
+    "questions_awaiting_user": [
+      "Q345",
+      "Q353",
+      "Q355",
+      "Q356",
+      "Q357",
+      "Q358",
+      "Q359"
+    ],
+    "q102_latest_read": 254,
+    "last_human_response_after_theme_update": false,
+    "backup_path": "/home/lsi/tempia/board/work-board-before-chat-draft-fix-20261014T103300Z",
+    "backup_sha256": "101ab92339b0185b7824ecc61845706c4f11bb4413b9072ba7bd206f005402f2",
+    "draft_fix": "Immediate journal checkpoint on individual and shared conversation edits; programmatic compose updates are ignored by the user-edit callback. Editing/crash-recovery suite and conversation-hub integration passed.",
+    "active_pid": 3238326,
+    "draft_fix_verification": "make check-editing passed (12 editing/recovery flows) plus individual and conversation durability tests, all using temporary states; personal SQLite journal untouched."
+  },
+  "progress_log": [
+    {
+      "family": "V08 continuation / VM and queue audit",
+      "evidence": "AI Work Board SQLite current state read through official CLI; /home/lsi/tempia/board/i295-live-20261014T0150Z bridge status; docs/VALIDACAO-V08-PLASMA-20261014.json",
+      "result": "Q102 is at saved revision 191, acknowledged 191; its saved note predates this check (2026-10-13T20:02:57Z), so there is no new human reply. Q357 revision 0 remains pending and asks whether to document Qt's unsupported 4px gap or open a separate adapter demand. Xephyr :68 remains running, but no MAME process exists. The existing bridge has an uncorrelated pending request and no reply; no new guest command, retry, or restart was made. Production board remains open on PID 3238326 with stable executable SHA-256 efc1c1b4461d6324f0f1e45c81e4fd8823e51095dc0a45b878a6443f8e4888be.",
+      "limits": "V08 is still active and partial. Historical thumb pairing, native disabled comparison, and manual review are outstanding. No other scrollbar family was started because the one-family-at-a-time rule keeps V08 active. No source/theme/personal settings or Apollo state changed."
+    },
+    {
+      "family": "Authorized queue audit after V08 obstacle",
+      "evidence": "AI Work Board shared channel Q102 seq.254; current saved questions Q334, Q345, Q354-Q359, Q366; V06/V07 receipts",
+      "result": "V06 corner comparison already exists at shared-channel seq.240, so it was not repeated. Remaining V06 spacing decision is Q357. V07's installed KInfoCenter/System Settings captures have no visible content frame; Q345 requests the real app to target. Q334/Q354 gate VM-dependent observations, V09 needs Q355/Q356/Q358, and I178's next scope needs Q359. Q366 already asks for details on the saved color-menu report; no duplicate question was created. T04 remains owned by the other AI.",
+      "limits": "No independent visual family had an authorized, evidence-valid next step that could proceed without those human answers, the unavailable Apollo session, or crossing T04. P10 stays open; no fidelity percentage inferred."
+    },
+    {
+      "family": "V08 + I174 baseline",
+      "evidence": "docs/VALIDACAO-V08-PLASMA-20261014.json; docs/review/VALIDACAO-I174-PAINEL-20261014.json",
+      "result": "V08 normal capture compared 1:1 in 15x255 crops; historical thumb length remains unpaired. I174 authorized revision 1 acknowledged; independent 97-file source/art snapshot created; 947x93 native vs 971x109 current, lower shelf 30px in both, upper region +16px current. No product or personal settings changed.",
+      "limits": "V08/V09 manual review and Q355/Q356/Q358 choices remain open. I174 measurements prepare a future proposal and do not authorize a product redesign before P10 review."
+    },
+    {
+      "family": "I175 panel 2.0 proposal",
+      "evidence": "docs/review/PROPOSTA-I175-PAINEL-COMPACTO-20261014.md",
+      "result": "Two reviewable layout variants are documented from I174 measurements; no variant selected or implemented, dynamic KDE roles retained, user choices Q355/Q356/Q358 remain open.",
+      "limits": "Text proposal only; does not count as native visual evidence or P10 completion."
+    },
+    {
+      "family": "production board and drafts",
+      "evidence": "active process /home/lsi/Documents/Projetos Open Source/ai-work-board/build/work-board; make check-editing",
+      "result": "Reopened GUI from official launcher with current SQLite state; active executable hash matches stable candidate. Editing and two durability suites passed; Q102 seq.251 reports availability for answers.",
+      "limits": "GUI process is running in the user Wayland session; no direct window screenshot was captured. User responses remain pending."
+    },
+    {
+      "family": "V08 real Plasma ScrollBar palette states",
+      "evidence": "docs/VALIDACAO-V08-PLASMA-20261014.json#scrollbar_runtime_palette_probe",
+      "result": "Real PC.ScrollBar+KSvg in isolated Xephyr, one live engine, changed temporary kdeglobals+QPalette with ApplicationPaletteChange. DomainOS/neutral/dark/yellow: 15px bar, 11px thumb; normal/hover/disabled roles changed 781/781 thumb pixels in every pair. Hover true, disabled false. No source or personal config changes.",
+      "limits": "This is consumer palette-response evidence only; no historical thumb-length pairing or human review."
+    },
+    {
+      "family": "I261 unsaved-draft fix recheck",
+      "evidence": "AI Work Board I261 assistant reply; make check-editing output; active production process SHA",
+      "result": "Production candidate running; edit/undo/reload/checkpoint/crash recovery and conversation draft durability tests passed with temporary states. Personal journal was not opened or modified.",
+      "limits": "Legacy private drafts remain untouched and are not auto-promoted to saved answers; manual review is separate."
+    },
+    {
+      "family": "V08 matched content-fraction thumb",
+      "evidence": "docs/VALIDACAO-V08-PLASMA-20261014.json#matched_content_thumb_probe; /home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/result.json SHA-256 7f3b620ca971805d20704f66eed6486aa8bc69b17538dc008ac4549714177621; Q372 revision 0",
+      "result": "VUE SR10.4 Help Viewer: 15/165, track 15x228, thumb 11x21. Real Plasma component with same fraction/track: thumb 11x20 at y+1, idle background hidden. Private top/bottom inset=1 test kept vertical length 20 and made horizontal cross-size 13; no product edit.",
+      "limits": "Q372 awaits user choice; manual review and exact app/data pairing remain open. Xephyr :68 has no MAME process; status shows uncorrelated pending 4260854bc6024f04a92238d48a3cd4c7; no input/restart."
+    }
+  ]
+}

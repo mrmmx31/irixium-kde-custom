@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-POPOVER-TOOLTIP-ROLES-20261018-R86",
+  "status": "passed",
+  "scope": "GTK 4.18.6, production DelayedPopoverHint GtkPopover and DomainOS theme, five role-distinct private palette fixtures; direct callback activation after construction; style and native popup pixels only",
+  "change": {
+    "helper": "tools/theme-lab/gtk4_hint_popover.py adds semantic CSS class theme-lab-hint to the GtkPopover",
+    "theme": "gtk/DomainOS-SR10-4-KDE-Reload/gtk-4.0/gtk.css maps the marked popover face/text to KDE Tooltip role aliases; border shades are derived from the Tooltip background",
+    "static_final_colors_added": false
+  },
+  "before_fix": {
+    "window_background": "#36485c",
+    "tooltip_background": "#e7d26e",
+    "popup_sample": "#36485c",
+    "tooltip_background_pixels": 0
+  },
+  "results": [
+    {"palette":"DomainOS","window_bg":"#78a0d5","tooltip_bg":"#78a0d5","tooltip_fg":"#ffffff","popup_sample":"#78a0d5","tooltip_background_pixels":4326,"tooltip_text_pixels":43,"popup_size":[243,27],"passed":true},
+    {"palette":"Irixium","window_bg":"#c1c1c1","tooltip_bg":"#c1c1c1","tooltip_fg":"#000000","popup_sample":"#c1c1c1","tooltip_background_pixels":4326,"tooltip_text_pixels":43,"popup_size":[243,27],"passed":true},
+    {"palette":"BreezeLight","window_bg":"#eff0f1","tooltip_bg":"#f7f7f7","tooltip_fg":"#232629","popup_sample":"#f7f7f7","tooltip_background_pixels":4326,"tooltip_text_pixels":43,"popup_size":[243,27],"passed":true},
+    {"palette":"BreezeDark","window_bg":"#202326","tooltip_bg":"#292c30","tooltip_fg":"#fcfcfc","popup_sample":"#292c30","tooltip_background_pixels":4326,"tooltip_text_pixels":43,"popup_size":[243,27],"passed":true},
+    {"palette":"TestYellow","window_bg":"#36485c","tooltip_bg":"#e7d26e","tooltip_fg":"#25200a","popup_sample":"#e7d26e","tooltip_background_pixels":4326,"tooltip_text_pixels":43,"popup_size":[243,27],"passed":true}
+  ],
+  "source_sha256": {
+    "tools/theme-lab/gtk4_hint_popover.py": "1ee694b5757a9a64d06e613bac0259efa03cfdb4c78fc74f88d48773ce1b19b8",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-4.0/gtk.css": "e40930eca9395c8fcb0adc5709c001d36488c20e81e0814290ac76b493e3a7e3"
+  },
+  "artifacts": "~/tempia/t07-gtk4-hint-colors-20261018-r86/RESULTADO-R86.json",
+  "limits": [
+    "The probe invoked the helper callback directly; no pointer timing, hover geometry, or dismissal behavior was measured in R86.",
+    "Five isolated role pairs validate GTK4 rendering, not historical pixel fidelity or human approval.",
+    "The separate Xephyr :82 used for this probe has been closed; no user or other-work Xephyr session was stopped."
+  ],
+  "conclusion": "The GTK4 scrollbar hint surface now follows KDE Tooltip role colors instead of inheriting Window roles. The dimensions remained 243x27 across all fixtures. T07 remains partial.",
+  "next": "Continue with a distinct gap in the authorized T07 scope; retain hover/delay and broader palette/exporter coverage as open where existing receipts do not cover them."
+}

@@ -1,0 +1,49 @@
+{
+  "status": "passed_scoped_pixels",
+  "schemes": [
+    {
+      "scheme": "light-r2",
+      "result": "/home/lsi/irixium-kde-custom/.qa-t04-pressed-pixels-light-r2/RESULTADO.json",
+      "sha256": "242adc4a9eee28987d193cb14afab678d9f5c847b29e7094cbc2d2c8439689c1",
+      "captures": 8,
+      "edge_pixels": 9472,
+      "face_pixels": 288,
+      "differences": 0
+    },
+    {
+      "scheme": "dark",
+      "result": "/home/lsi/irixium-kde-custom/.qa-t04-pressed-pixels-dark/RESULTADO.json",
+      "sha256": "e141a4d26f89329d677638abc4f12e2a069f8a2f43d996a6420fc8064ce8024a",
+      "captures": 8,
+      "edge_pixels": 9472,
+      "face_pixels": 288,
+      "differences": 0
+    },
+    {
+      "scheme": "yellow",
+      "result": "/home/lsi/irixium-kde-custom/.qa-t04-pressed-pixels-yellow/RESULTADO.json",
+      "sha256": "33ff84d00ad4f2285870bd4d23b40076e8bcfe9c7be373c6e3c8ffab6c8fa272",
+      "captures": 8,
+      "edge_pixels": 9472,
+      "face_pixels": 288,
+      "differences": 0
+    },
+    {
+      "scheme": "domainos",
+      "result": "/home/lsi/irixium-kde-custom/.qa-t04-pressed-pixels-domainos/RESULTADO.json",
+      "sha256": "bdfa1248072819eeead0acd299a4154116ce442da43c2817d1758e0bee131a54",
+      "captures": 8,
+      "edge_pixels": 9472,
+      "face_pixels": 288,
+      "differences": 0
+    }
+  ],
+  "scope": "GTK2 GtkButton: normal/forced pressed; face and relief edge pixels; separate GtkWindow and GtkPlug hosted by GtkSocket. Replacement, rollback, cleanup and one real click per origin also checked.",
+  "text_focus_and_other_controls_covered": false,
+  "personal_session_changed": false,
+  "historical_fidelity_claimed": false,
+  "public_capability_enabled": false,
+  "probe_sha256": "cb6fb9416537bfd0081d61a26fcfef2fc4d1b8ee494c8128b4167d62fdaacd76",
+  "failed_fixture": "First light attempt used nonexistent GI Gdk.Window.get_xid; corrected to private root capture and actual native allocation. Original log preserved.",
+  "next": "Per-control runtime gate, Motif controller persistence/restart, frozen delivery coordinated with user."
+}

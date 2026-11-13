@@ -1,0 +1,22 @@
+/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-88_pmdeq
+command: mousemove
+command: click
+command: search
+command: windowmove
+command: mousemove
+command: click
+command: search
+command: windowmove
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1191, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 211, in main
+    results.update(run(output, observation, click, wait, move_separate, separate_visible))
+                   ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/controller_gtk2_push.py", line 65, in run
+    assert not any(row['separate'] for row in observation().get('native_controls',[])), 'Closed origin accepted queued metrics'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Closed origin accepted queued metrics

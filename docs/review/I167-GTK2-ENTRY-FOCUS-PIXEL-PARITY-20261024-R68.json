@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-FOCUS-PIXEL-PARITY-20261024-R68",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "comparison": {
+    "focus_rgb": [254, 130, 130],
+    "rule_tested": "Exactly a two-pixel perimeter ring, no scaling or interpolation.",
+    "sources": [
+      {
+        "label": "Domain/OS SR10.4, HP VUE 2.01, Search Directories focused field",
+        "capture": "~/tempia/i167-entry-live-r57/entry-next-field-focused.png",
+        "sha256": "74e08830867226e7fe940e9adbae0a39001cb2aef652a42c79f253cfb3bebb47",
+        "roi_xyxy": [228, 404, 566, 438],
+        "size_px": [338, 34],
+        "actual_focus_pixels": 1472,
+        "expected_ring_pixels": 1472,
+        "symmetric_difference_pixels": 0
+      },
+      {
+        "label": "GTK 2.24.33 GtkEntry with mapped X11 focus, DomainOS palette",
+        "capture": "~/tempia/i167-entry-native-r66-final/DomainOS/separate-entry-focused.png",
+        "sha256": "9a85f129ec091e98d550e800ca3ae41b03bd408614ad9ad3452546d2492afe53",
+        "roi_xyxy": [16, 16, 276, 60],
+        "size_px": [260, 44],
+        "actual_focus_pixels": 1200,
+        "expected_ring_pixels": 1200,
+        "symmetric_difference_pixels": 0
+      }
+    ],
+    "result": "Both captures exactly match the same two-pixel focus-frame mask at their own native dimensions. The DomainOS GTK role renders the same focus RGB as the SR10.4 capture. This is a shape/color comparison; the widget sizes and surrounding themes are different."
+  },
+  "method": {
+    "script": "~/tempia/i167-focus-mask-compare-r68.py",
+    "script_sha256": "6e2774488e2b370b0af70bf2d149dfff102123e5608a234c29d9240e54d69b05",
+    "result_json": "~/tempia/i167-focus-mask-compare-r68.json",
+    "result_sha256": "a8ab66a3f10248291a065cbebfae62d28747d38e67bb216a25354e2cc70ba565",
+    "algorithm": "For each source ROI, compare the pixels equal to the focus RGB against x<2, x>=width-2, y<2, or y>=height-2; no resampling."
+  },
+  "measurement_note": "The R57 search-field ROI began at x=229 and omitted its leftmost focus pixel. Reinspection of the hash-matched capture locates the full 338x34 field ring at x=228..565, y=404..437. This corrects only the comparison ROI; R57's saved file and historical claim are preserved.",
+  "limits": [
+    "Exact focus-frame mask parity does not establish selected-text behavior, caret shape, caret blink, widget natural dimensions, or other GTK2 controls.",
+    "The GTK2 capture is a real mapped X11 window under Xvfb without a window manager; KWin/session integration remains separate.",
+    "The live SR10.4 clone still shows no VUE desktop, so no new guest interaction was possible."
+  ],
+  "next": "Preserve the verified two-pixel dynamic focus frame. Continue only unresolved GTK2 states; compare selected text/caret with the VUE guest when visible."
+}

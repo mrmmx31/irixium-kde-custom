@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "R396",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recheck all four normal GTK2 scrollbar stepper cells in the current project-owned Domain/OS SR10.4 guest capture; no input sent.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01; MAME 0.276 Apollo DN3500",
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "profile": {"paused": false, "frameskip": 4, "throttled": false, "captured": false, "pending_request": null}
+  },
+  "capture": {
+    "kind": "read-only native guest screen:snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/r396-vm-current/domainos-sr104-current.png",
+    "sha256": "84e6c0b13be933b4c43f51c6f938bd1201a94330e3e318d9991511108b2d25b4",
+    "dimensions_px": [1024, 844],
+    "visible": "VUE Terminal, File Manager and Trash Can; all four normal scrollbar arrows visible",
+    "pointer": "No pointer over a target arrow; no graphical input sent."
+  },
+  "method": "Exact RGB comparison of each 15x15 native screenshot cell against its current GTK2 DomainOS normal stepper asset at the established 1:1 screen coordinates; no scaling, filtering or color normalization.",
+  "cells": {
+    "left": {"origin": [52, 699], "different_pixels": 0, "compared_pixels": 225},
+    "right": {"origin": [576, 699], "different_pixels": 0, "compared_pixels": 225},
+    "up": {"origin": [595, 440], "different_pixels": 0, "compared_pixels": 225},
+    "down": {"origin": [595, 680], "different_pixels": 0, "compared_pixels": 225}
+  },
+  "result": "Current live SR10.4 normal arrow cells remain identical to the current GTK2 theme assets. This confirms normal-state pixels only and does not reproduce or explain the open XChat report.",
+  "limits": [
+    "No pointer target was visibly established, so held-state interaction was not attempted.",
+    "This does not verify GTK2 state held/hover/insensitive against VUE historical behavior.",
+    "This does not prove what an already-open XChat process has loaded in memory.",
+    "No GTK files changed, no application restarted, no VM settings or guest files changed, and the other MAME instance was not touched."
+  ]
+}

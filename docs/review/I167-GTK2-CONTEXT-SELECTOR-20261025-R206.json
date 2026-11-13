@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-CONTEXT-SELECTOR-20261025-R206",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "test": {
+    "gtk": "GTK 2.24.33 real GtkTreeView widgets under private Xvfb",
+    "capture": "~/tempia/ia-tema/evidence/I167/r206-gtk2-context-selector/native.png",
+    "capture_sha256": "d584ee669247cde46be5bdff4b29fb59875eb91acf4d41c5e6cd6c00079ed5c9",
+    "runner": "~/tempia/ia-tema/evidence/I167/r206-gtk2-context-selector.py",
+    "runner_sha256": "629698a977c6f4d20fde1bd2c3faf505a2ddc87f3e836fbb62ecf240fb0cb963",
+    "result": "~/tempia/ia-tema/evidence/I167/r206-gtk2-context-selector/result.json",
+    "result_sha256": "b1a2fc2f330c5d829d99ed1bd96e5285379fdee8071f7e2720a00868fde87fa2",
+    "method": "GTK2 RC widget-name selector applied to one named TreeView; pixel samples read from the rendered GTK2 root capture. The peer TreeView retained the normal KDE View role.",
+    "selector": "widget \"*DomainOSFileFinderResults\" style : highest \"file-finder-context-probe\"",
+    "scheme": "colors/DomainOS-SR10.4.colors",
+    "dynamic_input_role": "Colors:Header BackgroundNormal, RGB [50,151,199]",
+    "derived_factor": 0.847,
+    "derived_color": "#2a80a9 (RGB [42,128,169]); generated from the active KDE role for this private test only",
+    "target_pixel_rgb": [42, 128, 169],
+    "peer_pixel_rgb": [102, 136, 181],
+    "isolated_to_named_widget": true
+  },
+  "decision": "GTK2's RC widget-name selector can isolate a contextual style when the application assigns a unique widget name. A class selector such as GtkTreeView would be global to matching lists. The VUE app-default resources do not establish that any target GTK application exposes a corresponding unique widget name, so do not add the candidate color to the global GtkTreeView/list recipe. No product/theme source or user configuration changed.",
+  "limits": [
+    "The fixture proves GTK2 selector behavior, not that an actual target application assigns a stable name to its File Finder list.",
+    "The two pixel samples prove isolated face painting only; they do not compare list geometry, selected rows, focus, font, or scrollbar policy.",
+    "The GTK2 Style base array was not readable through this PyGObject introspection build; the test used rendered pixel samples instead."
+  ],
+  "next": "Keep only I167/GTK2 active. Do not change the global list recipe from this application-specific hypothesis. Move to a distinct GTK2 state with an available SR10.4 comparison, retaining the open questions about selection and application-level mapping.",
+  "product_source_changed": false,
+  "user_profile_changed": false,
+  "xchat_changed": false,
+  "vm_guest_changed": false,
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

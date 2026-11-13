@@ -1,0 +1,36 @@
+{
+  "checked_at": "2026-10-11T17:44:39.478388+00:00",
+  "status": "native_foundation_verified",
+  "family": "gtk2",
+  "control": "arrow",
+  "native": {
+    "matrix": ".qa-t04-arrow-foundation/native/RESULTADO.json",
+    "interaction": ".qa-t04-arrow-foundation/interactions/RESULTADO.json",
+    "directional_controls": 96,
+    "palettes": 4,
+    "origins": 2,
+    "variants": [
+      "normal",
+      "backdrop",
+      "disabled"
+    ],
+    "pressed_released_directions": 16
+  },
+  "unit_tests": 5,
+  "source_sha256": {
+    "gtk2_arrows.py": "61715c9dd41c248264c301f6b347d537412c7633b29f44324b2b9d859e967b7f",
+    "tests/test_gtk2_arrow_paint.py": "a31050c6d298135a1dffa935cd1820ee708c0850ffd138dcc155f31231100025",
+    "tests/probe_gtk2_arrow_paint.py": "85827a6ab28ca139e7cb9dcf20a0af6dbb4bd65f1c3f3fb59e69f49255b2cbc2"
+  },
+  "scope": "GtkButton/GtkArrow reais: quatro direções, glyphs comparados pixel a pixel às máscaras resolvidas da paleta KDE, alocação, face/sensibilidade; pressão/soltura normal/backdrop, clique e Space. Relevo do botão separado do glyph e dos steppers.",
+  "limits": [
+    "Fundação nativa: geração/recibo/trecho de código/cena/sessão/controlador ainda não integrados.",
+    "Sem certificação histórica da VM; pixels de foco completos e sincronização GTK4/Qt fora deste escopo.",
+    "Overrides do botão de seta isolado ainda são recusados no pipeline GTK2 atual; novo módulo só está em prova isolada."
+  ],
+  "coverage": {
+    "integrated": 13,
+    "catalog": 16,
+    "percentage": 81.25
+  }
+}

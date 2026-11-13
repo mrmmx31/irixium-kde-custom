@@ -1,0 +1,76 @@
+{
+  "item": "P06",
+  "user_revision": 1,
+  "definition_sha256": "c2790a68f146b1c11ebaf7115d24427a8d1013410d24c3526bd8d95f559375b5",
+  "checked_at": "2026-10-14T05:15:00Z",
+  "scope": "Pager: desktop UUID identity, count/names/navigation and geometric native-window activation in private KWin/X11. Pager light criterion explicitly depends on P08 and is not closed here.",
+  "source_sha256": {
+    "DomainOSPager.qml": "b66c6effa82fbfcea08b0fe1bf2de4ec2d04a2a81451089532a04db26078a8a4",
+    "DomainOSDesktopTile.qml": "82b64601271d6ba8c4f3f25fa88f0b88b112de60bff0e812e5f93f0f5cbf7691",
+    "PanelButton.qml": "ed09537dbeadd7c891550ef5fb93d2e2ec505b26ed025507f1d614ac6177c09e",
+    "DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6c8c338ff2bd322d07630389a"
+  },
+  "tests": {
+    "full_pager": "python3 -B plasma/tools/testar-domainos-pager.py --saida /tmp/domainos-p06-20261014-full",
+    "focused_names_count": "python3 -B plasma/tools/testar-domainos-pager.py --crud-dialogs-only --saida /tmp/domainos-p06-20261014-crud2",
+    "native_geometry": "python3 -B plasma/tools/testar-domainos-pager-janelas.py --backend x11 --saida /tmp/domainos-p06-20261014-windows",
+    "results": {
+      "full": {
+        "status": "failed",
+        "checks": 90,
+        "passed": 87,
+        "failures": [
+          "NameDialog_full_popup_height_unclipped_by_109px_host",
+          "native_test_completed",
+          "native_worker_exited_successfully"
+        ]
+      },
+      "crud": {
+        "status": "passed",
+        "checks": 93,
+        "passed": 93,
+        "failures": []
+      },
+      "windows": {
+        "status": "passed",
+        "checks": 41,
+        "passed": 41,
+        "failures": []
+      }
+    }
+  },
+  "failure_detail": {
+    "check": "NameDialog_full_popup_height_unclipped_by_109px_host",
+    "observed": "popup window 82 px; implicit height 82.8 px; host 109 px",
+    "interpretation": "0.8 px fractional rounding/size discrepancy in the optional short-host stress check; normal CRUD tests all passed. No source change or layout adjustment made.",
+    "cascades": [
+      "native_test_completed",
+      "native_worker_exited_successfully"
+    ]
+  },
+  "private_artifacts": "/home/lsi/tempia/board/domainos-p06-20261014",
+  "artifact_sha256": {
+    "crud-NATIVO.json": "b3048f22fb5791e9e663476ba22ce500126ed657a8bfe56b3f65a6e3254ceedb",
+    "crud-RESULTADO.json": "6f429911cab07c8b113e50eaebbf14054a95e1b52f6c0f96a229de28e23ff9fd",
+    "crud-native-test.log": "cdd8fb694f6ce993b008aae1764c3c324989f2e2658bd40858535a4ff17c5be6",
+    "full-FOUR-DESKTOPS.png": "64c7a9804cd785559991b48cb398800da7a22ad7b321a998401ec21cf136b425",
+    "full-NATIVE-WINDOW-GEOMETRY.png": "7d87d8271acc990799708009c5248ed5abeaca7a94c445595fd020de2b0979ea",
+    "full-NATIVO.json": "e72e92aa1cf967badd24c3f6b102078b96cf6a3d2fda4e5efa70daab2171f443",
+    "full-ONE-DESKTOP.png": "1a30a9cfcf50d0743c251cb13bc679ae87facb6cc812e3e4c08b7c99c77c07fc",
+    "full-PRESSED-UNSELECTED.png": "ca5d064ab1f98d8ac296fdaca5f1b151ca7c4323af8bd2a9b22dce4cb9838c9f",
+    "full-RESULTADO.json": "5be5a66f25169e36b839450f56349f86c5a4fa78b56241772701d5daece2d215",
+    "full-RETURN-TO-ONE.png": "1a30a9cfcf50d0743c251cb13bc679ae87facb6cc812e3e4c08b7c99c77c07fc",
+    "full-SELECTED-BETA.png": "2f086d740b75e92428ed1cc6828743fbf01ca37e1d637a4e6d2ba2815c9f36ef",
+    "full-SHORT-HOST-ContextMenu.png": "877e6dd1e43a9b78dd8d4f60f3d5e6c187d15a70a1940088c655856b9a1f59c9",
+    "full-TWO-DESKTOPS.png": "e031e89c3ef2721c5417cb9b96658944999a2b8d8d6027747b96cb1f4f5ad087",
+    "full-native-test.log": "02bbbf9025539e147c936b3e50cab7798da1e2e510382cd0530b8863207d8575",
+    "windows-GEOMETRIC-ACTIVATION.png": "1631ff11d915f4c77421b49cd45f7b76e30a5f0ab2f85ae0ce12f50de5b5e1e4",
+    "windows-NATIVO.json": "ed11d391c1373326b1f9934e2bc1bf4040bf2416f1cf1319e7ea6d901172e41c",
+    "windows-RESULTADO.json": "91b98ccde2454de84efc6107e572f92e6babb77c7de61f1573de0d19a6cbcab2"
+  },
+  "limits": [
+    "X11 private KWin only; no claim of Wayland verification.",
+    "No manual review or approval inferred.",
+    "P08 remains required before finalizing the Pager light criterion."
+  ]
+}

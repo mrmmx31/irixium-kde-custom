@@ -1,0 +1,49 @@
+{
+  "id": "T07-GTK4-1024X768-20261018-R1",
+  "task": "T07",
+  "date_local": "2026-10-18T12:05:00-04:00",
+  "scope": "Full native GTK4 gallery hint matrix in existing Xephyr :76 at 1024x768, current workspace sources; no historical pixel comparison or palette matrix.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "geometry": [1024, 768],
+    "theme": "Default",
+    "font": "Sans 10"
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79",
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "cb65b09c02a2cfa83f5380c2727a3428755aabdb35e00620051a812938e108cc"
+  },
+  "matrix": {
+    "mapped": 31,
+    "passed": 29,
+    "failed": 2,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "remaining_tips_inside_screen": true,
+    "remaining_tips_avoid_hover_point": true,
+    "scrollbar_clicks_with_hint_open": 2,
+    "popover_cleanup": "both tooltip controllers restored native state; temporary anchors removed"
+  },
+  "failures": [
+    {
+      "control": "GtkEntry",
+      "tooltip": "Leitura ou inativo: edição bloqueada.",
+      "tip_rect_px": [788, 270, 254, 33],
+      "overflow_right_px": 18
+    },
+    {
+      "control": "GtkScale",
+      "tooltip": "Escala da amostra, sem unidade: intervalo 0 a 100, passo 1. O progresso é uma amostra independente.",
+      "tip_rect_px": [633, 381, 407, 51],
+      "overflow_right_px": 16
+    }
+  ],
+  "limits": [
+    "The harness returned partial with two measured overflow cases; it did not claim success for the full matrix.",
+    "The X screen was restored to 1280x800 after this probe.",
+    "Dbus accessibility emitted an inotify/Too many open files warning; the native GTK probe still completed and produced the matrix."
+  ],
+  "next": "Apply a GTK4 theme-native delayed hint placement for the two controls and rerun the 1024x768 matrix."
+}

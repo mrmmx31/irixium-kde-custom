@@ -1,0 +1,95 @@
+{
+  "id": "R216",
+  "item": "I167",
+  "title": "Botão pressionado comparado ao GTK2",
+  "status": "technical comparison complete; human review pending",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "toolkit": "GTK 2.24.33",
+    "control": "GtkButton normal, pressed, released; focus outline and pixel geometry",
+    "environment": "private Xvfb; no installed profile, XChat, or VM input in this turn"
+  },
+  "evidence": {
+    "reference": {
+      "description": "SR10.4 VUE Find Files Reset button capture preserved from R215",
+      "file": "~/tempia/ia-tema/evidence/I167/i167-vue-before-button-press-r216.png",
+      "sha256": "cfca4afcdf221f3c50ed4119b398577c8e763e2382bff1659bcb7bdd7a5cee71",
+      "crop_px": [
+        84,
+        44
+      ]
+    },
+    "gtk2_probe": {
+      "file": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/probe.py",
+      "sha256": "22a786c1265529562a0e4f254be47b6a0ba3ea387a8a5349242cded18947cb2b",
+      "result_file": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/result.json",
+      "sha256_result": "5e40e20be5921bb41dd61f7dce11f2a054912213f727b29e13e0ef806157c263",
+      "gtk_version": "2.24.33",
+      "input": "xdotool mouse down/up through GDK; click emitted once on release",
+      "allocation_px": [
+        86,
+        46
+      ]
+    },
+    "captures": {
+      "gtk2-before.png": {
+        "file": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/gtk2-before.png",
+        "sha256": "3611a8e3b0202d30883809ce67d2a702a0cd2409fb6f5891f1dd08e65cbd802d"
+      },
+      "gtk2-pressed.png": {
+        "file": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/gtk2-pressed.png",
+        "sha256": "8984ec487ecdfe2b3b826be0074c3c30435b01f86c8b664f7e378a2bc9a2d917"
+      },
+      "gtk2-released.png": {
+        "file": "~/tempia/ia-tema/evidence/I167/r216-gtk2-native-pressed/gtk2-released.png",
+        "sha256": "3611a8e3b0202d30883809ce67d2a702a0cd2409fb6f5891f1dd08e65cbd802d"
+      }
+    },
+    "comparison": {
+      "crop_px": [
+        84,
+        44
+      ],
+      "focus_outline_matching": 496,
+      "focus_outline_mismatch": 0,
+      "body_px": [
+        76,
+        36
+      ],
+      "body_mismatch_outside_label": 0,
+      "normal_to_released_pixel_difference": 0,
+      "expected_press_delta_pixels": 1483,
+      "actual_press_delta_pixels": 1606,
+      "unexpected_press_delta_inside_antialiased_label": 123,
+      "whole_crop_mismatch_excluding_label_mask_before_and_pressed": 464,
+      "residual_location": "The 464 mismatches outside the label mask are parent-painted 2px padding around the pixmap body, not missing or incorrect button relief. The VUE crop paints this margin #3297c7 (Header face); the GTK2 fixture inherits #78a0d5 from its surrounding window/background. The button has no paint operation in this margin; R221 classifies this context difference."
+    },
+    "product_source": [
+      {
+        "file": "tools/theme-lab/gtk2_buttons.py",
+        "sha256": "a4ca3f18a33e7556051842b845b1cbf454003a09c67b225610a86d02fd3b6ab2"
+      },
+      {
+        "file": "tools/theme-lab/tests/test_gtk2_buttons.py",
+        "sha256": "f191e0c7d440569ee11bdefc515cada4c36e83a4b73feed48d00f5fced42880a"
+      }
+    ]
+  },
+  "conclusion": "The GTK2 button reproduces the measured VUE focus outline and the full 76x36 pixmap body outside the text mask. Its pressed top band and face transition match the reference; release restores the original capture exactly and emits one click. The 123 extra state-delta pixels are confined to GTK2 text antialiasing. The 464 whole-crop mismatches are the parent-painted 2px padding region: VUE uses #3297c7 while the GTK fixture uses #78a0d5. They are context colors outside the button paint area, not a button relief defect. No historical RGB was introduced into product source.",
+  "validation": {
+    "command": "python3 -B tools/theme-lab/tests/test_gtk2_buttons.py && git diff --check -- tools/theme-lab/gtk2_buttons.py tools/theme-lab/tests/test_gtk2_buttons.py",
+    "result": "3 tests passed; diff check passed",
+    "not_claimed": [
+      "human visual acceptance",
+      "installed theme or XChat validation",
+      "SDL pointer capture on MAME window activation",
+      "other GTK2 button states or controls"
+    ]
+  },
+  "next": "Continue only I167/GTK2 with the next not-yet-compared native control/state. Human review of the visual button adaptation remains pending.",
+  "board_registration": {
+    "code_changes": "recorded for I167 revision 2 with the current definition hash; exact two-file before/after comparison verified by changes-comparison",
+    "scripts": "the original 62 entries were restored from board revision history and preserved; two R216 scripts added; total 64/64; readback verified",
+    "assistant_reply": "updated in separate field; assistant status remains running, user revision 2 and authorization unchanged"
+  }
+}

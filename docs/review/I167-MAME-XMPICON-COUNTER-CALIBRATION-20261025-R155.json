@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XMPICON-COUNTER-CALIBRATION-20261025-R155",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone, Apollo DN3500, Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "guest_screen": "HP VUE and File Manager visible; bin icon unselected",
+    "host_pointer": "x=200,y=950, outside MAME; focus PID=274368",
+    "mouse_hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "paused": false,
+    "counter_baseline": {"x": 3, "y": 106}
+  },
+  "tests": [
+    {
+      "method": "one-frame direct counter override, x +1",
+      "result": "Cursor moved one pixel right in the frame capture; override cleared cleanly and baseline counters returned to x=3,y=106.",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-xmpicon-counter-frame-r155.png",
+      "sha256": "2e7fb391a71acb8277efebfcdedd6532e94b3c049503f35851400ed44589eb8a"
+    },
+    {
+      "method": "bounded helper movement, dx=-3, 100 steps, interval 2 frames",
+      "result": "Native pointer moved about 157 pixels left while the override was active; helper completed and cleared its fields without error.",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-bin-approach-r156.png",
+      "sha256": "6299a0be2958f8bce0f7508a27a3c03873adcc9c05c061e41ab86764cbe7364f"
+    },
+    {
+      "method": "second bounded movement in a separate operation, dx=-3, 100 steps, interval 10 frames",
+      "result": "The cursor returned near the original host-accumulator reference instead of continuing the prior displacement; separate cleared batches are not cumulative.",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-bin-approach-2-r156.png",
+      "sha256": "88fb4f78cb1b276356b6c23624048ddf06a566c1c10996e8e2d8802cbbae9087"
+    }
+  ],
+  "cleanup": {
+    "owned_operation_done": true,
+    "operation_error": null,
+    "cleanup_error": null,
+    "counter_overrides_cleared": true,
+    "mouse_hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "host_pointer": "x=200,y=950, outside MAME",
+    "guest_file_or_configuration_changed": false,
+    "original_vm_changed": false
+  },
+  "conclusion": "Single counter movement is observable without capturing the host pointer. The helper's bounded, separately cleared operations do not accumulate toward an XmpIcon target, so this route did not produce a selection/focus comparison. No guest item was clicked or opened.",
+  "next": "Use a deliberate, bounded pointer-capture interval for the XmpIcon visual test only after clarifying the reported screen-activation trigger; release with AltGr and verify the host pointer is outside afterward.",
+  "status": "counter_calibration_partial_icon_selection_pending"
+}

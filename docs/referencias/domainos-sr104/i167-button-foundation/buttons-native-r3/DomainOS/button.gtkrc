@@ -1,0 +1,51 @@
+# Private GTK2 button proposal; RGB resolved from verified KDE roles.
+style "theme-lab-gtk2-push" {
+  xthickness = 2
+  ythickness = 2
+  GtkButton::inner-border = { 4, 4, 4, 4 }
+  font_name = "13px"
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+  engine "pixmap" {
+    image { function = BOX detail = "button" state = NORMAL file = "push-normal.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT file = "push-normal.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE file = "push-pressed.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED file = "push-normal.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE file = "push-disabled.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+  }
+}
+style "theme-lab-gtk2-push-backdrop" {
+  xthickness = 2
+  ythickness = 2
+  GtkButton::inner-border = { 4, 4, 4, 4 }
+  font_name = "13px"
+  bg[NORMAL] = "#78a0d5"
+  fg[NORMAL] = "#ffffff"
+  bg[PRELIGHT] = "#78a0d5"
+  fg[PRELIGHT] = "#ffffff"
+  bg[ACTIVE] = "#78a0d5"
+  fg[ACTIVE] = "#ffffff"
+  bg[SELECTED] = "#78a0d5"
+  fg[SELECTED] = "#ffffff"
+  bg[INSENSITIVE] = "#6d99d0"
+  fg[INSENSITIVE] = "#a7c2e4"
+  engine "pixmap" {
+    image { function = BOX detail = "button" state = NORMAL file = "push-backdrop.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = PRELIGHT file = "push-backdrop.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = ACTIVE file = "push-backdrop.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = SELECTED file = "push-backdrop.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+    image { function = BOX detail = "button" state = INSENSITIVE file = "push-disabled.png" border = { 2, 2, 2, 2 } stretch = TRUE }
+  }
+}
+widget "*themeLabPush" style : highest "theme-lab-gtk2-push"
+widget "*themeLabPush.*" style : highest "theme-lab-gtk2-push"
+widget "*themeLabBackdropPush" style : highest "theme-lab-gtk2-push-backdrop"
+widget "*themeLabBackdropPush.*" style : highest "theme-lab-gtk2-push-backdrop"

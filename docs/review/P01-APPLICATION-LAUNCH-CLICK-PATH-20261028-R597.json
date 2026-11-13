@@ -1,0 +1,39 @@
+{
+  "id": "R597",
+  "date_utc": "2026-10-28T17:58:11Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "scope": "Static audit of application activation and double-click handling in the panel's Applications menu.",
+  "evidence": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "findings": [
+        "The integrated menu uses onClicked for app rows, pins, and favorites; leaf activation calls Kicker model.trigger through dispatchNative().",
+        "The panel code contains no onDoubleClicked handler for these application entries.",
+        "dispatchNative records that native dispatch returned; it does not observe whether the launched application accepted or completed its request."
+      ]
+    },
+    {
+      "file": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListDelegate.qml",
+      "findings": [
+        "The stock KDE menu triggers a leaf application from MouseArea.onReleased once for each completed press/release and closes the menu.",
+        "Keyboard activation triggers the model once for Return/Enter and closes the menu.",
+        "No onDoubleClicked handler is present in this delegate."
+      ]
+    }
+  ],
+  "interpretation": "The reviewed paths do not implement a special double-click launch action. A double click can still produce ordinary repeated click sequences, and this static audit cannot explain the reported application stall or Plasma restart.",
+  "validation": {
+    "source_reviewed": true,
+    "applications_relaunched": false,
+    "double_click_reproduced": false,
+    "plasma_restarted": false,
+    "runtime_cause_confirmed": false
+  },
+  "next": [
+    "Use Q510's answer to identify the app and exact click/retry sequence before reproducing the launch issue.",
+    "Validate R596 search typing and hover behavior only after a safe user-coordinated Plasma reload."
+  ]
+}

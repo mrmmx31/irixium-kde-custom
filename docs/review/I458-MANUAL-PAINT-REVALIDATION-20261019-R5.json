@@ -1,0 +1,82 @@
+{
+  "id": "I458-MANUAL-PAINT-REVALIDATION-20261019-R5",
+  "board_item": "I458",
+  "user_revision": 1,
+  "date": "2026-10-19",
+  "scope": "Current Theme Lab build, model test, and private Xephyr interaction check of the Motif pilot; no user visual acceptance or completion claim.",
+  "checks": {
+    "full_application_build": {
+      "command": "TMPDIR=$HOME/tempia make -C tools/theme-lab BUILD=$HOME/tempia/i458-build $HOME/tempia/i458-build/theme-lab",
+      "result": "pass; target is up to date after successful compile using TMPDIR under ~/tempia",
+      "binary_sha256": "13c3f9b3e7072d8eabc71cee3295c3a5fec38cf775dd878f93dd446a9c3aa89f"
+    },
+    "current_model_test": {
+      "command": "TMPDIR=$HOME/tempia make -B -C tools/theme-lab BUILD=$HOME/tempia/i458-build check-manual-paint-model",
+      "result": "pass: contexts, draw/fill, undo/redo, resize, project save/resume",
+      "exit_code": 0
+    },
+    "scoped_source_record": {
+      "status": "attached_partial_verified",
+      "base_ref": "git:9a67cc83d763e1e5a910a891dbfc77979fc562d8",
+      "file_count": 5,
+      "paths": [
+        "tools/theme-lab/include/manual_paint.h",
+        "tools/theme-lab/include/manual_paint_view.h",
+        "tools/theme-lab/src/paint/model.c",
+        "tools/theme-lab/src/view/manual_paint_view.c",
+        "tools/theme-lab/tests/manual_paint_model_test.c"
+      ],
+      "request": "~/tempia/board/diff-records/record-75yj2_fw/request.json",
+      "request_sha256": "13703bd990f6af15ae168ead3cf4229271aaf9b009e87f215a6bc9addaf2472c",
+      "patch_sha256": "812d3474b9297ebf23d938fcda1410ae644b398ef0ee7107fcd9f8cf4932e14f",
+      "excluded": "Mixed tracked integration in view.c/Makefile and documentation; this partial record does not close I458.",
+      "comparison": "Board CLI changes-comparison reports content_verified=true for all five files; changes-diff hash matches patch SHA-256."
+    },
+    "private_xephyr_ui": {
+      "display": ":81",
+      "xephyr_pid": 3835498,
+      "resolution": "1600x1000",
+      "theme_lab_pid": 3840377,
+      "title": "PARA LSI — I458: revisão da ferramenta | Xephyr :81",
+      "isolated_work_directory": "~/tempia/i458-revalidation-r5-20261019/work",
+      "checks": {
+        "native_context_selection": "Selecting Botão alternável / Hover updated labels, Motif dimensions to 56x21, and native sample dimensions to 64x29; selection of Caixa de seleção updated them to 61x25 and 69x33.",
+        "scale_and_separation": "Manual layer remained 96x32 art pixels at 1:1; Motif/native samples and the raster layer were separate, and the recipe panel reported no verified theme recipe.",
+        "undo_redo": "A drawn pixel disappeared after Undo (16 changed display pixels in a 4x crop) and Redo restored the exact crop (AE=0).",
+        "context_persistence": "Switching away from and back to Botão alternável / Hover restored the exact raster crop (AE=0).",
+        "close_reopen_persistence": "Exited the private app cleanly, reopened it on the same isolated work directory, reselected Botão alternável / Hover, and the raster crop matched exactly (AE=0)."
+      },
+      "manual_paint_file": {
+        "path": "~/tempia/i458-revalidation-r5-20261019/work/manual-paint.json",
+        "mode": "0600",
+        "sha256": "1114908631a36f838f020f46200301bd93227e554d032a4ea3eec400cfae7862"
+      },
+      "current_capture": "~/tempia/i458-revalidation-r5-20261019/manual-paint-reopened-context.png",
+      "current_capture_sha256": "14cdcf966ddd21fcb22676351e1297e215b3e7add49daf46ea43408c22c77c52",
+      "additional_captures": {
+        "manual-paint-current.png": "349c851e210585ff59e547534b13eff6a463deea83826adeb24edf880d2c63c8",
+        "control-selected.png": "f8ca4e0d20e8b3c08dd1cf0c44ac713b3e74e49b3a08a303c582723c8e14bee4",
+        "manual-paint-drawn.png": "741c80c13bc234b0d8b9df783ff058192df06609dcdb812d617cab3e921f0736",
+        "manual-paint-undo-zoom.png": "41a16e7e7497cfc14b01a2fb3dbb983f9da2614a43a539356cd0eca146b50737",
+        "manual-paint-redo-zoom.png": "e936f829066eb174cd0692d02238aff36feb1093acc3bfc3208f9861ced215a9",
+        "control-checkbox.png": "d1863bcd440bcdbe254a11c4a33ea1bdf73db21555934383becf5bfab85d9505"
+      }
+    }
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/view/manual_paint_view.c": "6eeab68f01af10812c90440ad9ffd2120aad39e9736c4b94bc6e7c32aff39ed2",
+    "tools/theme-lab/src/paint/model.c": "cdb6357a41b621aac6dd911933f35802b60447fd1f8a92fc376109de01598dec"
+  },
+  "artifact_cleanup": {
+    "date": "2026-10-19",
+    "removed": "17 raw XWD intermediates (about 90.2 MiB) from the R5 capture directory after confirming all seven PNGs referenced by this record still match their SHA-256 values.",
+    "preserved": "PNG evidence, the active Xephyr :81 session, its isolated work directory and journal, the build, authorization/reply drafts, and all unclassified ~/tempia content."
+  },
+  "limits": [
+    "This is technical visual inspection by the assistant in an isolated Xephyr, not user acceptance.",
+    "The manual bitmap is deliberately separate from native GTK/Qt/Plasma rendering and has no verified theme-code export.",
+    "No user visual acceptance is inferred; I458 remains running.",
+    "Integration in view.c/Makefile and documentation remains outside the partial record because the tracked files contain unrelated changes. I458 remains running."
+  ],
+  "next": "Continue with another authorized Fila Atual demand while preserving the verified partial record; isolate the shared integration before any I458 completion."
+}

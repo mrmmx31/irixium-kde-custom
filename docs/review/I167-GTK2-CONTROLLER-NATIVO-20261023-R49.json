@@ -1,0 +1,44 @@
+{
+  "id": "I167",
+  "receipt": "R49",
+  "date": "2026-10-23",
+  "checked_at_utc": "2026-10-23T02:47:15Z",
+  "family": "GTK2 public Theme Lab route: Motif controller, coupled preview and detached preview",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true,
+    "section": "work"
+  },
+  "change": {
+    "summary": "No source change in R49. Recorded an integration validation of the current central C99/Motif controller path for the exercised GTK2 push/range scene.",
+    "tested_source_sha256": {
+      "tools/theme-lab/src/controller.c": "bd4854cd03c4adb93889903bbc61d344034183a5101a6bb32410aec3d928a38f",
+      "tools/theme-lab/src/view.c": "53d2e161059c54a5dab18c444af903d24dfc01ea0540ebfd9754f5f949f9adb5",
+      "tools/theme-lab/native_scene_gtk2.py": "c245c4797937ff8743ec9a7cde4f1f8b95c14723a53ec0eafd70f1c3df0ff6fe",
+      "tools/theme-lab/preview_gtk2.py": "39f13f1d3fc38aa4da8dc9a887aeffb97f9f6530f554733ca7f8540597cff6d3",
+      "tools/theme-lab/build/controller-spin-probe": "9b5c1f2b4b1d4d197d05f395b685cf2a2273d9a8ca65fd999e344a97a5233b5b"
+    },
+    "harness_output": "~/tempia/theme-lab-spin-87xz11si"
+  },
+  "validation": {
+    "status": "passed",
+    "scope": "Real Motif controller -> private GTK2 button/range generation and both previews",
+    "checks": [
+      "Native GTK2 scene rendered in coupled and detached previews.",
+      "Apply changed the scene from 180x50 to 280x60 in both previews.",
+      "GTK3 recipe remained unchanged.",
+      "Turning detached preview off closed it while coupled preview remained.",
+      "Metrics from a closed preview origin were rejected; valid IPC was accepted and correlated.",
+      "Detached preview reopened successfully."
+    ],
+    "environment": "Private Xvfb and bwrap; personal desktop/profile untouched. Internal private Xvfb attempt was inaccessible to the harness; rerunning under an owned Xvfb passed.",
+    "result_file": "~/tempia/theme-lab-spin-87xz11si/RESULTADO.json"
+  },
+  "limits": [
+    "This proves the central controller route only for the exercised GTK2 push/range scene and geometry lifecycle, not every control.",
+    "Does not prove visual equivalence to Domain/OS SR10.4 or HP VUE 2.01.",
+    "Does not validate the user profile, XChat, or GTK2 session installation."
+  ],
+  "next": "Continue I167 GTK2 family audit; resolve remaining theme-controlled gaps and historical comparisons, then apply the completed GTK2 theme to the user session and XChat."
+}

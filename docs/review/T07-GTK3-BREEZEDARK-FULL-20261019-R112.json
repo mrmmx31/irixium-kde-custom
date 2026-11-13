@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK3-BREEZEDARK-FULL-20261019-R112",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped",
+  "recorded_at": "2026-10-19T05:15:45Z",
+  "purpose": "Combinar a matriz de hover da cena GTK3 com o esquema BreezeDark exportado pelo GtkConfig, usando a árvore de tema DomainOS realmente selecionada pelo GTK.",
+  "runtime": {
+    "gtk": "3.24.49",
+    "display": ":83 Xephyr mantida aberta",
+    "resolution_px": [
+      1280,
+      800
+    ],
+    "window_manager": "Openbox privado da sessão T07",
+    "gtk_theme_name": "DomainOS-SR10-4-KDE-Reload, confirmado por gtk-query-settings sem GTK_THEME override",
+    "palette": "BreezeDark exportado por org.kde.GtkConfig em R91; SHA-256 84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+    "tooltip_roles": {
+      "background": "#292c30",
+      "text": "#fcfcfc"
+    },
+    "profile": "HOME/XDG descartáveis em ~/tempia; apenas XSettings da Xephyr :83 foi substituído durante a rodada e restaurado para Adwaita ao final"
+  },
+  "method": "Probe nativo GTK3 da NativeScene para 16 tipos; xdotool posicionou o ponteiro, aguardou o timeout GTK, verificou estabilidade 400 ms, limites, não sobreposição e fechamento ao sair; captura da tela comparada aos papéis Tooltip exportados.",
+  "result": {
+    "passed": 16,
+    "failed": 0,
+    "controls": [
+      {
+        "control": "arrow",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          116,
+          380,
+          530,
+          69
+        ],
+        "tooltip_background_pixels": 27017,
+        "tooltip_text_pixels": 244
+      },
+      {
+        "control": "check",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          97,
+          380,
+          567,
+          69
+        ],
+        "tooltip_background_pixels": 29962,
+        "tooltip_text_pixels": 255
+      },
+      {
+        "control": "combo",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          98,
+          380,
+          565,
+          69
+        ],
+        "tooltip_background_pixels": 30304,
+        "tooltip_text_pixels": 199
+      },
+      {
+        "control": "entry",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          130,
+          380,
+          544,
+          69
+        ],
+        "tooltip_background_pixels": 27923,
+        "tooltip_text_pixels": 289
+      },
+      {
+        "control": "frame",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          95,
+          380,
+          572,
+          69
+        ],
+        "tooltip_background_pixels": 29645,
+        "tooltip_text_pixels": 268
+      },
+      {
+        "control": "list",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          103,
+          392,
+          555,
+          69
+        ],
+        "tooltip_background_pixels": 28567,
+        "tooltip_text_pixels": 259
+      },
+      {
+        "control": "progress",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          115,
+          381,
+          566,
+          69
+        ],
+        "tooltip_background_pixels": 28936,
+        "tooltip_text_pixels": 276
+      },
+      {
+        "control": "push",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          97,
+          380,
+          567,
+          69
+        ],
+        "tooltip_background_pixels": 29966,
+        "tooltip_text_pixels": 238
+      },
+      {
+        "control": "radio",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          113,
+          380,
+          535,
+          69
+        ],
+        "tooltip_background_pixels": 27637,
+        "tooltip_text_pixels": 232
+      },
+      {
+        "control": "scale_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          113,
+          391,
+          535,
+          69
+        ],
+        "tooltip_background_pixels": 27797,
+        "tooltip_text_pixels": 241
+      },
+      {
+        "control": "scale_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          113,
+          383,
+          535,
+          69
+        ],
+        "tooltip_background_pixels": 27893,
+        "tooltip_text_pixels": 221
+      },
+      {
+        "control": "scroll_h",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          95,
+          380,
+          571,
+          69
+        ],
+        "tooltip_background_pixels": 29167,
+        "tooltip_text_pixels": 293
+      },
+      {
+        "control": "scroll_v",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          99,
+          392,
+          564,
+          69
+        ],
+        "tooltip_background_pixels": 28808,
+        "tooltip_text_pixels": 273
+      },
+      {
+        "control": "spin",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          96,
+          382,
+          569,
+          69
+        ],
+        "tooltip_background_pixels": 29287,
+        "tooltip_text_pixels": 261
+      },
+      {
+        "control": "text",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          99,
+          392,
+          563,
+          69
+        ],
+        "tooltip_background_pixels": 29008,
+        "tooltip_text_pixels": 268
+      },
+      {
+        "control": "toggle",
+        "status": "passed",
+        "native_delay_ms": 500,
+        "overlap_pixels": 0,
+        "tooltip_rect": [
+          97,
+          380,
+          567,
+          69
+        ],
+        "tooltip_background_pixels": 30043,
+        "tooltip_text_pixels": 251
+      }
+    ]
+  },
+  "artifacts": [
+    "~/tempia/t07-gtk3-breezedark-full-r112-20261019/verified/RESULTADO.json",
+    "~/tempia/t07-gtk3-breezedark-full-r112-20261019/verified/captures/ (16 PNGs)",
+    "~/tempia/t07-gtk3-breezedark-full-r112-20261019/run_verified_matrix.py",
+    "~/tempia/t07-gtk3-breezedark-full-r112-20261019/run_with_private_xsettings.py"
+  ],
+  "source_sha256": {
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "9692eef594a7d774613de5e7f746c46afa4798006d6c3617a98d7fcaa9c82070",
+    "verified_matrix_runner": "8facc559eb90c4bce850555169e782194da5673eb0882e488076180eebbecc56",
+    "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css": "b638e00c58fc33cb53abd8221f405e885d84ca2187370420bf35b91cac540136",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-3.0/gtk.css": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+    "actual_GtkConfig_BreezeDark_colors.css": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+    "verified_RESULTADO.json": "71391b1896e178ade332e1c0eaf961f30e59e3d41971b3a9dfdbf8efb05630b8"
+  },
+  "diagnostics": [
+    "A primeira execução geométrica leu Adwaita em XSettings; embora a geometria passasse, foi excluída como prova de aplicação do tema. A rodada válida reconfigurou somente o serviço XSettings privado da Xephyr :83, confirmou o nome DomainOS no GTK antes dos testes e restaurou Adwaita em seguida.",
+    "gtk-query-settings gerou apenas aviso de D-Bus de acessibilidade ausente, sem afetar o teste."
+  ],
+  "limits": [
+    "Uma cena/layout e uma posição de controle em 1280×800; R103 cobre os quatro cantos em duas resoluções.",
+    "Um esquema alternativo BreezeDark; R85/R92 fornecem evidência separada de outros esquemas, mas não uma matriz completa combinada.",
+    "Não compara fidelidade histórica com pixels da VM nem substitui avaliação humana; não altera configuração GTK/KDE pessoal."
+  ],
+  "conclusion": "Os 16 tipos de controle da cena GTK3 produziram dicas após 500 ms usando o tema DomainOS realmente selecionado e os papéis Tooltip exportados de BreezeDark. Todas ficaram na tela, sem cobrir o controle, estáveis por 400 ms e fecharam ao sair. T07 permanece em andamento."
+}

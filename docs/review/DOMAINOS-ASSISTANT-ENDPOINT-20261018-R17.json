@@ -1,0 +1,42 @@
+{
+  "date_local": "2026-10-18T08:20:31-04:00",
+  "revision": "R17",
+  "purpose": "Give the assistant's Domain/OS SR10.4 clone a clearly distinct FTP/Telnet endpoint",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1354178,
+  "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "network_namespace": "net:[4026533817]",
+  "endpoint": {
+    "address": "10.104.10.104",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2 (private to this clone namespace)"
+  },
+  "retired_endpoint": {
+    "address": "10.104.10.4",
+    "status": "alias removed and listeners stopped after new endpoint passed probes"
+  },
+  "validation": {
+    "new_alias_assigned_only_to_assistant_clone_namespace": true,
+    "ftp_listener": "10.104.10.104:21, socat PID 1705670",
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "telnet_listener": "10.104.10.104:23, socat PID 1705672",
+    "telnet_negotiation_hex": "fffd18",
+    "old_alias_and_listeners_absent": true,
+    "mame_profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false
+    },
+    "ftp_root_login": "230 User root logged in.",
+    "ftp_active_mode_listing_entries": 26
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "guest_network_configuration_modified": false,
+    "assistant_clone_disk_modified": false
+  },
+  "client_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+  "scope_note": "Only the clone private namespace alias and FTP/Telnet proxies changed. FTP banner, root login and active listing of 26 entries passed; Telnet negotiation passed. Guest remains 192.168.240.2 in that isolated namespace."
+}

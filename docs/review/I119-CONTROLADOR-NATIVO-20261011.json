@@ -1,0 +1,106 @@
+{
+  "at": "2026-10-11T06:46:43.687685+00:00",
+  "item": "I119",
+  "revision": 1,
+  "previous_goal_turn_classification": "progress: transactional session implemented and tested",
+  "phase": "native_validated_delivery_coordination",
+  "native_result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-jnl8tip5/RESULTADO.json",
+  "native": {
+    "status": "passed",
+    "scope": "Real Motif buttons/keyboard -> controller -> atomic project history -> re-open",
+    "undo_redo_numbers": true,
+    "checkpoint_restore_undoable": true,
+    "scene_unchanged_until_apply": true,
+    "independent_text_undo_redo": true,
+    "project_shortcuts": true,
+    "selective_piece_reset": true,
+    "recovered_history_cursor_point": true,
+    "live_conflict_preserves_proposal": true
+  },
+  "editor_result": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-omv5d0ca/RESULTADO.json",
+  "editor": {
+    "native_multistep_undo_redo": true,
+    "native_utf8_copy_cut_paste_selection": true,
+    "scheme_catalog_refresh_preserves_draft": true,
+    "model_save_after_native_edit": true,
+    "draft_and_history_checkpoint": true,
+    "implicit_history_recovers_latest_proposal_separate_from_text_undo": true,
+    "reopened_draft_and_undo_redo": true,
+    "numeric_native_select_undo_redo": true,
+    "native_keyboard_edit_menu_six_actions": true,
+    "numeric_home_end_preserve_value": true,
+    "control_switch_preserves_independent_undo": true,
+    "sample_recovery_keys_remain_independent": true,
+    "status": "passed",
+    "personal_profile_exposed": false
+  },
+  "launcher_tests": {
+    "log": "/tmp/i119-launcher-history.log",
+    "result": "9 passed",
+    "scope": "exact saved project/text journal/project history copy, no runtime outputs"
+  },
+  "build": "/tmp/i119-delivery-build-final.log",
+  "failures_preserved": [
+    {
+      "attempt": "r1",
+      "log": "/tmp/i119-history-native.log",
+      "issue": "Production captured each typed digit as a project change; fixed by 300ms grouping plus immediate explicit-action capture."
+    },
+    {
+      "attempt": "r2",
+      "log": "/tmp/i119-history-native-r2.log",
+      "issue": "Text editor consumed Ctrl+Alt+Z as Ctrl+Z; excluded Alt/Super from basic text shortcuts."
+    },
+    {
+      "attempt": "r3",
+      "log": "/tmp/i119-history-native-r3.log",
+      "issue": "Fixture requested glyph13 beyond reserved arrow; used valid glyph9 and optional-object parsing."
+    },
+    {
+      "attempt": "r4",
+      "log": "/tmp/i119-history-native-r4.log",
+      "issue": "Fixture expected empty part container omitted although canonical schema2 preserves it."
+    },
+    {
+      "attempt": "r5",
+      "log": "/tmp/i119-history-native-r5.log",
+      "issue": "Fixture waited for a new probe after Quit had exited; now waits for process termination."
+    },
+    {
+      "attempt": "r6",
+      "log": "/tmp/i119-history-native-r6.log",
+      "issue": "No-op read rewrote derived working.json/exported_at; production skips unchanged writes and tracks a failed derivative for retry."
+    },
+    {
+      "attempt": "editor r1",
+      "log": "/tmp/i119-editor-regression.log",
+      "issue": "Old fixture expected pre-autosave working notes; updated to latest valid proposal plus independent text journal and scene unchanged before Apply."
+    }
+  ],
+  "hashes": {
+    "tools/theme-lab/src/controller.c": "b9e788df0d1f3339d92a8e6d89b001c1d2a8e7aee4895ed7d24e5b3aa82d90c6",
+    "tools/theme-lab/src/controller/project_session.c": "ddb24d5cde4d2ec92de063e58f6c8d3baf5e0a9414d9251332e125a9321b31e8",
+    "tools/theme-lab/src/view/project_history_controls.c": "7edf913d65eb7e1f47f97e94f8fec3f9bff70cfb3cad56305cf86e17ee1933b3",
+    "tools/theme-lab/src/editor/view.c": "8f2c23f07edd7e799df0feb94fa9f750df38dfe1b389ed9f8ed0b883f2c6fc50",
+    "tools/theme-lab/src/view.c": "b9e41222fb7ae88db1c7fe6221711e7397ee526e5e4ca4c1fefd84f14ffc4ed4",
+    "tools/theme-lab/include/theme_lab.h": "f756a4f77df0523804c7a9058315625d0bb87ae917bdc79bf3c415e0413c08a5",
+    "tools/theme-lab/tests/test_controller_spin.py": "70dbbd8e4f44a49466e83f32cffd0b5b038c3d40bf24df530ff15f15e1212540",
+    "tools/theme-lab/tests/controller_spin_probe.c": "f46d9fac976423e763abf004b9aefd58592b68e723a27a54f130e0430c19e480",
+    "tools/theme-lab/Makefile": "e725c66e3ac35d1e25b4aaa4159e13614bacac6f9cd78cebd2543fbc6146f9a9",
+    "plasma/tools/abrir-laboratorio-temas.py": "19074628ad55a708be35aec0cf3cca9e7bbedb2061f7a94402514ddf0cafa9fb",
+    "plasma/tests/test_lab_resume.py": "c89ac4971ec389997cf57faf68b6c36afd850ca6822f5e83bfd3227c68403dc7",
+    "tools/theme-lab/build/theme-lab": "5ca23a05b18e6388f984a7af92e2695ed2f8717e63331085d25e4a46dbf9c3ee",
+    "tools/theme-lab/build/controller-spin-probe": "8c4eae5ce6da9fc142aeeae4fe1dd895900144aec8e60afdb50c84b37aa2db15"
+  },
+  "capture_inspected": "/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-jnl8tip5/last.png",
+  "capture_scope": "new buttons visible and explicit conflict notice; post-reopen GTK3 canvas not yet mapped in capture, so no readiness claim",
+  "source_after_probe": "Only trailing whitespace normalized in controller before final delivery build; behavioral code used in passing probe unchanged. Fixture editor assertions revised separately.",
+  "limits": [
+    "No physical power-loss test or directory fsync failure injection",
+    "Project shortcuts only main Motif widgets; native GTK and later dialogs use own keys",
+    "No personal delivery yet; old windows intact",
+    "128 snapshots/32MiB, local synchronous store bounded but slow-device responsiveness not certified"
+  ],
+  "scope_progress_percent": 90,
+  "next": "exact temporary theme-button grant and current-scope check, then open new instance retaining origin; never reuse I118 grant"
+}

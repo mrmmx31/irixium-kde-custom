@@ -1,0 +1,20 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T17:30:00Z",
+  "status": "already-applied; preview-available; user-reports-improvement",
+  "scope": "GTK3 ComboBox arrow only; confirm installation state and preserve user visual feedback.",
+  "evidence": {
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "installed_css_sha256_both_user_theme_locations": "67a8370a6933eb45426874665163bbcb751fde8e046897a38f41abf7a3ffe8c7",
+    "preview_pid": 209878,
+    "preview_alive": true,
+    "preview_script": "~/tempia/gtk3-combobox-active/gtk3-combobox-preview.py",
+    "previous_install_receipt": "I457 R6"
+  },
+  "user_feedback": "The GTK3 dropdown now looks better; user asked to apply the changes so they can evaluate behavior. Changes were already installed in R6 and the real GTK3 preview is still running.",
+  "limits": [
+    "This is not approval of historical fidelity; the SR10.4 guest must show its VUE controls for that comparison."
+  ],
+  "next": "Keep the GTK3 preview available. Continue with the next authorized queue item; revisit I457 historical comparison when the VM exposes VUE controls."
+}

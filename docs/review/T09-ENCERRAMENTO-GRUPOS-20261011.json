@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-11T14:34:02.405993+00:00",
+  "item": "T09",
+  "authority_revision": 1,
+  "phase": "private_shutdown_helper",
+  "change": "Bounded group shutdown for controller exit and lost X display, TERM 200ms then KILL while leaders remain unreaped; verify direct child and own group before signalling. Maximum reap poll 200ms. No broad process scan.",
+  "tests": {
+    "kernel_process_groups": "passed: resistant leader/descendant, already-exited unreaped leader, duplicate IDs, non-child and unrelated group rejected; independent child alive; own direct child reaped",
+    "strict_build": "all and controller-spin-probe passed",
+    "runtime_closure": 2,
+    "gtk3_recovery": "passed; run started during build, so not counted as dedicated proof of new shutdown path",
+    "scoped_diff_check": "passed tools/theme-lab; unrelated qtquick_demo whitespace remains outside this change"
+  },
+  "limits": [
+    "Native Quit and lost-display paths with a resistant preview not yet exercised",
+    "Active cancellation can still reap leader before descendant cleanup; next item",
+    "Descendants escaping their process group are not covered",
+    "No installation or personal window reopening"
+  ],
+  "estimated_stage_progress_percent": 65,
+  "basis": "Crash, monotonic timeout and stale-event identity completed; shutdown helper proved with real kernel groups. Native shutdown/cancellation and delivery remain. Not overall goal or visual fidelity.",
+  "sha256": {
+    "tools/theme-lab/src/controller.c": "694afba2a3e21ef9187d6d0aec7a10c8fe879668fafe4b1dd8710920b703e83f",
+    "tools/theme-lab/src/controller/owned_processes.c": "1077a1b16f1a1edc4555a6ad1f5498d346c3c0e87e1d3bbce52bff132beb2a34",
+    "tools/theme-lab/include/owned_processes.h": "230f25262b3b679d1f5b036c1914692b6f5ef5c826e03fdd1c87fa58f6eb1cb0",
+    "tools/theme-lab/tests/owned_processes_test.c": "fe979629e2c8d25428beaff80e6156740abbb7f188d98377581c2eeb6e9eecbe",
+    "tools/theme-lab/Makefile": "95949048b8a17ed20bfa6b2895b83c0f7502f39cca7b687bf9238fbf98b2e69e"
+  }
+}

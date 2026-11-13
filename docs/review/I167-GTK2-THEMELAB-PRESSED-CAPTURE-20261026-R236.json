@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-THEMELAB-PRESSED-CAPTURE-20261026-R236",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "native-gtk2-capture-path-corrected-and-verified",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "GTK2 scrollbar down-stepper preview capture in normal, pressed, and released states"
+  },
+  "implementation": {
+    "source": "tools/theme-lab/preview_gtk2.py",
+    "sha256": "d2d6ace06ef80a7e68e5585ea015e4d65ba4a84db701999f1cf88853d73ea8a3",
+    "change": "For GTK2 scrollbar paint samples, dispatch the native GDK button press/release to the actual stepper. A GtkRange ACTIVE state alone did not paint the pressed bevel. Release is performed in cleanup and the full preview surface is checked against its pre-press pixels.",
+    "other_states_and_toolkits_changed": false
+  },
+  "runtime": {
+    "toolkit": "GTK 2.24.33",
+    "display": ":60 private Xephyr",
+    "scene_sha256": "db52d03bef3e4cebbfefb86282925f535a580a1384dae3f839eaa8837b9125d9",
+    "gtkrc_sha256": "3568760454f6d3ca86e99fef560c01975627e9975ad20bdc1240561db60dbed9",
+    "session_capture": {
+      "path": "~/tempia/ia-tema/qa/theme-lab-current-r236.png",
+      "sha256": "58574996f14b43935a872baf3368ee5efcde6f250b49825f9340ff9350e9d8f7",
+      "visible": ["Theme Lab with GTK2 attached canvas", "native GTK2 preview window", "native GTK3 and GTK4 gallery windows"],
+      "scope": "Read-only screenshot of the existing private Xephyr desktop; no second session opened."
+    },
+    "scale": 1,
+    "widget_allocation_px": [15, 54],
+    "sampled_cell_px": [15, 15],
+    "samples": {
+      "normal": {
+        "path": "~/tempia/ia-tema/evidence/I167/i167-theme-lab-gtk2-normal-r236.png",
+        "sha256": "bec6026d20a5037c7f60d400e3b75391cb5b2333f280eb6ab2b802f8a1df7dd0"
+      },
+      "pressed": {
+        "path": "~/tempia/ia-tema/evidence/I167/i167-theme-lab-gtk2-pressed-r236.png",
+        "sha256": "23160c194d6594fb979fc828686ec5ebd32ad51c675a8a2aa4826bbe0c571b6a"
+      }
+    },
+    "pressed_event": {
+      "event_sequence": ["BUTTON_PRESS", "BUTTON_RELEASE"],
+      "position_px": [7, 46],
+      "press_handled": true,
+      "release_handled": true,
+      "released_full_surface_matches_before": true
+    }
+  },
+  "historical_reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "normal_cell_source": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "state_rule": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "state_rule_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "live_vm_snapshot": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-after-wake-r236.png",
+      "sha256": "8d3376bc42a66dd32a07e3e568060635b220a9a60803b9134223d07d8bf24c82",
+      "visible_content": "File Manager and Terminal; Trash Can is not open"
+    }
+  },
+  "validation": {
+    "python_compile": "passed",
+    "focused_tests": "15 passed: test_gtk2_preview_route.py, test_gtk2_arrow_integration.py, test_gtk2_arrow_paint.py",
+    "pixel_method": "Exact RGB comparison at 1:1, with no resizing, interpolation, or color normalization.",
+    "normal_vs_retained_vue_cell_differences": 0,
+    "pressed_vs_retained_vue_held_rule_differences": 0,
+    "normal_to_pressed_changed_pixels": 53,
+    "release_to_prepress_full_surface_changed_pixels": 0,
+    "result": "The current Theme Lab GTK2 capture path now represents the native held stepper state and releases it safely. The native GTK2 normal and pressed cells match the retained SR10.4 normal/held pixels for this down arrow."
+  },
+  "limits": [
+    "This verifies only the GTK2 vertical down stepper capture path; other GTK2 controls remain in the active I167 review.",
+    "The current live VUE screen does not show Trash Can. Historical state comparison uses the retained native capture/state record from the same approved SR10.4 reference.",
+    "This is technical pixel evidence, not user visual approval or completion of I167/T04.",
+    "The adjustment uses GTK2 native events and existing KDE role-derived colors; no static final color was added."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 78,
+    "basis": "Retained R233/R234 coverage remains the baseline; this closes a capture-path defect for an already measured GTK2 arrow state and does not complete another control family.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Continue only the authorized GTK2/I167 work after the user inspects the already-open private preview; leave other toolkit families untouched."
+}

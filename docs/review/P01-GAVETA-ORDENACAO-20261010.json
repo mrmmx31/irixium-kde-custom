@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-10T19:10:43.168180+00:00",
+  "stage": "P01 drawer favorite move buttons",
+  "status": "installed_and_reloaded_manual_assessment_pending",
+  "request_revision": 1,
+  "result_sha256": "d7d237edd56b898e4a432e3350b7e878da9b1b2c594320c9d7dc26de1c7c94e8",
+  "checks": 71,
+  "checks_passed": true,
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplicationMenu.qml": "aac426503e57bb2eac2e15a2b588b3ca82790c0731f5307559576763c8a41b03",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteOrdering.qml": "b3370148f1f8e79a6e534d7792e9bb9b4c5fbb4e44b091a4d9215da36f78ec78",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSFavoriteMoveButton.qml": "bfd59436a3641258dc09432e1e8dd48978462700d2b5129ffc2b51c24f61399c",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSButton.qml": "1f850382928fa535c83f7d7168d7cbcba088d97afc582933804a58663fec59de",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml": "1a61a20c2cc95327efb04c2fb2218fe22640658aba39e98a3306e0661cbc4d80",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSControlPalette.qml": "f6f7cd9cd8cc8d364d5e775cfcaf4a94211dda439fd7bc6c4444e9097e58da19",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPalette.qml": "9b462a0b2a22167398b3301f6d56e502371238e6e8c338ff2bd322d07630389a",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/ApplicationActions.js": "0fdfd7dfc79192e1cd632bef5171b403ba5b021ea79a33e7d2d773927db9757d",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/favorite_order.py": "7ac6ab462cbc6adbbb99a3a8c9c1b500c8f18c330e0546a82f134451255986c9",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/code/pin_import.py": "05da1ad1323ab7215646e951d8554fa745e5c8963db6544dd4a147aa0c6051b1"
+  },
+  "scope": "Native KAStats clients and real pointer clicks in a private Plasma/KWin session. Favorites moved in both directions; persisted client order read through a second native provider; pins, memberships, preferences and user profiles preserved. No personal favorite reordered.",
+  "limits": [
+    "Installed files and normal runtime restart verified; manual assessment pending. No user approval inferred.",
+    "An already loaded independent external menu does not receive a live reorder signal from KAStats; the proof explicitly reloads its provider.",
+    "No historical visual fidelity score claimed."
+  ],
+  "installation": {
+    "destination": "XDG_DATA_HOME/plasma/plasmoids/org.irixclassic.domainos.panel",
+    "method": "tools/update_domainos_qml.py",
+    "native_payload_verified_and_reused": true,
+    "only_panel_updated": true,
+    "source_files_match": true,
+    "configuration_change": false,
+    "plasmashell_restart": true,
+    "backup": "XDG_STATE_HOME/irixium-domainos/backups/db5c1c90a8df4ddab33115b03eed1d8a",
+    "normal_plasmashell_pid": 1232809,
+    "panel_id": 2268,
+    "applet_id": 2269,
+    "height": 109,
+    "protected_configuration_hashes_unchanged": true
+  }
+}

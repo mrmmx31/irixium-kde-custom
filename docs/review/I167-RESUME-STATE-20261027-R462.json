@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R462",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate only the currently authorized GTK2 work item and its live prerequisites after Goal resumption.",
+  "authority": {
+    "board_item": "I167",
+    "board_generation": 8729,
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "current_state": {
+    "theme_mame_pid": 3971377,
+    "theme_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4,
+    "personal_xchat_process": "absent",
+    "codex_xchat_processes": [
+      "3414098",
+      "3951437",
+      "3951675"
+    ]
+  },
+  "reused_evidence": {
+    "latest_guest_snapshot": "docs/review/I167-DOMAINOS-CURRENT-SCREEN-READONLY-20261027-R461.json",
+    "snapshot_state": "black framebuffer; not recaptured during this audit",
+    "gtk2_test_receipt": "docs/review/I167-GTK2-RECIPE-REGRESSION-20261027-R452.json",
+    "r452_source_hashes": "all five match the current worktree; tests were not repeated"
+  },
+  "result": "I167 remains authorized and assistant status running at revision 2. The distinct Prancheta MAME still causes the guard to exit 4. No user-owned XChat is open for its GTK2 scrollbar comparison. No GTK2 code, desktop session, guest, VM, or other board item was changed.",
+  "remaining": [
+    "Native SR10.4 scrollbar states listed in R450",
+    "Comparison in a user-owned GTK2 application when one is available",
+    "User visual review"
+  ],
+  "next": "When the other MAME exits, revalidate both PIDs/disks and verify guard before guest input. Then confirm the current guest frame, perform only the documented wake procedure if needed, and continue the GTK2 scrollbar comparison."
+}

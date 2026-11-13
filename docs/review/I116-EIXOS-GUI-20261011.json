@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-11T03:22:10.248028+00:00",
+  "item": "I116",
+  "phase": "axis_lock_gui_native",
+  "native_result": {
+    "status": "passed",
+    "axis_lock_native_metrics": {
+      "10": "Pedido em edição: 320 x 0 (0 = automático)Motif referência: 135 x 15 px; preferido135 x 15Mínimo: toolkit não forneceGTK3 acoplado: 320 x 15 px lógicos; escala1Mínimo 320 x 15; preferido 320 x 15GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM.",
+      "11": "Pedido em edição: 0 x 260 (0 = automático)Motif referência: 15 x 65 px; preferido 15x 65Mínimo: toolkit não forneceGTK3 acoplado: 15 x 260 px lógicos; escala1Mínimo 15 x 260; preferido 15 x 260GTK3 separado: aguardando medida nativaMedidas da amostra; não são defaults daVM."
+    },
+    "locked_cross_fields_insensitive": true,
+    "length_native_undo_redo": true,
+    "unchanged_family_geometry_and_other_families": true,
+    "historical_fidelity_claimed": false,
+    "personal_profile_exposed": false
+  },
+  "integrity": {
+    "model": 900,
+    "backend": 23,
+    "scene": 14,
+    "ipc": "passed"
+  },
+  "initial_fixture_failure": "One Undo only removed final digit; fixture now proves all four edits with Undo/Redo. Product history unchanged.",
+  "estimated_stage_progress_percent": 55,
+  "basis": "Política do modelo, campos travados e medidas GTK3 em duas orientações comprovados. Ancoragem, limites e entrega pessoal pendentes.",
+  "personal_windows_preserved": true,
+  "remaining": [
+    "Escolha explícita da extremidade ancorada",
+    "Pedidos menores que mínimo e automático",
+    "Aplicação aos controles comparados Motif e prévia separada",
+    "Entrega coordenada"
+  ],
+  "hashes": {
+    "tools/theme-lab/src/view.c": "f6fdb63d3ec90650cae44bfce9adfff31bb9060b8a4933b901cdbbfaaef30ee6",
+    "tools/theme-lab/src/model/control_dimensions.c": "285be0e4a667a922ed70df2adb792b92f18b05b723e3b235198d6b5fc6f626b9",
+    "tools/theme-lab/tests/test_controller_spin.py": "5e8e8ecc5a7f84d2f77af1a686012401c7025511ba3d8cf140607f7dfd8c0a4d",
+    "tools/theme-lab/tests/controller_spin_probe.c": "46dad285e15f4b984ac625718b2b5ea05e65156a194a586b1b35f0bd1fb759d3"
+  }
+}

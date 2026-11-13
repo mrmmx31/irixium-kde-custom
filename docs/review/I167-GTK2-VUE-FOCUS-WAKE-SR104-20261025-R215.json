@@ -1,0 +1,43 @@
+{
+  "id": "R215",
+  "item": "I167",
+  "title": "Captura VUE após tela em repouso e medida do botão marcado",
+  "status": "native screenshot and geometry measured",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "authorized assistant clone",
+    "purpose": "resume the current GTK2 comparison after the Apollo display went black"
+  },
+  "input": {
+    "event": "one guest Shift frame; automatically released on frame 2",
+    "script": "~/tempia/ia-tema/evidence/I167/r215-wake-shift.lua",
+    "script_sha256": "e5d0adedab5ff8bde53f22cbb2b9809b20120141a4ccc92444388958e54c0132",
+    "callback_result": "done=true, frame=65, held=false, error=nil"
+  },
+  "native_capture": {
+    "image": "~/tempia/ia-tema/evidence/I167/i167-vue-after-wake-r215.png",
+    "sha256": "bd63a9b3af3bf8143b18cdad0096b0b1e1b81b5f943722c91e963bfb36195eff",
+    "screen_px": [1024, 844],
+    "visible": "HP VUE File Finder and its buttons are visible after the wake pulse",
+    "marked_button": "Reset",
+    "outline_color_sample": "#fe8282",
+    "outline_bbox_px": [295, 745, 378, 788],
+    "outline_size_px": [84, 44],
+    "outline_pixels": 496,
+    "interpretation_limit": "The capture does not identify whether this button mark is keyboard focus, default state, or both. R214 isolates GTK2 states but does not infer the VUE state machine."
+  },
+  "mame_post_state": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_hook_captured": false,
+    "wait_button_up": false,
+    "input_released": true
+  },
+  "limits": [
+    "The bridge's capture flags do not measure an SDL host pointer grab on window activation.",
+    "No VM configuration, guest file, host focus, or mouse input was changed.",
+    "This is a native VM image and pixel measurement, not human approval of the GTK2 theme."
+  ],
+  "next": "Continue I167/GTK2 with a controlled comparison of the native button's depressed visual state, after confirming that the intended button can be activated and restored without losing the current Find Files fields."
+}

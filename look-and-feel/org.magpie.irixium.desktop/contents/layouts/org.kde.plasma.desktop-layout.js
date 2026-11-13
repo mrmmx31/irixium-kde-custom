@@ -18,7 +18,7 @@ const user_browser = "file:///usr/share/applications/" + globals.readEntry("Brow
 const appsLaunch = panel.addWidget("org.kde.plasma.quicklaunch")
 appsLaunch.currentConfigGroup = ["General"]
 appsLaunch.writeConfig("launcherUrls", [user_browser,
-                "file:///usr/share/applications/org.kde.dolphin.desktop",
+                "file:///usr/share/applications/io.github.mrmmx31.irixclassic.files.desktop",
                 "file:///usr/share/applications/org.kde.konsole.desktop"
                 ])
 appsLaunch.writeConfig("maxSectionCount", 1)

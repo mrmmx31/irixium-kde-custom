@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "R370",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Resolve the three outer top-right pixels of the normal GTK2 vertical upper stepper using a palette-derived ACTIVE trough underlay, without changing the horizontal result",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "source_crop": "~/tempia/ia-tema/evidence/I167/r325-horizontal-bar-discovery-20261026/vue-filemanager-up-candidate.png",
+    "source_sha256": "e4133a84f840a498b5debf3eba00cadc8d9e49db67f1e9fe2987324ea7ea3f05",
+    "dimensions_px": [15, 15],
+    "registration": "R325 measured bounds x=13..27, y=16..30 in the live File Manager capture. The GTK2 native probe's corresponding cell begins at y=2."
+  },
+  "implementation": {
+    "generator": "tools/gtk2_domainos_palette.py",
+    "design": "Generate a separate vertical ACTIVE trough image from the current KDE-rendered trough, copy three corner samples from the normal up-stepper generated from the same KDE roles, and use a vertical 9-slice with four preserved rows at the top and bottom.",
+    "pixel_mapping": [
+      {"trough_xy": [22, 2], "stepper_xy": [13, 0]},
+      {"trough_xy": [23, 2], "stepper_xy": [14, 0]},
+      {"trough_xy": [22, 3], "stepper_xy": [13, 1]}
+    ],
+    "gtkrc_active_horizontal": "assets/scroll-trough-pressed-horizontal.png; border={4,4,2,2}",
+    "gtkrc_active_vertical": "assets/scroll-trough-pressed-vertical.png; border={2,2,4,4}",
+    "color_policy": "No final RGB values are embedded; every copied pixel comes from the same palette-rendered GTK2 stepper asset."
+  },
+  "generated_preview": {
+    "generator": "prepare_domainos rendered the actual repository source for the current KDE GTK palette and loaded the generated RC with GTK2 2.24.33 under private Xvfb.",
+    "bundle": "~/tempia/ia-tema/evidence/I167/r370-vertical-up-corner-fix/bundles/c475ee96efda114a06c0b9f920881d0ba3e2c8e072360f3bfc29d32b2dfd75e7",
+    "colors_css_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "vertical_capture": "~/tempia/ia-tema/evidence/I167/r370-vertical-up-corner-fix/vertical-loaded.png",
+    "vertical_sha256": "a05979496f9d69d05b9a72eef955167de835e0be048bfb3870d712a69cf8bd2e",
+    "horizontal_capture": "~/tempia/ia-tema/evidence/I167/r370-vertical-up-corner-fix/horizontal-loaded.png",
+    "horizontal_sha256": "1238fb260fba419dbfa316c6c4b89c22652315a7f02c7a0da9c6a10c9e31edba",
+    "gtkrc_sha256": "ed0a5f8d5d27e672287a07b78fcaecd5ceb7d49e3eab72d4152fa983e1c0b8b5"
+  },
+  "comparison": {
+    "vertical_widget_px": [15, 543],
+    "upper_cell_vs_retained_live_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "changed_vs_R368_vertical_capture": {
+      "different_pixels": 3,
+      "coordinates": [[13, 2], [14, 2], [13, 3]],
+      "all_changes_are_the_three_prior_mismatches": true
+    },
+    "horizontal_widget_px": [543, 15],
+    "horizontal_left_cell_vs_live_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "horizontal_right_cell_vs_live_vue": {"different_pixels": 0, "pixels_compared": 225},
+    "down_stepper": "Not changed. The retained R325 lower-arrow crop has an unresolved first-row registration mismatch; a fresh aligned Domain/OS pair is still required before editing this glyph."
+  },
+  "validation": {
+    "command": "PYTHONPATH=tests PYTHONPYCACHEPREFIX=/home/lsi/tempia/pycache-I167-r370 TMPDIR=/home/lsi/tempia python3 -m unittest -v test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests",
+    "result": "7 tests passed",
+    "py_compile": "passed",
+    "git_diff_check": "passed"
+  },
+  "limits": [
+    "Only the normal vertical upper stepper's three outer pixels are resolved by this comparison.",
+    "The lower vertical arrow, held/hover/disabled states, the in-application GTK2 session and human visual review remain open.",
+    "The user's profile and applications were not changed or restarted; no input was sent to any MAME instance."
+  ],
+  "next": "Continue only GTK2/I167 by obtaining a reliably registered normal lower-arrow reference, then validate remaining states and the actual application preview."
+}

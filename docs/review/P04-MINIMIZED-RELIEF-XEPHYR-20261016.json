@@ -1,0 +1,50 @@
+{
+  "id": "P04",
+  "date": "2026-10-16",
+  "test": "Selected Iconbox tile relief across real client minimize/restore",
+  "status": "failed",
+  "checks": {
+    "RESTORED-SELECTED_capture_saved": true,
+    "owned_native_client_pid_winid_exact": true,
+    "physical_single_click_selected_owned_tile": true,
+    "restored_selected_tile_and_label_initially_sunken": true,
+    "native_host_exited_cleanly": false,
+    "qml_runtime_errors_zero": true,
+    "real_profiles_unchanged": true,
+    "production_sources_unchanged": true,
+    "real_installed_native_host": true
+  },
+  "observed": {
+    "phase_reached": "RESTORED-SELECTED",
+    "state": {
+      "bodySunken": true,
+      "fullyMinimized": false,
+      "labelSunken": true,
+      "pressed": false,
+      "selected": true
+    },
+    "native_failure": "Bounded private client regression timeout",
+    "client_minimized_at_capture": false,
+    "client_active_at_capture": false
+  },
+  "interpretation": "Inconclusive after two harness attempts. The private client never became active in Xephyr; bypassing the focus gate let xdotool return success, but neither QWidget nor the native TasksModel reported minimization. This does not prove a production defect or correctness. The current row remains selected and sunken only while restored. Do not use this test as evidence for minimized relief until the private activation/input path is fixed.",
+  "environment": "Private Xephyr :70 / KWin / D-Bus. User profile and production QML remained unchanged.",
+  "capture_private": "~/tempia/board/p04-minimized-relief-xephyr-20261016/RESTORED-SELECTED.png",
+  "capture_sha256": "aab6772d84debd9b2d93ec1185687ff15c4a7ff09735bd5df4f9ecb9711d4c3c",
+  "runner_output": "~/tempia/board/p04-minimized-relief-xephyr-20261016/RESULTADO.json",
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTaskButton.qml": "c8a8af26aae4de07e306afb1af5f18a04e188390cef2a93de617259559f15d01",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "plasma/tests/domainos-minimized-relief-host.cpp": "e922142d4952a9070fcbfd61bc45343232c170ac67eee9a9330b83b7521cea3e"
+  },
+  "second_attempt": {
+    "private_output": "~/tempia/board/p04-minimized-relief-xephyr-20261016-r2/RESULTADO.json",
+    "status": "failed",
+    "client_active_before_minimize_click": false,
+    "pointer_command_returned_success": true,
+    "native_minimize_observed": false,
+    "native_failure": "Bounded private client regression timeout",
+    "capture_sha256": "aab6772d84debd9b2d93ec1185687ff15c4a7ff09735bd5df4f9ecb9711d4c3c"
+  }
+}

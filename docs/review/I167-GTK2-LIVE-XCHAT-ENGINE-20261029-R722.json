@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R722",
+  "date": "2026-10-29",
+  "observed_at_utc": "2026-10-29T06:56:29Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify the installed GTK2 theme is loaded by a real existing XChat process for user lsi without inspecting or retaining chat content.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "pid": 1327599,
+    "process_name": "xchat",
+    "window_identity": "Matched _NET_WM_PID to PID; no title or conversation content retained.",
+    "gtk_library": "/usr/lib/x86_64-linux-gnu/libgtk-x11-2.0.so.0.2400.33",
+    "gtk_version": "2.24.33",
+    "theme_profile": "/home/lsi/.gtkrc-2.0 selects DomainOS-SR10-4-KDE-Reload",
+    "theme_gtkrc_sha256": "5163752d3fb45a73700843fcce49a88080c49148745314b23badb0f705edbd9d",
+    "engine_path": "/home/lsi/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "engine_loaded_in_process": true,
+    "engine_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "companion_service": "irix-theme-companions.service",
+    "companion_service_state": "active"
+  },
+  "result": "The running XChat process is a real GTK2 2.24.33 client and has the installed DomainOS pixbuf engine mapped. Together with the selected user gtkrc and installed theme hash, this confirms the GTK2 theme is loaded in a live application process.",
+  "limits": [
+    "No chat text, full-window capture, or conversation data was retained.",
+    "This proves runtime selection and engine loading, not pixel-level scrollbar fidelity or human visual acceptance.",
+    "The user visual review in V03 remains unreviewed.",
+    "I517 press/release and I518 thumb-drag remain unauthorized; no VM input was sent."
+  ],
+  "next": "User may inspect the already-running GTK2 application and report visual differences. Keep I167 waiting_user; do not manipulate VM arrows/thumb until the separate board authorizations are valid.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Installation/runtime coverage only; not a visual-fidelity score and not human acceptance."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-VUE-REOPEN-20261024-R84",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "assistant_clone_pid": 2745483,
+    "resolution_px": [1024, 844],
+    "capture_after_vuelfile_request": {
+      "path": "~/tempia/i167-live-r84.png",
+      "sha256": "32accf94b1f59a96f9d0c80fddc0effa5210915df0a06f5aee7831822aeff587"
+    },
+    "capture_after_single_enter": {
+      "path": "~/tempia/i167-live-r85.png",
+      "sha256": "79d7b18fe7bd170562276c8be106d065a4519a086094bcebdff649508833def0"
+    }
+  },
+  "observation": {
+    "profile": {"paused": false, "frameskip": 4, "throttled": false},
+    "bridge_pending": false,
+    "actions": [
+      "Read-only capability check found /usr/X11/bin/vuefile; xdotool and wmctrl are absent.",
+      "Requested a new File Manager view using DISPLAY=:0 and vuefile -dir / -geometry 570x320+100+100. The command returned, but the existing vuefile process remained the only instance and the root X tree stayed at 42 children.",
+      "A single bounded Numpad Enter pulse was sent through the existing helper while the Screen dialog displayed an outline on OK and Screen Saver unchecked. The following capture still showed the dialog; activation was not observed."
+    ],
+    "x_state": [
+      {"xid": "0x14000fd", "title": "Screen dialog", "map_state": "IsViewable", "geometry_px": [431, 22, 295, 254]},
+      {"xid": "0x28000ff", "title": "File Manager", "map_state": "IsUnMapped", "geometry_px": [109, 90, 300, 365]},
+      {"xid": "0x28000c3", "title": "Find Files", "map_state": "IsUnMapped", "geometry_px": [0, 0, 5, 5]}
+    ],
+    "result": "No live text field was exposed. The unmapped File Manager/Find Files pixels remain unsuitable for GtkEntry comparison."
+  },
+  "preservation": {
+    "main_vm_pid_912338_touched": false,
+    "clone_restarted": false,
+    "guest_files_changed": false,
+    "clone_screen_setting_change": "not observed; dialog remained open",
+    "theme_source_changed": false,
+    "desktop_profile_changed": false,
+    "mame_profile_changed": false
+  },
+  "next": "Continue only GTK2 GtkEntry. A fresh selection/blink comparison needs the VUE File Finder entry mapped and visible; the current clone state has no such live target. Reuse R57/R68/R76 measurements and the GTK2 theme-engine limit in R63."
+}

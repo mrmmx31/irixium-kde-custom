@@ -1,0 +1,49 @@
+{
+  "id": "R602",
+  "date_local": "2026-10-28T14:35:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "scope": "Static audit of the installed Kicker search-focus contract and the local R596 call order.",
+  "installed_kicker": {
+    "package": "plasma-workspace 4:6.3.6-2",
+    "files": [
+      {
+        "path": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/MenuRepresentation.qml",
+        "sha256": "e920e290cdb801dc4dc8921e1a141a2fef298e8870654183d83e0299ae5e0058",
+        "facts": [
+          "reset() clears searchField.text and sets searchField.focus = true.",
+          "The SearchField is assigned focus unless the input method will show on active."
+        ]
+      },
+      {
+        "path": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/ItemListView.qml",
+        "sha256": "92f92fa49af0f6dd33aec581ae7b0dde3b0d8125715812aa5b2967961fed79ca"
+      },
+      {
+        "path": "/usr/share/plasma/plasmoids/org.kde.plasma.kicker/contents/ui/main.qml",
+        "sha256": "7819a9d94f22fc73673ad18fa585420e9909baa5195a6bdbe8f42325fc8b8a46"
+      }
+    ]
+  },
+  "local_r596_call_order": [
+    "open the Popup.Window",
+    "defer until it is visible",
+    "request activation on the QML window containing MenuRepresentation",
+    "force active focus on the Popup",
+    "call Kicker MenuRepresentation.reset(), which explicitly focuses the search field"
+  ],
+  "interpretation": "Static code does not show reset() undoing focus; it explicitly assigns focus=true. This narrows the unresponsive-search symptom to the live window activation/event-delivery path or another runtime condition, but does not prove which one. No behavior was simulated or changed.",
+  "validation": {
+    "installed_source_read": true,
+    "source_hashes_recorded": true,
+    "user_runtime_focus_observed": false,
+    "keyboard_delivery_observed": false,
+    "code_changed": false
+  },
+  "next": [
+    "Use the user's live observation after the already completed panel reload to determine whether keys reach searchField.",
+    "If typing still fails, instrument activeWindow, focusObject, searchField.focus and key-event delivery in an isolated authorized preview before revising the production QML."
+  ]
+}

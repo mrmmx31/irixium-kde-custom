@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SR104-CLONE-AVAILABILITY-20261024-R142",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "Current availability check of the already authorized assistant MAME clone; no launch or guest input",
+  "observation": {
+    "process_query": "ps -eo pid,etime,args | rg '[m]ame|[M]AME'",
+    "result": "no matching MAME process",
+    "channel": "/home/lsi/tempia/domainos-assistant-vm-20261018/sessao/controle",
+    "channel_status": {
+      "pending": null,
+      "reply": null,
+      "pending_files": [],
+      "acknowledged": false
+    }
+  },
+  "actions": {
+    "guest_input_sent": false,
+    "mame_restarted": false,
+    "vm_configuration_changed": false,
+    "other_sessions_touched": false
+  },
+  "result": "The assistant clone cannot receive physical mouse/keyboard input while its MAME process is absent. The user's recent wake action is not contradicted; this check only establishes that the authorized clone is not currently running in this host process table.",
+  "next": "Resume the existing authorized clone when it is running; then compare GtkIconView focus, hover and rubberband states directly with Domain/OS SR10.4. Do not start another MAME instance.",
+  "status": "historical_visual_pair_pending"
+}

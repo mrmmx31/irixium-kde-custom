@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-HORIZONTAL-ARROW-COMPARISON-20261026-R233",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "pixel-match-found-visual-review-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "scope": "GTK2 horizontal scrollbar stepper arrows only"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "machine": "project-owned assistant clone",
+    "mame_pid": 1313710,
+    "mame_version": "0.276",
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "retained_native_trash_can": {
+      "capture_date": "2026-10-10",
+      "path": "docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+      "source_capture_sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5",
+      "scope": "Native MAME guest image, normal state, no interpolation; empty Trash Can does not prove scrolling behavior."
+    },
+    "current_live_guest": {
+      "starting_image": "black guest display",
+      "wake_action": "one-frame Shift pulse through the existing Apollo keyboard input field, automatically released by frame 3; this wake method has prior R160 validation",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-vue-awake-r233-20261026.png",
+      "sha256": "7f0c7e09931dc6b0c4a679982c95c91242e69d5d39c11dcbcfa38fec4540b22e",
+      "visible_state": "HP VUE File Manager and Terminal; Trash Can is not currently open",
+      "guest_files_or_settings_changed": false
+    }
+  },
+  "comparison": {
+    "source_crop": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "provenance": "Horizontal scrollbar crop from the retained native SR10.4 Trash Can screenshot above."
+    },
+    "gtk2_render": {
+      "runtime": "GTK2 2.24.33",
+      "path": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+      "sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+      "size_px": [1600, 1000],
+      "state": "normal horizontal scrollbar in the current isolated native GTK2 preview"
+    },
+    "coordinate_system": "half-open crop boxes; all source and GTK2 pixels compared at 1:1, no resizing or filtering",
+    "cells": [
+      {
+        "direction": "left",
+        "source_cell": [2, 4, 17, 19],
+        "gtk2_screen_origin": [976, 402],
+        "cell_size_px": [15, 15],
+        "pixel_differences": 0,
+        "visible_glyph_bbox_px": [11, 11]
+      },
+      {
+        "direction": "right",
+        "source_cell": [527, 4, 542, 19],
+        "gtk2_screen_origin": [1002, 402],
+        "cell_size_px": [15, 15],
+        "pixel_differences": 0,
+        "visible_glyph_bbox_px": [11, 11]
+      }
+    ],
+    "result": "Both rendered GTK2 horizontal stepper cells match their corresponding normal-state SR10.4 reference cells exactly. The 11x11 glyph is not rendered smaller horizontally in this native preview. No GTK2 theme change is supported by this comparison."
+  },
+  "safety": {
+    "guest_mouse_capture": false,
+    "guest_wait_button_up": false,
+    "mame_paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "wake_operation_done": true,
+    "wake_key_released": true,
+    "theme_or_guest_configuration_changed": false
+  },
+  "limitations": [
+    "The current live VUE desktop has File Manager and Terminal, not the Trash Can. The arrow comparison uses the retained native Trash Can screenshot dated 2026-10-10 from the same SR10.4/VUE reference system; the current live capture verifies the clone is awake but does not show these arrows.",
+    "Only normal horizontal left/right stepper cells were compared. Pressed, insensitive, background and scrolling states remain outside this measurement.",
+    "Human visual review remains pending; exact pixels in this scoped state do not establish overall GTK2 fidelity."
+  ],
+  "next": "Keep GTK2 as the active family. Let the user inspect the now-open native GTK2 previews and compare them with the retained VUE evidence. If the reported small-arrow appearance remains, capture the exact GTK2 application/state where it occurs before changing GTK2 geometry; otherwise continue to the next authorized GTK2 state.",
+  "technical_coverage_estimate": {
+    "percent": 77,
+    "basis": "R224 baseline 76% plus one distinct horizontal left/right arrow state measured against the retained native reference; preview route is verified in R232.",
+    "not_a_visual_fidelity_score": true
+  }
+}

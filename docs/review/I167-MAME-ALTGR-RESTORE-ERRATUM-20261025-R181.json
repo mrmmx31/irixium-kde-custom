@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-ALTGR-RESTORE-ERRATUM-20261025-R181",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "user_report": "On activating the VM screen after AltGr release, the host pointer is captured although it was outside the VM.",
+  "action": {
+    "attempt": "A proposed click-to-focus interpretation led to a temporary change that made AltGr toggle capture and suppressed click recapture.",
+    "reverted": true,
+    "reason": "R158 explicitly requires identifying the exact wake event before changing the hook. The new report still does not distinguish physical keyboard, mouse movement/click, window activation, or monitor wake.",
+    "script_sha256_restored": "9edcb7272b4ff75bae50b34654a067962900f735fbb152a772e3ed5ce311bb4a"
+  },
+  "runtime_validation": {
+    "mame_pid": 274368,
+    "final_request_id": "88fd406db9f140b6a4b06d76a0932e19",
+    "captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "hook_transitions": 16,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "test_scope": "The hook methods were briefly toggled in memory and returned to released state; no physical wake event, focus transition, or pointer click was replayed in this turn."
+  },
+  "conclusion": "The original hook and its click-recapture behavior are restored. The user-reported activation capture remains unresolved and was not reproduced by this turn's state-only validation.",
+  "next": "Observe the exact user wake action with the host pointer outside MAME and correlate host capture, focus, and hook state across that event. Do not change the hook until the event is identified.",
+  "status": "unresolved_trigger_required"
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "R316",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "canonical-assistant-vm-running-at-console-login; graphical-guest-not-visible",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only MAME runtime/progress observation for later native GTK2 arrow comparison."
+  },
+  "vm": {
+    "process_id": 2633006,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "canonical_verifier": "bash vm/domainos-sr10.4-assistant/verify.sh",
+    "verifier_result": "Canonical disk, compatibility symlink and launcher identity verified.",
+    "network_alias": "10.253.104.20",
+    "profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "ui_active": false,
+      "main_cpu_scale": "not exposed by read-only probe",
+      "ethernet_cpu_scale": "not exposed by read-only probe"
+    }
+  },
+  "observation": {
+    "time_local": "2026-10-26T10:07:19-04:00",
+    "guest_snapshot": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r316-assistant-vm-start/domainos-afterboot.png",
+      "sha256": "ec78facec0b4cb6d8b6c9192cbd3034631ede77ac3acbada8dcc43e4d6c1afcb",
+      "dimensions_px": [
+        1024,
+        844
+      ],
+      "visual_result": "Domain/OS console has a login prompt along the bottom; the guest display area above it is black. HP VUE is not visible, so no arrow target can be confirmed."
+    },
+    "control_channel": "Read-only probe succeeded; no pending request.",
+    "startup_progress": "An earlier retained capture showed salvage complete and init/services starting; the first fresh capture reached a console login prompt; a later fresh capture was fully black.",
+    "time_local_latest": "2026-10-26T10:09:57-04:00",
+    "additional_snapshot": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/r316-assistant-vm-start/domainos-wake-check.png",
+      "sha256": "5fff64eb0ebcc6414ab0cbed24a524251b897bf8379ded8dd1fd265ed5896b2a",
+      "dimensions_px": [
+        1024,
+        844
+      ],
+      "visual_result": "Follow-up read-only capture later in the same running session is fully black; no login prompt, VUE, or scrollbar target is visible."
+    }
+  },
+  "isolation": {
+    "guest_input_sent": false,
+    "host_focus_changed": false,
+    "mouse_capture_changed": false,
+    "performance_profile_changed": false,
+    "xchat_or_user_app_touched": false,
+    "scripts_or_sessions_stopped": false,
+    "disk_replaced_or_moved": false,
+    "note": "The guest has booted on the canonical mutable disk; ordinary guest/runtime writes are possible during operation."
+  },
+  "next_step": "The VM rule requires a physical mouse/key event to wake a black guest display. Wait for the user to provide that event; then take a new native snapshot and proceed only if the VUE scrollbar target is visibly confirmed.",
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "This confirms a live canonical VM but does not add held-arrow comparison evidence. It is technical work coverage, not visual fidelity."
+  }
+}

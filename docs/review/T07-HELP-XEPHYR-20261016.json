@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "item": "T07",
+  "user_revision": 4,
+  "scope": "Ajuda do laboratório: tópicos novice/intermediate/expert; teste em Xephyr existente, sem alterar o projeto do usuário.",
+  "runtime": {
+    "display": ":68",
+    "xephyr_preserved": true,
+    "test_process_exit": 0,
+    "test_command": "DISPLAY=:68 XAUTHORITY=~/tempia/board/i295-live-20261014T0150Z/Xauthority68 HOME=~ TMPDIR=~/tempia LC_ALL=C.UTF-8 TL_HELP_ONLY=1 timeout 30 tools/theme-lab/build/native-metrics-view"
+  },
+  "checks": {
+    "native_help_menu": "passed",
+    "topic_and_level_selection": "passed",
+    "read_only_text_select_and_utf8_clipboard": "passed",
+    "close_reopen_and_window_manager_close": "passed",
+    "project_field_preserved": "passed",
+    "help_content_model": "passed: 10 topics × 3 distinct UTF-8 explanation levels; invalid indexes rejected",
+    "temp_file_policy": "clipboard capture uses TMPDIR, with ~/tempia fallback; no capture file remained after test"
+  },
+  "hashes": {
+    "tools/theme-lab/src/view/ui_help.c": "6557bf4162d7f3fc2f52d001e9b1c99637685151f024a7625850f0f2204fab81",
+    "tools/theme-lab/src/model/help_topics.c": "917892a0ff3cfe0bfcfc245f1708c5f613d1d906c6dd9aad3f247202538331c2",
+    "tools/theme-lab/tests/ui_help_flow.c": "6a65f6c09177cfb0af4ddfa5a0e774e6668e4e0fcc167f39275c29754ab9b614",
+    "tools/theme-lab/build/native-metrics-view": "03aa6f637990aa45d55b0530affef24fcbd89cfb79e378c4eafb066ffad9128e",
+    "tools/theme-lab/tests/help_topics_test.c": "0dacb0d2f7c56af480c6da04eec92136c27f4d6f0820deed6b714f95cd4a2964",
+    "tools/theme-lab/build/help-topics-test": "b132907a7c9277aefcade09f5c4ac32d7dbe2aff784f6c7f18579be38fc5332e"
+  },
+  "limitations": [
+    "Motif emitted missing-font and missing-character-set warnings; this test does not establish correct glyph rendering or historical font fidelity.",
+    "The UI help feature existed before this response; this retest verifies its current behavior and adds portable temporary-file handling."
+  ],
+  "human_review": "The user approved the help-menu direction; this technical receipt does not claim broader visual approval of T07."
+}

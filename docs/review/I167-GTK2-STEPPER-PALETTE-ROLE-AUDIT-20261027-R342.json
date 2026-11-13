@@ -1,0 +1,37 @@
+{
+  "id": "R342",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "verify that installed GTK2 stepper assets are generated from current KDE roles rather than fixed final colors",
+  "source": {
+    "art_sha256": "0caa2bd21a88ecb4437df236fb5bf5c8cb4d131f12810756a25153ffb7a9a16a",
+    "renderer_sha256": "02f91ce1e7bdb14c9d58de7dc1d943244c04cd1ddf1495d4438698db958c27f3",
+    "runtime_sha256": "d342012447656f8165b49f4b8b24f2e96977250ffdb7c8a07b21ea409dc5d131",
+    "mechanism": "gtk2_domainos_palette.prepare_domainos reads KDE GTKConfig role export, evaluates semantic pixel plans for gtk2_assets, emits immutable palette-specific PNG/GTKRC resources, and runtime refresh updates owned wrappers; no final RGB is embedded in the stepper geometry plans"
+  },
+  "active_install": {
+    "bundle": "14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467",
+    "status": "active",
+    "kde_roles": 84,
+    "sample_roles": {
+      "theme_button_background_normal_breeze": "#78a0d5",
+      "theme_button_foreground_normal_breeze": "#ffffff",
+      "theme_button_decoration_focus_breeze": "#fe8282",
+      "insensitive_bg_color_breeze": "#6d99d0"
+    },
+    "stepper_asset_sha256": {
+      "scrollbar-stepper-left-normal.png": "8d7311d1c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+      "scrollbar-stepper-right-normal.png": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+      "scrollbar-stepper-up-normal.png": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+      "scrollbar-stepper-down-normal.png": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"
+    },
+    "installed_RC_sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331"
+  },
+  "existing_matrix": {
+    "receipt": "I167-GTK2-STEPPER-OVERLAY-INSTALL-20261027-R332.json",
+    "result": "3 synthetic KDE palettes passed; 106 assets and 20 overlay rules per fixture",
+    "scope_limit": "Synthetic palette matrix and generated bundle do not prove current pixels in a freshly reloaded user GTK2 application or historical VM fidelity."
+  },
+  "conclusion": "The current GTK2 source and active user bundle follow the KDE role pipeline; the generated literal RGB values are palette snapshots, not fixed source colors. No theme, schema, running process, or VM was changed for this audit.",
+  "next": "Validate the current bundle in a fresh isolated GTK2 preview after explicit Xephyr approval; compare to a physically awake SR10.4 VM before making further artwork changes."
+}

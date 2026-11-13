@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "id": "R740",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "GTK2 normal vertical scrollbar thumb start: compare the user screenshot to Motif, isolate the two-row transition, generate an orientation-specific role-driven asset, and apply it through the GTK2 palette pipeline.",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "gtk2_user_capture": {
+      "path": "/home/lsi/.xchat2/codex-files/e7447b4956e8-capture-xchat-codex-QLOXX3.png",
+      "sha256": "1232d4617e3735755581262065cef182fc77344a1a67eaa4c519cbdbad76f2fd",
+      "dimensions_px": [
+        892,
+        642
+      ]
+    },
+    "motif_user_capture": {
+      "path": "/home/lsi/.xchat2/codex-files/d3d5685ba8f9-capture-xchat-codex-SEP9X3.png",
+      "sha256": "3ec656c79c386c8445520d17b5eb7d2173b06643aeb4e3345f5b57cdd255c4c2",
+      "dimensions_px": [
+        102,
+        655
+      ]
+    },
+    "canonical_motif_reference": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "dimensions_px": [
+        20,
+        258
+      ]
+    },
+    "installed_prechange_fixture": "docs/review/I167-GTK2-EXPLICIT-INSTALLED-RC-RENDER-20261029-R734.json",
+    "palette_source": "/home/lsi/.config/gtk-3.0/colors.css"
+  },
+  "finding": {
+    "geometry": "GTK2 and Motif bar width are both 15 px. Normal upper arrow remains a 15x15 cell; its normalized shape/relevo match.",
+    "before_transition": {
+      "pixel_differences_after_face_role_normalization": 17,
+      "by_relative_row": {
+        "17": 9,
+        "18": 8
+      },
+      "relative_columns": {
+        "17": [
+          4,
+          12
+        ],
+        "18": [
+          4,
+          11
+        ]
+      },
+      "classification": "At thumb start: GTK2 added a full-width light cap for two rows, while SR10.4 starts with the normal cross-axis thumb profile."
+    },
+    "cause": "The generic 24x24 GTK2 thumb pixmap contributed a two-row horizontal top cap when rendered at the vertical scrollbar start. It overlaid the continuous cross-axis relief measured in the canonical Motif reference.",
+    "palette": "Only generated pixels derived from the existing KDE face/light/shadow roles were reused. No final RGB was introduced."
+  },
+  "candidate": {
+    "implementation": "Generate scroll-thumb-normal-vertical.png from the palette-rendered normal thumb, copying its first body row into its two top 9-slice rows; route only the NORMAL VERTICAL slider to it. Horizontal and other states are unchanged.",
+    "preview": "GTK2 2.24.33 native fixture, private Xvfb :223, GtkAdjustment value 0, page size 250, vertical allocation 15x255; explicit generated palette RC.",
+    "candidate_vs_prechange_fixture": {
+      "different_pixels": 17,
+      "total_pixels": 211200,
+      "all_other_pixels_unchanged": true,
+      "upper_arrow_differences": 0,
+      "bounding_box_root_xyxy_exclusive": [
+        16,
+        52,
+        25,
+        54
+      ]
+    },
+    "candidate_vs_canonical_motif_first_30_rows": {
+      "different_pixels": 0,
+      "total_pixels": 450,
+      "comparison": "15x30, 1:1"
+    },
+    "candidate_vs_user_motif_first_30_rows_after_face_role_normalization": {
+      "different_pixels": 0,
+      "total_pixels": 450
+    },
+    "saved_control_crop": {
+      "path": "records/ia-tema/I167/R740/gtk2-vertical-scrollbar-normal.png",
+      "sha256": "f01909f28bf9fbfeba02e9ac31d917ddb63dcdb64b18fcbc48287e52052aec85",
+      "dimensions_px": [
+        15,
+        255
+      ]
+    },
+    "generated_asset_sha256": "2702e2038728d5b236cdcc371771b20367fb92e95d9f299474e2561045b2a932"
+  },
+  "deployment": {
+    "status": "applied",
+    "pipeline": "gtk2_palette_runtime.refresh; active selected DomainOS-SR10-4-KDE-Reload",
+    "bundle": "/home/lsi/.local/share/irixium/gtk2-palette/138466ed9bf42750431aeba15745229b27b6244ef630ca4da38e49a34093e7ac",
+    "asset_sha256": "2702e2038728d5b236cdcc371771b20367fb92e95d9f299474e2561045b2a932",
+    "backup": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261029T103757-12d5d4e78e15",
+    "native_reload": {
+      "status": "sent",
+      "windows_considered": 179,
+      "events_sent": 179,
+      "racing_x_errors": 0
+    },
+    "application_restart": "none"
+  },
+  "changes": [
+    "tools/gtk2_domainos_palette.py generates and routes the normal vertical thumb continuation asset.",
+    "GTK2 semantic palette refreshed for lsi through the existing journaled pipeline; 179 native reload events sent."
+  ],
+  "limits": [
+    "Only the normal vertical thumb start is compared and changed.",
+    "Horizontal thumb caps, pressed/disabled states and direct VUE interaction remain open.",
+    "Native isolated rendering proves the asset/preview; human visual acceptance in the open XChat remains pending."
+  ],
+  "result": "The first two thumb transition rows now match the canonical SR10.4 Motif profile exactly in the native GTK2 preview. The application change was applied without restarting XChat; human visual review remains open.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing GTK2 technical coverage estimate; no percentage claim about visual fidelity."
+  }
+}

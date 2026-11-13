@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29T17:36:29-04:00",
+  "item": "T04",
+  "authorization": {
+    "user_authorized": true,
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "scope": "Eliminar o traceback do worker GTK4 e manter a prévia GTK4 nativa acoplada na sessão normal do Theme Lab.",
+  "user_report": {
+    "summary": "A família GTK4 mostrava um traceback truncado na faixa inferior e não havia um log acessível na interface.",
+    "capture": "/home/lsi/.xchat2/codex-files/ca7d287f0357-capture-xchat-codex-J7Y6X3.png"
+  },
+  "root_causes": [
+    "A escolha salva de prévia separada tentava abrir um worker fora do namespace privado; essa recusa esperada aparecia como traceback.",
+    "gtk_window_present ainda não havia publicado de forma estável o XID e as propriedades de propriedade da janela quando a conexão X11 do host tentava acoplá-la.",
+    "Na sessão Wayland com DISPLAY também definido, GTK4 escolhia Wayland; gdk_x11_surface_get_xid era então aplicado à superfície errada e o host recebia BadWindow, código X11 3."
+  ],
+  "correction": {
+    "normal_session_route": "A preferência de janela separada continua salva, mas a sessão normal mantém somente a prévia acoplada; o lançamento separado continua restrito ao namespace bwrap privado.",
+    "backend_selection": "Quando existe canvas de acoplamento, GDK_BACKEND é definido como x11 antes de gtk_init; a prévia separada preserva o backend escolhido pela sessão.",
+    "bounded_handshake": "O worker aguarda o XID, bombeia no máximo 64 iterações pendentes por tentativa, descarrega a conexão GDK para o servidor X e repete a validação por até um segundo.",
+    "validation_diagnostics": "O bridge diferencia canvas, propriedade PID, atributos, raiz/classe, reparent e código de erro X11 sem remover as validações existentes.",
+    "private_log": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0/preview-gtk4-coupled-error.log",
+    "theme_assets_changed": false,
+    "installed_theme_changed": false
+  },
+  "validation": {
+    "gtk4_worker_tests": "10/10 passed",
+    "gtk4_host_tests": "8/8 passed",
+    "direct_guard_tests": "3/3 passed",
+    "python_compile": "passed",
+    "strict_native_host_build": "passed with -Wall -Wextra -Werror",
+    "diff_check": "passed",
+    "manual_probe": {
+      "status": "passed",
+      "pid": 3468870,
+      "canvas_xid": "0x280028f",
+      "child_xid": "0x2c00004",
+      "embedded": true
+    },
+    "cold_controller_reopen": {
+      "service": "domainos-theme-lab-gtk4-live-r13-20261029.service",
+      "theme_lab_pid": 3469214,
+      "observed_worker_pid": 3470920,
+      "canvas_xid": "0x280028f",
+      "child_xid": "0x2c00004",
+      "child_marker": [1, 46137348, 3470920],
+      "coupled_error_log_updated": false,
+      "separate_error_log_updated": false
+    },
+    "state_preserved": {
+      "scene_sha256": "ac3f831d35f28962634594be7c5a7aedf719069b1a47b1d9e377eed153a612ee",
+      "editor_journal_sha256": "a90a9195cbf39f692eeb74e251a730177431fa5e1616343d3b26b5b33117ebf1"
+    },
+    "historical_fidelity_claimed": false
+  },
+  "evidence": {
+    "capture": "/home/lsi/tempia/domainos-theme-work/gtk4-embed-fixed-20261029T1736/theme-lab-gtk4-embedded.png",
+    "capture_sha256": "d56b327999ed467675dd52853a37f30a977bab0ef1f0e6d1b6f3d062c59ff1d5",
+    "visible_result": "O painel superior mostra os controles GTK4 reais acoplados; o painel inferior mantém a referência Motif independente."
+  },
+  "source_sha256": {
+    "tools/theme-lab/preview_gtk4.py": "515fe0b54ae4fe19a2802d9413f230b6d5e27afe454eb9f95427c9251171a08d",
+    "tools/theme-lab/gtk4_worker.py": "17fc8e09edc69b2692c5a1dc639948ff313196c495852a36c0a6ca6774bc9a7f",
+    "tools/theme-lab/gtk4_host.py": "2aaa1aa9c406d0629ba754743e3f68aed76930b11c836eaefed146b61a207e4c",
+    "tools/theme-lab/native-gtk4/host.c": "1dd6073ab8919a94807f828c6c5bbb6d2cfff2d687078a2440aeeade886a834a",
+    "tools/theme-lab/native-gtk4/host.h": "6c0934f53e678b0b0a821b4dcaf0f11c6aabaf6799a241c712d6bc8b1ad0ceaa",
+    "tools/theme-lab/src/controller.c": "744430e5ed8e63865948526a7d5ea0d8a572f3cdab8467682632f54d084952b6",
+    "tools/theme-lab/build/libtheme-lab-gtk4-host.so": "c08ae469f9c78a5032a8ad0b14ae01f4c54e937cda0f86225dc1898c5c00f507",
+    "tools/theme-lab/build/theme-lab": "2768a79b2d6d0573c281b4cd9da11871b14a4d49be9dbc094b45821141d230c2"
+  },
+  "manual_visual_acceptance": "pending",
+  "next": "O usuário confere a prévia GTK4 acoplada e relata somente diferenças visuais; a prova técnica não autoriza nem aprova fidelidade histórica."
+}

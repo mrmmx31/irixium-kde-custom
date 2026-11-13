@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R258",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "scope": "Calibrate bounded Apollo pointer-counter response while preparing a native XmpIcon hover comparison",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01",
+    "process_pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "mouse_captured": false,
+      "wait_button_up": false,
+      "pending_request": null
+    }
+  },
+  "screen_wake": {
+    "before": "Fresh guest screenshot was black; no target-directed pointer input was sent before wake.",
+    "method": "One-frame Shift pulse through the already validated :kbd:keyboard4/Shift field; the callback released it on frame 2 and captured a new image at frame 65.",
+    "operation": "done=true, held=false, error=nil, cleanup_error=nil",
+    "after_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-after-wake-r248.png",
+      "sha256": "b0d08c6869bce3e92594d55e3c71ef2a5916e69fc89d3812c3b75830041d4f7e",
+      "visible_target": "File Manager grid in /node_12345; no file selection or guest file change."
+    }
+  },
+  "pointer_preflight": {
+    "path": "~/tempia/ia-tema/evidence/I167/i167-pointer-preflight-r250.png",
+    "sha256": "abff3ef54195392ad79ac21198c96645332b2a1fe095b56c79d8c261cbdffae1",
+    "read_only_values": "captured=false, wait=false, paused=false, x=41, y=191, frameskip=4, throttled=false"
+  },
+  "measurements": [
+    {
+      "case": "single negative X count",
+      "result": "No detectable cursor change in the inspected 90x65 px region."
+    },
+    {
+      "case": "six negative X steps of 3 counts (18 total)",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-pointer-x-r253-step6.png",
+      "sha256": "3377ff99e3ef2ad63a43c0bfef4f2608056611cbf579c53a843a38ffe8c7a074",
+      "measured_cursor_bbox": "x=281..287, y=246..259; prior reference bbox x=295..301, y=246..259; temporary displacement approximately -14 px X."
+    },
+    {
+      "case": "six positive Y steps of 3 counts (18 total)",
+      "capture": "~/tempia/ia-tema/evidence/I167/i167-pointer-y-r256-step6.png",
+      "sha256": "f8515fa29fa92154a649b7836b6d29d826610976826f0cbcbdc4575cb6e42311",
+      "reference": "Stable post-X cursor bbox x=343..349, y=246..259.",
+      "measured_cursor_bbox": "x=343..349, y=257..270; temporary displacement approximately +11 px Y."
+    }
+  ],
+  "cleanup": {
+    "result": "Both operations completed with held=false/cleared fields, no callback or cleanup error; final read-only check reports captured=false, wait=false, paused=false, frameskip=4, throttled=false and no pending bridge request.",
+    "final_screenshot": "~/tempia/ia-tema/evidence/I167/i167-stable-check-r255.png",
+    "sha256": "dd10e62996a37140312df15b32267f38d47bf0aa69eda8f12e56590c33b33b8b",
+    "note": "The final stable cursor location differs from the initial preflight image; clearing the override returned control to the live physical accumulator. No absolute cursor position was forced, and the cause of the difference was not inferred."
+  },
+  "failed_read_only_probe": "R247 attempted an unsupported :kbd:mouse2.fields read method after saving its screenshot; it returned an error before any input. The black screenshot is preserved at ~/tempia/ia-tema/evidence/I167/i167-screen-preflight-r247.png (SHA-256 c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579).",
+  "limits": [
+    "No click was sent and no XmpIcon item was reached or hovered.",
+    "The bounded X/Y calibration is not a visual acceptance of GTK2 or evidence of successful XmpIcon hover behavior.",
+    "No GTK2 recipe, user theme, guest file or performance setting was changed."
+  ],
+  "next": "Resume I167 with the live physical accumulator and capture hook in mind; do not reuse the initial x/y as screen coordinates or chase an absolute target. Continue only with a separately bounded, checkpointed movement and a fresh visible target capture.",
+  "technical_coverage_estimate": {
+    "percent": 78,
+    "basis": "No GTK2 control family or adapter behavior was completed by pointer calibration.",
+    "not_a_visual_fidelity_score": true
+  }
+}

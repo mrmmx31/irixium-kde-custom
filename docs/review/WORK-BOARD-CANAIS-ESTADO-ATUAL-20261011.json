@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-11T06:52:12.365445+00:00",
+  "request": "Manter canal originalmente Ok pode reabrir fixo, renomeado e fora de filtros; canal exclusivo para o colega",
+  "channels": [
+    {
+      "id": "Q091",
+      "title": "Canal — Tema e laboratório",
+      "owner": "IA do tema e laboratório",
+      "revision": 23
+    },
+    {
+      "id": "Q102",
+      "title": "Canal — Prancheta / outra IA",
+      "owner": "IA da Prancheta",
+      "revision": 37
+    }
+  ],
+  "result": "Configuração existente corresponde ao pedido; nenhum canal duplicado, nenhuma janela reiniciada.",
+  "source_hashes": {
+    "src/view/channels.c": "8d9f0e339aed12195549d566ecc19deaeea19eed645077154989728e9f429e41",
+    "src/model/filter.c": "8ce6bc38053110235a2eaf42d5990599e3e7b0ac313cef5cd4904938c5fa9dce",
+    "src/view/task_list.c": "4d5e886f126fa46cf6f2bbc904020e3ec7370017772a86fd71018c7bed49e587",
+    "docs/CANAIS-FIXOS.md": "dd179a9bead287531da794dc6fea94258e526ffc35dc96c50a6e1db4bf44427f"
+  },
+  "previous_proof_same_sources": true,
+  "existing_evidence": "docs/review/WORK-BOARD-CANAIS-FIXOS-20261010.json",
+  "scope_progress_percent": 100,
+  "human_approval_filled": false
+}

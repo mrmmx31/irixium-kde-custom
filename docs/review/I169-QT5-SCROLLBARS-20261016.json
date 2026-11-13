@@ -1,0 +1,1789 @@
+{
+  "date": "2026-10-16",
+  "item": "I169",
+  "user_revision": 1,
+  "authorized": true,
+  "status": "complete",
+  "coverage": {
+    "catalog_controls_total": 16,
+    "translated": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "translated_count": 16,
+    "coverage_ratio": 1.0,
+    "interpretation": "All 16 lab catalog controls have Qt5 Widgets translations; this is catalog coverage, not overall project completion or human visual approval.",
+    "next_control": "frame",
+    "next_item": "I170 (Qt6) in the current queue; separate authorized family stage."
+  },
+  "implementation": {
+    "method": "Qt5 Widgets QSS and role-derived generated assets; Qt owns native input/state semantics and scrollbar range",
+    "real_widgets": [
+      "QPushButton push",
+      "QCheckBox indicator",
+      "QRadioButton indicator",
+      "QLineEdit entry",
+      "checkable QPushButton toggle",
+      "QScrollArea",
+      "QScrollBar",
+      "QSpinBox integer stepper",
+      "QDoubleSpinBox decimal stepper",
+      "QSpinBox integer stepper",
+      "QDoubleSpinBox decimal stepper",
+      "QTextEdit multiline text",
+      "horizontal QSlider scale",
+      "vertical QSlider scale",
+      "standalone QToolButton arrow with native click/focus behavior",
+      "real QProgressBar with recipe state mapping",
+      "QTreeWidget list with 40 selectable rows and native internal scrollbars",
+      "QFrame Panel/Sunken content frame with palette-role-derived surface and bevel"
+    ],
+    "checkbox_contract": "QCheckBox retains native check state and click semantics; its 14x14 normal and checked indicator assets are generated from Motif symbolic art and the current KDE semantic roles. Four-scheme probe toggles the real widget and verifies zero pixel difference against the matching generated asset.",
+    "toggle_contract": "first click selects and keeps sunken relief; second click clears selection and restores normal relief",
+    "toggle_interaction_test": {
+      "widget": "real PyQt5 QPushButton",
+      "checked_pixels_differ_from_normal": true,
+      "second_click_checked": false,
+      "pixels_after_second_click_equal_normal": true
+    },
+    "source_sha256": {
+      "tools/theme-lab/backend.py": "353a4ea3953ac3ccbb2f73c2333ab3a68b5bb4cce2116d848b3e68ad60fcec61",
+      "tools/theme-lab/qt5_scrollbar_route.py": "7a30103e22cf0a6bbf35915ef3b61746f442ae5031eb2b4422830802dd0b1086",
+      "tools/theme-lab/qt6_scrollbar_recipe.py": "b3b152e43710301cee6c250cc53918118f5b3fc5906504a67350b555c4107081",
+      "plasma/tests/galerias-nativas/qt6_demo.py": "858a9577f408d272d492957bf913517b8d093ef9176864bc62de6099049e994b",
+      "tools/theme-lab/tests/probe_qt5_list_widget.py": "512a1226f384987bb64c57a9c393f43948a476d87a4bd0d43b9dc4188c7cd1e2",
+      "tools/theme-lab/tests/probe_qt5_frame_widget.py": "15de4f6b7f72dd18770ef8e16daab214a2acfa787481d5a5daec9dca068613c6",
+      "tools/theme-lab/tests/test_qt5_scrollbar_recipe.py": "ba5f5f1371604408c3e5ac887775a1341c97cbe6345c65b30f34589eea4cb375",
+      "tools/theme-lab/tests/test_qt5_scrollbar_xephyr.py": "bb620b4d035e32fe0132666906c160f41d61dbfd8ebed9ecfd4137e2b9d40631"
+    },
+    "backend_note": "Fixed a pre-existing capability metadata scoping issue: native_gallery, translated_controls and recipe_applied now remain attached to each family within the backend loop; Qt5 Xephyr preview previously failed with KeyError before this fix.",
+    "radio_contract": "Two real QRadioButtons in an exclusive QButtonGroup transfer selection on click. The checked and unchecked 14x14 indicators are generated from Motif symbolic art and the current KDE semantic roles; the probe verifies exact generated asset pixels in both states.",
+    "entry_contract": "QLineEdit retains Qt editing, cursor and selection semantics. Normal/backdrop/disabled faces and text use KDE View roles; selection uses KDE Selection roles; focused relief derives from the KDE focus role; padding is the recipe control_padding_px.",
+    "spin_contract": "Real Qt5 QSpinBox and QDoubleSpinBox retain native range, mouse stepping, keyboard stepping and disabled behavior. Generated up/down arrows use semantic KDE roles for normal, pressed, backdrop and disabled states; spinner button relief uses current button roles. Four-scheme matrix verifies native interaction and exact visible arrow pixels, ignoring transparent pixels composited over the face.",
+    "spin_interaction_test": {
+      "widgets": [
+        "QSpinBox",
+        "QDoubleSpinBox"
+      ],
+      "mouse_up_down": true,
+      "keyboard_up": true,
+      "disabled": true,
+      "arrow_asset_visible_pixels_equal": true
+    },
+    "text_contract": "Real QTextEdit multiline editor retains native typing and text selection; normal, focused, backdrop and disabled surfaces, selection colors and recessed/focus relief derive from KDE View, Selection, Window and Focus roles. Probe verifies native edit/selection/disabled state and exact normal/disabled face pixels across four schemes.",
+    "scale_contract": "Real horizontal and vertical QSlider controls retain native range, mouse and keyboard semantics. Track relief and thumb faces/states are generated from current KDE Button, Window and Focus roles; geometry derives from recipe thumb_cross_px and shadow_px. The QSS avoids opaque page overlays that hid the recessed track. Native probe verifies mouse, keyboard and disabled behavior in both orientations.",
+    "scale_interaction_test": {
+      "widgets": [
+        "QSlider horizontal",
+        "QSlider vertical"
+      ],
+      "mouse_changes_value": true,
+      "keyboard_changes_value": true,
+      "disabled": true,
+      "xephyr_screenshot": "~/tempia/qt5-scrollbar-xephyr/run-cc31d0939319/home/qt5widgets-proof/qt5-scales.png"
+    },
+    "arrow_contract": "A real QToolButton uses recipe-sized down-arrow glyph assets generated from the shared Motif symbolic artwork and current KDE semantic roles. Normal/backdrop/pressed/disabled glyph pixels are compared against the rendered widget; click signals and disabled state are checked. No final RGB values are hard-coded.",
+    "arrow_interaction_test": {
+      "widget": "RecipeArrowButton subclass of real PyQt5 QToolButton",
+      "normal_pressed_released_disabled_opaque_glyph_pixels_match_assets": true,
+      "click_count": 2,
+      "disabled": true,
+      "xephyr_screenshot": "~/tempia/qt5-scrollbar-xephyr/run-fd6f561b5d70/home/qt5widgets-proof/qt5-arrow-button.png"
+    },
+    "progress_contract": "A RecipeProgressBar subclass retains native Qt range, value, fill fraction and formatted text. It maps normal/backdrop/disabled/focused states to a domainosState property for QSS; track/fill/bevel derive from KDE View, Selection and Focus roles, while text inherits Qt palette Text. No final RGB is fixed.",
+    "progress_interaction_test": {
+      "widget": "RecipeProgressBar / real PyQt5 QProgressBar",
+      "initial_range": [
+        0,
+        100
+      ],
+      "initial_value": 43,
+      "initial_text": "43%",
+      "value_after_change": 70,
+      "text_after_change": "70%",
+      "disabled_state_checked": true,
+      "rendered_pixels_change_on_value": true,
+      "four_scheme_matrix": "passed"
+    },
+    "list_contract": "A real QTreeWidget retains Qt single-row selection, focus, keyboard navigation and internal scrolling. Row surfaces use KDE View roles and the selected row uses KDE Selection roles; all colors are generated from the active scheme. Its selection and disabled states were verified with nonzero pixel deltas.",
+    "frame_contract": "Real QFrame with native Panel/Sunken semantics and a 2 px line width from recipe shadow_px. Surface and normal/backdrop/disabled bevel colors derive from KDE View and Window roles. Four-scheme probes compared normal/disabled center pixels with the generated semantic-role values."
+  },
+  "palette_matrix": {
+    "status": "passed",
+    "scope": "Four isolated KDE schemes; real Qt5 widgets including standalone arrow and progress bar; offscreen, no profile writes.",
+    "results": [
+      {
+        "scheme": "DomainOS",
+        "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "push_face": "#78a0d5",
+        "push_foreground": "#ffffff",
+        "sample_pixel": "#78a0d5",
+        "contrast_ratio": 2.7,
+        "qss_sha256": "f13b585957d43ec6dc1a4b4e80dd5958732de9d9aaf0df3d9d27303485ac863c",
+        "widgets_probe_status": "passed",
+        "translated_controls": [
+          "arrow",
+          "check",
+          "combo",
+          "entry",
+          "progress",
+          "push",
+          "radio",
+          "scale_h",
+          "scale_v",
+          "scroll_h",
+          "scroll_v",
+          "spin",
+          "text",
+          "toggle"
+        ],
+        "checkbox_probe": {
+          "widgetClass": "QCheckBox",
+          "objectName": "domainosRecipeCheckBox",
+          "checkedAfterClick": true,
+          "checkedPixelChanges": 144,
+          "uncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "checkedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "uncheckedAfterSecondClick": true,
+          "restoredPixelChanges": 0
+        },
+        "radio_group_probe": {
+          "widgetClass": "QRadioButton",
+          "exclusiveGroup": true,
+          "selectedAfterPeerClick": true,
+          "selectionPixelChanges": 84,
+          "initialUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "initialCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "peerCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "radioUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "returnedToFirst": true
+        },
+        "entry_probe": {
+          "widgetClass": "QLineEdit",
+          "objectName": "domainosRecipeEntry",
+          "focused": true,
+          "focusPixelChanges": 2137,
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectionBackground": "#3297c7",
+          "selectionForeground": "#ffffff",
+          "disabled": true,
+          "normalFacePixel": "#6688b5",
+          "expectedNormalFace": "#6688b5",
+          "disabledFacePixel": "#6182ad",
+          "expectedDisabledFace": "#6182ad"
+        },
+        "spin_probe": {
+          "integer": {
+            "widgetClass": "QSpinBox",
+            "objectName": "domainosRecipeSpinBox",
+            "initialValue": 42,
+            "valueAfterUp": 43,
+            "valueAfterDown": 42,
+            "valueAfterKeyboardUp": 43,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "downArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledUpArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledDownArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              71,
+              35
+            ]
+          },
+          "decimal": {
+            "widgetClass": "QDoubleSpinBox",
+            "objectName": "domainosRecipeDoubleSpinBox",
+            "initialValue": 10.4,
+            "valueAfterUp": 10.5,
+            "valueAfterDown": 10.4,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              76,
+              35
+            ]
+          }
+        },
+        "text_probe": {
+          "widgetClass": "QTextEdit",
+          "objectName": "domainosRecipeText",
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectedText": "Native Qt5 multiline textx",
+          "selectionBackground": "#3297c7",
+          "selectionForeground": "#ffffff",
+          "disabled": true,
+          "normalFacePixel": "#6688b5",
+          "expectedNormalFace": "#6688b5",
+          "disabledFacePixel": "#6182ad",
+          "expectedDisabledFace": "#6182ad",
+          "sizeHint": [
+            256,
+            192
+          ]
+        },
+        "scale_probe": {
+          "horizontal": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleHorizontal",
+            "orientation": "horizontal",
+            "grooveRect": [
+              0,
+              2,
+              310,
+              11
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              84,
+              15
+            ]
+          },
+          "vertical": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleVertical",
+            "orientation": "vertical",
+            "grooveRect": [
+              11,
+              0,
+              11,
+              148
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              15,
+              84
+            ]
+          },
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/DomainOS/probe/qt5-scales.png"
+        },
+        "arrow_probe": {
+          "widgetClass": "RecipeArrowButton",
+          "objectName": "domainosRecipeArrow",
+          "normalState": "normal",
+          "releasedState": "normal",
+          "pressedState": "pressed",
+          "isDownAfterRelease": false,
+          "clickCount": 2,
+          "normalAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "pressedAsset": {
+            "pixelDifferences": 0,
+            "state": "pressed",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "releasedAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabledAsset": {
+            "pixelDifferences": 0,
+            "state": "disabled",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabled": true,
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/DomainOS/probe/qt5-standalone-arrow.png",
+          "heldImageCaptured": true
+        },
+        "progress_probe": {
+          "widgetClass": "RecipeProgressBar",
+          "objectName": "domainosRecipeProgress",
+          "orientation": "horizontal",
+          "recipeState": "disabled",
+          "initialValue": 43,
+          "initialText": "43%",
+          "valueAfterChange": 70,
+          "textAfterChange": "70%",
+          "fillValueChangedPixels": 2563,
+          "disabled": true,
+          "disabledStateChangedPixels": 9834,
+          "normalScreenshotSaved": true,
+          "disabledScreenshotSaved": true,
+          "normalScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/DomainOS/probe/qt5-progress-normal.png",
+          "disabledScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/DomainOS/probe/qt5-progress-disabled.png",
+          "size": [
+            298,
+            33
+          ]
+        }
+      },
+      {
+        "scheme": "BreezeLight",
+        "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+        "push_face": "#fcfcfc",
+        "push_foreground": "#232629",
+        "sample_pixel": "#fcfcfc",
+        "contrast_ratio": 14.82,
+        "qss_sha256": "c8dcf5de37b34e26a537bf7a46ae28abdb0e2b978424ec448176b39e59cea22d",
+        "widgets_probe_status": "passed",
+        "translated_controls": [
+          "arrow",
+          "check",
+          "combo",
+          "entry",
+          "progress",
+          "push",
+          "radio",
+          "scale_h",
+          "scale_v",
+          "scroll_h",
+          "scroll_v",
+          "spin",
+          "text",
+          "toggle"
+        ],
+        "checkbox_probe": {
+          "widgetClass": "QCheckBox",
+          "objectName": "domainosRecipeCheckBox",
+          "checkedAfterClick": true,
+          "checkedPixelChanges": 144,
+          "uncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "checkedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "uncheckedAfterSecondClick": true,
+          "restoredPixelChanges": 0
+        },
+        "radio_group_probe": {
+          "widgetClass": "QRadioButton",
+          "exclusiveGroup": true,
+          "selectedAfterPeerClick": true,
+          "selectionPixelChanges": 84,
+          "initialUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "initialCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "peerCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "radioUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "returnedToFirst": true
+        },
+        "entry_probe": {
+          "widgetClass": "QLineEdit",
+          "objectName": "domainosRecipeEntry",
+          "focused": true,
+          "focusPixelChanges": 2137,
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectionBackground": "#3daee9",
+          "selectionForeground": "#ffffff",
+          "disabled": true,
+          "normalFacePixel": "#ffffff",
+          "expectedNormalFace": "#ffffff",
+          "disabledFacePixel": "#f3f3f3",
+          "expectedDisabledFace": "#f3f3f3"
+        },
+        "spin_probe": {
+          "integer": {
+            "widgetClass": "QSpinBox",
+            "objectName": "domainosRecipeSpinBox",
+            "initialValue": 42,
+            "valueAfterUp": 43,
+            "valueAfterDown": 42,
+            "valueAfterKeyboardUp": 43,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "downArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledUpArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledDownArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              71,
+              35
+            ]
+          },
+          "decimal": {
+            "widgetClass": "QDoubleSpinBox",
+            "objectName": "domainosRecipeDoubleSpinBox",
+            "initialValue": 10.4,
+            "valueAfterUp": 10.5,
+            "valueAfterDown": 10.4,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              76,
+              35
+            ]
+          }
+        },
+        "text_probe": {
+          "widgetClass": "QTextEdit",
+          "objectName": "domainosRecipeText",
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectedText": "Native Qt5 multiline textx",
+          "selectionBackground": "#3daee9",
+          "selectionForeground": "#ffffff",
+          "disabled": true,
+          "normalFacePixel": "#ffffff",
+          "expectedNormalFace": "#ffffff",
+          "disabledFacePixel": "#f3f3f3",
+          "expectedDisabledFace": "#f3f3f3",
+          "sizeHint": [
+            256,
+            192
+          ]
+        },
+        "scale_probe": {
+          "horizontal": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleHorizontal",
+            "orientation": "horizontal",
+            "grooveRect": [
+              0,
+              2,
+              310,
+              11
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              84,
+              15
+            ]
+          },
+          "vertical": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleVertical",
+            "orientation": "vertical",
+            "grooveRect": [
+              11,
+              0,
+              11,
+              148
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              15,
+              84
+            ]
+          },
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeLight/probe/qt5-scales.png"
+        },
+        "arrow_probe": {
+          "widgetClass": "RecipeArrowButton",
+          "objectName": "domainosRecipeArrow",
+          "normalState": "normal",
+          "releasedState": "normal",
+          "pressedState": "pressed",
+          "isDownAfterRelease": false,
+          "clickCount": 2,
+          "normalAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "pressedAsset": {
+            "pixelDifferences": 0,
+            "state": "pressed",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "releasedAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabledAsset": {
+            "pixelDifferences": 0,
+            "state": "disabled",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabled": true,
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeLight/probe/qt5-standalone-arrow.png",
+          "heldImageCaptured": true
+        },
+        "progress_probe": {
+          "widgetClass": "RecipeProgressBar",
+          "objectName": "domainosRecipeProgress",
+          "orientation": "horizontal",
+          "recipeState": "disabled",
+          "initialValue": 43,
+          "initialText": "43%",
+          "valueAfterChange": 70,
+          "textAfterChange": "70%",
+          "fillValueChangedPixels": 2563,
+          "disabled": true,
+          "disabledStateChangedPixels": 9834,
+          "normalScreenshotSaved": true,
+          "disabledScreenshotSaved": true,
+          "normalScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeLight/probe/qt5-progress-normal.png",
+          "disabledScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeLight/probe/qt5-progress-disabled.png",
+          "size": [
+            298,
+            33
+          ]
+        }
+      },
+      {
+        "scheme": "BreezeDark",
+        "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+        "push_face": "#292c30",
+        "push_foreground": "#fcfcfc",
+        "sample_pixel": "#292c30",
+        "contrast_ratio": 13.67,
+        "qss_sha256": "e81eadcd4c064e0ec3479b45ed4332c0b1c67fce54887d561dc79e938bc3fc4b",
+        "widgets_probe_status": "passed",
+        "translated_controls": [
+          "arrow",
+          "check",
+          "combo",
+          "entry",
+          "progress",
+          "push",
+          "radio",
+          "scale_h",
+          "scale_v",
+          "scroll_h",
+          "scroll_v",
+          "spin",
+          "text",
+          "toggle"
+        ],
+        "checkbox_probe": {
+          "widgetClass": "QCheckBox",
+          "objectName": "domainosRecipeCheckBox",
+          "checkedAfterClick": true,
+          "checkedPixelChanges": 144,
+          "uncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "checkedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "uncheckedAfterSecondClick": true,
+          "restoredPixelChanges": 0
+        },
+        "radio_group_probe": {
+          "widgetClass": "QRadioButton",
+          "exclusiveGroup": true,
+          "selectedAfterPeerClick": true,
+          "selectionPixelChanges": 84,
+          "initialUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "initialCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "peerCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "radioUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "returnedToFirst": true
+        },
+        "entry_probe": {
+          "widgetClass": "QLineEdit",
+          "objectName": "domainosRecipeEntry",
+          "focused": true,
+          "focusPixelChanges": 2137,
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectionBackground": "#3daee9",
+          "selectionForeground": "#fcfcfc",
+          "disabled": true,
+          "normalFacePixel": "#141618",
+          "expectedNormalFace": "#141618",
+          "disabledFacePixel": "#131517",
+          "expectedDisabledFace": "#131517"
+        },
+        "spin_probe": {
+          "integer": {
+            "widgetClass": "QSpinBox",
+            "objectName": "domainosRecipeSpinBox",
+            "initialValue": 42,
+            "valueAfterUp": 43,
+            "valueAfterDown": 42,
+            "valueAfterKeyboardUp": 43,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "downArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledUpArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledDownArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              71,
+              35
+            ]
+          },
+          "decimal": {
+            "widgetClass": "QDoubleSpinBox",
+            "objectName": "domainosRecipeDoubleSpinBox",
+            "initialValue": 10.4,
+            "valueAfterUp": 10.5,
+            "valueAfterDown": 10.4,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              76,
+              35
+            ]
+          }
+        },
+        "text_probe": {
+          "widgetClass": "QTextEdit",
+          "objectName": "domainosRecipeText",
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectedText": "Native Qt5 multiline textx",
+          "selectionBackground": "#3daee9",
+          "selectionForeground": "#fcfcfc",
+          "disabled": true,
+          "normalFacePixel": "#141618",
+          "expectedNormalFace": "#141618",
+          "disabledFacePixel": "#131517",
+          "expectedDisabledFace": "#131517",
+          "sizeHint": [
+            256,
+            192
+          ]
+        },
+        "scale_probe": {
+          "horizontal": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleHorizontal",
+            "orientation": "horizontal",
+            "grooveRect": [
+              0,
+              2,
+              310,
+              11
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              84,
+              15
+            ]
+          },
+          "vertical": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleVertical",
+            "orientation": "vertical",
+            "grooveRect": [
+              11,
+              0,
+              11,
+              148
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              15,
+              84
+            ]
+          },
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeDark/probe/qt5-scales.png"
+        },
+        "arrow_probe": {
+          "widgetClass": "RecipeArrowButton",
+          "objectName": "domainosRecipeArrow",
+          "normalState": "normal",
+          "releasedState": "normal",
+          "pressedState": "pressed",
+          "isDownAfterRelease": false,
+          "clickCount": 2,
+          "normalAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "pressedAsset": {
+            "pixelDifferences": 0,
+            "state": "pressed",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "releasedAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabledAsset": {
+            "pixelDifferences": 0,
+            "state": "disabled",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabled": true,
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeDark/probe/qt5-standalone-arrow.png",
+          "heldImageCaptured": true
+        },
+        "progress_probe": {
+          "widgetClass": "RecipeProgressBar",
+          "objectName": "domainosRecipeProgress",
+          "orientation": "horizontal",
+          "recipeState": "disabled",
+          "initialValue": 43,
+          "initialText": "43%",
+          "valueAfterChange": 70,
+          "textAfterChange": "70%",
+          "fillValueChangedPixels": 2563,
+          "disabled": true,
+          "disabledStateChangedPixels": 9834,
+          "normalScreenshotSaved": true,
+          "disabledScreenshotSaved": true,
+          "normalScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeDark/probe/qt5-progress-normal.png",
+          "disabledScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/BreezeDark/probe/qt5-progress-disabled.png",
+          "size": [
+            298,
+            33
+          ]
+        }
+      },
+      {
+        "scheme": "TestYellow",
+        "scheme_sha256": "76ab8043dfdb507b6db35350e10714705fef9cfad31584f2408d354de898ce7c",
+        "push_face": "#ecd870",
+        "push_foreground": "#201c0c",
+        "sample_pixel": "#ecd870",
+        "contrast_ratio": 11.86,
+        "qss_sha256": "b441198b39133f39f22fdcbc4bd4f1d7bc883fcefd84d5f6e8a44cadea07337f",
+        "widgets_probe_status": "passed",
+        "translated_controls": [
+          "arrow",
+          "check",
+          "combo",
+          "entry",
+          "progress",
+          "push",
+          "radio",
+          "scale_h",
+          "scale_v",
+          "scroll_h",
+          "scroll_v",
+          "spin",
+          "text",
+          "toggle"
+        ],
+        "checkbox_probe": {
+          "widgetClass": "QCheckBox",
+          "objectName": "domainosRecipeCheckBox",
+          "checkedAfterClick": true,
+          "checkedPixelChanges": 144,
+          "uncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "checkedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "uncheckedAfterSecondClick": true,
+          "restoredPixelChanges": 0
+        },
+        "radio_group_probe": {
+          "widgetClass": "QRadioButton",
+          "exclusiveGroup": true,
+          "selectedAfterPeerClick": true,
+          "selectionPixelChanges": 84,
+          "initialUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "initialCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "peerCheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "radioUncheckedAsset": {
+            "rect": [
+              0,
+              4,
+              14,
+              14
+            ],
+            "pixelDifferences": 0
+          },
+          "returnedToFirst": true
+        },
+        "entry_probe": {
+          "widgetClass": "QLineEdit",
+          "objectName": "domainosRecipeEntry",
+          "focused": true,
+          "focusPixelChanges": 2137,
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectionBackground": "#584818",
+          "selectionForeground": "#fff8d8",
+          "disabled": true,
+          "normalFacePixel": "#ecd870",
+          "expectedNormalFace": "#ecd870",
+          "disabledFacePixel": "#e1ce6b",
+          "expectedDisabledFace": "#e1ce6b"
+        },
+        "spin_probe": {
+          "integer": {
+            "widgetClass": "QSpinBox",
+            "objectName": "domainosRecipeSpinBox",
+            "initialValue": 42,
+            "valueAfterUp": 43,
+            "valueAfterDown": 42,
+            "valueAfterKeyboardUp": 43,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "downArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledUpArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabledDownArrowAsset": {
+              "rect": [
+                483,
+                21,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              71,
+              35
+            ]
+          },
+          "decimal": {
+            "widgetClass": "QDoubleSpinBox",
+            "objectName": "domainosRecipeDoubleSpinBox",
+            "initialValue": 10.4,
+            "valueAfterUp": 10.5,
+            "valueAfterDown": 10.4,
+            "upArrowAsset": {
+              "rect": [
+                483,
+                3,
+                11,
+                11
+              ],
+              "pixelDifferences": 0
+            },
+            "disabled": true,
+            "sizeHint": [
+              76,
+              35
+            ]
+          }
+        },
+        "text_probe": {
+          "widgetClass": "QTextEdit",
+          "objectName": "domainosRecipeText",
+          "nativeEditWorked": true,
+          "selectionWorked": true,
+          "selectedText": "Native Qt5 multiline textx",
+          "selectionBackground": "#584818",
+          "selectionForeground": "#fff8d8",
+          "disabled": true,
+          "normalFacePixel": "#ecd870",
+          "expectedNormalFace": "#ecd870",
+          "disabledFacePixel": "#e1ce6b",
+          "expectedDisabledFace": "#e1ce6b",
+          "sizeHint": [
+            256,
+            192
+          ]
+        },
+        "scale_probe": {
+          "horizontal": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleHorizontal",
+            "orientation": "horizontal",
+            "grooveRect": [
+              0,
+              2,
+              310,
+              11
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              84,
+              15
+            ]
+          },
+          "vertical": {
+            "widgetClass": "QSlider",
+            "objectName": "domainosRecipeScaleVertical",
+            "orientation": "vertical",
+            "grooveRect": [
+              11,
+              0,
+              11,
+              148
+            ],
+            "initialValue": 25,
+            "valueAfterMouse": 45,
+            "valueBeforeKey": 40,
+            "valueAfterKey": 45,
+            "disabled": true,
+            "sizeHint": [
+              15,
+              84
+            ]
+          },
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/TestYellow/probe/qt5-scales.png"
+        },
+        "arrow_probe": {
+          "widgetClass": "RecipeArrowButton",
+          "objectName": "domainosRecipeArrow",
+          "normalState": "normal",
+          "releasedState": "normal",
+          "pressedState": "pressed",
+          "isDownAfterRelease": false,
+          "clickCount": 2,
+          "normalAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "pressedAsset": {
+            "pixelDifferences": 0,
+            "state": "pressed",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "releasedAsset": {
+            "pixelDifferences": 0,
+            "state": "normal",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabledAsset": {
+            "pixelDifferences": 0,
+            "state": "disabled",
+            "glyphSize": [
+              11,
+              11
+            ]
+          },
+          "disabled": true,
+          "screenshotSaved": true,
+          "screenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/TestYellow/probe/qt5-standalone-arrow.png",
+          "heldImageCaptured": true
+        },
+        "progress_probe": {
+          "widgetClass": "RecipeProgressBar",
+          "objectName": "domainosRecipeProgress",
+          "orientation": "horizontal",
+          "recipeState": "disabled",
+          "initialValue": 43,
+          "initialText": "43%",
+          "valueAfterChange": 70,
+          "textAfterChange": "70%",
+          "fillValueChangedPixels": 2563,
+          "disabled": true,
+          "disabledStateChangedPixels": 9834,
+          "normalScreenshotSaved": true,
+          "disabledScreenshotSaved": true,
+          "normalScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/TestYellow/probe/qt5-progress-normal.png",
+          "disabledScreenshot": "/home/lsi/tempia/test-tmp/qt5-four-schemes-20261016/TestYellow/probe/qt5-progress-disabled.png",
+          "size": [
+            298,
+            33
+          ]
+        }
+      }
+    ],
+    "contrast_method": "WCAG relative luminance ratio; diagnostic only, no static color override",
+    "contrast_note": "DomainOS roles are white on #78a0d5 (2.70:1); this comes from the selected schema and remains unmodified. TestYellow selected roles measure 11.86:1.",
+    "result_json": "~/tempia/test-tmp/qt5-four-schemes-20261016/result.json",
+    "result_json_sha256": "2fe80863f6cbebff9c01ac3afd6c21722a50502715ef43d0e3a55284fc192443",
+    "checkbox_assertion": "For each of DomainOS, BreezeLight, BreezeDark and TestYellow, a real QCheckBox toggled checked then unchecked; the captured 14x14 indicator matched the corresponding generated role-based asset with 0 differing pixels.",
+    "radio_assertion": "For DomainOS, BreezeLight, BreezeDark and TestYellow, an exclusive real QButtonGroup transferred selection between QRadioButtons; checked and unchecked 14x14 indicator crops matched generated role-derived assets with zero differing pixels.",
+    "entry_assertion": "For all four schemes, the real QLineEdit accepted keyboard input and selection, entered focus/disabled states, and its sampled normal/disabled face pixels matched the KDE-role colors emitted in the generated QSS."
+  },
+  "xephyr_native_preview": {
+    "status": "passed",
+    "display": ":61",
+    "qt_version": "5.15.15",
+    "pyqt_version": "5.15.11",
+    "style": {
+      "objectName": "breeze",
+      "className": "Breeze::Style"
+    },
+    "translated_controls": [
+      "arrow",
+      "check",
+      "combo",
+      "entry",
+      "frame",
+      "list",
+      "progress",
+      "push",
+      "radio",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "spin",
+      "text",
+      "toggle"
+    ],
+    "spin_widgets": [
+      {
+        "class": "QSpinBox",
+        "objectName": "domainosRecipeSpinBox",
+        "value": 42,
+        "sizeHint": [
+          59,
+          32
+        ]
+      },
+      {
+        "class": "QDoubleSpinBox",
+        "objectName": "domainosRecipeDoubleSpinBox",
+        "value": 10.4,
+        "sizeHint": [
+          70,
+          32
+        ]
+      }
+    ],
+    "text_editor": {
+      "applied": true,
+      "scope": "one real QTextEdit; Qt retains multiline editing, keyboard, selection and clipboard semantics",
+      "objectName": "domainosRecipeText",
+      "states": [
+        "normal",
+        "focused",
+        "backdrop",
+        "disabled"
+      ],
+      "source": "/home/domainos-test/out/revisions/20261016T111947-bec4060c8f34/qt5-scrollbar-snapshot/qt5-scrollbar.qss",
+      "sizeHint": [
+        256,
+        192
+      ],
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "limitations": [
+        "QSS state mapping does not establish historical SR10.4 fidelity or full controller integration."
+      ]
+    },
+    "scales": {
+      "applied": true,
+      "scope": "real horizontal and vertical QSlider controls; Qt retains range, mouse and keyboard semantics",
+      "widgets": [
+        {
+          "class": "QSlider",
+          "objectName": "domainosRecipeScaleHorizontal",
+          "orientation": "horizontal",
+          "value": 43,
+          "sizeHint": [
+            84,
+            20
+          ]
+        },
+        {
+          "class": "QSlider",
+          "objectName": "domainosRecipeScaleVertical",
+          "orientation": "vertical",
+          "value": 38,
+          "sizeHint": [
+            20,
+            84
+          ]
+        }
+      ],
+      "source": "/home/domainos-test/out/revisions/20261016T111947-bec4060c8f34/qt5-scrollbar-snapshot/qt5-scrollbar.qss",
+      "states": [
+        "normal",
+        "focused",
+        "pressed",
+        "backdrop",
+        "disabled"
+      ],
+      "selectedScheme": {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      "paletteInputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ],
+      "limitations": [
+        "The QSS uses Qt subcontrols; this does not establish historical SR10.4 fidelity."
+      ]
+    },
+    "spin_screenshot": "/home/lsi/tempia/qt5-scrollbar-xephyr/run-cc31d0939319/home/qt5widgets-proof/qt5-spinboxes.png",
+    "text_screenshot": "/home/lsi/tempia/qt5-scrollbar-xephyr/run-cc31d0939319/home/qt5widgets-proof/qt5-textedit.png",
+    "scale_screenshot": "/home/lsi/tempia/qt5-scrollbar-xephyr/run-cc31d0939319/home/qt5widgets-proof/qt5-scales.png",
+    "guards": {
+      "verified": true,
+      "uid": 1000,
+      "passwdName": "domainos-test",
+      "passwdHome": "/home/domainos-test",
+      "namespaceMarker": "/etc/domainos-preview",
+      "personalHomeExposed": false,
+      "systemBusSocketExposed": false,
+      "procStatusPresent": true,
+      "cwd": "/home/domainos-test"
+    },
+    "evidence": "~/tempia/qt5-scrollbar-xephyr/run-e7d16917a0b7/QT5-XEPHYR-PREVIEW-RESULT.json",
+    "scope": "Private bwrap preview in existing Xephyr; real Qt5 widget/recipe integration evidence only, not human or historical visual approval.",
+    "arrow": {
+      "applied": true,
+      "widget": "RecipeArrowButton / QToolButton",
+      "objectName": "domainosRecipeArrow",
+      "size_px": [
+        19,
+        19
+      ],
+      "states": [
+        "normal",
+        "pressed while held",
+        "backdrop",
+        "disabled",
+        "focused"
+      ],
+      "click_semantics": "two activation signals observed across press/release and click",
+      "screenshot": "~/tempia/qt5-scrollbar-xephyr/run-fd6f561b5d70/home/qt5widgets-proof/qt5-arrow-button.png",
+      "evidence": "~/tempia/qt5-scrollbar-xephyr/run-fd6f561b5d70/QT5-XEPHYR-PREVIEW-RESULT.json"
+    },
+    "progress": {
+      "applied": true,
+      "scope": "one real QProgressBar; Qt retains progress range, value, fill fraction and text formatting",
+      "objectName": "domainosRecipeProgress",
+      "widgetClass": "RecipeProgressBar",
+      "orientation": "horizontal",
+      "range": [
+        0,
+        100
+      ],
+      "value": 43,
+      "text": "43%",
+      "states": [
+        "normal",
+        "backdrop",
+        "disabled",
+        "focused"
+      ],
+      "textColorSource": "Qt palette Text role; the QSS only sets KDE-role-derived track/fill surfaces and relief",
+      "limitations": [
+        "The value shown is static gallery sample data, not task telemetry or historical fidelity."
+      ],
+      "screenshot": "~/tempia/qt5-scrollbar-xephyr/run-e7d16917a0b7/home/qt5widgets-proof/qt5-progress.png",
+      "selected_scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "palette_inputs": [
+        {
+          "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+          "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+          "kind": "xdg_user_color_scheme",
+          "scheme_id": "DomainOS-SR10.4",
+          "scheme_name": "DomainOS SR10.4"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+          "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+        },
+        {
+          "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+          "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+        }
+      ]
+    },
+    "list": {
+      "widget_class": "QTreeWidget",
+      "row_count": 40,
+      "single_row_selection": true,
+      "internal_scrollbars": {
+        "vertical": "visible; maximum 28; 15x403 px",
+        "horizontal": "visible; maximum 161; 459x15 px"
+      },
+      "screenshot": "~/tempia/qt5-scrollbar-xephyr/run-be1cfc9f90e0/home/qt5widgets-proof/qt5-list.png",
+      "limitations": [
+        "Real Qt widget and role mapping only; not historical SR10.4 fidelity or user approval."
+      ],
+      "screenshot_sha256": "d5c1c1aef61d3d9400dde6bac48d2773087af26acbc83db18e6c4ca73e0c8ebf"
+    },
+    "report": "~/tempia/qt5-scrollbar-xephyr/run-be1cfc9f90e0/QT5-XEPHYR-PREVIEW-RESULT.json",
+    "frame": {
+      "applied": true,
+      "widget_class": "QFrame",
+      "shape": "Panel",
+      "shadow": "Sunken",
+      "line_width_px": 2,
+      "size_hint_px": [
+        84,
+        42
+      ],
+      "screenshot": "~/tempia/qt5-scrollbar-xephyr/run-be1cfc9f90e0/home/qt5widgets-proof/qt5-frame.png",
+      "screenshot_sha256": "c322b1e7befc8eb1208ef92b9060ca6eb622738d089222df08a7583882cbdf17",
+      "limitations": [
+        "The gallery frame is a real Qt5 widget; the surrounding gallery tabs are not part of the recipe."
+      ]
+    },
+    "report_sha256": "cd0d9b9b1923f4d0d084bc630a6b6c09eab8d228824a8eb282a585f77313485a"
+  },
+  "tests": {
+    "python_compile": "passed: all modified Qt5 source/gallery/test files",
+    "qt5_unit_suite": "passed: 4/4 tests, including real QTreeWidget selection/scrolling and QFrame normal/disabled surface pixels",
+    "four_scheme_matrix": "passed across all 16 catalog controls using existing 14-control matrix plus dedicated real QTreeWidget/QFrame tests in DomainOS, BreezeLight, BreezeDark and TestYellow",
+    "existing_xephyr_public_route": "passed: :61, Qt 5.15.15/PyQt 5.15.11/Breeze, 16 real Qt Widgets controls under private bwrap; runner closed its own preview and preserved both Xephyr sessions",
+    "visual_inspection": "Qt5 list and frame captures visually inspected at native scale against the approved static SR10.4 Trash Can reference. This is a scoped design comparison, not a live VM capture or human approval.",
+    "qt5_list_four_scheme_matrix": "passed: four isolated schemes; selection pixel deltas 11099–11513; disabled delta 2688; both scrollbars visible in all schemes",
+    "qt6_unit_suite": "passed: 7/7 shared-generator regression tests",
+    "backend_suite": "passed: 39/39",
+    "scene_suite": "passed: 15/15",
+    "list_frame_four_scheme_matrix": "passed: list selection pixel delta 11099–11513; QFrame normal and disabled face pixels matched KDE-role-derived colors in all four schemes"
+  },
+  "limitations": [
+    "The 16/16 value measures Qt5 lab catalog coverage only; it does not complete T04, other families, the goal, or human visual approval.",
+    "The historic comparison used the approved static SR10.4 Trash Can capture. The sole running MAME process belongs to the explicitly excluded I342 task and was left untouched.",
+    "The generated Qt gallery tabs and sample content are test UI, not historical VUE widgets."
+  ],
+  "list_frame_palette_matrix": {
+    "status": "passed",
+    "scope": "real PyQt5 QTreeWidget selection and QFrame bevel/surface states; generated KDE semantic roles; offscreen profiles isolated",
+    "schemes": [
+      {
+        "scheme": "DomainOS",
+        "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "qss_sha256": "d31f848d27b1f1e4fdc6b83716dfd7be5cddc1aaaf6cecadd5dba5354de840a6",
+        "roles_applied": true,
+        "list_selection_pixel_delta": 11099,
+        "frame_normal_face": {
+          "actualPixel": "#6688b5",
+          "expectedKdeRoleDerived": "#6688b5"
+        },
+        "frame_disabled_face": {
+          "actualPixel": "#6182ad",
+          "expectedKdeRoleDerived": "#6182ad"
+        },
+        "frame_disabled_pixel_delta": 21120,
+        "disabled_pixel_delta": 2688,
+        "scrollbars": {
+          "vertical": {
+            "maximum": 32,
+            "objectName": "domainosScrollBarVertical",
+            "visible": true
+          },
+          "horizontal": {
+            "maximum": 223,
+            "objectName": "domainosScrollBarHorizontal",
+            "visible": true
+          }
+        },
+        "screenshot": "/home/lsi/tempia/qt5-list-four-schemes-20261016/DomainOS/probe/qt5-list-selected.png"
+      },
+      {
+        "scheme": "BreezeLight",
+        "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+        "qss_sha256": "582156ca71d65ce849deeb0c4070f6f95cbdf821f8063180af8eb2f2cbb92459",
+        "roles_applied": true,
+        "list_selection_pixel_delta": 11513,
+        "frame_normal_face": {
+          "actualPixel": "#ffffff",
+          "expectedKdeRoleDerived": "#ffffff"
+        },
+        "frame_disabled_face": {
+          "actualPixel": "#f3f3f3",
+          "expectedKdeRoleDerived": "#f3f3f3"
+        },
+        "frame_disabled_pixel_delta": 21120,
+        "disabled_pixel_delta": 2688,
+        "scrollbars": {
+          "vertical": {
+            "maximum": 32,
+            "objectName": "domainosScrollBarVertical",
+            "visible": true
+          },
+          "horizontal": {
+            "maximum": 223,
+            "objectName": "domainosScrollBarHorizontal",
+            "visible": true
+          }
+        },
+        "screenshot": "/home/lsi/tempia/qt5-list-four-schemes-20261016/BreezeLight/probe/qt5-list-selected.png"
+      },
+      {
+        "scheme": "BreezeDark",
+        "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+        "qss_sha256": "3e12e15cb02f60ecf02240bf1cb6a366622ec4315aff229fbee5af2ae14639d2",
+        "roles_applied": true,
+        "list_selection_pixel_delta": 11119,
+        "frame_normal_face": {
+          "actualPixel": "#141618",
+          "expectedKdeRoleDerived": "#141618"
+        },
+        "frame_disabled_face": {
+          "actualPixel": "#131517",
+          "expectedKdeRoleDerived": "#131517"
+        },
+        "frame_disabled_pixel_delta": 21115,
+        "disabled_pixel_delta": 2688,
+        "scrollbars": {
+          "vertical": {
+            "maximum": 32,
+            "objectName": "domainosScrollBarVertical",
+            "visible": true
+          },
+          "horizontal": {
+            "maximum": 223,
+            "objectName": "domainosScrollBarHorizontal",
+            "visible": true
+          }
+        },
+        "screenshot": "/home/lsi/tempia/qt5-list-four-schemes-20261016/BreezeDark/probe/qt5-list-selected.png"
+      },
+      {
+        "scheme": "TestYellow",
+        "scheme_sha256": "76ab8043dfdb507b6db35350e10714705fef9cfad31584f2408d354de898ce7c",
+        "qss_sha256": "5846470a1262279030cd886908a4b34fb96a8bca712196e163167fb240b65aa4",
+        "roles_applied": true,
+        "list_selection_pixel_delta": 11513,
+        "frame_normal_face": {
+          "actualPixel": "#ecd870",
+          "expectedKdeRoleDerived": "#ecd870"
+        },
+        "frame_disabled_face": {
+          "actualPixel": "#e1ce6b",
+          "expectedKdeRoleDerived": "#e1ce6b"
+        },
+        "frame_disabled_pixel_delta": 21120,
+        "disabled_pixel_delta": 2688,
+        "scrollbars": {
+          "vertical": {
+            "maximum": 32,
+            "objectName": "domainosScrollBarVertical",
+            "visible": true
+          },
+          "horizontal": {
+            "maximum": 223,
+            "objectName": "domainosScrollBarHorizontal",
+            "visible": true
+          }
+        },
+        "screenshot": "/home/lsi/tempia/qt5-list-four-schemes-20261016/TestYellow/probe/qt5-list-selected.png"
+      }
+    ]
+  },
+  "historical_visual_comparison": {
+    "reference": "docs/referencias/domainos-sr104/trash-can-normal.png",
+    "reference_sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+    "scope": "Static approved Domain/OS SR10.4 Trash Can reference at native pixel scale; compared the 2 px recessed content frame, 15 px scrollbar cross-axis and arrow/thumb layout against Qt5 list/frame captures.",
+    "result": "The QFrame top/left dark and bottom/right light bevel follows the recessed content-frame orientation. Qt5 scrollbar thickness and arrow placement match the shared 15/11/2 contract at native scale. The Qt gallery and item selection are not historical VUE UI.",
+    "live_vm": "Not sampled this step: the sole running MAME process is the I342 clone, explicitly excluded by the current goal. No MAME input or guest modification was sent."
+  }
+}

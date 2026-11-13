@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-12T01:40:12.989047+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 push delivery within existing lab; broader T04 remains running",
+  "new_pid": 3566301,
+  "new_window": "0x200022f",
+  "display": ":61",
+  "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-dd8d841cb3824109b5121de93ed265e2/MANIFESTO.json",
+  "new_start_ticks": 41700869,
+  "new_process_alive": true,
+  "new_window_inspected": true,
+  "source_pid": 3259590,
+  "source_exit_code": 0,
+  "normal_close": true,
+  "exact_preservation_after_source_close": [
+    "editor-journal.json",
+    "project-history.json",
+    "scene.json"
+  ],
+  "working_project_change": "Export timestamp only; semantic content preserved",
+  "preservation": {
+    "working.json": {
+      "exact": false,
+      "export_timestamp_only": true,
+      "source_sha256": "6638750d1d3e13926e561ba4d40785e2c7102f35bd18fb8009c6e48159109ab9",
+      "new_sha256": "89e1e233344124507007902e454534ee70d574745e6d6672c8b7347792194ff3"
+    },
+    "scene.json": {
+      "exact": true,
+      "export_timestamp_only": false,
+      "source_sha256": "50c32f601c00f82f660025ba3e8ee9e4d9652842b9265cd21a95d8d784a08898",
+      "new_sha256": "50c32f601c00f82f660025ba3e8ee9e4d9652842b9265cd21a95d8d784a08898"
+    },
+    "editor-journal.json": {
+      "exact": true,
+      "export_timestamp_only": false,
+      "source_sha256": "05c44b3af9c9fd8010467e799b3da8798d00b6c080ac50a1c6736876947a6fd8",
+      "new_sha256": "05c44b3af9c9fd8010467e799b3da8798d00b6c080ac50a1c6736876947a6fd8"
+    },
+    "project-history.json": {
+      "exact": true,
+      "export_timestamp_only": false,
+      "source_sha256": "38408333307285bb21de32c18b077840f1a2afa3312d1f9e6ec0969e2936386b",
+      "new_sha256": "38408333307285bb21de32c18b077840f1a2afa3312d1f9e6ec0969e2936386b"
+    }
+  },
+  "user_choice_preserved": "Qt5, current project, visibility/preferences; no forced GTK4 selection",
+  "gtk4_visibility_notice": "Preserved existing GTK4 recipe has visible_controls65535. To use current partial renderer select GTK4 and keep only push visible; other controls intentionally pending. No automatic recipe rewrite.",
+  "gtk4_host_and_runtime_frozen": true,
+  "candidate_hashes_verified": true,
+  "coordination_request_cancelled": "ca7975cf7cda3f7e4f3c1010ddfecfeecf878ae765c7d640133cff0476ca481e",
+  "xephyr_left_open": true,
+  "vm_or_downloads_backup_changed": false,
+  "human_approval_filled": false,
+  "estimated_unit_progress_percent": 100,
+  "percentage_basis": "Push foundation/session/controller/build and actual coordinated delivery verified; this is not completion of all GTK4 controls, T04 or whole goal, and not historical fidelity.",
+  "remaining": [
+    "Other GTK4 controls",
+    "Other native adapters and full goal",
+    "Manual assessment remains user-owned"
+  ],
+  "sha256": {
+    ".qa-t04-anchor-foundation/gtk4-handoff-before.json": "5de7b9403bca444e6ddeeba2e929192f9a43258221bc2e846efcb47f27f9586c",
+    ".qa-t04-anchor-foundation/gtk4-handoff-preservation.json": "296c197f8622ee991218f37bcc03b29230b159b6024f92ea02b36fb51f84f7d6",
+    ".qa-t04-anchor-foundation/gtk4-source-closed.json": "948821577120acc2ca2163c9e8054e9f2a0273c01a705530abb27017bcda1c06",
+    ".qa-t04-anchor-foundation/gtk4-handoff-coordination-final.json": "c5d668b1aaf11bdb11d2c73fe7b3156b197c30eb2bda14f05ba3f007602deb78"
+  }
+}

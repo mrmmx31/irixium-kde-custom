@@ -1,0 +1,71 @@
+{
+  "id": "I167-GTK2-TEXTO-20261023-R40",
+  "at": "2026-10-23T01:29:38Z",
+  "scope": "GTK2 native multiline TextView: Motif word-wrap behavior, four KDE schemes, normal/disabled/backdrop states, coupled/separate previews, editing and scroll behavior",
+  "authorization": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized_definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "assistant_status": "running"
+  },
+  "reference": {
+    "version": "local Theme Lab Motif sample; not the SR10.4 VM",
+    "artifact": "docs/review/theme-lab-motif-reference/01-MOTIF-REFERENCE.png",
+    "class": "XmText",
+    "resources": "XmNeditMode=XmMULTI_LINE_EDIT, XmNrows=3, XmNcolumns=14, XmNwordWrap=True",
+    "comparison_crop": "~/tempia/i167-gtk2-text-r40/motif-vs-gtk2-text-1to1.png",
+    "caveat": "The isolated Motif screenshot is grayscale under Xvfb and does not validate the historical VM palette/font. The shown widget bounds are a 97x54 px crop from the local sample."
+  },
+  "implementation": {
+    "changed": true,
+    "change": "The real GTK2 TextView in the native comparison scene now uses Gtk.WrapMode.WORD before inserting the sample text, matching XmNwordWrap=True. GTK theme colors remain generated from KDE View/Selection roles; no final RGB was added.",
+    "files": {
+      "tools/theme-lab/native_scene_gtk2.py": "d553143769c16702c91a11dc44ae0deefeef5d6914038b7cc81f2a31974ebae3",
+      "tools/theme-lab/tests/probe_gtk2_text_scene.py": "a14d3826a1fd3352df6450919170da81bf935b9658affb1ca29fa868b0363ed4"
+    }
+  },
+  "verification": {
+    "status": "passed_with_visual_difference_recorded",
+    "gtk2_version": "2.24.33",
+    "native_scenes": 24,
+    "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "states": ["normal", "disabled", "explicit_backdrop"],
+    "origins": ["coupled", "separate"],
+    "checked": [
+      "native TextView wrap mode is WORD in every scene",
+      "short sample has no horizontal scrollbar",
+      "long multiline sample scrolls vertically without a horizontal scrollbar",
+      "effective KDE View role matches sampled track pixels in all schemes and states",
+      "coupled and separate allocation, sensitivity, font description and sample text",
+      "transactional scene rebuild preserves UTF-8 text and preview Undo/Redo",
+      "editing-only pass: Ctrl+A/C/X/Z/Y/Shift+Z with multiline UTF-8 in both origins",
+      "model unchanged"
+    ],
+    "integration_tests": 3,
+    "py_compile": "passed",
+    "git_diff_check": "passed",
+    "environment_note": "GTK emitted the existing ATK bridge module warning under Xvfb; assertions completed successfully."
+  },
+  "visual_comparison": {
+    "one_to_one_size_px": [97, 54],
+    "motif_crop_sha256": "2218af83a371b640c0bcfafeef66c8427baa7a330524f13691b6f58d4594c3ab",
+    "gtk2_crop_sha256": "3c05bdd3313f32eb86e4853e60c87685422be8be1b64e09b92ca590b4a5c5e28",
+    "comparison_sha256": "6c49ad2d23801f54e52796297b9020ba0ebedf9a6cfd86acd1ddf4d1593d126f",
+    "result": "Word wrapping now matches the Motif control and removes horizontal scrolling. At the 97x54 crop, GTK2 still displays a vertical scrollbar and clips the last word because its 13px preview font needs more height/width than the local Motif sample. No arbitrary per-control font reduction was introduced."
+  },
+  "artifacts": {
+    "root": "~/tempia/i167-gtk2-text-r40/",
+    "matrix": "~/tempia/i167-gtk2-text-r40/scenes-final/RESULTADO.json",
+    "editing": "~/tempia/i167-gtk2-text-r40/editing-final/RESULTADO.json",
+    "motif_crop": "~/tempia/i167-gtk2-text-r40/motif-xmtext-crop-final.png",
+    "gtk2_crop": "~/tempia/i167-gtk2-text-r40/gtk2-text-crop-final.png",
+    "comparison": "~/tempia/i167-gtk2-text-r40/motif-vs-gtk2-text-1to1.png"
+  },
+  "limitations": [
+    "This is a local Motif sample comparison, not a measurement or visual acceptance of Domain/OS SR10.4.",
+    "The Motif Xvfb capture is grayscale; color fidelity is not claimed from that image.",
+    "At the matching crop size, font metrics leave one vertical scrollbar and clipped text in GTK2; the preview retains the KDE-derived 13px font rather than hard-coding a smaller size.",
+    "This does not complete GTK2, approve its public route, or authorize applying it to the personal XChat session."
+  ],
+  "next": "Continue I167 with the next GTK2 control family after recording this text-wrap translation and its remaining font/metric mismatch. Keep the VM request f2127393cf7642a4896dceae1977ea71 pending; do not send another guest command until its response arrives."
+}

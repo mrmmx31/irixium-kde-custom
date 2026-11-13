@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "PANEL-INSTALLED-20261019-R1",
+  "date": "2026-10-19",
+  "scope": "User-requested install and reload of the current DomainOS panel candidate in the lsi profile.",
+  "dependency": {
+    "package": "qt6-declarative-dev",
+    "status": "installed",
+    "pkg_config": {
+      "Qt6Qml": "6.8.2",
+      "Qt6Quick": "6.8.2",
+      "Qt6QuickControls2": "6.8.2"
+    }
+  },
+  "package": {
+    "version_label": "0.2.12-beta.1",
+    "version_label_changed": false,
+    "archive": "~/tempia/domainos-0.2.12-beta1-qt-sdk-20261019/irixclassic-domainos-0.2.12-beta.1.zip",
+    "sha256": "395e0eb9bd23bdf2d2bb7c2acc13ca615f369375cd6004d81e5b7e9f84176fa4",
+    "bytes": 1225783,
+    "files": 291,
+    "archive_verification": "passed",
+    "native_module_sha256": "60734648f19cf08d790eb94d97069c1e9373942383e4391ed5d1a51365542c21",
+    "native_module_qt": "6.8.2",
+    "architecture": "x86_64"
+  },
+  "installation": {
+    "status": "installed",
+    "targets": 4,
+    "backup_receipt": "~/.local/state/irixium-domainos/backups/d9f068f5cd8d490bbba5dfcc412c4e77",
+    "profile_preferences_changed": false,
+    "panel_layout_changed": false
+  },
+  "reload": {
+    "service": "plasma-plasmashell.service",
+    "status": "active",
+    "panel_id": 2268,
+    "widget_id": 2269,
+    "widget_type": "org.irixclassic.domainos.panel",
+    "location": "bottom",
+    "geometry": {
+      "x": 16,
+      "y": 16,
+      "width": 971,
+      "height": 109
+    }
+  },
+  "runtime_observation": {
+    "domainos_tray_non_notifyable_binding_warnings": 38,
+    "source": "journalctl for the new Plasma process immediately after reload",
+    "description": "38 QQmlExpression warnings reference DomainOSTray.qml:372:13 and dependencies on non-NOTIFYable properties. No user interaction or manual visual acceptance was performed."
+  },
+  "result": "current source candidate installed and loaded; manual behavior review remains open",
+  "next": "User can exercise the active bar. Track the tray binding warnings separately if they recur or affect behavior. Bump the version label before publishing a numbered release."
+}

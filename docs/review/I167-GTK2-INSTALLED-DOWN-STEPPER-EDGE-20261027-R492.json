@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "R492",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Correct and verify normal GTK2 scrollbar stepper cells against Domain/OS SR10.4 / HP VUE 2.01, preserving live KDE color roles.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "horizontal_crop": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "vertical_crop": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "crop_sha256": {
+      "horizontal": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+      "vertical": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+    },
+    "registration": "GTK2 trough-border is 2 px. Cells in native Xvfb screenshot therefore begin at left (2,0), right (37,0), up (0,21), down (0,56). Reference asset crops are left (2,4), right (526,4), up (4,2), down (4,242). Earlier raw counts that omitted this GTK inset are invalid; no physical stepper size defect was established by those counts."
+  },
+  "finding": {
+    "installed_runtime": "GTK2 2.24.33 with the selected DomainOS theme and generated KDE palette include",
+    "cause": "repair_active_vertical_stepper_edges copied the normal trough face over x=2..12 of row 0 in down-normal and down-focused. That changed 11 historical reference pixels. The patch had been kept consistent with the pressed asset based on a prior palette-generation check, without a fresh normal-state GTK2/VUE comparison.",
+    "rejected_hypotheses": [
+      "Removing the four ARROW overlays for all states/directions did not alter the capture SHA-256; the overlays were not the cause.",
+      "Setting trough-under-steppers=false left metrics at 15/11/2 but worsened all four cell comparisons; it was not retained."
+    ]
+  },
+  "change": {
+    "file": "tools/gtk2_domainos_palette.py",
+    "effect": "Preserve palette-rendered normal and prelight down-stepper artwork. Keep the existing role-derived top-row band only in the pressed asset while its historical pressed-state rendering remains unpaired.",
+    "color_policy": "All pixels remain generated from the current KDE color roles; no fixed RGB values were added."
+  },
+  "validation": {
+    "candidate_bundle": "b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa",
+    "candidate_capture": "~/tempia/ia-tema/evidence/I167/r492-fixed-candidate-20261027/native.png",
+    "candidate_capture_sha256": "9ea5697882a03935e73b9a784e7b83b93906d4c59b48c4ba0b17be43327b6fb2",
+    "runtime": "GTK2 2.24.33 pixmap engine under a private Xvfb; candidate generated from the current KDE GTK color export",
+    "normal_cells_vs_vue": {
+      "left": {"different_pixels": 0, "pixels": 225},
+      "right": {"different_pixels": 0, "pixels": 225},
+      "up": {"different_pixels": 0, "pixels": 225},
+      "down": {"different_pixels": 0, "pixels": 225}
+    },
+    "active_stepper_corner_palette_test": "passed",
+    "DomainOSGtk2RuntimeTests": "9/9 passed"
+  },
+  "user_profile": {
+    "renderer_module_sha256": "e8309ac9515847903ae32b1399742d1c079a60fab17839319f6f9302af75a398",
+    "renderer_backup_receipt": "/home/lsi/.local/state/irix-theme-companions/gtk2-domainos-generator-r492/backups/f93b663ebec040eab5059183fe1ae5e4/receipt.json",
+    "palette_transaction_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261027T164002-856835d9aed5/receipt.json",
+    "colors_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "installed_bundle": "b1fc3d4535ce046fdc092fe7e51417e1a990c33c2883fb4c202f289167b145aa",
+    "readback_capture": "~/tempia/ia-tema/evidence/I167/r492-user-readback-20261027/installed-after.png",
+    "readback_capture_sha256": "9ea5697882a03935e73b9a784e7b83b93906d4c59b48c4ba0b17be43327b6fb2",
+    "readback_normal_cells_vs_vue": "0/225 for each direction after loading the actual ~/.themes/DomainOS-SR10-4-KDE GTK2 wrapper in private Xvfb",
+    "native_reload_event": {"display": ":1", "events_sent": 181, "windows_considered": 181, "racing_x_errors": 0},
+    "applications_restarted": false,
+    "visual_user_acceptance": "pending"
+  },
+  "limits": [
+    "This validates normal and generated prelight cells only; SR10.4 hover, pressed, disabled, and drag behavior still need their own paired evidence.",
+    "The user profile was updated and GTK2 RC reload events were sent; this does not prove which visible application consumed them or establish human visual acceptance.",
+    "No MAME input was sent. Q499 remains unanswered, so no live VM manipulation was performed."
+  ],
+  "next": "Obtain human visual acceptance in a GTK2 application when available, then continue paired SR10.4 evidence for pressed, hover, disabled and drag states. Continue only I167/GTK2."
+}

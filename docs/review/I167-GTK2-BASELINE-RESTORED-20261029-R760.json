@@ -1,0 +1,24 @@
+{
+  "id": "R760",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "GTK2 DomainOS scrollbar baseline only",
+  "status": "waiting_user_review",
+  "change": "Restored the earlier flatter GTK2 trough adaptation profile DDFFFFFFFFFFFLL. The raised thumb remains a separate asset. The measured Domain/OS SR10.4 track profile remains DDLLFFFFFFFDDLL in the shared contract.",
+  "color_policy": "Colors continue to resolve from the current KDE semantic roles; no final static RGB values were added.",
+  "runtime": {
+    "palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/9619baef81c5a5ad7e9c6f3b6c3e2e0170a7e389c54e44d8ad1d62c8213e8934",
+    "palette_roles_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "rendered_vertical_trough_sha256": "c8df857d5d786495327b39b7375cd31cbc315fa7a2dfd5b7c4ba472001d2dd08",
+    "rendered_profile_sample": "DDFFFFFFFFFFFLL",
+    "gtk2_engine": "/home/lsi/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "reload": "GTK2 native reload event sent to 111 windows; 0 racing X errors; no application or desktop restart"
+  },
+  "review_limit": "This records the technical baseline only. It is not human acceptance. Await the user's comparison and change only the specific details they report and authorize.",
+  "evidence": [
+    "tools/domainos_scrollbar_rules.json",
+    "docs/DOMAINOS-REGRAS-ROLAGEM.md",
+    "docs/review/I167-GTK2-THUMB-TRACK-COMPARISON-20261029-R759.json",
+    "records/ia-tema/I167/R758/filemanager-vertical-scrollbar-aligned.png"
+  ]
+}

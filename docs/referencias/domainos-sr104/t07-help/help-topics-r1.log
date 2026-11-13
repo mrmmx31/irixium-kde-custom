@@ -1,0 +1,5 @@
+make: Entering directory '/home/lsi/irixium-kde-custom/tools/theme-lab'
+cc -Iinclude -I/usr/include/json-c -I/usr/include/libpng16  -O2 -g -std=c99 -Wall -Wextra -Werror -D_POSIX_C_SOURCE=200809L -D_XOPEN_SOURCE=700  tests/help_topics_test.c src/model/help_topics.c -o "build/help-topics-test"
+"build/help-topics-test"
+Help model: 10 topics × 3 distinct UTF-8 levels; invalid indexes rejected.
+make: Leaving directory '/home/lsi/irixium-kde-custom/tools/theme-lab'

@@ -1,0 +1,121 @@
+{
+  "item": "I167",
+  "revision": "R45",
+  "checked_at_utc": "2026-10-23T02:16:30Z",
+  "family": "GTK2 scrollbar public stepper cell, trough junction and correlated click proof",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "horizontal": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "vertical": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "scale": "1:1; 15x15 directional cells"
+  },
+  "implementation": {
+    "product_theme_changed": false,
+    "test_harness_changed": "tools/theme-lab/tests/test_gtk2_public_native.py",
+    "reason": "Public probe selected an arbitrary native event from unsorted directory iteration; it now orders events by emitted_at and requires a new event ID after the click.",
+    "change_record": "~/tempia/board/diff-records/record-gi00rp86/verified.json",
+    "change_record_content_verified": true
+  },
+  "validation": {
+    "gtk2_version": "2.24.33",
+    "public_scrollbar_schemes": [
+      "DomainOS-SR10.4",
+      "BreezeDark"
+    ],
+    "public_scrollbar_native_metrics": "horizontal 220x15, vertical 15x180; logical scale 1",
+    "historical_pixel_comparison": {
+      "source": "current public DomainOS-SR10.4 screenshot after click vs archived SR10.4 full-cell crops",
+      "regions": {
+        "left": {
+          "equal": 225,
+          "total": 225
+        },
+        "right": {
+          "equal": 225,
+          "total": 225
+        },
+        "up": {
+          "equal": 225,
+          "total": 225
+        },
+        "down": {
+          "equal": 225,
+          "total": 225
+        }
+      }
+    },
+    "public_press_release": {
+      "arrows": [
+        "left",
+        "right",
+        "up",
+        "down"
+      ],
+      "held_cell_pixels_changed_each": 53,
+      "released_cell_pixels_changed_each": 0,
+      "native_click_final_value": 34,
+      "click_event_correlated_by_new_event_id": true
+    },
+    "semantic_palette_validation": "GTK2 scrollbar cells and tracks match generated KDE roles in DomainOS-SR10.4 and BreezeDark; no static product RGB added.",
+    "all_controls_native_matrix": {
+      "status": "passed",
+      "control_count": 16,
+      "scenes": 8,
+      "schemes": [
+        "DomainOS",
+        "BreezeLight",
+        "BreezeDark",
+        "TestYellow"
+      ],
+      "origins": [
+        "coupled",
+        "separate"
+      ],
+      "all_mapped": true,
+      "within_viewport": true
+    },
+    "public_all_controls_route": {
+      "status": "passed",
+      "controls": 16,
+      "scheme": "DomainOS-SR10.4",
+      "interaction_checks": [
+        "push",
+        "toggle",
+        "check",
+        "radio"
+      ],
+      "normal_close": true
+    },
+    "git_diff_check": "passed"
+  },
+  "source_sha256": {
+    "tools/theme-lab/gtk2_recipe.py": "4d7cba2a7fd2b781c3df681ae7f3718837d38471486ab7a54edeb553bad8aefa",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/preview_gtk2.py": "39f13f1d3fc38aa4da8dc9a887aeffb97f9f6530f554733ca7f8540597cff6d3",
+    "tools/theme-lab/tests/test_gtk2_public_native.py": "260af64bb9381d5e61fb9d9b275ee6c095b3d097a9cf5627d08c6d5ed1fa363d",
+    "tools/theme-lab/tests/verify_gtk2_public_capture.py": "9f1520c5107d5f9f3850a0288a8dc281a5b773ab5274f097ae3e5eba6516541a",
+    "tools/theme-lab/tests/test_gtk2_all_controls_native.py": "5710565f2813bcff83266c0b84a3f2878ad0314984a83c1909b62546e451dc3e",
+    "tools/theme-lab/tests/probe_gtk2_all_controls_native.py": "a6ee926c3fda34b98847b2626946cf3b816f52cea240a4109bbb1bdc56a09b0d"
+  },
+  "artifacts": {
+    "public_domainos": "~/tempia/.qa-gtk2-public-v3snxnog",
+    "public_breeze_dark": "~/tempia/.qa-gtk2-public-3homrlsl",
+    "public_all_controls": "~/tempia/.qa-gtk2-public-all-jxnd9_dc",
+    "all_controls_native": "~/tempia/i167-gtk2-scrollbar-r45/all-controls-native",
+    "public_domainos_capture_sha256": "4de070cc3810a592c33d6e91ba58eeed19b59b8438bab89c2b0f8d321a2ac080",
+    "public_breeze_dark_capture_sha256": "0914c3e49c8e9c557ec35a95702e44e589c3189a4a777c1c78d66861ac3da20a",
+    "public_all_controls_capture_sha256": "44a790d558b7d251c765f7a3a004eaac83ec0cbfb48848818e9f9b3feee958cf",
+    "all_controls_result_sha256": "390b799b53fc29b866e3efe23e2f087435c3f57fffe2104014873acd06221b66"
+  },
+  "limits": [
+    "The exact 15x15 match covers normal DomainOS public scrollbar cells; it does not prove held-state pixel identity to the VM or all disabled/backdrop historical appearances.",
+    "All-controls gallery is a technical mount/visibility matrix and is not per-control pixel-fidelity approval.",
+    "GTK2 family states not represented in the available SR10.4 captures remain unverified; the MAME request is still pending.",
+    "No user session or XChat theme was changed; GTK2 remains gated on the remaining family and review audit."
+  ],
+  "next": "Audit all current I167 GTK2 receipts for remaining family-level gaps and current source/hash coverage. Keep Entry focus/caret/selection explicitly unverified, then complete only unresolved GTK2 work before considering application to XChat."
+}

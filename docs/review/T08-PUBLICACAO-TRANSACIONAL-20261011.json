@@ -1,0 +1,40 @@
+{
+  "at": "2026-10-11T13:47:26.711021+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "transactional_reconstruction_verified_private",
+  "changes": [
+    "Separada preparação validada de bytes e escrita/publicação.",
+    "Módulo private_publication monta em staging0700 no mesmo filesystem.",
+    "CLI publica arquivos e RECONSTRUCTION juntos; renameat2 RENAME_NOREPLACE recusa destino até vazio criado durante operação.",
+    "Exceções limpam somente staging criado pela operação; base, pacote e destino concorrente preservados."
+  ],
+  "checks": {
+    "failure_injection": "4 passed; writer/receipt failure, complete-only publication, concurrent empty/occupied destination preserved",
+    "artifact_library": "6 passed",
+    "real_cli": "3 passed",
+    "backend": "33 passed",
+    "runtime_dependencies": "2 passed",
+    "diff_check": "passed"
+  },
+  "limits": [
+    "SIGKILL/queda pode deixar staging oculto; não é revisão publicada. Não apagar automaticamente pastas desconhecidas.",
+    "Não garante persistência após queda de energia; não houve ensaio de crash/durabilidade.",
+    "Requer renameat2 no runtime Linux; ausência recusa publicação, sem fallback que substitui destino.",
+    "Sem instalação ou revalidação de papéis atuais."
+  ],
+  "remaining": [
+    "Interface Motif da reconstrução.",
+    "Entrega coordenada e avaliação pessoal.",
+    "Startup GTK com seleção diferente da cena requer prova própria."
+  ],
+  "estimated_stage_progress_percent": 90,
+  "percentage_basis": "Publicação sob exceções e disputa agora comprovada; percentual mantido até interface/entrega. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/private_publication.py": "eb7d705d57b9460a7bd8c15d1467d6cd78d44ea7479adf801fbe81986831ce7b",
+    "tools/theme-lab/artifact_delta.py": "00b477b9c2c3c00244800ad15a7e28aef2baf96894d37ed944690dfc8519ed9f",
+    "tools/theme-lab/artifact_reconstruction.py": "b1ac09d4cfd9dcabe7dac481e83fddcc6d5128ff64d92d10c289c5720df8d3cd",
+    "tools/theme-lab/tests/test_private_publication.py": "be7f027bc15d4b40dcc6fdc651a18470b45ec43afe358755f1ba7dbb66191c95"
+  }
+}

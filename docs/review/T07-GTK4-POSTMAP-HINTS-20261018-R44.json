@@ -1,0 +1,248 @@
+{
+  "item": "T07",
+  "revision": "R44",
+  "checked_at_utc": "2026-10-18T20:20:41Z",
+  "scope": "GTK4 C ABI gallery: defer status and internal child inspection until mapped; avoid exceptions crossing ctypes callbacks; position representative button and menu-row hints without covering their owners; correct private worker coordinates for reparented Openbox clients.",
+  "authorization": {
+    "section": "work",
+    "authorized": true,
+    "user_revision": 4,
+    "assistant_ack_revision": 4,
+    "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee"
+  },
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "xephyr_screen_px": [
+      1280,
+      800
+    ],
+    "session_root": "~/tempia/t07-gtk4-allocation-r43-20261018",
+    "dbus": "private",
+    "backend": "X11",
+    "theme": "Default",
+    "window_requested_px": [
+      850,
+      620
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "190448c832dc068155f3bcc8221a8de10f2eab5c01f54f73b773091b4e1ada88",
+    "tools/theme-lab/tests/gtk4_hover_worker.py": "e765a238db05d22134e895f354537d575d49f2029582b1c15b868e35106c3e82",
+    "tools/theme-lab/tests/probe_gtk4_gallery_hints.py": "23886a58241df0c31920d1bf2a72211408c0542a144a34b3bec975149f2fb55d",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef"
+  },
+  "verification": {
+    "py_compile": "passed",
+    "api_only_mode": "passed; GTK4 4.18.6; no GUI or display initialization",
+    "native_gallery": {
+      "status": "passed",
+      "mapped": true,
+      "allocated_px": [
+        850,
+        620
+      ],
+      "hint_resources": 53,
+      "internal_scrollbars": 12,
+      "internal_menu_rows": 15,
+      "callback_errors": []
+    },
+    "push_and_menu_hover": {
+      "status": "passed",
+      "control": [
+        230,
+        206,
+        144,
+        34
+      ],
+      "tooltip": [
+        423,
+        211,
+        398,
+        61
+      ],
+      "stable_ms": 400,
+      "delay_checked_ms": 200,
+      "closed_after_leave": true,
+      "native_clicks": 1,
+      "scope": "one real GTK4 production push, default native style",
+      "menu": {
+        "opened_rows": 5,
+        "hints_present_on_reopen": true,
+        "row_hover_tooltip": "Registra a ativação deste item na amostra, sem iniciar aplicações.",
+        "row_bounds": [
+          626,
+          258,
+          234,
+          30
+        ],
+        "row_tooltip_bounds": [
+          564,
+          292,
+          359,
+          51
+        ],
+        "row_tooltip_stable_ms": 400,
+        "row_tooltip_closed_after_leave": true,
+        "native_action_received": true,
+        "escape_closed": true
+      }
+    },
+    "cross_page_matrix": {
+      "status": "passed",
+      "initial_cold_delay_ms": 500,
+      "mapped_targets_first_page": 1,
+      "mapped_targets_second_page": 1,
+      "passed_targets": 2,
+      "failed_targets": 0,
+      "within_screen": true,
+      "never_covers_hover_point": true,
+      "small_control_nonoverlap": true,
+      "stable_ms": 400,
+      "closed_after_leave": true,
+      "cleanup": {
+        "hints": [
+          {
+            "native_tooltip_restored": true,
+            "closed_idempotently": true
+          },
+          {
+            "native_tooltip_restored": true,
+            "closed_idempotently": true
+          },
+          {
+            "native_tooltip_restored": true,
+            "closed_idempotently": true
+          }
+        ],
+        "overlay_anchors_before": 3,
+        "overlay_anchors_after": 0,
+        "anchors_removed": true
+      },
+      "cases": [
+        {
+          "page": 0,
+          "control_type": "GtkPopoverMenuBar",
+          "tooltip_text": "Menu nativo da amostra: acione, alterne opções ou feche somente esta galeria privada.",
+          "control_rect_px": [
+            221,
+            127,
+            838,
+            27
+          ],
+          "initial_tooltip_rect_px": [
+            640,
+            158,
+            381,
+            51
+          ],
+          "tooltip_rect_px": [
+            450,
+            158,
+            381,
+            51
+          ],
+          "initial_layout_positions_px": [
+            [
+              640,
+              158,
+              381,
+              51
+            ],
+            [
+              450,
+              158,
+              381,
+              51
+            ]
+          ],
+          "overlaps_large_owner_region": false,
+          "ancestor_tooltip_restored_after_leave": true,
+          "scrollbar_click_responded_with_hint_open": null,
+          "scrollbar_click_point_px": null,
+          "scroll_value_before_click": null,
+          "scroll_value_after_click": null,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "status": "passed"
+        },
+        {
+          "page": 1,
+          "control_type": "GtkPopoverMenuBar",
+          "tooltip_text": "Menu nativo da amostra: acione, alterne opções ou feche somente esta galeria privada.",
+          "control_rect_px": [
+            221,
+            127,
+            838,
+            27
+          ],
+          "initial_tooltip_rect_px": [
+            450,
+            158,
+            381,
+            51
+          ],
+          "tooltip_rect_px": [
+            450,
+            158,
+            381,
+            51
+          ],
+          "initial_layout_positions_px": [
+            [
+              450,
+              158,
+              381,
+              51
+            ]
+          ],
+          "overlaps_large_owner_region": false,
+          "ancestor_tooltip_restored_after_leave": true,
+          "scrollbar_click_responded_with_hint_open": null,
+          "scrollbar_click_point_px": null,
+          "scroll_value_before_click": null,
+          "scroll_value_after_click": null,
+          "stable_ms": 400,
+          "closed_after_leave": true,
+          "status": "passed"
+        }
+      ],
+      "scope": "Mapped native hint-bearing widgets on both pages of the GTK4 gallery; cold delay checked on first target, active-session tooltip cycles on remaining targets; custom popover cleanup restores native tooltip state and removes anchors.",
+      "selected_control_type": null,
+      "selected_tooltip_text": null,
+      "target_limit_per_page": 1
+    },
+    "failure_diagnostics": "Probe failure output now preserves worker stdout and stderr. A prior signature error came from rebinding a shared ctypes function to a worker-local struct; worker now uses the gallery void-pointer ABI. A later apparent overlap was a probe-coordinate defect: xdotool resolved the Openbox frame (+18 px) instead of the exact GDK client XID. xwininfo client coordinates removed the false overlap; correct button and menu row then passed.",
+    "callback_safety": "Mapped startup reporting catches errors and emits explicit JSON error status; later GtkPopover map inspection catches exceptions instead of letting them cross the ctypes callback boundary.",
+    "temporary_logs": {
+      "py_compile.log": {
+        "path": "/home/lsi/tempia/t07-gtk4-postmap-r44-20261018/py_compile.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "api-only.log": {
+        "path": "/home/lsi/tempia/t07-gtk4-postmap-r44-20261018/api-only.log",
+        "sha256": "824788ffc4bb42c12e9573209e04c59e86f853d98e7d88e25c5725010d119fe2"
+      },
+      "integration.log": {
+        "path": "/home/lsi/tempia/t07-gtk4-postmap-r44-20261018/integration.log",
+        "sha256": "e031a3b2881428fd67a2ed4d8b7498a2aa63ff52cf4520c15a0b88daede1e340"
+      },
+      "hover.log": {
+        "path": "/home/lsi/tempia/t07-gtk4-postmap-r44-20261018/hover.log",
+        "sha256": "9b48138a6c541cfd9350d10cbacfdd04695c5fee265102e5e5a7f196fdb99f32"
+      },
+      "matrix.log": {
+        "path": "/home/lsi/tempia/t07-gtk4-postmap-r44-20261018/matrix.log",
+        "sha256": "dcaa02308463904ac324caf31d955419aeb7ba3a9d4f76709b0bd310f1335025"
+      }
+    }
+  },
+  "limits": [
+    "Only the representative push/menu path and one mapped target per GTK4 page were exercised in this R44 run; the previously recorded 31-target matrix remains separate evidence.",
+    "Default GTK theme only; this is not a DomainOS palette, pixel-diff, or historical-fidelity comparison.",
+    "Other GTK4 layouts, alternate states, and user visual approval remain open.",
+    "The private D-Bus emitted a nonfatal host inotify-limit warning in earlier runs; this final saved run passed.",
+    "The user preview :67 and evaluation Xephyr :69 were not touched."
+  ],
+  "result": "Passed this scoped GTK4 diagnostics and representative hint-positioning correction; T07 remains partial."
+}

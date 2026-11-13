@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "item": "T10",
+  "title": "Validação, documentação e entrega da ferramenta",
+  "section": "work",
+  "user_revision": 4,
+  "definition_sha256": "0020e5000767fae2d50ce55cb005ecc8e4497118bc25a2f9c395204790fa950b",
+  "technical_status": "partial_waiting_user",
+  "completed": {
+    "build": "make -C tools/theme-lab all passed with strict C99 warnings enabled; private build hash matches the T09-recovery binary tested on current source.",
+    "default_check": "TMPDIR=~/tempia make -C tools/theme-lab check passed: 1007 model assertions, IPC/event and UTF-8 search checks, 39 backend tests, 15 scene tests, 4 Qt5 recipe tests, and 21 Qt6 recipe tests.",
+    "personal_paths_in_entry_docs": "No /home/lsi paths remain in the checked laboratory README, delivery guide, lab overview, rule index, or GTK4 adapter guide. The one private host path found in GTK4-ADAPTER.md was replaced with a portable description.",
+    "queue_accuracy": "Delivery guide corrected: T02 is technically done but not currently authorized; T08 revalidation is linked and awaiting human review.",
+    "draft_recovery_evidence": "Current controller, editor store, recovery probes, controller test, and built application hashes exactly match T09-RECUPERACAO-20261016.json; its real editor/Xephyr tests prove multistep UTF-8 Undo/Redo, clipboard, checkpoint and draft recovery.",
+    "default_private_path": "Execução direta sem --work-dir agora cria sua sessão em $HOME/tempia/theme-lab-* com modo privado. Xephyr :68 confirmou os arquivos esperados sob HOME isolado; compilação estrita e make check passaram após a mudança. Ver docs/review/T10-DEFAULT-PRIVATE-PATH-20261016.json.",
+    "current_source_check": "Após a correção do caminho padrão, make check passou: 1007 verificações do modelo, IPC/busca, 39 testes backend, 15 cena, 4 receitas Qt5 e 21 Qt6."
+  },
+  "not_completed": {
+    "full_gui_and_release_validation": "A GUI direta foi aberta em HOME isolado no Xephyr :68 somente para conferir o caminho padrão; revisão completa da interface e validação de release seguem pendentes. Outras instâncias privadas ativas foram preservadas.",
+    "display_loss_rerun": "Not possible with the current disposable Xvfb approach while system /tmp is full (0 bytes available). The scoped earlier proof is explicitly not treated as current-source evidence.",
+    "package_and_publication": "No release package was assembled or published. Historical review receipts contain host-local evidence paths and must not be copied into a public package without an explicit packaging manifest or sanitization.",
+    "manual_approval": "T08 project/export review and checklist responsiveness are still awaiting the user's observation."
+  },
+  "quality": {
+    "git_diff_check": "passed after removing trailing whitespace from newly added QtQuick tooltip lines; no behavior changed.",
+    "tmp_policy": "Build e testes rodados com TMPDIR=~/tempia. O fallback direto também usa $HOME/tempia; não houve uso de /tmp pelo código alterado."
+  },
+  "source_sha256": {
+    "tools/theme-lab/build/theme-lab": "7d6c2cc7d1ccc6244459f95ab4d17b24a107df1829aeba955d36960adccf8a7b",
+    "tools/theme-lab/src/controller.c": "fb02f19e7356de1637a67b26453c314bfe69b74695a6d7470553387a88bd5d5c",
+    "tools/theme-lab/src/editor/store.c": "6a99fefe23c50ef9184ae4275cb6b0b565d67ba3d98590088b60437e5e1091dc",
+    "tools/theme-lab/tests/controller_preview_recovery.py": "b55ca683d6e817fe95dc07c6e3b9c7874583296ab40bebebd77b6f6a2507366d",
+    "tools/theme-lab/tests/test_controller_spin.py": "9660e5035c0b5db87e1e464e23ad8b49eefe9683696010fc52c4a7c34deccdf3",
+    "tools/theme-lab/README.md": "3bab57d12cacfdab74dc8aceb7438e86f34ea05a489b2503d32bab584c22beb2",
+    "tools/theme-lab/GTK4-ADAPTER.md": "ca68792342f4588e11a1fd1e94b48b4f99fdc3c5a545a9e9a8a13e1a9b65d0c8",
+    "docs/DOMAINOS-LABORATORIO-ENTREGA.md": "04f43878f999d5ab7a9b79a545bb6e1bdf67cbb03eddf4a88d4b9c06d9e157f4",
+    "docs/DOMAINOS-LABORATORIO-TEMAS.md": "a52e907e7a431f3492d11892da41bed5e613913d5ed9e0710144abb93fa300f4",
+    "docs/DOMAINOS-INDICE-REGRAS.md": "ac6e67b5792b28144d3bcd8516cfb2b36314f19fe243da305b6b99af384be892",
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "6512a67774aff1134dc3c8609f534ea7df728fcd438208e2015d845a77942e63"
+  },
+  "next": "Continuar pela ordem da Fila Atual nos itens autorizados. T10 segue aguardando revisão humana e validação final; a pendência do fallback ~/tempia foi resolvida."
+}

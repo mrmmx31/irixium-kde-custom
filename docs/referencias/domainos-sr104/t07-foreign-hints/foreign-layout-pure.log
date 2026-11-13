@@ -1,0 +1,22 @@
+.E.............
+======================================================================
+ERROR: test_arrow_factory_is_a_button_with_a_native_click_event (__main__.SceneTests.test_arrow_factory_is_a_button_with_a_native_click_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_preview_scene.py", line 229, in test_arrow_factory_is_a_button_with_a_native_click_event
+    widget = native.factory('arrow', 12)
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/preview_gtk.py", line 405, in factory
+    hint_module.bind_control_hint(widget, identifier, 'gtk3')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/control_hints.py", line 41, in bind_control_hint
+    visit(widget)
+    ~~~~~^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/control_hints.py", line 36, in visit
+    child.set_tooltip_text(text)
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Button' object has no attribute 'set_tooltip_text'
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.007s
+
+FAILED (errors=1)

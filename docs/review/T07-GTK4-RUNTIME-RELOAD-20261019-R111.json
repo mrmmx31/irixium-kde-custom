@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTK4-RUNTIME-RELOAD-20261019-R111",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped_private_runtime",
+  "recorded_at": "2026-10-19T05:03:05Z",
+  "purpose": "Verify GTK4 consumes the KDE GtkConfig export after the product GTK4 palette refresh writes and selects its mirrored theme variant.",
+  "runtime": {
+    "gtk": "4.18.6",
+    "display": ":292 (private Xvfb 800x600; stopped after test)",
+    "schema": "BreezeDark",
+    "input_export": "The actual GTK4 colors.css emitted by KDE GtkConfig in R91; SHA-256 84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+    "profile": "Private HOME/XDG trees in ~/tempia; no installed or personal configuration changed"
+  },
+  "results": {
+    "palette_refresh": "passed; 13 CSS entries were mirrored, then the private selected theme switched from DomainOS-SR10-4-KDE to DomainOS-SR10-4-KDE-Reload",
+    "fresh_gtk4_application_theme": "DomainOS-SR10-4-KDE-Reload, read from Gtk.Settings without GTK_THEME override",
+    "tooltip_background_expected_and_sampled": "#292c30",
+    "tooltip_text_expected_and_style_context": "#fcfcfc",
+    "popover_size_px": [243, 27],
+    "status": "passed"
+  },
+  "change": {
+    "file": "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json",
+    "reason": "The two already-modified tooltip CSS files had stale hashes in the manifest, so gtk4_palette_runtime.refresh rejected its own source before writing any mirrors.",
+    "updated_entries": ["common/gtk.css", "gtk-4.0/gtk.css"],
+    "scope": "Only these two hashes changed. All 257 files now match their manifest; the sibling DomainOS-SR10-4-KDE manifest also verifies without mismatches."
+  },
+  "source_sha256": {
+    "tools/gtk4_palette_runtime.py": "aa6822e41ca8f3c4c6637a7101b71edf28b560d62f9ea6ab5a821fea7b7db531",
+    "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json": "2ae97737521b0fb23ef9d1e067c75e60d8fdee8a42353756f83ede8ce3368147",
+    "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css": "b638e00c58fc33cb53abd8221f405e885d84ca2187370420bf35b91cac540136",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-4.0/gtk.css": "e40930eca9395c8fcb0adc5709c001d36488c20e81e0814290ac76b493e3a7e3",
+    "actual_KDE_export_colors.css": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+    "~/tempia/t07-gtk4-runtime-reload-r111-20261019/refresh.py": "2f35a10f80fe7d0d829b824152b970e4826a79dc4739b8360798a7ea78ed12da",
+    "~/tempia/t07-gtk4-runtime-reload-r111-20261019/probe-private.py": "89ea9ae6b4419c92bcbb918378228fea3d2fc7a356b6eacd86d7be3260928627",
+    "~/tempia/t07-gtk4-runtime-reload-r111-20261019/consume.py": "fc3c1b2203a98bba292aff328bd342631e1d1d30f570cac0e191328c53904e70"
+  },
+  "diagnostics": [
+    "The first probe attempt used an intentionally incomplete isolated HOME and therefore lacked the second GTK theme root required by roots_for(). No product files were changed by that attempt.",
+    "The first refresh against the checkout's then-stale manifest was rejected before its transaction began. After updating only the two manifest hashes to match the existing tooltip CSS edits, the private refresh and fresh GTK4 consumer passed."
+  ],
+  "artifacts": "~/tempia/t07-gtk4-runtime-reload-r111-20261019/",
+  "limits": [
+    "The actual KDE export file is from R91, but this private runtime test used local notify/settings callbacks that update only the isolated profile; it did not invoke the user's KDED D-Bus setter or alter the live color scheme.",
+    "The fresh GTK4 consumer opened one tooltip after refresh; R110 covers actual pointer hover across four palettes, while R87 covers the 31-target hover/geometry matrix in its recorded palette.",
+    "No historical pixel fidelity or human visual approval is claimed."
+  ],
+  "conclusion": "The production GTK4 palette refresh now accepts its own source manifest and writes role-mirrored CSS; a fresh GTK4 process selected the reload variant and rendered the actual KDE-exported BreezeDark Tooltip face/text. R91 covers KDE's real export event and R110/R87 cover hover and palette behavior. T07 remains in progress."
+}

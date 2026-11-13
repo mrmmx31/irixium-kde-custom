@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R326",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "installed-wrapper-and-generated-include-effective-metrics-verified",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Read-only GTK2 runtime query of the existing installed wrapper and generated palette include; no profile or product changes."
+  },
+  "question": "Do the 16/16/0 base metrics in the installed GTK2 wrapper override the generated 11/15/2 palette include, potentially explaining the reported smaller horizontal arrows?",
+  "method": {
+    "runtime": "GTK 2.24.33; actual GtkHScrollbar/GtkVScrollbar widgets in private Xvfb; GTK_MODULES empty; GTK2_RC_FILES=/dev/null; Gtk.rc_parse applied to each existing RC independently.",
+    "probe": "tools/theme-lab/tests/probe_gtk2_runtime.py --paint-rc <RC>",
+    "display": "Private authenticated Xvfb :188 and :189; all authority/captures in ~/tempia/ia-tema/evidence/I167/gtk2-rc-precedence-r326/.",
+    "installed_wrapper": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+    "generated_include": "/home/lsi/.local/share/irixium/gtk2-palette/c33f7a5a1b14e5edc7a882a8194a3a8d2b955c59652b4d9fd1dfef655d05afa1/gtkrc"
+  },
+  "inputs": {
+    "wrapper_sha256": "6ce54677d9b26430b12c704b30299fb99a9b28666762eab77703299776ff43c3",
+    "generated_include_sha256": "4601517534d4b38377b11101e03949bbd093025dce6f132640aacd4128365226",
+    "wrapper_declared_metrics": {"slider_width": 16, "stepper_size": 16, "trough_border": 0},
+    "generated_include_declared_metrics": {"slider_width": 11, "stepper_size": 15, "trough_border": 2}
+  },
+  "observed": {
+    "wrapper_rc_parse": {
+      "horizontal": {"allocation_px": [54, 15], "slider_width": 11, "stepper_size": 15, "trough_border": 2},
+      "vertical": {"allocation_px": [15, 54], "slider_width": 11, "stepper_size": 15, "trough_border": 2}
+    },
+    "generated_include_rc_parse": {
+      "horizontal": {"allocation_px": [54, 15], "slider_width": 11, "stepper_size": 15, "trough_border": 2},
+      "vertical": {"allocation_px": [15, 54], "slider_width": 11, "stepper_size": 15, "trough_border": 2}
+    },
+    "rendered_capture": "~/tempia/ia-tema/xephyr-gtk2-r326/xephyr-screen-verified.png",
+    "interactive_comparison": {
+      "window_title": "PARA LSI - GTK2 DomainOS | I167 comparacao",
+      "display": ":187",
+      "reference": "Domain/OS SR10.4 horizontal scrollbar PNG at native 542x20 pixels",
+      "live_control": "GtkHScrollbar 542x15 pixels, with the installed wrapper and its generated palette include parsed",
+      "effective_metrics_read_after_realization": {"slider_width": 11, "stepper_size": 15, "trough_border": 2},
+      "user_review": "pending"
+    },
+    "warnings": "GTK module loading was disabled; GTK emitted no RC parser or asset-load warnings. An earlier env-only probe was not used as evidence because it did not explicitly load the theme RC through Gtk.rc_parse."
+  },
+  "conclusion": "Real GTK2 widgets report 11/15/2 after parsing the installed wrapper or its generated include. The wrapper-base 16/16/0 declarations do not override the effective generated geometry in this route. This confirms current metrics but does not explain the perceived horizontal-arrow size difference. R305's exact normal-state asset-to-SR10.4 cell matches remain valid; native preview and human comparison remain open.",
+  "safety": {
+    "user_theme_or_palette_changed": false,
+    "xchat_restarted_or_signaled": false,
+    "xephyr": {"started": true, "closed": false, "display": ":187", "title": "PARA LSI - GTK2 DomainOS | I167 comparacao"},
+    "vm_input_or_disk_changed": false,
+    "repository_theme_sources_changed": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 93,
+    "basis": "Effective metrics of the installed GTK2 wrapper plus generated include verified in real GTK2; the reported rendered-size discrepancy, coupled preview, historical pressed-state pairs, and human confirmation remain open.",
+    "not_a_visual_fidelity_score": true
+  },
+  "next": "Review the open comparison in Xephyr. If the perceived horizontal reduction remains, isolate and measure glyph bbox and cell alignment before changing assets; do not alter geometry from asset-only evidence."
+}

@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-18",
+  "item": "I167",
+  "family": "GTK2",
+  "display": ":91",
+  "scope": "Isolated comparison of the public GTK2 preview route with the direct native scene in a fresh Xephyr; no source files changed.",
+  "environment": {
+    "xephyr_pid": 1594835,
+    "xephyr_screen": "800x600, scale 1",
+    "artifacts": "~/tempia/i167-xephyr-public-recheck-20261018-r6/",
+    "public_run": "~/tempia/.qa-gtk2-public-lknmz1l0/",
+    "direct_native_run": "~/tempia/i167-xephyr-public-recheck-20261018-r6/direct-native/"
+  },
+  "public_preview": {
+    "test": "tools/theme-lab/tests/test_gtk2_public_native.py",
+    "sha256": "bd2951e2ca7a9f1ac988c4184489f4f707c1a88d5222d316a6996916ee2a509b",
+    "result": "failed_at_vertical_up_pressure",
+    "schema": "DomainOS-SR10.4",
+    "allocation_px": {
+      "horizontal": [220, 15],
+      "vertical": [15, 180]
+    },
+    "range_metrics": {
+      "horizontal": {"x": 16, "y": 16, "width": 220, "height": 15, "sensitive": true},
+      "vertical": {"x": 260, "y": 16, "width": 15, "height": 180, "sensitive": true}
+    },
+    "held_pixel_differences": {
+      "horizontal_left": 53,
+      "horizontal_right": 53,
+      "vertical_up": 0,
+      "vertical_down": "not reached"
+    },
+    "release_pixel_differences": {
+      "horizontal_left": 0,
+      "horizontal_right": 0,
+      "vertical_up": 0
+    },
+    "native_events": ["scroll_h value changed to 34"],
+    "recipe_applied": false,
+    "limitations": [
+      "The public preview did not demonstrate a pressed vertical-up stepper in this run.",
+      "The run stopped at the first failed assertion; BreezeDark and subsequent directions were not tested.",
+      "No historical visual conclusion is claimed."
+    ]
+  },
+  "direct_native_scene": {
+    "test": "tools/theme-lab/tests/probe_gtk2_scrollbar_arrow_states.py",
+    "sha256": "62e5d256eb4832081d2652df49cecca4f73f03f48aa2637d6a2559818eda4afc",
+    "result": "passed",
+    "origin": "separate",
+    "directions": {
+      "left": {"held_differences": 53, "release_differences": 0},
+      "right": {"held_differences": 53, "release_differences": 0},
+      "up": {"held_differences": 53, "release_differences": 0},
+      "down": {"held_differences": 53, "release_differences": 0}
+    },
+    "scheme": "DomainOS-SR10.4"
+  },
+  "conclusion": "The fresh isolated Xephyr and GTK2 runtime can press all four native steppers in a direct scene. The public preview presses both horizontal directions but not its vertical-up stepper. This narrows the failure to the public-preview path or its layout/input mapping; it does not establish a general Xephyr/XTest limitation. I167 remains partial. The cloned SR10.4 guest still has no visible VUE screen, so it cannot supply the missing live historical comparison in this state.",
+  "host_theme_or_user_profile_changed": false,
+  "source_files_changed": false
+}

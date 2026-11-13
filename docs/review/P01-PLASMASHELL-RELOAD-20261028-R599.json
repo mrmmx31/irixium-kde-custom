@@ -1,0 +1,37 @@
+{
+  "id": "R599",
+  "date_local": "2026-10-28T14:06:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": "P01 is authorized and running; user confirmed authorization in this turn.",
+  "action": {
+    "service": "plasma-plasmashell.service (user lsi only)",
+    "command": "systemctl --user restart plasma-plasmashell.service",
+    "old_pid": 505510,
+    "new_pid": 711522,
+    "other_session_preserved": "plasmashell PID 332937 belongs to p001532 and was not touched",
+    "kwin_restarted": false
+  },
+  "loaded_file": {
+    "source": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "installed": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "sha256_both": "a10473c4f014422fbb84f757f895a6e23e9bc498a6bce494361f6660749355d2"
+  },
+  "validation": {
+    "service_active": true,
+    "exec_status": 0,
+    "restarts_after_action": 0,
+    "user_session": "XDG_SESSION_ID=7; Wayland wayland-0; DISPLAY=:1",
+    "specific_menu_qml_error_seen": false,
+    "runtime_hover_or_typing_test": false,
+    "double_click_launch_reproduction": false
+  },
+  "board_reply_update": "Deferred: the AI Work Board reported its file/journal in use and preserved the reply input; no lock was bypassed.",
+  "interpretation": "The updated QML is now loaded by the lsi panel. This proves reload/startup only, not that hover closure or search typing is fixed. Logs contain unrelated EGL permission and pre-existing DomainOSTray binding warnings.",
+  "next": [
+    "User checks whether the KDE menu remains open when hovering into categories and whether the search accepts typing immediately after opening.",
+    "Keep Q510 open for safe diagnosis of application launch hang/restart; do not repeat launches until affected app and sequence are known."
+  ]
+}

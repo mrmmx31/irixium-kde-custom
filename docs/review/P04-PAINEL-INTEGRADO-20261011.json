@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-11T01:09:47.896283+00:00",
+  "item": "P04",
+  "authority_revision": 1,
+  "phase": "integrated_private_tests",
+  "installed": false,
+  "estimated_stage_progress_percent": 55,
+  "proofs": [
+    "11 Qt offscreen integrated handoff tests passed",
+    "exact footer global rectangle preserved across chooser close",
+    "synchronous and asynchronous close transitions",
+    "stale/cancelled selections",
+    "keyboard navigation after explicit native window activation",
+    "pointer routes exact layout selection",
+    "candidate standalone load/open/dispatch/null anchor test passed"
+  ],
+  "limitations": [
+    "Offscreen proof does not validate Wayland placement or focus acquisition",
+    "Native position/palette/outside dismissal and host lsi validation pending",
+    "No real window operations dispatched"
+  ],
+  "hashes": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "527c0ebf6462e432e719f140cafa880a8bee3367503742701bae649ffde257ac",
+    "plasma/tests/test_domainos_operations_handoff.py": "703193f91d6397b6db09c221cc0c3ad260e10f9e6a587c5d12ba18315729cab7",
+    "plasma/tests/test_domainos_operations_panel.py": "baea9f61e62d6fb979c549c3ebbad7bec5c09e31ccf618fda43d9358b2ee0023"
+  }
+}

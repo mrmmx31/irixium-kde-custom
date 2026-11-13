@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "id": "R679",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Render the current generated GTK2 scene containing all 16 catalog controls in private Xvfb, across four color schemes and separate/XEmbed origins.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "passed",
+    "native_toolkit": "GTK2 2.24",
+    "control_types": 16,
+    "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "origins": ["separate", "coupled"],
+    "native_scenes": 8,
+    "all_controls_mapped_and_drawable": true,
+    "all_allocations_within_viewport": true,
+    "stepper_cells_compared_to_current_role_assets": 32,
+    "stepper_pixels_equal": 7200,
+    "stepper_pixels_total": 7200,
+    "window_size_px": [1100, 1000]
+  },
+  "verification": {
+    "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_all_controls_native.py",
+    "result": "passed twice; final run preserved result JSON, log, and eight screenshots",
+    "log": "records/ia-tema/I167/R679/test-gtk2-all-controls-native.log",
+    "log_sha256": "c15641917f9d23e328b5a258c74cf1a357c7f492a7ee9a16898690896aee57ad",
+    "result_json": "records/ia-tema/I167/R679/ALL-CONTROLS-RESULTADO.json",
+    "result_json_sha256": "145f050875427ba7d1d75190a2be71691fdac46e02de45afe05e60cd26ba41c6",
+    "harness_sha256": "af76e6bba7efab2beddbf936acb9ab8633528f9c168f6ad515df8451829c914d",
+    "temporary_location": "~/tempia/domainos-theme-work/I167/R679-all-controls-20261029",
+    "temporary_outputs_cleaned_after_copy": true,
+    "desktop_changed": false,
+    "user_profile_changed": false,
+    "applications_restarted": false,
+    "vm_input_sent": false
+  },
+  "limits": [
+    "This validates current GTK2 generation, native widget mounting, allocations, and stepper cells against generated palette assets.",
+    "It does not compare the full controls or their colors pixel-for-pixel with the SR10.4 VM.",
+    "It is not the public Theme Lab bwrap/Xephyr route and is not human visual approval.",
+    "The screenshots are synthetic catalog arrangements at 1100x1000, not application-window fidelity samples."
+  ],
+  "next": "Use the public isolated Xephyr preview after the user's choice; then compare the GTK2 scrollbar family with the SR10.4 reference and preserve remaining held/hover/disabled interaction gates.",
+  "technical_coverage_estimate": {
+    "percent": 96,
+    "basis": "All current catalog controls now mount in eight private native scenes after generation changes; public launcher/Xephyr review, full historical appearance comparison, interaction states, and human acceptance remain open. This is not a visual fidelity score."
+  }
+}

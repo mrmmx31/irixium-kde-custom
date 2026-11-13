@@ -1,0 +1,42 @@
+{
+  "at": "2026-10-11T04:30:40.082242+00:00",
+  "item": "I117",
+  "authority_revision": 1,
+  "phase": "shared_initial_sample_inputs",
+  "contract": "sample_controls.json -> validated Python inputs and generated C header",
+  "verified": [
+    "Strict C99 build",
+    "Native Motif push label, SpinBox position and vertical Scale value",
+    "GTK3 labels, selected combo, checkbox state, entry, spin, both scales and level in coupled/separate origins",
+    "Previous geometry/font/anchor native probes passed with changed inputs",
+    "Generated C header matches JSON contract"
+  ],
+  "preservation": "No personal preview reopened, no live editing buffers or recipes changed, no VM intervention",
+  "limits": [
+    "Radio group and list/tree samples remain structurally different; not certified comparable",
+    "Motif Scale level is a documented substitute, not a ProgressBar",
+    "Initial common input does not synchronize interactive changes",
+    "Geometry, fonts and class differences may still produce unequal natural size",
+    "Current personal preview retains previous frozen snapshot"
+  ],
+  "failures_preserved": [
+    "Sandbox Xvfb unavailable (.qa-i117-content/motif.log and gtk.log)",
+    "Wrong test SpinBox descendant path (.qa-i117-content/motif-host.log), fixed; final Motif passed"
+  ],
+  "estimated_stage_progress_percent": 65,
+  "percentage_basis": "I117 implementation scope only; content inputs now comparable for supported sample subset, remaining pieces/full flow/delivery unproven",
+  "hashes": {
+    "tools/theme-lab/sample_controls.json": "664a0b3681dd8ab3d6cfdaf98d79969eb823a8ff9274d9b21e068434f631ffe6",
+    "tools/theme-lab/sample_contract.py": "d087d2f4ac344ddeeb8e861cdbb278435c1d17f145bffc065b4bc46b4054228b",
+    "tools/theme-lab/include/sample_controls.h": "8cc9c3db39a33b2ea42a259baf205ea817d9678c7af900b9e565e50d7aa7ca37",
+    "tools/theme-lab/src/view.c": "4a2196e534536dcb924c8b11bb750f32bb020642c065b0e82d1992d7bbc8bd96",
+    "tools/theme-lab/preview_gtk.py": "74661aa469faf54d2b234a962c6b4844542f6007905dd8d5cb498c9df6215535",
+    "tools/theme-lab/Makefile": "b6f8b2751ae28a50fae14d38d199764ee0bc43192bdecfe63cc362cccee65520",
+    "plasma/tools/abrir-laboratorio-temas.py": "611107136bfca00b36764fbb70fd411d71e640c342cb6fba64c85436eb1759cc",
+    "tools/theme-lab/tests/native_metrics_view.c": "4b99225c70683a850d956ffadc6b66287483eb049d97605f3fe672ea2cb361c4",
+    "tools/theme-lab/tests/test_native_metrics.py": "ccab14d9880b68f6fb32c21ac28c532e88fc72241010d77ba43a259490f49cb5",
+    ".qa-i117-content/motif-final.log": "5dde737d50508b9ee96d12afe31931b6a20887029f1e4f58bfe466ba47ac10b0",
+    ".qa-i117-content/gtk-host.log": "f8918607d63578ba2f73116e4f00537392ca33d5e2a29c86cef5c11cf4696c4f"
+  },
+  "next": "GTK3 isolated piece geometry and remaining non-equivalent sample structures; full flow then coordinated delivery"
+}

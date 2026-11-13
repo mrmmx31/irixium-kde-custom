@@ -1,0 +1,59 @@
+{
+  "id": "R628",
+  "date_utc": "2026-10-28",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true,
+    "board_generation": 9116,
+    "item_generation": 9100,
+    "closed": false,
+    "board_state_changed": false
+  },
+  "method": {
+    "kind": "native fake-input delivery test against a fullscreen Qt Quick window",
+    "compositor": "private kwin_wayland --virtual, 1024x768 output at origin (0,0)",
+    "client": "fake-input v5 client authorized only through a private XDG desktop entry",
+    "production_desktop_changed": false,
+    "production_plasmashell_restarted": false,
+    "private_compositor_exited": true,
+    "private_runtime_directories_removed": true,
+    "temporary_root": "~/tempia/domainos-theme-work/P01/R628-native-wayland-input-probe-20261028/run7/"
+  },
+  "observations": {
+    "fake_input_authenticated": true,
+    "fullscreen_probe_geometry": "1024x768",
+    "absolute_pointer_enter_at_100_100": true,
+    "absolute_pointer_motion_at_100_100": true,
+    "click_at_340_220_focused_text_field": true,
+    "keyboard_text_after_click": "searchproof",
+    "pointer_enter_and_motion_at_500_500": true,
+    "pointer_input_reached_native_qtquick_surface": true,
+    "previous_windowed_probe_setposition_was_compositor_authoritative": false,
+    "previous_pointer_coordinates_were_confirmed_global": false
+  },
+  "interpretation": {
+    "status": "fullscreen_pointer_and_keyboard_delivery_proven;_kicker_popup_delivery_not_yet_verified",
+    "conclusion": "The authorized fake-input protocol delivered absolute pointer enter/motion and a click to a fullscreen Qt Quick surface. The click focused the TextField and subsequent key events produced the expected text. The earlier windowed probe used QWindow::setPosition coordinates without proving the compositor's actual toplevel geometry; those coordinates may have missed its surface. This explains a plausible test-coordinate failure but does not yet prove the exact Kicker popup coordinates or reproduce the reported hover-close behavior.",
+    "production_fix_indicated": false,
+    "human_acceptance": false
+  },
+  "evidence_files": {
+    "run7/probe.cpp": "774e1aa696e1b77aac42844006ad9fd090210975f92f290453710537d60d0247",
+    "run7/probe.qml": "89fa7a8375beadc1d928fba50762f1a7fb675bd4123b5b701aad344adeb4c981",
+    "run7/probe": "2d332728d3cc438a2c417626de2a8c5e1014c094193034bdbe38e766f93e1402",
+    "run7/fake-input-client": "8faaee51a2c4d7bbc4a690e593b3aea5be6970ade41fec857f6dfa212be4962c",
+    "run7/app.log": "42c75cc98e1c980e8bf4fd84ef5519430c52bfa8cc825b65783e2061ea939de6",
+    "run7/fake-input.log": "6ceb3319c3be3965d1cb0c4ec9383c20ef3291a83f590f97e1407af348cfcb2a",
+    "run7/kwin.log": "08fc8589a6aa4e9fd7d56ed0cecf2df9b59f195a8cb4c71ea44547ac24d8ba6b",
+    "setup_attempts": "run4 missing compiled probe; run5 reused stale service cache; run6 stale executable path. No input was treated as sent in those setup failures."
+  },
+  "next": [
+    "Use KWin-observed global geometry or a fullscreen private host to map the Kicker host and popup surfaces before sending pointer events.",
+    "Repeat only the P01 search-focus and category-hover path on the real Kicker QML fixture; keep the double-click crash diagnosis separate.",
+    "Do not change the production applet until the actual pointer and focus event path reproduces the user report."
+  ]
+}

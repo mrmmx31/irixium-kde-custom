@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T01:12:50.647419+00:00",
+  "authority": "P04 revision 1 authorized current definition",
+  "scope": "own Xvfb/Openbox native X11; task doubles; injected role objects from actual schemes plus synthetic yellow",
+  "tests_passed": 3,
+  "position": "above footer button, gap <=8px, bounded horizontally",
+  "keyboard": "active focus, Down and Escape",
+  "dismissal": "native deactivation closes",
+  "palettes": [
+    {
+      "scheme": "DomainOS",
+      "text": "#ffffff",
+      "face": "#3297c7",
+      "pressed": true
+    },
+    {
+      "scheme": "neutral",
+      "text": "#ffffff",
+      "face": "#3daee9",
+      "pressed": true
+    },
+    {
+      "scheme": "dark",
+      "text": "#fcfcfc",
+      "face": "#3daee9",
+      "pressed": true
+    },
+    {
+      "scheme": "yellow-collision",
+      "text": "#111111",
+      "face": "#dddd28",
+      "pressed": true
+    }
+  ],
+  "visual": "captured DomainOS examined; removed metal weave from own menu for legibility; panel artwork untouched",
+  "installed": false,
+  "remaining": [
+    "Wayland native positioning and activation",
+    "live lsi delivery and user evaluation",
+    "other metallic-bar menus separate queued scope"
+  ],
+  "stage_percent": 65,
+  "hashes": {
+    "plasma/tests/test_domainos_operations_native.py": "7d896209819e8c193b480cdc2b6bcca12f1e73ca3da9c90656fb8a8a4e01fdeb",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "4c0517bcff6b37608457b9a1adcb22213b3d1eaa0a045102e34719a53ec3691d"
+  }
+}

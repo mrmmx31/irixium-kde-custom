@@ -1,0 +1,50 @@
+[
+  {
+    "name": "swiss-glyphs",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -lll -fn '-*-swiss 742-bold-r-normal-*-120-*'",
+    "bytes": 16818,
+    "sha256": "6c42a00edc841bfe1198dfe747ed668646b54d8598d37ce33b1a665ffef31f1f",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/swiss-glyphs.txt",
+    "finished_prompt": true
+  },
+  {
+    "name": "prestige-glyphs",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -lll -fn '-*-prestige-medium-r-normal-*-120-*'",
+    "bytes": 18838,
+    "sha256": "a2e31cf96e84c58cc14c155440423c8d258f69a8c8fa465219549d1621edd5d1",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/prestige-glyphs.txt",
+    "finished_prompt": true
+  },
+  {
+    "name": "system16",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -ll -fn system16",
+    "bytes": 1611,
+    "sha256": "b956191ef77c3e0f3937977b408bdda0b89956c6735df96cc50c5e2e5372c373",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/system16.txt",
+    "finished_prompt": true
+  },
+  {
+    "name": "system17",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -ll -fn system17",
+    "bytes": 1616,
+    "sha256": "a7c7353d8e703ef245eb2ff47dd5460b2d32794f76f45076d144f949fcf963cd",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/system17.txt",
+    "finished_prompt": true
+  },
+  {
+    "name": "system23",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -ll -fn system23",
+    "bytes": 1615,
+    "sha256": "f9a1cf77cdae57fae9b55ad1e830f026b125f5540cc1a5cfaf17d1f9d20ff1f5",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/system23.txt",
+    "finished_prompt": true
+  },
+  {
+    "name": "system17-glyphs",
+    "command": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -lll -fn system17",
+    "bytes": 16769,
+    "sha256": "c21708696ae3425f4c317d0ef8d4bd933adad0ba43564960a485e017efb22047",
+    "file": "docs/referencias/domainos-sr104/i120-x11-metrics/system17-glyphs.txt",
+    "finished_prompt": true
+  }
+]

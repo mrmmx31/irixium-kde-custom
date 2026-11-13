@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "R429",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Analyze the exact MAME 0.276 Apollo mouse-driver path to explain why the R417 field pulse did not prove a VUE pressed-state transition.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "source": {
+    "project": "MAME",
+    "version": "0.276",
+    "file": "src/mame/apollo/apollo_kbd.cpp",
+    "url": "https://github.com/mamedev/mame/blob/mame0276/src/mame/apollo/apollo_kbd.cpp",
+    "relevant_lines": ["150-159", "340-400", "740-749"]
+  },
+  "source_facts": [
+    "Apollo mouse buttons and relative X/Y axes are separate input ports.",
+    "The keyboard scan timer runs every 5 ms, but calls mouse.read_mouse only when the emulated keyboard/mouse mode is not KBD_MODE_0_COMPATIBILITY.",
+    "A changed mouse button or axis is packed and sent through the serial transmit path; the code sets m_tx_pending to 50 ms and comments that the packet takes 40 ms.",
+    "The live bridge probe cannot establish the private Apollo protocol mode from its listed input ports alone."
+  ],
+  "interpretation": "R417 proved that the MAME input field was high for two frame notifications, but did not prove that the Apollo driver sampled it in an eligible mode, completed its serial packet, or that VUE rendered a held relief before release. Short duration and unknown protocol mode are plausible explanations, not confirmed causes. The empty scrollbar also remains an unsuitable sensitivity control.",
+  "actions": {
+    "live_vm_input": false,
+    "focus_or_capture_changed": false,
+    "theme_changed": false,
+    "gtk2_recipe_changed": false
+  },
+  "next": "Use a native scrollbar arrow known to be enabled, hold beyond one documented 50 ms packet interval in emulated time, confirm field release and capture the held/released images. First establish a reproducible pointer route and available Apollo mode evidence; if the mode cannot be observed, report that limit rather than attributing failure to VUE."
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "id": "R436",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Check that GTK2 scrollbar stepper assets are regenerated from the active KDE color roles across four schemes; distinguish asset generation from GTK2 runtime and historical VM evidence.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "contract": {
+      "path": "tools/domainos_scrollbar_rules.json",
+      "sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3"
+    },
+    "gtk2_recipe": {
+      "path": "tools/theme-lab/gtk2_recipe.py",
+      "sha256": "7dec8c3fc1302c9e7f71ce59cc2810803a8460c5a9f80ae70b5be048d564d0ee"
+    },
+    "gtk2_generation": {
+      "path": "tools/theme-lab/gtk2_generation.py",
+      "sha256": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb"
+    },
+    "backend": {
+      "path": "tools/theme-lab/backend.py",
+      "sha256": "34a30abe57dfca5f0818032b033df1d7393f3df7c9017fabbc21b0b9219c1765"
+    },
+    "native_color_reader": {
+      "path": "tools/theme-lab/build/theme-lab-colors",
+      "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+    }
+  },
+  "method": {
+    "palette_read": "Read each scheme through the project's native KDE role helper; feed the resulting roles to the GTK2 scrollbar asset painter without opening a GUI or changing user configuration.",
+    "asset_matrix": "4 schemes × 4 states × 4 directions = 64 stepper cells; each cell is 15×15. Alpha geometry/mask is compared to DomainOS; RGB is compared to DomainOS for each alternative scheme.",
+    "scheme_sources": [
+      {
+        "name": "DomainOS-SR10.4",
+        "path": "colors/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5"
+      },
+      {
+        "name": "BreezeClassic",
+        "path": "/usr/share/color-schemes/BreezeClassic.colors",
+        "sha256": "9b868e122468e9e613215fd3688c8ed0139a1317f4aa90d15191ce6c7181cfca"
+      },
+      {
+        "name": "BreezeDark",
+        "path": "/usr/share/color-schemes/BreezeDark.colors",
+        "sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08"
+      },
+      {
+        "name": "KvBeige",
+        "path": "/usr/share/color-schemes/KvBeige.colors",
+        "sha256": "62e69b0141dfe490a00c092e7dad379b18b4a38aae3301fea6b3f1772d41def3"
+      }
+    ],
+    "matrix_report": {
+      "path": "~/tempia/ia-tema/evidence/I167/r436-gtk2-four-schemes-20261027/report.json",
+      "sha256": "0afddda83b5559c5182b5aa3e592740df66c069055a0144cb25772721e3f50f0"
+    },
+    "isolated_native_attempt": {
+      "status": "inconclusive; excluded from pass claims",
+      "reason": "The GTK2 test harness attached to an existing coordinated preview namespace instead of creating its own. Its 640×420 captures contain only four colors and no usable rendered controls; no native color/runtime conclusion can be drawn. The child preview PID recorded by the harness closed normally. No user profile, desktop theme, or VM was changed.",
+      "artifacts": "~/tempia/ia-tema/evidence/I167/r436-gtk2-four-schemes-20261027/public-native/.qa-gtk2-public-ovqvci93/"
+    },
+    "isolated_native_runtime": {
+      "status": "GTK2 runtime state comparison verified for BreezeClassic and KvBeige; first wrapper error is documented and does not invalidate its four arrow captures",
+      "isolation": "The harness itself created the Xvfb display and bwrap/user/network namespace under ~/tempia. namespace_created=false in the inner preview receipt is expected because preview_gtk2.py ran inside that already-private fixture; it does not indicate attachment to an external/shared renderer.",
+      "BreezeClassic": "Real GTK2 2.24.33 preview captured all four arrow directions in hover/held/released states. The wrapper then stopped at its final full-matrix import with ModuleNotFoundError for verify_gtk2_public_capture because the test directory was absent from sys.path. A pixel comparison of preserved captures completed independently.",
+      "KvBeige": "A focused rerun with the test directory on sys.path passed for all four directions and states; the GTK2 preview closed through its normal close path.",
+      "comparison_report": {
+        "path": "~/tempia/ia-tema/evidence/I167/r436-gtk2-four-schemes-20261027/native-runtime-comparison.json",
+        "sha256": "c9792d84a1dc6176ea68b78ba2224310d2e6e9ab158c86bd1ff403781c73835f"
+      },
+      "claims": "For each of 8 direction×scheme cells, hover and released equal the generated normal asset (0/225 RGB differences), held equals generated pressed asset (0/225), held changes 53/225 pixels from hover, and release restores 0 differences. This proves generated GTK2 recipe rendering in the isolated runtime for these two alternate palettes; not VUE fidelity or desktop-wide live scheme switching."
+    }
+  },
+  "result": {
+    "status": "asset-level palette following verified across four schemes; isolated GTK2 2.24.33 state rendering verified for BreezeClassic and KvBeige; historical VUE fidelity remains partial",
+    "geometry": "All 64 cells remain 15×15 and their alpha masks are identical across all four schemes.",
+    "color": "All 48 cells in BreezeClassic, BreezeDark, and KvBeige differ from DomainOS in RGB across the 225-pixel cell while preserving the same alpha mask. The painter derives RGB from KDE Button roles; no final RGB constants were added.",
+    "host_or_user_profile_changed": false,
+    "vm_contacted": false,
+    "source_changed": false,
+    "native_runtime": "Eight direction×scheme cells across BreezeClassic and KvBeige match their generated normal/pressed assets exactly; 53 pixels change while held and release restores the exact normal cell."
+  },
+  "remaining": [
+    "Finish the enabled horizontal VUE arrow held-state comparison using a stable, verified pointer route; R435 was inconclusive and no arrow was pressed.",
+    "Native SR10.4 hover/insensitive appearance, whole-family comparison, current open-application in-memory theme resolution, and human visual review remain separate pending evidence/acceptance.",
+    "The GTK2 runtime proof covers two alternate schemes; it does not establish desktop-wide live refresh or cover every other palette."
+  ],
+  "changes": {
+    "gtk2_recipe_changed": false,
+    "user_profile_changed": false,
+    "user_apps_restarted": false,
+    "vm_changed": false
+  }
+}

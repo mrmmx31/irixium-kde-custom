@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R296",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "four-normal-directions-exact-after-crop-alignment-erratum-human-review-open",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Correct source/screen crop registration for the normal GTK2 scrollbar arrow comparison; no theme edits."
+  },
+  "method": {
+    "coordinate_convention": "half-open pixel boxes, RGB comparison at 1:1, no resize, interpolation, or color normalization",
+    "native_geometry_source": "TRASH-CAN-METRICAS.json horizontal bbox [105,671,643,685] inclusive, width 539; horizontal crop begins at global x=103",
+    "correction": "The cropped horizontal bar occupies x=2..540 inclusive. Therefore its final 15-pixel cell is source x=526..540, half-open [526,541). R233/R287 used [527,542), and paired it with a screen crop one pixel to the right."
+  },
+  "inputs": {
+    "metrics": {
+      "path": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "sha256": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07"
+    },
+    "horizontal_reference": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    },
+    "vertical_reference": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+    },
+    "gtk2_current_scene": {
+      "path": "~/tempia/ia-tema/evidence/I167/r293-gtk2-live-palette-reload/DomainOS/separate-all-controls.png",
+      "sha256": "86eed3470a4ee7a8ab4519a9f20ecf73e3cadf538a32fee56eb18bf7c2b10725",
+      "runtime": "GTK2 2.24.33, separate native preview, DomainOS KDE role palette"
+    },
+    "gtk2_generated_right_asset": {
+      "path": "~/tempia/ia-tema/evidence/I167/r293-gtk2-live-palette-reload/DomainOS/gtk2-scrollbars/arrow-right-normal.png",
+      "sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0"
+    },
+    "prior_r233_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-gtk2-live-r233-20261026.png",
+      "sha256": "8372970c4f4e91455a2d8d1a802d8b0014e1baa603f9d6e372e01c702de540dc",
+      "prior_receipts_corrected": ["R233", "R287"]
+    }
+  },
+  "comparisons": {
+    "left": {"reference_crop": [2, 4, 17, 19], "current_scene_crop": [16, 566, 31, 581], "different_pixels": 0, "pixels": 225},
+    "right": {"reference_crop": [526, 4, 541, 19], "current_scene_crop": [56, 566, 71, 581], "different_pixels": 0, "pixels": 225},
+    "up": {"reference_crop": [4, 2, 19, 17], "current_scene_crop": [556, 566, 571, 581], "different_pixels": 0, "pixels": 225},
+    "down": {"reference_crop": [4, 242, 19, 257], "current_scene_crop": [556, 606, 571, 621], "different_pixels": 0, "pixels": 225}
+  },
+  "result": {
+    "normal_state": "All four current GTK2 stepper cells match the corresponding retained SR10.4 native cell exactly: 0/225 differing RGB pixels per direction.",
+    "right_arrow_erratum": "The R233/R287 right-arrow source and screen crops were both shifted +1 px. Their matching result was internally consistent but did not compare the final native cell. The corrected R296 pair is source [526,4,541,19) versus current scene [56,566,71,581).",
+    "implementation": "No geometry, asset, palette, source, installed theme, or application changed.",
+    "limits": "This closes only the four normal-state 15x15 GTK2 arrow crops. Historical pressed-state pairs for left/right/up remain open because the live VM guest is black without visible pointer; final GTK2 control-state audit and user visual review remain open. Exact pixel equality here is technical evidence, not user acceptance."
+  },
+  "evidence_saved_to": "~/tempia/ia-tema/evidence/I167/r296-normal-arrow-alignment.json",
+  "technical_coverage_estimate": {
+    "percent": 80,
+    "basis": "Corrects registration of an already measured normal-state direction and confirms four normal crops against retained reference. No new interaction state or control family closed; percentage remains a technical coverage estimate, not visual fidelity."
+  }
+}

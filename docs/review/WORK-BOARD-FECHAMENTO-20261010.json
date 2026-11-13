@@ -1,0 +1,264 @@
+{
+  "date": "2026-10-10T22:40:19.981658+00:00",
+  "item": "I096",
+  "revision": 3,
+  "phase": "delivered; live handoff verified",
+  "files": [
+    {
+      "path": "Makefile",
+      "before_sha256": "a7fa843e291c1656ad97b1acce42936d00a7ccdf10dc1e78cadd2f9e1ac2a233",
+      "after_sha256": "1473000c25812614b0b9e97a19197cb8f4ec1e52caf63d6829942d86ac58b0db"
+    },
+    {
+      "path": "PROTOCOLO.md",
+      "before_sha256": "395802a9a23c805ab65f1d8f52a2fd8aedb37891942656f616346903fb700bb7",
+      "after_sha256": "ac576941379cfc34552758acaec52f647e7aae34637ce1d63c00e7f6246b9245"
+    },
+    {
+      "path": "build/work-board",
+      "before_sha256": "9a090e5b432b9c26cc4e7799e27c63d0041e4e08c1575882b1299a1dbbf0252e",
+      "after_sha256": "7595549d85b55b58d1ce666b8f39f98e1d4e1d7e0f66f0e7448c9f7d835035ba"
+    },
+    {
+      "path": "build/libwork-board-model.a",
+      "before_sha256": "5870a7b59fce2d4e916975829d2223927caeed3d1bbebd87cc03b3e686186a6a",
+      "after_sha256": "c594012fce07728be89b828b743ce03441bacc01d5981a5f4cc8a9588dca8f16"
+    },
+    {
+      "path": "docs/FECHAMENTO-MANUAL.md",
+      "before_sha256": null,
+      "after_sha256": "f8c46c51f17dab6187a653ac4f06d4bdaa13773ab2e23a3500fa8d419e654931"
+    },
+    {
+      "path": "docs/FILTROS-ESTADO.md",
+      "before_sha256": "8cd93100f922d75e22be70580d38eadc088b9835e2e23c9bd6dc741200b1ce11",
+      "after_sha256": "257ac6df49d468b98ff21f54ee52a9e6c8243a4fce5a3f452360d37b3f6d6cec"
+    },
+    {
+      "path": "docs/MANUTENCAO.md",
+      "before_sha256": "c9aa89ba01445d0e212727511d64dfcd09c274096489c117f789af9383f94382",
+      "after_sha256": "2785edf9ad6ad025d8f62f39abbd6624b93e739f2ed84b738ef2cc5c0b541f43"
+    },
+    {
+      "path": "docs/ARQUITETURA.md",
+      "before_sha256": "0afc27919ec92eb73eff5d32f445c0de85bf90dc2bbc08b5d0be7c530bd06a2e",
+      "after_sha256": "88d80428a4a575f8811ffb9d38808e27fd2166be603547c4ebda031f1ddec606"
+    },
+    {
+      "path": "tests/native_closure_probe.c",
+      "before_sha256": null,
+      "after_sha256": "f7b3aa9363077a2cca57c2d4fcc823ec2b0c53eaaa4e5d613607ab696701c588"
+    },
+    {
+      "path": "tests/test_closure_native.py",
+      "before_sha256": null,
+      "after_sha256": "0cbb867e25ea068af4eff5fa616ea42ce7102b2ec6ef8245ebedf0b512e18a63"
+    },
+    {
+      "path": "tests/test_closure_model.py",
+      "before_sha256": null,
+      "after_sha256": "6ee62aa8ad09ad75337f42558d5b5cdb57433ad5b38c63fbc71172c4e7cbf182"
+    },
+    {
+      "path": "tests/test_model_api.py",
+      "before_sha256": "05d9d8211d5ca993d3fbc0dce6dc9718a9491a287dda46f95e36824e1890003e",
+      "after_sha256": "dc0dcf8cd9f9d65f2aad8b0f45db37238084b36c580004be52e9e70d341b022b"
+    },
+    {
+      "path": "tests/test_filter_model.py",
+      "before_sha256": "2ac9620faf53482c8b9ef84b8889e218f2e31f7614991cf25deb21874edb4d70",
+      "after_sha256": "67573adc10afce24b4c800f47344226c9b2d1b13d3f8f82092efd6f72185bdee"
+    },
+    {
+      "path": "src/model/filter.c",
+      "before_sha256": "27de36ca05fc8308dbbd07d131cb1d4e6458ab164ae3fdefa6af2f3200e64948",
+      "after_sha256": "44450c67a9ab32c5368af48b14b598e7d9875450bbac66e9f3c112dbfd2235c7"
+    },
+    {
+      "path": "src/model/validation.c",
+      "before_sha256": "6f479b076c080d3d791e7aef414b66708ef75ec1278d1ff6e1a23fa6ef85f9ed",
+      "after_sha256": "738e8a5661bdd9fe632f5ee6b3dcd714f162370cea6768700fb03077af141a07"
+    },
+    {
+      "path": "src/model/user_response.c",
+      "before_sha256": "9481407ffbe013d47c0a4f1f1b20777a275257b9a59a0b76e3228a36ec68b4db",
+      "after_sha256": "a03b8bf0a7d28f895a10ae438ecbbf59f4af79ee176ef05a4b1d1e367793d452"
+    },
+    {
+      "path": "src/model/assistant_response.c",
+      "before_sha256": "fa1d1ed4abe394d6f63f5d456a3e586ce4d38d9afebb62a1df1daba537c408bb",
+      "after_sha256": "102b8dc21e2b67da0837ef480a7c67045364a747b2c7fa6eb11bd906e79e67ab"
+    },
+    {
+      "path": "src/model/authorization.c",
+      "before_sha256": "1ffb86dec2aea60e5d4ccebadc316ebd4b18464e92e05cefffb5afdf8ace03ed",
+      "after_sha256": "f48b5548923e5ff878066c6d0ee70fc7599ad9ed19e3b1ce6a7418bc95182655"
+    },
+    {
+      "path": "src/model/closure.c",
+      "before_sha256": null,
+      "after_sha256": "a71be322518fc5f0b243647b9bfaf13a04ac8b27cea11e7ac7b918b35212e009"
+    },
+    {
+      "path": "src/model/queue_order.c",
+      "before_sha256": "94da98e99cfc8fcee5671963b1f82067af795286c067a4de10b4eeb6869d3eb5",
+      "after_sha256": "9b42383d72973a84d0c58c0e3724e668c954ce53e36d74ef0ba5c6047c3eb450"
+    },
+    {
+      "path": "src/view/details_layout.c",
+      "before_sha256": "72dd8260108fa4fcb3b07f7fd677ed46dfb23022f1edc18d26dbe86fd932b1c1",
+      "after_sha256": "bbd76bcfbba51c10bcc8cfa988a8c1a9d1f5bbf36b278206d32bfb11c1d27007"
+    },
+    {
+      "path": "src/view/help.c",
+      "before_sha256": "62f23a0cab7c671e521cb226347764750026c59e6a666b3aa9f4a45f97235610",
+      "after_sha256": "d0cf2697c3817107c0a75f549b6cf63d62f4f689ef5dba41f6f0e7385dc24307"
+    },
+    {
+      "path": "src/view/task_list.c",
+      "before_sha256": "cde4801993a10c6bdc188328c64844e4b210368c0f01ff8c4f07725f9f33b3a8",
+      "after_sha256": "b78e44663308994473e48563110cb9719811565db1fb68ad672a1ae5e5422a1e"
+    },
+    {
+      "path": "src/view/item_details.c",
+      "before_sha256": "2b6bf9436c9499757d32793f447e76fbd6e7ce2e8fdcf6dcca4eb17dfffcd256",
+      "after_sha256": "2c5b74f3980e4b2b13b7ad5ca4362251855d37227f26458be234ec8d737d19f4"
+    },
+    {
+      "path": "src/view/internal.h",
+      "before_sha256": "2d6f7e317e3ee43f5eb3064a9fa94bc34bdf8ca8135870bd417e13d4634eea62",
+      "after_sha256": "476e76e7b926ecd7324826c9891cc86b2b0a77c62bedbc32e6914f3689cd4025"
+    },
+    {
+      "path": "src/controller/session.c",
+      "before_sha256": "6fd16aa1a323e35eb0e1f17f5291d3cd1f948adbc1d41ddc73ac1a26673552dd",
+      "after_sha256": "43d2e9a9f98be5b5f2b61f728d701aaaeb93498d3743b783400a46f9af6f1a63"
+    },
+    {
+      "path": "skills/work-board/SKILL.md",
+      "before_sha256": "4a236bd34769525cc2f295da8084148a5fe5c0da9591909237cb01db84cfb39a",
+      "after_sha256": "c8295379362b4280d914d61cfa8e8b487197fcc2278088b068b5744c35277cd1"
+    },
+    {
+      "path": "skills/work-board/references/protocolo.md",
+      "before_sha256": "8e0159e7413eca3f1745402002b16facb39ede27c1fade9387acb50d5f2a92da",
+      "after_sha256": "b5a25115a187b12d5309d131a30c6f6c9062b5eebf2b3689752b63ab155fee6c"
+    },
+    {
+      "path": "include/work_board/closure.h",
+      "before_sha256": null,
+      "after_sha256": "90d31a9b56b2bdbaff7281702b997eb8afbc22a6a662663174232b3e904213ed"
+    }
+  ],
+  "checks": {
+    "native_flows": 15,
+    "closure_model_tests": 9,
+    "priority_model_tests": 8,
+    "store_tests": 17,
+    "import_tests": 7,
+    "model_api_no_gui": true,
+    "filter_model": true,
+    "editing_native_flows": 10,
+    "filters_native_flows": 10,
+    "kde_schemes": 4
+  },
+  "user_approval_filled": false,
+  "native_evidence": {
+    "tests": {
+      "legacy_open_no_phantom_draft_or_changed_response": true,
+      "closure_hint_visible_and_input_transparent": true,
+      "visible-1650": {
+        "state": [
+          1152,
+          109,
+          241,
+          35
+        ],
+        "level": [
+          907,
+          109,
+          241,
+          35
+        ],
+        "within_row": true
+      },
+      "visible-1920": {
+        "state": [
+          1341,
+          109,
+          282,
+          35
+        ],
+        "level": [
+          1056,
+          109,
+          281,
+          35
+        ],
+        "within_row": true
+      },
+      "draft_closure_only_and_revert_after_reload_switch_keeps_legacy_open_absent": true,
+      "native_close_preserves_decisions_and_blocks_execution_and_old_temporary_grant": true,
+      "assistant_return_and_reopen_request_refused_while_closed": true,
+      "empty-authorized-1920": {
+        "state": [
+          1341,
+          166,
+          282,
+          35
+        ],
+        "level": [
+          1056,
+          166,
+          281,
+          35
+        ],
+        "within_row": true
+      },
+      "saved_authorized_open_closed_filters_and_empty_result_are_consistent": true,
+      "closed_item_remains_editable_with_undo_reload_and_history_preserved": true,
+      "only_saved_manual_reopen_restores_matching_authorization": true,
+      "chat_metadata_only_closure_conserves_previous_note": true,
+      "stale_open_draft_cannot_override_newer_closed_revision": true,
+      "four_kde_schemes_closure_selector_matches_dynamic_button_roles": {
+        "DomainOS": {
+          "native_selector_matches_roles": true
+        },
+        "neutral": {
+          "native_selector_matches_roles": true
+        },
+        "dark": {
+          "native_selector_matches_roles": true
+        },
+        "yellow": {
+          "native_selector_matches_roles": true
+        }
+      },
+      "reopen_preserves_closure_drafts_both_histories_and_native_undo_redo": true
+    },
+    "scope": "Motif closure GUI + shared model gates",
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "handoff": {
+    "date": "2026-10-10T22:41:27.028599+00:00",
+    "item": "I096",
+    "revision": 3,
+    "pid": 1361672,
+    "display": ":1",
+    "binary_sha256": "7595549d85b55b58d1ce666b8f39f98e1d4e1d7e0f66f0e7448c9f7d835035ba",
+    "preservation": {
+      "user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_histories_identical": true,
+      "chat_histories_identical": true,
+      "drafts_identical": true,
+      "title_identical": true
+    },
+    "user_approval_filled": false,
+    "pause_authorization": "Native temporary button for exact I096 request/session, revalidated before SIGTERM",
+    "ephemeral_request_hidden_on_start": true
+  }
+}

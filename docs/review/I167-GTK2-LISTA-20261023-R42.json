@@ -1,0 +1,67 @@
+{
+  "id": "I167",
+  "receipt": "R42",
+  "date": "2026-10-23",
+  "family": "GTK2 list / GtkTreeView and XmList comparison",
+  "status": "partial",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 theme adapter and native preview comparison; no personal session or XChat installation"
+  },
+  "reference": {
+    "source": "local Motif native fixture; not the Domain/OS SR10.4 VM",
+    "XmList_item_spacing": 0,
+    "XmList_row_bounds_px": [19, 19, 19],
+    "XmList_widget_height_px": 55,
+    "evidence": "~/tempia/i167-gtk2-arrow-r41/list-r42/motif_metrics.c"
+  },
+  "change": {
+    "files": [
+      "tools/theme-lab/gtk2_lists.py",
+      "tools/theme-lab/tests/test_gtk2_list_paint.py"
+    ],
+    "summary": "GTK2 list cell separators are explicitly zero; generic button/input padding no longer feeds GtkTreeView cell spacing.",
+    "source_sha256": {
+      "tools/theme-lab/gtk2_lists.py": "bfa0e6b81ebb43e110e2b1a7b7c765d3c7cdd745b12b87b556db5157c6e9d069",
+      "tools/theme-lab/tests/test_gtk2_list_paint.py": "3c4a37088f3b1d7d8cdfad19377d63ca3f2b69e9fd959939c9a0c68c7bddc1c8",
+      "tools/theme-lab/tests/probe_gtk2_list.py": "2969a8a0a7024af139023a1ee79124ff728d8bc6ad46eec78c6fad89647c4301"
+    }
+  },
+  "measurements": {
+    "gtk2_version": "2.24.33",
+    "recipe_font_px": 13,
+    "GtkTreeView_row_bounds_px": [24, 24, 24],
+    "difference_from_local_motif_px_per_row": 5,
+    "diagnostic_only_font_px_9_row_bounds": [19, 19, 19],
+    "renderer_ypad_default": 2,
+    "renderer_ypad_zero_diagnostic_row_bounds": [20, 20, 20],
+    "gtkrc_cell_renderer_ypad_override": "ignored; renderer property remained 2 and row height 24 px",
+    "decision": "Keep 13 px recipe font and zero GTK2 tree-view separators. The theme-only gap remains 5 px; an application-specific ypad=0 brings it to 1 px, but the GTK2 theme recipe cannot request that renderer property. Do not shrink text to force the metric."
+  },
+  "validation": {
+    "pure_tests": "3 passed",
+    "native_scenes": 24,
+    "matrix": "four KDE color schemes × normal/backdrop/disabled × coupled/separate preview",
+    "checks": [
+      "effective view and selection roles",
+      "keyboard selection",
+      "horizontal and vertical scrolling",
+      "zero cell separators",
+      "generic control padding does not affect list identity",
+      "1:1 native metric capture against local Motif fixture",
+      "python bytecode compilation",
+      "git diff --check"
+    ],
+    "native_result": "~/tempia/i167-gtk2-arrow-r41/list-r42/final-matrix/RESULTADO.json",
+    "measurement_capture": "~/tempia/i167-gtk2-arrow-r41/list-r42/gtk_metrics.py",
+    "gtk2_warning": "Xvfb reported an atk-bridge ABI warning; GTK assertions passed."
+  },
+  "not_claimed": [
+    "Domain/OS SR10.4 VM visual fidelity",
+    "complete GTK2 family",
+    "application to XChat or personal GTK2 profile",
+    "integrated GTK2 lab canvas/controller"
+  ],
+  "next": "Continue the next authorized GTK2 family: frame."
+}

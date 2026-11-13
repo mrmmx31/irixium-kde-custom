@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "item": "T04",
+  "authorization": {
+    "user_authorized": true,
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "scope": "Colocar as faixas superiores do Theme Lab principal e do editor de pintura manual fora dos workspaces margados e fazê-las seguir Colors:Header do esquema KDE atual.",
+  "user_evidence": [
+    "/home/lsi/.xchat2/codex-files/5db2755165f3-capture-xchat-codex-E6WCY3.png",
+    "/home/lsi/.xchat2/codex-files/3a806730b74c-capture-xchat-codex-8Q95X3.png"
+  ],
+  "finding": {
+    "main": "O XmMenuBar era filho do mesmo XmForm com margem de 7 px usado pelos três painéis e recebia recursivamente Colors:Button.",
+    "manual_paint": "A faixa manualPaintSelectors era filha direta do formulário com margem de 8 px; não havia separação estrutural nem papel Header próprio.",
+    "reference": "A amostra SR10.4 mostra a barra de menu imediatamente sob a decoração. No esquema KDE ativo, Colors:Header/BackgroundNormal é 50,151,199 e Colors:Button/BackgroundNormal é 120,160,213."
+  },
+  "correction": {
+    "main_layout": "themeLabView agora não tem margem; laboratoryHelpMenu ocupa toda a largura; themeLabWorkspace separado conserva a margem de 7 px e contém painéis e rodapé.",
+    "manual_layout": "manualPaintRoot não tem margem; manualPaintSelectors ocupa toda a largura; manualPaintForm separado conserva a margem de 8 px e contém ferramentas, comparações e ações.",
+    "palette": "O backend publica uma paleta Header dinâmica separada; o controller valida e aplica corpo+Header atomicamente; cada view aplica Header somente à faixa e seus rótulos/cascades. Controles e painéis continuam nos papéis Button, Window e View.",
+    "fallback": "Colors:Header só é usado quando fundo e texto estão presentes; na ausência parcial ou total, a faixa acompanha o par Colors:Window do mesmo esquema, nunca RGB literal.",
+    "focus": "O realce de teclado usa Colors:Selection/BackgroundNormal, separado de face e texto Header.",
+    "kwin_boundary": "A decoração continua sob o KWin e os papéis WM; nenhuma barra de título é simulada dentro da aplicação.",
+    "theme_assets_changed": false,
+    "installed_theme_changed": false
+  },
+  "validation": {
+    "strict_c99_build": "passed with -Wall -Wextra -Werror",
+    "focused_backend_tests": "2 passed",
+    "header_layout_native_fixture": "passed for both forms",
+    "layout_assertions": [
+      "header x equals client x",
+      "header width equals client width",
+      "workspace begins below header",
+      "panel content remains inset",
+      "Header and Button roles remain independent"
+    ],
+    "help_menu_flow": "passed",
+    "live_main_pixels": {
+      "header_rgb8": [50, 151, 199],
+      "body_rgb8": [120, 160, 213]
+    },
+    "qualified_existing_failures": [
+      "The broad backend suite has one unrelated pre-existing assertion expecting the word 0700 while the output guard now rejects the path earlier.",
+      "The manual-paint hint fixture has an unrelated case-sensitive expectation for 'prévia nativa atual' while the actual registered hint starts with 'Prévia'."
+    ],
+    "historical_fidelity_claimed": false
+  },
+  "evidence": {
+    "isolated_main_capture": "/home/lsi/tempia/domainos-theme-work/header-visual-20261029/theme-lab-header.png",
+    "isolated_manual_capture": "/home/lsi/tempia/domainos-theme-work/header-visual-20261029/manual-paint-header-r2.png",
+    "isolated_manual_capture_sha256": "c24969e0e893ed656e42cfca3f6e1148c22982f50ebbb5ce1f31d63d3f179cfb",
+    "live_main_capture": "/home/lsi/tempia/domainos-theme-work/header-visual-20261029/theme-lab-live-r3-max.png",
+    "live_main_capture_sha256": "6d423e7f89a5006c3a4c58a7b1428c5f9609c987572a2d22d30ee943d0f82ad1"
+  },
+  "live_reopen": {
+    "service": "domainos-theme-lab-header-role-r3-20261029.service",
+    "theme_lab_pid": 3394797,
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "selected_family": "kvantum",
+    "editor_journal_preserved": true,
+    "project_history_preserved": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/backend.py": "65243a63ae16bba739dd000d9f1de80eda922d74cf73c1c7fd200f8442a0cc25",
+    "tools/theme-lab/src/controller.c": "8e2d5aa28eeed7587b3ea567b5e425b18d9ac0d4821d3373a0d11169d0027cf3",
+    "tools/theme-lab/src/view.c": "9adb7014edd07b1bc637425c07b8d08077140cd4727803c9cae0ee4737511cc8",
+    "tools/theme-lab/src/view/manual_paint_view.c": "4beb4d855b17729881d3509806e1d1ca44002629a53ee7ed2070d0fc8f50a521",
+    "tools/theme-lab/build/theme-lab": "1bc11c6d58a77184d791aca7ebd3c06e46b2966988caff75c1e724f991031fda"
+  },
+  "manual_visual_acceptance": "pending",
+  "next": "O usuário confere a proximidade da faixa principal e abre Pintura manual para a avaliação final; não inferir aceite a partir da fixture técnica."
+}

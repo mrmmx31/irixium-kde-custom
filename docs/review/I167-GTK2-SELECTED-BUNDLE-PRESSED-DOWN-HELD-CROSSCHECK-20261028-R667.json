@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "R667",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Cross-check the selected GTK2 palette bundle's pressed down-stepper glyph against the retained controlled HP VUE SR10.4 held capture.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "historical_state_record": "docs/referencias/domainos-sr104/SETA-INFERIOR-ESTADOS.json",
+    "historical_state_record_sha256": "caec9af55357b40b525c3e7ac9dfb9bf31bcd72035023dc3c8d20e5f2403f42e",
+    "historical_held_capture_sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568",
+    "selected_palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "selected_bundle_manifest_sha256": "108edac7c8fad57d74eb464c59ef5544255b6bc9eab7cde39aaeeafcbc949017",
+    "normal_asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981",
+    "pressed_asset_sha256": "e2fd41dbeb31888619f4500e7f4eab65c8338549148618cd847274a905787f8d"
+  },
+  "method": "Read only. Compared the current selected 15x15 down-pressed asset at 1:1 with the 71 historical L/D/F semantic glyph pixels recorded from the held VUE capture. Used the recorded dynamic KDE-role RGB values for light, shadow and face. Also counted current normal-to-pressed pixel changes inside and outside the centered 11x11 glyph box.",
+  "results": {
+    "historical_held_glyph_pixels_compared": 71,
+    "mismatches": 0,
+    "normal_to_pressed_changed_pixels_total": 53,
+    "changed_pixels_inside_centered_11x11": 53,
+    "changed_pixels_outside_glyph_box": 0,
+    "historical_release_relation": "The retained normal and released references have identical 15x15 ROIs; GTK2 uses the normal asset after release."
+  },
+  "interpretation": "The current selected GTK2 bundle preserves the recorded SR10.4 held down-arrow relief in the 71 semantic glyph pixels. Exactly 53 pixels change between its normal and pressed assets, all within the glyph box; face pixels and the surrounding stepper cell remain unchanged. The earlier R493 evidence used a different palette bundle, so this confirms the current user's selected bundle after its hash changed.",
+  "limits": [
+    "This is a pixel comparison to the retained historical interaction capture, not a new live VUE interaction.",
+    "It covers only the lower/down arrow and does not establish the other three pressed arrows, hover, insensitive, thumb drag, or live application presentation.",
+    "No MAME input, profile modification, or application restart occurred."
+  ],
+  "next": "Keep the current down-arrow assets. Compare the live pressed/released VUE state only after I517 is explicitly authorized.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "The selected current bundle now has direct normal and held-glyph matches for the down arrow; remaining interaction directions/states and human acceptance are still open. This is not a visual-fidelity score."
+  }
+}

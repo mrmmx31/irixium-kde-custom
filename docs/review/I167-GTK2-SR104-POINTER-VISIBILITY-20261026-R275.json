@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R275",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "vm-visible-pointer-not-established-held-arrow-comparison-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01",
+    "process_pid": 1313710,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "mouse_captured": false,
+      "wait_button_up": false,
+      "pending_request": null,
+      "pending_files": []
+    }
+  },
+  "observations": {
+    "preflight_black_capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r275.png",
+      "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+      "result": "Guest image black; no target-directed action taken."
+    },
+    "screen_wake": {
+      "method": "Reused the previously validated one-frame virtual Shift pulse through :kbd:keyboard4/Shift; this is guest-injected input, not claimed as a physical event.",
+      "script": "~/tempia/i167-r129-wake.lua",
+      "script_sha256": "3146396db52857d2e7610597ee75b297bc6a6f5917a08c5eb16e0532ce1291fc",
+      "request_id": "7f501ef14b294c24866d2f95b6287dc8",
+      "completion": "done=true, held=false, error=nil",
+      "capture": {
+        "path": "~/tempia/ia-tema/evidence/I167/i167-vue-after-wake-r276.png",
+        "sha256": "2b10536bb9e302aa3a8f1d9fb73ea0b76c882e0161f33c99e9ce7085a6207063",
+        "visible_state": "VUE Terminal and File Manager at /node_12345; vertical scrollbar arrows visible."
+      }
+    },
+    "pointer_nudge": {
+      "protocol": "One X counter step of +3, no buttons; the Apollo wrapped-counter protocol and masks were confirmed by the live probe.",
+      "request_id": "f67fe61b5cf84ae5b7324fda24999a1f",
+      "completion": "done=true, steps=1, error=nil, cleanup_error=nil; both counter overrides cleared.",
+      "capture": {
+        "path": "~/tempia/ia-tema/evidence/I167/i167-vue-pointer-step-r277.png",
+        "sha256": "2af5291ff8e6364f080a982a40e546414466e8cdbedb3cba536a80c9ecbdf452",
+        "result": "VUE remains visible, but the native pointer is still not visible over a target."
+      }
+    }
+  },
+  "result": "No scrollbar arrow was pressed. The VM remains on its canonical disk and profile; the wake pulse and single no-button counter step completed and left no capture, held field or pending request. Existing normal GTK2 arrow matches and the down-held pair remain valid; left/right/up held comparisons remain open.",
+  "product_changes": {
+    "gtk2_theme_assets_changed": false,
+    "other_toolkits_changed": false,
+    "guest_files_or_configuration_changed": false,
+    "vm_profile_changed": false,
+    "static_colors_added": false
+  },
+  "next": "Continue I167/GTK2 only. Before pressing an arrow, obtain a fresh VM image with the pointer visibly over that arrow; do not infer or chase its position from counter counts."
+}

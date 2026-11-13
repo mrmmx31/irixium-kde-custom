@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-WINDOW-ACTIVATION-POINTER-OUTSIDE-20261025-R196",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "mame_window_xid": "0x1c00008",
+    "mame_window_geometry": "+885+59 1024x844",
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 610, "y": 320},
+    "host_pointer_inside_mame": false,
+    "guest_screen": "VUE desktop visible",
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "action": {
+    "kind": "host window activation only",
+    "input": "Activated the authenticated MAME window without click or pointer movement, queried live hook/options, and restored the original XChat focus.",
+    "focus_before": "XChat window 0x1800003",
+    "focus_during": "MAME window 0x1c00008",
+    "focus_after": "XChat window 0x1800003"
+  },
+  "result": {
+    "hook_captured": false,
+    "hook_transitions": 18,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "host_pointer": {"x": 610, "y": 320},
+    "host_pointer_moved": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "guest_capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/current-capture-state-20261025.png",
+      "sha256": "d49c7cccb7c2640c0e7b5688e9a9b1fb5a030fde3457c70ba3f281f600679f93"
+    }
+  },
+  "limits": "Window focus activation by itself did not change the Lua hook or MAME mouse options. This does not reproduce physical monitor/screen wake after AltGr and does not directly query SDL's host pointer-grab state; Lua captured=false is not proof of the SDL grab state. The currently visible guest screenshot is read-only evidence.",
+  "next": "Observe the exact physical wake event after AltGr and correlate host pointer/focus with both hook/options and SDL grab. Keep the hook unchanged until that event is reproduced; synthetic guest keyboard input is not physical host input.",
+  "status": "window_activation_did_not_recapture_hook;_physical_wake_and_sdl_grab_unresolved"
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-TOOLTIP-ROLE-20261019-R134",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:55:00Z",
+  "status": "passed_scoped",
+  "scope": "Check whether the QtQuick6 attached ToolTip Window-role observation disappears when the KDE Qt platform theme plugin and session environment are enabled.",
+  "runtime": {
+    "display": "Owned Xephyr :82, isolated preview 660x560",
+    "qt": "6.8.2",
+    "style": "org.kde.desktop",
+    "QT_QPA_PLATFORMTHEME": "kde",
+    "XDG_CURRENT_DESKTOP": "KDE",
+    "KDE_SESSION_VERSION": "6",
+    "KDE_FULL_SESSION": "true",
+    "private_home_and_bus": true,
+    "personal_profile_changed": false
+  },
+  "result": {
+    "hover_matrix_status": "passed",
+    "disabled_targets_passed": 7,
+    "target_names": [
+      "qtquick6_disabledButton",
+      "qtquick6_disabledCheckBox",
+      "qtquick6_disabledSwitch",
+      "qtquick6_disabledCombo",
+      "qtquick6_disabledSpin",
+      "qtquick6_disabledText",
+      "qtquick6_disabledSlider"
+    ],
+    "stable_ms": 400,
+    "tooltip_rect": [
+      153,
+      65,
+      242,
+      48
+    ],
+    "measured_popup_background_mode_rgb": [
+      239,
+      240,
+      241
+    ],
+    "scheme_tooltip_background_rgb": [
+      247,
+      247,
+      247
+    ],
+    "scheme_window_background_rgb": [
+      239,
+      240,
+      241
+    ],
+    "observed_role": "Window",
+    "qapplication_palette": {
+      "Window": "#eff0f1",
+      "WindowText": "#232629",
+      "Base": "#ffffff",
+      "Text": "#232629",
+      "Button": "#fcfcfc",
+      "ButtonText": "#232629",
+      "Highlight": "#3daee9",
+      "HighlightedText": "#ffffff"
+    },
+    "qpa_environment_recorded": "kde",
+    "matrix_sha256": "326bf3749a9edd6364a792b2513d47b2c5c64ef4a4bf9e664b49511ddaac944e",
+    "capture": "~/tempia/t07-qtquick6-platform-kde-breezelight-r134-20261019/home/qtquick6-proof/disabled-qtquick6_disabledButton.png",
+    "capture_sha256": "25b96e4c551e455482a02ff46e0eaf2c338ac96d8a93dc22d0becc85e9646c4e"
+  },
+  "conclusion": "The KDE QPA platform theme loaded a KDE palette and the seven hover targets passed. The QtQuick6 attached tooltip still rendered the Window background role rather than BreezeLight Colors:Tooltip. This rules out missing QT_QPA_PLATFORMTHEME as the sole cause; it does not yet identify which attached-tooltip component or Kirigami color-set path produced the fill.",
+  "source_observation": "Installed /usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/ToolTip.qml assigns Kirigami.Theme.Tooltip, but the probe could not read the attached object color-set/background through the current QML reference. Identify the actual loaded style component before changing product code.",
+  "change_record": {
+    "product_source_changed": false,
+    "scripts_recorded": true,
+    "script_count": 22,
+    "scripts_readback": "~/tempia/t07-r134-scripts-after.json"
+  },
+  "limitations": [
+    "One contrasting scheme was tested in this environment diagnostic.",
+    "Existing KDE TabButton null-y warnings remain unrelated to this target.",
+    "This does not establish a historical motif or user-acceptance result."
+  ],
+  "next": "Instrument the attached ToolTip instance or use a minimal native QML probe to identify its actual implementation and effective Kirigami colorSet, then correct only if evidence shows the project preview bypasses the native Tooltip role."
+}

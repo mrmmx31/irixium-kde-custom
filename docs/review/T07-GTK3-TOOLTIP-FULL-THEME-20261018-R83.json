@@ -1,0 +1,230 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK3",
+  "status": "passed",
+  "summary": "Corrigida a especificidade das regras de tooltip. GtkTooltipWindow usa o caminho CSS tooltip:dir-ltr.background; a regra anterior tooltip perdia para .background e deixava cores DomainOS fixas quando o papel Tooltip divergia.",
+  "change": {
+    "file": "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css",
+    "sha256": "b638e00c58fc33cb53abd8221f405e885d84ca2187370420bf35b91cac540136",
+    "previous_sha256": "9340850231717d957dfe65b13ab8fc53832500d64facd8769edc66fb97c9e6d0",
+    "details": [
+      "Seletor específico tooltip.background para fundo, texto, borda e foco nos estados normal/backdrop/disabled.",
+      "Texto dos descendentes explicitamente segue @tooltip_text_breeze.",
+      "Nenhuma cor RGB final foi adicionada; propriedades continuam usando aliases da paleta GTK/KDE."
+    ]
+  },
+  "cause_evidence": {
+    "inconclusive_prior": "R82 carregou a folha sem erro, mas não consultou a especificidade/caminho CSS efetivo. GtkStyleContext mostrou tooltip:dir-ltr.background; classes [background]; o fundo era o valor de .background, não de tooltip.",
+    "runtime": "GTK 3.24.49, Xephyr :81 1280x800, GtkTooltipWindow nativa; GtkSettings informa Adwaita, com a folha completa carregada como provider process-local USER+1."
+  },
+  "test": {
+    "status": "passed",
+    "scope": "GTK3 3.24.49 native GtkTooltipWindow using the complete DomainOS theme stylesheet; tooltip CSS role aliases replaced privately for five palettes; provider parse errors, effective GtkStyleContext colors, native surface pixels, delay, stability, bounds, non-overlap and pointer-leave dismissal; one Xephyr 1280x800; no installed theme/personal profile changed",
+    "cases": [
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          308,
+          362,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "palette": "DomainOS",
+        "expected_background": "#78a0d5",
+        "expected_text": "#ffffff",
+        "style_path": "tooltip:dir-ltr.background",
+        "effective_window_background": "rgb(120,160,213)",
+        "effective_window_text": "rgb(255,255,255)",
+        "tooltip_child_text": [
+          "rgb(255,255,255)"
+        ],
+        "matching_background_pixels": 40270,
+        "matching_text_pixels": 238,
+        "css_parse_errors": [],
+        "style_roles_match": true,
+        "pixels_match": true
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          308,
+          362,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "palette": "Irixium",
+        "expected_background": "#c1c1c1",
+        "expected_text": "#000000",
+        "style_path": "tooltip:dir-ltr.background",
+        "effective_window_background": "rgb(193,193,193)",
+        "effective_window_text": "rgb(0,0,0)",
+        "tooltip_child_text": [
+          "rgb(0,0,0)"
+        ],
+        "matching_background_pixels": 40270,
+        "matching_text_pixels": 238,
+        "css_parse_errors": [],
+        "style_roles_match": true,
+        "pixels_match": true
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          308,
+          362,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "palette": "BreezeLight",
+        "expected_background": "#f7f7f7",
+        "expected_text": "#232629",
+        "style_path": "tooltip:dir-ltr.background",
+        "effective_window_background": "rgb(247,247,247)",
+        "effective_window_text": "rgb(35,38,41)",
+        "tooltip_child_text": [
+          "rgb(35,38,41)"
+        ],
+        "matching_background_pixels": 40270,
+        "matching_text_pixels": 238,
+        "css_parse_errors": [],
+        "style_roles_match": true,
+        "pixels_match": true
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          308,
+          362,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "palette": "BreezeDark",
+        "expected_background": "#292c30",
+        "expected_text": "#fcfcfc",
+        "style_path": "tooltip:dir-ltr.background",
+        "effective_window_background": "rgb(41,44,48)",
+        "effective_window_text": "rgb(252,252,252)",
+        "tooltip_child_text": [
+          "rgb(252,252,252)"
+        ],
+        "matching_background_pixels": 40270,
+        "matching_text_pixels": 238,
+        "css_parse_errors": [],
+        "style_roles_match": true,
+        "pixels_match": true
+      },
+      {
+        "status": "passed",
+        "family": "gtk3",
+        "control": "push",
+        "native_delay_ms": 500,
+        "control_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          308,
+          362,
+          583,
+          85
+        ],
+        "overlap_pixels": 0,
+        "stability_ms": 400,
+        "closed_after_pointer_leave": true,
+        "style_colors": null,
+        "embedded": false,
+        "scope": "one production control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout",
+        "palette": "TestYellow",
+        "expected_background": "#ecd870",
+        "expected_text": "#201c0c",
+        "style_path": "tooltip:dir-ltr.background",
+        "effective_window_background": "rgb(236,216,112)",
+        "effective_window_text": "rgb(32,28,12)",
+        "tooltip_child_text": [
+          "rgb(32,28,12)"
+        ],
+        "matching_background_pixels": 40270,
+        "matching_text_pixels": 238,
+        "css_parse_errors": [],
+        "style_roles_match": true,
+        "pixels_match": true
+      }
+    ],
+    "runner": "~/tempia/t07-gtk3-theme-tooltip-effective-20261018-r83/run.py",
+    "runner_sha256": "a99394766ff3973062e553942a117ee1384a538fa0cff951b0284e20f082f204",
+    "probe": "~/tempia/t07-gtk3-tooltip-theme-css-20261018-r82/probe_r85_context.py",
+    "probe_sha256": "3dce4f99adeba87a7976d3d5a98d22b0788838817d2b9ea36d5224134d4273f9",
+    "artifacts": "~/tempia/t07-gtk3-theme-tooltip-effective-20261018-r83/"
+  },
+  "limitations": [
+    "Cinco folhas privadas com aliases Tooltip derivados dos esquemas; não prova que o exportador/daemon real reemita os aliases ao trocar de tema.",
+    "Um controle (push), uma resolução e um layout; estados backdrop/disabled têm regras atualizadas, mas não foram simulados.",
+    "Nenhuma instalação no tema pessoal, aprovação manual ou fidelidade histórica é alegada."
+  ],
+  "product_files_changed": [
+    "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css"
+  ]
+}

@@ -23,4 +23,5 @@ metadata and provenance under `decorations/modern/`.
 The KDE Store components are package snapshots rather than Git checkouts.
 Their package pages and IDs are monitored for availability by the scheduled
 workflow; changes must be reviewed manually. The active cursor selection is
-`sgi`, as recorded in `cursors/sgi/ORIGEM.json`.
+`SGI-Classic` for Classic and `SGI-Irixium` for modern; `sgi` remains an alternative.
+Their verified upstream revision and local adaptations are recorded under `cursors/`.

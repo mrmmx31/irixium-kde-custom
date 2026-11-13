@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "R463",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only refresh of the current guest framebuffer to see whether the historical comparison target became visible since R461.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "theme_vm_pid": 3971377,
+    "theme_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4
+  },
+  "method": "Confirmed the channel had no pending request, ran a read-only MAME screen snapshot and read-only probe, then confirmed no pending request after completion. No key, mouse, focus, guest file, VM setting, or process was changed.",
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-readonly-r463.png",
+    "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "previous_r461_sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "byte_identical_to_r461": true,
+    "size_bytes": 10018,
+    "dimensions_px": [
+      1024,
+      844
+    ],
+    "guest_framebuffer_roi": [
+      0,
+      0,
+      1024,
+      800
+    ],
+    "guest_framebuffer_black_pixels": 819200,
+    "guest_framebuffer_total_pixels": 819200,
+    "apollo_command_strip_visible": true
+  },
+  "profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_capture": false,
+    "channel_pending_after": false
+  },
+  "result": "The current snapshot is byte-identical to R461: all guest framebuffer pixels remain black while the Apollo command strip is visible. This does not contradict the earlier successful wake; it records the current frame only. The separate Prancheta MAME remains active, so verify.sh blocks guest input.",
+  "next": "Keep I167 active and continue only when a non-duplicative GTK2 task becomes available or the separate MAME releases the guard. Then revalidate identity, wake once if required, and resume the native scrollbar-state comparison."
+}

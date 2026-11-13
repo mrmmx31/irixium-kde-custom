@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "kind": "motif_work_board_delivery",
+  "recorded_at": "2026-10-10T16:36:10.850937+00:00",
+  "implementation": "C99 / Motif / MVC / json-c",
+  "scope": "Prancheta de organização e autorização; não corrige nem aprova o laboratório ou o tema.",
+  "seed_groups": {
+    "Ferramenta": 10,
+    "Tema/painel": 10
+  },
+  "initial_authorizations": false,
+  "model_checks": {
+    "passed": 13,
+    "covered": [
+      "partial-item save",
+      "revision-guarded read",
+      "user/assistant merge",
+      "no-op timestamp",
+      "definition-change revocation",
+      "execution status authorization",
+      "separate question/instruction",
+      "nonblocking lock",
+      "invalid JSON/symlink/type rejection"
+    ]
+  },
+  "native_checks": {
+    "partial_save": true,
+    "reload_preserves_current_draft": true,
+    "reload_preserves_other_draft": true,
+    "assistant_reply_preserved": true,
+    "newer_response_unread": true,
+    "anchored_instruction": true,
+    "instruction_starts_unauthorized": true,
+    "native_save_reload_responsive": true
+  },
+  "live_window": {
+    "pid": 1123421,
+    "window": "39845967",
+    "state": "/home/lsi/.local/state/irixium/work-board/respostas.json",
+    "item_count": 20,
+    "all_initial_authorizations_false": true,
+    "geometry": "WINDOW=39845967\nX=0\nY=20\nWIDTH=1920\nHEIGHT=951\nSCREEN=0\n",
+    "live_native_session": "lsi"
+  },
+  "palette": {
+    "source": "KColorScheme / current kdeglobals; ten roles and derived Motif shadows",
+    "poll_seconds": 5,
+    "timeout_seconds": 5,
+    "same_palette_rebuilds_widgets": false,
+    "static_final_rgb": false,
+    "validated_scope": "Current native lsi palette, UTF-8 tooltip and real native widgets. No historical VM fidelity claim."
+  },
+  "preserved": [
+    "existing review answers including V01/V02",
+    "four unfinished editor metrics files",
+    "existing editor/native previews and projects",
+    "DomainOS MAME session and approved backup"
+  ],
+  "limits": [
+    "No automatic agent starts on save; read during current/next interaction.",
+    "Unsaved drafts survive item changes and Reload in this process, not a process crash.",
+    "Motif FontSet reports some missing auxiliary charsets; Portuguese UTF-8 displayed correctly.",
+    "New board is not part of the already-published beta.2 archive."
+  ],
+  "sha256": {
+    "tools/work-board/src/controller.c": "07018a7fd8465e4c091cf19705bcc5cd42e10bd77b599b95e58b22675920438b",
+    "tools/work-board/src/main.c": "66492e0bef22cfddd35bd52dc32e68e36f5383b0e9f337b9f28c4f3999a178f7",
+    "tools/work-board/src/model.c": "ebbdc05be7ab42c36d8f82ac084c6c501fc15ebfadf070fac331a9fb78976973",
+    "tools/work-board/src/view.c": "dbb9b0429e0581f4f0b0130ab8ecbcae0bf32a9e3824249dbc12b7c3a3ccb25b",
+    "tools/work-board/include/board.h": "060172cdedfec67b8363641e159e30e0aacebc2faba117b3741ee87a3186d80d",
+    "tools/work-board/include/view.h": "6fc21b92690d4c0857fd962e293a775c50bbb86ea1a5043c064cdf34bb626b7b",
+    "tools/work-board/tests/test_native.py": "73dc74add765775856683898f70e58de562f8cda3cc95484ed5e361e15da39e0",
+    "tools/work-board/tests/test_store.py": "33ff55043ae3c35d81633f523f6f1fa3a6f4279db9e6ef5775cab1080c760b4c",
+    "tools/work-board/open": "aac7132faea2e5e05507a461b4336951298b66e93dc21ada2a83c65ecdcf8434",
+    "tools/work-board/Makefile": "251d05a8439137d6a5474dce1305a45cd5b89dc816cbc26f9909f8331b762b40",
+    "docs/review/work-board-checklist.json": "ec02b50dd1647332c6d1586485e3f886155d07a6ad39ceb808dab9ffd864ec82",
+    "docs/review/work-board-native/native.png": "9e065612d8bc4ae8fe4b7054da41385b4b8abecf227eb740ceb28f364a2c9760",
+    "docs/review/work-board-native/lsi-open.png": "7003b3944b1c5470e758279a27f7fef674954f274fc24cfa8f3ffda5d7530ea0"
+  }
+}

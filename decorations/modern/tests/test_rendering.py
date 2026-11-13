@@ -24,17 +24,19 @@ const result=vm.runInNewContext(p.body,{G:geom,R:render});process.stdout.write(J
         self.assertEqual(p.returncode,0,p.stderr)
         return json.loads(p.stdout)
     def test_normal_geometry_order(self):
-        self.assertTrue(self.run_js('let m=G.metrics(800,false);m.menu.x<m.minimize.x && m.minimize.x<m.maximize.x && m.maximize.x<m.close.x'))
+        self.assertTrue(self.run_js('let m=G.metrics(800,false);m.menu.x<m.minimize.x && m.minimize.x<m.maximize.x'))
     def test_maximized_geometry_order(self):
-        self.assertTrue(self.run_js('let m=G.metrics(800,true);m.menu.x<m.minimize.x && m.minimize.x<m.maximize.x && m.maximize.x<m.close.x'))
+        self.assertTrue(self.run_js('let m=G.metrics(800,true);m.menu.x<m.minimize.x && m.minimize.x<m.maximize.x'))
     def test_gaps_equal(self):
-        self.assertEqual(self.run_js('[false,true].map(max=>{let m=G.metrics(800,max);return [m.maximize.x-m.minimize.x-m.minimize.w,m.close.x-m.maximize.x-m.maximize.w]})'),[[6,6],[6,6]])
+        self.assertEqual(self.run_js('[false,true].map(max=>{let m=G.metrics(800,max);return m.maximize.x-m.minimize.x-m.minimize.w})'),[6,6])
+    def test_actions_align_with_right_edge(self):
+        self.assertEqual(self.run_js('[false,true].map(max=>{let m=G.metrics(800,max);return m.width-m.maximize.x-m.maximize.w})'),[9,6])
     def test_caption_never_over_menu(self):
         self.assertTrue(self.run_js('[false,true].every(max=>{let m=G.metrics(220,max);return m.caption.x>=m.menu.x+m.menu.w+12})'))
     def test_caption_stops_before_actions(self):
         self.assertTrue(self.run_js('[220,500,1920].every(w=>[false,true].every(max=>{let m=G.metrics(w,max);return m.caption.x+m.caption.w<=m.minimize.x-12}))'))
     def test_caption_narrow_clamps_width(self):
-        self.assertEqual(self.run_js('G.metrics(120,false).caption.w'),0)
+        self.assertEqual(self.run_js('G.metrics(100,false).caption.w'),0)
     def test_vertical_center_consistent(self):
         self.assertEqual(self.run_js('[false,true].map(max=>{let m=G.metrics(800,max);return m.menu.y+m.menu.h/2-(m.caption.y+m.caption.h/2)})'),[0,0])
     def test_frame_metrics_preserved(self):
@@ -72,6 +74,9 @@ class SourceContracts(unittest.TestCase):
         for name in ('ButtonInput.qml','InputState.js'):
             self.assertEqual((UI/name).read_bytes(),(classic/name).read_bytes())
         self.assertIn('onCloseRequested: surface.closeRequested()', (UI/'Surface.qml').read_text())
+    def test_no_close_button(self):
+        self.assertNotIn('irixiumModernClose', (UI/'Surface.qml').read_text())
+        self.assertNotIn('closeAllowed', (UI/'main.qml').read_text())
     def test_frame_actually_uses_asset(self):
         s=(UI/'Surface.qml').read_text();self.assertIn('KSvg.FrameSvgItem',s);self.assertIn('../../assets/decoration.svg',s)
     def test_buttons_select_elements(self):

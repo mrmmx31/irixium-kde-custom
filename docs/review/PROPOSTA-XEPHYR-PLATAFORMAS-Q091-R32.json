@@ -1,0 +1,16 @@
+{
+  "type": "instruction",
+  "title": "Abrir Xephyr de revisão com laboratório e plataformas nativas disponíveis",
+  "after": "T07",
+  "scope": "Abrir uma sessão privada de revisão com a ferramenta Motif e as galerias nativas disponíveis de GTK1/2/3/4, Qt5/6, Kvantum e QtQuick KDE. Mostrar indisponibilidade ou estágio parcial explicitamente; não substituir runtime ausente por imagem ou outro toolkit. Não instalar temas ou alterar perfis pessoais.",
+  "criteria": [
+    "Uma sessão Xephyr privada, sem encerrar aplicações pessoais",
+    "Ferramenta acessível para comparação, edição com histórico preservado",
+    "Cada plataforma mostra runtime real e limites; GTK1 indisponível não é apresentada como implementada",
+    "Usuário decide quando encerrar a sessão"
+  ],
+  "origin": "Pedido salvo Q091 revisão32",
+  "insert_attempt": "CLI recusou: Limite de 200 itens atingido.",
+  "execution_authorized": false,
+  "at": "2026-10-11T11:47:23.041410+00:00"
+}

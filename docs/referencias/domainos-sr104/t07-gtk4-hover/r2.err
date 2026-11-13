@@ -1,0 +1,38 @@
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Activating service name='org.gtk.vfs.Daemon' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Successfully activated service 'org.gtk.vfs.Daemon'
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Successfully activated service 'org.a11y.Bus'
+command: windowfocus
+command: getwindowgeometry
+command: mousemove
+dbus-daemon[2295653]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295653]: Successfully activated service 'org.a11y.atspi.Registry'
+command: mousemove
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/gtk4_hover_worker.py", line 108, in <module>
+    assert not errors,errors
+           ^^^^^^^^^^
+AssertionError: ['native tooltip never appeared']
+A connection to the bus can't be made
+
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk4_gallery_hints.py", line 51, in <module>
+    assert child.returncode==0,stderr
+           ^^^^^^^^^^^^^^^^^^^
+AssertionError: dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Activating service name='org.gtk.vfs.Daemon' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Successfully activated service 'org.gtk.vfs.Daemon'
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Activating service name='org.a11y.Bus' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295587]: [session uid=1000 pid=2295587 pidfd=5] Successfully activated service 'org.a11y.Bus'
+command: windowfocus
+command: getwindowgeometry
+command: mousemove
+dbus-daemon[2295653]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=1000 pid=2295588 comm="/usr/bin/python3 -B /home/lsi/irixium-kde-custom/t")
+dbus-daemon[2295653]: Successfully activated service 'org.a11y.atspi.Registry'
+command: mousemove
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/gtk4_hover_worker.py", line 108, in <module>
+    assert not errors,errors
+           ^^^^^^^^^^
+AssertionError: ['native tooltip never appeared']
+A connection to the bus can't be made
+

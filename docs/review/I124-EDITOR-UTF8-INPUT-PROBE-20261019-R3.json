@@ -1,0 +1,17 @@
+{
+  "item": "I124",
+  "revision": "R3",
+  "checked_at_utc": "2026-10-19T15:07:53Z",
+  "scope": "Theme Lab Motif editor checkpoint test input path; no user data",
+  "evidence": {
+    "strict_build": "passed in isolated ~/tempia/i458-stability-20261019/build",
+    "manual_paint_model": "passed: context switch, draw/fill, undo/redo, resize, project save/resume",
+    "editor_store": "passed: 22 checks, UTF-8 accepted, invalid files preserved",
+    "controller_probe_first_attempt": "failed before app launch: fixed display :199 did not become reachable; no Xvfb process remained. A third-party .tX199-lock was preserved; exact server failure cause remains undetermined.",
+    "controller_probe_dynamic_display": "Xvfb -displayfd allocated :5; basic ASCII text and multi-step Undo/Redo passed. Later test timed out expecting “rascunho recuperável” after using xdotool type; the adjacent test helper explicitly says xdotool Unicode mapping is unreliable and provides paste_utf8() using xclip."
+  },
+  "finding": "Confirmed test-harness mismatch, not a confirmed product data-loss defect: one accented checkpoint sample uses xdotool type instead of the existing UTF-8 clipboard helper.",
+  "planned_narrow_fix": "Use paste_utf8() for that one accented sample; keep the same expected bytes and continue the recovery test.",
+  "product_or_personal_state_changed": false,
+  "next": "Rerun only the editor controller probe in a dynamic isolated Xvfb and inspect the checkpoint/reopen/Undo-Redo results."
+}

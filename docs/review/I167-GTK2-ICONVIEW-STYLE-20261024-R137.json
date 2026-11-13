@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-STYLE-20261024-R137",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "scope": "GTK2 GtkIconView theme-owned color states, separate from application-owned grid geometry",
+  "implementation": {
+    "generator": "gtk/tools/build_kde_domainos.py emits domainos-iconview and binds *GtkIconView at highest precedence",
+    "palette_bridge": "tools/gtk2_domainos_palette.py maps IconView NORMAL/PRELIGHT/ACTIVE/INSENSITIVE through KDE View roles and SELECTED through KDE Selection roles; values re-render on palette refresh",
+    "selection_box": "GTK2 native rubberband falls back to base[SELECTED]; it therefore follows the same dynamic Selection role",
+    "layout_boundary": "columns, item-width, item-padding, spacing, margin and row/column spacing remain GtkIconView object/application properties, absent from theme style-property adapter",
+    "coverage": "GTK2 has no separate Backdrop state; no backdrop state was claimed"
+  },
+  "runtime": {
+    "gtk": [
+      2,
+      24,
+      33
+    ],
+    "style": "loaded",
+    "states": {
+      "normal": {
+        "bg": "#6688b5",
+        "fg": "#ffffff",
+        "base": "#6688b5",
+        "text": "#ffffff"
+      },
+      "prelight": {
+        "bg": "#6688b5",
+        "fg": "#ffffff",
+        "base": "#6688b5",
+        "text": "#ffffff"
+      },
+      "active": {
+        "bg": "#6688b5",
+        "fg": "#ffffff",
+        "base": "#6688b5",
+        "text": "#ffffff"
+      },
+      "selected": {
+        "bg": "#3297c7",
+        "fg": "#ffffff",
+        "base": "#3297c7",
+        "text": "#ffffff"
+      },
+      "insensitive": {
+        "bg": "#6182ad",
+        "fg": "#9fb5d2",
+        "base": "#6182ad",
+        "text": "#9fb5d2"
+      }
+    },
+    "selected_items": 1,
+    "schema": "DomainOS-SR10.4.colors",
+    "rc_sha256": "6878eb7c699c0e3ee78f132dd030de2986048a799015f6e971393947d77fbf57",
+    "bundle": "/home/lsi/tempia/i167-r137-gtk2-iconview-runtime/bundles/060e2083e2a6d0ca8add8512d9e9799aa07e151e659465fba0fa1cdc418145da",
+    "status": "native_style_loaded"
+  },
+  "verification": {
+    "tests": "PYTHONPATH=tests python3 -m unittest test_domainos_motif.GtkDomainOSTest -v; 10/10 passed; targeted iconview palette test repeated after multi-palette assertions and passed",
+    "native_runtime": "GTK2 2.24.33; isolated Xvfb; effective rc style read from GtkStyle state arrays; selected item count 1; no profile or live XChat process used",
+    "palette_roles_checked": [
+      "DomainOS default role fixture",
+      "dark synthetic role fixture",
+      "yellow synthetic role fixture"
+    ],
+    "manifest": "all generated files matched MANIFEST for three DomainOS GTK identities",
+    "diff_check": "git diff --check passed for changed generator, bridge, test, GTK2 RCs and manifests"
+  },
+  "evidence_files": {
+    "runtime_result": "~/tempia/i167-r137-gtk2-iconview-runtime/RESULTADO.json",
+    "runtime_rc_sha256": "6878eb7c699c0e3ee78f132dd030de2986048a799015f6e971393947d77fbf57",
+    "prior_1to1_geometry_capture": "~/tempia/i167-r135-gtk2-iconview/refined/gtk2-iconview-domainos.png",
+    "prior_1to1_geometry_capture_sha256": "7a2cb1093fb1a38c9bf42b2f4504810c804ac6f065d30e3c5fb44fa690722f84"
+  },
+  "limitations": [
+    "Native runtime readback confirms role/state values, not pixel identity with VUE.",
+    "No live hover, keyboard-focus, or rubberband drag comparison was performed in this pass.",
+    "No theme selection or personal profile/XChat files were changed."
+  ],
+  "files_sha256": {
+    "gtk/tools/build_kde_domainos.py": "2bd743c8a6805641eded6c223059b6299dadf887a582da3e2dc43c9003294baa",
+    "tools/gtk2_domainos_palette.py": "72ace2edbaec2770ae0d25b0157b72741499fedd3ae75fa4b6345459ad33000b",
+    "tests/test_domainos_motif.py": "4128ea6b893489cc72bc55b5310779944fe50ef5a4f7bf0cf5d2bbd4d09b46c1",
+    "gtk/DomainOS-SR10-4/gtk-2.0/gtkrc": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+    "gtk/DomainOS-SR10-4/MANIFEST.json": "61668bbd7dbe2f1cbc0eae3c38a65af4affc088a03637168336a462e22a2748c",
+    "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+    "gtk/DomainOS-SR10-4-KDE/MANIFEST.json": "695f0405c3654ca580598a45862a9998bce600bd79f051c9af04f833f244ad09",
+    "gtk/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc": "7984f81cf65f1db6cbb98c6f7f79f28b4a7e5e7ce86cb2ee35b4e4f4cf8467f5",
+    "gtk/DomainOS-SR10-4-KDE-Reload/MANIFEST.json": "85dfb76ec1498ff24ae0c6d5848bae87016cb03e6356cd7f65d2727cab9c6406"
+  },
+  "status": "color_state_adapter_implemented_runtime_readback_passed_visual_state_review_pending",
+  "user_acceptance": "pending",
+  "next": "Inspect GtkIconView focus, hover and selected/rubberband output in an isolated capture and compare the same states against the SR10.4 XmpIcon VM; do not apply to the user profile.",
+  "mame_session_check": {
+    "assistant_clone_pid": 3759847,
+    "process_observation": "No MAME process was present in ps -C mame,mame64,MAME after the GTK2 runtime probe.",
+    "channel_status": {
+      "pending": null,
+      "reply": null,
+      "pending_files": []
+    },
+    "input_sent_after_probe": false,
+    "restart_attempted": false,
+    "consequence": "The previously identified assistant clone cannot currently receive a wake key. Resume the same authorized clone before the next SR10.4 state comparison; do not infer its display from the stale capture."
+  }
+}

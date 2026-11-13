@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "id": "R451",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify that GTK2 repository RGB reference colors are translated to current KDE palette roles before the generated GTK2 RC is used.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "sources": {
+    "palette_translator": {
+      "path": "tools/gtk2_domainos_palette.py",
+      "sha256": "f4b14c5e4b72f837c4c5d0a9e67977c9dd9bfa2e0f43497e5f5753c588fbcca7"
+    },
+    "repository_rc_template": {
+      "path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "efd251b9bab702159100ddf963554ca54ca9cf79b2542244d4e0797d1615aaa7",
+      "role_derived_generation": "R448 verified this template as the recorded baseline; the installed runtime adds the generated KDE-palette include."
+    },
+    "tests": {
+      "path": "tests/test_domainos_motif.py",
+      "sha256": "da4c30b21cc94aad817ec268f27c782e2860243947b60f2438a9833cb71f2b1c",
+      "executed": [
+        "test_gtk2_palette_reload_uses_deterministic_fresh_style_names",
+        "test_gtk2_iconview_palette_tracks_view_and_selection_roles"
+      ],
+      "result": "2/2 passed"
+    }
+  },
+  "method": {
+    "execution": "PYTHONDONTWRITEBYTECODE=1; in-memory rc_colors generation plus focused unittest discovery; no temporary output files, installs, user-app restarts, or VM input.",
+    "palettes": [
+      "blue",
+      "dark",
+      "yellow"
+    ],
+    "source_rgb_literal_count": 4,
+    "source_rgb_values_recorded_as_template_evidence": [
+      "#3297c7",
+      "#6688b5",
+      "#78a0d5",
+      "#ffffff"
+    ],
+    "generated_rc_rgb_tokens_per_palette": 69,
+    "source_rgb_values_remaining_in_generated_dark_rc": [],
+    "source_rgb_values_remaining_in_generated_yellow_rc": [],
+    "blue_palette_note": "The source template values coincide with the supplied blue scheme's roles; generated dark/yellow variants contain none of those source literals and are deterministic role-derived outputs."
+  },
+  "result": "The GTK2 generator replaces all four repository template RGB literals when translating dark and yellow palettes; the source colors are not retained as fixed final values in those generated RCs. Focused tests confirm palette-sensitive output and IconView role mapping. No static product color was introduced by this audit.",
+  "limits": [
+    "This proves role translation in the GTK2 generator, not which scheme an already-running application has loaded.",
+    "This is not historical VUE pixel evidence and does not close R450's pending native hover, insensitive, held-direction or thumb-drag states.",
+    "No product files, installed profiles, apps, or VM were changed."
+  ],
+  "next": "Keep I167 focused on GTK2. Resume native scrollbar-state comparisons only when the separate MAME releases the guarded input path."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-CLONE-SCREEN-SETTINGS-VISIBLE-20261024-R75",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_item": "I167",
+    "section": "work",
+    "user_authorized": true,
+    "revision": 2,
+    "assistant_ack_revision": 2,
+    "definition_hash": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "guest": "Domain/OS SR10.4 with HP VUE 2.01",
+    "emulator": "MAME 0.276",
+    "session": "assistant-owned clone from the approved backup",
+    "pid": 2745483,
+    "disk": "~/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "native_resolution": [1024, 844]
+  },
+  "evidence": {
+    "path": "~/tempia/i167-live-r75/domainos-screen.png",
+    "sha256": "5fba35481e38eac2bd18395a712fa9c4df4e8935981577da46ced478be3b6273",
+    "visible_content": ["HP VUE desktop", "Screen settings dialog", "Find Files", "File Manager", "Terminal Window", "DomainOS panel"],
+    "screen_settings_visual_read": {
+      "timeout_control_label": "Time Out",
+      "displayed_value": 10,
+      "screen_saver_checkbox": "appears unchecked in the captured pixels; not independently read from guest configuration"
+    },
+    "mame_profile": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false
+    }
+  },
+  "limits": [
+    "The capture proves VUE is visible now, not that it will remain visible after ten minutes.",
+    "No guest input or configuration readback was performed, so the screen-saver setting's persisted state is unknown.",
+    "This evidence does not change the GTK2 GtkEntry comparison scope."
+  ],
+  "preservation": {
+    "mame_restarted": false,
+    "mame_profile_changed": false,
+    "guest_input_sent": false,
+    "guest_files_changed": false,
+    "other_vm_sessions_touched": false
+  },
+  "next": "Continue the authorized GTK2 GtkEntry comparison against the currently visible VUE reference; do not infer the idle timeout outcome from this snapshot."
+}

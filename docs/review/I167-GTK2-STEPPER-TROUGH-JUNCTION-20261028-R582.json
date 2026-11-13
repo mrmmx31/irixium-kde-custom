@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "id": "R582",
+  "date": "2026-10-28",
+  "item": "I502",
+  "section": "work",
+  "scope": "Measure and correct only the GTK2 perpendicular junction from scrollbar stepper cells to trough, horizontal and vertical, against Domain/OS SR10.4 HP VUE 2.01.",
+  "authority": {
+    "board_item": "I502",
+    "user_revision": 1,
+    "authorized": true,
+    "definition_sha256": "04825c2c5aeca859700682ecc209577df36d85fb7c8d949e3f7a1a9626713fe0"
+  },
+  "inputs": {
+    "reference": {
+      "file": "docs/referencias/domainos-sr104/trash-can-normal.png",
+      "sha256": "f386fa2c41a775da5d3167b0585f0de4c83f8a3d6ed33602362ab3c8daa5974e",
+      "dimensions": [
+        592,
+        361
+      ]
+    },
+    "metrics": {
+      "file": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+      "sha256": "c4b734acc79684188068800541c179f72620fda85170a437347f963693913c07"
+    },
+    "captures": {
+      "gtk2_horizontal_preview": {
+        "file": "records/ia-tema/evidence/I167/r582-gtk2-horizontal-preview-20261028.png",
+        "sha256": "33d5766f43b64e03d72bcb6ab6b8ea76834573470dd73400be04310a4dd032fe",
+        "dimensions": [
+          640,
+          420
+        ]
+      },
+      "gtk2_vertical_preview": {
+        "file": "records/ia-tema/evidence/I167/r582-gtk2-vertical-preview-20261028.png",
+        "sha256": "80cb751b251f9820b8fe46dbd99fca8618c6a6f9b0db77a0b8a6e0f2e8b3eb55",
+        "dimensions": [
+          640,
+          420
+        ]
+      },
+      "gtk2_down_held": {
+        "file": "records/ia-tema/evidence/I167/r582-gtk2-down-held-20261028.png",
+        "sha256": "bd5d98d2548b315518790d24f9687a4e552d9524dcfa7c0bb8142bd9b497dbfd",
+        "dimensions": [
+          640,
+          420
+        ]
+      },
+      "gtk2_down_released": {
+        "file": "records/ia-tema/evidence/I167/r582-gtk2-down-released-20261028.png",
+        "sha256": "80cb751b251f9820b8fe46dbd99fca8618c6a6f9b0db77a0b8a6e0f2e8b3eb55",
+        "dimensions": [
+          640,
+          420
+        ]
+      },
+      "aligned_comparison": {
+        "file": "records/ia-tema/evidence/I167/r582-gtk2-separator-comparison-20261028.png",
+        "sha256": "9f36525e26bc8afd0767def71f345abaef438ec41762eabc1f398664ec145e4e",
+        "dimensions": [
+          540,
+          1148
+        ]
+      }
+    },
+    "reference_note": "Native VUE source is the already-measured canonical Trash Can capture; no new guest input was needed for the static 1:1 pixel profile."
+  },
+  "method": {
+    "contract": "tools/domainos_scrollbar_rules.json -> relief.gtk2_stepper_trough_junction",
+    "color_resolution": "D/L/F/T semantic tokens map to current KDE dark/light/face/trough roles; no final RGB constants.",
+    "geometry": "15px scrollbar and full stepper cell; 11px glyph; stepper-spacing 0; GTK2-only terminal cap assets.",
+    "comparison": "RGB tuple comparison, 1:1, no scaling or interpolation."
+  },
+  "result": {
+    "junction_strips": {
+      "horizontal_start": "0/75 differing pixels",
+      "horizontal_end": "0/75 differing pixels",
+      "vertical_start": "0/75 differing pixels",
+      "vertical_end": "0/75 differing pixels"
+    },
+    "arrow_cells": "Each of four 15x15 normal cells remains 0/225 differences; 11x11 arrow glyphs preserved.",
+    "gtk2_interaction": {
+      "vertical_down": "53/225 pixels change while held; release restores baseline (0 differing pixels).",
+      "horizontal_left": "53/225 pixels change while held; release restores baseline (0 differing pixels)."
+    }
+  },
+  "verification": {
+    "commands": [
+      "python3 tools/theme-lab/tests/test_gtk2_recipe.py -v (7 passed)",
+      "PYTHONPATH=tests python3 -m unittest test_gtk2_palette_runtime.DomainOSGtk2RuntimeTests.test_normal_horizontal_stepper_corners_follow_kde_roles -v (1 passed)",
+      "PYTHONPATH=tools/theme-lab python3 tools/theme-lab/tests/test_gtk2_snippet.py -v (8 passed)",
+      "python3 -m json.tool tools/domainos_scrollbar_rules.json",
+      "git diff --check on scoped files"
+    ],
+    "outcome": "All focused tests passed; exact normal junction strips match native reference. Private GTK2 preview is focused on scrollbar controls; it is not the complete installed theme."
+  },
+  "change_record": {
+    "board_cli": "changes-record",
+    "recorded": true,
+    "verified_files": [
+      "tools/domainos_motif_art.py",
+      "tools/domainos_scrollbar_rules.json",
+      "tools/theme-lab/gtk2_rc_fragments.py",
+      "tools/theme-lab/gtk2_recipe.py",
+      "tools/theme-lab/tests/test_gtk2_recipe.py",
+      "tools/gtk2_domainos_palette.py",
+      "tests/test_gtk2_palette_runtime.py"
+    ],
+    "all_content_verified": true,
+    "exported_diff_sha256": "675c427c624a05a2eac39c6ae8ee2e2bab16039a687a4e38a242fba2e4bd1dc6",
+    "before_snapshot_directory": "records/ia-tema/evidence/I167/r582-before/",
+    "before_sources": {
+      "tools/domainos_motif_art.py": "Installed theme companion, timestamp 2026-10-27T11:26:33-04:00; the preserved copy differs from the current file only by the measured GTK2 helper addition/import.",
+      "tools/domainos_scrollbar_rules.json": "Installed theme companion, timestamp 2026-10-27T11:26:33-04:00; the preserved copy differs from the current file only by the I502 junction contract entry.",
+      "tools/theme-lab/gtk2_rc_fragments.py": "Preserved private lab fixture timestamp 2026-10-17T18:38:00-04:00; comparison against current source shows only the I502 oriented trough asset/border changes."
+    },
+    "note": "The seven complete versions passed Board content verification and the exported diff hash was confirmed. Before snapshots were copied from preserved pre-I502 artifacts into the permanent evidence directory."
+  },
+  "limits": [
+    "No full theme install/reload or human acceptance is claimed.",
+    "The normal junction raster comparison does not prove all disabled/backdrop junction states.",
+    "No GTK1, GTK3/4, Qt, Kvantum, Plasma, personal application, or personal theme changes are included."
+  ],
+  "next": "I502 technical criteria and full seven-file changes-record are complete. Keep this GTK2 geometry; any other family or state requires its own scoped review."
+}

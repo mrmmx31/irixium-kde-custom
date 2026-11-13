@@ -1,0 +1,72 @@
+{
+  "id": "R211",
+  "item": "I167",
+  "title": "Foco do botão Start no GTK2 versus HP VUE 2.01",
+  "status": "technical partial; human review pending",
+  "scope": {
+    "reference": "Domain/OS SR10.4 with HP VUE 2.01",
+    "toolkit": "GTK 2.24.33",
+    "control": "push button, visually focused/default Start state",
+    "not_in_scope": ["other GTK families", "installed theme", "XChat", "MAME mouse hook"]
+  },
+  "historical_evidence": {
+    "full_image": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-results-r215.png",
+    "full_image_sha256": "8d91379e93d4fa8881bfd4c0286ef43d65cbf77f8a215b4f609c40f7cca7475c",
+    "button_crop": "~/tempia/ia-tema/evidence/I167/r211-vue-buttons.png",
+    "crop_sha256": "71a08ee5213fa13692ab1c2ffc0e4efa74dca2c832643a799b19ecc958620f2c",
+    "source_state": "Start is visibly highlighted; the capture alone does not distinguish GTK-style keyboard focus from a default-button indicator.",
+    "observed_focus_outline": {
+      "color_sample": "#fe8282",
+      "bbox_in_crop_px": [13, 10, 96, 53],
+      "bbox_size_px": [84, 44],
+      "edge": "continuous, approximately 2px coral outline outside the button face"
+    }
+  },
+  "adaptation": {
+    "files": [
+      "tools/theme-lab/gtk2_buttons.py",
+      "tools/theme-lab/tests/test_gtk2_buttons.py"
+    ],
+    "private_preview_rc": "~/tempia/ia-tema/evidence/I167/r211-button-focus/button/r211-button.gtkrc",
+    "private_preview_rc_sha256": "add7ddd49f0ca4a340f2ac6c3d3b40888817481cb2d76dbaf953e86acd63450f",
+    "properties": {
+      "GtkButton::focus-line-pattern": "empty string for solid outline",
+      "GtkButton::focus-line-width": 2,
+      "GtkButton::focus-padding": 2,
+      "GtkButton::interior-focus": false
+    },
+    "color_policy": "Focus foreground comes from the current KDE DecorationFocus role; labels retain the current Header foreground role. The preview RC resolves current palette values but inserts no historical fixed RGB into product source.",
+    "current_role_sample": "The generated DomainOS-schema preview resolved DecorationFocus to #fe8282; this is a captured palette value, not a source constant."
+  },
+  "gtk2_native_evidence": {
+    "runtime": "GTK 2.24.33 under private Xvfb",
+    "focus": true,
+    "default": true,
+    "allocation_px": [86, 46],
+    "focus_outline_bbox_px": [21, 21, 104, 64],
+    "focus_outline_size_px": [84, 44],
+    "image": "~/tempia/ia-tema/evidence/I167/r211-button-focus/focused-size-match.png",
+    "image_sha256": "4ad082f14b4b37ee3cb52c8333832971c160b649cb2b7e0e5b237634e5b917de",
+    "runtime_style_readback": {
+      "focus-line-pattern": "",
+      "focus-line-width": 2,
+      "focus-padding": 2,
+      "interior-focus": false
+    }
+  },
+  "validation": {
+    "command": "python3 -B tools/theme-lab/tests/test_gtk2_buttons.py",
+    "result": "3 tests passed",
+    "native_preview": "passed; GTK2 focus and default both asserted, generated outline dimensions match the VUE crop",
+    "other_palette_matrix": "not rerun for the new focus state; the menu matrix in R210 remains valid only for its own scope",
+    "installation_or_user_application_changes": "none"
+  },
+  "remaining": [
+    "The screenshot does not identify whether VUE focus and default status are both active; GTK2 fixture intentionally exercised both.",
+    "Resolved by R214: focus-only, default-only, and both states were captured separately with native GTK2 default-border behavior.",
+    "Hover, pressed, disabled, and inactive-window focus colors remain outside this receipt.",
+    "No human visual acceptance recorded."
+  ],
+  "superseded_by": "R214",
+  "next": "Continue I167/GTK2 only with another SR10.4-comparable state. Keep the independent MAME/SDL capture report separate."
+}

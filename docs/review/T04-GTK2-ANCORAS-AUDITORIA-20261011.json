@@ -1,0 +1,26 @@
+{
+  "stage": "T04 next GTK2 length-anchor audit",
+  "sources_sha256": {
+    "tools/theme-lab/preview_gtk.py": "38f6a46259caabf5260ed235f5774305090868b2974c35a88669ebdcd93c6611",
+    "tools/theme-lab/scene_contract.py": "12d09502e557766d7ba8b466e8bdfb8af52929f0d8d2272361ad050701b27f62",
+    "tools/theme-lab/native_scene_gtk2.py": "72d44af3eb36edd65c4cf15354094b43f95af7909bb95052b786bfaec4fd9d50",
+    "tools/theme-lab/gtk2_generation.py": "c3f8a503178fe6c41b4f8d7727b8c61c75180f5adc016c250454520b286b6f55",
+    "tools/theme-lab/backend.py": "4b62257c9a77408bbbd1cc916e3305c556f78cb487978e08710035d1419751df",
+    "tools/theme-lab/tests/test_gtk2_scene_contract.py": "cbc04685da84f9b53d89a26333f6460981180b434e2420ea42802c26e53fa400"
+  },
+  "findings": [
+    "Existing GTK3 anchor means actual trailing native scrollbar edge; it does not mean stretching with window resize.",
+    "Horizontal origin subtracts measured native width and child offset; vertical subtracts measured height and offset.",
+    "Coordinates must remain within0..2048; invalid native placement is rejected.",
+    "GTK2 currently rejects this feature at backend guard, generator and scene levels; changing only the renderer cannot deliver it.",
+    "C controller records GTK2 anchors as pending capabilities; its own guard requires an independent update."
+  ],
+  "next_steps": [
+    "Extract/reuse the existing geometry rule without changing its meaning",
+    "Connect GTK2 natural allocation and Ctrl gestures to trailing edge semantics",
+    "Update capability guards, generation and C/controller handling together",
+    "Prove horizontal/vertical behavior with native sizes and both origins before delivery"
+  ],
+  "implemented": false,
+  "historical_fidelity_claimed": false
+}

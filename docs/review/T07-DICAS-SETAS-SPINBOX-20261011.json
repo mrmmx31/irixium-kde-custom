@@ -1,0 +1,86 @@
+{
+  "at": "2026-10-11T12:45:52.912822+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: dynamic audit corrected omitted pixel unit and identified SpinBox arrow coverage gap",
+  "baseline": "Actual pointer on native increment region after950ms: ordinaryTip0 bridgeTip0. Preserved in t07-spin-before.log.",
+  "change": "Scoped SpinBox arrow hint bridge uses public Xt/Motif events and reads current field text/font/role pixels. No input translations, grabs, callbacks, recipe geometry or final static colors changed. Delay750ms/duration6000ms; cancellation on leave/click/unmap/destroy; duplicate registration avoided; preview/UI palette path refreshes live hint appearance.",
+  "proof": {
+    "strict_build_exit": 0,
+    "product_build_exit": 0,
+    "native_metrics_regression_exit": 0,
+    "dynamic_hint_regression_status": "passed",
+    "four_schemes": [
+      {
+        "scheme": "DomainOS",
+        "terminal": 0,
+        "observations": [
+          "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1",
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed."
+        ]
+      },
+      {
+        "scheme": "BreezeLight",
+        "terminal": 0,
+        "observations": [
+          "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1",
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed."
+        ]
+      },
+      {
+        "scheme": "BreezeDark",
+        "terminal": 0,
+        "observations": [
+          "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1",
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed."
+        ]
+      },
+      {
+        "scheme": "TestYellow",
+        "terminal": 0,
+        "observations": [
+          "Spin arrow hover: spin=86x36 arrow=16 pointer=76,18 nativeTip=0 bridgeTip=1",
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed."
+        ]
+      }
+    ]
+  },
+  "scope": "One actual SpinBox layout, two painted arrow regions: cold400ms, mapped950ms, whole-owner non-overlap/screen bounds/stable400ms, current source colors and live role swap; increment/decrement clicks, held repeat800ms, no late hint1100ms. Does not prove other layouts, disabled managers, all font sizes, or historical SR10.4 fidelity.",
+  "failed_attempts": [
+    "Strict build rejected ambiguous same-line if indentation; split without behavior change.",
+    "Second-arrow test initially used TextField coordinates. Corrected to the actual lower painted region; native decrement then confirmed."
+  ],
+  "remaining": [
+    "Disabled action/SpinBox guidance and other layouts remain explicit gaps",
+    "Coordinated personal delivery and manual evaluation"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "progress_basis": "Principal hint/help and internal SpinBox arrows now implemented with scoped native proof. Remaining states and delivery prevent completion; not percentage of fidelity or full goal.",
+  "personal_session_modified": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-after-r1.err": "6213ad0aad424bb2d62eabdadfa669dacc45535ec5fcbb355949e38e63a781b7",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-after-r1.log": "e717f2c02ea7886972404c17edc5db271f9086d98a4a6ebd0e140c79c060388e",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-before.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-before.log": "6ee7f3d4621198be4470982646f60a374afe26ca4b74bf6647979d2046b07140",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-build-r2.log": "5af3f5f960a53bfbd28a40cf3e3d5a4f3319b0a942f0623db309c916305058a3",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-build-r3.log": "491c72df2c35963be2b20607b4b5c1ecd7db4fdbb21589818776ac6ec6cadb6e",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-build-r4.log": "5af3f5f960a53bfbd28a40cf3e3d5a4f3319b0a942f0623db309c916305058a3",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-build.log": "b573473eb045a316b94f2045103930cff7d7f716cd2b61f51ddff00c2e04a98f",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-dynamic-regression.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-dynamic-regression.json": "8b6fa0492b475e033a54ac3bd5b8f74960cd95481365a0918d0bdc1a58dae097",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-palettes-r1.json": "33be504a1c9af6726f8ccf27b08cb1a662a74e37b84c23a14a1bb9143890bcb2",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-palettes-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-palettes-r2.json": "ea78ea84f2d0ed05790ba67a4c50031cb37e8a7cafa53f664b74443e854d6011",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-regression.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191",
+    "docs/referencias/domainos-sr104/t07-spin-arrow-hints/t07-spin-regression.log": "fb790051987c7ef9a316bf2ff6c01276f8f708bf46a96d4947bff5f4a6778a61",
+    "tools/theme-lab/src/view/ui_spin_hints.c": "0b95becea6a7ed27a2d5c1616956f13def0035354d43d113eb29292b3bddc26e",
+    "tools/theme-lab/src/view/ui_hints.c": "765eec143818deaf3a12b0b855a29224746d5ca3b8dbb87c2ee671d3c60b0dc3",
+    "tools/theme-lab/src/view.c": "c87046e5a3d0d61d1153e308a0d9fdc244ecde8b02f9573b9b138fae5f890ecd",
+    "tools/theme-lab/include/ui_hints.h": "a0d2aeb561df8885d2679160a605ebbdde15ab4464639f1e2a73183cb5721f2b",
+    "tools/theme-lab/tests/spin_hint_hover.c": "3f3ce8dd710d4be76216464ac1925c16e8a6f405367d5d957517a51e3503912b",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "bf631bbf980cfea7d8624fd88d63144546ef4c698a3a522a4b8aa35b2f94ae28",
+    "tools/theme-lab/Makefile": "6fb7ec392bfc4636e2b4a747a75f76b1912f4e05ccbd8b0b3b4900cbc84cc095"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "R441",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Provide a legible, aligned human-review sheet for the horizontal normal VUE/GTK2 stepper cells and identify the GTK2 pressed row as generated asset output.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "artifact": {
+    "path": "~/tempia/ia-tema/evidence/I167/r441-horizontal-arrow-contact-sheet-20261027/gtk2-horizontal-arrows-review-wide.png",
+    "sha256": "7cf629f9147b4545e144af8340eeafd00bab6153b5466edf36fafa9050499a00",
+    "dimensions": [640, 807],
+    "magnification": 12,
+    "interpolation": "nearest-neighbor"
+  },
+  "sources": {
+    "vue_horizontal_normal": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "vue_horizontal_normal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "gtk2_asset_manifest": "~/tempia/ia-tema/evidence/I167/r441-horizontal-arrow-contact-sheet-20261027/manifest-wide.json",
+    "derived_pressed_contract": "docs/review/I167-GTK2-HORIZONTAL-HELD-CONTRACT-DERIVATION-20261027-R440.json"
+  },
+  "construction": {
+    "normal_cells": "15x15 crops aligned at the measured GTK2 stepper cells x=2,y=4 and x=526,y=4; R344 alignment supersedes R334.",
+    "gtk2_pressed_cells": "Current GTK2 pressed assets only; not a direct observation or capture of the pressed VUE control.",
+    "validation": "PNG integrity and dimensions checked; inspected at readable scale. Pixel comparison remains defined at native 1:1 scale."
+  },
+  "result": {
+    "normal_reference_comparison": "R394/R439/R440 remain the pixel evidence; R441 is a visual review aid and adds no new pixel-equivalence claim.",
+    "direct_vue_pressed_state": "Not captured.",
+    "human_review": "Pending; no user verdict inferred."
+  },
+  "limitations": [
+    "The sheet does not capture the horizontal arrow while pressed in the SR10.4 guest.",
+    "The GTK2 pressed row is labeled asset output and cannot be presented as a VUE measurement.",
+    "No VM input was sent because verify.sh detects a separate MAME instance owned by the AI Work Board."
+  ],
+  "next": "Keep I167 active. Obtain a safe direct VUE held-state capture when the separate MAME instance no longer blocks the guarded input path; then present normal/held/released cells for manual review without repeating the valid normal and interaction tests."
+}

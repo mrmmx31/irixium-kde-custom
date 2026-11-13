@@ -1,0 +1,39 @@
+{
+  "id": "I167",
+  "receipt": "R55",
+  "date": "2026-10-24",
+  "family": "GTK2 live palette reload and pixmap style cache",
+  "authorization": {
+    "section": "work",
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "authorized": true
+  },
+  "scope": "Make the generated DomainOS GTK2 pixmap styles refresh when an already-open GTK2 window receives the targeted RC reload event after the KDE palette changes.",
+  "changes": [
+    "GTK2 RC style identifiers now receive a deterministic 10-hex namespace derived from the exported KDE role palette. Identifiers remain stable for an identical palette and change when palette values change.",
+    "Added a focused regression test for deterministic naming, palette-sensitive naming, consistent tooltip binding, and role-derived colors."
+  ],
+  "validation": {
+    "gtk2_unit_tests": "9/9 passed; GTK2 DomainOS test class",
+    "targeted_reload_probe": {
+      "runtime": "GTK2 2.24.33",
+      "display": ":1",
+      "profile": "private XDG/HOME roots under ~/tempia; no user app targeted",
+      "palette_change": "button face changed from RGB 82,103,124 to 180,55,82",
+      "reload": "targeted _GTK_READ_RCFILES ClientMessage changed the existing probe window; forced Gtk.rc_reparse_all_for_settings did not cause an additional change",
+      "result": "passed",
+      "artifact": "~/tempia/i167-r53-product-fix-r10/result.json",
+      "artifact_sha256": "f912c8ed3b634954f413424c3a0dfc76bed9e9174a579b76479179ff9a004de7",
+      "private_profile_restore": "passed; runner exited 0 and transaction receipt is under ~/tempia/i167-r53-product-fix-r10/home/.local/state/irixium-gtk2-palette/backups/"
+    },
+    "git_diff_check": "passed for the scoped generator and test files"
+  },
+  "limitations": [
+    "The reload probe sent the targeted X11 GTK reload message directly; it does not prove that the current KDE/XSettings bridge emits it in the user's live session.",
+    "This is a refresh behavior test, not an SR10.4 appearance comparison or user visual approval.",
+    "No installed theme, user GTK2 application, XChat, desktop setting, panel, or VM was changed."
+  ],
+  "next": "Verify the real KDE/XSettings notification path only in an isolated GTK2 probe. Then continue the remaining authorized GTK2 gaps; do not modify XChat before I167's criteria are complete.",
+  "progress_estimate": "~93% technical coverage of I167; this estimate reflects the added GTK2 palette-refresh correction and does not measure visual fidelity or human approval."
+}

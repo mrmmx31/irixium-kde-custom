@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "id": "R735",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Read-only check for a currently mapped GTK2 application window that can show the post-R731 theme without opening, focusing, or capturing personal content.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed_at_local": "2026-10-29T05:40:36-04:00",
+  "observations": {
+    "gtk2_processes": [
+      {"pid": 1321694, "app": "XChat", "gtk": "2.24.33", "x_window": "0x3c00001", "map_state": "IsUnMapped", "geometry_px": [10, 10]},
+      {"pid": 1327599, "app": "XChat", "gtk": "2.24.33", "x_window": "0x1800001", "map_state": "IsUnMapped", "geometry_px": [10, 10]},
+      {"pid": 2163323, "app": "Adobe Reader", "gtk": "GTK2 library mapped", "x_window": "0x4e00001", "map_state": "IsUnMapped", "geometry_px": [10, 10]}
+    ],
+    "gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+    "theme_lab": "A Theme Lab process exists, but it is not a GTK2 application-under-review and its open user session was left untouched."
+  },
+  "actions": {
+    "focused_or_mapped_window": false,
+    "captured_content": false,
+    "sent_input": false,
+    "restarted_application_or_vm": false
+  },
+  "result": "No currently mapped GTK2 client window is available for a live post-reload visual capture. The running GTK2 processes' X11 top-level windows are unmapped 10x10 clients. The R734 isolated render remains the best current-runtime evidence; it cannot substitute for viewing the actual application.",
+  "next": "Keep I167 open and wait for the user to expose/select an existing GTK2 application for visual inspection or provide a fresh scrollbar-only crop after the R731 reload. Do not map/focus XChat or Reader, restart applications, or infer human acceptance from R734.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing I167 technical coverage estimate; not a visual-fidelity percentage."
+  }
+}

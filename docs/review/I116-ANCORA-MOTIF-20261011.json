@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-11T03:34:15.736101+00:00",
+  "item": "I116",
+  "revision": 1,
+  "definition_sha256": "50c8f8b85d53750c14ebf94af1548b1bc19f7218e816be70f87357f1b9afb70d",
+  "phase": "native_motif_anchor",
+  "checks": {
+    "both_native_panes": true,
+    "horizontal_vertical": true,
+    "requests": [
+      260,
+      1,
+      0,
+      180
+    ],
+    "trailing_edge": 400,
+    "cross_size_preserved": true,
+    "invalid_origin_hidden_with_notice": true,
+    "corrected_origin_recovers_control": true,
+    "model": 935,
+    "backend": 24,
+    "scene": 15,
+    "ipc": "passed",
+    "strict_C99": "passed"
+  },
+  "observations": "Amostra Motif aceita comprimento solicitado 1; automático aloca 135 horizontal e 65 vertical. São medidas desta amostra, não defaults históricos comprovados.",
+  "corrected_failure": "XmForm restaurava posição antiga ao gerenciar painel. Ancoragem atualiza left/top attachment FORM e offsets calculados, após tamanho nativo.",
+  "estimated_stage_progress_percent": 85,
+  "remaining": [
+    "Seletor de extremidade e troca com preservação da origem",
+    "Ligação controlador/backend",
+    "Prova da edição e entrega pessoal coordenada"
+  ],
+  "limits": [
+    "Sem comparação histórica ou alteração de paleta nesta etapa",
+    "Sem reabertura de janelas pessoais",
+    "Controlador/backend continuam recusando aplicação da âncora final até integração completa"
+  ],
+  "hashes": {
+    "tools/theme-lab/src/view.c": "b39856085409aefd3b902d307efc364a584b89ec9e55fb292dfa7ac3d794b104",
+    "tools/theme-lab/tests/native_metrics_view.c": "bb4f4e72b4ad24305ac2bdcfb0b7b739c6a642961b0ab9990bba3ba66d424325",
+    ".qa-i116-motif-anchor/constraints.log": "ddb79e0158018940d250f33514a80af9cf7e9e89678e5fb87c11eb7958d302cc"
+  }
+}

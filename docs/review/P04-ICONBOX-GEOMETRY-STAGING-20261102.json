@@ -1,0 +1,129 @@
+{
+  "id": "P04-ICONBOX-GEOMETRY-STAGING-20261102",
+  "recorded_at": "2026-11-03T02:32:19Z",
+  "authority": {
+    "source": "pedido direto do usuário para corrigir a organização e detalhar a seleção",
+    "goal_changed": false,
+    "visual_acceptance_inferred": false
+  },
+  "incident": {
+    "message": "Geometry was requested; one or more clients did not confirm the requested size/position",
+    "cause": "a geometria era emitida no mesmo turno da restauração de uma janela parcialmente maximizada; o commit assíncrono posterior da restauração podia descartar o retângulo",
+    "live_read_only_observation": {
+      "title": "Source live",
+      "pid": 2570314,
+      "geometry": {
+        "x": 900,
+        "y": 0,
+        "width": 1020,
+        "height": 971
+      },
+      "minSize": {
+        "width": 360,
+        "height": 240
+      },
+      "maximizeMode": 1,
+      "tile": null
+    },
+    "note": "maximizeMode 1 correspondia à maximização vertical parcial; nenhuma organização foi repetida nas janelas do usuário durante o diagnóstico"
+  },
+  "changes": [
+    "A restauração de maximização virou uma etapa observada: os retângulos só são emitidos, uma única vez, depois de KWin confirmar desktop, saída, janela visível e maximizeMode 0 para todas as selecionadas.",
+    "minSize e maxSize nativos são conferidos antes de qualquer mutação; uma célula inviável informa janela, célula e mínimo declarado sem mover o lote.",
+    "O timeout foi ampliado de 2,5 s para 5 s, abaixo do watchdog de comunicação de 7 s, sem retry; uma falha futura identifica título, solicitado, observado, desktop, saída, modo de maximização e mínimo.",
+    "O seletor executa uma leitura nativa sem mutação a cada mudança estabilizada da seleção e exibe ali mesmo relação pai/transient, tiling, maximização parcial por eixo e mínimo declarado.",
+    "Uma janela ainda gerida pelo tiling é recusada antes da primeira mutação geométrica, com instrução explícita para retirá-la do mosaico.",
+    "Mínimos e máximos nativos são distinguidos no diagnóstico; a mensagem não atribui mais um limite máximo ao mínimo.",
+    "Falha da ponte de preflight ou backend ausente sai do estado Verificando e explica no seletor que a leitura está indisponível e nenhuma janela foi movida.",
+    "A inspeção nativa agora expõe minSize, maxSize, maximizeMode, tile e identidade de aplicação para diagnóstico verificável.",
+    "O ensaio nativo usa apenas ~/tempia/domainos-theme-work, inclusive TMPDIR, runtime e socket privado do D-Bus."
+  ],
+  "verification": {
+    "unit_and_qml": {
+      "command": "cd plasma/tests && python3 -m unittest test_domainos_window_ops_geometry.py test_domainos_window_ops_guard.py test_domainos_operations_handoff.py",
+      "result": "passed",
+      "tests": 29
+    },
+    "iconbox_journey": {
+      "result": "passed",
+      "checks": 86,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/iconbox-selection-preflight-r5-20261102/RESULTADO.json",
+      "visual_capture": "/home/lsi/tempia/domainos-theme-work/iconbox-selection-preflight-r5-20261102/ICONBOX-GROUP.png"
+    },
+    "native_x11": {
+      "result": "passed",
+      "checks": 62,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/wgx6/RESULTADO.json"
+    },
+    "native_wayland": {
+      "result": "passed",
+      "checks": 62,
+      "receipt": "/home/lsi/tempia/domainos-theme-work/wgw6/RESULTADO.json"
+    },
+    "covered_cases": [
+      "restauração parcial assíncrona antes da geometria",
+      "barreira de prontidão de todas as selecionadas antes de qualquer retângulo",
+      "preflight somente leitura revela maximização vertical parcial e relação de diálogo durante a seleção",
+      "janela vinculada ao tiling recusada antes da geometria",
+      "limite máximo identificado separadamente do mínimo",
+      "falha de transporte e backend ausente não deixam o seletor preso em estado pendente",
+      "mínimo incompatível recusado antes de mutação",
+      "colunas, linhas e mosaico em 2, 3 e 6 clientes quando viáveis",
+      "destino em outro desktop/monitor",
+      "relações modal/transient e identidade alterada",
+      "texto de compatibilidade atualizado a cada checkbox"
+    ],
+    "git_diff_check": "passed"
+  },
+  "deployment": {
+    "tool": "tools/update_domainos_qml.py",
+    "backup": "/home/lsi/.local/state/irixium-domainos/backups/878f5246697b444caa27824ec76da67c",
+    "installed_files": {
+      "contents/code/window_ops.js": "262d13abf18fe0797abb67d213a9fe147a8ca7811d78774c7ceb9380105dd72c",
+      "contents/code/window_ops.py": "b555caef70f7edcfc5ab3221b3c59a1e1de6f9b445ebc8fd65232730aa2c340b",
+      "contents/ui/DomainOSWindowOperations.qml": "456d04535a79e66d2bb7a74ab57b7d704655fa4a8a6431a742f6bee9c9e03d73",
+      "contents/ui/DomainOSIconbox.qml": "68dc76fdcd26ffab108e58e8f634fb23569fef27115febf058ef9c9a017f21e5"
+    },
+    "source_and_installed_match": true,
+    "plasmashell": {
+      "previous_pid": 2591552,
+      "current_pid": 2593724,
+      "active": true,
+      "other_user_pid_preserved": 332937
+    },
+    "configuration": {
+      "unchanged_hashes": {
+        "kdeglobals": "1a9ceb6c8b17cc5cb6aa5d25295050bb5ce89e28e0f3809a9acfab9415efcb3e",
+        "plasmarc": "ae86c7cebd4ffd3d2a378d8b0763426215de530c89bbc0ea6d9bb0e19ec5e0b3",
+        "kwinrc": "131f276c31272897f2eb4e5429c3dfcddc3363143cc089707bd882e958598a26"
+      },
+      "plasma_appletsrc_before": "941a7f1d2d593d461462d790c5c18c8ce3c11a9a574e51936697626239d6a7d3",
+      "plasma_appletsrc_after": "941a7f1d2d593d461462d790c5c18c8ce3c11a9a574e51936697626239d6a7d3",
+      "assessment": "os quatro arquivos de configuração observados mantiveram seus hashes nesta publicação e recarga",
+      "current_domainos_keys_observed": {
+        "panel_id": 2268,
+        "applet_id": 2269,
+        "applicationsMenuStyle": "kde",
+        "iconboxHintsEnabled": false,
+        "iconboxWindowThumbnails": true,
+        "systray_containment_id": 2270,
+        "layout_token": "a43662bdc75943c0a6bf2acd0edf4b06"
+      }
+    },
+    "new_errors_for_changed_files": false,
+    "preexisting_tray_non_notify_diagnostic": true
+  },
+  "sources": [
+    "https://develop.kde.org/docs/plasma/kwin/api/"
+  ],
+  "limits": [
+    "Nenhuma janela pessoal foi movida durante a verificação; a repetição do lote real cabe ao usuário.",
+    "A captura isolada comprova layout e texto do seletor, não aceitação visual do usuário na sessão normal.",
+    "Os avisos anteriores de DomainOSTray e do desktop containment não fazem parte deste incidente."
+  ],
+  "progress": {
+    "subscope_percent": 95,
+    "basis": "causa nativa identificada, implementação, testes unitários/QML, jornadas X11/Wayland, instalação e recarga concluídos; resta a repetição real e avaliação do usuário",
+    "not_visual_fidelity_percent": true
+  }
+}

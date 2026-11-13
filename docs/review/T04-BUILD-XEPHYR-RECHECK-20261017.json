@@ -1,0 +1,64 @@
+{
+  "checked_at_utc": "2026-10-17T23:57:23Z",
+  "stage": "T04 isolated rebuild, editor proof, Motif Xephyr and Plasma startup audit",
+  "status": "motif_candidate_open_full_plasma_preview_blocked_by_host_inotify_limit",
+  "workspace": "/home/lsi/irixium-kde-custom",
+  "build": {
+    "target": "/home/lsi/tempia/theme-lab-t04-20261017/build/theme-lab",
+    "compiler_flags": "C99 -Wall -Wextra -Werror",
+    "sha256": "7d6c2cc7d1ccc6244459f95ab4d17b24a107df1829aeba955d36960adccf8a7b",
+    "workspace_binary_sha256": "7d6c2cc7d1ccc6244459f95ab4d17b24a107df1829aeba955d36960adccf8a7b",
+    "binary_differs_from_workspace": false,
+    "tests": {
+      "model": "1007 checks passed",
+      "preview_event_ipc": "passed",
+      "utf8_code_search": "passed",
+      "backend": "39/39",
+      "preview_scene": "16/16",
+      "qt5_recipe": "4/4",
+      "qt6_recipe": "21/21",
+      "native_metrics_view": "passed; GTK3 and Motif reference panes",
+      "native_metrics_python": "2/2",
+      "editor_store": "22 checks passed; UTF-8 and invalid-file preservation",
+      "editor_controller": "passed with a dedicated authenticated Xvfb display :4090; 13 recovery/editing assertions in receipt output",
+      "editor_cases": [
+        "multistep undo/redo",
+        "UTF-8 copy/cut/paste/select-all and keyboard editing menu",
+        "save/reopen and recoverable draft/history checkpoint",
+        "control switching with independent undo history",
+        "Unicode scripts in storage, clipboard and undo/redo"
+      ]
+    },
+    "test_harness_note": "The default controller probe selected :199 because its free-display scan ignores a foreign transient /tmp/.tX199-lock. It timed out before creating its Xvfb. The same editor test passed with TL_TEST_DISPLAY=:4090 and a dedicated Xvfb; no foreign lock was changed."
+  },
+  "motif_candidate": {
+    "display": ":74",
+    "xephyr_pid": 1129599,
+    "theme_lab_pid": 1130839,
+    "home_and_xdg": "~/tempia/theme-lab-t04-20261017/native-xephyr/home",
+    "work_dir": "~/tempia/theme-lab-t04-20261017/native-xephyr/work",
+    "selected_private_kde_scheme": "DomainOS-SR10-4",
+    "private_scheme_count": 57,
+    "screenshot": "~/tempia/theme-lab-t04-20261017/native-xephyr/screen-with-palette.png",
+    "screenshot_sha256": "07d6e0876bafa57c0d92e1a9566190fdc47951db709b1bd75566670cec24b986",
+    "result": "Motif Theme Lab opened; private palette catalogue is available; main interface reports ready.",
+    "scope_limit": "This is the Motif application in Xephyr, not the full private Plasma session or a visual proof of other toolkits."
+  },
+  "full_plasma_preview": {
+    "display": ":66",
+    "session_dir": "~/tempia/theme-lab-t04-20261017/preview/session",
+    "status": "failed_before_KWin_and_Plasma_start",
+    "error": "KDED startup timed out while creating inotify watchers",
+    "inotify_instances_uid_1000": 403,
+    "inotify_max_user_instances": 384,
+    "existing_xephyr_sessions": "preserved",
+    "personal_profiles": "unchanged"
+  },
+  "adapter_status_scope": {
+    "gtk4": "partial: push, toggle and scrollbars have private native routes; other controls are rejected before rendering",
+    "gtk1": "isolated XMMS/GTK+ 1.2 runtime exists; no DomainOS adapter",
+    "gtk5": "no viable runtime",
+    "qt5_qt6_kvantum_plasma": "see the family-specific I169-I173 receipts; technical recipes do not imply human or historical approval"
+  },
+  "next": "Continue only the currently authorized T04 scope, one family/control at a time. Next GTK4 renderer gap: check button. Keep :74 open for review; full Plasma visual review awaits available host inotify capacity."
+}

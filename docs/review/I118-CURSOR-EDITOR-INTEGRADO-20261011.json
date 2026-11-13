@@ -1,0 +1,273 @@
+{
+  "at": "2026-10-11T06:12:28.577398+00:00",
+  "item": "I118",
+  "revision": 2,
+  "previous_goal_turn_classification": "progress: current channel configuration verified and continuity recorded",
+  "stage": "GTK3 thumb integrated editor",
+  "result": ".qa-theme-lab-spin-lr9_22_e/RESULTADO.json",
+  "terminal_exit": 0,
+  "proof": {
+    "initial_preview_measurement": "Pedido em edição: 220 x 80 (0 =automático)Motif referência: 66 x 25; escala 1Mínimo: toolkit não fornece; preferido 66x 25Posição local 16, 16Fonte: FontSet (13 fontes), primeira:-misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1Sensibilidade: habilitadoPeças internas: não medidasGTK3 acoplado: aguardando medida nativaGTK3 separado: aguardando medida nativaComparação física: aguardandomedidas/escala.Pareamento da barra: aguardandobarra/posição nativaPosições locais a cada canvas; nãoglobais.Pressionado/backdrop: sem equivalênciaMotif comprovada.Dimensão igual não comprova desenho igual.Medidas da amostra; não são defaults daVM.",
+    "relief_pointer_targets": [
+      {
+        "key": "relief_state",
+        "index": 0,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 1,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 1,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 2,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 2,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 3,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 3,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 1,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 4,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 2,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 5,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 4,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_kind",
+        "index": 0,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 2,
+        "bounds": [
+          388,
+          512,
+          17,
+          17
+        ]
+      },
+      {
+        "key": "relief_state",
+        "index": 2,
+        "bounds": [
+          357,
+          362,
+          17,
+          17
+        ]
+      }
+    ],
+    "status": "passed",
+    "scope": "Real Motif pointer selections -> controller -> independent thumb states -> manual Apply and private close/reload",
+    "input": "X11 pointer to measured native popup row bounds",
+    "supported_states_independent": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "manual_apply": true,
+    "cleared_only_state": "hover",
+    "unsupported_states_guard": true,
+    "recipes_preserved": true,
+    "reload_preserved": true,
+    "native_bar_origins": [
+      {
+        "control": 10,
+        "separate": 0,
+        "width": 220,
+        "height": 15,
+        "x": 16,
+        "y": 36,
+        "offset_y": 20,
+        "position_valid": true,
+        "pieces_source": 2,
+        "pieces_mask": 15,
+        "slider": [
+          81,
+          2,
+          38,
+          11
+        ],
+        "track": [
+          14,
+          2,
+          192,
+          11
+        ],
+        "arrow_first": [
+          2,
+          2,
+          12,
+          11
+        ],
+        "arrow_last": [
+          206,
+          2,
+          12,
+          11
+        ]
+      },
+      {
+        "control": 10,
+        "separate": 1,
+        "width": 220,
+        "height": 15,
+        "x": 16,
+        "y": 36,
+        "offset_y": 20,
+        "position_valid": true,
+        "pieces_source": 2,
+        "pieces_mask": 15,
+        "slider": [
+          81,
+          2,
+          38,
+          11
+        ],
+        "track": [
+          14,
+          2,
+          192,
+          11
+        ],
+        "arrow_first": [
+          2,
+          2,
+          12,
+          11
+        ],
+        "arrow_last": [
+          206,
+          2,
+          12,
+          11
+        ]
+      }
+    ],
+    "personal_profile_exposed": false,
+    "historical_fidelity_claimed": false
+  },
+  "visual_inspection": "Disabled/Sunken selected and corresponding script visible; native preview not ready after reopen in captured frame. Does not prove startup readiness.",
+  "reused_painting_receipt": "docs/review/I118-CURSOR-PINTURA-EDITOR-20261011.json",
+  "personal_window_changed": false,
+  "scope_progress_percent": 82,
+  "percentage_basis": "Thumb integrated editing proved; fitting, readiness and personal delivery remain. Not global goal or historical fidelity.",
+  "remaining": [
+    "Fitting state capability/translation",
+    "Initial and post-reopen native preview readiness",
+    "Personal delivery and human evaluation"
+  ],
+  "hashes": {
+    "tools/theme-lab/tests/test_controller_spin.py": "bf32d46634528404d549582131cd7b034600b17118a8f439d756afbc880c5305",
+    "tools/theme-lab/Makefile": "5dd0a9a960a4369adf8377629dc483dd61807934470f48c7452902c8978951b4",
+    "tools/theme-lab/build/controller-spin-probe": "f12f88fcd235e24abd32dec3946d473c9a9c277ef130054e5393a040a403a05a",
+    ".qa-theme-lab-spin-lr9_22_e/RESULTADO.json": "9424edd789d68503787a4507d57bc3869e7a36edc855166d05270b5b6049a76b",
+    "tools/theme-lab/thumb_states.py": "b69a05ac8b0a95169860f12cde892eb8ae964ff42e7ec8289bcc168dd6c49a97",
+    "tools/theme-lab/src/view/part_relief_editor.c": "5ee147b93b00296da887f751e21358e28f10936564d5aa902e1b7f3e403f3d12"
+  }
+}

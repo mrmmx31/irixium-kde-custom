@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R538",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-style-and-allocation-cache-invalidation-passes-focused-differential;asset-fallback-and-vm-review-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Private GTK2 stepper cache invalidation and regression only. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "engine": "private R538 GtkStyle engine prototype derived from R536",
+    "palette_fixture": "Synthetic RC colors isolate the redraw mechanism; KDE roles and palette changes are not tested.",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "vm_input_sent": false
+  },
+  "findings": {
+    "stale_cache_reproduced": "After gtk_widget_reset_rc_styles() changes GtkScrollbar::has-forward-stepper to false and GTK's internal has_stepper_d to false, the R536 control still paints the old right-stepper cache at its former cell.",
+    "style_and_allocation_invalidation": "R538 invalidates cached cells on GtkWidget style-set and size-allocate. With the same removal probe, its old 15x15 cell differs 207/225 pixels from the previously visible stepper, while a 1x1 partial damage/repaint returns to the post-removal baseline at 0/225 differences.",
+    "regression": "Four directions match fixture assets in normal, hover, pressed, released, endpoint and globally insensitive captures. Each pressed cell is restored after one-pixel damage. Input probe passes 8/8 movement, endpoint-blocking and whole-widget-insensitive cases.",
+    "asset_failure": "After-expose clears a cached cell when its saved asset cannot be loaded; this failure path was not exercised."
+  },
+  "limits": [
+    "Private GTK2 evidence only; no fresh Domain/OS SR10.4/HP VUE comparison or user visual review.",
+    "Synthetic fixed-color RC does not validate KDE semantic roles, color scheme changes or contrast.",
+    "Missing-asset fallback is coded but untested.",
+    "Only the common one-back/one-forward layout is covered; secondary steppers with duplicate directions remain untested and the cache still has one cell per direction.",
+    "PNG/GC I/O performance and broader style/palette transitions remain unmeasured.",
+    "No installation, personal application, VM or desktop was changed."
+  ],
+  "artifacts": {
+    "record": "records/ia-tema/experiments/i167-r538-cache-invalidation/",
+    "verifier": "records/ia-tema/experiments/i167-r538-cache-invalidation/verify_pixels.py",
+    "control_basis": "records/ia-tema/experiments/i167-r536-state-aware/r536-engine.c"
+  },
+  "next": "Review the private style-removal fix, test missing-asset fallback and duplicate-direction layouts, then compare GTK2 rendering against the project-owned SR10.4/HP VUE 2.01 VM before considering any user-profile integration."
+}

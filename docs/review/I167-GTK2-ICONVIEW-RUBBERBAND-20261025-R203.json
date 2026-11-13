@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ICONVIEW-RUBBERBAND-20261025-R203",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "question": "Does the GTK2 GtkIconView rubberband use the KDE Selection role from the active palette and preserve the resulting item selection after release?",
+  "runtime": {
+    "toolkit": "GTK 2.24.33",
+    "display": "Private Xvfb, 900x650x24, scale 1:1",
+    "widget": "Native GtkIconView in GtkScrolledWindow; MULTIPLE mode; 8 folder rows; four columns",
+    "input": "X11 drag from empty view space across all eight items; capture while held, release, capture again",
+    "focus": true,
+    "personal_apps_or_profile_changed": false,
+    "mame_or_guest_changed": false
+  },
+  "upstream_gtk_source": {
+    "url": "https://raw.githubusercontent.com/GNOME/gtk/2.24.33/gtk/gtkiconview.c",
+    "version": "GTK 2.24.33",
+    "behavior": [
+      "selection-box-alpha defaults to 64/255",
+      "selection-box-color is optional; when unset, the widget uses style->base[GTK_STATE_SELECTED]",
+      "the rectangle fill uses that color with alpha; its outline uses the same color opaque"
+    ]
+  },
+  "translation": {
+    "selected_face_role": "KDE Selection/BackgroundNormal",
+    "normal_view_role": "KDE View/BackgroundNormal",
+    "gtk2_rc_behavior": "R201 maps IconView base[SELECTED] to the active KDE Selection face; this RC leaves selection-box-color unset, so GTK2 falls back to base[SELECTED].",
+    "product_source_changed": false
+  },
+  "palettes": [
+    {
+      "name": "DomainOS",
+      "normal_view_rgb": [102, 136, 181],
+      "selection_rgb": [50, 151, 199],
+      "expected_fill_rgb_floor": [88, 139, 185],
+      "captured_fill_rgb": [88, 140, 186],
+      "max_channel_delta": 1,
+      "outside_rectangle_rgb": [102, 136, 181],
+      "held_selected_count": 8,
+      "released_selected_count": 8,
+      "held_sha256": "d5f0812e5460f5ee6a408fe0e813af18c3aca46f4bb94efa3f24a4d35a52c375",
+      "released_sha256": "12074230d7f38d675b8c52b37e65f5a7308745c8a09ae21e43c9a5785327f9c7"
+    },
+    {
+      "name": "Breeze Light",
+      "normal_view_rgb": [255, 255, 255],
+      "selection_rgb": [61, 174, 233],
+      "expected_fill_rgb_floor": [206, 234, 249],
+      "captured_fill_rgb": [206, 234, 249],
+      "max_channel_delta": 0,
+      "outside_rectangle_rgb": [255, 255, 255],
+      "held_selected_count": 8,
+      "released_selected_count": 8,
+      "held_sha256": "1cf0bf0ff48487a48ae3651dab00e3c93a03864ab0fbf5d361ca2789dff6f3a7",
+      "released_sha256": "888529bef03a84980a7db5d9b7297b20fb855c4980672ae502b150141a27f60e"
+    },
+    {
+      "name": "Cybermil Dark",
+      "normal_view_rgb": [11, 11, 11],
+      "selection_rgb": [55, 91, 60],
+      "expected_fill_rgb_floor": [22, 31, 23],
+      "captured_fill_rgb": [21, 30, 23],
+      "max_channel_delta": 1,
+      "outside_rectangle_rgb": [11, 11, 11],
+      "held_selected_count": 8,
+      "released_selected_count": 8,
+      "held_sha256": "ae8be975fa9b224748603e65c501d16861893eb549bcec658ee0ce4eea81c999",
+      "released_sha256": "ad4d754fa914b19da76accf47da8fdf1352cfd7e16cf34438326f67d654056d4"
+    },
+    {
+      "name": "Steamed Yellow",
+      "normal_view_rgb": [62, 70, 55],
+      "selection_rgb": [149, 136, 49],
+      "expected_fill_rgb_floor": [83, 86, 53],
+      "captured_fill_rgb": [83, 86, 53],
+      "max_channel_delta": 0,
+      "outside_rectangle_rgb": [62, 70, 55],
+      "held_selected_count": 8,
+      "released_selected_count": 8,
+      "held_sha256": "fd7b6b314b1eda774f52dbd4d726358885ecca13076c2b221a5bcc99b2f7b83a",
+      "released_sha256": "aa9fca21daf817b2a7b6dfc098dc57388bb4c7f26422e5c653357544aaf70294"
+    }
+  ],
+  "artifacts": {
+    "private_fixture": "~/tempia/ia-tema/evidence/I167/r203-gtk2-iconview-rubberband/fixture.py",
+    "private_controller": "~/tempia/ia-tema/evidence/I167/r203-gtk2-iconview-rubberband/controller.py",
+    "captures_directory": "~/tempia/ia-tema/evidence/I167/r203-gtk2-iconview-rubberband/"
+  },
+  "result": "The GTK2 rubberband fill follows the active KDE Selection face through the existing base[SELECTED] mapping in four actual GTK2 palette previews. Pixel samples outside the rectangle remain at the current View face; samples inside agree with the 64/255 blend within one 8-bit RGB level. All eight cells remain selected after release.",
+  "limits": [
+    "This is private GTK2 runtime evidence, not a live SR10.4 comparison or human visual approval.",
+    "The source and runtime evidence establish the GTK2 mechanism; they do not establish that VUE XmpIcon uses the same alpha, rectangle geometry, outline or post-release appearance.",
+    "The GTK2 selected-cell fill still covers full item rectangles, while the paired VUE selection in R200 covers label text only.",
+    "Other GTK2 widgets, focus/hover comparisons and full visual acceptance remain open."
+  ],
+  "next": "Keep I167 running and GTK2 as the only active family. Continue the next GTK2 control/state comparison, using exact SR10.4 evidence where available; do not apply this partial adapter to XChat or claim historical rubberband equivalence."
+}

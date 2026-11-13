@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R435",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Attempt to reach a visible horizontal VUE scrollbar arrow on the project-owned SR10.4 clone using the existing host mouse route; stop before pressing if the target cannot be confirmed.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_mame_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "other_vm_contacted": false,
+    "project_window_xid": "0x2e00006",
+    "project_window_pid_confirmed": 3971377,
+    "bridge": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "method": {
+    "capture_route": "Existing domainos_mouse_host hook; no duplicate hook installed.",
+    "observed_profile": {"captured_before_test": false, "paused": false, "frameskip": 4, "throttled": false},
+    "native_frame": {
+      "path": "~/tempia/ia-tema/evidence/I167/r435-live-horizontal-check-20261027/after-activate.png",
+      "sha256": "801c940b4bbd875b7ceef67144e7383520540735cf3aaeb591a1833444fbbf16",
+      "description": "Fresh 1024x844 guest snapshot. VUE is visible; File Manager overlays part of a rear window with a visible horizontal scrollbar segment. The pointer initially rests on the File Manager vertical trough, away from the horizontal arrow."
+    },
+    "measured_host_relative_steps": [
+      {"host_delta": [-50, 50], "guest_pointer_delta_approx": [-123, 110]},
+      {"host_delta": [-200, 70], "guest_pointer": "reached the left edge; exact delta clipped"},
+      {"host_delta": [10, 50], "guest_pointer": "near bottom-left edge; large vertical displacement"},
+      {"host_delta": [70, -15], "guest_pointer_delta_approx": [254, -32]},
+      {"host_delta": [-45, -110], "guest_pointer_delta_approx": [-104, -272]},
+      {"host_delta": [-3, -35], "guest_pointer_delta_approx": [1, -77]}
+    ],
+    "interaction": "Two low-risk clicks on exposed rear-window content/title strip did not visibly raise it. No scrollbar arrow was clicked or held. The repeated coordinate mismatch makes an arrow-target press untrustworthy in this route."
+  },
+  "result": {
+    "classification": "inconclusive input-path calibration; not a GTK2 visual failure",
+    "horizontal_held_state_proven": false,
+    "arrow_clicked": false,
+    "button_raw_after_cleanup": 0,
+    "interpretation": "The host-relative route remains too nonlinear for a confirmed horizontal-arrow target. R434 remains limited evidence for the live down-arrow held relief; R394 remains the direct normal-state match for all four GTK2 stepper cells."
+  },
+  "artifact_integrity": {
+    "unique_capture_directory": "~/tempia/ia-tema/evidence/I167/r435-live-horizontal-check-20261027/",
+    "captures": [
+      {"path": "step01.png", "sha256": "16f1c13a35a50eeb167263311403780ebdb00a1fe30ea394130cb5125a02aa07"},
+      {"path": "step02.png", "sha256": "54fec663c1e5df4903eea4ca74b5488091f6e0d5f7dc374394b14ad5d3b8dcd0"},
+      {"path": "step03.png", "sha256": "ab7facd2aedb41efdfd92cee74ca67d1f9b4f23f047ab22ed40fd7001eca9903"},
+      {"path": "step04.png", "sha256": "5ee55e07901f76d1bfecfa908a84db5d6f020ea58fcd35d6c13577f691075c6b"},
+      {"path": "step05.png", "sha256": "cb5dfd7b8b09a03184ea29067666ae7e5debae4423ac5c6a4e1af895e8df5db3"},
+      {"path": "step06.png", "sha256": "d8c2616a2afab0451e7c8f4fe15c7dbd6261a5134a3f5c23b946ce3ac8c331cd"},
+      {"path": "step07.png", "sha256": "7bca4817d51d69e6c0aea4c965c50d75aa989e057434e9467fa669d97b61d0f1"},
+      {"path": "final-release.png", "sha256": "0c681070ad001b758f08467d64c7552eebe16c0547a22e1ef21b82d92a60bf78"}
+    ],
+    "erratum": "The intermediate file recaptured.png was written twice during calibration. Its first snapshot was lost; the separately named after-activate.png and subsequent unique frames remain. No repository artifact was overwritten."
+  },
+  "cleanup": {
+    "hook_released": true,
+    "mouse_capture": false,
+    "left_button_raw": 0,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "project_window_restored_to_hidden_state": true,
+    "host_pointer_restored": [840, 666],
+    "other_vm_changed": false,
+    "guest_disk_modified_by_test": false,
+    "bridge_pending": false
+  },
+  "changes": {"gtk2_recipe_changed": false, "user_profile_changed": false, "other_vm_contacted": false},
+  "next": "Do not repeat large or blind coordinate guesses. Continue authorized GTK2 work with independent native/asset evidence while the horizontal live held state remains open; resume that comparison only with a stable, visible target route."
+}

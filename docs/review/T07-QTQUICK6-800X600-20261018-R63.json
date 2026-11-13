@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK6-800X600-20261018-R63",
+  "date": "2026-10-18",
+  "work_item": "T07",
+  "user_revision": 4,
+  "authorization": "user.authorized=true",
+  "status": "passed",
+  "purpose": "Exercise delayed native QtQuick5 hints over every enabled materialized target in the three-page gallery, synchronizing the selected tab and visible stack page.",
+  "environment": {
+    "xephyr": ":81",
+    "window_title": "PARA LSI - DomainOS Theme AI T07 (:81)",
+    "screen_px": [
+      800,
+      600
+    ],
+    "qt": "6.8.2",
+    "pyqt": "6.9.0",
+    "platform": "xcb",
+    "isolation": "bwrap namespace with disposable HOME/XDG/DBus; personal home and system bus not exposed",
+    "window_px": [
+      660,
+      560
+    ],
+    "host_profile_changed": false
+  },
+  "coverage": {
+    "native_hint_resources": 71,
+    "hovered_enabled_targets": 23,
+    "disabled_not_hoverable": 7,
+    "skipped": 0,
+    "failures": 0,
+    "pages": [
+      {
+        "name": "Controls",
+        "tab_index": 0,
+        "stack_index": 0,
+        "enabled_targets": 17
+      },
+      {
+        "name": "Table",
+        "tab_index": 1,
+        "stack_index": 1,
+        "coverage": [
+          "one real TableView cell",
+          "horizontal scrollbar",
+          "vertical scrollbar"
+        ]
+      },
+      {
+        "name": "Scroll",
+        "tab_index": 2,
+        "stack_index": 2,
+        "coverage": [
+          "TextArea",
+          "horizontal ScrollView scrollbar",
+          "vertical ScrollView scrollbar"
+        ]
+      }
+    ]
+  },
+  "criteria": {
+    "cold_check_ms": 300,
+    "declared_delay_ms": 750,
+    "observed_onset_ms": [
+      750,
+      850
+    ],
+    "stable_ms": 400,
+    "dismissal_ms": [
+      150,
+      350
+    ],
+    "within_screen": true,
+    "outside_owner": true,
+    "tab_and_stack_indices_match": true,
+    "all_enabled_materialized_targets_hovered": true
+  },
+  "palette": {
+    "palette_override": false,
+    "requested_scheme": "DomainOS-SR10.4",
+    "effective_widget_style": "QFusionStyle; KDE QML org.kde.desktop modules observed",
+    "effective_qt_palette": "Qt default/Fusion values",
+    "claim": "No color, Kvantum, Plasma Style, or historical-fidelity conclusion."
+  },
+  "changes": {
+    "production_source": "none",
+    "theme_source": "none",
+    "temporary_outputs": "~/tempia/t07-qtquick6-full-matrix-800x600-20261018-r63/"
+  },
+  "sha256": {
+    "qtquick_demo.py": "502af6357763b9aa601490984fd31dc76b68b69f5dd1a665a83ae7bb91094121",
+    "probe_qtquick6_fullmatrix_r54d.py": "8a2c5da9d30358251359e240e0ea9312c709f7d534a0b87b549e102b5036aa05",
+    "run_qtquick_probe_r54d.py": "4fcab61d01f13ed168144ca257ee4e8c66b25eda9cc94ceb9b3004874d9998e1",
+    "FULL-HOVER-MATRIX.json": "888655f69810061399689088b87b5419dbb3c0fe744c42baf6971b905df1685e",
+    "RESULTADO.json": "f3cecffd1aa454a12d78b6007766622cc5bc43b1d1341b7572486a2bba71e418",
+    "gallery.qml": "d8195a0a8f6fe9143fcaa929ae273c671dbd26986da485de8a0ea849dbadd713",
+    "qtquick5.png": "a972133e0a3f26d7c3581efe3ba161fd0dc0c3a15cc7f17a047ee4073e71d453",
+    "qtquick6.png": "8ff65a2a7251d076af0ea513bc762a60faab49568008ef56b18d679117590dd3"
+  },
+  "limitations": [
+    "One gallery layout and 800x600 screen; no alternate palette or state matrix.",
+    "Menu delegate hovers remain covered only by their separate focused receipts.",
+    "Disabled controls were recorded as non-hoverable, not treated as failures.",
+    "Three nonfatal KDE TabButton.qml:22 null-y warnings occurred and did not prevent the matrix.",
+    "No human acceptance or Domain/OS SR10.4 visual comparison is claimed."
+  ],
+  "next": "Continue the next independent T07 gap; retain the separate GTK2 R58 failure."
+}

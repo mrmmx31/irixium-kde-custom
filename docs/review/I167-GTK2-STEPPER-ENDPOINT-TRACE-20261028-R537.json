@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "R537",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-endpoint-classifier-trace-passes;cache-lifecycle-and-vm-acceptance-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "GTK2 private endpoint classifier trace and state/input verification. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "engine": "private R537 GtkStyle engine prototype derived from R536",
+    "palette_fixture": "Fixed RC colors only isolate rendering mechanics; no KDE palette roles tested.",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "vm_input_sent": false
+  },
+  "findings": {
+    "direct_endpoint_trace": "For hscrollbar_start, vscrollbar_start at value 0 and hscrollbar_end, vscrollbar_end at value 80, GTK passes raw GTK_STATE_INSENSITIVE (4); endpoint_stepper classifies only the blocked physical endpoint as true and selects GTK_STATE_NORMAL (0) for its artwork.",
+    "global_insensitive_distinguished": "When the entire range is insensitive, all four arrow callbacks receive GTK_STATE_INSENSITIVE but endpoint_stepper classifies none as an endpoint and paint remains insensitive.",
+    "pixels_and_repaint": "The four direction captures match normal/focused/pressed/released/endpoint/disabled fixture assets; each intentionally damaged pressed cell is restored from 1/225 to 0/225 differences.",
+    "input": "The GTK2 boundary probe passes 8/8 movement, blocked endpoint and globally insensitive cases with R537 loaded."
+  },
+  "limits": [
+    "Private GTK2 evidence only; no fresh SR10.4/VUE visual comparison or user review.",
+    "Synthetic fixed-color RC does not validate KDE semantic roles, palette changes or contrast.",
+    "R537 only adds endpoint tracing to R536. It contains no cache invalidation or missing-asset fallback fix; all R536 cache lifecycle risks remain.",
+    "Multiple same-direction steppers, active-state resize, missing-asset fallback, actual cache invalidation and PNG/GC performance remain unverified.",
+    "No installation, personal application, VM or desktop was changed."
+  ],
+  "artifacts": {
+    "record": "records/ia-tema/experiments/i167-r537-endpoint-trace/",
+    "pixel_and_trace_verifier": "records/ia-tema/experiments/i167-r537-endpoint-trace/verify_pixels.py",
+    "source_basis": "records/ia-tema/experiments/i167-r536-state-aware/r536-engine.c"
+  },
+  "next": "Test and refine the private cache lifecycle/fallback separately, then compare the corrected GTK2 rendering against the project-owned SR10.4/HP VUE 2.01 VM before considering any user-profile integration."
+}

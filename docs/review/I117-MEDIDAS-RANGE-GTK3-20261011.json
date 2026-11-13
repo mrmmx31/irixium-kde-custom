@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-11T04:18:20.526895+00:00",
+  "item": "I117",
+  "revision": 1,
+  "phase": "gtk3_public_range_measurement",
+  "implementation": [
+    "Intervalo longitudinal da caixa de margem do cursor via get_slider_range",
+    "Área conjunta trilho/setas via get_range_rect, sem renomear como trilho isolado",
+    "Coordenadas explicitamente da janela GTK, separadas do canvas/global",
+    "Eventos de valor atualizam métricas em refresh limitado, sem polling novo permanente",
+    "Geometria opcional no IPC com identidade/orientação, tipos, limites, extensão positiva e cursor contido na área"
+  ],
+  "sources": [
+    "https://docs.gtk.org/gtk3/method.Range.get_slider_range.html",
+    "https://docs.gtk.org/gtk3/method.Range.get_range_rect.html",
+    "https://raw.githubusercontent.com/GNOME/gtk/gtk-3-24/gtk/gtkrange.c"
+  ],
+  "tests": {
+    "strict_compile": "passed",
+    "ipc": "passed; axis mismatch, extent outside native area, zero extent, incomplete geometry rejected transactionally",
+    "formatter": "passed",
+    "gtk3_native": "2 passed, horizontal/vertical, coupled/separate, value 35 to 70 in 220-px requested sample; reported span matches native API",
+    "initial_test_failure": "Automatic short bar cursor covered available span, so no physical travel; assertion expecting displacement failed. Original retained; repeat with measured long allocation passed.",
+    "syntax_diff": "passed"
+  },
+  "limitations": [
+    "Seta isolada, trilho isolado e largura transversal do cursor não expostos por estas APIs; não inferidos de CSS",
+    "Geometria interna Motif ainda não medida; header privado 2.3.8 não usado como ABI portátil nem prova SR10.4",
+    "Caixa de margem do cursor não equivale à silhueta pintada",
+    "Não comprova fidelidade histórica, equivalência pressionado/backdrop ou todos os controles",
+    "Fluxo completo e entrega pessoal pendentes"
+  ],
+  "hashes": {
+    "tools/theme-lab/include/native_metrics.h": "2e2f5031f51401cdabb78b65f3973648508ce336c874bc2356d3c715deee9eaa",
+    "tools/theme-lab/src/native_metrics.c": "d1f18efdf6e3fbcf5550012f50c4670ccba613379b62f317a17e8b56e631fd49",
+    "tools/theme-lab/src/preview_event.c": "cecb8f26433071fab3c483b524c9f0dade3ee9881b740d0004b4573960bafe9c",
+    "tools/theme-lab/preview_gtk.py": "e12d88b1e4d7df40edbaec97b4ae3317d7d85241d14e3fcbf0a80397f2cb105c",
+    "tools/theme-lab/tests/test_native_metrics.py": "f601ae89eb035df23b45e93cea43a246cdab0066e82bb749609a7cfc064b23e8",
+    "tools/theme-lab/tests/preview_event_test.c": "5c65742d537ce282b0e75361e68accb3ce367708a6b3320bcf5cf967eb4ef4d3",
+    "tools/theme-lab/tests/metrics_comparison_test.c": "ab21b639aaae4e55caf5a7a3be8b6c36571a8c9b7fe12c87e5a62a50187c4ac8",
+    ".qa-i117-range/native-short-failure.log": "60dee74feb8137a182742e6651847ca7246e580718b00e2842718f6010179426",
+    ".qa-i117-range/native-long.log": "9da9d80ce9be58cb49bc1f326e10b782c028eef88b68eb4970b6fa293eb648a9",
+    ".qa-i117-range/ipc.log": "33236858a2987c02aa11878e3686f1356d7a6805443c64fb16ad06694af2b40b",
+    ".qa-i117-range/format.log": "c80a9451baada0f6681a656e7c27ca8175e6878cae762fb5429133b685d9348d"
+  },
+  "estimated_stage_progress_percent": 55,
+  "percentage_basis": "Avanço em medição longitudinal/área GTK3; continuam faltando peças completas, demais controles, integração e entrega",
+  "personal_window_changed": false,
+  "human_approval_filled": false
+}

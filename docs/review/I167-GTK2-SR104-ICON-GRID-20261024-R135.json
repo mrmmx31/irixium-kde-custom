@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-SR104-ICON-GRID-20261024-R135",
+  "date": "2026-10-24",
+  "item": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "authority": {
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "mame_pid": 3759847,
+    "assistant_clone_only": true,
+    "user_original_vm_touched": false
+  },
+  "evidence": {
+    "capture": "~/tempia/i167-r153-list-clean-pointer.png",
+    "sha256": "2e87017da0815b348866cf71ff8292ed9d155bff2417fb2c251301fba72d030b",
+    "resource_source": "R112 read-only result for /usr/X11/lib/app-defaults/Vuefile: XmpIcon resources pixmapForeground and highlightThickness; these identify the VUE file-grid widget and do not define GTK colors.",
+    "reference_ui": "File Manager at ~/node_12345; status reads 28 Files 2 Filtered. The visible file area is an icon grid with four columns, multiple rows, and a vertical scrollbar; no row-selection or hover state was tested.",
+    "estimated_geometry_px": {
+      "viewport_approx": [532, 245],
+      "columns": 4,
+      "column_pitch_approx": 130,
+      "row_pitch_approx": 55,
+      "folder_glyph_approx": [28, 24],
+      "label_gap_approx": 6,
+      "scope": "visual estimates from the native 1024x844 screenshot; pixel-level bounds and states remain to be measured"
+    }
+  },
+  "interpretation": {
+    "matched_gtk2_analogue": "GtkIconView, not the GtkTreeView used by the current Theme Lab list fixture",
+    "r42_scope": "R42 remains valid for GtkTreeView versus a local XmList fixture; it is not a visual comparison against the SR10.4 File Manager XmpIcon grid.",
+    "theme_change_made": false,
+    "xchat_or_personal_profile_changed": false
+  },
+  "next": "Create an isolated native GTK2 GtkIconView scene using the measured SR10.4 grid geometry and a captured folder glyph; compare at 1:1, then determine which color/layout properties can be supplied by the theme versus the application renderer. Keep all colors derived from KDE roles.",
+  "status": "reference_control_identified",
+  "user_acceptance": "pending"
+}

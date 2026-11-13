@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "timestamp": "2026-10-10T15:41:20.219963+00:00",
+  "scope": "Application correction in the lsi desktop; no historical fidelity claim for other families",
+  "causes": [
+    "KDE skips an already selected scheme ID although its installed RGB changed",
+    "Restored GTK2 receipt incorrectly rejected updated wrappers",
+    "Decoration reload omitted DomainOS and checked an asynchronous operation immediately"
+  ],
+  "verified": {
+    "selected_scheme": "DomainOS-SR10-4",
+    "kde_roles": {
+      "Colors:Window": {
+        "BackgroundNormal": "120,160,213",
+        "ForegroundNormal": "255,255,255"
+      },
+      "Colors:Button": {
+        "BackgroundNormal": "120,160,213",
+        "ForegroundNormal": "255,255,255"
+      },
+      "Colors:View": {
+        "BackgroundNormal": "102,136,181",
+        "ForegroundNormal": "255,255,255"
+      },
+      "WM": {
+        "activeBackground": "254,130,130",
+        "activeForeground": "255,255,255",
+        "inactiveBackground": "122,202,197",
+        "inactiveForeground": "255,255,255"
+      }
+    },
+    "qt_and_plasma": {
+      "qt_style": "Kvantum::Style",
+      "qt_palette": {
+        "Window": "#78a0d5",
+        "WindowText": "#ffffff",
+        "Button": "#78a0d5",
+        "ButtonText": "#ffffff",
+        "Base": "#6688b5",
+        "Text": "#ffffff",
+        "Highlight": "#3297c7",
+        "HighlightedText": "#ffffff"
+      },
+      "plasma_palette": {
+        "window": "#78a0d5",
+        "windowText": "#ffffff",
+        "button": "#78a0d5",
+        "buttonText": "#ffffff",
+        "base": "#6688b5",
+        "text": "#ffffff",
+        "highlight": "#3297c7",
+        "highlightedText": "#ffffff"
+      }
+    },
+    "gtk3": {
+      "theme": "DomainOS-SR10-4-KDE-Reload",
+      "window": {
+        "foreground": "rgb(255,255,255)",
+        "background": "rgb(120,160,213)"
+      },
+      "button": {
+        "foreground": "rgb(255,255,255)",
+        "background": "rgb(120,160,213)"
+      },
+      "entry": {
+        "foreground": "rgb(255,255,255)",
+        "background": "rgb(102,136,181)"
+      },
+      "textview": {
+        "foreground": "rgb(255,255,255)",
+        "background": "rgb(102,136,181)"
+      },
+      "roles": {
+        "theme_bg_color_breeze": "rgb(120,160,213)",
+        "theme_base_color_breeze": "rgb(102,136,181)",
+        "theme_titlebar_background_breeze": "rgb(50,151,199)",
+        "theme_titlebar_background_backdrop_breeze": "rgb(50,151,199)"
+      },
+      "probe_scope": "Root style contexts only; no GtkSourceView style scheme or painted child text surface checked by this R2 probe"
+    },
+    "loaded_decoration": [
+      "org.kde.kwin.aurorae",
+      "domainos_sr104"
+    ],
+    "panels": [
+      {
+        "id": 2268,
+        "height": 109,
+        "widgets": [
+          {
+            "id": 2269,
+            "type": "org.irixclassic.domainos.panel"
+          }
+        ]
+      }
+    ],
+    "panel_version": "0.2.12-beta.1",
+    "services": {
+      "plasma-plasmashell.service": "active",
+      "irix-theme-companions.service": "active",
+      "irix-domainos-style-bridge.service": "active"
+    },
+    "temporary_palette_aliases_removed": true
+  },
+  "visual_evidence": {
+    "private_capture_not_distributed": true,
+    "external_inactive_title_rgb": [
+      122,
+      202,
+      197
+    ],
+    "nested_active_title_rgb": [
+      254,
+      130,
+      130
+    ],
+    "user_feedback": "Sim, agora correspondem",
+    "feedback_scope": "Active coral / inactive cyan decorations now match Xephyr"
+  },
+  "limits": [
+    "Application-specific editor style schemes are outside this palette-role probe",
+    "GTK2/4 historical review and laboratory improvements remain queued",
+    "This correction is applied only in lsi; p001532 was not reapplied in this turn",
+    "Mousepad subsequently exposed a white-on-light painted text surface: see GTK3-TEXTO-20261010-R3.json for reproduction and scoped fix"
+  ]
+}

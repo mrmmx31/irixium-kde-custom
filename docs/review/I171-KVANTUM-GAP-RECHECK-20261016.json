@@ -1,0 +1,76 @@
+{
+  "id": "I171",
+  "date": "2026-10-16",
+  "scope": "Read-only real Qt6/Kvantum QScrollArea geometry probe on owned Xephyr :70; no theme/profile modification.",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "contract_sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "expected_view_bar_gap_px": 4
+  },
+  "runtime": {
+    "qt": "6.8.2",
+    "style_class": "Kvantum::Style",
+    "loaded_plugin": "/usr/lib/x86_64-linux-gnu/qt6/plugins/styles/libkvantum.so",
+    "color_scheme": "DomainOS-SR10-4",
+    "palette": {
+      "Window": "#78a0d5",
+      "Base": "#6688b5",
+      "Text": "#ffffff"
+    },
+    "display": ":70",
+    "screen": [
+      1024,
+      768
+    ],
+    "both_scrollbars_visible": true
+  },
+  "geometry_zero_viewport_margins": {
+    "configured_margins": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "viewport": [
+      4,
+      4,
+      697,
+      537
+    ],
+    "vertical_scrollbar": [
+      705,
+      0,
+      15,
+      545
+    ],
+    "horizontal_scrollbar": [
+      0,
+      545,
+      705,
+      15
+    ],
+    "measured_viewport_to_vertical_gap_px": 4,
+    "measured_viewport_to_horizontal_gap_px": 4,
+    "PM_ScrollView_ScrollBarSpacing": 0
+  },
+  "diagnostic_only_extra_margin": {
+    "added_right_bottom_margins_px": 4,
+    "resulting_horizontal_vertical_gaps_px": [
+      8,
+      8
+    ],
+    "shipped": false,
+    "conclusion": "Do not set extra margins: they double the real Qt/Kvantum layout gap."
+  },
+  "conclusion": "The earlier 0px observation was incorrect for the actual QScrollArea geometry. With the current real Kvantum style and zero explicit viewport margins, this Qt6 gallery yields 4px on both axes, matching the shared contract. The gap is supplied by effective QScrollArea/frame layout; Kvantum has no independent configuration key, and this result does not establish spacing for every Qt application.",
+  "artifacts": {
+    "probe_private_path": "/home/lsi/tempia/i171-kvantum-gap-20261016/probe.py",
+    "probe_sha256": "1255eabcff27bc0dfd70f02588887878beabebfaac4166ab3a356bcb42eabfbc",
+    "screenshot_repo_path": "docs/review/images/I171-KVANTUM-GAP-RECHECK-20261016.png",
+    "screenshot_sha256": "de32085965937385d8113f2df4821f7bdea6ebfcc3eb46a36c3599266477d1e4",
+    "kvconfig_sha256": "893256070f3710c51ea17cc8d42eb38a3d05671ac28eed86a08352090a9fd889",
+    "svg_sha256": "c6ec0f4e5fec9e630162e5fe0cb3c6d3866e24ff85b4e55df408c20dc3aeaea3"
+  },
+  "result": "passed_geometry_recheck; user_visual_review_pending"
+}

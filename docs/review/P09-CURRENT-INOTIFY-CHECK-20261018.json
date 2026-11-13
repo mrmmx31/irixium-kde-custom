@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-10-18",
+  "item": "P09",
+  "user_revision": 1,
+  "status": "partial_environment_block_confirmed",
+  "manual_review": "The user approved P09 revision 1 and said the current preferences worked.",
+  "user_cache_request": "Q338 revision 1 asks to retain a captured thumbnail in memory across tooltip hiding until the window closes.",
+  "implementation_reused": {
+    "behavior": "Cache last real QQuickItemGrabResult per window identity; keep frame while tooltip is hidden; clear on identity change, disabling thumbnails, or applet destruction.",
+    "source_hashes_unchanged": {
+      "DomainOSWindowThumbnails.qml": "6ffa59a36d12619177063d61ccca638b53113ac3cb2b1b1cb5cb55bd389c018a",
+      "DomainOSWindowPreviewContents.qml": "36cc3b81ca197fe6fb0bb294b475fc65286cfcd65ceacd2d06d36e593900268e"
+    },
+    "prior_receipt": "docs/review/P09-SESSION-THUMBNAIL-CACHE-20261016.json"
+  },
+  "fresh_environment_check": {
+    "inotify_max_user_instances": 384,
+    "uid_inotify_fd_descriptors_observed": 401,
+    "caveat": "This counts file descriptors, not unique inotify instances; it does not prove exact instance count.",
+    "prior_private_dbus_error": "Cannot initialize inotify: Too many open files (EMFILE)",
+    "decision": "No sysctl increase and no process/session termination. Native Plasma provider capture remains inconclusive; move to next independent authorized item."
+  }
+}

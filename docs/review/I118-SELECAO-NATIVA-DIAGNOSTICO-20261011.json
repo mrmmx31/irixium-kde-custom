@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-11T05:25:35.683647+00:00",
+  "item": "I118",
+  "authority_revision": 1,
+  "status": "native_editor_flow_passed",
+  "diagnosis": {
+    "failed_before": ".qa-theme-lab-spin-rv4n0moz/home/probe.json",
+    "callback_position": 0,
+    "native_actual_positions": [
+      1,
+      3,
+      0,
+      1,
+      1
+    ],
+    "motif_source": "/tmp/I094-motif-reference/motif-2.3.8/lib/Xm/ComboBox.c",
+    "source_scope": "Current Linux Motif algorithm; not historical SR10.4 appearance evidence",
+    "algorithm": "CallSelectionCallbacks reconstructs position with GetEditBoxValue/XmListItemPos; CBGetSelectedPos reads actual selected list positions"
+  },
+  "change": "State and relief callbacks read selectedPosition; programmatic refresh does not edit recipe",
+  "validated": {
+    "strict_build": "/tmp/i118-selection-build.log",
+    "callback_regression": "/tmp/i118-selection-unit.log",
+    "native_selection_and_apply": ".qa-theme-lab-spin-85ttp0d3/home/probe.json",
+    "actual_capture": {
+      "mask": 3,
+      "normal": 1,
+      "pressed": 3
+    },
+    "complete_flow": [
+      "Native pointer selections",
+      "normal/pressed independently retained",
+      "Apply to working and scene",
+      "both GTK3 origins measured",
+      "other-family values preserved allowing only explicit no-op defaults",
+      "unsupported hover disabled",
+      "inherit clears only normal",
+      "close/reload preserves every recipe"
+    ]
+  },
+  "harness_failure": {
+    "path": ".qa-theme-lab-spin-85ttp0d3",
+    "reason": "Strict dictionary comparison treated absent versus explicit empty scrollbar_parts and default length_anchor as other-family edits",
+    "correction": "Allow only those explicit no-op defaults; retain every other value and save before/after recipes"
+  },
+  "current_test": {
+    "session": 30785,
+    "terminal_exit": 0,
+    "log": "/tmp/i118-controller-preservation.log",
+    "result": ".qa-theme-lab-spin-iy_ri68w/RESULTADO.json",
+    "result_sha256": "44a8ce33a7a63070ad240a4fdd9715933a0b8bb63eb93bb7bdf53c9e09cad3b6"
+  },
+  "scope_progress_percent": 45,
+  "remaining": [
+    "Complete native inherit/save/reopen flow",
+    "Snippet follows local recipe state",
+    "Other supported states and pieces",
+    "Personal delivery",
+    "Native preview startup/reopen readiness"
+  ],
+  "personal_window_changed": false,
+  "hashes": {
+    "tools/theme-lab/src/view/part_relief_editor.c": "0ea4af3406aee7ece401d9e902696cd979155debb5d67e4110e3eaae0e3036bc",
+    "tools/theme-lab/tests/controller_spin_probe.c": "184e19248903f450aa3c83e718b44db03ce48223bc0e7855ec887ccf72c61140",
+    "tools/theme-lab/tests/part_relief_editor_test.c": "33c8df129cb41ac7ea47255b3f6cfb5b04e93efea5e2ce26d125483078293d0a",
+    "tools/theme-lab/tests/test_controller_spin.py": "44c7158a0eb6e7c99a5fb5c2c8ecb00928792f313ebe5184d64e32816e104944"
+  },
+  "visual_inspection": {
+    "capture": ".qa-theme-lab-spin-iy_ri68w/relief-editor.png",
+    "observed": "Pressed/sunken restored in editor after private reopen",
+    "limitation": "Screenshot precedes reloaded native preview/capabilities; does not prove preview startup or historical fidelity"
+  }
+}

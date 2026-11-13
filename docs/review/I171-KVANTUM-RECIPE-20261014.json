@@ -1,0 +1,119 @@
+{
+  "id": "I171",
+  "revision": 1,
+  "family": "kvantum",
+  "date": "2026-10-14",
+  "scope": "Theme Lab recipe adapter: generated real Kvantum SVG/config for scroll_h and scroll_v only; native Qt6 style preview wiring.",
+  "authorized": true,
+  "status": "implementation_and_native_qt_preview_passed_user_visual_review_pending",
+  "reference": "Domain/OS SR10.4 + HP VUE 2.01; shared tools/domainos_scrollbar_rules.json",
+  "contract_sha256": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+  "source_sha256": {
+    "tools/domainos_scrollbar_rules.json": "bcabde590fe8f122111e1507dfa4c4ae14b88e1d30858cf754e297911ade34d3",
+    "tools/domainos_motif_art.py": "52717996b7cb2278e71181a4ed4c241de8843ab0b0ee0713c4136dcacdda6239",
+    "tools/kvantum_domainos_palette.py": "f70f38b10566882aad10fc6224a3928817bfd86a886ff425407b1d6526589e11",
+    "tools/theme-lab/scene_contract.py": "63d6858068177e62f38efca707a7b7d143e3d06498da2ee36d583ecf29a49dc2",
+    "tools/theme-lab/kvantum_recipe.py": "2e7c2f290eee8c052eb1f6c6d46a3a594d9ce8dccd5471cf117b859893586fa6",
+    "tools/theme-lab/kvantum_route.py": "e76f08065072490723fb7ce1c74c358fcfe3896a5046288f08e3b259e3fdc65a",
+    "tools/theme-lab/backend.py": "160b2234c2edeae3cc28d0a69884bad4d80aa2b098467d220caa057a6c3b1062",
+    "tools/theme-lab/tests/test_kvantum_recipe.py": "11553931b7fb95f78685eafc676fa3752a2ee886baeacd9ffbb9d386a78f858b",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "4f59d71b958eeb38ca5b826ed965775675383b4b2d48f2a989c7e1ce82f1943d",
+    "tools/theme_companion_bridge.py": "74f34ac0d24b91fdec284c5f4b94884002be9b0fe8ddb6e26d692416b0ba6c83",
+    "tools/package_suite.py": "7cb66018f844af6986b8453ca4f346b10586a437dfe0f9f2da1ef50e54865d65",
+    "plasma/tools/prever-tema-completo.py": "42810e8453fe45412df311141980fb48f18032947e93c1f7d1e9dd23b3957984",
+    "plasma/tools/abrir-laboratorio-temas.py": "08caea42375cbe809a37e0115c7dc3d888f5e7acdc5a3a745e66d0501c1ebab6",
+    "plasma/tests/test_preview_private_copies.py": "0733ff3333158b02da8ebf4e8e02d87a20f5513530a001f348a5726820ab2e74"
+  },
+  "implemented": [
+    "Kvantum backend availability now identifies an implemented private SVG/metrics adapter.",
+    "Recipe geometry drives 15px bar, 2px relief, 11px odd arrow glyph and 15px configuration dimensions; custom valid odd dimensions also scale by integer cells.",
+    "Palette roles are resolved from the selected KDE scheme and emitted only into a private generated preview snapshot; changing palette changes paint without changing geometry.",
+    "Qt6 gallery route verifies the complete saved private receipt, selected Kvantum style class and loaded plugin before rendering real Qt widgets; no QSS palette injection.",
+    "The private theme is installed inside the preview XDG_CONFIG_HOME/Kvantum/<theme> path that Kvantum resolves; earlier XDG_DATA_HOME/Kvantum placement silently fell back to the system theme.",
+    "The Kvantum-native Qt6 preview opens the Scroll tab so both visible bars are measured and captured rather than reporting hidden controls.",
+    "Shared contract scene selection supports Kvantum, while this adapter refuses controls other than horizontal/vertical scrollbars.",
+    "The companion installer packages the shared scrollbar contract runtime dependency."
+  ],
+  "tests": {
+    "new_recipe_tests": "4/4 passed: backend generate-to-saved-receipt verification, contract+metrics+route, palette/geometry invariants, custom odd geometry and fail-closed validation.",
+    "related_tests": "21 tests.test_domainos_motif + 13 tests.test_kvantum_palette passed. In the 18-test companion bridge suite, 17 passed and test_native_file_observer_preserves_startup_choices_and_handles_later_global_transition failed twice because its fixture writes workers.json non-atomically and polling decodes the empty in-progress file. This is outside I171; no change made to that observer or its fixture.",
+    "runtime_tests": "2 passed: DomainOS Kvantum runtime.",
+    "compile": "py_compile passed for art, palette, recipe, route, backend and Qt6 gallery."
+  },
+  "native_visual_test": {
+    "status": "passed; awaiting_user_visual_review",
+    "session": "Xephyr :61, isolated addon run-55a3885a198646cd9203c62282a50d57; user-visible preview remains open",
+    "display_screenshot": "/home/lsi/tempia/board/i171-kvantum-current-20261014-r3/TEMA-COMPLETO.png",
+    "qt_gallery_screenshot": "/home/lsi/tempia/board/i171-kvantum-current-20261014-r3/home/theme-lab-55a3885a1986/generated/revisions/20261014T223238-29a835cdc984/kvantum-snapshot/qtwidgets-proof/qtwidgets.png",
+    "qt_gallery_screenshot_sha256": "88cde7962a70faf2f21944b43dba53a013358eb60a98307364a8a22bb503281e",
+    "reference": "Saved native Domain/OS SR10.4 + HP VUE 2.01 Trash Can reference, docs/referencias/domainos-sr104/trash-can-normal.png; 1:1 source remains unchanged.",
+    "runtime": {
+      "qt": "6.8.2",
+      "style_class": "Kvantum::Style",
+      "plugin_loaded": "/usr/lib/x86_64-linux-gnu/qt6/plugins/styles/libkvantum.so",
+      "selected_color_scheme": "DomainOS-SR10-4",
+      "palette": {
+        "Window": "#78a0d5",
+        "Base": "#6688b5",
+        "Button": "#78a0d5",
+        "Text": "#ffffff",
+        "Highlight": "#3297c7"
+      }
+    },
+    "native_metrics": {
+      "vertical": {
+        "allocation": [
+          15,
+          369
+        ],
+        "size_hint": [
+          15,
+          50
+        ],
+        "visible": true
+      },
+      "horizontal": {
+        "allocation": [
+          467,
+          15
+        ],
+        "size_hint": [
+          50,
+          15
+        ],
+        "visible": true
+      }
+    },
+    "observed_difference": "The generated theme now loads and paints in the DomainOS palette. Kvantum still provides no independent 4px viewport/bar gap control; the native preview has 0px there versus the 4px SR10.4 reference. Hover/disabled historical states remain unverified.",
+    "preserved": [
+      "Xephyr :68 and its original Qt6 processes",
+      "all prior addon workspaces and journals"
+    ]
+  },
+  "limitations": [
+    "Adapter covers only scrollbar appearance, not all Kvantum controls.",
+    "Kvantum owns range, page size, wheel, drag and native interaction.",
+    "Kvantum configuration does not expose independent 4px viewport/bar or arrow/thumb gap metrics; those are not simulated.",
+    "This receipt is not user approval.",
+    "Kvantum has no independent setting for viewport/bar spacing; the measured 4px comes from the tested QScrollArea/frame layout and is not guaranteed for every Qt application."
+  ],
+  "next": "User visually reviews the currently open Qt6/Kvantum preview and 1:1 screenshots; record any differences before deciding whether to accept the known 4px gap limitation or add a separate adapter task.",
+  "observed_difference": "Corrected by docs/review/I171-KVANTUM-GAP-RECHECK-20261016.json: the real Qt6/Kvantum QScrollArea in the gallery provides a measured 4px viewport/bar gap with zero explicit viewport margins, matching the shared contract. This is effective Qt container/frame layout, not a Kvantum theme setting; other applications may differ.",
+  "native_visual_recheck_2026-10-16": {
+    "status": "passed_geometry_recheck; awaiting_user_visual_review",
+    "evidence": "docs/review/I171-KVANTUM-GAP-RECHECK-20261016.json",
+    "measured_gap_px": {
+      "viewport_to_vertical_bar": 4,
+      "viewport_to_horizontal_bar": 4
+    },
+    "explicit_viewport_margins": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "style_metric_PM_ScrollView_ScrollBarSpacing": 0,
+    "interpretation": "The actual Qt6/Kvantum QScrollArea layout produces the contract 4px gap. An extra 4px viewport margin was only diagnostic and produced 8px; do not apply it.",
+    "previous_zero_gap_claim": "superseded by direct widget geometry measurements; historical record retained above."
+  }
+}

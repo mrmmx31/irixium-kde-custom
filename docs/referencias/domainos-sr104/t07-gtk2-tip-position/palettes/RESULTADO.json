@@ -1,0 +1,358 @@
+{
+  "status": "passed",
+  "rows": [
+    {
+      "scheme": "DomainOS",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          362,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              120,
+              160,
+              213
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              255,
+              255,
+              255
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": false,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "78a0d5",
+        "text": "ffffff"
+      }
+    },
+    {
+      "scheme": "DomainOS",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          600,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          510,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              120,
+              160,
+              213
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              255,
+              255,
+              255
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": true,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "78a0d5",
+        "text": "ffffff"
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          362,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              247,
+              247,
+              247
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              35,
+              38,
+              41
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": false,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "f7f7f7",
+        "text": "232629"
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          600,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          510,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              247,
+              247,
+              247
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              35,
+              38,
+              41
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": true,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "f7f7f7",
+        "text": "232629"
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          362,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              41,
+              44,
+              48
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              252,
+              252,
+              252
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": false,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "292c30",
+        "text": "fcfcfc"
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          600,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          510,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              41,
+              44,
+              48
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              252,
+              252,
+              252
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": true,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "292c30",
+        "text": "fcfcfc"
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          320,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          362,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              236,
+              216,
+              112
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              32,
+              28,
+              12
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": false,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "ecd870",
+        "text": "201c0c"
+      }
+    },
+    {
+      "scheme": "TestYellow",
+      "native": {
+        "status": "passed",
+        "family": "gtk2",
+        "native_delay_ms": 500,
+        "button_rect": [
+          540,
+          600,
+          120,
+          36
+        ],
+        "tooltip_rect": [
+          423,
+          510,
+          354,
+          84
+        ],
+        "style_colors": {
+          "face": {
+            "rgb8": [
+              236,
+              216,
+              112
+            ],
+            "matching_pixels": 25100
+          },
+          "text": {
+            "rgb8": [
+              32,
+              28,
+              12
+            ],
+            "matching_pixels": 3764
+          }
+        },
+        "embedded": true,
+        "scope": "one production push control, cold native delay, bounds/nonoverlap, 400ms stability, leave; one screen/layout"
+      },
+      "fixture_roles": {
+        "face": "ecd870",
+        "text": "201c0c"
+      }
+    }
+  ],
+  "scope": "native GTK2 tooltip geometry/timing/stability/leave/click in two origins; preserves four KDE-role RC fixtures, not generator or historical fidelity"
+}

@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-11T04:09:53.180047+00:00",
+  "item": "I117",
+  "revision": 1,
+  "phase": "font_measurement_native",
+  "implementation": [
+    "Módulo Motif separado consulta FontList/FontSet do controle textual e filhos Combo/Spin/Frame",
+    "GTK3 consulta contexto Pango carregado do rótulo/campo real; rádio usa primeiro membro do grupo",
+    "Barra/seta sem texto próprio explicitamente identificadas; ausência não usa fonte fictícia",
+    "IPC opcional com limite de 383 bytes, UTF-8, pares obrigatórios, sem NUL/controles; cenas antigas preservam ausência explícita",
+    "Métricas de fontes efêmeras, não gravadas como receita/default histórico"
+  ],
+  "native_observed_motif": "FontSet (13 fontes), primeira: -misc-fixed-medium-r-semicondensed--13-100-100-100-c-60-iso8859-1",
+  "tests": {
+    "strict_compile": "passed",
+    "ipc_font_validation": "passed including missing description/control characters/invalid UTF-8/none with unexpected description",
+    "motif_native": "passed",
+    "gtk3_native": "2 passed, coupled/separate; override Monospace 18 in text child measured correctly",
+    "initial_failure": "GTK radio sample is Box; get_child failed. Fixed first member label; failed log retained.",
+    "syntax_and_diff_checks": "passed"
+  },
+  "limitations": [
+    "FontSet description identifies first font and set count, not every glyph fallback",
+    "Pango measurement identifies loaded text-context font; per-glyph fallback not inspected",
+    "Installed Motif font is not the historical SR10.4 font",
+    "Same piece/state/content pairing and full comparison still pending",
+    "FontSet missing-charsets warning and deprecated GTK APIs recorded; no encoding conversion forced"
+  ],
+  "hashes": {
+    "tools/theme-lab/include/native_metrics.h": "3132fe6c60c710a6a5af4a3f5384c6ee455ae4a1d3947862554a64093d96014f",
+    "tools/theme-lab/include/native_font_motif.h": "5ce425877c10138b8619941423c1d1184759866024b3d57c489c557cf2613f3d",
+    "tools/theme-lab/src/native_font_motif.c": "4ef922e7ad768688c6fc0eff2bacb80f2c0006a23606e98ff435a8438a66cdd8",
+    "tools/theme-lab/src/native_metrics.c": "1a794f2816467c602e38ba5168915b6f643fa359cb91b36284c13b923d2589bf",
+    "tools/theme-lab/src/view.c": "e0269b94c2da05c75c410c414659979c9e7b4774f5a275528ab82f78cfba4929",
+    "tools/theme-lab/src/preview_event.c": "401a02bbbe9a80a494fd7bab42ac86a274db5c6fa09c33cb028a9b081a2d028d",
+    "tools/theme-lab/preview_gtk.py": "338e3f091dbaa5faf41312350374c7167e4b17a68a850397a1a88abfb1056513",
+    "tools/theme-lab/tests/test_native_metrics.py": "9e6eca1031e8520bc7f2b5748b2caa81e5de5cbfa4f651a788457e12c869f453",
+    "tools/theme-lab/tests/native_metrics_view.c": "785f5f060c581baa63f02e50f8e404f7fd16e2b8c110fdda03b9abf10233befa",
+    "tools/theme-lab/tests/preview_event_test.c": "5b24136a990d15574ea9a40a864ea626fd5f41aa4f23af5d7836994e4db92901",
+    ".qa-i117-font/motif-final.log": "cf341003dfc03848de8e8f2a93c9a1cc6ac7c879a67f3bc37e5ee962d795e29f",
+    ".qa-i117-font/gtk3-final.log": "14da26c8a16ff0ddf615e5c881fed4ad3acf41eeecbc01aec78e183ded2b5ff8",
+    ".qa-i117-font/gtk3-fixed.log": "dc901a7fffe63818143945b81e283f5ac68771e6892114368c1ebb0113ef1a0e"
+  },
+  "estimated_stage_progress_percent": 35,
+  "percentage_basis": "Geometria/escala e identificação das fontes atuais implementadas e testadas; pareamento por peça/estado e entrega faltam",
+  "personal_window_changed": false,
+  "human_approval_filled": false
+}

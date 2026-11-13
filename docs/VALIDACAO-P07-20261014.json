@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-14",
+  "item": "P07",
+  "user_revision": 1,
+  "definition_sha256": "cb0d5d99ab65617b0d4f455a55767ef53e943141adeb7a3280d361e5c4ae0228",
+  "status": "partial_waiting_user",
+  "scope": "Bandeja nativa Plasma: textura ocupada/vazia, provedores, atenção, popups, excedentes/ocultos, roda no volume e configuração de ordem.",
+  "sources": {
+    "DomainOSTray.qml": "50c6ed63a4917db69640fd0904587813d4c99e36b3ef9d0b2ced09ddfc525fa0",
+    "ConfigTray.qml": "d1ea2514a46e95efa260ef20283d6187a958eb4704dcc61b4032caa9825b5d7a",
+    "DomainOSPanel.qml": "6b5733e83ccc3d3a297c4725369ec536d6cd17902f4ceae4ffa805cfe795908c",
+    "DomainOSPopupWheel.qml": "61b7184aa326fc731bc317201880b6e32e4aa10a6ba130d784e29482e41817e8",
+    "PanelButton.qml": "ed09537dbeadd7c891550ef5fb93d2e2ec505b26ed025507f1d614ac6177c09e",
+    "installed_DomainOSTray.qml": "50c6ed63a4917db69640fd0904587813d4c99e36b3ef9d0b2ced09ddfc525fa0",
+    "installed_DomainOSPanel.qml": "6b5733e83ccc3d3a297c4725369ec536d6cd17902f4ceae4ffa805cfe795908c"
+  },
+  "evidence": [
+    {
+      "path": "/tmp/domainos-p07-20261014-tray-native-rerun/RESULTADO.json",
+      "result": "passed",
+      "checks": 42,
+      "scope": "Provedores nativos/SNI, ordem, excedentes, ocultos, atenção e estado real da bandeja em sessão privada."
+    },
+    {
+      "path": "/tmp/domainos-p07-20261014-tray-native/RESULTADO.json",
+      "result": "failed_then_repeated",
+      "checks": 42,
+      "failed_checks": [
+        "native_status_notifiers_included",
+        "explicit_hidden_policy_preserved",
+        "hidden_option_appends_after_displaced_items"
+      ],
+      "note": "Repetição independente passou os 42 checks; falha inicial preservada como transitória."
+    },
+    {
+      "path": "/tmp/domainos-p07-20261014-texture/RESULTADO.json",
+      "result": "passed",
+      "checks": 28,
+      "scope": "Slot SNI ocupado/vazio/reaparecendo, comparação de pixels, clique real, tooltip e restauração."
+    },
+    {
+      "path": "/tmp/domainos-p07-20261014-popups/RESULTADO.json",
+      "result": "passed",
+      "checks": 18,
+      "scope": "Abertura/fechamento de popups de excedentes/status, sete componentes nativos e serviços SNI de teste."
+    },
+    {
+      "path": "/tmp/irix-domainos-popup-wheel-final-011-20261009.json",
+      "result": "passed_reused_exact_source_hashes",
+      "checks": 121,
+      "scope": "Roda altera volume somente no alvo de volume; vizinhos, borda e overflow não encaminham áudio. Qt 6.8.2/XCB privado; não prova Wayland, hardware ou áudio pessoal."
+    },
+    {
+      "path": "/tmp/domainos-p07-20261014-order/RESULTADO.json",
+      "result": "failed",
+      "checks": 43,
+      "failed_checks": [
+        "apply_commits_complete_native_order",
+        "apply_first_up_pointer",
+        "apply_second_up_pointer",
+        "draft_first_up_pointer",
+        "draft_second_up_pointer",
+        "movement_limits_disabled",
+        "native_apply_pointer",
+        "native_discard_pointer",
+        "native_titles_and_missing_id_visible",
+        "other_fields_unchanged_in_draft",
+        "pointer_reorders_native_member_and_preserves_absent",
+        "present_backend_receives_requested_order",
+        "reopen_uses_preexisting_order",
+        "qml_runtime_errors_zero"
+      ],
+      "cause": "A ConfigView/KCM usa Plasmoid ID 4 e não recebe internalAction domainos-tray-items; o applet proprietário ID 3 tem o catálogo nativo completo, mas a lista disponível no formulário fica vazia. Treze gates comportamentais dependem das linhas ausentes. A verificação de erros também registra erros de enumeração do Kirigami PromptDialog instalado.",
+      "diagnostic": "/tmp/domainos-p07-20261014-bridge-diagnostic2/native.json"
+    }
+  ],
+  "saved_user_configuration_read_only": {
+    "trayVisibleItems": [
+      "org.kde.plasma.battery"
+    ],
+    "native_extraItems_contains_volume": true,
+    "native_shownItems": [
+      "org.kde.plasma.battery"
+    ],
+    "interpretation": "O Volume está disponível como provedor nativo, mas não consta na lista visível salva do perfil padrão. Nenhuma configuração foi alterada."
+  },
+  "preservation": {
+    "production_applet_sources_modified": false,
+    "personal_panel_configuration_modified": false,
+    "hardware_or_personal_audio_actions": false,
+    "MAME_guest_input_sent": false,
+    "MAME_pending_request": "Q334 permanece sem resposta correlacionada; captura Xephyr foi passiva."
+  },
+  "remaining": [
+    "A prova do ConfigView não recebe a lista do applet proprietário (IDs 4 e 3); Q373 decide se abrir uma demanda separada para ponte transitória somente leitura ou documentar/desativar a lista dinâmica mantendo os campos avançados.",
+    "Q335 pergunta se Volume deve entrar na lista visível; nenhuma preferência foi alterada.",
+    "Q336 pergunta qual menu/contexto não abre fora do Xephyr.",
+    "Avaliação manual de P07 permanece pendente."
+  ],
+  "next": "Aguardar Q373 antes de qualquer alteração ao editor de ordem; Q335/Q336 seguem escolhas independentes. Nenhum produto/configuração foi alterado.",
+  "follow_up_question": {
+    "id": "Q373",
+    "after": "P07",
+    "revision": 0,
+    "ack_revision": 0,
+    "status": "waiting_user",
+    "prompt": "Escolher entre propor uma ponte transitória somente leitura do applet dono ao ConfigView ou manter os campos avançados por IDs e remover/documentar a lista dinâmica sem suporte."
+  },
+  "architecture_diagnostic": {
+    "source_hashes_match_prior_receipt": true,
+    "owner_applet_id": 3,
+    "config_view_applet_id": 4,
+    "owner_bridge_action_present": true,
+    "config_view_bridge_action_present": false,
+    "config_view_available_items": "[]",
+    "behavioral_gates_failed": 14,
+    "behavioral_gates_total": 43,
+    "product_code_changed": false,
+    "personal_configuration_changed": false
+  }
+}

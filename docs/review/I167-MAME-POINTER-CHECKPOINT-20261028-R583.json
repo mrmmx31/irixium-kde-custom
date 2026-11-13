@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "id": "R583",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Restore the authorized Domain/OS VM display if idle, inspect the actual mouse route, and attempt a bounded relative-pointer visual checkpoint without pressing any scrollbar target until its position is visible.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01, Apollo DN3500, MAME 0.276",
+    "mame_pid": 379349,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 117186,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd"
+  },
+  "profile": {
+    "initial": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "host_mouse_captured": false,
+      "mouse_option": false,
+      "mouse_device": "none",
+      "channel_pending": false
+    },
+    "final": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "host_mouse_captured": false,
+      "mouse_option": false,
+      "mouse_device": "none",
+      "channel_pending": false
+    }
+  },
+  "actions": [
+    {
+      "name": "screen wake",
+      "result": "The native guest framebuffer was black. Sent one Shift frame via :kbd:keyboard4/Shift, auto-cleared by frame 3; native capture at frame 65 showed VUE, Terminal, Trash Can, and both scrollbars."
+    },
+    {
+      "name": "pointer checkpoint",
+      "result": "One bounded +X step then six -X steps were injected via the existing helper; each operation finished and cleared its counter overrides without cleanup error. Captures did not show the pointer; the one-step image differences were confined to the advancing panel clock. No click/hold was sent to a scrollbar."
+    }
+  ],
+  "evidence": {
+    "images": {
+      "r583-prewake-20261028.png": {
+        "sha256": "47b350ec834b8658ecf55748b4f1fed3522fb8d299ad48d438c36e2897418869",
+        "dimensions": [
+          1024,
+          844
+        ]
+      },
+      "r583-awake-20261028.png": {
+        "sha256": "549273b413a4bbacdc25d88aa9968d2c4881b69bc85e7f4e337967a266de1f06",
+        "dimensions": [
+          1024,
+          844
+        ]
+      },
+      "r583-pointer-one-step-20261028.png": {
+        "sha256": "65c5e1c2e5d6a8d57781bb0cc2d1e356174c9acc256f46120c31ad0e8ec67adb",
+        "dimensions": [
+          1024,
+          844
+        ]
+      },
+      "r583-pointer-x-step2-20261028.png": {
+        "sha256": "8a876b5d5262472ecbff9625222b6fd7ad24c0b9c8a803fec5f05784b92291b7",
+        "dimensions": [
+          1024,
+          844
+        ]
+      },
+      "r583-pointer-x-step4-20261028.png": {
+        "sha256": "35daf622c0afc002e2c4e99cd5a2cf43688c0107276d25d1d7501886c38ff0b9",
+        "dimensions": [
+          1024,
+          844
+        ]
+      },
+      "r583-pointer-x-step6-20261028.png": {
+        "sha256": "8a876b5d5262472ecbff9625222b6fd7ad24c0b9c8a803fec5f05784b92291b7",
+        "dimensions": [
+          1024,
+          844
+        ]
+      }
+    },
+    "scripts": [
+      "records/ia-tema/evidence/I167/r583-capture-current.lua",
+      "records/ia-tema/evidence/I167/r583-wake-once.lua",
+      "records/ia-tema/evidence/I167/r583-pointer-step.lua",
+      "records/ia-tema/evidence/I167/r583-pointer-approach-x.lua",
+      "records/ia-tema/evidence/I167/r583-script-record.json"
+    ],
+    "board_scripts_record": "Board scripts-record attached to I167 revision 2; 12 Lua scripts recorded; no source-code change in this VM-control step."
+  },
+  "result": "The VM is awake and stable. The current capture-off route did not produce a visible pointer after the bounded counter steps, so the horizontal held-state target cannot be confirmed. This does not establish a scrollbar defect.",
+  "limits": [
+    "No horizontal button press was attempted because the native image did not confirm the pointer over the target.",
+    "No host capture, mouse-device option, input sequences, focus, VM disk, or performance profile were changed.",
+    "The direct counter helper test is not proof that guest mouse input is routed when capture is disabled."
+  ],
+  "next": "Keep I167 running. Ask whether to use a different authorized input route for the horizontal held-state comparison; do not alter the mouse capture hook or mapping without that decision."
+}

@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-10-11T18:05:07.794623+00:00",
+  "status": "integrated_verified",
+  "family": "gtk2",
+  "control": "list",
+  "coverage": {
+    "integrated": 15,
+    "total": 16,
+    "percentage": 93.75,
+    "scope": "GTK2 catalog types; not historical fidelity or full goal"
+  },
+  "native": {
+    "scenes": ".qa-t04-list-integration/native-sized/RESULTADO.json",
+    "scene_count": 24,
+    "state_preserving_rebuild_count": 8,
+    "gestures": ".qa-t04-list-integration/gestures/RESULTADO.json",
+    "gesture_origins": 2,
+    "controller": ".qa-theme-lab-spin-kqfk0eop/RESULTADO.json",
+    "native_minimum_fixture": [
+      53,
+      71
+    ],
+    "font_fixture": "Sans13px; not Motif metric"
+  },
+  "tests": {
+    "pure_and_integration": 6,
+    "arrow_regression": 4,
+    "scene_contract": 4,
+    "strict_build": "passed",
+    "c_receipt": "passed",
+    "diff_check": "passed"
+  },
+  "scope": "Generation/receipt/bindings/snippet/scene/session/controller integrated. Ctrl select/move does not alter row selection, plain click selects row. Rebuild preserves rows/selection/horizontal+vertical offsets. Real controller resizing/toggle/SaveLoad/UndoRedo/two restarts preserves pending410x50 proposal with applied300x50 scene.",
+  "source_sha256": {
+    "src/controller/generated_preview.c": "a2fe730fffaba4f3384b53e506d0a844d7b5769ef1c3d41a600df1a43a4136d0",
+    "gtk2_lists.py": "5190109b0b25a2412299ea456a607f1353b4bbe9915edc8ae75e45ae6acdc6f6",
+    "list_control_gtk2.py": "eb94a72aab9c1f0510a43fab03b37aa5d7ea7a33dc7abd0fdd12f82b4949cc18",
+    "gtk2_generation.py": "b8ad08b8b7c638d714c759fcec981b1935fc86a108494e1af76349db8441358e",
+    "gtk2_session.py": "2b1c0e0714d3a66a0360113d513f0faf06fbe90ea0f74c419993253bca9e8e36",
+    "native_scene_gtk2.py": "fe37962d76a2ef0bd28c2f206567dafeb9b361eb1b597e62ca56658b7932f385",
+    "gestures_gtk2.py": "16144f8142c2a83ea887a58e2aabab6256235ac260c04b54ef0ff6bfb526fe0c",
+    "backend.py": "a7eab6dd020f9da311dc8e8f6c38c964844cc8b7d721aae42a72e96a86439ae4"
+  },
+  "limits": [
+    "No historical approval/full scrollbar pixel coverage in populated list",
+    "Forced press/focus still unsupported",
+    "Runtime sample state not persisted across separate application processes"
+  ],
+  "foundation": "docs/review/T04-GTK2-LISTA-FUNDACAO-20261011.json",
+  "python_scene": "docs/review/T04-GTK2-LISTA-CENA-20261011.json",
+  "delivery": {
+    "status": "open",
+    "pid": 2855546,
+    "display": ":61",
+    "manifest": ".qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-4bd5ffe44dbd4db68ed243743e6839d5/MANIFESTO.json",
+    "preservation": ".qa-t04-list-integration/delivery-preservation.json"
+  }
+}

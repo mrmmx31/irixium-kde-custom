@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "R741",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify that the R740 normal vertical thumb-start correction reached the already open real GTK2 XChat window; retain only scrollbar pixels.",
+  "authority": {
+    "parent_item": "T04",
+    "parent_revision": 9,
+    "parent_authorized": true,
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "target": {
+    "title": "XChat: lsi @ Codex VS Code / IA do Tema",
+    "x11_window": "0x1800003",
+    "pid": 1327599,
+    "display": ":1",
+    "map_state": "IsViewable",
+    "window_geometry_px": [
+      870,
+      601
+    ],
+    "capture_origin_root_px": [
+      11,
+      30
+    ]
+  },
+  "capture": {
+    "method": "Streamed XWD of the identified GTK2 client, cropped before saving; only the vertical scrollbar strip was retained. No focus change or input was sent.",
+    "temporary_control_crop": {
+      "path": "/home/lsi/tempia/domainos-theme-work/I167/R741-live-gtk2/scrollbar-only-20261029T104346Z.png",
+      "sha256": "01ab7e3d9042d415efbbd92f2ea00c6048f33cd420c5af1e86d183f43b941408",
+      "dimensions_px": [
+        20,
+        520
+      ]
+    },
+    "scrollbar_roi_in_crop_px": [
+      3,
+      2,
+      18,
+      32
+    ],
+    "retained_chat_text": false
+  },
+  "comparison": {
+    "active_profile": "DomainOS-SR10-4-KDE-Reload; GTK2 2.24.33; GTK2 pixbuf engine previously identified in R736.",
+    "normal_vertical_bar_thickness_px": 15,
+    "roi_size_px": [
+      15,
+      30
+    ],
+    "live_vs_R740_candidate": {
+      "different_pixels": 0,
+      "total_pixels": 450
+    },
+    "live_vs_canonical_motif": {
+      "different_pixels": 0,
+      "total_pixels": 450
+    },
+    "candidate_crop": "records/ia-tema/I167/R740/gtk2-vertical-scrollbar-normal.png",
+    "canonical_reference": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "alignment_in_live_capture_px": [
+      3,
+      2
+    ]
+  },
+  "result": "The post-reload real GTK2 window displays the corrected normal vertical thumb start. Its first 15x30 px match both the R740 native candidate and canonical SR10.4 Motif crop exactly.",
+  "limits": [
+    "Only the first 30 px from the upper arrow into the thumb were compared.",
+    "The lower arrow and end of the full scrollbar are not established by this capture.",
+    "Horizontal orientation and pressed/disabled states remain open.",
+    "The overall human visual review for I167 remains pending."
+  ],
+  "changes": [
+    "No product code or user configuration was changed in R741.",
+    "The capture contains only scrollbar pixels; chat text was neither saved nor analyzed."
+  ],
+  "next": "Keep I167 open for the user’s visual assessment; continue only with remaining GTK2 work authorized under T04/I167. Do not treat this exact crop match as acceptance of the entire scrollbar."
+}

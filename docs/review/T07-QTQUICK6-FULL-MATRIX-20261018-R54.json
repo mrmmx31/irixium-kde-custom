@@ -1,0 +1,75 @@
+{
+  "id": "T07-QTQUICK6-FULL-MATRIX-20261018-R54",
+  "date": "2026-10-18",
+  "scope": "Real QtQuick6 KDE gallery controls; hover timing, stability, dismissal, page navigation, table delegate and both scrollbar orientations.",
+  "result": {
+    "status": "passed",
+    "runtime": "QtQuick 6.8.2 / PyQt 6.9.0 / XCB",
+    "display": ":400",
+    "screen": "1280x800",
+    "isolation": "Owned Xephyr and bwrap namespace; disposable HOME/XDG/DBus; no personal profile exposed.",
+    "tabs": [
+      {
+        "text": "Controls",
+        "tab_index": 0,
+        "stack_index": 0,
+        "enabled_hints_visible": 17
+      },
+      {
+        "text": "Table",
+        "tab_index": 1,
+        "stack_index": 1,
+        "enabled_hints_visible": 48
+      },
+      {
+        "text": "Scroll",
+        "tab_index": 2,
+        "stack_index": 2,
+        "enabled_hints_visible": 7
+      }
+    ],
+    "hovered_targets": 23,
+    "failures": 0,
+    "skipped": 0,
+    "disabled_not_hoverable": 7,
+    "delay_ms_range": [
+      600,
+      900
+    ],
+    "stable_ms": 400,
+    "dismissal_ms_range": [
+      150,
+      300
+    ],
+    "coverage": "All 17 enabled Controls-page targets, one real TableView cell and both TableView scrollbars, plus TextArea and both ScrollView scrollbar orientations. Shared repeated delegates were sampled once per control type."
+  },
+  "probe_diagnosis": "R53/R55 undercounted QtQuick6 because the temporary probe filtered to two names and did not reliably activate all pages. This probe clicks each real TabButton and verifies TabBar and StackLayout indices agree before traversing visible items.",
+  "production_changes": false,
+  "palette": {
+    "override": false,
+    "qt_roles": "Qt default/Fusion values, not KDE DomainOS",
+    "claim": "No color or historical-fidelity conclusion."
+  },
+  "warnings": [
+    "Qt 6 KDE TabButton.qml:22 emitted three TypeError warnings about null y during the run; they did not prevent tab selection or hint tests. Kept as an unresolved runtime warning."
+  ],
+  "outputs": {
+    "matrix": "~/tempia/t07-qtquick-scrollview-20261018/qt6-r54d-fullmatrix/home/qtquick6-proof/FULL-HOVER-MATRIX.json",
+    "matrix_sha256": "e1e8cac0fa61cf215cbfee980ac44477f69dfd955c73e35a6d3aa8bdeba6573e",
+    "native_runtime": "~/tempia/t07-qtquick-scrollview-20261018/qt6-r54d-fullmatrix/home/qtquick6-proof/RESULTADO.json",
+    "native_runtime_sha256": "f3cecffd1aa454a12d78b6007766622cc5bc43b1d1341b7572486a2bba71e418",
+    "generated_qml_sha256": "d8195a0a8f6fe9143fcaa929ae273c671dbd26986da485de8a0ea849dbadd713",
+    "probe": "~/tempia/t07-qtquick-scrollview-20261018/probe_qtquick6_fullmatrix_r54d.py",
+    "probe_sha256": "8a2c5da9d30358251359e240e0ea9312c709f7d534a0b87b549e102b5036aa05",
+    "runner": "~/tempia/t07-qtquick-scrollview-20261018/run_qtquick_probe_r54d.py",
+    "runner_sha256": "4fcab61d01f13ed168144ca257ee4e8c66b25eda9cc94ceb9b3004874d9998e1"
+  },
+  "limitations": [
+    "No palette or historical appearance validation.",
+    "No human acceptance recorded.",
+    "Only one layout and current runtime; does not prove other families.",
+    "Seven disabled controls cannot receive hover.",
+    "TableView repeated delegates were sampled by representative cell, not every row."
+  ],
+  "status_note": "QtQuick6 full-matrix hover criterion now passes in this scope. T07 remains partial for remaining families/layouts and human review."
+}

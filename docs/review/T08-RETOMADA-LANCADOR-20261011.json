@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-11T14:09:25.681819+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "launcher_resume_applied_scene_verified",
+  "defect": "Lançador copiava proposta/históricos e omitia cena aplicada, perdendo a distinção ao entregar nova instância.",
+  "changes": [
+    "Copiar scene.json como dados de projeto, com hash/recibo/checagem antes de startup; gerados continuam excluídos.",
+    "Rechecagem respeita o limite32MB do histórico, em vez de8MB.",
+    "Cena ausente explicitamente registrada; cena malformada/link/concorrente recusa antes de criar destino."
+  ],
+  "checks": {
+    "resume": 14,
+    "runtime": 2,
+    "mounts": 4,
+    "status": "passed",
+    "diff_check": "passed"
+  },
+  "limits": [
+    "Provas de snapshot offline não substituem abertura da fixture pessoal.",
+    "Nenhum texto sem checkpoint importado; origem permanecerá aberta."
+  ],
+  "delivery_request": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "b88b20d815a4759f1760e7399579abd3f5060dd623d56b077d8b1c64244b50f8",
+      "item_id": "T08",
+      "user_revision": 1,
+      "definition_sha256": "18a83c2339323cd77222fb75140f48f2722acfd73c3144009e5b3e91aa655b78",
+      "application": "Laboratório T08 — projetos/exportação no Xephyr :61 (origem PID1947021)",
+      "reason": "Versão compilada/testada, incluindo T07 dicas/Ajuda e T08 abrir/salvar/importar/reconstruir. Abrir nova instância preservando projeto salvo, cena aplicada, journal e Undo/Redo; origem permanece aberta. Salve ajustes antes de liberar a pausa: texto sem checkpoint não será importado. Não altera o tema pessoal.",
+      "requested_at": "2026-10-11T14:08:59.487Z"
+    },
+    "available": true,
+    "permitted": false,
+    "scope_current": true
+  },
+  "estimated_stage_progress_percent": 95,
+  "percentage_basis": "T08 privado verificado e entrega preparada; falta handoff/avaliação. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "plasma/tools/abrir-laboratorio-temas.py": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d",
+    "plasma/tests/test_lab_resume.py": "b2c11c56a832bca1e600fed32f38d9233d9bf1fe0b50ad0e37eec859fad19dff"
+  }
+}

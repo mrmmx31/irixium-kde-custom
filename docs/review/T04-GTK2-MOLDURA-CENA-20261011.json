@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-10-11T18:12:00.560984+00:00",
+  "status": "python_scene_integrated_verified",
+  "family": "gtk2",
+  "control": "frame",
+  "native_result": ".qa-t04-frame-integration/native-face/RESULTADO.json",
+  "native_scenes": 24,
+  "font_padding_size_rebuilds": 8,
+  "tests": {
+    "pure_and_integration": 6,
+    "list_regression": 3,
+    "gtk2_scene_contract": 4,
+    "shared_scene": 15,
+    "diff_check": "passed"
+  },
+  "source_sha256": {
+    "gtk2_frames.py": "089df08860fc4acbcb8b1eec1f74fb97aa4fa0b7796ec36d0357c04c8c168834",
+    "frame_control_gtk2.py": "6d243814fa4cc66311c049abac36a6d2d0cb9fdc1423de39863a473727069a4c",
+    "gtk2_generation.py": "c3f8a503178fe6c41b4f8d7727b8c61c75180f5adc016c250454520b286b6f55",
+    "gtk2_session.py": "e3dd9477274746516d4dafd4f115726c26cd84b43bd4041afcf3ec36bb095cd5",
+    "native_scene_gtk2.py": "72d44af3eb36edd65c4cf15354094b43f95af7909bb95052b786bfaec4fd9d50",
+    "backend.py": "4b62257c9a77408bbbd1cc916e3305c556f78cb487978e08710035d1419751df"
+  },
+  "scope": "Generation/Python receipt/qualified bindings/selected snippet/native scene/session connected. Real frame with role-coloured event enclosure, content label and native alignment. Four palettes/three variants/two origins verify face and top/bottom bevel. Eight rebuilds apply size300x140, padding7 and absolute17px font, preserving toolkit font family.",
+  "visual_inspection": ".qa-t04-frame-integration/native-face/DomainOS/coupled-disabled.png inspected; disabled face separated from normal canvas.",
+  "failed_attempts": [
+    "Font fixture assumed Sans; actual Noto Sans17px valid. Replaced family assumption with Pango absolute size check.",
+    "Transparent EventBox inherited normal canvas interior in disabled state. Native visible event enclosure now uses generated window role; affected matrix repeated.",
+    "Initial shared scene test filename matched zero tests; corrected test_preview_scene.py passed15."
+  ],
+  "remaining": [
+    "C receipt gate and real controller SaveLoad/UndoRedo/restarts",
+    "Ctrl gestures in both origins",
+    "Full historical/mask edge/corner comparison",
+    "Runtime sample histories across processes"
+  ],
+  "coverage": {
+    "integrated": 15,
+    "total": 16,
+    "percentage": 93.75,
+    "basis": "Frame not counted before C/controller/gesture gates."
+  }
+}

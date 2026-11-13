@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "id": "R464",
+  "date": "2026-10-27",
+  "observed_at_utc": "2026-10-27T13:59:21Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only revalidation that the authorized GTK2 scrollbar recipe remains selected and its normal stepper assets remain deployed after the earlier native comparison.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "profile": {
+    "selector": "/home/lsi/.gtkrc-2.0",
+    "sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+    "selected_theme": "DomainOS-SR10-4-KDE",
+    "installed_theme_root": "/home/lsi/.themes/DomainOS-SR10-4-KDE"
+  },
+  "assets": {
+    "method": "SHA-256 comparison of the four normal 15x15 stepper PNGs in the current installed theme against the authorized worktree revision.",
+    "worktree_and_installed_match": true,
+    "directions": {
+      "left": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+      "right": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+      "up": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7",
+      "down": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981"
+    },
+    "palette_cache_roots_checked": [
+      "14847d531ea7dac1bbfcb70ed8aae4a1950fc670221379693445ffc7029b8467",
+      "c33f7a5a1b14e5edc7a882a8194a3a8d2b955c59652b4d9fd1dfef655d05afa1"
+    ],
+    "both_caches_have_identical_normal_stepper_hashes": true
+  },
+  "runtime_and_vm": {
+    "user_owned_gtk2_application_available": false,
+    "only_gtk2_apps_found": "Codex HOM/PRD XChat clients and project preview tools",
+    "theme_vm_pid": 3971377,
+    "theme_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "prancheta_vm_pid": 3971019,
+    "prancheta_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4
+  },
+  "result": "The user's GTK2 selector still names DomainOS-SR10-4-KDE, and all four deployed normal stepper assets match the source hashes. This confirms deployment freshness and preserves R394/R453 as the direct normal-state comparison; it does not prove rendering in a user-owned GTK2 application or close the remaining historical VUE states.",
+  "changes": {
+    "theme_source_changed": false,
+    "user_profile_changed": false,
+    "application_restarted": false,
+    "vm_input_sent": false,
+    "other_vm_contacted": false
+  },
+  "remaining": [
+    "Direct SR10.4/VUE held captures for the other arrow directions, hover, insensitive state and thumb drag",
+    "User-owned GTK2 application scrollbar comparison",
+    "Human visual review"
+  ],
+  "next": "Resume direct native comparison when the separate Prancheta MAME releases the project VM guard; then compare the scrollbar in an identified user-owned GTK2 application without inspecting its contents."
+}

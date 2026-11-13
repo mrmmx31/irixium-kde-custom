@@ -1,0 +1,150 @@
+{
+  "item": "P10",
+  "family": "V06",
+  "date": "2026-10-14",
+  "status": "partial_states_and_spacing_measured",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "contract": "tools/domainos_scrollbar_rules.json",
+    "bar_px": 15,
+    "arrow_px": 11,
+    "view_bar_gap_px": 4,
+    "origin": "measured native VM output"
+  },
+  "consumer": {
+    "style": "Kvantum::Style",
+    "qt": "6.8.2",
+    "environment": "Xephyr :69, DPR 1; private XDG; synthetic Qt fixture; no product source or personal KDE configuration changed"
+  },
+  "fixture": {
+    "content_lines": 165,
+    "visible_lines_estimate": 15,
+    "viewport_px": [
+      536,
+      289
+    ],
+    "frame_width_px": 2,
+    "bar_extent_px": 15,
+    "range": [
+      0,
+      151
+    ],
+    "page_step": 14,
+    "slider_px": 22,
+    "style_reported_view_bar_spacing_px": 0,
+    "measured_viewport_bar_gap_px": 0
+  },
+  "arrow_state_comparison": {
+    "qt_captures": {
+      "enabled_at_min": {
+        "path": "/home/lsi/tempia/domainos-v06-qtstates-20261014/r5/bar-enabled-at-min.png",
+        "sha256": "2fc32af8e61c9c3d15ef8fba8bb1af936e4cf3437a48c32fcedc8a2aff0d0415"
+      },
+      "down_held": {
+        "path": "/home/lsi/tempia/domainos-v06-qtstates-20261014/r5/bar-down-held.png",
+        "sha256": "af28b7e6848a1d64c75e7d1e922b362d880d02ed3fda359f48a2d8307d56f548"
+      },
+      "down_released": {
+        "path": "/home/lsi/tempia/domainos-v06-qtstates-20261014/r5/bar-down-released.png",
+        "sha256": "1e9ef4166c76394aee4ad86676221449b35a155622c8aceb55a60030bb1c1386"
+      },
+      "enabled_restored_at_min": {
+        "path": "/home/lsi/tempia/domainos-v06-qtstates-20261014/r5/bar-released-restored-at-min.png",
+        "sha256": "2fc32af8e61c9c3d15ef8fba8bb1af936e4cf3437a48c32fcedc8a2aff0d0415"
+      }
+    },
+    "native_reference": {
+      "normal": {
+        "path": ".qa-domainos-scrollbar-reference-20261010/TRASH-DOWN-NORMAL.png",
+        "sha256": "cab2b598869a7e6909a9de583b75e7ba0e630c59478816d37440b9ce3f30a46b"
+      },
+      "held": {
+        "path": ".qa-domainos-scrollbar-reference-20261010/TRASH-DOWN-HELD.png",
+        "sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568"
+      },
+      "released": {
+        "path": ".qa-domainos-scrollbar-reference-20261010/TRASH-DOWN-RELEASED.png",
+        "sha256": "1a5c823b09e65f00d309bdf6b2c0820981e68a3a427c8b35a451a977d228a62b"
+      },
+      "cursor_masked_pixels": 9
+    },
+    "pixel_result": "After masking the nine cursor pixels in the VUE crop, each 15×15 lower-arrow glyph crop has zero differing pixels against the corresponding Qt state. Qt held/release delta is 53 glyph pixels. QStyleOption flags remained Enabled|Active with SC_None; no State_Sunken semantic claim is made."
+  },
+  "spacing_investigation": {
+    "private_trial": "scrollbar_in_view=true",
+    "result": "Spacing and geometry unchanged; integrated measured gap remains 0px. The consulted Kvantum theme configuration exposes no setting for PM_ScrollView_ScrollBarSpacing. layout_spacing config is generic layout item spacing and did not alter viewport/bar gap. No theme workaround was introduced."
+  },
+  "other_measurements": {
+    "standalone_scrollbar": {
+      "range": [
+        0,
+        150
+      ],
+      "page_step": 15,
+      "slider_px": 20
+    },
+    "corner_allocation_px": [
+      15,
+      15
+    ],
+    "corner_native_comparison": "The 15x15 corner fill matches the native VUE crop at 1:1 in all 225 pixels; adjacent frame/scrollbar comparison remains open.",
+    "disabled_capture_sha256": "bdf2ee573e388e9a466f710f54a6b563ad26944c8e2ca5c892fba13ec261c1d4",
+    "disabled_native_comparison": "unavailable"
+  },
+  "limitations": [
+    "Synthetic Qt content mirrors the Help Viewer caption, not identical font metrics or native application frame.",
+    "22px fixture thumb vs approximately 21px observed in the Help Viewer is a roughly 1px difference; not enough evidence for a product adjustment.",
+    "Native disabled-thumb appearance remains unproven. Only the uniform 15x15 corner fill was pixel-compared; adjacent frame/scrollbar geometry remains open."
+  ],
+  "corner_comparison": {
+    "reference": {
+      "path": "docs/referencias/domainos-sr104/canto-normal.png",
+      "sha256": "fe81e2de89dadc2a7dc2f54c782260d4ac76e8f476d882f613e2db5bea660aff",
+      "dimensions_px": [
+        40,
+        45
+      ],
+      "roi_xyxy_px": [
+        25,
+        30,
+        40,
+        45
+      ],
+      "scale": "native 1:1"
+    },
+    "qt_fixture": {
+      "path": "/home/lsi/tempia/domainos-v06-qtstates-20261014/r5/dual-scroll-corner.png",
+      "sha256": "1f911fd8c6d5da0ee035e2d3c6877924d0d86803ee3ed40df0af15cb7c18fec9",
+      "dimensions_px": [
+        370,
+        330
+      ],
+      "device_pixel_ratio": 1.0,
+      "roi_xyxy_px": [
+        355,
+        315,
+        370,
+        330
+      ],
+      "scale": "native 1:1"
+    },
+    "comparison": {
+      "region": "15x15 corner fill only",
+      "different_pixels": 0,
+      "total_pixels": 225,
+      "captured_uniform_rgb": "#78a0d5",
+      "adjacent_40x45_crop_different_pixels": 846,
+      "adjacent_40x45_crop_total_pixels": 1800,
+      "result": "corner tile fill matches exactly; this does not prove surrounding junction or scrollbar geometry",
+      "color_note": "RGB describes the evidence captures only; no product color was introduced or changed."
+    }
+  },
+  "changes": {
+    "product_source_changed": false,
+    "personal_kde_config_changed": false,
+    "vm_input_sent": false,
+    "other_ai_T04_touched": false
+  },
+  "next": "Question Q357 decides whether to keep the 4px spacing gap documented or open a separate authorized Qt style adapter demand; continue V08 after recording that decision."
+}

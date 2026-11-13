@@ -1,0 +1,64 @@
+{
+  "system": "Domain/OS SR10.4",
+  "transport": "FTP ativo autorizado, apenas leitura",
+  "guest_mutations": [],
+  "scope": "10 recursos lidos; 12 diretórios listados; busca adicional limitada a 30 diretórios/profundidade 2. Não prova ausência de fontes em todo o sistema.",
+  "files": [
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Vue",
+      "sha256": "49b55fdd1511e466b20e9c1da3cd925e9908144c0ba4ee0f891626508c3103c4",
+      "bytes": 2053
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Vuewm",
+      "sha256": "c07f1bbd1a5929c81f76109e2fe5881cf89669ca9ef07bc94aed1e616d6a2f17",
+      "bytes": 7603
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Vuefile",
+      "sha256": "052b89bee515c80096011eeb1744173dc42979fddabcbeccec71cc9adf4e66e0",
+      "bytes": 202
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Vuestyle",
+      "sha256": "dbab0289f624170008f4a637d243b1e17fb94e05932d3e958b46a0192b3e1322",
+      "bytes": 2590
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Vuehelp",
+      "sha256": "b3c7bf7be7b2cc35e025e2ec97944da821bf3c9ee1fe6d243f4ebf31f9bdf691",
+      "bytes": 1510
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/XTerm",
+      "sha256": "49137ca28f3bf63fb09d7381eafa8da9cc5fd4dc1ad8e434cadb57d92ec4b883",
+      "bytes": 3040
+    },
+    {
+      "guest_path": "/usr/X11/lib/app-defaults/Mwm",
+      "sha256": "acdf9d0fed20564524371c1a83bee02acd3203a4885ba2b7d45c4477e919bb86",
+      "bytes": 726
+    },
+    {
+      "guest_path": "/usr/X11/lib/sys.Xdefaults",
+      "sha256": "ca3ee4336b01d035be083de81ef7c568a03e8c6dd5bea8385f3b4d1a564c4bd5",
+      "bytes": 4593
+    },
+    {
+      "guest_path": "/users/user/.vue/node_12345:0/palette.vue",
+      "sha256": "8a02f2780d92205026f922c8906054148475545cdb03c0cb93ac5444c645fe97",
+      "bytes": 125
+    },
+    {
+      "guest_path": "/usr/X11/lib/vue/palettes/CoralReef.vp",
+      "sha256": "a98e02e176f5af4b79a03c910a9624d64b49af3fd2d5e36a28ddb35e2a42b3a3",
+      "bytes": 112
+    }
+  ],
+  "live_xrdb": {
+    "command": "DISPLAY=:0 /usr/X11/bin/xrdb -query",
+    "sha256": "34a60976dea8120498be3fbaf4f101a02a330dcfb319d70029e3363f72fdd508",
+    "resource_count": 10,
+    "scrollbar_geometry_declared": false
+  }
+}

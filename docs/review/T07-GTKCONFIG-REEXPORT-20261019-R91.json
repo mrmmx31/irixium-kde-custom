@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "id": "T07-GTKCONFIG-REEXPORT-20261019-R91",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "status": "passed_scoped_native_export",
+  "purpose": "Verify that the native KDE GtkConfig module re-emits GTK color roles after KConfig color-scheme changes.",
+  "runtime": {
+    "service": "org.kde.GtkConfig in private dbus-run-session",
+    "session": "private dbus-run-session",
+    "outputs": [
+      "gtk-3.0/colors.css",
+      "gtk-4.0/colors.css"
+    ]
+  },
+  "method": "Applied the actual DomainOS-SR10-4 and BreezeDark KDE color-scheme groups to a private kdeglobals, emitted org.kde.kconfig.notify.ConfigChanged for General/ColorScheme, then checked the actual GtkConfig output files.",
+  "result": [
+    {
+      "scheme": "DomainOS-SR10-4",
+      "exports": [
+        {
+          "path": "home/.config/gtk-3.0/colors.css",
+          "mtime_ns": 1792377832151946907,
+          "sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+          "roles": {
+            "theme_bg_color_breeze": "#78a0d5",
+            "theme_fg_color_breeze": "#ffffff",
+            "tooltip_background_breeze": "#78a0d5",
+            "tooltip_text_breeze": "#ffffff"
+          }
+        },
+        {
+          "path": "home/.config/gtk-4.0/colors.css",
+          "mtime_ns": 1792377832155946970,
+          "sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+          "roles": {
+            "theme_bg_color_breeze": "#78a0d5",
+            "theme_fg_color_breeze": "#ffffff",
+            "tooltip_background_breeze": "#78a0d5",
+            "tooltip_text_breeze": "#ffffff"
+          }
+        }
+      ],
+      "status": "passed"
+    },
+    {
+      "scheme": "BreezeDark",
+      "exports": [
+        {
+          "path": "home/.config/gtk-3.0/colors.css",
+          "mtime_ns": 1792377832867958051,
+          "sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+          "roles": {
+            "theme_bg_color_breeze": "#202326",
+            "theme_fg_color_breeze": "#fcfcfc",
+            "tooltip_background_breeze": "#292c30",
+            "tooltip_text_breeze": "#fcfcfc"
+          }
+        },
+        {
+          "path": "home/.config/gtk-4.0/colors.css",
+          "mtime_ns": 1792377832867958051,
+          "sha256": "84d85337d3cb37719134972f87546eb9bb5a0276d9eaff6d08bb5071dea028a6",
+          "roles": {
+            "theme_bg_color_breeze": "#202326",
+            "theme_fg_color_breeze": "#fcfcfc",
+            "tooltip_background_breeze": "#292c30",
+            "tooltip_text_breeze": "#fcfcfc"
+          }
+        }
+      ],
+      "status": "passed"
+    }
+  ],
+  "artifacts": {
+    "native_result": "~/tempia/t07-gtkconfig-reexport-20261019/logs/result-r91-final.json",
+    "private_logs": "~/tempia/t07-gtkconfig-reexport-20261019/logs/"
+  },
+  "limits": [
+    "This validates file emission and exact role values, not GTK application CSS reload or rendered tooltip pixels; R92 covers new GTK3 application behavior.",
+    "Only DomainOS-SR10-4 and BreezeDark were applied; no other palette or human review was included.",
+    "No personal KDE profile or product file was changed."
+  ],
+  "conclusion": "GtkConfig rewrote both gtk-3.0/colors.css and gtk-4.0/colors.css on each real private KConfig scheme notification. The two GTK output files had identical content hashes for each scheme."
+}

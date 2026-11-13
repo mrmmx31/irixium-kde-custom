@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-18",
+  "item": "T07",
+  "family": "GTK3",
+  "status": "inconclusive_test_harness",
+  "runtime": {
+    "gtk": "3.24.49",
+    "display": ":81",
+    "resolution": "1280x800",
+    "font": "Adwaita/Sans 10",
+    "theme_name_reported_by_GtkSettings": "Adwaita"
+  },
+  "scope": "Load a private copy of the complete DomainOS-SR10-4-KDE-Reload GTK3 stylesheet through a process-local Gtk.CssProvider, substitute Tooltip aliases, then inspect a native tooltip surface.",
+  "observed": {
+    "gtk_tooltip_geometry_probe": "passed",
+    "control_geometry_px": [540,320,120,36],
+    "tooltip_geometry_px": [308,362,583,85],
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "dismissed_on_leave": true,
+    "attempted_scheme": "Irixium",
+    "expected_tooltip_background": "#c1c1c1",
+    "expected_tooltip_text": "#000000",
+    "direct_GDK_capture": "The captured tooltip surface remained blue with white text, matching DomainOS roles rather than the Irixium fixture."
+  },
+  "interpretation": "The copied stylesheet's effective application was not verified. The probe did not assert the effective GtkStyleContext colors; therefore this capture cannot establish either a product defect or a product pass. The earlier root capture was also black. Treat both as harness diagnostics only.",
+  "product_files_changed": false,
+  "personal_profile_changed": false,
+  "source": {
+    "gtk_theme_css": "gtk/DomainOS-SR10-4-KDE-Reload/common/gtk.css",
+    "gtk_theme_css_sha256": "9340850231717d957dfe65b13ab8fc53832500d64facd8769edc66fb97c9e6d0",
+    "runner": "~/tempia/t07-gtk3-tooltip-theme-css-20261018-r82/run_direct_one.py",
+    "runner_sha256": "5e0f82660b31c4183582cd627e66e99606d83b687d2b105acde5f425dd8f098c",
+    "probe_copy": "~/tempia/t07-gtk3-tooltip-theme-css-20261018-r82/probe_gtk_hint_hover_direct_capture.py",
+    "probe_copy_sha256": "a74bcb0f640c239ad9d1173f60948d6df594334f864efc8e4fdc8e49d180a439",
+    "artifacts": "~/tempia/t07-gtk3-tooltip-theme-css-20261018-r82/"
+  },
+  "next_step": "If resuming the GTK3 full-theme palette check, first assert the loaded provider and effective tooltip background/text values in the GtkStyleContext; do not infer colors from the geometry probe alone. Meanwhile proceed to the next authorized Fila Atual item."
+}

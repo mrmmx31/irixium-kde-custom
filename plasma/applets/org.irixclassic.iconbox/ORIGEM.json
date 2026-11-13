@@ -1,0 +1,62 @@
+{
+  "component": "IRIX Classic Iconbox",
+  "identifier": "org.irixclassic.iconbox",
+  "version": "0.2.0",
+  "kind": "plasma-applet",
+  "license": "GPL-2.0-or-later",
+  "upstream": {
+    "name": "KDE Plasma Icons-and-Text Task Manager",
+    "package": "plasma-desktop",
+    "debian_version": "4:6.3.6-1",
+    "installed_path": "/usr/share/plasma/plasmoids/org.kde.plasma.taskmanager",
+    "source": "https://invent.kde.org/plasma/plasma-desktop/-/tree/v6.3.6/applets/taskmanager",
+    "files_sha256": {
+      "contents/config/config.qml": "c183d8d441a72b7c58f832c87627cd0d5e1d294b61bf7f8958fda85bda98f301",
+      "contents/config/main.xml": "84f4a57313667e9bbf7961f8ed1bd7c6c88b73050686d1b87b1b417082986009",
+      "contents/ui/AudioStream.qml": "c1be30480c76d1db9ea8ef9bc86af11560d324f37b994ca01eaa3bdc18f7192b",
+      "contents/ui/Badge.qml": "1cc83155d23c3e2460fb0f38fc06ea5a211790b18989807a205092b5e25022cc",
+      "contents/ui/ConfigAppearance.qml": "b15f041ace7a5462a75f142920da45ff54bc3599daed2d7a66d087e0e55dc454",
+      "contents/ui/ConfigBehavior.qml": "f2b764955e3921ba9240b9c633520e38e7841a6c2d28f0295bf4a73d7475093a",
+      "contents/ui/ContextMenu.qml": "cd2f37835e0921f8ecc700786e7abe3b1dc7247d9a8b4d7357a9190a7b501c1d",
+      "contents/ui/GroupDialog.qml": "a08b5ebf79155fe61c6c297a1a66bee3c6198ce7a2d931b1f428689ecaa4f7f7",
+      "contents/ui/GroupExpanderOverlay.qml": "3952b93347507327fdcde6b31b29f963bb0be3ea6e8ddd59ef4a919b29ac075f",
+      "contents/ui/MouseHandler.qml": "045a1cacc20556114af71cb2ff58edcebe42de35c8bdf517736a9140ad28f6fe",
+      "contents/ui/PipeWireThumbnail.qml": "b76fc7105bb69bf00a1cad94533fc0292a6ca7171409ec89bee75d2f68077e6b",
+      "contents/ui/PlayerController.qml": "f0d7f0328da01ebd6f5c5b9688f011bf961a2b8e54fd8a88ebb50f8f686d4229",
+      "contents/ui/PulseAudio.qml": "9fcf8c90d0b0f13395d8cf956b308d3003978421d55ca1c8ca0a2f818b374f70",
+      "contents/ui/ScrollableTextWrapper.qml": "87fe90c02049276d7d04f7dbdb79f2c8f4a3d20cc216c8ea91f9e5623bd77af7",
+      "contents/ui/Task.qml": "f58c50371d4157b7575ac96e1c6afb5c523112b1c32e9a983176ff9ab3afc862",
+      "contents/ui/TaskBadgeOverlay.qml": "d711d3576d66f7a4a9f11246791f329f23b7f5e3ab21643663da8baea601cc0a",
+      "contents/ui/TaskList.qml": "3246553467e194578b2cf1e447ee2653e17f6de7bdbd9ed048da808c55e565e0",
+      "contents/ui/TaskProgressOverlay.qml": "d6ee04f527fe64094f7485a91604f5e14f949601be392c17738bbdf6823d0259",
+      "contents/ui/ToolTipDelegate.qml": "2759500c52e93ffd85f04f24be791a23d0b347e5983da29a3e1b90bea1e8e721",
+      "contents/ui/ToolTipInstance.qml": "b810eb47e0aed58bad71c44ce5116df839c661880df5ee8443c99eeaf7beef5d",
+      "contents/ui/ToolTipWindowMouseArea.qml": "dd862a9060a1afd5ac4136f4a600feb0e5d3809e2edaa0e6db470fa601bb489c",
+      "contents/ui/code/layoutmetrics.js": "71407a56da9bfafffa6b488c9333d9c31f2faa9412da92ee4d003f2e42859612",
+      "contents/ui/code/tools.js": "6b0b4d982e4e1f4617474b563cdfd952231342ae9f6ed9bd4343bb1d2cb6ee41",
+      "contents/ui/main.qml": "727c4a828b84b8a72efcb93bd051fc156dc844ad79316e7ecfad760918966d5e",
+      "metadata.json": "81d5191e071f1ac6e91affd4564e0cf451e4d09928b9854a6a3cc548e0d4e93a"
+    }
+  },
+  "local_changes": [
+    "Own metadata identifier; all upstream authors and file license notices retained.",
+    "Compact single stripe of icon-plus-caption cells, bounded to 64–84 logical pixels.",
+    "Classic inset background and instantaneous pressed task SVG states.",
+    "Native task models, menus, grouping, drag and drop, accessibility and keyboard actions retained.",
+    "Separate icon wells and caption strips in a recessed teal housing, with an 8 px heading and a minimum applet height of 56 px for the existing 64 px panel; native group popup rows are retained.",
+    "Tile-based bitmap heading and hard stippled housing supplied by Classic artwork; heading anchors, dimensions, label font and all task input handlers unchanged."
+  ],
+  "dependencies": [
+    "Plasma 6",
+    "org.kde.taskmanager",
+    "org.kde.plasma.private.taskmanager",
+    "org.kde.ksvg",
+    "org.kde.plasma.components",
+    "org.kde.plasma.extras",
+    "org.kde.plasma.workspace.trianglemousefilter",
+    "org.kde.plasma.workspace.dbus",
+    "org.kde.plasma.private.mpris",
+    "org.kde.kirigami",
+    "org.kde.kcmutils"
+  ]
+}

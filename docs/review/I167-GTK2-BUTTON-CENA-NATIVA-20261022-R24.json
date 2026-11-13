@@ -1,0 +1,36 @@
+{
+  "item": "I167",
+  "revision": "R24",
+  "checked_at_utc": "2026-10-22T21:55:28Z",
+  "family": "GTK2 push button in the public scene",
+  "reference": "Domain/OS SR10.4 with HP VUE 2.01 remains the visual authority; this run did not capture new VM pixels.",
+  "command": "env TMPDIR=$HOME/tempia /usr/bin/python3 -B tools/theme-lab/tests/test_gtk2_button_scene_native.py --output $HOME/tempia/i167-button-scene-20261021 --yellow $HOME/tempia/I167-TestYellow-20261021.colors",
+  "result": {
+    "status": "passed",
+    "schemes": 4,
+    "origins": ["separate", "coupled"],
+    "native_scenes": 8,
+    "button_native_click": true,
+    "same_window_after_scene_replacement": true,
+    "scrollbar_value_preserved": 43,
+    "model_unchanged": true
+  },
+  "source_sha256": {
+    "tools/theme-lab/tests/test_gtk2_button_scene_native.py": "0706a209682b220fc0eabb397ff9074d5307f1f21f44e17992f207dc92e1098b",
+    "tools/theme-lab/tests/probe_gtk2_button_scene.py": "8c0b788ab25fb023b2aa0638dc9c50efc443163e92776c6af7c2afdcc4b1dcb5",
+    "tools/theme-lab/gtk2_generation.py": "1b7a9cb2cbf32156b0ae33a6ff3c84a25c46c9032f445af6de63cbcefcb2aadb",
+    "tools/theme-lab/gtk2_buttons.py": "ffa5dafa2628ea94087b239f2ce1121a537e23fe8af8a438f4077913788c3a5f"
+  },
+  "visual_limits": [
+    "The native GTK2 image is a full-window Xvfb capture with unused black canvas; it does not align pixel-for-pixel with the 300x120 isolated button reference.",
+    "Foundation edge checks compare the GTK2 native fixture against its generated role-based artwork, not against live Motif pixels.",
+    "No visual approval or historical fidelity claim is made; recipe_applied remains false in the generated receipt."
+  ],
+  "artifacts": {
+    "root": "~/tempia/i167-button-scene-20261021",
+    "domainos_button_coupled": "DomainOS/coupled/preview.png",
+    "domainos_button_separate": "DomainOS/separate/preview.png",
+    "native_metrics": "DomainOS/coupled/native.json"
+  },
+  "next": "Use the Theme Lab native single-control capture for GTK2 push-button calibration against the retained SR10.4/Motif reference, eliminating whole-window black margins. Then proceed to the next control family only after recording the comparison."
+}

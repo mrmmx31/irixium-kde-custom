@@ -1,0 +1,190 @@
+{
+  "at": "2026-10-10T23:18:25.621006+00:00",
+  "item": "I088",
+  "user_revision": 4,
+  "phase": "delivered_lsi",
+  "native_cases": 20,
+  "results": {
+    "tests": {
+      "list_expands_only_left_column": true,
+      "restore_original_pane_heights": true,
+      "progress_expands_and_restores_only_left": true,
+      "text_journal_undo_redo_preserved": true,
+      "failed_checkpoint_keeps_layout_and_text": true,
+      "two_widths_remain_inside_own_column": true,
+      "scope_response_reply_expand_restore_inside_right_column": true,
+      "columns_expand_independently": true,
+      "expanded_response_edit_undo_reload_preserved": true,
+      "history_expands_restores_and_survives_reload": true,
+      "history_chat_mode_restores_only_right_column": true,
+      "individual_conversation_reference_composition_expand_restore": true,
+      "expanded_composer_undo_redo_reload_preserved": true,
+      "all_buttons_at_both_widths": {
+        "1650": {
+          "nine_buttons_inside_own_column": true
+        },
+        "1920": {
+          "nine_buttons_inside_own_column": true
+        }
+      },
+      "user_adjusted_sash_restored": true,
+      "native_cursor_selection_scroll_restored": true,
+      "item_switch_keeps_independent_drafts_during_expansion": true,
+      "four_native_KDE_palettes": {
+        "DomainOS": {
+          "nine_buttons_match_current_KDE_roles": true,
+          "expanded_editor_matches_view_roles": true
+        },
+        "neutral": {
+          "nine_buttons_match_current_KDE_roles": true,
+          "expanded_editor_matches_view_roles": true
+        },
+        "dark": {
+          "nine_buttons_match_current_KDE_roles": true,
+          "expanded_editor_matches_view_roles": true
+        },
+        "yellow": {
+          "nine_buttons_match_current_KDE_roles": true,
+          "expanded_editor_matches_view_roles": true
+        }
+      },
+      "reopen_returns_normal_layout_and_preserves_complete_journal_undo": true,
+      "resize_expanded_columns_restores_split_ratio_within_new_height": true
+    },
+    "scope": "I088 left and three right panels; history and individual chat panels implemented; full geometry, editing, and palettes; handoff pending",
+    "installed": false
+  },
+  "chat_regression_cases": 17,
+  "chat_regression": {
+    "wide_selectors_above_checks_and_history_control_visible": true,
+    "empty_composer_shows_copyable_reference_without_inserting_saved_text": true,
+    "typing_hides_reference_and_expands_only_independent_composition": true,
+    "utf8_multistep_undo_redo_clipboard_replacement_and_native_menu": true,
+    "native_context_menu_opens_by_menu_key_and_shift_f10": true,
+    "switching_audit_chat_and_items_keeps_two_drafts_and_scope": true,
+    "draft_filter_includes_independent_composition_without_sending_or_authorizing": true,
+    "incoming_message_updates_conversation_without_touching_editor": true,
+    "explicit_reload_preserves_composition_history_and_unsent_base": true,
+    "save_sends_only_new_composition_and_reset_is_reversible": true,
+    "metadata_only_save_does_not_erase_saved_orientation": true,
+    "revision_conflict_keeps_composition_and_external_response": true,
+    "return_to_saved_recovers_latest_reference_and_remains_reversible": true,
+    "invalid_response_file_preserves_composition_and_recovers": true,
+    "checkpoint_failure_blocks_mode_change_without_losing_composition": true,
+    "four_native_kde_palettes_match_dynamic_compose_and_reference_roles": {
+      "DomainOS": {
+        "native_compose_and_reference_match_view_roles": true
+      },
+      "neutral": {
+        "native_compose_and_reference_match_view_roles": true
+      },
+      "dark": {
+        "native_compose_and_reference_match_view_roles": true
+      },
+      "yellow": {
+        "native_compose_and_reference_match_view_roles": true
+      }
+    },
+    "reopen_restores_chat_choice_independent_drafts_and_undo": true
+  },
+  "chat_regression_scope": "Shared checkpoint/action ordering fixed and verified; reused after left-only resize formula change.",
+  "installed": true,
+  "human_approval_filled": false,
+  "estimated_stage_progress_percent": 100,
+  "source_hashes": {
+    "docs/AMPLIAR-PAINEIS.md": "3b9433e04439de144107ebbfa830e542efb0baae3a9cd6344c8e985d65da71c9",
+    "src/view/panel_zoom.c": "ddd02a9e4b6fcf0a283558d62d4ea8b6672640b508ff9066a589ba65448f7234",
+    "src/view/panel_zoom_right.c": "0c84a5b9310667a2cd7f73a4126cbc239b1a8b8903e4e2c63914dd76bd6f945b",
+    "src/view/panel_zoom_chat.c": "798f5f993fbdcf2c70210838f88f96599c3a047923f4444838fcaa7be848f5c9",
+    "src/view/history_layout.c": "9f02ef735cc5afcdc754663afb2eada4a0a7f36e9dbc4ceb4793d5441700804c",
+    "src/view/chat.c": "15081b46b83fcddf8f9b030ed7bd12229b8101617f8f42f1ee8108fd4787eb5b",
+    "src/view/details_layout.c": "9fc94291baea7f46edf943c7d22202e09a9658c72b840ca1469cfecaa54a5139",
+    "src/view/panels.c": "d0525e71654d6312855425c73dde8913cbeb91c18c4c857433533f57192f069c",
+    "src/view/progress.c": "8443080931756f842aeb9851913eff3f86b167b426904835649cd2c0cfcc1e5e",
+    "src/controller/actions.c": "817f6a8ca6e2f8080ad6b5b4dd3bed3dc25bdfbd75e3ed2435189dd467070e4e",
+    "src/view/internal.h": "7210546cebb0ccd12a51bc8c745b0e9f00bf24eebbb4cb0d4b0dbc72adf7d15a",
+    "include/work_board/view.h": "3d44ac3713b9b2d37597b5ed122ee608c7941678effefec9f38c8c672571495e",
+    "tests/test_panels_native.py": "e47c23e1230f57d9623158ba3c7b26b25aba12076f41c0830d6e707703a4e381",
+    "tests/native_panels_probe.c": "7aa8d240149adf69fe1a137904e51d3b59bf4f5d6818bd8e678e33bece7679b3",
+    "Makefile": "1e66efd5696d91e8f295c0761f489e5564e2b353006f0dbb49c8de4eac4e3550"
+  },
+  "evidence_sha256": "8b24f649c62baf3354e18e2cbc992473ac61a7476638d282af02e352b0849b27",
+  "chat_evidence_sha256": "7acc9ac603f59d66e1b458e766fe5c5be3e2b8932b46ee5cf66c438ede77e670",
+  "install": {
+    "date": "2026-10-10T23:17:45.280378+00:00",
+    "item": "I088",
+    "revision": 4,
+    "installed_paths": [
+      "Makefile",
+      "README.md",
+      "docs/AMPLIAR-PAINEIS.md",
+      "build/work-board",
+      "build/libwork-board-model.a",
+      "tests/test_panels_native.py",
+      "tests/native_panels_probe.c",
+      "src/view/panel_zoom_chat.c",
+      "src/view/panel_zoom_right.c",
+      "src/view/panel_zoom.c",
+      "src/view/panels.c",
+      "src/view/internal.h",
+      "src/view/chat.c",
+      "src/view/progress.c",
+      "src/view/details_layout.c",
+      "src/view/history_layout.c",
+      "src/controller/actions.c",
+      "include/work_board/view.h"
+    ],
+    "private_backup": "/home/lsi/.local/state/ai-work-board/panel-recovery-20261010T231745Z",
+    "binary_sha256": "dd052db9cdfbcaff65bbcea8ea78a52a0bda1b899b4d97b01a696794cd7480ab",
+    "source_hashes": {
+      "Makefile": "1e66efd5696d91e8f295c0761f489e5564e2b353006f0dbb49c8de4eac4e3550",
+      "README.md": "e0fcf92722681a2cd046a2a57a72336c36359ea9b3fd16232e6e0174e85d16bc",
+      "docs/AMPLIAR-PAINEIS.md": "3b9433e04439de144107ebbfa830e542efb0baae3a9cd6344c8e985d65da71c9",
+      "build/work-board": "dd052db9cdfbcaff65bbcea8ea78a52a0bda1b899b4d97b01a696794cd7480ab",
+      "build/libwork-board-model.a": "2515736cbbc528c0da045713a322cd42baa1e35390518db2cae51fb439ad681a",
+      "tests/test_panels_native.py": "e47c23e1230f57d9623158ba3c7b26b25aba12076f41c0830d6e707703a4e381",
+      "tests/native_panels_probe.c": "7aa8d240149adf69fe1a137904e51d3b59bf4f5d6818bd8e678e33bece7679b3",
+      "src/view/panel_zoom_chat.c": "798f5f993fbdcf2c70210838f88f96599c3a047923f4444838fcaa7be848f5c9",
+      "src/view/panel_zoom_right.c": "0c84a5b9310667a2cd7f73a4126cbc239b1a8b8903e4e2c63914dd76bd6f945b",
+      "src/view/panel_zoom.c": "ddd02a9e4b6fcf0a283558d62d4ea8b6672640b508ff9066a589ba65448f7234",
+      "src/view/panels.c": "d0525e71654d6312855425c73dde8913cbeb91c18c4c857433533f57192f069c",
+      "src/view/internal.h": "7210546cebb0ccd12a51bc8c745b0e9f00bf24eebbb4cb0d4b0dbc72adf7d15a",
+      "src/view/chat.c": "15081b46b83fcddf8f9b030ed7bd12229b8101617f8f42f1ee8108fd4787eb5b",
+      "src/view/progress.c": "8443080931756f842aeb9851913eff3f86b167b426904835649cd2c0cfcc1e5e",
+      "src/view/details_layout.c": "9fc94291baea7f46edf943c7d22202e09a9658c72b840ca1469cfecaa54a5139",
+      "src/view/history_layout.c": "9f02ef735cc5afcdc754663afb2eada4a0a7f36e9dbc4ceb4793d5441700804c",
+      "src/controller/actions.c": "817f6a8ca6e2f8080ad6b5b4dd3bed3dc25bdfbd75e3ed2435189dd467070e4e",
+      "include/work_board/view.h": "3d44ac3713b9b2d37597b5ed122ee608c7941678effefec9f38c8c672571495e"
+    },
+    "personal_window_reopened": false,
+    "personal_journal_touched": false
+  },
+  "handoff": {
+    "date": "2026-10-10T23:17:57.577134+00:00",
+    "request": "Current reply call_f84416a5b71d4c7080913b2df0e743ca: Parei de digitar; pode reabrir",
+    "previous_pid": 1373938,
+    "pid": 1387195,
+    "binary_sha256": "dd052db9cdfbcaff65bbcea8ea78a52a0bda1b899b4d97b01a696794cd7480ab",
+    "backup": "/home/lsi/.local/state/ai-work-board/reopen-panels-20261010T231755Z",
+    "visible_windows": 1,
+    "preservation": {
+      "all_user_records_identical": true,
+      "all_journal_fields_identical": true,
+      "undo_redo_histories_identical": true,
+      "chat_undo_redo_histories_identical": true,
+      "drafts_identical": true,
+      "chat_drafts_identical": true
+    },
+    "I088_revision": 4,
+    "installed_panel_changes": true
+  },
+  "visual_inspection": [
+    "composition/reference expanded inside right column at 1650/1920",
+    "DomainOS/dark/yellow KDE palettes",
+    "personal lsi window: one visible board, recovered categories and drafts, small buttons visible"
+  ],
+  "remaining": [
+    "human evaluation of I088; no approval filled by assistant"
+  ],
+  "broad_goal": "active/incomplete"
+}

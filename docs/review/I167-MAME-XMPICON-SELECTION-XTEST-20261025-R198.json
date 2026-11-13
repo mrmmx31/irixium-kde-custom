@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XMPICON-SELECTION-XTEST-20261025-R198",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "initial_state": {
+    "mame_pid": 274368,
+    "mame_window_xid": "0x1c00008",
+    "mame_window_geometry": "+885+59 1024x844",
+    "guest_screen": "VUE File Manager at /node_12345, 28 files, no selected icon",
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 506, "y": 394},
+    "hook_captured": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false
+  },
+  "action": {
+    "kind": "bounded XTest click sequence",
+    "input": "A 60 ms click at an empty desktop point was consumed for capture; after release, the pointer was moved to the first bin icon center using the host/window mapping and a single 60 ms click was sent. The final snapshot was taken before releasing with AltGr.",
+    "observations": [
+      "The initial empty-space click changed the hook to captured=true, confirming the known recapture path.",
+      "The target click did not produce a visible selected icon or open the folder; the File Manager remained at /node_12345 with 28 files.",
+      "The preceding host relative motion test also produced no visible XmpIcon hover."
+    ]
+  },
+  "final_state": {
+    "guest_screen": "VUE desktop visible; File Manager remains at /node_12345, no icon selected or opened",
+    "hook_captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "apollo_mouse_ports": {"x": 3, "y": 106},
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_active_window": "XChat",
+    "host_pointer": {"x": 506, "y": 394},
+    "capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/final-current-r198.png",
+      "sha256": "b67f30f90606416b5ae483d6936c8c9a7d753f32d644ad07bf7daeb9c633d8bc"
+    },
+    "selection_attempt_capture": {
+      "path": "/home/lsi/tempia/ia-tema/evidence/I167/xmpicon-single-select-r198.png",
+      "sha256": "e3a7cd74a19096b6c8d16f7bff6a627f109763189d7b61387baf91ff4c8f5937"
+    }
+  },
+  "limits": "This was a synthetic host XTest sequence, not a physical mouse interaction. It confirms capture on the blank click, but does not establish that the host/window coordinate mapping becomes Apollo pointer motion after capture. No native XmpIcon selected state was obtained; no guest files/configuration changed.",
+  "next": "Do not repeat the same XTest sequence. Continue GTK2 work using an independently measurable native state; keep the physical wake/capture report unresolved until that exact event can be observed.",
+  "status": "capture_click_confirmed;_xmpicon_selection_not_obtained;_host_state_restored"
+}

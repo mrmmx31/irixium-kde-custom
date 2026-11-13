@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "R674",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare both normal horizontal stepper cells visible in the current native SR10.4/VUE screen with the canonical Trash Can cells and active GTK2 assets.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "native_system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "native_capture": "~/tempia/domainos-theme-work/gtk2-sr104-20261028-awake.png",
+    "native_capture_sha256": "5e8c713e67158750a9db2eaacba203231475e04cd2ba02c724a011bacb00f9ef",
+    "native_window": "File Manager horizontal scrollbar; current screenshot is not the Trash Can window",
+    "reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "gtk2_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+    "scale": "1:1; no resize or interpolation"
+  },
+  "method": {
+    "comparison": "RGBA exact-pixel comparison of each 15x15 cell and its central 11x11 glyph allocation.",
+    "screen_cells": {
+      "left": [52, 699],
+      "right": [576, 699]
+    },
+    "reference_cells": {
+      "left": [2, 4],
+      "right": [526, 4]
+    }
+  },
+  "results": {
+    "left": {
+      "live_crop": "~/tempia/domainos-theme-work/gtk2-sr104-horizontal-left-r674.png",
+      "live_crop_sha256": "41957875e1a1aa80f87050253d0dcd9803680e71741e40c9ef9b52f08e20df33",
+      "active_asset": "assets/scrollbar-stepper-left-normal.png",
+      "active_asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99",
+      "different_pixels_live_vs_reference": 0,
+      "different_pixels_asset_vs_reference": 0,
+      "different_pixels_live_vs_asset": 0,
+      "cell_pixels_compared": 225,
+      "central_11x11_differences": 0
+    },
+    "right": {
+      "live_crop": "~/tempia/domainos-theme-work/gtk2-sr104-horizontal-right-r674.png",
+      "live_crop_sha256": "967539ac520632179267a9f3bb8b6bdf06fd6b9305a34aabae5c143ce9f7f91e",
+      "active_asset": "assets/scrollbar-stepper-right-normal.png",
+      "active_asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0",
+      "different_pixels_live_vs_reference": 0,
+      "different_pixels_asset_vs_reference": 0,
+      "different_pixels_live_vs_asset": 0,
+      "cell_pixels_compared": 225,
+      "central_11x11_differences": 0
+    },
+    "contract_metrics": {
+      "bar_px": 15,
+      "shadow_px": 2,
+      "arrow_allocation_px": 11,
+      "source": "tools/domainos_scrollbar_rules.json; SR10.4 VM measurement"
+    }
+  },
+  "limits": [
+    "This verifies normal horizontal cells in the live VUE File Manager, not a new Trash Can capture.",
+    "It does not identify the horizontal right candidate within the live XChat screenshot or prove that XChat's horizontal bar is visible.",
+    "No GTK2 source or user profile was changed; no MAME mouse input was sent.",
+    "Pressed/released, hover, disabled and drag comparisons remain open; I517 is still unauthorized."
+  ],
+  "conclusion": "The reported short horizontal arrow is not reproduced in the normal 15x15 cell or 11x11 allocation: both live VUE cells and both active GTK2 assets match the canonical normal cells exactly.",
+  "next": "Keep the horizontal visual report open for app-level attribution or a new user observation; continue other independent GTK2 adapter work. Do not change arrow dimensions without a measured mismatch.",
+  "technical_coverage_estimate": {
+    "scope": "GTK2 scrollbar normal-state evidence only",
+    "percent": 95,
+    "basis": "R674 confirms both normal horizontal cells on a current native VUE screen and the active GTK2 assets at 1:1. App-level horizontal attribution and interactive states remain open; this is not a fidelity score or a full-adapter completion claim."
+  }
+}

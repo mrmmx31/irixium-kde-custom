@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "R432",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Test the existing wrapped Apollo X-counter path with the mouse capture hook enabled, using a held native screenshot before clearing the override.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_board_mame_pid": 3971019,
+    "separate_board_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "method": {
+    "existing_mouse_hook_capture": true,
+    "counter_port": ":kbd:mouse2/Mouse X",
+    "initial_counter": 53,
+    "overridden_counter": 54,
+    "hold_duration_emulated_seconds": 0.30,
+    "snapshot_taken_before_counter_clear": true,
+    "button_input": false
+  },
+  "evidence": {
+    "baseline": {
+      "path": "~/tempia/ia-tema/evidence/I167/r436-after-counter-cleanup-20261027.png",
+      "sha256": "7930638dd1b6b5fc4d74a20860272a63f08271ac17b84e390806fe7cae30bd1a"
+    },
+    "held": {
+      "path": "~/tempia/ia-tema/evidence/I167/r437-counter-dwell-preclear-20261027.png",
+      "sha256": "ae56e0186d37480cb3ee9d3f47131a9b15a3d1a3f6d9599692e9e5275e2e492a"
+    },
+    "pixel_comparison": {
+      "baseline_and_held_dimensions": [1024, 844],
+      "changed_pixels_total": 146,
+      "changed_pixels_in_pointer_roi_500_710_535_745": 0,
+      "changed_pixels_in_file_manager_scrollbar_roi_840_320_865_575": 0,
+      "changed_pixels_in_center_roi_200_100_800_700": 0,
+      "changed_pixels_bbox": [249, 736, 906, 820],
+      "interpretation": "The 146 changes are confined to the lower panel strip and do not intersect the cursor or scrollbar regions; no pointer displacement was visible during this one-count X override."
+    }
+  },
+  "result": "With the existing hook in captured=true/wait=false state, a one-count X override was held for 300 ms (beyond R429's 50 ms interval), captured before cleanup, and compared with its immediately preceding frame. The cursor and File Manager scrollbar ROIs were identical. This shows this exact counter-field override did not visibly move the pointer under the tested state; it does not prove whether the Apollo driver sampled the port or what protocol mode the guest used. Earlier helper auto-cleanup completed before its requested dwell, so that attempt was inconclusive; this direct held snapshot fixes that measurement flaw.",
+  "cleanup": {
+    "counter_override_cleared": true,
+    "mouse_hook_released": true,
+    "captured": false,
+    "wait_button_up": false,
+    "mouse_option": false,
+    "mouse_device": "none",
+    "left_button_raw": 0,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "host_pointer_restored": [600, 100],
+    "mame_window": "Iconic/unmapped",
+    "channel_pending": false
+  },
+  "actions": {
+    "scrollbar_clicked": false,
+    "gtk2_recipe_changed": false,
+    "mame_restarted": false,
+    "profile_changed": false,
+    "other_vm_sessions_touched": false
+  },
+  "next": "Continue I167 only. Investigate the live Apollo mouse protocol/driver mode or a controlled host-motion route; do not repeat a one-count field override. The enabled VUE arrow must be visibly targeted before any press/release comparison."
+}

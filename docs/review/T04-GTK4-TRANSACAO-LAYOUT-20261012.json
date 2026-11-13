@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-12T00:29:53.767318+00:00",
+  "item": "T04",
+  "authority_revision": 6,
+  "scope": "GTK4 push layout transaction; no native gesture integration yet",
+  "tests": {
+    "command": "PYTHONPATH=tools/theme-lab python3 -B -m unittest discover -s tools/theme-lab/tests -p test_gtk4_layout_transaction.py -v",
+    "passed": 6
+  },
+  "properties": [
+    "stable surface-relative delta",
+    "selection-only click emits no move",
+    "record changes after successful move event",
+    "failed write restores placement",
+    "surface/scale changes and non-finite coordinates cancel",
+    "bounded positions and idempotent cancellation"
+  ],
+  "native_proof": false,
+  "personal_session_changed": false,
+  "remaining": [
+    "GTK4 gesture controllers",
+    "native Ctrl click/drag proof in both origins",
+    "controller routing and delivery"
+  ],
+  "sha256": {
+    "tools/theme-lab/gtk4_layout_transaction.py": "138647bd66b6df5be5af3fe4d9c8dd35858557ef9dd9f4306013a894e39bda9b",
+    "tools/theme-lab/tests/test_gtk4_layout_transaction.py": "a066ec3b967eeb43a63ca7af147b950bb9a9620cb3241a8452e0ea4720da9d52"
+  }
+}

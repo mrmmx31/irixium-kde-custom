@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "at": "2026-10-11T06:56:25.587709+00:00",
+  "reference": "Domain/OS SR10.4 / HP VUE2.01; sessão MAME existente",
+  "authority": {
+    "item": "I120",
+    "revision": 1,
+    "definition_sha256": "8cab7a3a61bb9421ae0dc94c0ef55b2abd9db7569fb8b4e98ba8ed43c97dcf3d"
+  },
+  "font_records": [
+    {
+      "role": "sistema/controles: padrão aberto da sessão",
+      "request": "-*-swiss 742-bold-r-normal-*-120-*",
+      "xlfd": "-Bitstream-Swiss 742-Bold-R-Normal--16-120-72-72-P-94-HP-Roman8",
+      "file": "/usr/X11/lib/fonts/hp_roman8/75dpi/system16.snf.Z",
+      "family": "Swiss 742",
+      "weight": "Bold",
+      "spacing": "proportional",
+      "advance_min": 3,
+      "advance_max": 15,
+      "pixel_size": 16,
+      "point_size_decipoints": 120,
+      "dpi": [
+        72,
+        72
+      ],
+      "ascent": 12,
+      "descent": 4,
+      "cap_height": 9,
+      "x_height": 6,
+      "charset": "HP-Roman8",
+      "copyright": "Copyright 1989 by Bitstream, Inc. All rights reserved.",
+      "distribution_license": "Não identificada; não redistribuído"
+    },
+    {
+      "role": "usuário/campos de texto: padrão aberto da sessão",
+      "request": "-*-prestige-medium-r-normal-*-120-*",
+      "xlfd": "-Bitstream-Prestige-Medium-R-Normal--16-120-72-72-M-80-HP-Roman8",
+      "file": "/usr/X11/lib/fonts/hp_roman8/75dpi/user8x16.snf.Z",
+      "family": "Prestige",
+      "weight": "Medium",
+      "spacing": "character cell",
+      "advance_min": 8,
+      "advance_max": 8,
+      "pixel_size": 16,
+      "point_size_decipoints": 120,
+      "dpi": [
+        72,
+        72
+      ],
+      "ascent": 12,
+      "descent": 4,
+      "cap_height": 9,
+      "x_height": 6,
+      "charset": "HP-Roman8",
+      "copyright": "Copyright 1989 by Bitstream, Inc. All rights reserved.",
+      "distribution_license": "Não identificada; não redistribuído"
+    }
+  ],
+  "configured_resources": {
+    "*Font": "-*-prestige-medium-r-normal-*-120-*",
+    "*FontList": "-*-swiss 742-bold-r-normal-*-120-*",
+    "*XmText*FontList": "-*-prestige-medium-r-normal-*-120-*",
+    "*XmTextField*FontList": "-*-prestige-medium-r-normal-*-120-*",
+    "*systemFont": "-*-swiss 742-bold-r-normal-*-120-*",
+    "*userFont": "-*-prestige-medium-r-normal-*-120-*"
+  },
+  "query_method": "DISPLAY=:0 /usr/X11/bin/xlsfonts -o -ll -fn <padrão>; OpenFont resolve uma fonte concreta, distinto de ListFonts",
+  "resource_reads": [
+    {
+      "path": "/usr/X11/lib/app-defaults/Vue",
+      "bytes": 2053,
+      "sha256": "49b55fdd1511e466b20e9c1da3cd925e9908144c0ba4ee0f891626508c3103c4"
+    },
+    {
+      "path": "/usr/X11/lib/app-defaults/Vuewm",
+      "bytes": 7603,
+      "sha256": "c07f1bbd1a5929c81f76109e2fe5881cf89669ca9ef07bc94aed1e616d6a2f17"
+    },
+    {
+      "path": "/usr/X11/lib/app-defaults/Vuestyle",
+      "bytes": 2590,
+      "sha256": "dbab0289f624170008f4a637d243b1e17fb94e05932d3e958b46a0192b3e1322"
+    },
+    {
+      "path": "/usr/X11/lib/sys.Xdefaults",
+      "bytes": 4593,
+      "sha256": "ca3ee4336b01d035be083de81ef7c568a03e8c6dd5bea8385f3b4d1a564c4bd5"
+    },
+    {
+      "path": "/users/user/.Xdefaults",
+      "error": "550 /users/user/.Xdefaults: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/fonts.alias",
+      "error": "550 /usr/X11/lib/fonts/iso_8859.1/fonts.alias: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/fonts.dir",
+      "error": "550 /usr/X11/lib/fonts/iso_8859.1/fonts.dir: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/hp_roman8/fonts.alias",
+      "error": "550 /usr/X11/lib/fonts/hp_roman8/fonts.alias: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/hp_roman8/fonts.dir",
+      "error": "550 /usr/X11/lib/fonts/hp_roman8/fonts.dir: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/misc/fonts.alias",
+      "sha256": "aa70fca878f601063d02132f48a5aa9fb72bb1bc8ab59f8d12da56e813feeb28",
+      "bytes": 4707
+    },
+    {
+      "path": "/usr/X11/lib/fonts/misc/fonts.dir",
+      "sha256": "c2a40ac7a6a16c73872eee40e9c565c213dfc632fe10ca707e844d1e216bd662",
+      "bytes": 13642
+    },
+    {
+      "path": "/usr/X11/lib/fonts/75dpi/fonts.alias",
+      "error": "550 /usr/X11/lib/fonts/75dpi/fonts.alias: No such file or directory."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/75dpi/fonts.dir",
+      "sha256": "3d45e36e71613004f9a71d8a12f1766fe565668ed413bfcf351c648a59b3522c",
+      "bytes": 10084
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/75dpi/fonts.alias",
+      "sha256": "ed4fb76a8cbc4606ab2c459662f710e7d5e5d88c673d5e00c14f33c634f253f5",
+      "bytes": 3087
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/75dpi/fonts.dir",
+      "sha256": "34a5aa52495704409873a85608093898545aa2b2e939a5e9dfc55d4af213cb7e",
+      "bytes": 16440
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/100dpi/fonts.alias",
+      "sha256": "c05cef4511cbec5110dccd8036e66d7b8e1e4ad5b065f805ae975c907fb05bb5",
+      "bytes": 3175
+    },
+    {
+      "path": "/usr/X11/lib/fonts/iso_8859.1/100dpi/fonts.dir",
+      "error": "timed out"
+    },
+    {
+      "path": "/usr/X11/lib/fonts/hp_roman8/75dpi/fonts.alias",
+      "error": "550 /usr/X11/lib/fonts/iso_8859.1/100dpi/fonts.dir: Connection reset by peer."
+    },
+    {
+      "path": "/usr/X11/lib/fonts/hp_roman8/75dpi/fonts.dir",
+      "sha256": "d3f0ee207a6440ec7ed343b43d96f796e4026a15db6baa740920b664ddd339b3",
+      "bytes": 9230
+    }
+  ],
+  "vm_observation": {
+    "profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false,
+      "captured": false
+    },
+    "no_graphical_input": true,
+    "native_capture_sha256": "10110b1cdce288ba73ecf287f84c18e5436aafa6200b11813dd8e4492f68bb75"
+  },
+  "remaining": [
+    "Medir glyphs e textos correspondentes na VM e comparar amostras das alternativas",
+    "Confirmar fontes efetivas específicas de título, data e ícones; recursos não são introspecção do widget",
+    "Concluir equivalências por toolkit com suporte/encoding/fontes efetivas e métricas separados",
+    "Escolher substituição distribuível e provar visualmente antes de aplicar ao tema"
+  ],
+  "limits": [
+    "Padrão OpenFont provado no servidor; não comprova introspecção de cada widget existente",
+    "Captura nativa examinada, ainda sem comparação de glyphs por pixel",
+    "A enumeração com wildcard também listou Prestige de23px pelo campo average_width120; OpenFont confirmou a variante16px",
+    "FTP retornou timeout em iso_8859.1/100dpi/fonts.dir; resposta seguinte no mesmo controle possivelmente desincronizada, conservada como erro e sem afirmar ausência de hp_roman8/fonts.alias",
+    "Fontes binárias do convidado não copiadas nem distribuídas; direitos não interpretados como licença livre"
+  ],
+  "scope_progress_percent": 45
+}

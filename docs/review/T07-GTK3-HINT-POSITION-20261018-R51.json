@@ -1,0 +1,231 @@
+{
+  "id": "T07-GTK3-HINT-POSITION-20261018-R51",
+  "date": "2026-10-18",
+  "demand": "T07",
+  "status": "GTK3 native hint positioning passed for one catalog layout; T07 remains partial",
+  "purpose": "Keep GTK3 native tooltips outside their owning control without replacing their native rendering, content, color roles, or delay.",
+  "method": {
+    "toolkit": "GTK 3.24.49",
+    "owned_xephyr": {
+      "display": ":572",
+      "server_pid": 2576655,
+      "resolution": "1280x800",
+      "window_manager": "Openbox",
+      "server_identity": "The runner verified /tmp/.X572-lock contains its own Xephyr PID before connecting; the runner terminated only its own Xephyr and Openbox."
+    },
+    "fixture": "One real Theme Lab GTK3 catalog control per fresh process; owner window 640x600; one geometry and one screen; center-point hover.",
+    "criteria": "No display before 500 ms; exactly one native tooltip; within monitor; zero intersection with control; same position and size after 400 ms; disappears after pointer leaves; push action remains connected.",
+    "positioning": "On map, move the existing native GtkTooltipWindow to the first fitting outside-control position using tooltip_position.outside_control; keep native GTK styles and timers."
+  },
+  "results": {
+    "matrix": {
+      "passed": 16,
+      "total": 16,
+      "controls": [
+        {
+          "control": "arrow",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "check",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "combo",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "entry",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "frame",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "list",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "progress",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "push",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "radio",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "scale_h",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "scale_v",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "scroll_h",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "scroll_v",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "spin",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "text",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        },
+        {
+          "control": "toggle",
+          "status": "passed",
+          "overlap_pixels": 0,
+          "native_delay_ms": 500,
+          "stability_ms": 400,
+          "closed_after_pointer_leave": true
+        }
+      ]
+    },
+    "push": {
+      "control_rect": [
+        541,
+        338,
+        120,
+        36
+      ],
+      "tooltip_rect": [
+        309,
+        380,
+        583,
+        85
+      ],
+      "overlap_pixels": 0,
+      "action_assertion": "passed"
+    },
+    "toggle": {
+      "control_rect": [
+        541,
+        338,
+        120,
+        36
+      ],
+      "tooltip_rect": [
+        309,
+        380,
+        583,
+        85
+      ],
+      "overlap_pixels": 0
+    },
+    "capture": "~/tempia/t07-gtk3-r55-owned-xephyr-20261018/push-center.png (the first owned-display capture showed the real GTK3 window and the 6 px gap)."
+  },
+  "implementation": {
+    "files": [
+      "tools/theme-lab/gtk3_hint_position.py",
+      "tools/theme-lab/control_hints.py",
+      "tools/theme-lab/tests/probe_gtk_hint_hover.py"
+    ],
+    "source_sha256": {
+      "tools/theme-lab/gtk3_hint_position.py": "fbfd551f43d21c13ed30e497030e53070a6a527ca0f8439f0a833986c5ec195f",
+      "tools/theme-lab/control_hints.py": "1f35d9adcbe661f35687f43b730ca909341bebae5cd5189f6572c22d9b79b07c",
+      "tools/theme-lab/tests/probe_gtk_hint_hover.py": "94fcf553ce4addf463926cfbc3cdbfe414c582c8424917c12f12b1c625a1f9a9"
+    },
+    "runner_sha256": "76a203a7cf5e945b35be121bbc1d652a81cd37165b0e011fc62d5c47b6292d9f",
+    "matrix_sha256": "18362ef7379341139823d23cec71fc2c71854f71f0f6f65f71bef240ce185ecf",
+    "host_user_settings_changed": false,
+    "color_roles_changed": false,
+    "production_package_rebuilt": false
+  },
+  "diagnostics": [
+    {
+      "attempt": "R50 display :72",
+      "outcome": "discarded",
+      "reason": "The runner did not verify that the responding X server was the Xephyr process it had launched; the 14/16 result is not product evidence."
+    },
+    {
+      "attempt": "R55 frame",
+      "outcome": "one stability assertion failed once",
+      "reason": "The tooltip position changed or disappeared at the 400 ms check; follow-up owned-display runs R56 (1/1), R57 (3/3), and R60 (including frame) passed. Root cause was not established."
+    },
+    {
+      "attempt": "R58 push",
+      "outcome": "no tooltip detected; discarded as a probe miss",
+      "reason": "The pointer was reported at 389,783 rather than the target center. The probe was updated to verify actual pointer coordinates before accepting a missing hint."
+    },
+    {
+      "attempt": "R59 with xdotool --sync",
+      "outcome": "invalid runner behavior",
+      "reason": "xdotool timed out moving to 0,0 when no motion event was produced; this altered the test harness, not the product. R60 uses polling of the actual pointer state and passed 16/16."
+    }
+  ],
+  "limits": [
+    "One GTK3 layout, one screen, one palette, and center-point hovers; no alternate palettes, other layouts, disabled states, Motif fidelity, or human approval claimed.",
+    "GTK4, GTK2, Qt Widgets, QtQuick, Plasma and remaining T07 controls/layouts stay governed by their separate evidence in T07-INVENTARIO-DICAS.md."
+  ]
+}

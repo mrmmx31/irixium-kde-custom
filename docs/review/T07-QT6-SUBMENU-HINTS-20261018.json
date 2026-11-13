@@ -1,0 +1,34 @@
+{
+  "item": "T07",
+  "family": "Qt6 Widgets submenu QAction hints",
+  "checked_at_local": "2026-10-18T04:21:17-04:00",
+  "result": "blocked_partial",
+  "attempts": [
+    {
+      "run": "/home/lsi/tempia/t07-qtwidgets-submenu-fallback-xephyr-20261018",
+      "exit": "failed",
+      "failure": "probe_qt_full_gallery_hints.py:182: AssertionError: menu action 5 hint did not appear"
+    },
+    {
+      "run": "/home/lsi/tempia/t07-qtwidgets-submenu-fallback-xephyr-20261018-r2",
+      "exit": "failed",
+      "failure": "probe_qt_full_gallery_hints.py:182: AssertionError: menu action 5 hint did not appear"
+    }
+  ],
+  "attempted_fallback": "A temporary 700 ms QTimer on QMenu.hovered attempted to show QToolTip for submenu actions while the child menu opened. Both runs failed on action 5; the fallback was removed.",
+  "restored_file": {
+    "path": "plasma/tests/galerias-nativas/qt_widget_hints.py",
+    "sha256": "75facd38b74253e836340da366f50f32d6ba7654fcbe26f1159ac298cb850dd1",
+    "equals_recorded_previous_delivery": true
+  },
+  "harness": {
+    "probe_sha256": "a041ff3936357476ef61837f45f541f4fa4fc0b30e60004f0153287e8457d2e9",
+    "runner_sha256": "b3179f410aaca6d70b0a1cf524ac455d7b01041a0ea4ce0341e6d6144dfa45d5"
+  },
+  "limits": [
+    "This does not invalidate the earlier Qt5 QAction hover receipt.",
+    "Qt6 submenu rows remain unverified; no fallback is delivered.",
+    "The test runner emitted portal/dbus environment warnings, but the decisive failure was the missing tooltip on action 5."
+  ],
+  "next": "Proceed to the next authorized queue item; revisit Qt6 submenu hints only with a new supported approach and a focused native hover test."
+}

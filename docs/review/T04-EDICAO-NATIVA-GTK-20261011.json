@@ -1,0 +1,113 @@
+{
+  "at": "2026-10-11T16:15:20.177941+00:00",
+  "item": "T04",
+  "revision": 2,
+  "phase": "native_preview_text_editing",
+  "baseline": {
+    "status": "passed",
+    "gtk": "3.0",
+    "baseline": true,
+    "results": [
+      {
+        "baseline": "Ctrl+Z did not restore GtkEntry text"
+      }
+    ]
+  },
+  "gtk3_actual_scene": {
+    "status": "passed",
+    "gtk": "3.0",
+    "baseline": false,
+    "real_scene_rebuilt": true,
+    "results": [
+      {
+        "widget": "Entry",
+        "unicode": true,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      },
+      {
+        "widget": "TextView",
+        "unicode": true,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      },
+      {
+        "widget": "SpinButton",
+        "unicode": false,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      }
+    ]
+  },
+  "gtk2_adapter_foundation": {
+    "status": "passed",
+    "gtk": "2.0",
+    "baseline": false,
+    "real_scene_rebuilt": false,
+    "results": [
+      {
+        "widget": "Entry",
+        "unicode": true,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      },
+      {
+        "widget": "TextView",
+        "unicode": true,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      },
+      {
+        "widget": "SpinButton",
+        "unicode": false,
+        "shortcuts": "Ctrl+A/C/X/V/Z/Y/Shift+Z",
+        "menu": "Undo/Redo activation"
+      }
+    ]
+  },
+  "changes": [
+    "Bounded per-control history, UTF8 text/cursor/selection and numeric spin value.",
+    "CtrlZ/CtrlY/CtrlShiftZ, native Cut/Copy/Paste/SelectAll and Undo/Redo menu.",
+    "GTK3 Entry/TextView/SpinButton use the adapter; history survives NativeScene.build destruction/recreation.",
+    "Spin restoration updates numeric value from restored valid text, retaining partial input."
+  ],
+  "tests": {
+    "history_model": 3,
+    "pure_scene": 15,
+    "runtime_freeze": 2,
+    "diff": "tools/theme-lab passed",
+    "native_keyboard": "real X keyboard, native clipboard, three controls in each runtime; GTK3 rebuilt actual scene",
+    "gtk2_clipboard_fixture": "Gdk2 typelib lacks atom_intern; installed public GTK2 C clipboard API used only by fixture"
+  },
+  "post_native_nonfunctional_changes": [
+    "Module docstring clarifies process lifetime. Undo/Redo menu tooltip texts added after native interaction proofs; hover display not tested."
+  ],
+  "limits": [
+    "History is in memory of one preview process; no native-field journal across process exit, controller child replacement or new instance. Motif editor journal remains independent.",
+    "GTK2 field adapter foundation proved; GtkEntry theme generation/scene/controller integration still pending.",
+    "GTK3 editing tested in NativeScene separate window, not a new Motif-hosted keyboard matrix.",
+    "Not a historical/palette fidelity test or user acceptance.",
+    "Delivery pending exact theme coordination; user window stays open."
+  ],
+  "failed_logs": [
+    "baseline.err: original fixture lacked native focus/XDG isolation",
+    "baseline-fixed.err: X display unavailable in reused test directory",
+    "gtk3-isolated.err: insert-text typelib marshalling warnings, handler removed",
+    "gtk2-final.err: omitted Gdk2 atom_intern API",
+    "scene-native.err and scene-diagnosed.err: SpinButton reconstruction failed before numeric/text synchronization"
+  ],
+  "sources": {
+    "tools/theme-lab/preview_gtk.py": "06c6757ca879dc1918ceaf7aa7cd9a610e6dd66a089075630c406341e9daebf3",
+    "tools/theme-lab/preview_text_history.py": "431ae2098aafb79f4784f8a589ae1ba00810eb1f3013e6e90adf372d595d014b",
+    "tools/theme-lab/preview_text_editing.py": "1138ca4f74c93792ed06b4aca21c1229730af5dbde1fc9f5f2dc166d9b7468eb",
+    "tools/theme-lab/tests/probe_preview_text_editing.py": "0b85b80f9a4548ae7f22e14c587057ef0cf6ff8c8c27335cbb4a46da7a4ad667",
+    "tools/theme-lab/tests/test_preview_text_history.py": "b57efc76f196c02aa8e71f92be37f84ce5346e1bc97661a6de7554fc08c70861"
+  },
+  "coordination_input": ".qa-t04-gtk-editing-tmp/request.json",
+  "coverage": {
+    "gtk2_controls": 7,
+    "total": 16,
+    "percent": 43.75,
+    "basis": "catalog count, not total goal or fidelity"
+  }
+}

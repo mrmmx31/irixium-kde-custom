@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "R453",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Independently rederive the horizontal-arrow crop comparison because the reported smaller glyph conflicts with R394 and older R344 registration results.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "historical_reference": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "historical_reference_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "r394_receipt_sha256": "740ebf543a75b81b3bc735b6ed5f3b38609284e54b84250e64d6df7468116b88",
+    "r394_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r392-installed-gtk2-runtime/user-theme-root.png",
+    "r394_capture_sha256": "97b6b30de2bd25153b260d8503fae9460a542ab4e04f229b45734b376677d3bf",
+    "r344_receipt_sha256": "7fd98d21817255520a856c075bc38097cc2bd5bfc78ee7402edc02e7db35c349",
+    "r343_capture": "/home/lsi/tempia/ia-tema/evidence/I167/r343-installed-gtk2/gtk2-installed-horizontal-no-atk.png",
+    "r343_capture_sha256": "913456498bc68e3617305824ed651f5082035a5a68212837479d42c4ed3f3c2d"
+  },
+  "method": "Reopen the exact referenced PNGs, convert to RGB, crop the recorded 15x15 source and target cells, and count per-pixel inequality without scaling or color normalization.",
+  "comparisons": [
+    {
+      "capture": "R392 GTK2 2.24.33 full-theme renderer",
+      "direction": "left",
+      "reference_xy": [2, 4],
+      "capture_xy": [0, 0],
+      "cell_px": [15, 15],
+      "mismatched_pixels": 0
+    },
+    {
+      "capture": "R392 GTK2 2.24.33 full-theme renderer",
+      "direction": "right",
+      "reference_xy": [526, 4],
+      "capture_xy": [185, 0],
+      "cell_px": [15, 15],
+      "mismatched_pixels": 0
+    },
+    {
+      "capture": "R343 installed GTK2 horizontal-only window",
+      "direction": "left",
+      "reference_xy": [2, 4],
+      "capture_xy": [2, 0],
+      "cell_px": [15, 15],
+      "mismatched_pixels": 3,
+      "coordinates_in_cell": [[0, 13], [1, 13], [0, 14]]
+    },
+    {
+      "capture": "R343 installed GTK2 horizontal-only window",
+      "direction": "right",
+      "reference_xy": [526, 4],
+      "capture_xy": [526, 0],
+      "cell_px": [15, 15],
+      "mismatched_pixels": 1,
+      "coordinates_in_cell": [[14, 1]]
+    }
+  ],
+  "result": "The crop arithmetic in R394 is reproducible: both normal arrows in the current full-theme GTK2 renderer match the retained VUE cells exactly. The older R343 native window retains only the four corner mismatches described by R344; none indicate a shortened glyph. No geometry change is supported by these files.",
+  "limits": [
+    "This is a pixel recheck of existing artifacts, not a new guest capture.",
+    "R392 is an isolated GTK2 runtime image; it does not show what an already-open XChat process loaded.",
+    "A direct live-application comparison and user visual acceptance remain open.",
+    "No VM, profile, application or installed theme was changed."
+  ],
+  "next": "Keep GTK2 on I167. After the separate MAME releases the guard, capture the relevant live VUE state and then compare the GTK2 application that shows the discrepancy; do not infer a glyph-size fix from the report alone."
+}

@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T04:56:16.838794+00:00",
+  "item": "I118",
+  "revision": 1,
+  "phase": "sparse-state-relief-contract",
+  "estimated_stage_progress_percent": 15,
+  "percentage_basis": "Contrato, persistência e validação concluídos; faltam tradução gráfica, GUI por peça, capacidade nativa e comparação visual. Não mede fidelidade histórica.",
+  "states": [
+    "normal",
+    "pressed",
+    "disabled",
+    "backdrop",
+    "hover",
+    "focus"
+  ],
+  "reliefs": [
+    "flat",
+    "raised",
+    "sunken"
+  ],
+  "semantics": "Ausência herda desenho nativo. Limpar um estado preserva geometria, demais estados e outras peças. Receita não comprova capacidade de forçar estado interno nativo.",
+  "tests": {
+    "strict_build": "passed",
+    "part_states": "passed",
+    "model_checks": 947,
+    "backend_tests": 25
+  },
+  "logs": {
+    "/tmp/i118-build.log": "bec5b9d887a70ba67b1649e3cc9f23bba9075141cfdd6a1e8856f7c40dead165",
+    "/tmp/i118-build-model.log": "fb102e1a46c2f05caff8f6df222e749417d9dc98869bd962bf5ce8cff56bf508",
+    "/tmp/i118-model.log": "d2ef609c481fce1138cd2c614b89a6354da5530465d1f89387eed2d38f9e2c09",
+    "/tmp/i118-backend.log": "7c9be36b2557b25e79dc036487f173416dd8cea5c0b3e4fd8ff999da4086a442"
+  },
+  "hashes": {
+    "tools/theme-lab/include/scrollbar_parts.h": "7a8b88f0195249ba615386c4b480e7dcd07a8bd54908aff40c67e8c58a528bd6",
+    "tools/theme-lab/src/model/part_states.c": "f7887584fe1259a4063c2c7aa238135d128b0c0b8dbad04131f2f4e5d1176fa9",
+    "tools/theme-lab/src/model/scrollbar_parts.c": "4485b1a7e9d36ebde3db3bd03bc913edcde18218c38cdb7a9655f53127ab4457",
+    "tools/theme-lab/backend.py": "30838cc4a63f7ddecb97eb81ec71761f11c879e646040212a520967aa103df7b",
+    "tools/theme-lab/tests/part_states_test.c": "4e636762dde2a9af696335e25f1988395ace068b58a49771ac49f1d91f39dee1",
+    "tools/theme-lab/tests/model_test.c": "e8a16793a95e3f39a8d711c62c64cf259117b96060a0a96f7f45b19a63ee5b9c",
+    "tools/theme-lab/tests/test_backend.py": "1f3dc6dfee1fa2bd6e48e001e231628192f00dbfe4075660f565903b7706dd07",
+    "tools/theme-lab/Makefile": "9f83a5595d5f1c18e39aa654a938bda778d65c9f544620f302f91442ccd2ef25"
+  },
+  "limitation": "Geração de receitas com state_relief não vazio rejeitada explicitamente até tradução implementada. Não há controles de edição nem pintura novos entregues.",
+  "preserved": "Instância pessoal I117 congelada não foi reaberta nem alterada.",
+  "next": "Implementar relevo da seta GTK3 por estado com papéis KDE e limites explícitos; comparar prévia nativa antes da entrega."
+}

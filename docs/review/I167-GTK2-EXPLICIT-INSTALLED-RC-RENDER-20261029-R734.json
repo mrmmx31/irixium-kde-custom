@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "id": "R734",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Render the GTK2 scrollbar fixture in a private Xvfb using the user's explicit active GTK2 RC list, then compare both orientations with native SR10.4 cells.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "inputs": {
+    "fixture_source": "/home/lsi/tempia/domainos-theme-work/I167/R731-relief-candidate/bars-short.c",
+    "fixture_binary": "/home/lsi/tempia/domainos-theme-work/I167/R731-relief-candidate/bars-short",
+    "explicit_gtk2_rc_files": "/etc/gtk-2.0/gtkrc:/home/lsi/.gtkrc-2.0:/home/lsi/.config/gtkrc-2.0",
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "theme_rc": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "palette_bundle": "dc0aa8ec162b5a516008a29e95d9cc28329906a507fbe46a49566a59f074e15d",
+    "motif_vertical": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+    },
+    "motif_horizontal": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    }
+  },
+  "capture": {
+    "environment": "Private Xvfb, GTK_MODULES empty, GDK_BACKEND=x11, GTK2_RC_FILES explicitly set to the active user's RC list.",
+    "geometry_stdout": "WIN 0 0 563 302 H 12 12 539 15 V 12 35 15 255",
+    "source_capture": "/home/lsi/tempia/domainos-theme-work/I167/R734-explicit-installed-rc/installed-gtkrc.png",
+    "recorded_crop": "records/ia-tema/I167/R734/installed-gtkrc-crop.png",
+    "sha256": "c06434c3594acfcba01a0b75a0743ae39c865be577931d7bc627046bf4b4c3ba",
+    "dimensions_px": [640, 330],
+    "captured_at_local": "2026-10-29T05:37:51-04:00"
+  },
+  "measurements": {
+    "candidate_comparison": {
+      "reference": "records/ia-tema/I167/R732/candidate-short.png",
+      "method": "RGB compare of the same 640x330 fixture region",
+      "different_pixels": 0,
+      "total_pixels": 211200
+    },
+    "arrow_cells_rgb_differences": {
+      "vertical_up": 0,
+      "vertical_down": 0,
+      "horizontal_left": 0,
+      "horizontal_right": 0,
+      "pixels_per_cell": 225,
+      "horizontal_reference_row_in_crop": 4
+    },
+    "body_cross_axis_profiles": {
+      "gtk2_vertical": "DDFFFFFFFFFFFLL",
+      "gtk2_horizontal": "DDFFFFFFFFFFFLL",
+      "literal_vm": "DDLLFFFFFFFDDLL",
+      "adaptation": "Four internal cross-section pixels are face-colored (offsets 2-3 and 11-12); 15 px thickness and the outer two-pixel dark/light edges remain.",
+      "active_render_rgb_roles": {
+        "dark": "#3e536e",
+        "face": "#78a0d5",
+        "light": "#c4d5ed"
+      }
+    },
+    "geometry": {
+      "horizontal_allocation_px": [539, 15],
+      "vertical_allocation_px": [15, 255],
+      "arrow_cell_px": [15, 15]
+    }
+  },
+  "changes": [
+    "Saved the exact-RC fixture crop in records/ia-tema/I167/R734/installed-gtkrc-crop.png; the Tempia source files remain intact.",
+    "No theme, palette, desktop client, or VM was changed or restarted."
+  ],
+  "result": "A fresh GTK2 2.24.33 fixture loaded the explicit installed user RC list. Its whole 640x330 raster is identical to the R731 candidate; all four normal arrow cells match the SR10.4 crops in RGB at 225/225 pixels each. Both long bodies render DDFFFFFFFFFFFLL while the literal VM body remains DDLLFFFFFFFDDLL. Colors resolve through the active KDE-derived palette. This validates the current installed RC rendering in an isolated fixture, not repaint or visual acceptance of an already-open personal application.",
+  "next": "Keep R731 applied. I167 remains open for the user's visual assessment of an already-open GTK2 application after the native reload. If it still reads outward, capture and inspect that exact complete control before changing its profile.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing I167 technical coverage estimate; not a visual-fidelity percentage."
+  }
+}

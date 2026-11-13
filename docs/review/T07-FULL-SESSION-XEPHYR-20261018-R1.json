@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-18",
+  "demand": "T07",
+  "revision": 4,
+  "status": "passed_scoped_private_session_startup; T07_remains_partial",
+  "environment": {
+    "display": ":67",
+    "session": "~/tempia/domainos-user-preview-20261018/session",
+    "private_profile": true,
+    "global_theme": "org.magpie.irixclassic.domainos.desktop",
+    "color_scheme": "DomainOS-SR10-4",
+    "all_galleries_requested": true,
+    "desktop_resolution": "1600x1000",
+    "capture": "~/tempia/domainos-user-preview-20261018/session/TEMA-COMPLETO.png",
+    "capture_sha256": "6e45e541a6f32d0d5008f0ca46db040b4dd06835d053410279fd69b678958939"
+  },
+  "verified": {
+    "launcher_status": "open",
+    "startup_checks": "22/22 true",
+    "native_windows_alive": ["GTK2", "GTK3", "GTK4", "Qt5", "Qt6", "QtQuick5", "QtQuick6"],
+    "private_theme_and_palette": "confirmed by session result and manifest",
+    "tooltip_position_helper_copied_to_private_gallery": {
+      "source": "tools/theme-lab/tooltip_position.py",
+      "source_sha256": "f58f484eaadb3a7d04ba38bd411dcfb6f77a99bfe2bb291127f58c35524e5e0a",
+      "fixture_sha256": "f58f484eaadb3a7d04ba38bd411dcfb6f77a99bfe2bb291127f58c35524e5e0a",
+      "same_bytes": true
+    },
+    "gtk4_hint_popover_helper_copied_to_private_gallery": {
+      "source": "tools/theme-lab/gtk4_hint_popover.py",
+      "source_sha256": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+      "fixture_sha256": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+      "same_bytes": true
+    },
+    "gallery_entrypoint_sha256": {
+      "plasma/tests/galerias-nativas/qt_widget_hints.py": "59c0bff6255005966601282da5aa9f453f3ccc069b95ede5d428c38e36758290",
+      "plasma/tests/galerias-nativas/gtk4_demo.py": "82d467263ce338ee03d295f15ae109acce1c4419177cb71f631eaccf06f881ff",
+      "plasma/tools/prever-tema-completo.py": "721b1756d99990788973e69c087ff83f9453a31219bb2f5c04b818abe67a5c0e"
+    }
+  },
+  "observations": {
+    "fatal_import_or_traceback_in_gallery_logs": false,
+    "nonfatal_logs": [
+      "GTK2 deprecation warning for Gtk.Entry.set_editable",
+      "GTK3 accessibility bus warning in private profile",
+      "GTK4 reports an unknown gtk-modules setting and no accessibility bus; its status says requested window allocation 0x0, so layout/hover behavior still requires a separate check",
+      "QtQuick6 reports TabButton y-null TypeErrors during startup; not attributed to T07 without a baseline comparison"
+    ],
+    "user_interaction_sent": false,
+    "personal_profile_or_theme_changed": false
+  },
+  "coverage_limit": "This proves the current source and its helper modules load in the complete private DomainOS Plasma/Xephyr session, with all requested native gallery processes alive. It does not prove timed tooltip appearance, non-overlap, stability, close-on-exit, correct text in every control/layout, or human acceptance. T07 remains partial."
+}

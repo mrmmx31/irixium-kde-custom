@@ -1,0 +1,46 @@
+{
+  "id": "I167-GTK2-PROGRESS-20261023-R39",
+  "at": "2026-10-23T01:07:05Z",
+  "scope": "GTK2 native GtkProgressBar, four KDE color schemes, normal/disabled/backdrop states, coupled/separate previews; local Motif comparison only",
+  "historical_reference": {
+    "version": "local Theme Lab Motif sample",
+    "artifact": "docs/review/theme-lab-motif-reference/01-MOTIF-REFERENCE.png",
+    "sha256": "f413f7ab6eb2306998d8582b480dba01fa3bf7caf66715dd7136e5e435443527",
+    "motif_class": "XmScale, disabled and read-only; Motif has no standard ProgressBar class",
+    "comparison": "shared semantic roles and relief can be compared; slider geometry/value placement are not equivalent to a progress fill"
+  },
+  "implementation": {
+    "changed": true,
+    "change": "GTK2 preview now places the sample percentage above a native GtkProgressBar, matching the Motif sample's value placement. Value text maps to the current KDE View foreground role for normal/backdrop/disabled states; runtime capture and restore still operate on GtkProgressBar.",
+    "source_sha256": {
+      "tools/theme-lab/gtk2_progress.py": "5133e339c02238efaa6f51431f8350edd45366839c005b7559a5e632b29946d1",
+      "tools/theme-lab/native_scene_gtk2.py": "06a6950ff392f283b70bf51dcf1bfe51d91e1e4bc75d0ebe0a46b9df08e356bd",
+      "tools/theme-lab/gtk2_runtime_state.py": "e79bbe250cce60305d2c1480efda0ef629acf1453eaac61c04fac16ed289c683",
+      "tools/theme-lab/tests/probe_gtk2_progress.py": "507834570711bedf081ae7ba8263a478596b3612fddbd01bb3316c1dabf31087",
+      "tools/theme-lab/tests/test_gtk2_progress.py": "e08a19854960c3f2c81200292338d767dcb2b75ca9055b5b189b409e35582bd9"
+    },
+    "color_policy": "generated from current KDE View/Selection roles; no final static RGB values"
+  },
+  "verification": {
+    "status": "passed",
+    "native_scenes": 24,
+    "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+    "states": ["normal", "disabled", "explicit_backdrop"],
+    "origins": ["coupled", "separate"],
+    "checked": ["allocation 220x40", "natural requisition 150x38", "sample fraction 0.60", "fraction capture/restore", "sensitivity", "font description", "fill and track KDE role pixels", "value-above-trough layout", "value text follows KDE View foreground in all four schemes/states", "model unchanged"],
+    "unit_tests": {"gtk2_progress": 5, "gtk2_runtime_state": 6},
+    "visual_review": "GTK2 keeps its native filled ProgressBar, but now places the sample percentage above it as Motif does for XmScale. The Motif reference has a slider thumb while GtkProgressBar has a fill segment; this structural mismatch remains and is not represented as pixel-equivalence.",
+    "environment_note": "GTK emitted an ATK bridge module warning in Xvfb; all 24 scenes completed and assertions passed."
+  },
+  "artifacts": {
+    "root": "~/tempia/i167-gtk2-progress-r39/",
+    "result": "~/tempia/i167-gtk2-progress-r39/RESULTADO.json",
+    "comparison_1to1": "~/tempia/i167-gtk2-progress-r39/comparison-1to1.png"
+  },
+  "limitations": [
+    "The Motif sample is the Theme Lab reference, not the Domain/OS SR10.4 VM.",
+    "GTK2 fill/text and Motif slider are different native control semantics; only shared color roles and relief are directly comparable.",
+    "This does not approve the complete GTK2 family, public theme route, or personal/XChat installation."
+  ],
+  "next": "Continue the remaining GTK2 control kinds under I167, one family at a time; keep historical VM claims open until the MAME channel has a correlated response."
+}

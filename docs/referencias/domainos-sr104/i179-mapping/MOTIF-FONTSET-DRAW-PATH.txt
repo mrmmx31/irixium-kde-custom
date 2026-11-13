@@ -1,0 +1,21 @@
+Motif source TextOut.c, inspected local archive SHA256 03e6331511b778064c3da532a7365335a87e9fe5177ee6107d948ad5de146650
+Scope: current Motif drawing code, not DomainOS historical library identity.
+
+		         XtWindow(tw->text.inner_widget),
+		         data->gc, x - (int)(data->linewidth * 0.5),
+		         y - data->voffset, rec_width, rec_height);
+	
+	  SetInvGC(tw, data->gc);
+	  SetMarginGC(tw, data->gc);
+	  if (data->use_fontset) {
+	    XmbDrawString(XtDisplay(tw),
+			  XtWindow(tw->text.inner_widget), 
+			  (XFontSet) data->font, data->gc, 
+			  x, y - data->voffset, block.ptr, length);
+#ifdef USE_XFT
+	  } else if (data->use_xft) {
+	    _XmXftDrawString2(XtDisplay(tw), XtWindow(tw->text.inner_widget),
+			      data->gc, (XftFont*) data->font, 1,
+			      x, y - data->voffset, block.ptr, length);
+#endif
+	  } else {

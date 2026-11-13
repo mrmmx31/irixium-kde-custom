@@ -1,0 +1,5 @@
+style "T07Tooltip" {
+ bg[NORMAL] = "#f7f7f7"
+ fg[NORMAL] = "#232629"
+}
+widget "*gtk-tooltip*" style : highest "T07Tooltip"

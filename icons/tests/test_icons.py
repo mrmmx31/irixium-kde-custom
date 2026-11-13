@@ -177,8 +177,88 @@ class Package(unittest.TestCase):
                     self.assertEqual(original,(parent/(name+'.'+ext)).read_bytes())
     def test_manifest_counts(self):
         m=json.loads((ROOT/'themes/IrixClassic-SGI/manifest.json').read_text())
-        self.assertEqual(m['canonical_icons'],126);self.assertEqual(m['unique_artworks'],110)
-        self.assertEqual(m['icon_names'],292)
+        self.assertEqual(m['canonical_icons'],953);self.assertEqual(m['unique_artworks'],481)
+        self.assertEqual(m['icon_names'],2380)
+        self.assertIn(44,m['sizes'])
+
+    def test_audited_names_have_explicit_portable_coverage(self):
+        catalog=json.loads((ROOT/'sources/classic-audit-coverage.json').read_text())
+        names={n for i in build_classic.ITEMS for n in [i['name'],*i['aliases']]}
+        absent=[d for d in catalog['decisions'] if d.get('before')=='ausente']
+        self.assertEqual(len(absent),585)
+        self.assertTrue(all(d['name'] in names for d in absent))
+        self.assertEqual([d['name'] for d in catalog['decisions'] if d['decision']=='excluded'],[])
+        self.assertIn('noneyet',names)
+
+    def test_panel_states_have_distinct_decoded_pixels_at_small_sizes(self):
+        from PIL import Image
+        theme=ROOT/'themes/IrixClassic-SGI'
+        groups=[['battery-empty','battery-missing'],['microphone-sensitivity-muted','audio-volume-muted'],
+                ['microphone-sensitivity-high','audio-volume-high'],['notifications','notification-disabled'],
+                [f'network-wireless-connected-{level:02}' for level in (0,25,50,75,100)]]
+        for size in (16,22,24,32,48):
+            for group in groups:
+                for suffix in ('','-symbolic'):
+                    files=[theme/f'{size}x{size}/status'/(n+suffix+'.png') for n in group]
+                    # battery-empty symbolic is separately generated from its canonical battery.
+                    pixels=[Image.open(p).convert('RGBA').tobytes() for p in files]
+                    self.assertEqual(len(pixels),len(set(pixels)),(size,group,suffix))
+
+    def test_symbolic_artwork_contains_no_colour_pixels(self):
+        from PIL import Image
+        for p in (ROOT/'themes/IrixClassic-SGI/16x16').rglob('*-symbolic.png'):
+            if p.parent.name in ('status','categories') or p.stem.startswith('start-here'):continue
+            self.assertTrue(all(r==g==b for r,g,b,a in Image.open(p).convert('RGBA').getdata() if a),p.name)
+
+    def test_classic_panel_and_launcher_keep_coloured_artwork(self):
+        from PIL import Image
+        root=ROOT/'themes/IrixClassic-SGI'
+        for context,name in [('categories','start-here-kde-symbolic'),
+                             ('status','network-bluetooth-symbolic'),
+                             ('status','network-wireless-connected-100-symbolic'),
+                             ('status','audio-volume-high-symbolic')]:
+            pixels=Image.open(root/f'32x32/{context}/{name}.png').convert('RGBA').getdata()
+            self.assertTrue(any(a>128 and max(r,g,b)-min(r,g,b)>20 for r,g,b,a in pixels),name)
+
+    def test_kde_menu_category_symbolic_names_have_native_artwork(self):
+        catalog=json.loads((ROOT/'sources/classic-identities.json').read_text())
+        theme=ROOT/'themes/IrixClassic-SGI'
+        lookup={n:i for i in build_classic.ITEMS for n in [i['name'],*i['aliases']]}
+        for name,target in catalog['menu_aliases'].items():
+            self.assertIn(name,lookup)
+            self.assertEqual(lookup[name]['category'],'categories')
+            for size in build_classic.SIZES:
+                actual=theme/f'{size}x{size}/categories'/(name+'.png')
+                source=theme/f'{size}x{size}'/lookup[target]['category']/(target+'.png')
+                self.assertEqual(actual.read_bytes(),source.read_bytes(),name)
+
+    def test_application_identities_are_distinct_at_native_menu_sizes(self):
+        from PIL import Image
+        theme=ROOT/'themes/IrixClassic-SGI'
+        items=[i for i in build_classic.ITEMS if i['kind']=='identity']
+        for size in (16,22,32,64):
+            seen={}
+            for item in items:
+                pixels=Image.open(theme/f'{size}x{size}'/item['category']/(item['name']+'.png')).convert('RGBA').tobytes()
+                self.assertNotIn(pixels,seen,(size,item['name'],seen.get(pixels)))
+                seen[pixels]=item['name']
+
+    def test_requested_menu_categories_have_coloured_sgi_artwork(self):
+        from PIL import Image
+        theme=ROOT/'themes/IrixClassic-SGI'
+        for name in ('applications-games-symbolic','applications-education-symbolic',
+                     'applications-science-symbolic','applications-system-symbolic'):
+            im=Image.open(theme/'32x32/categories'/(name+'.png')).convert('RGBA')
+            self.assertGreater(sum(a>128 and max(r,g,b)-min(r,g,b)>20 for r,g,b,a in im.getdata()),5,name)
+            self.assertIn('translate(3 -1)',(theme/'scalable/categories'/(name+'.svg')).read_text())
+
+    def test_generated_inventory_has_no_unmanifested_or_conflicting_assets(self):
+        root=ROOT/'themes/IrixClassic-SGI'
+        expected={f'{folder}/{i["category"]}/{n}.{ext}' for i in build_classic.ITEMS
+                  for n in [i['name'],*i['aliases']]
+                  for folder,ext in [('scalable','svg')]+[(f'{s}x{s}','png') for s in build_classic.SIZES]}
+        actual={p.relative_to(root).as_posix() for p in root.rglob('*') if p.suffix in ('.png','.svg')}
+        self.assertEqual(actual,expected)
     def test_generator_refuses_existing(self):
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaises(FileExistsError):build_classic.build(Path(tmp),None)

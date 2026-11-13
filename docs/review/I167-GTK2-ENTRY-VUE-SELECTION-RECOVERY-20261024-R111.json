@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "id": "R111",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Recover live SR10.4 VUE and test XmTextField selection input",
+  "reference": {
+    "system": "Domain/OS SR10.4 on Apollo DN3500",
+    "desktop": "HP VUE 2.01",
+    "source": "Authorized assistant MAME clone only",
+    "mame_pid": 3759847,
+    "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "main_vm_touched": false
+  },
+  "method": {
+    "screen_saver": "Read-only Telnet query showed timeout=600 and cycle=600. Temporarily disabled the saver to recover the live VUE screen, then restored 600/600 and re-queried it.",
+    "selection_input": "Only bounded keyboard pulses were sent to the already focused File Name field. No search, click, mouse movement, or text entry was performed. Each input script released its fields and the bridge confirmed cleanup.",
+    "pixel_roi": {
+      "capture_coordinates_xyxy": [176, 365, 515, 399],
+      "comparison": "Pillow RGB pixel difference in the File Name field ROI; screenshots kept at native 1024x844 scale."
+    }
+  },
+  "observations": {
+    "visible_vue": {
+      "capture": "~/tempia/i167-vue-current-r110/domainos-saver-restored.png",
+      "sha256": "416033c65bcc8b757a13b957820c3a044594bd21ede24d4c489ae56f14bbdf12",
+      "description": "The Domain/OS SR10.4 terminal, Find Files dialog, File Name field containing the pre-existing test pattern a*a, vuefile and VUE panel are visible. No search was started."
+    },
+    "original_saver_restored": {
+      "confirmed": true,
+      "timeout_seconds": 600,
+      "cycle_seconds": 600,
+      "evidence": "Read-only xset -display :0 q after restoration; VUE processes remained present."
+    },
+    "caret_delivery": {
+      "capture": "~/tempia/i167-vue-current-r110/domainos-entry-caret-right.png",
+      "sha256": "ae9f2f1559aea06b6fba146641b5ab14a6a6560162353341ee8337366df8b7b1",
+      "input": "One Cursor Right pulse",
+      "field_roi_changed_pixels": 60,
+      "interpretation": "The visible caret changed position; keyboard events reach the focused VUE field."
+    },
+    "selection_attempts": [
+      {
+        "input": "End followed by Shift+Cursor Left",
+        "capture": "~/tempia/i167-vue-current-r110/domainos-entry-select-last-char.png",
+        "sha256": "68ddb069e73354e16dd7ad72df8262c13b2e115bfc17a520403890dc3c087e83",
+        "field_roi_changed_pixels_from_restored_baseline": 0,
+        "result": "No visible selection. The End key did not provide the expected caret positioning."
+      },
+      {
+        "input": "Shift+Cursor Left held together",
+        "capture": "~/tempia/i167-vue-current-r110/domainos-entry-select-char.png",
+        "sha256": "ae9f2f1559aea06b6fba146641b5ab14a6a6560162353341ee8337366df8b7b1",
+        "field_roi_changed_pixels_from_caret_right": 0,
+        "result": "No visible selection."
+      },
+      {
+        "input": "Shift down one frame, then Cursor Left, then release both",
+        "capture": "~/tempia/i167-vue-current-r110/domainos-entry-select-char-sequential.png",
+        "sha256": "8b3588eceb1e646e9348a6162e0236762ba8b173c15e081871f567c9347526aa",
+        "field_roi_changed_pixels_from_caret_right": 40,
+        "result": "Only the text/caret area changed; the screenshot shows no selection band. This does not prove selected text or its native color."
+      }
+    ],
+    "text_integrity": "The File Name field remained a*a; no file search or guest file modification occurred.",
+    "mame_final_state": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "wait_button_up": false,
+      "last_callback_done": true,
+      "last_callback_released": true,
+      "last_callback_error": null
+    }
+  },
+  "result": {
+    "historical_selection_fidelity": "unverified",
+    "new_evidence": "The black screen was recoverable by disabling the observed 600-second saver temporarily; the live VUE desktop returned and the original 600/600 setting was restored. A caret-only key event is visibly delivered, but the bounded Shift+Left attempts did not produce a visible selection band.",
+    "gtk2_patch_installed": false,
+    "xchat_or_personal_theme_changed": false
+  },
+  "limits": [
+    "No native selected/unselected SR10.4 pixel pair was obtained.",
+    "The current keyboard mapping or VUE selection gesture remains unresolved; no mouse drag was attempted because the pointer route is not calibrated.",
+    "This receipt does not claim historical GTK2 selection-color fidelity or complete I167."
+  ],
+  "artifacts": {
+    "directory": "~/tempia/i167-vue-current-r110",
+    "field_analysis_script": "analyze_r111_field.py",
+    "field_analysis_sha256": "ae4be2cd78701b2a0709811e20979f738dc1c58c2c626f38d3da421ffa639e38",
+    "selected_capture_sha256": "8b3588eceb1e646e9348a6162e0236762ba8b173c15e081871f567c9347526aa"
+  }
+}

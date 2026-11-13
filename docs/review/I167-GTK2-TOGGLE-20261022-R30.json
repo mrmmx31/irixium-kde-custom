@@ -1,0 +1,49 @@
+{
+  "item": "I167",
+  "revision": "R30",
+  "checked_at_utc": "2026-10-22T22:56:45Z",
+  "family": "GTK2 indicator-less toggle",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "change": {
+    "source": "tools/theme-lab/gtk2_toggles.py",
+    "source_sha256": "f3141d26514169b547ad4e4e156d6efff20b458cbd446ba6f3d7e32dd99cd660",
+    "summary": "Added a GTK2 toggle-specific adapter using KDE Window/WindowText roles, shallow native geometry, and a flat face for persistent and armed states. This matches the local indicator-less Motif sample after focus leaves; GTK2 Pixmap cannot distinguish persistent ACTIVE from armed ACTIVE, so it cannot express separate relief for those states.",
+    "related_files": {
+      "tools/theme-lab/tests/test_gtk2_toggles.py": "6783bda344ce7b2bd2a54a34c1b99d02b2b0ec6964b0f1089578c8e96f2b00df",
+      "tools/theme-lab/tests/test_gtk2_toggle_native.py": "a152bafc52be46912d7338a2451e218897acd7f1c218d28800ae7cf8d145b6a2",
+      "tools/theme-lab/tests/probe_gtk2_toggle.py": "211610bba32bc89b2def41fcc8a849ea91fae648b7fab9285431c26655636e98",
+      "tools/theme-lab/tests/verify_gtk2_toggle_pixels.py": "68094904dbd8d797551b09e96b5648aa638bc25121f17b559177e17790fcd63a"
+    },
+    "tests": "12 targeted tests passed across GTK2 push/toggle/combo/spin; py_compile and git diff --check passed. All test temporary directories were under ~/tempia."
+  },
+  "results": {
+    "status": "passed_scoped_native_and_pixels",
+    "gtk2": "2.24.33",
+    "palettes": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "captures": "44 captures: 11 states per palette; native click/release worked and disabled input was blocked in every palette.",
+    "natural_request_px": [
+      55,
+      22
+    ],
+    "pixel_check": "44/44 scoped checks passed; 0 edge differences; face matched the Window role. Text antialiasing was measured separately from the face.",
+    "local_motif_reference": "The Theme Lab local XmToggleButton sample requests 56×21 px. Idle and selected after focus moves are pixel-identical; the focused capture differs by a black focus outline (292 pixels). This is a local sample, not a metric or screenshot from the SR10.4 VM.",
+    "native_results_sha256": "d644753684e56ef796fa38c4fa8ef0d849d33a4809157c2e8bba7ec811345b99",
+    "pixel_results_sha256": "ffd9b99bf6d5f2c6a8cbf1e7ab024f7cdf537354ea1e7d21f1722f935499e964",
+    "artifacts": "~/tempia/i167-gtk2-toggle-r39/"
+  },
+  "limits": [
+    "No manual approval inferred.",
+    "No direct visual capture from the SR10.4 guest was taken for this control.",
+    "The GTK2 toggle-specific recipe is technically validated; GTK2 as a whole remains incomplete.",
+    "No session theme, XChat process, Xephyr, or user preference was changed."
+  ],
+  "next": "Continue with the GTK2 check control as one isolated family; radio remains a separate later step. Apply GTK2 to the user session and XChat only after the complete GTK2 adapter scope is finished."
+}

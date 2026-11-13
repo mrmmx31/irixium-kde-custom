@@ -1,0 +1,74 @@
+{
+  "item": "T04",
+  "stage": "GTK3 initial comparison and Paint family selection",
+  "date": "2026-10-21",
+  "authorization": {
+    "context": "theme",
+    "section": "work",
+    "user_revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+    "authorized_definition_matches": true
+  },
+  "scope": "GTK3 first; GTK2 sample regression; no other adapter claims",
+  "changes": [
+    {
+      "file": "tools/theme-lab/src/model.c",
+      "sha256": "0879228297ee2e1f65f76698cccf9820423e64f5a6872bddc937be4a27b47fe6",
+      "change": "A fresh project now selects GTK3 for editing while preserving the independent Motif reference."
+    },
+    {
+      "file": "tools/theme-lab/src/view/manual_paint_view.c",
+      "sha256": "651606e10f3a3ae3d4cae9883c4987112728f2ff2b44d96270b101e1f8ef0026",
+      "change": "Paint records only which ComboBox changed and re-reads its selected position after the Motif callback unwinds before switching family/control/state."
+    }
+  ],
+  "tests": {
+    "build": {
+      "status": "passed",
+      "command": "TMPDIR=~/tempia make -C tools/theme-lab -j2 all build/model-test",
+      "strict_c99": true
+    },
+    "model": {
+      "status": "passed",
+      "result": "1008 offline checks passed; test now asserts GTK3 as the fresh-model selection"
+    },
+    "coupled_detached_recheck_after_build": {
+      "status": "passed",
+      "result_file": "~/tempia/theme-lab-spin-hcb06ctc/RESULTADO.json",
+      "result": "same GTK3 scrollbar geometry and local position in both origins and after reopen"
+    },
+    "paint_model": {
+      "status": "passed",
+      "result": "contexts, drawing/fill, multi-step undo/redo, resize, save/resume"
+    },
+    "paint_gtk2": {
+      "status": "passed",
+      "native_label": "GTK2 / amostra nativa atual / 220 x 15 px / 1:1",
+      "widget_source": "native_gtk2",
+      "result_file": "~/tempia/theme-lab-spin-bvy4zgvs/RESULTADO.json",
+      "historical_fidelity_claimed": false
+    },
+    "paint_gtk3": {
+      "status": "passed",
+      "native_label": "GTK3 / amostra nativa atual / 220 x 80 px / 1:1",
+      "widget_source": "native_gtk3",
+      "result_file": "~/tempia/theme-lab-spin-5nnyz83f/RESULTADO.json",
+      "historical_fidelity_claimed": false
+    },
+    "gtk3_coupled_detached": {
+      "status": "passed",
+      "result_file": "~/tempia/theme-lab-spin-y82nl00o/RESULTADO.json",
+      "result": "same GTK3 scrollbar geometry and local position in both origins and after reopen"
+    }
+  },
+  "live_xephyr": {
+    "display": ":82",
+    "private_project_separate_preview": true,
+    "observation": "The detached GTK3 window overlaps the editor when enabled; the coupled preview child remains in the Motif canvas. This session was not restarted or changed after rebuilding."
+  },
+  "remaining": [
+    "GTK4/Qt5/Qt6/Kvantum/Plasma native Paint samples are not implemented or verified here.",
+    "Verify the family change by user interaction in the rebuilt live window; the current :82 process predates this build."
+  ],
+  "human_review": "pending"
+}

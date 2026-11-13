@@ -1,0 +1,43 @@
+{
+  "id": "P04",
+  "date": "2026-10-16",
+  "test": "Wheel pagination and grouped chooser reopen in a private Xephyr :69 session",
+  "status": "passed",
+  "check_count": 19,
+  "checks": {
+    "default_wheel_does_not_activate_any_owned_window": true,
+    "default_wheel_reaches_second_page": true,
+    "default_wheel_returns_first_page": true,
+    "first_group_click_opens_native_list": true,
+    "native_scenario_completed": true,
+    "new_group_after_wheel_opens_on_first_click": true,
+    "nine_native_groups_eighteen_owned_clients": true,
+    "original_group_reopens_after_return_wheel_cycle_0": true,
+    "original_group_reopens_after_return_wheel_cycle_1": true,
+    "original_group_reopens_after_return_wheel_cycle_2": true,
+    "page_change_dismisses_previous_group": true,
+    "second_page_group_reopens_after_wheel_cycle_0": true,
+    "second_page_group_reopens_after_wheel_cycle_1": true,
+    "second_page_group_reopens_after_wheel_cycle_2": true,
+    "wheel_activation_disabled_by_default": true,
+    "wheel_and_group_selection_never_activate_any_window": true,
+    "native_host_exited": true,
+    "qml_diagnostics_zero": true,
+    "real_profiles_unchanged": true
+  },
+  "scope": "Actual production Iconbox and Tasks QML, 9 native groups backed by 18 owned X11 clients. Real pointer events in a private Xephyr/KWin/D-Bus. Default wheel moved to page 2 and back without activating windows; group list closed on page change and opened on first click after each of three cycles.",
+  "limitations": [
+    "This is a private X11/Xephyr run, not the user Wayland session.",
+    "It does not validate every application-specific activation behavior or human visual acceptance."
+  ],
+  "protected_profiles_unchanged": true,
+  "qml_diagnostics_zero": true,
+  "runner_output": "~/tempia/board/p04-group-wheel-xephyr-20261016-r2/RESULTADO.json",
+  "full_state_snapshots": "~/tempia/board/p04-group-wheel-xephyr-20261016-r2/native.json",
+  "source_sha256": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+    "plasma/tests/domainos-group-wheel-host.cpp": "1cf38e224e5065d9b999ddd11fbfba3cb2419289d401f1b5664fed815635e325",
+    "plasma/tools/testar-domainos-grupos-roda.py": "c85f46ec24ba9e1f46b92c34aaec4c3956a827e0b53537b081fec290c6a684f1"
+  }
+}

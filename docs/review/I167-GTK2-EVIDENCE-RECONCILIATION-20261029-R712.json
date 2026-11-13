@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "id": "R712",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Reconcile valid GTK2 arrow-state evidence for I167 so completed comparisons are reused with their limits.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "evidence": {
+    "R655_private_native_preview": {
+      "gtk_version": "2.24.33",
+      "recipe": "private partial recipe; not the full installed theme",
+      "schemes": ["DomainOS-SR10.4", "BreezeDark"],
+      "directions": ["left", "right", "up", "down"],
+      "cell_size_px": [15, 15],
+      "held_pixel_differences_each": 53,
+      "released_pixel_differences_each": 0,
+      "source": "docs/review/I167-GTK2-PUBLIC-NATIVE-PREVIEW-20261029-R655.json"
+    },
+    "R434_live_vm_down_arrow": {
+      "observed_transition_pixels": 37,
+      "exact_matches": 37,
+      "expected_pixels_occluded_by_pointer": 16,
+      "unexpected_transitions": 0,
+      "limit": "Only the down arrow was observed; enabled state at the thumb endpoint and other directions were not established.",
+      "source": "docs/review/I167-MAME-LIVE-DOWN-ARROW-HELD-20261027-R434.json"
+    },
+    "board_authorization_gate": {
+      "instruction": "I517",
+      "user_revision": 0,
+      "authorized": false,
+      "authorized_definition_matches": false,
+      "result": "No new VM input is authorized. Existing R434 evidence is reused; no arrow was pressed in this reconciliation."
+    }
+  },
+  "current_state": {
+    "profile_theme": "DomainOS-SR10-4-KDE-Reload",
+    "source_matches_installed_base_after_removing_owned_palette_include": true,
+    "gtk2_palette_runtime": "active",
+    "application_restart_or_theme_change": false,
+    "vm_input_sent": false
+  },
+  "pending": [
+    "Human visual review of the installed GTK2 theme in the user's application remains open.",
+    "I517 remains an unapproved request for a new direct press/release comparison; do not repeat R655's private preview or R434's down-arrow observation as if they were missing.",
+    "I518 thumb-drag remains a distinct unapproved instruction."
+  ],
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "Existing technical coverage estimate; this reconciliation reuses prior evidence and does not establish visual fidelity or human approval."
+  }
+}

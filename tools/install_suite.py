@@ -1,22 +1,68 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-or-later
-"""Install both complete themes, offline, only for the invoking user."""
+"""Install the three complete themes, offline, only for the invoking user."""
 import argparse
+from contextlib import contextmanager
 import importlib.util
 import json
 import os
 from pathlib import Path
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
 import uuid
 
 from theme_transaction import Failure, no_links, snapshot, image, atomic, replace_checked
-from user_bundle import Bundle
-from components import sources
+from user_bundle import Bundle, validate_source
+from components import sources, cursor_compat_sources, decoration_sources, gtk_compat_sources
+from domainos_native_menu import prepared_source_pairs
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def copy_private_source(source, destination):
+    """Keep published trees immutable; only their owned staging copy is writable."""
+    source, destination = Path(source), Path(destination)
+    validate_source(source)
+    if source.is_dir():
+        shutil.copytree(source, destination, symlinks=True)
+        copied = (destination, *destination.rglob('*'))
+    else:
+        shutil.copy2(source, destination)
+        copied = (destination,)
+    for path in copied:
+        if path.is_symlink():
+            continue  # validated internal aliases; never chmod their targets
+        if path.stat().st_uid != os.getuid():
+            raise Failure('Cópia de instalação não pertence ao usuário: ' + str(path))
+        path.chmod(stat.S_IMODE(path.stat().st_mode) | stat.S_IWUSR)
+
+
+@contextmanager
+def prepared_install_sources(pairs, *, dry=False):
+    """Normalize immutable input permissions without modifying sources/backups."""
+    if dry:
+        yield pairs
+        return
+    with tempfile.TemporaryDirectory(prefix='irix-suite-sources-') as temporary:
+        replacements = {}
+        prepared = []
+        for source, destination in pairs:
+            source = Path(source)
+            if source not in replacements:
+                validate_source(source)
+                entries = (source, *source.rglob('*')) if source.is_dir() else (source,)
+                readonly = any(not (path.stat().st_mode & stat.S_IWUSR)
+                               for path in entries if not path.is_symlink())
+                replacement = source
+                if readonly:
+                    replacement = Path(temporary) / str(len(replacements))
+                    copy_private_source(source, replacement)
+                replacements[source] = replacement
+            prepared.append((replacements[source], destination))
+        yield prepared
 
 
 def roots():
@@ -36,31 +82,12 @@ def roots():
 
 
 
-def migrate_user_hook(config, state, dry=False):
-    """Update only this checkout's existing optional service after path relocation."""
-    service = config/'systemd/user/irix-classic-user.service'
-    before = snapshot(service)
-    if not before['exists']:
-        return
-    old = str(ROOT/'classic-rewrite-rc1/hooks/irix-classic-user.sh')
-    current = service.read_text()
-    if 'ExecStart='+old+'\n' not in current:
-        return  # A different checkout/user-maintained service is not ours to edit.
-    new = str(ROOT/'decorations/classic/hooks/irix-classic-user.sh')
-    escaped = new.replace('\\', '\\\\').replace('"', '\\"').replace('%', '%%')
-    updated = current.replace('ExecStart='+old+'\n', 'ExecStart="'+escaped+'"\n')
-    print('Hook opcional existente: atualizar caminho da decoração Classic.')
-    if dry:
-        return
-    receipt = state/'irixium-hook-migration'/uuid.uuid4().hex/'receipt.json'
-    after = image(updated.encode(), before['mode'])
-    atomic(receipt, (json.dumps({'path':str(service),'before':before,'after':after},indent=2)+'\n').encode())
-    replace_checked(service,before,after)
-    if os.environ.get('DBUS_SESSION_BUS_ADDRESS') and shutil.which('systemctl'):
-        result = subprocess.run(['systemctl','--user','daemon-reload'],capture_output=True,text=True)
-        if result.returncode:
-            print('Aviso: execute systemctl --user daemon-reload antes do próximo login.')
-    print('Backup do hook: '+str(receipt.parent))
+def migrate_user_hook(data, config, state, dry=False):
+    """Detach only this checkout's existing optional hook from its source tree."""
+    # Standalone DomainOS packages import this module without the Classic hook.
+    # The optional helper is needed only when this suite migration is requested.
+    from classic_hook_runtime import migrate
+    return migrate(ROOT, data, config, state, dry=dry)
 
 
 def refresh_icons(data):
@@ -93,9 +120,23 @@ def refresh_icons(data):
                 break
 
 
+def check_domainos_qt():
+    """The DomainOS separate popup windows require Qt Quick Controls 6.8."""
+    version = subprocess.check_output(['qtpaths6', '--qt-version'], text=True).strip()
+    try:
+        major, minor = (int(part) for part in version.split('.')[:2])
+    except (ValueError, TypeError):
+        raise Failure('Não foi possível verificar a versão Qt 6 usada pelo Plasma: ' + version)
+    if (major, minor) < (6, 8):
+        raise Failure('DomainOS exige Qt 6.8 ou superior; Qt encontrado: ' + version
+                      + '. Atualize pelos pacotes da distribuição. Nenhum pacote de sistema foi alterado.')
+
+
 def check_runtime():
-    missing = [name for name in ('plasma-apply-lookandfeel', 'kreadconfig6', 'qtpaths6')
+    missing = [name for name in ('plasma-apply-lookandfeel', 'kreadconfig6', 'qtpaths6', 'qdbus6')
                if not shutil.which(name)]
+    if shutil.which('qtpaths6'):
+        check_domainos_qt()
     if not missing:
         def query(name):
             return Path(subprocess.check_output(['qtpaths6','--query',name],text=True).strip())
@@ -103,9 +144,30 @@ def check_runtime():
         plugins = query('QT_INSTALL_PLUGINS')
         for path, label in [(qml/'org/kde/kwin/decoration/qmldir','Aurorae Qt 6'),
                             (qml/'org/kde/ksvg/qmldir','KSvg QML Qt 6'),
+                            (qml/'org/kde/ksysguard/sensors/qmldir','KSystemStats QML Qt 6'),
+                            (qml/'org/kde/taskmanager/qmldir','TaskManager QML Plasma 6'),
+                            (qml/'org/kde/plasma/private/pager/qmldir','Pager QML Plasma 6'),
+                            (qml/'org/kde/plasma/private/kicker/qmldir','Aplicativos QML Plasma 6'),
+                            (qml/'org/kde/plasma/private/keyboardindicator/qmldir','Estado de modificadores QML Plasma 6'),
+                            (qml/'org/kde/plasma/private/taskmanager/qmldir','Menu de tarefas QML Plasma 6'),
+                            (qml/'org/kde/plasma/private/sessions/qmldir','Sessão QML Plasma 6'),
+                            (qml/'org/kde/plasma/plasma5support/qmldir','Plasma5Support Qt 6'),
+                            (qml/'org/kde/plasma/workspace/dbus/qmldir','D-Bus QML Plasma 6'),
+                            (qml/'org/kde/plasma/workspace/calendar/qmldir','Calendário QML Plasma 6'),
+                            (qml/'org/kde/kcmutils/qmldir','Preferências QML Plasma 6'),
+                            (plugins/'kf6/kded/gtkconfig.so','GTK Config nativo do KDE'),
                             (plugins/'styles/libkvantum.so','Kvantum Qt 6')]:
             if not path.is_file():
                 missing.append(label)
+    if not shutil.which('ksystemstats'):
+        missing.append('ksystemstats')
+    # The transient KWin bridge deliberately uses distribution Qt bindings,
+    # matching KDE's libraries rather than an unrelated virtual environment.
+    python = Path('/usr/bin/python3')
+    if not python.is_file() or subprocess.run(
+            [str(python), '-c', 'from PyQt6 import QtCore, QtDBus, QtGui; from PIL import Image'],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode:
+        missing.append('PyQt6 QtCore/QtDBus/QtGui e Pillow do Python da distribuição')
     if missing:
         raise Failure('Dependências de execução ausentes: '+', '.join(missing)+
                       '. Instale os pacotes da sua distribuição antes de continuar. Nenhum pacote de sistema foi alterado.')
@@ -115,63 +177,157 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--verificar', action='store_true')
     parser.add_argument('--restaurar', action='store_true')
+    parser.add_argument('--recuperar', action='store_true',
+                        help='concluir a restauração de uma migração interrompida; exige --restaurar')
+    parser.add_argument('--recarregar-decoracao', action='store_true',
+                        help='liberar QML antigo da decoração IRIX na sessão do próprio usuário')
     parser.add_argument('--sem-cache', action='store_true', help='para testes sem sessão gráfica')
+    parser.add_argument('--sem-integracao', action='store_true',
+                        help='não instalar/iniciar o observador GTK/Kvantum por usuário')
+    parser.add_argument('--cursor-compat-root', type=Path,
+                        help='raiz de compatibilidade libXcursor; padrão ~/.icons; útil para testes isolados')
+    parser.add_argument('--gtk-compat-root', type=Path,
+                        help='raiz de descoberta GTK2; padrão ~/.themes; útil para testes isolados')
     args = parser.parse_args()
+    if args.recuperar and not args.restaurar:
+        parser.error('--recuperar exige --restaurar')
     if os.geteuid() == 0:
         raise Failure('Execute como usuário normal, sem sudo.')
     data, config, state = roots()
+    if args.recarregar_decoracao:
+        if args.sem_cache or args.restaurar:
+            parser.error('--recarregar-decoracao exige instalação na sessão gráfica, sem --sem-cache/--restaurar')
+        from reload_decoration import check_session
+        check_session()
     if not args.restaurar:
         check_runtime()
-    pairs = sources(data, config)
-    bundle = Bundle(state/'irixium-suite', [dest for _, dest in pairs])
+    pairs = sources(data, config) + cursor_compat_sources(args.cursor_compat_root) + gtk_compat_sources(args.gtk_compat_root)
+    from theme_companion_bridge import (install as install_companion_bridge, locations as companion_locations,
+        restore_palette_resources, stop_if_installed, start as start_companion_bridge,
+        uninstall as uninstall_companion_bridge, service as companion_service, UNIT as companion_unit)
+    from domainos_color_migration import LEGACY_FILENAME, prepare_migration, install_with_migration, restore_migration
+    bundle = Bundle(state/'irixium-suite', [dest for _, dest in pairs]
+                    + [data/'color-schemes'/LEGACY_FILENAME])
     if args.restaurar:
+        from domainos_style_bridge import (detach_global_choices, service_command as panel_bridge_service,
+            UNIT as panel_bridge_unit)
+        panel_detach=detach_global_choices(data,config,state,dry=True)
+        uninstall_companion_bridge(data, config, state, dry=True)
+        palette_plan = restore_palette_resources(data, config, state, Path.home(), dry=True)
+        if not args.verificar:
+            if not args.sem_cache: stop_if_installed(data, config, state)
+            if panel_detach['status']=='ready' and not args.sem_cache:
+                panel_bridge_service(['stop',panel_bridge_unit])
+            restore_palette_resources(data, config, state, Path.home())
+        restore_migration(data, state, dry=True, recovery=args.recuperar)
+        overlays = [entry for result in palette_plan for entry in result.get('overlays', [])]
+        bundle.restore(dry=True, overlays=overlays if args.verificar else None)
         if args.verificar:
-            bundle.restore(dry=True)
+            return
         else:
             with bundle.locked():
+                restore_migration(data, state, dry=True, recovery=args.recuperar)
+                bundle.restore(dry=True)
+                restore_migration(data, state, recovery=args.recuperar)
                 bundle.restore()
             if not args.sem_cache:
                 refresh_icons(data)
+            companion_control = companion_locations(data, config, state)['control']
+            if companion_control.exists() and not args.sem_cache:
+                companion_service(['disable', companion_unit])
+            uninstall_companion_bridge(data, config, state)
+            if panel_detach['status']=='ready':
+                panel_detach=detach_global_choices(data,config,state)
+                if not args.sem_cache:
+                    if not panel_detach['style_enabled']:
+                        panel_bridge_service(['disable',panel_bridge_unit])
+                    elif panel_detach['enabled']:
+                        panel_bridge_service(['start',panel_bridge_unit])
         return
     sys.path.insert(0, str(ROOT/'icons/tools'))
+    if not args.sem_integracao:
+        install_companion_bridge(data, config, state, Path.home(), dry=True)
     from icon_common import audit
     for source in (ROOT/'icons/Irixium', ROOT/'icons/themes/IrixClassic-SGI'):
         report = audit(source)
         if report['errors']:
             raise Failure(f'Ícones inválidos em {source}: {report["errors"]} erro(s). Execute icons/tools/validate_theme.py.')
+    sys.path.insert(0, str(ROOT/'cursors/tools'))
+    from cursor_audit import audit_theme as audit_cursors
+    for source, _ in pairs:
+        if source.parent == ROOT/'cursors':
+            report = audit_cursors(source)
+            if report['errors']:
+                raise Failure('Cursores inválidos: '+ '; '.join(report['errors']))
     # Stage metadata with the same ID used by the global theme. Preserve only
     # known appearance settings, not old QML implementations or interaction delays.
     spec = importlib.util.spec_from_file_location('classic_manager', ROOT/'decorations/classic/tools/manage.py')
     classic = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(classic)
     from user_bundle import fingerprint
-    for folder in ('decorations/classic', 'decorations/modern'):
+    for package in decoration_sources():
+        folder = package.parent.relative_to(ROOT)
         expected = json.loads((ROOT/folder/'MANIFEST.json').read_text())['package']
         if fingerprint(ROOT/folder/'package') != expected:
             raise Failure(f'Manifesto divergente: {folder}')
     with tempfile.TemporaryDirectory(prefix='irix-suite-') as tmp:
+        classic_index = next(i for i, (_, dest) in enumerate(pairs)
+                             if dest.name == 'irixium_irix_classic_v4')
+        classic_source, classic_dest = pairs[classic_index]
         staged = Path(tmp)/'classic'
-        shutil.copytree(pairs[1][0], staged)
+        copy_private_source(classic_source, staged)
         metadata = staged/'metadata.json'
         value = json.loads(metadata.read_text())
-        value['KPlugin']['Id'] = pairs[1][1].name
+        value['KPlugin']['Id'] = classic_dest.name
         metadata.write_text(json.dumps(value, ensure_ascii=False, indent=4)+'\n')
-        if pairs[1][1].exists():
-            classic.merge_settings(pairs[1][1], staged)
-        pairs[1] = (staged, pairs[1][1])
-        if args.verificar:
-            bundle.install(pairs, dry=True)
-        else:
-            with bundle.locked():
-                bundle.install(pairs)
+        if classic_dest.exists():
+            classic.merge_settings(classic_dest, staged)
+        pairs[classic_index] = (staged, classic_dest)
+        with prepared_source_pairs(ROOT, pairs, dry=args.verificar) as prepared:
+            # Dynamic palette files belong to their own journals. Validate
+            # those guards before replacing a complete installed theme tree.
+            restore_palette_resources(data, config, state, Path.home(), dry=True)
+            if not args.verificar:
+                if not args.sem_cache: stop_if_installed(data, config, state)
+                restore_palette_resources(data, config, state, Path.home())
+            migration = prepare_migration(data, state)
+            with prepared_install_sources(prepared, dry=args.verificar) as install_sources:
+                install_with_migration(bundle, install_sources, migration, dry=args.verificar)
+        if not args.verificar:
             if not args.sem_cache:
                 refresh_icons(data)
-    migrate_user_hook(config, state, dry=args.verificar)
+    migrate_user_hook(data, config, state, dry=args.verificar)
+    if not args.sem_integracao:
+        install_companion_bridge(data, config, state, Path.home(), dry=args.verificar)
+        from domainos_style_bridge import (install_bridge, start_bridge, paths as panel_bridge_paths,
+            read_control as read_panel_bridge, service_command as panel_bridge_service)
+        panel_paths = panel_bridge_paths(data, config, state)
+        if not args.verificar and not args.sem_cache and (panel_paths['state']/'control.json').exists():
+            read_panel_bridge(panel_paths, allow_previous_runtime=True)
+            panel_bridge_service(['stop', 'irix-domainos-style-bridge.service'])
+        panel_paths = install_bridge(data, config, state, global_choices=True, dry=args.verificar)
+        if not args.verificar and not args.sem_cache:
+            from select_gtk import native_ready
+            if native_ready():
+                start_companion_bridge()
+                start_bridge(panel_paths)
+            else:
+                print('Integrações instaladas. Inicie-as na própria sessão KDE:')
+                print('python3 tools/theme_companion_bridge.py --instalar --iniciar')
+                print('python3 tools/domainos_style_bridge.py --temas-globais --iniciar')
+    if args.recarregar_decoracao:
+        from reload_decoration import reload
+        reload(config/'kwinrc', state/'irixium-decoration-reload', dry=args.verificar)
     if not args.verificar:
-        print('Os dois temas e suas dependências gráficas foram instalados no seu perfil.')
-        print('Sons SGI: use sons/instalar.sh --baixar, --origem DIRETORIO ou o cache local já preparado.')
-        print('Para aplicar o conjunto: bash aplicar-tema.sh classic (ou moderno).')
-        print('Após atualizar QML em uso, salve o trabalho e entre novamente na sessão.')
+        print('Os três temas e suas dependências gráficas foram instalados no seu perfil.')
+        if (ROOT/'sons/instalar.sh').is_file():
+            print('Sons SGI: use sons/instalar.sh --baixar, --origem DIRETORIO ou o cache local já preparado.')
+        else:
+            print('Sons SGI opcionais não fazem parte desta distribuição gráfica.')
+        print('Para aplicar o conjunto: bash aplicar-tema.sh classic, moderno ou domainos.')
+        if not args.recarregar_decoracao:
+            print('Para liberar QML antigo em uso: python3 tools/reload_decoration.py (na própria sessão KDE).')
+        print('Reabra os aplicativos para recarregar Kvantum e os ícones.')
 
 
 if __name__ == '__main__':

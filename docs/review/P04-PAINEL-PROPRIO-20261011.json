@@ -1,0 +1,30 @@
+{
+  "at": "2026-10-11T01:05:56.559503+00:00",
+  "item": "P04",
+  "revision": 1,
+  "scope": "Candidate for own Operations panel, not installed",
+  "phase": "native_dialog_candidate_offscreen",
+  "checks": {
+    "installed_sources_equal_current": true,
+    "qml_native_dialog_load": true,
+    "ten_rows_measured_before_open": true,
+    "open_visible": true,
+    "command_emits_then_closes": true,
+    "null_anchor_refused": true
+  },
+  "limits": [
+    "Offscreen does not prove Wayland lsi lifecycle, outside dismissal, screen placement or historical fidelity.",
+    "Existing live component unchanged; candidate is not wired into Iconbox yet.",
+    "Fixture records command signal, never operates real windows."
+  ],
+  "remaining": [
+    "Bind exact invoking button rectangle before member picker closes",
+    "Wire candidate and prove synchronous/asynchronous group handoff, cancellation, keyboard, scrolling and all color schemes",
+    "Compare native scoped preview and validate real lsi instance without modifying personal windows"
+  ],
+  "estimated_stage_progress_percent": 40,
+  "hashes": {
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "698341c0c490f3a0f612b07b9eccfda8760af36a1fa5a5dbf8ef9c70bb57802f",
+    "plasma/tests/test_domainos_operations_panel.py": "baea9f61e62d6fb979c549c3ebbad7bec5c09e31ccf618fda43d9358b2ee0023"
+  }
+}

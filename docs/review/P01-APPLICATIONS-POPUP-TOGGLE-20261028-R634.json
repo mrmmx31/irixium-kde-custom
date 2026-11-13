@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R634",
+  "date_utc": "2026-10-28T22:30:20+00:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "authorization": {
+    "authorized": true,
+    "definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+    "definition_matches": true
+  },
+  "scope": "Focused private Qt Quick probe of the current DomainOSPopupToggle state machine used by the Applications menu and pinned-applications drawer.",
+  "method": {
+    "environment": "Qt6 QQuickView with offscreen/software backend; the exact current DomainOSPopupToggle.qml was copied byte-for-byte into a disposable fixture under ~/tempia.",
+    "inputs": "Synthetic anchor Items emitted the same pointerPressed/pointerCancelled signals consumed by DomainOSPopupToggle. Each of the menu and drawer helper instances was exercised through open, same-anchor close, next-click reopen, popup-first dismissal on the same event, deferred latch clear, and following-click reopen.",
+    "source_integration": "Static inspection confirms PanelButton emits pointerPressed on MouseArea press; DomainOSPanel routes the Applications launcher action to DomainOSRuntime; DomainOSApplications.showMenu() and showDrawer() both call their respective DomainOSPopupToggle instances.",
+    "production_sources_changed": false,
+    "personal_profile_changed": false,
+    "user_window_or_compositor_touched": false,
+    "discarded_attempt": "The first harness draft placed multiple clicks inside one Qt event dispatch and was invalid; only the corrected asynchronous run below is evidence."
+  },
+  "checks": {
+    "qml_loaded": true,
+    "qml_runtime_errors": 0,
+    "compiled_host": true,
+    "menu_open_close_reopen": true,
+    "menu_native_early_dismiss_close": true,
+    "menu_latch_clears_between_events": true,
+    "drawer_open_close_reopen": true,
+    "drawer_native_early_dismiss_close": true,
+    "drawer_latch_clears_between_events": true,
+    "all_12_assertions_passed": true,
+    "production_sources_unchanged": true
+  },
+  "source_sha256": {
+    "DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "DomainOSApplications.qml": "44b8602342c8ab849a554497dae3d2e15f58617b9a3e1671278480a21ffdb3b4",
+    "DomainOSKdeApplicationMenu.qml": "27264c3da56d6ac185ce4a76a07a9bafca604bddf09376b96b9599a41ad49d72",
+    "PanelButton.qml": "ed09537dbeadd7c891550ef5fb93d2e2ec505b26ed025507f1d614ac6177c09e",
+    "DomainOSPanel.qml": "3f44a53701368606fa7589eb72883bb0f71eecbd40a1a2a817c1f234704f478b",
+    "DomainOSRuntime.qml": "6e9c1ec149554547cfa880e0220d2461c67ce03cec81dc45562a9a330ec875d6"
+  },
+  "fixture_sha256": {
+    "DomainOSPopupToggle.qml": "d3baf9918ad38fda570d3cdcde3012cb0e77cccad26422002b40b5da17377317",
+    "toggle-probe.qml": "5ab91027f9a289bdbee24b6ce6bfa5860f5e2c54e491c506784c0da7eb764460",
+    "host.cpp": "1f8795956f746e9bc2f053f9639bb37e21dbad6805e20c2b17249973c003bb38",
+    "run.log": "413144f341273e7152b6da8fc24d46fdfc066b30333b898d2e3677e1ed926f62"
+  },
+  "evidence": {
+    "record_directory": "records/ia-tema/P01/R634-popup-toggle-20261028/",
+    "temporary_directory": "~/tempia/domainos-theme-work/P01/R634-popup-toggle-20261028/",
+    "run_log": "records/ia-tema/P01/R634-popup-toggle-20261028/run.log"
+  },
+  "limits": [
+    "This verifies the helper state machine with the same signal names and the current source file; it does not inject a physical pointer into the production plasmashell panel.",
+    "It does not replace live review of both menus on the user desktop or human acceptance."
+  ],
+  "conclusion": "Both production helper instances’ state-machine paths pass in the corrected private fixture, including same-button close/reopen and native-popup-first dismissal. No production change was indicated. P01 remains open for the live desktop review.",
+  "next": "Continue only P01. Ask for/await the user’s live menu review; do not claim full desktop acceptance from this helper fixture."
+}

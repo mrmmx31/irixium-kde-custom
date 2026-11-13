@@ -1,0 +1,65 @@
+{
+  "at": "2026-10-11T11:22:52.880304+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "estimated_stage_percent": 85,
+  "basis": "Grupo de outras galerias parcialmente coberto; hover/diálogos/GTK4/Plasma/handoff ainda faltam. Não converter contagem de widgets em fidelidade.",
+  "implemented": [
+    "Módulo comum Qt5/Qt6 de dicas por classe e limites nativos",
+    "Dicas existentes preservadas; parâmetros numéricos da amostra sem unidade separados de px do tema",
+    "Menus nativos habilitados para mostrar dicas; ações de arquivo/settings/captura explicam perfil privado",
+    "Galeria Qt5 compartilha main Qt6; usos Kvantum recebem mesma atribuição, pintura desse engine não certificada"
+  ],
+  "native_helper": {
+    "qt5": "passed",
+    "qt6": "passed",
+    "invariants": "paleta/texto/dicas existentes/clique preservados"
+  },
+  "production_full_gallery": {
+    "qt5": {
+      "widgets": 60,
+      "actions": 10,
+      "buttons_with_hint": 35
+    },
+    "qt6": {
+      "widgets": 63,
+      "actions": 10,
+      "buttons_with_hint": 35
+    },
+    "guards": "bwrap/fakeHOME/passwd/bus/proc/X11 verificados sem substituir private_guards",
+    "scope": "main de produção, todos botões registrados, menus habilitados, limites, cabeçalho e clique; não hover/fidelidade"
+  },
+  "initial_failures": [
+    "QTabWidget sem dica no helper; contêiner incluído sem remover teste",
+    "Namespace sem placeholders de /etc/fonts/alternatives/cache; falhou antes de Qt, corrigido em fixture"
+  ],
+  "remaining": [
+    "Hover Qt: atraso/estabilidade/posição/cores efetivas",
+    "Diálogos dinâmicos Qt",
+    "Galerias GTK4 e Plasma",
+    "Outros layouts/estados e entrega pessoal coordenada"
+  ],
+  "sources": {
+    "plasma/tests/galerias-nativas/qt_widget_hints.py": "b76b4f25b1b3e2fdaad7dff713578e5d2346bdeea44bbbcfea9e85ba2b0d33aa",
+    "plasma/tests/galerias-nativas/qt6_demo.py": "fa84466492f51b4e2ec400491dcc60f20e8ed4f57640f6879d33c36e32cb1aae",
+    "tools/theme-lab/tests/probe_qt_gallery_hints.py": "56415e41b408ca618ea472159336ff78a859e0df614378bca042a946a3b307ce",
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "fcee4059e8d39bb73b42490b1170ecf16059743f1a31f74e002372c4aa1546a3",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "d05e182aca253839de4459109e7a969131907d0df2e2a73bd80d926e62da4a0d",
+    "tools/theme-lab/Makefile": "1720f69a66a28ff968f82c5a844cd69e708837cdcb0c3c7709296cb86473bb06"
+  },
+  "evidence": [
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt5-gallery-hints-r1.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt6-gallery-hints-r1.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt5-gallery-hints-r2.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt6-gallery-hints-r2.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt5-full-gallery-r1.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt6-full-gallery-r1.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt5-full-gallery-r2.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt6-full-gallery-r2.log",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt5-full-gallery/proof/HINTS-QA.json",
+    "docs/referencias/domainos-sr104/t07-qt-gallery/qt6-full-gallery/proof/HINTS-QA.json"
+  ],
+  "personal_tool_reopened": false,
+  "human_approval_filled": false
+}

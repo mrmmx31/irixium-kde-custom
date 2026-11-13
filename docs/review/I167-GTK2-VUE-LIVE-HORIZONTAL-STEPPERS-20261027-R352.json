@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "id": "R352",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Live Domain/OS SR10.4 HP VUE 2.01 Trash Can horizontal scrollbar and 15x15 stepper cells",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "network_namespace": "net:[4026534562]",
+    "other_vm": {
+      "mame_pid": 3971019,
+      "disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+      "network_namespace": "net:[4026534021]",
+      "contacted": false
+    },
+    "bridge": "Project-owned channel verified clean before and after; no request pending.",
+    "profile_before_input": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "mouse_hook": "present",
+      "wait_button_up": false
+    },
+    "profile_after": "Read-only channel status remained clean; no MAME profile settings were changed."
+  },
+  "interaction": {
+    "screen_was_awake_before_input": true,
+    "input_type": "MAME bridge guest keyboard fields; not physical keyboard input",
+    "sequence": [
+      "One-frame Alt+F opened the File menu and was released.",
+      "A seven-Down plus Enter attempt did not open Trash Can; no file operation was invoked; Escape closed the menu.",
+      "One-frame Alt+F followed by one-frame S selected Show Trash and opened the Trash Can.",
+      "Waited 180 guest frames without further input before the stable capture."
+    ],
+    "input_released": true,
+    "files_deleted_or_moved": false
+  },
+  "capture": {
+    "type": "Native guest screen snapshot",
+    "path": "~/tempia/ia-tema/evidence/I167/r351-vue-trash-settled.png",
+    "sha256": "f80abc65669df8cc170b23ae6ba5747f9b4ebbe9500b9dacbe13751a03ca0181",
+    "size_px": [1024, 844],
+    "visible": "VUE Trash Can active with horizontal and vertical scrollbar arrows visible; File Manager and Terminal remain open behind it."
+  },
+  "reference": {
+    "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "size_px": [542, 20]
+  },
+  "comparison": {
+    "method": "Direct RGB comparison of the aligned full-bar crop; then separate 15x15 cell comparisons. No scaling, filtering, or per-pixel displacement optimization.",
+    "live_full_bar_crop": {"xyxy": [50, 695, 592, 715], "size_px": [542, 20]},
+    "reference_full_bar_different_pixels": 0,
+    "pixels_compared": 10840,
+    "left_cell": {
+      "live_origin": [52, 699],
+      "reference_origin": [2, 4],
+      "different_pixels": 0,
+      "pixels_compared": 225
+    },
+    "right_cell": {
+      "live_origin": [576, 699],
+      "reference_origin": [526, 4],
+      "different_pixels": 0,
+      "pixels_compared": 225
+    },
+    "display_artifact": {
+      "path": "~/tempia/ia-tema/evidence/I167/r352-vue-live-vs-retained-horizontal.png",
+      "sha256": "6634b8ffef613614ea0cac55ef14e32d3695a00e1f3005f5a9cb3c98adb7aa59",
+      "description": "Reference and live VUE bar stacked and enlarged 2x nearest-neighbor; numeric measurements use native 1:1 pixels."
+    }
+  },
+  "conclusion": "The current live SR10.4 VUE horizontal Trash Can scrollbar is pixel-identical to the retained reference over the full 542x20 bar. Both horizontal 15x15 stepper cells and arrow glyphs are exact. This independently confirms the historical crop origin and closes the question of what the VUE horizontal arrows look like in the current guest.",
+  "limits": [
+    "This proves live VUE appearance, not GTK2 appearance.",
+    "GTK2 installed renderer remains 3/225 left and 1/225 right against the reference at the outer relief corners (R344); normal glyph geometry is not shortened.",
+    "The open XChat predates GTK2 R332 and has not reloaded the recipe; no pixel claim is made about its in-memory style.",
+    "No pressed, disabled, vertical, or content-scroll state was changed or measured here.",
+    "No human visual acceptance is inferred."
+  ],
+  "next": "Continue only GTK2/I167: determine whether the four GTK2 cell-corner pixels can be aligned without changing semantic KDE colors or 15px geometry; preserve XChat reload and user visual review as separate pending steps."
+}

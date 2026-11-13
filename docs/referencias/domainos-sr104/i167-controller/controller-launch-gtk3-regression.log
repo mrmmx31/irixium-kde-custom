@@ -1,0 +1,25 @@
+/home/lsi/irixium-kde-custom/.qa-theme-lab-spin-zp37mqcj
+command: mousemove
+command: click
+command: search
+command: windowmove
+command: mousemove
+command: click
+command: mousemove
+command: click
+command: search
+command: windowmove
+command: mousemove
+command: click
+command: mousemove
+command: click
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1166, in <module>
+    main()
+    ~~~~^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 1106, in main
+    results['automatic_spin_both'] = wait(lambda: allocated(width, height, True))
+                                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_controller_spin.py", line 32, in wait
+    raise AssertionError('Timeout waiting for native controller/preview condition')
+AssertionError: Timeout waiting for native controller/preview condition

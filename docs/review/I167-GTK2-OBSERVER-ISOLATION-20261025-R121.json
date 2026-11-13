@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "id": "R121",
+  "date": "2026-10-25",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "GTK2 observer and worker isolation validated on a private session bus",
+  "method": {
+    "display": "Fresh xvfb-run X11 server; no desktop or user X session used.",
+    "profile": "/home/lsi/tempia/i167-r118/private-observer-r121-retry/home",
+    "session_bus": "Private dbus-daemon socket under the fixture directory; no SESSION_MANAGER or WAYLAND_DISPLAY inherited.",
+    "observer": "Production theme_companion_bridge.watch() and its QProcess worker; the production GTK2 palette runtime and _GTK_READ_RCFILES sender ran unchanged.",
+    "gtkconfig": "Private test service implementing the GTKConfig theme-name methods and exporting synthetic palette files only under the fixture profile. The observer received a private org.kde.kconfig.notify.ConfigChanged signal.",
+    "isolation_checks": "Parent process asserted HOME, all XDG paths, private bus and X11 display. Each worker repeated these assertions before importing/calling the production bridge."
+  },
+  "result": {
+    "status": "passed",
+    "initial_palette_exports": 1,
+    "palette_id_after_change": "changed",
+    "gtk2_face_rgb_before": [
+      82,
+      103,
+      124
+    ],
+    "gtk2_face_rgb_after": [
+      180,
+      55,
+      82
+    ],
+    "changed_pixels": 46274,
+    "native_reload_runs": [
+      {
+        "colors_sha256": "223a5e1237125de1344e91896fb80c63ad0dd0f0af9ea657d9459775bcb841b2",
+        "native_reload": {
+          "status": "sent",
+          "windows_considered": 3,
+          "events_sent": 3,
+          "racing_x_errors": 0
+        },
+        "native_reload_required": true,
+        "gtk4_status": "reloaded",
+        "native_palette": "native_palette_exported"
+      },
+      {
+        "colors_sha256": "027fe63dcdb7598b7e87381dcd8f764052285a4d06f26bcfa0e4ee965e22a886",
+        "native_reload": {
+          "status": "sent",
+          "windows_considered": 3,
+          "events_sent": 3,
+          "racing_x_errors": 0
+        },
+        "native_reload_required": true,
+        "gtk4_status": "reloaded",
+        "native_palette": "native_palette_exported"
+      }
+    ],
+    "gtk2_restore_status": "restored",
+    "restore_errors": [],
+    "parent_isolation_assertion": true,
+    "worker_isolation_assertions": true,
+    "no personal bus or apps used": true,
+    "xvfb_x_errors": 0
+  },
+  "failed_fixture_attempts": [
+    "R121 first run remained under private HOME/XDG/D-Bus, but its fake GTKConfig service lacked selected-theme.txt, so gtkTheme() returned FileNotFoundError and no palette update occurred. A diagnostic confirmed the missing fixture file. The root cause was fixed by creating selected-theme.txt before starting the service; the successful retry is in the evidence directory."
+  ],
+  "limits": [
+    "KConfig notification was emitted by the fixture, and GTKConfig export was a private service implementation; this does not prove the installed kded6/KConfigWatcher/GTKConfig module chain itself.",
+    "GTK4 was exercised only because the production bridge synchronizes it alongside GTK2; no GTK4 fidelity claim is made.",
+    "The process printed a non-fatal GLib main-context teardown critical after the verified result; observer, worker, service, D-Bus and Xvfb exited. This is recorded as test-harness cleanup noise and is not hidden."
+  ],
+  "evidence": {
+    "probe": {
+      "path": "~/tempia/i167-r118/probe_private_observer-r121.py",
+      "sha256": "a70fd006c4be3366afe808db0fb709287046b52f29b37567e1928ffe8d5897d1"
+    },
+    "worker": {
+      "path": "~/tempia/i167-r118/private-observer-r121-retry/private_worker.py",
+      "sha256": "41bcada77632353aae4317e52b76c52611f4c6721297113946f2cebd137d9ad2"
+    },
+    "result": {
+      "path": "~/tempia/i167-r118/private-observer-r121-retry/result.json",
+      "sha256": "bda4736b283ff646a60fa514fd9278478a2696705486db34f3c2daa2bde16e6c"
+    },
+    "before_capture": {
+      "path": "~/tempia/i167-r118/private-observer-r121-retry/before.png",
+      "sha256": "65685cc43db285b6ec2ce48c48eecf63f11e56d427462849c70a1ee05909486a"
+    },
+    "after_capture": {
+      "path": "~/tempia/i167-r118/private-observer-r121-retry/after.png",
+      "sha256": "0884f7226055ec57e9aad818309717d283104858907b7e0c8a66344eebf5b8ad"
+    },
+    "run_log": "~/tempia/i167-r118/private-observer-r121-retry-run.log",
+    "r120_restoration_state": "~/tempia/i167-r118/r120-restoration-state.json"
+  },
+  "next": "Consider a fully private kded6 + installed GTKConfig module fixture, after verifying it cannot join the user session bus or write outside ~/tempia; then audit the remaining GTK2 end-to-end gaps. Do not treat this as human fidelity approval or permission to modify the user profile."
+}

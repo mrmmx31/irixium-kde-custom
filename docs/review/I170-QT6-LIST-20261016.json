@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "item": "I170",
+  "revision": 1,
+  "definition_sha256": "eee59ace856d938dfe9eae115b0e49a50bfc86b78f28670e06e9be7b26554426",
+  "control": "list",
+  "status": "passed",
+  "implementation": "Real QTreeWidget with Qt6 native row selection and keyboard/mouse semantics. QSS uses KDE roles for normal, selected, focused, backdrop and disabled states; native vertical and horizontal scrollbars remain active.",
+  "native_evidence": {
+    "widgetClass": "QTreeWidget",
+    "objectName": "domainosRecipeList",
+    "rowCount": 40,
+    "selectedRow": 0,
+    "selectionMode": "single row",
+    "states": [
+      "normal",
+      "selected",
+      "focused",
+      "backdrop",
+      "disabled"
+    ],
+    "nativeScrollbars": {
+      "vertical": {
+        "visible": true,
+        "maximum": 25,
+        "sizeHint": [
+          15,
+          15
+        ],
+        "objectName": "domainosScrollBarVertical",
+        "widgetClass": "QScrollBar",
+        "allocation": [
+          15,
+          386
+        ]
+      },
+      "horizontal": {
+        "visible": true,
+        "maximum": 165,
+        "sizeHint": [
+          15,
+          15
+        ],
+        "objectName": "domainosScrollBarHorizontal",
+        "widgetClass": "QScrollBar",
+        "allocation": [
+          455,
+          15
+        ]
+      }
+    },
+    "selectedScheme": {
+      "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+      "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "kind": "xdg_user_color_scheme",
+      "scheme_id": "DomainOS-SR10.4",
+      "scheme_name": "DomainOS SR10.4"
+    },
+    "paletteInputs": [
+      {
+        "path": "/home/domainos-test/.local/share/color-schemes/DomainOS-SR10.4.colors",
+        "sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+        "kind": "xdg_user_color_scheme",
+        "scheme_id": "DomainOS-SR10.4",
+        "scheme_name": "DomainOS SR10.4"
+      },
+      {
+        "path": "/fixture/root/tools/theme-lab/build/theme-lab-colors",
+        "sha256": "d12a78a1fd8c4e7c407f0ba10d87e194253ecd6a8a43814ca04580ddecf081f1"
+      },
+      {
+        "path": "/fixture/root/tools/theme-lab/src/native_colors.cpp",
+        "sha256": "b39b776e8bed69a3f94cc53d7f85b5e1616182cac36fc16284252493e6b7a7a6"
+      }
+    ],
+    "limitations": [
+      "The QTreeView is a real Qt6 control; matching SR10.4 visual evidence is not implied."
+    ]
+  },
+  "validation": {
+    "qt6_recipe_suite": "20/20 passed",
+    "qt5_regression_suite": "4/4 passed",
+    "public_xephyr": {
+      "status": "passed",
+      "display": ":68",
+      "qt": "6.8.2",
+      "pyqt": "6.9.0",
+      "platform": "xcb",
+      "style": {
+        "objectName": "fusion",
+        "className": "QFusionStyle"
+      },
+      "private_namespace_guards": {
+        "verified": true,
+        "uid": 1000,
+        "passwdName": "domainos-test",
+        "passwdHome": "/home/domainos-test",
+        "namespaceMarker": "/etc/domainos-preview",
+        "personalHomeExposed": false,
+        "systemBusSocketExposed": false,
+        "procStatusPresent": true,
+        "cwd": "/home/domainos-test"
+      },
+      "preview_exit_code": 0
+    },
+    "visual_capture": "Real list tab shows selected first row and both native Qt scrollbars; screenshot inspected."
+  },
+  "artifacts": {
+    "public_result": "/home/lsi/tempia/i170-qt6-public-t7jghh3d/home/qtwidgets-proof/RESULTADO.json",
+    "public_result_sha256": "fb9cb1ec6b63536eb6fa633dc8e9000b1313f483a83e236849ba1a84ed32d22c",
+    "screenshot": "docs/review/I170-QT6-LIST-20261016.png",
+    "screenshot_sha256": "635c1743873e9b13f56ede8df9b0e26729942b1823ff299b03396ac560d5132b",
+    "source_sha256": {
+      "tools/theme-lab/qt6_scrollbar_recipe.py": "c199dc8f686e9db1e249b1ba32270983324a3276784f8adb9396cc6f6b6b63be",
+      "tools/theme-lab/qt6_scrollbar_route.py": "a01211de1b2ca65d63d8eebbba3cb406b1edc02aea9d03f094a52c972dbf62ea",
+      "plasma/tests/galerias-nativas/qt6_demo.py": "f641eae940949d64cec9ebff3600328d3dc3031bcad52606b767545a4a18c78d",
+      "tools/theme-lab/tests/probe_qt6_list_widget.py": "4a7fb6d4e080852f1da9bbf9c1cd7293c5444c1ae718c09545b4d287d5169e57",
+      "tools/theme-lab/tests/test_qt6_scrollbar_recipe.py": "c7b4bef53352b1841d2ce3407b33a5d2d46a0069ee2f59351d5d05c7f12cbf74",
+      "tools/theme-lab/tests/test_qt6_scrollbar_public_native.py": "e063e15a9806246b3126b501ae3cc857c0d399b93f546a8e2295a1e6c8b43e6c"
+    }
+  },
+  "limitations": [
+    "This proves a real Qt6 widget and role-driven preview, not visual fidelity to the SR10.4 VM or human approval."
+  ]
+}

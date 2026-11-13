@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-11T11:39:38.203572+00:00",
+  "item": "T07",
+  "status": "partial",
+  "results": [
+    {
+      "major": 5,
+      "qa": {
+        "status": "passed",
+        "native_hints": 31,
+        "spin_range_units_verified": true,
+        "real_click_sent": true,
+        "scope": "production QtQuick KDE Controls resources/click; not Plasma SVG/hover"
+      },
+      "quickStyle": {
+        "requested": "org.kde.desktop",
+        "name": null,
+        "nameApiAvailable": false,
+        "kdeDesktopQmlObserved": true
+      },
+      "qmlWarnings": []
+    },
+    {
+      "major": 6,
+      "qa": {
+        "status": "passed",
+        "native_hints": 27,
+        "spin_range_units_verified": true,
+        "real_click_sent": true,
+        "scope": "production QtQuick KDE Controls resources/click; not Plasma SVG/hover"
+      },
+      "quickStyle": {
+        "requested": "org.kde.desktop",
+        "name": null,
+        "nameApiAvailable": false,
+        "kdeDesktopQmlObserved": true
+      },
+      "qmlWarnings": [
+        "file:///usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/TabButton.qml:22: TypeError: Cannot read property 'y' of null",
+        "file:///usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/TabButton.qml:22: TypeError: Cannot read property 'y' of null",
+        "file:///usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop/TabButton.qml:22: TypeError: Cannot read property 'y' of null"
+      ]
+    }
+  ],
+  "scope": "Production QtQuick KDE Controls native attached ToolTip resources and real button click, original private guards",
+  "limits": [
+    "Not Plasma SVG painting or complete Plasma shell",
+    "Hover/position/timing not yet proven",
+    "Menu delegate tips assigned but opened-menu rows not verified",
+    "Qt6 KDE TabButton emitted three y-of-null warnings; retained, not attributed to hints without evidence"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "source_hashes": {
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "2004cfea4e918b2230cacd1ca19147fb592f595458a65eb87c47e723ad637c3b",
+    "tools/theme-lab/tests/probe_qtquick_gallery_hints.py": "29ce99875adc3c3fcf673ea4973fb8cfcbc5382fb87d57866b50c462927ae98c",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "c4607c54bc9034983118af0556bf5fed99168a0bd2eec9dd86cf1599897240cf"
+  },
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

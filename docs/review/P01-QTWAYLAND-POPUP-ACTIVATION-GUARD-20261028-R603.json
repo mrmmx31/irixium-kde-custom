@@ -1,0 +1,29 @@
+{
+  "id": "R603",
+  "date_local": "2026-10-28T14:48:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "source": {
+    "repository": "https://github.com/qt/qtwayland",
+    "tag": "v6.8.2",
+    "file": "src/plugins/shellintegration/xdg-shell/qwaylandxdgshell.cpp",
+    "sha256": "943f7bbd94053c444ba724247da2b692cfb791d5b652e8f362752812dd7d0632"
+  },
+  "finding": {
+    "automatic_activation": "QWaylandXdgSurface::requestActivateOnShow returns false for Qt.ToolTip, Qt.Popup, and Qt.SplashScreen before calling requestActivate().",
+    "explicit_activation": "QWaylandWindow::requestActivateWindow directly delegates to the shell surface; R596 calls QWindow.requestActivate explicitly after opening the menu."
+  },
+  "interpretation": "QtWayland deliberately avoids automatic activation for popup windows, while R596 explicitly requests activation. The source does not prove this explicit request is invalid or harmful, but means the popup's actual window type and focus/deactivation sequence deserve live validation before calling R596 a fix.",
+  "validation": {
+    "matching_installed_qt_source_read": true,
+    "popup_runtime_type_observed": false,
+    "activation_token_and_focus_observed": false,
+    "code_changed": false
+  },
+  "next": [
+    "Wait for the user's post-reload hover/search observation or an authorized isolated runtime trace.",
+    "If symptoms remain, capture popup QWindow type, active state, focusObject, last input serial availability, and deactivation reason without recording typed text."
+  ]
+}

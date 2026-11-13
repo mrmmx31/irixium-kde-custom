@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-11T20:29:37.073444+00:00",
+  "item": "T04",
+  "authority_revision": 2,
+  "scope": "Generated DomainOS KDE-role GTK2 NativeSession.replace and post-transfer rollback, real click, optional native bridge closure.",
+  "native_session": {
+    "session": 4086,
+    "exit_code": 0,
+    "proof": ".qa-t04-pressed-generated-release-baseline/RESULTADO.json",
+    "origins": 2,
+    "normal_pressed_replacements_per_origin": 4,
+    "rollback_after_transfer": true,
+    "old_scene_preserved": true,
+    "failed_candidate_bindings_closed": true,
+    "zero_artificial_clicks": true,
+    "physical_clicks": {
+      "CLICK-coupled": {
+        "origin": "coupled",
+        "physical_click_events": 1,
+        "state_after_physical_release": 1
+      },
+      "CLICK-separate": {
+        "origin": "separate",
+        "physical_click_events": 1,
+        "state_after_physical_release": 1
+      }
+    }
+  },
+  "packaging": {
+    "tests": 4,
+    "result": "passed",
+    "checks": [
+      "optional absence allowed",
+      "ELF bridge plus C/header closure",
+      "stale helper refused",
+      "symlink helper refused"
+    ],
+    "native_import_tests": 2,
+    "note": "Freezer includes optional helper and ABI sources; an actual frozen-controller delivery remains pending."
+  },
+  "lifecycle_tests": 6,
+  "scene_contract_tests": 9,
+  "failures_retained": [
+    {
+      "session": 40763,
+      "exit_code": 1,
+      "proof": ".qa-t04-pressed-generated-click/CLICK-separate.json",
+      "finding": "Real release left PRELIGHT despite forced pressed; fixed by after released RUN_FIRST signal."
+    },
+    {
+      "session": 44340,
+      "exit_code": 1,
+      "finding": "First origin click passed; next origin legitimately hovered under retained pointer. Fixture now moves pointer outside before NORMAL baseline."
+    }
+  ],
+  "hashes": {
+    "tools/theme-lab/gtk2_pressed_state.py": "63978ae0928f4d41fa929ca4b9ea9ad6a295ec9a18eef2fedc2eaf1e46c719ea",
+    "tools/theme-lab/tests/probe_gtk2_pressed_session.py": "e55e946bea2fb5ad994a1d28465459a0d7265f963ddc1bd6fefaac642cc73199",
+    "plasma/tools/abrir-laboratorio-temas.py": "a7f348959db7258e304a6098f5c20aae875b1a17d94f4cfccedde3a024b7637a",
+    "plasma/tests/test_lab_gtk2_press_files.py": "b1ce8d1b81aa942c6fe5a9a41ddac8d595d122678cacf397f270e906cfdc0ee1",
+    ".qa-t04-pressed-generated-release-baseline/RESULTADO.json": "89cd3b299580a3d283b1ed528038e318ba734748589dfbf21309e82bb29ca52c",
+    ".qa-t04-pressed-generated-release-baseline/CLICK-coupled.json": "63c727188a6aa3b4da3c5a703e84ca7763eb978ac68a6f959ade51af0497555e",
+    ".qa-t04-pressed-generated-release-baseline/CLICK-separate.json": "34fff151a84e2adf74fa1ec6555cd120925c2517e61926961f104840311f7f3d"
+  },
+  "progress": {
+    "percent": 50,
+    "basis": "Lifecycle foundation and guarded bridge/renderer/generated-session integration completed; remaining stages public capability/controller/four-palette proof and coordinated delivery."
+  },
+  "limits": [
+    "DomainOS selectable scheme generated, remaining three palette proofs pending.",
+    "Public forced push capability is still blocked by backend/controller.",
+    "GTK2 GtkSocket host, not yet actual Motif-host controller proof.",
+    "No historical fidelity or user approval inferred.",
+    "No personal session or installed theme changed."
+  ],
+  "next": "Run effective-state proof across neutral/dark/yellow schemes; enable capability only for push with runtime guard, then controller persistence/restart and frozen delivery."
+}

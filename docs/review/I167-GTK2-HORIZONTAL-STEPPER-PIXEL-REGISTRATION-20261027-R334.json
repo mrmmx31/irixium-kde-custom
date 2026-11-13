@@ -1,0 +1,45 @@
+{
+  "id": "R334",
+  "item": "I167",
+  "date": "2026-10-27",
+  "scope": "GTK2 horizontal scrollbar steppers, normal state, 1:1 pixel registration",
+  "status": "comparison_refined_live_application_review_pending",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "file": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "crop_origin": "reference scrollbar crop; left stepper x=2,y=2; right stepper x=526,y=2; each 15x15"
+  },
+  "gtk2": {
+    "version": "2.24.33",
+    "capture": "/home/lsi/tempia/ia-tema/evidence/I167/r332-pipeline-live/normal-wide.png",
+    "sha256": "5ad20897a595865a466e5f04a5cf25fdc8ebebe6cb9c220d173897cc080f1087",
+    "scope": "native GTK2 pipeline capture; not an already-open user application",
+    "left_crop": {"xy": [12, 8], "size": [15, 15]},
+    "right_crop": {"xy": [535, 8], "size": [15, 15]}
+  },
+  "result": {
+    "left_stepper": {"different_pixels": 0, "compared_pixels": 225},
+    "right_stepper": {
+      "different_pixels": 1,
+      "compared_pixels": 225,
+      "difference_xy_in_crop": [14, 3],
+      "reference_rgb": [196, 213, 237],
+      "gtk2_rgb": [62, 83, 110],
+      "location": "outer upper-right relief corner; arrow glyph silhouette is unchanged"
+    },
+    "conclusion": "With crop origins registered to the measured widget edges, the rendered horizontal arrow glyphs match the 11x11 SR10.4 silhouettes. The earlier R332 fixed-crop counts (3/225 left, 57/225 right) included a one-pixel registration error and are superseded by this comparison. The remaining one-pixel outer-corner relief difference on the right stepper is real in this capture.",
+    "colors": "The compared GTK2 pipeline capture uses the same four RGB role values as this SR10.4 reference; theme output remains generated through KDE roles, not hard-coded final colors.",
+    "limitations": [
+      "The guest display is in standby; no new guest input was sent because the documented wake event is physical.",
+      "This is GTK2 renderer/pipeline evidence, not an already-open application or manual user acceptance.",
+      "No claim is made for pressed, disabled, vertical, or live scroll-content states by this horizontal normal-state check."
+    ]
+  },
+  "visual_artifact": {
+    "path": "~/tempia/ia-tema/evidence/I167/gtk2-horizontal-steppers-reference-vs-r332-r334.png",
+    "sha256": "f1395ce0aa058ebdb593ca914e93adddce2cde6e067345d4ae153065e9e4e3d1",
+    "scale": "12x nearest-neighbor for review; measurements above use native 1:1 pixels"
+  },
+  "next": "Keep I167 on GTK2. After the guest is awake through physical input, capture/compare the native VM and retain manual review of the deployed GTK2 application as open. Do not change the one-pixel corner without first isolating its source from arrow geometry."
+}

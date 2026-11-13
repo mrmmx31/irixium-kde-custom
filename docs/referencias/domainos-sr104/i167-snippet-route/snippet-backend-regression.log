@@ -1,0 +1,19 @@
+...................E.............
+======================================================================
+ERROR: test_piece_recipe_roundtrip_and_adapter_limit (__main__.BackendTests.test_piece_recipe_roundtrip_and_adapter_limit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/test_backend.py", line 267, in test_piece_recipe_roundtrip_and_adapter_limit
+    backend.snippet(ROOT, pending)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/backend.py", line 866, in snippet
+    require_scroll_parts_adapter(recipe, family)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/backend.py", line 124, in require_scroll_parts_adapter
+    from gtk2_recipe import paint_contract
+ModuleNotFoundError: No module named 'gtk2_recipe'
+
+----------------------------------------------------------------------
+Ran 33 tests in 2.404s
+
+FAILED (errors=1)

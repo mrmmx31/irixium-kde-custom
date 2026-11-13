@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-11T10:09:31.939098+00:00",
+  "item": "I195",
+  "revision": 1,
+  "technical_status": "complete",
+  "user_evaluation": "not_inferred",
+  "evidence": "docs/referencias/domainos-sr104/i195-radio-controller",
+  "proof": {
+    "controller_palettes": 4,
+    "independent_selected_member_preserved_on_apply": true,
+    "clicks_after_restart": true,
+    "native_request": [
+      77,
+      46
+    ],
+    "custom_group_size_after_apply": [
+      280,
+      120
+    ],
+    "corrected_native_scene_origins": 8,
+    "current_C_parser_native_events": 128,
+    "toggle_regression": true,
+    "GTK3_graphical_regression": true
+  },
+  "corrected_defect": "GtkBox natural request was 0 because children were invisible during initial measurement. Marking members visible before measuring the unmapped parent yields native 77x46; r1 evidence preserved but superseded for metrics.",
+  "previous_receipts": [
+    "I195-GERACAO-PARCIAL-20261011.json",
+    "I195-CENA-PARCIAL-20261011.json"
+  ],
+  "limits": [
+    "Two indicator center pixels prove selected member direction, not full visual fidelity.",
+    "Composition uses two options, homogeneous rows, zero spacing; not historical defaults.",
+    "Focus/inconsistent/RTL/automatic backdrop still pending.",
+    "CHECK integration I194 remains separate, not authorized."
+  ],
+  "historical_fidelity_claimed": false,
+  "personal_session_changed": false,
+  "stage_estimate_percent": 100,
+  "parent_I167_estimate_percent": 88,
+  "estimate_basis": "I195 scene, generation, snippet, C gate, native input/metrics, restart and regressions verified. Parent remains incomplete for other controls/states and historical comparison.",
+  "sha256": {
+    "include/preview_event.h": "6636e63e9eddb11d9b1ced3330e5b93e7eb5c0ddce76a441d0b50ba8ac8080dc",
+    "src/preview_event.c": "8602afaf3ff1ae36a68af9dbd11591735393a40a6835c95ac4f21435300abb10",
+    "src/controller.c": "398c73334eadebed00937e8cb0ca09562767bdfcfe2e8f4fbf7aacfd9b6458a3",
+    "preview_gtk2.py": "179d18464a58aca6408829dfefe5eafa3bc738b3498ccdbcb3216b0d240c61da",
+    "radio_group_gtk2.py": "1a43eb1dc77dfa6528defa4d1cec87ca20a84c823fa976bcdad63c152b2237f6",
+    "tests/preview_event_test.c": "2231449d9f7bf58d0388d8b284202f7218affae898a54645132f3c816ea83e57",
+    "tests/controller_gtk2_radio.py": "0c08a350236c2b7198cccb52ebf385c78f387b7a088318893f317b0199c6d8db",
+    "tests/controller_spin_probe.c": "986819a4780509bc3a480e02d79ae5f38d449ef499500476633500ec59e10811",
+    "tests/test_controller_spin.py": "1326c084e296bfce3de512505ed48b2dab72d64685ef90dbebc4812242dac799",
+    "GTK2-RADIO-GROUP.md": "7641f4ce1224fcb161ab6fb250fcebb0ac3e444f6b7c557f91239fb01928afc0"
+  }
+}

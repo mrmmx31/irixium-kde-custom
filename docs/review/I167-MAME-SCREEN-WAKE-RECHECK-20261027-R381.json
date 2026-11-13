@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R381",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate the current canonical assistant VM after the user reported that it was awake; preserve and record the observed screen-sleep recurrence and safe wake result.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01; MAME 0.276 Apollo DN3500",
+    "mame_pid": 3971377,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "profile_before": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "pending_request": null
+    },
+    "profile_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "mouse": false,
+      "mouse_device": "none",
+      "pending_request": null
+    }
+  },
+  "observation": {
+    "fresh_pre_wake_capture": "~/tempia/ia-tema/evidence/I167/r381-user-reported-awake/vm-current.png",
+    "pre_wake_sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579",
+    "pre_wake_result": "The guest framebuffer was black except for the persistent Apollo command legend, despite the user having reported the screen awake earlier. This is a new observation, not a correction to the user report.",
+    "wake_script": "~/tempia/ia-tema/evidence/I167/r381-user-reported-awake/wake-once.lua",
+    "wake_method": "One-frame Shift pulse through the already validated MAME Apollo keyboard4/Shift input; automatically cleared on frame 3. This is guest-injected MAME input, not described as physical host input.",
+    "native_capture": "~/tempia/ia-tema/evidence/I167/r381-user-reported-awake/vm-after-shift.png",
+    "native_capture_sha256": "ecf3aa117e4c2e0c1b99b4d45e4d78957208fc8024f08da196f54f273a3e157c",
+    "visible_result": "VUE desktop, Terminal, File Manager and Trash Can are visible; horizontal and vertical scrollbars are visible."
+  },
+  "cleanup": {
+    "wake_done": true,
+    "key_held": false,
+    "error": null,
+    "mouse_captured": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "channel_pending": false,
+    "guest_files_changed": false,
+    "vm_restarted": false,
+    "other_vm_touched": false
+  },
+  "limits": [
+    "No mouse movement or scrollbar press was sent.",
+    "The snapshot contains no visible pointer over an arrow; historical held horizontal comparison remains gated by R275 pointer-visibility rule.",
+    "The user was right that the VM had previously been awake; this capture shows it had returned to screen sleep by this later check."
+  ]
+}

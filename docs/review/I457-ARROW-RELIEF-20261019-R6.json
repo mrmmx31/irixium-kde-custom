@@ -1,0 +1,51 @@
+{
+  "item": "I457",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T17:10:11Z",
+  "status": "gtk3-combobox-applied-to-selected-theme; native-profile-preview-open",
+  "scope": "GTK3 ComboBox arrow only. Apply the already validated rule to the identity selected in the user's GTK settings; do not change the schema or other control families.",
+  "baseline": {
+    "selected_gtk_theme": "DomainOS-SR10-4-KDE",
+    "settings_file": "~/.config/gtk-3.0/settings.ini",
+    "previous_active_css_sha256": "9340850231717d957dfe65b13ab8fc53832500d64facd8769edc66fb97c9e6d0",
+    "cause": "R5 corrected only the -Reload identity, while the active profile selected the non-Reload identity."
+  },
+  "product_change": {
+    "package": "gtk/DomainOS-SR10-4-KDE",
+    "installed_targets": [
+      "~/.local/share/themes/DomainOS-SR10-4-KDE",
+      "~/.themes/DomainOS-SR10-4-KDE"
+    ],
+    "changed_files": [
+      "common/gtk.css",
+      "common/adaptive/gtk3-combobox-arrow-normal-0-symbolic.svg",
+      "common/adaptive/gtk3-combobox-arrow-pressed-0-symbolic.svg",
+      "common/adaptive/gtk3-combobox-arrow-disabled-0-symbolic.svg",
+      "common/adaptive/MANIFEST.json",
+      "MANIFEST.json"
+    ],
+    "details": "Transferred only the six tested normal/backdrop/disabled/active ComboBox rules and their three semantic recolorable masks. Preserved the selected identity's existing tooltip selectors and all unrelated CSS. Colors remain derived from KDE Button roles.",
+    "css_sha256": "dc0498cdd9f5fd8c92a97b211582a5964b4f5db7fefb269340551c432c90819b",
+    "manifest_entries": 260,
+    "manifest_hash_mismatches": 0,
+    "backup": "~/tempia/gtk3-combobox-active/backup-before-install/"
+  },
+  "validation": {
+    "preview_title": "PARA LSI — DomainOS GTK3 ComboBox | I457",
+    "pid": 209878,
+    "display": ":1",
+    "gtk": "3.24.49",
+    "reported_theme": "DomainOS-SR10-4-KDE",
+    "custom_css_provider": false,
+    "theme_settings_changed": false,
+    "capture": "~/tempia/gtk3-combobox-active/gtk3-combobox-preview.png",
+    "capture_sha256": "dd67553985d97d2f4948bfe6600f6efc6a1fecadaadbf755551aca4be0447406",
+    "gtk_diagnostics": "Only the session's unavailable AT-SPI accessibility bus warning; no GTK CSS parse warning."
+  },
+  "limits": [
+    "The native session preview uses the user's current DomainOS color schema; alternate color schemes were not cycled in this step.",
+    "This proves the selected GTK3 identity and current runtime render, not direct historical ComboBox equivalence; the MAME guest still does not show VUE controls.",
+    "Already running GTK applications were not restarted; newly launched GTK3 applications read the updated theme files."
+  ],
+  "next": "Leave the focused GTK3 ComboBox preview available for user inspection. Keep I457 open for a future SR10.4 guest comparison when VUE controls are visible."
+}

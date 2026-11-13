@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "R731",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Restore the pre-R726 GTK2 long-body relief profile in the authorized DomainOS GTK2 user variants while retaining the measured VM raster as reference.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "user_assessment": {
+    "result": "failure",
+    "text": "The GTK2 inner scrollbar relief looks outward and is less faithful than the earlier version."
+  },
+  "cause": {
+    "change": "R726 added the internal light/light and dark/dark rails to every straight GTK2 trough-body cross-section; R727 copied that profile into Theme Lab.",
+    "previous_profile": "DDFFFFFFFFFFFLL",
+    "r726_profile": "DDLLFFFFFFFDDLL",
+    "interpretation": "The user's visual failure remains authoritative even though the R726 raster sample matched measured VM pixels."
+  },
+  "changes": [
+    "Preserved the literal SR10.4 measurement DDLLFFFFFFFDDLL as reference evidence.",
+    "Added a separate GTK2 adaptation profile DDFFFFFFFFFFFLL, derived from current KDE semantic roles, to remove only the four newly added body rails.",
+    "Switched the GTK2 installed-theme generator and Theme Lab GTK2 renderer to the separate adaptation profile; measured arrow caps and arrow artwork remain unchanged.",
+    "Applied the adaptation only to DomainOS-SR10-4-KDE and DomainOS-SR10-4-KDE-Reload GTK2 variants for lsi; other GTK2 themes and toolkits were not regenerated."
+  ],
+  "evidence": {
+    "isolated_native_candidate": {
+      "toolkit": "GTK 2.24.33",
+      "profile": "DDFFFFFFFFFFFLL",
+      "allocations_px": {
+        "horizontal": [
+          539,
+          15
+        ],
+        "vertical": [
+          15,
+          255
+        ]
+      },
+      "thumb_adjustment": "page_size 250 / upper 1000, chosen to expose the long trough body; fixture input only.",
+      "capture": "~/tempia/domainos-theme-work/I167/R731-relief-candidate/candidate-short.png",
+      "sha256": "dac60e295e85420796e70bb521adfc2bfaa657e141f6d16c076e948ff874b8c6",
+      "method": "Native GTK2 fixture in isolated Xvfb using a generated candidate bundle from the current KDE GTK color-role export."
+    },
+    "deployment": {
+      "status": "updated",
+      "bundle_id": "dc0aa8ec162b5a516008a29e95d9cc28329906a507fbe46a49566a59f074e15d",
+      "palette_export_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "backup_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261029T091354-3f64538899f9/receipt.json",
+      "native_reload": {
+        "windows_considered": 179,
+        "events_sent": 179,
+        "racing_x_errors": 0
+      },
+      "application_restart": "none"
+    }
+  },
+  "limits": [
+    "The adaptation is now active in the two DomainOS GTK2 variants for lsi; no GTK2 app was restarted.",
+    "A live application capture was not obtained for human visual acceptance. The fixture proves the role-derived bundle renders natively, not that the user-visible composition is accepted.",
+    "The exact SR10.4 measurement remains recorded separately; the user-requested flatter GTK2 body is an explicit visual adaptation."
+  ],
+  "result": "The previous GTK2 long-body profile is now active for the user, preserving the arrow caps and arrow artwork while removing only the R726 inner body rails. The update used current KDE roles, affected only the two DomainOS GTK2 theme variants, and sent a native reload without restarting applications. The user visual review remains open; no fidelity claim is made.",
+  "next": "The user can inspect the currently open GTK2 application after the reload. If the relief still reads outward, continue GTK2-only by capturing that exact complete control and localizing the remaining edge.",
+  "coverage_estimate": {
+    "percent": 95,
+    "basis": "I167 technical coverage estimate unchanged. This is not a visual-fidelity percentage."
+  }
+}

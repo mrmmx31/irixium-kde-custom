@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R430",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Verify the uncertain live pointer calibration after R429, avoid clicking until the native target is confirmed, and restore the assistant MAME host-capture state.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 3971377,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "separate_board_mame_pid": 3971019,
+    "separate_board_vm_contacted": false,
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "observations": {
+    "current_guest_frame": {
+      "path": "~/tempia/ia-tema/evidence/I167/r437-current-state-20261027.png",
+      "sha256": "fda7adb744fde470ab479e56b370605def52658a1870e6a9d163d6ae339cbce2",
+      "dimensions": [1024, 844],
+      "visible": ["VUE desktop", "Terminal", "File Manager", "Trash Can"],
+      "pointer": "At approximately guest pixel 504,65; not over a scrollbar arrow."
+    },
+    "relative_motion": {
+      "host_input": "one xdotool relative move of +100,+100 after R437",
+      "guest_pointer_after": "Approximately guest pixel 536,95, about +32,+30 pixels from R437.",
+      "path": "~/tempia/ia-tema/evidence/I167/r438-pointer-step-20261027.png",
+      "sha256": "fd5b8bd032a999e080ab6cccf1c26a095c5dc9aeded0a5b24022024ca895b446",
+      "interpretation": "This confirms visible host-relative movement reaches the guest, but the mapping is not a stable absolute coordinate transform. No click was sent because the pointer was not confirmed on the intended enabled arrow."
+    },
+    "cleanup": {
+      "existing_hook_release": "domainos_mouse_host.release()",
+      "captured": false,
+      "wait_button_up": false,
+      "mouse_option": false,
+      "mouse_device": "none",
+      "left_button_raw": 0,
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "host_pointer_restored": [600, 100],
+      "mame_window": "Iconic/unmapped, matching its state before calibration",
+      "channel_pending": false
+    }
+  },
+  "actions": {
+    "guest_button_pressed": false,
+    "scrollbar_clicked": false,
+    "gtk2_recipe_changed": false,
+    "mame_restarted": false,
+    "mame_profile_changed": false,
+    "other_vm_sessions_touched": false
+  },
+  "result": "The uncertain +50,+50 command from the previous step had completed; R437 read the live framebuffer/profile and confirmed host capture was active, with all buttons released. R438 added one bounded relative movement and established a visible but non-absolute pointer response. The capture hook was then released and the host pointer/window restored. This does not prove a pressed scrollbar state or content scrolling.",
+  "next": "Continue only the enabled VUE vertical-arrow comparison in I167. Re-establish capture, calibrate the pointer against fresh native frames in small measured steps, and press only after the cursor hotspot is visibly inside the target. Hold longer than the documented 50 ms packet interval, capture held/released frames, verify release, then restore host capture/focus/window. Do not alter the GTK2 recipe based on this calibration."
+}

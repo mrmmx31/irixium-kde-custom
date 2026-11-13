@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-11T02:27:59.986342+00:00",
+  "item": "I115",
+  "revision": 1,
+  "authority_definition": "76b806eb6771448504c6f97ec838d1f6c2a95712ce349632181f34415744784a",
+  "status": "running",
+  "implemented": "Independent sparse per-piece model and versioned persistence; not yet UI or native translator",
+  "tests": {
+    "build": "C99 -Wall -Wextra -Werror passed",
+    "model_checks": 734,
+    "backend_tests": 16,
+    "scene_tests": 14,
+    "ipc": "passed",
+    "sanitizers": "734 checks passed ASan/UBSan; leak detection disabled"
+  },
+  "preserved": [
+    "personal windows",
+    "installed theme",
+    "VM",
+    "frozen backup",
+    "human answers"
+  ],
+  "not_proven": [
+    "native independent piece rendering",
+    "historical fidelity",
+    "project numeric undo",
+    "per-piece editing UI"
+  ],
+  "new_proposal": "I124",
+  "estimated_stage_progress_percent": 30,
+  "basis": "Model/persistence complete; editor/translator and native comparison incomplete",
+  "hashes": {
+    "tools/theme-lab/include/scrollbar_parts.h": "0c4015955f4f2d076b809f6a99771b8bfec0042db1aced04ba6cd541fa1095be",
+    "tools/theme-lab/src/model/scrollbar_parts.c": "a3a0e31943f2fbe58e78df97fe3d0d3502a5a2c09f4d9cad0b69034b9b90fb4e",
+    "tools/theme-lab/src/model.c": "d706ac8d2209effda24a4c7674324279463589d3b98622630f97149679422ebe",
+    "tools/theme-lab/include/theme_lab.h": "20a4efc037d3e63f55b70923001a9b69c8ef8c040e597882d05f0c0b87861695",
+    "tools/theme-lab/backend.py": "a912cd9a0e6194eafd3924a7065c14e998f700e12dfcb06e563dccef905c96b9",
+    "tools/theme-lab/src/controller.c": "fad295fc46bef0f3570cf5272f8ace14b6762bcb50affaa56891eba6f83290e2",
+    "tools/theme-lab/preview_gtk.py": "f190b18a90d0b3dd62de5183e4ab84be49c1c6c604a379abfc7b95a46b33d084",
+    "tools/theme-lab/tests/model_test.c": "eb90032581e4043661621ed4c927f1e9992f4cd0efb7762544233982feaaca92",
+    "tools/theme-lab/tests/test_backend.py": "4e21f0074fa9f79d5f08806765bce0e0c2baf342d0d9e2b815bd8e96fde21728",
+    "tools/theme-lab/Makefile": "96cad5cbe174d7ca5cb058a173e98690d5c9b1160261507b22f49a4ba6ab3ec4"
+  }
+}

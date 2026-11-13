@@ -1,0 +1,73 @@
+{
+  "item": "I167",
+  "revision": "R293",
+  "checked_at_utc": "2026-10-26T10:12:04Z",
+  "authorization": {
+    "user_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 scrollbar palette reload in one native process",
+  "finding": {
+    "initial_probe": "R291 rendered four palettes in one GTK2 process using fixed GtkRC scrollbar style names. DomainOS and BreezeDark scrollbar cell ROIs retained the DomainOS RGB pixels even though their generated PNG assets differed; separate-process R292 scenes rendered each palette correctly.",
+    "cause": "GTK2 retains parsed RC style definitions by name; new widgets after Gtk.rc_parse reused fixed scrollbar style names and inherited the first parsed pixmaps.",
+    "scope": "GTK2 live recipe/palette replacement only; no other family or desktop theme changed."
+  },
+  "implementation": {
+    "files": [
+      "tools/theme-lab/gtk2_recipe.py",
+      "tools/theme-lab/gtk2_session.py",
+      "tools/theme-lab/tests/test_gtk2_recipe.py",
+      "tools/theme-lab/tests/probe_gtk2_all_controls_native.py"
+    ],
+    "change": "Derive a deterministic 16-hex GtkRC style identity from scrollbar geometry, recipe state and effective KDE role palette. Bind geometry, paint, insensitive and backdrop styles to that identity; validate it when loading a snapshot. The all-control probe now compares rendered 15x15 GTK2 stepper cells to each current palette asset during same-process palette changes.",
+    "static_final_colors_added": false,
+    "theme_installed": false,
+    "user_session_changed": false,
+    "vm_changed": false
+  },
+  "validation": {
+    "native_toolkit": "GTK2 2.24.33",
+    "same_process_palette_reload": {
+      "status": "passed",
+      "schemes": ["DomainOS", "BreezeLight", "BreezeDark", "TestYellow"],
+      "origins": ["separate", "coupled"],
+      "scenes": 8,
+      "controls_per_scene": 16,
+      "stepper_cells": 32,
+      "pixels_per_cell": 225,
+      "pixels_different": 0,
+      "report_sha256": "6dfb35b8682db8b496bd1079c436272000f9e3bc8e2e2518e26a518dcd818ddb"
+    },
+    "unit": "test_gtk2_recipe.py: 6 tests passed",
+    "generation_regression": {
+      "status": "passed",
+      "palettes": 4,
+      "verified_png_matches": 136,
+      "report_sha256": "623406bdd0ea45d5fa1c192ba813be97550addb6a87cf3ff49ec81dbce1584d1"
+    },
+    "scene_regression": {
+      "status": "passed",
+      "scenes": 24,
+      "widgets_measured": 48,
+      "arrow_mask_checks": 96,
+      "scene_report_sha256": "a9837a546909b8017015eef1db1bef9f914a7209292455885a710676687ccb23",
+      "mask_report_sha256": "53b0233a209193e55e29b21eb8005034c756ec59ba512f15c846b4aa7703d1c3"
+    },
+    "diff_check": "passed"
+  },
+  "evidence": {
+    "failed_baseline": "~/tempia/ia-tema/evidence/I167/r291-gtk2-four-palette-scenes/",
+    "isolated_palette_scenes": "~/tempia/ia-tema/evidence/I167/r292-gtk2-per-palette-process/",
+    "fixed_same_process_scenes": "~/tempia/ia-tema/evidence/I167/r293-gtk2-live-palette-reload/",
+    "generation_regression": "~/tempia/ia-tema/evidence/I167/r293-generation-regression/",
+    "scene_regression": "~/tempia/ia-tema/evidence/I167/r293-scene-regression/",
+    "domainos_same_process_png_sha256": "86eed3470a4ee7a8ab4519a9f20ecf73e3cadf538a32fee56eb18bf7c2b10725",
+    "breeze_dark_same_process_png_sha256": "9928fddbc8a713cfc2538eb193641bbd1c3e33e0a6cfee3c65bb9b6fad07bc32"
+  },
+  "limits": [
+    "This verifies GTK2 same-process palette refresh and rendered cells against the generated assets, not historical pixel fidelity of each palette.",
+    "The VUE pressed-state pairs for left, right and up remain open until the physical pointer is visible over the target in the authorized VM.",
+    "No user visual approval or production installation is claimed."
+  ],
+  "next": "Continue only GTK2 I167. Resolve the remaining historical pressed-state comparisons when the authorized VM shows the pointer on the target; then audit the remaining GTK2 control states and report any manual-review questions together."
+}

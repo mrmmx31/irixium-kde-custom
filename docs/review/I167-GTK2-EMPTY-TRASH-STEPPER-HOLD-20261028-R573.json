@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "R573",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Diagnostic attempt to observe a live held state on the empty Trash Can down-stepper using the existing MAME field helper.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "other_vm_contacted": false
+  },
+  "method": {
+    "route": "Previously loaded mame_live_mouse.hold through the existing serialized Lua bridge; left field :kbd:mouse1 mask 16, three emulated seconds, automatic release.",
+    "target_confirmation": "Fresh native guest capture and 10x crop showed the cursor hotspot within the visible lower arrow button before input.",
+    "pre_capture": {
+      "path": "~/tempia/domainos-theme-work/i167-vue-captures-20261028/domainos-screen-r571-verify.png",
+      "sha256": "822535890b4b6f37dbf56def7ec3646292e3fdde8539fdd589444fcf8abf3c46"
+    },
+    "held_capture": {
+      "path": "~/tempia/domainos-theme-work/i167-vue-captures-20261028/domainos-screen-r572-down-held.png",
+      "sha256": "862426c62c4644968516f604c1b7c2ffca04995b9fb4c26b44465f53a24938d9",
+      "capture_callback": "The snapshot callback ran on frame 3 after the button field was set and before the bounded hold deadline."
+    },
+    "profile": "paused=false, frameskip=4, throttled=false"
+  },
+  "comparison": {
+    "region_xyxy": [592, 679, 611, 698],
+    "normal_to_held_different_pixels": 0,
+    "full_frame_different_pixels": 233,
+    "full_frame_difference_bbox": [81, 731, 944, 820],
+    "interpretation_of_full_frame_changes": "Panel clock and animation region, outside the scrollbar."
+  },
+  "result": "This route produced no visible change in the empty Trash Can arrow ROI. It does not establish whether that arrow is insensitive or whether this direct MAME field path was accepted by VUE. Treat as inconclusive; do not infer a GTK2 asset defect.",
+  "reconciliation": {
+    "prior_inconclusive_route": "R433 already found that a direct field hold without a raw-button read did not prove VUE received the event.",
+    "prior_valid_live_evidence": "R434 remains the valid File Manager down-arrow result: XTest held the pointer-targeted arrow, raw button was 16 during capture and 0 after release, and all 37 visible changed pixels matched the measured VUE transition.",
+    "normal_horizontal_evidence": "R394, R453, R496 and R553 show exact normal-state 15x15 horizontal cells/crops; R509 records the generated overlay mapping that avoids the former 15x15-to-15x11 stretch."
+  },
+  "cleanup": {
+    "button_raw": 0,
+    "hold_done": true,
+    "hold_reason": "hold complete",
+    "hold_cleanup_error": null,
+    "pointer_controller_done": true,
+    "pointer_controller_cleanup_error": null,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "bridge_pending": false
+  },
+  "changes": {
+    "theme_files_changed": false,
+    "desktop_or_personal_app_changed": false,
+    "guest_files_changed": false,
+    "mame_restarted": false,
+    "other_vm_contacted": false
+  },
+  "limits": [
+    "The empty Trash Can case does not test content scrolling.",
+    "This is not a horizontal held-arrow comparison.",
+    "Do not repeat direct field holds as a substitute for the authenticated host-input method used by R434."
+  ],
+  "next": "Preserve R434/R496/R509/R553 as valid existing evidence. The normal horizontal size discrepancy is not reproduced in the current 1:1 GTK2 fixture; keep the horizontal held state and the user's reported application/state question open. Do not repeat the failed direct-field or blind host-coordinate routes."
+}

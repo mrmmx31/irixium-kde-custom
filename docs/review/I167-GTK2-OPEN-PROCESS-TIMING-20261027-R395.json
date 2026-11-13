@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "R395",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Determine whether the already-open GTK2 applications began before the current selected user theme file, without inspecting application windows or restarting processes.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed": {
+    "observed_at_utc": "2026-10-27T10:00:22.019837+00:00",
+    "processes": [
+      {
+        "pid": 3414098,
+        "started_local_text": "Mon Oct 26 13:29:09 2026"
+      },
+      {
+        "pid": 3951437,
+        "started_local_text": "Mon Oct 26 19:38:49 2026"
+      },
+      {
+        "pid": 3951675,
+        "started_local_text": "Mon Oct 26 19:39:02 2026"
+      }
+    ],
+    "selected_gtk2_theme": "DomainOS-SR10-4-KDE",
+    "files": [
+      {
+        "path": "/home/lsi/.gtkrc-2.0",
+        "mtime_local": "2026-10-24T23:19:13.885391-04:00",
+        "sha256": "fea2ec6a6c095aa3cba2091e56f1548301e5c2752f6f3f53b474090f86df4192",
+        "size": 327
+      },
+      {
+        "path": "/home/lsi/.themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "mtime_local": "2026-10-27T02:52:45.695283-04:00",
+        "sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+        "size": 25226
+      },
+      {
+        "path": "/home/lsi/.local/share/themes/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+        "mtime_local": "2026-10-27T02:52:45.667284-04:00",
+        "sha256": "4c74138cca49ef15fb86ff24cd7b9b14ba303c1bada17e09708a839be4cfb331",
+        "size": 25226
+      }
+    ],
+    "interpretation": "All observed XChat processes started before the selected theme gtkrc mtime. Existing process appearance is therefore not confirmed as the current installed render; GTK2 reload may have occurred, so stale in-memory styling is plausible but not proven.",
+    "scope_note": "Only process start times and selected theme config file metadata/content were read. No window pixels or chat contents were captured; no XChat was restarted or modified."
+  },
+  "result": "All observed XChat processes predate the currently selected installed GTK2 gtkrc modification time. This makes stale in-memory styling a plausible explanation for a difference from a fresh process, but does not prove that GTK2 failed to reload the configuration. The existing app appearance remains unverified.",
+  "changes": {
+    "chat_content_read": false,
+    "windows_captured": false,
+    "processes_restarted": false,
+    "theme_files_changed": false
+  },
+  "next": "If the user still sees a smaller arrow in an open app, compare only its scrollbar region after an explicitly coordinated reload/restart; do not infer its style from process age alone."
+}

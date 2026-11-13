@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R587",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate the authorized GTK2 held-arrow input route using the exact Tema MAME window; restore its previous host and emulator state.",
+  "authority": {
+    "P10": {"user_revision": 1, "authorized": true, "definition_sha256": "939e9ae8d36a4d38b0c11654d263523b8460190c84ed70ef9a9f7c86b4eb91d4"},
+    "I167": {"user_revision": 2, "authorized": true, "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"},
+    "Q505": "Still unanswered in persisted Board state; the direct user authorization was used only for the bounded capture/movement attempt. No user-owned fields changed."
+  },
+  "instance": {
+    "mame_pid": 379349,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "window_id": "0x3800008",
+    "window_pid_verified": 379349,
+    "initial_window_state": "Iconic",
+    "other_visible_mame_pid": 117186,
+    "other_vm_touched": false
+  },
+  "wake": {
+    "initial_framebuffer": "black",
+    "input": "one Shift pulse; released at frame 3",
+    "result": "VUE visible at frame 65",
+    "held_after": false,
+    "capture": "~/tempia/domainos-theme-work/I167/vuer-awake-r587.png"
+  },
+  "pointer_route": {
+    "saved_host_state": {"focus_window": "0x1800003", "focus_pid": 327563, "pointer": [942, 951], "mame_state": "Iconic"},
+    "window_mapping": "Exact MAME window was temporarily mapped and activated; XChat focus was identified and restorable.",
+    "method": "xdotool absolute move to the horizontal-left scrollbar arrow in the guest image (window-local 58,708; host screen 517,825), with the existing capture hook temporarily enabled.",
+    "host_observation": "The absolute warp initially landed on an overlapping XChat window while MAME was inactive. After activation, xdotool reported the pointer inside the exact MAME window. The guest snapshot still did not show a verifiable cursor at the arrow; the subsequent host pointer/focus returned to XChat.",
+    "port_observation": "Post-move Apollo fields read x=217,y=239; no pre-move baseline was captured, so these values do not establish cursor displacement.",
+    "arrow_pressed": false,
+    "button_events": 0
+  },
+  "cleanup": {
+    "capture_hook": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "focus_restored_to": {"window": "0x1800003", "pid": 327563},
+    "pointer_restored": [942, 951],
+    "mame_window_state_restored": "Iconic",
+    "channel_pending": false
+  },
+  "post_cleanup_read": {
+    "focus_pid": 327563,
+    "focus_x_window": "0x18edda2",
+    "pointer": [580, 263],
+    "note": "The immediate restoration command read back focus window 0x1800003 and pointer (942,951). A later passive read found another XChat window for the same PID and pointer (580,263); cause unknown. No further host input was sent."
+  },
+  "captures_tempia": [
+    "~/tempia/domainos-theme-work/I167/vuer-before-abs-r587.png",
+    "~/tempia/domainos-theme-work/I167/vuer-awake-r587.png",
+    "~/tempia/domainos-theme-work/I167/vuer-abs-r587.png"
+  ],
+  "result": "Mapping the exact MAME window prevented routing the absolute host warp into the overlapping XChat window. With MAME active and captured, host coordinates reached the MAME window, but the native guest image did not verify the cursor over the arrow. No arrow was pressed. The historical held-state comparison remains open.",
+  "next": "Do not repeat counter/XTest/absolute-warp attempts as proof. Continue I167 with a capture method that visibly includes the actual guest cursor or another already available input route; retain the normal-state 15x15/11x11 GTK2 pixel matches."
+}

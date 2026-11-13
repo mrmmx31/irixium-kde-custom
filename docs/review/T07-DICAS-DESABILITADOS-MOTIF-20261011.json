@@ -1,0 +1,116 @@
+{
+  "at": "2026-10-11T12:53:31.798559+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: implemented and verified painted SpinBox arrow hints",
+  "baseline": "Insensitive button delivered no regular/raw Enter to owner; sensitive parent received normal crossing. Native probes preserved, not historical SR10.4 proof.",
+  "change": "Scoped ancestor observer supplies delayed hints for insensitive label/text/list primitives and SpinBox arrow surface. Reads current source text/font/role pixels; no sensitivity/translations/callback/grab changes. Active-only watcher100ms dismisses on pointer departure, button hold or restored sensitivity; duration6000ms, delay750ms. Removes timers and ancestor handlers on owner destruction. Menus excluded because their dedicated bridge handles their posting.",
+  "strict_build_exit": 0,
+  "full_motif_regression_exit": 0,
+  "native_tests": {
+    "history": [
+      {
+        "scheme": "DomainOS",
+        "exit": 0,
+        "observations": [
+          "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+          "History disabled Undo: delayed bridge, bounds/non-overlap, stable400, click blocked and leave passed"
+        ]
+      },
+      {
+        "scheme": "BreezeLight",
+        "exit": 0,
+        "observations": [
+          "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+          "History disabled Undo: delayed bridge, bounds/non-overlap, stable400, click blocked and leave passed"
+        ]
+      },
+      {
+        "scheme": "BreezeDark",
+        "exit": 0,
+        "observations": [
+          "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+          "History disabled Undo: delayed bridge, bounds/non-overlap, stable400, click blocked and leave passed"
+        ]
+      },
+      {
+        "scheme": "TestYellow",
+        "exit": 0,
+        "observations": [
+          "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+          "History disabled Undo: delayed bridge, bounds/non-overlap, stable400, click blocked and leave passed"
+        ]
+      }
+    ],
+    "spin": [
+      {
+        "scheme": "DomainOS",
+        "exit": 0,
+        "observations": [
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.",
+          "Disabled SpinBox field and painted arrow hints passed; clicks remain blocked and numeric value unchanged."
+        ]
+      },
+      {
+        "scheme": "BreezeLight",
+        "exit": 0,
+        "observations": [
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.",
+          "Disabled SpinBox field and painted arrow hints passed; clicks remain blocked and numeric value unchanged."
+        ]
+      },
+      {
+        "scheme": "BreezeDark",
+        "exit": 0,
+        "observations": [
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.",
+          "Disabled SpinBox field and painted arrow hints passed; clicks remain blocked and numeric value unchanged."
+        ]
+      },
+      {
+        "scheme": "TestYellow",
+        "exit": 0,
+        "observations": [
+          "Spin arrow delay, bounds, no overlap, stability, live roles, dismissal, native increment/decrement/repeat and no late hint passed.",
+          "Disabled SpinBox field and painted arrow hints passed; clicks remain blocked and numeric value unchanged."
+        ]
+      }
+    ]
+  },
+  "scope": "Actual project Undo disabled: delayed tooltip, bounds/no owner overlap, stable400ms, zero activation after real click, leave. Disabled SpinBox field and painted arrow surface: hints mapped, ordinary/enabled bridge absent, native clicks remain blocked and value unchanged. Enabled increment/decrement/repeat preserved. Four initial schemes for each test; one layout. Source colors/fonts are dynamically read, not a pixel-fidelity audit of all disabled renderings.",
+  "remaining": [
+    "Other disabled classes/gadgets/layouts are outside this native proof",
+    "Final scoped coverage and coordinated personal handoff/manual review"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "progress_basis": "Principal disabled states now implemented with native proof; delivery and remaining coverage still open. Not percentage of historical fidelity or whole goal.",
+  "personal_session_modified": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-build-r2.log": "b1ea104ef8defbd8d13c5898402830ad1a5e2b8bffc3e120239945ccba1145e9",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-build-r3.log": "16585c4fb0f6f73a0dc52c29aaeb7090ad50315e960e3b5bec03c0bb12120259",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-build.log": "0bbaebc0bc254dc8a5017f98b5d3f45786ef69b26ac85a853853689393c22473",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-events.c": "549fb3015bcec10040276ba640bdcbc3cb8c72365494d60431f29ceab0d16319",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-events.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-events.log": "b5b06a5ada014eab8125e0dbea0123ad903c0bdb11096ec10a57922cc3f2221f",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-history-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-history-r1.json": "e10ae395e7e9222b3420a18b11b5f0a71cb6c47e958fe75f7226c315876d3a5a",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-history-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-history-r2.json": "faa00b46f85e731da80d86b27e61d3500fcbc317582a7f603d0371dc6313a32c",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-parent-events.c": "26595aa45882e11b69b015b2194bcb865f5f1986677c026849b18346a301fb57",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-parent-events.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-parent-events.log": "8fb8be69c3fc2bd6ffe8fae624f76f9cb5b8f26c6381f7b03f8439f46e50ab53",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-regression.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-regression.log": "499afd52ca1e2efc343f368898dfd95bf35096143f69a8b0f9e638bfc4c36690",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-spin-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-disabled-hints/t07-disabled-spin-r1.json": "94ef0fa58e219fcef8337a3f205d4d7d4e102570a75ffa817933288b2417133d",
+    "tools/theme-lab/src/view/ui_disabled_hints.c": "0b614cca772f11c88262cb8b04d65bb2531cee64582a6ddbb1ff287b30aa42d9",
+    "tools/theme-lab/src/view/ui_hints.c": "d6b6c0b43bdd1be9942be5274b1ca5a20dd4469896c6a477fc268df56c9859a0",
+    "tools/theme-lab/src/view/ui_spin_hints.c": "dfdafde891b6cb368bec3e28981d0255cd96c699987f722e18ffc8deb892e2a1",
+    "tools/theme-lab/include/ui_hints.h": "1a4f4c44bbb1b30ed249c65e5cf397dfe1c56b375f522b6f7fc5b08940d7f1bb",
+    "tools/theme-lab/tests/ui_help_flow.c": "55df4e5e2c829eabd5eb539e91e6d3a082a5d8bcf244176cd64f1ea5db4d33ae",
+    "tools/theme-lab/tests/spin_hint_hover.c": "30b729ff95656f2f0ccde5ef83c7cd670bb7fffd6db33e71ca14358ce7bf19b9",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "d8fceb721b676ae878c1de53ff2558989644d4e6133ccd7be7001c107b4c9fcd",
+    "tools/theme-lab/Makefile": "f9669a4ae2c478ab77c1f18c1f9b1ea0668dddc19ca46c70ee46fd6cc8f6ef6f"
+  }
+}

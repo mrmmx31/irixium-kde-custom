@@ -1,0 +1,69 @@
+{
+  "at": "2026-10-11T06:49:01.459382+00:00",
+  "item": "I119",
+  "authority_revision": 1,
+  "phase": "delivered_lsi",
+  "previous_goal_turn_classification": "progress: native controller, callbacks, tests and coordinated delivery",
+  "pid": 1864866,
+  "window": "46137506",
+  "display": ":61",
+  "run": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-10a9e43e110d4cfe8e2b2d0bc29b05d6/MANIFESTO.json",
+  "release_used": {
+    "schema": 1,
+    "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+    "pid": 1609066,
+    "active": true,
+    "request": {
+      "id": "d9892dbdc2a9ae564d2f9e4b436ae5c2096d565d41bf72591f6bf20cfeac09fe",
+      "item_id": "I119",
+      "user_revision": 1,
+      "definition_sha256": "f941a5055bcb3b9ce00aaa1f02dea2abd3ec8aa03153df524c80321424029e80",
+      "application": "Laboratório I119 — histórico do projeto no Xephyr :61",
+      "reason": "Versão compilada e provas privadas concluídas: Undo/Redo do projeto, ponto salvo, reset seletivo, recuperação e conflito sem perda. Abrir nova instância copiando projeto salvo, journal textual e histórico existente; manter a origem PID1834334 aberta, pois texto bruto não persistido não será importado. Pausa apenas para coordenar a cópia, sem fechar outras janelas.",
+      "requested_at": "2026-10-11T06:45:59.878Z"
+    },
+    "answer": {
+      "approved": true,
+      "session": "5a50d8f4d09a7e81159b86738ae02eaf80e3fd01161d755869c60c0321e478c7",
+      "request_id": "d9892dbdc2a9ae564d2f9e4b436ae5c2096d565d41bf72591f6bf20cfeac09fe",
+      "responded_at": "2026-10-11T06:46:10.158Z"
+    },
+    "available": true,
+    "permitted": true,
+    "scope_current": true
+  },
+  "resume": {
+    "source_manifest": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/lab-addon/run-a05c335fd0aa41ea85aeb1cd97b37358/MANIFESTO.json",
+    "source_manifest_sha256": "1a4b0a750cadf21532ea26b4a62c700c0966957e79ebcac4eeae838b503e07f0",
+    "saved_files_sha256": {
+      "working.json": "9a9ebed7ebbe48e2d7c0823f72689d3abc6fc3ec49592f3ab70b6f2531d9c9b9",
+      "editor-journal.json": "3b2f6d15c7522b1b902c7eed103f8e1df990050ca0a8a82be37aaf2aac4b8acd"
+    },
+    "source_untouched": true,
+    "unsaved_widget_text_imported": false,
+    "runtime_outputs_imported": false
+  },
+  "preserved": {
+    "saved_project_equal_except_exported_at": true,
+    "text_journal_and_undo_byte_identical": true,
+    "original_pid1834334_alive": true,
+    "original_window_kept_open": true,
+    "raw_unsaved_text_not_imported": true
+  },
+  "new_project_history": {
+    "file": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/theme-lab-10a9e43e110d/project-history.json",
+    "entries": 1,
+    "position": 0,
+    "matches_recovered_project": true,
+    "sha256": "545078925972a4731bda5deb08f26feffa9ba21b22ceb9fe693ec5b86f92c6be"
+  },
+  "capture": "/home/lsi/irixium-kde-custom/.qa-domainos-all-toolkit-preview-20261010/full-preview-lab-r16/home/i119-delivered.png",
+  "capture_inspected": "Motif selection, dynamic palette, native controls and five history buttons visible; no personal pointer/keyboard input sent.",
+  "capture_initial_failure": "nsenter setgroups denied; retry preserving credentials succeeded, without UI input.",
+  "native_proofs": "docs/review/I119-CONTROLADOR-NATIVO-20261011.json",
+  "coordination": "Exact theme request consumed and cancelled after delivery; permanent Q091/Q102 and board lane preserved.",
+  "estimated_scope_progress_percent": 100,
+  "basis": "I119 model/storage/transaction/controller/actions/private native proof/build and personal delivery completed; human evaluation and full project remain separate.",
+  "user_approval_filled": false,
+  "remaining": "Human evaluation; next authorized item I120; no full-goal completion claim"
+}

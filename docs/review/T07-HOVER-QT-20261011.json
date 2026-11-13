@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-11T11:27:31.805709+00:00",
+  "item": "T07",
+  "status": "partial",
+  "proofs": [
+    {
+      "status": "passed",
+      "qt_major": 5,
+      "guarded_production_main": true,
+      "buttons_with_hint": 35,
+      "hover": {
+        "cold_delay_checked_ms": 100,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          52,
+          181,
+          127,
+          25
+        ],
+        "tooltip": [
+          117,
+          209,
+          528,
+          23
+        ],
+        "no_overlap": true,
+        "inside_screen": true
+      },
+      "scope": "production gallery resources and one native push hover; not all layouts or Kvantum fidelity"
+    },
+    {
+      "status": "passed",
+      "qt_major": 6,
+      "guarded_production_main": true,
+      "buttons_with_hint": 35,
+      "hover": {
+        "cold_delay_checked_ms": 100,
+        "stable_ms": 400,
+        "closed_after_leave": true,
+        "control": [
+          52,
+          181,
+          127,
+          25
+        ],
+        "tooltip": [
+          117,
+          217,
+          528,
+          23
+        ],
+        "no_overlap": true,
+        "inside_screen": true
+      },
+      "scope": "production gallery resources and one native push hover; not all layouts or Kvantum fidelity"
+    }
+  ],
+  "initial_failure": "No input focus in WM-less Xvfb; test fixture focuses only private gallery, guards unchanged.",
+  "source_hashes": {
+    "tools/theme-lab/tests/probe_qt_full_gallery_hints.py": "2f89768ca56f4832a691f33da56d08930f38e177e2b68357964c018304413780",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "2c54f44aa00e01cb1bf6f2910ea53db095b751ca52b86a72c5bc5af7f8a33431"
+  },
+  "remaining": [
+    "Other Qt controls/layouts and dynamic dialogs",
+    "GTK4/Plasma galleries",
+    "Coordinated personal handoff"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "basis": "Partial T07 stages, not historical fidelity or full goal completion",
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

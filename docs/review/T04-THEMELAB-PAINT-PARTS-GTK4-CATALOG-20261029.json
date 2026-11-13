@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "item": "T04",
+  "date": "2026-10-29",
+  "scope": "Editor de pintura manual: peças de barra, geometria privada, cursores, ComboBoxes e catálogo GTK4",
+  "authorization": {
+    "board_revision": 9,
+    "authorized": true,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "implemented": [
+    "Seletores separados de plataforma, controle, peça, variante e estado",
+    "Peças de barra: controle inteiro, seta, botão da seta, trilho, cursor e encaixe",
+    "Variantes contextuais de posição e direção",
+    "Comprimento, espessura, posição e página da amostra nativa sem alterar scene.json",
+    "Dimensões da arte manual separadas das dimensões do ensaio nativo",
+    "Cursores próprios para lápis, borracha, linha/retângulo, preenchimento e pipeta",
+    "Reconciliação de seleção por XmComboBox, XmList, campo visível e eventos de teclado/mouse",
+    "Catálogo GTK4 com 16 controles e disponibilidade explícita"
+  ],
+  "gtk4_capability": {
+    "catalog_controls": 16,
+    "translated_controls": [
+      "push",
+      "toggle",
+      "check",
+      "scroll_h",
+      "scroll_v"
+    ],
+    "unavailable_controls": [
+      "radio",
+      "entry",
+      "combo",
+      "spin",
+      "text",
+      "scale_h",
+      "scale_v",
+      "arrow",
+      "progress",
+      "list",
+      "frame"
+    ],
+    "policy": "Controle sem tradutor permanece visível e explicitamente indisponível; não há fallback para os três botões nem simulação de render nativo."
+  },
+  "verification": [
+    {
+      "command": "make -C tools/theme-lab -B build/theme-lab build/native-metrics-view",
+      "result": "passed with -Wall -Wextra -Werror"
+    },
+    {
+      "command": "TL_PAINT_SELECTION_ONLY=1 xvfb-run -a tools/theme-lab/build/native-metrics-view",
+      "result": "passed: control, piece, variant and state selection paths"
+    },
+    {
+      "command": "TL_PAINT_CURSORS_ONLY=1 xvfb-run -a tools/theme-lab/build/native-metrics-view",
+      "result": "passed: five distinct cursor functions applied; line and rectangle intentionally share crosshair"
+    },
+    {
+      "command": "PYTHONPATH=tools/theme-lab python3 -B -m pytest -q tools/theme-lab/tests/test_gtk4_route.py tools/theme-lab/tests/test_gtk4_worker.py tools/theme-lab/tests/test_gtk4_host.py",
+      "result": "40 passed"
+    },
+    {
+      "kind": "live",
+      "capture": "~/tempia/domainos-theme-work/theme-lab-r20-arrow-start.png",
+      "result": "GTK2 / Rolagem vertical / Seta / Inicial coherent; native sample 15 x 120 px"
+    }
+  ],
+  "preservation": {
+    "manual_paint_sha256": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87",
+    "scene_sha256": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+    "installed_theme_changed": false,
+    "user_configuration_changed": false
+  },
+  "source_hashes": {
+    "tools/theme-lab/src/view/manual_paint_view.c": "3c0a33cfdb9a4bb0c948eda016407b0075039c538b8ba17c7172c78623546d87",
+    "tools/theme-lab/src/view.c": "7befc1f81f9b0d2cc3375f4f1273a1b043c74022f428137dd9ea088bb57f0e4e",
+    "tools/theme-lab/gtk4_route.py": "7b4ff8aab6ba0eef64d7466f68f7351b6c39c0eb931cb3c051b06e39f0718347",
+    "tools/theme-lab/gtk4_worker.py": "fe7bef426aec4009ae2e04e602398024c1dc41726965f3745a768ddca125e163"
+  },
+  "limits": [
+    "Only 5 of 16 GTK4 controls have a DomainOS translator",
+    "GtkScrollbar has no native arrow; manual arrow art is not a native GTK4 capture",
+    "Technical verification does not constitute historical fidelity or user visual acceptance"
+  ],
+  "next": "User edits and reviews the GTK2 arrow piece in the open manual editor; visual acceptance remains pending."
+}

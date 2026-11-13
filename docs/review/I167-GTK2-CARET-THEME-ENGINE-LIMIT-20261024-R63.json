@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-CARET-THEME-ENGINE-LIMIT-20261024-R63",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2
+  },
+  "question": "Can a normal GTK2 theme engine add the two horizontal terminal caps and set caret height to the VUE measurement without patching GTK or replacing application widgets?",
+  "reference_source": {
+    "version": "GTK 2.24.33",
+    "installed_source_copy": "~/tempia/i167-gtk2-entry-r40/gtk-source/gtk+2.0-2.24.33/",
+    "gtkstyle.c_sha256": "c0c3441181c7489d5fc36bea745c48113f564338579193414979615f69d62e53",
+    "gtkstyle.h_sha256": "2c755365bade5feb0c281ee2eab3e3184282df5bfa3f8b9566203ad313c76ad6",
+    "gtkentry.c_sha256": "0d5e974046816b573fba1fe3bee5df0a79c7d16727eb520c3542ee5f2974dc1e",
+    "gtktextdisplay.c_sha256": "42850a4b7355f91c746b38c780cbcd0600194f57af95d812dba4eec612c41498"
+  },
+  "findings": {
+    "gtkstyle.c": "gtk_draw_insertion_cursor is documented in source as a convenience function, explicitly not a style function. It calculates width from cursor-aspect-ratio and draws the stem plus optional bidi arrow; it does not draw horizontal end caps.",
+    "gtkentry.c": "GtkEntry calls gtk_draw_insertion_cursor directly (line 5688 in the installed source copy).",
+    "gtktextdisplay.c": "GtkTextView calls the same helper directly (line 894 in the installed source copy).",
+    "gtkstyle.h": "The public GtkStyleClass exposes drawing callbacks for boxes, lines, arrows, checks, and other primitives, but no insertion-cursor callback. A theme engine therefore has no ordinary style vfunc to override for this caret.",
+    "height": "The caret height is supplied by the Entry/TextView text-layout geometry. The theme style property affects width, not the height or cap shape."
+  },
+  "conclusion": "GTK2 theme files or a conventional GtkThemeEngine cannot provide exact VUE caret terminals or force only this caret to 14px while preserving application text metrics. That would require changing GTK2's helper or replacing/subclassing the text widget in each application. No toolkit patch or application-specific widget was made.",
+  "existing_theme_adaptation": "Keep the R61 cursor-aspect-ratio=0.0 setting: it gives a 1px stem and follows the current KDE text role. R61 measured 18px height at 338x34, while SR10.4 measured 14px plus two 5x1px terminals.",
+  "method": "Read-only source inspection and comparison of public GtkStyleClass declarations with the direct GtkEntry and GtkTextView helper call sites. No GUI, VM, toolkit installation, or user configuration changed.",
+  "remaining": [
+    "Historical color, selected-text shape, and caret blink timing remain unmeasured in SR10.4.",
+    "The GTK2 adapter still lacks a real mapped-window focus-cycle observation in an isolated target.",
+    "R62 records that the assistant-owned clone's Lua request remains pending and that the visible MAME X window is another process."
+  ],
+  "next": "Do not pursue a standalone theme engine for this caret; it cannot override the direct GTK2 helper. Continue GTK2 I167 with remaining native adapter checks and resume historical visual comparison only when the correct SR10.4 clone video is accessible."
+}

@@ -1,0 +1,118 @@
+{
+  "item": "I174",
+  "revision": 1,
+  "definition_sha256": "472ff3e0a7a1f2d416a3ebe33c412fcfbdca5acce3c3b78be7d037ad74a5279d",
+  "date": "2026-10-14",
+  "status": "measurement_complete_design_unchanged_pending_P10_and_review",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "path": "/home/lsi/tempia/domainos-vue-study/controls/panels/vuewm-panel-static-20261012.png",
+    "sha256": "b92f55743fb90ddf569ab093807122593c7303d68b161eecb6d0017b58c87412",
+    "capture_px": [
+      947,
+      93
+    ],
+    "crop_scale": "1:1; unobstructed native strip crop"
+  },
+  "current": {
+    "path": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+    "sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+    "capture_canvas_px": [
+      971,
+      109
+    ],
+    "painted_nonblack_bbox_exclusive": [
+      8,
+      0,
+      971,
+      109
+    ],
+    "painted_bbox_px": [
+      963,
+      109
+    ],
+    "source_panel_qml": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml",
+    "source_panel_qml_sha256": "f9e42a0ad96b4e3fd4f0c2d9ee2c356dc128c76ff89a2983a460e008ef5990bf",
+    "design_canvas_px": [
+      1942,
+      218
+    ],
+    "drawing_scale": 0.5,
+    "nominal_rendered_px": [
+      971,
+      109
+    ]
+  },
+  "measurements": {
+    "canvas_delta_px": [
+      24,
+      16
+    ],
+    "canvas_delta_percent": [
+      2.534,
+      17.204
+    ],
+    "aspect_ratio": {
+      "native": 10.1828,
+      "current_canvas": 8.90826,
+      "current_painted_bbox": 8.83486
+    },
+    "horizontal_band_split": {
+      "native_lower_shelf_y": 63,
+      "current_lower_shelf_y": 79,
+      "native_upper_band_px": 63,
+      "current_upper_band_px": 79,
+      "native_lower_shelf_px": 30,
+      "current_lower_shelf_px": 30,
+      "upper_band_delta_px": 16,
+      "lower_shelf_delta_px": 0
+    },
+    "upper_band_share_percent": {
+      "native": 67.74,
+      "current": 72.48
+    },
+    "proportional_fit_options": {
+      "uniform_scale_to_native_height": {
+        "scale": 0.853211,
+        "result_px": [
+          828.47,
+          93
+        ],
+        "width_shortfall_vs_native_px": 118.53
+      },
+      "uniform_scale_to_native_width": {
+        "scale": 0.975283,
+        "result_px": [
+          947,
+          106.31
+        ],
+        "height_excess_vs_native_px": 13.31
+      },
+      "exact_native_outer_size_requires_nonuniform_scale": {
+        "x_scale": 0.975283,
+        "y_scale": 0.853211
+      }
+    }
+  },
+  "baseline_copy": {
+    "directory": "/home/lsi/tempia/i174-panel-design-baseline-20261014",
+    "capture": "current-integrated-panel.png",
+    "capture_sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+    "source_snapshot_manifest": "sha256.txt",
+    "frozen_downloads_backup_modified": false
+  },
+  "interpretation": "The capture canvas is 24px wider and 16px taller than the historical strip. The lower shelf remains 30px; all measured vertical excess is in the upper panel region. The captured artwork footprint begins at x=8 because the root-derived crop contains an 8px black margin; report canvas size and painted bbox separately. Current design ratio is flatter than the native panel. Matching both historic outer dimensions with uniform scaling is impossible: width-fit remains about 13.3px too tall, height-fit becomes about 82.1px too narrow. A future compact composition requires internal layout redesign rather than a single proportional scale; no product change is proposed in I174.",
+  "changes": {
+    "product_source_changed": false,
+    "personal_configuration_changed": false,
+    "downloads_backup_modified": false,
+    "vm_input_sent": false
+  },
+  "limits": [
+    "Source capture and historical reference are static saved captures; this measurement does not validate transient Apollo states.",
+    "User review and P10 closure are pending.",
+    "Composition choices Q355-Q358 remain separate; no Pager/title-strip choice was inferred."
+  ],
+  "next": "Use this baseline when the authorized P10 review is complete; I175 can prepare the compact historical composition proposal using these measured constraints before any implementation."
+}

@@ -1,0 +1,37 @@
+{
+  "date_local": "2026-10-18T08:02:49-04:00",
+  "revision": "R16",
+  "purpose": "Revalidate dedicated FTP/Telnet endpoint requested for the assistant clone",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1354178,
+  "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "network_namespace": "net:[4026533817]",
+  "endpoint": {
+    "address": "10.104.10.4",
+    "ftp_port": 21,
+    "telnet_port": 23,
+    "guest_backend": "192.168.240.2 (private to clone namespace)"
+  },
+  "checks": {
+    "alias_assigned_to_clone_tap_only": true,
+    "ftp_listener": "10.104.10.4:21, socat PID 1661380",
+    "ftp_banner": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "ftp_root_login": "230 User root logged in.",
+    "ftp_active_mode_listing_entries": 26,
+    "telnet_listener": "10.104.10.4:23, socat PID 1661382",
+    "telnet_negotiation_hex": "fffd18",
+    "old_alias_192.168.246.10": "not assigned and no listeners",
+    "mame_profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false
+    }
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "guest_network_configuration_modified": false
+  },
+  "client_helper": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+  "scope_note": "This revalidates the assistant clone endpoint. Historical visual comparison remains limited by the black native MAME capture recorded in R15."
+}

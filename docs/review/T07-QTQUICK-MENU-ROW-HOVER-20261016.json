@@ -1,0 +1,89 @@
+{
+  "item": "T07",
+  "authorization_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-17T00:20:00Z",
+  "status": "partial_pass",
+  "scope": "QtQuick KDE Desktop Controls 6.8.2: one push button and two real menu rows in the native gallery. Does not certify QtQuick 5, all controls/layouts, Plasma SVG, the product theme's full hint inventory, or historical fidelity.",
+  "environment": {
+    "xephyr": ":71",
+    "screen": "1024x768",
+    "display_backend": "xcb",
+    "namespace": "bwrap; private HOME, UID 1000 and D-Bus session; host personal home and system bus not exposed",
+    "qt_version": "6.8.2",
+    "qtquick_style_requested": "org.kde.desktop",
+    "qtquick_style_evidence": "Loaded QML controls and menu components from /usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/desktop.",
+    "qt_widgets_style": "QFusionStyle; this reports QApplication's widget style and is not evidence for the QtQuick style."
+  },
+  "checks": {
+    "native_hint_resources": 27,
+    "push_hint": {
+      "configured_delay_ms": 750,
+      "not_visible_at_ms": 300,
+      "stable_ms": 400,
+      "does_not_cover_control": true,
+      "hidden_after_pointer_leave": true
+    },
+    "first_menu_row": {
+      "text": "Registra a ativação da ação de exemplo; não inicia aplicações.",
+      "configured_delay_ms": 750,
+      "not_visible_at_ms": 300,
+      "stable_ms": 400,
+      "row_rect": [0.0, 26.0, 192.0, 30.0],
+      "tooltip_rect": [200.0, 59.0, 261.0, 46.0],
+      "inside_screen": true,
+      "does_not_cover_owner_or_neighbor_rows": true,
+      "hidden_after_pointer_leave": true
+    },
+    "second_menu_row": {
+      "text": "Marca ou desmarca esta opção do menu nativo.",
+      "configured_delay_ms": 750,
+      "not_visible_at_ms": 300,
+      "stable_ms": 400,
+      "tooltip_rect": [200.0, 7.0, 241.0, 46.0],
+      "inside_screen": true,
+      "does_not_cover_owner_or_neighbor_rows": true,
+      "hidden_after_pointer_leave": true
+    },
+    "menu_remains_open_on_hover_leave": true,
+    "menu_action_click_closes_menu": true,
+    "button_action_click_recorded": true
+  },
+  "runtime_warnings": [
+    "The isolated D-Bus reported that it could not initialize inotify (host limit exhausted); portal emitted FUSE/PipeWire fallback warnings.",
+    "KDE Desktop TabButton.qml reported three null-y warnings while the gallery initialized. The tested button/menu hover assertions and actions passed."
+  ],
+  "qtquick5_attempt": {
+    "qt_version": "5.15.15",
+    "requested_style": "org.kde.desktop",
+    "kde_desktop_qml_observed": true,
+    "status": "inconclusive",
+    "failure_point": "The probe stopped before hover assertions because the captured first-row hint text did not match the expected string. No menu-row hover pass is claimed.",
+    "runtime_warning": "The KDE Qt5 Menu/ListView emitted repeated implicitWidth binding-loop warnings (32 occurrences).",
+    "actions_recorded": ["button:clicked"],
+    "artifacts": {
+      "result": "~/tempia/t07-qtquick-menu-row-20261016-r18-qt5/home/qtquick5-proof/RESULTADO.json",
+      "stderr": "~/tempia/t07-qtquick-menu-row-20261016-r18-qt5/stderr.log"
+    },
+    "sha256": {
+      "RESULTADO.json": "f119336c3dfb18a4a38d09cb9d6c2d5ca7fb046ed27f608f0117aa9a3e09ccbe",
+      "stderr.log": "dc1529e02d834e5e6cf04beac17def655c4ec8f6c76ee4de57dd4d3f919c4c0d"
+    }
+  },
+  "artifacts": {
+    "native_gallery_screenshot": "~/tempia/t07-qtquick-menu-row-20261016-r17/home/qtquick6-proof/menu-row-tooltip.png",
+    "native_result": "~/tempia/t07-qtquick-menu-row-20261016-r17/home/qtquick6-proof/RESULTADO.json",
+    "hover_result": "~/tempia/t07-qtquick-menu-row-20261016-r17/home/qtquick6-proof/HINTS-QA.json",
+    "stdout": "~/tempia/t07-qtquick-menu-row-20261016-r17/stdout.log",
+    "stderr": "~/tempia/t07-qtquick-menu-row-20261016-r17/stderr.log"
+  },
+  "sha256": {
+    "tools/theme-lab/tests/probe_qtquick_gallery_hints.py": "270a99152884f80f40a5e26cf70ea5819dbe595d43441b198a14eaa9b22bb5e8",
+    "tools/theme-lab/tests/run_qt_gallery_namespace.py": "98fb646ff62d88f6cb3bf8398f404f512036df69fe755177e18e0630611a68db",
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "6b4aa09e6ae776196c57ea39c18416df54197659ce2595bf7d33bf624f56d438",
+    "screenshot": "d20dad3bbc9104d850a71d718cfc97fa559e1c63c622aaed90c95d0f0f6ef085",
+    "HINTS-QA.json": "da94dcb975279a0c14324cd5f474713aeb275063335d1ee157efde6787fa8acb",
+    "RESULTADO.json": "ea7aae73abe56a1eafe47f093e7401401c8039f45fb5b7c3ec0bf10d2764f362"
+  },
+  "human_approval": "pending"
+}

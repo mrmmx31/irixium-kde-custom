@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29T16:30:17-04:00",
+  "item": "T04",
+  "authorization": {
+    "user_authorized": true,
+    "revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "scope": "Roteamento da previa GTK4 acoplada quando o catalogo mantem todos os 16 controles visiveis e o controle push esta selecionado.",
+  "user_report": "Ao abrir GTK4, gtk4_worker.py apresentou erro; havia suspeita de que a janela aberta fosse uma versao antiga.",
+  "root_cause": {
+    "backend": "gtk4_route.renderer() escolhia o renderizador de botoes pelo controle push selecionado.",
+    "controller_before": "O controlador inferia o modo scrollbar apenas pela presenca de scroll_h ou scroll_v no conjunto visivel.",
+    "invalid_combination": "O snapshot continha botoes, mas preview_gtk4.py recebia --private-scrollbar-session; gtk4_worker.py recusava corretamente a incompatibilidade.",
+    "old_binary_disproved": true
+  },
+  "correction": {
+    "controller_dispatch": "O controlador agora replica a prioridade documentada de gtk4_route.renderer(): controle selecionado visivel, botoes visiveis e, por ultimo, barras visiveis.",
+    "saved_masks_changed": false,
+    "theme_assets_changed": false,
+    "installed_theme_changed": false
+  },
+  "focused_validation": {
+    "gtk4_route_tests": "9/9 passed",
+    "gtk4_worker_tests": "5/5 passed",
+    "integrated_real_worker": {
+      "status": "passed",
+      "visible_catalog_controls": 16,
+      "selected_control": "push",
+      "button_mode": true,
+      "scrollbar_mode": false,
+      "mixed_catalog_preserved": true,
+      "result_file": "/home/lsi/tempia/theme-lab-spin-fd96kow6/RESULTADO.json"
+    },
+    "strict_build": "passed",
+    "diff_check": "passed"
+  },
+  "separate_regression": {
+    "test": "controller GTK4 push save-close-restart-load",
+    "status": "failed outside the corrected routing step",
+    "failure": "The restarted isolated fixture could not open X display :180.",
+    "evidence": "/home/lsi/tempia/theme-lab-spin-e1g8rrqe/namespace.log",
+    "interpretation": "Do not promote the focused routing proof into restart lifecycle coverage; investigate this fixture/runtime regression separately."
+  },
+  "preserved_user_session": {
+    "work_dir": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "selected_family": "qt5",
+    "separate_preview": false,
+    "working_scene_sha256": "45d510897c3965fc2bd5c52189bae50a057ea21f8b095f87bcc67a81f08b59a4",
+    "reopened": {
+      "service": "domainos-theme-lab-gtk4-routing-20261029.service",
+      "theme_lab_pid": 3340057,
+      "main_window_xid": "0x3c00248",
+      "preview_canvas_xid": "0x3c0028e",
+      "qt5_preview_pid": 3340106,
+      "native_child_xid": "0x500000c",
+      "native_child_title": "DomainOS SR10.4 — Qt5 Widgets / Kvantum",
+      "window_activated": true
+    }
+  },
+  "source_sha256": {
+    "tools/theme-lab/src/controller.c": "50a4b62c3e848be3c3421f14976715692e390b5ba3685cb0c8bda2655dbdf3ac",
+    "tools/theme-lab/tests/controller_gtk4_all_controls.py": "fe835b2b40da120eee96f55d820eb00ad0d8964dc6f65cfd882cbd5c6ec24cb2",
+    "tools/theme-lab/tests/test_gtk4_worker.py": "9baa3105d8a8f8f99f5ff7f72fb32e9b702fced0984c77d110c3aea54c7dd10c",
+    "tools/theme-lab/build/theme-lab": "28be9881f8330dccf8fac5b4ae28e638b4673c0ec1f12b6ca919c68f644ec025"
+  },
+  "manual_visual_acceptance": "pending",
+  "next": "Reopen the preserved session with the corrected build. The user switches to GTK4 and checks that the coupled preview opens; keep visual acceptance separate from the technical routing proof."
+}

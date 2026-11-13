@@ -1,0 +1,61 @@
+{
+  "at": "2026-10-12T18:05:00Z",
+  "item": "T02",
+  "authority_revision": 4,
+  "definition_sha256": "e5e2abb18df75f4ee5911127564b78bbc1a398493a8d902c7b92e2d8293444d9",
+  "phase": "current_native_catalog_and_project_roundtrip",
+  "criteria": {
+    "tree_categories_and_individual_controls": {
+      "status": "passed",
+      "method": "Actual Motif widgets under disposable Xvfb and namespace; pointer and Space exercised across five categories and sixteen control checkboxes. Return selected a different control without toggling visibility.",
+      "categories": 5,
+      "controls": 16,
+      "families": "GTK3→Motif→GTK3→Motif retained independent recipes, masks, selected controls and positions; untouched families stayed unchanged.",
+      "result": ".qa-theme-lab-spin-hi1be4rb/RESULTADO.json",
+      "capture": ".qa-theme-lab-spin-hi1be4rb/last.png"
+    },
+    "persist_visibility_selection_positions_assembly": {
+      "status": "passed",
+      "method": "Real native Save and Load dialogs saved then restored category/control visibility masks, selected control, positions and assembly state.",
+      "result": ".qa-theme-lab-spin-6_favbix/RESULTADO.json",
+      "capture": ".qa-theme-lab-spin-6_favbix/last.png"
+    }
+  },
+  "builds": {
+    "controller_probe": "passed with -std=c99 -Wall -Wextra -Werror",
+    "application": "passed with -std=c99 -Wall -Wextra -Werror"
+  },
+  "test_harness_diagnostic": {
+    "initial_control_catalog_run": "failed because its click helper targeted category0 while the reported Y coordinate was -534, outside the visible catalog; no product defect inferred.",
+    "corrected_evidence": "Repeated the same project roundtrip with an archived private harness that reveals each item and asserts it lies inside the native clip before clicking; passed.",
+    "archived_helpers": [
+      "tools/theme-lab/build/t02-audit-20261012/_qa_t02_harness.py",
+      "tools/theme-lab/build/t02-audit-20261012/_qa_t02_catalog_save_load.py"
+    ]
+  },
+  "limits": [
+    "Expansion/collapse is view state and is not serialized; saved criteria cover visibility, selection, positions and assembly.",
+    "Native Motif behavior only; no historical visual fidelity claim and no user verdict was filled from tests.",
+    "No personal session, theme, VM, or backup changed."
+  ],
+  "estimated_stage_progress_percent": 100,
+  "basis": "Both saved technical criteria are proved against the current compiled application/controller path by native interaction and real Save/Load. The number is stage completion, not visual fidelity.",
+  "sha256": {
+    "tools/theme-lab/src/view/control_catalog.c": "4eeff588182227cea05e59e1b2c932107f68a125bf61acb71fe20e78628c5d52",
+    "tools/theme-lab/src/view.c": "a0b31809ff28ffca4823410241bbf7288e9decce1779ce5d64ebe44cd14bbfe8",
+    "tools/theme-lab/include/control_catalog.h": "2e7da96590b3e23ec591fbb5fe3395dfc08d61f840be2bda812183aff6e41fe6",
+    "tools/theme-lab/tests/controller_catalog_matrix.py": "0e0673725c687a44b7365e63d8ad93089ec03702bd8f64676bbf6a75fb9162f4",
+    "tools/theme-lab/tests/controller_control_catalog.py": "297074e7a107e86da5b40269ff07e6c5d64b3e71fc47fe850cbe7c83634ce781",
+    "tools/theme-lab/tests/test_controller_spin.py": "6e7504efb6ec069bd121724bf3896bbf815ed19ae6998fe53a539087f826d088",
+    "tools/theme-lab/tests/controller_spin_probe.c": "6d0a8b7507df6f85da33335b1c29237b9187fcbea33ba55f5393e3ebdc4ff8d8",
+    "tools/theme-lab/Makefile": "0a3865a5629a8573a8a2cd80bbd09b04a7db4026bafed26e0384078b88631ae3",
+    "tools/theme-lab/build/t02-audit-20261012/controller-spin-probe": "9a5593f706c3bfffe15fece0afb610a4be6026f43785422c4fc86aa8b8179fb5",
+    "tools/theme-lab/build/t02-audit-20261012/theme-lab": "e0f8ee3c4e51a968f77556d166dda67b2c191e4ad3dd2985394ee5bc957bc567",
+    "tools/theme-lab/build/t02-audit-20261012/_qa_t02_harness.py": "a83cd9d843d8a62520353a22f2f869013c420e700ff983188a3e75bb7582e65b",
+    "tools/theme-lab/build/t02-audit-20261012/_qa_t02_catalog_save_load.py": "af341efcee0a53106c77499bcb196da2859845ce80d9c89a4cf24009272a363b",
+    ".qa-theme-lab-spin-hi1be4rb/RESULTADO.json": "e391999f2ff5ce9349fbe2025135814177f3187e3354a1844ec925e50e4039e8",
+    ".qa-theme-lab-spin-hi1be4rb/last.png": "cc163835d1b7f7eb4d9283c464715fb91ce7e6b570d555af981425fbaba869f5",
+    ".qa-theme-lab-spin-6_favbix/RESULTADO.json": "76baf1eba707a69f8ebd1a36be9e9a6b72497d422e1bb0777c818a3ecac987b6",
+    ".qa-theme-lab-spin-6_favbix/last.png": "5a5e1df44c5015b1441818b863e8bcae1e42b4aaf7c370b2909fb8b9ebd7999a"
+  }
+}

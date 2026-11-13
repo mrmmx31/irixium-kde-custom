@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "id": "R581",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Recover the current black/idle screen of the authorized DomainOS reference VM with the one-frame guest Shift pulse already validated for this clone, then verify the resulting guest image and release.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01; MAME 0.276 Apollo DN3500",
+    "mame_pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_project_vm_pid": 117186,
+    "other_project_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "profile_before_and_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "captured": false,
+      "mouse_hook": "table",
+      "channel_pending": false
+    }
+  },
+  "observation": {
+    "pre_wake_capture": "records/ia-tema/evidence/I167/r581-pre-wake-black-20261028.png",
+    "pre_wake_state": "Black guest framebuffer with the persistent Apollo command legend visible.",
+    "pre_wake_capture_note": "The first read-only snapshot wrote a valid 1024x844 PNG; its trailing status formatting returned an error because screen:width is a numeric property in this MAME build. The image was validated and not recaptured.",
+    "wake_script": "records/ia-tema/evidence/I167/r581-wake-once-20261028.lua",
+    "wake_method": "One-frame Shift pulse on :kbd:keyboard4/Shift, auto-cleared at frame 3; native screen snapshot at frame 65. No mouse movement, click, focus change, or MAME restart.",
+    "operation_result": "done=true; frame=65; held=false; error=nil; screenshot captured",
+    "post_wake_capture": "records/ia-tema/evidence/I167/r581-awake-20261028.png",
+    "post_wake_capture_sha256": "86cbc1087a7b2dcc7446ee312ba97da5da687624400760da315ecceee05f28cc",
+    "dimensions": [
+      1024,
+      844
+    ],
+    "visible_result": "VUE desktop awake, Terminal and Trash Can visible; horizontal and vertical scrollbars are visible.",
+    "pre_wake_capture_sha256": "47b350ec834b8658ecf55748b4f1fed3522fb8d299ad48d438c36e2897418869",
+    "pre_wake_script": "records/ia-tema/evidence/I167/r581-pre-wake-snapshot-20261028.lua",
+    "pre_wake_script_sha256": "46d48d1b3ae2f7680e301caaaf3dbb0df622d657d8b2cbc206930c22b77088c6",
+    "wake_script_sha256": "e1c646b7da7d659dcfdb86557c3acd1128c1d0fc4e061ad395c093349477d5a0"
+  },
+  "cleanup": {
+    "key_released": true,
+    "mouse_touched": false,
+    "profile_changed": false,
+    "other_vm_touched": false,
+    "guest_files_changed": false,
+    "vm_restarted": false
+  },
+  "limits": [
+    "This wake observation does not compare held horizontal arrows or identify the user's GTK2 application/state.",
+    "The current saved board still shows I500 without user authorization and Q501 unanswered; no additional graphical test was performed."
+  ],
+  "next": "Keep the screen awake state observed in this capture. Continue GTK2 work without further guest input until the current Board route/target records are saved; reuse R580 and R480 for normal and renderer evidence."
+}

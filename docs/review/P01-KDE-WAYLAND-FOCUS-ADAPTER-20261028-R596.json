@@ -1,0 +1,48 @@
+{
+  "id": "R596",
+  "date_utc": "2026-10-28T17:55:40Z",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "scope": [
+    "focus and keyboard input in the KDE applications popup",
+    "Wayland activation path used by KDE category submenus on hover"
+  ],
+  "changes": [
+    {
+      "file": "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+      "sha256": "a10473c4f014422fbb84f757f895a6e23e9bc498a6bce494361f6660749355d2",
+      "details": [
+        "After opening the KDE popup, request activation on the window containing its loaded representation before restoring Kicker's search focus chain.",
+        "Keep Kicker.WindowSystem monitoring and signal behavior, but provide a theme-local windowSystem adapter. On Wayland it requests activation through the item's QML Window and applies active focus; on X11 it preserves Kicker's native forceActive implementation.",
+        "No KDE files under /usr/share were changed."
+      ]
+    }
+  ],
+  "user_install": {
+    "path": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+    "previous_sha256": "72c43d77534bbb8c307799aef2b1f94e52fc8ea6d6a89cfd7f2cd18a9f037889",
+    "backup": "records/ia-tema/P01/R596-before-install/DomainOSKdeApplicationMenu.qml",
+    "installed_sha256": "a10473c4f014422fbb84f757f895a6e23e9bc498a6bce494361f6660749355d2",
+    "plasmashell_restarted": false,
+    "live_qml_loaded": false
+  },
+  "evidence": {
+    "upstream": "Plasma 6.3.6 Kicker WindowSystem::forceActive calls KX11Extras::forceActiveWindow without a Wayland guard; Kicker ItemListView calls forceActive while creating a category submenu on hover. See R595.",
+    "qt_api": "The Qt Quick Window API documents requestActivate() as a request for keyboard focus: https://doc.qt.io/qt-6/qml-qtquick-window.html",
+    "limits": "This is a supported activation request, not a guarantee that the compositor grants activation. No live reproduction or visual acceptance has been made."
+  },
+  "validation": {
+    "source_reviewed": true,
+    "static_lint_available": false,
+    "tests_run": false,
+    "live_menu_reloaded": false,
+    "typing_verified": false,
+    "hover_close_verified": false
+  },
+  "next": [
+    "At a safe, user-coordinated Plasma reload, verify search typing in the KDE menu and hover into a category without closing the parent.",
+    "Keep Q510 pending for the applications involved and the exact double-click/retry sequence before reproducing launch stalls or changing launch semantics."
+  ]
+}

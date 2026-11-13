@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R330",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "read-only-source-and-pixel-composition-analysis; runtime-candidate-pending-authorization",
+  "authority": {
+    "board_item": "P10",
+    "user_revision": 0,
+    "authorized": false,
+    "scope": "Read-only inspection of GTK2 stepper asset and RC composition. No runtime candidate or product change."
+  },
+  "inputs": {
+    "reference": {
+      "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+      "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+    },
+    "gtkrc": {
+      "path": "gtk/DomainOS-SR10-4-KDE/gtk-2.0/gtkrc",
+      "sha256": "b52f77177eb4acaff4957b78bd22d93315f17901567d318224d758db53715203"
+    },
+    "theme_lab_snapshot": "~/tempia/ia-tema/theme-lab-r232-session/home/theme-lab/generated/revisions/20261026T060424-394a15742e4a/gtk2-scrollbars/gtkrc",
+    "analysis_artifact": "~/tempia/ia-tema/evidence/I167/gtk2-stepper-overlay-source-analysis-r330.json"
+  },
+  "observations": {
+    "product_rc": "GTK2 binds a complete 15x15 image to each scrollbar STEPPER and a separate 11x11 image to ARROW for each state.",
+    "theme_lab_rc": "The saved Theme Lab snapshot binds a complete 15x15 cell image through STEPPER overlay_file and has no separate ARROW rules.",
+    "normal_horizontal_cells": {
+      "left": {
+        "reference_crop_half_open": [2, 4, 17, 19],
+        "stepper_asset": {"path": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-left-normal.png", "size_px": [15, 15], "sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99", "different_rgba_pixels": 0},
+        "arrow_overlay_asset": {"path": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-left-normal.png", "size_px": [11, 11], "sha256": "c97e0ecc88ff4267ffaa612a241dfe22141e73337c75adf1858d69ab9f899771"},
+        "centered_alpha_composite_origin": [2, 2],
+        "composited_differences": 0
+      },
+      "right": {
+        "reference_crop_half_open": [526, 4, 541, 19],
+        "stepper_asset": {"path": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-stepper-right-normal.png", "size_px": [15, 15], "sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0", "different_rgba_pixels": 0},
+        "arrow_overlay_asset": {"path": "gtk/DomainOS-SR10-4-KDE/common/assets/scrollbar-arrow-right-normal.png", "size_px": [11, 11], "sha256": "c0f96e58df801af730e572f12612dd566fc3d60205514938a7faebb10387fe15"},
+        "centered_alpha_composite_origin": [2, 2],
+        "composited_differences": 0
+      }
+    }
+  },
+  "conclusion": "The repository's complete normal stepper cells exactly match the SR10.4 reference. Centered alpha composition of the paired current 11x11 arrow overlays also remains pixel-identical. The existence of both RC rules alone does not prove double painting or explain the live widget mismatch. Runtime placement, clipping, style/state selection, or loaded revision remain candidates for investigation.",
+  "safety": {"product_source_changed": false, "installed_theme_changed": false, "xchat_touched": false, "mame_or_vm_touched": false, "xephyr_touched": false},
+  "technical_coverage_estimate": {"percent": 93, "basis": "Adds source and pixel-composition evidence but does not close the GTK2 renderer cause, pressed-state VM pairs, remaining GTK2 audit, or user visual review.", "not_a_visual_fidelity_score": true},
+  "next": "After P10 authorization is saved, run one isolated GTK2 runtime comparison of the current RC and a private candidate that changes only scrollbar ARROW painting; record left/right 15x15 and vertical cells at 1:1 before considering product changes."
+}

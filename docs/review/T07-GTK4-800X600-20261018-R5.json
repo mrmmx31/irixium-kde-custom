@@ -1,0 +1,103 @@
+{
+  "id": "T07-GTK4-800X600-20261018-R5",
+  "task": "T07",
+  "date_utc": "2026-10-18T16:20:00Z",
+  "scope": "Full GTK4 hint matrix at 800x600 after fitting the demo window request to the first monitor and shortening the notebook/editor-container hints.",
+  "environment": {
+    "gtk": "4.18.6",
+    "display": ":76",
+    "geometry": [
+      800,
+      600
+    ],
+    "theme": "Default",
+    "font": "Sans 10",
+    "requested_client_px": [
+      760,
+      520
+    ],
+    "xephyr_restored_to": [
+      1280,
+      800
+    ]
+  },
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/gtk4_demo.py": "cf2d9086a2174c9361925d8f09e196c222e0aa59e4d032b826a1b643f602c369",
+    "tools/theme-lab/gtk4_hint_popover.py": "985330aac9a3518b70d5acda108443bf9317fcc4eb7ca961c5834a4361caa5ef",
+    "tools/theme-lab/tests/gtk4_hint_matrix_worker.py": "342ad886437ff28931b780fe329ae66d640fd41932d2e1c2a6cbf681ed144c79"
+  },
+  "matrix": {
+    "status": "partial",
+    "mapped": 31,
+    "passed": 28,
+    "failed": 3,
+    "cold_delay_ms": 500,
+    "stable_ms": 400,
+    "within_screen_for_passed": true,
+    "never_covers_hover_point": true,
+    "small_control_nonoverlap": true,
+    "scrollbar_clicks": 2,
+    "cleanup": {
+      "hints": [
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        },
+        {
+          "native_tooltip_restored": true,
+          "closed_idempotently": true
+        }
+      ],
+      "overlay_anchors_before": 2,
+      "overlay_anchors_after": 0,
+      "anchors_removed": true
+    }
+  },
+  "failures": [
+    {
+      "page": 0,
+      "control": "GtkScale",
+      "tooltip": "Escala, sem unidade: 0–100; passo 1. Progresso independente.",
+      "rect_px": [
+        521,
+        347,
+        413,
+        33
+      ],
+      "overflow_right_px": 134,
+      "reason": "tooltip exceeds screen: tip=(521, 347, 413, 33)"
+    },
+    {
+      "page": 0,
+      "control": "GtkProgressBar",
+      "tooltip": "Progresso de exemplo fixado em 57%; não mede uma operação em execução.",
+      "rect_px": [
+        400,
+        375,
+        421,
+        51
+      ],
+      "overflow_right_px": 21,
+      "reason": "tooltip exceeds screen: tip=(400, 375, 421, 51)"
+    },
+    {
+      "page": 1,
+      "control": "GtkTextView",
+      "tooltip": "Editor nativo de várias linhas: selecione, copie ou edite o texto de amostra; não altera o projeto.",
+      "rect_px": [
+        396,
+        353,
+        411,
+        51
+      ],
+      "overflow_right_px": 7,
+      "reason": "tooltip exceeds screen: tip=(396, 353, 411, 51)"
+    }
+  ],
+  "limits": [
+    "This is geometry/hover evidence, not historical pixel fidelity or another palette test.",
+    "GTK reported zero allocation for the top-level widget in the gallery JSON, although mapped controls were measured by the independent X11 matrix.",
+    "No production theme/schema change."
+  ],
+  "raw_output": "~/tempia/t07-gtk4-current-r31-20261018/800x600-fitted.stdout"
+}

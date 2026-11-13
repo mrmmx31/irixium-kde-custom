@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "R480",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Revalidate all four GTK2 scrollbar stepper directions in the current Theme Lab GTK2 renderer under DomainOS KDE roles, including normal, held, and release behavior after the R470/R473 update.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk": "2.24.33",
+    "scheme": "DomainOS-SR10.4",
+    "renderer": "tools/theme-lab/backend.py GTK2 native preview",
+    "isolation": "private Xvfb/bwrap fixture; personal HOME and system bus not exposed",
+    "recipe_scope": "translated_controls",
+    "translated_controls": ["push", "toggle", "scroll_h", "scroll_v"],
+    "recipe_applied": false,
+    "scale": "1:1",
+    "cell_px": [15, 15],
+    "output": "~/tempia/ia-tema/evidence/I167/r480-current-domainos-gtk2-steppers/.qa-gtk2-public-b12003yk"
+  },
+  "results": {
+    "window_closed_normally": true,
+    "private_fixture_guards_verified": true,
+    "arrows": {
+      "left": {"pixels": 225, "held_changed": 53, "release_differences_from_normal": 0},
+      "right": {"pixels": 225, "held_changed": 53, "release_differences_from_normal": 0},
+      "up": {"pixels": 225, "held_changed": 53, "release_differences_from_normal": 0},
+      "down": {"pixels": 225, "held_changed": 53, "release_differences_from_normal": 0}
+    },
+    "normal_cells_vs_generated_assets": {"left": 0, "right": 0, "up": 0, "down": 0},
+    "bar_role_colors_match": true,
+    "native_events": 17,
+    "capture": {
+      "path": "~/tempia/ia-tema/evidence/I167/r480-current-domainos-gtk2-steppers/.qa-gtk2-public-b12003yk/preview.png",
+      "sha256": "4de070cc3810a592c33d6e91ba58eeed19b59b8438bab89c2b0f8d321a2ac080"
+    },
+    "result_json_sha256": "4a414218067930f7af4f153a6afdbf144c132d72b6cc3797550c3a61ff5fb213",
+    "held_released_asset_comparison": {
+      "report": "~/tempia/ia-tema/evidence/I167/r480-current-domainos-gtk2-steppers/.qa-gtk2-public-b12003yk/state-pixel-comparison.json",
+      "report_sha256": "4da3f21b1ae8544a78f0a243c1a9432b56c69794c8041da05e26612c093e1395",
+      "method": "Reused the generated 15x15 GTK2 direction assets and current preview allocations. Each held full-window capture was compared against its matching pressed asset, with the other three direction cells compared against normal assets; each released full-window capture was compared against all four normal assets.",
+      "held_vs_expected_pressed_and_other_normal": {"left": 0, "right": 0, "up": 0, "down": 0},
+      "released_vs_all_normal": {"left": 0, "right": 0, "up": 0, "down": 0},
+      "pixels_per_cell": 225
+    }
+  },
+  "execution_note": "The first harness invocation lacked its tests directory on PYTHONPATH and failed while importing the post-capture verifier; it produced no valid pixel result. After correcting the import path, the same isolated test passed. The incomplete owned fixture was preserved at ~/tempia/ia-tema/archived/I167-R480-failed-test-invocation-v1b45v32.",
+  "result": "In the current generated GTK2 renderer, all four 15x15 cells matched their generated normal assets exactly. Each held capture matched its expected pressed cell and the other three normal cells in 0/225 differences; every released capture matched all four normal assets in 0/225. Holding each arrow changed 53 pixels. Dynamic DomainOS role colors matched in the fixture. This confirms the post-R470 source-renderer interaction path, not historical appearance in the SR10.4 guest.",
+  "limits": [
+    "This is an isolated Theme Lab-generated GTK2 recipe, not a separately launched copy of the user-installed theme package or a personal GTK2 application.",
+    "No SR10.4 guest input was sent; Q499 coordination authorization remains unanswered.",
+    "The test does not prove the held horizontal appearance against a live VUE capture, disabled appearance, full application fidelity, or human acceptance."
+  ],
+  "changes": {
+    "theme_source_changed": false,
+    "user_profile_changed": false,
+    "personal_app_restarted": false,
+    "mame_input_sent": false
+  },
+  "next": "Keep I167 focused on GTK2. Obtain the cursor-clear horizontal held-state comparison in the SR10.4 VM when the saved coordination gate permits it; use R480 as current post-R470 GTK2 renderer evidence."
+}

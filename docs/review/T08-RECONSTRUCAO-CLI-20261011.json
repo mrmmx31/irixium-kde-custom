@@ -1,0 +1,34 @@
+{
+  "at": "2026-10-11T13:44:53.377722+00:00",
+  "item": "T08",
+  "revision": 1,
+  "phase": "file_reconstruction_cli_verified_private",
+  "changes": [
+    "CLI --reconstruct-files em módulo separado; saída revision-UUID/theme e RECONSTRUCTION.json.",
+    "Contrato recusa tipos/schema/modo/inventários/hashes/remoções inválidos, colisões arquivo/pasta e destinos dentro da base/pacote.",
+    "Diretórios novos privados0700; saída existente precisa pertencer ao usuário e ser0700.",
+    "Recibo informa hashes/contagens, sem instalação nem revalidação de paleta atual."
+  ],
+  "checks": {
+    "real_cli": "3 tests passed; snapshot/delta exact bytes, base unchanged, invalid manifests/no output, wrong base, links, overlapping output and private directory permissions",
+    "artifact_library": "6 passed",
+    "backend": "33 passed; includes real generated GTK3 delta reconstruction",
+    "runtime_dependencies": "2 passed",
+    "diff_check": "passed"
+  },
+  "remaining": [
+    "Interface Motif para reconstrução de arquivos.",
+    "Falha de I/O durante publicação pode deixar revisão incompleta sem recibo; melhorar transação/limpeza.",
+    "Entrega pessoal coordenada e avaliação.",
+    "Revalidação de papéis atuais antes de instalação é etapa separada, não certificada pela reconstrução."
+  ],
+  "estimated_stage_progress_percent": 90,
+  "percentage_basis": "Reconstituição exposta e verificada por CLI; interface, publicação sob falha e entrega ainda pendentes. Não goal/fidelidade.",
+  "personal_gui_changed": false,
+  "hashes": {
+    "tools/theme-lab/artifact_delta.py": "08b4c228cd6e50cb8354e96399f547c2f114e7f7ba2f3b7fc3ef956128720d1f",
+    "tools/theme-lab/artifact_reconstruction.py": "d559111fe2a2a618d804b0bf30893c19ef90900f375c691a7dfab3dd948a1bb6",
+    "tools/theme-lab/backend.py": "20fdd635133b490a41cb50c3bf4886368813726502853cf56267ae34a0075570",
+    "tools/theme-lab/tests/test_artifact_reconstruction.py": "cde4625b9bf05424cb5e0e20b94d0f8e8343504242193b0cde2d4fea1a91cfb4"
+  }
+}

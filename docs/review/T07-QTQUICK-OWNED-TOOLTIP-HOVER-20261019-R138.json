@@ -1,0 +1,47 @@
+{
+  "id": "T07-R138",
+  "date": "2026-10-19",
+  "purpose": "Verify the application-owned Tooltip role binding on one real QtQuick6 gallery control while preserving other native hints.",
+  "environment": {
+    "xephyr": ":82",
+    "xephyr_pid": 3782338,
+    "screen": "1600x1000",
+    "qt": "6.8.2",
+    "controls_style": "org.kde.desktop",
+    "qpa_platform_theme": "kde",
+    "palette": "BreezeLight",
+    "isolation": "disposable bwrap profile and read-only project; no personal profile or product source modified"
+  },
+  "change_in_probe_only": "The disabled Button's shared attached tooltip was hidden. An app-owned ToolTip was parented to the real button, used its text and hovered state, retained a 750 ms delay and 6000 ms timeout, and resolved Tooltip colors separately on the ToolTip, Text contentItem, and Rectangle background. Other six disabled targets retained the production attached tooltip.",
+  "result": {
+    "matrix_status": "passed",
+    "targets_hovered": 7,
+    "failures": 0,
+    "button_custom_tooltip": {
+      "visible_during_sample": true,
+      "delay_ms_after_300ms_cold_check": 450,
+      "total_delay_ms": 750,
+      "stable_ms": 400,
+      "dismiss_after_leave_ms": 250,
+      "owner_global_rect": [232, 116, 84, 34],
+      "tooltip_global_rect": [43, 83, 462, 30],
+      "tooltip_above_owner": true,
+      "overlap_with_owner": false,
+      "tooltip_role_background": "#f7f7f7",
+      "window_role_background": "#eff0f1",
+      "attached_default_background": "#eff0f1",
+      "application_owned_text": "#232629"
+    },
+    "other_six_attached_tooltips": "passed existing delay, 400 ms stability, position, and dismiss checks"
+  },
+  "conclusion": "The app-owned role binding works on a real production-gallery Button with pointer hover and does not obscure its owner. It follows the 750 ms delay, remains stable, and closes on leave. This verifies the pattern in an isolated source-transformed fixture only; production integration across all controls has not been performed.",
+  "artifacts": {
+    "directory": "~/tempia/t07-qtquick-tooltip-role-r137-20261019/",
+    "matrix_sha256": "08d9e6319dbd65359663d0280e0dc62267deaebbf1b2e53f6efe60fb1a74523a",
+    "screenshot_sha256": "6461b6fb0aa57250c53d69f6c18915467e11dac5d667741b48762d576a0030b1",
+    "probe_sha256": "ed65b28f2335d78dd56d1e93f9591a02e4d5f6af0a89dd1761076b5a3ac1bc8e"
+  },
+  "product_changed": false,
+  "user_visual_approval": false,
+  "next": "Assess a reusable app-owned tooltip path for QtQuick controls without changing other families or the system KDE style; first include all affected positions and palette roles in the probe, then make a product change only within T07 and rerun the complete QtQuick matrix."
+}

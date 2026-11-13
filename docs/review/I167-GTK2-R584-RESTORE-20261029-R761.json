@@ -1,0 +1,50 @@
+{
+  "id": "R761",
+  "date": "2026-10-29",
+  "item": "I167",
+  "scope": "Restore the complete R584 GTK2 user runtime only: GTK2 theme package files, generated palette bundle, active wrappers, GTK2 profile selection, and native client reload.",
+  "status": "waiting_user_review",
+  "restored_from": {
+    "palette_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261028T162938-cc64d93c5f40/receipt.json",
+    "palette_receipt_sha256": "d4e9b663138418442cd1b721e76edf8d55bd76b49ee9391eb3ec61ea0bc2bebf",
+    "bundle_id": "fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+    "package_preimages": [
+      "/home/lsi/.local/state/irixium-domainos-gtk2-theme/backups/71a17cc2cd7c462c9f2f43d8bb3bda24/receipt.json",
+      "/home/lsi/.local/state/irixium-domainos-gtk2-theme/backups/b710f712deee41d98f5849c32b3b2e85/receipt.json"
+    ]
+  },
+  "result": {
+    "gtk2_package_files_restored": 18,
+    "palette_receipt_entries_verified": 119,
+    "intermediate_generated_resources_removed": 116,
+    "profile_theme": "DomainOS-SR10-4-KDE",
+    "engine": "pixmap",
+    "palette_roles_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+    "final_palette_receipt": "/home/lsi/.local/state/irixium-gtk2-palette/backups/20261029T131853-37e62cf13723/receipt.json",
+    "package_rollback_journal": "/home/lsi/tempia/domainos-theme-work/I167/R761-r584-restore/package/backups/7fd808c4ad2648ae81600267fa11ab0d/receipt.json",
+    "rollback_order": [
+      "Restore the final palette transaction first so the GTK2 wrappers return to the package journal after-images.",
+      "Restore the GTK2 package journal second.",
+      "Use the saved gtkrc-2.0 copy to reverse the profile-name change if needed."
+    ],
+    "gtk2_profile_before_sha256": "597acb65503625211fe98e4b049a737ff9eff9a7becc8af9c8c4430b4ec4d42f",
+    "gtk2_profile_after_sha256": "ea965131735cedd775b4df5fb8c33c537e96a461ddf2022e715361a5d0f2a01e",
+    "gtk2_profile_recovery": "/home/lsi/tempia/domainos-theme-work/I167/R761-r584-restore/gtk2-profile/gtkrc-2.0.before",
+    "native_reload": {
+      "display": ":1",
+      "windows_considered": 106,
+      "events_sent": 106,
+      "racing_x_errors": 0,
+      "applications_restarted": false
+    },
+    "shared_gsettings_changed": false,
+    "other_toolkit_families_changed": false
+  },
+  "review_limit": "R584 technical state is restored and receipts validate. This does not constitute human visual acceptance; compare the current GTK2 appearance and report specific remaining differences.",
+  "evidence": [
+    "docs/review/I167-GTK2-USER-PALETTE-UPDATE-20261028-R584.json",
+    "docs/review/I167-GTK2-BASELINE-RESTORED-20261029-R760.json",
+    "tools/domainos_scrollbar_rules.json",
+    "docs/DOMAINOS-REGRAS-CORES.md"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-11T06:01:59.902481+00:00",
+  "item": "I118",
+  "revision": 1,
+  "stage": "Movable slider translation; native run terminal by harness deadline",
+  "source": "https://raw.githubusercontent.com/GNOME/gtk/3.24.49/gtk/gtkrange.c",
+  "contract": "slider pressure/hover from gadget grab/mouse, sensitivity/backdrop inherited; no focus on default scrollbar. Masks alter relief only and preserve geometry.",
+  "implementation": "thumb_states.py module; five states accepted; future frozen launcher includes module; editor still unavailable until complete native proof",
+  "proof": {
+    "backend_tests": 32,
+    "css_combinations": 57,
+    "css_passed": true,
+    "native_handle": 32695,
+    "native_log": "/tmp/i118-thumb-native.log",
+    "native_root": ".qa-theme-lab-thumb-states-cpxqff6i/home/results",
+    "completed_cases": 32,
+    "completed_cases_passed": true,
+    "full_suite_verified": false,
+    "planned_cases": 60,
+    "runner_deadline_seconds": 180,
+    "observed_case_seconds_approx": 5.2,
+    "budget_risk": "60-case test may exceed driver deadline. Poll same handle until terminal; preserve completed case proofs. Do not restart from observation timeout.",
+    "backend_first_failure": "Obsolete unavailable-hover expectation; replaced with focus, which remains unsupported, without changing persistence invariant.",
+    "native_handle_terminal": true,
+    "terminal_reason": "Driver timeout180 seconds; no aggregate RESULTADO.json. Completed 32 case records retained."
+  },
+  "remaining": [
+    "Continue remaining28case scope after inspecting preserved case records and extending driver budget; do not repeat completed proofs unnecessarily",
+    "Enable editor capability only after proof and test integrated pointer path",
+    "Fitting states",
+    "Startup/reopen readiness",
+    "Personal delivery"
+  ],
+  "personal_window_changed": false,
+  "historical_fidelity_claimed": false,
+  "scope_progress_percent": 77,
+  "percentage_basis": "Thumb translation and parser/source invariants added; native scope not yet complete, editor not enabled. Not overall goal/fidelity.",
+  "hashes": {
+    "tools/theme-lab/backend.py": "b60fc2e5fd7e4a4af69e9b1bc882c0e232a1bdc58a0cf0adb9f841f4fb6bb05a",
+    "tools/theme-lab/thumb_states.py": "b69a05ac8b0a95169860f12cde892eb8ae964ff42e7ec8289bcc168dd6c49a97",
+    "tools/theme-lab/tests/test_backend.py": "68bc9679a0a3c86db71a80f6d8a5c9f3358e943669da12362f5f8cef2220ea89",
+    "tools/theme-lab/tests/test_state_relief_css.py": "9f2d1bfa69f45dbd73c0826e8b6e1e251eb310a4de09f250c54d0e932012c3cd",
+    "tools/theme-lab/tests/test_thumb_states_native.py": "ee5236e34b3c77dc2b1583e7861dbd78e5651e1c52873da00083f3ad42b36c96",
+    "plasma/tools/abrir-laboratorio-temas.py": "6c8ff3a49f540232602749aa2f2d96634a41a2cb74ba564efa7edddc202e76ba",
+    "tools/theme-lab/CURSOR-ESTADOS-GTK3.md": "6185fba569a482faf4210a53122916a8bfaf91917ede31804a4fafb57e8d7bd4"
+  }
+}

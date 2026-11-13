@@ -1,0 +1,37 @@
+{
+  "at": "2026-10-11T14:51:11.265994+00:00",
+  "item": "T02",
+  "authority_revision": 1,
+  "phase": "private_tree_first_native_path",
+  "change": "Replace flat extended-selection list and separate category checks with modular Motif tree, five expandable categories and16 member checkboxes; label selects editor control without toggling visibility. Reuse existing project masks and positions.",
+  "tests": {
+    "strict_build": "product and probe passed",
+    "native": {
+      "status": "passed",
+      "scope": "Actual Motif pointer clicks collapse/expand category, toggle category visibility without losing member choices, select by label, toggle member checkbox without changing selection, preserve all positions and restore masks/selection through native Save/Load. Expansion is current view state, not project data. No toolkit fidelity claim.",
+      "selected_control": 2,
+      "positions_preserved": true,
+      "saved_visibility_restored": true
+    },
+    "runtime_closure": 2,
+    "scoped_diff_check": "passed tools/theme-lab"
+  },
+  "visual_inspection": "Native capture inspected: tree indentation, category header expander/check, independent member checkbox/label button; current KDE-derived Motif colors. No historical visual claim.",
+  "limits": [
+    "Native path exercised category0/member2; remaining categories, keyboard and family switch need dedicated checks",
+    "Expansion is presentation state of current view; reopening resets expansion, masks/selection/positions persist in project",
+    "No personal installation or reopening, no human acceptance filled"
+  ],
+  "estimated_stage_progress_percent": 60,
+  "basis": "Modular tree built and first native collapse/visibility/select/save-load path passed. Broader catalog interactions and handoff remain; not goal/fidelity.",
+  "sha256": {
+    "tools/theme-lab/include/control_catalog.h": "2e7da96590b3e23ec591fbb5fe3395dfc08d61f840be2bda812183aff6e41fe6",
+    "tools/theme-lab/src/view/control_catalog.c": "df429a059d342b01110a4010b5296044e297d328ac3ff763170311411890e238",
+    "tools/theme-lab/src/view.c": "9ef0d3a777ce2a03133aa583b4501ab23cf7736984c44eea0ebd3ff7acf5bc7b",
+    "tools/theme-lab/Makefile": "129b79e869237edc7d3070b90dc263f4267096a91c3e759fe38e8b916f9fe875",
+    "tools/theme-lab/tests/controller_control_catalog.py": "297074e7a107e86da5b40269ff07e6c5d64b3e71fc47fe850cbe7c83634ce781",
+    "tools/theme-lab/tests/controller_spin_probe.c": "9fbcc82b4e352e45cecb5f5d65e8283389e41ad8c95567f999a1d8b4d59cbffa",
+    "tools/theme-lab/tests/test_controller_spin.py": "c501a5f1f4f75eda7e3cea04c8a962a2c0c83af52ab5429fdd5be1eb48acda12",
+    "tools/theme-lab/tests/native_metrics_view.c": "87b8706fcb9bd00e1475e55765f2144dd1d6d64ed9272e4edcd16b3b1a1cfd1f"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "at": "2026-10-11T14:42:39.704049+00:00",
+  "item": "T09",
+  "authority_revision": 1,
+  "phase": "private_display_loss_and_refresh",
+  "tests": {
+    "display_loss": {
+      "status": "passed",
+      "scope": "Loss of the exact disposable Xvfb server invokes controller X IO handler; owned generation leader and resistant descendant stop; independent sentinel and all four saved project/editor files preserved byte-for-byte. No unsaved-keystroke or historical fidelity claim.",
+      "lost_display_owned_group": [
+        2563853,
+        2563854
+      ],
+      "exit_seconds": 0.24589019699487835,
+      "independent_process_preserved": true,
+      "saved_files_preserved": [
+        "working.json",
+        "scene.json",
+        "editor-journal.json",
+        "project-history.json"
+      ]
+    },
+    "refresh_cancel_quit_current": {
+      "status": "passed",
+      "scope": "Native Motif Load cancels real gated generation leader and resistant descendant; actual GTK3 recovers223x80, then fast Apply updates224x80 while old cancelled preview is tracked; native Quit closes next owned group; independent child stays alive, project and scene preserved. Test-only descendant, no historical fidelity claim.",
+      "cancelled_group": [
+        2566314,
+        2566315
+      ],
+      "quit_group": [
+        2566603,
+        2566604
+      ],
+      "cancellation_seconds": 2.125615013006609,
+      "independent_process_preserved": true
+    },
+    "strict_build": "passed all and controller-spin-probe",
+    "runtime_closure": 2,
+    "scoped_diff_check": "passed tools/theme-lab"
+  },
+  "change": "active_kind excludes cancelled jobs: tracking for cleanup must not prevent new same-kind preview admission after quick generation. Cancellation and shutdown cleanup module unchanged.",
+  "display_provenance": {
+    "controller_source_at_display_run_sha256": "2e5b73a9586531686d2d7af0c06fb2d5e28aaad971bdec8443d15214ba2979b2",
+    "owned_processes_module_unchanged_and_hash_verified": true,
+    "subsequent_controller_change": "Only active_kind admission changed after display test; current native fast refresh/cancellation/Quit rerun."
+  },
+  "limits": [
+    "No guarantee for uncheckpointed keystrokes or power failure",
+    "Descendants escaping their group remain outside this ownership contract",
+    "Fast-refresh test confirms current real GTK3 allocation224x80 without a held generation gate; does not assert precise overlap duration of old/new preview processes",
+    "Personal delivery not performed; theme lane is live but not permitted"
+  ],
+  "estimated_stage_progress_percent": 85,
+  "basis": "Private crash/deadline/stale-event/cancellation/Quit/lost-display and subsequent fast regeneration passed. Delivery and user evaluation remain. Not overall goal or historical fidelity.",
+  "current_sha256": {
+    "tools/theme-lab/src/controller/owned_processes.c": "f402f6dcd2c059f64256b21a621aeac37a82a064e010db28a4b8188d4da694ae",
+    "tools/theme-lab/src/controller.c": "ed59a7ad7eafc13eaefdc0d252d3c03b04bb6c419edadbea5295a1d207696b3c",
+    "tools/theme-lab/tests/controller_cancel_group.py": "9cd1477a04e0708dba5c9fc551a2b62eac8100b527e751e6d4d685204f6dae8a",
+    "tools/theme-lab/tests/test_controller_spin.py": "96e723cc785a32a433f29bb7b2cc2206a981f35c5ed6f581617a5e8ce599fe15",
+    "tools/theme-lab/build/theme-lab": "6fbc1bf36640a8f93df363f199af390c1599462d2974610e63b043b994e03f29",
+    "tools/theme-lab/build/controller-spin-probe": "4f3d728d042e54177fad03171986fa61016c5196b340926addb5cef7b323cc34"
+  }
+}

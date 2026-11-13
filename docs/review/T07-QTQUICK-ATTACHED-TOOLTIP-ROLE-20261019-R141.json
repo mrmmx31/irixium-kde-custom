@@ -1,0 +1,179 @@
+{
+  "id": "T07-QTQUICK-ATTACHED-TOOLTIP-ROLE-20261019-R141",
+  "date": "2026-10-19",
+  "board_item": "T07",
+  "status": "passed_scoped; T07 remains partial",
+  "purpose": "Apply KDE Tooltip roles to QtQuick6 attached hints when the native popup becomes visible, without polling; retain QtQuick5 behavior.",
+  "implementation": {
+    "files": [
+      "plasma/tests/galerias-nativas/qtquick_demo.py",
+      "tools/theme-lab/tests/probe_qtquick_gallery_hints.py"
+    ],
+    "behavior": "Connections listens for visibleChanged on the shared window-attached popup, menu rows and TableView cell popup; applies Kirigami.Theme.Tooltip to popup, content and background after opening. No polling timer. QtQuick5 excludes Qt6-only Kirigami Theme diagnostics and keeps its existing tooltip route.",
+    "colors": "Role values are resolved from the active KDE/Kirigami palette; no final RGB constants were added."
+  },
+  "evidence": {
+    "xephyr": ":82 (owned T07 session)",
+    "resolution": "1600x1000",
+    "qtquick6_palettes": [
+      {
+        "scheme": "BreezeLight",
+        "status": "passed",
+        "tooltip_role_background": "#f7f7f7",
+        "tooltip_role_foreground": "#232629",
+        "popup_background": "#f7f7f7",
+        "popup_foreground": "#232629",
+        "popup_matches_role": true,
+        "role_adaptations": 21,
+        "native_hints": 29,
+        "result_sha256": "b441708069475d773461a4ad7c9fd3f4782e543b7981fd11ea187d2e9c5ed05a",
+        "qa_sha256": "66629a093b3f9da24c3f04ec1ae417fe4431099933f397c58d9a8924caa7c11f",
+        "menu_screenshot_sha256": "fd6b786e3765c541204ff9b1a323300fce52924e2411696ce5274335b798d76b"
+      },
+      {
+        "scheme": "DomainOS-SR10-4",
+        "status": "passed",
+        "tooltip_role_background": "#78a0d5",
+        "tooltip_role_foreground": "#ffffff",
+        "popup_background": "#78a0d5",
+        "popup_foreground": "#ffffff",
+        "popup_matches_role": true,
+        "role_adaptations": 21,
+        "native_hints": 29,
+        "result_sha256": "bfd1e34acd5728d24185c0a0d7bb2c81a067cc1a5d6e7ed82fbc0336bee46257",
+        "qa_sha256": "66629a093b3f9da24c3f04ec1ae417fe4431099933f397c58d9a8924caa7c11f",
+        "menu_screenshot_sha256": "d9c4ecba2538037ddd3a476615185243f824b7fe4b3eff8e3d95f7d8146bc923"
+      },
+      {
+        "scheme": "BreezeDark",
+        "status": "passed",
+        "tooltip_role_background": "#292c30",
+        "tooltip_role_foreground": "#fcfcfc",
+        "popup_background": "#292c30",
+        "popup_foreground": "#fcfcfc",
+        "popup_matches_role": true,
+        "role_adaptations": 21,
+        "native_hints": 29,
+        "result_sha256": "66bb26d4bbcc4793c98f20c873ec27effcecf3a5b05a83db831027d1f98d6837",
+        "qa_sha256": "66629a093b3f9da24c3f04ec1ae417fe4431099933f397c58d9a8924caa7c11f",
+        "menu_screenshot_sha256": "a404d937c2a6576e4c4e6501ab64a5bd8a3c08c22025c1fecfe04ddec2ed80c1"
+      },
+      {
+        "scheme": "KvBeige",
+        "status": "passed",
+        "tooltip_role_background": "#000000",
+        "tooltip_role_foreground": "#ffffff",
+        "popup_background": "#000000",
+        "popup_foreground": "#ffffff",
+        "popup_matches_role": true,
+        "role_adaptations": 28,
+        "native_hints": 29,
+        "result_sha256": "0116ef359b7fc7cdd302c76415da51f2f531cad8c36569ec76db7e489e436c4c",
+        "qa_sha256": "66629a093b3f9da24c3f04ec1ae417fe4431099933f397c58d9a8924caa7c11f",
+        "menu_screenshot_sha256": "fbe236827cdd36fbfb04711be0cc5a9c4bc446b75ab52fe4f499d18334bbf128"
+      },
+      {
+        "scheme": "Irixium",
+        "status": "passed",
+        "tooltip_role_background": "#c1c1c1",
+        "tooltip_role_foreground": "#000000",
+        "popup_background": "#c1c1c1",
+        "popup_foreground": "#000000",
+        "popup_matches_role": true,
+        "role_adaptations": 21,
+        "native_hints": 29,
+        "result_sha256": "1bc70a5aa64596f31bb211a3c09434e36a556e3c1ed98d1ad398796c280a1f19",
+        "qa_sha256": "66629a093b3f9da24c3f04ec1ae417fe4431099933f397c58d9a8924caa7c11f",
+        "menu_screenshot_sha256": "1222fbc65d613281a52c5517138ba12710543cc0ff58a1a09b46559c73898fe7"
+      }
+    ],
+    "qtquick6_disabled_target_matrix": {
+      "status": "passed",
+      "targets": 7,
+      "non_hoverable": 0,
+      "skipped": 0,
+      "failures": 0,
+      "role_asserted_on_each_target": true,
+      "result_sha256": "1d2733f11e14458866ed8116c0e9f99b052f12eb53b2e033fdc4e96f389b6554",
+      "result_json_sha256": "fed56e0d1765d5b51338d87b249ff66c1f7fbc94740f8d5951bf7367d6833713",
+      "rerun": "Final R141 source: 7/7 targets, 0 skipped, 0 non-hoverable, 0 failures; each live attached popup matched the KDE Tooltip role."
+    },
+    "qtquick6_hover_and_menu": "Real QtQuick6/org.kde.desktop push button and menu row: declared delay 750 ms, no early appearance, stable 400 ms, no owner overlap, inside screen, dismisses on leave, menu stays open until action. Menu-row foreground/background matched Tooltip roles in each palette.",
+    "qtquick5_regression": {
+      "scheme": "BreezeLight",
+      "status": "passed",
+      "native_hints": 33,
+      "push_button_hover": {
+        "delay_checked_ms": 300,
+        "stable_ms": 400,
+        "no_overlap": true,
+        "closed_after_leave": true,
+        "control": [
+          14.0,
+          116.0,
+          124.0,
+          34.0
+        ],
+        "tooltip": [
+          6.0,
+          65.0,
+          264.0,
+          48.0
+        ]
+      },
+      "menu_row_hover": {
+        "delay_checked_ms": 300,
+        "stable_ms": 400,
+        "no_owner_overlap": true,
+        "inside_screen": true,
+        "outside_menu_bounds": true,
+        "closed_after_leave": true,
+        "row": [
+          4.0,
+          30.0,
+          207.0,
+          30.0
+        ],
+        "tooltip": [
+          219.0,
+          21.0,
+          264.0,
+          48.0
+        ],
+        "second_row_text": "Marca ou desmarca esta opção do menu nativo.",
+        "switch_delay_checked_ms": 250,
+        "second_row_stable_ms": 400,
+        "second_row_tooltip": [
+          219.0,
+          51.0,
+          264.0,
+          48.0
+        ]
+      },
+      "qml_warnings": [
+        "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\"",
+        "file:///usr/lib/x86_64-linux-gnu/qt5/qml/QtQuick/Controls.2/org.kde.desktop/Menu.qml:35:18: QML ListView: Binding loop detected for property \"implicitWidth\""
+      ],
+      "result_sha256": "f38d3b59448cd09a5f0db575837c0cc271d9545e8f0d4cb1c3deedc3d4e70def",
+      "qa_sha256": "157c4c5db21c6aca76ec94dd755a9493a4974bb8c69d351d184ff212026f6167"
+    },
+    "static_checks": "py_compile passed for gallery and probe; guarded native QtQuick6 and QtQuick5 runs passed."
+  },
+  "transient_failures": [
+    "One QtQuick5 run reported menu-row tooltip position oscillation; unchanged recheck passed.",
+    "One KvBeige run did not open the menu-row hint before timeout; unchanged recheck passed."
+  ],
+  "limitations": [
+    "Covers this QtQuick gallery and menu samples, not every Theme Lab layout or every lazy delegate.",
+    "QtQuick6 gallery still emits the existing KDE TabButton.qml null-y TypeError at startup; it did not fail these hover tests and is not attributed to this change.",
+    "Tests used private HOME/XDG/bus on owned Xephyr; no personal palette or desktop setting changed.",
+    "No theme release/install or visual user approval is claimed."
+  ],
+  "artifacts": "~/tempia/t07-qtquick-attached-role-r139-20261019/",
+  "source_sha256": {
+    "plasma/tests/galerias-nativas/qtquick_demo.py": "2e2b604c8e16ca059f4ea2fce8962f60b2685851a399604ead5aaf2952638b4b",
+    "tools/theme-lab/tests/probe_qtquick_gallery_hints.py": "d612a1794719f17add722458d687acfb30300b6d23f9c73d86551e30a789323e"
+  },
+  "user_visual_approval": false,
+  "next": "Continue T07 by checking this palette-role binding in remaining production layouts and table/scroll surfaces, then take another independent open hint family. Leave I457 on its existing pending MAME request and do not expand I458."
+}

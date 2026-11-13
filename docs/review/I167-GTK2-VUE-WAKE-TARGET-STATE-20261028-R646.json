@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "R646",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "guest-awake-target-visible-pointer-not-aligned",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "input_route_answer": "Q505 revision 1: existing MAME window capture selected; no hook/map/profile changes"
+  },
+  "vm": {
+    "verify_script": "vm/domainos-sr10.4-assistant/verify.sh",
+    "verify_result": "passed; separate Theme and Prancheta disks/channels",
+    "theme_mame_pid": 379349,
+    "canonical_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle"
+  },
+  "wake": {
+    "before_sha256": "5fff64eb0ebcc6414ab0cbed24a524251b897bf8379ded8dd1fd265ed5896b2a",
+    "method": "one-frame Shift on :kbd:keyboard4/Shift; automatically cleared at frame 3",
+    "operation_done": true,
+    "frame": 65,
+    "key_held_after": false,
+    "after_sha256": "856660406ce92ee477a484e957fb9373213e751b814595065cf6ab917f3cd4a4",
+    "after_image": "Native guest snapshot shows HP VUE File Manager with visible vertical and horizontal scrollbar steppers. Guest pointer is visible at the top edge, away from the scrollbar target."
+  },
+  "input": {
+    "arrow_press_sent": false,
+    "reason": "The current guest pointer is not over a stepper. Prior R397/R402/R413/R417 and R644 show that guessed Apollo counter deltas or XTest do not establish safe target placement.",
+    "portal_question": {
+      "id": "Q515",
+      "section": "work",
+      "user_authorized": false,
+      "status": "pending"
+    }
+  },
+  "profile_after": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "captured": false,
+    "channel_pending": false
+  },
+  "artifacts": {
+    "durable": "records/ia-tema/I167/R646/",
+    "temporary": "~/tempia/domainos-theme-work/I167/R646/",
+    "before_image": "guest-current-r646.png",
+    "after_image": "guest-after-wake-r646.png",
+    "wake_script": "wake-once-r646.lua",
+    "durable_files": [
+      "guest-current-r646.png",
+      "guest-after-wake-r646.png",
+      "wake-once-r646.lua",
+      "board-reply-I167.json",
+      "board-reply-T04.json"
+    ]
+  },
+  "limits": [
+    "This confirms wake and current target visibility only; it does not compare pressed/released pixels or prove GTK2 fidelity.",
+    "The R645 live-window scan output file was empty and is not treated as evidence.",
+    "No scrollbar input, theme source change, user-profile change, guest configuration change, or other-project VM interaction occurred."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "I167 implementation and normal-state GTK2 evidence remain unchanged; this wake snapshot closes no pressed-state visual criterion. Not a fidelity score."
+  }
+}

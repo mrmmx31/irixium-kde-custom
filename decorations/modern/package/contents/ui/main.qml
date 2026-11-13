@@ -30,7 +30,6 @@ Decoration {
         maximizedWindow: decoration.client.maximized
         minimizeAllowed: decoration.client.minimizeable
         maximizeAllowed: decoration.client.maximizeable
-        closeAllowed: decoration.client.closeable
         closeOnDouble: decoration.client.closeable
         menuOnPress: false
         caption: decoration.client.caption

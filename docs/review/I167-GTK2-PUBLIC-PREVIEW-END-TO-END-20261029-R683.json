@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "id": "R683",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Exercise the real public GTK2 backend preview route in a private Xvfb/bwrap environment for both scrollbars and all catalog controls, without opening Xephyr or touching the desktop.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "result": {
+    "status": "passed",
+    "gtk": "2.24.33",
+    "public_backend_cli": "tools/theme-lab/backend.py --preview",
+    "native_renderer": "tools/theme-lab/preview_gtk2.py",
+    "runs": [
+      {
+        "scheme": "DomainOS-SR10.4",
+        "scene": "scrollbars",
+        "status": "passed",
+        "native_events": 15,
+        "four_directions": {
+          "left": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "right": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "up": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "down": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          }
+        },
+        "arrow_roi_asset_differences": {
+          "left": 0,
+          "right": 0,
+          "up": 0,
+          "down": 0
+        },
+        "normal_close": true
+      },
+      {
+        "scheme": "BreezeDark",
+        "scene": "scrollbars",
+        "status": "passed",
+        "native_events": 15,
+        "four_directions": {
+          "left": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "right": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "up": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          },
+          "down": {
+            "held_pixel_changes": 53,
+            "release_pixel_differences": 0
+          }
+        },
+        "arrow_roi_asset_differences": {
+          "left": 0,
+          "right": 0,
+          "up": 0,
+          "down": 0
+        },
+        "normal_close": true
+      },
+      {
+        "scheme": "DomainOS-SR10.4",
+        "scene": "all_controls",
+        "status": "passed",
+        "catalog_controls": 16,
+        "metrics_controls": 16,
+        "native_events": 52,
+        "clicked_controls": [
+          "push",
+          "toggle",
+          "check",
+          "radio"
+        ],
+        "normal_close": true
+      }
+    ],
+    "guards_verified": true,
+    "recipe_applied": false,
+    "recipe_scope": "translated_controls"
+  },
+  "isolation": {
+    "display": "private Xvfb owned by the test",
+    "mount_namespace": "/tmp was bind-mounted to a private folder under ~/tempia only inside an unprivileged mount namespace",
+    "desktop_changed": false,
+    "user_profile_changed": false,
+    "applications_restarted": false,
+    "vm_input_sent": false,
+    "xephyr_opened": false,
+    "owned_processes_terminal": true
+  },
+  "verification": {
+    "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_public_native.py",
+    "temporary_outputs": "three isolated run directories under ~/tempia; selected evidence copied here and the exact transient directories removed",
+    "source_hashes": {
+      "tools/theme-lab/tests/test_gtk2_public_native.py": "f844bfa1ff8fb3f6846d8f14e2e62654e37b270105a3863ff85a37c53978d52c",
+      "tools/theme-lab/backend.py": "8c8b2eb5c444cb36656bfcc83b6cacae4a62031709f77b9d875f80b0120740e2",
+      "tools/theme-lab/preview_gtk2.py": "63e0f5bd8e43d026d4bffa6fc63d65e731324178e0497868f6d627468b3b5d07",
+      "tools/theme-lab/gtk2_generation.py": "fcec1db035b9c6dfdea59653d5ee6a01f1b1176125a47fbd3b1a50168374cb31"
+    }
+  },
+  "limits": [
+    "This verifies the real GTK2 public preview route, GTK2 interactions, dynamic role colors in the tested schemes, and normal close lifecycle.",
+    "The all-controls screenshot is a synthetic catalog layout and does not prove every control matches the historical VM.",
+    "No Xephyr review or historical pressed/hover/disabled/drag comparison in Domain/OS was performed.",
+    "The recipe remains explicitly partial; no generated recipe was applied to the installed profile."
+  ],
+  "next": "Continue GTK2 historical comparison using existing VM captures and authorized evidence. Keep the public Xephyr preview gated on the user choice and live VM pointer input gated on I517.",
+  "technical_coverage_estimate": {
+    "percent": 97,
+    "basis": "A rota pública GTK2 real agora passou com barras e cena de 16 controles; permanecem a prévia Xephyr para avaliação do usuário, estados históricos adicionais na VM e aceite visual humano. Isto não mede fidelidade visual."
+  }
+}

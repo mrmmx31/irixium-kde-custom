@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "id": "I167-MAME-XTEST-CAPTURE-TIMING-20261025-R180",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "reference": "MAME 0.276 assistant clone; Apollo DN3500; Domain/OS SR10.4 / HP VUE 2.01",
+  "test": {
+    "window": "MAME PID 274368, XID 0x1c00008, 1024x844 at +885+59",
+    "action": "A short XTest click at the visible domain_examples icon coordinate initially left the hook uncaptured. A subsequent held XTest sequence did not return an immediate correlated state. During later host-focus restoration, the hook was observed captured=true with mouse=true/device=mouse.",
+    "interpretation": "The capture transition was asynchronous relative to the control call. Its exact event timing is uncertain; this receipt does not attribute it to wake, pointer movement, activation, or a specific click."
+  },
+  "cleanup": {
+    "hook_release_called": true,
+    "final_hook_captured": false,
+    "mouse": false,
+    "mouse_device": "none",
+    "wait_button_up": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "pending_bridge_command": false,
+    "host_focus": "XChat window 0x01800003",
+    "host_pointer": {"x": 200, "y": 950}
+  },
+  "limits": "This is not proof of the user's physical screen-wake trigger or a GTK2 visual state. No code, guest file, or guest configuration was changed.",
+  "status": "capture_timing_uncertain_cleaned_up"
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "R456",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Fresh read-only capture of the project-owned SR10.4 guest after goal resumption; verify whether the VUE target is visible before any graphical input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "project_vm_pid": 3971377,
+    "project_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "other_mame_pid": 3971019,
+    "other_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4
+  },
+  "method": "Confirmed project PID/disk and active MAME_CONTROL_DIR from /proc, checked the correlated channel status (no pending request), ran the read-only probe, then screen:snapshot on :apollo_screen:screen to a new ~/tempia file. No keyboard/mouse fields or host focus were changed.",
+  "capture": {
+    "path": "/home/lsi/tempia/domainos-i167-readonly-20261027-r456.png",
+    "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "size_bytes": 10018,
+    "dimensions_px": [1024, 844],
+    "guest_framebuffer_roi": [0, 0, 1024, 800],
+    "guest_framebuffer_black_pixels": 819200,
+    "guest_framebuffer_total_pixels": 819200,
+    "apollo_command_strip_visible": true
+  },
+  "live_profile": {
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_capture": false,
+    "channel_pending_after_capture": false
+  },
+  "result": "The VUE framebuffer is still black in this fresh capture. The user-documented wake procedure for this exact clone is applicable, but graphical input remains barred while the separate Prancheta MAME is active. No wake key or mouse event was sent.",
+  "next": "Revalidate the guard when the Prancheta-owned MAME ends. If clear, confirm the project's canonical disk again, send at most the one documented Shift pulse for this black-screen episode, verify VUE becomes visible and the key is released, then continue GTK2 scrollbar comparison."
+}

@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "id": "R455",
+  "date": "2026-10-27",
+  "item": "I167",
+  "section": "work",
+  "scope": "Attempt a privacy-limited, read-only pixel-template scan of visible XChat windows to locate the GTK2 scrollbar arrows without storing or displaying conversation content.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "method": "Captured three large visible XChat top-level windows directly to memory and searched them for exact 15x15 GTK2 normal stepper assets from the two retained generated palette revisions. Printed only window IDs, dimensions and asset-hit coordinates. No image or chat text was written to disk or displayed; no focus change was made.",
+  "observations": {
+    "windows_scanned": [
+      {"pid": 3951437, "window": "25165827", "size_px": [1092, 606], "exact_stepper_matches": 0},
+      {"pid": 3951675, "window": "32415673", "size_px": [1064, 720], "exact_stepper_matches": 0},
+      {"pid": 3951675, "window": "31759825", "size_px": [998, 606], "exact_stepper_matches": 0}
+    ],
+    "focus_before_after_equal": true,
+    "palette_asset_revisions_searched": 2
+  },
+  "result": "Inconclusive. No exact stepper asset was located in these window captures. This does not establish that the windows lack scrollbars, that the GTK theme failed, or that the glyph dimensions differ: widget extents and runtime-loaded assets were not identified, and the scan was limited to exact normal-state asset matches.",
+  "limits": [
+    "No screenshot or conversation content was persisted or reviewed.",
+    "The app processes load GTK2 2.24.33 and the current user selector names DomainOS-SR10-4-KDE, but their runtime GtkSettings and cached pixmap revision remain unconfirmed.",
+    "The MAME graphical guard still returns 4 while the separate Prancheta VM PID 3971019 and project VM PID 3971377 are both active; no guest input was sent.",
+    "No user app, profile, theme installation or VM was modified."
+  ],
+  "next": "Do not infer a code change from this scan. Native SR10.4 states still require exclusive use of the project VM; identify the live GTK2 scrollbar widget and loaded theme state before any application-level conclusion."
+}

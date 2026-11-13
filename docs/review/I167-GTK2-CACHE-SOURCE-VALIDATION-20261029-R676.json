@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "R676",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Ensure the GTK2 preview regenerates when source inputs change and accepts scenes without scrollbars only when their receipts match current sources.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "findings": [
+    {
+      "id": "stale-preview-cache",
+      "before": "The GTK2 preview cache checked the project and palette but did not compare receipt source hashes with the current generator sources.",
+      "change": "Add generation_sources_current(); the GTK2 cache is invalidated when a listed source is missing, unsafe, outside the project root, or has a different SHA-256. The receipt lists backend.py and scene_contract.py alongside the GTK2 generators because they supply translation helpers and scene masks.",
+      "file": "tools/theme-lab/backend.py",
+      "sha256": "8c8b2eb5c444cb36656bfcc83b6cacae4a62031709f77b9d875f80b0120740e2"
+    },
+    {
+      "id": "scrollbar-requirement-on-empty-scene",
+      "before": "Snapshot validation required a scrollbar style identity and RC bindings even when the selected scene contained no scrollbar.",
+      "change": "Validate scrollbar identity and bindings only when the scene contains scroll_h or scroll_v; always reject receipts whose source hashes are stale.",
+      "file": "tools/theme-lab/gtk2_session.py",
+      "sha256": "4f70140e39b23a728c6fb2dcae0d81640652452b614ee9706091ba0b1fe144c3"
+    }
+  ],
+  "related_generation_change": {
+    "file": "tools/theme-lab/gtk2_generation.py",
+    "sha256": "fcec1db035b9c6dfdea59653d5ee6a01f1b1176125a47fbd3b1a50168374cb31",
+    "record": "docs/review/I167-GTK2-GENERATION-VISIBILITY-MASKS-20261029-R675.json"
+  },
+  "verification": {
+    "method": "Static source-path and cache-flow review plus focused, non-GUI GTK2 route and generation checks; scoped git diff --check.",
+    "git_diff_check": "passed",
+    "tests_run": true,
+    "focused_checks": [
+      {
+        "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_preview_route.py",
+        "result": "passed; 5 tests, including stale scene_contract.py source receipt invalidation"
+      },
+      {
+        "command": "PYTHONPATH=tools/theme-lab:tools/theme-lab/tests python3 -B tools/theme-lab/tests/test_gtk2_generation_visibility.py",
+        "result": "passed; frame-only scene generated and validated without scrollbar style identity; receipt records backend.py and scene_contract.py"
+      }
+    ],
+    "native_preview_after_change": false,
+    "historical_comparison_after_change": false,
+    "user_profile_changed": false,
+    "vm_input_sent": false,
+    "applications_restarted": false
+  },
+  "limits": [
+    "The installed GTK2 theme for lsi is unchanged; the existing deployed theme remains selected.",
+    "No GTK2 native preview or user-visible repaint was observed after these source changes.",
+    "I517 remains the separate authorization gate for pressed/released historical input in the VM."
+  ],
+  "next": "Validate the GTK2 native preview in an authorized isolated display; the non-GUI checks now cover source invalidation and a frame-only scene, but do not prove live painting or fidelity.",
+  "technical_coverage_estimate": {
+    "percent": 95,
+    "basis": "GTK2 deployment and normal scrollbar comparisons remain recorded; preview cache integration, held-state historical comparison, and manual visual acceptance remain open. This is not a fidelity score."
+  }
+}

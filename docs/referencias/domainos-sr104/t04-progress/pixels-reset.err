@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lsi/irixium-kde-custom/tools/theme-lab/tests/probe_gtk2_progress.py", line 58, in <module>
+    assert fill==expected_fill and track==expected_track,(name,origin,state,fill,expected_fill,track,expected_track)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('BreezeLight', 'separate', 0, (50, 151, 199), (61, 174, 233), (102, 136, 181), (255, 255, 255))

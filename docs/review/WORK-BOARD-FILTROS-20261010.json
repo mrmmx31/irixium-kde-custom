@@ -1,0 +1,102 @@
+{
+  "date": "2026-10-10T19:44:49.401231+00:00",
+  "scope": "I082 revision 2: state filters combined with section and category",
+  "implementation": "delivered",
+  "user_approval": "pending",
+  "tests": {
+    "filters": {
+      "authorized_filter_uses_saved_scope_bound_decisions": true,
+      "reported_failure_is_separate_and_preserves_hidden_draft_history": true,
+      "group_and_state_intersect_instead_of_broadening_when_empty": true,
+      "undo_redo_survive_filter_switch_and_empty_results": true,
+      "state_filter_and_drafts_restore_after_restart": true,
+      "reload_of_changed_scope_hides_revoked_item_without_erasing_draft": true,
+      "draft_filter_uses_journal_without_sending_response": true,
+      "state_filter_combines_with_each_section": true,
+      "navigation_does_not_commit_drafts_or_restore_revoked_consent": true,
+      "empty_result_keeps_section_and_state_across_restart": true
+    },
+    "reload": {
+      "title_and_taskbar_name_are_explicit_utf8": true,
+      "unchanged_reload_keeps_tabs_geometry_and_utf8_draft": true,
+      "live_added_sections_and_all_old_tabs_are_accessible": true,
+      "partial_definition_preserves_sections_items_and_responses": true,
+      "undo_redo_still_work_after_dynamic_and_partial_reloads": true
+    },
+    "editing": {
+      "unicode_multiline_undo_redo_shortcuts": true,
+      "multi_step_history": true,
+      "copy_cut_paste_select_all_and_reversible_replacement": true,
+      "history_survives_reload_and_item_switch": true,
+      "save_retains_history_and_return_to_saved_is_reversible": true,
+      "context_menu_undo": true,
+      "private_autosave_is_separate_from_answers_and_authorizations": true,
+      "second_editor_cannot_overwrite_journal": true,
+      "crash_restores_multiple_drafts_title_and_undo_redo": true,
+      "failed_checkpoint_prevents_destructive_action": true
+    }
+  },
+  "model_contract": "passed: scope-bound saved consent, failures persist, draft excluded from consent, immutable input, no GUI dependencies",
+  "progress_model_regression": "passed after sharing the saved-consent function",
+  "store_import_model_api": "passed (15 store, 7 import, independent C client)",
+  "evidence_scope": {
+    "filters": "final binary including empty-selection section recovery; synthetic data only",
+    "editing_reload": "run after state filter integration; final empty-selection recovery additionally covered by filters; no editor, store or palette changes afterwards"
+  },
+  "source_sha256": {
+    "tests/native_filter_probe.c": "dfb090033dcdc59415f9c8c4d31558592e993b090edd828bc2bbf0a4a2c20a56",
+    "tests/filter_client.c": "d64ee5a04eef481e91a415c660946c0c150b17993a16fc1cd2a4e98b3ee33e46",
+    "tests/test_filters.py": "853754e27106b3c3013b1d1bcfca9e89a4659481ee8e0a4b1d31c79df5453e85",
+    "tests/test_filter_model.py": "2ac9620faf53482c8b9ef84b8889e218f2e31f7614991cf25deb21874edb4d70",
+    "src/model/authorization.c": "1ffb86dec2aea60e5d4ccebadc316ebd4b18464e92e05cefffb5afdf8ace03ed",
+    "src/model/progress.c": "f98f6cbe1cbe860003dde21037baa0a97177868022f2ca2868d9bdf3afb70a55",
+    "src/model/filter.c": "4ac20d42bdec008cf2c02cb34b78786fafdc8896dc94af6b4b07d6e830e2859e",
+    "src/model/assistant_response.c": "fa1d1ed4abe394d6f63f5d456a3e586ce4d38d9afebb62a1df1daba537c408bb",
+    "src/view/task_list.c": "53fe4c980339e474a80133facca51707508a7e95f47adc86ad22281fc7da0534",
+    "src/view/state_filter.c": "1a86e4377bbc65cea6f1b46177e2c67fe5f3b235246f8bb35d2add0e524069c5",
+    "src/view/internal.h": "607b383dd689b279d3a126651f4ba2731ed22c3ffb971a8e66f72ce75f0e0481",
+    "src/view/item_details.c": "14a1cfaa026b1a9515f3c28dc513d548baebeffc8e7129c94284f801cac9ffa3",
+    "src/view/toolbar.c": "b96e0c9163fcfd51214d982d7912c683dbcf4868dfdc85aa4a40dd1b14d08396",
+    "src/controller/lifecycle.c": "5b59192f0f772cbd85f365d9c7a68f6eb49f75fe203ceb6a966145bd2c51727d",
+    "src/controller/session.c": "01a5ebd9da9a4a2467ea493ea9d74de0253145f7d1e3a2d35cf4b15156e33cd4",
+    "src/controller/state_filter.c": "bf8699d07d426e1503f85de4efd73c07bb2da67e5b3e7a29dafd919e5153d15d",
+    "src/controller/internal.h": "29b0e6cbca6a742546d2250c7fd48ffa2985f4e764915a0acd43a8240698e0fd",
+    "src/controller/commands.c": "b56c083786aa071fd0da05ede05ef99af4a2f77627ecaa71586dc510f137a7bf",
+    "src/controller/navigation.c": "f973c04bfad533ea5cbd448bb8f2d73a269d75bac8b0944ccf099d9d9d980614",
+    "include/work_board/authorization.h": "9f19cd67b00b5af2d66c2c2a8ec3d7c3acf114965296859f9bb64899c221e636",
+    "include/work_board/filter.h": "3538b5ace52c05440ec9b1cfd0ab56e51290979d960c361c02b09be7e61ad1ec",
+    "include/work_board/view.h": "525b44bb0ec158c5452f23203173578c6c248c692d054b5737f381db7ddf3aa1"
+  },
+  "binary_sha256": "c15a9886059f1c590b4db56ffbc5ad3896ee768a63f07498d84f1a6912e85c6f",
+  "limits": [
+    "State is recorded data, not live agent/process telemetry.",
+    "Manual Reload refreshes saved response rows; the automatic monitor still updates only its own panel.",
+    "I083 conversation history and I084 new-response alert are outside this implementation.",
+    "State filter lives in the private journal; user decisions and definition hashes are unchanged.",
+    "No final RGB colors introduced; the new control uses the existing role-based palette.",
+    "Test probe is linked only into a private synthetic-data executable.",
+    "Native user-window captures, if taken, stay in private XDG recovery."
+  ],
+  "updated_at": "2026-10-10T19:51:44.341963+00:00",
+  "delivery": {
+    "sources_and_binary_installed": true,
+    "gui_reopened": true,
+    "installed_hashes_verified": true,
+    "private_recovery_saved": true,
+    "date": "2026-10-10T19:50:29.689093+00:00",
+    "pid": 1252134,
+    "display": ":1",
+    "preservation": {
+      "user_records_identical": true,
+      "drafts_identical": true,
+      "undo_histories_identical": true,
+      "navigation_identical": true,
+      "state_filter_default_restored": true,
+      "user_approval_filled_by_assistant": false
+    },
+    "native_window_count": 1,
+    "window_maximized": true,
+    "state_filter_visible": true,
+    "current_palette_control_visible": true
+  }
+}

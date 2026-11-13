@@ -1,0 +1,32 @@
+{
+  "at": "2026-10-11T07:04:55.909346+00:00",
+  "item": "I120",
+  "revision": 1,
+  "phase": "ASCII_native_metrics_and_alternative_comparison",
+  "query_manifest": "docs/referencias/domainos-sr104/I120-QUERIES-X11.json",
+  "comparison": "docs/referencias/domainos-sr104/I120-COMPARACAO-METRICAS.json",
+  "native_text_proof": "docs/referencias/domainos-sr104/I120-TEXTOS-CAPTURA-METRICAS.json",
+  "measured": {
+    "swiss_glyphs": 223,
+    "prestige_glyphs": 255,
+    "native_matching_text_extents": 6,
+    "modern_toolkits": [
+      "Pango1.56.3",
+      "Qt5.15.15 offscreen",
+      "Qt6.8.2 offscreen"
+    ]
+  },
+  "limitations": [
+    "Comparação ASCII; Roman8 não é Unicode",
+    "Igualdade de limites não comprova glyphs idênticos",
+    "QFontInfo exactMatch falso para Nimbus no Qt6 permanece registrado; não assumir ausência de fallback",
+    "Métricas QFontMetrics não comprovam widgets, Kvantum ou Plasma",
+    "A fonte geral da prévia Motif atual e as prévias GTK2/4 ainda precisam comparação própria",
+    "Nenhum valor de tamanho equivalente escolhido ou aplicado ao tema"
+  ],
+  "scope_progress_percent": 60,
+  "percentage_basis": "Identidades/papéis e métricas históricas confirmados, alternativas Pango/Qt medidas; falta comparação gráfica e Motif/GTK nativos para escolher equivalentes",
+  "theme_modified": false,
+  "personal_ui_reopened": false,
+  "human_approval_filled": false
+}

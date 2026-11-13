@@ -1,0 +1,44 @@
+{
+  "item": "I458",
+  "revision": 1,
+  "recorded_at_utc": "2026-10-19T16:26:25Z",
+  "status": "manual-paint-visible-and-save-undo-redo-verified; broader-recovery-pending",
+  "scope": "Open the Motif Paint editor in an owned Xephyr, make a test pixel edit, exercise undo/redo/save/close/reopen, and correct isolated fallback text visibility.",
+  "runtime": {
+    "xephyr": ":86, 1600x900, PID 113337",
+    "title": "PARA LSI — I458 Paint editor | Xephyr :86",
+    "theme_lab_pid": 138936,
+    "binary": "~/tempia/i458-xephyr-r153/build/theme-lab",
+    "binary_sha256": "0f5a63d7e4f42870ae7ce74ee645c956309f8ed74da2b6ff309b68760c456877",
+    "test_work_dir": "~/tempia/i458-xephyr-r153/work"
+  },
+  "changes": {
+    "motif_text": "The Paint dialog inherits the Theme Lab Motif font list; if unavailable, it retains an X core-font fallback. Compound strings use the same locale multibyte path as the main Theme Lab view.",
+    "native_palette_fallback": "Without a KDE palette in the isolated profile, role samples are read from the current Motif form, content, and canvas resources (foreground, face, view, highlight, top shadow, bottom shadow). No final color literals were added.",
+    "theme_generation": "Manual raster remains separate from native toolkit recipes and generated code."
+  },
+  "validation": {
+    "strict_build": "PASS: C99 -Wall -Wextra -Werror; TMPDIR was ~/tempia/i458-xephyr-r153/tmp.",
+    "model_test": "PASS: contexts, draw/fill, undo/redo, resize, project save/resume; 1 test.",
+    "native_gui": "PASS: Paint editor opened in the owned Xephyr; selectors, tools, dimensions, previews, actions, and raster canvas were legible in the screen capture.",
+    "edit": "PASS: a raster pixel action changed the test project; Ctrl+Z restored SHA-256 6e4a937a6001c184e8b425913be0a0c744dcdb63c4a280f25a625b914663967d; Ctrl+Y restored 0a5c0f8431d4307968e084531cf11d29df9825a788d60f25b3a13d26be26f5e0; explicit Save preserved it.",
+    "resume": "PASS: closing and reopening the editor retained the saved test layer with SHA-256 0a5c0f8431d4307968e084531cf11d29df9825a788d60f25b3a13d26be26f5e0.",
+    "capture": "~/tempia/i458-xephyr-r153/final-visible-editor.png",
+    "capture_sha256": "0abbe37b72deee04256df5a344086ac4931d8daf76a1fa6461ff7b842c686345",
+    "palette_limit": "The Xephyr profile has no KDE palette, so this capture validates native Motif fallback legibility, not color-role behavior under KDE schemes."
+  },
+  "preservation": {
+    "source_fixture": "~/tempia/i458-xephyr-20261019/work/manual-paint.json",
+    "source_fixture_sha256_before_and_after": "b9dd6d950ed9a91aa6900cf0cfcebe2bab054f72143df5cebcadca3439ff8045",
+    "test_copy_sha256": "0a5c0f8431d4307968e084531cf11d29df9825a788d60f25b3a13d26be26f5e0",
+    "installed_application_replaced": false,
+    "other_xephyr_sessions_touched": false,
+    "mame_or_guest_touched": false
+  },
+  "remaining": [
+    "Recovery/export of valid sibling layers when another record in the same source project is malformed.",
+    "Manual inspection by the user; technical checks do not mark visual approval.",
+    "This test covered one Motif/Button/Normal raster layer, not all family/control/state contexts or conversion to toolkit recipes."
+  ],
+  "next": "Keep Xephyr :86 and the Paint editor open for the user's inspection. Continue one other authorized Fila Atual item; revisit I458 recovery separately without touching its preserved malformed source."
+}

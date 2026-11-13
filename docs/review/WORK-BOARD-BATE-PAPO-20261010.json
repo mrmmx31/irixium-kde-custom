@@ -1,0 +1,252 @@
+{
+  "date": "2026-10-10T20:52:00.151835+00:00",
+  "item": "I083",
+  "revision": 5,
+  "definition_sha256": "910c361e7ec5e174b0a17b7fe7bf3aaf3c5029c67281fcb12808c4eab507cf95",
+  "phase": "delivered_lsi",
+  "technical_delivery_percent": 100,
+  "human_approval": "pending_not_filled_by_assistant",
+  "scope": "Compositor Motif independente, referência somente leitura, modos conversa/auditoria e seletores acima dos checkboxes.",
+  "binary_sha256": "3e8aa65ab938f609f982beb8246e20a529fc45c99174bdb01396bb39ac78d15a",
+  "model_library_sha256": "95520782cabef82dfeaa21e2db885d56afe5d3cf29892a2b40d3707cd04ed086",
+  "helper_unchanged_sha256": "46db6a60f895743b67810aa129503c01c651be3a076dab02b237392bb565dece",
+  "tests": {
+    "chat": {
+      "flows": 17,
+      "passed": true,
+      "result_sha256": "7acc9ac603f59d66e1b458e766fe5c5be3e2b8932b46ee5cf66c438ede77e670",
+      "assertions": {
+        "wide_selectors_above_checks_and_history_control_visible": true,
+        "empty_composer_shows_copyable_reference_without_inserting_saved_text": true,
+        "typing_hides_reference_and_expands_only_independent_composition": true,
+        "utf8_multistep_undo_redo_clipboard_replacement_and_native_menu": true,
+        "native_context_menu_opens_by_menu_key_and_shift_f10": true,
+        "switching_audit_chat_and_items_keeps_two_drafts_and_scope": true,
+        "draft_filter_includes_independent_composition_without_sending_or_authorizing": true,
+        "incoming_message_updates_conversation_without_touching_editor": true,
+        "explicit_reload_preserves_composition_history_and_unsent_base": true,
+        "save_sends_only_new_composition_and_reset_is_reversible": true,
+        "metadata_only_save_does_not_erase_saved_orientation": true,
+        "revision_conflict_keeps_composition_and_external_response": true,
+        "return_to_saved_recovers_latest_reference_and_remains_reversible": true,
+        "invalid_response_file_preserves_composition_and_recovers": true,
+        "checkpoint_failure_blocks_mode_change_without_losing_composition": true,
+        "four_native_kde_palettes_match_dynamic_compose_and_reference_roles": {
+          "DomainOS": {
+            "native_compose_and_reference_match_view_roles": true
+          },
+          "neutral": {
+            "native_compose_and_reference_match_view_roles": true
+          },
+          "dark": {
+            "native_compose_and_reference_match_view_roles": true
+          },
+          "yellow": {
+            "native_compose_and_reference_match_view_roles": true
+          }
+        },
+        "reopen_restores_chat_choice_independent_drafts_and_undo": true
+      },
+      "reused": false
+    },
+    "editing": {
+      "flows": 10,
+      "passed": true,
+      "result_sha256": "419636306a446e14a7cf05850af032f8359e92f59be20ecf80dfd167161126f9",
+      "assertions": {
+        "unicode_multiline_undo_redo_shortcuts": true,
+        "multi_step_history": true,
+        "copy_cut_paste_select_all_and_reversible_replacement": true,
+        "history_survives_reload_and_item_switch": true,
+        "save_retains_history_and_return_to_saved_is_reversible": true,
+        "context_menu_undo": true,
+        "private_autosave_is_separate_from_answers_and_authorizations": true,
+        "second_editor_cannot_overwrite_journal": true,
+        "crash_restores_multiple_drafts_title_and_undo_redo": true,
+        "failed_checkpoint_prevents_destructive_action": true
+      },
+      "reused": false
+    },
+    "filters": {
+      "flows": 10,
+      "passed": true,
+      "result_sha256": "437b826a4f1b25f3da8205b6a83eb5c16a6c93e6f65747b8a2dd7819e4edadb0",
+      "assertions": {
+        "authorized_filter_uses_saved_scope_bound_decisions": true,
+        "reported_failure_is_separate_and_preserves_hidden_draft_history": true,
+        "group_and_state_intersect_instead_of_broadening_when_empty": true,
+        "undo_redo_survive_filter_switch_and_empty_results": true,
+        "state_filter_and_drafts_restore_after_restart": true,
+        "reload_of_changed_scope_hides_revoked_item_without_erasing_draft": true,
+        "draft_filter_uses_journal_without_sending_response": true,
+        "state_filter_combines_with_each_section": true,
+        "navigation_does_not_commit_drafts_or_restore_revoked_consent": true,
+        "empty_result_keeps_section_and_state_across_restart": true
+      },
+      "reused": false
+    },
+    "notifications": {
+      "flows": 15,
+      "passed": true,
+      "result_sha256": "ef3ac583449ea02b50805428675768061d8ab6db71b33f76e871fcf7c2d8a6f6",
+      "assertions": {
+        "upper_right_notice_pulses_and_filter_tab_is_available": true,
+        "new_saved_replies_notify_without_focus_cursor_draft_or_undo_changes": true,
+        "notice_opens_latest_replies_and_global_unread_filter": true,
+        "leaving_displayed_reply_marks_only_private_read_ledger": true,
+        "watch_while_typing_in_global_unread_filter_preserves_editor": true,
+        "newer_reply_is_not_acknowledged_by_leaving_an_older_displayed_one": true,
+        "filter_exit_restores_navigation_and_multistep_editor_history": true,
+        "assistant_ack_does_not_create_a_new_message_notice": true,
+        "empty_unread_filter_is_valid_and_reversible": true,
+        "menu_layout_has_the_same_reversible_unread_filter": true,
+        "invalid_saved_file_preserves_notice_editor_and_recovers": true,
+        "four_native_kde_palettes_and_low_contrast_attention_fallback": {
+          "DomainOS": {
+            "attention_contrast": 3.518,
+            "fallback_to_button_text": false,
+            "native_pixels_match": true
+          },
+          "neutral": {
+            "attention_contrast": 3.731,
+            "fallback_to_button_text": false,
+            "native_pixels_match": true
+          },
+          "dark": {
+            "attention_contrast": 3.295,
+            "fallback_to_button_text": false,
+            "native_pixels_match": true
+          },
+          "yellow": {
+            "attention_contrast": 1.139,
+            "fallback_to_button_text": true,
+            "native_pixels_match": true
+          }
+        },
+        "older_helper_without_attention_role_keeps_dynamic_text_and_outline_pulse": true,
+        "failed_checkpoint_prevents_read_ack_and_navigation": true,
+        "reopen_preserves_read_ledger_filter_drafts_and_undo": true
+      },
+      "reused": false
+    },
+    "history_reused": {
+      "flows": 11,
+      "passed": true,
+      "result_sha256": "47832d73ef80f5eb0d91c91879312753b7adbe7e533d2ca4408c57261173eef1",
+      "assertions": {
+        "wide_selectors_keep_history_visible_below_them": true,
+        "history_toggle_preserves_scope_draft_cursor_and_undo": true,
+        "history_is_readonly_copyable_and_does_not_rewrite_sources": true,
+        "return_to_editor_keeps_multistep_undo_redo": true,
+        "history_refresh_reads_external_replies_without_reloading_editor": true,
+        "invalid_state_preserves_last_history_and_recovers": true,
+        "history_tracks_selected_item_without_leaking_another_conversation": true,
+        "older_and_newer_pages_are_available_without_truncating_messages": true,
+        "slow_reader_cancels_without_blocking_ui_or_applying_stale_result": true,
+        "reader_timeout_preserves_editor_and_allows_retry": true,
+        "reopen_restores_history_choice_draft_and_undo": true
+      },
+      "reused": true
+    },
+    "reload_reused": {
+      "flows": 5,
+      "passed": true,
+      "result_sha256": "5f52c7e2e7de4ca89b24e2ddc775dad451513c86b787bc9a060c0404d00ccf92",
+      "assertions": {
+        "title_and_taskbar_name_are_explicit_utf8": true,
+        "unchanged_reload_keeps_tabs_geometry_and_utf8_draft": true,
+        "live_added_sections_and_all_old_tabs_are_accessible": true,
+        "partial_definition_preserves_sections_items_and_responses": true,
+        "undo_redo_still_work_after_dynamic_and_partial_reloads": true
+      },
+      "reused": true
+    }
+  },
+  "pure_model_composer": "passed_without_Xm_X11_Qt",
+  "existing_model_contract": "15 store + 7 imports + 1 independent C API passed; unchanged model paths reused",
+  "reused_evidence_scope": "History reader/archives/pagination and legacy reload/navigation behavior retain their validated rules. Current chat independently proves audit switch, clipboard/menu, explicit reload, conflicting revision and restart. Editing/filter/notification native suites rerun for changed shared input and row presence.",
+  "failures_resolved": [
+    "native first-popup event verifier missed lazy creation; menu prepared before first input",
+    "keyboard accelerator release re-posted/toggled menu after focus transfer; release consumed on editor/menu targets",
+    "test undo replacement step count corrected to actual native edits",
+    "test restart now waits for fresh probe instead of reading stale widget snapshot"
+  ],
+  "limits": [
+    "History read-only in application, not immutable against filesystem writers",
+    "128 undo entries/1 MiB per field, 32 MiB journal, 64000 composer characters",
+    "Chat automatic refresh does not infer user reading or grant consent",
+    "GTK/Qt fidelity and theme lab are outside this delivery"
+  ],
+  "source_sha256": {
+    "Makefile": "88e981c72949cd8e277e299750d6590f2a89139dbd7f6387ee0ec327919ef1e9",
+    "docs/ARQUITETURA.md": "71347cdd040ebc5b25e807b8523c46ccbfb8da41670f607ee6bca9f9a090d2a9",
+    "docs/BATE-PAPO.md": "b423e64e5093b51259bed1d7197fa4c4e18dd46af06a2a829235ce81b47fcf1f",
+    "docs/MANUTENCAO.md": "dd07018ca85c80c10aa613d0429b49f99a37b3f4627dbb312c879fee8519e8ea",
+    "include/work_board/composer.h": "f5b6f316247d688dc7e26510e58c5dfb0c0fb5242bb4126819168072516bce15",
+    "include/work_board/view.h": "13c5561d7657a333899aa8dbd057e51abe7128144d2aecb977cc72b07c01e454",
+    "skills/work-board/references/protocolo.md": "fe1774bcd62ab316e50dbfa31b3708de1e5d3a019011f24f666dea5d7f2ea3b4",
+    "src/controller/actions.c": "35f6c05950b0a65db1860fdffbda23c3186610d175dfed48f9f533dd194f0988",
+    "src/controller/chat.c": "72916961f50910e96660377e1161870f2f74092bfa4588d755f539693286c52a",
+    "src/controller/commands.c": "cc9574b45433598e114849dcdc228cc23b271e9d68c8fa218ef06284425ab840",
+    "src/controller/history_actions.c": "c841b87fa40607a26e1cdd98efd5a8b3ac6c639700e606ffb15734f424681fdc",
+    "src/controller/internal.h": "cb6d59449dacb329ed80f76aa0990f2adf183ae2ffb4bc396e13ba51f3b0c9b9",
+    "src/controller/lifecycle.c": "4bbe16a3c88413745d99707c469eb887466fa4dd5ccd636fe88fc77344e2cfd2",
+    "src/controller/notifications_read.c": "4677b68f3627d91c30bf171c5305401f6c61f09e9a7cdbe95ea666cadb6ffe32",
+    "src/controller/session.c": "e49ff3515985c0fe1d64b0042da7b8d0bca1e9e08e88f62de97169d4bba08253",
+    "src/controller/state_filter.c": "c8404fe4b1ae3e90a5dfeb1ede71ea68a719c99ce6c7833ac278c005d301e7b2",
+    "src/editor/bindings.c": "a411aad6b68f7c851b6e9d089855f2c682adb799bbaae64df98ebc7e84366e35",
+    "src/editor/context_menu.c": "bc649e3e952b47424b37bb24693e1cbbef57a830a2ef2365cd4ba6e6724970d1",
+    "src/editor/history.c": "baeb3174a4472c1502f543718229f114a9185fea8c5c564d60ca704e0ee07621",
+    "src/editor/input.c": "6e18b372d47391f7a3321993030cb83ab42beed4b3a926525423c82d3a8da6c0",
+    "src/editor/internal.h": "faac0965ccbe838afb4b728f478de7c1dbece4576768bf2c36531ac556f2a6e5",
+    "src/model/composer.c": "64b23a07de73aea8dfae759864909eb4928859e2007f2f0bd0437a6a448b6800",
+    "src/view/chat.c": "5438b4f62881b13f5419acfc18b1ffc232280fdeaea62cf30807a5ca5332a4c7",
+    "src/view/chat_layout.c": "b545f6f10dcea6ade61a0becfc0eebc38d93dd653a783070048f8df163e2b236",
+    "src/view/details_layout.c": "5065b176532e480bce667e73e350d61d73e03eaf91beb3e219fe0e4fdf2f07d2",
+    "src/view/edit_bindings.c": "1f6b5994524881184c35bb839984c7b3405491ebe79e87daa4de1d342f61003a",
+    "src/view/history.c": "ffc249110c8cf2b4cbde96fb5b335b01a2da645e37b92c04f7f812cf9cda2a03",
+    "src/view/history_layout.c": "df801ca9157ce0635578d2308f9f7a6da90a7b45a2953e4e8e3ebac8f7a325fc",
+    "src/view/internal.h": "452b203d96e745e7f3dbe812da222b54d62bfb3a86dafc163498fe0ff1a2ba15",
+    "src/view/item_details.c": "024cccd847060910f3324cc184af0f47a2d0655be1c59764903ad92d206f4978",
+    "tests/composer_client.c": "088f260015f6f25f93390b02845b0129906a2b763f544a2cc47c2e78e2dc1f2c",
+    "tests/native_chat_probe.c": "49e23c60ebc51ee1003d8c385eec0707d77332ed42bab24007e519ebbd4bdc87",
+    "tests/test_chat_native.py": "45566feabce50608b501da890faabc4f5cf588c8e52904ab2b927b2a5bdc61bb",
+    "tests/test_composer_model.py": "48cfd42944f741f0fd17f1301a5fb544f74700f3849134b664de6e671e77df26",
+    "tests/test_history_native.py": "5cf4cc47e48a5b40db2e095c193cbf6adfd7d999e4d7bb8385134cf9d2fd72ee",
+    "docs/FILA-PRANCHETA.md": "176debec38461a38c94f1eccd43f9b99606c0897a76304c2b4e34b5415c3e9a2"
+  },
+  "installed_files": 39,
+  "install_preserves_open_editor": true,
+  "reopen": {
+    "date": "2026-10-10T20:53:42.725789+00:00",
+    "item": "I083",
+    "reopen_authorization_revision": 6,
+    "pid": 1291885,
+    "display": ":1",
+    "preservation": {
+      "user_records_identical": true,
+      "drafts_identical": true,
+      "undo_histories_identical": true,
+      "all_prior_journal_fields_identical": true,
+      "assistant_read_ledger_preserved_or_initialized_empty": true,
+      "unread_filter_preserved_or_initialized_off": true,
+      "chat_composition_initialized_empty": true,
+      "chat_history_initialized_empty": true,
+      "chat_mode_preserved_or_off": true,
+      "user_approval_filled_by_assistant": false
+    },
+    "binary_sha256": "3e8aa65ab938f609f982beb8246e20a529fc45c99174bdb01396bb39ac78d15a"
+  },
+  "native_lsi": {
+    "unique_window_visible": true,
+    "loaded_binary_matches_tested": true,
+    "selectors_above_checkboxes_visible": true,
+    "history_toggle_and_scope_visible": true,
+    "chat_mode_was_not_forced_on": true,
+    "chat_native_behavior_verified_in_artificial_fixture": true,
+    "capture_sha256": "3411f49638f01fdc87742063628135288b61da267b515a8ae02fa09f36dcb58f",
+    "personal_capture_is_private": true
+  },
+  "reopen_authorization_revision": 6,
+  "external_project": "ai-work-board"
+}

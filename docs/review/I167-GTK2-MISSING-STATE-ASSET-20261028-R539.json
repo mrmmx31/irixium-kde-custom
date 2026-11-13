@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "id": "R539",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "private-missing-pressed-asset-invalidation-passes-left-horizontal-only",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "scope": "Private GTK2 cache invalidation regression. No installed theme changes."
+  },
+  "environment": {
+    "gtk": "2.24.33",
+    "display": "private Xvfb",
+    "scale": 1,
+    "palette_fixture": "Synthetic RC colors isolate cache/fallback behavior; KDE semantic roles were not tested.",
+    "baseline_engine": "R538",
+    "candidate_engine": "R539 scratch copy",
+    "target": "Horizontal left stepper, active/pressed state, missing pressed PNG",
+    "system_theme_changed": false,
+    "user_apps_touched": false,
+    "vm_input_sent": false
+  },
+  "findings": {
+    "baseline_reproduction": "With scrollbar-stepper-left-pressed.png absent in a private asset copy, R538 receives GTK arrow state=1 at adjustment value=29 but replays the cached left normal cell after full and partial exposure. The left 15x15 cell is byte-identical to its normal-seeded crop (0/225 differing pixels) after transition, 1x1 partial repaint, and full repaint.",
+    "candidate_change": "R539 scratch adds a direction-specific cache invalidation when loading the requested stepper state asset fails, before existing GTK box/arrow fallback rendering.",
+    "candidate_result": "R539 does not replay the stale normal cell. The pressed, partial-repaint, and full-repaint left-cell crops each differ from the normal seed by exactly 207/225 pixels and are pixel-identical to one another. Both baseline and candidate active callbacks report state=1/value=29.",
+    "verification": "verify_r539.py passed after independent parent execution and read-only peer review. It checks crop equality by byte comparison, not alpha-only bounding boxes. Final verifier SHA-256: 2b20e0056b7f5764d52bef0c26098f95a3f96a11294592d8ab7941e4a273266a."
+  },
+  "limits": [
+    "One synthetic horizontal-left missing-pressed-asset transition only; right, up, down, other missing states, and duplicate-direction steppers remain untested.",
+    "A 207/225 pixel difference proves the stale normal image is no longer replayed; it does not prove that GTK fallback visually matches Domain/OS VUE.",
+    "No new comparison against the project-owned Domain/OS SR10.4/HP VUE 2.01 VM, no KDE semantic palette validation, and no user visual review.",
+    "The R539 engine remains a private scratch prototype; no product source, installed theme, app, desktop, or VM was changed."
+  ],
+  "artifacts": {
+    "durable_record": "records/ia-tema/experiments/i167-r539-missing-asset-transition-20261028/",
+    "scratch": "~/tempia/domainos-theme-work/i167-r539-missing-asset-transition-20261028/",
+    "verifier": "records/ia-tema/experiments/i167-r539-missing-asset-transition-20261028/verify_r539.py",
+    "source_diff": "records/ia-tema/experiments/i167-r539-missing-asset-transition-20261028/r539.diff",
+    "verifier_sha256": "2b20e0056b7f5764d52bef0c26098f95a3f96a11294592d8ab7941e4a273266a"
+  },
+  "next": "Exercise the same missing-state fallback for the remaining directions in private fixtures; then resume the GTK2 historical comparison using only the project VM after channel coordination is available. Do not integrate based on this single synthetic case."
+}

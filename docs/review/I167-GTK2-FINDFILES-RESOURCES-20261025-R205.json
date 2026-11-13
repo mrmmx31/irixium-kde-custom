@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-FINDFILES-RESOURCES-20261025-R205",
+  "date": "2026-10-25",
+  "item": "I167",
+  "section": "work",
+  "board_authority": {
+    "ai_context": "theme",
+    "section": "work",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 with HP VUE 2.01",
+    "guest": "Existing authorized assistant MAME clone, PID 274368",
+    "method": "Read-only FTP/resource inspection through the clone's isolated network helper",
+    "guest_files_or_settings_changed": false,
+    "profile_changed": false
+  },
+  "resource_evidence": {
+    "readback": "~/tempia/ia-tema/evidence/I167/r205-vue-find-resources-readback.txt",
+    "readback_sha256": "5059a0cc7ea53697a24b4b108915474905205bc7008557b8cbaaa7fd44ae16e7",
+    "application_default_file": "Vuefile",
+    "Vuefile_resources": [
+      "*secondaryColorSetId: 5",
+      "*XmpIcon*pixmapForeground: black"
+    ],
+    "Vuestyle_resources": [
+      "Vuestyle*SecondaryColorSetId: 7",
+      "Vuestyle*hostDlg*list1*visibleItemCount: 10"
+    ],
+    "installed_resource_files": [
+      "Vue",
+      "Vuecommand",
+      "Vuefile",
+      "Vuehello",
+      "Vuehelp",
+      "Vuepad",
+      "Vuesession",
+      "Vuestyle",
+      "Vuewm"
+    ],
+    "finding": "The VUE File Manager declares a global secondary color set ID 5. The inspected app-default files contain no Find Files list-specific row-height, XmpList/XmList color, or horizontal/vertical scrollbar policy resource. Vuestyle hostDlg list visibleItemCount belongs to the host dialog and is not evidence for File Finder."
+  },
+  "palette_relation": {
+    "candidate": "The File Finder list face matches the measured VUE entry face and the dynamic 0.847 shade of KDE Header already documented by R129.",
+    "status": "candidate only; the mapping from SR10.4 color-set index 5 to the list's precise face role is not proven by the resource lookup",
+    "constraint": "Do not insert a final static RGB. Do not change global GTK2 View roles from this application-specific observation."
+  },
+  "decision": "The R204 GTK2/VUE differences in surface color, 19 px versus 24 px row stride, and scrollbar visibility cannot be attributed to the inspected VUE application resources. Do not change the global GTK2 recipe. Continue with a private contextual preview only if the GTK2 adapter can select it through supported application context; otherwise record the limit and proceed to another GTK2 state.",
+  "artifacts": {
+    "VUE_capture": "~/tempia/ia-tema/evidence/I167/i167-vue-find-files-after-wait-r217.png",
+    "GTK2_capture": "~/tempia/ia-tema/evidence/I167/gtk2-treeview-vue-find-r204/gtk2-treeview.png",
+    "side_by_side": "~/tempia/ia-tema/evidence/I167/gtk2-treeview-vue-find-r204/vue-gtk2-side-by-side.png"
+  },
+  "limits": [
+    "Only installed application-default resources inspected by the read-only query are covered; compiled Xmp/Xm library defaults and other runtime sources are not proven absent.",
+    "The measured VUE palette was CoralReef; GTK2 remains driven by current KDE semantic roles.",
+    "No GTK2 product source, user profile, XChat, VM setting, or guest file changed."
+  ],
+  "next": "Continue only I167/GTK2. Determine whether a supported contextual selector can express the candidate Header-shaded File Finder surface without changing other lists. Do not apply a global color, row-height, or scrollbar-policy adjustment on this evidence. Keep the separate mouse-capture report unresolved: the Lua captured flag does not prove SDL host grab state, and the hook was not changed.",
+  "product_source_changed": false,
+  "user_profile_changed": false,
+  "xchat_changed": false,
+  "assistant_status": "running",
+  "user_acceptance": "pending"
+}

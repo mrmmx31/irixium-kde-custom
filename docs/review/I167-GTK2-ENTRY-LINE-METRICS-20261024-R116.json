@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "id": "R116",
+  "date": "2026-10-24",
+  "demand_id": "I167",
+  "section": "work",
+  "user_revision": 2,
+  "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+  "title": "Measure GTK2 GtkEntry selection and line metrics against native VUE",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "ui": "HP VUE 2.01",
+    "source": "R113 idle samples and existing paired GTK2 runtime captures",
+    "main_vm_touched": false
+  },
+  "measurements": {
+    "vue": {
+      "native_character_cell_px": [8, 16],
+      "stable_inverse_selection_px": [8, 16],
+      "caret_footprint_px": [5, 16],
+      "evidence": "docs/review/I167-GTK2-ENTRY-VUE-IDLE-SELECTION-20261024-R113.json"
+    },
+    "gtk2_runtime_default_font": {
+      "gtk": "2.24.33",
+      "font_description": "Nimbus Sans [urw] 12",
+      "entry_allocation_px": [320, 34],
+      "pango_logical_text_px": [27, 23],
+      "inverse_selection_bbox_px": [8, 23],
+      "difference_from_vue_selection_px": [0, 7],
+      "source": "~/tempia/i167-line-metrics-r116/output-h34/DomainOS/runtime-capture/"
+    },
+    "gtk2_candidate_font": {
+      "font_description": "DejaVu Sans Mono 9.25",
+      "entry_allocation_px": [320, 34],
+      "pango_logical_text_px": [24, 16],
+      "pango_character_advance_px": [8, 8, 8],
+      "rendered_selection_bbox_px": [7, 16],
+      "difference_from_vue_selection_px": [-1, 0],
+      "scheme_runtime_changed_pixels": {
+        "DomainOS": 148,
+        "Breeze Light": 148,
+        "Breeze Dark": 146
+      },
+      "captures": "~/tempia/i167-line-metrics-r116/output-font-dejavu-mono-9_25/DomainOS/runtime-capture/",
+      "scope": "Temporary RC override for measurement only; not installed or committed as the product font."
+    },
+    "probe_scripts": [
+      {
+        "path": "~/tempia/i167-line-metrics-r116/probe_entry_height.py",
+        "sha256": "8785d2b577d577469a6798ac864062b2ae513452b150cfb5dceabeee41f401eb"
+      },
+      {
+        "path": "~/tempia/i167-line-metrics-r116/probe_entry_font.py",
+        "sha256": "6de35b3e6b938166b675ec188d41daa29167bf10ed4842f70bad3c2bd47dd33f"
+      },
+      {
+        "path": "~/tempia/i167-line-metrics-r116/probe_entry_font_9_5.py",
+        "sha256": "2dc468be1f2759fa67a2fbf8935c1f1991fb494a461dd1efbbf384bc7ce97f41"
+      },
+      {
+        "path": "~/tempia/i167-line-metrics-r116/probe_entry_font_9_25.py",
+        "sha256": "c15a6aea0ee0d96a59f066371a7ca1bcf79bb3ca397ed54e3b05c77390d29f9b"
+      }
+    ],
+    "adjacent_sizes": {
+      "9_pt": "Pango logical height 15 px; rendered selection 7x15 px.",
+      "9_5_pt": "Pango logical height 17 px; rendered selection 7x17 px."
+    }
+  },
+  "findings": [
+    "The R115 44 px artificial allocation overstated the caret height; repeating at the measured 34 px VUE field height reduced that confound.",
+    "With the runtime's inherited Nimbus Sans 12 font, the measured Pango line and selected field are 23 px tall, seven pixels taller than the native 16 px cell.",
+    "A temporary DejaVu Sans Mono 9.25 candidate reproduces the 8 px character advance and 16 px Pango line, but GTK2 paints a 7 px-wide selected region. The candidate family is not proven to match the VUE font.",
+    "Changing GtkEntry inner-border shifted the selection but did not change its 23 px height, so padding alone is not a line-metric correction."
+  ],
+  "limits": [
+    "This is a native-pixel measurement and a GTK2 Xvfb runtime experiment, not human approval.",
+    "The exact font resource used by this VUE File Finder field remains unidentified.",
+    "No GTK2 theme, user profile, open XChat, MAME setting, or guest file was changed.",
+    "KWin palette-change integration and application reload remain untested. The shared MAME channel was not used because its permissions fail the live-control helper's safety check."
+  ],
+  "next": "Resolve the one-pixel selection-width difference and identify a justified font policy for the GTK2 adapter; then finish authorized palette integration/reload and session validation."
+}

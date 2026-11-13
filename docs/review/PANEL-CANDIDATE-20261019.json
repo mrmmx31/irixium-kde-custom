@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "PANEL-CANDIDATE-20261019",
+  "date": "2026-10-19",
+  "requested_action": "Execute the latest DomainOS panel version in the lsi profile.",
+  "installed_before": {
+    "version": "0.2.12-beta.1",
+    "path": "~/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel"
+  },
+  "candidate": {
+    "version_metadata": "0.2.12-beta.1 (unchanged; working-tree QML differs from installed copy)",
+    "scope": "Favorites ordering UI, Iconbox Operations popup/lifecycle, thumbnail frame cache, related panel QML."
+  },
+  "verification": {
+    "isolated_tests": {
+      "passed": 61,
+      "skipped": 2,
+      "files": [
+        "plasma/tests/test_domainos_operations_panel.py",
+        "plasma/tests/test_domainos_operations_handoff.py",
+        "plasma/tests/test_domainos_thumbnails.py",
+        "plasma/tests/test_domainos_iconbox_thumbnails.py",
+        "plasma/tests/test_iconbox_source.py",
+        "tests/test_domainos_native_menu.py",
+        "tests/test_install_domainos_runtime.py"
+      ],
+      "workspace": "~/tempia/panel-candidate-check-20261019/"
+    },
+    "combined_test_attempt": "The combined Qt test process segfaulted while initializing the second fixture. Each test module passed when executed in a separate process; the isolated runs are the counted evidence.",
+    "package_verify": "Could not complete: pkg-config cannot find Qt6Qml.pc.",
+    "installer_dry_run": "Stopped before any write for the same missing Qt6 QML development package.",
+    "diff_check": "passed"
+  },
+  "changes": {
+    "tools/domainos_native_menu.py": "Temporary native build staging now respects standard TMPDIR; no user path is hardcoded.",
+    "source_sha256": {
+      "tools/domainos_native_menu.py": "5161fef55e7851be78ee352d44df88093c92e3d041e748880ba427b16107d514",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml": "b97078c3f3801439a32135fa3ef4d75f4f84c61311eda72abcd20b919f393001",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSIconbox.qml": "3a3ec089ed642188512989efb4dcd896d88cb270d0d208a762068f9f63df9699",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+      "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSThumbnailFrameCache.qml": "f529b93cb2f14d905f6cf3ec978ab1ea69350e955ce4e87767abf413c24b10c5"
+    }
+  },
+  "result": "not_installed",
+  "reason": "The current source-only applet requires a matching Qt6 QML SDK to build its bundled native menu plugin. Installation was not attempted without a verified package.",
+  "side_effects": {
+    "installed_applet_changed": false,
+    "plasmashell_restarted": false,
+    "user_preferences_changed": false,
+    "system_packages_changed": false
+  },
+  "next": "Install qt6-declarative-dev, then rerun package and installer verification; prepare a reversible applet-only update and reload lsi."
+}

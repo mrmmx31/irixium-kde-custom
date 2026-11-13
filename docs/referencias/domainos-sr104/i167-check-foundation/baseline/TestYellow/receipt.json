@@ -1,0 +1,22 @@
+{
+  "rc": "/home/lsi/irixium-kde-custom/.qa-i167-gtk2/checks-native-r3/TestYellow/check.gtkrc",
+  "assets": [
+    "check-normal.png",
+    "check-normal-selected.png",
+    "check-disabled.png",
+    "check-disabled-selected.png",
+    "check-backdrop.png",
+    "check-backdrop-selected.png",
+    "check-canvas-normal.png",
+    "check-canvas-disabled.png",
+    "check-canvas-backdrop.png"
+  ],
+  "translated_control": "check",
+  "scope": "Standalone native checkbox foundation; integration pending",
+  "unsupported": [
+    "inconsistent",
+    "focus",
+    "RTL",
+    "automatic backdrop"
+  ]
+}

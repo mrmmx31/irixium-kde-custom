@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "id": "I167-GTK2-ENTRY-SELECTION-PALETTES-MAPPED-20261024-R72",
+  "date": "2026-10-24",
+  "item": "I167",
+  "authority": {
+    "board_revision": 2,
+    "user_authorized": true,
+    "assistant_status": "running",
+    "ack_revision": 2,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "family": "GTK2 GtkEntry selection roles across KDE color schemes with mapped X11 focus",
+  "implementation_change": {
+    "file": "tools/theme-lab/tests/probe_gtk2_entry_selection_palettes_mapped.py",
+    "sha256": "d31de12ae6084e4c2dd09d2c8afb0d158a6884adbd7b21837b2102b6ce3841b2",
+    "change": "Added a reproducible three-scheme mapped GTK2 selection check using xdotool Ctrl+A and exact dynamic selection-role pixels."
+  },
+  "method": {
+    "toolkit": "GTK 2.24.33",
+    "display": "private Xvfb :702 without window manager",
+    "temporary_storage": "private mount namespace binds ~/tempia/i167-xvfb-private-r72 over /tmp inside the namespace only",
+    "text": "DomainOS SR10.4 selection (25 UTF-8 characters)",
+    "selection_action": "real xdotool Ctrl+A after mapped XID focus"
+  },
+  "schemes": [
+    {
+      "scheme": "DomainOS",
+      "scheme_path": "/home/lsi/irixium-kde-custom/colors/DomainOS-SR10.4.colors",
+      "scheme_sha256": "1d9ebafcdb88c82a26fcdfddebb8d5ef789290d789625ab304e83677cf7553c5",
+      "xid": 2097155,
+      "xdotool_focused_xid": 2097155,
+      "gtk_entry_is_focus": true,
+      "gtk_toplevel_has_focus": true,
+      "selection_bounds": [
+        0,
+        25
+      ],
+      "selection_background_role_rgb": [
+        50,
+        151,
+        199
+      ],
+      "selection_foreground_role_rgb": [
+        255,
+        255,
+        255
+      ],
+      "exact_role_pixels_before": 0,
+      "exact_role_pixels_after": 2108,
+      "added_role_pixels": 2108,
+      "changed_pixels": 2896,
+      "captures": {
+        "unselected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/DomainOS/unselected-mapped.png",
+          "sha256": "d096163bdd80945ae593752c7af39fba6f3e90280e5476547e1b9f8b50777bf0"
+        },
+        "selected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/DomainOS/selected-mapped.png",
+          "sha256": "3a3d2e321d985861f5e1f248d8f64460404f497b6a6109852108a707029df917"
+        }
+      }
+    },
+    {
+      "scheme": "BreezeLight",
+      "scheme_path": "/usr/share/color-schemes/BreezeLight.colors",
+      "scheme_sha256": "06420bd0378d6dd3e44063a4ed44a818707fa8c0ad0f94b1baf9de2f2a339c67",
+      "xid": 2097241,
+      "xdotool_focused_xid": 2097241,
+      "gtk_entry_is_focus": true,
+      "gtk_toplevel_has_focus": true,
+      "selection_bounds": [
+        0,
+        25
+      ],
+      "selection_background_role_rgb": [
+        61,
+        174,
+        233
+      ],
+      "selection_foreground_role_rgb": [
+        255,
+        255,
+        255
+      ],
+      "exact_role_pixels_before": 1440,
+      "exact_role_pixels_after": 3548,
+      "added_role_pixels": 2108,
+      "changed_pixels": 2930,
+      "captures": {
+        "unselected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/BreezeLight/unselected-mapped.png",
+          "sha256": "1399d324f01f50215ce6ec1eefb9180eb6171189ba27094d560e70fa217e1008"
+        },
+        "selected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/BreezeLight/selected-mapped.png",
+          "sha256": "0e25d13fb32c242052ca4f9c5a59ff25bd7637005d403973b57b9cc7d3142ad0"
+        }
+      }
+    },
+    {
+      "scheme": "BreezeDark",
+      "scheme_path": "/usr/share/color-schemes/BreezeDark.colors",
+      "scheme_sha256": "36085d111f59f86f44b081b55cf2c0536b3dd3a8e522621b7fd4ed3c59c65b08",
+      "xid": 2097338,
+      "xdotool_focused_xid": 2097338,
+      "gtk_entry_is_focus": true,
+      "gtk_toplevel_has_focus": true,
+      "selection_bounds": [
+        0,
+        25
+      ],
+      "selection_background_role_rgb": [
+        61,
+        174,
+        233
+      ],
+      "selection_foreground_role_rgb": [
+        252,
+        252,
+        252
+      ],
+      "exact_role_pixels_before": 1440,
+      "exact_role_pixels_after": 3548,
+      "added_role_pixels": 2108,
+      "changed_pixels": 2919,
+      "captures": {
+        "unselected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/BreezeDark/unselected-mapped.png",
+          "sha256": "2965c5ba65263455b9f067ed9588fe77343a40585c2b0f87c8c8e16f0fcc018f"
+        },
+        "selected": {
+          "path": "/home/lsi/tempia/i167-entry-selection-palettes-mapped-r72/BreezeDark/selected-mapped.png",
+          "sha256": "e5d617d52dc679b510c8110a716bd3477303eb231c6eb595aca2c5d763c709bc"
+        }
+      }
+    }
+  ],
+  "result": {
+    "status": "passed",
+    "conclusion": "All three schemes retained actual X/GTK focus and selected the complete text. Each generated recipe painted its own current selection role; DomainOS used RGB 50,151,199 and both Breeze schemes used 61,174,233. Each added 2,108 exact role pixels; baseline count was zero."
+  },
+  "artifacts": {
+    "result": "~/tempia/i167-entry-selection-palettes-mapped-r72/RESULTADO.json",
+    "result_sha256": "f91eae796051ed14466dd0967564234535b19e34d8257c2d92e66a176fabeeca",
+    "probe": "tools/theme-lab/tests/probe_gtk2_entry_selection_palettes_mapped.py",
+    "probe_sha256": "d31de12ae6084e4c2dd09d2c8afb0d158a6884adbd7b21837b2102b6ce3841b2"
+  },
+  "limits": [
+    "This verifies dynamic GTK2 palette-role behavior, not historical SR10.4 selection color or shape.",
+    "R71 confirms the live guest is still black except for Apollo status strip; no VUE comparison is possible.",
+    "Xvfb without a window manager does not prove KWin behavior or human approval.",
+    "No final RGB was introduced in the product."
+  ],
+  "next": "Remain on authorized I167/GTK2; continue independent GTK2 checks while preserving historical visual comparison as unresolved."
+}

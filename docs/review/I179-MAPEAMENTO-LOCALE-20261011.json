@@ -1,0 +1,50 @@
+{
+  "at": "2026-10-11T07:36:57.567887+00:00",
+  "authorized_revision": 1,
+  "scope": "I179 locale mapping correction, fonts and native editing",
+  "build_terminal": 0,
+  "mapping_coverage_policy_native_terminals": [
+    0,
+    0,
+    0
+  ],
+  "editor_terminal": 0,
+  "before": {
+    "Portuguese_ASCII_dash_delta": 0,
+    "Greek_pixels_different": 150,
+    "Cyrillic_pixels_different": 128
+  },
+  "after": "5samples x UTF8/MB x4paletteRoleFixtures: full256x24pixmaps match directUnicode glyphs; nonempty ink asserted",
+  "policy": "Query locale missing charsets via XCreateFontSet; append only existing samefamily/size/width variants; retain primary identity and95ASCII metrics",
+  "graphics_examined": "editor-final.png Greek/Cyrillic now distinguishable; CJK/emoji unsupported remain preserved in text",
+  "source_of_motif_path": {
+    "file": "TextOut.c",
+    "sha256": "03e6331511b778064c3da532a7365335a87e9fe5177ee6107d948ad5de146650",
+    "scope": "current upstream source supports XmbDrawString path only, no SR10.4 version claim"
+  },
+  "remaining": [
+    "Native widget states/fonts resizing and reporting unavailable render coverage",
+    "Personal delivery/handoff with text/history preserved and coordination",
+    "Human evaluation separate from installation"
+  ],
+  "scope_progress_percent": 85,
+  "installed": false,
+  "goal_complete": false,
+  "source_sha256": {
+    "tools/theme-lab/src/font_policy_motif.c": "756d5dc3fce83d77b6f10853325153f0047d63774107c74cca3d0f0edfadf5aa",
+    "tools/theme-lab/src/native_font_motif.c": "1c1486ca7a9f9549d1af5d8253621c7a8ea8dacd0135b6ab25a01cc92e9d8455",
+    "tools/theme-lab/tests/font_mapping_motif_test.c": "8e6122f9890c7802bf3075a3eb9fb0c12d825b75103d1ebee008344dc7ad6d7f",
+    "tools/theme-lab/tests/test_font_mapping_motif.py": "5e9b1035c933af157de77bb2f3d39546e2718dbfce174a9ac715c8f7f6d0879d"
+  },
+  "evidence_sha256": {
+    "docs/referencias/domainos-sr104/i179-mapping/after-locale-first.log": "483554a03b4ebcc98733c298fada3e38cbaf93d780c9c5e684c51a4d224273e6",
+    "docs/referencias/domainos-sr104/i179-mapping/policy-final.log": "a9c3b250b2e55348f3ada933665fe03b5b033956517ca6ebc50735447cacc4f1",
+    "docs/referencias/domainos-sr104/i179-mapping/MOTIF-FONTSET-DRAW-PATH.txt": "abb0bebeec110b47f0527e022446133c782b59739309036b6b3ee23fa1ba12af",
+    "docs/referencias/domainos-sr104/i179-mapping/native-final.log": "1c0c2403d7f608208571ba3962d2a7644eb8a60cb2e9e2c74bd5fa16eb33e0fc",
+    "docs/referencias/domainos-sr104/i179-mapping/before-locale.log": "71da3464a687c0fe72bdaa26f8e458f1faa34d2f98c9fce9b3f7377f88403612",
+    "docs/referencias/domainos-sr104/i179-mapping/build-final.log": "9a5e630c9e354a2031b78a142a7283281674df8bc9ba1d8b1ccc23dd1b96204e",
+    "docs/referencias/domainos-sr104/i179-mapping/editor-final.png": "437b74883846e965429356c4da6bbf418d28d8fba2c5c5310ddc353e56fa6542",
+    "docs/referencias/domainos-sr104/i179-mapping/four-palettes.json": "95c5521c65c29306af4c808d1da2be2587584fdb46b184a211edc47e117dfcbd",
+    "docs/referencias/domainos-sr104/i179-mapping/editor-final.log": "77d1c0b2f9b33fe82b6fd2111abecf2c2638affa8c53c9607d2e360a644bb384"
+  }
+}

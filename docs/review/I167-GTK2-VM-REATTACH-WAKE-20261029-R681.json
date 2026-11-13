@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "id": "R681",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "scope": "Safely reattach to the authorized SR10.4 reference VM, wake its idle black screen once using the documented guest Shift pulse, and establish the current visible state without pointer input.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea",
+    "additional_pointer_instruction": "I517",
+    "pointer_instruction_authorized": false,
+    "pointer_input_used": false
+  },
+  "result": {
+    "status": "passed",
+    "mame_pid": 379349,
+    "disk": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "pre_wake_guest_snapshot": "black guest image with Apollo command strip visible",
+    "wake": "one Shift frame; auto-released at frame 3",
+    "post_wake_guest_snapshot": "HP VUE File Manager at /usr",
+    "snapshot_dimensions_px": [
+      1024,
+      844
+    ],
+    "keyboard4_read_after_wake": 0,
+    "capture": false,
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "ui_active": false,
+    "wait_button_up": false,
+    "bridge_pending": false
+  },
+  "verification": {
+    "project_vm_verifier": "vm/domainos-sr10.4-assistant/verify.sh passed; canonical disk identity preserved; only project PID 379349 attached to this disk",
+    "bridge": "read-only status confirmed no pending work before and after; final status clean",
+    "report": "docs/review/I167-GTK2-VM-REATTACH-WAKE-20261029-R681.json",
+    "artifacts": "records/ia-tema/I167/R681/ARTIFACTS.json"
+  },
+  "limits": [
+    "The live guest currently shows a VUE File Manager with a vertical scrollbar only.",
+    "No GTK2 horizontal bar or Theme Lab preview was visible, so R681 is not a GTK2 visual comparison.",
+    "No mouse input, guest navigation, MAME restart, VM profile change, or user-profile change was made.",
+    "The pressed/released arrow pointer comparison remains separately gated by I517."
+  ],
+  "next": "Use the user-selected public preview path for GTK2. The current guest is awake and ready; do not send mouse input until I517 is authorized."
+}

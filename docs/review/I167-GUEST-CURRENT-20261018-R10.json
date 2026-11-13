@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "kind": "domainos_live_observation",
+  "item": "I167",
+  "recorded_at": "2026-10-18",
+  "mame_pid": 1354178,
+  "source": "Independent assistant clone of approved SR10.4 VM backup; no input issued.",
+  "probe": {
+    "captured": false,
+    "ui_active": false,
+    "paused": false,
+    "throttled": false,
+    "frameskip": 4,
+    "mouse_hook": "table",
+    "pending_command": null,
+    "screen_tag": ":apollo_screen:screen"
+  },
+  "capture": {
+    "path": "~/tempia/domainos-assistant-vm-20261018/sessao/capturas/guest-current-r10.png",
+    "sha256": "f6d53645db97bc4a7f226cebde3d6add5d06eb1b6a6b32287dfdcd9027ec5842",
+    "size_px": [
+      1024,
+      844
+    ],
+    "observed": "Black guest screen with the MAME command strip visible at the bottom; HP VUE is not visible in this capture."
+  },
+  "network_endpoint": "192.168.253.10:21/23; not used for this observation.",
+  "preserved": {
+    "vm_original": true,
+    "approved_backup": true,
+    "guest_state_unchanged": true,
+    "mame_profile_unchanged": true
+  },
+  "limit": "This capture does not provide a visible scrollbar or a current VUE reference. It is not a historical comparison."
+}

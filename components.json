@@ -2,6 +2,11 @@
   "format": 1,
   "components": [
     {
+      "source": "wine/IrixClassic/package",
+      "root": "data",
+      "destination": "irixium-suite/wine/IrixClassic"
+    },
+    {
       "source": "decorations/modern/package",
       "root": "data",
       "destination": "kwin/decorations/irixium_modern"
@@ -10,6 +15,11 @@
       "source": "decorations/classic/package",
       "root": "data",
       "destination": "kwin/decorations/irixium_irix_classic_v4"
+    },
+    {
+      "source": "decorations/domainos/package",
+      "root": "data",
+      "destination": "kwin/decorations/domainos_sr104"
     },
     {
       "source": "icons/Irixium",
@@ -27,7 +37,17 @@
       "destination": "icons/sgi"
     },
     {
-      "source": "gtk",
+      "source": "cursors/SGI-Classic",
+      "root": "data",
+      "destination": "icons/SGI-Classic"
+    },
+    {
+      "source": "cursors/SGI-Irixium",
+      "root": "data",
+      "destination": "icons/SGI-Irixium"
+    },
+    {
+      "source": "gtk/Irixium",
       "root": "data",
       "destination": "themes/Irixium"
     },
@@ -75,6 +95,111 @@
       "source": "look-and-feel/org.magpie.irixclassic.desktop",
       "root": "data",
       "destination": "plasma/look-and-feel/org.magpie.irixclassic.desktop"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.applications",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.applications"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.quicklaunch",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.quicklaunch"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.iconbox",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.iconbox"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.systemtray",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.systemtray"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.analogclock",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.analogclock"
+    },
+    {
+      "source": "gtk/IrixClassic",
+      "root": "data",
+      "destination": "themes/IrixClassic"
+    },
+    {
+      "source": "decorations/modern-13/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_modern_13"
+    },
+    {
+      "source": "decorations/modern-41/package",
+      "root": "data",
+      "destination": "kwin/decorations/irixium_modern_41"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.grosview",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.grosview"
+    },
+    {
+      "source": "plasma/IrixClassicDomainOS",
+      "root": "data",
+      "destination": "plasma/desktoptheme/IrixClassicDomainOS"
+    },
+    {
+      "source": "plasma/applets/org.irixclassic.domainos.panel",
+      "root": "data",
+      "destination": "plasma/plasmoids/org.irixclassic.domainos.panel"
+    },
+    {
+      "source": "colors/DomainOS-SR10.4.colors",
+      "root": "data",
+      "destination": "color-schemes/DomainOS-SR10-4.colors"
+    },
+    {
+      "source": "gtk/IrixClassic-KDE",
+      "root": "data",
+      "destination": "themes/IrixClassic-KDE"
+    },
+    {
+      "source": "gtk/IrixClassic-KDE-Reload",
+      "root": "data",
+      "destination": "themes/IrixClassic-KDE-Reload"
+    },
+    {
+      "source": "gtk/Irixium-KDE",
+      "root": "data",
+      "destination": "themes/Irixium-KDE"
+    },
+    {
+      "source": "gtk/Irixium-KDE-Reload",
+      "root": "data",
+      "destination": "themes/Irixium-KDE-Reload"
+    },
+    {
+      "source": "look-and-feel/org.magpie.irixclassic.domainos.desktop",
+      "root": "data",
+      "destination": "plasma/look-and-feel/org.magpie.irixclassic.domainos.desktop"
+    },
+    {
+      "source": "kvantum/DomainOS-SR10-4",
+      "root": "config",
+      "destination": "Kvantum/DomainOS-SR10-4"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4-KDE",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4-KDE"
+    },
+    {
+      "source": "gtk/DomainOS-SR10-4-KDE-Reload",
+      "root": "data",
+      "destination": "themes/DomainOS-SR10-4-KDE-Reload"
     }
   ],
   "profiles": {
@@ -85,7 +210,9 @@
       "icons": "IrixClassic-SGI",
       "plasma": "IrixClassic",
       "wallpaper": "IrixClassic",
-      "gtk": "Irixium"
+      "gtk": "IrixClassic-KDE",
+      "cursor": "SGI-Classic",
+      "colors": "Irixium"
     },
     "moderno": {
       "global": "org.magpie.irixium.desktop",
@@ -94,7 +221,20 @@
       "icons": "Irixium",
       "plasma": "Irixium",
       "wallpaper": "Irixium",
-      "gtk": "Irixium"
+      "gtk": "Irixium-KDE",
+      "cursor": "SGI-Irixium",
+      "colors": "Irixium"
+    },
+    "domainos": {
+      "global": "org.magpie.irixclassic.domainos.desktop",
+      "kvantum": "DomainOS-SR10-4",
+      "decoration": "domainos_sr104",
+      "icons": "IrixClassic-SGI",
+      "plasma": "IrixClassicDomainOS",
+      "wallpaper": "IrixClassic",
+      "gtk": "DomainOS-SR10-4-KDE",
+      "cursor": "SGI-Classic",
+      "colors": "DomainOS-SR10-4"
     }
   },
   "sounds": {

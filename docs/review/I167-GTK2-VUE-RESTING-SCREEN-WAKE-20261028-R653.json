@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "id": "R653",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "status": "guest-awake-after-single-key; pointer-comparison-pending",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "release": "Domain/OS SR10.4 + HP VUE 2.01",
+    "pid": 379349,
+    "disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "control_channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "profile": {
+      "frameskip": 4,
+      "throttled": false,
+      "paused": false,
+      "captured": false
+    }
+  },
+  "observation": {
+    "before": "Native guest snapshot black except Apollo command stripe; idle display.",
+    "action": "One Shift key pulse to the verified guest; released by frame 3. No mouse movement, click, or portal session.",
+    "callback": "done=true; frame=65; held=false; reason=single Shift released; native snapshot captured; error=nil",
+    "after": "Native snapshot shows HP VUE with File Manager and ordinary vertical scrollbar; no arrow is held.",
+    "controller_pending": false,
+    "other_vm_disks_touched": false
+  },
+  "remaining": [
+    "Q515 has no saved user response; do not open KDE RemoteDesktop portal or send pointer input until authorized.",
+    "Canonical held-state comparisons for GTK2 upper and horizontal arrows remain pending.",
+    "Manual visual acceptance remains separate."
+  ],
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "This wake observation restores access to the reference VM but closes no held-arrow comparison criterion; not a fidelity score."
+  },
+  "artifacts": [
+    {
+      "path": "records/ia-tema/I167/R653/capture-current-r653.lua",
+      "bytes": 314,
+      "sha256": "30a72a978f121f3ea48bcaf3b10bc8aa5968134e75f6ff3abbc3bf602ca95472"
+    },
+    {
+      "path": "records/ia-tema/I167/R653/wake-once-r653.lua",
+      "bytes": 1140,
+      "sha256": "71fad2d01b7572b6b7a0b103ea81aacdaf6acb43b8fbb5736c9020fb2e478ed8"
+    },
+    {
+      "path": "records/ia-tema/I167/R653/status-wake-r653.lua",
+      "bytes": 230,
+      "sha256": "7f95beb51522e17bd3e68c707c299eabfdd47865f2a264a547336c3973821d58"
+    },
+    {
+      "path": "records/ia-tema/I167/R653/guest-current-r653.png",
+      "bytes": 9981,
+      "sha256": "c93ba0a83ae01db3547eb4bbe91be1553a579df939c5b1fab42192219765d579"
+    },
+    {
+      "path": "records/ia-tema/I167/R653/guest-after-wake-r653.png",
+      "bytes": 34484,
+      "sha256": "1a6c539cd367e08adc7b6905f630518211300fdd3326813ddd06743e3708b4b8"
+    },
+    {
+      "path": "records/ia-tema/I167/R653/board-reply-I167.json",
+      "bytes": 747,
+      "sha256": "50443e3b41d75a23ad8dd19390c57ca5c3ef1030b33424b95fb6d7843d18c37a"
+    }
+  ],
+  "board_update": {
+    "item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "assistant_ack_revision": 2,
+    "status": "running",
+    "user_authorization_preserved": true,
+    "other_board_sections_modified": false
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-11T12:28:16.966931+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "progress: diagnosed posting dismissal and added late-hint guard",
+  "change": "Use public XmPOPUP_AUTOMATIC for the editor popup, created before first input. RowColumn owns pointer posting/tracking; existing custom keyboard gesture remains. Map callback refreshes current field roles/font.",
+  "evidence_basis": "Installed XmRowColumn(3) documents XmNpopupEnabled/XmPOPUP_AUTOMATIC; actual installed runtime and native tests supply behavioral proof, not SR10.4 historical claim.",
+  "build_exit_code": 0,
+  "mouse_palettes": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540"
+      ]
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540"
+      ]
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540"
+      ]
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0,
+      "cold_observations": [
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540",
+        "Editor cold observed menu=1 tip=0 pointer=0,0 local=-642,-540"
+      ]
+    }
+  ],
+  "keyboard_exit_code": 0,
+  "full_native_metrics_exit_code": 0,
+  "help_flow_exit_code": 0,
+  "scope": "Two complete right-click postings per scheme, menu remains mapped after release; actual hover delay/bounds/stability, left-click Copy/text/clipboard, visible palette update with selection preserved, no late hint1100ms after action; keyboard Shift+F10, help/read-only protections and full native metric regression.",
+  "remaining": [
+    "Other command/layout coverage in final audit",
+    "Coordinated personal handoff and human evaluation"
+  ],
+  "source_hashes": {
+    "tools/theme-lab/src/editor/view.c": "b8033dee0c8dddd6589b225238ddf0f2410b140b2380380119caf1803aff5043",
+    "tools/theme-lab/src/view/ui_menu_hints.c": "206ca1b39987b6e3f220370d70cd69a6a130c447313ce2761340ad4656d4adc7",
+    "tools/theme-lab/tests/ui_help_flow.c": "ec82820f46f1c6807b78c1b594b3b39f1036b21f0ae1a0fff3363f6d087fb83c",
+    "tools/theme-lab/Makefile": "41fe83fb7cb5b6f313ed90e1ecc6b7c3a2e7fa709bfb1209893ca0141809d001"
+  },
+  "evidence_hashes": {
+    "editor-auto-popup-build.log": "9cc6621f696f1770faa28dfaea2aa28c34d216ffa6f376eaa09ef3d0feb7de1f",
+    "editor-auto-popup-mouse-r1.log": "2b84fb6ef50fd5c8c95e82ca5690ddfc6fd15088cae95c5a936a6eede482422a",
+    "editor-auto-popup-mouse-r1.err": "9c907962ccaa202473cb8f527392b12b71d4d2026f4661361da4d4e304a2c18a",
+    "editor-auto-popup-mouse-palettes-r1.json": "3111506431c36955145640fcf72026ea8a7cb1058581d64252f93387d8f5bde7",
+    "editor-auto-popup-mouse-palettes-r1.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "editor-auto-popup-keyboard-r1.log": "9c5975892fc3750e11dff4449775ed991c237dec201d60b7dbe0774fe9b10cfb",
+    "editor-auto-popup-keyboard-r1.err": "a2309ad1f639cf469f60c893c3597d7baccd6a8e78e92fd3f9ab0dd270b4fda0",
+    "editor-auto-popup-regression-r1.log": "f827ed45f2aa3c9fc02c7054285c5dfefdad8e99be4e93b4b6fd88476049768f",
+    "editor-auto-popup-regression-r1.err": "f04c98b52a9c4bc9b2cd2507a39fecda4a5a6bd4ba3ce8a508ba68c746eaf191",
+    "editor-auto-popup-help-r1.log": "4dff9b7b2a339e59cb9683c21ba776687b72023ec7a1444ab57a39fd85a435bf",
+    "editor-auto-popup-help-r1.err": "f9873e05ca60ac1e258bdb5a998e768b93536f2b301674500a4ffc50f8c140bc"
+  },
+  "estimated_stage_progress_percent": 95,
+  "progress_basis": "Main hint/help coverage and the blocking native editor-popup path now verified; final coverage audit and coordinated personal delivery remain. Not a measure of historical fidelity or whole-goal completion.",
+  "personal_session_modified": false,
+  "human_approval_filled": false
+}

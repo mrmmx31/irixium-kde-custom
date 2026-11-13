@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-18",
+  "revision": "R15",
+  "instance": "assistant-clone-20261018",
+  "mame_pid": 1354178,
+  "disk": "/home/lsi/tempia/domainos-assistant-vm-20261018/discos/dn3500_sr10.4.assistant-20261018.awd",
+  "endpoint": {
+    "address": "10.104.10.4",
+    "ftp_port": 21,
+    "ftp_greeting": "220 node_12345 FTP server (Domain/OS FTPD) ready.",
+    "telnet_port": 23,
+    "telnet_greeting_hex": "fffd18",
+    "guest_backend": "192.168.240.2, private to clone namespace"
+  },
+  "retired_endpoint": {
+    "address": "192.168.246.10",
+    "ftp_and_telnet_listeners_stopped": true,
+    "address_removed_from_clone_namespace": true
+  },
+  "checks": {
+    "new_endpoint_ftp_tcp_and_banner": "passed",
+    "new_endpoint_telnet_tcp_and_negotiation": "passed",
+    "ftp_root_login_and_active_listing": "Previously proved for this same guest/backend before the alias-only migration; 26 entries",
+    "guest_x_root_tree": "28 root children; viewable client windows at 592x361+35+370 and 681x365+66+51; vuewm helper at 10x10+10000+0",
+    "mame_profile": "frameskip 4, throttled false, paused false",
+    "xrefresh": "No change to native MAME capture; black except Apollo command strip",
+    "capture_sha256": "7cccf1bcb84df23678e2b90f52be82045164b11eda0360ea9a517fd52b7bfebb",
+    "capture_path": "~/tempia/domainos-assistant-vm-20261018/sessao/capturas/guest-after-xrefresh-r15.png",
+    "interpretation": "Mapped VUE client windows are present, but pixels remain unavailable in MAME screenshot; no cause inferred."
+  },
+  "preservation": {
+    "original_vm_modified": false,
+    "approved_downloads_backup_modified": false,
+    "guest_network_files_modified": false,
+    "clone_disk_modified_for_network_change": false
+  },
+  "host_access": "~/tempia/domainos-assistant-vm-20261018/run-in-assistant-vm-network.sh",
+  "cleanup_monitor": "cleanup-endpoint-r15.sh watches MAME PID 1354178 and removes alias/proxies after that exact disk process exits"
+}

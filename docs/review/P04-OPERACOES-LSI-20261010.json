@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-10T18:55:33.557860+00:00",
+  "scope": "P04 Operations, normal lsi instance baseline",
+  "status": "normal_instance_input_method_unavailable_manual_observation_requested",
+  "source_hashes": {
+    "DomainOSIconbox.qml": "e6f50df0cdc8eff865cfd414235e9afa50a14fda85d056a894603e21941f1c57",
+    "DomainOSOperationsMenu.qml": "bf00dbd0ff3129b81274cddbe2bfbbc7ae5afa2bb8b00fba621f7cbf458c9895",
+    "DomainOSTasks.qml": "16b5ead6e4a728c779e4793f765db27112f6a4e6257166c593a0c4f12aeeeb18",
+    "DomainOSPopupPlacement.qml": "09258b6605f9aa60de609ef82f0ab09ed17cf59173a2aefe88b5198a16be9675"
+  },
+  "evidence": {
+    "current_panel_contains_single_domainos_applet": true,
+    "installed_iconbox_matches_worktree": true,
+    "installed_operations_matches_worktree": true,
+    "normal_qmlcache_for_iconbox_mapped": false,
+    "own_test_window_opened_without_accepting_focus": true,
+    "own_test_window_exited_normally": true,
+    "test_window_operations_executed": false,
+    "native_test_input_advertised": false,
+    "native_input_permission_configuration_changed": false,
+    "xtest_attempt_not_valid_panel_reproduction": true,
+    "owned_window_closed_after_timeout": true,
+    "new_runtime_pid": 1232809
+  },
+  "limits": [
+    "XTest did not reach the Wayland panel; this is not evidence of Operations failure or success.",
+    "The native input protocol was not advertised to the temporary test controller. No permission checks were disabled or changed.",
+    "Q087 requests a manual observation in the board. No menu correction or user approval claimed."
+  ],
+  "implementation": "unchanged; cause not yet proven"
+}

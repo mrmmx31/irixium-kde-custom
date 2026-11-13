@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "id": "R666",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare all four normal stepper assets from the GTK2 palette bundle currently selected by user lsi with the original Domain/OS SR10.4 + HP VUE 2.01 references.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "profile": {
+    "gtk2_theme": "DomainOS-SR10-4-KDE-Reload",
+    "palette_bundle": "/home/lsi/.local/share/irixium/gtk2-palette/01993dfd1e703b884f158c558e0db268d002a1ec16787689f939cd583c8a47f6",
+    "companion_service": "irix-theme-companions.service",
+    "service_state": "active"
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "horizontal_crop": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "horizontal_sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1",
+    "vertical_crop": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+    "vertical_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5"
+  },
+  "method": "Direct RGB comparison of the four installed generated 15x15 PNG assets against the retained reference cells at 1:1. No scaling, filtering, registration shift, or color normalization.",
+  "cells": [
+    {"direction": "left", "asset": "assets/scrollbar-stepper-left-normal.png", "asset_sha256": "8d7311d3c80c9c51274796582e66dd7f268899f3faa88f5bc76c2a1949c02a99", "reference_xy": [2, 4], "different_pixels": 0, "pixels": 225},
+    {"direction": "right", "asset": "assets/scrollbar-stepper-right-normal.png", "asset_sha256": "6dc913ca5719b74ae9ca12e397ea74b440691f07e8eb7f0a1acc58e3cab5c9c0", "reference_xy": [526, 4], "different_pixels": 0, "pixels": 225},
+    {"direction": "up", "asset": "assets/scrollbar-stepper-up-normal.png", "asset_sha256": "8064e3398add164c4dc40bf14f4334e30ae2821194d93f575170ec6271084cf7", "reference_xy": [4, 2], "different_pixels": 0, "pixels": 225},
+    {"direction": "down", "asset": "assets/scrollbar-stepper-down-normal.png", "asset_sha256": "d2cdd09fc683e0e096aa1e9688b0d105c76f914a60ab41a48a945474eda25981", "reference_xy": [4, 242], "different_pixels": 0, "pixels": 225}
+  ],
+  "result": "The four normal arrows in the exact bundle selected by the user's GTK2 profile match their SR10.4/VUE reference cells pixel-for-pixel. The earlier report that horizontal arrows looked narrower is not reproduced by these assets.",
+  "limits": [
+    "This checks the selected palette assets, not pixels consumed by every already-open GTK2 application.",
+    "Pressed, hover, insensitive, drag, and manual visual acceptance remain separate.",
+    "No profile or application changed; no VM input was sent."
+  ],
+  "next": "Keep the normal arrow assets unchanged. Continue GTK2 state comparison after I517 is explicitly authorized.",
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "All four selected normal assets are proven exact, but interaction states and live application acceptance remain open. This is not a visual-fidelity score."
+  }
+}

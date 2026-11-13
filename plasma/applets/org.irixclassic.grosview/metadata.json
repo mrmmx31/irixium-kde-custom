@@ -1,0 +1,17 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [{"Name": "mrmmx31"}],
+    "Category": "System Information",
+    "Description": "CPU, memory, swap, disk and network instruments for IRIX Classic",
+    "Description[pt_BR]": "Instrumentos de CPU, memória, swap, disco e rede para IRIX Classic",
+    "EnabledByDefault": true,
+    "FormFactors": ["desktop"],
+    "Icon": "utilities-system-monitor",
+    "Id": "org.irixclassic.grosview",
+    "License": "GPL-3.0+",
+    "Name": "IRIX Classic gr_osview",
+    "Version": "0.1.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}

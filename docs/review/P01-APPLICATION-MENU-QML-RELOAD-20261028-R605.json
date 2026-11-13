@@ -1,0 +1,46 @@
+{
+  "id": "R605",
+  "date_local": "2026-10-28T14:22:00-04:00",
+  "board_item": "P01",
+  "board_section": "work",
+  "board_user_revision": 4,
+  "board_definition_sha256": "7aea7c142ad3003f9037701393246a443a232c64ac183be69d524fe5cea37e21",
+  "authorization": {
+    "authorized": true,
+    "authorized_definition_matches": true
+  },
+  "action": {
+    "service": "plasma-plasmashell.service (user lsi only)",
+    "command": "systemctl --user restart plasma-plasmashell.service",
+    "old_pid": 711522,
+    "new_pid": 729401,
+    "kwin_pid_preserved": 6800,
+    "other_user_plasmashell_pid_preserved": 332937,
+    "restart_count_after_action": 0
+  },
+  "loaded_files": {
+    "DomainOSApplications.qml": {
+      "path": "~/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSApplications.qml",
+      "sha256": "5f92e781f6fd4de8e472bede6db8e3fce0dd6f7e1880f8a5b1ffbd56419598c8"
+    },
+    "DomainOSKdeApplicationMenu.qml": {
+      "path": "~/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSKdeApplicationMenu.qml",
+      "sha256": "77b92680d89ed485c5f056949bf9f54ad05291110f368698f0c54e3d4a6d3c21"
+    },
+    "applications_menu_style": "kde"
+  },
+  "validation": {
+    "service_active": true,
+    "new_pid_observed": true,
+    "qml_error_for_changed_menu_files_in_new_pid": false,
+    "unrelated_startup_messages": "Pre-existing DomainOSTray QQmlBind::target warnings and audio monitor message; no failure recorded for either changed menu file.",
+    "hover_and_keyboard_behavior": "pending user observation",
+    "double_click_application_reproduced": false
+  },
+  "next": [
+    "In the KDE menu, move the pointer into a category and its submenu; report if the parent stays open.",
+    "Type a harmless application query immediately after opening, without clicking Search.",
+    "Switch to the panel's own menu and check whether typing begins immediately.",
+    "Do not repeat a problematic application launch until Q510 identifies the application and approximate time."
+  ]
+}

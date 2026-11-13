@@ -1,0 +1,47 @@
+{
+  "item": "T07",
+  "user_revision": 4,
+  "checked_at_utc": "2026-10-19T16:00:00Z",
+  "status": "bus-free-gtk4-hover-matrix-passed; broader-tool-hints-remain-open",
+  "test": {
+    "command": "T07_PRIVATE_PROBE=1 NO_AT_BRIDGE=1 GTK_MODULES= GSETTINGS_BACKEND=memory DBUS_SESSION_BUS_ADDRESS=unix:path=~/tempia/t07-gtk4-busfree-matrix-r153/nonexistent-bus LC_ALL=C.UTF-8 xvfb-run -a -s '-screen 0 1024x768x24' python3 -B tools/theme-lab/tests/probe_gtk4_gallery_hints.py --hover-matrix --matrix-timeout-sec 240 --reuse-session-bus",
+    "display": "Xvfb :336, 1024x768x24; no user Xephyr or MAME session used",
+    "gtk_version": "4.18.6",
+    "elapsed_seconds": 132,
+    "result": "PASS",
+    "matrix": {
+      "mapped_targets_first_page": 26,
+      "mapped_targets_second_page": 5,
+      "passed_targets": 31,
+      "failed_targets": 0,
+      "initial_cold_delay_ms": 500,
+      "stable_ms": 400,
+      "within_screen": true,
+      "never_covers_hover_point": true,
+      "small_control_nonoverlap": true,
+      "closed_after_leave": true,
+      "scrollbar_click_while_hint_open": true,
+      "anchors_removed_after_cleanup": true,
+      "native_tooltip_restored": true
+    },
+    "warning": "GTK emitted Unable to acquire session bus for the deliberately nonexistent bus address; the actual gallery and tooltip matrix passed without starting dbus-run-session."
+  },
+  "artifacts": {
+    "directory": "~/tempia/t07-gtk4-busfree-matrix-r153",
+    "run_log_sha256": "2a624291391e97d8c9e0103f88c09d53345c4710a416569beec9f1a043b52be1",
+    "stderr_sha256": "dc01bea4f32f172813d8dfef8a1f93aaae062da93efeb7d47583df8c5061e4cc"
+  },
+  "interpretation": "The focused GTK4 native tooltip and menu paths work in an isolated bus-free test, and the complete 31-target gallery hover matrix also passes without a private D-Bus session. This distinguishes the earlier timeout from a general GTK4 hover failure. It does not prove that inotify pressure caused the timeout; the prior private dbus-daemon warning remains a plausible environmental complication, not a proven cause.",
+  "preservation": {
+    "user_configuration_changed": false,
+    "system_inotify_limits_changed": false,
+    "processes_killed": false,
+    "other_xephyr_sessions_touched": false,
+    "mame_guest_touched": false
+  },
+  "remaining": [
+    "T07 includes user-facing hints across the Theme Lab controls and help guidance; GTK4 gallery validation alone does not complete that broader scope.",
+    "Manual visual review remains distinct from this technical pass."
+  ],
+  "next": "Resume I458, the next authorized item with an available private test fixture; I457 remains limited by the guest screen not showing VUE controls. Do not repeat the GTK4 matrix unless its input changes."
+}

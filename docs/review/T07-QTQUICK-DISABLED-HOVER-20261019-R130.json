@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "id": "T07-QTQUICK-DISABLED-HOVER-20261019-R130",
+  "board_item": "T07",
+  "board_revision": 4,
+  "definition_sha256": "a4ddc519b39c04aa23aa0fca7e2ccdd6bab4c7e50d8c92e826d430239157d7ee",
+  "recorded_at": "2026-10-19T09:32:22Z",
+  "status": "passed_scoped",
+  "scope": "Combined enabled/disabled hint matrix in the native QtQuick5 and QtQuick6 galleries; seven disabled-control hints and existing enabled hints. Menus remain covered by their separate row probe.",
+  "runtime": {
+    "display": "Owned Xephyr :82, host 1600x1000; private gallery profile and D-Bus/network namespace",
+    "style": "org.kde.desktop",
+    "scheme": "DomainOS-SR10.4",
+    "product_theme_or_user_config_changed": false,
+    "qtquick5": "Qt 5.15.15",
+    "qtquick6": "Qt 6.8.2"
+  },
+  "implementation": {
+    "file": "plasma/tests/galerias-nativas/qtquick_demo.py",
+    "approach": "Passive HoverHandlers map pointer coordinates to disabled QQuickItems in QtQuick5. After 750 ms, one separate native KDE Controls ToolTip displays that item's existing hint text. It is positioned above the owner, or below when the owner is near the top edge.",
+    "shared_hint_behavior": "Existing attached ToolTip delays remain 750 ms. The separate popup avoids changing shared/attached delay behavior for enabled controls.",
+    "safety": "No disabled control is enabled or activated. The route only tracks the current item and toggles the separate ToolTip. No palette values or final RGB colors are set.",
+    "qtquick6": "Coordinate handler is disabled; all controls continue using their attached native ToolTips."
+  },
+  "method": {
+    "probe": "R4 native-gallery probe with the pointer moved outside the window before page transitions and each target, then tested all materialized targets on three pages.",
+    "runner": "run_t07_qtquick_matrix_r4.py --quick in disposable profiles on Xephyr :82",
+    "cold_check_ms": 300,
+    "declared_delay_ms": 750,
+    "stable_ms": 400,
+    "owner_overlap": false,
+    "screen_bounds": "all displayed tooltip rectangles remained within the available screen"
+  },
+  "results": {
+    "qtquick5": {
+      "matrix_sha256": "5a44214d79518b9744e11dc61e9e8b394891288983a28a7d6ad383e23cd8329f",
+      "status": "passed",
+      "targets": 27,
+      "shown": 27,
+      "disabled_targets": 7,
+      "disabled_non_hoverable": 0,
+      "skipped": 0,
+      "failures": 0,
+      "observed_wait_after_cold_check_ms": [450, 550],
+      "dismiss_after_leave_ms": [150, 350]
+    },
+    "qtquick6": {
+      "matrix_sha256": "538845ba918ea6edd781a86d488f7f5e2ca38dcae01813e5af12688070ee7c0a",
+      "status": "passed",
+      "targets": 27,
+      "shown": 27,
+      "disabled_targets": 7,
+      "disabled_non_hoverable": 0,
+      "skipped": 0,
+      "failures": 0,
+      "observed_wait_after_cold_check_ms": [450, 650],
+      "dismiss_after_leave_ms": [150, 300]
+    }
+  },
+  "diagnosis": "R128's focused disabled-only proof passed, but the first mixed probes showed early hints. Parking the pointer alone did not fix them. The cause was changing the attached ToolTip delay on disabled targets; that interfered with other attached hints. A separate native ToolTip popup plus preserved 750 ms attached delays passed the complete 27-target matrix in both Qt versions.",
+  "source": {
+    "before_sha256": "510074477e170cb3889f323cfd6646f60eb127e50f89782554019d1a73748244",
+    "after_sha256": "7b2b6e9fd5c1bf43b4512aad2c445e9eb320691f064a1acd6d7dacf695c44418",
+    "combined_probe": "~/tempia/probe_t07_qtquick_combined_r130.py",
+    "combined_probe_sha256": "7425341cb38ee5122c2c4a493f6cb01d37387fa1d1d29d0b7ef1a7059d5e29b7",
+    "disabled_probe": "~/tempia/probe_t07_qtquick_disabled_only_r130.py",
+    "disabled_probe_sha256": "9f305d70837d5a6211e1be29da21218896cc3949cadb2276fa902cb79ef24069",
+    "runner": "~/tempia/run_t07_qtquick_matrix_r4.py",
+    "runner_sha256": "ed72565a5a9fd38ea2f572623c8b477b3d75106ff4eb438826c3ede4cd084d55"
+  },
+  "change_record": {
+    "registered": true,
+    "record_id": "record-hunoxz7p",
+    "comparison_verified": true,
+    "content_verified": true,
+    "diff_sha256": "2be9e331b508418bd691c214f77cf0f19d7a710e873c4669cc3ab2e2eb503599",
+    "diff_matches_prepared_patch": true
+  },
+  "scripts_record": {
+    "registered": true,
+    "user_revision": 4,
+    "script_count": 13,
+    "files_changed": true,
+    "readback": "~/tempia/t07-r130-scripts-after.json"
+  },
+  "artifacts": [
+    "~/tempia/t07-qtquick5-combined-r130-20261019/",
+    "~/tempia/t07-qtquick6-combined-r130-20261019/",
+    "~/tempia/t07-qtquick5-disabled-r130b-20261019/"
+  ],
+  "limitations": [
+    "The tested scope is the project's native gallery; it does not establish behavior in unrelated QtQuick applications or historical SR10.4 pixels.",
+    "This run used the DomainOS scheme only; the new standalone ToolTip's pixel colors were not sampled under alternate schemes. Its QtQuick style/palette were not overridden."
+  ],
+  "remaining": [
+    "Review the standalone popup under alternate KDE color schemes and other supported layouts.",
+    "Continue T07's other uncovered controls/layouts and obtain separate manual acceptance; this receipt does not close T07."
+  ],
+  "next": "Continue T07 with the standalone native ToolTip palette check, then take the next uncovered inventory scope."
+}

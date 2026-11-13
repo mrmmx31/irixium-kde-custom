@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "id": "R286",
+  "date": "2026-10-26",
+  "item": "I167",
+  "section": "work",
+  "status": "awaiting-physical-mouse-event-for-visible-guest-pointer",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "authorized_definition": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "vm": {
+    "reference": "Domain/OS SR10.4 + HP VUE 2.01",
+    "process_pid": 1313710,
+    "disk_verified": "vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "profile_after": {
+      "paused": false,
+      "frameskip": 4,
+      "throttled": false,
+      "mouse_captured": false,
+      "wait_button_up": false,
+      "pending_request": null
+    }
+  },
+  "diagnostic": {
+    "authorization_revalidated": "I167 work revision 2; authorized_definition matches definition_sha256.",
+    "starting_guest_image": {
+      "path": "~/tempia/ia-tema/evidence/I167/i167-vue-current-r282.png",
+      "sha256": "d4d6d3b129db78ff66810db98f295df68dabfe9b10c773484af7db7ea76c45e8",
+      "state": "VUE Terminal and File Manager /node_12345 visible; scrollbar arrows visible; guest pointer not visible."
+    },
+    "host_window": {
+      "xid": "0x2400008",
+      "pid": 1313710,
+      "initial_host_focus": 25165827,
+      "initial_host_pointer": [609, 515]
+    },
+    "synthetic_recapture_click": {
+      "target": "Blank guest desktop at local host-window coordinates (800,500), outside application controls.",
+      "result": "Existing capture hook remained captured=false; no guest action was observed."
+    },
+    "temporary_hook_capture": {
+      "operation": "Used the already-loaded capture hook's capture() and later release() methods; no hook/configuration was loaded or replaced.",
+      "observed_capture_state": "captured=true, wait_button_up=false, mouse option=true",
+      "capture": {
+        "path": "~/tempia/ia-tema/evidence/I167/i167-vue-capture-test-r283.png",
+        "sha256": "e07d77ade3931b3354b0b7e3aad1447c56110c976c97e9eeec54c69ce36d55c9",
+        "result": "Pointer still not visible."
+      },
+      "host_mouse_move": {
+        "target": "Vertical upper stepper center, local guest coordinates (600,476), after confirming it visible in R282.",
+        "capture": {
+          "path": "~/tempia/ia-tema/evidence/I167/i167-vue-pointer-up-target-r284.png",
+          "sha256": "9c97fdaba7e2ab194ba5c53f5cb4d91d80ae4e1535b94781c4b7f653cb148b85",
+          "result": "No pointer visible over the stepper."
+        },
+        "Apollo_counter_read": "X=41, Y=191; host XTest motion did not change the guest counters."
+      },
+      "single_counter_step": {
+        "operation": "One X +3 counter step via the authorized helper; no button.",
+        "request_id": "9c9e48a2123f49eb8d4a1af6686fc340",
+        "completion": "done=true, steps=1, error=nil, cleanup_error=nil",
+        "capture": {
+          "path": "~/tempia/ia-tema/evidence/I167/i167-vue-pointer-captured-step-r285.png",
+          "sha256": "f15f9eed2cce7fc9aa151a915f1092036fa13c7a503801a333feca42105a8cce",
+          "result": "No pointer visible over a target."
+        }
+      }
+    }
+  },
+  "restoration": {
+    "capture_hook": "release() restored captured=false, wait_button_up=false, mouse option=false.",
+    "host_focus": "Restored to XChat window 25165827.",
+    "host_pointer": [609, 515],
+    "channel": "No pending request or result."
+  },
+  "result": "Synthetic host motion and direct temporary recapture did not produce an auditable guest pointer. No arrow was pressed. No theme asset, guest file/configuration, VM disk, performance profile or other board section changed.",
+  "next": "Wait for a physical host mouse movement inside the MAME window that makes the guest pointer visible; then verify a particular arrow and resume the held-state GTK2 comparisons.",
+  "technical_coverage_estimate": {
+    "percent": 79,
+    "not_a_visual_fidelity_score": true,
+    "reason": "This diagnostic explains the input path but completes no GTK2 control or historical held-arrow comparison."
+  }
+}

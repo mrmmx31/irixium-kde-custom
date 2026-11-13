@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "id": "R691",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Keep the authorized GTK2 DomainOS palette renderer current when the existing user companion service launches a separate synchronization helper after a KDE color-scheme update.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "deployment": {
+    "command": "python3 -B tools/theme_companion_bridge.py --instalar",
+    "result": "installed",
+    "backup_id": "c034255da49143b29d4b5ca4d07c1146",
+    "runtime": "/home/lsi/.local/share/irixium/theme-companions",
+    "changed_runtime_file": "tools/gtk2_domainos_palette.py",
+    "renderer_sha256": "a01cef8ce10acbd310c42fa4436e5253d48eaec28984a293279fd2b2587ef18a",
+    "other_deployed_modules": "identical to checkout before installation",
+    "components_json_sha256": "e114c3af0213a84ce56d59231fa4c2ebaefa418b3ec03ad71ce977d10e69e574",
+    "scrollbar_rules_sha256": "5f56bf69a5ca67bf687550d979f001ed83953d7c9a5ddf8d6d3ea647efc1d92e"
+  },
+  "preserved_runtime": {
+    "service": "irix-theme-companions.service",
+    "pid_before_and_after": 1275437,
+    "state": "active",
+    "gtk2_palette": "active",
+    "gtk2_theme": "DomainOS-SR10-4-KDE",
+    "kde_scheme": "DomainOS-SR10-4",
+    "xchat_processes": [
+      1321694,
+      1327599
+    ],
+    "engine": "libdomainos-pixbuf.so",
+    "engine_sha256": "4eaf36cc60425c564351d7d7b9f63b6fb21cc2ffc2848ca213750533853cf23d",
+    "all_processes_mapped_engine": true,
+    "desktop_or_app_restart": false
+  },
+  "verification": {
+    "bundle_runtime_fingerprint": "valid",
+    "active_palette_journal": "valid",
+    "schema_change_exercised": false,
+    "limit": "The observer process was deliberately preserved. Its next child helper imports the updated on-disk renderer; an actual KDE scheme transition has not yet been observed."
+  },
+  "remaining": [
+    "Compare GTK2 visual states with direct SR10.4 evidence where available.",
+    "User visual acceptance remains pending.",
+    "Direct held-arrow input on the reference VM still requires I517 authorization."
+  ],
+  "next": "Continue only GTK2 under I167; verify a palette regeneration event without changing other toolkit families, then cover remaining GTK2 states with existing historical references."
+}

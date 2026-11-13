@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "id": "I458-THEMELAB-CANONICAL-MOTIF-R584-20261029",
+  "recorded_at": "2026-10-29T19:53:10-04:00",
+  "scope": "Editor de pintura manual: usar os identificadores canonicos do formulario principal para parear Motif e GTK2 e oferecer o bundle GTK2 R584 como fonte importavel.",
+  "authorization": {
+    "item": "I458",
+    "user_revision": 1,
+    "assistant_ack_revision": 1,
+    "authorized": true,
+    "definition_sha256": "2722126ca0b2b6e38564e4f23d204bfa52c7a6d8bd20bf363cf5a96693401b7c",
+    "dependency_items": [
+      {
+        "id": "T04",
+        "user_revision": 9,
+        "assistant_ack_revision": 9,
+        "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+      },
+      {
+        "id": "I167",
+        "user_revision": 2,
+        "assistant_ack_revision": 2,
+        "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+      }
+    ]
+  },
+  "canonical_controls": {
+    "source": "tl_control_ids",
+    "count": 16,
+    "ids": [
+      "push",
+      "toggle",
+      "check",
+      "radio",
+      "entry",
+      "combo",
+      "spin",
+      "text",
+      "scale_h",
+      "scale_v",
+      "scroll_h",
+      "scroll_v",
+      "arrow",
+      "progress",
+      "list",
+      "frame"
+    ],
+    "motif_available": 16,
+    "gtk2_available": 16,
+    "mapping_rule": "O editor nao mantem uma segunda lista de nomes: Motif e GTK2 resolvem o mesmo indice de tl_control_ids usado pelo formulario principal."
+  },
+  "reference_sources": {
+    "motif": {
+      "label": "Motif do form principal",
+      "meaning": "Captura local corrente dos widgets Motif do formulario principal; nao e apresentada como captura historica da VM Domain/OS.",
+      "capture": "O widget canonico e mapeado temporariamente, capturado com seus filhos X11 e devolvido ao estado anterior."
+    },
+    "gtk2_r584": {
+      "label": "GTK2 R584 (assets)",
+      "receipt": "docs/review/I167-GTK2-USER-PALETTE-UPDATE-20261028-R584.json",
+      "receipt_sha256": "0f11d4aa6cb38c97f93f8035ac4ef7cab3101c944ae9d5925bd5bc5ac3de2c6b",
+      "bundle_id": "fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755",
+      "manifest_sha256": "565e5c9095e5ae86df516b819c55a502dcc74af8b5412e42af9e6c4a49d4b0ee",
+      "palette_source_sha256": "ef34a032ddb76017ff15e92524d1964eb28b0cf71414312030456b3348c79b70",
+      "asset_count": 112,
+      "selection": "controle, peca, estado, direcao e variante sao resolvidos sem fallback silencioso",
+      "mutation": "Selecionar apenas mostra a referencia; Copiar referencia e a unica acao que substitui a camada raster e cria um passo reversivel de historico."
+    }
+  },
+  "implementation": [
+    "tools/theme-lab/include/control_availability.h",
+    "tools/theme-lab/src/model/control_availability.c",
+    "tools/theme-lab/include/gtk2_r584_catalog.h",
+    "tools/theme-lab/src/model/gtk2_r584_catalog.c",
+    "tools/theme-lab/include/manual_paint_view.h",
+    "tools/theme-lab/src/view/manual_paint_view.c",
+    "tools/theme-lab/include/theme_lab.h",
+    "tools/theme-lab/src/view.c",
+    "tools/theme-lab/src/controller.c",
+    "tools/theme-lab/Makefile"
+  ],
+  "verification": {
+    "build": "C99 estrito com -Wall -Wextra -Werror",
+    "tests": [
+      "check-control-availability: 3/3",
+      "check-paint-control-catalog: 16/16 identificadores canonicos Motif disponiveis mesmo com somente um controle GTK2 visivel",
+      "check-gtk2-r584-catalog: recibo, manifesto, bundle, paleta e 112 assets verificados por SHA-256",
+      "check-paint-r584: fonte selecionavel, asset de seta pressionada copiado para a peca escolhida e raster editavel distinto",
+      "check-paint-selection: seletores OpenMotif persistem sem retornar ao item anterior",
+      "check-paint-reference-copy: copia atomica e Undo/Redo",
+      "check-paint-hints: 54 controles do editor com dica",
+      "check-paint-sample-role: 4/4, trabalhos de alvo e referencia isolados"
+    ],
+    "runtime": {
+      "service": "domainos-theme-lab-reference-source-r26-20261029.service",
+      "pid": 3661176,
+      "main_window_xid": 41943624,
+      "paint_window_xid": 41944942,
+      "paint_geometry": "1500x850+11+30",
+      "binary_sha256": "801e2c91e072398b1950f315528ddbfcfae10217e7b78a36d9c0f423d34d4c02"
+    },
+    "preserved_state": {
+      "scene_json_sha256": "75745beb2b54237a038375fa3ad4433ab11a49c40053dec38d3fc165d54ebb36",
+      "working_json_sha256": "d1cecd679637edc0b23dc39ac1830c50eeb98d7b33c2402547d5f3edd10232e3",
+      "project_history_json_sha256": "53baf100625fb6d958b410405d3ad0cf9d26b94bf54d6ec198db6f424a3ee3c8",
+      "manual_paint_json_sha256": "41fdf847748af7289c57714b0696e8256d5e8dc9a71c2e46d3c344791b6fbf87"
+    },
+    "screenshots": [
+      {
+        "path": "~/tempia/domainos-theme-work/reopen-evidence/theme-lab-r584-main.png",
+        "sha256": "09c37a5e5bb6b338e5c532b6253fcaeffeab64122c0a59b8a12972ee1926438b"
+      },
+      {
+        "path": "~/tempia/domainos-theme-work/reopen-evidence/theme-lab-r584-paint.png",
+        "sha256": "c6599f9331b9939ba435a9f530792280bde1d38583e7c484383356adbdc0f9c7"
+      }
+    ],
+    "runtime_regression_found_and_fixed": "A primeira captura Motif de um widget temporariamente mapeado encontrou BadMatch em XGetImage. XGetImage e XComposite agora usam armadilha X11 limitada; a mesma operacao foi repetida sem encerrar o processo."
+  },
+  "limits": [
+    "A cobertura 16/16 comprova o pareamento tecnico de identificadores, nao fidelidade visual historica.",
+    "A referencia Motif local nao substitui a VM Domain/OS SR10.4 com HP VUE 2.01.",
+    "R584 cobre somente os assets certificados no bundle; combinacoes ausentes ficam indisponiveis e nao usam outra imagem como fallback.",
+    "O aceite visual do usuario permanece pendente."
+  ]
+}

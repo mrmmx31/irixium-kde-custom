@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "id": "R654",
+  "date": "2026-10-29",
+  "item": "I167",
+  "section": "work",
+  "status": "user-profile-active; gtk2-refresh-broadcast-observed; per-window-paint-not-captured",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "observed_at": "2026-10-29T00:17:19Z",
+  "profile": {
+    "gtk2_rc_files": "/home/lsi/.gtkrc-2.0",
+    "selected_theme": "DomainOS-SR10-4-KDE-Reload",
+    "installed_gtkrc": "/home/lsi/.themes/DomainOS-SR10-4-KDE-Reload/gtk-2.0/gtkrc",
+    "installed_gtkrc_sha256": "29701b3bdfb12ad8055ee51f6f5c01859dd7313d7fa8c5c2fa20c6675ff60247",
+    "stepper_size_px": 15,
+    "stepper_overlay_stretch": false,
+    "gtk2_palette_companion": "active"
+  },
+  "live_reload": {
+    "journal_time_local": "2026-10-28T18:52:54-04:00",
+    "service": "irix-theme-companions.service",
+    "profile": "domainos",
+    "gtk2_palette_status": "updated",
+    "native_reload_required": true,
+    "windows_considered": 177,
+    "events_sent": 177,
+    "racing_x_errors": 0,
+    "xchat_process": {
+      "pid_at_observation": 327563,
+      "display": ":1",
+      "gtk2_rc_files_environment_includes_profile": true,
+      "started_before_profile_refresh": true
+    }
+  },
+  "limits": [
+    "The user profile points to the DomainOS GTK2 theme, and the companion reports broadcasting GTK2 reload events to all 177 enumerated windows.",
+    "The service log does not identify each XID, so delivery to the specific XChat window is not separately correlated.",
+    "No screenshot or per-widget runtime style query was taken; this does not prove the visible pixels in the existing XChat window.",
+    "No theme files, user profile, desktop process, application window, or VM were changed in this observation."
+  ],
+  "remaining": [
+    "Canonical SR10.4/VUE held-state comparisons for the upper and horizontal GTK2 arrows still await the unanswered Q515 input-method decision.",
+    "Manual visual acceptance remains separate."
+  ],
+  "board_update": {
+    "item": "I167",
+    "section": "work",
+    "user_revision": 2,
+    "assistant_ack_revision": 2,
+    "status": "running",
+    "user_authorization_preserved": true,
+    "other_board_sections_modified": false
+  },
+  "technical_coverage_estimate": {
+    "percent": 94,
+    "basis": "This confirms the selected GTK2 profile and records a broad reload broadcast, but neither correlates the XChat XID nor captures held arrows in the canonical VM; this is not a visual-fidelity score."
+  }
+}

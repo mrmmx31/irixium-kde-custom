@@ -1,0 +1,249 @@
+{
+  "status": "coverage_audited",
+  "controls": [
+    {
+      "control": "push",
+      "index": 0,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "toggle",
+      "index": 1,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "check",
+      "index": 2,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "radio",
+      "index": 3,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "entry",
+      "index": 4,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "combo",
+      "index": 5,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "spin",
+      "index": 6,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "text",
+      "index": 7,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "scale_h",
+      "index": 8,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "scale_v",
+      "index": 9,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "scroll_h",
+      "index": 10,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "scroll_v",
+      "index": 11,
+      "scene_admitted": true,
+      "scene_reason": "Native scene admitted",
+      "snippet_status": "ok",
+      "snippet_kind": "translated_native_fragment"
+    },
+    {
+      "control": "arrow",
+      "index": 12,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "progress",
+      "index": 13,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "list",
+      "index": 14,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    },
+    {
+      "control": "frame",
+      "index": 15,
+      "scene_admitted": false,
+      "scene_reason": "GTK2: cena parcial; controles além do botão e barras ainda pendentes.",
+      "snippet_status": "not_implemented",
+      "snippet_kind": "proposed_recipe"
+    }
+  ],
+  "catalog_count": 16,
+  "admitted_count": 6,
+  "coverage_percent": 37.5,
+  "coverage_basis": "six declared native control types out of sixteen; not fidelity, toolkit states or overall goal completion",
+  "prior_estimate_90_percent": "Withdrawn for complete adapter scope; described incremental pipeline progress and understated remaining controls",
+  "native_support_evidence": [
+    "I194-CONTROLADOR-CONCLUIDO-20261011.json",
+    "I195-CONTROLADOR-CONCLUIDO-20261011.json",
+    "I193-CONTROLADOR-CONCLUIDO-20261011.json"
+  ],
+  "source_sha256": {
+    "scene_contract.py": "12d09502e557766d7ba8b466e8bdfb8af52929f0d8d2272361ad050701b27f62",
+    "native_scene_gtk2.py": "2b326322c6b08cbf6b03af32bd57cbec81de7f82903940de51f61302644a15c3",
+    "backend.py": "b46b19c00c223f44f240ec0cdde9031205b1bfb465e320b5b512fe01c46663e5"
+  },
+  "at": "2026-10-11T10:18:57.304950+00:00",
+  "groups": [
+    {
+      "id": "G01",
+      "activity": "Botões, indicadores e barras",
+      "controls": [
+        "push",
+        "toggle",
+        "check",
+        "radio",
+        "scroll_h",
+        "scroll_v"
+      ],
+      "status": "integrated_scoped_evidence"
+    },
+    {
+      "id": "G02",
+      "activity": "Entrada simples e edição segura",
+      "controls": [
+        "entry"
+      ],
+      "status": "pending",
+      "foundation_item": "I200"
+    },
+    {
+      "id": "G03",
+      "activity": "Texto multilinha e edição segura",
+      "controls": [
+        "text"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G04",
+      "activity": "Seleção suspensa",
+      "controls": [
+        "combo"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G05",
+      "activity": "Entrada numérica",
+      "controls": [
+        "spin"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G06",
+      "activity": "Controles de nível",
+      "controls": [
+        "scale_h",
+        "scale_v"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G07",
+      "activity": "Seta isolada",
+      "controls": [
+        "arrow"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G08",
+      "activity": "Progresso",
+      "controls": [
+        "progress"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G09",
+      "activity": "Listas e molduras",
+      "controls": [
+        "list",
+        "frame"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "G10",
+      "activity": "Estados, atualização, edição e comparação histórica",
+      "controls": [],
+      "status": "partial_scoped_evidence",
+      "remaining": [
+        "focus",
+        "inconsistent",
+        "RTL",
+        "automatic backdrop",
+        "forced states supported honestly",
+        "historical native comparison",
+        "text editing safety on all editable controls"
+      ]
+    }
+  ],
+  "status_message_tests": 8,
+  "board_limit": 200,
+  "integration_proposal_location": "I167-GTK2-ENTRY-PROPOSTA-INTEGRACAO-20261011.json"
+}

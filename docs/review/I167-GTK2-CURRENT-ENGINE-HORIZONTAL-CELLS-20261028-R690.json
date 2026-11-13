@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "id": "R690",
+  "date": "2026-10-28",
+  "item": "I167",
+  "section": "work",
+  "scope": "Compare the normal horizontal scrollbar endpoint cells from GTK2 using the currently active user DomainOS RC and domainos-pixbuf module against native HP VUE SR10.4 at 1:1.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "runtime": {
+    "gtk2": "2.24.33",
+    "display": "private Xvfb :192",
+    "theme": "DomainOS-SR10-4-KDE",
+    "kde_color_scheme": "DomainOS-SR10-4",
+    "gtk2_engine": "~/.gtk-2.0/2.10.0/engines/libdomainos-pixbuf.so",
+    "effective_palette_rc": "/home/lsi/.local/share/irixium/gtk2-palette/aa9830f7fd6e6b2e65ab0b16e4ffe8218ae94d28ce5f04c8c8deb63b029abc3f/gtkrc",
+    "effective_palette_rc_sha256": "3c2cb9718f34796baf1c5c64f87e897b6d3733e4eb212cfb65603605f391396d",
+    "user_theme_wrapper_includes_palette": true
+  },
+  "capture": {
+    "path": "~/tempia/domainos-theme-work/I167/gtk2-current-engine-r690/current.png",
+    "sha256": "002920d76a32543962cefef57688c03d69374f1303e7923c171c6f26dd5dbce2",
+    "dimensions_px": [390, 114]
+  },
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "path": "docs/referencias/domainos-sr104/barra-horizontal-normal.png",
+    "sha256": "3f2bf37c2dafc49266c2951e3533b9c8256e22c8688a1d3ba9abffecacb069e1"
+  },
+  "comparison": {
+    "method": "Exact RGB; 15x15 endpoint cells; no scaling or filtering. GTK2 cell origins were located in the captured widget before comparison.",
+    "left": {
+      "gtk2_origin_px": [10, 8],
+      "vue_crop_origin_px": [2, 4],
+      "pixels": 225,
+      "different_pixels": 0
+    },
+    "right": {
+      "gtk2_origin_px": [365, 8],
+      "vue_crop_origin_px": [526, 4],
+      "pixels": 225,
+      "different_pixels": 0
+    },
+    "all_exact": true
+  },
+  "limits": [
+    "This closes only the normal horizontal endpoint cells in a fresh GTK2 process. It does not prove live XChat appearance by visual inspection or user acceptance.",
+    "Pressed, hover, disabled-whole-widget, thumb drag, and the direct VUE horizontal held state remain open; the latter requires the separate I517 authorization.",
+    "The companion service remains running; schema-change regeneration through that already-running process is still a separate follow-up."
+  ],
+  "next": "Continue I167 GTK2 with the next state that has direct historical evidence and no extra VUE input gate; retain user visual review as pending."
+}

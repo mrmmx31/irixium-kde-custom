@@ -1,0 +1,119 @@
+{
+  "at": "2026-10-11T14:45:37.295538+00:00",
+  "item": "T10",
+  "authority_revision": 1,
+  "phase": "preparation_only_not_final_delivery",
+  "published": false,
+  "installed": false,
+  "candidate": "T07-T09 private functional candidate; remaining tool work not complete",
+  "commit_base": "9a67cc83d763e1e5a910a891dbfc77979fc562d8",
+  "changes": [
+    "Document pkg-config dependency and all four resume files",
+    "Track owned_processes.h and Makefile for both binaries",
+    "Add check-owned-processes target"
+  ],
+  "tests": {
+    "strict_build": "all, controller-spin-probe and check-owned-processes passed",
+    "header_rebuild_graph": "make -n -W include/owned_processes.h schedules both binaries",
+    "runtime_import_closure": 2,
+    "scoped_diff_check": "passed tools/theme-lab"
+  },
+  "reused_proofs": {
+    "receipt": "docs/review/T09-PERDA-DISPLAY-20261011.json",
+    "same_sha256": {
+      "tools/theme-lab/build/theme-lab": true,
+      "tools/theme-lab/build/controller-spin-probe": true,
+      "tools/theme-lab/src/controller.c": true
+    },
+    "scope": "Same product/probe/controller bytes; reuse only T09 private functional checks, not whole tool completion or visual fidelity"
+  },
+  "runtime_inventory_scope": "Installed libraries/imports; no historical fidelity or visual test claimed.",
+  "runtime_inventory": {
+    "motif": {
+      "available": true,
+      "version": "2.3.8-4",
+      "adapter": "not_implemented",
+      "native_gallery": false,
+      "recipe_applied": false
+    },
+    "gtk1": {
+      "available": false,
+      "version": null,
+      "adapter": "not_implemented",
+      "native_gallery": false,
+      "recipe_applied": false
+    },
+    "gtk2": {
+      "available": true,
+      "version": "2.24.33",
+      "adapter": "gtk2_scrollbar_proposal_only",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "gtk3": {
+      "available": true,
+      "version": "3.24.49",
+      "adapter": "gtk3_private_recipe",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "gtk4": {
+      "available": true,
+      "version": "4.18.6",
+      "adapter": "not_implemented",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "gtk5": {
+      "available": false,
+      "version": null,
+      "adapter": "not_implemented",
+      "native_gallery": false,
+      "recipe_applied": false
+    },
+    "qt5": {
+      "available": true,
+      "version": "5.15.15",
+      "adapter": "not_implemented",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "qt6": {
+      "available": true,
+      "version": "6.8.2",
+      "adapter": "not_implemented",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "kvantum": {
+      "available": true,
+      "version": null,
+      "adapter": "not_implemented",
+      "native_gallery": true,
+      "recipe_applied": false
+    },
+    "plasma": {
+      "available": true,
+      "version": "6.8.2",
+      "adapter": "not_implemented",
+      "native_gallery": true,
+      "recipe_applied": false
+    }
+  },
+  "remaining": [
+    "Continue authorised tool items, starting T02 catalog",
+    "Coordinate private T07-T09 candidate handoff without losing saved project/scene/history",
+    "Final T10 release audit remains for end, per user instruction; no publication authorised by this receipt"
+  ],
+  "estimated_stage_progress_percent": 10,
+  "basis": "Preparation inventory/build documentation only. Final validation, pending feature scope and delivery not completed. Not goal/fidelity percentage.",
+  "sha256": {
+    "tools/theme-lab/Makefile": "60b6ef6ab7bf32bce1f0fbce3b12c482b5db8f9c17bb7e289c57caf9f8b41d58",
+    "tools/theme-lab/README.md": "00f4056d200fbfca65ad35e6a693cc406fc9ba33c7e622c0547efa20255e9ca3",
+    "tools/theme-lab/build/theme-lab": "6fbc1bf36640a8f93df363f199af390c1599462d2974610e63b043b994e03f29",
+    "tools/theme-lab/build/controller-spin-probe": "4f3d728d042e54177fad03171986fa61016c5196b340926addb5cef7b323cc34",
+    "tools/theme-lab/src/controller.c": "ed59a7ad7eafc13eaefdc0d252d3c03b04bb6c419edadbea5295a1d207696b3c",
+    "tools/theme-lab/include/owned_processes.h": "8b053b1db602bd471c7cc0806921e77dde8b59d10d2fd14c40a504f740c62372",
+    "plasma/tools/abrir-laboratorio-temas.py": "8648258c79f6c591e336f6e8e8e74bb91b4fff282595550e78525b05fc028f7d"
+  }
+}

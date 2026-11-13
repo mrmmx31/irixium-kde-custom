@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-10T18:17:14.966621+00:00",
+  "scope": "title_and_reload_incident",
+  "user_approval": "pending",
+  "tests": {
+    "model": 15,
+    "import": 7,
+    "reload_native": 5,
+    "navigation_native": 7,
+    "safe_editing_native": 10
+  },
+  "source_sha256": {
+    "src/controller.c": "3cd43c1005ea46b8f320d28ff08631d476ae581b578ab04b5c2e6b855fe120ac",
+    "src/model.c": "a544ff1b78099bffd36cb0f604351cb242b1c9ee6eff6962f72ba8baf22fc840",
+    "src/view.c": "5ef08a143356b6e70f2561e37a846a34a74822c3992f1a8eb8e5a245fab6db57",
+    "tests/test_store.py": "367303a75d8caff39e142913cbb0d6a20ad7ea94fc1c4d714834b9438980288f",
+    "tests/test_reload.py": "2865b5c1408a881ef027042d2419db1ec8d58cf3594195a9ebb82c0e451ad600",
+    "Makefile": "6432cedf5ed109b1204f0a8ed87719b325295fd2dc849773d587f6e9fdadede6"
+  },
+  "private_user_data_included": false,
+  "pending_architecture": [
+    "PR01",
+    "PR02",
+    "PR03",
+    "PR04",
+    "PR05",
+    "PR06",
+    "PR07",
+    "R01"
+  ],
+  "lsi_installation": {
+    "saved_records_identical": true,
+    "drafts_identical": true,
+    "undo_histories_identical": true,
+    "sections": 5,
+    "items": 80,
+    "utf8_title_verified": true,
+    "maximized_geometry": "1920x951",
+    "public_data_excludes_personal_state": true,
+    "kwin_caption_verified": "AI Work Board — Prancheta de projetos"
+  }
+}

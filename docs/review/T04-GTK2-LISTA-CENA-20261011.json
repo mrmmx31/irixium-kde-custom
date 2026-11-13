@@ -1,0 +1,41 @@
+{
+  "checked_at": "2026-10-11T18:02:21.955745+00:00",
+  "status": "python_scene_integrated_verified",
+  "family": "gtk2",
+  "control": "list",
+  "native_result": ".qa-t04-list-integration/native-sized/RESULTADO.json",
+  "native_scenes": 24,
+  "state_preserving_rebuilds": 8,
+  "tests": {
+    "list_integration": 3,
+    "gtk2_scene_contract": 4,
+    "arrow_regression": 4,
+    "diff_check": "passed"
+  },
+  "sources": {
+    "gtk2_generation.py": "b8ad08b8b7c638d714c759fcec981b1935fc86a108494e1af76349db8441358e",
+    "gtk2_session.py": "2b1c0e0714d3a66a0360113d513f0faf06fbe90ea0f74c419993253bca9e8e36",
+    "native_scene_gtk2.py": "fe37962d76a2ef0bd28c2f206567dafeb9b361eb1b597e62ca56658b7932f385",
+    "gestures_gtk2.py": "16144f8142c2a83ea887a58e2aabab6256235ac260c04b54ef0ff6bfb526fe0c",
+    "backend.py": "a7eab6dd020f9da311dc8e8f6c38c964844cc8b7d721aae42a72e96a86439ae4",
+    "list_control_gtk2.py": "eb94a72aab9c1f0510a43fab03b37aa5d7ea7a33dc7abd0fdd12f82b4949cc18"
+  },
+  "scope": "Generation/qualified bindings/selected snippet/native scene/session connected. Native palette pixels and selection keyboard/scroll passed. Rebuild preserves rows/selection/scroll offsets and dimensions. Private only.",
+  "visual_inspection": ".qa-t04-list-integration/native-sized/DomainOS/separate-normal.png examined; selected flat row and sunken enclosure.",
+  "remaining": [
+    "C receipt validation and real controller flow",
+    "Native Ctrl gestures without changing row selection",
+    "Full glyph/scrollbar pixel matrix in populated list",
+    "Cross-process sample history/state persistence",
+    "Historical/manual approval"
+  ],
+  "coverage": {
+    "integrated": 14,
+    "total": 16,
+    "percentage": 87.5,
+    "basis": "List not counted until C/controller and gestures pass."
+  },
+  "failed_attempts": [
+    "Fixture missing sizes list corrected; initial failure retained."
+  ]
+}

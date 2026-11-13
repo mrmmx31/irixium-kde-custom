@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-14",
+  "authority": {
+    "item": "P04",
+    "user_revision": 3,
+    "authorized": true,
+    "definition_sha256": "da73bf29ee8b311998f00d4d99d9c3d644d776cc605a46478ad669a139581f41"
+  },
+  "scope": "Reproduzir no ambiente lsi o clique em Operações na Iconbox e corrigir somente causa comprovada.",
+  "environment": {
+    "display": ":69",
+    "compositor": "Xephyr + KWin 6.3.6 X11 privado",
+    "resolution": "1600x1200",
+    "plasmashell_pid": 2179033,
+    "production_board_pid": 2297777,
+    "production_board_sha256": "f2d87697d06f3e29e88b9711424cfdf66562a97f1b21866fa77fe9cc3b96307d"
+  },
+  "source_hashes": {
+    "worktree/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "installed/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "xephyr/DomainOSIconbox.qml": "4c3e56bbeffacdf9719b8acd30d514c2217d7691e61bcf59a4301541bead0aed",
+    "worktree/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+    "installed/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc",
+    "xephyr/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc"
+  },
+  "test": {
+    "synthetic_windows": 10,
+    "window_class": "P04Probe",
+    "group_header": "XTerm — 0 de 7 selecionadas",
+    "selected_members": 2,
+    "mouse_input": "xdotool clicks within Xephyr :69",
+    "popup_title": "Operações das janelas selecionadas",
+    "popup_geometry": "331x286 at +813+760",
+    "popup_contents": "2 janelas selecionadas and available operations",
+    "still_viewable_after_seconds": 3,
+    "escape_closed_popup": true,
+    "window_operations_executed": false,
+    "test_windows_closed": true,
+    "failure_reproduced": false,
+    "code_or_configuration_changed": false
+  },
+  "screenshots": {
+    "grouped_windows": {
+      "path": "/home/lsi/tempia/domainos-i178-20261014/p04-ten-probes.png",
+      "sha256": "95c51517ecec0c18fcb188026e284f7741c5b020aad0c2fce9908f759cdef9f5"
+    },
+    "group_selection": {
+      "path": "/home/lsi/tempia/domainos-i178-20261014/p04-group-selected.png",
+      "sha256": "d3a4c660cb23860774d7d462df4210949876e5367e2c9d2ed952e2afc95eaa22"
+    },
+    "operations_open": {
+      "path": "/home/lsi/tempia/domainos-i178-20261014/p04-operations-click.png",
+      "sha256": "9b723c62fbe03036baca0f61cdc790264c52bd79f204bc22b7233a1793ca7487"
+    },
+    "operations_stable_3s": {
+      "path": "/home/lsi/tempia/domainos-i178-20261014/p04-operations-stable-3s.png",
+      "sha256": "4e8f0d83484410d659a28cd49e76aac89ce03e9985046e0c2cce24f1e9875ab7"
+    }
+  },
+  "limits": [
+    "This proves the applet path loaded in private Xephyr, not physical input to the personal production Wayland panel.",
+    "The current production install hashes match the tested Iconbox and OperationsPanel files.",
+    "An inotify capacity notification appeared in Xephyr; no system limit or session setting was changed."
+  ],
+  "next": "Q360 asks whether the same Operations action still fails in the open production session."
+}

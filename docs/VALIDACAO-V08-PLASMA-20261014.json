@@ -1,0 +1,819 @@
+{
+  "item": "P10",
+  "family": "V08",
+  "date": "2026-10-14",
+  "status": "partial_content_fraction_matched_thumb_geometry_and_idle_trough_differ_manual_review_open",
+  "reference": {
+    "system": "Domain/OS SR10.4",
+    "desktop": "HP VUE 2.01",
+    "metrics": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json",
+    "native_bar_cross_axis_px": 15,
+    "native_thumb_cross_axis_px": 11,
+    "capture_sha256": "60270f874bfd00758912e34a5d878d964b785a27cac2153385f1013035f6a1b5"
+  },
+  "consumer": {
+    "component": "org.kde.plasma.components.ScrollBar (real KDE Plasma QML component)",
+    "source": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/plasma/components/ScrollBar.qml",
+    "source_sha256": "667eb8eb470df650925831025efc391d6f655d70bb4ebcb4d3e93f5076145262",
+    "package": "plasma-desktoptheme",
+    "native_renderer": "KSvg.FrameSvgItem loading widgets/scrollbar.svg",
+    "arrow_support": "source contains TODO support arrows; this Plasma Components control does not draw stepper arrows. The System Settings arrow belongs to V07."
+  },
+  "implementation": {
+    "generator": "plasma/IrixClassicDomainOS/tools/build_artwork.py",
+    "generator_sha256": "ff9a15e76837a8f07e9803752adc59dbeb989ba8d8e2f63ece765176f96a4319",
+    "asset": "plasma/IrixClassicDomainOS/widgets/scrollbar.svg",
+    "asset_sha256": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
+    "origin": "plasma/IrixClassicDomainOS/ORIGEM.json",
+    "origin_sha256": "ed0df6b1ef1634df9723be9aff19e211de611dbfa485f2867d719e6f1a183d04",
+    "geometry": {
+      "hint_scrollbar_size": [
+        11,
+        11
+      ],
+      "vertical_cross_axis_insets": [
+        2,
+        2
+      ],
+      "horizontal_cross_axis_insets": [
+        2,
+        2
+      ]
+    }
+  },
+  "capture": {
+    "environment": "Xephyr :69, 1024x844, Qt6.8.2 / PyQt6, real Plasma Components.ScrollBar and KSvg; temporary XDG copy of current KDE colors; DPR1",
+    "fixture": "/home/lsi/tempia/domainos-v08-plasma-20261014/plasma-scrollbar-fixture.qml",
+    "before_image": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/plasma-scrollbars-before.png",
+      "sha256": "4cdf05d7f3526c384ae899a0f4da8a4cec4edc4bef8f6b8be7cf0a91d286ca1e"
+    },
+    "after_image": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/plasma-scrollbars-after.png",
+      "sha256": "99e26a527eec2b722811dacee2ff227e00f4b7996f901ae13ca28ccf4a507149"
+    },
+    "hover_image": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/plasma-scrollbars-hover-after.png",
+      "sha256": "99e26a527eec2b722811dacee2ff227e00f4b7996f901ae13ca28ccf4a507149"
+    },
+    "before_metrics": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/metrics-before.json",
+      "sha256": "fb3a19e6b6cbcf1a2479b73ab1f46252b50fd45903af5a4ac34dcf6cfec7fb3a",
+      "vertical_thickness_px": 20,
+      "horizontal_thickness_px": 16,
+      "thumb_cross_size_px": 12
+    },
+    "after_metrics": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/metrics-after.json",
+      "sha256": "a7b9905332cc6b6d09182005c1b04254de93cf3fd654279aed1f5d90006adf99",
+      "vertical_thickness_px": 15,
+      "horizontal_thickness_px": 15,
+      "thumb_cross_size_px": 11,
+      "hover_state_observed": true
+    }
+  },
+  "native_palette_validation": {
+    "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/native-verification/verification.json",
+    "sha256": "5c9570f70725ab62603a8b33c2c78f19107de9f112e173f022cfc79842502fa0",
+    "passed": true,
+    "cases": [
+      "current_roles",
+      "dark",
+      "strong_roles",
+      "yellow"
+    ],
+    "native_checks": 207,
+    "all_checks_passed": true,
+    "native_element_bounds_compared_per_case": 1875,
+    "intentional_changed_bounds": [
+      "widgets/scrollbar.svg#layer1",
+      "widgets/scrollbar.svg#hint-scrollbar-size",
+      "widgets/scrollbar.svg#slider-hint-left-inset",
+      "widgets/scrollbar.svg#slider-hint-right-inset",
+      "widgets/scrollbar.svg#mouseover-slider-hint-left-inset",
+      "widgets/scrollbar.svg#mouseover-slider-hint-right-inset",
+      "widgets/scrollbar.svg#background-vertical-hint-left-inset",
+      "widgets/scrollbar.svg#background-vertical-hint-right-inset"
+    ],
+    "desktop_configuration_modified": false
+  },
+  "verification": {
+    "generator": "python3 plasma/IrixClassicDomainOS/tools/build_artwork.py",
+    "result": "passed; original Classic inventory unchanged",
+    "unit": "python3 -m unittest tests.test_domainos -v",
+    "result_unit": "6 tests passed",
+    "native": "python3 plasma/IrixClassicDomainOS/tools/verify_artwork.py --output /home/lsi/tempia/domainos-v08-plasma-20261014/native-verification",
+    "result_native": "passed; four fresh color-role cases: current roles, dark, yellow and strongly distinct roles; 207 checks"
+  },
+  "limits": [
+    "Only Plasma scrollbar cross-axis geometry was corrected; no arrow family is present in this component.",
+    "A real PC.ScrollBar+KSvg fixture now matches the native page fraction 15/165 and track 15x228; the native thumb is 11x21 at y=1 and Plasma is 11x20 at y=2. This is not an identical application/data widget.",
+    "The Plasma component hides its track background at idle while the native VUE paints the trough; full 15x228 ROI differs in all 3420 pixels for this behavior.",
+    "A private top/bottom inset=1 probe moves the vertical thumb to y=1 but leaves it 20px long; the shared SVG hint also expands the horizontal thumb cross-axis to 13px. No product asset was changed.",
+    "No historical held or disabled state is inferred; this component does not draw arrows.",
+    "Q372 awaits the user choice between documenting these integration limits and proposing a separate QML integration; manual visual review is still open."
+  ],
+  "changes": {
+    "DomainOS_style_source_changed": true,
+    "personal_KDE_or_Plasma_configuration_changed": false,
+    "other_AI_T04_touched": false,
+    "VM_input_sent": false
+  },
+  "next": "Keep V08 partial with no asset or product code change. Q372 is acknowledged at revision 0 and asks whether to document current Plasma limits or open a separate QML integration demand. The content-fraction/track-matched probe shows native 11x21 versus Plasma 11x20 at +1px, and idle trough behavior differs. A private inset variation does not solve vertical length and would widen horizontal thumb to 13px. Continue only after the user choice; keep manual review separate.",
+  "matched_normal_state_probe": {
+    "date": "2026-10-14",
+    "environment": "New isolated Xephyr :69; Qt 6.8.2 / Plasma Components.ScrollBar + KSvg; DPR 1; XCB; cursor outside; no personal KDE configuration or Apollo VM input.",
+    "reference_crop": {
+      "path": "docs/referencias/domainos-sr104/barra-vertical-normal.png",
+      "source_sha256": "caac3a9204d72c3ac12fd995fd0755cdc459d45c9418f8db871a0350b76e9ce5",
+      "crop_box_exclusive": [
+        2,
+        2,
+        17,
+        257
+      ],
+      "size_px": [
+        15,
+        255
+      ],
+      "native_controls": "SR10.4 scrollbar including Xt arrow buttons; arrows are absent in Plasma Components.ScrollBar."
+    },
+    "plasma_fixture": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/matched-normal/fixture.qml",
+      "sha256": "13ea7da2ab7ffb8e8fb9f0fb326915113b43676c66e143121eeca6fca0b067d2",
+      "capture": "/home/lsi/tempia/domainos-v08-plasma-20261014/matched-normal/plasma-vertical-normal.png",
+      "capture_sha256": "4997b7277bcec64696f5d15f847afbe7b9db4c3e9a1e267501dd1170f4f38f5f",
+      "crop_box_exclusive": [
+        22,
+        12,
+        37,
+        267
+      ],
+      "size_px": [
+        15,
+        255
+      ],
+      "bar_geometry_px": [
+        15,
+        255
+      ],
+      "thumb_cross_axis_px": 11,
+      "thumb_visible_rows_in_fixture": 70,
+      "position": 0.36,
+      "page_size": 0.28,
+      "hovered": false
+    },
+    "pixel_comparison": {
+      "changed_pixels": 2208,
+      "of": 3825,
+      "interpretation": "This count is not a style-fidelity score: reference includes arrows while Plasma has no arrows, and the historical content/page ratio is not available to match thumb length. Geometry and cross-axis thumb size agree with known native measurements; detailed appearance and thumb length remain unproven."
+    },
+    "source_changes": false,
+    "personal_configuration_changed": false,
+    "vm_input_sent": false,
+    "result": "Normal-state, same-size crop added as scoped evidence. No SVG correction inferred. V08 remains partial; content-matched thumb and manual review remain open."
+  },
+  "interaction_probe": {
+    "environment": "Existing Xephyr :69; real Plasma Components.ScrollBar + KSvg in isolated fixture; DPR 1.",
+    "input": "Pointer moved outside the window for baseline, onto the vertical thumb, held left button, released while still hovering, then moved outside.",
+    "captures": {
+      "normal": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/states-normal.png",
+        "sha256": "50157e43b49d797262c3e81f4d3e53c3c82adc7447017eabc20e6e5048fc9d50"
+      },
+      "hover": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/states-hover.png",
+        "sha256": "59aef2b55b77879e64769c6d629d600458fbcce5a23b9738b0ac3447bde2c4c9"
+      },
+      "held": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/states-held.png",
+        "sha256": "2bd7e893fa414e2d6afefabf04cb85f44d86dd9e36a6639ec1876c365728474b"
+      },
+      "released_hovered": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/states-released-hovered.png",
+        "sha256": "2bd7e893fa414e2d6afefabf04cb85f44d86dd9e36a6639ec1876c365728474b"
+      },
+      "released_outside": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/states-released-outside.png",
+        "sha256": "da7ec8944f65682f16fdbbbd5f37e0151e6f1baf9101a00a57a0d6f3eccc0435"
+      }
+    },
+    "vertical_bar_roi_box_exclusive": [
+      38,
+      45,
+      64,
+      322
+    ],
+    "pixel_results": {
+      "normal_to_hover": {
+        "different_pixels": 2457,
+        "of": 7202,
+        "observation": "Hover fades in the background/trough."
+      },
+      "hover_to_held": {
+        "different_pixels": 0,
+        "of": 7202,
+        "observation": "Pressing the thumb did not move it or change its pixels."
+      },
+      "held_to_release_while_hovered": {
+        "different_pixels": 0,
+        "of": 7202,
+        "observation": "The component uses the same mouseover-slider SVG prefix for hover and pressed."
+      },
+      "released_outside_to_normal": {
+        "different_pixels": 0,
+        "of": 154800,
+        "observation": "After moving the pointer away, the entire window matches the normal capture exactly."
+      }
+    },
+    "historical_limit": "This validates the current Qt component's hover/press/release event path and geometry only. SR10.4 VM evidence covers a pressed down arrow, not a pressed thumb; no historical appearance conclusion is claimed for this state."
+  },
+  "disabled_state_recheck": {
+    "environment": "Xephyr :70, 1024x844, Qt 6.8.2/PyQt6, real org.kde.plasma.components.ScrollBar + KSvg, DPR 1, isolated XDG config/data/cache copied from the earlier V08 fixture; no personal KDE config or theme installation",
+    "fixture_source": "/home/lsi/tempia/domainos-v08-plasma-20261014/plasma-scrollbar-fixture.qml",
+    "fixture_disabled_sha256": "1600d76528880464bcae6e399e5524720eda980ff3c4c5a31d99d5839ba76eb1",
+    "isolated_palette_sha256": "472da2be6bac5ad16fa74a5ccd806e156bb22da015d906d7b2892d5ac511d8ab",
+    "enabled_capture": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/disabled-20261014/enabled-fixture.png",
+      "sha256": "6fb444d9c5b0415e1ac6c3b8cf2a5b56bf98447257d7a33d6385b7890910bd79"
+    },
+    "disabled_capture": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/disabled-20261014/disabled-fixture.png",
+      "sha256": "593deb393802321fff352208ee2321c4fa7a978a402699947755259fcdea27ee"
+    },
+    "runtime_metrics": {
+      "vertical": {
+        "enabled": false,
+        "visible": true,
+        "width_px": 15,
+        "height_px": 270
+      },
+      "horizontal": {
+        "enabled": false,
+        "visible": true,
+        "width_px": 270,
+        "height_px": 15
+      },
+      "device_pixel_ratio": 1
+    },
+    "enabled_disabled_pixel_diff": {
+      "vertical_roi_xyxy": [
+        38,
+        45,
+        64,
+        322
+      ],
+      "vertical_changed_pixels": 814,
+      "vertical_diff_bbox_local": [
+        6,
+        101,
+        17,
+        175
+      ],
+      "horizontal_roi_xyxy": [
+        82,
+        310,
+        362,
+        338
+      ],
+      "horizontal_changed_pixels": 990,
+      "horizontal_diff_bbox_local": [
+        65,
+        10,
+        155,
+        21
+      ],
+      "observation": "The change is confined to the thumb areas in this fixture; the disabled component remains visible and retains the 15px cross-axis geometry. The packaged QML sets handle opacity to 0.5 when disabled. This records current Plasma behavior only; the SR10.4 VM has no matching Xt-insensitive thumb observation."
+    }
+  },
+  "scrollview_corner_probe": {
+    "date": "2026-10-14",
+    "environment": "Xephyr :69, 1024x844, Qt 6.8.2/PyQt6, PC.ScrollView and Plasma Components.ScrollBar + KSvg, DPR 1, isolated XDG copied from V08 fixture",
+    "reference": "HP VUE 2.01 Trash Can native screenshot at 1:1; native corner crop is 40x45 around the two scrollbar ends. The native 15px bars and 4px gaps remain measurements from TRASH-CAN-METRICAS.json.",
+    "fixture": {
+      "qml": "/home/lsi/tempia/domainos-v08-plasma-20261014/scrollview-corner-20261014/fixture.qml",
+      "qml_sha256": "02bee8483fb09ed86777258bef8fb2ee618b566009b9aaebc84a6d4fe217908a",
+      "image": "/home/lsi/tempia/domainos-v08-plasma-20261014/scrollview-corner-20261014/scrollview-corner.png",
+      "image_sha256": "6911f3abcd11e182535d7c2b42fe4e14e1714044b8da49a91db59a791966ca23",
+      "metrics": "/home/lsi/tempia/domainos-v08-plasma-20261014/scrollview-corner-20261014/metrics.json",
+      "metrics_sha256": "4e61cf273f7ee504bc47dceb6740c509396a90bc9c83d6cbc2b61298049d94f6",
+      "scrollview_bounds": [
+        35,
+        40,
+        350,
+        270
+      ],
+      "horizontal_bar_local": [
+        0,
+        255,
+        335,
+        15
+      ],
+      "vertical_bar_local": [
+        335,
+        0,
+        15,
+        255
+      ],
+      "content_viewport": [
+        335,
+        255
+      ],
+      "reserved_intersection": [
+        15,
+        15
+      ],
+      "content_size": [
+        700,
+        600
+      ]
+    },
+    "observation": "The real PC.ScrollView reserves a 15x15 parent intersection when both bars show. In this isolated fixture the intersection shows the Window background because no ScrollView background was assigned; content uses palette.base. Native VUE crop shows the content face in its corner region. This demonstrates that the corner fill follows the host ScrollView/background context; it does not establish a defect in the Plasma ScrollBar SVG or an app-independent color rule. No product change was made.",
+    "warnings": [
+      "Qt emitted a visible-binding loop warning for the two attached Plasma ScrollBars; bars still measured 15px and the capture was saved. The capture is scoped to parent-owned corner/background behavior, not a final application rendering.",
+      "The initial fixture with two separate unconnected ScrollBars did not meet at a corner; this ScrollView probe was run to resolve that scope question."
+    ],
+    "source_changes": false,
+    "personal_config_changed": false,
+    "vm_input_sent": false,
+    "page_host_followup": {
+      "fixture": "/home/lsi/tempia/domainos-v08-plasma-20261014/scrollview-corner-page-20261014/fixture.qml",
+      "fixture_sha256": "bb47c97d033a787099a0953a8159f82dab13f2b6845d76b6d79e143095637480",
+      "image": "/home/lsi/tempia/domainos-v08-plasma-20261014/scrollview-corner-page-20261014/scrollview-corner-page.png",
+      "image_sha256": "00995cdf58d4f53c1f7a16056fef3554bf03ac847e9db5488f89a5a84e1f70fd",
+      "metrics_sha256": "1689a381e58fe19e7948370b7890c5bdb3066991bbaf8ccae77e86982c3e0bb5",
+      "runtime_roles_logged": {
+        "Kirigami.Theme.backgroundColor": "#78a0d5",
+        "Kirigami.Theme.viewBackgroundColor": "undefined",
+        "SystemPalette.window": "#78a0d5",
+        "SystemPalette.base": "#6688b5"
+      },
+      "result": "Adding a real PC.Page parent still left the intersection unpainted in this fixture; PC.Page/Representation does not supply a ScrollView background itself. A full plasmoid popup/host must determine the final background. This does not show an app-independent ScrollBar asset defect."
+    },
+    "source_trace": {
+      "plasma_scrollview_qml": {
+        "path": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/plasma/components/ScrollView.qml",
+        "sha256": "ab6d54abc46b35a02ac62a915033dba297230ab80ae7427d1c167e27dcdf12df",
+        "finding": "Places real Plasma ScrollBars against right and bottom edges and reserves their padding; it declares no background fill for the corner."
+      },
+      "plasma_representation_qml": {
+        "path": "/usr/lib/x86_64-linux-gnu/qt6/qml/org/kde/plasma/extras/Representation.qml",
+        "sha256": "6a4ddd64699e267937b02ca827df2582afed62e2d2dc9206188505d70463e06d",
+        "finding": "Representation extends PlasmaComponents.Page; it adjusts margins but does not assign a background."
+      },
+      "real_installed_consumer_source": {
+        "path": "/usr/share/plasma/plasmoids/org.kde.plasma.vault/contents/ui/main.qml",
+        "sha256": "1f1922c7fff91756fad267ec82f082266a1370ff46a06ddb3a56be1df1e7b627",
+        "finding": "Vault fullRepresentation uses PlasmaExtras.Representation containing PlasmaComponents3.ScrollView; it does not assign a ScrollView background."
+      },
+      "scope": "Static QML source confirms the host owns the final corner background, but no user-data plasmoid was launched; live application rendering remains unverified."
+    },
+    "panel_host_followup": {
+      "date": "2026-10-14",
+      "environment": "Xephyr :69, 1600x1200, real Plasma 6.3.6 plasmashell/KWin, isolated XDG profile, DPR 1; synthetic probe widget in a temporary top panel",
+      "fixture_package": "/home/lsi/tempia/domainos-v08-plasma-20261014/popup-host-20261014/package",
+      "capture": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/popup-host-20261014/root-tall.png",
+        "sha256": "87233040f02482cfc1c2bec341e4e57692289af86dee0066a5080a5de4b0ec75",
+        "dimensions_px": [
+          1600,
+          1200
+        ]
+      },
+      "runtime_roles_logged": {
+        "SystemPalette.window": "#3d3d3e",
+        "SystemPalette.base": "#2e2e2e",
+        "SystemPalette.text": "#ffffff"
+      },
+      "observation": "A real Plasma panel containment rendered synthetic scroll content with both real Plasma Components scrollbars. The 15x15 reserved intersection shows the outer patterned panel surface while rows use SystemPalette.base; the role values were logged by the fixture. This is direct evidence for corner ownership in that panel host.",
+      "scope_limit": "This is a panel containment, not the applet popup/Representation. It does not establish the final popup background or a defect in the scrollbar asset.",
+      "source_changes": false,
+      "personal_config_changed": false,
+      "temporary_panel_removed": true,
+      "other_AI_T04_touched": false
+    },
+    "popup_host_followup": {
+      "date": "2026-10-14",
+      "environment": "Xephyr :69, 1600x1200, Plasma 6.3.6 plasmashell/KWin, isolated XDG profile, DPR 1",
+      "synthetic_applet": {
+        "plugin_id": "org.irixclassic.domainos.v08popupprobe",
+        "qml": "/home/lsi/tempia/domainos-v08-plasma-20261014/popup-host-20261014/popup-probe-package/contents/ui/main.qml",
+        "qml_sha256": "a2eb65643f4b33f7f39066142506d925bec41756aca6c5320deb56835755dcb8",
+        "metadata_sha256": "f6614961d5cb4005d73a1c3a9904b438c75e736b8c247c385c9ac202ec7f2739",
+        "activation": "Clicked the compact V08 representation; PlasmoidItem.expanded opened fullRepresentation in the real plasmashell popup."
+      },
+      "popup_window": {
+        "map_state": "IsViewable",
+        "bounds_xywh": [
+          8,
+          56,
+          778,
+          558
+        ]
+      },
+      "capture": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/popup-host-20261014/popup-live.png",
+        "sha256": "f4ac0d511cd562f1c0c02a487cd2995d017f55075f06f6a26e4de97204d66b00",
+        "dimensions_px": [
+          1600,
+          1200
+        ],
+        "scale": "1:1"
+      },
+      "runtime_roles_logged": {
+        "SystemPalette.window": "#3d3d3e",
+        "SystemPalette.base": "#2e2e2e",
+        "SystemPalette.text": "#ffffff"
+      },
+      "pixel_samples_rgb": {
+        "popup_content_row": [
+          46,
+          46,
+          46
+        ],
+        "popup_background_beside_content": [
+          120,
+          160,
+          213
+        ],
+        "reserved_corner_center": [
+          120,
+          160,
+          213
+        ]
+      },
+      "reserved_corner_roi": {
+        "box_xyxy_exclusive": [
+          770,
+          598,
+          785,
+          613
+        ],
+        "size_px": [
+          15,
+          15
+        ],
+        "pixels_equal_to_adjacent_popup_background": 169,
+        "total_pixels": 225
+      },
+      "observation": "The real plasmashell popup displays both Plasma Components scrollbars around synthetic content. The sampled reserved corner center is #78a0d5, equal to the adjacent popup background; 169/225 pixels in the 15x15 corner ROI match that background. Content rows use the logged SystemPalette.base role. This live popup render confirms the host supplies the corner fill in this synthetic applet.",
+      "scope_limit": "Synthetic applet and content in the real Plasma popup host; does not measure a user applet or establish content-matched thumb length against the empty SR10.4 Trash Can.",
+      "source_changes": false,
+      "personal_config_changed": false,
+      "temporary_applet_panel_removed": true,
+      "isolated_layout_restored": true,
+      "other_AI_T04_touched": false
+    }
+  },
+  "scrollbar_runtime_palette_probe": {
+    "date": "2026-10-14",
+    "environment": "Isolated Xephyr :69/XCB, private D-Bus and XDG config. Real org.kde.plasma.components.ScrollBar + KSvg, one live QML engine. Each temporary kdeglobals role palette and QApplication QPalette were changed together and ApplicationPaletteChange was sent. No user config, persistent KDE config, VM or Apollo state was changed.",
+    "script": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/probe.py",
+    "script_sha256": "31e7437e3b2248e2ca7ef3ed53008014f69b232c39a5ef83d43e308b25cf1dd4",
+    "fixture": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/fixture.qml",
+    "fixture_sha256": "b0a0776d4a2215945c44a8940d29603d4cefc9cbe7df5505262fb7d6845a04ab",
+    "results_json": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/results.json",
+    "results_json_sha256": "5bea532f72453548523387b2e32ee2b7ac6f2be78da7029ba9833a0d0d7948e9",
+    "passed": true,
+    "checks": {
+      "domainos_window_role_rendered": true,
+      "domainos_normal_geometry_15px": true,
+      "domainos_normal_button_text_role_visible": true,
+      "domainos_hover_is_active": true,
+      "domainos_disabled_is_inactive": true,
+      "neutral_window_role_rendered": true,
+      "neutral_normal_geometry_15px": true,
+      "neutral_normal_button_text_role_visible": true,
+      "neutral_hover_is_active": true,
+      "neutral_disabled_is_inactive": true,
+      "dark_window_role_rendered": true,
+      "dark_normal_geometry_15px": true,
+      "dark_normal_button_text_role_visible": true,
+      "dark_hover_is_active": true,
+      "dark_disabled_is_inactive": true,
+      "yellow_window_role_rendered": true,
+      "yellow_normal_geometry_15px": true,
+      "yellow_normal_button_text_role_visible": true,
+      "yellow_hover_is_active": true,
+      "yellow_disabled_is_inactive": true,
+      "neutral_normal_render_changes": true,
+      "neutral_normal_thumb_role_changes": true,
+      "neutral_hover_render_changes": true,
+      "neutral_hover_thumb_role_changes": true,
+      "neutral_disabled_render_changes": true,
+      "neutral_disabled_thumb_role_changes": true,
+      "dark_normal_render_changes": true,
+      "dark_normal_thumb_role_changes": true,
+      "dark_hover_render_changes": true,
+      "dark_hover_thumb_role_changes": true,
+      "dark_disabled_render_changes": true,
+      "dark_disabled_thumb_role_changes": true,
+      "yellow_normal_render_changes": true,
+      "yellow_normal_thumb_role_changes": true,
+      "yellow_hover_render_changes": true,
+      "yellow_hover_thumb_role_changes": true,
+      "yellow_disabled_render_changes": true,
+      "yellow_disabled_thumb_role_changes": true,
+      "all_four_normal_thumb_centers_are_distinct": true
+    },
+    "captures": {
+      "domainos": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/domainos.png",
+        "sha256": "d5007aa5d88e019b911354448e42257b37eedfcc23c9208f30585b4992e63900"
+      },
+      "neutral": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/neutral.png",
+        "sha256": "da396f67dbc9115e06a661ad51f322aa103fae0390d6fcf91fe0870c0baf0b2f"
+      },
+      "dark": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/dark.png",
+        "sha256": "eea9ce2774b457c0e3bc29246df4fc47360a0a6d39ed8c59154f11938e1533ba"
+      },
+      "yellow": {
+        "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/palette-probe-r2-20261014/yellow.png",
+        "sha256": "49cfd55d5b841b77aa959eb403d21da3842dd4e0362bcc93c7fecb8248c713f4"
+      }
+    },
+    "palettes": {
+      "domainos": {
+        "roles": {
+          "Window": "#78a0d5",
+          "View": "#6688b5",
+          "Button": "#78a0d5",
+          "Header": "#78a0d5",
+          "Tooltip": "#78a0d5",
+          "Selection": "#3297c7",
+          "Text": "#ffffff",
+          "HighlightedText": "#ffffff"
+        },
+        "window_pixel_rgb": [
+          120,
+          160,
+          213
+        ],
+        "normal_thumb_center_rgb": [
+          125,
+          163,
+          214
+        ],
+        "normal_button_text_role_pixels": 79,
+        "hover_thumb_center_rgb": [
+          120,
+          160,
+          213
+        ],
+        "hover_button_text_role_pixels": 79,
+        "hover_active": true,
+        "disabled_thumb_center_rgb": [
+          123,
+          162,
+          213
+        ],
+        "disabled_enabled": false,
+        "control_cross_axis_px": 15.0
+      },
+      "neutral": {
+        "roles": {
+          "Window": "#c1c1c1",
+          "View": "#9ebfbf",
+          "Button": "#999999",
+          "Header": "#c1c1c1",
+          "Tooltip": "#c1c1c1",
+          "Selection": "#78a0a0",
+          "Text": "#000000",
+          "HighlightedText": "#000000"
+        },
+        "window_pixel_rgb": [
+          193,
+          193,
+          193
+        ],
+        "normal_thumb_center_rgb": [
+          157,
+          157,
+          157
+        ],
+        "normal_button_text_role_pixels": 79,
+        "hover_thumb_center_rgb": [
+          157,
+          157,
+          157
+        ],
+        "hover_button_text_role_pixels": 79,
+        "hover_active": true,
+        "disabled_thumb_center_rgb": [
+          174,
+          174,
+          174
+        ],
+        "disabled_enabled": false,
+        "control_cross_axis_px": 15.0
+      },
+      "dark": {
+        "roles": {
+          "Window": "#26211b",
+          "View": "#17130e",
+          "Button": "#4e4233",
+          "Header": "#342b23",
+          "Tooltip": "#41352a",
+          "Selection": "#ddb541",
+          "Text": "#f2dfb3",
+          "HighlightedText": "#23170e"
+        },
+        "window_pixel_rgb": [
+          38,
+          33,
+          27
+        ],
+        "normal_thumb_center_rgb": [
+          84,
+          73,
+          58
+        ],
+        "normal_button_text_role_pixels": 79,
+        "hover_thumb_center_rgb": [
+          78,
+          66,
+          51
+        ],
+        "hover_button_text_role_pixels": 79,
+        "hover_active": true,
+        "disabled_thumb_center_rgb": [
+          61,
+          52,
+          42
+        ],
+        "disabled_enabled": false,
+        "control_cross_axis_px": 15.0
+      },
+      "yellow": {
+        "roles": {
+          "Window": "#ddd377",
+          "View": "#66540e",
+          "Button": "#b39a33",
+          "Header": "#e7c957",
+          "Tooltip": "#f4dfab",
+          "Selection": "#762853",
+          "Text": "#1b1707",
+          "HighlightedText": "#fff0df"
+        },
+        "window_pixel_rgb": [
+          221,
+          211,
+          119
+        ],
+        "normal_thumb_center_rgb": [
+          182,
+          158,
+          58
+        ],
+        "normal_button_text_role_pixels": 79,
+        "hover_thumb_center_rgb": [
+          182,
+          158,
+          58
+        ],
+        "hover_button_text_role_pixels": 79,
+        "hover_active": true,
+        "disabled_thumb_center_rgb": [
+          201,
+          184,
+          88
+        ],
+        "disabled_enabled": false,
+        "control_cross_axis_px": 15.0
+      }
+    },
+    "geometry": {
+      "control_cross_axis_px": 15,
+      "thumb_cross_axis_px": 11,
+      "thumb_roi_xyxy_exclusive": [
+        26,
+        112,
+        37,
+        183
+      ],
+      "thumb_roi_px": [
+        11,
+        71
+      ],
+      "pointer_hover_property": true,
+      "disabled_instance_enabled": false
+    },
+    "pixel_comparisons": {
+      "thumb_roi_px": 781,
+      "changed_pixels_each_palette_pair_in_normal_hover_disabled": [
+        781,
+        781,
+        781
+      ],
+      "all_4_palettes_passed": true
+    },
+    "interpretation": "The real Plasma ScrollBar thumb and its ButtonText role pixels changed with the DomainOS, neutral, dark and yellow role sets. The pointer hover remained active; the disabled instance remained disabled. This verifies this consumer’s current palette response, not historical thumb length/appearance or the desktop scheme selector UI.",
+    "changes": {
+      "product_source_changed": false,
+      "personal_configuration_changed": false,
+      "persistent_kde_config_changed": false,
+      "vm_input_sent": false
+    },
+    "limits": [
+      "ScrollBar fixture content/page ratio is synthetic; no SR10.4 thumb-length pairing is established.",
+      "Disabled appearance is not paired to a historical disabled state.",
+      "Manual user review remains open."
+    ]
+  },
+  "matched_content_thumb_probe": {
+    "evidence_receipt": {
+      "path": "/home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/result.json",
+      "sha256": "7f3b620ca971805d20704f66eed6486aa8bc69b17538dc008ac4549714177621"
+    },
+    "reference": {
+      "system": "Domain/OS SR10.4 / HP VUE 2.01",
+      "capture": "/home/lsi/tempia/domainos-vue-study/captures/2026-10-14/mame-vue-help-viewer-keys-before-roll-down-20261014.png",
+      "capture_sha256": "e37218840defe3ce756acce989d7510eb85c4b6db1a55101254293e4d8ad1286",
+      "dimensions_px": [
+        1024,
+        844
+      ],
+      "scale": "1:1",
+      "scrollbar_crop": "/home/lsi/tempia/domainos-vue-study/controls/scrollbars/help-viewer-keys-vertical-scrollbar-20261014.png",
+      "scrollbar_crop_sha256": "922651e36759b4a17047bb6d66ae51ceda2d5dae8f4fd40ca996ae381f4a0525",
+      "track_px": [
+        15,
+        228
+      ],
+      "page_indicator": "Lines 1 to 15 of 165",
+      "thumb_bbox_track_xyxy": [
+        2,
+        1,
+        13,
+        22
+      ],
+      "thumb_px": [
+        11,
+        21
+      ]
+    },
+    "consumer": {
+      "component": "org.kde.plasma.components.ScrollBar + KSvg",
+      "environment": "Xephyr :69; Qt 6.8.2; DPR 1; XCB; pointer outside; private XDG copy of current theme",
+      "fixture": "/home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/fixture.qml",
+      "fixture_sha256": "d7de51a46d1366198a65d94c8899eeafc8bee357b05430efea6626c452c6a849",
+      "capture": "/home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/plasma-track-matched-page-15-of-165.png",
+      "capture_sha256": "31d54b0ede3161beba6a86bbe03e8a6f36fb9f252d3fc673e105679c1d34f777",
+      "track_capture": "/home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/plasma-track-15x228.png",
+      "track_sha256": "82d69c10694e19ec9d84ab826aea49ab62098b13c5d42f6ef51bf68516080a5b",
+      "component_source_sha256": "667eb8eb470df650925831025efc391d6f655d70bb4ebcb4d3e93f5076145262",
+      "theme_source_sha256": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
+      "runtime_geometry": {
+        "width_px": 15,
+        "height_px": 228,
+        "size": 0.09090909090909091,
+        "position": 0.0,
+        "hovered": false,
+        "enabled": true,
+        "topPadding_px": 2,
+        "bottomPadding_px": 2,
+        "topInset_px": 2,
+        "bottomInset_px": 2,
+        "minimumSize": 0.06578947368421052
+      },
+      "thumb_bbox_track_xyxy": [
+        2,
+        2,
+        13,
+        22
+      ],
+      "thumb_px": [
+        11,
+        20
+      ]
+    },
+    "comparison": {
+      "same_fraction_and_track_geometry": true,
+      "native_thumb_px": [
+        11,
+        21
+      ],
+      "plasma_thumb_px": [
+        11,
+        20
+      ],
+      "plasma_starts_1px_lower_and_is_1px_shorter": true,
+      "common_core_difference_pixels": 220,
+      "common_core_total_pixels": 220,
+      "full_track_difference_pixels": 3420,
+      "full_track_total_pixels": 3420,
+      "full_track_difference_reason": "Plasma hides the background when not hovered and interactive; SR10.4 paints the trough at rest."
+    },
+    "private_inset_probe": {
+      "receipt": "/home/lsi/tempia/domainos-v08-plasma-20261014/help-thumb-match-r1/axis-inset1/result.json",
+      "sha256": "e36212145e8bf486297d552afef5269f3046d8b86c2342ba10cbc0dc7c66baec",
+      "variant_svg_sha256": "8d65f3711c35392fda5096b06fa4a69140bd537a0e97d374876e6ac17581f2e3",
+      "source_svg_sha256": "cc8431f1e8e63a888492436bc234da0c9027fdd24f318743e6533f61a0045c2d",
+      "result": "top/bottom hints 1px moved vertical thumb start to y=1 but retained 20px length; horizontal cross-axis grew to 13px. Private fixture only; no product source change."
+    },
+    "scope": "Fraction/track matched using a real Plasma component fixture; not an identical application or dataset. Normal/top state only. No product SVG, installed theme, personal setting, or Apollo input changed.",
+    "question": "Q372 revision 0; assistant acknowledgement recorded; user choice pending."
+  }
+}

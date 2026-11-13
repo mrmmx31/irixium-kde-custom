@@ -1,0 +1,42 @@
+{
+  "item": "T04",
+  "stage": "GTK3 native Paint sample and coupled/detached preview pairing",
+  "date": "2026-10-21",
+  "authorization": {
+    "context": "theme",
+    "section": "work",
+    "user_revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a",
+    "authorized_definition_matches": true
+  },
+  "result": "technical_pass_with_unrelated_size_assertion_open",
+  "scope": "GTK3 only; no claim for GTK4, Qt, Kvantum or Plasma",
+  "tests": {
+    "paint_sample": {
+      "status": "passed",
+      "command": "TMPDIR=~/tempia python3 -B tools/theme-lab/tests/test_controller_spin.py tools/theme-lab/build/controller-spin-probe --paint-gtk3-sample",
+      "native_label": "GTK3 / amostra nativa atual / 220 x 80 px / 1:1",
+      "widget_source": "native_gtk3",
+      "motif_reference": "separate panel, 66 x 25 px, 1:1",
+      "historical_fidelity_claimed": false,
+      "result_file": "~/tempia/theme-lab-spin-58pkpvuu/RESULTADO.json",
+      "capture_sha256": "90a473dc7f7e09b966d49183c174e5395135d2f311abacad1dc41d471e72db97"
+    },
+    "coupled_and_detached": {
+      "status": "passed",
+      "command": "TMPDIR=~/tempia make -C tools/theme-lab check-preview-readiness",
+      "result_file": "~/tempia/theme-lab-spin-j7rt7mi3/RESULTADO.json",
+      "initial": "GTK3 scrollbar in coupled and detached origins: 220 x 15 px, same local position and piece geometry",
+      "after_reopen": "both origins retained 220 x 15 px and matching local position/pieces",
+      "personal_profile_exposed": false
+    },
+    "broader_controller_test": {
+      "status": "failed_at_existing_auto_size_assertion",
+      "result_file": "~/tempia/theme-lab-spin-et5md4iw/RESULTADO.json",
+      "details": "Coupled and detached sizes matched at each tested state. The script then expected automatic natural size to equal the separately reported minimum: got 70 x 30 versus 221 x 81. This is recorded as an open dimension-test discrepancy; it did not fail the Paint sample or paired-origin checks."
+    }
+  },
+  "source_review": "The current Paint path captures a real GTK3 OffscreenWindow widget for the selected family/control/state. The Motif reference is captured independently; unsupported families are not replaced with Motif.",
+  "human_review": "pending",
+  "next": "User identifies whether the still-failing view is the main coupled canvas or the Paint side-by-side sample; continue GTK3 only. Investigate the automatic-size assertion separately under its authorized scope."
+}

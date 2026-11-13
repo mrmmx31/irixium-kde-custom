@@ -10,8 +10,7 @@ function metrics(width, maximized) {
     var gap = 6;
     var titleTop = maximized ? 4 : 7;
     var y = titleTop + 2;
-    var closeX = width - edge - button;
-    var maximizeX = closeX - button - gap;
+    var maximizeX = width - edge - button;
     var minimizeX = maximizeX - button - gap;
     var captionX = edge + button + 12;
     return {
@@ -23,7 +22,6 @@ function metrics(width, maximized) {
         menu: {x: edge, y: y, w: button, h: button},
         minimize: {x: minimizeX, y: y, w: button, h: button},
         maximize: {x: maximizeX, y: y, w: button, h: button},
-        close: {x: closeX, y: y, w: button, h: button},
         caption: {
             x: captionX,
             y: titleTop,

@@ -1,0 +1,101 @@
+{
+  "measured_geometry": {
+    "reference_resolution": [
+      1024,
+      848
+    ],
+    "arrow_glyph_bbox_xyxy": [
+      650,
+      654,
+      661,
+      665
+    ],
+    "comparison_roi_xyxy": [
+      648,
+      652,
+      663,
+      667
+    ],
+    "normal_to_held_swapped_pixels": 53,
+    "held_to_release_swapped_pixels": 53,
+    "normal_to_release_roi_pixels": 0,
+    "glyph_bevel_measured_pixels": 2,
+    "glyph_face_pixels": 18,
+    "native_colors": {
+      "light": "#c4d5ed",
+      "shadow": "#3e536e",
+      "face": "#78a0d5",
+      "trough": "#6688b5"
+    }
+  },
+  "glyph_rows_with_context": {
+    "TRASH-DOWN-NORMAL.png": [
+      "LLLLLLLLLLL",
+      "LLLLLLLLLDD",
+      ".LLFFFFFDDC",
+      ".LLFFFFFDDC",
+      "..LLFFFDD.C",
+      "..LLFFFDD.C",
+      "...LLFDD..C",
+      "...LLFDD..C",
+      "....LDD...C",
+      "....LDD...C",
+      ".....D....C"
+    ],
+    "TRASH-DOWN-HELD.png": [
+      "DDDDDDDDDDD",
+      "DDDDDDDDDLL",
+      ".DDFFFFFLLC",
+      ".DDFFFFFLLC",
+      "..DDFFFLL.C",
+      "..DDFFFLL.C",
+      "...DDFLL..C",
+      "...DDFLL..C",
+      "....DLL...C",
+      "....DLL...C",
+      ".....L....C"
+    ],
+    "TRASH-DOWN-RELEASED.png": [
+      "LLLLLLLLLLL",
+      "LLLLLLLLLDD",
+      ".LLFFFFFDDC",
+      ".LLFFFFFDDC",
+      "..LLFFFDD.C",
+      "..LLFFFDD.C",
+      "...LLFDD..C",
+      "...LLFDD..C",
+      "....LDD...C",
+      "....LDD...C",
+      ".....D....C"
+    ]
+  },
+  "legend": {
+    "L": "native topShadow",
+    "D": "native bottomShadow",
+    "F": "face",
+    ".": "trough/context",
+    "C": "white cursor overlay outside the triangular glyph"
+  },
+  "observed": "Mouse hold changes the native arrow relief; release reverses exactly. Empty Trash Can does not prove content scrolling. Triangle has 71 native pixels (53 bevel+18 face). Nine white cursor pixels lie outside its silhouette and are retained in raw references.",
+  "declared_vs_measured": "11px glyph/2px bevel are measurements of this SR10.4 native widget, not yet claims about a declared Xt resource or all Motif defaults. Root is collecting effective resources separately.",
+  "source_captures": {
+    "TRASH-DOWN-NORMAL.png": {
+      "sha256": "cab2b598869a7e6909a9de583b75e7ba0e630c59478816d37440b9ce3f30a46b",
+      "size": 36468
+    },
+    "TRASH-DOWN-HELD.png": {
+      "sha256": "f03f153923db76057adc6848f36eb4e715c1e6f8e4e8ddd5972279693de6a568",
+      "size": 36463
+    },
+    "TRASH-DOWN-RELEASED.png": {
+      "sha256": "1a5c823b09e65f00d309bdf6b2c0820981e68a3a427c8b35a451a977d228a62b",
+      "size": 36341
+    }
+  },
+  "scope": "Controlled SR10.4 down-arrow cycle only; no native proof of other pressed directions, disabled state, or thumb dragging.",
+  "capture_pixels": [
+    1024,
+    844
+  ],
+  "measurement_receipt_resolution_correction": "Native PNGs are 1024x844; the private original receipt recorded 848 in one geometry field. Pixel coordinates and crops are unchanged."
+}

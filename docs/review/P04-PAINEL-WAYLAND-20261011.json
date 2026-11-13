@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-11T01:16:06.584964+00:00",
+  "phase": "native_wayland_mapped",
+  "authority": "P04 r1",
+  "result": {
+    "visible": true,
+    "count": 10,
+    "x": 404,
+    "y": 504,
+    "width": 291,
+    "height": 246,
+    "anchor": {
+      "x": 500,
+      "y": 750,
+      "width": 100,
+      "height": 30
+    },
+    "above": true,
+    "bounded": true,
+    "opened": 1,
+    "error": "",
+    "host_exit_code": 0,
+    "scope": "legitimate plasmawindowed in own KWin virtual/profile/bus; QML-invoked lifecycle with model doubles, no seat-input or real-job claim"
+  },
+  "evidence_directory": "/tmp/domainos-p04-wayland-ehy66j4c",
+  "change": "stable button-area child anchor with native BottomEdge placement; avoids full Iconbox positioning",
+  "protocol_authorized": true,
+  "regression": "3 native X11 and 11 offscreen handoff passed after anchor change",
+  "limits": [
+    "synthetic invocation rectangle, model doubles; no physical seat clicks",
+    "one virtual output and one above-position case",
+    "not installed in lsi; real Operations route remains to verify"
+  ],
+  "stage_percent": 75,
+  "hashes": {
+    "plasma/tools/testar-domainos-operacoes-wayland.py": "ee2f92363350849bc0c287dec4c3fb060bbb3ab845c3520e6d21487b75bff163",
+    "plasma/applets/org.irixclassic.domainos.panel/contents/ui/DomainOSOperationsPanel.qml": "d9e9cb4ae0248f79a036ca40723bb3b54fd579de20b017bbd51663b3e0b580bc"
+  }
+}

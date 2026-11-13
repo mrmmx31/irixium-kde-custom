@@ -1,0 +1,73 @@
+{
+  "at": "2026-10-11T11:15:48.473411+00:00",
+  "item": "T07",
+  "revision": 1,
+  "phase": "partial",
+  "estimated_stage_percent": 85,
+  "basis": "Defeito de sobreposição GTK2 corrigido e verificado nas duas origens; não representa cobertura de todas as galerias/estados nem conclusão do goal.",
+  "source_reference": {
+    "url": "https://raw.githubusercontent.com/GNOME/gtk/gtk-2-24/gtk/gtktooltip.c",
+    "sha256": "908c2e36e6a7c2db0da1e310939040d89a9cbd4ffede4b389d8b3195c8df67fa",
+    "finding": "gtk_tooltip_position usa cursor+metade do cursor no modo mouse; tip_area só delimita validade. Referência para mecanismo GTK2, não referência histórica DomainOS."
+  },
+  "implementation": [
+    "Modelo geométrico puro: abaixo, acima ou laterais, limitado ao monitor; ausência de espaço retornaNone",
+    "Visão GTK2 reposiciona janela gtk-tooltip nativa no evento map; conserva conteúdo, pintura, estilo e timers",
+    "Guarda por nome/tipo/display, referência fraca ao dono e limpeza ao unmap; popup alheio preservado"
+  ],
+  "tests": {
+    "native_cases": 8,
+    "roles": [
+      "DomainOS",
+      "BreezeLight",
+      "BreezeDark",
+      "TestYellow"
+    ],
+    "origins": [
+      "separate",
+      "coupled_XEmbed"
+    ],
+    "native_delay_ms": 500,
+    "stable_ms": 400,
+    "hover": "dentro do monitor, fora do botão, fechamento ao sair, clique real após fechar",
+    "colors": "Pixels de face/texto das quatro fixtures KDE-role presentes; é prova de preservar estilo recebido, não geração GTK2",
+    "geometry_pure": 4,
+    "scene_contracts": "15GTK3+4GTK2",
+    "gtk3_hover_regression": "passed",
+    "final_native_guard": "passed em XEmbed; popup custom de tooltip não tocado"
+  },
+  "harness_corrections": [
+    "GtkPlug não tem título WM pesquisável; usar XID nativo",
+    "GtkStyle.bg da introspecção GTK2 não fornece array válido; prova de cor usa captura X11 privada, sem leitura de estrutura C"
+  ],
+  "reused_scope": "As oito paletas validam algoritmo de geometria/pintura inalterado; guarda final adicional nome/display/popup alheio validada separadamente em XEmbed, sem repetir pintura inteira.",
+  "sources": {
+    "tools/theme-lab/control_hints.py": "506d9fef9ed22bf4cbc91ce8ff91d4e3bc6d3656b5ebe340c82f89a1a8274086",
+    "tools/theme-lab/gtk2_hint_position.py": "bf248ce96571ebed887a23c7ee5869e431a464766b30ba699490aa182b736e17",
+    "tools/theme-lab/tooltip_position.py": "f58f484eaadb3a7d04ba38bd411dcfb6f77a99bfe2bb291127f58c35524e5e0a",
+    "tools/theme-lab/tests/probe_gtk_hint_hover.py": "35e2bdad148e7f255b5d84e08551904063b7925e052078b41c9afe050d37c112",
+    "tools/theme-lab/tests/test_tooltip_position.py": "de721fd4c3fbbbae19a1498ad8c0029f671ea5cd89d7cc3b17ee554e7a8c6abc",
+    "tools/theme-lab/tests/test_gtk2_hint_palettes.py": "0646712f03a5ce5df497f8c83a38adaca1f47d550d4e3e45230382be1604755c",
+    "tools/theme-lab/Makefile": "17c1a7fce071c23692750c847e7f4727ff92e54f7a66a5f96958499e53c452b2"
+  },
+  "evidence": [
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/hover-gtk2-r4.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/hover-gtk2-embedded-r1.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/hover-gtk2-embedded-r2.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/hover-gtk2-embedded-r3.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tip-position-pure-final.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tip-gtk3-contract-final.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tip-gtk2-contract-final.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tip-gtk3-hover-regression.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tip-guard-final.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/gtk2-tooltip-palettes-r1.log",
+    "docs/referencias/domainos-sr104/t07-gtk2-tip-position/palettes/RESULTADO.json"
+  ],
+  "limits": [
+    "Amostra push, um tamanho de tela e duas posições/origens; não todos os controles/monitores/escalas",
+    "Quando não existe espaço exterior ao controle, esconder dica preserva entrada; caso extremo não comprovado nativamente",
+    "Auditagem de outras galerias e entrega pessoal permanecem pendentes"
+  ],
+  "personal_tool_reopened": false,
+  "human_approval_filled": false
+}

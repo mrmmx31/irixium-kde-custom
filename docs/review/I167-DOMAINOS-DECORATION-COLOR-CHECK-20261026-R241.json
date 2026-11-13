@@ -1,0 +1,44 @@
+{
+  "id": "R241",
+  "date": "2026-10-26",
+  "scope": "DomainOS SR10.4 active/inactive window-decoration color comparison",
+  "user_observation": "User perceives active coral/orange and inactive teal/green decoration as slightly lighter than the VM.",
+  "reference": {
+    "system": "Domain/OS SR10.4 + HP VUE 2.01",
+    "capture_type": "native guest pixels via MAME screen:snapshot",
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/domainos-color-review-r241.png",
+    "sha256": "99f9c66c668d724013ebb155357317a57b5d39c1cfb3e4bd29e0a15508798aaf",
+    "resolution": [
+      1024,
+      844
+    ]
+  },
+  "comparison": {
+    "system": "current private Xephyr :60 Theme Lab session",
+    "capture_type": "native Xephyr root pixels via XWD",
+    "path": "/home/lsi/tempia/ia-tema/evidence/T04/domainos-decoration-current-xephyr-r241.png",
+    "sha256": "b18554207a56f64fe6565876a8a101a7023b468a1a44257fb9cc9c3012b026be",
+    "resolution": [
+      1600,
+      1000
+    ]
+  },
+  "measured_face_rgb": {
+    "active_VM": "#fe8282",
+    "active_Xephyr": "#fe8282",
+    "inactive_VM": "#7acac5",
+    "inactive_Xephyr": "#7acac5",
+    "exact_face_match": true
+  },
+  "measured_active_bevel": {
+    "light": "#ffc8c8",
+    "dark": "#864545"
+  },
+  "measured_inactive_bevel": {
+    "light": "#c5e8e6",
+    "dark": "#406b68"
+  },
+  "implementation_check": "KWin decoration main.qml passes DecorationOptions.titleBarColor and fontColor to the real Surface; Surface derives relief from the current face role. Frame.qml defaults are standalone-preview defaults, not the live decoration source.",
+  "result": "The reported lighter hue is not reproduced in the current captures: solid active and inactive faces are pixel-identical. No code or palette was changed. This does not rule out a difference in another active decoration/session or a perceptual difference in the bevel/compositor.",
+  "vm_state": "One canonical MAME process, disk verified, probe captured=false, paused=false, frameskip=4, throttled=false. Read-only snapshot only; no input sent."
+}

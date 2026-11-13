@@ -1,0 +1,40 @@
+{
+  "id": "T04-EMBEDDED-FAMILY-SELECTOR-20261029",
+  "date": "2026-10-29",
+  "authorization": {
+    "item": "T04",
+    "user_authorized": true,
+    "user_revision": 9,
+    "definition_sha256": "e4c92185967769428970e5843f16803a01b1288cd5abe33bf6f665869ee7459a"
+  },
+  "requirement": "The central Theme Lab canvas must host the real native preview for every available family adapter; separate preview and Paint raster are different surfaces.",
+  "finding": {
+    "selector": "family_callback read XmNselectedPosition during Motif selection callback, where the previous row can still be returned.",
+    "effect": "The family selector could display GTK1 while the controller launched and embedded GTK2.",
+    "change": "Use XmComboBoxCallbackStruct.item_position synchronously, requiring XmCR_SELECT and validating the zero-based index."
+  },
+  "verification": {
+    "build": {
+      "command": "make -C tools/theme-lab build/theme-lab",
+      "result": "success"
+    },
+    "theme_lab_pid": 2844611,
+    "gtk2_child_pid": 2844754,
+    "work_dir_reused": "/home/lsi/tempia/domainos-theme-work/theme-lab-qY9XI0",
+    "observed_family_label": "GTK 2",
+    "observed_canvas_notice": "GTK2 nativo acoplado",
+    "observed": "The central canvas displays the real GTK2 controls; the editor's native sample pane is separate.",
+    "screenshot": "~/tempia/domainos-theme-work/themelab-embedded-family-selector-20261029T1624.png",
+    "tests": "Not run."
+  },
+  "family_matrix": {
+    "embedded_routes_in_controller": ["GTK2", "GTK3", "GTK4"],
+    "currently_separate_or_unmapped_for_central_canvas": ["Qt5", "Qt6", "Kvantum", "Plasma Style"],
+    "runtime_not_confirmed": ["GTK1", "GTK5"]
+  },
+  "limits": [
+    "This record proves the GTK2 central embedded route and selector synchronization only.",
+    "It does not claim that every family already embeds or that GTK2 is visually accepted.",
+    "No theme installation or user profile change was made."
+  ]
+}

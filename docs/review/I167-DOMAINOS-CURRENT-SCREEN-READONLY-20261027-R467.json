@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "R467",
+  "date": "2026-10-27",
+  "observed_at_utc": "2026-10-27T14:20:34Z",
+  "item": "I167",
+  "section": "work",
+  "scope": "Read-only refresh of the project-owned Domain/OS SR10.4 framebuffer after time elapsed since R465.",
+  "authority": {
+    "board_item": "I167",
+    "user_revision": 2,
+    "authorized": true,
+    "definition_sha256": "5e128e4eca5cabd7a949ab11b3b480ce1c433d1446615e10ec8313bf273885ea"
+  },
+  "identity": {
+    "theme_mame_pid": 3971377,
+    "theme_disk": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/discos/dn3500_sr10.4.assistant-20261018.awd",
+    "prancheta_mame_pid": 3971019,
+    "prancheta_disk": "/home/lsi/gitlab-developments/ai-work-board/board/vm/domainos-sr10.4-prancheta/runtime/discos/dn3500_sr10.4.prancheta-20261026.awd",
+    "verify_exit": 4
+  },
+  "method": {
+    "channel": "/home/lsi/irixium-kde-custom/vm/domainos-sr10.4-assistant/runtime/sessao/controle",
+    "before": "Correlated status had no pending command or reply; read-only probe reported captured=false, paused=false, frameskip=4, throttled=false, ui_active=false.",
+    "action": "One read-only screen:snapshot command against :apollo_screen:screen; no keyboard, mouse, host focus, guest file, VM setting, or process was changed.",
+    "request_id": "3febee73f90d4646876bf2179272af86",
+    "after": "Correlated status had no pending command or reply."
+  },
+  "capture": {
+    "path": "/home/lsi/tempia/ia-tema/evidence/I167/i167-vue-readonly-20261027T142034Z.png",
+    "sha256": "bcdbb8c61edc1ae4c0e16049be18b58f554c4b39bf28b941152b9a40a56c1a79",
+    "dimensions_px": [1024, 844],
+    "guest_framebuffer_roi": [0, 0, 1024, 800],
+    "black_pixels": 819200,
+    "total_pixels": 819200,
+    "apollo_command_strip_visible": true
+  },
+  "result": "The current guest framebuffer is black while the Apollo command strip remains visible. The guest is unpaused and the live profile is unchanged. This confirms the frame at 14:20:34Z; it does not contradict the earlier wake documented in R381/R393 or establish the frame seen by the user at another time. The distinct Prancheta MAME still causes verify.sh to return 4, so no wake input or graphical comparison was attempted.",
+  "next": "After the other MAME releases the guard, revalidate target PID/disk and channel. If this guest frame remains black, use the documented one-shot wake procedure, confirm VUE is visible and input is released, then continue the authorized GTK2 native-state comparison."
+}

@@ -1,0 +1,56 @@
+{
+  "at": "2026-10-11T04:05:24.318490+00:00",
+  "item": "I117",
+  "revision": 1,
+  "phase": "measurement_comparison_base",
+  "vm_probe": {
+    "request_id": "80b2595087b7443eb0f4437336d2bc94",
+    "status": "OK",
+    "paused": false,
+    "frameskip": 4,
+    "throttled": false,
+    "mouse_hook": "table",
+    "captured": false,
+    "input_sent": false
+  },
+  "vm_snapshot": {
+    "request_id": "9c260fc28e1e43b2bf5ea673d33c4f4f",
+    "status": "OK",
+    "path": ".qa-i117-pair/vm-current.png",
+    "observed": "Terminal uname identifica SR10.4; paleta CoralReef, controles nativos e painel presentes",
+    "historical_metrics_reused": "docs/referencias/domainos-sr104/TRASH-CAN-METRICAS.json; sem alterar recursos/desenho da VM"
+  },
+  "implementation": [
+    "Posição local e escala explícitas no resumo",
+    "Motif Xt medido em pixels X11, escala física 1",
+    "Diferença dimensional convertida à escala física; desconhecidos recusados",
+    "Mínimo Motif ausente continua explícito; igualdade dimensional não afirma fidelidade visual"
+  ],
+  "tests": {
+    "strict_compile": "passed",
+    "metrics_comparison": "passed: igualdade física com escalas diferentes, ausências, limites, posição local e buffer curto",
+    "native_motif_view": "passed on private Xvfb",
+    "sandbox_xvfb_attempt": "Cannot open display; repetição no host privado passou",
+    "warnings": [
+      "Missing charsets in String to FontSet conversion; fonte efetiva será tratada no próprio I117"
+    ]
+  },
+  "hashes": {
+    "tools/theme-lab/include/native_metrics.h": "175a7acb0b2ed77ff7943d7fe86ceb0c13bce24de435393207a38d585455acba",
+    "tools/theme-lab/src/native_metrics.c": "6cd9dddf903f07ebad63f5f9fb2505f98adcfddc84b94a024c065c7350bff44d",
+    "tools/theme-lab/src/view.c": "aabc04ba11ad467d21b09990fe9ab4e5a32b3582ab2868f46fe6744df793c4c0",
+    "tools/theme-lab/tests/metrics_comparison_test.c": "f45a8f933614683b3de39d98d9c986706ff25b744c16786e1b47e3e7ff2ff33d",
+    "tools/theme-lab/Makefile": "e17c90da02dca7676707380d8ee0200d1d2a55c0ce3f837c096e12bab0aec078",
+    ".qa-i117-pair/vm-current.png": "7527371d5afb7016b03872158b8fc4ecda4c169c868976d8c340bfa1ddea751f"
+  },
+  "estimated_stage_progress_percent": 20,
+  "percentage_basis": "Camada inicial de medição implementada; pareamento de peça/estado/fonte e provas completas faltam",
+  "personal_window_changed": false,
+  "human_approval_filled": false,
+  "remaining": [
+    "Mesma peça/estado em referência e amostra com posição lógica identificada",
+    "Fonte efetiva por controle, sem confundir com fonte histórica SR10.4",
+    "Métricas das peças internas e comparação nativa completa",
+    "Entrega pessoal coordenada"
+  ]
+}

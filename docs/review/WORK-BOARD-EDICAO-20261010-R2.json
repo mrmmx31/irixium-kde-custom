@@ -1,0 +1,75 @@
+{
+  "recorded_at": "2026-10-10T17:17:37.354356+00:00",
+  "scope": "Correção de segurança da edição na prancheta Motif; não certifica a ferramenta de temas ou fidelidade histórica.",
+  "incident": {
+    "field": "userNote",
+    "cause_observed": "Ctrl+C/Ctrl+Z chegaram como bytes de controle 0x03/0x1a; default Motif não oferecia os atalhos prometidos. Reproduzido com texto artificial.",
+    "recovery": "Parágrafos encontrados como UTF-32LE no heap da própria prancheta. Preservados privadamente; original copiado para novo rascunho. Não garantir que todo trecho perdido esteja incluído.",
+    "recovered_characters": 1697,
+    "saved_answers_modified": false,
+    "execution_authorization_inferred": false
+  },
+  "native_editing_checks": {
+    "unicode_multiline_undo_redo_shortcuts": true,
+    "multi_step_history": true,
+    "copy_cut_paste_select_all_and_reversible_replacement": true,
+    "history_survives_reload_and_item_switch": true,
+    "save_retains_history_and_return_to_saved_is_reversible": true,
+    "context_menu_undo": true,
+    "private_autosave_is_separate_from_answers_and_authorizations": true,
+    "second_editor_cannot_overwrite_journal": true,
+    "crash_restores_multiple_drafts_title_and_undo_redo": true,
+    "failed_checkpoint_prevents_destructive_action": true
+  },
+  "existing_model_checks_passed": 13,
+  "existing_native_flow_checks_passed": 8,
+  "implementation": {
+    "language": "C99/Motif/MVC",
+    "history": "Por item/campo; até 128 edições e 1 MiB; pelo menos dois últimos valores.",
+    "autosave": "Journal separado, atomic rename/fsync, modo 0600, a cada 200ms de digitação, limite 32 MiB.",
+    "shortcuts": [
+      "Ctrl+Z",
+      "Ctrl+Y",
+      "Ctrl+Shift+Z",
+      "Ctrl+C",
+      "Ctrl+V",
+      "Ctrl+X",
+      "Ctrl+A"
+    ],
+    "context_menu": [
+      "botão direito",
+      "Menu",
+      "Shift+F10"
+    ],
+    "destructive_toolbar_action": "Voltar ao salvo exige checkpoint e mantém recuperação por Undo."
+  },
+  "live_delivery": {
+    "pid": 1147616,
+    "window": 44040271,
+    "session": "lsi",
+    "recovered_note_matches_journal": true,
+    "saved_T01_revision": 0,
+    "saved_T01_authorized": false,
+    "user_manual_acceptance": "pending",
+    "old_pid_closed": true,
+    "corrected_window_still_open_verified_on_host": true,
+    "verification_method": "ps e xdotool na sessão host, sem teclas nos campos do usuário"
+  },
+  "remaining": [
+    "Conferência manual do usuário.",
+    "Propostas contidas no texto recuperado permanecem na fila, sem execução inferida.",
+    "Aplicar o requisito de edição no laboratório antes de uma nova entrega de seus campos; métricas continuam em rascunho."
+  ],
+  "sha256": {
+    "tools/work-board/src/editor.c": "487fa94d359e8a321dfd3f564a2ece5809f79f35dcf47fd2fe6f52c78c615cee",
+    "tools/work-board/src/controller.c": "6f20dd001d4bc0709270c6fb3a1dad97eb8dc9c478013311c3cc083f215179b1",
+    "tools/work-board/src/view.c": "537163d725fe9733e838036ad66cc304fd5b543dd4857dcf654e5f279dec2136",
+    "tools/work-board/src/model.c": "b36d7a26a29444fa72237496b15e6c1ecc1fd06a89b84e3ba0ee88ae56f96dc2",
+    "tools/work-board/tests/test_editing.py": "5d99d743c07de873861d05becea2696d75886911d0e3f1910acac2a8e02a8b3b",
+    "AGENTS.md": "8a50723a45d3ca4e0ced8a37c47f46e2c2dfe7219ffbd083870edd2a42118e1c"
+  },
+  "limits": [
+    "Até 200 ms entre a entrada e seu checkpoint; histórico limitado a 128 edições/1MiB por campo.",
+    "O código atual também ajusta textos de ajuda de Voltar ao salvo; a janela já aberta continua com os avisos da compilação testada anterior, cujo comportamento é igual."
+  ]
+}

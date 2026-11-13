@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-11T15:16:49.560583+00:00",
+  "item": "T02",
+  "authority_revision": 1,
+  "phase": "private_complete_catalog_matrix",
+  "native": {
+    "status": "passed",
+    "scope": "Real pointer and Space across five categories/16 checkboxes; GTK3→Motif→GTK3→Motif preserves independent masks/selected controls/positions and untouched other families. No adapter or visual fidelity claim.",
+    "categories_checked": 5,
+    "members_checked": 16,
+    "keyboard": [
+      "Space",
+      "Return"
+    ],
+    "return_selects_different_member_without_toggling_visibility": true,
+    "family_recipes_independent": true,
+    "positions_preserved": true
+  },
+  "fixture": ".qa-theme-lab-spin-wd0aum49",
+  "before": {
+    "fixture": ".qa-theme-lab-spin-ps9jbhzy",
+    "keyboard_focus": "catalogControl5",
+    "selected_control_before_and_after_Return": 4,
+    "result": "Return did not activate focused catalog member; confirmed focus after correcting test preparation."
+  },
+  "fix": "Only catalog name buttons explicitly bind Return to native ArmAndActivate. Checkboxes and text editors unchanged.",
+  "test_preparation": "Focus requested only after scroll; actual XmGetFocusWidget asserted before key. No direct callback used for tested activation.",
+  "strict_build": "product and probe passed",
+  "runtime_tests": 2,
+  "diff_check": "passed tools/theme-lab",
+  "environment": "Initial build failed because host /tmp inodes exhausted; rebuilt with own repository TMPDIR, no personal files removed.",
+  "reused": "Earlier native Save/Load proof remains scoped to unchanged project serialization.",
+  "limits": [
+    "Personal delivery and human evaluation pending",
+    "Family selection by keyboard not covered; tested native pointer item selection",
+    "Expanded presentation remains view-only, not serialized between process starts",
+    "No new adapter or historical fidelity approval"
+  ],
+  "estimated_stage_progress_percent": 90,
+  "basis": "Catalog native matrix and keyboard member activation now proved; personal delivery remains. Not total goal progress.",
+  "sha256": {
+    "tools/theme-lab/src/view/control_catalog.c": "4eeff588182227cea05e59e1b2c932107f68a125bf61acb71fe20e78628c5d52",
+    "tools/theme-lab/tests/controller_spin_probe.c": "9243bf30c145e662f119bfdfcec19dc3e58c36a06dc30ae8b942c14ef8a7a781",
+    "tools/theme-lab/tests/controller_catalog_matrix.py": "0e0673725c687a44b7365e63d8ad93089ec03702bd8f64676bbf6a75fb9162f4",
+    "tools/theme-lab/build/theme-lab": "550f294489e2e0d6cf2849a82258c68a468ff8570566458d7c92d2978f14010f",
+    "tools/theme-lab/build/controller-spin-probe": "9f50a543816f9d4ccc82f5e1f4a2cd4846e1acd1afa121707510348563df8353"
+  }
+}

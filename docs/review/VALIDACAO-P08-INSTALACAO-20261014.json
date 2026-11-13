@@ -1,0 +1,62 @@
+{
+  "item": "P08",
+  "user_revision": 1,
+  "definition_sha256": "231cf87cf046e087a2403df9872c67f4e469e04f0ea0c11dd3223ab9a6158f1f",
+  "status": "partial_waiting_user",
+  "recorded_at_utc": "2026-10-14T11:17:20Z",
+  "installation": {
+    "destination": "/home/lsi/.local/share/plasma/plasmoids/org.irixclassic.domainos.panel/contents/ui/DomainOSPanel.qml",
+    "before_sha256": "6b5733e83ccc3d3a297c4725369ec536d6cd17902f4ceae4ffa805cfe795908c",
+    "after_sha256": "f9e42a0ad96b4e3fd4f0c2d9ee2c356dc128c76ff89a2983a460e008ef5990bf",
+    "change": "Applications icon geometry from 64x48 to 54x40 logical units; ratio and dynamic palette roles preserved",
+    "backup_receipt": "/home/lsi/.local/state/irixium/p08-applications-20261014/backups/874600abd662485a9a4f58f04b300c17/receipt.json",
+    "backup_dry_restore": "passed; exact destination still matches transaction after-hash",
+    "approved_download_backup_unchanged": true
+  },
+  "reload_verification": {
+    "service": "plasma-plasmashell.service",
+    "active": true,
+    "main_pid": 2345586,
+    "panel_id": 2268,
+    "applet_id": 2269,
+    "screen": 0,
+    "domainos_panel_qml_errors_after_restart": 0,
+    "config_hashes_unchanged": {
+      "kdeglobals": "a782395a440fd67f3d10022dc1b1ba64ec874516cdfad460b397f089e138de17",
+      "kwinrc": "147ffd659ed4b30e580c5f463c8dea25f77e411efb8f2382aacc34d7a0843901",
+      "plasmarc": "8941bc1e6562aa63fce805612ec1dda964ae7cf6a9a37ffeb0e0a30c4c77bf28",
+      "plasmashellrc": "0f62bc31bfd0dc2c94a90baeaeb9b87d66a5137432635f617d1c49c1fbcd6dcc"
+    },
+    "applets_config": {
+      "baseline_sha256_before_restart": "cb3ec745f528cb33a46bf2927f1c9d9b249044356b71dbfc2e536fb820619367",
+      "current_sha256": "c272d24b99f8596a3abee6a8cd53fb7b5da419251dc5f4cde833b6d033adb8cb",
+      "diff_available": false,
+      "note": "The layout file hash differs from the pre-restart sample. No pre-restart byte copy is available, so the writer/cause is not attributed. Panel/applet IDs remain present."
+    }
+  },
+  "visual_evidence": {
+    "scope": "isolated Xephyr integrated-panel capture at 1:1; not a native personal-session screenshot",
+    "capture": "/home/lsi/tempia/domainos-v09-kde-session-20261014/integrated-panel-971x109.png",
+    "capture_size": "971x109",
+    "capture_sha256": "bf761e3a7a4961e5c5508b1d6e68d8a7d747a6fa87bcb22c3e8125126bace5de",
+    "zoom_crop": "/home/lsi/tempia/domainos-i178-20261014/p08-integrated-crop-zoom.png",
+    "zoom_crop_sha256": "6bb16a3af6ae936f40a703f30b00384adc3a4436de14e7ae8e1a7350c49d87ec"
+  },
+  "prior_regression": {
+    "receipt": "docs/VALIDACAO-P08-20261014.json",
+    "isolated_xvfb": "46/46",
+    "isolated_xephyr": "46/46",
+    "command_fixture": "20/23; three launch/process gates remain failed"
+  },
+  "limits": [
+    "No native screenshot/manual review of the personal production panel after reload.",
+    "Q334 still blocks authorized guest input in the VM."
+  ],
+  "next": "P08 remains partial for manual review, Q334, and the full-panel pointer path; helper gates now pass.",
+  "startup_followup_receipt": "docs/review/P08-STARTUP-XEPHYR-20261014.json",
+  "startup_followup_status": "Isolated Xephyr run passed 37/37 checks; actual delayed KDE startup kept lamp blinking and wait cursor active, then both returned to normal after the window mapped. Regression suite 49/49.",
+  "activity_followup_receipt": "docs/review/P08-ACTIVITY-INSTALL-20261014.json",
+  "activity_followup_status": "DomainOSActivity.qml installed by one-file reversible transaction and reloaded; panel 2268/applet 2269 active; backup dry restore passed; exact pre-restart appletsrc bytes restored after verifying that only the ordering of the same screenMapping tuples changed.",
+  "command_bridge_receipt": "docs/review/P08-COMANDOS-XEPHYR-20261014.json",
+  "command_bridge_status": "Updated stale process/PID assertions to request-accepted plus native-window contract; 25/25 passed in Xvfb and private Xephyr."
+}

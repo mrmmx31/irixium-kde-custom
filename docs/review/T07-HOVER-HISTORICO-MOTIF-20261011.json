@@ -1,0 +1,80 @@
+{
+  "at": "2026-10-11T12:33:41.747589+00:00",
+  "item": "T07",
+  "status": "partial",
+  "previous_goal_turn": "no progress: verified already-delivered fixed channels; resumed authorized T07 coverage audit",
+  "change": "Added native hover coverage for five actual project-history commands. No product drawing, editor, input or personal configuration changed.",
+  "build_exit_code": 0,
+  "native_rows": [
+    {
+      "scheme": "DomainOS",
+      "exit_code": 0,
+      "observations": [
+        "History hover projectUndo owner=13,712 108x25 tip=67,737 400x30 delay400 stable400 passed",
+        "History hover projectRedo owner=126,712 108x25 tip=180,737 391x30 delay400 stable400 passed",
+        "History hover projectMark owner=239,712 108x25 tip=293,737 364x30 delay400 stable400 passed",
+        "History hover projectRestore owner=13,742 108x25 tip=67,767 404x30 delay400 stable400 passed",
+        "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+        "History disabled Undo: hint resource preserved; native popup mapped=0"
+      ]
+    },
+    {
+      "scheme": "BreezeLight",
+      "exit_code": 0,
+      "observations": [
+        "History hover projectUndo owner=13,712 108x25 tip=67,737 399x30 delay400 stable400 passed",
+        "History hover projectRedo owner=126,712 108x25 tip=180,737 325x29 delay400 stable400 passed",
+        "History hover projectMark owner=239,712 108x25 tip=293,737 352x30 delay400 stable400 passed",
+        "History hover projectRestore owner=13,742 108x25 tip=67,767 405x30 delay400 stable400 passed",
+        "History hover projectResetPart owner=126,742 108x25 tip=180,767 382x30 delay400 stable400 passed",
+        "History disabled Undo: hint resource preserved; native popup mapped=0"
+      ]
+    },
+    {
+      "scheme": "BreezeDark",
+      "exit_code": 0,
+      "observations": [
+        "History hover projectUndo owner=13,712 108x25 tip=67,737 386x30 delay400 stable400 passed",
+        "History hover projectRedo owner=126,712 108x25 tip=180,737 393x30 delay400 stable400 passed",
+        "History hover projectMark owner=239,712 108x25 tip=293,737 364x30 delay400 stable400 passed",
+        "History hover projectRestore owner=13,742 108x25 tip=67,767 404x30 delay400 stable400 passed",
+        "History hover projectResetPart owner=126,742 108x25 tip=180,767 416x30 delay400 stable400 passed",
+        "History disabled Undo: hint resource preserved; native popup mapped=0"
+      ]
+    },
+    {
+      "scheme": "TestYellow",
+      "exit_code": 0,
+      "observations": [
+        "History hover projectUndo owner=13,712 108x25 tip=67,737 399x30 delay400 stable400 passed",
+        "History hover projectRedo owner=126,712 108x25 tip=180,737 391x30 delay400 stable400 passed",
+        "History hover projectMark owner=239,712 108x25 tip=293,737 364x30 delay400 stable400 passed",
+        "History hover projectRestore owner=13,742 108x25 tip=67,767 405x30 delay400 stable400 passed",
+        "History hover projectResetPart owner=126,742 108x25 tip=180,767 418x30 delay400 stable400 passed",
+        "History disabled Undo: hint resource preserved; native popup mapped=0"
+      ]
+    }
+  ],
+  "scope": "Five enabled history actions in one scrolled production layout: no popup400ms, popup950ms, no owner overlap, screen bounds, stable400ms and dismissal160ms. Four initial UI schemes and preview palette isolation. Disabled Undo retains resource but native popup absent950ms.",
+  "remaining": [
+    "Disabled Motif action hover guidance needs a deliberate solution or explicit documented limitation",
+    "Other controls/layouts outside current proof",
+    "Coordinated personal delivery and evaluation"
+  ],
+  "estimated_stage_progress_percent": 95,
+  "progress_basis": "Principal hint/help paths verified; this closes history-hover coverage, not remaining disabled guidance/handoff or entire goal.",
+  "personal_session_modified": false,
+  "human_approval_filled": false,
+  "hashes": {
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-build.log": "10110ad7e5f17a52a4fa2facf8585d38fe13a7235d5cae00ab44eb9ede61854b",
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-hover-r2.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-hover-r2.json": "905f15e45fdc2783916bffc6521ea24c2e690ed7200a29bae28a95d1d69a143b",
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-hover.err": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-hover.json": "deb68181857278fc9572aec6411e29e51edc4127e8743ce10c889dd815005dc2",
+    "docs/referencias/domainos-sr104/t07-history-hover/t07-history-xvfb.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tools/theme-lab/tests/ui_help_flow.c": "a9dd21d813113b51644814bc21cc4af8754065e7fccc401f4e47a1e9486e639a",
+    "tools/theme-lab/tests/native_metrics_view.c": "f76c215ab2a5d6300c36ccd3b418079670e9f1b2f27ec6816c7726d9720648ae",
+    "tools/theme-lab/tests/test_ui_hint_palettes.py": "735db97868d71f99a40384b4a92be6edece218571a841c89f097899d2a8a8fc0",
+    "tools/theme-lab/Makefile": "03f62709313e4c9c77742951ac2661ef17dd70091d3b0ef840372587e23bfffa"
+  }
+}
