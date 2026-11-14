@@ -107,6 +107,36 @@ static void update_view(Controller *c) {
 static int path_join(char *out,size_t cap,const char *a,const char *b) {
     int n=snprintf(out,cap,"%s/%s",a,b); return n>=0&&(size_t)n<cap?0:-1;
 }
+static int package_root_valid(const char *root) {
+    static const char *required[]={
+        "tools/theme-lab/backend.py",
+        "tools/theme-lab/sample_controls.json",
+        "tools/domainos_scrollbar_rules.json",
+        "plasma/tests/galerias-nativas/gtk2_demo.py"
+    };
+    struct stat info;char path[TL_PATH_MAX];size_t i;
+    if(!root||root[0]!='/'||lstat(root,&info)||!S_ISDIR(info.st_mode)||S_ISLNK(info.st_mode))return 0;
+    for(i=0;i<sizeof(required)/sizeof(required[0]);i++) {
+        if(path_join(path,sizeof(path),root,required[i])||lstat(path,&info)||
+           !S_ISREG(info.st_mode)||S_ISLNK(info.st_mode))return 0;
+    }
+    return 1;
+}
+static int discover_package_root(const char *requested,char *root,size_t capacity) {
+    char candidate[TL_PATH_MAX],resolved[TL_PATH_MAX],*slash;int level;
+    if(requested&&requested[0]) {
+        if(!realpath(requested,resolved)||!package_root_valid(resolved)||strlen(resolved)>=capacity)return -1;
+        strcpy(root,resolved);return 0;
+    }
+    if(!realpath("/proc/self/exe",candidate))return -1;
+    for(level=0;level<4;level++) {
+        slash=strrchr(candidate,'/');
+        if(!slash||slash==candidate)return -1;
+        *slash=0;
+    }
+    if(!package_root_valid(candidate)||strlen(candidate)>=capacity)return -1;
+    strcpy(root,candidate);return 0;
+}
 static int private_directory(const char *path,char *err,size_t cap) {
     char part[TL_PATH_MAX]; struct stat st; size_t i,len=strlen(path);
     if(path[0]!='/'||len>=sizeof(part)||strstr(path,"/../")||strstr(path,"/./")) {
@@ -125,6 +155,18 @@ static int private_directory(const char *path,char *err,size_t cap) {
     if(stat(path,&st)||st.st_uid!=getuid()||(st.st_mode&0077)) {
         snprintf(err,cap,"Pasta de trabalho precisa pertencer ao usuário e ter modo 0700");return -1;
     }return 0;
+}
+static int session_parent(const char *path,char *err,size_t cap) {
+    struct stat info;
+    if(lstat(path,&info)) {
+        if(errno!=ENOENT) {snprintf(err,cap,"Não foi possível conferir o contêiner privado: %s",strerror(errno));return -1;}
+        if(mkdir(path,0700)) {snprintf(err,cap,"Não foi possível criar o contêiner privado: %s",strerror(errno));return -1;}
+        if(lstat(path,&info)) {snprintf(err,cap,"Não foi possível conferir o contêiner privado: %s",strerror(errno));return -1;}
+    }
+    if(S_ISLNK(info.st_mode)||!S_ISDIR(info.st_mode)||info.st_uid!=getuid()||(info.st_mode&0022)) {
+        snprintf(err,cap,"Contêiner deve pertencer ao usuário e não permitir escrita de terceiros");return -1;
+    }
+    return 0;
 }
 /* The history file is authoritative. working.json is a derived backend input. */
 static int commit_project(Controller *c,const TLModel *candidate) {
@@ -1187,14 +1229,14 @@ static void tick(XtPointer context,XtIntervalId *id) {
     if(!c->closing)XtAppAddTimeOut(c->app,100,tick,c);
 }
 int tl_controller_run(int argc,char **argv) {
-    Controller c={0};char err[TL_TEXT_MAX],contract[TL_PATH_MAX],temporary[TL_PATH_MAX],temp_base[TL_PATH_MAX];
+    Controller c={0};char err[TL_TEXT_MAX],contract[TL_PATH_MAX],temporary[TL_PATH_MAX],temp_root[TL_PATH_MAX],temp_base[TL_PATH_MAX];
     char r584_receipt[TL_PATH_MAX],r584_manifest[TL_PATH_MAX];
-    const char *initial=NULL,*reference=NULL,*family=NULL;int i;char *xtargv[]={argv[0],NULL};int xtargc=1;
+    const char *initial=NULL,*reference=NULL,*family=NULL,*requested_root=NULL;int i;char *xtargv[]={argv[0],NULL};int xtargc=1;
     setlocale(LC_ALL,"");umask(0077);tl_model_init(&c.model);
     for(i=1;i<argc;i++) {
-        if(!strcmp(argv[i],"--help")) {puts("theme-lab --root REPOSITORY --work-dir PRIVATE_DIR [--project JSON] [--reference PNG] [--family gtk3|motif|...] [--gtk4-host-bridge LIBRARY]\nInterface Motif C99/MVC. Apply and export affect private proposals only.");return 0;}
+        if(!strcmp(argv[i],"--help")) {puts("theme-lab [--root PACKAGE_ROOT] [--work-dir PRIVATE_DIR] [--project JSON] [--reference PNG] [--family gtk3|motif|...] [--gtk4-host-bridge LIBRARY]\nPACKAGE_ROOT is discovered relative to the executable when omitted. Interface Motif C99/MVC. Apply and export affect private proposals only.");return 0;}
         if(i+1>=argc) {fprintf(stderr,"Argumento incompleto: %s\n",argv[i]);return 2;}
-        if(!strcmp(argv[i],"--root")) {if(strlen(argv[++i])>=sizeof(c.root))return 2;strcpy(c.root,argv[i]);}
+        if(!strcmp(argv[i],"--root"))requested_root=argv[++i];
         else if(!strcmp(argv[i],"--work-dir")) {if(strlen(argv[++i])>=sizeof(c.work))return 2;strcpy(c.work,argv[i]);}
         else if(!strcmp(argv[i],"--project")) initial=argv[++i];
         else if(!strcmp(argv[i],"--reference"))reference=argv[++i];
@@ -1202,12 +1244,16 @@ int tl_controller_run(int argc,char **argv) {
         else if(!strcmp(argv[i],"--gtk4-host-bridge")) {if(strlen(argv[++i])>=sizeof(c.host4))return 2;strcpy(c.host4,argv[i]);}
         else {fprintf(stderr,"Argumento desconhecido: %s\n",argv[i]);return 2;}
     }
-    if(!c.root[0]) {fprintf(stderr,"Informe --root com a raiz dos tradutores.\n");return 2;}
+    if(discover_package_root(requested_root,c.root,sizeof(c.root))) {
+        fputs("Pacote Theme Lab inválido: informe --root ou mantenha os recursos junto ao executável.\n",stderr);return 2;
+    }
     if(!c.work[0]) {
         const char *home=getenv("HOME");
         if(!home||home[0]!='/') {fputs("HOME absoluto é necessário para criar a sessão privada em ~/tempia.\n",stderr);return 1;}
+        if(path_join(temp_root,sizeof(temp_root),home,"tempia")) {fputs("Caminho de ~/tempia muito longo.\n",stderr);return 1;}
         if(path_join(temp_base,sizeof(temp_base),home,"tempia/domainos-theme-work")) {fputs("Caminho de ~/tempia/domainos-theme-work muito longo.\n",stderr);return 1;}
-        if(private_directory(temp_base,err,sizeof(err))) {fprintf(stderr,"Não foi possível preparar ~/tempia/domainos-theme-work: %s\n",err);return 1;}
+        if(session_parent(temp_root,err,sizeof(err))) {fprintf(stderr,"Não foi possível preparar ~/tempia: %s\n",err);return 1;}
+        if(session_parent(temp_base,err,sizeof(err))) {fprintf(stderr,"Não foi possível preparar ~/tempia/domainos-theme-work: %s\n",err);return 1;}
         int n=snprintf(temporary,sizeof(temporary),"%s/theme-lab-XXXXXX",temp_base);
         if(n<0||(size_t)n>=sizeof(temporary)) {fputs("Caminho temporário muito longo.\n",stderr);return 1;}
         char *made=mkdtemp(temporary);if(!made) {perror("mkdtemp em ~/tempia");return 1;}
@@ -1270,10 +1316,15 @@ int tl_controller_run(int argc,char **argv) {
         err[0]=0;
         int receipt_ok=path_join(r584_receipt,sizeof(r584_receipt),c.root,
             "docs/review/I167-GTK2-USER-PALETTE-UPDATE-20261028-R584.json")==0;
-        int manifest_length=home&&home[0]=='/'?
-            snprintf(r584_manifest,sizeof(r584_manifest),
-                "%s/.local/share/irixium/gtk2-palette/%s/manifest.json",
-                home,tl_gtk2_r584_canonical_identity.bundle_id):-1;
+        int manifest_length=snprintf(r584_manifest,sizeof(r584_manifest),
+            "%s/resources/gtk2-r584/%s/manifest.json",c.root,
+            tl_gtk2_r584_canonical_identity.bundle_id);
+        if(manifest_length<0||(size_t)manifest_length>=sizeof(r584_manifest)||
+           access(r584_manifest,R_OK))
+            manifest_length=home&&home[0]=='/'?
+                snprintf(r584_manifest,sizeof(r584_manifest),
+                    "%s/.local/share/irixium/gtk2-palette/%s/manifest.json",
+                    home,tl_gtk2_r584_canonical_identity.bundle_id):-1;
         if(!receipt_ok||manifest_length<0||
            (size_t)manifest_length>=sizeof(r584_manifest)||
            tl_view_manual_paint_r584_catalog(c.view,r584_receipt,r584_manifest,

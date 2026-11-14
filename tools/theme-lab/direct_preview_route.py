@@ -15,6 +15,8 @@ import re
 import stat
 import tempfile
 
+from x11_session import verify_local_x11
+
 
 FAMILIES = frozenset(('qt5', 'qt6', 'kvantum', 'plasma'))
 
@@ -32,11 +34,17 @@ def _owned_private_directory(path: Path, message: str) -> Path:
 
 def _session_root(output: Path) -> Path:
     allowed = Path.home().resolve() / 'tempia' / 'domainos-theme-work'
-    _owned_private_directory(allowed, 'A raiz privada do Theme Lab deve ser 0700.')
+    try:
+        info = allowed.lstat()
+        if (stat.S_ISLNK(info.st_mode) or not stat.S_ISDIR(info.st_mode) or
+                info.st_uid != os.getuid() or stat.S_IMODE(info.st_mode) & 0o022):
+            raise ValueError
+    except (OSError, ValueError):
+        raise ValueError('O contêiner do Theme Lab deve pertencer ao usuário e não permitir escrita de terceiros.') from None
     output = output.absolute()
     try:
         relative = output.relative_to(allowed)
-        if not relative.parts:
+        if not relative.parts or any(part in ('.', '..') for part in relative.parts):
             raise ValueError
         session = allowed / relative.parts[0]
         _owned_private_directory(session, 'A sessão direta deve ser um diretório 0700 do usuário.')
@@ -59,27 +67,9 @@ def guard(root, output, family, *, embed_window=None, host_pid=None,
     output = Path(output).absolute()
     session = _session_root(output)
 
-    display = os.environ.get('DISPLAY', '')
-    match = re.fullmatch(r'(?:unix/)?:(\d+)(?:\.\d+)?', display)
-    if not match:
-        raise ValueError('A prévia direta requer um DISPLAY X11 local.')
-    socket_path = Path('/tmp/.X11-unix') / ('X' + match.group(1))
-    try:
-        info = socket_path.lstat()
-        if not stat.S_ISSOCK(info.st_mode) or info.st_uid not in (0, os.getuid()):
-            raise ValueError
-    except (OSError, ValueError):
-        raise ValueError('O socket do DISPLAY X11 local não pôde ser validado.') from None
-
-    authority = Path(os.environ.get('XAUTHORITY', '')).absolute()
-    try:
-        info = authority.lstat()
-        if (not authority.is_absolute() or stat.S_ISLNK(info.st_mode) or
-                not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or
-                stat.S_IMODE(info.st_mode) & 0o077):
-            raise ValueError
-    except (OSError, ValueError):
-        raise ValueError('A autorização X11 deve ser arquivo privado do usuário.') from None
+    x11 = verify_local_x11()
+    display = x11['display']
+    authority = Path(x11['xauthority'])
 
     bus = os.environ.get('DBUS_SESSION_BUS_ADDRESS', '')
     bus_match = re.fullmatch(r'unix:path=([^,;]+)(?:,guid=[0-9a-fA-F]+)?', bus)
@@ -128,6 +118,7 @@ def guard(root, output, family, *, embed_window=None, host_pid=None,
         'session_root': str(session),
         'profile': {key: str(value) for key, value in directories.items()},
         'display': display, 'xauthority': str(authority),
+        'x11_transport': x11['transport'], 'x11_peer': x11['peer'],
         'dbus_socket': str(bus_path), 'fixture_root': str(root),
         'embed_window': embed_window, 'host_pid': host_pid,
         'host_bridge': str(bridge) if embedded else None,

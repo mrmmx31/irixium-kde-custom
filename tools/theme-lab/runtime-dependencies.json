@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "shared": {
+    "commands": ["/usr/bin/python3"],
+    "python_modules": ["PIL"],
+    "libraries": ["X11", "Xm"],
+    "resources": [
+      "tools/theme-lab/backend.py",
+      "tools/theme-lab/build/theme-lab-colors",
+      "tools/theme-lab/src/native_colors.cpp",
+      "tools/theme-lab/sample_controls.json",
+      "tools/domainos_scrollbar_rules.json",
+      "tools/domainos_motif_art.py",
+      "colors/DomainOS-SR10.4.colors"
+    ]
+  },
+  "families": {
+    "motif": {
+      "libraries": ["Xm"],
+      "resources": ["tools/theme-lab/build/theme-lab"]
+    },
+    "gtk1": {
+      "libraries": ["gtk-1.2"],
+      "resources": [],
+      "limitation": "Sem galeria nativa e sem tradução implementada."
+    },
+    "gtk2": {
+      "libraries": ["gtk-x11-2.0"],
+      "python_modules": ["gi"],
+      "resources": [
+        "tools/theme-lab/preview_gtk2.py",
+        "tools/theme-lab/build/libtheme-lab-gtk2-press.so",
+        "plasma/tests/galerias-nativas/gtk2_demo.py",
+        "resources/gtk2-r584/fe95ddd38ef6f61a941d420f6d3d33f376b4d34032c3fc2cf9cad77834710755/manifest.json"
+      ]
+    },
+    "gtk3": {
+      "libraries": ["gtk-3"],
+      "python_modules": ["gi"],
+      "resources": [
+        "tools/theme-lab/preview_gtk.py",
+        "gtk/tools/build_kde_domainos.py",
+        "gtk/tools/adaptive_assets.py",
+        "plasma/tests/galerias-nativas/gtk3_demo.py"
+      ]
+    },
+    "gtk4": {
+      "libraries": ["gtk-4"],
+      "commands_optional": ["xwd", "xwdtopnm"],
+      "resources": [
+        "tools/theme-lab/preview_gtk4.py",
+        "tools/theme-lab/build/libtheme-lab-gtk4-host.so",
+        "plasma/tests/galerias-nativas/gtk4_demo.py"
+      ]
+    },
+    "gtk5": {
+      "resources": [],
+      "limitation": "Nenhum runtime ou galeria GTK5 disponível."
+    },
+    "qt5": {
+      "python_modules": ["PyQt5"],
+      "resources": ["plasma/tests/galerias-nativas/qt5_demo.py"]
+    },
+    "qt6": {
+      "python_modules": ["PyQt6"],
+      "resources": ["plasma/tests/galerias-nativas/qt6_demo.py"]
+    },
+    "kvantum": {
+      "python_modules": ["PyQt6"],
+      "resources": [
+        "plasma/tests/galerias-nativas/qt6_demo.py",
+        "tools/theme-lab/kvantum_recipe.py",
+        "tools/kvantum_native_palette.py",
+        "tools/kvantum_palette_config.py",
+        "tools/theme_transaction.py"
+      ],
+      "system_resource_glob": "/usr/lib/*/qt6/plugins/styles/libkvantum.so"
+    },
+    "plasma": {
+      "python_modules": ["PyQt6.QtQml"],
+      "resources": [
+        "plasma/tests/galerias-nativas/plasma_style_demo.py",
+        "plasma/IrixClassicDomainOS/metadata.json",
+        "tools/theme-lab/plasma_recipe.py"
+      ],
+      "system_resource_glob": "/usr/lib/*/qt6/qml/org/kde/plasma/components/ScrollBar.qml"
+    }
+  }
+}

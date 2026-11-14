@@ -41,6 +41,7 @@ sys.dont_write_bytecode = True
 LOCAL = Path(__file__).resolve().parent
 if str(LOCAL) not in sys.path:
     sys.path.insert(0, str(LOCAL))  # Also support explicit spec-based module loading.
+from x11_session import verify_local_x11
 ROOT = Path(__file__).resolve().parents[2]
 FAMILIES = ('motif', 'gtk1', 'gtk2', 'gtk3', 'gtk4', 'gtk5', 'qt5', 'qt6', 'kvantum', 'plasma')
 CONTROLS = ('push', 'toggle', 'check', 'radio', 'entry', 'combo', 'spin', 'text',
@@ -720,31 +721,22 @@ def embedded_user_preview_guard(root, project, rc_file, events_directory,
             raise Unavailable('Saída da captura deve ser um PNG único dentro dos eventos privados.')
 
     display = os.environ.get('DISPLAY', '')
-    match = re.fullmatch(r'(?:unix/)?:(\d+)(?:\.\d+)?', display)
-    if not match or os.environ.get('GDK_BACKEND', 'x11') not in ('x11', 'X11'):
+    if os.environ.get('GDK_BACKEND', 'x11') not in ('x11', 'X11'):
         raise Unavailable('Prévia acoplada exige um DISPLAY X11 local da sessão do Theme Lab.')
-    socket_path = Path('/tmp/.X11-unix') / ('X' + match.group(1))
     try:
-        socket_info = socket_path.lstat()
-        if not stat.S_ISSOCK(socket_info.st_mode) or socket_info.st_uid not in (0, os.getuid()):
-            raise ValueError
-    except (OSError, ValueError):
-        raise Unavailable('Socket X11 local da sessão não pôde ser validado.')
-    authority = Path(os.environ.get('XAUTHORITY', str(home / '.Xauthority'))).absolute()
-    try:
-        auth_info = authority.lstat()
-        if (stat.S_ISLNK(auth_info.st_mode) or not stat.S_ISREG(auth_info.st_mode) or
-                auth_info.st_uid != os.getuid() or stat.S_IMODE(auth_info.st_mode) & 0o077):
-            raise ValueError
-    except (OSError, ValueError):
-        raise Unavailable('Arquivo de autorização X11 não é privado e pertencente ao usuário.')
+        x11 = verify_local_x11(display=display,
+            authority=os.environ.get('XAUTHORITY', str(home / '.Xauthority')))
+    except ValueError as error:
+        raise Unavailable(str(error)) from error
 
     return {'verified': True,
             'mode': ('explicit_user_session_offscreen_capture' if capture_mode
                      else 'explicit_user_session_xembed'),
             'uid': os.getuid(), 'project': str(project), 'recipe': str(rc_file),
             'events': str(events_directory), 'session_root': str(session_root),
-            'display': display, 'personal_profile_written': False,
+            'display': display, 'xauthority': x11['xauthority'],
+            'x11_transport': x11['transport'], 'x11_peer': x11['peer'],
+            'personal_profile_written': False,
             'scope': (f'Somente captura {family.upper()} offscreen; não mapeia janela.'
                       if capture_mode else
                       f'Somente a cena {family.upper()} acoplada do Theme Lab por XEmbed.')}

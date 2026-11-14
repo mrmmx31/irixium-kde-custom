@@ -22,6 +22,7 @@ from select_companions import effective_look_and_feel, select, require_global
 from select_gtk import notify
 from theme_transaction import Failure, atomic, no_links, sha
 from user_bundle import Bundle, fingerprint
+from kvantum_native_palette import native_palette_signature
 
 ROOT = Path(__file__).resolve().parents[1]
 UNIT = 'irix-theme-companions.service'
@@ -207,27 +208,6 @@ def reload_kvantum(config, profile):
         'org.kde.KGlobalSettings.notifyChange', 'int32:2', 'int32:0'],
         capture_output=True, text=True, timeout=10, check=True)
     return 'native_style_change_sent'
-
-
-def native_palette_signature(config):
-    """Fingerprint KDE's inputs independently of its asynchronous GTK export.
-
-    A Global Theme applied by the GUI can change these inputs while colors.css
-    still contains the preceding theme. Reading only colors.css misses that
-    change. Notifications do not write these files, so our own notification
-    cannot change this signature and request another export.
-    """
-    sources = []
-    for relative in ('kdeglobals', 'kdedefaults/kdeglobals'):
-        path = config/relative
-        no_links(path)
-        if path.exists():
-            if not path.is_file() or path.stat().st_size > 1048576:
-                raise Failure('Origem KDE inválida para a paleta: ' + str(path))
-            sources.append((relative, sha(path.read_bytes())))
-        else:
-            sources.append((relative, None))
-    return sha(json.dumps(sources, separators=(',', ':')).encode())
 
 
 def palette_export_identity(config):

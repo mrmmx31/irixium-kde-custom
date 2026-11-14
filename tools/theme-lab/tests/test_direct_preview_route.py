@@ -18,7 +18,7 @@ class DirectPreviewRouteTests(unittest.TestCase):
     def setUp(self):
         base = Path.home() / 'tempia/domainos-theme-work'
         base.mkdir(mode=0o700, parents=True, exist_ok=True)
-        base.chmod(0o700)
+        self.base_mode = base.stat().st_mode & 0o777
         self.session = Path(tempfile.mkdtemp(prefix='qt-direct-test-', dir=base))
         self.session.chmod(0o700)
         self.output = self.session / 'generated'
@@ -40,6 +40,8 @@ class DirectPreviewRouteTests(unittest.TestCase):
                     'XDG_CACHE_HOME', 'XDG_STATE_HOME', 'XDG_RUNTIME_DIR'):
             self.assertTrue(Path(child[key]).is_relative_to(self.session), key)
             self.assertEqual(Path(child[key]).stat().st_mode & 0o777, 0o700)
+        self.assertEqual((Path.home() / 'tempia/domainos-theme-work').stat().st_mode & 0o777,
+                         self.base_mode)
 
     def test_rejects_other_temp_roots(self):
         outside = Path.home() / 'tempia' / ('direct-outside-' + uuid.uuid4().hex)
@@ -49,6 +51,21 @@ class DirectPreviewRouteTests(unittest.TestCase):
                 guard(ROOT, outside, 'qt5')
         finally:
             outside.rmdir()
+
+    def test_rejects_parent_segments_inside_private_session(self):
+        escaped = self.output / '..' / '..' / 'escaped'
+        with self.assertRaisesRegex(ValueError, 'sessão 0700'):
+            guard(ROOT, escaped, 'qt5')
+
+    def test_all_direct_families_accept_private_session_below_safe_parent(self):
+        for family in ('qt5', 'qt6', 'kvantum', 'plasma'):
+            with self.subTest(family=family):
+                proof = guard(ROOT, self.output, family)
+                self.assertTrue(proof['verified'])
+                self.assertEqual(proof['family'], family)
+                number = proof['display'].split(':', 1)[1].split('.', 1)[0]
+                self.assertEqual(proof['x11_peer'],
+                                 f'/tmp/.X11-unix/X{number}')
 
     def test_embed_arguments_are_atomic(self):
         command = append_host_arguments(['demo'], embed_window=0x1234,

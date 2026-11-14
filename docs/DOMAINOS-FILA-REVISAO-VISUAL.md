@@ -19086,3 +19086,76 @@ desabilitada conserva a explicação visível e continua bloqueando o clique. O
 próximo gate é o usuário abrir
 esta versão na sessão escolhida e avaliar visualmente menus, proporções,
 rolagem lateral e canvas. Nenhum aceite humano foi inferido.
+
+### Portabilidade do runtime e guards da sessão normal — 2026-11-12
+
+Foi preparada, sem instalação, uma distribuição relocável do ThemeLab. O
+binário agora descobre recursos em relação ao próprio executável; o pacote leva
+scripts, galerias, pontes nativas, temas de referência e o catálogo R584 com
+seus 112 assets verificados. O estado mutável continua fora do pacote, numa
+sessão 0700 do usuário. O contêiner `~/tempia/domainos-theme-work` não é
+reconfigurado: pode manter 0755 se pertencer ao usuário e não permitir escrita
+de grupo/terceiros; cada sessão e seus descendentes continuam privados.
+
+A falha GTK2/3/4 da sessão normal vinha de exigir o pathname
+`/tmp/.X11-unix/X1`, embora a conexão real use o peer Unix abstrato
+`\0/tmp/.X11-unix/X1`. A nova prova mantém DISPLAY local, Xauthority 0600 do
+usuário e autenticação ativa, e confere o peer e o número da tela. A falha
+Qt5/6/Kvantum/Plasma era independente: a guarda rejeitava o contêiner 0755
+antes de chegar à sessão 0700. As quatro rotas diretas agora aceitam essa
+combinação segura sem executar chmod nem escrever no perfil pessoal.
+
+O candidato atual em
+`~/tempia/domainos-theme-work/theme-lab-relocatable-final5-20261112` contém 292
+arquivos com manifesto SHA-256 íntegro
+`44574d0f9c945fa3c491a5bef8e560f88539caa6a07cb5de91d72287518f8d11`.
+O `final4` revelou em um HOME realmente vazio que o launcher ainda pressupunha
+`~/tempia` existente. A criação agora é hierárquica: `~/tempia`, o contêiner do
+projeto e a sessão receberam modo 0700 sem mudar permissões de diretórios já
+existentes. Em Xvfb privado, o `final5` iniciou sem `--root`, permaneceu ativo
+até o timeout esperado e não registrou erro de raiz, R584, fonte nativa,
+importação ou traceback. Os 19 avisos continuaram limitados às fontes ausentes
+no HOME mínimo.
+
+A geração real do pacote produziu GTK3 completo no escopo declarado e receitas
+parciais para GTK2, GTK4, Qt5, Qt6, Kvantum e Plasma; Motif permanece referência
+sem adaptador, e GTK1/GTK5 continuam indisponíveis e não simulados. Em Xvfb
+próprio foram capturados botão e scrollbar vertical reais de GTK2, GTK3 e GTK4,
+seis PNGs 0600; GTK2 e GTK4 respeitaram a barra privada de 15×180 px. As provas
+nativas anteriores de Qt5, Qt6, Kvantum e Plasma foram reutilizadas porque o
+manifesto do `final5` difere do `final4` somente no binário C do launcher; todos
+os scripts, receitas e assets de geração/prévia conservam os mesmos hashes.
+Nenhuma janela foi reaberta no desktop do usuário.
+
+`recipe_applied=false` no inventário significa que a consulta de capacidade não
+inicializou a GUI; no recibo de geração também preserva a informação de cobertura
+parcial da família. Já `applied=true` nos recibos nativos por controle registra
+que a QSS/SVG gerada foi ligada àquele widget real. Isso não amplia a cobertura:
+Kvantum, por exemplo, continua traduzindo somente as barras e lista os demais
+controles como não traduzidos.
+
+Passaram 22 testes focados de pacote/X11/rotas/falhas, 57 do companion e da
+paleta Kvantum, compilação C99 separada com `-Werror` e a inicialização isolada.
+A suíte ampla repetida também passou: 1027 verificações de modelo, 42 de backend,
+16 de cena, quatro Qt5, 21 Qt6, quatro do comparador, IPC e busca UTF-8.
+
+Durante a primeira validação, uma versão anterior do teste mudou
+momentaneamente o contêiner `domainos-theme-work` de 0755 para 0700; o modo
+observado foi restaurado de imediato, o teste foi corrigido e a validação final
+confirmou 0755 sem nova alteração. A primeira compilação separada também
+revelou que o CMake do helper de cores ainda apontava para a saída padrão e
+relinkou `tools/theme-lab/build/theme-lab-colors`; o processo compartilhado não
+usa nem mapeia esse helper. O Makefile agora direciona o helper para o `BUILD`
+solicitado e as compilações seguintes ficaram isoladas.
+
+Evidência estruturada:
+`docs/review/THEMELAB-PORTABLE-RUNTIME-20261112.json`. Isso comprova
+empacotamento, isolamento, guards, geração e renderização técnica dos controles
+listados; não comprova fidelidade visual nem aceite humano. Próximo gate visual:
+abrir deliberadamente o novo pacote na sessão escolhida pelo usuário e revisar
+uma família por vez. Não houve commit, push ou publicação nesta etapa.
+
+Em 2026-11-14, o usuário autorizou publicar este conjunto de portabilidade no
+branch corrente `#irixfiles`. Esta autorização não converte as provas técnicas
+acima em aceite visual: o histórico Git remoto é o registro autoritativo do
+commit e do push, e a revisão humana por família continua sendo o próximo gate.

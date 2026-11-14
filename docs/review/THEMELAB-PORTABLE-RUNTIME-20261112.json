@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-12",
+  "scope": "ThemeLab relocatable runtime and legitimate local X11 session guards",
+  "changes": {
+    "resource_root": "Discovered relative to PACKAGE/tools/theme-lab/build/theme-lab; explicit --root remains validated.",
+    "mutable_state": "Per-run directory below ~/tempia/domainos-theme-work, mode 0700.",
+    "container_policy": "Owned non-symlink directory without group/other write; existing mode is preserved.",
+    "path_policy": "Package output is a new direct child of the private container; preview output rejects parent segments and verifies every existing directory as owned mode 0700.",
+    "x11_policy": "Local DISPLAY plus private owned Xauthority plus authenticated AF_UNIX peer matching the display number.",
+    "r584": "Canonical receipt, manifest, gtkrc and 112 verified assets are package resources.",
+    "family_diagnostics": "Declared package resources and installed runtime capability are reported separately.",
+    "missing_runtime_resources": "native_colors.cpp plus the lightweight Kvantum palette/config transaction modules are packaged and declared.",
+    "clean_home_chain": "The launcher creates ~/tempia and ~/tempia/domainos-theme-work in sequence when HOME is genuinely empty; it does not chmod an existing container."
+  },
+  "real_session_evidence": {
+    "display": ":1",
+    "transport": "unix_abstract",
+    "peer": "/tmp/.X11-unix/X1",
+    "xauthority_mode": "0600",
+    "shared_windows_active_at_final_validation": false,
+    "shared_windows_reopened": false,
+    "owned_xvfb_display_for_native_captures": ":190"
+  },
+  "relocated_package_evidence": {
+    "path": "~/tempia/domainos-theme-work/theme-lab-relocatable-final5-20261112",
+    "manifest_files": 292,
+    "manifest_sha256": "44574d0f9c945fa3c491a5bef8e560f88539caa6a07cb5de91d72287518f8d11",
+    "manifest_sha256_failures": 0,
+    "explicit_root_used": false,
+    "clean_home": true,
+    "clean_home_created_directories": [
+      "~/tempia",
+      "~/tempia/domainos-theme-work",
+      "~/tempia/domainos-theme-work/theme-lab-XXXXXX"
+    ],
+    "created_session_mode": "0700",
+    "startup_expected_timeout_seconds": 5,
+    "startup_errors": [],
+    "startup_warnings": "19 avisos de fontes ausentes no HOME mínimo; a interface permaneceu ativa até o timeout esperado.",
+    "available_runtime_families": [
+      "motif", "gtk2", "gtk3", "gtk4", "qt5", "qt6", "kvantum", "plasma"
+    ],
+    "unavailable_runtime_families": {
+      "gtk1": "GTK1 is not installed and has no implemented native gallery.",
+      "gtk5": "No GTK5 runtime or gallery is available; it is not simulated."
+    }
+  },
+  "generation_evidence": {
+    "package": "~/tempia/domainos-theme-work/theme-lab-relocatable-final4-20261112",
+    "revision": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/generated/revisions/20261112T151737-eb2105e05d0f",
+    "reuse_for_final5": "The final5 manifest differs from final4 only in the rebuilt C launcher binary; every generation and preview resource hash is unchanged.",
+    "overall_status": "partially_generated",
+    "families": {
+      "motif": "not_implemented_reference_only",
+      "gtk1": "unavailable",
+      "gtk2": "partially_generated",
+      "gtk3": "generated",
+      "gtk4": "partially_generated",
+      "gtk5": "unavailable",
+      "qt5": "partially_generated",
+      "qt6": "partially_generated",
+      "kvantum": "partially_generated",
+      "plasma": "partially_generated"
+    },
+    "missing_source_or_import_errors": []
+  },
+  "native_preview_evidence": {
+    "gtk": {
+      "result": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/gtk-native-proof-r1/RESULTADO.json",
+      "families": ["gtk2", "gtk3", "gtk4"],
+      "controls_per_family": ["push", "scroll_v"],
+      "capture_count": 6,
+      "png_mode": "0600",
+      "desktop_window_mapped": false
+    },
+    "qt5": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/native-preview-profile/qt5/detached/home/qt5widgets-proof/RESULTADO.json",
+    "qt6": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/native-preview-profile/qt6/detached/home/qtwidgets-proof/RESULTADO.json",
+    "kvantum": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/native-preview-profile/kvantum/detached/home/qtwidgets-proof/RESULTADO.json",
+    "plasma": "~/tempia/domainos-theme-work/themelab-final4-family-validation-20261112/native-preview-profile/plasma/detached/home/plasma-native-preview/RESULTADO.json",
+    "recipe_applied_semantics": "Capability and generation summaries keep recipe_applied=false when no GUI was initialized or family coverage remains partial. The native gallery receipts set the per-control recipe to applied=true only after the generated QSS/SVG was attached to the listed real widgets. Kvantum applies only the scrollbar recipe; its other controls remain explicitly untranslated."
+  },
+  "tests": {
+    "x11_session": 4,
+    "direct_preview_route": 6,
+    "runtime_package": 6,
+    "runtime_probe_failures": 6,
+    "theme_companion_and_kvantum_palette": 57,
+    "model_offline": 1027,
+    "backend": 42,
+    "preview_scene": 16,
+    "qt5_recipe": 4,
+    "qt6_recipe": 21,
+    "visual_compare": 4,
+    "preview_event_and_code_search": "passed",
+    "separate_c99_build": "passed with -Werror",
+    "source_tree_diff_check": "passed"
+  },
+  "validation_incidents": [
+    "Uma versão anterior do teste alterou momentaneamente o contêiner domainos-theme-work de 0755 para 0700. O modo observado antes do teste foi restaurado imediatamente; o teste foi corrigido e a validação final confirmou 0755 sem nova alteração.",
+    "A primeira compilação separada do helper de cores herdou do CMake um caminho de saída fixo e relinkou tools/theme-lab/build/theme-lab-colors. O processo compartilhado não usa nem mapeia esse helper. O Makefile agora fixa a saída no BUILD solicitado e as compilações seguintes ficaram isoladas.",
+    "O candidato final4 falhou ao iniciar com HOME realmente vazio porque ~/tempia ainda não existia. O launcher passou a criar ~/tempia antes do contêiner do projeto; final5 permaneceu ativo até o timeout esperado e criou toda a cadeia com modo 0700."
+  ],
+  "limits": [
+    "No visual fidelity or human acceptance is inferred.",
+    "No other user account was used.",
+    "No global KDE, GTK or X11 setting was changed; the final filesystem permission state matches the state observed before validation.",
+    "No ThemeLab window was reopened on the user's desktop during final validation; native GTK captures and clean startup used an owned Xvfb.",
+    "GTK1 and GTK5 remain unavailable rather than being simulated."
+  ],
+  "publication": {
+    "commit": false,
+    "push": false,
+    "installed": false
+  }
+}

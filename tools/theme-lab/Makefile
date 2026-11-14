@@ -40,7 +40,8 @@ $(BUILD)/metrics-comparison-test: tests/metrics_comparison_test.c src/native_met
 check-metrics-comparison: $(BUILD)/metrics-comparison-test
 	"$(BUILD)/metrics-comparison-test"
 native-colors:
-	cmake -S native-build -B "$(BUILD)/native-colors"
+	cmake -S native-build -B "$(BUILD)/native-colors" \
+		-DTHEME_LAB_COLOR_OUTPUT="$(abspath $(BUILD))"
 	cmake --build "$(BUILD)/native-colors" --parallel 2
 $(BUILD):
 	mkdir -p "$@"

@@ -34,6 +34,46 @@ cmake -S tools/theme-lab/native-build -B tools/theme-lab/build/native-colors
 cmake --build tools/theme-lab/build/native-colors --parallel 2
 ```
 
+## Pacote relocável e diagnóstico
+
+O binário descobre a raiz de recursos a partir de seu próprio caminho quando
+`--root` é omitido. A estrutura esperada é
+`PACKAGE/tools/theme-lab/build/theme-lab`; trocar o diretório atual ou o nome do
+usuário não altera essa descoberta. `--root` continua disponível para a árvore
+de desenvolvimento, mas é canonicalizado e precisa conter os recursos mínimos.
+
+Uma distribuição autocontida é gerada somente em um diretório novo sob
+`~/tempia/domainos-theme-work/`. Ela inclui os scripts, galerias, temas de
+referência, as pontes nativas e o bundle canônico R584 verificado. Dados
+mutáveis não entram no pacote: cada execução cria uma sessão 0700 própria. O
+contêiner `domainos-theme-work` pode ser 0755, desde que pertença ao usuário e
+não permita escrita de grupo ou terceiros; a ferramenta não muda seu modo.
+
+```sh
+make -C tools/theme-lab BUILD="$HOME/tempia/domainos-theme-work/theme-lab-build" \
+  all gtk2-pressure native-colors
+python3 -B tools/theme-lab/package_runtime.py \
+  --root "$PWD" \
+  --build-dir "$HOME/tempia/domainos-theme-work/theme-lab-build" \
+  --output "$HOME/tempia/domainos-theme-work/theme-lab-package"
+"$HOME/tempia/domainos-theme-work/theme-lab-package/theme-lab"
+```
+
+`THEME-LAB-PACKAGE.json` registra SHA-256 de todos os arquivos. O diagnóstico
+abaixo confere esse manifesto e separa recursos empacotados, bibliotecas,
+bindings e limitações de cada família. Ausência de GTK1/GTK5 permanece uma
+indisponibilidade explícita, não uma substituição por outro toolkit.
+
+```sh
+python3 -B PACKAGE/tools/theme-lab/runtime_diagnostics.py --root PACKAGE
+```
+
+Na sessão normal, o guard X11 exige `DISPLAY` local, Xauthority regular 0600 do
+usuário e uma conexão autenticada cujo peer Unix corresponda à tela pedida.
+Tanto o socket de pathname quanto o socket abstrato do Xwayland são aceitos;
+TCP, autoridade pública, peer de outra tela e falha de autenticação são
+recusados. Nenhuma guarda seleciona tema ou escreve no perfil pessoal.
+
 ## Abrir na sessão de teste
 
 Com uma prévia criada por `plasma/tools/prever-tema-completo.py`, execute:

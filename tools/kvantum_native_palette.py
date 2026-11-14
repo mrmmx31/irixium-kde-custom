@@ -11,8 +11,23 @@ import sys
 from theme_transaction import Failure
 
 
+def native_palette_signature(config):
+    """Fingerprint the KDE inputs used by the native Qt palette reader."""
+    from theme_transaction import no_links, sha
+    sources = []
+    for relative in ('kdeglobals', 'kdedefaults/kdeglobals'):
+        path = config / relative
+        no_links(path)
+        if path.exists():
+            if not path.is_file() or path.stat().st_size > 1048576:
+                raise Failure('Origem KDE inválida para a paleta: ' + str(path))
+            sources.append((relative, sha(path.read_bytes())))
+        else:
+            sources.append((relative, None))
+    return sha(json.dumps(sources, separators=(',', ':')).encode())
+
+
 def read(config):
-    from theme_companion_bridge import native_palette_signature
     before = native_palette_signature(config)
     environment = dict(os.environ, XDG_CONFIG_HOME=str(config),
         QT_QPA_PLATFORM='offscreen', QT_QPA_PLATFORMTHEME='kde',
